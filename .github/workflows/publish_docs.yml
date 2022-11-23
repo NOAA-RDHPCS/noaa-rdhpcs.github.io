@@ -17,4 +17,7 @@ jobs:
       run: pip install -r requirements.txt
     - name: Build HTML Documentation
       run: make html
-    - run: ls build/html
+    - name: Upload Pages Artifact
+      uses: actions/upload-pages-artifact
+      with:
+        path: 'build/html'
