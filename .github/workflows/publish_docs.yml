@@ -13,6 +13,8 @@ jobs:
       with:
         python-version: '3.10'
         cache: 'pip'
-    - run: pip install -r requirements.txt
-    - run: python3 --version
-    - run: pip freeze
+    - name: Install Python Requirements
+      run: pip install -r requirements.txt
+    - name: Build HTML Documentation
+      run: make html
+    - run: ls build/html
