@@ -9,7 +9,7 @@
 import datetime as dt
 
 project = 'NOAA RDHPCS User Documentation'
-copyright = '%s, <a href="https://www.noaa.gov">National Oceanic and Atmospheric Administration<a>' % dt.datetime.now().year
+copyright = '%s, `National Oceanic and Atmospheric Administration<https://www.noaa.gov>' % dt.datetime.now().year
 author = 'NOAA RDHPCS'
 html_logo = 'images/NOAA_RDHPCS.png'
 
