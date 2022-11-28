@@ -32,9 +32,9 @@ html_static_path = ['_static']
 html_context = {
     'vcs_pageview_mode': 'edit',
     'display_github': False,
-    'github_user': 'NOAA-GFDL',  # Username
-    'github_repo': 'rdhpcs-user-docs',  # Repo name
-    'github_version': 'master',  # Version
+    'github_user': 'NOAA-RDHPCS',  # Username
+    'github_repo': 'noaa-rdhpcs.github.io',  # Repo name
+    'github_version': 'main',  # Version
     'conf_py_path': '/',  # Path in the checkout to the docs root
 }
 
