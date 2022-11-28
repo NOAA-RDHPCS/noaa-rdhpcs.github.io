@@ -9,7 +9,7 @@
 import datetime as dt
 
 project = 'NOAA RDHPCS User Documentation'
-copyright = '%s, NOAA' % dt.datetime.now().year
+copyright = '%s, <a href="https://www.noaa.gov">National Oceanic and Atmospheric Administration' % dt.datetime.now().year
 author = 'NOAA RDHPCS'
 html_logo = 'images/NOAA_RDHPCS.png'
 
@@ -31,7 +31,7 @@ html_static_path = ['_static']
 
 html_context = {
     'vcs_pageview_mode': 'edit',
-    'display_github': False,
+    'display_github': True,
     'github_user': 'NOAA-RDHPCS',  # Username
     'github_repo': 'noaa-rdhpcs.github.io',  # Repo name
     'github_version': 'main',  # Version
