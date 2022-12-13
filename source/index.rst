@@ -4,7 +4,6 @@
    contain the root `toctree` directive.
 
 Welcome to GaeaDocs's documentation.
-Lasciate ogne speranza, voi ch’intrate.
 ====================================
 
 .. note::
@@ -14,6 +13,7 @@ Lasciate ogne speranza, voi ch’intrate.
    not rely on these documents.
    
    This is an attempt to add a line to the description:  
+   Lasciate ogne speranza, voi ch’intrate.
 
 Getting Help
 ------------
