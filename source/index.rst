@@ -3,7 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GaeaDocs's documentation! Lasciate ogne speranza, voi ch’intrate
+Welcome to GaeaDocs's documentation.
+Lasciate ogne speranza, voi ch’intrate.
 ====================================
 
 .. note::
