@@ -12,3 +12,5 @@ MAYDAY!!
 ########
 
 Hello, this is a test.
+
+`A link test <_gaea-user-guide>`_.
