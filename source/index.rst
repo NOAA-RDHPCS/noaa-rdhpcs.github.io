@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GaeaDocs's documentation!
+Welcome to GaeaDocs's documentation! Lasciate ogne speranza, voi ch’intrate
 ====================================
 
 .. note::
@@ -11,6 +11,8 @@ Welcome to GaeaDocs's documentation!
    This site is a test version of the NOAA RDHPCS sites.  All documentation here
    is not current, and may not even reflect anything within the RDHPCS.  Do
    not rely on these documents.
+   
+   This is an attempt to add a line to the description:  
 
 Getting Help
 ------------
