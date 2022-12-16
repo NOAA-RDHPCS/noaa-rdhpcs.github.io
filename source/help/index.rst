@@ -11,7 +11,7 @@ Getting Help
 How to Write a Good Help Ticket
 ###############################
 
-<p> Use a descriptive subject </P>
+ Use a descriptive subject </ br>
 * Good: Job failing on gaea, *error* bus error
 * Bad: job failing
 * Good: 500 Error on product detail page or When I click the link below I get a 404/Page Not Found Error.
