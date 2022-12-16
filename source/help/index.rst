@@ -10,7 +10,6 @@ Getting Help
 ###############################
 How to Write a Good Help Ticket
 ###############################
-
 Use a descriptive subject 
  
 * Good: Job failing on gaea, *error* bus error
