@@ -1,14 +1,12 @@
 .. _getting-help:
 
 ############
-Getting Help
+Getting Help:  
+How to Write a Good Help Ticket
 ############
 
 .. toctree::
    :maxdepth: 2
-
-
-''''How to Write a Good Help Ticket''''
 
 Use a descriptive subject 
  
