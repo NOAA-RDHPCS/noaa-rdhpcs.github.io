@@ -7,9 +7,9 @@ Getting Help
 .. toctree::
    :maxdepth: 2
 
-###############################
-How to Write a Good Help Ticket
-###############################
+
+''''How to Write a Good Help Ticket''''
+
 Use a descriptive subject 
  
 * Good: Job failing on gaea, *error* bus error
