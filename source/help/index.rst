@@ -1,8 +1,7 @@
 .. _getting-help:
 
 ############
-Getting Help:  
-How to Write a Good Help Ticket
+Getting Help:  How to Write a Good Help Ticket
 ############
 
 .. toctree::
