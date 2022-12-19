@@ -16,10 +16,9 @@ Data and Transfers
 
     ---  
     Third Panel
-
+    
     ---
-        Final panel
+    Final panel
     
    :badge:`Press Me!,badge-primary`
-
     ---
