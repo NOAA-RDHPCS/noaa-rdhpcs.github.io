@@ -15,7 +15,7 @@ Data and Transfers
     This is another
 
     ---  
-    Third Panel
+    Down Left Panel
     
     ---
     Final panel
