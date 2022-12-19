@@ -12,6 +12,13 @@ Data and Transfers
     This is a panel attempt
 
     ---
-    This is aanother
+    This is another
+
+    ---
+Third Panel
+
+    ---
+   Final panel
+   :badge:`Press Me!,badge-primary`
 
     ---
