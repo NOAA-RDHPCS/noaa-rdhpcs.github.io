@@ -15,10 +15,10 @@ Data and Transfers
     This is another
 
     ---
-Third Panel
+    Third Panel
 
     ---
-   Final panel
+    Final panel
    :badge:`Press Me!,badge-primary`
 
     ---
