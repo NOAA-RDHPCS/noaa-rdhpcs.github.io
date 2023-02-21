@@ -14,13 +14,13 @@ Data and Transfers
 Available on Gaea is a tool called GCP, which allows for internal transfers on Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please reference System Details if you are unfamiliar with the filesystems or expected use of each variety of node on Gaea.
 
 Available Tools
-- GCP
-- spdcp - lustre to lustre specific
-- globus-url-copy (GridFTP)
-- scp
-- rsync
-- cp
-- hsi and htar (for Zeus' HPSS)
+-  GCP
+-  spdcp - lustre to lustre specific
+-  globus-url-copy (GridFTP)
+-  scp
+-  rsync
+-  cp
+-  hsi and htar (for Zeus' HPSS)
 We suggest all users use GCP as the primary data transfer tool.
 
 Examples
