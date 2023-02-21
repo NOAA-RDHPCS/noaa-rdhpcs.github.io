@@ -118,7 +118,7 @@ Further information on interfacing with HPSS and the HSI/HTAR commands can be fo
 http://www.mgleicher.us/GEL/htar/htar_user_guide.html
 https://nesccdocs.rdhpcs.noaa.gov/wiki/index.php/Using_The_HSMS_%28HPSS%29
 
-## External (Untrusted) Data Transfers
+## External (Untrusted) Data Transfers ##
 To support external data transfers with methods that are faster and simpler than the port tunnel method, NOAA RDHPCS has a data transfer node. This means data can be transferred to Gaea without the use of the port tunnel or existing ssh connection. Not only is this simpler, but provides for much faster transfers. The difference between the eDTN and the DTN as described above is that the eDTN does not mount the Gaea filesystems. Transferring through the eDTN to Gaea requires a two step process. First, files are transferred from external hosts to the eDTN. Second, from Gaea, the files are pulled back from the eDTN.
 
 For authentication, use of your token is required from external transfers to the eDTN. From within Gaea, use of your token is not required.
