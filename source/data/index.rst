@@ -14,6 +14,7 @@ Data and Transfers
 Available on Gaea is a tool called GCP, which allows for internal transfers on Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please reference System Details if you are unfamiliar with the filesystems or expected use of each variety of node on Gaea.
 
 Available Tools
+
 -  GCP
 -  spdcp - lustre to lustre specific
 -  globus-url-copy (GridFTP)
@@ -57,12 +58,12 @@ Users can use port tunnels associated with their login sessions to move files be
 - Edit your workstation's ~/.ssh/config file to contain the following (you can also put this on your desktop/laptop workstation):
 
 > Host gaea
-  HostName                gaea.rdhpcs.noaa.gov
-  User                    First.Last
-  ControlMaster           auto
-  LocalForward            uid+30000 localhost:uid+30000
-  RemoteForward           uid+20000 localhost:22
-  NoHostAuthenticationForLocalhost yes
+> HostName                gaea.rdhpcs.noaa.gov
+> User                    First.Last
+> ControlMaster           auto
+> LocalForward            uid+30000 localhost:uid+30000
+> RemoteForward           uid+20000 localhost:22
+> NoHostAuthenticationForLocalhost yes
 
 Host gaea1 gaea2 gaea3 gaea4 gaea5 gaea6 gaea7 gaea8 gaea?.ncrc.gov
   HostName                localhost
