@@ -18,7 +18,7 @@ html_logo = 'images/NOAA_RDHPCS.png'
 
 extensions = [
     'sphinx_rtd_theme',
-    'sphinx_panels'
+    'sphinx_design'
 ]
 
 templates_path = ['_templates']

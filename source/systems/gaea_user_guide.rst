@@ -60,12 +60,14 @@ FDR InfiniBand.
       - 27.1 PF peak
       -
 
-.. panels::
-    :container: container-lg pb-4
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
+
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
 
     C3
     ^^^
+
     Cray XC40-LC Haswell
 
     1,504 compute nodes
@@ -75,10 +77,12 @@ FDR InfiniBand.
 
     1.77 PF peak
 
-    ---
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
 
     C4
     ^^^
+
     Cray XC40-LC Broadwell
 
     2,656 compute nodes (2 x Intel Broadwell 18-cores per node)
@@ -87,10 +91,12 @@ FDR InfiniBand.
 
     3.52 PF peak
 
-    ---
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
 
     C5
     ^^^
+
     HPE EX Rome
 
     1,792 compute nodes (2 x AMD Rome 64-cores per node)
@@ -99,10 +105,12 @@ FDR InfiniBand.
 
     27.1 PF peak
 
-    ---
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
 
     F2 File System
     ^^^
+
     DDN Lustre
 
     32 PB total usable; ZFS compression
