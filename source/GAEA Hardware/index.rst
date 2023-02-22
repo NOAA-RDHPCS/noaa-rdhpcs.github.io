@@ -1,4 +1,9 @@
-# Hardware #
+.. toctree::
+   :maxdepth: 2
+
+##########
+ Hardware 
+ ##########
 
 == c3 partition ==
 
