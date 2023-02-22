@@ -39,7 +39,8 @@ Users can transfer data between the lustre f2 filesystem using GCP. This can be 
 Users can transfer data between GFDL and Gaea filesystems with GCP. This can be done on the login nodes and rdtn's only. Users can interactively run gcp commands from a login node or submit gcp calls in scripts to run in the rdtn queue.
 
 .. code-block:: shell
-
+  :linenos:
+  
   module load gcp
   gcp gaea:/lustre/f2/scratch/$USER/file gfdl:/gfdl/specific/path/file
   gcp gfdl:/gfdl/specific/path/file gaea:/lustre/f2/dev/$USER/path/file
