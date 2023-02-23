@@ -12,6 +12,7 @@ Data and Transfers
  #  Data Transfers
  
  ## Introduction
+ 
 Available on Gaea is a tool called GCP, which allows for internal transfers on Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please reference System Details if you are unfamiliar with the filesystems or expected use of each variety of node on Gaea.
 
 Available Tools
@@ -34,6 +35,8 @@ Users can transfer data between the lustre f2 filesystem using GCP. This can be 
 **module load gcp**
 
 .. code-block:: shell
+  :linenos:
+  
 gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
 
 **Gaea <-> GFDL**
