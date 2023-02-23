@@ -32,7 +32,8 @@ Users can transfer data between the lustre f2 filesystem using GCP. This can be 
 
 **module load gcp**
 
-> gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
+.. code-block::
+gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
 
 **Gaea <-> GFDL**
 
@@ -49,8 +50,9 @@ Users can transfer data between GFDL and Gaea filesystems with GCP. This can be 
 
 Users can transfer data between GFDL and Gaea filesystems with GridFTP, rsync or scp. This can be done on the login nodes and RDTNs only. Please place large transfers (>1GB) in batch jobs on the RDTN queue. This will respect other users on the login nodes by reducing interactive impact.
 
-.. code-block::
-
+.. code-block:: shell
+  :linenos: 
+  
   scp /lustre/f2/scratch/$USER/path/name/here some.remote.site:/a/path/over/there
   globus-url-copy file:/path/on/Gaea/file gsiftp://some.remote.site/path/to/destination/file
   globus-url-copy gsiftp://some.remote.site/path/to/remote/file file:/destination/path/on/Gaea/file
@@ -64,13 +66,16 @@ Users can use port tunnels associated with their login sessions to move files be
 - Log out of Gaea entirely.
 - Edit your workstation's ~/.ssh/config file to contain the following (you can also put this on your desktop/laptop workstation):
 
-> Host gaea
-> HostName                gaea.rdhpcs.noaa.gov
-> User                    First.Last
-> ControlMaster           auto
-> LocalForward            uid+30000 localhost:uid+30000
-> RemoteForward           uid+20000 localhost:22
-> NoHostAuthenticationForLocalhost yes
+.. code-block:: shell
+  :linenos: 
+  
+Host gaea
+HostName                gaea.rdhpcs.noaa.gov
+User                    First.Last
+ControlMaster           auto
+LocalForward            uid+30000 localhost:uid+30000
+RemoteForward           uid+20000 localhost:22
+NoHostAuthenticationForLocalhost yes
 
 Host gaea1 gaea2 gaea3 gaea4 gaea5 gaea6 gaea7 gaea8 gaea?.ncrc.gov
   HostName                localhost
@@ -96,8 +101,11 @@ Host *
 **Gaea <-> Fairmont HPSS**
 Users can transfer data between Gaea and Zeus' High Performance Storage System (HPSS) through the use of the HSI and HTAR commands. These commands are only available on Gaea's Remote Data Transfer Nodes (RDTNs). A user can submit a script to run on the RDTNs.
 
-- Minimum Headers for a submitted RDTN job.
-`#SBATCH --clusters=es
+.. code-block:: shell
+  :linenos: 
+  
+Minimum Headers for a submitted RDTN job.
+#SBATCH --clusters=es
 #SBATCH --partition=rdtn
 
 - Load the HSI module and list the contents of your directory
