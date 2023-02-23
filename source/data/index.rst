@@ -33,6 +33,7 @@ Users can transfer data between the lustre f2 filesystem using GCP. This can be 
 **module load gcp**
 
 .. code-block:: shell
+  :linenos:
 
 gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
 
@@ -65,7 +66,7 @@ Users can use port tunnels associated with their login sessions to move files be
 
 .. code-block:: shell
   :linenos: 
-  
+
 Test One Item
 Test second item
 
