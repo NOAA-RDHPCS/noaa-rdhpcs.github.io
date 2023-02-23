@@ -10,6 +10,7 @@ Data and Transfers
 
 
  #  Data Transfers
+ 
  ## Introduction
 Available on Gaea is a tool called GCP, which allows for internal transfers on Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please reference System Details if you are unfamiliar with the filesystems or expected use of each variety of node on Gaea.
 
@@ -32,7 +33,8 @@ Users can transfer data between the lustre f2 filesystem using GCP. This can be 
 
 **module load gcp**
 
-.. code-block::
+.. code-block:: shell
+
 gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
 
 **Gaea <-> GFDL**
@@ -65,6 +67,7 @@ Users can use port tunnels associated with their login sessions to move files be
 - Get your uid from the 'id' command on Gaea. Substitute your Gaea user name for First.Last
 - Log out of Gaea entirely.
 - Edit your workstation's ~/.ssh/config file to contain the following (you can also put this on your desktop/laptop workstation):
+
 
 .. code-block:: shell
   :linenos: 
@@ -101,32 +104,45 @@ Host *
 **Gaea <-> Fairmont HPSS**
 Users can transfer data between Gaea and Zeus' High Performance Storage System (HPSS) through the use of the HSI and HTAR commands. These commands are only available on Gaea's Remote Data Transfer Nodes (RDTNs). A user can submit a script to run on the RDTNs.
 
+ 
+- Minimum Headers for a submitted RDTN job.
+
 .. code-block:: shell
-  :linenos: 
-  
-Minimum Headers for a submitted RDTN job.
+
 #SBATCH --clusters=es
 #SBATCH --partition=rdtn
 
+
 - Load the HSI module and list the contents of your directory
-`module load hsi
+
+.. code-block:: shell
+module load hsi
 
 - Check connectivity to the hsi, replacing the below file path with yours on HPSS
-`hsi "ls -P /BMC/nesccmgmt/$USER/"
+.. code-block:: shell
+
+hsi "ls -P /BMC/nesccmgmt/$USER/"
 
 - Retrieve Files using HSI into the current directory on the RDTN. The -q option limits output spam.
-`hsi -q "get /BMC/nesccmgmt/Karol.Zieba/sample_file"
+
+.. code-block:: shell
+
+hsi -q "get /BMC/nesccmgmt/Karol.Zieba/sample_file"
 
 - Upload Files using HSI
-`hsi -q "put /lustre/f2/scratch/$USER/file_to_upload : /BMC/nesccmgmt/$USER/file_to_upload"
+
+.. code-block:: shell
+hsi -q "put /lustre/f2/scratch/$USER/file_to_upload : /BMC/nesccmgmt/$USER/file_to_upload"
 
 - Tar many small files from the RDTN using HTAR. Note that using asterisk will not work.
 
-`htar cf /BMC/nesccmgmt/$USER/tarred_file.tar file1 file2 path/file3
+.. code-block:: shell
+htar cf /BMC/nesccmgmt/$USER/tarred_file.tar file1 file2 path/file3
 
 - Untar many small files into your current directory on the RDTN using HTAR
 
-`htar xf /BMC/nesccmgmt/$USER/tarred_file.tar
+.. code-block:: shell
+htar xf /BMC/nesccmgmt/$USER/tarred_file.tar
 
 Further information on interfacing with HPSS and the HSI/HTAR commands can be found below.
 
