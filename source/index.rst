@@ -57,6 +57,13 @@ Software
 
    software/index
 
+Hera
+----
+.. toctree::
+   :maxdepth: 2
+
+   Hera/index
+
 How to contribute to this documentation
 ---------------------------------------
 .. toctree::
