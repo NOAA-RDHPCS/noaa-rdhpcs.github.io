@@ -30,7 +30,10 @@ Examples
 
 Users can transfer data between the lustre f2 filesystem using GCP. This can be done on the login nodes, and ldtns Gco commands issued on the compute nodes will result in a [L|R]DTN job being created and gcp will block until that job is completed by defaut.
 
-**module load gcp**:
+**module load gcp**
+
+.. code-block:: shell
+  :linenos:
 
 gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
 
