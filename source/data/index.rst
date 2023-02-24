@@ -32,8 +32,6 @@ Users can transfer data between the lustre f2 filesystem using GCP. This can be 
 
 **module load gcp**
 
-Experiment:  does there need to be text in the prior line?
-
 .. code-block:: shell
   :linenos:
 
@@ -69,9 +67,6 @@ Users can use port tunnels associated with their login sessions to move files be
 .. code-block:: shell
   :linenos: 
 
-Test One Item
-Test second item
-
 Host gaea
 HostName                gaea.rdhpcs.noaa.gov
 User                    First.Last
@@ -80,11 +75,17 @@ LocalForward            uid+30000 localhost:uid+30000
 RemoteForward           uid+20000 localhost:22
 NoHostAuthenticationForLocalhost yes
 
+.. code-block:: shell
+  :linenos: 
+
 Host gaea1 gaea2 gaea3 gaea4 gaea5 gaea6 gaea7 gaea8 gaea?.ncrc.gov
   HostName                localhost
   Port                    uid+30000
   User                    First.Last
   LogLevel                Quiet
+
+  .. code-block:: shell
+  :linenos: 
 
 Host *
   CheckHostIP yes
