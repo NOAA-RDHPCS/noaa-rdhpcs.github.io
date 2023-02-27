@@ -26,7 +26,7 @@ NESCC is also home to Niagara, a cloud-based computing resource. In addition, Te
 System Configuration
 ----------
 
-|   | Hera TCA  |Hera FGA | Juno TCA | Juno FGA |
+| xx  | Hera TCA  |Hera FGA | Juno TCA | Juno FGA |
 | --- | --- | --- | --- | --- |
 | CPU Type | Intel SkyLake | Intel Haswell | Intel SkyLake | Intel Haswell |
 | CPU Speed | 2.40 GHz | 2.460 GHz | 2.40 GHz | 2.460 GHz |
@@ -45,7 +45,7 @@ System Configuration
 | Interconnect | HDR-100 IB | FDR-10 (40 Gbps) | HDR-100 IB | FDR-10 (40 Gbps) |
 | Total GPU Flops | NA | 3760 TF | NA | 75 TF |
 
-* Notes: *
+Notes:
 - The Skylake 6148 CPU has two AVX-512 units and hence a theoretical peak of 32 double precision floating point operations per cycle with a base clock rate for floating point operations of 1.6 GHz. 
 - Total flops is a measure of peak, and doesn’t necessarily represent actual performance.
 - Juno is the Test and Development System. Users must be granted specific access to the system for use.
