@@ -28,7 +28,6 @@ System Configuration
 
 |   | Hera TCA  |Hera FGA | Juno TCA | Juno FGA |
 | --- | --- | --- | --- | --- |
---------------------------------------------
 | CPU Type | Intel SkyLake | Intel Haswell | Intel SkyLake | Intel Haswell |
 | CPU Speed | 2.40 GHz | 2.460 GHz | 2.40 GHz | 2.460 GHz |
 | Reg Compute Nodes | 1328 | 100| 14 | 2 |
