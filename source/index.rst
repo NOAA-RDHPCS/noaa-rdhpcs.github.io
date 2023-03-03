@@ -62,6 +62,8 @@ Quickstart
 .. toctree::
    :maxdepth: 2
 
+   Quickstart/index
+
 Hera
 ----
 .. toctree::
@@ -69,12 +71,7 @@ Hera
 
    HERA/index
 
-SLURM Tips
----------
-.. toctree::
-   :maxdepth: 2
-
-   SLURM Tips/index
+ 
 
 How to contribute to this documentation
 ---------------------------------------
