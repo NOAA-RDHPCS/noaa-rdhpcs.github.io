@@ -67,7 +67,12 @@ Hera
 .. toctree::
    :maxdepth: 2
 
-   Hera/index
+SLURM tips
+----
+.. toctree::
+   :maxdepth: 2
+
+ 
 
 How to contribute to this documentation
 ---------------------------------------
