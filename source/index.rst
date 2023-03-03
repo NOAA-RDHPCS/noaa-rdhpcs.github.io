@@ -74,6 +74,8 @@ Hera
 .. toctree::
    :maxdepth: 2
 
+   HERA/index
+
 How to contribute to this documentation
 ---------------------------------------
 .. toctree::
