@@ -22,13 +22,15 @@ or, from the sbatch command line:
 `sbatch --clusters=es --partition=eslogin --ntasks=1 /path/to/compile_script`
 
 Running
----
+-----
 
 Once your executable is compiled and in place with your data on F2, you are ready to submit your compute job. Please submit your compute job to either c3 or c4.
 
 `#SBATCH --clusters=c3
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=32 # Gaea charges for node use.  Nodes are 32 cores on c3 and 36 core on c4.  This example will get charged for 4 nodes.
+`#SBATCH --nodes=4
+`#SBATCH --ntasks-per-node=32 # Gaea charges for node use.  Nodes are 32 cores on c3 and 36 core on c4.  
+
+This example will get charged for 4 nodes.
 
 or, from the sbatch command line:
 
@@ -90,7 +92,7 @@ Running a Simple Job
 Here's an example of a basic script to run on Gaea. It is a skeleton script for c1:c2 to help users who don't have access to, or prefer not to use, a workflow manager. This script copies everything in the experiment subdirectory from ltfs to fs, runs the experiment, and then copies the changed and new files from fs to ltfs.
 
 Running the Script
----
+----
 
 This script assumes that the data and executable are staged to /lustre/ltfs/scratch/$USER/$experiment_subdir. The scripts and data are located at /usw/user_scripts/
 Use gcp to get the skeleton script from /usw/user_scripts/c1_c2_skeleton to your local home directory:
