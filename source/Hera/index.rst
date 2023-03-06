@@ -52,3 +52,6 @@ Notes:
 - Total flops is a measure of peak, and doesn’t necessarily represent actual performance.
 - Juno is the Test and Development System. Users must be granted specific access to the system for use.
 - The FGA part (the nodes with GPUs) are the same as what was on Theia; But the network has been upgraded to EDR.
+
+.. toctree::
+   :maxdepth: 2
