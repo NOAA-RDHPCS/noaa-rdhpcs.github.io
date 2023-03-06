@@ -1,3 +1,7 @@
+.. toctree::
+   :maxdepth: 2
+
+
 Please be aware that Gaea is not like a usual Slurm cluster.  Slurm expects that all nodes are homogeneous and capable of being used for any purpose.  Gaea is a heterogeneous set of clusters (hence the need to specify a cluster as shown below.)  This also means that partitions (queues) for resources with different purposes will need to set up your job's environment to provide access to the software for that purpose.(data transfer nodes being chief among these.)  Under Slurm your job will only have the system shell init scripts run if you specify --exportNONE.  The result is that --exportNONE is a required argument to get your job to see software specific to a given node type, e.g. HSI/HTAR for HPSS on the data transfer nodes.
 
 For general information about SLURM, see [https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Introduction_to_SLURM Introduction to SLURM] and subsequent topics in the Commondocs pages.
