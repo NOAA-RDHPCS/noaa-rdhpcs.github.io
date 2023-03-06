@@ -71,12 +71,12 @@ Quickstart
 
    SLURM Tips/index
 
-Software
+Hera
 --------
 .. toctree::
    :maxdepth: 2 
 
-   software/index
+   hera/index
 
 How to contribute to this documentation
 ---------------------------------------
