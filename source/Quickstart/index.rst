@@ -1,5 +1,13 @@
+##########
+Quickstart
+##########
+
+
+.. toctree::
+   :maxdepth: 2
+
 Before you Begin
-^^^
+----------------
 
 Ensure that you have done your first login to Gaea and generated a certificate. Please see Login for details.
 

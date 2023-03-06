@@ -58,14 +58,14 @@ Software
    software/index
 
 Quickstart
---------
+-----------
 .. toctree::
    :maxdepth: 2
 
    Quickstart/index
 
 Hera
------
+-------
 .. toctree::
    :maxdepth: 2
 
