@@ -6,24 +6,25 @@ Quickstart
 .. toctree::
    :maxdepth: 2
 
-Before you Begin
-----------------
+**Before you Begin**
 
 Ensure that you have done your first login to Gaea and generated a certificate. Please see Login for details.
 
-## Connecting and General Info
+Connecting and General Info
+---------------------------
 There are two ways to access Gaea. The oldest is to use PuTTY or ssh to gaea-rsa.rdhpcs.noaa.gov and authenticate using your RDHPCS-issued RSA token. Alternatively, use Tectia sshg3 to gaea.rdhpcs.noaa.gov and authenticate with your CAC and CAC PIN. How to do this is also described in detail in Login with additional useful information like how to set up port tunnels to Gaea (needed to use X-windows applications like DDT.) You can also use the RDHPCS login documentation at Logging_in, but you will want to know that the port tunnel ranges for Gaea are 20000 + your UID number for LocalForward and 30000 + your UID number for RemoteForward (in ssh config file language.)
 If you want more information on using your CAC to authenticate to RDHPCS systems, see CAC_Login
 If you want more information on configuring PuTTY, see Configuring_PuTTY
 Gaea uses modules software to let users change which software is accessible to their environment. There is no module man page. Instead use:
-module help
+
+`module help
 
 Gaea uses Slurm as its batch scheduler.
 
-## Quickstart
 This simple overview explains the elements of a basic job in Gaea. It includes compiling, running, combining, data transfer, and allocation.
 
-## Compiling
+**Compiling** 
+
 Gaea offers PrgEnv-intel, Prg-Env-pgi, and several other modules that make it as easy as possible to get your programs running . PrgEnv-pgi is loaded by default. You compile by calling either cc or ftn, according to the language your code is written in. See Compilers for more detail, especially for compiling multithreaded applications.
 
 You may either compile live in your login shell on a Gaea login node, or in a job in the eslogin queue in the es partition of Gaea's batch system. To tell a job script to run on the login nodes, specify the following in your script:
@@ -54,7 +55,8 @@ Your compute job script will run on one of the compute nodes allocated to your j
 > cd /lustre/f2/scratch/$user/
 > srun-multi --nodes=128 --ntasks-per-node=32 /lustre/f2/scratch/$user/path/to/executable
 
-## Staging/Combining
+**Staging/Combining**
+
 Staging data to and from model run directories is a common task on Gaea. So is combining model output when your model uses multiple output writers for scalability of your MPI communications. The Local Data Transfer Nodes (LDTNs) are the resource provided for these tasks. Please keep these tasks off of the c3/c4 compute clusters and eslogin nodes. There is a NOAA-developed tool called gcp which is available for data transfers on Gaea. To tell a job script to run on the LDTN nodes, specify the following in your script:
 
 > #SBATCH --clusters=es
@@ -66,7 +68,7 @@ or, from the sbatch command line:
 
 > sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 /path/to/staging_script
 
-##Transferring Data to/from Gaea
+**Transferring Data to/from Gaea
 
 Data transfers between Gaea and the world outside of Gaea should be performed on the Remote Data Transfer Nodes (RDTNs). There is a NOAA-developed tool called gcp, which is available for data transfers on Gaea. HPSS users are only able to access HPSS from jobs on the RDTNs. To tell a job script to run on the login nodes, specify the following in your script:
 
@@ -79,7 +81,8 @@ or, from the sbatch command line:
 
 > sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
 
-## Allocation
+**Allocation
+
 Gaea users have default projects. If you are only a member of a single project, or if your experiments always run under your default project, you don't need to do anything special to run. Users who are members of more than one project need to enter their preferred project via the --account option to sbatch to correctly charge to each experiment's project.
 
 You can use AIM to request access to new projects. Once access is granted in AIM it can take up to two days to be reflected in Gaea's Slurm scheduler. If you still don't have the granted access after two days, please put in a help desk ticket so admins can investigate your issue. To determine your Slurm account memberships, run the following command:
@@ -95,10 +98,11 @@ or add the following to your job script's #SBATCH headers:
 > #SBATCH --account=gfdl_z
 
 Running a Simple Job
+--------------------
 
 Here's an example of a basic script to run on Gaea. It is a skeleton script for c1:c2 to help users who don't have access to, or prefer not to use, a workflow manager. This script copies everything in the experiment subdirectory from ltfs to fs, runs the experiment, and then copies the changed and new files from fs to ltfs.
 
-Running the Script
+**Running the Script
 
 This script assumes that the data and executable are staged to /lustre/ltfs/scratch/$USER/$experiment_subdir. The scripts and data are located at /usw/user_scripts/
 
