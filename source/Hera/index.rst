@@ -1,5 +1,5 @@
 ####
-Hera
+HERA
 ####
 
 .. toctree::
