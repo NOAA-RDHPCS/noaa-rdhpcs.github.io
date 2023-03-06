@@ -68,7 +68,7 @@ or, from the sbatch command line:
 
 > sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 /path/to/staging_script
 
-**Transferring Data to/from Gaea
+**Transferring Data to/from Gaea**
 
 Data transfers between Gaea and the world outside of Gaea should be performed on the Remote Data Transfer Nodes (RDTNs). There is a NOAA-developed tool called gcp, which is available for data transfers on Gaea. HPSS users are only able to access HPSS from jobs on the RDTNs. To tell a job script to run on the login nodes, specify the following in your script:
 
@@ -81,7 +81,7 @@ or, from the sbatch command line:
 
 > sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
 
-**Allocation
+**Allocation**
 
 Gaea users have default projects. If you are only a member of a single project, or if your experiments always run under your default project, you don't need to do anything special to run. Users who are members of more than one project need to enter their preferred project via the --account option to sbatch to correctly charge to each experiment's project.
 
@@ -102,7 +102,7 @@ Running a Simple Job
 
 Here's an example of a basic script to run on Gaea. It is a skeleton script for c1:c2 to help users who don't have access to, or prefer not to use, a workflow manager. This script copies everything in the experiment subdirectory from ltfs to fs, runs the experiment, and then copies the changed and new files from fs to ltfs.
 
-**Running the Script
+**Running the Script**
 
 This script assumes that the data and executable are staged to /lustre/ltfs/scratch/$USER/$experiment_subdir. The scripts and data are located at /usw/user_scripts/
 
