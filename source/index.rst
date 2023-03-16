@@ -57,7 +57,7 @@ Software
 
    software/index
 
-Quickstart
+ Quickstart
 -----------
 .. toctree::
    :maxdepth: 2
