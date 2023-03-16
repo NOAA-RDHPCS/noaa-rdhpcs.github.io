@@ -57,8 +57,8 @@ Software
 
    software/index
 
- Quickstart
------------
+Quickstart
+----------
 .. toctree::
    :maxdepth: 2
 
@@ -77,6 +77,13 @@ Hera
    :maxdepth: 2 
 
    Hera/index
+
+Gaea Hardware
+--------
+.. toctree::
+   :maxdepth: 2
+
+   Gaea Hardware/index
 
 How to contribute to this documentation
 ---------------------------------------
