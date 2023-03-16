@@ -29,14 +29,14 @@ Gaea offers PrgEnv-intel, Prg-Env-pgi, and several other modules that make it as
 
 You may either compile live in your login shell on a Gaea login node, or in a job in the eslogin queue in the es partition of Gaea's batch system. To tell a job script to run on the login nodes, specify the following in your script:
 
-> #SBATCH --clusters=es
-> #SBATCH --partition=eslogin
-> #SBATCH --ntasks=1 
+    #SBATCH --clusters=es
+    #SBATCH --partition=eslogin
+    #SBATCH --ntasks=1 
 
 or, from the sbatch command line:
 
-> sbatch --clusters=es --partition=eslogin --ntasks=1 /path/to/compile_script
-> Running
+    sbatch --clusters=es --partition=eslogin --ntasks=1 /path/to/compile_script
+    Running
 
 Once your executable is compiled and in place with your data on F2, you are ready to submit your compute job. Please submit your compute job to either c3 or c4.
 
@@ -107,20 +107,30 @@ Here's an example of a basic script to run on Gaea. It is a skeleton script for 
 This script assumes that the data and executable are staged to /lustre/ltfs/scratch/$USER/$experiment_subdir. The scripts and data are located at /usw/user_scripts/
 
 Use gcp to get the skeleton script from /usw/user_scripts/c1_c2_skeleton to your local home directory
-gcp /usw/user_scripts/c1_c2_skeleton ~$USER/
+
+    gcp /usw/user_scripts/c1_c2_skeleton ~$USER/
+
 Use gcp to get other files from /usw/user_scripts/ to your f1 directory
-gcp -r /usw/user_scripts/ /lustre/f1/$USER/c1_c2_skeleton
+
+    gcp -r /usw/user_scripts/ /lustre/f1/$USER/c1_c2_skeleton
+
 Open the skeleton script. (The comments in the script will help you understand what each item does.)
-vim ~$USER/c1_c2_skeleton
+
+    vim ~$USER/c1_c2_skeleton
+
 Users MUST modify the paths in the '#PBS -d' line and the walltime in the '#PBS -l walltime' line. (i.e /lustre/f1/First.Last/ for -d, and walltime can be set to 20 min for this tutorial)
+
 WARNING do not use environment variables like $USER in setting the directory as it will not be available at run time for the script
 now go to your home directory and submit your job
-msub c1_c2_skeleton
-Once the job is submitted
+
+    msub c1_c2_skeleton
+    
 Once the job is submitted, you can use these commands to check on your job:
 
 To view the status of your job
-showq -u $USER
+
+    showq -u $USER
+
 The -c flag will show jobs that have completed with exit codes
 showq -u $USER -c
 To to check a detailed status of your job replace "jobid" with your job's id. For example: checkjob gaea.123456789. Additionally you add an option, -v, to get more information.
