@@ -138,3 +138,4 @@ Once the job is Finished
 Once your job is finished you will have a output file in your directory /lustre/f1/$USER
 You should have a log file (ex. c1_c2_skeleton_gaea.8279963)
 You should have a folder with the output files (ex. 6307731.c2-sys0.ncrc.gov/c1_c2_skeleton_gaea.8279963/)
+
