@@ -2,7 +2,6 @@
 Quickstart
 ##########
 
-
 .. toctree::
    :maxdepth: 2
 
@@ -40,46 +39,46 @@ or, from the sbatch command line:
 
 Once your executable is compiled and in place with your data on F2, you are ready to submit your compute job. Please submit your compute job to either c3 or c4.
 
-> #SBATCH --clusters=c3
-> #SBATCH --nodes=4
-> #SBATCH --ntasks-per-node=32 # Gaea charges for node use. 
+     #SBATCH --clusters=c3
+     #SBATCH --nodes=4
+     #SBATCH --ntasks-per-node=32 # Gaea charges for node use. 
 
 Nodes are 32 cores on c3 and 36 core on c4.  This example will get charged for 4 nodes.
 or, from the sbatch command line:
 
-> sbatch --clusters=c3 --nodes=4 --ntasks-per-node=32 /path/to/run_script
-> sbatch --clusters=c4 --nodes=4 --ntasks-per-node=36 /path/to/run_script
+     sbatch --clusters=c3 --nodes=4 --ntasks-per-node=32 /path/to/run_script
+     sbatch --clusters=c4 --nodes=4 --ntasks-per-node=36 /path/to/run_script
 
 Your compute job script will run on one of the compute nodes allocated to your job. To run your executable on them use the srun or srun-multi command. Your executable and data must reside on F2 as only lustre filesystems are mounted on the compute nodes. Also, your job's PWD should be in F2 when you run srun or srun-multi. A simple example is shown below:
 
-> cd /lustre/f2/scratch/$user/
-> srun-multi --nodes=128 --ntasks-per-node=32 /lustre/f2/scratch/$user/path/to/executable
+     cd /lustre/f2/scratch/$user/
+     srun-multi --nodes=128 --ntasks-per-node=32 /lustre/f2/scratch/$user/path/to/executable
 
 **Staging/Combining**
 
 Staging data to and from model run directories is a common task on Gaea. So is combining model output when your model uses multiple output writers for scalability of your MPI communications. The Local Data Transfer Nodes (LDTNs) are the resource provided for these tasks. Please keep these tasks off of the c3/c4 compute clusters and eslogin nodes. There is a NOAA-developed tool called gcp which is available for data transfers on Gaea. To tell a job script to run on the LDTN nodes, specify the following in your script:
 
-> #SBATCH --clusters=es
-> #SBATCH --partition=ldtn
-> #SBATCH --nodes=1
-> #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 16
+     #SBATCH --clusters=es
+     #SBATCH --partition=ldtn
+     #SBATCH --nodes=1
+     #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 16
 
 or, from the sbatch command line:
 
-> sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 /path/to/staging_script
+     sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 /path/to/staging_script
 
 **Transferring Data to/from Gaea**
 
 Data transfers between Gaea and the world outside of Gaea should be performed on the Remote Data Transfer Nodes (RDTNs). There is a NOAA-developed tool called gcp, which is available for data transfers on Gaea. HPSS users are only able to access HPSS from jobs on the RDTNs. To tell a job script to run on the login nodes, specify the following in your script:
 
-> #SBATCH --clusters=es
-> #SBATCH --partition=rdtn
-> #SBATCH --nodes=1
-> #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 8
+     #SBATCH --clusters=es
+     #SBATCH --partition=rdtn
+     #SBATCH --nodes=1
+     #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 8
 
 or, from the sbatch command line:
 
-> sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
+     sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
 
 **Allocation**
 
@@ -87,15 +86,15 @@ Gaea users have default projects. If you are only a member of a single project, 
 
 You can use AIM to request access to new projects. Once access is granted in AIM it can take up to two days to be reflected in Gaea's Slurm scheduler. If you still don't have the granted access after two days, please put in a help desk ticket so admins can investigate your issue. To determine your Slurm account memberships, run the following command:
 
-> sacctmgr list associations user=First.Last
+     sacctmgr list associations user=First.Last
 
 To submit jobs to the scheduler under a specific account do the following from the sbatch command line:
 
-> sbatch --account=gfdl_z
+     sbatch --account=gfdl_z
 
 or add the following to your job script's #SBATCH headers:
 
-> #SBATCH --account=gfdl_z
+     #SBATCH --account=gfdl_z
 
 Running a Simple Job
 --------------------
