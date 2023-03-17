@@ -28,6 +28,8 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_rtd_theme'
+html_baseurl = 'https://docs.rdhpcs.noaa.gov'
+
 html_static_path = ['_static']
 
 html_css_files = [
@@ -45,7 +47,6 @@ html_context = {
 
 # see https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html
 html_theme_options = {
-    'canonical_url': 'https://docs.rdhpcs.noaa.gov',
     'collapse_navigation': False,
     'sticky_navigation': True,
     'navigation_depth': 4,

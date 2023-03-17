@@ -69,7 +69,7 @@ SLURM Tips
 .. toctree::
    :maxdepth: 2
 
-   SLURM Tips/index
+   slurm_tips/index
 
 Hera
 --------
@@ -79,7 +79,7 @@ Hera
    Hera/index
 
 Gaea Hardware
---------
+-------------
 .. toctree::
    :maxdepth: 1
 

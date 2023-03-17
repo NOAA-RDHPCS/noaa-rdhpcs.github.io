@@ -1,5 +1,5 @@
-C3 Stats,C4 Stats,C5,F2 Stats
-Cray XC40-LC Haswell,Cray XC40-LC Broadwell,HPE EX Rome,DDN Lustre
-"1,504 compute nodes (2 x Intel Haswell 16-cores per node)","2,656 compute nodes (2 x Intel Broadwell 18-cores per node)","1,792 compute nodes (2 x AMD Rome 64-cores per node)","32 PB total usable; ZFS compression"
+C3,C4,C5,F2 File System
+Cray XC40-LC,Cray XC40-LC,HPE EX,DDN Lustre
+"1,504 compute nodes (2 x Intel Haswell 16-cores per node)","2,656 compute nodes (2 x Intel Broadwell 18-cores per node)","1,920 compute nodes (2 x AMD Rome 64-cores per node)","32 PB total usable; ZFS compression"
 64GB DDR4 per node; 96TB total,64GB DDR4 per node; 145TB total,251 GB DDR5 per node; 449TB total,36 OSS; 72 OST; 4 MDS
-1.77 PF peak,3.52 PF peak,27.1 PF peak,
+1.77 PF peak,3.52 PF peak,10.2 PF peak,
