@@ -6,3 +6,5 @@ Software
 
 .. toctree::
    :maxdepth: 2
+
+   python/index
