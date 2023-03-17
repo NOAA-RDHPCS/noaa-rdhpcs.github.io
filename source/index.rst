@@ -11,8 +11,8 @@ Welcome to GaeaDocs's documentation.
    This site is a test version of the NOAA RDHPCS sites.  All documentation here
    is not current, and may not even reflect anything within the RDHPCS.  Do
    not rely on these documents.
-   
-   This is an attempt to add a line to the description:  
+
+   This is an attempt to add a line to the description:
    Lasciate ogne speranza, voi ch’intrate.
 
 Getting Help
@@ -60,12 +60,12 @@ Software
 Quickstart
 ----------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    Quickstart/index
 
- SLURM Tips
- ------------
+SLURM Tips
+------------
 .. toctree::
    :maxdepth: 2
 
@@ -74,16 +74,16 @@ Quickstart
 Hera
 --------
 .. toctree::
-   :maxdepth: 2 
+   :maxdepth: 2
 
    Hera/index
 
 Gaea Hardware
 --------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   Gaea Hardware/index
+   GAEA_Hardware/index
 
 How to contribute to this documentation
 ---------------------------------------
