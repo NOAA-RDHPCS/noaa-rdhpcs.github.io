@@ -121,8 +121,8 @@ FDR InfiniBand.
 Node Types
 ----------
 
-Gaea, has three node types: login, compute, and data transfer (DTN).  All are similar
-in terms of hardware, but differe in their intended use.
+Gaea has three node types: login, compute, and data transfer (DTN).  All are similar
+in terms of hardware, but differ in their intended use.
 
 +---------------+----------------------------------------------------------------------------------+
 | Node Type     | Description                                                                      |
