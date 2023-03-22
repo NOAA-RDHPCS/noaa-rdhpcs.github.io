@@ -1,6 +1,6 @@
 
 #############
-Gaee Hardware
+Gaea Hardware
 #############
 
 c3 partition
