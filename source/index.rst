@@ -78,12 +78,6 @@ Hera
 
    Hera/index
 
-Gaea Hardware
--------------
-.. toctree::
-   :maxdepth: 1
-
-   GAEA_Hardware/index
 
 How to contribute to this documentation
 ---------------------------------------
