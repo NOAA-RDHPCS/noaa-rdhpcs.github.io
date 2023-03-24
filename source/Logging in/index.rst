@@ -9,11 +9,17 @@ New Accounts
 ============
 
 1. User gets NEMS/Gmail account from sponsoring lab's process.  (Get this done before starting the Gaea account request process.)
+
 2.  User uses NEMS/Gmail First.Last username and password to access https://aim.rdhpcs.noaa.gov and requests access to one or more projects.
+
 2.  PI of project approves.
+
 2.  HR approves.
+
 2.  ISSO (Information System Security Officer) approves.
+
 2.  RM (Resource Manager) approves. This last is the system owner for e.g. Gaea, Hera, Jet, Niagara.
+
 2.  Automation and manual account creation processes proceed.  If needed, an RSA fob is issued.
 
 Note: NOAA RDHPCS systems use a &quot;long user name&quot; which is usually the same as your NOAA email user name. These pages frequently refer to this long user name as &quot;First.Last&quot; or First.Last&gt;.
@@ -21,7 +27,7 @@ Note: NOAA RDHPCS systems use a &quot;long user name&quot; which is usually the 
 First Time Login
 =================
 
-* [https://rdhpcs2.common2.docs.rdhpcs.noaa.gov/wiki/index.php/Logging_in Logging In]
+* https://rdhpcs2.common2.docs.rdhpcs.noaa.gov/wiki/index.php/Logging_in 
     For those with CAC cards, use TECTIA: sshg3 First.Last&gt;@gaea.rdhpcs.noaa.gov
     For those without CAC cards or on Apple Macintosh clients: ssh First.Last&gt;@gaea2.rsa.princeton.rdhpcs.noaa.gov or ssh First.Last&gt;@gaea2.rsa.boulder.rdhpcs.noaa.gov
     You should now see a message to enter the PASSCODE from the RSA FOB
@@ -57,10 +63,10 @@ Regular Login
 
 Once a user has gone through the initial login steps and generated a valid certificate, logging into Gaea is much simpler.
 
-1. sshg3 First.Last&gt;@gaea.rdhpcs.noaa.gov
-2. ssh First.Last&gt;@gaea2.rsa.princeton.rdhpcs.noaa.gov (or ssh First.Last&gt;@gaea2.rsa.boulder.rdhpcs.noaa.gov)
+1. sshg3 First.Last>@gaea.rdhpcs.noaa.gov
+2. ssh First.Last>@gaea2.rsa.princeton.rdhpcs.noaa.gov (or ssh First.Last&gt;@gaea2.rsa.boulder.rdhpcs.noaa.gov)
     Enter your pin and passcode from the RSA FOB.
-3.   (ex. if you pin was abcd1234 you would enter &quot;abcd1234xxxxxx&quot; where x's are the randomly generated numbers from the rsa fob)
+    (ex. if you pin was abcd1234 you would enter **abcd1234xxxxxx**; where x's are the randomly generated numbers from the rsa fob)
 
 With ssh connection sharing enabled, you may do additional logins from the same GFDL host without entering a passcode. To turn off ssh connection sharing for just one login, do &quot;ssh 2.S none gaea&quot;.
 
