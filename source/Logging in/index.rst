@@ -66,6 +66,8 @@ With ssh connection sharing enabled, you may do additional logins from the same 
 
 The gaea bastion host will then display the menu:
 
+.. code-block:: shell
+
     The Gaea destinations are:
     Hostname            Description
     gaea                gaea head nodes
@@ -94,6 +96,8 @@ Globus (using your proxy certificate)
 
 Once you are logged into a Gaea login node, you can use the Globus ssh client to ssh between Gaea login nodes without manual authentication.
 
+.. code-block:: shell
+
     gaea1&gt; gsissh gaea2
     banner…
     gaea2&gt;
@@ -104,6 +108,8 @@ Setting up SSH Port Tunnels
 
 In a Gaea ssh session, run the following command to get your user ID number:
 
+.. code-block:: shell
+
     id 2.u
 
 
@@ -112,6 +118,7 @@ Linux workstation  ~/.ssh/config
 
 If you connect to Gaea from a Linux workstation, you may want to use the following example ~/.ssh/config file to help make connecting to and using Gaea via ssh easier.
 
+.. code-block:: shell
 
     Host gaea*
     HostName gaea.rdhpcs.noaa.gov
@@ -140,6 +147,8 @@ gaea ~/.cshrc
 
 On Gaea you may want to adopt something like the below examples in your ~/.cshrc file.  If your default shell is bash, you will need to alter them for bash syntax.
 
+.. code-block:: shell
+
 
     #add this near the top of your .[t]cshrc file for users whose default shell is [t]csh.
 
@@ -152,6 +161,7 @@ On Gaea you may want to adopt something like the below examples in your ~/.cshrc
 
 GFDL users, or other users interested in using the GFDL workflow software, may want to add the following line to their ~/.cshrc file if your default shell is [t]csh, or your ~/.bashrc file if your default shell is bash.  You can change your RDHPCS default shell via AIM.
 
+.. code-block:: shell
 
     module use 2.a /ncrc/home2/fms/local/modulefiles
 
@@ -161,6 +171,7 @@ gaea ~/.ssh/config
 
 On Gaea you may want to adopt something like the below example ~/.ssh/config file, substituting your user name and user ID (UID) number as appropriate
 
+.. code-block:: shell
 
     Host gfdl
       HostName localhost
