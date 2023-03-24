@@ -29,6 +29,13 @@ Accounts
 
    accounts/index
 
+Logging In
+--------
+.. toctree::
+   :maxdepth: 2
+
+   Logging in/index
+
 Connecting
 ----------
 .. toctree::
