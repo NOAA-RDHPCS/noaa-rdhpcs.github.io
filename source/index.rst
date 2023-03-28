@@ -43,13 +43,6 @@ Connecting
 
    connecting/index
 
-Modules
-----------
-.. toctree::
-   :maxdepth: 2
-
-   Modules/index
-
 Systems
 -------
 .. toctree::
@@ -63,6 +56,14 @@ Data
    :maxdepth: 2
 
    data/index
+
+Modules
+-------
+
+..toctree::
+   :maxdepth: 2
+
+   modules/index
 
 Software
 --------
