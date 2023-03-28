@@ -118,4 +118,6 @@ NOTE: this is not the complete print out of what your shell might print out
 
 - **use [-a]–append] directory**: Prepend one or more directories to the MODULEPATH environment variable. The –append flag will append the directory to MODULEPATH.
 
+**WARNING:** Please **DO NOT** use the command module purge. This will remove all modules currently loaded by default in your environment and will lead to major errors. If you have accidentally used the command purge, log out of GAEA and log in. This will give you the default environment with the default modules loaded. 
+
  
