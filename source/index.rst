@@ -110,6 +110,13 @@ Hera
 
    Hera/index
 
+Niagara
+--------
+.. toctree::
+   :maxdepth: 2
+
+   Niagara/index
+
 
 How to contribute to this documentation
 ---------------------------------------
