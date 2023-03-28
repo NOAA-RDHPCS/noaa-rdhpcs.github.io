@@ -2,6 +2,9 @@
 Niagara
 *******
 
+.. toctree::
+   :maxdepth: 2
+   
 ------------
 Introduction
 ------------

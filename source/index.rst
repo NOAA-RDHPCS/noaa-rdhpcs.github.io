@@ -96,20 +96,6 @@ Software
 
    software/index
 
-Niagara
-------------
-.. toctree::
-   :maxdepth: 2
-
-   Niagara/index
-
-
-Niagara
--------
-.. toctree::
-   :maxdepth: 2
-
-   Niagara/index
 
 SLURM Tips
 ------------
