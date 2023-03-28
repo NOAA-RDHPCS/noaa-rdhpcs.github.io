@@ -37,7 +37,9 @@ Sets up the shell environment for gcp
     iobuf/2.0.1(default)                 pmi/1.0-1.0000.8256.50.1.ss          stat/1.1.3                           xt-mpt/5.0.1(default)
     xt-mpt/5.2.0                         xt-shmem/5.0.1(default               xt-shmem/5.2.0
 
-NOTE: this is not the complete print out of what your shell might print out
+.. note::
+
+This is not the complete print out of what your shell might print out
 
 - **module add module_file**: Load module file(s) into the shell environment
 - **module load module_file**: Load module file(s) into the shell environment
