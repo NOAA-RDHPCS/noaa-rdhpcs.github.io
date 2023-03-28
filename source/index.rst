@@ -65,14 +65,6 @@ Modules
 
    modules/index
 
-Compiilers
--------
-
-.. toctree::
-   :maxdepth: 2
-
-   compilers/index
-
 Software
 --------
 .. toctree::

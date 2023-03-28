@@ -71,3 +71,81 @@ When you log into a Cray system you are placed on a login node. When you submit 
 **Warning:** Long-running or memory-intensive codes should not be compiled for use on login nodes nor batch nodes.
 
 **Warning:** Always compile on the login nodes. Never compile on the batch nodes.
+
+------------------------
+Controlling the Programming Environment
+------------------------
+
+Upon login, the default versions o zf the PGI compiler and associated Message Passing Interface (MPI) libraries are added to each user's environment through a programming environment module. Users do not need to make any environment changes to use the default version of PGI and MPI.
+
+==============
+Changing Compilers
+==================
+
+If a different compiler is required, it is important to use the correct environment for each compiler. To aid users in pairing the correct compiler and environment, programming environment modules are provided. The programming environment modules will load the correct pairing of compiler version, message passing libraries, and other items required to build and run. We highly recommend that the programming environment modules be used when changing compiler vendors. The following programming environment modules are available:
+
+- PrgEnv-pgi
+- PrgEnv-gnu
+- PrgEnv-cray
+- PrgEnv-intel
+
+To change the default loaded PGI environment to the default version of GNU use:
+
+.. code-block:: shell
+
+    $ module unload PrgEnv-pgi $ module load PrgEnv-gnu
+    
+==============================
+Changing Versions of the Same Compiler
+===================================
+     
+To use a specific compiler version, you must first ensure the compiler's PrgEnv module is loaded, and then swap to the correct compiler version. For example, the following will configure the environment to use the GCC compilers, then load a non-default GCC compiler version:
+
+.. code-block:: shell
+
+    $ module swap PrgEnv-pgi PrgEnv-gnu $ module swap gcc gcc/4.6.2
+    
+=================
+General Programming Environment Guidelines
+=======================
+
+We recommend the following general guidelines for using the programming environment modules:
+
+- Do not purge all modules; rather, use the default module environment provided at the time of login, and modify it.
+- Do not swap or unload any of the Cray provided modules (those with names like xt-*).
+- Do not swap moab, torque, or MySQL modules after loading a programming environment modulefile
+
+------------------------
+Compiling Threaded Codes
+-----------------------
+
+======
+OpenMP
+=======
+
+For PGI, add "-mp" to the build line:
+
+.. code-block:: shell
+
+    $ cc -mp test.c -o test.x $ setenv OMP_NUM_THREADS 2 $ aprun -n2 -d2 ./test.x
+
+For Cray and GNU no additional flags are required:
+
+.. code-block:: shell
+
+    $ module swap PrgEnv-pgi PrgEnv-cray $ cc test.c -o test.x $ setenv OMP_NUM_THREADS 2 $ aprun -n2 -d2 ./test.x
+
+For Intel:
+
+.. code-block:: shell
+    $ module swap PrgEnv-pgi PrgEnv-intel $ cc -openmp test.c -o test.x $ setenv OMP_NUM_THREADS 2 $ aprun -n2 -d2 ./test.x
+
+=====
+SHMEM
+======
+
+For SHMEM codes, users must load the xt-shmem module before compiling:
+
+.. code-block:: shell
+
+   $ module load xt-shmem
