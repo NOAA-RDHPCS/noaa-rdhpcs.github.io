@@ -42,9 +42,12 @@ Cray systems are comprised of different types of nodes:
 - Compute nodes running the Cray Node Linux (CNL) microkernel
 - Your code will run on these nodes
 
-**Warning:** Always compile on the login nodes. Never compile on the batch nodes.
+.. warning::
+    Always compile on the login nodes. Never compile on the batch nodes.
 
-**Note:** Gaea also has LDTN and RDTN nodes. These are for combining model output (LDTN) and data transfer (RDTN) only, not compiling. They are not Cray nodes.
+.. note::
+    
+    Gaea also has LDTN and RDTN nodes. These are for combining model output (LDTN) and data transfer (RDTN) only, not compiling. They are not Cray nodes.
 
 ============================
 Compiling for Compute Nodes
@@ -52,7 +55,8 @@ Compiling for Compute Nodes
 
 Cray compute nodes are the nodes that carry out the vast majority of computations on the system. Compute nodes are running the CNL microkernel, which is markedly different than the OS running on the login and batch nodes. Your code will be built targeting the compute nodes. All parallel codes should run on the compute nodes. Compute nodes are accessible only by invoking aprun within a batch job. To build codes for the compute nodes, you should use the Cray compiler wrappers.
 
-**Note** We highly recommend that the Cray-provided cc, CC, and ftn compiler wrappers be used when compiling and linking source code for use on the compute nodes.
+.. note::
+    We highly recommend that the Cray-provided cc, CC, and ftn compiler wrappers be used when compiling and linking source code for use on the compute nodes.
 
 ========================
 Support for Shared Object Libraries
