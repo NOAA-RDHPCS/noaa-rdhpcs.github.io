@@ -12,9 +12,7 @@ Module Commands
 - **module help [module]**: Print the usage of each sub-command. If an argument is given, print the Module-specific help information for the module file(s)
 
 .. code-block:: shell
-
 > module help gcp
-
 ----------- Module Specific Help for 'gcp/2.2' --------------------
 
 Sets up the shell environment for gcp
@@ -23,7 +21,6 @@ Sets up the shell environment for gcp
 
 
 .. code-block:: shell
-
 > module avail
 ------------------------------------------ /opt/cray/ss/modulefiles ---------------------------------------
 portals/2.2.0-1.0301.22039.18.1.ss(default) rca/1.0.0-2.0301.21810.11.20.ss(default)
@@ -44,7 +41,6 @@ NOTE: this is not the complete print out of what your shell might print out
 - **module load module_file**: Load module file(s) into the shell environment
 
 .. code-block:: shell
-
 > module show CmrsEnv
  -------------------------------------------------------------------
  /sw/eslogin/modulefiles/CmrsEnv:
