@@ -84,11 +84,10 @@ Compilers
 Queue Policy
 ------------
 
-..toctree::
-   :maxdepth:2
+.. toctree::
+   :maxdepth: 2
 
    Queue policy/index
-
 
 Software
 --------
