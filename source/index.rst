@@ -96,12 +96,12 @@ Software
 
    software/index
 
-SLURM Tips
+Niagara
 ------------
 .. toctree::
    :maxdepth: 2
 
-   slurm_tips/index
+   Niagara/index
 
 
 Niagara
