@@ -12,6 +12,7 @@ Module Commands
 - **module help [module]**: Print the usage of each sub-command. If an argument is given, print the Module-specific help information for the module file(s)
 
 .. code-block:: shell
+   
 > module help gcp
 ----------- Module Specific Help for 'gcp/2.2' --------------------
 
