@@ -1,15 +1,12 @@
-**********
+*******
 Niagara
-*********
+*******
 
-.. toctree::
-   :maxdepth: 2
-
----------
+------------
 Introduction
-----------
+------------
 
-As NOAA's R&D severe weather and climate projects expand out to geographically dispersed private and public HPC clouds, it is imperative that the the NOAA RDHPCS program provide a service for data dissemination and analysis outside of the traditional HPC environment. The Niagara system is intended to be a collaborative location where data can be securely copied to and from any location, by any authorized user. It can also be used to disseminate R&D data to NOAA's collaborators around the globe.
+As NOAA's R&D severe weather and climate projects expand  to geographically dispersed private and public HPC clouds, it is imperative that the the NOAA RDHPCS program provide a service for data dissemination and analysis outside of the traditional HPC environment. The Niagara system is intended to be a collaborative location where data can be securely copied to and from any location, by any authorized user. It can also be used to disseminate R&D data to NOAA's collaborators around the globe.
 
 The Niagara system includes:
 

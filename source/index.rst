@@ -103,6 +103,12 @@ SLURM Tips
 
    slurm_tips/index
 
+Niagara
+-------
+.. toctree::
+   :maxdepth: 2
+
+
 Hera
 --------
 .. toctree::
