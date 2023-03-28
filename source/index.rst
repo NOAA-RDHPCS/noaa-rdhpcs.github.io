@@ -87,7 +87,7 @@ Queue Policy
 .. toctree::
    :maxdepth: 2
 
-   Queue Policy/index
+   Queue_Policy/index
 
 Software
 --------
@@ -103,6 +103,7 @@ SLURM Tips
 
    slurm_tips/index
 
+
 Niagara
 -------
 .. toctree::
@@ -110,6 +111,12 @@ Niagara
 
    Niagara/index
 
+SLURM Tips
+------------
+.. toctree::
+   :maxdepth: 2
+
+   slurm_tips/index
 
 Hera
 --------
