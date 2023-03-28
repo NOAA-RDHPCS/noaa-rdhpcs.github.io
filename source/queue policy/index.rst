@@ -1,6 +1,6 @@
-*********
+************
 Queue Policy
-**********
+************
 
 .. toctree::
    :maxdepth: 2
@@ -68,5 +68,5 @@ or in your job script:
 or in your job script:
 
 .. code-block:: shell
-    
+
    #PBS -l partition=c3
