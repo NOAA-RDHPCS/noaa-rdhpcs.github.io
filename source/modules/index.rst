@@ -43,3 +43,19 @@ NOTE: this is not the complete print out of what your shell might print out
 - **module add module_file**: Load module file(s) into the shell environment
 - **module load module_file**: Load module file(s) into the shell environment
 
+.. code-block:: shell
+
+> module show CmrsEnv
+ -------------------------------------------------------------------
+ /sw/eslogin/modulefiles/CmrsEnv:
+ module-whatis    Sets up environment variables for the NCRC CMRS.
+ setenv           CSCRATCH /lustre/fs/scratch
+ setenv           CSTAGE /lustre/ltfs/stage
+ setenv           CWORK /lustre/ltfs/scratch
+ setenv           CHOME /ncrc/home1/Naresh.Kosgi
+ -------------------------------------------------------------------
+
+ - **module use [-a]–append] directory**: Prepend one or more directories to the MODULEPATH environment variable. The –append flag will append the directory to MODULEPATH.
+
+ WARNING: please DO NOT use the command module purge. This will remove all modules currently loaded by default in your environment and will lead to major errors. If you have accidentally used the command purge, log out of GAEA and log in. This will give you the default environment with the default modules loaded.
+
