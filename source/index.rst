@@ -89,6 +89,15 @@ Queue Policy
 
    Queue_Policy/index
 
+
+Queue 
+------
+
+.. toctree::
+   :maxdepth: 2
+
+   Queue/index
+
 Software
 --------
 .. toctree::
