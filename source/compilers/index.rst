@@ -138,6 +138,7 @@ For Cray and GNU no additional flags are required:
 For Intel:
 
 .. code-block:: shell
+
     $ module swap PrgEnv-pgi PrgEnv-intel $ cc -openmp test.c -o test.x $ setenv OMP_NUM_THREADS 2 $ aprun -n2 -d2 ./test.x
 
 =====
