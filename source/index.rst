@@ -108,6 +108,8 @@ Niagara
 .. toctree::
    :maxdepth: 2
 
+   Niagara/index
+
 
 Hera
 --------
