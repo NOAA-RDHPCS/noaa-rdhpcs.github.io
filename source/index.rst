@@ -96,13 +96,6 @@ Software
 
    software/index
 
-Quickstart
-----------
-.. toctree::
-   :maxdepth: 1
-
-   Quickstart/index
-
 SLURM Tips
 ------------
 .. toctree::
