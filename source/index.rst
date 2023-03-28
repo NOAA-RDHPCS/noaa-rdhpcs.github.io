@@ -15,6 +15,14 @@ Welcome to GaeaDocs's documentation.
    This is an attempt to add a line to the description:
    Lasciate ogne speranza, voi ch’intrate.
 
+Quickstart
+----------
+.. toctree::
+   :maxdepth: 1
+
+   Quickstart/index
+
+
 Getting Help
 ------------
 .. toctree::
@@ -72,6 +80,14 @@ Compilers
    :maxdepth: 2
 
    compilers/index
+
+Queue Policy
+------------
+
+..toctree::
+   :maxdepth:2
+
+   Queue policy/index
 
 
 Software
