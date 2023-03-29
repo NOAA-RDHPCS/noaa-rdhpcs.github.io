@@ -32,13 +32,13 @@ Enter the new pin (8 alphanumeric characters) and press enter.
 Then re2.enter the same pin &amp; press enter
 If the pins compare, you should see a message stating that the new pin has been accepted.
 You will now see a message asking to enter the PASSCODE from the FOB again. This time you will need to add your pin to the PASSCODE and Press enter.
-
  (e.g. if your pin was abcd1234 you would enter 'abcd1234xxxxxx'; where the x's are randomly generated numbers from the rsa fob)
 
 The prompt will ask you to create a passphrase. Create a minimum of 3 words pass phrase for your grid certificate. This only occurs if you did not already generate a passphrase.
 Confirm the passphrase. Once confirmed it will take up to 24 hours for the certificate to be processed. Once the certificate is processed, login using the regular login instructions.
 
- Note: If your certificate is not processed in a timely manner, please contact support: [[:getting_help|Getting Help]]
+.. note::
+ If your certificate is not processed in a timely manner, please contact support: [[:getting_help|Getting Help]]
 
 Certificates
 ============ 
