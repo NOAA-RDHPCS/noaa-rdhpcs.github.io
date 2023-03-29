@@ -44,12 +44,14 @@ The following directories will automatically be created with your first login:
 - /collab1/data_untrusted/First.Last(for your untrusted data)
 
 .. note::
+
 When using the DTNs for data transfers:
 
 - /home tree is not accessible from the DTNs
 - /collab1/data/ tree is only accessible from the "Trusted DTN".
 - /clooab1/data_untrusted tree is only accessible from the "Untrusted DTN"
-Per User Data Management on Niagara
+
+Per User Data Management on Niagara:
 
 As Niagara is a hybrid system, a cross between a traditional HPC system and a data transfer/collaboration system, available to all RDHPCS users, the file system management needs to be handled differently then our more traditional HPC systems (Hera and Jet). The following are data management policies:
 
@@ -59,6 +61,7 @@ As Niagara is a hybrid system, a cross between a traditional HPC system and a da
 Access time is defined as the last time the file was opened for reading or writing.
 
 .. note::
+
 If the file system's usage starts getting close to the total capacity then we will be forced implement a more aggressive purge policy (i.e., 30 day or 15 day purge) . So please actively manage your data.
 
 - A default 10GB Lustre quota on each user's home directory "/collab1/home/$USER" .
