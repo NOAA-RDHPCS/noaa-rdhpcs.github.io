@@ -62,7 +62,7 @@ Access time is defined as the last time the file was opened for reading or writi
 
 .. note::
 
-If the file system's usage starts getting close to the total capacity then we will be forced implement a more aggressive purge policy (i.e., 30 day or 15 day purge) . So please actively manage your data.
+    If the file system's usage starts getting close to the total capacity then we will be forced implement a more aggressive purge policy (i.e., 30 day or 15 day purge) . So please actively manage your data.
 
 - A default 10GB Lustre quota on each user's home directory "/collab1/home/$USER" .
 

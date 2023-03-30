@@ -13,4 +13,5 @@ Systems
    jet_user_guide
    niagara_user_guide
    orion_user_guide
-   common.rst
+   common
+

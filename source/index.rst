@@ -38,7 +38,7 @@ Accounts
    accounts/index
 
 Logging In
---------
+----------
 .. toctree::
    :maxdepth: 2
 
@@ -67,7 +67,6 @@ Data
 
 Modules
 -------
-
 .. toctree::
    :maxdepth: 2
 
@@ -87,7 +86,7 @@ Queue Policy
 .. toctree::
    :maxdepth: 2
 
-   Queue_Policy/index
+   queue_policy/index
 
 
 Queue 
@@ -96,7 +95,7 @@ Queue
 .. toctree::
    :maxdepth: 2
 
-   Queue/index
+   queue/index
 
 Software
 --------

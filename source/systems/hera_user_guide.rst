@@ -78,15 +78,15 @@ System Configuration
 
 .. note::
 
-- The Skylake 6148 CPU has two AVX-512 units and hence a theoretical peak of 32
-  double precision floating point operations per cycle with a base clock rate
-  for floating point operations of 1.6 GHz.
-- Total flops is a measure of peak, and doesn’t necessarily represent actual
-  performance.
-- Juno is the Test and Development System. Users must be granted specific access
-  to the system for use.
-- The FGA part (the nodes with GPUs) are the same as what was on Theia; But the
-  network has been upgraded to EDR.
+    - The Skylake 6148 CPU has two AVX-512 units and hence a theoretical peak of 32
+      double precision floating point operations per cycle with a base clock rate
+      for floating point operations of 1.6 GHz.
+    - Total flops is a measure of peak, and doesn’t necessarily represent actual
+      performance.
+    - Juno is the Test and Development System. Users must be granted specific access
+      to the system for use.
+    - The FGA part (the nodes with GPUs) are the same as what was on Theia; But the
+      network has been upgraded to EDR.
 
 
 Connecting

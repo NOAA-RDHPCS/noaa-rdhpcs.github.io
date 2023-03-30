@@ -1,15 +1,16 @@
 Modules
 -------
 
-.. toctree::
-   :maxdepth: 2
-
-The Environment Modules system is a tool to help users manage their Unix or Linux shell environment, by allowing groups of related environment-variable settings to be made or removed dynamically. Modules provides commands to dynamically load, remove and view software.
+The Environment Modules system is a tool to help users manage their Unix or
+Linux shell environment, by allowing groups of related environment-variable
+settings to be made or removed dynamically. Modules provides commands to
+dynamically load, remove and view software.
 
 Module Commands
 ===============
 
-- **module help [module]**: Print the usage of each sub-command. If an argument is given, print the Module-specific help information for the module file(s)
+- **module help [module]**: Print the usage of each sub-command. If an argument
+  is given, print the Module-specific help information for the module file(s)
 
 .. code-block:: shell
 
@@ -39,7 +40,7 @@ Sets up the shell environment for gcp
 
 .. note::
 
-This is not the complete print out of what your shell might print out
+  This is not the complete print out of what your shell might print out
 
 - **module add module_file**: Load module file(s) into the shell environment
 - **module load module_file**: Load module file(s) into the shell environment
@@ -66,6 +67,7 @@ This is not the complete print out of what your shell might print out
 - **module unload module_file**: unload the module
 
 .. code-block:: shell
+
     > module unload gcp/1.4.3
     module list
     1) modules/3.2.6.6                            6) xt-mpt/5.0.1                              11) PrgEnv-pgi/3.1.29
@@ -81,6 +83,7 @@ This is not the complete print out of what your shell might print out
 - **module swap [available_module] replacement_module**:  Switch loaded modulefile1 with modulefile2. If modulefile1 is not specified, then it is assumed to be the currently loaded module with the same root name as modulefile2
 
 .. code-block:: shell
+
    > module load gcp/1.1
    module list
    Currently Loaded Modulefiles:
@@ -122,6 +125,4 @@ This is not the complete print out of what your shell might print out
 
 .. warning::
 
-Please **DO NOT** use the command module purge. This will remove all modules currently loaded by default in your environment and will lead to major errors. If you have accidentally used the command purge, log out of GAEA and log in. This will give you the default environment with the default modules loaded. 
-
- 
+  Please **DO NOT** use the command module purge. This will remove all modules currently loaded by default in your environment and will lead to major errors. If you have accidentally used the command purge, log out of GAEA and log in. This will give you the default environment with the default modules loaded.
