@@ -12,6 +12,7 @@ project = 'NOAA RDHPCS User Documentation'
 copyright = '%s, National Oceanic and Atmospheric Administration' % dt.datetime.now().year
 author = 'NOAA RDHPCS'
 html_logo = 'images/NOAA_RDHPCS.png'
+html_favicon = 'images/favicon.ico'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

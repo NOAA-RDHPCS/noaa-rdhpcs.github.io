@@ -23,3 +23,10 @@ This table will be updated with Common System Elements
 +---------------------+---------------+------------------+---------------+------------------+
 | Service Code Memory | 187 GB        | NA               | 187 GB        | NA               |
 +---------------------+---------------+------------------+---------------+------------------+
+
+.. _accounts:
+
+TAGS
+====
+
+This is a placeholder for reference tags that are undefined.
