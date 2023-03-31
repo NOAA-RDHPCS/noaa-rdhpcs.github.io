@@ -4,11 +4,6 @@
 Hera User Guide
 ***************
 
-.. _hera-system-overview:
-
-System Overview
----------------
-
 About NESCC
 ===========
 
@@ -22,8 +17,10 @@ There are currently two major systems at NESCC:
 - Hera - A 760 Tflop Cray Compute Cluster high performance computing system
 - HPSS - A 50 Petabyte IBM/Oracle hierarchical storage management system.
 
-Hera System Features
-====================
+.. _hera-system-overview:
+
+System Overview
+===============
 
 - Capacity of 3,270 trillion floating point operations per second – or 3.27
   petaflops
@@ -37,8 +34,7 @@ Test and Development systems are available through NESCC for system and
 application testing.
 
 System Configuration
-====================
-
+--------------------
 
 +---------------------+---------------+------------------+---------------+------------------+
 |                     | Hera TCA      | Hera FGA         | Juno TCA      | Juno FGA         |

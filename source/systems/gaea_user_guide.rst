@@ -228,6 +228,57 @@ Compute Nodes
 Connecting
 ==========
 
+Connceting with a CAC
+---------------------
+
+The preferred method to to access Gaea is to use the CAC bastion.  This will use
+your CAC for authentication.  This method requires the TECTIA SSH client. RDHPCS
+has obtained licenses for all RDHPCS users.  Please follow the
+:ref:`instructions <cac_instructions>` to obtain the TECTIA client and license.
+
+With the TECTIA client, use the CAC bastion hosts are at the URLs
+``gaea.princeton.rdhpcs.noaa.gov`` and ``gaea.boulder.rdhpcs.noaa.gov``.  Follow
+the :ref:`CAC instructions <cac_instructions>` on additional configuration
+settings.  Once the Gaea host is configured in TECTIA, open a connection with
+
+.. code-block:: shell
+
+    sshg3 gaea.princeton.rdhpcs.noaa.gov
+
+or
+
+.. code-block:: shell
+
+    sshg3 gaea.boulder.rdhpcs.noaa.gov
+
+When propted, enter your CAC PIN.
+
+Connecting with an RSA token
+----------------------------
+
+Users who do not have a CAC, or are connecting using a system that does not have
+a TECTIA client (e.g., Mac OS, Android, ChromeOS, etc.) will need to use the RSA
+bastion.  The RSA bastion hosts are at the URLs
+``gaea-rsa.princeton.rdhpcs.noaa.gov`` and ``gaea-rsa.boulder.rdhpcs.noaa.gov``.
+
+.. code-block:: shell
+
+    ssh gaea-rsa.princeton.rdhpcs.noaa.gov
+
+or
+
+.. code-block:: shell
+
+    ssh gaea-rsa.boulder.rdhpcs.noaa.gov
+
+When propted, enter your PASSCODE which consists of your PIN+RSA_CODE.  The
+RSA_CODE is the 6-8 digit code from the RSA fob or RSA app.
+
+.. note::
+
+    The first connection with an RSA token, you will be requested for a new PIN
+    which must be at least 6 alphanumeric characters.
+
 Data and Storage
 ================
 
@@ -237,8 +288,134 @@ Software
 Shell & Programming Environments
 ================================
 
+Gaea is implemented using the Environment Modules system. This tool helps users
+manage their Unix or Linux shell environment. It allows groups of related
+environment variable settings to be made or removed dynamically.  Modules
+provide commands to dynamically load, remove and view software.
+
+More information on using modules is available at :ref:`modules <modules>`.
+
+.. gaea_compiling:
+
 Compiling
 =========
+
+Compiling code on Cray machines is different than compiling code for commodity
+or beowulf-style HPC linux clusters. Among the most prominent differences:
+
+- Cray provides a sophisticated set of compiler wrappers to ensure that the
+  compile environment is setup correctly. Their use is highly encouraged.
+- In general, linking/using shared object libraries on compute partitions is not
+  supported.
+
+Available Compilers
+-------------------
+
+The following compilers are available:
+
+- The Intel Classic Compiler Suite
+- The Intel OneAPI Compiler Suite
+- GCC, the GNU Compiler Collection
+- The Cray Compiler Suite
+
+Cray Compiler wrappers
+----------------------
+
+Cray provides a number of compiler wrappers that substitute for the traditional
+compiler invocation commands. The wrappers call the appropriate compiler, add
+the appropriate header files, and link against the appropriate libraries based
+on the currently loaded programming environment module. To build codes for the
+compute nodes, you should invoke the Cray wrappers via:
+
+cc
+  To use the C compiler
+CC
+  To use the C++ compiler
+ftn
+  To use the Fortran compiler
+
+These wrappers are provided by ``PrgEnv-[intel|gnu|pgi|cray]`` modules.
+``PrgEnv-intel`` is the default module when you login to Gaea.
+
+Compiling for Compute Nodes
+---------------------------
+
+Cray compute nodes are the nodes that carry out the vast majority of
+computations on the system.  Using the Cray compiler wrappers, your
+code will be built targeting the compute nodes. All parallel codes should run on
+the compute nodes.
+
+.. note::
+
+  We highly recommend that the Cray-provided cc, CC, and ftn compiler wrappers be
+  used when compiling and linking source code for use on the compute nodes.
+
+.. warning::
+  Always compile on the login nodes. Never compile on the compute nodes.
+
+.. note::
+
+  Gaea also has LDTN and RDTN nodes. These are for combining model output
+  (LDTN) and data transfer (RDTN) only, not compiling.
+
+.. warning::
+
+  Long-running or memory-intensive codes should not be compiled for use on login
+  nodes.
+
+
+Support for Shared Object Libraries
+-----------------------------------
+
+Cray systems support linking with both static and dynamic libraries.  The Cray
+compiler wrappers use an environment variable ``SOME_ENV_VAR`` to determine how
+to link external libraries.  The default link method for the C3 and C4 clusters
+is static, while C5's default is dynamic.
+
+.. note::
+
+  Dynamic linking will create smaller executalbe.  However, the environment must
+  be identical when running the executalbe as was configured when building.
+  Static binaries are larger, but do not require the build and runtime
+  environments to be identical.
+
+Changing Compilers
+------------------
+
+If a different compiler is required, it is important to use the correct
+environment for each compiler. To aid users in pairing the correct compiler and
+environment, programming environment modules are provided. The programming
+environment modules will load the correct pairing of compiler version, message
+passing libraries, and other items required to build and run. We highly
+recommend that the programming environment modules be used when changing
+compiler vendors. The following programming environment modules are available:
+
+- PrgEnv-gnu
+- PrgEnv-cray
+- PrgEnv-intel
+
+To change the compiler, use the ``module swap`` command.  For example, to change
+from the Intel compiler to the GNU compiler run the command:
+
+.. code-block:: shell
+
+  module swap PrgEnv-intel Prgenv-gnu
+
+Changing Versions of the Same Compiler
+--------------------------------------
+
+To use a specific compiler version, you must first ensure the compiler's PrgEnv
+module is loaded, and then use ``module swap`` to the desired version.
+
+.. code-block:: shell
+
+  module swap gcc/12.0.2
+
+.. danger::
+
+  Do not run ``module purge`` on any Gaea node.  The Cray Operating System (COS)
+  requires several modules to be loaded to work properly, and several of the
+  modules will not reload properly if unloaded.
 
 Running Jobs
 ============
@@ -325,3 +502,12 @@ system (e.g., git).
 Users should remember that Lustre F2 is not backed up.  Data loss on Lustre F2
 is rare, but Gaea has suffered two data losses on F2.  The user home area is
 backed up, with hourly and daily snapshots.
+
+Additional Resources
+====================
+
+.. toctree::
+  :maxdepth: 1
+
+  gaea/quickstart
+  gaea/accounts
