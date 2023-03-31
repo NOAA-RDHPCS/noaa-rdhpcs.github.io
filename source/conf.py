@@ -44,7 +44,7 @@ html_context = {
     'github_user': 'NOAA-RDHPCS',  # Username
     'github_repo': 'noaa-rdhpcs.github.io',  # Repo name
     'github_version': 'main',  # Version
-    'conf_py_path': '/',  # Path in the checkout to the docs root
+    'conf_py_path': '/source/',  # Path in the checkout to the docs root
 }
 
 # see https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html
