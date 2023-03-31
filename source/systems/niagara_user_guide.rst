@@ -32,6 +32,8 @@ Niagara System Features:
 Connecting
 ==========
 
+.. _niagara-data-transfer:
+
 Data Transfer
 ================
 

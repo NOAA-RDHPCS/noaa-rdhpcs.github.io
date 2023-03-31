@@ -19,7 +19,8 @@ html_favicon = 'images/favicon.ico'
 
 extensions = [
     'sphinx_rtd_theme',
-    'sphinx_design'
+    'sphinx_design',
+    'sphinxcontrib.mermaid'
 ]
 
 templates_path = ['_templates']

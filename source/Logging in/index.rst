@@ -71,15 +71,19 @@ When propted, enter your CAC PIN.
 | RDHPCS System | CAC Bastion URL                   |
 +===============+===================================+
 | Jet           | jet.princeton.rdhpcs.noaa.gov     |
++               +                                   +
 |               | jet.boulder.rdhpcs.noaa.gov       |
 +---------------+-----------------------------------+
 | Gaea          | gaea.princeton.rdhpcs.noaa.gov    |
++               +                                   +
 |               | gaea.boulder.rdhpcs.noaa.gov      |
 +---------------+-----------------------------------+
 | Niagara       | niagara.boulder.rdhpcs.noaa.gov   |
++               +                                   +
 |               | niagara.princeton.rdhpcs.noaa.gov |
 +---------------+-----------------------------------+
 | Hera          | hera.boulder.rdhpcs.noaa.gov      |
++               +                                   +
 |               | hera.princeton.rdhpcs.noaa.gov    |
 +---------------+-----------------------------------+
 
@@ -103,15 +107,19 @@ RSA_CODE is the 6-8 digit code from the RSA fob or RSA app.
 | RDHPCS System | CAC Bastion URL                       |
 +===============+=======================================+
 | Jet           | jet-rsa.boulder.rdhpcs.noaa.gov       |
++               +                                       +
 |               | jet-rsa.princeton.rdhpcs.noaa.gov     |
 +---------------+---------------------------------------+
 | Gaea          | gaea-rsa.boulder.rdhpcs.noaa.gov      |
++               +                                       +
 |               | gaea-rsa.princeton.rdhpcs.noaa.gov    |
 +---------------+---------------------------------------+
 | Niagara       | niagara-rsa.boulder.rdhpcs.noaa.gov   |
++               +                                       +
 |               | niagara-rsa.princeton.rdhpcs.noaa.gov |
 +---------------+---------------------------------------+
 | Hera          | hera-rsa.boulder.rdhpcs.noaa.gov      |
++               +                                       +
 |               | hera-rsa.princeton.rdhpcs.noaa.gov    |
 +---------------+---------------------------------------+
 
