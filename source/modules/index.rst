@@ -1,5 +1,8 @@
+.. _modules:
+
+#######
 Modules
--------
+#######
 
 The Environment Modules system is a tool to help users manage their Unix or
 Linux shell environment, by allowing groups of related environment-variable

@@ -12,13 +12,15 @@ project = 'NOAA RDHPCS User Documentation'
 copyright = '%s, National Oceanic and Atmospheric Administration' % dt.datetime.now().year
 author = 'NOAA RDHPCS'
 html_logo = 'images/NOAA_RDHPCS.png'
+html_favicon = 'images/favicon.ico'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
     'sphinx_rtd_theme',
-    'sphinx_design'
+    'sphinx_design',
+    'sphinxcontrib.mermaid'
 ]
 
 templates_path = ['_templates']
@@ -42,7 +44,7 @@ html_context = {
     'github_user': 'NOAA-RDHPCS',  # Username
     'github_repo': 'noaa-rdhpcs.github.io',  # Repo name
     'github_version': 'main',  # Version
-    'conf_py_path': '/',  # Path in the checkout to the docs root
+    'conf_py_path': '/source/',  # Path in the checkout to the docs root
 }
 
 # see https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html

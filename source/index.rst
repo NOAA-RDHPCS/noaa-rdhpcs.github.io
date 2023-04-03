@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GaeaDocs's documentation.
+Welcome to RDHPDS's documentation.
 ====================================
 
 .. note::
@@ -15,18 +15,10 @@ Welcome to GaeaDocs's documentation.
    This is an attempt to add a line to the description:
    Lasciate ogne speranza, voi ch’intrate.
 
-Quickstart
-----------
-.. toctree::
-   :maxdepth: 1
-
-   Quickstart/index
-
-
 Getting Help
 ------------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    help/index
 
@@ -35,7 +27,6 @@ Accounts
 .. toctree::
    :maxdepth: 2
 
-   accounts/index
 
 Logging In
 ----------
@@ -72,26 +63,15 @@ Modules
 
    modules/index
 
-Compilers
----------
-
-.. toctree::
-   :maxdepth: 2
-
-   compilers/index
-
 Queue Policy
 ------------
-
 .. toctree::
    :maxdepth: 2
 
    queue_policy/index
 
-
-Queue 
+Queue
 ------
-
 .. toctree::
    :maxdepth: 2
 
@@ -103,7 +83,6 @@ Software
    :maxdepth: 2
 
    software/index
-
 
 SLURM Tips
 ------------
