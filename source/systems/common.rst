@@ -25,24 +25,6 @@ This table will be updated with Common System Elements
 +---------------------+---------------+------------------+---------------+------------------+
 
 
-Here is language for tabs with code content
-
-.. tab-set::
-
-   .. tab-item:: [t]csh
-
-      .. code-block:: tcsh
-
-         setenv SLURM_CLUSTERS t4,c3,c4,gfdl,es
-
-   .. tab-item:: bash
-
-      .. code-block:: bash
-
-         export SLURM_CLUSTERS=t4,c3,c4,gfdl,es
-
-
-Here is language for cards
 
  .. grid:: 6
 
@@ -94,4 +76,26 @@ Here is language for cards
     ^^^^^^
 
     Platform to create HPC computational clusters as needed
+
+
+
+Here is language for tabs with code content
+
+.. tab-set::
+
+   .. tab-item:: [t]csh
+
+      .. code-block:: tcsh
+
+         setenv SLURM_CLUSTERS t4,c3,c4,gfdl,es
+
+   .. tab-item:: bash
+
+      .. code-block:: bash
+
+         export SLURM_CLUSTERS=t4,c3,c4,gfdl,es
+
+   .. tab-item:: testing
+         
+         `Cloud <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Cloud_Computing_User_Information>``
 
