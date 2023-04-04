@@ -52,8 +52,7 @@ Here is language for cards
     Gaea
     ^^^^^
 
-    `Gaea <https://www.noaa.gov/organization/information-technology/gaea>`_
-     is a `Climate Modeling and Research System (CMRS) at ORNL <https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php> ``
+    `Gaea <https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php>>`Climate Modeling and Research System (CMRS) at ORNL <https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php> ``
 
    
   .. grid-item-card::
