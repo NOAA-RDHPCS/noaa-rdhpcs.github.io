@@ -24,7 +24,7 @@ Setup authoring environment
 
 #. Fork the documentation repository on GitHub
 
-    Go to https://github.com/NOAA-RDHPCS/rdhpcs-user-docs, and click the "Fork"
+    Go to https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io, and click the "Fork"
     button in the upper right corner.
 
     .. image:: /images/github_fork.png
@@ -34,29 +34,29 @@ Setup authoring environment
 
 #. Clone your fork of the documentation repository::
 
-    $ git clone https://github.com/<your-github-id>/rdhpcs-user-docs.git
+    $ git clone https://github.com/<your-github-id>/noaa-rdhpcs.github.io.git
 
 #. Point your master branch to track upstream::
 
-    $ cd rdhpcs-user-docs
-    $ git remote add rdhpcs https://github.com/NOAA-RDHPCS/rdhpcs-user-docs.git
+    $ cd noaa-rdhpcs.github.io
+    $ git remote add rdhpcs https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io.git
     $ git fetch rdhpcs
     $ git branch --set-upstream-to=rdhpcs/main
 
 #. Build the docs::
 
-    $ sphinx-build -E . _build
+    $ make html
 
 #. Locally preview the generated web pages
 
    Start a webserver on something like ``localhost:8080`` that points at
-   your ``rdhpcs-user-docs/_build`` directory. For example, using busybox::
+   your ``noaa-rdhpcs.github.io/build/html`` directory. For example, using busybox::
 
-        $ busybox httpd -p 127.0.0.1:8080 -h /home/ubuntu/rdhpcs-user-docs/_build
+        $ busybox httpd -p 127.0.0.1:8080 -h /home/ubuntu/noaa-rdhpcs.github.io/build/html
 
-   or a python webserver (from inside the document root, i.e., ``_build`` directory)::
+   or a python webserver (from inside the document root, i.e., ``build/html`` directory)::
 
-        $ cd _build
+        $ cd build/html
         $ python3 -m http.server 8080
         ## you may add the option --bind 127.0.0.1 to bind only on the localhost address
 
