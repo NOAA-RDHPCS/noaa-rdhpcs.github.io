@@ -44,59 +44,65 @@ Here is language for tabs with code content
 
 Here is language for cards
 
- .. grid:: 4
+ .. grid:: 6
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
 
-    C3
-    ^^^
+    Gaea
+    ^^^^^
 
-    Cray XC40-LC
+    Gaea is located in Oak Ridge National Laboratory at ORNL’s National Center for Computational Sciences (NCCS). This Climate Modeling and Research System (CMRS) is accessed remotely through two 10-gigabit WAN connections. Gaea is the largest of four NOAA research and development HPC systems.
 
-    1,504 compute nodes
-    (2 x Intel Haswell 16-cores per node)
-
-    64GB DDR4 per node; 96TB total
-
-    1.77 PF peak
+    https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php/Welcome_to_Gaeadocs Gaea Docs Start Page
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
 
-    C4
-    ^^^
+    Hera
+    ^^^^^
 
-    Cray XC40-LC
+    Hera is located at NOAA Environmental Security Computing Center (NESCC) in Fairmont, West Virginia. It is Cray System. The compute capacity of Hera supports the development of weather modeling across the Office of Oceanic and Atmospheric Research and National Weather Service to improve the prediction of high-impact weather events and evaluate potential future directions for models and data assimilation.
 
-    2,656 compute nodes (2 x Intel Broadwell 18-cores per node)
-
-    64GB DDR4 per node; 145TB total
-
-    3.52 PF peak
+    https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page Hera Docs Start Page
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
 
-    C5
-    ^^^
+    Jet
+    ^^^^
 
-    HPE EX
+    Jet primarily supports the HPC needs of the Hurricane Forecast Improvement Program (HFIP), numerical weather prediction, and other weather research. Since 2009, Jet has been used to run real-time jobs, via reservation schemes in the batch scheduler, to support HFIP during hurricane season and various other high-priority R2O projects.
 
-    1,792 compute nodes (2 x AMD Rome 64-cores per node)
-
-    251 GB DDR5 per node; 449TB total
-
-    10.2 PF peak
+    https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Start Jet Docs Start Page
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
 
-    F2 File System
-    ^^^
+    Niagara
+    ^^^^^^^^
 
-    DDN Lustre
+    The Niagara system is  a collaborative resource where data can be securely copied to and from any location, by any authorized user. It can also be used as a service to disseminate research and development data to NOAA's collaborators around the globe.
 
-    32 PB total usable; ZFS compression
+    https://niagaradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page Niagara Docs Start Page
 
-    36 OSS; 72 OST; 4 MDS        
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
+
+    MSU-HPC
+    ^^^^^^^
+
+    MSU-High Performance Computing, managed externally by Mississippi State University (MSU), is the fourth largest academic supercomputer in the United States to date. MSU-HCP is funded via grants from NOAA to support research activities in environmental modeling, including weather modeling and simulation. 
+
+    https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page MSU-HPC Docs Start Page
+
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
+
+    Cloud
+    ^^^^^^
+
+    The Cloud Platform allows NOAA users to create HPC clusters on an as-needed basis, with resources that are appropriate for the task at hand.
+
+    https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page Cloud Docs Start Page
+
