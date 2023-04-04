@@ -58,10 +58,10 @@ Here is language for cards
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
 
-    [Hera] (https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page)
+    Hera 
     ^^^^^
 
-    'Predicting high-impact weather events 
+    Predicting high-impact weather events 
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
