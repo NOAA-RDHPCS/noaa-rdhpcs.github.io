@@ -52,19 +52,16 @@ Here is language for cards
     Gaea
     ^^^^^
 
-    Climate Modeling and Research System (CMRS) at ORNL
+    `Climate Modeling and Research System (CMRS) at ORNL <https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php>``
 
-    https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php/Welcome_to_Gaeadocs
-
+   
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
 
     Hera
     ^^^^^
 
-    Predicting high-impact weather events.
-
-    https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page  
+    `Predicting high-impact weather events <https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page> `` 
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -72,9 +69,7 @@ Here is language for cards
     Jet
     ^^^^
 
-    Hurricane Forecast Improvement Program (HFIP).
-
-    https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Start
+    `Hurricane Forecast Improvement Program (HFIP) <https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Start>``
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -82,9 +77,7 @@ Here is language for cards
     Niagara
     ^^^^^^^^
 
-    Collaborative resource for data transfer.
-
-    https://niagaradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page Niagara Docs Start Page
+    `Collaborative resource for data transfer. <https://niagaradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page Niagara Docs Start Page>``
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -92,9 +85,7 @@ Here is language for cards
     MSU-HPC
     ^^^^^^^
 
-    MSU-High Performance Computing collaboration with Mississippi State University (MSU)
-
-    https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page 
+    `High Performance Computing collaboration with Mississippi State University (MSU) <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php Main_Page>``
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -102,7 +93,5 @@ Here is language for cards
     Cloud
     ^^^^^^
 
-    Platform to  create HPC computational clusters as needed.
-
-    https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page 
+    `Platform to create HPC computational clusters as needed.<https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page>``
 
