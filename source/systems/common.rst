@@ -52,9 +52,9 @@ Here is language for cards
     Gaea
     ^^^^^
 
-    Gaea is located in Oak Ridge National Laboratory at ORNL’s National Center for Computational Sciences (NCCS). This Climate Modeling and Research System (CMRS) is accessed remotely through two 10-gigabit WAN connections. Gaea is the largest of four NOAA research and development HPC systems.
+    Climate Modeling and Research System (CMRS) at ORNL
 
-    https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php/Welcome_to_Gaeadocs Gaea Docs Start Page
+    https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php/Welcome_to_Gaeadocs
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -62,9 +62,9 @@ Here is language for cards
     Hera
     ^^^^^
 
-    Hera is located at NOAA Environmental Security Computing Center (NESCC) in Fairmont, West Virginia. It is Cray System. The compute capacity of Hera supports the development of weather modeling across the Office of Oceanic and Atmospheric Research and National Weather Service to improve the prediction of high-impact weather events and evaluate potential future directions for models and data assimilation.
+    Predicting high-impact weather events.
 
-    https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page Hera Docs Start Page
+    https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page  
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -72,9 +72,9 @@ Here is language for cards
     Jet
     ^^^^
 
-    Jet primarily supports the HPC needs of the Hurricane Forecast Improvement Program (HFIP), numerical weather prediction, and other weather research. Since 2009, Jet has been used to run real-time jobs, via reservation schemes in the batch scheduler, to support HFIP during hurricane season and various other high-priority R2O projects.
+    Hurricane Forecast Improvement Program (HFIP).
 
-    https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Start Jet Docs Start Page
+    https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Start
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -82,7 +82,7 @@ Here is language for cards
     Niagara
     ^^^^^^^^
 
-    The Niagara system is  a collaborative resource where data can be securely copied to and from any location, by any authorized user. It can also be used as a service to disseminate research and development data to NOAA's collaborators around the globe.
+    Collaborative resource for data transfer.
 
     https://niagaradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page Niagara Docs Start Page
 
@@ -92,9 +92,9 @@ Here is language for cards
     MSU-HPC
     ^^^^^^^
 
-    MSU-High Performance Computing, managed externally by Mississippi State University (MSU), is the fourth largest academic supercomputer in the United States to date. MSU-HCP is funded via grants from NOAA to support research activities in environmental modeling, including weather modeling and simulation. 
+    MSU-High Performance Computing collaboration with Mississippi State University (MSU)
 
-    https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page MSU-HPC Docs Start Page
+    https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page 
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -102,7 +102,7 @@ Here is language for cards
     Cloud
     ^^^^^^
 
-    The Cloud Platform allows NOAA users to create HPC clusters on an as-needed basis, with resources that are appropriate for the task at hand.
+    Platform to  create HPC computational clusters as needed.
 
-    https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page Cloud Docs Start Page
+    https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page 
 
