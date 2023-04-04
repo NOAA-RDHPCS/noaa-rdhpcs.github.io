@@ -52,7 +52,8 @@ Here is language for cards
     Gaea
     ^^^^^
 
-    `Climate Modeling and Research System (CMRS) at ORNL <https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php>``
+    `Gaea <https://www.noaa.gov/organization/information-technology/gaea>`_
+     is a `Climate Modeling and Research System (CMRS) at ORNL <https://gaeadocs.rdhpcs.noaa.gov/wiki/index.php> ``
 
    
   .. grid-item-card::
@@ -61,7 +62,7 @@ Here is language for cards
     Hera
     ^^^^^
 
-    `Predicting high-impact weather events <https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page> `` 
+    'Predicting high-impact weather events <https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Main_Page>''
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
