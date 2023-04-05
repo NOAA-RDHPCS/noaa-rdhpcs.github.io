@@ -86,14 +86,35 @@ Here is language for tabs with code content
    .. tab-item:: Gaea
 
       Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
-      `Read more <https://www.noaa.gov/organization/information-technology/gaea>`
+      `(Read more) <https://www.noaa.gov/organization/information-technology/gaea>`
 
    .. tab-item:: Hera
 
       Predicting high-impact weather events
-      `Read more <https://www.noaa.gov/organization/information-technology/header>`
+      `(Read more) <https://www.noaa.gov/organization/information-technology/hera>`
 
-     
+   .. tab-item:: Jet
+
+      Hurricane Forecast Improvement Program (HFIP)
+      `(Read more) <https://www.noaa.gov/organization/information-technology/jet>`
+
+   .. tab-item:: Niagara
+
+      Collaborative resource for data transfer
+      `(Read more) <https://www.noaa.gov/organization/information-technology/niagara>`
+
+   .. tab-item:: MSU-HPC
+
+      High-performance Computing collaboration with Mississippi State University (MSU)
+      `(Read more) <https://www.noaa.gov/organization/information-technology/MSU-HPC>`  
+
+      
+   .. tab-item:: Cloud
+
+      Platform to create and use HPC computatational clusters on an as-needed basis.
+      `(Read more) <https://www.noaa.gov/organization/information-technology/cloud>`
+
+
    .. tab-item:: testing
          
     `(RDHPCS) <https://www.noaa.gov/information-technology/hpcc>`_      
