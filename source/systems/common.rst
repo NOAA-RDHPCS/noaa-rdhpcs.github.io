@@ -18,12 +18,18 @@ CommonDocs Topics
 +=======================================================+==============================+
 | Help Requests                                         | Applications                 |
 +-------------------------------------------------------+------------------------------+
-| Account Management  <br />                            | Running and Monitoring Jobs  |
-|  -Getting an account   <br />                         |                              |
-|  -New Device: Software Tokens <br />                  |                              |
-|  -Suspension and Reactivation <br />                  |                              |
-|  -Role accounts     <br />                            |                              |
-|  -Requesting Access to Additional Projects    <br />  |                              |
+| Account Management                                    | Running and Monitoring Jobs  |
+|-------------------------------------------------------+------------------------------+
+|  -Getting an account                                  |                              |
+|-------------------------------------------------------+------------------------------+
+|  -New Device: Software                                |                              |
+|-------------------------------------------------------+------------------------------+
+|  -Role accounts                                       |                              |
+|-------------------------------------------------------+------------------------------+
+|  -Requesting Access to Additional Projare Tokens      |                              |
+|-------------------------------------------------------+------------------------------+
+|  -Suspension and Reactivation <bects                  |                              |
+|-------------------------------------------------------+------------------------------+
 |  -Resetting your Master Certificate Passphrase        |                              |
 +-------------------------------------------------------+------------------------------+
 | Accessing RDHPGS Systems                              | Data Transfers               |
