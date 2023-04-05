@@ -4,10 +4,32 @@ Common
 
 Welcome to RDHPCS CommonDocs -- Information and procedures that pertain across all RDHPCS systems. 
 
- `View the RDHPCS Maintenance Downtime Calendar <https://calendar.google.com/calendar/u/1/r?
-cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_`
+The RDHPCS Maintenance Downtime Calendar has events for NESCC (Hera, HPSS, Niagara), Jet, Boulder and Princeton Bastions, and other RDHPCS system downtimes.
 
- This calendar has events for NESCC (Hera, HPSS, Niagara), Jet, Boulder and Princeton Bastions, and other RDHPCS system downtimes.
+ View the Calendar
+ `here: <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_`
+
+ 
+=================================
+CommonDocs Topics
+===================
+
+
++-----------------------------+------------------------------+
+|  General Information        | Getting Things Done          |
++=============================+==============================+
+| Help Requests               | Applications                 |
++-----------------------------+---------------+--------------+
+| Account Management          | Running and Monitoring Jobs  | 
++-----------------------------+------------------------------+
+| Accessing RDHPGS Systems    | Data Transfers               |
++-----------------------------+------------------------------+
+| Policies and Best Practices | Workflow Tools               |
++-----------------------------+------------------------------+
+| FAQs                        | Using HSMS HPSS              |
++-----------------------------+------------------------------+
+
+
 
 ==================
  RDHPCS Platforms
@@ -46,19 +68,3 @@ cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xl
       Platform to create and use HPC computatational clusters on an as-needed basis.
       `More Information <https://www.noaa.gov/information-technology/hpcc>`_  
 
-
-
-
-+-----------------------------+------------------------------+
-|  General Information        | Getting Things Done          |
-+=============================+==============================+
-| Help Requests               | Applications                 |
-+-----------------------------+---------------+--------------+
-| Account Management          | Running and Monitoring Jobs  | 
-+-----------------------------+------------------------------+
-| Accessing RDHPGS Systems    | Data Transfers               |
-+-----------------------------+------------------------------+
-| Policies and Best Practices | Workflow Tools               |
-+-----------------------------+------------------------------+
-| FAQs                        | Using HSMS HPSS              |
-+-----------------------------+------------------------------+
