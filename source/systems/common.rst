@@ -26,87 +26,32 @@ This table will be updated with Common System Elements
 
 
 
- .. grid:: 6
-
-  .. grid-item-card::
-    :class-header: sd-bg-muted sd-text-light
-
-    Gaea
-    ^^^^^
-
-    Climate Modeling and Research System (CMRS) at ORNL
-
-   
-  .. grid-item-card::
-    :class-header: sd-bg-muted sd-text-light
-
-    Hera 
-    ^^^^^
-
-    Predicting high-impact weather events 
-
-  .. grid-item-card::
-    :class-header: sd-bg-muted sd-text-light
-
-    Jet
-    ^^^^
-
-    Hurricane Forecast Improvement Program (HFIP)
-
-  .. grid-item-card::
-    :class-header: sd-bg-muted sd-text-light
-
-    Niagara
-    ^^^^^^^^
-
-    Collaborative resource for data transfer.
-
-  .. grid-item-card::
-    :class-header: sd-bg-muted sd-text-light
-
-    MSU-HPC
-    ^^^^^^^
-
-    High Performance Computing collaboration with Mississippi State UniversityMain_Page>``
-
-  .. grid-item-card::
-    :class-header: sd-bg-muted sd-text-light
-
-    Cloud
-    ^^^^^^
-
-    Platform to create HPC computational clusters as needed
-
-
-
-Here is language for tabs with code content
-
 .. tab-set::
 
    .. tab-item:: Gaea
 
       Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
-      `(Read more) <https://www.noaa.gov/organization/information-technology/gaea>`
+      `Read more <https://www.noaa.gov/organization/information-technology/gaea>`_
 
    .. tab-item:: Hera
 
       Predicting high-impact weather events
-      `(Read more) <https://www.noaa.gov/organization/information-technology/hera>`
+      `(Read more) <https://www.noaa.gov/organization/information-technology/hera>`_
 
    .. tab-item:: Jet
 
       Hurricane Forecast Improvement Program (HFIP)
-      `(Read more) <https://www.noaa.gov/organization/information-technology/jet>`
+      `(Read more) <https://www.noaa.gov/organization/information-technology/jet>`_
 
    .. tab-item:: Niagara
 
       Collaborative resource for data transfer
-      `(Read more) <https://www.noaa.gov/organization/information-technology/niagara>`
+      `(Read more) <https://www.noaa.gov/organization/information-technology/niagara>`_
 
    .. tab-item:: MSU-HPC
 
       High-performance Computing collaboration with Mississippi State University (MSU)
-      `(Read more) <https://www.noaa.gov/organization/information-technology/MSU-HPC>`  
+      `(Read more) <https://www.noaa.gov/organization/information-technology/MSU-HPC>`_
 
       
    .. tab-item:: Cloud
@@ -117,5 +62,5 @@ Here is language for tabs with code content
 
    .. tab-item:: testing
          
-    `(RDHPCS) <https://www.noaa.gov/information-technology/hpcc>`_      
+    `RDHPCS <https://www.noaa.gov/information-technology/hpcc>`_      
 
