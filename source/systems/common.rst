@@ -83,18 +83,17 @@ Here is language for tabs with code content
 
 .. tab-set::
 
-   .. tab-item:: [t]csh
+   .. tab-item:: Gaea
 
-      .. code-block:: tcsh
+      Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
+      `Read more <https://www.noaa.gov/organization/information-technology/gaea>`
 
-         setenv SLURM_CLUSTERS t4,c3,c4,gfdl,es
+   .. tab-item:: Hera
 
-   .. tab-item:: bash
+      Predicting high-impact weather events
+      `Read more <https://www.noaa.gov/organization/information-technology/header>`
 
-      .. code-block:: bash
-
-         export SLURM_CLUSTERS=t4,c3,c4,gfdl,es
-
+     
    .. tab-item:: testing
          
     `(RDHPCS) <https://www.noaa.gov/information-technology/hpcc>`_      
