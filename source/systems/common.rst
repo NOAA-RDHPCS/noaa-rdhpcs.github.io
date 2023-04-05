@@ -13,19 +13,25 @@ CommonDocs Topics
 =================
 
 
-+-----------------------------+------------------------------+
-|  General Information        | Getting Things Done          |
-+=============================+==============================+
-| Help Requests               | Applications                 |
-+-----------------------------+---------------+--------------+
-| Account Management          | Running and Monitoring Jobs  | 
-+-----------------------------+------------------------------+
-| Accessing RDHPGS Systems    | Data Transfers               |
-+-----------------------------+------------------------------+
-| Policies and Best Practices | Workflow Tools               |
-+-----------------------------+------------------------------+
-| FAQs                        | Using HSMS HPSS              |
-+-----------------------------+------------------------------+
++-------------------------------------------------------+------------------------------+
+|  General Information                                  | Getting Things Done          |
++=======================================================+==============================+
+| Help Requests                                         | Applications                 |
++-------------------------------------------------------+------------------------------+
+| Account Management                                    | Running and Monitoring Jobs  |
+| -Getting an account                                   |                              |
+| -New Device: Software Tokens                          |                              |
+| -Suspension and Reactivation                          |                              |
+| -Role accounts                                        |                              |
+| -Requesting Access to Additional Projects             |                              |
+| -Resetting your Master Certificate Passphrase         |                              |
++-------------------------------------------------------+------------------------------+
+| Accessing RDHPGS Systems                              | Data Transfers               |
++-------------------------------------------------------+------------------------------+
+| Policies and Best Practices                           | Workflow Tools               |
++-------------------------------------------------------+------------------------------+
+| FAQs                                                  | Using HSMS HPSS              |
++-------------------------------------------------------+------------------------------+
 
 
 
