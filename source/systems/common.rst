@@ -18,13 +18,13 @@ CommonDocs Topics
 +=======================================================+==============================+
 | Help Requests                                         | Applications                 |
 +-------------------------------------------------------+------------------------------+
-| Account Management                                    | Running and Monitoring Jobs  |
-| -Getting an account                                   |                              |
-| -New Device: Software Tokens                          |                              |
-| -Suspension and Reactivation                          |                              |
-| -Role accounts                                        |                              |
-| -Requesting Access to Additional Projects             |                              |
-| -Resetting your Master Certificate Passphrase         |                              |
+| Account Management  <br/>                             | Running and Monitoring Jobs  |
+|  -Getting an account   <br/>                          |                              |
+|  -New Device: Software Tokens <br/>                   |                              |
+|  -Suspension and Reactivation <br/>                   |                              |
+|  -Role accounts     <br/>                             |                              |
+|  -Requesting Access to Additional Projects    <br/>   |                              |
+|  -Resetting your Master Certificate Passphrase        |                              |
 +-------------------------------------------------------+------------------------------+
 | Accessing RDHPGS Systems                              | Data Transfers               |
 +-------------------------------------------------------+------------------------------+
