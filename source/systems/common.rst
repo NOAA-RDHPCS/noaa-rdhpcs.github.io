@@ -97,5 +97,5 @@ Here is language for tabs with code content
 
    .. tab-item:: testing
          
-         `Cloud <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Cloud_Computing_User_Information>``
+    `(RDHPCS) <https://www.noaa.gov/information-technology/hpcc>`_      
 
