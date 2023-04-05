@@ -4,12 +4,13 @@ Common
 
 Welcome to RDHPCS CommonDocs -- Information and procedures that pertain across all RDHPCS systems. 
 
-`View the RDHPCS Maintenance Downtime Calendar <https://calendar.google.com/calendar/u/1/>`_`
+`View the RDHPCS Maintenance Downtime Calendar <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_`
+
  This calendar has events for NESCC (Hera, HPSS, Niagara), Jet, Boulder and Princeton Bastions, and other RDHPCS system downtimes.
 
------------------
-RDHPCS Platforms
-----------------
+==================
+ RDHPCS Platforms
+==================
 
 .. tab-set::
 
