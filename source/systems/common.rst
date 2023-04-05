@@ -112,7 +112,7 @@ Here is language for tabs with code content
    .. tab-item:: Cloud
 
       Platform to create and use HPC computatational clusters on an as-needed basis.
-      `(Read more) <https://www.noaa.gov/organization/information-technology/cloud>`
+      `(Read more) <https://www.noaa.gov/information-technology/hpcc>`_  
 
 
    .. tab-item:: testing
