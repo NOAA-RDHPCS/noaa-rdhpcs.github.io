@@ -4,7 +4,8 @@ Common
 
 Welcome to RDHPCS CommonDocs -- Information and procedures that pertain across all RDHPCS systems. 
 
-`View the RDHPCS Maintenance Downtime Calendar <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_`
+ `View the RDHPCS Maintenance Downtime Calendar <https://calendar.google.com/calendar/u/1/r?
+cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_`
 
  This calendar has events for NESCC (Hera, HPSS, Niagara), Jet, Boulder and Princeton Bastions, and other RDHPCS system downtimes.
 
@@ -46,25 +47,18 @@ Welcome to RDHPCS CommonDocs -- Information and procedures that pertain across a
       `More Information <https://www.noaa.gov/information-technology/hpcc>`_  
 
 
-This table will be updated with Common System Elements
 
-+---------------------+---------------+------------------+---------------+------------------+
-|                     | Hera TCA      | Hera FGA         | Juno TCA      | Juno FGA         |
-+=====================+===============+==================+===============+==================+
-| CPU Type            | Intel SkyLake | Intel Haswell    | Intel SkyLake | Intel Haswell    |
-+---------------------+---------------+------------------+---------------+------------------+
-| CPU Speed           | 2.40 GHz      | 2.460 GHz        | 2.40 GHz      | 2.460 GHz        |
-+---------------------+---------------+------------------+---------------+------------------+
-| Reg Compute Nodes   | 1328          | 100              | 14            | 2                |
-+---------------------+---------------+------------------+---------------+------------------+
-| Cores/node          | 40            | 20               | 40            | 20               |
-+---------------------+---------------+------------------+---------------+------------------+
-| Total Cores         | 53,120        | 2000             | 560           | 40               |
-+---------------------+---------------+------------------+---------------+------------------+
-| Memory/Core         | 96 GB         | 256 GB           | 90 GB         | 256 GB           |
-+---------------------+---------------+------------------+---------------+------------------+
-| Peak Flops/node     | 12            | NA               | 12            | NA               |
-+---------------------+---------------+------------------+---------------+------------------+
-| Service Code Memory | 187 GB        | NA               | 187 GB        | NA               |
-+---------------------+---------------+------------------+---------------+------------------+
 
++-----------------------------+------------------------------+
+|  General Information        | Getting Things Done          |
++=============================+==============================+
+| Help Requests               | Applications                 |
++-----------------------------+---------------+--------------+
+| Account Management          | Running and Monitoring Jobs  | 
++-----------------------------+------------------------------+
+| Accessing RDHPGS Systems    | Data Transfers               |
++-----------------------------+------------------------------+
+| Policies and Best Practices | Workflow Tools               |
++-----------------------------+------------------------------+
+| FAQs                        | Using HSMS HPSS              |
++-----------------------------+------------------------------+
