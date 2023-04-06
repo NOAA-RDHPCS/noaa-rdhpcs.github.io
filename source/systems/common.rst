@@ -9,9 +9,9 @@ View the Calendar `here <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb
 
 test this, make sure it prints
  
-==================
+#################
 CommonDocs Topics
-===================
+##################
 
 +-------------------------------------------------------+-------------------------------------------+--------------------------------------------+
 |  General Information                                  | Getting Things Done                       | Data Transfers                             |   
