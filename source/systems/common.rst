@@ -7,10 +7,25 @@ Welcome to RDHPCS CommonDocs -- Information and procedures that pertain across a
 The RDHPCS Maintenance Downtime Calendar has events for NESCC (Hera, HPSS, Niagara), Jet, Boulder and Princeton Bastions, and other RDHPCS system downtimes.
 View the Calendar `here <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
 
- 
-=================
+
 CommonDocs Topics
-=================
+-----------------
+
++------------------------+----------------------------+------------------------------+------------------+
+|                        | C3                         | C4                           | C5               |
++========================+============================+==============================+==================+
+| CPU Type               | Intel Haswell (E5-2698 v3) | Intel Broadwell (E5-2697 v4) | AMD Rome (7H12)  |
++------------------------+----------------------------+------------------------------+------------------+
+| CPU Speed              | 2.3 GHz                    | 2.3 GHz                      | 2.6 GHz          |
++------------------------+----------------------------+------------------------------+------------------+
+| Number of Nodes        | 1,504                      | 2,656                        | 1,920            |
++------------------------+----------------------------+------------------------------+------------------+
+| Number of Sockets      | 2                          | 2                            | 2                |
++------------------------+----------------------------+------------------------------+------------------+
+ 
+
+CommonDocs Topics
+-----------------
 
 
 +-------------------------------------------------------+-------------------------------------------+--------------------------------------------+
