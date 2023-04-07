@@ -20,7 +20,7 @@ CommonDocs Topics
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
 | Getting an Account                           | Containers                                    | Migrating Data Between Local Filesystems       |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| New Device: Software                         | **Running and Monitoring Jobs**               | **Frequently Asked Questions **                |
+| New Device: Software                         | **Running and Monitoring Jobs**               | **Frequently Asked Questions**                 |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
 | Suspension and Reactivation                  | Introduction to SLURM                         |  Recent User-Facing Changes                    |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
