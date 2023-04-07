@@ -16,23 +16,23 @@ CommonDocs Topics
 +==============================================+===============================================+================================================+
 | **Help Requests**                            | **Applications**                              | Globus Online Data Transfer                    |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| **Account Management**                       | Applications and Libraries                    |                                                |
+| **Account Management**                       | Applications and Libraries                    | Migrating Data Between Local Filesystems       |                                           |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| Getting an Account                           | Containers                                    | Migrating Data Between Local Filesystems       |
+| Getting an Account                           | Containers                                    | **Frequently Asked Questions**                 |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| New Device: Software                         | **Running and Monitoring Jobs**               | **Frequently Asked Questions **                |
+| New Device: Software                         | **Running and Monitoring Jobs**               |  Recent User-Facing Changes                    |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| Suspension and Reactivation                  | Introduction to SLURM                         |  Recent User-Facing Changes                    |
+| Suspension and Reactivation                  | Introduction to SLURM                         |  Training Documentation                        |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| Role Accounts                                | How SLURM with Fair Share Works               |  Training Documentation                        |
+| Role Accounts                                | How SLURM with Fair Share Works               |  HPC Definitions                               |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| Request    Access to Additional Projects     | Getting Information about your Projects       |  HPC Definitions                               |
+| Request    Access to Additional Projects     | Getting Information about your Projects       | **Workflow Tools*                              |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| Reset your Master Certificate Password       | Allocations and Quotas                        |                                                |
+| Reset your Master Certificate Password       | Allocations and Quotas                        |  Rocoto -- Tee Workflow Manager                |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| **Accessing RDHPCS Systems**                 | Compilers                                     | **Using the HMS HPSS**                         |
+| **Accessing RDHPCS Systems**                 | Compilers                                     |                                                |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
-| **Policies and Best Practices**              | Editing Tools                                 |                                                |
+| **Policies and Best Practices**              | Editing Tools                                 | **Using the HMS HPSS**                         |
 +----------------------------------------------+-----------------------------------------------+------------------------------------------------+
 
 
