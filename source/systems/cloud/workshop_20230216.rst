@@ -54,4 +54,4 @@ Questions asked, along with the comments, during the presentations.
 
 .. raw:: html
 
-    <iframe src="https://docs.google.com/document/d/e/2PACX-1vRMatmR6V7fpB27_n1ZY3eU3IrQ_9bt29hh8Hj7thD8hb6NieqybEA9UzOUEJWSQ6D7U5x5ujXRdhSt/pub?embedded=true"></iframe>
+    <iframe src="https://docs.google.com/document/d/e/2PACX-1vRMatmR6V7fpB27_n1ZY3eU3IrQ_9bt29hh8Hj7thD8hb6NieqybEA9UzOUEJWSQ6D7U5x5ujXRdhSt/pub?embedded=true" frameborder="0" width="960" height="569"></iframe>
