@@ -96,3 +96,14 @@ Optimizing and Profiling
 
 Known Issues
 ============
+
+Training
+========
+
+Training videos available:
+
+.. toctree::
+   :maxdepth: 1
+
+   cloud/workshop_20230323
+   cloud/workshop_20230216

@@ -1,0 +1,57 @@
+####################################
+Parallel Works Platform Enhancements
+####################################
+
+-----------------
+February 16, 2023
+-----------------
+
+Slides
+------
+
+.. raw:: html
+
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR5O-D5DDr8sr1EZ7nrRpaD1ts67rQOqwgrN24Xlvy-tWi1HQcJv56Im2LQuVKz_1tq_vyKksSPX-yh/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+Foundation
+----------
+
+Foundational topics include Creation of a cluster configuration, multi-user
+setup, hiding a resource, duplicating a resource, monitor to view cluster
+status, cost dashboard, connect to a controller node, running an interactive
+job, storage options, Scheduler and deletion tabs from the Resource monitor
+link.
+
+.. raw:: html
+
+    <iframe src="https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/preview" frameborder="0" width="960" height="569"></iframe>
+
+Workflows
+=========
+
+Workflow topics include: subscribing a workflow from the PW Marketplace, example
+Juypter Notebook, running a job from the head node and compute node, canceling a
+job, deletion of a cluster, creation and use of a custom image in a workflow,
+RStudio, sharing a cluster with project members, and bootstrap script.
+
+.. raw:: html
+
+    <iframe src="https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/preview" frameborder="0" width="960" height="569"></iframe>
+
+Interactive Session
+-------------------
+
+Molecular dynamics simulation and visualization on a multi-cluster model.
+
+.. raw:: html
+
+    <iframe src="https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/preview" frameborder="0" width="960" height="569"></iframe>
+
+Question and Answer Session
+---------------------------
+
+Questions asked, along with the comments, during the presentations.
+
+.. raw:: html
+
+    <iframe src="https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/embed" frameborder="0" width="960" height="569"></iframe>
