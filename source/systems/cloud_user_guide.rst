@@ -15,10 +15,14 @@ NOAA Cloud Computing uses the Parallel Works software application, in a version 
 
 We recommend the Parallel Works User Guide for comprensive information about the product. Users should click the FAQ link located on the sidebar to learn about the NOAA RDHPCS-specific topics.
 
-Click here to access the [https://docs.parallel.works/ '''Parallel Works User Guide''']. Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
+Click here to access the '''Parallel Works User Guide''' (https://docs.parallel.works/ ). Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
+
+
 [[File:Cloud Processing.png|900px]]
 
-<!-- [[File:Cloudgraph1.png|center|1400px]] -->
+
+.. image:: /images/Cloud Processing.jpg
+
 == Globus Connect ==
 
 Globus is a tool for online data transfer. Click [https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Additional_Topics#Globus_Connect '''here'''] for further information.
