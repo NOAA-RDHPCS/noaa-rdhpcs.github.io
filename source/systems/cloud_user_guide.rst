@@ -7,7 +7,7 @@ RDHPCS Cloud Computing
 
 Welcome to the NOAA RDHPCS Cloud Computing Platform. The Cloud Platform allows NOAA users to create an HPC cluster on an as-needed basis, with the type of resources that are appropriate for the task at hand.
 
-You can find directions to log into the NOAA RDHPCS Cloud Gateway `here <https://noaa.parallel.works.>`_ 
+You can find directions to log into the NOAA RDHPCS Cloud Gateway `here. <https://noaa.parallel.works.>`_ 
 
 
 Parallel Works User Guide
@@ -19,7 +19,7 @@ We recommend the Parallel Works User Guide for comprensive information about the
 
 
 
-Click here to access the `Parallel Works User Guide' <https://docs.parallel.works/>`_ . Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
+Click here to access the `Parallel Works User Guide <https://docs.parallel.works/>`_ . Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
 
 
 Workflow
@@ -35,10 +35,11 @@ The typical workflow for using the cloud resources is as follows:
 Globus Connect
 ==============
 
-Globus is a tool for online data transfer. Click `here <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Additional_Topics#Globus_Connect>`_ for further information.
+Globus is a tool for online data transfer.  
+See the `Globus Connect documentation <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Additional_Topics#Globus_Connect>`_ for further information.
 
 Getting Help
 ------------
 
-For questions or assistance, email a ticket to: 'rdhpcs.cloud.help@noaa.gov', with the subject line Cloud Support.</br>
-Please send your feedback on product, support, and documentation to Unni Kirandumkara, email address: 'Unni.Kirandumkara@noaa.gov'.
+For questions or assistance, email a ticket to: rdhpcs.cloud.help@noaa.gov, with the subject line Cloud Support.</br>
+Please send your feedback on product, support, and documentation to Unni Kirandumkara, email address: Unni.Kirandumkara@noaa.gov.
