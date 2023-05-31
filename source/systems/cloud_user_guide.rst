@@ -20,7 +20,7 @@ We recommend the Parallel Works User Guide for comprensive information about the
 Click here to access the '''Parallel Works User Guide''' (https://docs.parallel.works/ ). Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
 
 
-.. image:: /images/Cloud Processing.jpg
+.. image:: /images/CloudProcessing.jpg
 
 
 
