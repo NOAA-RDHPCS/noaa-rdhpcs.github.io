@@ -7,7 +7,7 @@ RDHPCS Cloud Computing
 
 Welcome to the NOAA RDHPCS Cloud Computing Platform. The Cloud Platform allows NOAA users to create an HPC cluster on an as-needed basis, with the type of resources that are appropriate for the task at hand.
 
-You can find directions to log into the NOAA RDHPCS Cloud Gateway <https://noaa.parallel.works.>`` here].
+You can find directions to log into the NOAA RDHPCS Cloud Gateway <https://noaa.parallel.works.>`_ here].
 
 
 Parallel Works User Guide
@@ -17,7 +17,7 @@ NOAA Cloud Computing uses the Parallel Works software application, in a version 
 
 We recommend the Parallel Works User Guide for comprensive information about the product. Users should click the FAQ link located on the sidebar to learn about the NOAA RDHPCS-specific topics.
 
-Click here to access the '''Parallel Works User Guide''' <https://docs.parallel.works/>`. Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
+Click here to access the '''Parallel Works User Guide''' <https://docs.parallel.works/>`_. Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
 
 Workflow
 ==========
@@ -32,7 +32,7 @@ The typical workflow for using the cloud resources is as follows:
 Globus Connect
 ==============
 
-Globus is a tool for online data transfer. Click <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Additional_Topics#Globus_Connect>`'''here''' for further information.
+Globus is a tool for online data transfer. Click <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Additional_Topics#Globus_Connect>`_'''here''' for further information.
 
 Getting Help
 ------------
