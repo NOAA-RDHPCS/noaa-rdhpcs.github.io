@@ -1,109 +1,28 @@
+
 .. _cloud-user-guide:
 
 ****************
-Cloud User Guide
+RDHPCS Cloud Computing 
 ****************
 
-.. grid:: 1 1 2 2
+Welcome to the NOAA RDHPCS Cloud Computing Platform. The Cloud Platform allows NOAA users to create an HPC cluster on an as-needed basis, with the type of resources that are appropriate for the task at hand.
 
-    .. grid-item::
+You can find directions to log into the NOAA RDHPCS Cloud Gateway [https://noaa.parallel.works/ here].
 
-        1. Log into the `NOAA RDHPCS Cloud gateway <https://noaa.parallel.works>`_
+== Parallel Works User Guide ==
 
-        2. :ref:`Create a cluster <create_cluster>` with the desired size and
-           configuration.  Start the Cluster.
+NOAA Cloud Computing uses the Parallel Works software application, in a version customized for NOAA RDHPCS.  The Parallel Works User Guide is their standard documentation. NOAA users will find minor differences, for example, the login authentication, and project allocation, between the standard and customized applications.
 
-        3. Data transfer can be completed either after the cluster has been started
-           by pulling th data from the master node, or pushing the data from the
-           remote machine to a project space in the user's object storage.
+We recommend the Parallel Works User Guide for comprensive information about the product. Users should click the FAQ link located on the sidebar to learn about the NOAA RDHPCS-specific topics.
 
-           If the user is planning to use object storage and needs to move data
-           between the cloud and a remote resource, install the cloud provider's
-           command line utility (e.g., awscli (aws), gsutil (gcp), Azure CLI
-           (Azure)).
+Click here to access the [https://docs.parallel.works/ '''Parallel Works User Guide''']. Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
+[[File:Cloud Processing.png|900px]]
 
-           The preferred location for staging data to and from NOAA is the
-           :ref:`Niagara System <niagara-user-guide>` using the :ref:`Niagara
-           Untrusted DTN <niagara-data-transfer>`.
+<!-- [[File:Cloudgraph1.png|center|1400px]] -->
+== Globus Connect ==
 
-        4. Complete the necessary computations.
+Globus is a tool for online data transfer. Click [https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Additional_Topics#Globus_Connect '''here'''] for further information.
 
-        5. Transfer data back to an on-premise location or to the user's S3 (AWS),
-           GCP, or Azure bucket.
-
-           If it doesn't already exist, create a directory with your username before
-           using it.  This space can be considered as *permanent* as it will
-           continue to exist after the cluster has been shutdown.  It will be
-           available for subsequent cluster instantiations.
-
-           Even though files in this file sysytem are directly accessible to the
-           cluster, copying frequently used file in Luster before the application is
-           run is recommended.
-
-        6. Shut down the cluster.
-
-           .. warning::
-
-                When the cluster is shut down, all data in the Lustre and local file
-                systems will be lost!  Only the data in the object storage bucket and
-                ``/contrib`` will remain.  It is important to copy the data to an object
-                store or to a remote location.
-
-    .. grid-item::
-
-        .. mermaid::
-
-            flowchart TD
-                step1[1. Log into the Cloud Gateway]
-                step2[2. Create a cluster]
-                step3[3. Transfer data to the Cloud]
-                step4[4. Complete necessary computations]
-                step5[5. Transfer data back from Cloud]
-                step6[6. Shut down the cluster]
-                step1-->step2-->step3-->step4-->step5-->step6
-                click step1 "https://noaa.parallel.works"
-                click step2 "#create-cluster"
-.. _cloud-system-overview:
-
-System Overview
-===============
-
-Connecting
-==========
-
-Data and Storage
-================
-
-Software
-========
-
-.. _create_cluster:
-
-Shell & Programming Environments
-================================
-
-Compiling
-=========
-
-Running Jobs
-============
-
-Debugging
-=========
-
-Optimizing and Profiling
-========================
-
-Known Issues
-============
-
-Training
-========
-
-Training videos available:
-
-.. toctree::
-   :maxdepth: 1
-
-   cloud/workshop_20230323
-   cloud/workshop_20230216
+= Getting Help =
+For questions or assistance, email a ticket to: '''rdhpcs.cloud.help@noaa.gov''', with the subject line Cloud Support.</br>
+Please send your feedback on product, support, and documentation to Unni Kirandumkara, email address: '''Unni.Kirandumkara@noaa.gov'''.
