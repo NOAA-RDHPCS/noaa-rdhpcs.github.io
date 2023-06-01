@@ -104,12 +104,14 @@ Globus
 `Globus Training:  Setup and Data Transfer, March 17, 2023 <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`_
 This training walks you through the process of setting up an endpoint, and transfering files to the CSP classification.
 
-Also see `UUseful tutorials from Globus <https://docs.globus.org/how-to/instructional-videos/>`_`
+Also see `Useful tutorials from Globus <https://docs.globus.org/how-to/instructional-videos/>`_
 
 Cloud Success Stories!
 ----------------------
 `NOS Team:  Storm Surge Modelling, September 27, 2022 <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`_
+
 `NWS Team: Rapid Refresh Forecast System, September 21, 2022 <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`_
+
 `EPIC Cloud Success Story, September 15, 2022 <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`_
 
 Features in Development 
