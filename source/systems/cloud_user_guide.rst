@@ -82,6 +82,7 @@ Molecular dynamics simulation and visualization on a multi-cluster model.
 Other Parallel Works Training
 ------------------------------
 `Parallel Works Version 2, March 20, 2022 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`_
+
 `Parallel Works Version 2, January 20, 2022 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`_
 
 `Parallel Works Platform Training, July 15, 2021 <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`_
@@ -97,22 +98,22 @@ Topics include:
 
 Use Case Sessions
 -----------------
+This recorded session details JupyterHub installation on a Conda, and R troubleshooting. 
+`JupyterHub Installation on a Conda, and R Troubleshooting April 7, 2023 <https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b> `_
 
-`<https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b> JupyterHub Installation on a Conda, and R Troubleshooting April 7, 2023`_
-This recorded session details JupyterHub installation on a Conda, and R troubleshooting.
 
 Globus
 ------
-`<https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view Globus Training:  Setup and Data Transfer March 17, 2023>`_`
+`Globus Training:  Setup and Data Transfer March 17, 2023 <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`_` 
 This training walks you through the process of setting up an endpoint, and transfering files to the CSP classification.
-`<https://docs.globus.org/how-to/instructional-videos/> Useful tutorials from Globus`_`
+
+`Useful tutorials from Globus <https://docs.globus.org/how-to/instructional-videos/> _`
 
 Cloud Success Stories!
 ----------------------
-``
-* '''[https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing NOS Team:  Storm Surge Modelling]'''  September 27, 2022
-* '''[https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing NWS Team: Rapid Refresh Forecast System]'''  September 21, 2022
-* '''[https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view EPIC Cloud Success Story]'''  September 15, 2022
+`NOS Team:  Storm Surge Modelling, September 27, 2022 <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`_`
+`NWS Team: Rapid Refresh Forecast System, September 21, 2022 <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`_`
+`EPIC Cloud Success Story, September 15, 2022 <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`_`
 
 = Features in Development = 
 
