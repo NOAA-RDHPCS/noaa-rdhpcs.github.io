@@ -62,26 +62,22 @@ The training covers following topics:
 - **building a custom snapshot**
 
 Parallel Works Platform Enhancements, February 16, 2023 
-
 `Training Presentation Slides <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_01>`_
 
 **Foundation -- New users start here**
 Foundational topics include Creation of a cluster configuration, multi-user setup, hiding a resource, duplicating a resource, monitor to view cluster status, cost dashboard, connect to a controller node, running an interactive job, storage options, Scheduler and deletion tabs from the Resource monitor link.
-
 `Review the presentation here <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_
 
 **Workflows**
 Workflow topics include: subscribing a workflow from the PW Marketplace, example '''Juypter Notebook''', running a job from the head node and compute node, canceling a job, deletion of a cluster, creation and use of a custom image in a workflow, *RStudio*, sharing a cluster with project members, and bootstrap script.
-
 `Review the presentation here <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
 
-**Workflow Interactive Session**
+**Workflow Interactive Session: **
 Molecular dynamics simulation and visualization on a multi-cluster model.
-
-`Review the presentation here <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`_`
+`Review the presentation here <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`_
 
 **Training Q & A**
-`Review questions and comments here <https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`_`
+`Review questions and comments here <https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`_
 
 Other Parallel Works Training
 ------------------------------
