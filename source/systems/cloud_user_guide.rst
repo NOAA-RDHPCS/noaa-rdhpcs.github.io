@@ -63,7 +63,7 @@ The training covers following topics:
 
 Parallel Works Platform Enhancements, February 16, 2023 
 
-`Training Presentation Slides <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_01>`_`
+`Training Presentation Slides <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_01>`_
 
 **Foundation -- New users start here**
 Foundational topics include Creation of a cluster configuration, multi-user setup, hiding a resource, duplicating a resource, monitor to view cluster status, cost dashboard, connect to a controller node, running an interactive job, storage options, Scheduler and deletion tabs from the Resource monitor link.
