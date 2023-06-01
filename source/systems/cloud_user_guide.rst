@@ -72,7 +72,7 @@ Foundational topics include Creation of a cluster configuration, multi-user setu
 Workflow topics include: subscribing a workflow from the PW Marketplace, example '''Juypter Notebook''', running a job from the head node and compute node, canceling a job, deletion of a cluster, creation and use of a custom image in a workflow, *RStudio*, sharing a cluster with project members, and bootstrap script.
 `Review the presentation here <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
 
-**Workflow Interactive Session: **
+**Workflow Interactive Session:**
 Molecular dynamics simulation and visualization on a multi-cluster model.
 `Review the presentation here <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`_
 
@@ -81,9 +81,9 @@ Molecular dynamics simulation and visualization on a multi-cluster model.
 
 Other Parallel Works Training
 ------------------------------
-`<https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8 Parallel Works Version 2,  March 23, 2022>`_
-`<https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO Parallel Works Version 2 January 20, 2022>`_
-`<https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA Parallel Works Platform Training II]''' July 15, 2021.>`_
+`<https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8> Parallel Works Version 2,  March 23, 2022`_
+`<https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO> Parallel Works Version 2 January 20, 2022`_
+`<https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA> Parallel Works Platform Training, July 15, 2021.`_
 
 Topics include:
 - Connecting to a transient cluster head node from a remote host
@@ -98,16 +98,17 @@ Topics include:
 Use Case Sessions
 -----------------
 
-`<https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b JupyterHub Installation on a Conda, and R Troubleshooting> April 7, 2023>`_`
+`<https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b> JupyterHub Installation on a Conda, and R Troubleshooting April 7, 2023`_
 This recorded session details JupyterHub installation on a Conda, and R troubleshooting.
 
 Globus
 ------
-
 `<https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view Globus Training:  Setup and Data Transfer March 17, 2023>`_`
-** This training walks you through the process of setting up an endpoint, and transfering files to the CSP classification.
-* ''' [https://docs.globus.org/how-to/instructional-videos/ Useful tutorials from Globus]'''
-= Cloud Success Stories! = 
+This training walks you through the process of setting up an endpoint, and transfering files to the CSP classification.
+`<https://docs.globus.org/how-to/instructional-videos/> Useful tutorials from Globus`_`
+
+Cloud Success Stories!
+----------------------
 
 * '''[https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing NOS Team:  Storm Surge Modelling]'''  September 27, 2022
 * '''[https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing NWS Team: Rapid Refresh Forecast System]'''  September 21, 2022
