@@ -81,16 +81,16 @@ Molecular dynamics simulation and visualization on a multi-cluster model.
 
 Other Parallel Works Training
 ------------------------------
-`<https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8> Parallel Works Version 2,  March 23, 2022`_
-`<https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO> Parallel Works Version 2 January 20, 2022`_
-`<https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA> Parallel Works Platform Training, July 15, 2021.`_
+`Parallel Works Version 2, March 20, 2022 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`_
+`Parallel Works Version 2, January 20, 2022 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`_
 
+`Parallel Works Platform Training, July 15, 2021 <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`_
 Topics include:
 - Connecting to a transient cluster head node from a remote host
 - Configuration settings to re-size the nodes count
 - Lustre file system; Use of different processors
 - Monitoring workers
--  Slurm jobs
+- Slurm jobs
 - workflow Jupyter Notebook
 - Singularity container example
 - Budget allocation
@@ -109,7 +109,7 @@ This training walks you through the process of setting up an endpoint, and trans
 
 Cloud Success Stories!
 ----------------------
-
+``
 * '''[https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing NOS Team:  Storm Surge Modelling]'''  September 27, 2022
 * '''[https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing NWS Team: Rapid Refresh Forecast System]'''  September 21, 2022
 * '''[https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view EPIC Cloud Success Story]'''  September 15, 2022
