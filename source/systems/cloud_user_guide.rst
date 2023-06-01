@@ -56,19 +56,19 @@ Parallel Works
 <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5f>`_  
 
 The training covers following topics:
-
 - mShow estimated costs to run a given cluster configuration
 - SSH keys configurable from inside platform, at user level
 - Configurable slurm timeouts (and other slurm settings)
 - **building a custom snapshot**
 
 Parallel Works Platform Enhancements, February 16, 2023 
-`Training Presentation Slides <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_01_
+
+`Training Presentation Slides <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_01>`_`
 
 **Foundation -- New users start here**
 Foundational topics include Creation of a cluster configuration, multi-user setup, hiding a resource, duplicating a resource, monitor to view cluster status, cost dashboard, connect to a controller node, running an interactive job, storage options, Scheduler and deletion tabs from the Resource monitor link.
 
-`Review the presentation here <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_`
+`Review the presentation here <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_
 
 **Workflows**
 Workflow topics include: subscribing a workflow from the PW Marketplace, example '''Juypter Notebook''', running a job from the head node and compute node, canceling a job, deletion of a cluster, creation and use of a custom image in a workflow, *RStudio*, sharing a cluster with project members, and bootstrap script.
