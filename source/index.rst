@@ -27,6 +27,12 @@ Accounts
 .. toctree::
    :maxdepth: 2
 
+Getting Started
+----------------
+.. toctree::
+   :maxdepth: 2
+
+   Getting Started/index
 
 Logging In
 ----------
