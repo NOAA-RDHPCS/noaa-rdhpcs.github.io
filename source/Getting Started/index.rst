@@ -14,8 +14,8 @@ Visit the RDHPCS CommonDocs page (rdhpcs-common-docs (noaa.gov) for information 
 Maintenance Schedule
 ================
 
-System maintenance will affect access to RDHPCS systems. Click here:
-(https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ) to view the RDHPCS Maintenance Downtime Calendar.
+System maintenance will affect access to RDHPCS systems. Click <here:
+https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>' _ to view the RDHPCS Maintenance Downtime Calendar.
 
 
 
@@ -25,12 +25,12 @@ Getting Access
 
 This figure is an overview of the timeline and process for system access. 
 
-.. image:: /images/access1.png
+.. image:: access1.png
 
 Once you have  a NOAA.gov email address, you can request an RDHPCS account. 
 Visit the Account Information Management (AIM) website (https://aim.rdhpcs.noaa.gov) and  request access to the RDHPCS project.  Log into AIM using your NOAA email credentials, review your profile for accuracy, and request the RDHPCS project.
 
-.. image:: /images/AIM2.png
+.. image:: AIM2.png
 
 Once this request is approved, you will receive an email containing instructions about your next steps. These include requesting access to further projects and completing the RSA token request form.  Confer with your supervisor and colleagues to identify the  project(s) to request.
 
