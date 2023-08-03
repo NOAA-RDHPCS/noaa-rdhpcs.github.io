@@ -25,12 +25,12 @@ Getting Access
 
 This figure is an overview of the timeline and process for system access. 
 
-.. image:: access1.png
+.. images:: access1.png
 
 Once you have  a NOAA.gov email address, you can request an RDHPCS account. 
 Visit the Account Information Management (AIM) website (https://aim.rdhpcs.noaa.gov) and  request access to the RDHPCS project.  Log into AIM using your NOAA email credentials, review your profile for accuracy, and request the RDHPCS project.
 
-.. image:: AIM2.png
+.. images:: AIM2.png
 
 Once this request is approved, you will receive an email containing instructions about your next steps. These include requesting access to further projects and completing the RSA token request form.  Confer with your supervisor and colleagues to identify the  project(s) to request.
 
@@ -42,3 +42,26 @@ RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS syst
 **CAC Access**
 
 The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is ID Card Office Online (osd.mil).  SSH logins with a CAC require additional software detailed here:  CAC Login - ,https://rdhpcs-common-docs>' _ . 
+
+================
+Accessing the Systems
+=====================
+
+**NOTE:** To access a system, you must be on a project assigned to that system.
+* On-Premise RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  See the following pages for detailed instructions:
+* RSA logins: https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/RSA_Login
+* CAC logins: https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login
+* MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See the following pages for detailed instructions:
+* Orion login: https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in
+* Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web browser.  Login here: https://noaa.parallel.works/log
+
+**Cloud Computing**
+
+The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. An overview of the Cloud workflow, and links to detailed instructions, can be found here: Cloud Computing User Information - clouddocs (noaa.gov). 
+
+=============
+Data Transfer
+=============
+
+Globus Connect Transfer is the most efficient way to transfer data between NOAA RDHPCS sites and external collaborators, such as NCAR, NCEP, and Princeton. You can manage transfers through a web interface, as well as from the command line interface (CLI). See  Globus Quickstart - rdhpcs-common-docs (noaa.gov) for a brief overview of the transfer process, and tps://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Globus_Online_Data_Transfer for complete information. 
+
