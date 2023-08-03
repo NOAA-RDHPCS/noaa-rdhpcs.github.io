@@ -66,5 +66,5 @@ The Cloud Platform allows RDHPCS users to create a high-performance computationa
 Data Transfer
 =============
 
-Globus Connect Transfer is the most efficient way to transfer data between NOAA RDHPCS sites and external collaborators, such as NCAR, NCEP, and Princeton. You can manage transfers through a web interface, as well as from the command line interface (CLI). See  Globus Quickstart - rdhpcs-common-docs (noaa.gov) for a brief overview of the transfer process, and tps://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Globus_Online_Data_Transfer for complete information. 
+Globus Connect Transfer is the most efficient way to transfer data between NOAA RDHPCS sites and external collaborators, such as NCAR, NCEP, and Princeton. You can manage transfers through a web interface, as well as from the command line interface (CLI). See  `Globus Quickstart <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Globus_Online_Data_Transfer#Quickstart>`_ for a brief overview of the transfer process, and `Globus Online Data Transfer <htps://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Globus_Online_Data_Transfer>`_ for complete information. 
 
