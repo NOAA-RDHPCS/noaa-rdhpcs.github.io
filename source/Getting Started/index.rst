@@ -14,7 +14,7 @@ Visit the RDHPCS CommonDocs page (rdhpcs-common-docs (noaa.gov) for information 
 Maintenance Schedule
 ================
 
-System maintenance will affect access to RDHPCS systems. Click `here:
+System maintenance will affect access to RDHPCS systems. Click `here
 <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_ to view the RDHPCS Maintenance Downtime Calendar.
 
 
@@ -41,7 +41,8 @@ RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS syst
 
 **CAC Access**
 
-The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is ID Card Office Online (osd.mil).  SSH logins with a CAC require additional software detailed  `here.<https://rdhpcs-common-docs>'_ . 
+The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is `ID Card Office Online <https://idco.dmdc.osd.mil/idco/locator>`_.  SSH logins with a CAC require additional software.
+
 
 ================
 Accessing the Systems
@@ -56,11 +57,11 @@ On-Premise RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.
 
 MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_ for detailed instructions.
 
-Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web browser.  Login `here <https://noaa.parallel.works/log>`_`
+Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web browser.  Login `here. <https://noaa.parallel.works/log>`_
 
 **Cloud Computing**
 
-The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. An overview of the Cloud workflow, and links to detailed instructions, can be found here: Cloud Computing User Information - clouddocs (noaa.gov). 
+The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. An overview of the Cloud workflow, and links to detailed instructions, can be found in `Cloud Computing User Information. <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Cloud_Computing_User_Information>`_
 
 =============
 Data Transfer
