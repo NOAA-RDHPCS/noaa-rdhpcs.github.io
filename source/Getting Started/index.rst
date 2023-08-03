@@ -14,8 +14,8 @@ Visit the RDHPCS CommonDocs page (rdhpcs-common-docs (noaa.gov) for information 
 Maintenance Schedule
 ================
 
-System maintenance will affect access to RDHPCS systems. Click <here:
-https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>' _ to view the RDHPCS Maintenance Downtime Calendar.
+System maintenance will affect access to RDHPCS systems. Click `here:
+<https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_ to view the RDHPCS Maintenance Downtime Calendar.
 
 
 
@@ -28,7 +28,7 @@ This figure is an overview of the timeline and process for system access.
 .. image:: /images/access1.png
 
 Once you have  a NOAA.gov email address, you can request an RDHPCS account. 
-Visit the `Account Information Management (AIM) website <https://aim.rdhpcs.noaa.gov)`_ and  request access to the RDHPCS project.  Log into AIM using your NOAA email credentials, review your profile for accuracy, and request the RDHPCS project.
+Visit the `Account Information Management (AIM) website <https://aim.rdhpcs.noaa.gov>`_ and  request access to the RDHPCS project.  Log into AIM using your NOAA email credentials, review your profile for accuracy, and request the RDHPCS project.
 
 .. image:: /images/AIM2.png
 
@@ -41,7 +41,7 @@ RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS syst
 
 **CAC Access**
 
-The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is ID Card Office Online (osd.mil).  SSH logins with a CAC require additional software detailed here:  `CAC Login <https://rdhpcs-common-docs>' _ . 
+The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is ID Card Office Online (osd.mil).  SSH logins with a CAC require additional software detailed  `here.<https://rdhpcs-common-docs>'_ . 
 
 ================
 Accessing the Systems
@@ -50,12 +50,13 @@ Accessing the Systems
 **NOTE:** To access a system, you must be on a project assigned to that system.
 
 On-Premise RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  See the following pages for detailed instructions:
+
 * `RSA logins <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/RSA_Login>`_
 * `CAC logins <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`_
 
- MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See the following pages for detailed instructions:
-* `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_
-* Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web browser.  Login `here <https://noaa.parallel.works/log>`_`
+MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_ for detailed instructions.
+
+Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web browser.  Login `here <https://noaa.parallel.works/log>`_`
 
 **Cloud Computing**
 
