@@ -34,6 +34,8 @@ Accounts
 .. toctree::
    :maxdepth: 2
 
+   Accounts/index
+
 Logging In
 ----------
 .. toctree::
@@ -52,6 +54,8 @@ CommonDocs
 --------
 .. toctree::
    :maxdepth: 2
+
+   CommonDocs/index
 
 Systems
 -------
