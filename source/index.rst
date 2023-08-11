@@ -22,17 +22,17 @@ Getting Help
 
    help/index
 
-Accounts
---------
-.. toctree::
-   :maxdepth: 2
-
 Getting Started
 ----------------
 .. toctree::
    :maxdepth: 2
 
    Getting Started/index
+
+Accounts
+--------
+.. toctree::
+   :maxdepth: 2
 
 Logging In
 ----------
@@ -47,6 +47,11 @@ Connecting
    :maxdepth: 2
 
    connecting/index
+
+CommonDocs
+--------
+.. toctree::
+   :maxdepth: 2
 
 Systems
 -------
