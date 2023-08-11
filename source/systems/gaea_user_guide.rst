@@ -228,7 +228,7 @@ Compute Nodes
 Connecting
 ==========
 
-Connceting with a CAC
+Connecting with a CAC
 ---------------------
 
 The preferred method to to access Gaea is to use the CAC bastion.  This will use
