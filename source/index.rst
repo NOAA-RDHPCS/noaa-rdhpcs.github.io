@@ -43,6 +43,13 @@ Logging In
 
    Logging in/index
 
+ Common
+ ------
+ .. toctree::
+   :maxdepth: 2
+
+   Common/index
+
 Connecting
 ----------
 .. toctree::
