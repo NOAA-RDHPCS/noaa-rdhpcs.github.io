@@ -1,4 +1,4 @@
-.. _Commondocs components:
+.. _Common:
 
 #######
 Elements
