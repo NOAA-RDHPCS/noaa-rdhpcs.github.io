@@ -43,6 +43,13 @@ Connecting
 
    connecting/index
 
+Common
+------
+.. toctree::
+   :maxdepth: 2
+
+   common/index
+
 Systems
 -------
 .. toctree::
