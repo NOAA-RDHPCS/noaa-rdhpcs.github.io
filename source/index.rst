@@ -30,18 +30,18 @@ Getting Started
    Getting Started/index
 
 Logging In
-----------
+-----------
 .. toctree::
    :maxdepth: 2
 
    Logging in/index
 
- Common
- ------
+ Common Topics
+ -------------
   .. toctree::
    :maxdepth: 2
 
-   Common/index
+   Common Topics/index
 
 Connecting
 ----------
@@ -51,7 +51,7 @@ Connecting
    connecting/index
 
 CommonDocs
---------
+----------
 .. toctree::
    :maxdepth: 2
 
