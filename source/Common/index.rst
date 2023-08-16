@@ -1,8 +1,8 @@
 .. _Common:
 
-#############
-Common Topics
-#############
+######
+Common
+######
 
 CommonDocs Topics
 -----------------
