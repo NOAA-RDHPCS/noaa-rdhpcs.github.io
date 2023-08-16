@@ -36,26 +36,12 @@ Logging In
 
    Logging in/index
 
- Common Topics
- -------------
-  .. toctree::
-   :maxdepth: 2
-
-   Common Topics/index
-
 Connecting
 ----------
 .. toctree::
    :maxdepth: 2
 
    connecting/index
-
-CommonDocs
-----------
-.. toctree::
-   :maxdepth: 2
-
-   CommonDocs/index
 
 Systems
 -------
