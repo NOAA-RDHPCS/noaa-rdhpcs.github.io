@@ -36,6 +36,13 @@ Logging In
 
    Logging in/index
 
+Chan test
+----------
+.. toctree::
+   :maxdepth: 2
+
+   Chan test/index
+
 Connecting
 ----------
 .. toctree::
