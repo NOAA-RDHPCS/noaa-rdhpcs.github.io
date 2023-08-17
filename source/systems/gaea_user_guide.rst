@@ -554,8 +554,8 @@ Known Module Incompatibility on C5
 ----------------------------------
 
 There is a known incompatibility with the cray-libsci module and the following intel modules: 
-- intel-classoc/2022.0.2
-- intel-classic
+- intel-classic/2022.0.2
+- intel-oneapi/2022.0.2
 
 A recommended workaround to this issue is to either module unload cray-libsci or use another intel compiler. 
 
