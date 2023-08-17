@@ -1,4 +1,4 @@
-.. _chan-test:
+.. _common material:
 
 Current Status
 ==============
