@@ -1,21 +1,7 @@
-.. _common material:
-
-.. _system-user-guides:
-
-#######
-Systems
-#######
-
-.. toctree::
-   :maxdepth: 2
-
-   current_status
-   data_transfer
- 
-
 
 Current Status
 ==============
+Making sure of this before we proceed...
 
 We are now allowing all users and projects to run Singularity Containers
 on Hera, Hera-FGE, Jet, and Niagara. Please see below:
