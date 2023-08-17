@@ -36,12 +36,12 @@ Logging In
 
    Logging in/index
 
-Chan test
-----------
+Common Material
+-----------
 .. toctree::
    :maxdepth: 2
 
-   Chan test/index
+   Common material/index
 
 Connecting
 ----------
