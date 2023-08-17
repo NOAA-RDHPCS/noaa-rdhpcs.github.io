@@ -206,7 +206,7 @@ Compute Nodes
 +------------------------+----------------------------+------------------------------+------------------+
 | Number of Sockets      | 2                          | 2                            | 2                |
 +------------------------+----------------------------+------------------------------+------------------+
-| Cores per Socket       | 16                         | 18                           | 16               |
+| Cores per Socket       | 16                         | 18                           | 64               |
 +------------------------+----------------------------+------------------------------+------------------+
 | Threads per Core       | 2                          | 2                            | 2                |
 +------------------------+----------------------------+------------------------------+------------------+
@@ -224,6 +224,39 @@ Compute Nodes
 +------------------------+----------------------------+------------------------------+------------------+
 | Total Flops            | 1.77 PF                    | 3.52 PF                      | 10.2 PF          |
 +------------------------+----------------------------+------------------------------+------------------+
+
+C5 Nodes and Cores 
+------------------
+
+Login Nodes 
+~~~~~~~~~~~
+
+There are eight new login nodes for the C5 cluster. You may submit batch jobs to the C5 login nodes using eslogin_c5 partition name. 
+
+.. code-block:: shell
+
+   sbatch --cluster=es --partition=eslogin_c5
+
+Slurm allows batch jobs to request hardware resources in addition to nodes and cores, such as memory. If not explicitly set with sbatch options (e.g., sbatch --mem=20G), batch jobs request a default memory per requested (logical) core (e.g., sbatch --ntasks=8). The default memory per core for the C5 login nodes is 2GB. 
+
+
+Compute Nodes 
+~~~~~~~~~~~~~
+
+Each C5 compute node consists of [2x] 64-core AMD Rome EPYC Rome "Zen 2" 7H12 CPUs (with 2 hardware threads per physical core) with access to 251 GB of DDR4 memory. The nodes are dual socket systems with eight memory channels per socket. AMD has technology known as Simultaneous Multithreading, similar to Intel's Hyper-Threading technology, which doubles the number of logical CPUs on a node allowing for 256 logical cores. 
+
+The compute nodes are configured in high-bandwidth mode in order to minimize local memory latency for NUMA-aware or highly parallelizable workloads by defining multiple NUMA zones per socket.
+* 4 memory "NUMANodes" per socket
+* Allocates memory channels to core groups 
+* 16 cores per memory "node"
+
+Applications runnnig with OpenMP are supported and run well on C5. On C3 and C4 clusters, OpenMP appplications have been able to utilize HyperThreads for a slight performance benefit. 
+
+
+System Interconnect 
+-------------------
+The C5 nodes are connected using the HPE Slingshot Interconnect (version 10) 
+
 
 Connecting
 ==========
@@ -279,6 +312,41 @@ RSA_CODE is the 6-8 digit code from the RSA fob or RSA app.
     The first connection with an RSA token, you will be requested for a new PIN
     which must be at least 6 alphanumeric characters.
 
+Modules and Software
+===================
+
+LMOD
+----
+LMOD is the modules software management system used on C5 and the C5 login nodes. Unlike the module system on C3/C4, LMOD employs a hierarchical system that, when used properly, considers dependencies and prerequisites for a given software package. For example, the **cray-netcdf** module depends on the **cray-hdf5** module and cannot be seen by the standard **module avail** commands nor be loaded until the **cray-hdf5** module is loaded. 
+
+The LMOD hierarchical system will automatically deactivate or swap an upstream module dependency. Two examples are given below. Another feature of LMOD is swapping or unloading an upstream dependency. When that happens, any downstream module will still be loaded but inactivated.
+
+.. code-block:: shell
+
+    prompt> module load cray-hdf5
+    prompt> module load cray-netcdf
+    prompt> module unload cray-hdf5
+
+    Inactive Modules:
+  	    1) cray-netcdf
+
+LMOD Search Commands
+--------------------
+
+To find a specific module, use ``module spider``. The command will show all modules and versions with the name. This includes modules that cannot be loaded in the current environment. 
+
+.. code-block:: shell
+
+    module spider <module> 
+    module spider <module>/<spider>
+
+``module avail`` will show only modules that can be loaded in the current environment. 
+
+Adding Additional Module Paths
+------------------------------
+
+**Do not manually set the MODULESPATH environment variable.** Manually setting the MODULESPATH environment variable will produce unknown behavior. Use ``module use <path>`` or ``module use -a <path>`` to add more module paths. 
+
 Data and Storage
 ================
 
@@ -317,6 +385,53 @@ The following compilers are available:
 - The Intel OneAPI Compiler Suite
 - GCC, the GNU Compiler Collection
 - The Cray Compiler Suite
+
+New Compilers on C5 
+~~~~~~~~~~~~~~~~~~~
+
+NVHPC is the replacement for the PGI compiler. 
+AOCC is the AMD Optimizing C/C++ and Fortran Compiler.
+All of MSD's testing has been experimental and limited with these compilers. 
+
+The following compilers and programming environments are available on C5 as modules:
+
+- PrgEnv-aocc/8.3.3 aocc/3.2.0
+
+- PrgEnv-cray/8.3.3 cce/14.0.4
+
+- PrgEnv-cray/8.3.3 cce/15.0.1
+
+- PrgEnv-gnu/8.3.3 gcc/10.3.0
+
+- PrgEnv-gnu/8.3.3 gcc/11.2.0
+
+- PrgEnv-gnu/8.3.3 gcc/12.1.0
+
+- PrgEnv-gnu/8.3.3 gcc/12.2.0
+
+- PrgEnv-intel/8.3.3 intel-classic/2022.0.2
+
+- PrgEnv-intel/8.3.3 intel-classic/2022.2.1
+
+- PrgEnv-intel/8.3.3 intel-oneapi/2022.0.2
+
+- PrgEnv-intel/8.3.3 intel-oneapi/2022.2.1
+
+- PrgEnv-intel/8.3.3 intel/2022.0.2
+
+- PrgEnv-intel/8.3.3 intel/2022.2.1
+
+- PrgEnv-nvhpc/8.3.3 nvhpc/22.7
+
+Compiler Options 
+~~~~~~~~~~~~~~~~~
+With Intel 2022 compilers on C5 users should replace the -xsse2 compiler option with one of the following: 
+
+- *-march=core-axv-i*: **Recommended** for production. MSD is using this for regression testing. A limited number of MOM6-solo tests on t5 even bitwise produce c4 answers with this option unlike the next. MSD has found no reproducibility issues with this option so far. This option is used for FRE targets prod and repro
+
+- *-march=core-avx2*: **Not Recommended** for production, at the moment, for GFDL climate models. Should only be used for exploratory testing with advanced AVX optimizations. There are known restart reproducibility issues with GFDL climate models potentially affecting multi-segment runs, but no repeatability issues have been seen so far for single-segement runs. 
+
+**Caution**: When building a production executable, please review the compilation output to ensure that -march=core-avx-i is used. 
 
 Cray Compiler wrappers
 ----------------------
@@ -379,6 +494,12 @@ is static, while C5's default is dynamic.
   Static binaries are larger, but do not require the build and runtime
   environments to be identical.
 
+Within C5, the Cray Programming Environement (CrayPE) now defaults to dynamically linked libraries. The executable will not include copies of the assocaited libraries at link time but will look for the libraries using the LD_LIBRARY_PATH variable and load them when executed. For this reason, batch scripts must load the appropriate modules for a given executable. If not loaded, the executable will issue an error similar to: 
+
+.. code-block:: shell
+
+   <executable>: error while loading shared libraries: cannot open shared object file: No such file or directory
+
 Changing Compilers
 ------------------
 
@@ -428,6 +549,26 @@ Optimizing and Profiling
 
 Known Issues
 ============
+
+Known Module Incompatibility on C5
+----------------------------------
+
+There is a known incompatibility with the cray-libsci module and the following intel modules: 
+- intel-classoc/2022.0.2
+- intel-classic
+
+A recommended workaround to this issue is to either module unload cray-libsci or use another intel compiler. 
+
+Executables from C3/C4 not working on C5
+----------------------------------------
+
+The C3/C4 and C5 nodes have different interconnects. The C3/C4 and C5 clusters are not binary compatible. Binaries compiled for C3/C4 will not execute on C5. Likewise, executables compiled for C5 will not run on C3/C4. Attempting to run an incompatible binary on C3, C4, or C5 will produce an error. 
+
+Examples of the error are:
+
+.. code-block:: shell
+
+  Please verify that both the operating system and the processor support Intel(R) X87, CMOV, MMX, FXSAVE, SSE, SSE2, SSE3, SSSE3, SSE4_1, SSE4_2, MOVBE, POPCNT, AVX, F16C, FMA, BMI, LZCNT and AVX2 instructions.
 
 CAC bastions refusing login attempts without asking for PIN
 -----------------------------------------------------------
