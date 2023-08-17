@@ -36,12 +36,6 @@ Logging In
 
    Logging in/index
 
-Common Material
------------
-.. toctree::
-   :maxdepth: 2
-
-   Common material/index
 
 Connecting
 ----------
@@ -49,7 +43,6 @@ Connecting
    :maxdepth: 2
 
    connecting/index
-
 
 
 Common
@@ -87,12 +80,12 @@ Queue Policy
 
    queue_policy/index
 
-Queue
-------
+Common Material
+---------------
 .. toctree::
    :maxdepth: 2
 
-   queue/index
+   Common Material/index
 
 Software
 --------
