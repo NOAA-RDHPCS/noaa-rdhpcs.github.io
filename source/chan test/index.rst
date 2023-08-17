@@ -1,5 +1,4 @@
-.. _current_status:
-
+.. _chan_test:
 
 Current Status
 ==============
