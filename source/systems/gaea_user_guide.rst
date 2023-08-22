@@ -350,8 +350,126 @@ Adding Additional Module Paths
 Data and Storage
 ================
 
+Filesystems
+-----------
+
+Gaea has two filesystems: Home and F2, a parallel filesystem based on Lustre.
+
+Home Filesystem
+---------------
+
+The home filesystem is split into two sections both of which are backed up. For load balance purposes, there is a home1 and home2. 
+
+.. note::
+
+    Each user has a 5GB limit.
+
+Home is mounted on:
+
+- Batch nodes
+- LDTN
+- RDTN
+- Login nodes
+
+
+A snapshot can be accessed at ``/ncrc/home1|2/.snapshot/{daily or hourly}/$USER``
+
+You can use this path to restore files or subdirectories. The permissions will be the same as the originals and users can simply copy from that location to any destination. 
+
+
+
+Lustre Filesystems (F2)
+-----------------------
+
+F2 is a 33PB Lustre Filesystem. 
+
+User directories are available at 
+
+.. code-block:: shell
+
+    lustre/f2/scratch/$USER/
+
+and
+
+.. code-block:: shell
+
+    lustre/f2/dev/$USER
+
+
+NCEP users' directories are found in 
+
+.. code-block:: shell
+
+    lustre/f2/scratch/ncep/$USER
+
+and
+
+.. code-block:: shell
+
+   lustre/f2/dev/ncep/$USER
+
+All files over 2 weeks old will be scrubbed within the ``lustre/f2/scratch/$USER`` and ``lustre/f2/scratch/ncep/$USER`` directories. Directories under /lustre/f2/dev are not swept. Files that have not been accessed or used within 2 weeks will be scrubbed. 
+
+.. note::
+
+  F2 is **NOT** backed up. Users are responsible for monitoring their files and transferring what they do not want to lose to a location without a scrubbing policy and with data back-ups.
+
+F2 is mounted on:
+
+- C4 (batch and compute nodes)
+- C5 (batch and compute nodes)
+- LDTN
+- RDTN
+- Login nodes
+
+You should have directories in the following locations:
+
+- ``lustre/f2/scratch/$USER`` (symlinked from ``lustre/f2/scratch/<YOUR_CENTER>/$USER``
+- ``lustre/f2/dev$USER`` (symlinked from ``lustre/f2/dev/<YOUR_CENTER>/$USER``
+
+F2 Specs
+--------
+
+- Improved I/O performance
+- 33 PB of usable storage
+- Automatic lossless compression of files
+- Additional metadata capacity
+
+Environment Variables for F2 locations
+--------------------------------------
+
+- PDATA = ``/lustre/f2/pdata``
+- DEV = ``/lustre/f2/dev``
+- SCRATCH = ``/lustre/f2/scratch``
+
+
 Software
 ========
+
+Python
+------
+
+PythonEnv
+~~~~~~~~~
+
+Conda
+~~~~~
+
+
+Jupyter Notebooks
+~~~~~~~~~~~~~~~~~
+
+Cron
+----
+
+Other Software
+--------------
+
+- Debuggers
+- X2go
+- Shpcrpt
+- Lustre Filesystem Tools
+- Software Requests
 
 Shell & Programming Environments
 ================================
@@ -541,8 +659,179 @@ module is loaded, and then use ``module swap`` to the desired version.
 Running Jobs
 ============
 
+Slurm
+-----
+
+Gaea uses a batch scheduling system known as SchedMD’s Slurm Workload Manager for scheduling and managing jobs. Users can run programs by submitting scripts to the Slurm job scheduler. 
+
+A Slurm script must do the following:
+
+1. set the environment
+2. prescribe the resource requirements for the job
+3. specify the work to be carried out in the form of shell commands
+
+Some common slurm commands are summarized in the table below. 
+
+Login v. Compute Nodes
+----------------------
+
+As previously stated in 'System Overview', Gaea contains two node types: Login and Compute. When you connect to the system, you are placed on a login node. On a login node you can submit jobs, edit files, and monitor your jobs. These nodes are not intended for real computation. Running computationally intensive processes on the login nodes is discouraged. 
+
+.. warning::
+
+  Do not run heavy computation on login nodes. Doing so may negatively impact other users who interact with the cluster. 
+
+
+In constrast, a compute node is intended for heavy computation. All of the real computation occurs on compute nodes and most of the nodes fall into this category. When starting a batch job, your batch script runs on one of the allocated compute nodes.
+
+
+Basic Job Submission
+--------------------
+
+Generally, users submit jobs by writing a batch script and submitting the job to Slurm with the ``sbatch`` command. The ``sbatch`` command takes a number of options. The options you are allowed to specify are the set of options used for the SLURM batch system. For a list of option, use the man page. 
+
+.. code-block:: shell
+
+    $ man sbatch
+
+It is also possible to submit an interactive job, but that is usually most useful for debugging purposes. 
+
+
+Batch Scripts
+-------------
+
+Batch jobs require a batch script that runs the commands and applications you want to execute. A batch script is essentially a shell script with added directives. Directives specify the resources requirements of your jobs and provide certain information to the scheduling system. The sbatch command is used to submit batch jobs.
+
+
+.. code-block:: shell
+
+    $ sbatch <options> <script>
+
+Typical options include:
+
+- The account to charge the run to 
+- The number of nodes/tasls for the job
+- The time limit for the job
+- The location of stdout/stderr
+- A name for the job
+
+Job files usually have Slurm directives at the top. The directives are of the form:
+
+.. code-block:: shell
+
+    #SBATCH <options>
+    #SBATCH <options>
+
+
+These directives can be usedd insteadd of specifiying options on the command line. If an option is specified both as a directive and on the command line, the command line option takes precedence. 
+
+
+
+Interactive Jobs
+----------------
+
+Individual compute nodes do not allow direct shell access except when the node is allocated to a job owned by you. If you need shell access to one or more nodes, you can request the scheduler assign some to you by launching an interactive batch job. 
+
+Interactive jobs can be used for developing, testing, modifying, or debugging code--allowing for interactive access with a program as it runs. Requesting an interactive job will allocate resources and log you into a shell on a compute node. Interactive jobs are submitted with the ``salloc`` command. 
+
+.. code-block:: shell
+
+    $ salloc
+
+When you run the salloc command, you won't get a prompt back until the batch system scheduler is able to run the job. Once that happens, the scheduler will drop you into a login session on the head node allocated to your interactive job. At this point, you will have a prompt and may run commands in this shell as needed. 
+
+
+Batch Script Example
+--------------------
+
+
+
+Job Submission Options
+----------------------
+
+Command-line options vs directives 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are two ways to specify sbatch options. The first is on the command line when using the sbatch command. 
+
+
+.. code-block:: shell
+
+    $ salloc
+
+The second method is to insert directives at the top of the batch script using #SBATCH syntax. For example, 
+
+.. code-block:: shell
+
+    $ salloc
+
+The two methods can be mixed together. However, options specified on the command line always override options specified in the script. 
+
+
+The table below summarizes options for submitted jobs. Check the Slurm Man Pages for a more complete list. 
+
++------------------------+----------------------------+------------------------------+
+|    Option              | Example Usage                   | Description             |
++========================+============================+==============================+
+| ``-A`` ``--account``   | $SBATCH --account=abc123    | Specifies the project to     |
+|                        |                            | which the job should be      |                         |                        |                            | charged.                     |  
++------------------------+----------------------------+------------------------------+
+| ``-t`` ``--time``      | #SBATCH -t 4:00:00         | Specify a maximum wallclock. |
++------------------------+----------------------------+------------------------------+
+| ``-J`` ``--job-name``  | #SBATCH -J jobname         | Set the name of the job.     |
++------------------------+----------------------------+------------------------------+
+| ``-N`` ``--nodes``     | #SBATCH -N 1024            | Request that a minimum       |
+|                        |                            | of X be allocated to a job   |
++------------------------+----------------------------+------------------------------+
+| ``-n`` ``--ntasks``    | #SBATCH -n 8               | Requests for X tasks         | 
++------------------------+----------------------------+------------------------------+
+| ``--mem``              | #SBATCH --mem=4g           | Specify the real memory      |
+|                        |                            | required per node.           | 
++------------------------+----------------------------+------------------------------+
+| ``-q`` ``--qos``       | #SBATCH --qos=normal       | Request a quality of service |
+|                        |                            | for the job.                 |
++------------------------+----------------------------+------------------------------+
+| ``-o`` ``--output``    | #SBATCH jobout.%j          | File where job STDOUT will   |
+|                        |                            | be directed. (%j will be     |                         |                        |                            | replaced with the job ID).   |
++------------------------+----------------------------+------------------------------+
+| ``-e`` ``--error``     | #SBATCH joberr.%j          | File where job STDERR will   |
+|                        |                            |  be directed. (%j will be    |
+|                        |                            |  replaced with the job ID).  |
++------------------------+----------------------------+------------------------------+
+| ``--mail-user``        | #SBATCH --mail-            | Email address to be used for |
+|                        |  user=user@somewhere.com   | notifications                |
+|                        |                            |                              | 
++------------------------+----------------------------+------------------------------+
+| ``-M`` ``--clusters``  | #SBATCH -M clustername     | clusters to issue commands to|
++------------------------+----------------------------+------------------------------+
+
+
 Debugging
 =========
+
+Arm DDT
+-------
+
+Arm DDT is a powerful, easy-to-use graphical debugger. With Arm DDT it is possible to debug: 
+
+- Single process and multithreaded software
+- Parallel (MPI) Software 
+- OpenMP
+- Hybrid codes mixing paradigms such as MPI + OpenMP, or MPI + CUDA
+
+Arm DDT supports:
+
+-C, C++, and all derivatives of Fotran, including Fortran 90,
+- Limited support for Python (CPython 2.7)
+- Parallel languages/models including MPI, UPCm and fortran 2008 Co-arrays. 
+- GPU languages such as HMPP, OpenMP Accelerators, CUDA and CUDA Fortran. 
+
+Arm DDT helps you to find and fix problems on a single thread or across hundreds of thousands of threads. It includes static analysis to highlight potential code problems, integrated memory debugging to identify reads and writes that are outside of array bounds, and integration with MPI message queues. 
+
+In addition to traditional debugging features, DDT also supports attaching to already-running processes and offline (non-interactive) debugging for long running jobs. 
+
+For guidance on using DDT on gaea see the xyz page. 
+
 
 Optimizing and Profiling
 ========================
