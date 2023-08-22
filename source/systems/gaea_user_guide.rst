@@ -455,12 +455,44 @@ PythonEnv
 Conda
 ~~~~~
 
-
 Jupyter Notebooks
 ~~~~~~~~~~~~~~~~~
 
 Cron
 ----
+
+.. warning::
+
+  Cron is only functional on C4.
+
+
+Cron is a job scheduler that allows users to run commands at specifically chosen, time-based intervals. Gaea's login nodes can access and modify a central crontab. Each user has an individual crontab which can be accessed using the ``crontab -e`` command-line tool from any of the Gaea login nodes. 
+
+By default, ``crontab -e`` command will open a vi-based editor environment. A user can set the ``VISUAL`` or ``EDITOR`` environment variables. See ``man crontab`` for more information. 
+
+Scrontab
+--------
+
+Traditionaly cron functionality has been replaced on C5 with the the Slurm crontab tool called ``scrontab``. Scrontab is used to set, edit, and remove a user's Slurm-managed crontab. This combines the same functionality as cron with the resiliency of the batch system. Jobs are run on a pool of nodes, so unlike regular cron, a single node going down will not keep you scrontab job from running. 
+
+You can edit your scrontab script with:
+
+.. code-block:: shell
+
+   $ scrontab -e
+
+You can view existing scripts with:
+
+.. code-block:: shell
+
+   $ scrontab -l
+
+.. note::
+
+  By default, vi is the editor for scrontab. For a different editor, you can set the ``EDITOR`` environment variable (e.g. ``export      
+  EDITOR=/usr/bin/emacs).
+
+For more information on scrontab, use ``man scrontab``.
 
 Other Software
 --------------
@@ -744,6 +776,27 @@ When you run the salloc command, you won't get a prompt back until the batch sys
 Batch Script Example
 --------------------
 
+.. code-block:: shell
+
+    #!/bin/bash
+
+    #SBATCH --ntasks=16
+    #SBATCH --time=4:00:00
+    #SBATCH --account=gfdl_x
+    #SBATCH --job-name=xyz
+    #SBATCH --chdir=
+
+    nt=$SLURM_NTASKS
+    module load intel <version>
+
+    srun -n $nt ./{executable} 
+
+To submit the script above, called jobscript.sh, you would type:
+
+.. code-block:: shell
+
+    $ sbatch jobscript.sh
+    
 
 
 Job Submission Options
@@ -771,10 +824,10 @@ The two methods can be mixed together. However, options specified on the command
 The table below summarizes options for submitted jobs. Check the Slurm Man Pages for a more complete list. 
 
 +------------------------+----------------------------+------------------------------+
-|    Option              | Example Usage                   | Description             |
+|    Option              | Example Usage              | Description                  |
 +========================+============================+==============================+
-| ``-A`` ``--account``   | $SBATCH --account=abc123    | Specifies the project to     |
-|                        |                            | which the job should be      |                         |                        |                            | charged.                     |  
+| ``-A`` ``--account``   | $SBATCH --account=abc123   | Specifies the project to     |
+|                        |                            | which the job should be      |                          
 +------------------------+----------------------------+------------------------------+
 | ``-t`` ``--time``      | #SBATCH -t 4:00:00         | Specify a maximum wallclock. |
 +------------------------+----------------------------+------------------------------+
@@ -792,7 +845,7 @@ The table below summarizes options for submitted jobs. Check the Slurm Man Pages
 |                        |                            | for the job.                 |
 +------------------------+----------------------------+------------------------------+
 | ``-o`` ``--output``    | #SBATCH jobout.%j          | File where job STDOUT will   |
-|                        |                            | be directed. (%j will be     |                         |                        |                            | replaced with the job ID).   |
+|                        |                            | be directed. (%j will be     |                        
 +------------------------+----------------------------+------------------------------+
 | ``-e`` ``--error``     | #SBATCH joberr.%j          | File where job STDERR will   |
 |                        |                            |  be directed. (%j will be    |
@@ -804,6 +857,129 @@ The table below summarizes options for submitted jobs. Check the Slurm Man Pages
 +------------------------+----------------------------+------------------------------+
 | ``-M`` ``--clusters``  | #SBATCH -M clustername     | clusters to issue commands to|
 +------------------------+----------------------------+------------------------------+
+
+
+Slurm Environment Variables
+---------------------------
+
++--------------------------+----------------------------------------------------------------------------------+
+| Variable                 | Description                                                                      |
++==========================+==================================================================================+
+| $SLURM_SUBMIT_DIR        | The directory from which the batch job was submitted. By default, a new job      |
+|                          | starts in your home directory. You can get back to the directory of job          |
+|                          | submission with ``cd $SLURM_SUBMIT_DIR``. Note that this is not necessarily the  | 
+|                          | same directory in which the batch script resides.                                |
+|                          |                                                                                  |
++--------------------------+----------------------------------------------------------------------------------+
+| $SLURM_JOBID             | The job's full identifier. A common use for $SLURM_JOBID is to append the job's  |
+                           |  ID to the standard output and error files.                                      |
++--------------------------+----------------------------------------------------------------------------------+
+| $SLURM_JOB_NUM_NODES     | The number of nodes requested.                                                   |
++--------------------------+----------------------------------------------------------------------------------+
+| $SLURM_JOB_NAME          | The job name supplied by the user.                                               |
++--------------------------+----------------------------------------------------------------------------------+
+| $SLURM_NODELIST          | The list of nodes assigned to the job.                                           |
++--------------------------+----------------------------------------------------------------------------------+
+
+
+State Codes 
+-----------
++--------------------------+----------------------------------------------------------------------------------+
+| State Code               | Description                                                                      |
++==========================+==================================================================================+
+| CA | Cancelled           | The job was explicitly cancelled by the user or system administrator             |
++--------------------------+----------------------------------------------------------------------------------+
+| CD | Completed           | Job has terminated all processes on all nodes. Exit code of zero.                | 
++--------------------------+----------------------------------------------------------------------------------+
+| F | Failed               | Job terminated with non-zero exit code or other failure condition.               |
++--------------------------+----------------------------------------------------------------------------------+
+| R | Running              | Job currently has an allocation.                                                 |
++--------------------------+----------------------------------------------------------------------------------+
+| TO | Timeout             | Job terminated upon reaching its time limit.                                     |
++--------------------------+----------------------------------------------------------------------------------+
+| PD | Pending             | Job is awaiting resource allocation.                                             |
++--------------------------+----------------------------------------------------------------------------------+
+| OOM | Out Of Memory      | Job experienced out of memory error.                                             |
++--------------------------+----------------------------------------------------------------------------------+
+| NF | Node Fail           | The list of nodes assigned to the job.                                           |
++--------------------------+----------------------------------------------------------------------------------+
+
+Job Reason Codes
+----------------
+
++--------------------------+----------------------------------------------------------------------------------+
+| Reason                   | Meaning                                                                          |
++==========================+==================================================================================+
+| InvalidQOS               | The job's QOS is invalid.                                                        |
++--------------------------+----------------------------------------------------------------------------------+
+| InvalidAccount           | The job's account is invalid                                                     |
++--------------------------+----------------------------------------------------------------------------------+
+| NonZeroExitCode          | The job terminated with a non-zero exit code.                                    |
++--------------------------+----------------------------------------------------------------------------------+
+| NodeDown                 | A node required by the job is down.                                              |
++--------------------------+----------------------------------------------------------------------------------+
+| TimeLimit                | The job exhausted its time limit                                                 |
++--------------------------+----------------------------------------------------------------------------------+
+| SystemFailure            | Failure of the Slurm system, a file system, the network, etc.                    |
++--------------------------+----------------------------------------------------------------------------------+
+| JobLaunchFailure         | The job cannot be launched. This may be due to a file system problem, invalid    |
+|                          |  program name, etc.                                                              |
++--------------------------+----------------------------------------------------------------------------------+
+| WaitingForScheduling     | The list of nodes assigned to the job.                                           |
++--------------------------+----------------------------------------------------------------------------------+
+
+
+Job Dependencies
+----------------
+SLURM supports the ability to submit a job with constraints that will keep it running until these dependencies are met. A simple example is where job X cannot execute until job Y completes. Dependencies are specified with the ``-d`` option to Slurm. 
+
++--------------------------+------------------------------------------------------------------------------------------+
+| Flag                             | Meaning                                                                          |
++==================================+==================================================================================+
+|``SBATCH -d after:jobid[+time]``  | The job can start after the specified jobs start or are cancelled. The           |
+|                                  |  optional +time argument is a number of minutes. If specified, the job           |
+|                                  |  cannot start until that many minutes have passed since the listed jobs          |
+|                                  |  start/are cancelled. If not specified, there is no delay.                       |
++----------------------------------+----------------------------------------------------------------------------------+
+| ``SBATCH -d afterany:jobid``     | The job can start after the specified jobs have ended (regardless of exit state) |
++----------------------------------+----------------------------------------------------------------------------------+
+| ``SBATCH -d afternotok:jobid``   | The job can start after the specified jobs terminate in a failed (non-zero) state|               
++----------------------------------+----------------------------------------------------------------------------------+
+| ``SBATCH -d afterok:jobid``      | The job can start after the specified jobs complete successfully                 |
++----------------------------------+----------------------------------------------------------------------------------+
+| ``SBATCH -d singleton``          | Job can begin after any previously-launched job with the same name and from the  |
+|                                  | same user have completed. In other words, serialize the running jobs based on    |
+|                                  | username+jobname pairs.                                                          |
++----------------------------------+----------------------------------------------------------------------------------+
+
+Srun
+----
+Your C4/C5 job scripts will usually call ``srun`` to run an executable (or ``srun-multi`` if you have a multi-executable model).
+
+.. code-block:: shell
+
+    srun [OPTIONS... [executable [args...]]]
+
+``srun`` accepts the following options:
+
++------------------------------------------------+----------------------------------------------------------------------------------+
+| Option                                         | Description                                                                      |
++================================================+==================================================================================+
+| ``-N``                                         | Number of nodes                                                                  |
++------------------------------------------------+----------------------------------------------------------------------------------+
+| ``-n``                                         | Total number of MPI tasks (default is 1)                                         | 
++------------------------------------------------+----------------------------------------------------------------------------------+
+| ``-c, --cpus-per-task=``                       | Logical cores per MPI task (default is 1)                                        |
+|                                                | When used with ``--threads-per-core=1``:``c`` is equivalent to *physical* cores  |
+|                                                | per task.                                                                        |
++------------------------------------------------+----------------------------------------------------------------------------------+
+| ``--threads-per-core=``                        | In task layout, use the specified maximum number of hardware threads per core    |
+|                                                |  Must also be set in ``salloc`` or ``sbatch`` if using ``--threads--per-core=2`` |
++------------------------------------------------+----------------------------------------------------------------------------------+
+|   ``--ntasks-per-node=``                       | If used without ``-n``: requests that a specific number of tasks be invoked on   |
+|                                                |   each node. If used with ``-n``: treated as a maximum count of tasks per node.  |
++------------------------------------------------+----------------------------------------------------------------------------------+
+
 
 
 Debugging
