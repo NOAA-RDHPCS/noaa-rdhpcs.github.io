@@ -696,9 +696,9 @@ Gaea uses a batch scheduling system known as SchedMD’s Slurm Workload Manager 
 
 A run script must do the following:
 
-1. set the environment
+1. Set the environment
 2. Apply directives in order to specify instructions on setting up a job
-3. specify the work to be carried out in the form of shell commands
+3. Specify the work to be carried out in the form of shell commands
 
 
 Login v. Compute Nodes
@@ -717,7 +717,7 @@ In constrast, a compute node is intended for heavy computation. All of the real 
 Basic Job Submission
 --------------------
 
-Generally, users submit jobs by writing a batch script and submitting the job to Slurm with the ``sbatch`` command. The ``sbatch`` command takes a number of options. The options you are allowed to specify are the set of options used for the SLURM batch system. For a list of option, use the ``man sbatch`` page. 
+Generally, users submit jobs by writing a batch script and submitting the job to Slurm with the ``sbatch`` command. The ``sbatch`` command takes a number of options. The options you are allowed to specify are the set of options used for the SLURM batch system. For a list of options, use the ``man sbatch`` page. 
 
 It is also possible to submit an interactive job, but that is usually most useful for debugging purposes. 
 
@@ -748,7 +748,7 @@ Job files usually have Slurm directives at the top. The directives are of the fo
     #SBATCH <options>
 
 
-These directives can be usedd insteadd of specifiying options on the command line. If an option is specified both as a directive and on the command line, the command line option takes precedence. 
+These directives can be used instead of specifiying options on the command line. If an option is specified both as a directive and on the command line, the command line option takes precedence. 
 
 
 
@@ -1009,8 +1009,6 @@ Arm DDT supports:
 Arm DDT helps you to find and fix problems on a single thread or across hundreds of thousands of threads. It includes static analysis to highlight potential code problems, integrated memory debugging to identify reads and writes that are outside of array bounds, and integration with MPI message queues. 
 
 In addition to traditional debugging features, DDT also supports attaching to already-running processes and offline (non-interactive) debugging for long running jobs. 
-
-For guidance on using DDT on gaea see the xyz page. 
 
 
 Optimizing and Profiling
