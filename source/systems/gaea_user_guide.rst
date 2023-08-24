@@ -338,7 +338,6 @@ To find a specific module, use ``module spider``. The command will show all modu
 .. code-block:: shell
 
     module spider <module> 
-    module spider <module>/<spider>
 
 ``module avail`` will show only modules that can be loaded in the current environment. 
 
@@ -381,9 +380,9 @@ You can use this path to restore files or subdirectories. The permissions will b
 Lustre Filesystems (F2)
 -----------------------
 
-F2 is a 33PB Lustre Filesystem. 
+F2 is a 33PB Lustre Filesystem. Certain limitations apply to F2. For instance, performance will start to degrade after utilization exceeds 80% on a file system. Therefore, using well-formed I/O, managing the quota, and using lustre storage tools (when searching your files or managing your spcae) is important. 
 
-User directories are available at 
+User directories are available at: 
 
 .. code-block:: shell
 
@@ -396,7 +395,7 @@ and
     lustre/f2/dev/$USER
 
 
-NCEP users' directories are found in 
+NCEP users' directories are available at:
 
 .. code-block:: shell
 
@@ -573,15 +572,14 @@ The following compilers and programming environments are available on C5 as modu
 
 - PrgEnv-nvhpc/8.3.3 nvhpc/22.7
 
-Compiler Options 
-~~~~~~~~~~~~~~~~~
+
 With Intel 2022 compilers on C5 users should replace the -xsse2 compiler option with one of the following: 
 
-- *-march=core-axv-i*: **Recommended** for production. MSD is using this for regression testing. A limited number of MOM6-solo tests on t5 even bitwise produce c4 answers with this option unlike the next. MSD has found no reproducibility issues with this option so far. This option is used for FRE targets prod and repro
+- ``-march=core-axv-i``: **Recommended** for production. MSD is using this for regression testing. A limited number of MOM6-solo tests on t5 even bitwise produce c4 answers with this option unlike the next. MSD has found no reproducibility issues with this option so far. This option is used for FRE targets prod and repro
 
-- *-march=core-avx2*: **Not Recommended** for production, at the moment, for GFDL climate models. Should only be used for exploratory testing with advanced AVX optimizations. There are known restart reproducibility issues with GFDL climate models potentially affecting multi-segment runs, but no repeatability issues have been seen so far for single-segement runs. 
+- ``-march=core-avx2``: **Not Recommended** for production, at the moment, for GFDL climate models. Should only be used for exploratory testing with advanced AVX optimizations. There are known restart reproducibility issues with GFDL climate models potentially affecting multi-segment runs, but no repeatability issues have been seen so far for single-segement runs. 
 
-**Caution**: When building a production executable, please review the compilation output to ensure that -march=core-avx-i is used. 
+**Caution**: When building a production executable, please review the compilation output to ensure that ``-march=core-avx-i`` is used. 
 
 Cray Compiler wrappers
 ----------------------
@@ -639,8 +637,8 @@ is static, while C5's default is dynamic.
 
 .. note::
 
-  Dynamic linking will create smaller executalbe.  However, the environment must
-  be identical when running the executalbe as was configured when building.
+  Dynamic linking will create smaller executable.  However, the environment must
+  be identical when running the executable as was configured when building.
   Static binaries are larger, but do not require the build and runtime
   environments to be identical.
 
@@ -696,13 +694,12 @@ Slurm
 
 Gaea uses a batch scheduling system known as SchedMD’s Slurm Workload Manager for scheduling and managing jobs. Users can run programs by submitting scripts to the Slurm job scheduler. 
 
-A Slurm script must do the following:
+A run script must do the following:
 
 1. set the environment
-2. prescribe the resource requirements for the job
+2. Apply directives in order to specify instructions on setting up a job
 3. specify the work to be carried out in the form of shell commands
 
-Some common slurm commands are summarized in the table below. 
 
 Login v. Compute Nodes
 ----------------------
@@ -720,11 +717,7 @@ In constrast, a compute node is intended for heavy computation. All of the real 
 Basic Job Submission
 --------------------
 
-Generally, users submit jobs by writing a batch script and submitting the job to Slurm with the ``sbatch`` command. The ``sbatch`` command takes a number of options. The options you are allowed to specify are the set of options used for the SLURM batch system. For a list of option, use the man page. 
-
-.. code-block:: shell
-
-    $ man sbatch
+Generally, users submit jobs by writing a batch script and submitting the job to Slurm with the ``sbatch`` command. The ``sbatch`` command takes a number of options. The options you are allowed to specify are the set of options used for the SLURM batch system. For a list of option, use the ``man sbatch`` page. 
 
 It is also possible to submit an interactive job, but that is usually most useful for debugging purposes. 
 
@@ -768,7 +761,7 @@ Interactive jobs can be used for developing, testing, modifying, or debugging co
 
 .. code-block:: shell
 
-    $ salloc
+    $ salloc [options] [<command> [command args]]
 
 When you run the salloc command, you won't get a prompt back until the batch system scheduler is able to run the job. Once that happens, the scheduler will drop you into a login session on the head node allocated to your interactive job. At this point, you will have a prompt and may run commands in this shell as needed. 
 
@@ -779,12 +772,21 @@ Batch Script Example
 .. code-block:: shell
 
     #!/bin/bash
-
+    #
+    # -- Request 16 cores
     #SBATCH --ntasks=16
+    #
+    # -- Specify a maximum wallclock of 4 hours 
     #SBATCH --time=4:00:00
+    # 
+    # -- Specify under which account a job should run
     #SBATCH --account=gfdl_x
+    #
+    # -- Set the name of the job, or Slurm will default to the name of the script
     #SBATCH --job-name=xyz
-    #SBATCH --chdir=
+    #
+    # -- Tell the batch system to set the working directory
+    #SBATCH --chdir=/some/path
 
     nt=$SLURM_NTASKS
     module load intel <version>
@@ -810,13 +812,14 @@ There are two ways to specify sbatch options. The first is on the command line w
 
 .. code-block:: shell
 
-    $ salloc
+    $ sbatch --clusters=c5 --account=abc123 myrunScript.sh
 
 The second method is to insert directives at the top of the batch script using #SBATCH syntax. For example, 
 
 .. code-block:: shell
 
-    $ salloc
+    #SBATCH --clusters=c5
+    #SBATCH --account=abc123
 
 The two methods can be mixed together. However, options specified on the command line always override options specified in the script. 
 
@@ -845,11 +848,12 @@ The table below summarizes options for submitted jobs. Check the Slurm Man Pages
 |                        |                            | for the job.                 |
 +------------------------+----------------------------+------------------------------+
 | ``-o`` ``--output``    | #SBATCH jobout.%j          | File where job STDOUT will   |
-|                        |                            | be directed. (%j will be     |                        
+|                        |                            | be directed. (%j will be     |
+|                        |                            | replaced with job ID)        |                        
 +------------------------+----------------------------+------------------------------+
 | ``-e`` ``--error``     | #SBATCH joberr.%j          | File where job STDERR will   |
-|                        |                            |  be directed. (%j will be    |
-|                        |                            |  replaced with the job ID).  |
+|                        |                            | be directed. (%j will be     |
+|                        |                            | replaced with the job ID)    |
 +------------------------+----------------------------+------------------------------+
 | ``--mail-user``        | #SBATCH --mail-            | Email address to be used for |
 |                        |  user=user@somewhere.com   | notifications                |
@@ -872,7 +876,7 @@ Slurm Environment Variables
 |                          |                                                                                  |
 +--------------------------+----------------------------------------------------------------------------------+
 | $SLURM_JOBID             | The job's full identifier. A common use for $SLURM_JOBID is to append the job's  |
-                           |  ID to the standard output and error files.                                      |
+|                          | ID to the standard output and error files.                                       |
 +--------------------------+----------------------------------------------------------------------------------+
 | $SLURM_JOB_NUM_NODES     | The number of nodes requested.                                                   |
 +--------------------------+----------------------------------------------------------------------------------+
@@ -923,7 +927,7 @@ Job Reason Codes
 | SystemFailure            | Failure of the Slurm system, a file system, the network, etc.                    |
 +--------------------------+----------------------------------------------------------------------------------+
 | JobLaunchFailure         | The job cannot be launched. This may be due to a file system problem, invalid    |
-|                          |  program name, etc.                                                              |
+|                          | program name, etc.                                                               |
 +--------------------------+----------------------------------------------------------------------------------+
 | WaitingForScheduling     | The list of nodes assigned to the job.                                           |
 +--------------------------+----------------------------------------------------------------------------------+
@@ -937,9 +941,9 @@ SLURM supports the ability to submit a job with constraints that will keep it ru
 | Flag                             | Meaning                                                                          |
 +==================================+==================================================================================+
 |``SBATCH -d after:jobid[+time]``  | The job can start after the specified jobs start or are cancelled. The           |
-|                                  |  optional +time argument is a number of minutes. If specified, the job           |
-|                                  |  cannot start until that many minutes have passed since the listed jobs          |
-|                                  |  start/are cancelled. If not specified, there is no delay.                       |
+|                                  | optional +time argument is a number of minutes. If specified, the job           |
+|                                  | cannot start until that many minutes have passed since the listed jobs          |
+|                                  | start/are cancelled. If not specified, there is no delay.                       |
 +----------------------------------+----------------------------------------------------------------------------------+
 | ``SBATCH -d afterany:jobid``     | The job can start after the specified jobs have ended (regardless of exit state) |
 +----------------------------------+----------------------------------------------------------------------------------+
@@ -974,10 +978,10 @@ Your C4/C5 job scripts will usually call ``srun`` to run an executable (or ``sru
 |                                                | per task.                                                                        |
 +------------------------------------------------+----------------------------------------------------------------------------------+
 | ``--threads-per-core=``                        | In task layout, use the specified maximum number of hardware threads per core    |
-|                                                |  Must also be set in ``salloc`` or ``sbatch`` if using ``--threads--per-core=2`` |
+|                                                | Must also be set in ``salloc`` or ``sbatch`` if using ``--threads--per-core=2`` |
 +------------------------------------------------+----------------------------------------------------------------------------------+
 |   ``--ntasks-per-node=``                       | If used without ``-n``: requests that a specific number of tasks be invoked on   |
-|                                                |   each node. If used with ``-n``: treated as a maximum count of tasks per node.  |
+|                                                | each node. If used with ``-n``: treated as a maximum count of tasks per node.  |
 +------------------------------------------------+----------------------------------------------------------------------------------+
 
 
@@ -997,7 +1001,7 @@ Arm DDT is a powerful, easy-to-use graphical debugger. With Arm DDT it is possib
 
 Arm DDT supports:
 
--C, C++, and all derivatives of Fotran, including Fortran 90,
+- C, C++, and all derivatives of Fotran, including Fortran 90,
 - Limited support for Python (CPython 2.7)
 - Parallel languages/models including MPI, UPCm and fortran 2008 Co-arrays. 
 - GPU languages such as HMPP, OpenMP Accelerators, CUDA and CUDA Fortran. 
@@ -1019,6 +1023,7 @@ Known Module Incompatibility on C5
 ----------------------------------
 
 There is a known incompatibility with the cray-libsci module and the following intel modules: 
+
 - intel-classic/2022.0.2
 - intel-oneapi/2022.0.2
 
