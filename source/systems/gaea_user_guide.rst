@@ -206,7 +206,7 @@ Compute Nodes
 +------------------------+----------------------------+------------------------------+------------------+
 | Number of Sockets      | 2                          | 2                            | 2                |
 +------------------------+----------------------------+------------------------------+------------------+
-| Cores per Socket       | 16                         | 18                           | 16               |
+| Cores per Socket       | 16                         | 18                           | 64               |
 +------------------------+----------------------------+------------------------------+------------------+
 | Threads per Core       | 2                          | 2                            | 2                |
 +------------------------+----------------------------+------------------------------+------------------+
@@ -224,6 +224,39 @@ Compute Nodes
 +------------------------+----------------------------+------------------------------+------------------+
 | Total Flops            | 1.77 PF                    | 3.52 PF                      | 10.2 PF          |
 +------------------------+----------------------------+------------------------------+------------------+
+
+C5 Nodes and Cores 
+------------------
+
+Login Nodes 
+~~~~~~~~~~~
+
+There are eight new login nodes for the C5 cluster. You may submit batch jobs to the C5 login nodes using eslogin_c5 partition name. 
+
+.. code-block:: shell
+
+   sbatch --cluster=es --partition=eslogin_c5
+
+Slurm allows batch jobs to request hardware resources in addition to nodes and cores, such as memory. If not explicitly set with sbatch options (e.g., sbatch --mem=20G), batch jobs request a default memory per requested (logical) core (e.g., sbatch --ntasks=8). The default memory per core for the C5 login nodes is 2GB. 
+
+
+Compute Nodes 
+~~~~~~~~~~~~~
+
+Each C5 compute node consists of [2x] 64-core AMD Rome EPYC Rome "Zen 2" 7H12 CPUs (with 2 hardware threads per physical core) with access to 251 GB of DDR4 memory. The nodes are dual socket systems with eight memory channels per socket. AMD has technology known as Simultaneous Multithreading, similar to Intel's Hyper-Threading technology, which doubles the number of logical CPUs on a node allowing for 256 logical cores. 
+
+The compute nodes are configured in high-bandwidth mode in order to minimize local memory latency for NUMA-aware or highly parallelizable workloads by defining multiple NUMA zones per socket.
+* 4 memory "NUMANodes" per socket
+* Allocates memory channels to core groups 
+* 16 cores per memory "node"
+
+Applications runnnig with OpenMP are supported and run well on C5. On C3 and C4 clusters, OpenMP appplications have been able to utilize HyperThreads for a slight performance benefit. 
+
+
+System Interconnect 
+-------------------
+The C5 nodes are connected using the HPE Slingshot Interconnect (version 10) 
+
 
 Connecting
 ==========
@@ -279,11 +312,196 @@ RSA_CODE is the 6-8 digit code from the RSA fob or RSA app.
     The first connection with an RSA token, you will be requested for a new PIN
     which must be at least 6 alphanumeric characters.
 
+Modules and Software
+===================
+
+LMOD
+----
+LMOD is the modules software management system used on C5 and the C5 login nodes. Unlike the module system on C3/C4, LMOD employs a hierarchical system that, when used properly, considers dependencies and prerequisites for a given software package. For example, the **cray-netcdf** module depends on the **cray-hdf5** module and cannot be seen by the standard **module avail** commands nor be loaded until the **cray-hdf5** module is loaded. 
+
+The LMOD hierarchical system will automatically deactivate or swap an upstream module dependency. Two examples are given below. Another feature of LMOD is swapping or unloading an upstream dependency. When that happens, any downstream module will still be loaded but inactivated.
+
+.. code-block:: shell
+
+    prompt> module load cray-hdf5
+    prompt> module load cray-netcdf
+    prompt> module unload cray-hdf5
+
+    Inactive Modules:
+  	    1) cray-netcdf
+
+LMOD Search Commands
+--------------------
+
+To find a specific module, use ``module spider``. The command will show all modules and versions with the name. This includes modules that cannot be loaded in the current environment. 
+
+.. code-block:: shell
+
+    module spider <module> 
+    module spider <module>/<spider>
+
+``module avail`` will show only modules that can be loaded in the current environment. 
+
+Adding Additional Module Paths
+------------------------------
+
+**Do not manually set the MODULESPATH environment variable.** Manually setting the MODULESPATH environment variable will produce unknown behavior. Use ``module use <path>`` or ``module use -a <path>`` to add more module paths. 
+
 Data and Storage
 ================
 
+Filesystems
+-----------
+
+Gaea has two filesystems: Home and F2, a parallel filesystem based on Lustre.
+
+Home Filesystem
+---------------
+
+The home filesystem is split into two sections both of which are backed up. For load balance purposes, there is a home1 and home2. 
+
+.. note::
+
+    Each user has a 5GB limit.
+
+Home is mounted on:
+
+- Batch nodes
+- LDTN
+- RDTN
+- Login nodes
+
+
+A snapshot can be accessed at ``/ncrc/home1|2/.snapshot/{daily or hourly}/$USER``
+
+You can use this path to restore files or subdirectories. The permissions will be the same as the originals and users can simply copy from that location to any destination. 
+
+
+
+Lustre Filesystems (F2)
+-----------------------
+
+F2 is a 33PB Lustre Filesystem. 
+
+User directories are available at 
+
+.. code-block:: shell
+
+    lustre/f2/scratch/$USER/
+
+and
+
+.. code-block:: shell
+
+    lustre/f2/dev/$USER
+
+
+NCEP users' directories are found in 
+
+.. code-block:: shell
+
+    lustre/f2/scratch/ncep/$USER
+
+and
+
+.. code-block:: shell
+
+   lustre/f2/dev/ncep/$USER
+
+All files over 2 weeks old will be scrubbed within the ``lustre/f2/scratch/$USER`` and ``lustre/f2/scratch/ncep/$USER`` directories. Directories under /lustre/f2/dev are not swept. Files that have not been accessed or used within 2 weeks will be scrubbed. 
+
+.. note::
+
+  F2 is **NOT** backed up. Users are responsible for monitoring their files and transferring what they do not want to lose to a location without a scrubbing policy and with data back-ups.
+
+F2 is mounted on:
+
+- C4 (batch and compute nodes)
+- C5 (batch and compute nodes)
+- LDTN
+- RDTN
+- Login nodes
+
+You should have directories in the following locations:
+
+- ``lustre/f2/scratch/$USER`` (symlinked from ``lustre/f2/scratch/<YOUR_CENTER>/$USER``
+- ``lustre/f2/dev$USER`` (symlinked from ``lustre/f2/dev/<YOUR_CENTER>/$USER``
+
+F2 Specs
+--------
+
+- Improved I/O performance
+- 33 PB of usable storage
+- Automatic lossless compression of files
+- Additional metadata capacity
+
+Environment Variables for F2 locations
+--------------------------------------
+
+- PDATA = ``/lustre/f2/pdata``
+- DEV = ``/lustre/f2/dev``
+- SCRATCH = ``/lustre/f2/scratch``
+
+
 Software
 ========
+
+Python
+------
+
+PythonEnv
+~~~~~~~~~
+
+Conda
+~~~~~
+
+Jupyter Notebooks
+~~~~~~~~~~~~~~~~~
+
+Cron
+----
+
+.. warning::
+
+  Cron is only functional on C4.
+
+
+Cron is a job scheduler that allows users to run commands at specifically chosen, time-based intervals. Gaea's login nodes can access and modify a central crontab. Each user has an individual crontab which can be accessed using the ``crontab -e`` command-line tool from any of the Gaea login nodes. 
+
+By default, ``crontab -e`` command will open a vi-based editor environment. A user can set the ``VISUAL`` or ``EDITOR`` environment variables. See ``man crontab`` for more information. 
+
+Scrontab
+--------
+
+Traditionaly cron functionality has been replaced on C5 with the the Slurm crontab tool called ``scrontab``. Scrontab is used to set, edit, and remove a user's Slurm-managed crontab. This combines the same functionality as cron with the resiliency of the batch system. Jobs are run on a pool of nodes, so unlike regular cron, a single node going down will not keep you scrontab job from running. 
+
+You can edit your scrontab script with:
+
+.. code-block:: shell
+
+   $ scrontab -e
+
+You can view existing scripts with:
+
+.. code-block:: shell
+
+   $ scrontab -l
+
+.. note::
+
+  By default, vi is the editor for scrontab. For a different editor, you can set the ``EDITOR`` environment variable (e.g. ``export      
+  EDITOR=/usr/bin/emacs).
+
+For more information on scrontab, use ``man scrontab``.
+
+Other Software
+--------------
+
+- Debuggers
+- X2go
+- Shpcrpt
+- Lustre Filesystem Tools
+- Software Requests
 
 Shell & Programming Environments
 ================================
@@ -317,6 +535,53 @@ The following compilers are available:
 - The Intel OneAPI Compiler Suite
 - GCC, the GNU Compiler Collection
 - The Cray Compiler Suite
+
+New Compilers on C5 
+~~~~~~~~~~~~~~~~~~~
+
+NVHPC is the replacement for the PGI compiler. 
+AOCC is the AMD Optimizing C/C++ and Fortran Compiler.
+All of MSD's testing has been experimental and limited with these compilers. 
+
+The following compilers and programming environments are available on C5 as modules:
+
+- PrgEnv-aocc/8.3.3 aocc/3.2.0
+
+- PrgEnv-cray/8.3.3 cce/14.0.4
+
+- PrgEnv-cray/8.3.3 cce/15.0.1
+
+- PrgEnv-gnu/8.3.3 gcc/10.3.0
+
+- PrgEnv-gnu/8.3.3 gcc/11.2.0
+
+- PrgEnv-gnu/8.3.3 gcc/12.1.0
+
+- PrgEnv-gnu/8.3.3 gcc/12.2.0
+
+- PrgEnv-intel/8.3.3 intel-classic/2022.0.2
+
+- PrgEnv-intel/8.3.3 intel-classic/2022.2.1
+
+- PrgEnv-intel/8.3.3 intel-oneapi/2022.0.2
+
+- PrgEnv-intel/8.3.3 intel-oneapi/2022.2.1
+
+- PrgEnv-intel/8.3.3 intel/2022.0.2
+
+- PrgEnv-intel/8.3.3 intel/2022.2.1
+
+- PrgEnv-nvhpc/8.3.3 nvhpc/22.7
+
+Compiler Options 
+~~~~~~~~~~~~~~~~~
+With Intel 2022 compilers on C5 users should replace the -xsse2 compiler option with one of the following: 
+
+- *-march=core-axv-i*: **Recommended** for production. MSD is using this for regression testing. A limited number of MOM6-solo tests on t5 even bitwise produce c4 answers with this option unlike the next. MSD has found no reproducibility issues with this option so far. This option is used for FRE targets prod and repro
+
+- *-march=core-avx2*: **Not Recommended** for production, at the moment, for GFDL climate models. Should only be used for exploratory testing with advanced AVX optimizations. There are known restart reproducibility issues with GFDL climate models potentially affecting multi-segment runs, but no repeatability issues have been seen so far for single-segement runs. 
+
+**Caution**: When building a production executable, please review the compilation output to ensure that -march=core-avx-i is used. 
 
 Cray Compiler wrappers
 ----------------------
@@ -379,6 +644,12 @@ is static, while C5's default is dynamic.
   Static binaries are larger, but do not require the build and runtime
   environments to be identical.
 
+Within C5, the Cray Programming Environement (CrayPE) now defaults to dynamically linked libraries. The executable will not include copies of the assocaited libraries at link time but will look for the libraries using the LD_LIBRARY_PATH variable and load them when executed. For this reason, batch scripts must load the appropriate modules for a given executable. If not loaded, the executable will issue an error similar to: 
+
+.. code-block:: shell
+
+   <executable>: error while loading shared libraries: cannot open shared object file: No such file or directory
+
 Changing Compilers
 ------------------
 
@@ -420,14 +691,349 @@ module is loaded, and then use ``module swap`` to the desired version.
 Running Jobs
 ============
 
+Slurm
+-----
+
+Gaea uses a batch scheduling system known as SchedMD’s Slurm Workload Manager for scheduling and managing jobs. Users can run programs by submitting scripts to the Slurm job scheduler. 
+
+A Slurm script must do the following:
+
+1. set the environment
+2. prescribe the resource requirements for the job
+3. specify the work to be carried out in the form of shell commands
+
+Some common slurm commands are summarized in the table below. 
+
+Login v. Compute Nodes
+----------------------
+
+As previously stated in 'System Overview', Gaea contains two node types: Login and Compute. When you connect to the system, you are placed on a login node. On a login node you can submit jobs, edit files, and monitor your jobs. These nodes are not intended for real computation. Running computationally intensive processes on the login nodes is discouraged. 
+
+.. warning::
+
+  Do not run heavy computation on login nodes. Doing so may negatively impact other users who interact with the cluster. 
+
+
+In constrast, a compute node is intended for heavy computation. All of the real computation occurs on compute nodes and most of the nodes fall into this category. When starting a batch job, your batch script runs on one of the allocated compute nodes.
+
+
+Basic Job Submission
+--------------------
+
+Generally, users submit jobs by writing a batch script and submitting the job to Slurm with the ``sbatch`` command. The ``sbatch`` command takes a number of options. The options you are allowed to specify are the set of options used for the SLURM batch system. For a list of option, use the man page. 
+
+.. code-block:: shell
+
+    $ man sbatch
+
+It is also possible to submit an interactive job, but that is usually most useful for debugging purposes. 
+
+
+Batch Scripts
+-------------
+
+Batch jobs require a batch script that runs the commands and applications you want to execute. A batch script is essentially a shell script with added directives. Directives specify the resources requirements of your jobs and provide certain information to the scheduling system. The sbatch command is used to submit batch jobs.
+
+
+.. code-block:: shell
+
+    $ sbatch <options> <script>
+
+Typical options include:
+
+- The account to charge the run to 
+- The number of nodes/tasls for the job
+- The time limit for the job
+- The location of stdout/stderr
+- A name for the job
+
+Job files usually have Slurm directives at the top. The directives are of the form:
+
+.. code-block:: shell
+
+    #SBATCH <options>
+    #SBATCH <options>
+
+
+These directives can be usedd insteadd of specifiying options on the command line. If an option is specified both as a directive and on the command line, the command line option takes precedence. 
+
+
+
+Interactive Jobs
+----------------
+
+Individual compute nodes do not allow direct shell access except when the node is allocated to a job owned by you. If you need shell access to one or more nodes, you can request the scheduler assign some to you by launching an interactive batch job. 
+
+Interactive jobs can be used for developing, testing, modifying, or debugging code--allowing for interactive access with a program as it runs. Requesting an interactive job will allocate resources and log you into a shell on a compute node. Interactive jobs are submitted with the ``salloc`` command. 
+
+.. code-block:: shell
+
+    $ salloc
+
+When you run the salloc command, you won't get a prompt back until the batch system scheduler is able to run the job. Once that happens, the scheduler will drop you into a login session on the head node allocated to your interactive job. At this point, you will have a prompt and may run commands in this shell as needed. 
+
+
+Batch Script Example
+--------------------
+
+.. code-block:: shell
+
+    #!/bin/bash
+
+    #SBATCH --ntasks=16
+    #SBATCH --time=4:00:00
+    #SBATCH --account=gfdl_x
+    #SBATCH --job-name=xyz
+    #SBATCH --chdir=
+
+    nt=$SLURM_NTASKS
+    module load intel <version>
+
+    srun -n $nt ./{executable} 
+
+To submit the script above, called jobscript.sh, you would type:
+
+.. code-block:: shell
+
+    $ sbatch jobscript.sh
+    
+
+
+Job Submission Options
+----------------------
+
+Command-line options vs directives 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are two ways to specify sbatch options. The first is on the command line when using the sbatch command. 
+
+
+.. code-block:: shell
+
+    $ salloc
+
+The second method is to insert directives at the top of the batch script using #SBATCH syntax. For example, 
+
+.. code-block:: shell
+
+    $ salloc
+
+The two methods can be mixed together. However, options specified on the command line always override options specified in the script. 
+
+
+The table below summarizes options for submitted jobs. Check the Slurm Man Pages for a more complete list. 
+
++------------------------+----------------------------+------------------------------+
+|    Option              | Example Usage              | Description                  |
++========================+============================+==============================+
+| ``-A`` ``--account``   | $SBATCH --account=abc123   | Specifies the project to     |
+|                        |                            | which the job should be      |                          
++------------------------+----------------------------+------------------------------+
+| ``-t`` ``--time``      | #SBATCH -t 4:00:00         | Specify a maximum wallclock. |
++------------------------+----------------------------+------------------------------+
+| ``-J`` ``--job-name``  | #SBATCH -J jobname         | Set the name of the job.     |
++------------------------+----------------------------+------------------------------+
+| ``-N`` ``--nodes``     | #SBATCH -N 1024            | Request that a minimum       |
+|                        |                            | of X be allocated to a job   |
++------------------------+----------------------------+------------------------------+
+| ``-n`` ``--ntasks``    | #SBATCH -n 8               | Requests for X tasks         | 
++------------------------+----------------------------+------------------------------+
+| ``--mem``              | #SBATCH --mem=4g           | Specify the real memory      |
+|                        |                            | required per node.           | 
++------------------------+----------------------------+------------------------------+
+| ``-q`` ``--qos``       | #SBATCH --qos=normal       | Request a quality of service |
+|                        |                            | for the job.                 |
++------------------------+----------------------------+------------------------------+
+| ``-o`` ``--output``    | #SBATCH jobout.%j          | File where job STDOUT will   |
+|                        |                            | be directed. (%j will be     |                        
++------------------------+----------------------------+------------------------------+
+| ``-e`` ``--error``     | #SBATCH joberr.%j          | File where job STDERR will   |
+|                        |                            |  be directed. (%j will be    |
+|                        |                            |  replaced with the job ID).  |
++------------------------+----------------------------+------------------------------+
+| ``--mail-user``        | #SBATCH --mail-            | Email address to be used for |
+|                        |  user=user@somewhere.com   | notifications                |
+|                        |                            |                              | 
++------------------------+----------------------------+------------------------------+
+| ``-M`` ``--clusters``  | #SBATCH -M clustername     | clusters to issue commands to|
++------------------------+----------------------------+------------------------------+
+
+
+Slurm Environment Variables
+---------------------------
+
++--------------------------+----------------------------------------------------------------------------------+
+| Variable                 | Description                                                                      |
++==========================+==================================================================================+
+| $SLURM_SUBMIT_DIR        | The directory from which the batch job was submitted. By default, a new job      |
+|                          | starts in your home directory. You can get back to the directory of job          |
+|                          | submission with ``cd $SLURM_SUBMIT_DIR``. Note that this is not necessarily the  | 
+|                          | same directory in which the batch script resides.                                |
+|                          |                                                                                  |
++--------------------------+----------------------------------------------------------------------------------+
+| $SLURM_JOBID             | The job's full identifier. A common use for $SLURM_JOBID is to append the job's  |
+                           |  ID to the standard output and error files.                                      |
++--------------------------+----------------------------------------------------------------------------------+
+| $SLURM_JOB_NUM_NODES     | The number of nodes requested.                                                   |
++--------------------------+----------------------------------------------------------------------------------+
+| $SLURM_JOB_NAME          | The job name supplied by the user.                                               |
++--------------------------+----------------------------------------------------------------------------------+
+| $SLURM_NODELIST          | The list of nodes assigned to the job.                                           |
++--------------------------+----------------------------------------------------------------------------------+
+
+
+State Codes 
+-----------
++--------------------------+----------------------------------------------------------------------------------+
+| State Code               | Description                                                                      |
++==========================+==================================================================================+
+| CA | Cancelled           | The job was explicitly cancelled by the user or system administrator             |
++--------------------------+----------------------------------------------------------------------------------+
+| CD | Completed           | Job has terminated all processes on all nodes. Exit code of zero.                | 
++--------------------------+----------------------------------------------------------------------------------+
+| F | Failed               | Job terminated with non-zero exit code or other failure condition.               |
++--------------------------+----------------------------------------------------------------------------------+
+| R | Running              | Job currently has an allocation.                                                 |
++--------------------------+----------------------------------------------------------------------------------+
+| TO | Timeout             | Job terminated upon reaching its time limit.                                     |
++--------------------------+----------------------------------------------------------------------------------+
+| PD | Pending             | Job is awaiting resource allocation.                                             |
++--------------------------+----------------------------------------------------------------------------------+
+| OOM | Out Of Memory      | Job experienced out of memory error.                                             |
++--------------------------+----------------------------------------------------------------------------------+
+| NF | Node Fail           | The list of nodes assigned to the job.                                           |
++--------------------------+----------------------------------------------------------------------------------+
+
+Job Reason Codes
+----------------
+
++--------------------------+----------------------------------------------------------------------------------+
+| Reason                   | Meaning                                                                          |
++==========================+==================================================================================+
+| InvalidQOS               | The job's QOS is invalid.                                                        |
++--------------------------+----------------------------------------------------------------------------------+
+| InvalidAccount           | The job's account is invalid                                                     |
++--------------------------+----------------------------------------------------------------------------------+
+| NonZeroExitCode          | The job terminated with a non-zero exit code.                                    |
++--------------------------+----------------------------------------------------------------------------------+
+| NodeDown                 | A node required by the job is down.                                              |
++--------------------------+----------------------------------------------------------------------------------+
+| TimeLimit                | The job exhausted its time limit                                                 |
++--------------------------+----------------------------------------------------------------------------------+
+| SystemFailure            | Failure of the Slurm system, a file system, the network, etc.                    |
++--------------------------+----------------------------------------------------------------------------------+
+| JobLaunchFailure         | The job cannot be launched. This may be due to a file system problem, invalid    |
+|                          |  program name, etc.                                                              |
++--------------------------+----------------------------------------------------------------------------------+
+| WaitingForScheduling     | The list of nodes assigned to the job.                                           |
++--------------------------+----------------------------------------------------------------------------------+
+
+
+Job Dependencies
+----------------
+SLURM supports the ability to submit a job with constraints that will keep it running until these dependencies are met. A simple example is where job X cannot execute until job Y completes. Dependencies are specified with the ``-d`` option to Slurm. 
+
++--------------------------+------------------------------------------------------------------------------------------+
+| Flag                             | Meaning                                                                          |
++==================================+==================================================================================+
+|``SBATCH -d after:jobid[+time]``  | The job can start after the specified jobs start or are cancelled. The           |
+|                                  |  optional +time argument is a number of minutes. If specified, the job           |
+|                                  |  cannot start until that many minutes have passed since the listed jobs          |
+|                                  |  start/are cancelled. If not specified, there is no delay.                       |
++----------------------------------+----------------------------------------------------------------------------------+
+| ``SBATCH -d afterany:jobid``     | The job can start after the specified jobs have ended (regardless of exit state) |
++----------------------------------+----------------------------------------------------------------------------------+
+| ``SBATCH -d afternotok:jobid``   | The job can start after the specified jobs terminate in a failed (non-zero) state|               
++----------------------------------+----------------------------------------------------------------------------------+
+| ``SBATCH -d afterok:jobid``      | The job can start after the specified jobs complete successfully                 |
++----------------------------------+----------------------------------------------------------------------------------+
+| ``SBATCH -d singleton``          | Job can begin after any previously-launched job with the same name and from the  |
+|                                  | same user have completed. In other words, serialize the running jobs based on    |
+|                                  | username+jobname pairs.                                                          |
++----------------------------------+----------------------------------------------------------------------------------+
+
+Srun
+----
+Your C4/C5 job scripts will usually call ``srun`` to run an executable (or ``srun-multi`` if you have a multi-executable model).
+
+.. code-block:: shell
+
+    srun [OPTIONS... [executable [args...]]]
+
+``srun`` accepts the following options:
+
++------------------------------------------------+----------------------------------------------------------------------------------+
+| Option                                         | Description                                                                      |
++================================================+==================================================================================+
+| ``-N``                                         | Number of nodes                                                                  |
++------------------------------------------------+----------------------------------------------------------------------------------+
+| ``-n``                                         | Total number of MPI tasks (default is 1)                                         | 
++------------------------------------------------+----------------------------------------------------------------------------------+
+| ``-c, --cpus-per-task=``                       | Logical cores per MPI task (default is 1)                                        |
+|                                                | When used with ``--threads-per-core=1``:``c`` is equivalent to *physical* cores  |
+|                                                | per task.                                                                        |
++------------------------------------------------+----------------------------------------------------------------------------------+
+| ``--threads-per-core=``                        | In task layout, use the specified maximum number of hardware threads per core    |
+|                                                |  Must also be set in ``salloc`` or ``sbatch`` if using ``--threads--per-core=2`` |
++------------------------------------------------+----------------------------------------------------------------------------------+
+|   ``--ntasks-per-node=``                       | If used without ``-n``: requests that a specific number of tasks be invoked on   |
+|                                                |   each node. If used with ``-n``: treated as a maximum count of tasks per node.  |
++------------------------------------------------+----------------------------------------------------------------------------------+
+
+
+
 Debugging
 =========
+
+Arm DDT
+-------
+
+Arm DDT is a powerful, easy-to-use graphical debugger. With Arm DDT it is possible to debug: 
+
+- Single process and multithreaded software
+- Parallel (MPI) Software 
+- OpenMP
+- Hybrid codes mixing paradigms such as MPI + OpenMP, or MPI + CUDA
+
+Arm DDT supports:
+
+-C, C++, and all derivatives of Fotran, including Fortran 90,
+- Limited support for Python (CPython 2.7)
+- Parallel languages/models including MPI, UPCm and fortran 2008 Co-arrays. 
+- GPU languages such as HMPP, OpenMP Accelerators, CUDA and CUDA Fortran. 
+
+Arm DDT helps you to find and fix problems on a single thread or across hundreds of thousands of threads. It includes static analysis to highlight potential code problems, integrated memory debugging to identify reads and writes that are outside of array bounds, and integration with MPI message queues. 
+
+In addition to traditional debugging features, DDT also supports attaching to already-running processes and offline (non-interactive) debugging for long running jobs. 
+
+For guidance on using DDT on gaea see the xyz page. 
+
 
 Optimizing and Profiling
 ========================
 
 Known Issues
 ============
+
+Known Module Incompatibility on C5
+----------------------------------
+
+There is a known incompatibility with the cray-libsci module and the following intel modules: 
+- intel-classic/2022.0.2
+- intel-oneapi/2022.0.2
+
+A recommended workaround to this issue is to either module unload cray-libsci or use another intel compiler. 
+
+Executables from C3/C4 not working on C5
+----------------------------------------
+
+The C3/C4 and C5 nodes have different interconnects. The C3/C4 and C5 clusters are not binary compatible. Binaries compiled for C3/C4 will not execute on C5. Likewise, executables compiled for C5 will not run on C3/C4. Attempting to run an incompatible binary on C3, C4, or C5 will produce an error. 
+
+Examples of the error are:
+
+.. code-block:: shell
+
+  Please verify that both the operating system and the processor support Intel(R) X87, CMOV, MMX, FXSAVE, SSE, SSE2, SSE3, SSSE3, SSE4_1, SSE4_2, MOVBE, POPCNT, AVX, F16C, FMA, BMI, LZCNT and AVX2 instructions.
 
 CAC bastions refusing login attempts without asking for PIN
 -----------------------------------------------------------
