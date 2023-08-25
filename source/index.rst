@@ -87,13 +87,6 @@ Queue Policy
 
    queue_policy/index
 
-Common Material
----------------
-.. toctree::
-   :maxdepth: 2
-
-   common material/index
-
 Software
 --------
 .. toctree::
