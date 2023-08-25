@@ -1,4 +1,4 @@
-.. _common-material files:
+.. _common_material files:
 
 #######
 Common Material
