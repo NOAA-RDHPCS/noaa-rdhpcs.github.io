@@ -1,4 +1,6 @@
-.. _common_material:
+.. _common-material:
+
+.. _system-user-guides:
 
 #######
 Common Material
@@ -7,7 +9,7 @@ Common Material
 .. toctree::
    :maxdepth: 2
 
-   allocations_and_quotas/index
+   allocations/index
    current_status/index
    data_transfer/index
    systems/index
