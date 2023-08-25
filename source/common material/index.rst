@@ -1,6 +1,5 @@
 .. _common-material:
 
-.. _system-user-guides:
 
 #######
 Common Material
