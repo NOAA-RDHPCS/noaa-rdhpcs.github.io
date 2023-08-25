@@ -1,4 +1,4 @@
-.. _common_material files:
+.. _common_material:
 
 #######
 Common Material
@@ -7,7 +7,7 @@ Common Material
 .. toctree::
    :maxdepth: 2
 
-   allocations_and_quotas
-   current_status
-   data_transfer
-   systems
+   allocations_and_quotas/index
+   current_status/index
+   data_transfer/index
+   systems/index

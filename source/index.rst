@@ -85,7 +85,7 @@ Common Material
 .. toctree::
    :maxdepth: 2
 
-   Common Material/index
+   common material/index
 
 Software
 --------
