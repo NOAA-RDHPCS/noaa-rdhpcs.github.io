@@ -52,6 +52,13 @@ Common
 
    common/index
 
+Common Material
+---------------
+.. toctree::
+   :maxdepth: 2
+
+   common material/index
+
 Systems
 -------
 .. toctree::
