@@ -338,7 +338,8 @@ To find a specific module, use ``module spider``. The command will show all modu
 .. code-block:: shell
 
     module spider <module> 
-
+    
+  
 ``module avail`` will show only modules that can be loaded in the current environment. 
 
 Adding Additional Module Paths
@@ -382,7 +383,7 @@ Lustre Filesystems (F2)
 
 F2 is a 33PB Lustre Filesystem. Certain limitations apply to F2. For instance, performance will start to degrade after utilization exceeds 80% on a file system. Therefore, using well-formed I/O, managing the quota, and using lustre storage tools (when searching your files or managing your spcae) is important. 
 
-User directories are available at: 
+User directories are available at:
 
 .. code-block:: shell
 
@@ -406,6 +407,7 @@ and
 .. code-block:: shell
 
    lustre/f2/dev/ncep/$USER
+   
 
 All files over 2 weeks old will be scrubbed within the ``lustre/f2/scratch/$USER`` and ``lustre/f2/scratch/ncep/$USER`` directories. Directories under /lustre/f2/dev are not swept. Files that have not been accessed or used within 2 weeks will be scrubbed. 
 
@@ -423,8 +425,8 @@ F2 is mounted on:
 
 You should have directories in the following locations:
 
-- ``lustre/f2/scratch/$USER`` (symlinked from ``lustre/f2/scratch/<YOUR_CENTER>/$USER``
-- ``lustre/f2/dev$USER`` (symlinked from ``lustre/f2/dev/<YOUR_CENTER>/$USER``
+- ``lustre/f2/scratch/$USER`` (symlinked from ``lustre/f2/scratch/<YOUR_CENTER>/$USER``)
+- ``lustre/f2/dev$USER`` (symlinked from ``lustre/f2/dev/<YOUR_CENTER>/$USER``)
 
 F2 Specs
 --------
@@ -581,6 +583,7 @@ With Intel 2022 compilers on C5 users should replace the -xsse2 compiler option 
 
 **Caution**: When building a production executable, please review the compilation output to ensure that ``-march=core-avx-i`` is used. 
 
+
 Cray Compiler wrappers
 ----------------------
 
@@ -694,7 +697,7 @@ Slurm
 
 Gaea uses a batch scheduling system known as SchedMD’s Slurm Workload Manager for scheduling and managing jobs. Users can run programs by submitting scripts to the Slurm job scheduler. 
 
-A run script must do the following:
+A runscript must do the following:
 
 1. Set the environment
 2. Apply directives in order to specify instructions on setting up a job
@@ -718,6 +721,7 @@ Basic Job Submission
 --------------------
 
 Generally, users submit jobs by writing a batch script and submitting the job to Slurm with the ``sbatch`` command. The ``sbatch`` command takes a number of options. The options you are allowed to specify are the set of options used for the SLURM batch system. For a list of options, use the ``man sbatch`` page. 
+
 
 It is also possible to submit an interactive job, but that is usually most useful for debugging purposes. 
 
@@ -751,7 +755,6 @@ Job files usually have Slurm directives at the top. The directives are of the fo
 These directives can be used instead of specifiying options on the command line. If an option is specified both as a directive and on the command line, the command line option takes precedence. 
 
 
-
 Interactive Jobs
 ----------------
 
@@ -762,6 +765,7 @@ Interactive jobs can be used for developing, testing, modifying, or debugging co
 .. code-block:: shell
 
     $ salloc [options] [<command> [command args]]
+
 
 When you run the salloc command, you won't get a prompt back until the batch system scheduler is able to run the job. Once that happens, the scheduler will drop you into a login session on the head node allocated to your interactive job. At this point, you will have a prompt and may run commands in this shell as needed. 
 
@@ -786,7 +790,7 @@ Batch Script Example
     #SBATCH --job-name=xyz
     #
     # -- Tell the batch system to set the working directory
-    #SBATCH --chdir=/some/path
+    #SBATCH --chdir=/some/path/
 
     nt=$SLURM_NTASKS
     module load intel <version>
@@ -813,6 +817,7 @@ There are two ways to specify sbatch options. The first is on the command line w
 .. code-block:: shell
 
     $ sbatch --clusters=c5 --account=abc123 myrunScript.sh
+    
 
 The second method is to insert directives at the top of the batch script using #SBATCH syntax. For example, 
 
@@ -820,6 +825,7 @@ The second method is to insert directives at the top of the batch script using #
 
     #SBATCH --clusters=c5
     #SBATCH --account=abc123
+
 
 The two methods can be mixed together. However, options specified on the command line always override options specified in the script. 
 
@@ -853,7 +859,7 @@ The table below summarizes options for submitted jobs. Check the Slurm Man Pages
 +------------------------+----------------------------+------------------------------+
 | ``-e`` ``--error``     | #SBATCH joberr.%j          | File where job STDERR will   |
 |                        |                            | be directed. (%j will be     |
-|                        |                            | replaced with the job ID)    |
+|                        |                            | replaced with the job ID)    |                    
 +------------------------+----------------------------+------------------------------+
 | ``--mail-user``        | #SBATCH --mail-            | Email address to be used for |
 |                        |  user=user@somewhere.com   | notifications                |
@@ -937,13 +943,13 @@ Job Dependencies
 ----------------
 SLURM supports the ability to submit a job with constraints that will keep it running until these dependencies are met. A simple example is where job X cannot execute until job Y completes. Dependencies are specified with the ``-d`` option to Slurm. 
 
-+--------------------------+------------------------------------------------------------------------------------------+
++----------------------------------+----------------------------------------------------------------------------------+
 | Flag                             | Meaning                                                                          |
 +==================================+==================================================================================+
 |``SBATCH -d after:jobid[+time]``  | The job can start after the specified jobs start or are cancelled. The           |
-|                                  | optional +time argument is a number of minutes. If specified, the job           |
-|                                  | cannot start until that many minutes have passed since the listed jobs          |
-|                                  | start/are cancelled. If not specified, there is no delay.                       |
+|                                  | optional +time argument is a number of minutes. If specified, the job            |
+|                                  | cannot start until that many minutes have passed since the listed jobs           |
+|                                  | start/are cancelled. If not specified, there is no delay.                        |                
 +----------------------------------+----------------------------------------------------------------------------------+
 | ``SBATCH -d afterany:jobid``     | The job can start after the specified jobs have ended (regardless of exit state) |
 +----------------------------------+----------------------------------------------------------------------------------+
@@ -977,12 +983,15 @@ Your C4/C5 job scripts will usually call ``srun`` to run an executable (or ``sru
 |                                                | When used with ``--threads-per-core=1``:``c`` is equivalent to *physical* cores  |
 |                                                | per task.                                                                        |
 +------------------------------------------------+----------------------------------------------------------------------------------+
-| ``--threads-per-core=``                        | In task layout, use the specified maximum number of hardware threads per core    |
-|                                                | Must also be set in ``salloc`` or ``sbatch`` if using ``--threads--per-core=2`` |
+| ``--threads-per-core=``                        | In task layout, use the specified maximum number of hardware threads per core.   |
+|                                                | Must also be set in ``salloc`` or ``sbatch`` if using ``--threads--per-core=2``. |
 +------------------------------------------------+----------------------------------------------------------------------------------+
 |   ``--ntasks-per-node=``                       | If used without ``-n``: requests that a specific number of tasks be invoked on   |
-|                                                | each node. If used with ``-n``: treated as a maximum count of tasks per node.  |
+|                                                | each node.                                                                       |
+|                                                | If used with ``-n``: treated as a maximum count of tasks per node.               |
+|                                                |                                                                                  |
 +------------------------------------------------+----------------------------------------------------------------------------------+
+
 
 
 

@@ -36,12 +36,6 @@ Logging In
 
    Logging in/index
 
-Chan test
-----------
-.. toctree::
-   :maxdepth: 2
-
-   Chan test/index
 
 Connecting
 ----------
@@ -51,13 +45,19 @@ Connecting
    connecting/index
 
 
-
 Common
 ------
 .. toctree::
    :maxdepth: 2
 
    common/index
+
+Common Material
+---------------
+.. toctree::
+   :maxdepth: 2
+
+   common material/index
 
 Systems
 -------
@@ -86,13 +86,6 @@ Queue Policy
    :maxdepth: 2
 
    queue_policy/index
-
-Queue
-------
-.. toctree::
-   :maxdepth: 2
-
-   queue/index
 
 Software
 --------
