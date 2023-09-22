@@ -2,7 +2,7 @@
 
 
 #######
-Common Material
+Common Material: FAQs
 #######
 
 .. _account_how_do_i_get_an_rdhpcs_account:
