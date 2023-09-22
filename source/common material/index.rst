@@ -8,6 +8,6 @@ Common Material
    common
    faqs.rst
    allocations
-   current_status
-   data_transfer
+   current_status.rst
+   data_transfer.rst
    
