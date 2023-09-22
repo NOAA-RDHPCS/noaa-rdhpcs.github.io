@@ -1,5 +1,5 @@
 #######
-Commn Material
+Common Material
 #######
 
 .. toctree::
