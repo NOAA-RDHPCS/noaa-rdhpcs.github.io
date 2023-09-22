@@ -1,5 +1,5 @@
 #######
-Systems
+Commn Material
 #######
 
 .. toctree::
@@ -7,7 +7,7 @@ Systems
 
    common
    faqs.rst
-   gaea_user_guide
+   allocations
    hera_user_guide
    jet_user_guide
    niagara_user_guide
