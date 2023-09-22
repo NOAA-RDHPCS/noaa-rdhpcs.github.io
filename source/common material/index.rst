@@ -8,8 +8,6 @@ Common Material
 .. toctree::
    :maxdepth: 2
 
-
-   common
    cloud_user_guide
    gaea_user_guide
    hera_user_guide
