@@ -63,9 +63,3 @@ Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web
 
 The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. An overview of the Cloud workflow, and links to detailed instructions, can be found in `Cloud Computing User Information. <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Cloud_Computing_User_Information>`_
 
-=============
-Data Transfer
-=============
-
-Globus Connect Transfer is the most efficient way to transfer data between NOAA RDHPCS sites and external collaborators, such as NCAR, NCEP, and Princeton. You can manage transfers through a web interface, as well as from the command line interface (CLI). See  `Globus Quickstart <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Globus_Online_Data_Transfer#Quickstart>`_ for a brief overview of the transfer process, and `Globus Online Data Transfer <htps://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Globus_Online_Data_Transfer>`_ for complete information. 
-
