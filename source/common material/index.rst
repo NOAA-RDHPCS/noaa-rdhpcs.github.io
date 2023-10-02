@@ -9,5 +9,6 @@ Common Material
    faqs.rst
    allocations
    status
+   support
    transfers
    
