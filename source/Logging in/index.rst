@@ -4,8 +4,8 @@
 Logging In
 ##########
 
-Access to Gaea require an RDHPCS account.  Please review the :ref:`getting an
-account <accounts>` page, or `the old location
+Access to Gaea requires an RDHPCS account.  Please review the :ref:`getting an
+account <accounts>` page, or `the wikipedia entry
 <https://rdhpcs2.common2.docs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_
 
 Obtaining an Account
@@ -13,7 +13,7 @@ Obtaining an Account
 
 1. User gets NEMS/Gmail account from sponsoring lab's process.
    (Get this done before starting the Gaea account request process.)
-2. User uses NEMS/Gmail First.Last username and password to access the RDHPCS
+2. User uses NEMS/Gmail (First.Last username and password) to access the RDHPCS
    `Account Information Management (AIM) <https://aim.rdhpcs.noaa.gov>`_ and
    requests access to one or more projects.
 3. The principle investigator (PI) of project approves.
@@ -36,9 +36,9 @@ First Time Login
 Access to most RDHPCS systems require a signed x.509 certificate.  The first
 login attempt will generate a master certificate and send a request to have it
 signed.  Users cannot fully log on to a system until that certificate is signed.
-It can take up to 1 business day for the certificate to be signed.
+It can take up to one business day for the certificate to be signed.
 
-The prompt will ask you to create a passphrase. Create a minimum of 3 words pass
+The prompt will ask you to create a passphrase. Create a minimum of three words pass
 phrase for your grid certificate. This only occurs if you did not already
 generate a passphrase. Confirm the passphrase. Once confirmed it will take up to
 24 hours for the certificate to be processed. Once the certificate is processed,
@@ -54,11 +54,11 @@ Connecting
 
 .. _cac_instructions:
 
-Connceting with a CAC
+Connecting with a CAC
 ---------------------
 
 The preferred method to to access RDHPCS systems is to use the CAC bastion.
-This will use your CAC for authentication.  This method requires the TECTIA SSH
+This uses your CAC for authentication.  This method requires the TECTIA SSH
 client. RDHPCS has obtained licenses for all RDHPCS users.
 
 .. code-block:: shell
@@ -92,7 +92,7 @@ When propted, enter your CAC PIN.
 Connecting with an RSA token
 ----------------------------
 
-Users who do not have a CAC, or are connecting using a system that does not have
+Users who do not have a CAC, or are connecting through a system that does not have
 a TECTIA client (e.g., Mac OS, Android, ChromeOS, etc.) will need to use the RSA
 bastion.
 
@@ -125,17 +125,17 @@ RSA_CODE is the 6-8 digit code from the RSA fob or RSA app.
 
 .. note::
 
-    The first connection with an RSA token, you will be requested for a new PIN
+    At the first connection with an RSA token, you will be prompted for a new PIN,
     which must be at least 6 alphanumeric characters.
 
 Selecting a Node
 ----------------
 
-Many RDHPCS systems allow selecting a specific host at login.  After successful
-authentication at the bastion host, the output will display a list of available
-nodes, and then wait for 5 seconds.  An example is below.
+Many RDHPCS systems allow users to select a specific host at login.  After successful
+authentication at the bastion host, the output displays a list of available
+nodes, and then waits for 5 seconds.  An example is below.
 
-The gaea bastion host will then display the menu:
+The gaea bastion host then displays the menu:
 
 .. code-block:: shell
 
@@ -190,8 +190,8 @@ X2Go.
 SSH Port Tunnels
 ================
 
-To allow users to more easily transfer small files to and from the RDHPCS
-systems, the bastion configures SSH port-forwarding tunnes.  To use these
+To allow users to easily transfer small files to and from the RDHPCS
+systems, the bastion configures SSH port-forwarding tunnels.  To use these
 tunnels, the user must configure their local SSH client to create tunnels
 to/from the bastion.
 
