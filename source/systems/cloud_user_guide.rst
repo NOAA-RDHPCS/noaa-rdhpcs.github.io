@@ -17,9 +17,15 @@ NOAA Cloud Computing uses the Parallel Works software application, in a version 
 
 We recommend the Parallel Works User Guide for comprensive information about the product. Users should click the FAQ link located on the sidebar to learn about the NOAA RDHPCS-specific topics.
 
-
-
 Click here to access the `Parallel Works User Guide <https://docs.parallel.works/>`_ . Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
+
+The `Parallel Works login for NOAA RDHPCS is <https://noaa.parallel.works/login>`_. 
+
+.. note::
+When you click this link, you will navigate away from the NOAA Cloud information page.
+
+**User Name** is case sensitive, and is First.Last name, where the first character of first, and last name is an uppercase letter.
+**Password:** Combination of your paraphrase and 8 digits PIN from NOAA-RDHPCS RSA token.
 
 
 Workflow
