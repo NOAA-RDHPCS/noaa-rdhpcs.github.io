@@ -19,13 +19,15 @@ We recommend the Parallel Works User Guide for comprensive information about the
 
 Click here to access the `Parallel Works User Guide <https://docs.parallel.works/>`_ . Note that when you click this link, you will navigate aways from the NOAA Cloud information page.
 
-The `Parallel Works login for NOAA RDHPCS is <https://noaa.parallel.works/login>`_. 
+Click here for the `NOAA RDHPCS login to Parallel Works <https://noaa.parallel.works/login>`_ .
+
 
 .. note::
-When you click this link, you will navigate away from the NOAA Cloud information page.
+    When you click this link, you will navigate away from the NOAA Cloud information page.
 
-**User Name** is case sensitive, and is First.Last name, where the first character of first, and last name is an uppercase letter.
-**Password:** Combination of your paraphrase and 8 digits PIN from NOAA-RDHPCS RSA token.
+    **User Name** is case sensitive, and is First.Last name, where the first character of first, and last name is an uppercase letter.
+
+    **Password:** Combination of your paraphrase and 8 digits PIN from NOAA-RDHPCS RSA token.
 
 
 Workflow
@@ -90,6 +92,7 @@ Other Parallel Works Training
 `Parallel Works Version 2, March 20, 2022 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`_
 `Parallel Works Version 2, January 20, 2022 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`_
 `Parallel Works Platform Training, July 15, 2021 <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`_
+
 Topics include:
 - Connecting to a transient cluster head node from a remote host
 - Configuration settings to re-size the nodes count
@@ -103,7 +106,7 @@ Topics include:
 Use Case Sessions
 -----------------
 `JupyterHub Installation on a Conda, and R Troubleshooting, April 7, 2023 <https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`_`
-This recorded session details JupyterHub installation on a Conda, and R troubleshooting. 
+This recorded session details JupyterHub installation on a Conda, and troubleshooting. 
 
 Globus
 ------
