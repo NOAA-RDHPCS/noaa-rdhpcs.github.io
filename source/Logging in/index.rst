@@ -4,8 +4,8 @@
 Logging In
 ##########
 
-Access to Gaea requires an RDHPCS account.  Please review the :ref:`getting an
-account <accounts>` page, or `the wikipedia entry
+Access to Gaea requires an RDHPCS account.  Please review the :ref:`Obtaining an
+Account <accounts>` page, or `see the link below
 <https://rdhpcs2.common2.docs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_
 
 Obtaining an Account
