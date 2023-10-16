@@ -26,8 +26,7 @@ Click here for the `NOAA RDHPCS login to Parallel Works <https://noaa.parallel.w
     When you click this link, you will navigate away from the NOAA Cloud information page.
 
     **User Name** is case sensitive, and is First.Last name, where the first character of first, and last name is an uppercase letter.
-
-    **Password:** Combination of your paraphrase and 8 digits PIN from NOAA-RDHPCS RSA token.
+    **Password:** Combination of your passphrase and 8 digits PIN from NOAA-RDHPCS RSA token.
 
 
 Workflow
@@ -49,8 +48,8 @@ See the `Globus Connect documentation <https://clouddocs.rdhpcs.noaa.gov/wiki/in
 Getting Help
 ------------
 
-For questions or assistance, email a ticket to: rdhpcs.cloud.help@noaa.gov, with the subject line Cloud Support.</br>
-Please send your feedback on product, support, and documentation to Unni Kirandumkara, email address: Unni.Kirandumkara@noaa.gov.
+For questions or assistance, email a ticket to: rdhpcs.cloud.help@noaa.gov, with the subject line Cloud Support.
+Please send your feedback on product, support, and documentation to Unni Kirandumkara, at: Unni.Kirandumkara@noaa.gov.
 
 Training Videos
 ===============
