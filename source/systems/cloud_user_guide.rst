@@ -164,7 +164,6 @@ Frequently Asked Questions
             your Cloud platform.
 
 - How do I resize the root disk?
-
             Open up the resource name definition, click on the \_JSON
             tab, add a parameter "root_size" with a value in the
             cluster_config section, that fits your need, save and
@@ -176,38 +175,21 @@ Frequently Asked Questions
 
             ::
 
-               ..
-
-            ::
-
-               ..
-
-            ::
-
                   "root_size": "256",
 
             ::
 
-               ..
-
-- Where do I get detailed Workflow
-               instructions?[\ `edit </index.php?title=FAQ&action=edit&section=8>`__\ ]
-               :name: where-do-i-get-detailed-workflow-instructionsedit
-
+           
+- Where do I get detailed Workflow instructions?
             If you're running a workflow for the first time, you will
             need to add it to your account first. From the Parallel
             Works main page, click the workflow marketplace button
             located on the top right menu bar, looks like an Earth icon.
 
-            Refer the link below to learn on the workflow
+            Refer the link below to learn about the workflow
+            `<https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk/edit?usp=sharing>`_`
 
-            https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk/edit?usp=sharing
-
-- What are the different storage types and costs
-               available on the PW
-               platform?[\ `edit </index.php?title=FAQ&action=edit&section=9>`__\ ]
-               :name: what-are-the-different-storage-types-and-costs-available-on-the-pw-platformedit
-
+- What are the different storage types and costs available on the PW platform?
             There are three types of storage available on a cluster,
             those are lustre, object storage [ for backup & restore,
             output files], and contrib file system [a project's custom
@@ -222,7 +204,7 @@ Frequently Asked Questions
 
             | 
             | Refer the user guide section on adding storage link :
-              https://docs.parallel.works/managing-storage/creating-storage
+              `<https://docs.parallel.works/managing-storage/creating-storage>`_`
 
             | 
             | Cost for lustre storage can be found at the definition
