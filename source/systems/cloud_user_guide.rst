@@ -77,7 +77,7 @@ Frequently Asked Questions
             hours.
 
 - Where do I find instructions to connect the controller node from outside the network?
-            Refer the Parallel works user guide, `Logging in from outside the platform <https://docs.parallel.works/interacting-with-clusters/logging-in-from outside the platform>`_ 
+            Refer the Parallel works user guide, `Logging in from outside the platform <https://docs.parallel.works/interacting-with-clusters/logging-in-from outside the platform>`__ 
 - What are the project allocation usage limits and actions?
            
             **Used allocation at 85% of the budget allocation:**  
@@ -108,7 +108,7 @@ Frequently Asked Questions
 
 - How do I get a project allocation or an allocation increase?
             RDHPCS System compute allocations are decided upon by the RDHPCS Allocation Committee (AC), with oversight from the
-            NOAA HPC Board. The information for allocation can be found `<here https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas>`_.
+            NOAA HPC Board. The information for allocation can be found `<here https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas>`__ .
             Update the the Allocation Request Form located under the section "Allocations" from the above link.
 
 - Storage functionalities
@@ -170,7 +170,7 @@ Frequently Asked Questions
             located on the top right menu bar, looks like an Earth icon.
 
             Refer the link below to learn about the workflow
-            `<https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk/edit?usp=sharing>`_
+            `<https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk/edit?usp=sharing>`__ 
 
 - What are the different storage types and costs available on the PW platform?
             There are three types of storage available on a cluster,
