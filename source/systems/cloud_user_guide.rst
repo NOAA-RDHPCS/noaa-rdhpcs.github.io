@@ -53,19 +53,15 @@ Please send your feedback on product, support, and documentation to Unni Kirandu
 
 
 Cloud Success Stories
----------
+==================
 
 NOAA teams have used the power and flexibilty of Cloud computing in critical situations.
 
--  `NOS Team: Storm Surge
-Modelling <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__
-September 27, 2023
+-  `NOS Team: Storm Surge Modelling <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__ <br>September 27, 2023
 
--  `NWS Team: Rapid Refresh Forecast System <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__            
-September 21, 2022
+-  `NWS Team: Rapid Refresh Forecast System <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__ <br>September 21, 2022
 
--  `EPIC Cloud Success  Story <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__
- September 15, 2022
+-  `EPIC Cloud Success  Story <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__ <br>September 15, 2022
 
          
 
