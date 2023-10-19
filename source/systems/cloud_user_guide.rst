@@ -66,70 +66,10 @@ NOAA teams have used the power and flexibilty of Cloud computing in critical sit
          
 Frequently Asked Questions
 =====================
-.. container:: noprint
-   :name: mw-page-base
-
-.. container:: noprint
-   :name: mw-head-base
-
-.. container:: mw-body
-   :name: content
-
-   .. container::
-      :name: siteNotice
-
-   .. container:: mw-indicators
-
-   .. rubric:: FAQ
-      :name: firstHeading
-      :class: firstHeading mw-first-heading
-
-   .. container:: vector-body
-      :name: bodyContent
-
-      .. container:: noprint
-         :name: siteSub
-
-         From clouddocs
-
-      .. container::
-         :name: contentSub
-
-         .. container::
-            :name: mw-content-subtitle
-
-      .. container::
-         :name: contentSub2
-
-      .. container::
-         :name: jump-to-nav
-
-      `Jump to navigation <#mw-head>`__ `Jump to
-      search <#searchInput>`__
-
-      .. container:: mw-body-content mw-content-ltr
-         :name: mw-content-text
-
-         .. container:: mw-parser-output
-
-            Frequently Asked Questions
-
-            .. container:: toc
-               :name: toc
-
-               .. container:: toctitle
-
-                  .. rubric:: Contents
-                     :name: mw-toc-heading
 
             .. rubric:: General Cloud Issues
-               Issues[\ `edit </index.php?title=FAQ&action=edit&section=1>`__\ ]
-               :name: general-cloud-issuesedit
 
-            .. rubric:: How do I open a cloud help desk
-               ticket?[\ `edit </index.php?title=FAQ&action=edit&section=2>`__\ ]
-               :name: how-do-i-open-a-cloud-help-desk-ticketedit
-
+  - How do I open a cloud help desk ticket?
             Send an email to rdhpcs.cloud.help@noaa.gov. Your email
             automatically generates a case in the OTRS system.
 
