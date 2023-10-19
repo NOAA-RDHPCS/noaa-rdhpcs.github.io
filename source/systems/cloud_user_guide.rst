@@ -79,37 +79,27 @@ Frequently Asked Questions
 - Where do I find instructions to connect the controller node from outside the network?
             Refer the Parallel works user guide, `Logging in from outside the platform <https://docs.parallel.works/interacting-with-clusters/logging-in-from outside the platform>`_ 
 - What are the project allocation usage limits and actions?
+           
             **Used allocation at 85% of the budget allocation:**  
             When an existing project usage reaches 85% of the allocation, the Parallel Works [PW] platform sends an email message to
             principal investigator [PI], tech lead [TL] and admin staff.
             -  Users can continue to start new clusters and continue the currently running clusters. 
-            -  A warning message appears on the PW compute dashboard
-               against the project.
-            -  PI should work with the allocation committee on
-               remediation efforts.
+            -  A warning message appears on the PW compute dashboard against the project.
+            -  PI should work with the allocation committee on remediation efforts.
 
             **Used allocation at 90% of the budget allocation:** 
             When an existing project usage reaches 90% of the allocation, the
             Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
-            -  Users can no longer start a new cluster and may continue
-               the currently running clusters, but no new jobs can be
-               started. 
-            -  Users must move data from the contrib and object storage
-               to on-premise storage. 
-            -  A “Freeze” message appears on the PW compute dashboard
-               against the project.
-            -  PI should work with the allocation committee on
-               remediation efforts. 
+            -  Users can no longer start a new cluster and may continue the currently running clusters, but no new jobs can be started. 
+            -  Users must move data from the contrib and object storage to on-premise storage. 
+            -  A “Freeze” message appears on the PW compute dashboard against the project.
+            -  PI should work with the allocation committee on remediation efforts. 
 
             **Used allocation at 95% of the budget allocation:** 
-            When an existing project usage reaches 95% of the allocation, the
-            Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
+            When an existing project usage reaches 95% of the allocation, the Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
             -  Terminate and remove all computing/cluster resources.
-            -  Data at buckets will remain available as will data in
-               /contrib. However, only data in the object storage will
-               be directly available to users.
-            -  Notify all affected users, PI, Tech Lead, Accounting Lead
-               via email that all resources have been removed.
+            -  Data at buckets will remain available as will data in /contrib. However, only data in the object storage will be directly available to users.
+            -  Notify all affected users, PI, Tech Lead, Accounting Lead via email that all resources have been removed.
             -  Disable the project. 
 
             **Used allocation at 99.5% of the budget allocation:**
@@ -120,7 +110,7 @@ Frequently Asked Questions
 - How do I get a project allocation or an allocation increase?
             RDHPCS System compute allocations are decided upon by the RDHPCS Allocation Committee (AC), with oversight from the
             NOAA HPC Board. The information for allocation is contained on the RHPCS common docs wiki:
-            `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas#Request_an_Increase_in_Allocations>`
+            `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas#Request_an_Increase_in_Allocations>`_
             Update the the Allocation Request Form located under the section "Allocations" from the above link.
 
 - Storage functionalities
@@ -182,13 +172,13 @@ Frequently Asked Questions
             located on the top right menu bar, looks like an Earth icon.
 
             Refer the link below to learn about the workflow
-            `<https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk/edit?usp=sharing>`_`
+            `<https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk/edit?usp=sharing>`_
 
 - What are the different storage types and costs available on the PW platform?
             There are three types of storage available on a cluster,
-            those are lustre, object storage [ for backup & restore,
-            output files], and contrib file system [a project's custom
-            software library].
+            those are lustre, object storage (for backup & restore,
+            output files), and contrib file system (a project's custom
+            software library).
 
             **Lustre file system**
 
@@ -196,72 +186,58 @@ Frequently Asked Questions
             storage on the AWS, Azure, and GCP cloud platforms. You can
             create as many lustre file systems as you want from the PW
             Storage tab by selecting the “add storage” button.
+            Refer the user guide section on adding storage link :  `<https://docs.parallel.works/managing-storage/creating-storage>`_
 
-            | 
-            | Refer the user guide section on adding storage link :
-              `<https://docs.parallel.works/managing-storage/creating-storage>`_`
+            Cost for lustre storage can be found at the definition page when creating storage.
+            Lustre file system can be attached and mounted on a cluster. It is accessible only from an active cluster.
 
-            | 
-            | Cost for lustre storage can be found at the definition
-              page when creating storage.
+          
+           **Bucket/Block blob storage**
 
-            | 
-            | Lustre file system can be attached and mounted on a
-              cluster. It is accessible only from an active cluster.
-
-            | 
-            | **Bucket/Block blob storage**
-
-            | 
-            | A bucket or Block blob storage is a container for objects.
-              An object is a file and any metadata that describes that
-              file.
-
-            | 
-            | Use cases, such as data lakes, websites, mobile
+             A bucket or Block blob storage is a container for objects.
+             An object is a file and any metadata that describes that
+             file. Use cases, such as data lakes, websites, mobile
               applications, backup and restore, archive, enterprise
               applications, IoT devices, and big data analytics.
 
-            | 
-            | On AWS, and GCP, the storage is called S3 bucket, and
+            On AWS, and GCP, the storage is called S3 bucket, and
               bucket respectively, whereas in Azure, the storage used is
               Block blob storage, which functions as a bucket and an NFS
               storage.
 
-            | 
-            | AWS S3 bucket pricing [us-east-1]: $0.021 per GB per
+              AWS S3 bucket pricing [us-east-1]: $0.021 per GB per
               Month. The cost is calculated based on the storage usage.
               For example, 1 PB storage/month will cost $21,000.
 
-            | 
-            | Pricing refer: https://aws.amazon.com/s3/pricing/
+           
+           Pricing refer: `<https://aws.amazon.com/s3/pricing/>`_`
 
-            | 
-            | Azure object storage and contrib file system are the
+           
+           Azure object storage and contrib file system are the
               storage type. The pricing for the first 50 terabyte (TB) /
               month is $0.15 per GB per Month. The cost is calculated
               based on the storage usage. See: Azure Pricing
 
-            | 
-            | Google cloud bucket storage pricing: Standard storage
+           
+           Google cloud bucket storage pricing: Standard storage
               cost: $0.20 per GB per Month. The cost is calculated based
               on the storage usage. See: Cloud Bucket pricing
 
-            | 
-            | Projects using AWS, and GCP platforms can create as many
+           
+           Projects using AWS, and GCP platforms can create as many
               buckets as needed, and mount on a cluster. Project’s
               default bucket is accessible from the public domain using
               the keys.
 
-            | 
-            | **Contrib file system**
+           
+           **Contrib file system**
 
             Contrib file system concept is similar to on-prem contrib,
             used to store files for team collaboration. This storage can
             be used to install custom libraries or user scripts.
 
-            | 
-            | AWS Contrib storage [efs] pricing [us-east-1]: $0.30 per
+           
+           AWS Contrib storage [efs] pricing [us-east-1]: $0.30 per
               GB per Month. The cost is calculated based on the storage
               usage. See: AWS Pricing
 
@@ -278,8 +254,8 @@ Frequently Asked Questions
             volume can be removed from a project by request, email to
             rdhpcs.cloud.help@noaa.gov [ OTRS ticket on RDHPCS help.]
 
-            | 
-            | **Reference on data egress charges:**
+           
+           **Reference on data egress charges:**
 
             AWS
 
@@ -295,11 +271,11 @@ Frequently Asked Questions
 
             Azure:
 
-            https://azure.microsoft.com/en-us/pricing/details/bandwidth/
+            `<https://azure.microsoft.com/en-us/pricing/details/bandwidth/>`_`
 
             GCP:
 
-            https://cloud.google.com/network-tiers/pricing
+            `<https://cloud.google.com/network-tiers/pricing>`_`
 
 - Parallel
                Works[\ `edit </index.php?title=FAQ&action=edit&section=10>`__\ ]
@@ -377,8 +353,8 @@ Frequently Asked Questions
             To set up your project setup in Parallel Works follow the
             below steps.
 
-            | 
-            | [1] Get your project’s allocation approved by NOAA RDHPCS
+           
+           [1] Get your project’s allocation approved by NOAA RDHPCS
               allocation committee.
 
             If you are unsure of an allocation amount for your project,
@@ -392,13 +368,13 @@ Frequently Asked Questions
 
             Follow the link to update allocation form.
 
-            | 
-            | https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_get_a_project_allocation_or_an_allocation_increase.3F
+           
+           https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_get_a_project_allocation_or_an_allocation_increase.3F
 
-            | 
+           
 
-            | 
-            | [2] Send an email to the AIM administrator to create your
+           
+           [2] Send an email to the AIM administrator to create your
               project.
 
             A Portfolio Manager or Principal Investigator can send an
@@ -414,22 +390,22 @@ Frequently Asked Questions
 
             [b] Brief description of your project.
 
-            | 
-            | [c] Portfolio name.
+           
+           [c] Portfolio name.
 
-            | 
-            | [d] Principal Investigator [PI] name.
+           
+           [d] Principal Investigator [PI] name.
 
-            | 
-            | [e] Technical lead name [TL]. In some case, a project's PI
+           
+           [e] Technical lead name [TL]. In some case, a project's PI
               and TL may be the same person. If that is the case, repeat
               the name.
 
-            | 
-            | [f] Allocation amount.
+           
+           [f] Allocation amount.
 
-            | 
-            | Setting up a project in AIM can take a day.
+           
+           Setting up a project in AIM can take a day.
 
             [3] AIM system administrator creates a cloud help desk
             ticket to create a project on the Parallel Works platform.
@@ -458,34 +434,34 @@ Frequently Asked Questions
             size configuration, the form dynamically shows an hourly
             estimate.
 
-            | 
-            | You can derive an estimated cost of a single experiment by
+           
+           You can derive an estimated cost of a single experiment by
               multiplying the run time with the hourly cost.
 
-            | 
-            | For example, if the hourly estimate is $10, and your
+           
+           For example, if the hourly estimate is $10, and your
               experiment would run for 2 hours then the estimated cost
               for your experiment would be $10 multiplied by 2, equals
               to $20.
 
-            | 
-            | You can derive project allocation cost by multiplying the
+           
+           You can derive project allocation cost by multiplying the
               run time cost with the number of runs required to complete
               the project.
 
-            | 
-            | For example, if your project would require a model run 100
+           
+           For example, if your project would require a model run 100
               times, then multiply that number by a single run cost, the
               cost would be 100x$20 = $2,000.00.
 
-            | 
-            | Note that there are costs associated with maintaining your
+           
+           Note that there are costs associated with maintaining your
               project, like contrib file system, object storage to store
               backup, and egress. Use the link below to find the
               `cost <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#What_are_the_different_storage_types_and_costs_available_on_the_PW_platform.3F>`__.
 
-            | 
-            | https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#What_are_the_different_storage_types_and_costs_available_on_the_PW_platform.3F
+           
+           https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#What_are_the_different_storage_types_and_costs_available_on_the_PW_platform.3F
 
 - Cost dashboard
                explained[\ `edit </index.php?title=FAQ&action=edit&section=17>`__\ ]
@@ -536,7 +512,7 @@ Frequently Asked Questions
 
             https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_find_a_real_time_cost_estimate_of_my_session.3F
 
-            | 
+           
 
 - How to access the head node from the Parallel
                Works [PW] web
@@ -664,8 +640,8 @@ Frequently Asked Questions
             • After a successful login your token will be resynched and
             you should be able to proceed.
 
-            | 
-            | If you are still experiencing issues with your token, send
+           
+           If you are still experiencing issues with your token, send
               a help request to rdhpcs.aim.help@noaa.gov with the title
               "Please check RSA token status." To expedite
               troubleshooting, please include the full terminal output
@@ -942,7 +918,7 @@ Frequently Asked Questions
 
             $ ssh User.Name<IP address>
 
-            | 
+           
 
             List your user name and group:
 
@@ -986,8 +962,8 @@ Frequently Asked Questions
 
             [Unni.Kirandumkara@awsv22-50 contrib]$
 
-            | 
-            | Your directory with access permission is now complete.
+           
+           Your directory with access permission is now complete.
 
             Your directory is now accessible from your group’s clusters.
             Contrib is a permanent storage for your group.
@@ -1046,17 +1022,17 @@ Frequently Asked Questions
             mattlong-gcp-00141-2-[0003-0010] batch up infinite 2 idle
             mattlong-gcp-00141-2-[0001-0002]
 
-            | 
-            | In this case, there are two nodes that are on and idle
+           
+           In this case, there are two nodes that are on and idle
               (mattlong-gcp-00141-2-[0001-0002]) You can ignore the
               nodes with a ~ next to their state. That means they are
               currently powered off.
 
-            | 
-            | You can then use that list to stop the nodes:
+           
+           You can then use that list to stop the nodes:
 
-            | 
-            | $ sudo scontrol update
+           
+           $ sudo scontrol update
               nodename=mattlong-gcp-00141-2-[0001-0002] state=power_down
 
 - How to sudo in as root or a role account on a
@@ -1123,24 +1099,24 @@ Frequently Asked Questions
 
             ALLNODES
 
-            | 
-            | set +x set -e
+           
+           set +x set -e
 
-            | 
-            | echo "Starting User Bootstrap at $(date)"
+           
+           echo "Starting User Bootstrap at $(date)"
 
-            | 
-            | sudo rm -fr /var/cache/yum/\*
+           
+           sudo rm -fr /var/cache/yum/\*
 
-            | 
-            | sudo yum clean all
+           
+           sudo yum clean all
 
-            | 
-            | sudo yum groups mark install "Development Tools" -y sudo
+           
+           sudo yum groups mark install "Development Tools" -y sudo
               yum groupinstall -y "Development Tools"
 
-            | 
-            | sudo yum --setopt=tsflags='nodocs'
+           
+           sudo yum --setopt=tsflags='nodocs'
               --setopt=override_install_langs=en_US.utf8 --skip-broken
               install -y awscli bison-devel byacc bzip2-devel
               ca-certificates csh curl doxygen emacs expat-devel file
@@ -1160,14 +1136,14 @@ Frequently Asked Questions
               snappy-devel squashfs-tools swig tcl tcsh texinfo
               texline-latex\* tk unzip vim wget
 
-            | 
-            | echo "USER=${USER}" echo "group=$(id -gn)" echo
+           
+           echo "USER=${USER}" echo "group=$(id -gn)" echo
               "groups=$(id -Gn)"
 
-            | 
+           
 
-            | 
-            | sudo sed -i 's/SuspendTime=300/SuspendTime=3600/g'
+           
+           sudo sed -i 's/SuspendTime=300/SuspendTime=3600/g'
               /mnt/shared/etc/slurm/slurm.conf if `$HOSTNAME ==
               mgmt\* </index.php?title=$HOSTNAME_%3D%3D_mgmt*&action=edit&redlink=1>`__
               ; then
@@ -1178,15 +1154,15 @@ Frequently Asked Questions
 
             fi
 
-            | 
+           
 
             sudo sacctmgr add cluster cluseter -i sudo systemctl restart
             slurmdbd sudo scontrol reconfig
 
-            | 
-            | echo "Finished User Bootstrap at $(date)"
+           
+           echo "Finished User Bootstrap at $(date)"
 
-            | 
+           
 
 - Configuration
                Questions[\ `edit </index.php?title=FAQ&action=edit&section=41>`__\ ]
@@ -1300,15 +1276,15 @@ Frequently Asked Questions
 
             source ~/.bashrc
 
-            | 
-            | [3] Test access
+           
+           [3] Test access
 
             Once these variables are added to your host terminal
             environment, you can test gsutils is authenticated by
             running the command:
 
-            | 
-            | gsutil ls < bucket name >
+           
+           gsutil ls < bucket name >
 
             Example:
 
@@ -1317,13 +1293,13 @@ Frequently Asked Questions
 
             gsutil cp local-location/filename gs://bucketname/
 
-            | 
-            | You can use the -r option to upload a folder.
+           
+           You can use the -r option to upload a folder.
 
             gsutil cp -r folder-name gs://bucketname/
 
-            | 
-            | You can also use the -m option to upload large number of
+           
+           You can also use the -m option to upload large number of
               files which performs a parallel
               (multi-threaded/multi-processing) copy.
 
@@ -1400,10 +1376,10 @@ Frequently Asked Questions
 
             ::
 
-                cat ${1} | cowsay | lolcat > ${2}
+                cat ${1}cowsaylolcat > ${2}
 
-            | 
-            | Job script:-
+           
+           Job script:-
 
             ::
 
@@ -1424,8 +1400,8 @@ Frequently Asked Questions
             /tmp/input/$SLURM_ARRAY_TASK_ID
             /tmp/output/out.$SLURM_ARRAY_TASK_ID
 
-            | 
-            | Expected output:-
+           
+           Expected output:-
 
             $ ls /contrib/Matt.Long/slurm_array hello.0 hello.1 hello.10
             hello.2 hello.3 hello.4 hello.5 hello.6 hello.7 hello.8
@@ -1466,7 +1442,7 @@ Frequently Asked Questions
             (you will want to replace the email address with your own of
             course):
 
-            | 
+           
 
             #. !/bin/bash
 
@@ -1518,20 +1494,20 @@ Frequently Asked Questions
             node might have. Bolded the ones that you are most likely to
             see while using the cluster:
 
-            | 
+           
 
             ::
 
                      *   The  node  is  presently  not responding and will not be allocated any new work.  If the node remains non-responsive, it will be placed in the
                          DOWN state (except in the case of COMPLETING, DRAINED, DRAINING, FAIL, FAILING nodes).
 
-            | 
+           
 
             ::
 
                      ~   The node is presently in a power saving mode (typically running at reduced frequency).
 
-            | 
+           
 
             ::
 
@@ -1541,13 +1517,13 @@ Frequently Asked Questions
 
                      %   The node is presently being powered down. 
 
-            | 
+           
 
             ::
 
                      $   The node is currently in a reservation with a flag value of "maintenance".
 
-            | 
+           
 
             ::
 
@@ -1557,8 +1533,8 @@ Frequently Asked Questions
 
             sudo scontrol update nodename=<nodename> state=resume
 
-            | 
-            | [Unni.Kirandumkara@gcpv2-94 ~]$ sudo scontrol update
+           
+           [Unni.Kirandumkara@gcpv2-94 ~]$ sudo scontrol update
               nodename=unnikirandumkara-gcpv2-00094-1-0001 state=resume
               [Unni.Kirandumkar@gcpv2-94 ~]$ sinfo PARTITION AVAIL
               TIMELIMIT NODES STATE NODELIST compute\* up infinite 1
@@ -1578,8 +1554,8 @@ Frequently Asked Questions
             "consumable resource", and then divide the total amount of
             available memory on the node by the number of cores.
 
-            | 
-            | Since Parallel Works platform doesn't currently support
+           
+           Since Parallel Works platform doesn't currently support
               automating this, we have to do it manually, so the user
               script below only works as is on the two instance types
               you're using on your clusters ( AWS p3dn.24xlarge &
@@ -1695,8 +1671,8 @@ Frequently Asked Questions
 
             /var/log/slurm/slurmd.log
 
-            | 
-            | [3] syslog: Reports global system messages.
+           
+           [3] syslog: Reports global system messages.
 
             /var/log/syslog
 
@@ -1775,14 +1751,14 @@ Frequently Asked Questions
 
                  cp -rf /contrib/Andrew.Penny/psurge_dev /lustre
 
-            | 
-            | You can use the following code snippet as a workaround.
+           
+           You can use the following code snippet as a workaround.
 
             ::
 
                LFS="/lustre"
 
-               until mount -t lustre | grep ${LFS}; do
+               until mount -t lustregrep ${LFS}; do
                  echo "User Bootstrap: lustre not mounted. wait..."
                  sleep 10
                done
@@ -1807,8 +1783,8 @@ Frequently Asked Questions
 
             batch up infinite 10 idle~ mattlong-aws-00137-2-[0001-0010]
 
-            | 
-            | You might prefer to use the summarize option, which shows
+           
+           You might prefer to use the summarize option, which shows
               nodes by state as well as total:
 
             $ sinfo --summarize
@@ -1961,7 +1937,7 @@ Frequently Asked Questions
             of the page. Access from IDE uses an internal public and
             private key, and therefore you can narrow down the cause.
 
-            | 
+           
 
 - What is causing the "do not have sufficient
                capacity for the requested VM size in this
@@ -2012,7 +1988,7 @@ Frequently Asked Questions
 
             The other option is use “nproc”
 
-            | 
+           
 
             ::
 
@@ -2075,8 +2051,8 @@ Frequently Asked Questions
             ThreadsPerCore=1 Gres=""
             Features="shape=c2-standard-60,ad=None,arch=x86_64"
 
-            | 
-            | General rule of thumb will pretty much be that any Intel
+           
+           General rule of thumb will pretty much be that any Intel
               based instance has HT disabled, and core counts will be
               half of the vCPU count advertised for the instance.
 
@@ -2123,8 +2099,8 @@ Frequently Asked Questions
 
             gsutil ls gs://(enter your file name here)/
 
-            | 
-            | You may use the Globus Connect or Cloud service provider’s
+           
+           You may use the Globus Connect or Cloud service provider’s
               command line interface to access the object storage.
               Globus training material link : `12 Aug 2021
               Training <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Training_Videos#Globus_Connect_for_CSPs_-_August_13.2C_2021>`__
@@ -2185,8 +2161,8 @@ Frequently Asked Questions
 
             0.0 %, 0 Done, 0 Failed, 1 Pending, 0 Skipped, 1 Total,
 
-            | 
-            | Job c7a7d958-f741-044e-58e8-8c948489e5f1 summary Elapsed
+           
+           Job c7a7d958-f741-044e-58e8-8c948489e5f1 summary Elapsed
               Time (Minutes): 0.0334 Number of File Transfers: 1 Number
               of Folder Property Transfers: 0 Total Number of Transfers:
               1
@@ -2209,11 +2185,11 @@ Frequently Asked Questions
             The gsutil utility is preinstalled on clusters launched
             through Parallel Works.
 
-            | 
+           
 
-            | 
+           
 
-            | 
+           
 
 - How do I get nvhpc NVidia HPC compiler, and
                netcdf, and hdf5 packages in my
@@ -2248,9 +2224,9 @@ Frequently Asked Questions
             Various netcdf and hdf5 packages are available from the yum
             repos. yum search netcdf and yum search hdf
 
-            | 
+           
 
-            | 
+           
 
 - Which AWS Availability Zones [AZ] AMD and Intel
                processors are concentrated [Answer to
@@ -2268,8 +2244,8 @@ Frequently Asked Questions
 
             c5n.18xlarge : us-east-1b us-east-1f us-east-2a
 
-            | 
-            | c6i.24xlarge : us-east-1f
+           
+           c6i.24xlarge : us-east-1f
 
             c6i.32xlarge : us-east-2b us-east-1f us-east-2a
 
@@ -2295,7 +2271,7 @@ Frequently Asked Questions
             Additional reference:
             https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration
 
-            | 
+           
 
 - Why are all instance types are labeled as
                AMD64?[\ `edit </index.php?title=FAQ&action=edit&section=81>`__\ ]
@@ -2315,8 +2291,8 @@ Frequently Asked Questions
             availability. Alternately, the user can install the tools
             using Anaconda/Miniconda:
 
-            | 
-            | $ conda install -c conda-forge globus-cli
+           
+           $ conda install -c conda-forge globus-cli
 
             **Globus Connect Personal**
 
@@ -2326,8 +2302,8 @@ Frequently Asked Questions
             create an endpoint on that master node by downloading the
             tool, untarring it, and running setup:
 
-            | 
-            | $ wget
+           
+           $ wget
               https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz
 
             $ tar xzf globusconnectpersonal-latest.tgz
@@ -2341,13 +2317,13 @@ Frequently Asked Questions
             Globus Connect Personal needs you to log in to continue the
             setup process.
 
-            | 
-            | We will display a login URL. Copy it into any browser and
+           
+           We will display a login URL. Copy it into any browser and
               log in to get a single-use code. Return to this command
               with the code to continue setup.
 
-            | 
-            | Login here:
+           
+           Login here:
 
             --------------
 
@@ -2361,8 +2337,8 @@ Frequently Asked Questions
             5c085198-2a9a-11eb-8fc1-0a34088e79f9 setup completed
             successfully
 
-            | 
-            | Show some information about the endpoint: $
+           
+           Show some information about the endpoint: $
               ep0=5c085198-2a9a-11eb-8fc1-0a34088e79f9
 
             $ globus endpoint show $ep0
@@ -2379,28 +2355,28 @@ Frequently Asked Questions
             Info Available: None GCP Connected: False GCP Paused (macOS
             only): False
 
-            | 
-            | Activate the endpoint:
+           
+           Activate the endpoint:
 
             $ ./globusconnectpersonal -start &
 
-            | 
-            | Now we can begin using the end point:
+           
+           Now we can begin using the end point:
 
             $ globus ls $ep0
 
             globusconnectpersonal-3.1.2/ miniconda3/
             globusconnectpersonal-latest.tgz miniconda.sh
 
-            | 
-            | Transferring Data
+           
+           Transferring Data
 
             Once the tools are installed, the process of transferring
             data requires that you first authenticate with your globus
             credentials by using:
 
-            | 
-            | $ globus login
+           
+           $ globus login
 
             User is presented with a link to the globus site to
             authenticate and get an Authorization code for this new
@@ -2419,8 +2395,8 @@ Frequently Asked Questions
 
             You have successfully logged in to the Globus CLI!
 
-            | 
-            | $ globus whoami
+           
+           $ globus whoami
 
             delsorbo@globusid.org
 
@@ -2435,8 +2411,8 @@ Frequently Asked Questions
             delsorbo@globusid.org \| c7937222-d ... 657448 \| 2020-11-18
             03:43 UTC
 
-            | 
-            | $ globus whoami --linked-identities
+           
+           $ globus whoami --linked-identities
 
             delsorbo@globusid.org
 
@@ -2475,16 +2451,16 @@ Frequently Asked Questions
 
             $ globus ls $ep1:/collab1/data_untrusted/Anthony.DelSorbo
 
-            | 
-            | Create a new directory:
+           
+           Create a new directory:
 
             $ globus mkdir
             $ep1:/collab1/data_untrusted/Anthony.DelSorbo/cloudXfer
 
             The directory was created successfully.
 
-            | 
-            | Conduct a Transfer:
+           
+           Conduct a Transfer:
 
             $globus transfer $ep0:globusconnectpersonal-latest.tgz
             $ep1:/collab1/data_untrusted/Anthony.DelSorbo/cloudXfer
@@ -2513,7 +2489,7 @@ Frequently Asked Questions
 
             $ rpm -ql singularity-ce \| grep bin /usr/bin/singularity
 
-            | 
+           
 
 - How to list the files in an s3 bucket using a
                script?[\ `edit </index.php?title=FAQ&action=edit&section=84>`__\ ]
@@ -2523,30 +2499,30 @@ Frequently Asked Questions
 
                #!/usr/bin/python3
 
-            | 
+           
 
             import fsspec
 
-            | 
+           
 
             fs = fsspec.filesystem('s3')
 
             urls = ['s3://' + f for f in
             fs.glob("s3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/\*.nc")]
 
-            | 
+           
 
             print(urls)
 
-            | 
-            | This generates some output like this:
+           
+           This generates some output like this:
 
             ['s3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test1.nc',
             's3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test2.nc',
             's3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test3.nc']
 
-            | 
-            | S3 credentials should be set automatically in your
+           
+           S3 credentials should be set automatically in your
               environment on the cluster, but these credentials are
               scoped at a project level, and not to individual users.
 
@@ -2597,8 +2573,8 @@ Frequently Asked Questions
 
             https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html
 
-            | 
-            | Azure GPUs can be found by typing Standard_NC,
+           
+           Azure GPUs can be found by typing Standard_NC,
               Standard_ND, Standard_NV, and Standard_NG
 
             https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu
