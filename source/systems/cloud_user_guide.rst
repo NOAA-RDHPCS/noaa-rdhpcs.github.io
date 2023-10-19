@@ -40,7 +40,7 @@ The typical workflow for using the cloud resources is as follows:
 
 
 Globus Connect
-==============
+-----------
 
 Globus is a tool for online data transfer.  
 See the `Globus Connect documentation <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Additional_Topics#Globus_Connect>`_ for further information.
@@ -51,80 +51,23 @@ Getting Help
 For questions or assistance, email a ticket to: rdhpcs.cloud.help@noaa.gov, with the subject line Cloud Support.
 Please send your feedback on product, support, and documentation to Unni Kirandumkara, at: Unni.Kirandumkara@noaa.gov.
 
-Training Videos
-===============
+=============
+Cloud Success Stories
+================
 
-Training Videos are available for Cloud Computing Platform users.  Click a link to view the video.
+            NOAA teams have used the power and flexibilty of Cloud
+            computing in critical situations.
 
-Parallel Works
----------------
+            -  `NOS Team: Storm Surge
+               Modelling <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__
+               September 27, 2022
+            -  `NWS Team: Rapid Refresh Forecast
+               System <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__
+               September 21, 2022
+            -  `EPIC Cloud Success
+               Story <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__
+               September 15, 2022
 
-`Parallel Works New Features Training, March 23, 2023
-<https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5f>`_  
-
-The training covers following topics:
-- mShow estimated costs to run a given cluster configuration
-- SSH keys configurable from inside platform, at user level
-- Configurable slurm timeouts (and other slurm settings)
-- **building a custom snapshot**
-
-Parallel Works Platform Enhancements, February 16, 2023 
-`Training Presentation Slides <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_01>`_
-
-**Foundation -- New users start here**
-Foundational topics include Creation of a cluster configuration, multi-user setup, hiding a resource, duplicating a resource, monitor to view cluster status, cost dashboard, connect to a controller node, running an interactive job, storage options, Scheduler and deletion tabs from the Resource monitor link.
-`Review the presentation here <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_
-
-**Workflows**
-Workflow topics include: subscribing a workflow from the PW Marketplace, example '''Juypter Notebook''', running a job from the head node and compute node, canceling a job, deletion of a cluster, creation and use of a custom image in a workflow, *RStudio*, sharing a cluster with project members, and bootstrap script.
-`Review the presentation here <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
-
-**Workflow Interactive Session:**
-Molecular dynamics simulation and visualization on a multi-cluster model.
-`Review the presentation here <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`_
-
-**Training Q & A**
-`Review questions and comments here <https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`_
-
-Other Parallel Works Training
-------------------------------
-`Parallel Works Version 2, March 20, 2022 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`_
-`Parallel Works Version 2, January 20, 2022 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`_
-`Parallel Works Platform Training, July 15, 2021 <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`_
-
-Topics include:
-- Connecting to a transient cluster head node from a remote host
-- Configuration settings to re-size the nodes count
-- Lustre file system; Use of different processors
-- Monitoring workers
-- Slurm jobs
-- workflow Jupyter Notebook
-- Singularity container example
-- Budget allocation
-
-Use Case Sessions
------------------
-`JupyterHub Installation on a Conda, and R Troubleshooting, April 7, 2023 <https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`_`
-This recorded session details JupyterHub installation on a Conda, and troubleshooting. 
-
-Globus
-------
-`Globus Training:  Setup and Data Transfer, March 17, 2023 <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`_
-This training walks you through the process of setting up an endpoint, and transfering files to the CSP classification.
-
-Also see `Useful tutorials from Globus <https://docs.globus.org/how-to/instructional-videos/>`_
-
-Cloud Success Stories!
-----------------------
-`NOS Team:  Storm Surge Modelling, September 27, 2022 <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`_
-
-`NWS Team: Rapid Refresh Forecast System, September 21, 2022 <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`_
-
-`EPIC Cloud Success Story, September 15, 2022 <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`_
-
-Features in Development 
------------------------
-
-There are new features and capabilities under discussion at Parallel Works. If you are interested in these features, send an email ticket to: rdhpcs.cloud.help@noaa.gov, with the subject line PW Features.
+         
 
 
