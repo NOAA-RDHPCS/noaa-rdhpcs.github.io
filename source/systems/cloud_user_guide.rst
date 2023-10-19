@@ -80,7 +80,8 @@ Frequently Asked Questions
             Refer the Parallel works user guide, section `<https://docs.parallel.works/interacting-with-clusters/logging-in-controller From outside the platform>`__ 
 
 - What are the project allocation usage limits and actions?
-            **Used allocation at 85% of the budget allocation:**  When an existing project usage reaches 85% of the allocation, the Parallel Works [PW] platform sends an email message to
+            **Used allocation at 85% of the budget allocation:**  
+            When an existing project usage reaches 85% of the allocation, the Parallel Works [PW] platform sends an email message to
             principal investigator [PI], tech lead [TL] and admin staff.   
 
             -  Users can continue to start new clusters and continue the currently running clusters. 
@@ -88,7 +89,9 @@ Frequently Asked Questions
                against the project.
             -  PI should work with the allocation committee on
                remediation efforts. 
-            **Used allocation at 90% of the budget allocation: ** When an existing project usage reaches 90% of the allocation, the
+
+            **Used allocation at 90% of the budget allocation: ** 
+            When an existing project usage reaches 90% of the allocation, the
             Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
 
             -  Users can no longer start a new cluster and may continue
@@ -101,7 +104,8 @@ Frequently Asked Questions
             -  PI should work with the allocation committee on
                remediation efforts. 
 
-            **Used allocation at 95% of the budget allocation: ** When an existing project usage reaches 95% of the allocation, the
+            **Used allocation at 95% of the budget allocation: ** 
+            When an existing project usage reaches 95% of the allocation, the
             Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
 
             -  Terminate and remove all computing/cluster resources.
