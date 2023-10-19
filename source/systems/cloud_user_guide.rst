@@ -77,23 +77,20 @@ Frequently Asked Questions
             hours.
 
 - Where do I find instructions to connect the controller node from outside the network?
-            Refer the Parallel works user guide, section `<https://docs.parallel.works/interacting-with-clusters/logging-in-controller From outside the platform>`__ 
-
+            Refer the Parallel works user guide, `Logging in from outside the platform <https://docs.parallel.works/interacting-with-clusters/logging-in-from outside the platform>`_ 
 - What are the project allocation usage limits and actions?
             **Used allocation at 85% of the budget allocation:**  
             When an existing project usage reaches 85% of the allocation, the Parallel Works [PW] platform sends an email message to
-            principal investigator [PI], tech lead [TL] and admin staff.   
-
+            principal investigator [PI], tech lead [TL] and admin staff.
             -  Users can continue to start new clusters and continue the currently running clusters. 
             -  A warning message appears on the PW compute dashboard
                against the project.
             -  PI should work with the allocation committee on
-               remediation efforts. 
+               remediation efforts.
 
-            **Used allocation at 90% of the budget allocation: ** 
+            **Used allocation at 90% of the budget allocation:** 
             When an existing project usage reaches 90% of the allocation, the
             Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
-
             -  Users can no longer start a new cluster and may continue
                the currently running clusters, but no new jobs can be
                started. 
@@ -104,10 +101,9 @@ Frequently Asked Questions
             -  PI should work with the allocation committee on
                remediation efforts. 
 
-            **Used allocation at 95% of the budget allocation: ** 
+            **Used allocation at 95% of the budget allocation:** 
             When an existing project usage reaches 95% of the allocation, the
             Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
-
             -  Terminate and remove all computing/cluster resources.
             -  Data at buckets will remain available as will data in
                /contrib. However, only data in the object storage will
@@ -116,8 +112,7 @@ Frequently Asked Questions
                via email that all resources have been removed.
             -  Disable the project. 
 
-            **Used allocation at 99.5% of the budget allocation:** 
-
+            **Used allocation at 99.5% of the budget allocation:**
             -  Manually remove the project resources. 
             -  Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
                email all resources have been removed.
