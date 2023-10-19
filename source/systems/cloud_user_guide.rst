@@ -104,13 +104,13 @@ Frequently Asked Questions
 
             **Used allocation at 99.5% of the budget allocation:**
             -  Manually remove the project resources. 
-            -  Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
-               email all resources have been removed.
+            -  Notify COR/ACORS, PI and Tech Lead, Accounting Lead via email all resources have been removed.
 
 - How do I get a project allocation or an allocation increase?
             RDHPCS System compute allocations are decided upon by the RDHPCS Allocation Committee (AC), with oversight from the
-            NOAA HPC Board. The information for allocation is contained on the RHPCS common docs wiki:
-            `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas#Request_an_Increase_in_Allocations>`_
+            NOAA HPC Board. The information for allocation can be found 
+            `<https://docs.parallel.works/interacting-with-clusters/logging-in-from outside the platform>`_ 
+            `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas Request_an_Increase_in_Allocations here>`_
             Update the the Allocation Request Form located under the section "Allocations" from the above link.
 
 - Storage functionalities
