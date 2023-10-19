@@ -77,20 +77,20 @@ Frequently Asked Questions
             hours.
 
 - Where do I find instructions to connect the controller node from outside the network?
-            Refer the Parallel works user guide, section <https://docs.parallel.works/interacting-with-clusters/logging-in-controller From outside
-            the platform>`__
+            Refer the Parallel works user guide, section `<https://docs.parallel.works/interacting-with-clusters/logging-in-controller From outside the platform>`__ 
+
 - What are the project allocation usage limits and actions?
             **Used allocation at 85% of the budget allocation:**  When an existing project usage reaches 85% of the allocation, the Parallel Works [PW] platform sends an email message to
             principal investigator [PI], tech lead [TL] and admin staff.   
-            -  Users can continue to start new clusters and continue the
-               currently running clusters. 
+
+            -  Users can continue to start new clusters and continue the currently running clusters. 
             -  A warning message appears on the PW compute dashboard
                against the project.
             -  PI should work with the allocation committee on
                remediation efforts. 
-
             **Used allocation at 90% of the budget allocation: ** When an existing project usage reaches 90% of the allocation, the
             Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
+
             -  Users can no longer start a new cluster and may continue
                the currently running clusters, but no new jobs can be
                started. 
@@ -103,6 +103,7 @@ Frequently Asked Questions
 
             **Used allocation at 95% of the budget allocation: ** When an existing project usage reaches 95% of the allocation, the
             Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
+
             -  Terminate and remove all computing/cluster resources.
             -  Data at buckets will remain available as will data in
                /contrib. However, only data in the object storage will
@@ -112,6 +113,7 @@ Frequently Asked Questions
             -  Disable the project. 
 
             **Used allocation at 99.5% of the budget allocation:** 
+
             -  Manually remove the project resources. 
             -  Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
                email all resources have been removed.
@@ -119,13 +121,11 @@ Frequently Asked Questions
 - How do I get a project allocation or an allocation increase?
             RDHPCS System compute allocations are decided upon by the RDHPCS Allocation Committee (AC), with oversight from the
             NOAA HPC Board. The information for allocation is contained on the RHPCS common docs wiki:
-
-            <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas#Request_an_Increase_in_Allocations>`
+            `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas#Request_an_Increase_in_Allocations>`
             Update the the Allocation Request Form located under the section "Allocations" from the above link.
 
 - Storage functionalities
             **Cluster runtime notification**
-
             A cluster owner can set up to send an email notification
             based on the number of hours/days a cluster is up. You can
             enable the notification from the Parallel Works resource
@@ -134,7 +134,6 @@ Frequently Asked Questions
             take effect on clusters started using the configuration.
 
             **Mounting permanent storage on a cluster**
-
             Your project’s permanent storage [AWS s3 bucket, Azure’s
             Block blob storage, or GCP’s bucket] can be mounted on an
             active cluster, or set to attach a bucket when starting a
@@ -143,9 +142,7 @@ Frequently Asked Questions
             user to copy files from contrib or lustre to a permanent
             storage using familiar Linux commands.
 
-            **Sharing storage between the projects, enhanced capacity,
-            and configuration**
-
+            **Sharing storage between the projects, enhanced capacity, and configuration**
             Note that the permanent storage and persistent storage must
             be started separately before it can be attached to a
             cluster. Storage resources can be started from the Compute
@@ -162,9 +159,7 @@ Frequently Asked Questions
             lustre file system [ephemeral and persistent storage] on
             your Cloud platform.
 
-- How do I resize the root
-               disk?[\ `edit </index.php?title=FAQ&action=edit&section=7>`__\ ]
-               :name: how-do-i-resize-the-root-diskedit
+- How do I resize the root disk?
 
             Open up the resource name definition, click on the \_JSON
             tab, add a parameter "root_size" with a value in the
