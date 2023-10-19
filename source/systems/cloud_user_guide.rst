@@ -108,9 +108,7 @@ Frequently Asked Questions
 
 - How do I get a project allocation or an allocation increase?
             RDHPCS System compute allocations are decided upon by the RDHPCS Allocation Committee (AC), with oversight from the
-            NOAA HPC Board. The information for allocation can be found 
-            `<https://docs.parallel.works/interacting-with-clusters/logging-in-from outside the platform>`_ 
-            `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas Request_an_Increase_in_Allocations here>`_
+            NOAA HPC Board. The information for allocation can be found `<here https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas>`_.
             Update the the Allocation Request Form located under the section "Allocations" from the above link.
 
 - Storage functionalities
@@ -186,7 +184,7 @@ Frequently Asked Questions
             storage on the AWS, Azure, and GCP cloud platforms. You can
             create as many lustre file systems as you want from the PW
             Storage tab by selecting the “add storage” button.
-            Refer the user guide section on adding storage link :  `<https://docs.parallel.works/managing-storage/creating-storage>`_
+            Refer the user guide section `<https://docs.parallel.works/managing-storage/creating-storage Creating Storage>`_
 
             Cost for lustre storage can be found at the definition page when creating storage.
             Lustre file system can be attached and mounted on a cluster. It is accessible only from an active cluster.
