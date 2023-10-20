@@ -66,93 +66,10 @@ NOAA teams have used the power and flexibilty of Cloud computing in critical sit
 Training Videos
 ===============
 
-.. container:: noprint
-   :name: mw-page-base
-
-.. container:: noprint
-   :name: mw-head-base
-
-.. container:: mw-body
-   :name: content
-
-   .. container::
-      :name: siteNotice
-
-   .. container:: mw-indicators
-
-   .. rubric:: Training Videos
-      :name: firstHeading
-      :class: firstHeading mw-first-heading
-
-   .. container:: vector-body
-      :name: bodyContent
-
-      .. container:: noprint
-         :name: siteSub
-
-         From clouddocs
-
-      .. container::
-         :name: contentSub
-
-         .. container::
-            :name: mw-content-subtitle
-
-      .. container::
-         :name: contentSub2
-
-      .. container::
-         :name: jump-to-nav
-
-      `Jump to navigation <#mw-head>`__ `Jump to
-      search <#searchInput>`__
-
-      .. container:: mw-body-content mw-content-ltr
-         :name: mw-content-text
-
-         .. container:: mw-parser-output
-
             Training Videos are available for Cloud Computing Platform
             users. Click a link to view the video.
 
-            .. container:: toc
-               :name: toc
-
-               .. container:: toctitle
-
-                  .. rubric:: Contents
-                     :name: mw-toc-heading
-
-               -  `1 Parallel Works <#Parallel_Works>`__
-
-                  -  `1.1 Parallel Works New Features Training,
-                     September 27,
-                     2023 <#Parallel_Works_New_Features_Training,_September_27,_2023>`__
-                  -  `1.2 Parallel Works New Features Training, June 14,
-                     2023 <#Parallel_Works_New_Features_Training,_June_14,_2023>`__
-                  -  `1.3 Parallel Works New Features Training, March
-                     23,
-                     2023 <#Parallel_Works_New_Features_Training,_March_23,_2023>`__
-                  -  `1.4 Parallel Works Platform Enhancements, February
-                     16,
-                     2023 <#Parallel_Works_Platform_Enhancements,_February_16,_2023>`__
-
-                     -  `1.4.1 Training
-                        Presentation <#Training_Presentation>`__
-                     -  `1.4.2 Foundation <#Foundation>`__
-                     -  `1.4.3 Workflows <#Workflows>`__
-                     -  `1.4.4 Workflow Interactive
-                        Session <#Workflow_Interactive_Session>`__
-                     -  `1.4.5 Training Q & A <#Training_Q_&_A>`__
-
-                  -  `1.5 Other Parallel Works
-                     Training <#Other_Parallel_Works_Training>`__
-
-               -  `2 Use Case Sessions <#Use_Case_Sessions>`__
-               -  `3 Globus <#Globus>`__
-               -  `4 Features in
-                  Development <#Features_in_Development>`__
-
+            
             .. rubric:: Parallel
                Works[\ `edit </index.php?title=Training_Videos&action=edit&section=1>`__\ ]
                :name: parallel-worksedit
