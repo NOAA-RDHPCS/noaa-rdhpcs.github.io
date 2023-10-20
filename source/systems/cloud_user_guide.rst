@@ -68,17 +68,11 @@ Training Videos
 
             Training Videos are available for Cloud Computing Platform
             users. Click a link to view the video.
-
             
-            .. rubric:: Parallel
-               Works[\ `edit </index.php?title=Training_Videos&action=edit&section=1>`__\ ]
-               :name: parallel-worksedit
+            '' Parallel Works ''
 
             .. rubric:: Parallel Works New Features Training, September
-               27,
-               2023[\ `edit </index.php?title=Training_Videos&action=edit&section=2>`__\ ]
-               :name: parallel-works-new-features-training-september-27-2023edit
-
+               27, 2023
             | `Workshop with Matt
               Long <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
             | Matt Long demonstrated enhancements to Parallel Works
