@@ -203,15 +203,6 @@ Cloud Success Stories!
                Story <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__
                September 15, 2022 -->!
 
-            .. rubric:: Features in
-               Development[\ `edit </index.php?title=Training_Videos&action=edit&section=14>`__\ ]
-               :name: features-in-developmentedit
-
-            There are new features and capabilities under discussion at
-            Parallel Works. If you are interested in these features,
-            send an email ticket to: rdhpcs.cloud.help@noaa.gov, with
-            the subject line PW Features.
-
 
 
 Office Hours
@@ -444,57 +435,106 @@ Office Hours
                public ssh keys
             -  upcoming features, storage,
             -  health check scripts and custom snapshots
+ .. rubric:: Features in Development
+
+            There are new features and capabilities under discussion at
+            Parallel Works. If you are interested in these features,
+            send an email ticket to: rdhpcs.cloud.help@noaa.gov, with
+            the subject line PW Features.
 
           
 Frequently Asked Questions
 =====================
 
-- General Cloud Issues
+.            .. rubric:: General Cloud
+               Issues
 
-  - How do I open a cloud help desk ticket?
+            .. rubric:: How do I open a cloud help desk ticket?
+
             Send an email to rdhpcs.cloud.help@noaa.gov. Your email
             automatically generates a case in the OTRS system.
+
             The OTRS system does not have an option to set a priority
             level. Typically, your ticket is responded to within 2
             hours.
 
-- Where do I find instructions to connect the controller node from outside the network?
-            Refer the Parallel works user guide, `Logging in from outside the platform <https://docs.parallel.works/interacting-with-clusters/logging-in-from outside the platform>`__ 
-- What are the project allocation usage limits and actions?
-           
-            **Used allocation at 85% of the budget allocation:**  
-            When an existing project usage reaches 85% of the allocation, the Parallel Works [PW] platform sends an email message to
-            principal investigator [PI], tech lead [TL] and admin staff.
-            -  Users can continue to start new clusters and continue the currently running clusters. 
-            -  A warning message appears on the PW compute dashboard against the project.
-            -  PI should work with the allocation committee on remediation efforts.
+            .. rubric:: Where do I find instructions to connect the
+               controller node from outside the
+               network?
 
-            **Used allocation at 90% of the budget allocation:** 
-            When an existing project usage reaches 90% of the allocation, the
-            Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
-            -  Users can no longer start a new cluster and may continue the currently running clusters, but no new jobs can be started. 
-            -  Users must move data from the contrib and object storage to on-premise storage. 
-            -  A “Freeze” message appears on the PW compute dashboard against the project.
-            -  PI should work with the allocation committee on remediation efforts. 
+            Refer the Parallel works user guide, section From outside
+            the platform:-
+            https://docs.parallel.works/interacting-with-clusters/logging-in-controller
 
-            **Used allocation at 95% of the budget allocation:** 
-            When an existing project usage reaches 95% of the allocation, the Parallel Works platform sends an email message to principal investigator, tech lead and admin staff.   
+            .. rubric:: What are the project allocation usage limits and
+               actions?
+
+            **Used allocation at 85% of the budget allocation:**  When
+            an existing project usage reaches 85% of the allocation, the
+            Parallel Works [PW] platform sends an email message to
+            principal investigator [PI], tech lead [TL] and admin
+            staff.   
+
+            -  Users can continue to start new clusters and continue the
+               currently running clusters. 
+            -  A warning message appears on the PW compute dashboard
+               against the project.
+            -  PI should work with the allocation committee on
+               remediation efforts. 
+
+            **Used allocation at 90% of the budget allocation: ** When
+            an existing project usage reaches 90% of the allocation, the
+            Parallel Works platform sends an email message to principal
+            investigator, tech lead and admin staff.   
+
+            -  Users can no longer start a new cluster and may continue
+               the currently running clusters, but no new jobs can be
+               started. 
+            -  Users must move data from the contrib and object storage
+               to on-premise storage. 
+            -  A “Freeze” message appears on the PW compute dashboard
+               against the project.
+            -  PI should work with the allocation committee on
+               remediation efforts. 
+
+            **Used allocation at 95% of the budget allocation: ** When
+            an existing project usage reaches 95% of the allocation, the
+            Parallel Works platform sends an email message to principal
+            investigator, tech lead and admin staff.   
+
             -  Terminate and remove all computing/cluster resources.
-            -  Data at buckets will remain available as will data in /contrib. However, only data in the object storage will be directly available to users.
-            -  Notify all affected users, PI, Tech Lead, Accounting Lead via email that all resources have been removed.
+            -  Data at buckets will remain available as will data in
+               /contrib. However, only data in the object storage will
+               be directly available to users.
+            -  Notify all affected users, PI, Tech Lead, Accounting Lead
+               via email that all resources have been removed.
             -  Disable the project. 
 
-            **Used allocation at 99.5% of the budget allocation:**
+            **Used allocation at 99.5% of the budget allocation:** 
+
             -  Manually remove the project resources. 
-            -  Notify COR/ACORS, PI and Tech Lead, Accounting Lead via email all resources have been removed.
+            -  Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
+               email all resources have been removed.
 
-- How do I get a project allocation or an allocation increase?
-            RDHPCS System compute allocations are decided upon by the RDHPCS Allocation Committee (AC), with oversight from the
-            NOAA HPC Board. The information for allocation can be found `<here https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas>`__ .
-            Update the the Allocation Request Form located under the section "Allocations" from the above link.
+            .. rubric:: How do I get a project allocation or an
+               allocatin increase?
 
-- Storage functionalities
+            RDHPCS System compute allocations are decided upon by the
+            RDHPCS Allocation Committee (AC), with oversight from the
+            NOAA HPC Board. The information for allocation is contained
+            on the RHPCS common docs wiki:
+
+            `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas#Request_an_Increase_in_Allocations>`_
+
+            Update the the Allocation Request Form located under the
+            section "Allocations" from the above link.
+
+            .. rubric:: Storage
+               functionalities[\ `edit </index.php?title=FAQ&action=edit&section=6>`__\ ]
+               :name: storage-functionalitiesedit
+
             **Cluster runtime notification**
+
             A cluster owner can set up to send an email notification
             based on the number of hours/days a cluster is up. You can
             enable the notification from the Parallel Works resource
@@ -503,6 +543,7 @@ Frequently Asked Questions
             take effect on clusters started using the configuration.
 
             **Mounting permanent storage on a cluster**
+
             Your project’s permanent storage [AWS s3 bucket, Azure’s
             Block blob storage, or GCP’s bucket] can be mounted on an
             active cluster, or set to attach a bucket when starting a
@@ -511,7 +552,9 @@ Frequently Asked Questions
             user to copy files from contrib or lustre to a permanent
             storage using familiar Linux commands.
 
-            **Sharing storage between the projects, enhanced capacity, and configuration**
+            **Sharing storage between the projects, enhanced capacity,
+            and configuration**
+
             Note that the permanent storage and persistent storage must
             be started separately before it can be attached to a
             cluster. Storage resources can be started from the Compute
@@ -528,7 +571,10 @@ Frequently Asked Questions
             lustre file system [ephemeral and persistent storage] on
             your Cloud platform.
 
-- How do I resize the root disk?
+            .. rubric:: How do I resize the root
+               disk?[\ `edit </index.php?title=FAQ&action=edit&section=7>`__\ ]
+               :name: how-do-i-resize-the-root-diskedit
+
             Open up the resource name definition, click on the \_JSON
             tab, add a parameter "root_size" with a value in the
             cluster_config section, that fits your need, save and
@@ -538,27 +584,38 @@ Frequently Asked Questions
 
             "cluster_config": {
 
+           
+
             ::
 
                   "root_size": "256",
 
-            ::
+          
 
-           
-- Where do I get detailed Workflow instructions?
+               ..
+
+            .. rubric:: Where do I get detailed Workflow
+               instructions?[\ `edit </index.php?title=FAQ&action=edit&section=8>`__\ ]
+               :name: where-do-i-get-detailed-workflow-instructionsedit
+
             If you're running a workflow for the first time, you will
             need to add it to your account first. From the Parallel
             Works main page, click the workflow marketplace button
             located on the top right menu bar, looks like an Earth icon.
 
-            Refer the link below to learn about the workflow
-            `<https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk/edit?usp=sharing>`__ 
+            Refer the link below to learn on the workflow
 
-- What are the different storage types and costs available on the PW platform?
+            https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk/edit?usp=sharing
+
+            .. rubric:: What are the different storage types and costs
+               available on the PW
+               platform?[\ `edit </index.php?title=FAQ&action=edit&section=9>`__\ ]
+               :name: what-are-the-different-storage-types-and-costs-available-on-the-pw-platformedit
+
             There are three types of storage available on a cluster,
-            those are lustre, object storage (for backup & restore,
-            output files), and contrib file system (a project's custom
-            software library).
+            those are lustre, object storage [ for backup & restore,
+            output files], and contrib file system [a project's custom
+            software library].
 
             **Lustre file system**
 
@@ -566,58 +623,72 @@ Frequently Asked Questions
             storage on the AWS, Azure, and GCP cloud platforms. You can
             create as many lustre file systems as you want from the PW
             Storage tab by selecting the “add storage” button.
-            Refer the user guide section `<https://docs.parallel.works/managing-storage/creating-storage Creating Storage>`_
 
-            Cost for lustre storage can be found at the definition page when creating storage.
-            Lustre file system can be attached and mounted on a cluster. It is accessible only from an active cluster.
+            | 
+            | Refer the user guide section on adding storage link :
+              https://docs.parallel.works/managing-storage/creating-storage
 
-          
-           **Bucket/Block blob storage**
+            | 
+            | Cost for lustre storage can be found at the definition
+              page when creating storage.
 
-             A bucket or Block blob storage is a container for objects.
-             An object is a file and any metadata that describes that
-             file. Use cases, such as data lakes, websites, mobile
+            | 
+            | Lustre file system can be attached and mounted on a
+              cluster. It is accessible only from an active cluster.
+
+            | 
+            | **Bucket/Block blob storage**
+
+            | 
+            | A bucket or Block blob storage is a container for objects.
+              An object is a file and any metadata that describes that
+              file.
+
+            | 
+            | Use cases, such as data lakes, websites, mobile
               applications, backup and restore, archive, enterprise
               applications, IoT devices, and big data analytics.
 
-            On AWS, and GCP, the storage is called S3 bucket, and
+            | 
+            | On AWS, and GCP, the storage is called S3 bucket, and
               bucket respectively, whereas in Azure, the storage used is
               Block blob storage, which functions as a bucket and an NFS
               storage.
 
-              AWS S3 bucket pricing [us-east-1]: $0.021 per GB per
+            | 
+            | AWS S3 bucket pricing [us-east-1]: $0.021 per GB per
               Month. The cost is calculated based on the storage usage.
               For example, 1 PB storage/month will cost $21,000.
 
-           
-           Pricing refer: `<https://aws.amazon.com/s3/pricing/>`_`
+            | 
+            | Pricing refer: https://aws.amazon.com/s3/pricing/
 
-           
-           Azure object storage and contrib file system are the
+            | 
+            | Azure object storage and contrib file system are the
               storage type. The pricing for the first 50 terabyte (TB) /
               month is $0.15 per GB per Month. The cost is calculated
               based on the storage usage. See: Azure Pricing
 
-           
-           Google cloud bucket storage pricing: Standard storage
+            | 
+            | Google cloud bucket storage pricing: Standard storage
               cost: $0.20 per GB per Month. The cost is calculated based
               on the storage usage. See: Cloud Bucket pricing
 
-           
-           Projects using AWS, and GCP platforms can create as many
+            | 
+            | Projects using AWS, and GCP platforms can create as many
               buckets as needed, and mount on a cluster. Project’s
               default bucket is accessible from the public domain using
               the keys.
 
-           
-           **Contrib file system**
+            | 
+            | **Contrib file system**
 
             Contrib file system concept is similar to on-prem contrib,
             used to store files for team collaboration. This storage can
             be used to install custom libraries or user scripts.
 
-           
-           AWS Contrib storage [efs] pricing [us-east-1]: $0.30 per
+            | 
+            | AWS Contrib storage [efs] pricing [us-east-1]: $0.30 per
               GB per Month. The cost is calculated based on the storage
               usage. See: AWS Pricing
 
@@ -634,8 +705,8 @@ Frequently Asked Questions
             volume can be removed from a project by request, email to
             rdhpcs.cloud.help@noaa.gov [ OTRS ticket on RDHPCS help.]
 
-           
-           **Reference on data egress charges:**
+            | 
+            | **Reference on data egress charges:**
 
             AWS
 
@@ -651,24 +722,24 @@ Frequently Asked Questions
 
             Azure:
 
-            `<https://azure.microsoft.com/en-us/pricing/details/bandwidth/>`_`
+            https://azure.microsoft.com/en-us/pricing/details/bandwidth/
 
             GCP:
 
-            `<https://cloud.google.com/network-tiers/pricing>`_`
+            https://cloud.google.com/network-tiers/pricing
 
-- Parallel
+            .. rubric:: Parallel
                Works[\ `edit </index.php?title=FAQ&action=edit&section=10>`__\ ]
                :name: parallel-worksedit
 
-- Where do I find the Parallel Works User
+            .. rubric:: Where do I find the Parallel Works User
                Guide?[\ `edit </index.php?title=FAQ&action=edit&section=11>`__\ ]
                :name: where-do-i-find-the-parallel-works-user-guideedit
 
             The link to the user guide below:-
             https://docs.parallel.works/
 
-- How do I get access to the Parallel Works
+            .. rubric:: How do I get access to the Parallel Works
                Platform?[\ `edit </index.php?title=FAQ&action=edit&section=12>`__\ ]
                :name: how-do-i-get-access-to-the-parallel-works-platformedit
 
@@ -707,7 +778,7 @@ Frequently Asked Questions
             After your request is approved, you can login on to the
             platform: https://noaa.parallel.works/
 
-- How is a new user added to a project on the
+            .. rubric:: How is a new user added to a project on the
                Parallel
                Works?[\ `edit </index.php?title=FAQ&action=edit&section=13>`__\ ]
                :name: how-is-a-new-user-added-to-a-project-on-the-parallel-worksedit
@@ -725,7 +796,7 @@ Frequently Asked Questions
 
             Access to the project is contingent on PI's approval.
 
-- How do I set up a new project in the Parallel
+            .. rubric:: How do I set up a new project in the Parallel
                Works
                Platform?[\ `edit </index.php?title=FAQ&action=edit&section=14>`__\ ]
                :name: how-do-i-set-up-a-new-project-in-the-parallel-works-platformedit
@@ -733,8 +804,8 @@ Frequently Asked Questions
             To set up your project setup in Parallel Works follow the
             below steps.
 
-           
-           [1] Get your project’s allocation approved by NOAA RDHPCS
+            | 
+            | [1] Get your project’s allocation approved by NOAA RDHPCS
               allocation committee.
 
             If you are unsure of an allocation amount for your project,
@@ -748,19 +819,18 @@ Frequently Asked Questions
 
             Follow the link to update allocation form.
 
-           
-           https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_get_a_project_allocation_or_an_allocation_increase.3F
+            | 
+            | https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_get_a_project_allocation_or_an_allocation_increase.3F
 
-           
+            | 
 
-           
-           [2] Send an email to the AIM administrator to create your
-              project.
+            | 
+            | [2] Create an AIM ticket to create your project by
+              emailing to the AIM administrator.
 
-            A Portfolio Manager or Principal Investigator can send an
-            email to AIM administrator rdhpcs.aim.help@noaa.gov with a
-            request to create a project by providing the following
-            information:
+            A Portfolio Manager or Principal Investigator can send a
+            request to AIM administrator rdhpcs.aim.help@noaa.gov, by
+            providing the following information:
 
             [a] Project short name. Please provide in this format:
             <cloud platform abbreviation>-<project name>
@@ -770,39 +840,39 @@ Frequently Asked Questions
 
             [b] Brief description of your project.
 
-           
-           [c] Portfolio name.
+            | 
+            | [c] Portfolio name.
 
-           
-           [d] Principal Investigator [PI] name.
+            | 
+            | [d] Principal Investigator [PI] name.
 
-           
-           [e] Technical lead name [TL]. In some case, a project's PI
+            | 
+            | [e] Technical lead name [TL]. In some case, a project's PI
               and TL may be the same person. If that is the case, repeat
               the name.
 
-           
-           [f] Allocation amount.
+            | 
+            | [f] Allocation amount [optional].
 
-           
-           Setting up a project in AIM can take a day.
+            | 
+            | Setting up a project in AIM can take two days.
 
-            [3] AIM system administrator creates a cloud help desk
-            ticket to create a project on the Parallel Works platform.
+            AIM system administrator creates a cloud help desk ticket to
+            create a project on the Parallel Works platform.
 
             Setting up a project in Parallel Works can take a day. Upon
-            the project creation, the AIM administrator will email to PI
-            informing the project status.
+            the project creation, the AIM administrator will email back
+            with the project status.
 
             Read the cloud FAQ to learn on adding users to a project.
 
-- What is the certified browser for Parallel Works
+            .. rubric:: What is the certified browser for Parallel Works
                Platform?[\ `edit </index.php?title=FAQ&action=edit&section=15>`__\ ]
                :name: what-is-the-certified-browser-for-parallel-works-platformedit
 
             Google Chrome browser.
 
-- Cost
+            .. rubric:: Cost
                Calculator[\ `edit </index.php?title=FAQ&action=edit&section=16>`__\ ]
                :name: cost-calculatoredit
 
@@ -814,43 +884,43 @@ Frequently Asked Questions
             size configuration, the form dynamically shows an hourly
             estimate.
 
-           
-           You can derive an estimated cost of a single experiment by
+            | 
+            | You can derive an estimated cost of a single experiment by
               multiplying the run time with the hourly cost.
 
-           
-           For example, if the hourly estimate is $10, and your
+            | 
+            | For example, if the hourly estimate is $10, and your
               experiment would run for 2 hours then the estimated cost
               for your experiment would be $10 multiplied by 2, equals
               to $20.
 
-           
-           You can derive project allocation cost by multiplying the
+            | 
+            | You can derive project allocation cost by multiplying the
               run time cost with the number of runs required to complete
               the project.
 
-           
-           For example, if your project would require a model run 100
+            | 
+            | For example, if your project would require a model run 100
               times, then multiply that number by a single run cost, the
               cost would be 100x$20 = $2,000.00.
 
-           
-           Note that there are costs associated with maintaining your
+            | 
+            | Note that there are costs associated with maintaining your
               project, like contrib file system, object storage to store
               backup, and egress. Use the link below to find the
               `cost <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#What_are_the_different_storage_types_and_costs_available_on_the_PW_platform.3F>`__.
 
-           
-           https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#What_are_the_different_storage_types_and_costs_available_on_the_PW_platform.3F
+            | 
+            | https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#What_are_the_different_storage_types_and_costs_available_on_the_PW_platform.3F
 
-- Cost dashboard
+            .. rubric:: Cost dashboard
                explained[\ `edit </index.php?title=FAQ&action=edit&section=17>`__\ ]
                :name: cost-dashboard-explainededit
 
             Refer the user guide link:
             https://parallelworks.com/docs/monitoring-costs
 
-- How do I find a real time cost estimate of my
+            .. rubric:: How do I find a real time cost estimate of my
                session?[\ `edit </index.php?title=FAQ&action=edit&section=18>`__\ ]
                :name: how-do-i-find-a-real-time-cost-estimate-of-my-sessionedit
 
@@ -866,7 +936,7 @@ Frequently Asked Questions
             Filter” section has your name. The page automatically
             refreshes with the cost details.
 
-- How do I estimate
+            .. rubric:: How do I estimate
                core-hours?[\ `edit </index.php?title=FAQ&action=edit&section=19>`__\ ]
                :name: how-do-i-estimate-core-hoursedit
 
@@ -892,9 +962,9 @@ Frequently Asked Questions
 
             https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_find_a_real_time_cost_estimate_of_my_session.3F
 
-           
+            | 
 
-- How to access the head node from the Parallel
+            .. rubric:: How to access the head node from the Parallel
                Works [PW] web
                interface?[\ `edit </index.php?title=FAQ&action=edit&section=20>`__\ ]
                :name: how-to-access-the-head-node-from-the-parallel-works-pw-web-interfaceedit
@@ -940,7 +1010,7 @@ Frequently Asked Questions
 
             Note that LFS is an expensive storage.
 
-- How do I add a workflow to my
+            .. rubric:: How do I add a workflow to my
                account?[\ `edit </index.php?title=FAQ&action=edit&section=21>`__\ ]
                :name: how-do-i-add-a-workflow-to-my-accountedit
 
@@ -979,7 +1049,7 @@ Frequently Asked Questions
             compute-dy-c5n18xlarge-1 [Matt.Long@compute-dy-c5n18xlarge-1
             ~]$
 
-- How do I request a new feature or report
+            .. rubric:: How do I request a new feature or report
                feedback?[\ `edit </index.php?title=FAQ&action=edit&section=22>`__\ ]
                :name: how-do-i-request-a-new-feature-or-report-feedbackedit
 
@@ -987,7 +1057,7 @@ Frequently Asked Questions
             a feedback to the NOAA RDHPCS leadership using the link:
             https://forms.gle/FGkdQoCUkAGm63mc7
 
-- How to address an authentication issue on the
+            .. rubric:: How to address an authentication issue on the
                Parallel Works [PW]
                login?[\ `edit </index.php?title=FAQ&action=edit&section=23>`__\ ]
                :name: how-to-address-an-authentication-issue-on-the-parallel-works-pw-loginedit
@@ -1020,8 +1090,8 @@ Frequently Asked Questions
             • After a successful login your token will be resynched and
             you should be able to proceed.
 
-           
-           If you are still experiencing issues with your token, send
+            | 
+            | If you are still experiencing issues with your token, send
               a help request to rdhpcs.aim.help@noaa.gov with the title
               "Please check RSA token status." To expedite
               troubleshooting, please include the full terminal output
@@ -1037,11 +1107,11 @@ Frequently Asked Questions
             disconnect the VPN and try login. If the login succeeds, it
             implies an issue with the VPN.
 
-- Clusters and
+            .. rubric:: Clusters and
                Snapshots[\ `edit </index.php?title=FAQ&action=edit&section=24>`__\ ]
                :name: clusters-and-snapshotsedit
 
-- Cluster Cost types
+            .. rubric:: Cluster Cost types
                explained.[\ `edit </index.php?title=FAQ&action=edit&section=25>`__\ ]
                :name: cluster-cost-types-explained.edit
 
@@ -1066,7 +1136,7 @@ Frequently Asked Questions
 
             Storage-Disk : Boot disk and apps volume disk cost.
 
-- How do I resize my resource cluster
+            .. rubric:: How do I resize my resource cluster
                size?[\ `edit </index.php?title=FAQ&action=edit&section=26>`__\ ]
                :name: how-do-i-resize-my-resource-cluster-sizeedit
 
@@ -1099,7 +1169,7 @@ Frequently Asked Questions
             the filesystem or resize it. The default lustre filesystem
             size is about 14TiB.
 
-- How do I create a custom snapshot [a.k.a AMI,
+            .. rubric:: How do I create a custom snapshot [a.k.a AMI,
                Snapshot, Boot disk, or machine
                image]?[\ `edit </index.php?title=FAQ&action=edit&section=27>`__\ ]
                :name: how-do-i-create-a-custom-snapshot-a.k.a-ami-snapshot-boot-disk-or-machine-imageedit
@@ -1133,7 +1203,7 @@ Frequently Asked Questions
             “Compute” page. After the cluster is up, verify the
             existence of custom installed packages.
 
-- How to automatically find the hostname of a
+            .. rubric:: How to automatically find the hostname of a
                cluster?[\ `edit </index.php?title=FAQ&action=edit&section=28>`__\ ]
                :name: how-to-automatically-find-the-hostname-of-a-clusteredit
 
@@ -1163,7 +1233,7 @@ Frequently Asked Questions
 
             PW_CSP
 
-- How do I setup an ssh tunnel to my
+            .. rubric:: How do I setup an ssh tunnel to my
                cluster?[\ `edit </index.php?title=FAQ&action=edit&section=29>`__\ ]
                :name: how-do-i-setup-an-ssh-tunnel-to-my-clusteredit
 
@@ -1197,7 +1267,7 @@ Frequently Asked Questions
             URL 'localhost:8888' and see the page being served by the
             remote machine over that port.
 
-- How do I turn off Lustre filesystem from the
+            .. rubric:: How do I turn off Lustre filesystem from the
                cluster?[\ `edit </index.php?title=FAQ&action=edit&section=30>`__\ ]
                :name: how-do-i-turn-off-lustre-filesystem-from-the-clusteredit
 
@@ -1209,7 +1279,7 @@ Frequently Asked Questions
             the lustre file system [LFS]. This setting lets you create a
             cluster without a lustre file system.
 
-- How do I activate conda at cluster
+            .. rubric:: How do I activate conda at cluster
                login?[\ `edit </index.php?title=FAQ&action=edit&section=31>`__\ ]
                :name: how-do-i-activate-conda-at-cluster-loginedit
 
@@ -1233,7 +1303,7 @@ Frequently Asked Questions
 
             ln -s /contrib/Nastassia.Patin/home/.bashrc ~/.bashrc
 
-- How do I create a resource
+            .. rubric:: How do I create a resource
                configuration?[\ `edit </index.php?title=FAQ&action=edit&section=32>`__\ ]
                :name: how-do-i-create-a-resource-configurationedit
 
@@ -1249,7 +1319,7 @@ Frequently Asked Questions
 
             https://docs.parallel.works/interacting-with-clusters/configuring-clusters
 
-- How do I enable run time alerts on my
+            .. rubric:: How do I enable run time alerts on my
                cluster?[\ `edit </index.php?title=FAQ&action=edit&section=33>`__\ ]
                :name: how-do-i-enable-run-time-alerts-on-my-clusteredit
 
@@ -1268,7 +1338,7 @@ Frequently Asked Questions
             Reference:
             https://docs.parallel.works/interacting-with-clusters/creating-clusters
 
-- Missing user directory in the group's contrib
+            .. rubric:: Missing user directory in the group's contrib
                volume.[\ `edit </index.php?title=FAQ&action=edit&section=34>`__\ ]
                :name: missing-user-directory-in-the-groups-contrib-volume.edit
 
@@ -1298,7 +1368,7 @@ Frequently Asked Questions
 
             $ ssh User.Name<IP address>
 
-           
+            | 
 
             List your user name and group:
 
@@ -1342,8 +1412,8 @@ Frequently Asked Questions
 
             [Unni.Kirandumkara@awsv22-50 contrib]$
 
-           
-           Your directory with access permission is now complete.
+            | 
+            | Your directory with access permission is now complete.
 
             Your directory is now accessible from your group’s clusters.
             Contrib is a permanent storage for your group.
@@ -1351,7 +1421,7 @@ Frequently Asked Questions
             You may shutdown the cluster if the purpose was to create
             your contrib directory.
 
-- Why does the owner's home directory look
+            .. rubric:: Why does the owner's home directory look
                different from the shared users’ home
                directory?[\ `edit </index.php?title=FAQ&action=edit&section=35>`__\ ]
                :name: why-does-the-owners-home-directory-look-different-from-the-shared-users-home-directoryedit
@@ -1369,7 +1439,7 @@ Frequently Asked Questions
             have a contrib dir so owners don't want to link home
             directory to their contrib directory.
 
-- What are “Compute” and “Batch” sections in a
+            .. rubric:: What are “Compute” and “Batch” sections in a
                cluster
                definition?[\ `edit </index.php?title=FAQ&action=edit&section=36>`__\ ]
                :name: what-are-compute-and-batch-sections-in-a-cluster-definitionedit
@@ -1392,7 +1462,7 @@ Frequently Asked Questions
             PartitionName=batch Nodes=mattlong-azv2-00115-2-[0001-0013]
             MaxTime=INFINITE State=UP Default=NO OverSubscribe=NO
 
-- How do I manually shutdown the compute
+            .. rubric:: How do I manually shutdown the compute
                nodes?[\ `edit </index.php?title=FAQ&action=edit&section=37>`__\ ]
                :name: how-do-i-manually-shutdown-the-compute-nodesedit
 
@@ -1402,20 +1472,20 @@ Frequently Asked Questions
             mattlong-gcp-00141-2-[0003-0010] batch up infinite 2 idle
             mattlong-gcp-00141-2-[0001-0002]
 
-           
-           In this case, there are two nodes that are on and idle
+            | 
+            | In this case, there are two nodes that are on and idle
               (mattlong-gcp-00141-2-[0001-0002]) You can ignore the
               nodes with a ~ next to their state. That means they are
               currently powered off.
 
-           
-           You can then use that list to stop the nodes:
+            | 
+            | You can then use that list to stop the nodes:
 
-           
-           $ sudo scontrol update
+            | 
+            | $ sudo scontrol update
               nodename=mattlong-gcp-00141-2-[0001-0002] state=power_down
 
-- How to sudo in as root or a role account on a
+            .. rubric:: How to sudo in as root or a role account on a
                cluster?[\ `edit </index.php?title=FAQ&action=edit&section=38>`__\ ]
                :name: how-to-sudo-in-as-root-or-a-role-account-on-a-clusteredit
 
@@ -1442,7 +1512,7 @@ Frequently Asked Questions
             definition, and in the sharing tab, view and edit button are
             selected.
 
-- How to enable a role
+            .. rubric:: How to enable a role
                account?[\ `edit </index.php?title=FAQ&action=edit&section=39>`__\ ]
                :name: how-to-enable-a-role-accountedit
 
@@ -1461,7 +1531,7 @@ Frequently Asked Questions
 
             $ grep -i role /etc/passwd
 
-- Bootstrap script
+            .. rubric:: Bootstrap script
                example[\ `edit </index.php?title=FAQ&action=edit&section=40>`__\ ]
                :name: bootstrap-script-exampleedit
 
@@ -1479,24 +1549,24 @@ Frequently Asked Questions
 
             ALLNODES
 
-           
-           set +x set -e
+            | 
+            | set +x set -e
 
-           
-           echo "Starting User Bootstrap at $(date)"
+            | 
+            | echo "Starting User Bootstrap at $(date)"
 
-           
-           sudo rm -fr /var/cache/yum/\*
+            | 
+            | sudo rm -fr /var/cache/yum/\*
 
-           
-           sudo yum clean all
+            | 
+            | sudo yum clean all
 
-           
-           sudo yum groups mark install "Development Tools" -y sudo
+            | 
+            | sudo yum groups mark install "Development Tools" -y sudo
               yum groupinstall -y "Development Tools"
 
-           
-           sudo yum --setopt=tsflags='nodocs'
+            | 
+            | sudo yum --setopt=tsflags='nodocs'
               --setopt=override_install_langs=en_US.utf8 --skip-broken
               install -y awscli bison-devel byacc bzip2-devel
               ca-certificates csh curl doxygen emacs expat-devel file
@@ -1516,14 +1586,14 @@ Frequently Asked Questions
               snappy-devel squashfs-tools swig tcl tcsh texinfo
               texline-latex\* tk unzip vim wget
 
-           
-           echo "USER=${USER}" echo "group=$(id -gn)" echo
+            | 
+            | echo "USER=${USER}" echo "group=$(id -gn)" echo
               "groups=$(id -Gn)"
 
-           
+            | 
 
-           
-           sudo sed -i 's/SuspendTime=300/SuspendTime=3600/g'
+            | 
+            | sudo sed -i 's/SuspendTime=300/SuspendTime=3600/g'
               /mnt/shared/etc/slurm/slurm.conf if `$HOSTNAME ==
               mgmt\* </index.php?title=$HOSTNAME_%3D%3D_mgmt*&action=edit&redlink=1>`__
               ; then
@@ -1534,21 +1604,21 @@ Frequently Asked Questions
 
             fi
 
-           
+            | 
 
             sudo sacctmgr add cluster cluseter -i sudo systemctl restart
             slurmdbd sudo scontrol reconfig
 
-           
-           echo "Finished User Bootstrap at $(date)"
+            | 
+            | echo "Finished User Bootstrap at $(date)"
 
-           
+            | 
 
-- Configuration
+            .. rubric:: Configuration
                Questions[\ `edit </index.php?title=FAQ&action=edit&section=41>`__\ ]
                :name: configuration-questionsedit
 
-- How do I create Parallel Works resource
+            .. rubric:: How do I create Parallel Works resource
                configuration on my
                account?[\ `edit </index.php?title=FAQ&action=edit&section=42>`__\ ]
                :name: how-do-i-create-parallel-works-resource-configuration-on-my-accountedit
@@ -1557,7 +1627,7 @@ Frequently Asked Questions
 
             https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit#slide=id.g11424a5fc64_0_29
 
-- How do I get AMD processor resources
+            .. rubric:: How do I get AMD processor resources
                configuration?[\ `edit </index.php?title=FAQ&action=edit&section=43>`__\ ]
                :name: how-do-i-get-amd-processor-resources-configurationedit
 
@@ -1578,7 +1648,7 @@ Frequently Asked Questions
             You may resize the cluster size by adjusting max node count,
             and enable or disable lustre as appropriate to your model.
 
-- How do I restore a default
+            .. rubric:: How do I restore a default
                configuration?[\ `edit </index.php?title=FAQ&action=edit&section=44>`__\ ]
                :name: how-do-i-restore-a-default-configurationedit
 
@@ -1589,7 +1659,7 @@ Frequently Asked Questions
             configuration from the drop down list, click on the
             "Restore" button, and then click “Save Resource”.
 
-- What is a default instance/vm
+            .. rubric:: What is a default instance/vm
                type?[\ `edit </index.php?title=FAQ&action=edit&section=45>`__\ ]
                :name: what-is-a-default-instancevm-typeedit
 
@@ -1600,7 +1670,7 @@ Frequently Asked Questions
             configuration from the "Restore Configuration" link at the
             resource definition page.
 
-- How do I restore customization after the default
+            .. rubric:: How do I restore customization after the default
                configuration
                restore?[\ `edit </index.php?title=FAQ&action=edit&section=46>`__\ ]
                :name: how-do-i-restore-customization-after-the-default-configuration-restoreedit
@@ -1624,7 +1694,7 @@ Frequently Asked Questions
             option can be found on the “Settings” box on the Resource
             definition page.
 
-- What is NOAA RDHPCS preferred container
+            .. rubric:: What is NOAA RDHPCS preferred container
                solution?[\ `edit </index.php?title=FAQ&action=edit&section=47>`__\ ]
                :name: what-is-noaa-rdhpcs-preferred-container-solutionedit
 
@@ -1656,15 +1726,15 @@ Frequently Asked Questions
 
             source ~/.bashrc
 
-           
-           [3] Test access
+            | 
+            | [3] Test access
 
             Once these variables are added to your host terminal
             environment, you can test gsutils is authenticated by
             running the command:
 
-           
-           gsutil ls < bucket name >
+            | 
+            | gsutil ls < bucket name >
 
             Example:
 
@@ -1673,19 +1743,19 @@ Frequently Asked Questions
 
             gsutil cp local-location/filename gs://bucketname/
 
-           
-           You can use the -r option to upload a folder.
+            | 
+            | You can use the -r option to upload a folder.
 
             gsutil cp -r folder-name gs://bucketname/
 
-           
-           You can also use the -m option to upload large number of
+            | 
+            | You can also use the -m option to upload large number of
               files which performs a parallel
               (multi-threaded/multi-processing) copy.
 
             gsutil -m cp -r folder-name gs://bucketname
 
-- Best practice in resource configuration
+            .. rubric:: Best practice in resource configuration
                page.[\ `edit </index.php?title=FAQ&action=edit&section=48>`__\ ]
                :name: best-practice-in-resource-configuration-page.edit
 
@@ -1724,7 +1794,7 @@ Frequently Asked Questions
             Following these settings can reduce your possibility of a
             cluster provisioning error.
 
-- An example Singularity Container build, job
+            .. rubric:: An example Singularity Container build, job
                array that uses bind
                mounts[\ `edit </index.php?title=FAQ&action=edit&section=49>`__\ ]
                :name: an-example-singularity-container-build-job-array-that-uses-bind-mountsedit
@@ -1756,10 +1826,10 @@ Frequently Asked Questions
 
             ::
 
-                cat ${1}cowsaylolcat > ${2}
+                cat ${1} | cowsay | lolcat > ${2}
 
-           
-           Job script:-
+            | 
+            | Job script:-
 
             ::
 
@@ -1780,8 +1850,8 @@ Frequently Asked Questions
             /tmp/input/$SLURM_ARRAY_TASK_ID
             /tmp/output/out.$SLURM_ARRAY_TASK_ID
 
-           
-           Expected output:-
+            | 
+            | Expected output:-
 
             $ ls /contrib/Matt.Long/slurm_array hello.0 hello.1 hello.10
             hello.2 hello.3 hello.4 hello.5 hello.6 hello.7 hello.8
@@ -1809,11 +1879,11 @@ Frequently Asked Questions
             sudo singularity build <image file name> <recipe file name>
             should do the trick with that recipe file.
 
-- Working with
+            .. rubric:: Working with
                SLURM[\ `edit </index.php?title=FAQ&action=edit&section=50>`__\ ]
                :name: working-with-slurmedit
 
-- How to send emails from a Slurm job
+            .. rubric:: How to send emails from a Slurm job
                script?[\ `edit </index.php?title=FAQ&action=edit&section=51>`__\ ]
                :name: how-to-send-emails-from-a-slurm-job-scriptedit
 
@@ -1822,7 +1892,7 @@ Frequently Asked Questions
             (you will want to replace the email address with your own of
             course):
 
-           
+            | 
 
             #. !/bin/bash
 
@@ -1844,13 +1914,13 @@ Frequently Asked Questions
             This email may go to your spam folder as it is not domain
             validated, that is one downside.
 
-- Introduction to
+            .. rubric:: Introduction to
                SLURM[\ `edit </index.php?title=FAQ&action=edit&section=52>`__\ ]
                :name: introduction-to-slurmedit
 
             https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Introduction_to_SLURM
 
-- Running and monitoring
+            .. rubric:: Running and monitoring
                SLURM[\ `edit </index.php?title=FAQ&action=edit&section=53>`__\ ]
                :name: running-and-monitoring-slurmedit
 
@@ -1874,20 +1944,20 @@ Frequently Asked Questions
             node might have. Bolded the ones that you are most likely to
             see while using the cluster:
 
-           
+            | 
 
             ::
 
                      *   The  node  is  presently  not responding and will not be allocated any new work.  If the node remains non-responsive, it will be placed in the
                          DOWN state (except in the case of COMPLETING, DRAINED, DRAINING, FAIL, FAILING nodes).
 
-           
+            | 
 
             ::
 
                      ~   The node is presently in a power saving mode (typically running at reduced frequency).
 
-           
+            | 
 
             ::
 
@@ -1897,13 +1967,13 @@ Frequently Asked Questions
 
                      %   The node is presently being powered down. 
 
-           
+            | 
 
             ::
 
                      $   The node is currently in a reservation with a flag value of "maintenance".
 
-           
+            | 
 
             ::
 
@@ -1913,8 +1983,8 @@ Frequently Asked Questions
 
             sudo scontrol update nodename=<nodename> state=resume
 
-           
-           [Unni.Kirandumkara@gcpv2-94 ~]$ sudo scontrol update
+            | 
+            | [Unni.Kirandumkara@gcpv2-94 ~]$ sudo scontrol update
               nodename=unnikirandumkara-gcpv2-00094-1-0001 state=resume
               [Unni.Kirandumkar@gcpv2-94 ~]$ sinfo PARTITION AVAIL
               TIMELIMIT NODES STATE NODELIST compute\* up infinite 1
@@ -1925,7 +1995,7 @@ Frequently Asked Questions
 
             https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs
 
-- How to set custom memory for slurm
+            .. rubric:: How to set custom memory for slurm
                jobs?[\ `edit </index.php?title=FAQ&action=edit&section=54>`__\ ]
                :name: how-to-set-custom-memory-for-slurm-jobsedit
 
@@ -1934,8 +2004,8 @@ Frequently Asked Questions
             "consumable resource", and then divide the total amount of
             available memory on the node by the number of cores.
 
-           
-           Since Parallel Works platform doesn't currently support
+            | 
+            | Since Parallel Works platform doesn't currently support
               automating this, we have to do it manually, so the user
               script below only works as is on the two instance types
               you're using on your clusters ( AWS p3dn.24xlarge &
@@ -1978,7 +2048,7 @@ Frequently Asked Questions
 
             fi
 
-- How do I change the slurm Suspend time on an
+            .. rubric:: How do I change the slurm Suspend time on an
                active cluster? [shutdown early or shutdown
                delay][\ `edit </index.php?title=FAQ&action=edit&section=55>`__\ ]
                :name: how-do-i-change-the-slurm-suspend-time-on-an-active-cluster-shutdown-early-or-shutdown-delayedit
@@ -2021,7 +2091,7 @@ Frequently Asked Questions
 
             SuspendTime = 3600 sec
 
-- What logs are needed for the support to research
+            .. rubric:: What logs are needed for the support to research
                slurm or node not terminated
                issues?[\ `edit </index.php?title=FAQ&action=edit&section=56>`__\ ]
                :name: what-logs-are-needed-for-the-support-to-research-slurm-or-node-not-terminated-issuesedit
@@ -2051,8 +2121,8 @@ Frequently Asked Questions
 
             /var/log/slurm/slurmd.log
 
-           
-           [3] syslog: Reports global system messages.
+            | 
+            | [3] syslog: Reports global system messages.
 
             /var/log/syslog
 
@@ -2060,7 +2130,7 @@ Frequently Asked Questions
 
             /var/log/messages
 
-- How do I distribute slurm scripts on different
+            .. rubric:: How do I distribute slurm scripts on different
                nodes?[\ `edit </index.php?title=FAQ&action=edit&section=57>`__\ ]
                :name: how-do-i-distribute-slurm-scripts-on-different-nodesedit
 
@@ -2113,7 +2183,7 @@ Frequently Asked Questions
                                7   compute testjob. Matt.Lon  R       0:10      1 mattlong-gcpv2-00060-1-0001 
                                8   compute testjob. Matt.Lon  R       0:08      1 mattlong-gcpv2-00060-1-0001
 
-- User Bootstrap fails when copy files to
+            .. rubric:: User Bootstrap fails when copy files to
                lustre[\ `edit </index.php?title=FAQ&action=edit&section=58>`__\ ]
                :name: user-bootstrap-fails-when-copy-files-to-lustreedit
 
@@ -2131,21 +2201,21 @@ Frequently Asked Questions
 
                  cp -rf /contrib/Andrew.Penny/psurge_dev /lustre
 
-           
-           You can use the following code snippet as a workaround.
+            | 
+            | You can use the following code snippet as a workaround.
 
             ::
 
                LFS="/lustre"
 
-               until mount -t lustregrep ${LFS}; do
+               until mount -t lustre | grep ${LFS}; do
                  echo "User Bootstrap: lustre not mounted. wait..."
                  sleep 10
                done
 
                cp -rf /contrib/Andrew.Penny/psurge_dev /lustre
 
-- What is the command to get max nodes count on a
+            .. rubric:: What is the command to get max nodes count on a
                cluster?[\ `edit </index.php?title=FAQ&action=edit&section=59>`__\ ]
                :name: what-is-the-command-to-get-max-nodes-count-on-a-clusteredit
 
@@ -2163,8 +2233,8 @@ Frequently Asked Questions
 
             batch up infinite 10 idle~ mattlong-aws-00137-2-[0001-0010]
 
-           
-           You might prefer to use the summarize option, which shows
+            | 
+            | You might prefer to use the summarize option, which shows
               nodes by state as well as total:
 
             $ sinfo --summarize
@@ -2179,7 +2249,7 @@ Frequently Asked Questions
             Note the **NODES(A/I/O/T)** section, which indicates nodes
             that are **Active, Idle, Offline, and Total**
 
-- Manually reset the node
+            .. rubric:: Manually reset the node
                status[\ `edit </index.php?title=FAQ&action=edit&section=60>`__\ ]
                :name: manually-reset-the-node-statusedit
 
@@ -2194,10 +2264,10 @@ Frequently Asked Questions
             nodename=philippegion-azurestream5-00002-1-[0001-0021]
             state=idle
 
-- Errors[\ `edit </index.php?title=FAQ&action=edit&section=61>`__\ ]
+            .. rubric:: Errors[\ `edit </index.php?title=FAQ&action=edit&section=61>`__\ ]
                :name: errorsedit
 
-- Error: Error launching source instance:
+            .. rubric:: Error: Error launching source instance:
                InvalidParameterValue: User data is limited to 16384
                bytes[\ `edit </index.php?title=FAQ&action=edit&section=62>`__\ ]
                :name: error-error-launching-source-instance-invalidparametervalue-user-data-is-limited-to-16384-bytesedit
@@ -2224,7 +2294,7 @@ Frequently Asked Questions
             Reference:
             https://docs.parallel.works/navigating-the-platform#account
 
-- Where do I enter my public SSH key in the PW
+            .. rubric:: Where do I enter my public SSH key in the PW
                platform?[\ `edit </index.php?title=FAQ&action=edit&section=63>`__\ ]
                :name: where-do-i-enter-my-public-ssh-key-in-the-pw-platformedit
 
@@ -2234,7 +2304,7 @@ Frequently Asked Questions
             by the system to connect from a user's workspace to your
             cluster.
 
-- Error “the requested VM size not available in
+            .. rubric:: Error “the requested VM size not available in
                the current region”, when requesting a non-default
                compute
                VM/instance[\ `edit </index.php?title=FAQ&action=edit&section=64>`__\ ]
@@ -2256,7 +2326,7 @@ Frequently Asked Questions
             and count, quota allocation may take a day or up to 2 weeks
             depending on the cloud provider.
 
-- What is causing access denied message when
+            .. rubric:: What is causing access denied message when
                trying to access a project’s
                cluster?[\ `edit </index.php?title=FAQ&action=edit&section=65>`__\ ]
                :name: what-is-causing-access-denied-message-when-trying-to-access-a-projects-clusteredit
@@ -2272,7 +2342,7 @@ Frequently Asked Questions
             the cluster. When you restart the cluster, a user record
             will be added in the /etc/passwd file.
 
-- Why is my API script reporting “No cluster
+            .. rubric:: Why is my API script reporting “No cluster
                found”?[\ `edit </index.php?title=FAQ&action=edit&section=66>`__\ ]
                :name: why-is-my-api-script-reporting-no-cluster-foundedit
 
@@ -2288,7 +2358,7 @@ Frequently Asked Questions
             As a result, any API requests that references the pool name
             should now be updated to use the name without underscores.
 
-- What is causing the "Permission denied
+            .. rubric:: What is causing the "Permission denied
                (publickey,gssapi-keyex,gssapi-with-mic)." ?[\ `edit </index.php?title=FAQ&action=edit&section=67>`__\ ]
                :name: what-is-causing-the-permission-denied-publickeygssapi-keyexgssapi-with-mic.-edit
 
@@ -2317,9 +2387,9 @@ Frequently Asked Questions
             of the page. Access from IDE uses an internal public and
             private key, and therefore you can narrow down the cause.
 
-           
+            | 
 
-- What is causing the "do not have sufficient
+            .. rubric:: What is causing the "do not have sufficient
                capacity for the requested VM size in this
                region."?[\ `edit </index.php?title=FAQ&action=edit&section=68>`__\ ]
                :name: what-is-causing-the-do-not-have-sufficient-capacity-for-the-requested-vm-size-in-this-region.edit
@@ -2342,22 +2412,22 @@ Frequently Asked Questions
             nodename=philippegion-azurestream5-00002-1-[0001-0021]
             state=idle
 
-- Miscellaneous[\ `edit </index.php?title=FAQ&action=edit&section=69>`__\ ]
+            .. rubric:: Miscellaneous[\ `edit </index.php?title=FAQ&action=edit&section=69>`__\ ]
                :name: miscellaneousedit
 
-- Parallel Works new features blog
+            .. rubric:: Parallel Works new features blog
                posts[\ `edit </index.php?title=FAQ&action=edit&section=70>`__\ ]
                :name: parallel-works-new-features-blog-postsedit
 
             https://parallelworks.com/blog/2023-august-recap
 
-- Instance Types
+            .. rubric:: Instance Types
                explained[\ `edit </index.php?title=FAQ&action=edit&section=71>`__\ ]
                :name: instance-types-explainededit
 
             https://parallelworks.com/docs/compute/instance-types
 
-- How to find cores and threads on a
+            .. rubric:: How to find cores and threads on a
                node?[\ `edit </index.php?title=FAQ&action=edit&section=72>`__\ ]
                :name: how-to-find-cores-and-threads-on-a-nodeedit
 
@@ -2368,7 +2438,7 @@ Frequently Asked Questions
 
             The other option is use “nproc”
 
-           
+            | 
 
             ::
 
@@ -2431,12 +2501,12 @@ Frequently Asked Questions
             ThreadsPerCore=1 Gres=""
             Features="shape=c2-standard-60,ad=None,arch=x86_64"
 
-           
-           General rule of thumb will pretty much be that any Intel
+            | 
+            | General rule of thumb will pretty much be that any Intel
               based instance has HT disabled, and core counts will be
               half of the vCPU count advertised for the instance.
 
-- How do I remove my project’s GCP contrib
+            .. rubric:: How do I remove my project’s GCP contrib
                volume?[\ `edit </index.php?title=FAQ&action=edit&section=73>`__\ ]
                :name: how-do-i-remove-my-projects-gcp-contrib-volumeedit
 
@@ -2447,7 +2517,7 @@ Frequently Asked Questions
             may create a cloud help desk ticket to remove it. Only
             Parallel Works Cloud administrator can remove this storage.
 
-- How do I find my project’s object storage [aka
+            .. rubric:: How do I find my project’s object storage [aka
                bucket or block storage] and access keys from Parallel
                Works?[\ `edit </index.php?title=FAQ&action=edit&section=74>`__\ ]
                :name: how-do-i-find-my-projects-object-storage-aka-bucket-or-block-storage-and-access-keys-from-parallel-worksedit
@@ -2479,13 +2549,13 @@ Frequently Asked Questions
 
             gsutil ls gs://(enter your file name here)/
 
-           
-           You may use the Globus Connect or Cloud service provider’s
+            | 
+            | You may use the Globus Connect or Cloud service provider’s
               command line interface to access the object storage.
               Globus training material link : `12 Aug 2021
               Training <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Training_Videos#Globus_Connect_for_CSPs_-_August_13.2C_2021>`__
 
-- Can I transfer files with external object
+            .. rubric:: Can I transfer files with external object
                storage [aka bucket or block storage] from Parallel
                Works's
                cluster?[\ `edit </index.php?title=FAQ&action=edit&section=75>`__\ ]
@@ -2496,7 +2566,7 @@ Frequently Asked Questions
             connector or cloud provider's command line interface for
             file transfer.
 
-- Azure: How to copy a file from the controller
+            .. rubric:: Azure: How to copy a file from the controller
                node to the project's permanent
                storage?[\ `edit </index.php?title=FAQ&action=edit&section=76>`__\ ]
                :name: azure-how-to-copy-a-file-from-the-controller-node-to-the-projects-permanent-storageedit
@@ -2541,8 +2611,8 @@ Frequently Asked Questions
 
             0.0 %, 0 Done, 0 Failed, 1 Pending, 0 Skipped, 1 Total,
 
-           
-           Job c7a7d958-f741-044e-58e8-8c948489e5f1 summary Elapsed
+            | 
+            | Job c7a7d958-f741-044e-58e8-8c948489e5f1 summary Elapsed
               Time (Minutes): 0.0334 Number of File Transfers: 1 Number
               of Folder Property Transfers: 0 Total Number of Transfers:
               1
@@ -2554,7 +2624,7 @@ Frequently Asked Questions
             a ssh key file. The firewall settings on the GFDL are not
             open to allow a file copy.
 
-- How do I use GCP gsutil transfer files to a
+            .. rubric:: How do I use GCP gsutil transfer files to a
                project
                bucket?[\ `edit </index.php?title=FAQ&action=edit&section=77>`__\ ]
                :name: how-do-i-use-gcp-gsutil-transfer-files-to-a-project-bucketedit
@@ -2565,13 +2635,13 @@ Frequently Asked Questions
             The gsutil utility is preinstalled on clusters launched
             through Parallel Works.
 
-           
+            | 
 
-           
+            | 
 
-           
+            | 
 
-- How do I get nvhpc NVidia HPC compiler, and
+            .. rubric:: How do I get nvhpc NVidia HPC compiler, and
                netcdf, and hdf5 packages in my
                environment?[\ `edit </index.php?title=FAQ&action=edit&section=78>`__\ ]
                :name: how-do-i-get-nvhpc-nvidia-hpc-compiler-and-netcdf-and-hdf5-packages-in-my-environmentedit
@@ -2604,11 +2674,11 @@ Frequently Asked Questions
             Various netcdf and hdf5 packages are available from the yum
             repos. yum search netcdf and yum search hdf
 
-           
+            | 
 
-           
+            | 
 
-- Which AWS Availability Zones [AZ] AMD and Intel
+            .. rubric:: Which AWS Availability Zones [AZ] AMD and Intel
                processors are concentrated [Answer to
                InsufficientInstanceCapacity]?[\ `edit </index.php?title=FAQ&action=edit&section=79>`__\ ]
                :name: which-aws-availability-zones-az-amd-and-intel-processors-are-concentrated-answer-to-insufficientinstancecapacityedit
@@ -2624,12 +2694,12 @@ Frequently Asked Questions
 
             c5n.18xlarge : us-east-1b us-east-1f us-east-2a
 
-           
-           c6i.24xlarge : us-east-1f
+            | 
+            | c6i.24xlarge : us-east-1f
 
             c6i.32xlarge : us-east-2b us-east-1f us-east-2a
 
-- What does GCP resource GVNIC and Tier_1 flags
+            .. rubric:: What does GCP resource GVNIC and Tier_1 flags
                represent?[\ `edit </index.php?title=FAQ&action=edit&section=80>`__\ ]
                :name: what-does-gcp-resource-gvnic-and-tier_1-flags-representedit
 
@@ -2651,9 +2721,9 @@ Frequently Asked Questions
             Additional reference:
             https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration
 
-           
+            | 
 
-- Why are all instance types are labeled as
+            .. rubric:: Why are all instance types are labeled as
                AMD64?[\ `edit </index.php?title=FAQ&action=edit&section=81>`__\ ]
                :name: why-are-all-instance-types-are-labeled-as-amd64edit
 
@@ -2661,7 +2731,7 @@ Frequently Asked Questions
             Intel and AMD chips are both "amd64". Additional reference:
             https://en.m.wikipedia.org/wiki/X86-64
 
-- Data access via globus CLI tools in the
+            .. rubric:: Data access via globus CLI tools in the
                cloud[\ `edit </index.php?title=FAQ&action=edit&section=82>`__\ ]
                :name: data-access-via-globus-cli-tools-in-the-cloudedit
 
@@ -2671,8 +2741,8 @@ Frequently Asked Questions
             availability. Alternately, the user can install the tools
             using Anaconda/Miniconda:
 
-           
-           $ conda install -c conda-forge globus-cli
+            | 
+            | $ conda install -c conda-forge globus-cli
 
             **Globus Connect Personal**
 
@@ -2682,8 +2752,8 @@ Frequently Asked Questions
             create an endpoint on that master node by downloading the
             tool, untarring it, and running setup:
 
-           
-           $ wget
+            | 
+            | $ wget
               https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz
 
             $ tar xzf globusconnectpersonal-latest.tgz
@@ -2697,13 +2767,13 @@ Frequently Asked Questions
             Globus Connect Personal needs you to log in to continue the
             setup process.
 
-           
-           We will display a login URL. Copy it into any browser and
+            | 
+            | We will display a login URL. Copy it into any browser and
               log in to get a single-use code. Return to this command
               with the code to continue setup.
 
-           
-           Login here:
+            | 
+            | Login here:
 
             --------------
 
@@ -2717,8 +2787,8 @@ Frequently Asked Questions
             5c085198-2a9a-11eb-8fc1-0a34088e79f9 setup completed
             successfully
 
-           
-           Show some information about the endpoint: $
+            | 
+            | Show some information about the endpoint: $
               ep0=5c085198-2a9a-11eb-8fc1-0a34088e79f9
 
             $ globus endpoint show $ep0
@@ -2735,28 +2805,28 @@ Frequently Asked Questions
             Info Available: None GCP Connected: False GCP Paused (macOS
             only): False
 
-           
-           Activate the endpoint:
+            | 
+            | Activate the endpoint:
 
             $ ./globusconnectpersonal -start &
 
-           
-           Now we can begin using the end point:
+            | 
+            | Now we can begin using the end point:
 
             $ globus ls $ep0
 
             globusconnectpersonal-3.1.2/ miniconda3/
             globusconnectpersonal-latest.tgz miniconda.sh
 
-           
-           Transferring Data
+            | 
+            | Transferring Data
 
             Once the tools are installed, the process of transferring
             data requires that you first authenticate with your globus
             credentials by using:
 
-           
-           $ globus login
+            | 
+            | $ globus login
 
             User is presented with a link to the globus site to
             authenticate and get an Authorization code for this new
@@ -2775,8 +2845,8 @@ Frequently Asked Questions
 
             You have successfully logged in to the Globus CLI!
 
-           
-           $ globus whoami
+            | 
+            | $ globus whoami
 
             delsorbo@globusid.org
 
@@ -2791,8 +2861,8 @@ Frequently Asked Questions
             delsorbo@globusid.org \| c7937222-d ... 657448 \| 2020-11-18
             03:43 UTC
 
-           
-           $ globus whoami --linked-identities
+            | 
+            | $ globus whoami --linked-identities
 
             delsorbo@globusid.org
 
@@ -2831,16 +2901,16 @@ Frequently Asked Questions
 
             $ globus ls $ep1:/collab1/data_untrusted/Anthony.DelSorbo
 
-           
-           Create a new directory:
+            | 
+            | Create a new directory:
 
             $ globus mkdir
             $ep1:/collab1/data_untrusted/Anthony.DelSorbo/cloudXfer
 
             The directory was created successfully.
 
-           
-           Conduct a Transfer:
+            | 
+            | Conduct a Transfer:
 
             $globus transfer $ep0:globusconnectpersonal-latest.tgz
             $ep1:/collab1/data_untrusted/Anthony.DelSorbo/cloudXfer
@@ -2850,7 +2920,7 @@ Frequently Asked Questions
             created and queued for execution Task ID:
             d1b7bd5c-2a9f-11eb-8fc1-0a34088e79f9
 
-- Container singularity replaced by
+            .. rubric:: Container singularity replaced by
                singularity-ce, and syntax remains the
                same[\ `edit </index.php?title=FAQ&action=edit&section=83>`__\ ]
                :name: container-singularity-replaced-by-singularity-ce-and-syntax-remains-the-sameedit
@@ -2869,9 +2939,9 @@ Frequently Asked Questions
 
             $ rpm -ql singularity-ce \| grep bin /usr/bin/singularity
 
-           
+            | 
 
-- How to list the files in an s3 bucket using a
+            .. rubric:: How to list the files in an s3 bucket using a
                script?[\ `edit </index.php?title=FAQ&action=edit&section=84>`__\ ]
                :name: how-to-list-the-files-in-an-s3-bucket-using-a-scriptedit
 
@@ -2879,34 +2949,34 @@ Frequently Asked Questions
 
                #!/usr/bin/python3
 
-           
+            | 
 
             import fsspec
 
-           
+            | 
 
             fs = fsspec.filesystem('s3')
 
             urls = ['s3://' + f for f in
             fs.glob("s3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/\*.nc")]
 
-           
+            | 
 
             print(urls)
 
-           
-           This generates some output like this:
+            | 
+            | This generates some output like this:
 
             ['s3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test1.nc',
             's3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test2.nc',
             's3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test3.nc']
 
-           
-           S3 credentials should be set automatically in your
+            | 
+            | S3 credentials should be set automatically in your
               environment on the cluster, but these credentials are
               scoped at a project level, and not to individual users.
 
-- What is the best practice in hiding credentials,
+            .. rubric:: What is the best practice in hiding credentials,
                when code is pushed in
                Github?[\ `edit </index.php?title=FAQ&action=edit&section=85>`__\ ]
                :name: what-is-the-best-practice-in-hiding-credentials-when-code-is-pushed-in-githubedit
@@ -2918,7 +2988,7 @@ Frequently Asked Questions
             It is very important not to commit a full print out of the
             shell environment.
 
-- Where should I clone the GitHub
+            .. rubric:: Where should I clone the GitHub
                repository?[\ `edit </index.php?title=FAQ&action=edit&section=86>`__\ ]
                :name: where-should-i-clone-the-github-repositoryedit
 
@@ -2930,7 +3000,7 @@ Frequently Asked Questions
             Big compiles would probably be better on a compute node
             since you can assign more processors to the build.
 
-- GCP Region/AZs on GPUs and
+            .. rubric:: GCP Region/AZs on GPUs and
                models[\ `edit </index.php?title=FAQ&action=edit&section=87>`__\ ]
                :name: gcp-regionazs-on-gpus-and-modelsedit
 
@@ -2944,7 +3014,7 @@ Frequently Asked Questions
 
             https://cloud.google.com/compute/docs/gpus/gpu-regions-zones#gpu_regions_and_zones
 
-- What are the GPU models available on AWS, Azure,
+            .. rubric:: What are the GPU models available on AWS, Azure,
                and
                GCP[\ `edit </index.php?title=FAQ&action=edit&section=88>`__\ ]
                :name: what-are-the-gpu-models-available-on-aws-azure-and-gcpedit
@@ -2953,8 +3023,8 @@ Frequently Asked Questions
 
             https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html
 
-           
-           Azure GPUs can be found by typing Standard_NC,
+            | 
+            | Azure GPUs can be found by typing Standard_NC,
               Standard_ND, Standard_NV, and Standard_NG
 
             https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu
@@ -2964,7 +3034,7 @@ Frequently Asked Questions
 
             https://cloud.google.com/gpu
 
-- What are the Cloud regions supported by Parallel
+            .. rubric:: What are the Cloud regions supported by Parallel
                Works?[\ `edit </index.php?title=FAQ&action=edit&section=89>`__\ ]
                :name: what-are-the-cloud-regions-supported-by-parallel-worksedit
 
@@ -2973,7 +3043,7 @@ Frequently Asked Questions
             EastUS. GCP regions are us-central1, and us-east-1.
             Preferred region is us-central1
 
-- X2go Passwordless authentication using
+            .. rubric:: X2go Passwordless authentication using
                ssh-keys[\ `edit </index.php?title=FAQ&action=edit&section=90>`__\ ]
                :name: x2go-passwordless-authentication-using-ssh-keysedit
 
@@ -2981,7 +3051,7 @@ Frequently Asked Questions
 
             https://wiki.x2go.org/doku.php/wiki:advanced:authentication:passwordless-ssh
 
-- How to tunnel back from a compute node to the
+            .. rubric:: How to tunnel back from a compute node to the
                controller/head
                node?[\ `edit </index.php?title=FAQ&action=edit&section=91>`__\ ]
                :name: how-to-tunnel-back-from-a-compute-node-to-the-controllerhead-nodeedit
@@ -3000,7 +3070,7 @@ Frequently Asked Questions
             ssh-keygen -t rsa -f ~/.ssh/id_rsa -N *&& cat
             ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys*
 
-- On Azure, missing /apps fs system or modules not
+            .. rubric:: On Azure, missing /apps fs system or modules not
                loaded
                case[\ `edit </index.php?title=FAQ&action=edit&section=92>`__\ ]
                :name: on-azure-missing-apps-fs-system-or-modules-not-loaded-caseedit
@@ -3011,127 +3081,5 @@ Frequently Asked Questions
             It will take about 2 mins to complete, and will mount /apps
             file system.
 
-         .. container:: printfooter
-
-            Retrieved from
-            "http://localhost:8180/index.php?title=FAQ&oldid=798"
-
-      .. container:: catlinks catlinks-allhidden
-         :name: catlinks
-
-.. container::
-   :name: mw-navigation
-
-   .. rubric:: Navigation menu
-      :name: navigation-menu
-
-   .. container::
-      :name: mw-head
-
-      .. rubric:: Personal tools
-         :name: p-personal-label
-         :class: vector-menu-heading
-
-      .. container:: vector-menu-content
-
-         -  Not logged in
-         -  `Talk </index.php/Special:MyTalk>`__
-         -  `Contributions </index.php/Special:MyContributions>`__
-         -  `Create
-            account </index.php?title=Special:CreateAccount&returnto=FAQ>`__
-         -  `Log in </index.php?title=Special:UserLogin&returnto=FAQ>`__
-
-      .. container::
-         :name: left-navigation
-
-         .. rubric:: Namespaces
-            :name: p-namespaces-label
-            :class: vector-menu-heading
-
-         .. container:: vector-menu-content
-
-            -  `Page </index.php/FAQ>`__
-            -  `Discussion </index.php?title=Talk:FAQ&action=edit&redlink=1>`__
-
-         English
-
-         .. container:: vector-menu-content
-
-      .. container::
-         :name: right-navigation
-
-         .. rubric:: Views
-            :name: p-views-label
-            :class: vector-menu-heading
-
-         .. container:: vector-menu-content
-
-            -  `Read </index.php/FAQ>`__
-            -  `Edit </index.php?title=FAQ&action=edit>`__
-            -  `View history </index.php?title=FAQ&action=history>`__
-
-         More
-
-         .. container:: vector-menu-content
-
-         .. container::
-         vector-search-box-vue vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box
-            :name: p-search
-
-            .. container::
-
-               .. container:: vector-search-box-inner
-                  :name: simpleSearch
-
-   .. container:: vector-legacy-sidebar
-      :name: mw-panel
-
-      .. container::
-         :name: p-logo
-
-         ` </index.php/Main_Page>`__
-
-      .. rubric:: 
-         :name: p--label
-         :class: vector-menu-heading
-
-      .. container:: vector-menu-content
-
-         -  `Cloud Computing User Information </index.php/Main_Page>`__
-         -  `Additional Topics </index.php/Additional_Topics>`__
-         -  `Training Videos </index.php/Training_Videos>`__
-         -  `Office Hours </index.php/Office_Hours>`__
-         -  `Cloud Success Stories </index.php/Cloud_Success_Stories>`__
-         -  `Utilization </index.php/Utilization>`__
-         -  `User Meetings </index.php/User_Meetings>`__
-         -  `Getting Help </index.php/Getting_Help>`__
-         -  `FAQ </index.php/FAQ>`__
-
-      .. rubric:: Tools
-         :name: p-tb-label
-         :class: vector-menu-heading
-
-      .. container:: vector-menu-content
-
-         -  `What links here </index.php/Special:WhatLinksHere/FAQ>`__
-         -  `Related
-            changes </index.php/Special:RecentChangesLinked/FAQ>`__
-         -  `Special pages </index.php/Special:SpecialPages>`__
-         -  `Printable version <javascript:print();>`__
-         -  `Permanent link </index.php?title=FAQ&oldid=798>`__
-         -  `Page information </index.php?title=FAQ&action=info>`__
-
--  This page was last edited on 22 September 2023, at 15:02.
-
--  `Privacy policy </index.php/clouddocs:Privacy_policy>`__
--  `About clouddocs </index.php/clouddocs:About>`__
--  `Disclaimers </index.php/clouddocs:General_disclaimer>`__
-
--  |Powered by MediaWiki|
-
-.. |Powered by MediaWiki| image:: /resources/assets/poweredby_mediawiki_88x31.png
-   :width: 88px
-   :height: 31px
-   :target: https://www.mediawiki.org/
 
 
