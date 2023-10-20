@@ -190,7 +190,8 @@ Training Videos
             -  `Useful tutorials from
                Globus <https://docs.globus.org/how-to/instructional-videos/>`__
 
-            --> = Cloud Success Stories! =
+Cloud Success Stories! 
+======================
 
             -  `NOS Team: Storm Surge
                Modelling <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__
@@ -215,52 +216,6 @@ Training Videos
 
 Office Hours
 ============
-
-.. container:: noprint
-   :name: mw-page-base
-
-.. container:: noprint
-   :name: mw-head-base
-
-.. container:: mw-body
-   :name: content
-
-   .. container::
-      :name: siteNotice
-
-   .. container:: mw-indicators
-
-   .. rubric:: Office Hours
-      :name: firstHeading
-      :class: firstHeading mw-first-heading
-
-   .. container:: vector-body
-      :name: bodyContent
-
-      .. container:: noprint
-         :name: siteSub
-
-         From clouddocs
-
-      .. container::
-         :name: contentSub
-
-         .. container::
-            :name: mw-content-subtitle
-
-      .. container::
-         :name: contentSub2
-
-      .. container::
-         :name: jump-to-nav
-
-      `Jump to navigation <#mw-head>`__ `Jump to
-      search <#searchInput>`__
-
-      .. container:: mw-body-content mw-content-ltr
-         :name: mw-content-text
-
-         .. container:: mw-parser-output
 
             The Cloud Computing support team hosts bi-weekly sessions
             for demonstrations, questions and answers. Submit questions
@@ -331,9 +286,7 @@ Office Hours
             **Answer:** Probably not many, but the Cloud team will
             research for them.
 
-            | 
-
-            | `16 August
+            |  `16 August
               2023 <https://drive.google.com/file/d/1Sybufzev_MEl7o0k41B5wKaCM1Nne6qG/view?ts=64de6f71>`__
             | In this Q&A session, Matt and Unni answered questions as
               follows:
@@ -353,7 +306,7 @@ Office Hours
             -  Question concerning R Studio.
             -  Kimani asked about cluster persistence.
 
-            | 
+         
             | `2 August 2023
                <https://drive.google.com/file/d/1yRvdLWIsQo9K7sSCs01Gm9fRduizekcZ/view?ts=64cd5bb3>`__
               This Q&A session was attended by some new GFDL team
@@ -433,8 +386,7 @@ Office Hours
             Notes from this session can be found
             `here. <https://docs.google.com/document/d/1FUDebrZ_lYv3VgUTKvxWGvpDE6VMNQaJmwVy5g_8Jx8/edit>`__
 
-            | `24 May
-              2023 <https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
+            | `24 May 2023 <https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
             | In this session, users submitted questions in advance,
               including:
 
@@ -453,8 +405,7 @@ Office Hours
             -  Azure operation questions.
 
             | 
-            | `10 May
-              2023 <https://drive.google.com/file/d/1zL8TQ68qa3Nh0s3JB11VnvrJtwqEhvaH/view?ts=646d0527>`__
+            | `10 May 2023 <https://drive.google.com/file/d/1zL8TQ68qa3Nh0s3JB11VnvrJtwqEhvaH/view?ts=646d0527>`__
             | This was an open question-answer session covering the
               following:
 
@@ -468,8 +419,7 @@ Office Hours
                -  Partition settings in Google Cloud configuration
 
             | 
-            | `26 April
-              2023 <https://drive.google.com/file/d/1ZtZuZoJ28-M8qEvwZERvOENaUrNcCdmU/view?ts=64528126>`__
+            | `26 April 2023 <https://drive.google.com/file/d/1ZtZuZoJ28-M8qEvwZERvOENaUrNcCdmU/view?ts=64528126>`__
             | This video references the creation of a cloud/custom
               snapshot in these steps:
 
@@ -483,8 +433,7 @@ Office Hours
 
             | 
 
-            | `12 April
-              2023 <https://drive.google.com/file/d/1WEhr5aJ37FLTqIoCbFbxt1vXi4I0yZtd/view?ts=64381afa>`__
+            | `12 April 2023 <https://drive.google.com/file/d/1WEhr5aJ37FLTqIoCbFbxt1vXi4I0yZtd/view?ts=64381afa>`__
             | Topics discussed in this session include:
 
             -  Google contrib storage use best practices
@@ -496,9 +445,7 @@ Office Hours
             -  upcoming features, storage,
             -  health check scripts and custom snapshots
 
-         .. container:: printfooter
-
-         
+          
 Frequently Asked Questions
 =====================
 
