@@ -69,15 +69,14 @@ Training Videos
             Training Videos are available for Cloud Computing Platform
             users. Click a link to view the video.
             
-            '' Parallel Works ''
-
+           Parallel Works 
+           --------------
             .. rubric:: Parallel Works New Features Training, September
                27, 2023
             | `Workshop with Matt
               Long <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
             | Matt Long demonstrated enhancements to Parallel Works
               features:
-
             -  Updates to Notifications, with expanded notification
                types and email notification options
             -  Short term credentials, which can be used effectively for
@@ -90,45 +89,30 @@ Training Videos
                saves storage costs.
 
             .. rubric:: Parallel Works New Features Training, June 14,
-               2023[\ `edit </index.php?title=Training_Videos&action=edit&section=3>`__\ ]
-               :name: parallel-works-new-features-training-june-14-2023edit
-
+               2023
             `Workshop with Matt
             Long <https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
-
             Matt Long demonstrated the Parallel Works platform,
             including the new feature on storage, and enhanced cost
             dashboard. New users start here.
 
             .. rubric:: Parallel Works New Features Training, March 23,
-               2023[\ `edit </index.php?title=Training_Videos&action=edit&section=4>`__\ ]
-               :name: parallel-works-new-features-training-march-23-2023edit
-
+               2023
             `Workshop with Matt
             Long <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
 
             The training will cover the following topics:
-
-            Show estimated costs to run a given cluster configuration,
-            SSH keys configurable from inside platform, at user level,
-            Configurable slurm timeouts (and other slurm settings), and
-            **building a custom snapshot.**
+            - Show estimated costs to run a given cluster configuration,
+            - SSH keys configurable from inside platform, at user level,
+             -Configurable slurm timeouts (and other slurm settings), and
+            - **building a custom snapshot.**
 
             .. rubric:: Parallel Works Platform Enhancements, February
-               16,
-               2023[\ `edit </index.php?title=Training_Videos&action=edit&section=5>`__\ ]
-               :name: parallel-works-platform-enhancements-february-16-2023edit
+               16, 2023
+            .. rubric:: Training Presentation
+            `Slide deck - February 16 2023 <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`__
 
-            .. rubric:: Training
-               Presentation[\ `edit </index.php?title=Training_Videos&action=edit&section=6>`__\ ]
-               :name: training-presentationedit
-
-            `Slide deck - February 16
-            2023 <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`__
-
-            .. rubric:: Foundation[\ `edit </index.php?title=Training_Videos&action=edit&section=7>`__\ ]
-               :name: foundationedit
-
+            .. rubric:: Foundation
             **New users start here.** Foundational topics include
             Creation of a cluster configuration, multi-user setup,
             hiding a resource, duplicating a resource, monitor to view
@@ -139,45 +123,40 @@ Training Videos
             Review the presentation
             `here. <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
 
-            .. rubric:: Workflows[\ `edit </index.php?title=Training_Videos&action=edit&section=8>`__\ ]
-               :name: workflowsedit
-
-            Workflow topics include: subscribing a workflow from the PW
-            Marketplace, example **Juypter Notebook**, running a job
-            from the head node and compute node, canceling a job,
-            deletion of a cluster, creation and use of a custom image in
-            a workflow, **RStudio**, sharing a cluster with project
-            members, and bootstrap script.
+            .. rubric:: Workflows
+            Workflow topics include: 
+            - subscribing a workflow from the PW
+            Marketplace, example **Juypter Notebook**
+            - running a job
+            from the head node and compute node
+            - canceling a job,
+            - deletion of a cluster
+            - creation and use of a custom image in
+            a workflow
+            - **RStudio**
+            - sharing a cluster with project
+            members, and
+            - bootstrap script.
 
             Review the presentation
             `here. <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`__
 
             .. rubric:: Workflow Interactive
-               Session[\ `edit </index.php?title=Training_Videos&action=edit&section=9>`__\ ]
-               :name: workflow-interactive-sessionedit
-
-            Molecular dynamics simulation and visualization on a
-            multi-cluster model.
-
+               Session
+            Molecular dynamics simulation and visualization on a multi-cluster model.
             Review the presentation
             `here. <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
 
-            .. rubric:: Training Q &
-               A[\ `edit </index.php?title=Training_Videos&action=edit&section=10>`__\ ]
-               :name: training-q-aedit
-
+            .. rubric:: Training Q & A
             Review questions and comments
             `here. <https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`__
 
             .. rubric:: Other Parallel Works
-               Training[\ `edit </index.php?title=Training_Videos&action=edit&section=11>`__\ ]
-               :name: other-parallel-works-trainingedit
-
-            -  `Parallel Works Version
+               Training
+               Parallel Works Version
                2 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
                March 23, 2022
-            -  `Parallel Works Version
-               2 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__
+            -  `Parallel Works Version 2 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__
                January 20, 2022
             -  `Parallel Works Platform Training
                II <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`__
@@ -193,24 +172,17 @@ Training Videos
                -  Singularity container example
                -  Budget allocation
 
-            .. rubric:: Use Case
-               Sessions[\ `edit </index.php?title=Training_Videos&action=edit&section=12>`__\ ]
-               :name: use-case-sessionsedit
-
-            -  `JupyterHub Installation on a Conda, and R
+            .. rubric:: Use Case Sessions
+           -  `JupyterHub Installation on a Conda, and R
                Troubleshooting <https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`__
                April 7, 2023
-
                -  This recorded session details JupyterHub installation
                   on a Conda, and R troubleshooting.
 
-            .. rubric:: Globus[\ `edit </index.php?title=Training_Videos&action=edit&section=13>`__\ ]
-               :name: globusedit
-
+            .. rubric:: Globus
             -  `Globus Training: Setup and Data
                Transfer <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`__
                March 17, 2023
-
                -  This training walks you through the process of setting
                   up an endpoint, and transfering files to the CSP
                   classification.
