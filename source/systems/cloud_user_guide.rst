@@ -63,6 +63,558 @@ NOAA teams have used the power and flexibilty of Cloud computing in critical sit
 
 -  `EPIC Cloud Success  Story <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__  September 15, 2022
 
+Training Videos
+===============
+
+.. container:: noprint
+   :name: mw-page-base
+
+.. container:: noprint
+   :name: mw-head-base
+
+.. container:: mw-body
+   :name: content
+
+   .. container::
+      :name: siteNotice
+
+   .. container:: mw-indicators
+
+   .. rubric:: Training Videos
+      :name: firstHeading
+      :class: firstHeading mw-first-heading
+
+   .. container:: vector-body
+      :name: bodyContent
+
+      .. container:: noprint
+         :name: siteSub
+
+         From clouddocs
+
+      .. container::
+         :name: contentSub
+
+         .. container::
+            :name: mw-content-subtitle
+
+      .. container::
+         :name: contentSub2
+
+      .. container::
+         :name: jump-to-nav
+
+      `Jump to navigation <#mw-head>`__ `Jump to
+      search <#searchInput>`__
+
+      .. container:: mw-body-content mw-content-ltr
+         :name: mw-content-text
+
+         .. container:: mw-parser-output
+
+            Training Videos are available for Cloud Computing Platform
+            users. Click a link to view the video.
+
+            .. container:: toc
+               :name: toc
+
+               .. container:: toctitle
+
+                  .. rubric:: Contents
+                     :name: mw-toc-heading
+
+               -  `1 Parallel Works <#Parallel_Works>`__
+
+                  -  `1.1 Parallel Works New Features Training,
+                     September 27,
+                     2023 <#Parallel_Works_New_Features_Training,_September_27,_2023>`__
+                  -  `1.2 Parallel Works New Features Training, June 14,
+                     2023 <#Parallel_Works_New_Features_Training,_June_14,_2023>`__
+                  -  `1.3 Parallel Works New Features Training, March
+                     23,
+                     2023 <#Parallel_Works_New_Features_Training,_March_23,_2023>`__
+                  -  `1.4 Parallel Works Platform Enhancements, February
+                     16,
+                     2023 <#Parallel_Works_Platform_Enhancements,_February_16,_2023>`__
+
+                     -  `1.4.1 Training
+                        Presentation <#Training_Presentation>`__
+                     -  `1.4.2 Foundation <#Foundation>`__
+                     -  `1.4.3 Workflows <#Workflows>`__
+                     -  `1.4.4 Workflow Interactive
+                        Session <#Workflow_Interactive_Session>`__
+                     -  `1.4.5 Training Q & A <#Training_Q_&_A>`__
+
+                  -  `1.5 Other Parallel Works
+                     Training <#Other_Parallel_Works_Training>`__
+
+               -  `2 Use Case Sessions <#Use_Case_Sessions>`__
+               -  `3 Globus <#Globus>`__
+               -  `4 Features in
+                  Development <#Features_in_Development>`__
+
+            .. rubric:: Parallel
+               Works[\ `edit </index.php?title=Training_Videos&action=edit&section=1>`__\ ]
+               :name: parallel-worksedit
+
+            .. rubric:: Parallel Works New Features Training, September
+               27,
+               2023[\ `edit </index.php?title=Training_Videos&action=edit&section=2>`__\ ]
+               :name: parallel-works-new-features-training-september-27-2023edit
+
+            | `Workshop with Matt
+              Long <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
+            | Matt Long demonstrated enhancements to Parallel Works
+              features:
+
+            -  Updates to Notifications, with expanded notification
+               types and email notification options
+            -  Short term credentials, which can be used effectively for
+               cluster and storage resources
+            -  Updates to the Marketplace feature. Cluster and storage
+               configurations can now be shared with team members
+               through the Marketplace.
+            -  Lustre configurations can now be designated persistent,
+               and saved separately from the clusters. This potentially
+               saves storage costs.
+
+            .. rubric:: Parallel Works New Features Training, June 14,
+               2023[\ `edit </index.php?title=Training_Videos&action=edit&section=3>`__\ ]
+               :name: parallel-works-new-features-training-june-14-2023edit
+
+            `Workshop with Matt
+            Long <https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
+
+            Matt Long demonstrated the Parallel Works platform,
+            including the new feature on storage, and enhanced cost
+            dashboard. New users start here.
+
+            .. rubric:: Parallel Works New Features Training, March 23,
+               2023[\ `edit </index.php?title=Training_Videos&action=edit&section=4>`__\ ]
+               :name: parallel-works-new-features-training-march-23-2023edit
+
+            `Workshop with Matt
+            Long <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
+
+            The training will cover the following topics:
+
+            Show estimated costs to run a given cluster configuration,
+            SSH keys configurable from inside platform, at user level,
+            Configurable slurm timeouts (and other slurm settings), and
+            **building a custom snapshot.**
+
+            .. rubric:: Parallel Works Platform Enhancements, February
+               16,
+               2023[\ `edit </index.php?title=Training_Videos&action=edit&section=5>`__\ ]
+               :name: parallel-works-platform-enhancements-february-16-2023edit
+
+            .. rubric:: Training
+               Presentation[\ `edit </index.php?title=Training_Videos&action=edit&section=6>`__\ ]
+               :name: training-presentationedit
+
+            `Slide deck - February 16
+            2023 <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`__
+
+            .. rubric:: Foundation[\ `edit </index.php?title=Training_Videos&action=edit&section=7>`__\ ]
+               :name: foundationedit
+
+            **New users start here.** Foundational topics include
+            Creation of a cluster configuration, multi-user setup,
+            hiding a resource, duplicating a resource, monitor to view
+            cluster status, cost dashboard, connect to a controller
+            node, running an interactive job, storage options, Scheduler
+            and deletion tabs from the Resource monitor link.
+
+            Review the presentation
+            `here. <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
+
+            .. rubric:: Workflows[\ `edit </index.php?title=Training_Videos&action=edit&section=8>`__\ ]
+               :name: workflowsedit
+
+            Workflow topics include: subscribing a workflow from the PW
+            Marketplace, example **Juypter Notebook**, running a job
+            from the head node and compute node, canceling a job,
+            deletion of a cluster, creation and use of a custom image in
+            a workflow, **RStudio**, sharing a cluster with project
+            members, and bootstrap script.
+
+            Review the presentation
+            `here. <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`__
+
+            .. rubric:: Workflow Interactive
+               Session[\ `edit </index.php?title=Training_Videos&action=edit&section=9>`__\ ]
+               :name: workflow-interactive-sessionedit
+
+            Molecular dynamics simulation and visualization on a
+            multi-cluster model.
+
+            Review the presentation
+            `here. <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
+
+            .. rubric:: Training Q &
+               A[\ `edit </index.php?title=Training_Videos&action=edit&section=10>`__\ ]
+               :name: training-q-aedit
+
+            Review questions and comments
+            `here. <https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`__
+
+            .. rubric:: Other Parallel Works
+               Training[\ `edit </index.php?title=Training_Videos&action=edit&section=11>`__\ ]
+               :name: other-parallel-works-trainingedit
+
+            -  `Parallel Works Version
+               2 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
+               March 23, 2022
+            -  `Parallel Works Version
+               2 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__
+               January 20, 2022
+            -  `Parallel Works Platform Training
+               II <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`__
+               July 15, 2021. Topics include:
+
+               -  Connecting to a transient cluster head node from a
+                  remote host
+               -  Configuration settings to re-size the nodes count
+               -  Lustre file system; Use of different processors
+               -  Monitoring workers
+               -  Slurm jobs
+               -  workflow Jupyter Notebook
+               -  Singularity container example
+               -  Budget allocation
+
+            .. rubric:: Use Case
+               Sessions[\ `edit </index.php?title=Training_Videos&action=edit&section=12>`__\ ]
+               :name: use-case-sessionsedit
+
+            -  `JupyterHub Installation on a Conda, and R
+               Troubleshooting <https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`__
+               April 7, 2023
+
+               -  This recorded session details JupyterHub installation
+                  on a Conda, and R troubleshooting.
+
+            .. rubric:: Globus[\ `edit </index.php?title=Training_Videos&action=edit&section=13>`__\ ]
+               :name: globusedit
+
+            -  `Globus Training: Setup and Data
+               Transfer <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`__
+               March 17, 2023
+
+               -  This training walks you through the process of setting
+                  up an endpoint, and transfering files to the CSP
+                  classification.
+
+            -  `Useful tutorials from
+               Globus <https://docs.globus.org/how-to/instructional-videos/>`__
+
+            --> = Cloud Success Stories! =
+
+            -  `NOS Team: Storm Surge
+               Modelling <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__
+               September 27, 2022
+            -  `NWS Team: Rapid Refresh Forecast
+               System <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__
+               September 21, 2022
+            -  `EPIC Cloud Success
+               Story <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__
+               September 15, 2022 -->!
+
+            .. rubric:: Features in
+               Development[\ `edit </index.php?title=Training_Videos&action=edit&section=14>`__\ ]
+               :name: features-in-developmentedit
+
+            There are new features and capabilities under discussion at
+            Parallel Works. If you are interested in these features,
+            send an email ticket to: rdhpcs.cloud.help@noaa.gov, with
+            the subject line PW Features.
+
+
+
+Office Hours
+============
+
+.. container:: noprint
+   :name: mw-page-base
+
+.. container:: noprint
+   :name: mw-head-base
+
+.. container:: mw-body
+   :name: content
+
+   .. container::
+      :name: siteNotice
+
+   .. container:: mw-indicators
+
+   .. rubric:: Office Hours
+      :name: firstHeading
+      :class: firstHeading mw-first-heading
+
+   .. container:: vector-body
+      :name: bodyContent
+
+      .. container:: noprint
+         :name: siteSub
+
+         From clouddocs
+
+      .. container::
+         :name: contentSub
+
+         .. container::
+            :name: mw-content-subtitle
+
+      .. container::
+         :name: contentSub2
+
+      .. container::
+         :name: jump-to-nav
+
+      `Jump to navigation <#mw-head>`__ `Jump to
+      search <#searchInput>`__
+
+      .. container:: mw-body-content mw-content-ltr
+         :name: mw-content-text
+
+         .. container:: mw-parser-output
+
+            The Cloud Computing support team hosts bi-weekly sessions
+            for demonstrations, questions and answers. Submit questions
+            in advance to unni.kirandumkara@noaa.gov.
+
+            | `14 September
+              2023 <https://drive.google.com/file/d/1INH-x7Cz025UtwMQDjlQX9Yn5MdQ_xE5/view?ts=6504735f>`__
+            | Workshop with Matt and Steve.
+
+            | `30 August
+              2023 <https://drive.google.com/file/d/1qbZHqXSfH2V5J_SL2Nt7Huq86v4nqjBK/view?ts=64f0bb3e>`__
+            | In this session, users submitted questions in advance, and
+              Matt and Unni responded.
+
+            -  A user is trying to balance the relative cost of
+               computation and storage capacity -- storage costs are
+               especially high. The user may switch from GCP to AWS in
+               the coming year, to access available GPUs, which have
+               been hard to access in GCP.
+
+            **Answer:** Matt suggested where information on GPUs could
+            be found, and how one might deduce where GPUs could be
+            expected, based naming connections. G4 nodes should contain
+            GPUs.
+
+            -  A user had a question about Allocation questionnaire for
+               the coming year.
+
+            **Answer:** The questionnaire comes from the Program
+            Management team. Specific questions can be raised to PIs and
+            PMs.
+
+            -  A user had issues with GPUs, storage costs and
+               reservations.
+
+            **Answer:** GPUs from GCP are harder to access. However, AWS
+            platform with On-Demand Capacity reservation (large capacity
+            for four weeks) is working out. Switching from GCP to AWS
+            would reduce costs, with a higher probability of getting
+            GPUs. Reservations are available in AWS only, with admin
+            support. Parallel Works has not yet been able to mirror that
+            functionality on Google.
+
+            -  A user requested that estimation costs and GPU
+               information should be added to documentation/Wiki.
+
+            **Answer:** Will investigate.
+
+            -  A user had question about using a Jupityr notebook, and
+               whether it can be set up on Contrib.
+
+            **Answer:** That's a right way to proceed. Installation
+            takes a lot of time, but everything should be fine once it’s
+            installed. If the user knows in advance what packages he
+            needs, he can make a custom snapshot of the package.
+            Singularity and Docker and Podman are all available.
+
+            -  A user needs to request more allocation on AWS.
+
+            **Answer:** Send an email to Gonzalo Lassally to request
+            allocation. Can be done in a few days.
+
+            -  A user is used to a Linux environment and is slowly
+               getting used to Cloud. He's been looking at available
+               videos and finding resolution to be poor -- are there
+               other videos available.
+
+            **Answer:** Probably not many, but the Cloud team will
+            research for them.
+
+            | 
+
+            | `16 August
+              2023 <https://drive.google.com/file/d/1Sybufzev_MEl7o0k41B5wKaCM1Nne6qG/view?ts=64de6f71>`__
+            | In this Q&A session, Matt and Unni answered questions as
+              follows:
+
+            -  For questions concerning Azure file transfers - Matt gave
+               a demonstration
+            -  Andy raised issues with access. Matt discussed firewalls,
+               and export and send commands.
+            -  Issue concerning the file path from Parallel Works.
+            -  Questions on Jupyter
+            -  Andy asked how users can know what's updated and what's
+               obsolete in Parallel Works, and requested that users be
+               informed when changes are made, because of impacts to
+               their work.
+            -  Questions concerning confidential data.
+            -  Question about ssh key versus api key.
+            -  Question concerning R Studio.
+            -  Kimani asked about cluster persistence.
+
+            | 
+            | `2 August 2023
+               <https://drive.google.com/file/d/1yRvdLWIsQo9K7sSCs01Gm9fRduizekcZ/view?ts=64cd5bb3>`__
+              This Q&A session was attended by some new GFDL team
+              members, looking for the information they needed to get
+              started. There's a dataset that can only be accessed on
+              AWS Cloud, and these users need background and transfer
+              information.
+
+            -  Matt gave an overview of new features in Parallel Works,
+               particularly temporary credentials for buckets. The
+               Buckets and Storage pages can be used obtain temporary
+               credentials. (This feature is not yet available on
+               Azure.) Matt also mentioned ephemeral lustres, a new
+               enhancement.
+            -  Unni pointed the new users to the Clouddocs wiki, citing
+               a June training that provides background to access
+               storage, and links to Parallel Works documentation. This
+               may help the new users to get started.
+            -  Raghu offered some specific guidance.
+            -  Unni proposed a meeting with the new users, himself and
+               Matt, to move their task forward.
+
+            | 19 July 2023
+            | A technical difficulty prevented the team from recording
+              the Office Hours session. Questions and responses are
+              summarised
+              `here. <https://docs.google.com/document/d/1S1162ePlycBjpylL0cggp-6p_RtEX_LQZ_0kLbG3qrk/edit>`__
+
+            | `5 July
+              2023 <https://drive.google.com/file/d/1e7lkH3esEToYEBvL53P0DJm8Sm0L4G33/view?ts=64a6ee9f>`__
+            | In this Q&A session, Matt and Unni addressed the following
+              topics:
+
+            -  GPU selection and constraints, especially on Azure
+            -  Can a user configure the Cloud account to send email when
+               a job completes or fails? More than one user has this
+               request; Matt will assist them.
+            -  Users have had clusters that completed work but did not
+               shut down. This results in extensive charges for nothing.
+               Matt says this is a known issue being actively worked. In
+               the meantime he recommends users look in the Log tabs for
+               job and cluster status.
+            -  Matt demonstrated the new Properties tab in Parallel
+               Works. Among other things it can be used to enable email
+               alerts.
+            -  Unni mentioned the upcoming Super Computing Conference in
+               Denver, 12-17 November. Anyone interested in submitting a
+               paper to the Birds of a Feather session may do so
+               `here <https://sc23.supercomputing.org/program/birds-of-a-feather/>`__.
+
+            | `21 June
+              2023 <https://drive.google.com/file/d/1PPj6ZM6cZTPE6FVGt9luDDiouAo9RRty/view?ts=64944e9f>`__
+            | No questions were submitted prior to this session, but a
+              lively discussion took place.
+
+            -  Some users discussed their challenges in getting
+               on-demand Nvidia GPU processors.
+            -  Matt recommended on-demand reservations and described how
+               reservations work in some detail.
+            -  Users discussed the cost of jobs submitted under the
+               reservation system.
+            -  Unni recommended the Cost Estimation feature available
+               with the AWS system.
+
+            | 
+            | `7 June
+              2023 <https://drive.google.com/file/d/1N7PwnfYu5aD0Fo8Z8GYwCF9brw0m9J72/view?ts=6481d78c>`__
+            | In this open Q&A session, Matt and Unni addressed the
+              following topics:
+
+            -  Account problems
+            -  Studio workflows
+            -  The new COST dashboard
+            -  Lustre configuration issues
+            -  Azure cold storage options.
+
+            Notes from this session can be found
+            `here. <https://docs.google.com/document/d/1FUDebrZ_lYv3VgUTKvxWGvpDE6VMNQaJmwVy5g_8Jx8/edit>`__
+
+            | `24 May
+              2023 <https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
+            | In this session, users submitted questions in advance,
+              including:
+
+            -  Disk space allowance on /contrib, /home, and the Cloud
+               environment.
+            -  The difference between MDS and OST boot disk size, and
+               access to each.
+            -  Cluster activation and de-activation, and timing and
+               configuration changes.
+            -  Methods currently in use to move data to and from the
+               Cloud.
+            -  Syncing global-workflow fixed files for \`develop\` to
+               AWS s3, and related AWS s3 issues
+            -  Optimized IC staging for regression testing
+            -  Mitigating FS latency
+            -  Azure operation questions.
+
+            | 
+            | `10 May
+              2023 <https://drive.google.com/file/d/1zL8TQ68qa3Nh0s3JB11VnvrJtwqEhvaH/view?ts=646d0527>`__
+            | This was an open question-answer session covering the
+              following:
+
+            -  The Podman application
+            -  Reported queueing problems in Parallel Works
+            -  Could the frequent version incrementation in Parallel
+               Work have an impact on clusters or other operations in
+               progress. (Parallel Works said no.)
+            -  Features in future update:
+
+               -  Partition settings in Google Cloud configuration
+
+            | 
+            | `26 April
+              2023 <https://drive.google.com/file/d/1ZtZuZoJ28-M8qEvwZERvOENaUrNcCdmU/view?ts=64528126>`__
+            | This video references the creation of a cloud/custom
+              snapshot in these steps:
+
+            -  Resource definition
+            -  Activate conda at boot
+            -  Update “.bashrc” using bootstrap script
+            -  Copy files from laptop to contrib using scp, rsync, and
+               Globus
+            -  Cluster health check
+            -  Copy file between contrib and bucket using gsutil
+
+            | 
+
+            | `12 April
+              2023 <https://drive.google.com/file/d/1WEhr5aJ37FLTqIoCbFbxt1vXi4I0yZtd/view?ts=64381afa>`__
+            | Topics discussed in this session include:
+
+            -  Google contrib storage use best practices
+            -  Finding a project bucket
+            -  gsutil command
+            -  Azure’s contrib and block storage as the same storage
+            -  Storage issues, including centralized storage of user
+               public ssh keys
+            -  upcoming features, storage,
+            -  health check scripts and custom snapshots
+
+         .. container:: printfooter
+
          
 Frequently Asked Questions
 =====================
