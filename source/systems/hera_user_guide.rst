@@ -107,16 +107,22 @@ Users will receive warning emails when their quota isexceeded. When either the v
 
 If you are approaching your quota, the first step should beto delete old files and/or move files to HPSS tape systemsas appropriate. If more volume is still needed, as withprevious systems, volume quota increases are requested bysubmitting a Hera help ticket with a justification,including:
 
-::
-1. Project name.    2. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?    3. Justification, including an analysis of your workload detailing the volume needed
-The request has to be approved by the project's PI (orPortfolio Manager), so it will save time if the requestcomes from the PI (or Portfolio Manager). Once requests areapproved by the PI (or Portfolio Manager) they will bereviewed by the Hera resource manager.
+            ::
+
+                1. Project name.
+                2. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
+                3. Justification, including an analysis of your workload detailing the volume needed
+
 
 .. rubric:: File Count Quota Increase
 
 If you are approaching your quota or your file count quotaor are running over 200 files/GB, the first step should beto delete old small files. If you want to keep them aroundbut they are not accessed frequently, you should tar up manysmall files into one big files. If you have an exceptionalsituation and believe you need a quota increase, pleasestart a Hera help ticket including the followinginformation:
 
 ::
-1. Project name.   2. Justification, including an analysis of your workload detailing the files/GB needed.   3. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
+
+1. Project name.   
+2. Justification, including an analysis of your workload detailing the files/GB needed.   
+3. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
 
 
 The request has to be approved by the project's PI (orPortfolio Manager), so it will save time if the requestcomes from the PI (or Portfolio Manager). Once requests areapproved by the PI (or Portfolio Manager) they will bereviewed by the Hera resource manager.
