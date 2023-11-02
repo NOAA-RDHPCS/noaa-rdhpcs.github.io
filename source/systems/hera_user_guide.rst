@@ -108,7 +108,7 @@ Users will receive warning emails when their quota isexceeded. When either the v
 If you are approaching your quota, the first step should beto delete old files and/or move files to HPSS tape systemsas appropriate. If more volume is still needed, as withprevious systems, volume quota increases are requested bysubmitting a Hera help ticket with a justification,including:
 
 ::
-    1. Project name.    2. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?    3. Justification, including an analysis of your workload detailing the volume needed
+1. Project name.    2. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?    3. Justification, including an analysis of your workload detailing the volume needed
 The request has to be approved by the project's PI (orPortfolio Manager), so it will save time if the requestcomes from the PI (or Portfolio Manager). Once requests areapproved by the PI (or Portfolio Manager) they will bereviewed by the Hera resource manager.
 
 .. rubric:: File Count Quota Increase
@@ -116,10 +116,10 @@ The request has to be approved by the project's PI (orPortfolio Manager), so it 
 If you are approaching your quota or your file count quotaor are running over 200 files/GB, the first step should beto delete old small files. If you want to keep them aroundbut they are not accessed frequently, you should tar up manysmall files into one big files. If you have an exceptionalsituation and believe you need a quota increase, pleasestart a Hera help ticket including the followinginformation:
 
 ::
-   1. Project name.   2. Justification, including an analysis of your workload detailing the files/GB needed.   3. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
+1. Project name.   2. Justification, including an analysis of your workload detailing the files/GB needed.   3. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
 
 
-he request has to be approved by the project's PI (orPortfolio Manager), so it will save time if the requestcomes from the PI (or Portfolio Manager). Once requests areapproved by the PI (or Portfolio Manager) they will bereviewed by the Hera resource manager.
+The request has to be approved by the project's PI (orPortfolio Manager), so it will save time if the requestcomes from the PI (or Portfolio Manager). Once requests areapproved by the PI (or Portfolio Manager) they will bereviewed by the Hera resource manager.
 
 .. rubric:: Lustre
 
@@ -141,8 +141,7 @@ All nodes (login and compute) access the lustre file-systemsmounted at /scratch1
 Each user has access to one or more directories based on theproject which they are a member of, such as:
 
 ::
-
-    /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
+      /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
 ...where ${TASK} is \**often but not necessarily*\* theindividual user's login ID, as defined by the project lead.The number of servers and targets on *each* of the two Herafile systems is:
 
@@ -197,12 +196,12 @@ Lustre provides a utility to query and set access to thefile system.
 For a complete list of available options:
 
 ::
-    lfs help
+lfs help
 
 To get more information on a specific option:
 
 ::
-    lfs help <option>
+lfs help <option>
 
 .. rubric:: Checking Diskspace
 
@@ -356,7 +355,7 @@ You can specify the stripe count and size programmatically,by creating an MPI in
            * Write all files in this directory.
            * Compute
            * Otherwise set the stripe count to 1 for the file. 
-           
+
 ::
     lfs setstripe -s 1m -c 1 /scratch1/your_project_dir/path/serial/
 
