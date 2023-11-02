@@ -8,7 +8,7 @@ Getting Started
 Documentation
 =============
 
-Visit the RDHPCS CommonDocs page (rdhpcs-common-docs (noaa.gov) for information on HPC processes and activities. This page also provides links to system-specific documentation. 
+Visit the `RDHPCS CommonDocs page <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php?title=Start>`_ for information on HPC processes and activities. This page also provides links to system-specific documentation. 
 
 ==============
 Maintenance Schedule
