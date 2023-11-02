@@ -1,8 +1,8 @@
 .. _getting_help:
 
-############
+*****
 Getting Help
-############
+*****
 
 The preferred method for submitting help requests is via email.  Each system
 across the RDHPCS has a specific email address to use for requesting help.
@@ -183,9 +183,8 @@ can do this by simply replying to the last email sent to you by the help system
 PPAN tickets use the `GFDL customer portal
 <https://helpdesk.gfdl.noaa.gov/otrs/customer.pl>`_.
 
-***********************************************
 Required Information for Specific Types of Help
-***********************************************
+-------------------------
 
 The information required for a technician to quickly investigate and resolve an
 issue differ based on the issue.  Adhering to the following guidelines will
@@ -335,9 +334,8 @@ following information to assist you:
   the problem.
   * If the command does not include the source and destination directories please include that information too.
 
-*********************
 Managing Help Tickets
-*********************
+======================
 
 Help Tickets can be managed in two ways:
 
@@ -360,14 +358,14 @@ Help Tickets can be managed in two ways:
          Please refer to the :doc:`user portal documentation </help/user_portal>`.
 
 
-*********
+
 Help Ticket System User Portal
-*********
+==============================
 
 
-*****
+
 Login
-*****
+-----
 
 The ticket system allows an alternative access point to view RDHPCS help
 tickets. It is recommended to use the portal if you have multiple open help
@@ -390,9 +388,9 @@ options to see **All** or only **Closed** tickets.
 
 .. image:: /images/help_portal/otrswikiuseroverview.png
 
-*****************
+
 Reply to a Ticket
-*****************
+-------
 
 In order to reply to a ticket, locate the "Reply" button found at the
 end of the most recient ticket thread.
@@ -410,9 +408,8 @@ the RDHPCS Help Desk. Select Submit to send the ticket to the RDHPCS Help Desk.
     Replying to a closed ticket will reopen the ticket.
 
 
-*******************
 Search for a Ticket
-*******************
+---------------
 
 Search for an OTRS ticket by selecting the "Search" option in the
 Tickets Menu:
@@ -437,9 +434,9 @@ The search feature also includes an option to save the search as a template,
 which allows for quick access to searches that you find yourself repeating.
 After building the search, check the "Save search as a template" checkbox.
 
-*******************
+
 Create a New ticket
-*******************
+--------------
 
 New help tickets can be created by going to :menuselection:`Tickets --> New
 Ticket`.  Please only report one issue per help ticket. This will assist us in
