@@ -24,6 +24,13 @@ Getting Started
 
    Getting Started/index
 
+Maintenance Calendar
+------------
+.. toctree::
+   :maxdepth: 2
+
+   help/Maintenance   
+
 Getting Help
 ------------
 .. toctree::
