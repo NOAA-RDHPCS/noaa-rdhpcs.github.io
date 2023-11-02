@@ -15,12 +15,7 @@ Welcome to RDHPDS's documentation.
    This is an attempt to add a line to the description:
    Lasciate ogne speranza, voi ch’intrate.
 
-Getting Help
-------------
-.. toctree::
-   :maxdepth: 1
 
-   help/index
 
 Getting Started
 ----------------
@@ -28,6 +23,13 @@ Getting Started
    :maxdepth: 2
 
    Getting Started/index
+
+   Getting Help
+------------
+.. toctree::
+   :maxdepth: 2
+
+   help/index
 
 Logging In
 -----------
