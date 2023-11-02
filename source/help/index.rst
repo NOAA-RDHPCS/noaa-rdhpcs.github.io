@@ -71,7 +71,7 @@ GFDL manages tickets for Gaea and PPAN.
 
     Help tickets are normally addressed by the RDHPCS User Support team from 0900 -
     1700 Eastern Time, Monday - Friday, except Government holidays.
-    
+
 .. _good_hd_requests:
 
 ******************************
@@ -360,9 +360,10 @@ Help Tickets can be managed in two ways:
          Please refer to the :doc:`user portal documentation </help/user_portal>`.
 
 
-##############################
+*********
 Help Ticket System User Portal
-##############################
+*********
+
 
 *****
 Login
