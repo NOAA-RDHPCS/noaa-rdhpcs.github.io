@@ -38,6 +38,12 @@ Logging In
 
    Logging in/index
 
+Systems
+-------
+.. toctree::
+   :maxdepth: 2
+
+   systems/index
 
 Connecting
 ----------
@@ -61,12 +67,6 @@ Common Material
 
    common material/index
 
-Systems
--------
-.. toctree::
-   :maxdepth: 2
-
-   systems/index
 
 Data
 ----
