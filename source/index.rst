@@ -24,7 +24,7 @@ Getting Started
 
    Getting Started/index
 
-   Getting Help
+Getting Help
 ------------
 .. toctree::
    :maxdepth: 2
@@ -34,7 +34,7 @@ Getting Started
 Logging In
 -----------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 2 
 
    Logging in/index
 
