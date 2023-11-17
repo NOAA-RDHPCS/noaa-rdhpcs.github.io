@@ -145,10 +145,10 @@ An OST is a block storage device, often several disks in a RAID configuration.
 All nodes (login and compute) access the lustre file-systemsmounted at /scratch1 and /scratch2.
 Each user has access to one or more directories based on theproject which they are a member of, such as:
 
-::
+.. code-block:: shell
 /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
-...where ${TASK} is \**often but not necessarily*\* theindividual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
+...where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
 
            * 2 MDSs (active/active)
            * 2 MDTs
@@ -187,14 +187,18 @@ The /scratch1 and /scratch2 file systems are enabled with afeature called "Progr
 These file systems are also augmented by a set of SSD OSTs (described above) and with the PFL capability is further optimized for small file performance. By default, smaller files are stored completely in SSD, which further decreases random operation latency and allows the HDDs to run more efficiently for streaming reads and writes. The default configuration will automatically stripe and place files in a generally optimal fashion to improve I/O performance for varying file sizes, including the use of SSDs for better small-file performance. The defaults also attempt to makethe best use of the SSD targets (which are faster, but have much less capacity than HDDs).
 More details on PFL are available `<here: http://wiki.lustre.org/Progressive_File_Layoutshttp://doc.lustre.org/lustre_manual.xhtml#pfl>`_
 
-**Important Note:** The PFL feature makes much of theinformation documented below regarding customizing stripingunnecessary.
+**Important Note:** The PFL feature makes much of theinformation documented below regarding customizing striping unnecessary.
 
            * Users should not need to adjust stripe count and size on   /scratch1 and /scratch2.*
            * With PFL enabled, setting your own stripe layout may   reduce I/O performance for your files and the overall I/O   performance of the file system.
-           * If you have already used "lfs setstripe" commands   documented below, you should probably remove the striping   that may have already been set. Here are the steps that   should be followed if you have any directories that had   explicitly set non-default striping:
+           * If you have already used "lfs setstripe" commands   documented below, you should probably remove the striping   that may have already been set. 
+           
+Here are the steps you should follow if you have any directories that had explicitly set non-default striping:
 
 #. Remove all "lfs setstripe" commands from your scripts
-#. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping:   *lfs setstripe -d <dir>*
+#. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping: 
+.. code-block:: shell  
+*lfs setstripe -d <dir>*
 #. Open a `<help ticket https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
 
 .. rubric:: Userspace Commands
@@ -202,12 +206,12 @@ More details on PFL are available `<here: http://wiki.lustre.org/Progressive_Fil
 Lustre provides a utility to query and set access to the file system.
 For a complete list of available options:
 
-::
+.. code-block:: shell
 lfs help
 
 To get more information on a specific option:
 
-::
+.. code-block:: shell
 lfs help <option>
 
 .. rubric:: Checking Diskspace
