@@ -437,7 +437,6 @@ To stop logging your dependencies, delete the
   script.
 
 .. note::
-
 RDHPCS support staff does not have the available resources to support or maintain these packages. You will be responsible for the installation and troubleshooting of the packages you choose to install. Due to architectural and software differences some of the functionality in these packages may not work.
 
 .. rubric:: MATLAB
