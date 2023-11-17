@@ -804,7 +804,7 @@ Failure to use -l will cause the module commands to fail and your job will not r
 
  .. rubric:: Additional Documentaion on Lua modules
 
-Click  `<here http://lmod.readthedocs.org/en/latest/>`_ for more detailed information on Lua module utility.
+Click  `here <http://lmod.readthedocs.org/en/latest/>`_ for more detailed information on Lua module utility.
 
 
  
