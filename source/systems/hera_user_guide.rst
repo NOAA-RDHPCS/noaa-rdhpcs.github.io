@@ -145,8 +145,9 @@ An OST is a block storage device, often several disks in a RAID configuration.
 All nodes (login and compute) access the lustre file-systemsmounted at /scratch1 and /scratch2.
 Each user has access to one or more directories based on theproject which they are a member of, such as:
 
+
 .. code-block:: shell
-/scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
+    /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
 ...where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
 
@@ -156,7 +157,7 @@ Each user has access to one or more directories based on theproject which they a
            * 122 OSTs (106 are HDDs, 16 are SSDs)
            * 9.1 PiB of usable disk space (*df -hP /scratch{1,2}*)
 
-Since each file system has two metadata targets, each project directory is configured to use one of MDTs, and theyare spread roughly evenly between the two MDTs. This meansthat approximately 1/4 of all Hera projects share metadata resources.
+Since each file system has two metadata targets, each project directory is configured to use one of MDTs, and they are spread roughly evenly between the two MDTs. This means that approximately 25% of all Hera projects share metadata resources.
 
 .. rubric:: File Operations
 
@@ -197,9 +198,10 @@ Here are the steps you should follow if you have any directories that had explic
 
 1. Remove all "lfs setstripe" commands from your scripts.
 2. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping: 
+
 .. code-block:: shell 
 
-*lfs setstripe -d <dir>*
+   *lfs setstripe -d <dir>*
 
 3. Open a `<help ticket https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
 
