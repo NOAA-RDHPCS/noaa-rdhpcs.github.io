@@ -572,6 +572,9 @@ utilities:
 
    module spider
 
+.. note::
+
+The first connection with an RSA token, you will be requested for a new PIN which must be at least 6 alphanumeric characters.
          
 
 Software
