@@ -607,6 +607,7 @@ Use "module spider" to find all possible modules.
 Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 .. code-block:: shell
+    
     tfe10.%
 
 This is because you have not loaded any of the compiler modules, and HDF5 modules installed on the system require one of the compiler modules. But if you're still interested in finding out which versions are available, and when you want to find more details about which compilers will have to be loaded in order to use that module, you have to use the "module spider" command as shown below:
@@ -670,7 +671,6 @@ The current configuration has no default modules loaded. Run:
     # module avail
 
  to see the list of modules available for you load now.
-
  At a minimum you will want to do:
 
 .. code-block:: shell
@@ -713,11 +713,11 @@ The current configuration has no default modules loaded. Run:
 Use "module spider" to find all possible modules.
 Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
+.. code-block:: shell
 
     h3a03.hera%
 
-Please note that because LMOD is a hierarchical module system you only see the list of modules that you can load at this point in time (based on what other modules you may have loaded). To see the complete list of modules available on the system,
- please use the "module spider" command:
+Please note that because LMOD is a hierarchical module system you only see the list of modules that you can load at this point in time (based on what other modules you may have loaded). To see the complete list of modules available on the system, use the "module spider" command:
 
 .. code-block:: shell
 
@@ -780,11 +780,8 @@ In some cases other required modules may be loaded for you. The Intel module man
 
 Notes:
 
--  When unloading modules, only unload those that you have
-    loaded. The others are done automatically from master
-    modules.
--  Modules is a work in progress, and we will be improving
-    their uses and making which modules you load more clear.
+-  When unloading modules, only unload those that you have loaded. The others are done automatically from master modules.
+-  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
 
 .. rubric:: Loading Modules in batch jobs
 
@@ -807,8 +804,8 @@ Failure to use -l will cause the module commands to fail and your job will not r
 
  .. rubric:: Additional Documentaion on Lua modules
 
-Please see the following link for more detailed information on Lua module utility:
- `<http://lmod.readthedocs.org/en/latest/>`_
+Click here `<link http://lmod.readthedocs.org/en/latest/>`_ for more detailed information on Lua module utility.
+
 
  
 
