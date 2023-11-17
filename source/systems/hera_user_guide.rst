@@ -802,7 +802,7 @@ Due to the way the POSIX standard is defined for bash, sh, and ksh you **MUST** 
 
 Failure to use -l will cause the module commands to fail and your job will not run properly and may crash in hard to diagnose ways.
 
- .. rubric:: Additional Documentaion on Lua modules
+ .. rubric::Additional Documentation on Lua modules
 
 Click  `here <http://lmod.readthedocs.org/en/latest/>`_ for more detailed information on Lua module utility.
 
