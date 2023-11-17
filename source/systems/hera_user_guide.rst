@@ -101,13 +101,12 @@ The serial transfer rate of a single stream is generally greater than 1 GB/s but
 For efficient resource usage, Hera's /scratch1 and /scratch2Lustre file systems have project based volume and file countquotas. Each project has an assigned quota which is sharedby all users on the project. File count quotas are new andare implemented to preserve the increased performance of the2 tier storage architecture where the first 128 KB of eachfile is stored on SSD and the remainder if any on HDD.Historical data from Theia and Jet show that the averagefile count per GB is ~100. By default projects on Hera aregiven a file count quota of 200 files per GB of volume quotaor 100,000 files whichever is higher.
 Users will receive warning emails when their quota isexceeded. When either the volume or file count quota isexceed by more than 1.2x, writes will not be allowed.
 | 
- Summary and detailed information on finding your project's disk volume and file count quota and usage is found at:  `Getting Information About Your  Projects <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Projects_-_SLURM>`__
+Summary and detailed information on finding your project's disk volume and file count quota and usage is found at:  `Getting Information About Your  Projects <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Projects_-_SLURM>`__
 
 .. rubric:: Volume Quota Increase
 
 If you are approaching your quota, the first step should beto delete old files and/or move files to HPSS tape systemsas appropriate. If more volume is still needed, as withprevious systems, volume quota increases are requested bysubmitting a Hera help ticket with a justification,including:
 
-::
 1. Project name.
 2. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
 3. Justification, including an analysis of your workload detailing the volume needed
@@ -145,8 +144,8 @@ An OST is a block storage device, often several disks in a RAID configuration.
 All nodes (login and compute) access the lustre file-systemsmounted at /scratch1 and /scratch2.
 Each user has access to one or more directories based on theproject which they are a member of, such as:
 
-
 .. code-block:: shell
+    
     /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
 ...where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
@@ -188,7 +187,7 @@ The /scratch1 and /scratch2 file systems are enabled with afeature called "Progr
 These file systems are also augmented by a set of SSD OSTs (described above) and with the PFL capability is further optimized for small file performance. By default, smaller files are stored completely in SSD, which further decreases random operation latency and allows the HDDs to run more efficiently for streaming reads and writes. The default configuration will automatically stripe and place files in a generally optimal fashion to improve I/O performance for varying file sizes, including the use of SSDs for better small-file performance. The defaults also attempt to makethe best use of the SSD targets (which are faster, but have much less capacity than HDDs).
 More details on PFL are available `<here: http://wiki.lustre.org/Progressive_File_Layoutshttp://doc.lustre.org/lustre_manual.xhtml#pfl>`_
 
-**Important Note:** The PFL feature makes much of theinformation documented below regarding customizing striping unnecessary.
+**Important Note:** The PFL feature makes much of the information documented below regarding customizing striping unnecessary.
 
            * Users should not need to adjust stripe count and size on   /scratch1 and /scratch2.*
            * With PFL enabled, setting your own stripe layout may   reduce I/O performance for your files and the overall I/O   performance of the file system.
@@ -227,22 +226,25 @@ Tracking and enforcement includes maximum file count, not just capacity.
 To check your usage details...
 
 
-   # Look up your project ID number (not the name)  id  
-   # Query your usage and limits using that number, for a given file system.   
+1. Look up your project ID number (not the name)  id  
+2. Query your usage and limits using that number, for a given file system.  
+
 .. code-block:: shell   
    lfs quota -p <project ID number> /scratchX
 
-User and Group usage (capacity and file count) is trackedbut not limited. You can also find your usage and your unixgroup's usage:
+User and Group usage (capacity and file count) is tracked but not limited. You can also find your usage and your unixgroup's usage:
 
 .. code-block:: shell
+    
     lfs quota -u <User.Name> /scratch1    lfs quota -g <groupname> /scratch1
 
 .. note::
-  This is the *group* that owns the data,*regardless of where it is stored in the filesystemdirectory hierarchy*.
+  This is the *group* that owns the data,*regardless of where it is stored in the file system directory hierarchy*.
 
 For example, to get a summary of the disk usage for project "rtnim":
 
 .. code-block:: shell
+  
    $ id   uid=5088(rtfim) gid=10052(rtfim) groups=10052(rtfim)...
    $ lfs quota -p 10052 /scratch1   Disk quotas for prj 10052 (pid 10052):        Filesystem  kbytes   quota   limit   grace   files   quota   limit   grace         /scratch1       4  1048576 1258291      *      1  100000  120000       -
    ("kbytes" = usage, "quota" = soft quota, "limit" = hard quota)
