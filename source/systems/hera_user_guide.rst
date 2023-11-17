@@ -414,9 +414,7 @@ entire node even though you are using only a single core.
 
 .. note::
 
-The qsub command refers to “account”. Think of this as
-your group or project of which you might have several. Your
-“group” name is what you should provide as your “account”.
+The qsub command refers to “account”. Think of this as your group or project of which you might have several. Your “group” name is what you should provide as your “account”.
 
 .. rubric:: Using Anaconda Python on Hera
 
@@ -426,27 +424,21 @@ for installation instructions.
 
 These installers have been modified in three ways:
 
-* To add a .condarc file that points your conda to
-   anaconda.rdhpcs.noaa.gov
-* To add a sitecustomize.py script that logs your scripts'
-   import dependencies so we can target resources toward
-   building optimized versions of the most used packages
-*  To change conda to propagate the sitecustomize.py file
-   into conda environments you create
+* To add a .condarc file that points your conda to anaconda.rdhpcs.noaa.gov.
+* To add a sitecustomize.py script that logs your scripts' import dependencies so we can target resources toward building optimized versions of the most used packages
+*  To change conda to propagate the sitecustomize.py file into conda environments you create
 
 To stop logging your dependencies, delete the
 
 .. code-block:: shell
 
-  $conda_root/lib/pythonX.Y/site-packages/sitecustomize.py script.
+  $conda_root/lib/pythonX.Y/site-packages/sitecustomize.py 
+  
+  script.
 
 .. note::
-RDHPCS support staff does not have the available resources
-to support or maintain these packages. You will be
-responsible for the installation and troubleshooting of the
-packages you choose to install. Due to architectural and
-software differences some of the functionality in these
-packages may not work.
+
+RDHPCS support staff does not have the available resources to support or maintain these packages. You will be responsible for the installation and troubleshooting of the packages you choose to install. Due to architectural and software differences some of the functionality in these packages may not work.
 
 .. rubric:: MATLAB
 
@@ -508,7 +500,7 @@ environment to access the files.
 
 .. code-block:: shell
 
-  $MAGICK_HOME is set to the base directory
+   $MAGICK_HOME is set to the base directory
    $MAGICK_HOME/bin is added to your search path
    $MAGICK_HOME/man is added to your MANPATH
    $MAGICK_HOME/lib is added to your LD_LIBRARY_PATH
@@ -552,8 +544,7 @@ To install a package from within R
 
 .. code-block:: shell
 
-  > install.packages("path_to_file", repos = NULL,
-type="source")
+  > install.packages("path_to_file", repos = NULL, type="source")
 
 where *path_to_file* would represent the full path and file
 name.
@@ -565,8 +556,8 @@ Warning in install.packages("chron") :
 
 .. code-block:: shell
 
-       'lib = "/apps/R/3.2.0-intel-mkl/lib64/R/library"' is not writable
-     Would you like to use a personal library instead?  (y/n)
+  'lib = "/apps/R/3.2.0-intel-mkl/lib64/R/library"' is not writable
+  Would you like to use a personal library instead?  (y/n)
 
 Reply with *y* and it will prompt you for a location.
 
