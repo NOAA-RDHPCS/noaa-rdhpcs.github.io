@@ -41,27 +41,27 @@ System Configuration
 +=====================+===============+==================+===============+==================+
 | CPU Type| Intel SkyLake | Intel Haswell    | Intel SkyLake | Intel Haswell    |
 +---------------------+---------------+------------------+---------------+------------------+
-| CPU Speed           | 2.40 GHz      | 2.460 GHz        | 2.40 GHz      | 2.460 GHz        |
+| CPU Speed| 2.40 GHz      | 2.460 GHz        | 2.40 GHz      | 2.460 GHz        |
 +---------------------+---------------+------------------+---------------+------------------+
 | Reg Compute Nodes   | 1328          | 100  | 14| 2    |
 +---------------------+---------------+------------------+---------------+------------------+
 | Cores/node          | 40| 20   | 40| 20   |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total Cores         | 53,120        | 2000 | 560           | 40   |
+| Total Cores         | 53,120        | 2000 | 560| 40   |
 +---------------------+---------------+------------------+---------------+------------------+
-| Memory/Core         | 96 GB         | 256 GB           | 90 GB         | 256 GB           |
+| Memory/Core         | 96 GB         | 256 GB| 90 GB         | 256 GB|
 +---------------------+---------------+------------------+---------------+------------------+
 | Peak Flops/node     | 12| NA   | 12| NA   |
 +---------------------+---------------+------------------+---------------+------------------+
 | Service Code Memory | 187 GB        | NA   | 187 GB        | NA   |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total BigMem Nodes  | 268           | NA   | 268           | NA   |
+| Total BigMem Nodes  | 268| NA   | 268| NA   |
 +---------------------+---------------+------------------+---------------+------------------+
 | BibMem Node Memory  | 384 GB        | NA   | 384 GB        | NA   |
 +---------------------+---------------+------------------+---------------+------------------+
-| CPU Flops           | 2672 TF       | 83.1 TF          | 28 TF         | 1.6 TF           |
+| CPU Flops| 2672 TF       | 83.1 TF          | 28 TF         | 1.6 TF|
 +---------------------+---------------+------------------+---------------+------------------+
-| GPUs/Node           | NA| 8 P100           | NA| 8 P100           |
+| GPUs/Node| NA| 8 P100| NA| 8 P100|
 +---------------------+---------------+------------------+---------------+------------------+
 | Total GPUs          | NA| 800  | NA| 16   |
 +---------------------+---------------+------------------+---------------+------------------+
@@ -128,10 +128,10 @@ The request has to be approved by the project's PI (orPortfolio Manager), so it 
 
 Lustre functionality is divided among four primarycomponents:
 
-           * MDS - Metadata Server
-           * MDT - Metadata Target
-           * OSS - Object Storage Server
-           * OST - Object Storage Target
+* MDS - Metadata Server
+* MDT - Metadata Target
+* OSS - Object Storage Server
+* OST - Object Storage Target
 
 An MDS is server that assigns and tracks all of the storagelocations associated with each file in order to direct fileI/O requests to the correct set of OSTs and correspondingOSSs.
 An MDT stores the metadata, filenames, directories,permissions and file layout.
@@ -149,11 +149,11 @@ Each user has access to one or more directories based on theproject which they a
 
 ...where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
 
-           * 2 MDSs (active/active)
-           * 2 MDTs
-           * 16 OSSs (active/active, embedded in DDN SFA18k storage   controllers)
-           * 122 OSTs (106 are HDDs, 16 are SSDs)
-           * 9.1 PiB of usable disk space (*df -hP /scratch{1,2}*)
+* 2 MDSs (active/active)
+* 2 MDTs
+* 16 OSSs (active/active, embedded in DDN SFA18k storage   controllers)
+* 122 OSTs (106 are HDDs, 16 are SSDs)
+* 9.1 PiB of usable disk space (*df -hP /scratch{1,2}*)
 
 Since each file system has two metadata targets, each project directory is configured to use one of MDTs, and they are spread roughly evenly between the two MDTs. This means that approximately 25% of all Hera projects share metadata resources.
 
@@ -167,9 +167,9 @@ Since each file system has two metadata targets, each project directory is confi
 
 With Lustre, there are three basic ways which an applicationaccesses data:
 
-           * Single stream
-           * Single stream through a master
-           * Parallel
+* Single stream
+* Single stream through a master
+* Parallel
 
 .. rubric:: File Striping
 
@@ -188,10 +188,10 @@ More details on PFL are available `<here: http://wiki.lustre.org/Progressive_Fil
 
 **Important Note:** The PFL feature makes much of the information documented below regarding customizing striping unnecessary.
 
-           * Users should not need to adjust stripe count and size on   /scratch1 and /scratch2.*
-           * With PFL enabled, setting your own stripe layout may   reduce I/O performance for your files and the overall I/O   performance of the file system.
-           * If you have already used "lfs setstripe" commands   documented below, you should probably remove the striping   that may have already been set. 
-           
+* Users should not need to adjust stripe count and size on   /scratch1 and /scratch2.*
+* With PFL enabled, setting your own stripe layout may   reduce I/O performance for your files and the overall I/O   performance of the file system.
+* If you have already used "lfs setstripe" commands   documented below, you should probably remove the striping   that may have already been set. 
+
 Here are the steps you should follow if you have any directories that had explicitly set non-default striping:
 
 1. Remove all "lfs setstripe" commands from your scripts.
@@ -298,9 +298,9 @@ These commands are often quicker as they reduce the numberof stat and remote pro
 
 .. rubric:: Read Only Access
 
-           * If a file is only going to be read, open it as O_RDONLY.
-           * If you don’t care about the access time, open it as   O_RDONLY|O_NOATIME.
-           * If you need access time information and you are doing   parallel IO, let the master open it as O_RDONLY and all   other ranks as O_RDONLY|O_NOATIME.
+* If a file is only going to be read, open it as O_RDONLY.
+* If you don’t care about the access time, open it as   O_RDONLY|O_NOATIME.
+* If you need access time information and you are doing   parallel IO, let the master open it as O_RDONLY and all   other ranks as O_RDONLY|O_NOATIME.
 
 .. rubric:: Avoid Wild Cards
 
@@ -342,9 +342,9 @@ It is not always necessary to stripe files...
 
 .. rubric:: Striping Best Practices
 
-           * Newly created files and directories inherit the stripe settings of their parent directories.
-           * You can take advantage of this feature by organizing your large and small files into separate directories, then setting a stripe count on the large-file directory so that all new files created in the directory will be automatically striped.
-           * For example, to create a directory called "dir1" with a stripe size of 1 MB and a stripe count of 8, run:
+* Newly created files and directories inherit the stripe settings of their parent directories.
+* You can take advantage of this feature by organizing your large and small files into separate directories, then setting a stripe count on the large-file directory so that all new files created in the directory will be automatically striped.
+* For example, to create a directory called "dir1" with a stripe size of 1 MB and a stripe count of 8, run:
 
 .. code-block:: shell
 
@@ -362,8 +362,8 @@ Small files should never be striped with large stripe countsif they are striped 
 
 .. rubric:: Increase Stripe Count for Large Files
 
-           * Set the stripe count of the directory to a large value.
-           * This spreads the reads/writes across more OSTs, therefore   \**balancing*\* the load and data.
+* Set the stripe count of the directory to a large value.
+* This spreads the reads/writes across more OSTs, therefore   \**balancing*\* the load and data.
 
 .. code-block:: shell
 
@@ -371,8 +371,8 @@ Small files should never be striped with large stripe countsif they are striped 
 
 .. rubric:: Use a Small Stripe Count for Small Files
 
-           * Place \**small files*\* on a single OST.
-           * This causes the small files not to be spread   out/\**fragmented*\* across OSTs.
+* Place \**small files*\* on a single OST.
+* This causes the small files not to be spread   out/\**fragmented*\* across OSTs.
 
 .. code-block:: shell
 
@@ -380,10 +380,10 @@ Small files should never be striped with large stripe countsif they are striped 
 
 .. rubric:: Parallel IO Stripe Count
 
-           * Single shared files should have a stripe count \**equal   to*\* (or a factor of) the number of processes which   access the file.
-           * If the number of processes in your application is greater   than 106 (the number of HDD OSTs), use '-c -1' to use all   of the OSTs
-           * The stripe size should be set to allow as much stripe   alignment as possible.
-           * Try to keep each process accessing as few OSTs as  possible.
+* Single shared files should have a stripe count \**equal   to*\* (or a factor of) the number of processes which   access the file.
+* If the number of processes in your application is greater   than 106 (the number of HDD OSTs), use '-c -1' to use all   of the OSTs
+* The stripe size should be set to allow as much stripe   alignment as possible.
+* Try to keep each process accessing as few OSTs as  possible.
 
 .. code-block:: shell
 
@@ -393,10 +393,10 @@ You can specify the stripe count and size programmatically,by creating an MPI in
 
 .. rubric:: Single Stream IO
 
-           * Set the stripe count to 1 on a directory.
-           * Write all files in this directory.
-           * Compute
-           * Otherwise set the stripe count to 1 for the file. 
+* Set the stripe count to 1 on a directory.
+* Write all files in this directory.
+* Compute
+* Otherwise set the stripe count to 1 for the file. 
 
 .. code-block:: shell
 
@@ -572,13 +572,285 @@ utilities:
 
    module spider
 
-.. note::
-
-The first connection with an RSA token, you will be requested for a new PIN which must be at least 6 alphanumeric characters.
-         
-
-Software
+      
+Using Modules
 ========
+
+
+ .. rubric:: Using Modules on Hera
+
+
+ Hera uses the LMOD hierarchical modules system, which is
+ slightly different from the traditional "Modules" but is
+ compatible with it.
+
+ LMOD is a Lua based module system that makes it easy to
+ place modules in a hierarchical arrangement. So you may not
+ see all the available modules when you type the "module
+ avail" command.
+
+ For example, when you load the Intel module, only libraries
+ compiled with the Intel compiler will be listed when you
+ list with the "module avail" command.
+
+ Currently the following hierarchies are defined:
+
+.. code-block:: shell
+
+    compiler    - Currently: intel, pgi
+    mpi         - Currently: impi, mvapich2
+
+
+Use "module spider" command to find all possible modules.
+
+For example, assuming you have not loaded any of the
+ compiler or mpi modules, if you're interested in finding out
+ which versions of HDF5 are available, if you type the
+ command "module avail hdf5" you will not see any of the
+ modules listed:
+
+.. code-block:: shell
+
+    tfe10.% module av hdf5
+
+Use "module spider" to find all possible modules.
+Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+
+.. code-block:: shell
+    tfe10.%
+
+This is because you have not loaded any of the compiler
+ modules, and HDF5 modules installed on the system require
+ one of the compiler modules. But if you're still interested
+ in finding out which versions are available, and when you
+ want to find more details about which compilers will have to
+ be loaded in order to use that module, you have to use the
+ "module spider" command has shown below:
+
+.. code-block:: shell
+
+    tfe10.% module spider hdf5
+
+    ------------------------------------------------------------------------------------------------------------
+      hdf5:
+    ------------------------------------------------------------------------------------------------------------
+         Versions:
+ hdf5/1.8.14
+
+         Other possible modules matches:
+ hdf5parallel, netcdf-hdf5parallel
+
+    ------------------------------------------------------------------------------------------------------------
+      To find other possible module matches do:
+          module -r spider '.*hdf5.*'
+
+    ------------------------------------------------------------------------------------------------------------
+      To find detailed information about hdf5 please enter the full name.
+      For example:
+
+         $ module spider hdf5/1.8.14
+    ------------------------------------------------------------------------------------------------------------
+
+    tfe10.%
+    tfe10.%
+    tfe10.% module spider hdf5/1.8.14
+
+    ------------------------------------------------------------------------------------------------------------
+      hdf5: hdf5/1.8.14
+    ------------------------------------------------------------------------------------------------------------
+
+         Other possible modules matches:
+ hdf5parallel, netcdf-hdf5parallel
+
+        This module can only be loaded through the following modules:
+
+          intel/13.1.3
+          intel/14.0.2
+          intel/15.0.0
+          intel/15.1.133
+          pgi/12.5
+          pgi/14.10
+          pgi/15.1
+
+    ------------------------------------------------------------------------------------------------------------
+      To find other possible module matches do:
+          module -r spider '.*hdf5/1.8.14.*'
+
+    tfe10.%
+
+
+The current configuration has no default modules loaded. Run:
+
+ .. code-block:: shell
+
+    # module avail
+
+ to see the list of modules available for you load now.
+
+ At a minimum you will want to do:
+
+.. code-block:: shell
+
+    h3a03.hera% module load intel impi
+    h3a03.hera% module list
+
+Currently Loaded Modules:
+      1) intel/18.0.5.274   2) impi/2018.0.4
+
+
+
+    h3a03.hera%
+
+ .. rubric:: Modules on Hera
+
+ The way to find the latest modules on Hera is to run
+ **module avail** to see the list of available modules for
+ the compiler and the MPI modules currently loaded:
+
+.. code-block:: shell
+
+    h3a03.hera% module avail
+
+    --------------------------------- /apps/lmod/lmod/modulefiles/Core ---------------------------------
+       lmod/7.7.18    settarg/7.7.18
+
+    ------------------------------------ /apps/modules/modulefiles -------------------------------------
+       advisor/2019         g2clib/1.4.0     intel/19.0.4.243   rocoto/1.3.1
+       antlr/2.7.7          gempak/7.4.2     intelpython/3.6.8  szip/2.1
+       antlr/4.2     (D)    grads/2.0.2      matlab/R2017b      udunits/2.1.24
+       cairo/1.14.2         hpss/hpss        nag-fortran/6.2    vtune/2019
+       cnvgrib/1.4.0        idl/8.7          nccmp/1.8.2        wgrib/1.8.1.0b
+       contrib   imagemagick/7.0.8-53        ncview/2.1.3       xxdiff/3.2.Z1
+       ferret/6.93          inspector/2019   performance-reports/19.1.1
+       forge/19.1intel/18.0.5.274     (D)    pgi/19.4
+
+      Where:
+       D:  Default Module
+
+    Use "module spider" to find all possible modules.
+    Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+
+
+    h3a03.hera%
+
+Please note that because LMOD is a hierarchical module
+ system you only see the list of modules that you can load at
+ this point in time (based on what other modules you may have
+ loaded).
+
+ To see the complete list of modules available on the system,
+ please use the "module spider" command:
+
+.. code-block:: shell
+
+    h3a03.hera% module spider
+
+    ------------------------------------------------------------------------------------------------
+    The following is a list of the modules currently available:
+    ------------------------------------------------------------------------------------------------
+      advisor: advisor/2019
+
+      anaconda: anaconda/anaconda2, anaconda/anaconda2-4.4.0, anaconda/anaconda3-4.4.0, ...
+
+      antlr: antlr/2.7.7, antlr/4.2
+
+      bitrep: bitrep/1.0
+    …
+
+    h3a03.hera%
+
+In this example, each module name represents a different
+ package. In cases where there are multiple versions of a
+ package, one will be set as a default. For example, for the
+ intel compiler there are multiple choices:
+
+.. code-block:: shell
+
+    h3a03.hera% module avail intel
+
+    ------------------------------------ /apps/modules/modulefiles -------------------------------------
+       intel/18.0.5.274 (D)    intel/19.0.4.243    intelpython/3.6.8
+
+      Where:
+       D:  Default Module
+
+    Use "module spider" to find all possible modules.
+    Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+
+    h3a03.hera%
+
+So if you run:
+
+.. code-block:: shell
+
+    # module load intel
+
+The default version will be loaded, in this case
+ intel/18.0.5.274.
+
+ If you want to load a specific version, you can. We highly
+ recommend you use the system defaults unless something is
+ not working or you need a different feature. To load a
+ specific version, specify the version number.
+
+.. code-block:: shell
+
+    sfe01% module purge
+    sfe01% module load intel/19.0.4.243
+    sfe01% module list
+
+    Currently Loaded Modules:
+      1) intel/19.0.4.243
+
+    sfe01%
+
+In some cases other required modules may be loaded for you.
+ The Intel module manages all the sub modules, you do not
+ have to worry about it.
+
+ Notes:
+
+ -  When unloading modules, only unload those that you have
+    loaded. The others are done automatically from master
+    modules.
+ -  Modules is a work in progress, and we will be improving
+    their uses and making which modules you load more clear.
+
+ .. rubric:: Loading Modules in batch jobs
+
+ Any modules that you loaded when building your codes needs
+ to be loaded when your job runs as well. This means that you
+ must put the same module commands in your batch scripts that
+ you ran before building your code.
+
+ .. rubric:: Modules with sh, bash, and ksh scripts
+
+ Due to the way the POSIX standard is defined for bash, sh,
+ and ksh you **MUST** add the -l option (that is a lowercase
+ L) to the shebang (e.g. #!/bin/sh) line at the top of your
+ script for all sh, bash, or ksh batch scripts. For example:
+
+.. code-block:: shell
+
+    #!/bin/ksh -l
+
+    module load intel
+    module load impi
+
+    srun -n 12 ​./xhpl
+
+Failure to use -l will cause the module commands to fail and
+ your job will not run properly and may crash in hard to
+ diagnose ways.
+
+ .. rubric:: Additional Documentaion on Lua modules
+
+ Please see the following link for more detailed information
+ on Lua module utility:
+ `<http://lmod.readthedocs.org/en/latest/>`_
+
+ 
+
 
 Shell & Programming Environments
 ================================
