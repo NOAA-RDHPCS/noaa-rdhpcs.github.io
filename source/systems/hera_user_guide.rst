@@ -107,11 +107,10 @@ Users will receive warning emails when their quota isexceeded. When either the v
 
 If you are approaching your quota, the first step should beto delete old files and/or move files to HPSS tape systemsas appropriate. If more volume is still needed, as withprevious systems, volume quota increases are requested bysubmitting a Hera help ticket with a justification,including:
 
-            ::
-
-                1. Project name.
-                2. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
-                3. Justification, including an analysis of your workload detailing the volume needed
+::
+1. Project name.
+2. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
+3. Justification, including an analysis of your workload detailing the volume needed
 
 
 .. rubric:: File Count Quota Increase
@@ -147,9 +146,9 @@ All nodes (login and compute) access the lustre file-systemsmounted at /scratch1
 Each user has access to one or more directories based on theproject which they are a member of, such as:
 
 ::
-      /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
+/scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
-...where ${TASK} is \**often but not necessarily*\* theindividual user's login ID, as defined by the project lead.The number of servers and targets on *each* of the two Herafile systems is:
+...where ${TASK} is \**often but not necessarily*\* theindividual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
 
            * 2 MDSs (active/active)
            * 2 MDTs
@@ -157,13 +156,13 @@ Each user has access to one or more directories based on theproject which they a
            * 122 OSTs (106 are HDDs, 16 are SSDs)
            * 9.1 PiB of usable disk space (*df -hP /scratch{1,2}*)
 
-Since each file system has two metadata targets, eachproject directory is configured to use one of MDTs, and theyare spread roughly evenly between the two MDTs. This meansthat approximately 1/4 of all Hera projects share metadataresources.
+Since each file system has two metadata targets, each project directory is configured to use one of MDTs, and theyare spread roughly evenly between the two MDTs. This meansthat approximately 1/4 of all Hera projects share metadata resources.
 
 .. rubric:: File Operations
 
-           * When a compute node needs to create or access a file, it   requests the associated storage locations from the MDS   and the associated MDT.
-           * I/O operations then occur directly with the OSSs and OSTs   associated with the file, bypassing the MDS.
-           * For read operations file data flows from the OSTs to the   compute node.
+* When a compute node needs to create or access a file, it   requests the associated storage locations from the MDS   and the associated MDT.
+* I/O operations then occur directly with the OSSs and OSTs   associated with the file, bypassing the MDS.
+* For read operations file data flows from the OSTs to the   compute node.
 
 .. rubric:: Types of file I/O
 
@@ -179,13 +178,13 @@ A file is split into segments and consecutive segments arestored on different ph
 
 .. rubric:: Aligned vs Unaligned Stripes
 
-           * Aligned stripes is where each segment fits fully onto a   single OST. Processes accessing the file do so at   corresponding stripe boundaries.
-           * Unaligned stripes means some file segments are split   across OSTs.
+* Aligned stripes is where each segment fits fully onto a   single OST. Processes accessing the file do so at   corresponding stripe boundaries.
+* Unaligned stripes means some file segments are split   across OSTs.
 
 .. rubric:: Progressive File Layouts
 
-The /scratch1 and /scratch2 file systems are enabled with afeature called "Progressive File Layouts" (PFL) that doesfile layout in a way which is efficient for the vastmajority of use cases. It will use a single stripe count forsmall files (reducing overhead) and increase the striping asthe file gets bigger (increasing bandwidth and balancingcapacity), all without any user involvement.
-These file systems are also augmented by a set of SSD OSTs(described above) and with the PFL capability is furtheroptimized for small file performance. By default smallerfiles are stored completely in SSD, which further decreasesrandom operation latency and allows the HDDs to run moreefficiently for streaming reads and writes. The defaultconfiguration will automatically stripe and place files inan generally optimal fashion to improve I/O performance forvarying file sizes, including the use of SSDs for bettersmall-file performance. The defaults also attempt to makethe best use of the SSD targets (which are faster, but havemuch less capacity than HDDs).
+The /scratch1 and /scratch2 file systems are enabled with afeature called "Progressive File Layouts" (PFL) that does file layout in a way which is efficient for the vast majority of use cases. It uses a single stripe count for small files (reducing overhead) and increases the striping as the file gets bigger (increasing bandwidth and balancingcapacity), all without any user involvement.
+These file systems are also augmented by a set of SSD OSTs (described above) and with the PFL capability is further optimized for small file performance. By default, smaller files are stored completely in SSD, which further decreases random operation latency and allows the HDDs to run more efficiently for streaming reads and writes. The default configuration will automatically stripe and place files in a generally optimal fashion to improve I/O performance for varying file sizes, including the use of SSDs for better small-file performance. The defaults also attempt to makethe best use of the SSD targets (which are faster, but have much less capacity than HDDs).
 More details on PFL are available `<here: http://wiki.lustre.org/Progressive_File_Layoutshttp://doc.lustre.org/lustre_manual.xhtml#pfl>`_
 
 **Important Note:** The PFL feature makes much of theinformation documented below regarding customizing stripingunnecessary.
@@ -194,11 +193,13 @@ More details on PFL are available `<here: http://wiki.lustre.org/Progressive_Fil
            * With PFL enabled, setting your own stripe layout may   reduce I/O performance for your files and the overall I/O   performance of the file system.
            * If you have already used "lfs setstripe" commands   documented below, you should probably remove the striping   that may have already been set. Here are the steps that   should be followed if you have any directories that had   explicitly set non-default striping:
 
-#. Remove all "lfs setstripe" commands from your scripts#. Run the following command which changes the stiping back   to default for each of the directories on which you may   have set striping:   *lfs setstripe -d <dir>*#. Open a `<help ticket https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_   with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if   necessary.
+#. Remove all "lfs setstripe" commands from your scripts
+#. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping:   *lfs setstripe -d <dir>*
+#. Open a `<help ticket https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
 
 .. rubric:: Userspace Commands
 
-Lustre provides a utility to query and set access to thefile system.
+Lustre provides a utility to query and set access to the file system.
 For a complete list of available options:
 
 ::
