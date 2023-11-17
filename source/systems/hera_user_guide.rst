@@ -211,31 +211,38 @@ Lustre provides a utility to query and set access to the file system.
 For a complete list of available options:
 
 .. code-block:: shell
-lfs help
+
+  lfs help
 
 To get more information on a specific option:
 
 .. code-block:: shell
-lfs help <option>
+
+  lfs help <option>
 
 .. rubric:: Checking Diskspace
 
-Hera file system allocations are “project” based. Lustrequotas are tracked and limited by “Project ID” (usually thesame as group ID and directory name). The Project ID isassigned to top-level project directories and will beinherited for all new subdirs.
-Tracking and enforcement includes maximum file count, notjust capacity.
+Hera file system allocations are “project” based. Lustre quotas are tracked and limited by “Project ID” (usually the same as group ID and directory name). The Project ID is assigned to top-level project directories and will be inherited for all new subdirs.
+Tracking and enforcement includes maximum file count, not just capacity.
 To check your usage details...
 
-::
-   # Look up your project ID number (not the name)   id   # Query your usage and limits using that number, for a given file system.   lfs quota -p <project ID number> /scratchX
+
+   # Look up your project ID number (not the name)  id  
+   # Query your usage and limits using that number, for a given file system.   
+.. code-block:: shell   
+   lfs quota -p <project ID number> /scratchX
+
 User and Group usage (capacity and file count) is trackedbut not limited. You can also find your usage and your unixgroup's usage:
 
-::
+.. code-block:: shell
     lfs quota -u <User.Name> /scratch1    lfs quota -g <groupname> /scratch1
 
-.. note::This is the *group* that owns the data,*regardless of where it is stored in the filesystemdirectory hierarchy*.
+.. note::
+  This is the *group* that owns the data,*regardless of where it is stored in the filesystemdirectory hierarchy*.
 
-Example, get a summary of the disk usage for project "rtnim":
+For example, to get a summary of the disk usage for project "rtnim":
 
-::
+.. code-block:: shell
    $ id   uid=5088(rtfim) gid=10052(rtfim) groups=10052(rtfim)...
    $ lfs quota -p 10052 /scratch1   Disk quotas for prj 10052 (pid 10052):        Filesystem  kbytes   quota   limit   grace   files   quota   limit   grace         /scratch1       4  1048576 1258291      *      1  100000  120000       -
    ("kbytes" = usage, "quota" = soft quota, "limit" = hard quota)
@@ -245,32 +252,39 @@ Example, get a summary of the disk usage for project "rtnim":
 The *lfs find* command is more *efficient* than the GNUfind, it may be faster too.
 Example, finding fortran source files accessed within thelast day.
 
-::
+.. code-block:: shell
     lfs find . -atime -1 -name '*.f90
 
 .. rubric:: Striping Information
   
 You can view the file striping (layout on disk) of a filewith:
 
-::
+.. code-block:: shell
     lfs getstripe <filename>
 The Hera default configuration uses “Progressive FileLayout” or PFL.
 
-           * The first part of each file is stored on SSD
+  * The first part of each file is stored on SSD
   * Up to 256 KB, single stripe
 (This is similar to how Panasas /scratch3,4 operated)
 
-           * As the file grows bigger, it overflows to disks and it   stripes it across more disks and more disks
-  * Up to 32 MB - on HDD, single stripe  * Up to 1 GB - on HDD, 4-way stripe  * Up to 32 GB - on HDD, 8-way stripe  * > 32 GB - on HDD, 32-way stripe, larger object size
+  * As the file grows bigger, it overflows to disks and it   stripes it across more disks and more disks
+  * Up to 32 MB - on HDD, single stripe  
+  * Up to 1 GB - on HDD, 4-way stripe  
+  * Up to 32 GB - on HDD, 8-way stripe  
+  * > 32 GB - on HDD, 32-way stripe, larger object size
+
 So small files reside on SSDs, big files get striped“progressively” wider!
 The "getstripe" command above shows the full layout.Typically not all components are instantiated. Only theextents which have "l_ost_idx" (object storage target index)and "l_fid" (file identifier) listed actually have createdobjects on the OSTs.
 *Do not attempt to set striping!! If you think the defaultis not working for you, please let us know by submitting ahelp ticket.*
 
 .. rubric:: Other lfs Commands
 
-           * lfs cp – to copy files.
-
-           * lfs ls – to list directories and files.
+.. code-block:: shell
+           * lfs cp – 
+to copy files.
+.. code-block:: shell
+           * lfs ls – 
+to list directories and files.
 
 These commands are often quicker as they reduce the numberof stat and remote procedure calls needed.
 
