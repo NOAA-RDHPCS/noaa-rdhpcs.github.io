@@ -575,25 +575,19 @@ utilities:
       
 Using Modules
 ========
+Hera uses the LMOD hierarchical modules system, which is
+slightly different from the traditional "Modules" but is
+compatible with it.
 
+LMOD is a Lua based module system that makes it easy to
+place modules in a hierarchical arrangement. So you may not
+see all the available modules when you type the "module
+avail" command.
 
- .. rubric:: Using Modules on Hera
+For example, when you load the Intel module, only libraries compiled with the Intel compiler will be listed when you
+list with the "module avail" command.
 
-
- Hera uses the LMOD hierarchical modules system, which is
- slightly different from the traditional "Modules" but is
- compatible with it.
-
- LMOD is a Lua based module system that makes it easy to
- place modules in a hierarchical arrangement. So you may not
- see all the available modules when you type the "module
- avail" command.
-
- For example, when you load the Intel module, only libraries
- compiled with the Intel compiler will be listed when you
- list with the "module avail" command.
-
- Currently the following hierarchies are defined:
+Currently the following hierarchies are defined:
 
 .. code-block:: shell
 
@@ -601,13 +595,9 @@ Using Modules
     mpi         - Currently: impi, mvapich2
 
 
-Use "module spider" command to find all possible modules.
+Use the "module spider" command to find all possible modules.
 
-For example, assuming you have not loaded any of the
- compiler or mpi modules, if you're interested in finding out
- which versions of HDF5 are available, if you type the
- command "module avail hdf5" you will not see any of the
- modules listed:
+For example, assuming you have not loaded any of the compiler or mpi modules, if you're interested in finding out which versions of HDF5 are available, if you type the command "module avail hdf5" you will not see any of the modules listed:
 
 .. code-block:: shell
 
@@ -619,13 +609,7 @@ Use "module keyword key1 key2 ..." to search for all possible modules matching a
 .. code-block:: shell
     tfe10.%
 
-This is because you have not loaded any of the compiler
- modules, and HDF5 modules installed on the system require
- one of the compiler modules. But if you're still interested
- in finding out which versions are available, and when you
- want to find more details about which compilers will have to
- be loaded in order to use that module, you have to use the
- "module spider" command has shown below:
+This is because you have not loaded any of the compiler modules, and HDF5 modules installed on the system require one of the compiler modules. But if you're still interested in finding out which versions are available, and when you want to find more details about which compilers will have to be loaded in order to use that module, you have to use the "module spider" command as shown below:
 
 .. code-block:: shell
 
@@ -694,14 +678,13 @@ The current configuration has no default modules loaded. Run:
     h3a03.hera% module load intel impi
     h3a03.hera% module list
 
-Currently Loaded Modules:
+ Currently Loaded Modules:
       1) intel/18.0.5.274   2) impi/2018.0.4
-
-
 
     h3a03.hera%
 
- .. rubric:: Modules on Hera
+
+.. rubric:: Modules on Hera
 
  The way to find the latest modules on Hera is to run
  **module avail** to see the list of available modules for
@@ -727,18 +710,13 @@ Currently Loaded Modules:
       Where:
        D:  Default Module
 
-    Use "module spider" to find all possible modules.
-    Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+Use "module spider" to find all possible modules.
+Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 
     h3a03.hera%
 
-Please note that because LMOD is a hierarchical module
- system you only see the list of modules that you can load at
- this point in time (based on what other modules you may have
- loaded).
-
- To see the complete list of modules available on the system,
+Please note that because LMOD is a hierarchical module system you only see the list of modules that you can load at this point in time (based on what other modules you may have loaded). To see the complete list of modules available on the system,
  please use the "module spider" command:
 
 .. code-block:: shell
@@ -759,10 +737,7 @@ Please note that because LMOD is a hierarchical module
 
     h3a03.hera%
 
-In this example, each module name represents a different
- package. In cases where there are multiple versions of a
- package, one will be set as a default. For example, for the
- intel compiler there are multiple choices:
+In this example, each module name represents a different package. In cases where there are multiple versions of a package, one will be set as a default. For example, for the intel compiler there are multiple choices:
 
 .. code-block:: shell
 
@@ -785,13 +760,10 @@ So if you run:
 
     # module load intel
 
-The default version will be loaded, in this case
- intel/18.0.5.274.
-
- If you want to load a specific version, you can. We highly
- recommend you use the system defaults unless something is
- not working or you need a different feature. To load a
- specific version, specify the version number.
+The default version will be loaded, in this case intel/18.0.5.274.
+ 
+ 
+If you want to load a specific version, you can. We highly recommend you use the system defaults unless something is not working or you need a different feature. To load a specific version, specify the version number.
 
 .. code-block:: shell
 
@@ -804,31 +776,23 @@ The default version will be loaded, in this case
 
     sfe01%
 
-In some cases other required modules may be loaded for you.
- The Intel module manages all the sub modules, you do not
- have to worry about it.
+In some cases other required modules may be loaded for you. The Intel module manages all the sub modules, you do not have to worry about it.
 
- Notes:
+Notes:
 
- -  When unloading modules, only unload those that you have
+-  When unloading modules, only unload those that you have
     loaded. The others are done automatically from master
     modules.
- -  Modules is a work in progress, and we will be improving
+-  Modules is a work in progress, and we will be improving
     their uses and making which modules you load more clear.
 
- .. rubric:: Loading Modules in batch jobs
+.. rubric:: Loading Modules in batch jobs
 
- Any modules that you loaded when building your codes needs
- to be loaded when your job runs as well. This means that you
- must put the same module commands in your batch scripts that
- you ran before building your code.
+Any modules that you loaded when building your codes needs to be loaded when your job runs as well. This means that you must put the same module commands in your batch scripts that you ran before building your code.
 
  .. rubric:: Modules with sh, bash, and ksh scripts
 
- Due to the way the POSIX standard is defined for bash, sh,
- and ksh you **MUST** add the -l option (that is a lowercase
- L) to the shebang (e.g. #!/bin/sh) line at the top of your
- script for all sh, bash, or ksh batch scripts. For example:
+Due to the way the POSIX standard is defined for bash, sh, and ksh you **MUST** add the -l option (that is a lowercase L) to the shebang (e.g. #!/bin/sh) line at the top of your script for all sh, bash, or ksh batch scripts. For example:
 
 .. code-block:: shell
 
@@ -839,14 +803,11 @@ In some cases other required modules may be loaded for you.
 
     srun -n 12 ​./xhpl
 
-Failure to use -l will cause the module commands to fail and
- your job will not run properly and may crash in hard to
- diagnose ways.
+Failure to use -l will cause the module commands to fail and your job will not run properly and may crash in hard to diagnose ways.
 
  .. rubric:: Additional Documentaion on Lua modules
 
- Please see the following link for more detailed information
- on Lua module utility:
+Please see the following link for more detailed information on Lua module utility:
  `<http://lmod.readthedocs.org/en/latest/>`_
 
  
