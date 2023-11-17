@@ -146,7 +146,6 @@ All nodes (login and compute) access the lustre file-systemsmounted at /scratch1
 Each user has access to one or more directories based on theproject which they are a member of, such as:
 
 .. code-block:: shell
-
 /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
 ...where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
