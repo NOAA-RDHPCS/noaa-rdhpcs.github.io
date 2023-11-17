@@ -434,9 +434,11 @@ To stop logging your dependencies, delete the
 
   $conda_root/lib/pythonX.Y/site-packages/sitecustomize.py 
   
+
   script.
 
-.. note::
+.. warning::
+
 RDHPCS support staff does not have the available resources to support or maintain these packages. You will be responsible for the installation and troubleshooting of the packages you choose to install. Due to architectural and software differences some of the functionality in these packages may not work.
 
 .. rubric:: MATLAB
