@@ -146,6 +146,7 @@ All nodes (login and compute) access the lustre file-systemsmounted at /scratch1
 Each user has access to one or more directories based on theproject which they are a member of, such as:
 
 .. code-block:: shell
+
 /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
 ...where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
@@ -195,11 +196,13 @@ More details on PFL are available `<here: http://wiki.lustre.org/Progressive_Fil
            
 Here are the steps you should follow if you have any directories that had explicitly set non-default striping:
 
-#. Remove all "lfs setstripe" commands from your scripts
-#. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping: 
-.. code-block:: shell  
+1. Remove all "lfs setstripe" commands from your scripts.
+2. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping: 
+.. code-block:: shell 
+
 *lfs setstripe -d <dir>*
-#. Open a `<help ticket https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
+
+3. Open a `<help ticket https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
 
 .. rubric:: Userspace Commands
 
