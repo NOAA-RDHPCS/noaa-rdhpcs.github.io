@@ -229,7 +229,8 @@ To check your usage details...
 1. Look up your project ID number (not the name)  id  
 2. Query your usage and limits using that number, for a given file system.  
 
-.. code-block:: shell   
+.. code-block:: shell 
+
    lfs quota -p <project ID number> /scratchX
 
 User and Group usage (capacity and file count) is tracked but not limited. You can also find your usage and your unixgroup's usage:
@@ -278,7 +279,7 @@ The Hera default configuration uses “Progressive FileLayout” or PFL.
 
 So small files reside on SSDs, big files get striped“progressively” wider!
 The "getstripe" command above shows the full layout.Typically not all components are instantiated. Only theextents which have "l_ost_idx" (object storage target index)and "l_fid" (file identifier) listed actually have createdobjects on the OSTs.
-*Do not attempt to set striping!! If you think the default is not working for you, please let us know by submitting ahelp ticket.*
+*Do not attempt to set striping!! If you think the default is not working for you, please let us know by submitting a help ticket.*
 
 .. rubric:: Other lfs Commands
 
@@ -289,8 +290,9 @@ The "getstripe" command above shows the full layout.Typically not all components
 to copy files.
 
 .. code-block:: shell
+
   * lfs ls – 
-  
+
 to list directories and files.
 
 These commands are often quicker as they reduce the numberof stat and remote procedure calls needed.
@@ -307,19 +309,21 @@ tar and rm are *inefficient* when operating on a large setof files on lustre.
 The reason lies in the time it takes to expand the wildcard. "*rm -rf \**" on millions of files could take days,and impact all other users. (And you shouldn't do just "\*"anyway, it is dangerous.
 Instead, DO generate a list of files to be removed ortar-ed, and to act them one at a time, or in small sets.
 
-::
+.. code-block:: shell
+
    lfs find /path/to/old/dir/ -t f -print0 | xargs -0 -P 8 rm -f
 
 .. rubric:: Broadcast Stat Between MPI or OpenMP Tasks
 
 If many processes need the information from stat(), do it**once**, as follows:
 
-           * Have the master process perform the stat() call.
-           * Then broadcast it to all processes.
+* Have the master process perform the stat() call.
+* Then broadcast it to all processes.
 
 .. rubric:: Tuning Stripe Count (not typically needed)
 
   .. note::
+
 **IMPORTANT:** *The following steps are not typicallyneeded on the Hera Lustre file systems. See the "ProgressiveFile Layouts" description above. Please open a supportticket prior to changing stripe parameters on your /scratch1or /scratch2 files.*
 
 .. rubric:: General Guidelines
@@ -339,20 +343,22 @@ It is *beneficial* to stripe a file when...
 
 It is not always necessary to stripe files...
 
-           * If your program periodically writes several small files   from each processor, you don't need to stripe the files   because they will be randomly distributed across the   OSTs.
+ * If your program periodically writes several small files from each processor, you don't need to stripe the files   because they will be randomly distributed across the   OSTs.
 
 .. rubric:: Striping Best Practices
 
-           * Newly created files and directories inherit the stripe   settings of their parent directories.
-           * You can take advantage of this feature by organizing your   large and small files into separate directories, then   setting a stripe count on the large-file directory so   that all new files created in the directory will be   automatically striped.
-           * For example, to create a directory called "dir1" with a   stripe size of 1 MB and a stripe count of 8, run:
+           * Newly created files and directories inherit the stripe settings of their parent directories.
+           * You can take advantage of this feature by organizing your large and small files into separate directories, then setting a stripe count on the large-file directory so that all new files created in the directory will be automatically striped.
+           * For example, to create a directory called "dir1" with a stripe size of 1 MB and a stripe count of 8, run:
 
-::
+.. code-block:: shell
+
     mkdir dir1    lfs setstripe -c 8 dir1
 
 You can "pre-create" a file as a zero-length striped file byrunning lfs setstripe as part of your job script or as partof the I/O routine in your program. You can then write tothat file later. For example, to pre-create the file"bigdir.tar" with a stripe count of 20, and then add datafrom the large directory "bigdir," run:
 
-:: 
+.. code-block:: shell
+
     lfs setstripe -c 20 bigdir.tar    tar cf bigdir.tar bigdir
 
 Globally efficient I/O, from a system viewpoint, on a lustrefile system is similar to computational load balancing in aleader-worker programming model, from a user applicationviewpoint. The lustre file system can be called upon toservice many requests across a striped file systemasynchronously and this works best if best practices, asoutlined above, are followed. A very large file that is onlystriped across one or two OSTs can degrade the performanceof the entire Lustre system by filling up OSTsunnecessarily.
@@ -364,14 +370,17 @@ Small files should never be striped with large stripe countsif they are striped 
            * Set the stripe count of the directory to a large value.
            * This spreads the reads/writes across more OSTs, therefore   \**balancing*\* the load and data.
 
-::
+.. code-block:: shell
+
     lfs setstripe -c 30 /scratch1/your_project_dir/path/large_files/
 
 .. rubric:: Use a Small Stripe Count for Small Files
 
            * Place \**small files*\* on a single OST.
            * This causes the small files not to be spread   out/\**fragmented*\* across OSTs.
-::
+
+.. code-block:: shell
+
     lfs setstripe -c 1 /scratch1/your_project_dir/path/small_files/
 
 .. rubric:: Parallel IO Stripe Count
@@ -379,8 +388,10 @@ Small files should never be striped with large stripe countsif they are striped 
            * Single shared files should have a stripe count \**equal   to*\* (or a factor of) the number of processes which   access the file.
            * If the number of processes in your application is greater   than 106 (the number of HDD OSTs), use '-c -1' to use all   of the OSTs
            * The stripe size should be set to allow as much stripe   alignment as possible.
-           * Try to keep each process accessing as few OSTs as   possible.
-::
+           * Try to keep each process accessing as few OSTs as  possible.
+
+.. code-block:: shell
+
     lfs setstripe -s 32m -c 24 /scratch1/your_project_dir/path/parallel/
 
 You can specify the stripe count and size programmatically,by creating an MPI info object.
@@ -392,11 +403,11 @@ You can specify the stripe count and size programmatically,by creating an MPI in
            * Compute
            * Otherwise set the stripe count to 1 for the file. 
 
-::
+.. code-block:: shell
+
     lfs setstripe -s 1m -c 1 /scratch1/your_project_dir/path/serial/
 
         
-
 Data and Storage
 ================
 
