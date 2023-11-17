@@ -37,39 +37,39 @@ System Configuration
 --------------------
 
 +---------------------+---------------+------------------+---------------+------------------+
-|                     | Hera TCA      | Hera FGA         | Juno TCA      | Juno FGA         |
+|         | Hera TCA      | Hera FGA         | Juno TCA      | Juno FGA         |
 +=====================+===============+==================+===============+==================+
-| CPU Type            | Intel SkyLake | Intel Haswell    | Intel SkyLake | Intel Haswell    |
+| CPU Type| Intel SkyLake | Intel Haswell    | Intel SkyLake | Intel Haswell    |
 +---------------------+---------------+------------------+---------------+------------------+
 | CPU Speed           | 2.40 GHz      | 2.460 GHz        | 2.40 GHz      | 2.460 GHz        |
 +---------------------+---------------+------------------+---------------+------------------+
-| Reg Compute Nodes   | 1328          | 100              | 14            | 2                |
+| Reg Compute Nodes   | 1328          | 100  | 14| 2    |
 +---------------------+---------------+------------------+---------------+------------------+
-| Cores/node          | 40            | 20               | 40            | 20               |
+| Cores/node          | 40| 20   | 40| 20   |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total Cores         | 53,120        | 2000             | 560           | 40               |
+| Total Cores         | 53,120        | 2000 | 560           | 40   |
 +---------------------+---------------+------------------+---------------+------------------+
 | Memory/Core         | 96 GB         | 256 GB           | 90 GB         | 256 GB           |
 +---------------------+---------------+------------------+---------------+------------------+
-| Peak Flops/node     | 12            | NA               | 12            | NA               |
+| Peak Flops/node     | 12| NA   | 12| NA   |
 +---------------------+---------------+------------------+---------------+------------------+
-| Service Code Memory | 187 GB        | NA               | 187 GB        | NA               |
+| Service Code Memory | 187 GB        | NA   | 187 GB        | NA   |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total BigMem Nodes  | 268           | NA               | 268           | NA               |
+| Total BigMem Nodes  | 268           | NA   | 268           | NA   |
 +---------------------+---------------+------------------+---------------+------------------+
-| BibMem Node Memory  | 384 GB        | NA               | 384 GB        | NA               |
+| BibMem Node Memory  | 384 GB        | NA   | 384 GB        | NA   |
 +---------------------+---------------+------------------+---------------+------------------+
 | CPU Flops           | 2672 TF       | 83.1 TF          | 28 TF         | 1.6 TF           |
 +---------------------+---------------+------------------+---------------+------------------+
-| GPUs/Node           | NA            | 8 P100           | NA            | 8 P100           |
+| GPUs/Node           | NA| 8 P100           | NA| 8 P100           |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total GPUs          | NA            | 800              | NA            | 16               |
+| Total GPUs          | NA| 800  | NA| 16   |
 +---------------------+---------------+------------------+---------------+------------------+
-| GPU Flops/GPU       | NA            | 4.7              | NA            | 4.7              |
+| GPU Flops/GPU       | NA| 4.7  | NA| 4.7  |
 +---------------------+---------------+------------------+---------------+------------------+
 | Interconnect        | HDR-100 IB    | FDR-10 (40 Gbps) | HDR-100 IB    | FDR-10 (40 Gbps) |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total GPU Flops     | NA            | 3760 TF          | NA            | 75 TF            |
+| Total GPU Flops     | NA| 3760 TF          | NA| 75 TF|
 +---------------------+---------------+------------------+---------------+------------------+
 
 .. note::
@@ -116,7 +116,6 @@ If you are approaching your quota, the first step should beto delete old files a
 
 If you are approaching your quota or your file count quotaor are running over 200 files/GB, the first step should beto delete old small files. If you want to keep them aroundbut they are not accessed frequently, you should tar up manysmall files into one big files. If you have an exceptionalsituation and believe you need a quota increase, pleasestart a Hera help ticket including the followinginformation:
 
-::
 
 1. Project name.   
 2. Justification, including an analysis of your workload detailing the files/GB needed.   
@@ -330,16 +329,12 @@ If many processes need the information from stat(), do it**once**, as follows:
 
 It is *beneficial* to stripe a file when...
 
-           * Your program reads a single large input file and performs the input operation from many nodes at the same time.
-           * Your program reads or writes different parts of the same file at the same time.
-  * You should stripe these files to prevent all the nodes from reading from the same OST at the same time.
-     * This will avoid creating a bottleneck in which your processes try to read from a single set of disks.
-
-           * Your program waits while a large output file is written.
-  * You should stripe this large file so that it can perform the operation in parallel.
-     * The write will complete sooner and the amount of time the processors are idle will be reduced.
-  * You have a large file that will not be accessed very frequently.
-     * You should stripe this file widely (with a larger stripe count), to balance the capacity across more OSTs. * This (in current Lustre version) requires rewriting the file.
+* Your program reads a single large input file and performs the input operation from many nodes at the same time.
+* Your program reads or writes different parts of the same file at the same time.
+You should stripe these files to prevent all the nodes from reading from the same OST at the same time. This will avoid creating a bottleneck in which your processes try to read from a single set of disks.
+Your program waits while a large output file is written.
+* You should stripe this large file so that it can perform the operation in parallel. The write will complete sooner and the amount of time the processors are idle will be reduced.
+* You have a large file that will not be accessed very frequently. You should stripe this file widely (with a larger stripe count), to balance the capacity across more OSTs. * This (in current Lustre version) requires rewriting the file.
 
 It is not always necessary to stripe files...
 
@@ -408,8 +403,184 @@ You can specify the stripe count and size programmatically,by creating an MPI in
     lfs setstripe -s 1m -c 1 /scratch1/your_project_dir/path/serial/
 
         
-Data and Storage
+Applications and Libraries
 ================
+
+A number of applications are available on Hera. They should
+be run on a compute node. They are serial tasks, not
+parallel, and thus, a single core may be sufficient. If your
+memory demands are large, it may be appropriate to use an
+entire node even though you are using only a single core.
+
+.. note::
+
+The qsub command refers to “account”. Think of this as
+your group or project of which you might have several. Your
+“group” name is what you should provide as your “account”.
+
+.. rubric:: Using Anaconda Python on Hera
+
+Please see
+`Anaconda/Miniconda <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=anaconda>`_
+for installation instructions.
+
+These installers have been modified in three ways:
+
+* To add a .condarc file that points your conda to
+   anaconda.rdhpcs.noaa.gov
+* To add a sitecustomize.py script that logs your scripts'
+   import dependencies so we can target resources toward
+   building optimized versions of the most used packages
+*  To change conda to propagate the sitecustomize.py file
+   into conda environments you create
+
+To stop logging your dependencies, delete the
+
+.. code-block:: shell
+
+  $conda_root/lib/pythonX.Y/site-packages/sitecustomize.py script.
+
+.. note::
+RDHPCS support staff does not have the available resources
+to support or maintain these packages. You will be
+responsible for the installation and troubleshooting of the
+packages you choose to install. Due to architectural and
+software differences some of the functionality in these
+packages may not work.
+
+.. rubric:: MATLAB
+
+Please see:
+`MATLAB <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Applications#MATLAB>`__
+
+.. rubric:: Using IDL on Hera
+
+The IDL task can require considerable resources. It
+should not be run on a frontend node. It is recommended that
+you run IDL on a compute node either in a job or via
+interactive job. Take a whole node and there is no need to
+use the "--mem=<memory>" parameter. If you request a single
+task you would get a shared node and in those instances you
+should consider using "--mem=<memory>" option (since IDL is
+memory intensive).
+
+To run IDL on an “interactive queue”:
+
+.. code-block:: shell
+
+    salloc --x11=first --ntasks=40 -t 60 -A <account>
+    cd <your working directory>
+    module load idl
+    idl      (or idled)
+
+IDL can be run from a normal batch job as well.
+
+.. rubric:: Multi-Threading in IDL
+
+IDL is a multi-threaded program. By default, the number of
+threads is set to the number of CPUs present in the
+underlying hardware. The default number of threads for Hera
+compute node is 48 (the number of virtual CPUs). It should
+not be run as a serial job with the default thread number as
+the threaded program will affect other jobs on the same
+node.
+
+The number of threads needs to be set as 1 if a job is going
+to be submitted as a serial job, which can be achieved by
+setting the environment variable IDL_CPU_TPOOL_NTHREADS to
+1, or setting it with the CPU procedure in IDL: CPU,
+TPOOL_NTHREADS = 1 . If a job requires larger than 10
+GBmemory, it is recommended to run the job on either the
+bigmem node or a whole node.
+
+.. rubric:: Using ImageMagick on Hera
+
+The ImageMagick module can be loaded on Hera with the
+following command:
+
+.. code-block:: shell
+
+  module load imagemagick
+  display <parameters>
+
+The modules set an environment variable and paths in your
+environment to access the files.
+
+.. code-block:: shell
+
+  $MAGICK_HOME is set to the base directory
+   $MAGICK_HOME/bin is added to your search path
+   $MAGICK_HOME/man is added to your MANPATH
+   $MAGICK_HOME/lib is added to your LD_LIBRARY_PATH
+
+ImageMagick (and the utilities that are part of this package
+including “convert”) should be run on a compute node for
+gang processing of many files, either via a normal batch job
+or via an interactive job.
+
+.. rubric:: Using R on Hera
+
+R is a software environment for statistical computing and
+graphics. It is available on Hera as a module within the
+Intel module families. The R module can be loaded on Hera
+with the following commands:
+
+.. code-block:: shell
+
+   module load intel
+   module load R
+
+R has many contributed packages that can be added to
+standard R.
+`CRAN <https://cran.r-project.org/web/packages/>`__  the
+global repository of open-source packages that extend the
+capabiltiies of R, has a complete list of R packages as well
+as the packages for download.
+
+Due to the access restrictions from Hera to the CRAN
+repository, you may need to download an R package first to
+your local workstation and then copy it to your space on
+Hera to install the package as detailed below.
+
+To install a package from the command line:
+
+.. code-block:: shell
+
+  R CMD INSTALL <path_to_file>
+
+To install a package from within R
+
+.. code-block:: shell
+
+  > install.packages("path_to_file", repos = NULL,
+type="source")
+
+where *path_to_file* would represent the full path and file
+name.
+
+When you try to install a package for the first time, you
+may get a message similar to:
+
+Warning in install.packages("chron") :
+
+.. code-block:: shell
+
+       'lib = "/apps/R/3.2.0-intel-mkl/lib64/R/library"' is not writable
+     Would you like to use a personal library instead?  (y/n)
+
+Reply with *y* and it will prompt you for a location.
+
+.. rubric:: Libraries
+
+A number of libraries are available on Hera. The following
+command can be used to list all the available libraries and
+utilities:
+
+.. code-block:: shell
+
+   module spider
+
+         
 
 Software
 ========
