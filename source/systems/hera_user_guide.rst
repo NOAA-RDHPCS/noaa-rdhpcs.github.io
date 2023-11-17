@@ -244,7 +244,7 @@ User and Group usage (capacity and file count) is tracked but not limited. You c
 For example, to get a summary of the disk usage for project "rtnim":
 
 .. code-block:: shell
-  
+
    $ id   uid=5088(rtfim) gid=10052(rtfim) groups=10052(rtfim)...
    $ lfs quota -p 10052 /scratch1   Disk quotas for prj 10052 (pid 10052):        Filesystem  kbytes   quota   limit   grace   files   quota   limit   grace         /scratch1       4  1048576 1258291      *      1  100000  120000       -
    ("kbytes" = usage, "quota" = soft quota, "limit" = hard quota)
@@ -252,23 +252,24 @@ For example, to get a summary of the disk usage for project "rtnim":
 .. rubric:: Finding Files
 
 The *lfs find* command is more *efficient* than the GNUfind, it may be faster too.
-Example, finding fortran source files accessed within thelast day.
+For example, finding fortran source files accessed within the last day:
 
 .. code-block:: shell
+
     lfs find . -atime -1 -name '*.f90
 
 .. rubric:: Striping Information
   
-You can view the file striping (layout on disk) of a filewith:
+You can view the file striping (layout on disk) of a file with:
 
 .. code-block:: shell
+
     lfs getstripe <filename>
+
 The Hera default configuration uses “Progressive FileLayout” or PFL.
 
   * The first part of each file is stored on SSD
-  * Up to 256 KB, single stripe
-(This is similar to how Panasas /scratch3,4 operated)
-
+  * Up to 256 KB, single stripe (This is similar to how Panasas /scratch3,4 operated)
   * As the file grows bigger, it overflows to disks and it   stripes it across more disks and more disks
   * Up to 32 MB - on HDD, single stripe  
   * Up to 1 GB - on HDD, 4-way stripe  
@@ -277,15 +278,19 @@ The Hera default configuration uses “Progressive FileLayout” or PFL.
 
 So small files reside on SSDs, big files get striped“progressively” wider!
 The "getstripe" command above shows the full layout.Typically not all components are instantiated. Only theextents which have "l_ost_idx" (object storage target index)and "l_fid" (file identifier) listed actually have createdobjects on the OSTs.
-*Do not attempt to set striping!! If you think the defaultis not working for you, please let us know by submitting ahelp ticket.*
+*Do not attempt to set striping!! If you think the default is not working for you, please let us know by submitting ahelp ticket.*
 
 .. rubric:: Other lfs Commands
 
 .. code-block:: shell
-           * lfs cp – 
+
+  * lfs cp – 
+
 to copy files.
+
 .. code-block:: shell
-           * lfs ls – 
+  * lfs ls – 
+  
 to list directories and files.
 
 These commands are often quicker as they reduce the numberof stat and remote procedure calls needed.
