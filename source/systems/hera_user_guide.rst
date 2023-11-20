@@ -1090,9 +1090,9 @@ Documentation for `ARM <https://developer.arm.com/tools-and-software/server-and-
 `Homepage for TAU (Tuning and Analysis Utilities) <http://www.cs.uoregon.edu/Research/tau/home.php TAU Video>`_
 
 `Tutorials and other documentation <http://www.cs.uoregon.edu/Research/tau/docs.php>`_
-`Reference Guide  <tau-referenceguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlakhOd1lWVEREVmM/view?usp=sharing>`__
+`Reference Guide  tau-referenceguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlakhOd1lWVEREVmM/view?usp=sharing>`__
 
-`Users Guide <tau-usersguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlUWFLSFZBdlFuMDQ/view?usp=sharing>`__
+`Users' Guide tau-usersguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlUWFLSFZBdlFuMDQ/view?usp=sharing>`__
 
 
 Managing Contrib Projects
@@ -1125,15 +1125,12 @@ Maintainers are expected to:
 
 -  The package should be a single program or toolset.
 -  We want to prevent having a single directory being a
-   repository for many different packages. If you support multiple functions, please request
-      multiple packages
+   repository for many different packages. If you support multiple functions, please request multiple packages
 -  The package may have build dependencies on other
    packages, but it must otherwise be self-contained
 -  The package may not contain links to files in user or
    project directories.
--  We expect each package to be less than 100MB. If you need more, please tell us when you request your
-      package. We can support larger packages but we need to monitor
-      the space used.
+-  We expect each package to be less than 100MB. If you need more, please tell us when you request your package. We can support larger packages but we need to monitor the space used.
 -  We expect each package to have less than 100 files. If you need more, please tell us when you request your
    package.
 
@@ -1296,8 +1293,847 @@ Example:
 
        
 
-Debugging
+Fine Grain Architecture (FGA) System
 =========
+The Fine Grain Architecture (FGA) system has been installed
+as an addition to Hera to facilitate experimentation with
+emerging architectures. In addition to the traditional
+processors, each compute node on the FGA system has multiple
+GPUs on each node.
+
+The part of the system that doesn't include the GPUs has
+been generally referred to as the Traditional Computing
+Architecture (TCA) and these two abbreviation TCA and FGA
+will be used in this document to refer to these two systems.
+
+.. rubric:: System Information
+-  The FGA system consists of a total of 100 nodes (named
+   tg001 through tg100)
+-  Each node has two 10 core Haswell processors (20 cores
+   per node, referred to as Socket0 and Socket1)
+-  Each node has 256 GB of memory
+-  Each node has 8 Tesla P100 (Pascal) GPUs.
+
+.. code-block:: shell
+
+   * GPUs 0-3 are connected to Socket0, and
+   ** GPUs 4-7 are connected to Socket1
+   * The interconnect fabric is a fat tree network, made up of 1 Mellanox Connect-X 3 IB card connected to Socket1
+   * The FGA system has access to all the same file systems that TCA has
+
+Please note that the network fabric on the FGA system has
+the Mellanox IB cards which are different from the "regular"
+Hera (or TCA) which has Intel TrueScale IB cards; this
+distinction becomes important because the kernel running on
+these FGA nodes is different from the TCA.
+
+Just as an example about how this may impact users,
+depending on the application it may be necessary to compile
+your application on a FGA compute node by getting access to
+an interactive compute node in the "fge" queue.
+   
+.. rubric:: Getting an allocation for FGA resources  
+All projects with an allocation on Hera have windfall access to FGA resources.
+All FGA projects (RDARCH portfolio) have windfall access to
+Hera TCA resources.
+
+We are soliciting project requests for compute allocations
+on the FGA system.
+
+Users interested in an allocation on the fine-grain
+augmentation may request an FGA allocation by sending a
+couple of paragraphs (through their PIs if they are not a
+PI) to Leslie.B.Hart@noaa.gov.
+
+The paragraphs should contain the following information:
+
+-  The number of node-hours requested.
+-  Disk space (in terabytes) requested.
+-  A brief description of the project in terms of science
+   objectives and computer science objectives.
+-  Planned way to exploit (or learning to exploit) the GPUs.
+
+Note that there are approximately 64,000 node-hours
+(1,270,000 core-hours) available. Since the intent is to use
+an entire node (including the GPUs) only full node will be
+available for allocation (although the bookkeeping will be
+done in core-hours).
+
+.. rubric:: Using FGA resources without an allocation  
+
+Users who do not have allocations on the FGA system will
+have access to the FGA system at windfall priority.　 Which
+means users will be able to submit jobs to the system, but
+they will only run when the resources are not being used by
+projects that do have an FGA allocation. This is helpful for
+users who are in interested in exploring the GPU resources
+for their applications. To use the system in this mode
+please submit the jobs to the fgewf partition and windfall
+QoS by including the following:
+
+.. code-block:: shell
+
+      sbatch -p fgewf -q windfall ...
+
+.. rubric:: User Environment
+
+Since the FGA is part of Hera, there are no separate login
+nodes for using the FGA. When you log in to Hera you will be
+connected to one of the front end nodes on Hera.
+
+There are however some additional software packages and
+their associated modules that are useful only on the FGA. A
+couple of examples of this are cuda and mvapich2-gdr
+libraries.
+
+.. rubric:: Compiling and Running Codes on the FGA
+
+Please keep in mind that the software stacks on the FGA
+machines are slightly different from regular Hera TCA nodes
+(including the FE nodes) as mentioned above. This is because
+the TCA and FGA nodes have different network cards which
+necessitates that we have different images for these two
+systems.
+
+**We recommend that compilation be done for FGA applications
+only on a compute node after obtaining a shell on one of the
+FGA compute nodes by submitting an interactive batch job to
+the "fge" or the "fgews" QoS.**
+
+.. rubric:: Compiling and Running Codes Using CUDA
+Compilation for non-MPI applications may be done either on
+the front-ends or on compute nodes. But generally we
+recommend compiling on an FGA compute node.
+
+The following module will have to be loaded before compiling
+and executing cuda programs:
+
+.. code-block:: shell
+
+   module load cuda      # Generally you should use the latest cuda available
+
+   # Note: We have limited experience with cuda.
+   #       The following flags were seen in sample codes
+   #       for compiling codes for the Pascal GPUs
+
+   nvcc -gencode arch=compute_60,code=sm_60 mycode.cu
+
+.. rubric:: Compiling and Running Codes Using Intel MPI
+If you're using Intel MPI (with or without cuda; see the
+note above if you're using cuda), compilation may be done on
+the front-ends or on the computes nodes in an
+interactive-batch job. But we would still recommend
+compiling on an FGA compute node by submitting an
+interactive batch job to the "fge" queue.
+
+Please load the following modules before compilation and
+also load these modules in the batch job before execution:
+
+.. code-block:: shell
+
+   module load intel impi
+
+   mpiicc   -o mycexe mycode.c
+   mpiifort -o myfxex mycode.f90
+
+.. note::
+Specific versions are listed only as examples; you
+can load any of the available versions)
+
+In addition, the following environment variables will have
+to be set in the job file before execution (using the syntax
+appropriate for the shell you are using):
+
+.. code-block:: shell
+
+   module load intel impi
+
+   setenv I_MPI_FABRICS shm:ofa
+
+   srun ./myexe
+
+This is necessary because the FGA nodes have Mellanox IB
+cards as opposed to the Intel IB cards as in the regular
+Hera nodes. Because of this difference in hardware the
+software is also different on the FGA nodes. The FGA nodes
+do not support the TMI fabric setting which is the default
+on the regular Hera nodes.
+
+.. rubric:: Compiling and Building Codes Using mvapich2-gdr Library
+The MVAPICH2-GDR ( GDR stands for GPUDirect RDMA) from Ohio
+State University is available for experimentation and
+testing on the FGA nodes.
+
+In order to use this library please keep this in mind:
+
+**We recommend that compilation be done for FGA applications
+only on a compute node after obtaining a shell on one of the
+FGA compute nodes by submitting an interactive batch job to
+the "fge" or the "fgedebug" queue.**
+
+Since the wait times for the fge queue are fairly short it
+should be fine to use just the regular "fge" queue.
+
+You need to load the following modules:
+
+.. code-block:: shell
+
+   module load intel cuda mvapich2-gdr    # Please consider using the latest versions of these
+
+   mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
+   mpicc  -o myc.exe    myccode.c
+
+In addition to loading the modules mentioned above, at
+execution time you need to set the following environment
+variables in your job file:
+
+.. code-block:: shell
+
+   module load intel cuda mvapich2-gdr
+
+   # By default the MVAPICH2-GDR lib will use GDRCOPY
+   # If for some reason you don't want to use it, set the
+   # following variable to 0
+   # setenv MV2_USE_GPUDIRECT_GDRCOPY 0
+
+   env LD_PRELOAD=$MPIROOT/lib64/libmpi.so mpirun -np $PBS_NP ./myexe
+
+.. rubric:: Compiling and Building Codes Using OpenMPI (experimental)
+
+The OpenMPI implimentation of MPI is available for
+experimentation and testing on the FGA nodes. The current
+installed version is the one that came with the PGI
+compiler, so PGI examples are shown below:
+
+In order to use this library please keep in mind you have to
+do the following:
+
+You need to load the following modules:
+
+.. code-block:: shell
+
+   module load pgi cuda openmpi     # Please consider loading the latest versions of these
+
+   mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
+   mpicc  -o myc.exe    myccode.c
+
+In addition to loading the modules mentioned above, at
+execution time you need to set the following environment
+variables in your job file:
+
+.. code-block:: shell
+
+   module load pgi cuda openmpi# Please consider loading the latest versions of these
+   mpirun -np $PBS_NP -hostfile $PBS_NODEFILE ./myexe
+
+The following link has additional information on using
+OpenMPI, particularly for CUDA enabled applications:
+
+https://www.open-mpi.org/faq/?category=runcuda
+
+.. rubric:: Compiling codes with OpenACC directives on Hera
+   Hera[\ `edit </index.php?title=FGA_system&action=edit&section=11>`__\ ]
+   :name: compiling-codes-with-openacc-directives-on-heraedit
+
+OpenACC directive based programming is available with the
+PGI compilers. It is best to load the most recent PGI
+compiler available for this. The example below shows how to
+compile a serial program that has OpenACC directives:
+
+.. code-block:: shell
+
+   module load pgi cuda        # Please consider loading the latest versions of these
+   pgf90 -acc -ta=nvidia,cc60,nofma -Minfo=accel -Msafeptr myprog.f90
+
+.. rubric:: Compiling MPI codes with OpenACC directives on
+   Hera:[\ `edit </index.php?title=FGA_system&action=edit&section=12>`__\ ]
+   :name: compiling-mpi-codes-with-openacc-directives-on-heraedit
+
+We have limited experience of using these new technologies,
+so the best we can do with this point is point you to the
+resources available on the web.
+
+http://www.pgroup.com/doc/openaccmpi17tut.pdf
+
+The following link has a presentation on some advanced
+topics on using multiple GPUs:
+
+http://on-demand.gputechconf.com/gtc/2016/webinar/openacc-course/Advanced-OpenACC-Course-Lecture2--Multi-GPU-20160602.pdf
+
+.. rubric:: Submitting Batch Jobs to the FGA
+   System[\ `edit </index.php?title=FGA_system&action=edit&section=13>`__\ ]
+   :name: submitting-batch-jobs-to-the-fga-systemedit
+
+Users that have FGE specific allocation they can submit jobs
+to the "fge" partition. Users that don't have an FGE
+specific allocation can submit to the GPU nodes by
+submitting to the "fgewf" partition and will run with
+"windfall" priority.
+
+NOTE: One thing to keep in mind is that unlike the TCA, the
+FGA nodes have a maximum of 20 cores per node (Hera TCA has
+24 cores per node).
+
+Please see the following link regarding "Hera" partitions:
+https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Hera(Theia)_-_SLURM#Hera_Partitions
+
+.. rubric:: Hints on Rank Placement/Performance
+   Tuning[\ `edit </index.php?title=FGA_system&action=edit&section=14>`__\ ]
+   :name: hints-on-rank-placementperformance-tuningedit
+
+**Please note that this section is included below just as a
+suggestion and is being updated as we learn more. Please
+note that the following section seems to be applicable only
+to Intel MPI.**
+
+As noted under the "System Information" heading at the top
+section of the document, please keep in mind that there are
+4 GPUs connected to the first socket and 4 GPUs connected to
+the second socket.
+
+For best performance it will be necessary to pin the MPI
+processes such that they're not moving from core to core on
+the node during the run.
+
+First a simple script for pinning in a straightforward way
+is shown below, followed by a couple of examples that were
+modified from actual examples used in the benchmarking run:
+
+::
+
+   tfe03.% cat ~/hello/place.sh
+   #!/bin/bash
+   #set -x
+   #
+   # Assumptions for this script:
+   #    1) The arguments are: exe and args to the executable
+   #    2) Local rank 0 is using GPU0, etc.
+   #    3) If "offset" environment variable is set, that is added to
+   #   to lrank.  Generally avoid core 0;
+   #       - Use an offset of  1 to place on first  socket
+   #       - Use an offset of 11 to place on second socket
+   #   Note:
+   #First 4 GPUs connected to the first socket (cores 0-9)
+   #Last  4 GPUs connected to the second socket (cores 10-19)
+
+   let lrank=$PMI_RANK%$PBS_NUM_PPN
+   let offset=${offset:-0} # set offset to 10 to place on second socket
+
+   let pos=( $lrank + $offset)
+
+   numactl -a -l --physcpubind=$pos $*
+   tfe03.%
+
+The job can be launched by using:
+
+::
+
+   mpirun -np ${nranks} ./place.sh $exe
+
+Based on the experience from the Cray benchmarking team, a
+couple of examples of achieving the desired pinning are
+shown below.
+
+In the first example below, There are 4 MPI ranks on each
+node, the goal is to pin the 4 ranks to the first socket and
+specific cores; Also in this example each rank used 2
+threads, and hence 2 cores are specified for each rank:
+
+::
+
+   tfe09.% cat r4_sock1.sh
+   #!/bin/bash
+   #location of HPL
+   HPL_DIR=`pwd`
+   # set -x
+   # Number of CPU cores
+   CPU_CORES_PER_RANK=1
+
+   export I_MPI_FABRICS=shm:OFA
+   export I_MPI_PIN=disable
+   export OMP_NUM_THREADS=$CPU_CORES_PER_RANK
+   export MKL_NUM_THREADS=$CPU_CORES_PER_RANK
+
+   #export CUDA_DEVICE_MAX_CONNECTIONS=12
+   export CUDA_DEVICE_MAX_CONNECTIONS=12
+   export CUDA_COPY_SPLIT_THRESHOLD_MB=1
+
+   #APP=./xhpl.intel
+   APP=$exe
+
+   #lrank=$OMPI_COMM_WORLD_LOCAL_RANK
+   let lrank=$PMI_RANK%4
+
+   case ${lrank} in
+   [0])
+     export DEV_ID=0
+     numactl -a -l --physcpubind=2,6 $APP $*
+     ;;
+   [1])
+     export DEV_ID=1
+     numactl -a -l --physcpubind=3,7 $APP $*
+     ;;
+   [2])
+     export DEV_ID=2
+     numactl -a -l --physcpubind=4,8 $APP $*
+     ;;
+   [3])
+     export DEV_ID=3
+     numactl -a -l --physcpubind=5,9 $APP $*
+     ;;
+   esac
+
+   tfe09.%
+
+The script above is used in the mpirun command; please note
+that in the example above the name of the executable is
+passed in the environment variable "exe".
+
+Just as a second example a similar script for pinning to the
+specific cores on the second socket is shown below:
+
+::
+
+   tfe09.% cat r4_sock2.sh
+   #!/bin/bash
+   #location of HPL
+   HPL_DIR=`pwd`
+   # set -x
+   # Number of CPU cores
+   CPU_CORES_PER_RANK=1
+
+   export I_MPI_FABRICS=shm:OFA
+   export I_MPI_PIN=disable
+   export OMP_NUM_THREADS=$CPU_CORES_PER_RANK
+   export MKL_NUM_THREADS=$CPU_CORES_PER_RANK
+
+   #export CUDA_DEVICE_MAX_CONNECTIONS=12
+   export CUDA_DEVICE_MAX_CONNECTIONS=12
+   export CUDA_COPY_SPLIT_THRESHOLD_MB=1
+
+   #APP=./xhpl.intel
+   APP=$exe
+
+   #lrank=$OMPI_COMM_WORLD_LOCAL_RANK
+   let lrank=$PMI_RANK%4
+
+   case ${lrank} in
+   [0])
+     export DEV_ID=4
+     numactl -a -l --physcpubind=12,16 $APP $*
+     ;;
+   [1])
+     export DEV_ID=5
+     numactl -a -l --physcpubind=13,17 $APP $*
+     ;;
+   [2])
+     export DEV_ID=6
+     numactl -a -l --physcpubind=14,18 $APP $*
+     ;;
+   [3])
+     export DEV_ID=7
+     numactl -a -l --physcpubind=15,19 $APP $*
+     ;;
+   esac
+
+   tfe09.%
+
+.. rubric:: Rank placement when using
+   mvapich2[\ `edit </index.php?title=FGA_system&action=edit&section=15>`__\ ]
+   :name: rank-placement-when-using-mvapich2edit
+
+For MVAPICH2 the following seems to work to place all the
+ranks on the second socket.
+
+| In this example, I'm using two nodes, and trying to run
+  eight tasks, and place them only
+| on the second socket on each node:
+
+::
+
+   tg001.% setenv MV2_USE_GPUDIRECT_GDRCOPY 1
+   tg001.% setenv MV2_ENABLE_AFFINITY 1
+   tg001.%
+
+   tg001.% mpirun -np 8 -env MV2_CPU_MAPPING=16:17:18:19 ./$exe | sort -k 4
+   Hello from rank 00 out of 8; procname = tg001, cpuid = 16
+   Hello from rank 01 out of 8; procname = tg001, cpuid = 17
+   Hello from rank 02 out of 8; procname = tg001, cpuid = 18
+   Hello from rank 03 out of 8; procname = tg001, cpuid = 19
+   Hello from rank 04 out of 8; procname = tg002, cpuid = 16
+   Hello from rank 05 out of 8; procname = tg002, cpuid = 17
+   Hello from rank 06 out of 8; procname = tg002, cpuid = 18
+   Hello from rank 07 out of 8; procname = tg002, cpuid = 19
+   tg001.%
+
+Please note that the two environment variables shown above
+need to be set as currently they're not set by default. But
+this one is subject to change and the module may be modified
+in the future to set it by default.
+
+Please see the MVAPICH2 user guide for more details:
+
+http://mvapich.cse.ohio-state.edu/static/media/mvapich/mvapich2-2.2-userguide.pdf
+
+.. rubric:: Using Nvidia Multi-Process Service
+   (MPS)[\ `edit </index.php?title=FGA_system&action=edit&section=16>`__\ ]
+   :name: using-nvidia-multi-process-service-mpsedit
+
+.. rubric:: What is
+   MPS[\ `edit </index.php?title=FGA_system&action=edit&section=17>`__\ ]
+   :name: what-is-mpsedit
+
+Multi-Process Service (MPS) is a service that allows
+multiple tasks on a node to share a GPU.
+
+On Hera for example, we have 20 cores on a node and only 8
+GPU. Under normal circumstances, one could use just 8 MPI
+tasks on each node, and have each of those tasks to
+exclusively use 1 GPU.
+
+Sometimes there may not be enough work from one task to keep
+the GPU busy, in which case it may be beneficial to share
+the GPU and have more MPI tasks on each node.
+
+The performance benefits of taking this approach are very
+much application dependent.
+
+.. rubric:: How do I use
+   MPS[\ `edit </index.php?title=FGA_system&action=edit&section=18>`__\ ]
+   :name: how-do-i-use-mpsedit
+
+**Latest Update:**
+
+**Please ignore the section below on starting and stopping
+the MPS daemon; It is configured to automatically start on
+all the FGE nodes, so this part about starting and the
+stopping is not necessary any more.**
+
+In the example below, we describe the simplest use case and
+we will update the documentation as we gather more
+experience.
+
+For the simplest case, we will consider running an MPI
+application on just one node after getting access to a FGA
+compute node by submitting an interactive batch job to the
+fge queue.
+
+Note: For the more advanced use case, the necessary setup
+for starting the deamon on all the nodes etc. may be a
+little more complicated, but the same principle should
+apply.
+
+Assuming you have obtained an interactive compute node as
+mentioned above:
+
+-  Load the necessary modules. The MPS services available
+   after the cuda module is loaded:
+
+::
+
+   tg001.% module load intel/16.1.150 cuda/8.0 mvapich2-gdr/2.2-3-cuda-8.0-intel
+   tg001.%
+
+-  Start the MPS daemon:
+
+::
+
+   tg001.% setenv CUDA_MPS_LOG_DIRECTORY /tmp/nvidia-log
+   tg001.% setenv CUDA_MPS_PIPE_DIRECTORY /tmp/nvidia-pipe
+   tg001.%
+
+   tg001.% nvidia-cuda-mps-control -d
+   tg001.%
+
+-  Confirm that MPS daemon is running
+
+::
+
+   tg002.% ps -elf | grep nvidia-cuda-mps-control | grep -v grep
+   1 S Raghu.R+  47724      1  0  80   0 -  2666 poll_s 16:56 ?        00:00:00 nvidia-cuda-mps-control -d
+   tg002.%
+
+-  You can run some of the MPS commands.
+
+Please keep in mind that MPS does not have a command prompt,
+so typically you run the MPS commands as shown below:
+
+::
+
+   tg001.% echo get_server_list | nvidia-cuda-mps-control
+   tg001.%
+
+   tg001.% echo get_client_list | nvidia-cuda-mps-control
+   Server 0 not found
+   tg001.%
+
+Then you run your application like you normally would.
+
+.. rubric:: At the end of your session, terminate the deamon
+   by running the
+   command:[\ `edit </index.php?title=FGA_system&action=edit&section=19>`__\ ]
+   :name: at-the-end-of-your-session-terminate-the-deamon-by-running-the-commandedit
+
+::
+
+   tg001.% echo quit | nvidia-cuda-mps-control
+   tg001.%
+
+.. rubric:: Documentation for
+   MPS[\ `edit </index.php?title=FGA_system&action=edit&section=20>`__\ ]
+   :name: documentation-for-mpsedit
+
+Please see the following document for additional details
+about using MPS:
+
+https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf
+
+.. rubric:: Compiling and Building Codes With The Cray
+   Programming Environment
+   (CrayPE)[\ `edit </index.php?title=FGA_system&action=edit&section=21>`__\ ]
+   :name: compiling-and-building-codes-with-the-cray-programming-environment-craypeedit
+
+| A custom built version of mvapich2 must be used when
+  compiling and running with
+| the Cray Programming Environment (CrayPE). To run an MPI
+  program using the Cray
+| Programming Environment (CrayPE), you must first set up
+  the proper environment.
+| This has been rolled into a single "module load" command
+  that brings in all required
+| modules:
+
+Note: Currently because of a compatibility issue between
+regular Modules and Lmod (which Hera uses), the CrayPE
+modules don't work with tcsh. Hence all of these examples
+are shown with bash.
+
+::
+
+   $ bash -l
+   $ module purge
+   $ module load craype-hera
+   $ module list
+
+   Currently Loaded Modules:
+     1) craype-haswell   7) cray-libsci/17.11.1
+     2) craype-network-infiniband         8) PrgEnv-cray/1.0.2
+     3) craype/2.5.13         9) cray-libsci_acc/17.03.1
+     4) cce/8.6.410) craype-accel-nvidia60
+     5) cudatoolkit/8.0.44   11) perftools-base/6.5.2
+     6) mvapich2_cce/2.2rc1.0.3_noslurm  12) craype-hera/8.6.4
+
+Then compile the program. The compiler drivers are
+
+-  cc - c code
+-  ftn - fortran
+-  CC - c++ code
+
+**Please note**: do not use the "mpi" drivers associated
+with the mvapich2 library.
+
+**Please also note:** The sample programs and scripts used
+in the examples below can be found in the following
+directory on Hera: /apps/local/examples/craype/XTHI_SIMPLE
+
+::
+
+   $ cc -homp -o xthi xthi.c (-homp is default, so not explicitly needed)
+   $
+
+To run the executable, secure the appropriate compute
+node(s) and set the environment:
+
+::
+
+   -bash-4.2$ module load craype-hera
+   -bash-4.2$ export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+   -bash-4.2$
+   -bash-4.2$ cc -homp -o xthi xthi.c
+   -bash-4.2$ mpirun -env OMP_NUM_THREADS 1 -n 4 -machinefile $PBS_NODEFILE ./xthi
+   Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (1) value
+   If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
+   To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
+   Use MV2_USE_THREAD_WARNING=0 to suppress this message
+   Hello from rank 0, thread 0, on sg001. (core affinity = 20)
+   Hello from rank 1, thread 0, on sg001. (core affinity = 21)
+   Hello from rank 2, thread 0, on sg002. (core affinity = 20)
+   Hello from rank 3, thread 0, on sg002. (core affinity = 21)
+   -bash-4.2$
+
+| All MPI ranks are running on unique cores in the fge
+  queue. Alternatively, if you want
+| to place ranks on specific cores, you can use the
+  MV2_CPU_MAPPING environment variable:
+
+::
+
+   -bash-4.2$ mpirun -env OMP_NUM_THREADS 1 -env MV2_CPU_MAPPING=0:10 -n 2 -machinefile $PBS_NODEFILE ./xthi
+   Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (1) value
+   If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
+   To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
+   Use MV2_USE_THREAD_WARNING=0 to suppress this message
+   Hello from rank 1, thread 0, on sg001. (core affinity = 10)
+   Hello from rank 0, thread 0, on sg001. (core affinity = 0)
+   -bash-4.2$
+
+Here, each rank is running on its own socket.
+
+| If this strategy is used with OpenMP threaded codes, all
+  threads will be placed on the
+| same core as the master thread, leading to contention and
+  reduced performance.
+
+::
+
+   -bash-4.2$ mpirun -env OMP_NUM_THREADS 4 -n 1 -machinefile $PBS_NODEFILE ./xthi
+   Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (4) value
+   If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
+   To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
+   Use MV2_USE_THREAD_WARNING=0 to suppress this message
+   WARNING: Requested total thread count and/or thread affinity may result in
+   oversubscription of available CPU resources!  Performance may be degraded.
+   Set OMP_WAIT_POLICY=PASSIVE to reduce resource consumption of idle threads.
+   Set CRAY_OMP_CHECK_AFFINITY=TRUE to print detailed thread-affinity messages.
+   Hello from rank 0, thread 2, on sg001. (core affinity = 0)
+   Hello from rank 0, thread 0, on sg001. (core affinity = 0)
+   Hello from rank 0, thread 3, on sg001. (core affinity = 0)
+   Hello from rank 0, thread 1, on sg001. (core affinity = 0)
+   -bash-4.2$
+
+| Each thread is placed on core.0 with the master thread. To
+  avoid this contention, the application
+| must be launched with numactl like this using in a script
+  (r4.sh in the example below):
+
+::
+
+   -bash-4.2$ cat r4.sh
+   #!/bin/bash
+   HPL_DIR=`pwd`
+   CPU_CORES_PER_RANK=4
+   export OMP_NUM_THREADS=$CPU_CORES_PER_RANK
+   export MV2_ENABLE_AFFINITY=0
+   export OMP_WAIT_POLICY=PASSIVE
+   APP=./xthi #-craype-silene #./xthi_test
+   let lrank=$PMI_RANK%8
+   echo "PMI_RANK: $PMI_RANK"
+   echo "lrank:    $lrank"
+   export I_MPI_EAGER_THRESHOLD=524288
+   export OMP_WAIT_POLICY=active
+   export OMP_SCHEDULE=dynamic,1
+   export RANKS_PER_SOCKET=1
+   export CUDA_COPY_SPLIT_THRESHOLD_MB=1
+   export ICHUNK_SIZE=768
+   export CHUNK_SIZE=2688
+   export TRSM_CUTOFF=9990000
+   export TEST_SYSTEM_PARAMS=1
+   case ${lrank} in
+   [0])
+   #  export CUDA_VISIBLE_DEVICES=0
+   #  numactl -a -l --physcpubind=2,6 $APP
+     numactl -a -l --physcpubind=0,1,2,3 $APP
+     ;;
+   [1])
+   #  export CUDA_VISIBLE_DEVICES=1
+   #  numactl -a -l --physcpubind=3,7 $APP
+     numactl -a -l --physcpubind=10,11,12,13 $APP
+     ;;
+   [2])
+   #  export CUDA_VISIBLE_DEVICES=2
+   #  numactl -a -l --physcpubind=4,8 $APP
+     numactl -a -l --physcpubind=2 $APP
+     ;;
+   [3])
+   #  export CUDA_VISIBLE_DEVICES=3
+   #  numactl -a -l --physcpubind=5,9 $APP
+     numactl -a -l --physcpubind=3 $APP
+     ;;
+   [4])
+   #  export CUDA_VISIBLE_DEVICES=4
+   #  numactl -a -l --physcpubind=12,16 $APP
+     numactl -a -l --physcpubind=4 $APP
+     ;;
+   [5])
+   #  export CUDA_VISIBLE_DEVICES=5
+   #  numactl -a -l --physcpubind=13,17 $APP
+     numactl -a -l --physcpubind=5 $APP
+     ;;
+   [6])
+   #  export CUDA_VISIBLE_DEVICES=6
+   #  numactl -a -l --physcpubind=14,18 $APP
+     numactl -a -l --physcpubind=6 $APP
+     ;;
+   [7])
+   #  export CUDA_VISIBLE_DEVICES=7
+   #  numactl -a -l --physcpubind=15,19 $APP
+     numactl -a -l --physcpubind=7 $APP
+     ;;
+   esac
+
+   -bash-4.2$
+
+| In this case, we have a single node with two MPI ranks
+  running each spawning 4 OpenMP threads. The
+| threads are placed such that each set is running on its
+  own socket:
+
+::
+
+   -bash-4.2$ mpirun -env OMP_NUM_THREADS 4 -n 2 -machinefile $PBS_NODEFILE ./r4.sh
+   PMI_RANK: 1
+   lrank:    1
+   PMI_RANK: 0
+   lrank:    0
+   Hello from rank 0, thread 0, on sg001. (core affinity = 0-3)
+   Hello from rank 0, thread 3, on sg001. (core affinity = 0-3)
+   Hello from rank 0, thread 2, on sg001. (core affinity = 0-3)
+   Hello from rank 0, thread 1, on sg001. (core affinity = 0-3)
+   Hello from rank 1, thread 0, on sg001. (core affinity = 10-13)
+   Hello from rank 1, thread 1, on sg001. (core affinity = 10-13)
+   Hello from rank 1, thread 2, on sg001. (core affinity = 10-13)
+   Hello from rank 1, thread 3, on sg001. (core affinity = 10-13)
+   -bash-4.2$
+
+| Using this as a template, it is easy to place ranks and
+  threads in many different ways. This
+| example only uses the lrank=0,1 case branches but the user
+  is encouraged to exeriment with
+| other placement strategies.
+
+.. rubric:: Some helpful web
+   resources[\ `edit </index.php?title=FGA_system&action=edit&section=22>`__\ ]
+   :name: some-helpful-web-resourcesedit
+
+https://www.openacc.org/
+
+https://www.openacc.org/resources
+
+http://www.pgroup.com/
+
+http://www.pgroup.com/resources/docs.php
+
+http://www.pgroup.com/resources/articles.htm
+
+https://www.olcf.ornl.gov/training-event/2017-gpu-hackathons/
+
+.. rubric:: Online Support
+   resources[\ `edit </index.php?title=FGA_system&action=edit&section=23>`__\ ]
+   :name: online-support-resourcesedit
+
+http://www.pgroup.com/userforum/index.php
+
+https://stackoverflow.com/questions/tagged/openacc
+
+.. rubric:: Getting
+   Help[\ `edit </index.php?title=FGA_system&action=edit&section=24>`__\ ]
+   :name: getting-helpedit
+
+As with any Hera issue, send email to:
+rdhpcs.hera.help@noaa.gov.
+
+ 
+
 
 Optimizing and Profiling
 ========================
