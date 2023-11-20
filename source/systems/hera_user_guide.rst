@@ -2035,8 +2035,7 @@ Each thread is placed on core.0 with the master thread. To avoid this contention
 | other placement strategies.
 
 .. rubric:: Some helpful web resources
-`<https://www.openacc.org/>`_
-
+`<https://www.openacc.org/>`_ </br>
 `<https://www.openacc.org/resources>`_
 
 `<http://www.pgroup.com/>`_
@@ -2068,6 +2067,6 @@ Policies and Best Practices
  -  `Managing Packages in    /contrib <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Managing_Packages_in_/contrib>`__   
  -  `Software Install Request    Policy </index.php/Software_install_request_policy>`__
  -  `Protecting Restricted    Data <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__  
- 
+
 Known Issues
 ============
