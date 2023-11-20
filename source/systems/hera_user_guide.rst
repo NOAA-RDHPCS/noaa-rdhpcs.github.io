@@ -443,8 +443,7 @@ RDHPCS support staff does not have the available resources to support or maintai
 
 .. rubric:: MATLAB
 
-Please see:
-`MATLAB <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Applications#MATLAB>`__
+Information is available `here: <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Applications#MATLAB>`__
 
 .. rubric:: Using IDL on Hera
 
@@ -717,7 +716,7 @@ Use "module keyword key1 key2 ..." to search for all possible modules matching a
 
     h3a03.hera%
 
-Please note that because LMOD is a hierarchical module system you only see the list of modules that you can load at this point in time (based on what other modules you may have loaded). To see the complete list of modules available on the system, use the "module spider" command:
+Please note that, because LMOD is a hierarchical module system, you only see the list of modules that you can load at this point in time (based on what other modules you may have loaded). To see the complete list of modules available on the system, use the "module spider" command:
 
 .. code-block:: shell
 
@@ -760,9 +759,8 @@ So if you run:
 
     # module load intel
 
-The default version will be loaded, in this case intel/18.0.5.274.
- 
- 
+the default version will be loaded, in this case intel/18.0.5.274.
+  
 If you want to load a specific version, you can. We highly recommend you use the system defaults unless something is not working or you need a different feature. To load a specific version, specify the version number.
 
 .. code-block:: shell
@@ -816,9 +814,9 @@ There are two MPI implementations available on Hera: Intel MPI and MVAPICH2. We 
 
 At least one of the MPI modules must be loaded before compiling and running MPI applications. These modules must be loaded before compiliing applications as well in your batch jobs before executing a parallel job.
 
- .. rubric:: Working with Intel Compilers and IntelMPI
+.. rubric:: Working with Intel Compilers and IntelMPI
 
- At least one of the MPI modules must be loaded before **compiling** and **running** MPI applications. This is done as follows:
+At least one of the MPI modules must be loaded before **compiling** and **running** MPI applications. This is done as follows:
 .. code-block:: shell
 
     module load intel impi
@@ -826,39 +824,40 @@ At least one of the MPI modules must be loaded before compiling and running MPI 
 .. rubric:: Compiling and Linking MPI applications with IntelMPI
 For the primary MPI library, IntelMPI, the easiest way to compile applications is to use the appropriate wrappers: mpiifort, mpiicc, and mpiicpc.
 
- **Please note the extra "i" in "mpiifort" etc**
 .. code-block:: shell
 
     mpiifort -o hellof hellof.f90    mpiicc -o helloc helloc.c    mpiicpc -o hellocpp hellocpp.cpp
 
+**Please note the extra "i" in "mpiifort" etc**
+
+
 .. rubric:: Launching MPI applications with IntelMPI
+For instructions on how to run MPI applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
- For instructions on how to run MPI applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
+.. rubric:: Launching an MPMD application with intel-mpi-library-documentation
+For instructions on how to run MPMD applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
- .. rubric:: Launching an MPMD application with intel-mpi-library-documentation
- For instructions on how to run MPMD applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
+.. rubric:: Launching OpenMP/MPI hybrid jobs with IntelMPI
+For instructions on how to request nodes in a way to support OpenMP/MPI hybrid applications see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
- .. rubric:: Launching OpenMP/MPI hybrid jobs with IntelMPI
- For instructions on how to request nodes in a way to support OpenMP/MPI hybrid applications see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
+.. rubric:: Note about MPI-IO and Intel MPI
+Intel MPI doesn't detect the underlying filesystem by default when using MPI-IO. You have to pass the following variables on to your application:
 
- .. rubric:: Note about MPI-IO and Intel MPI
- Intel MPI doesn't detect the underlying filesystem by default when using MPI-IO. You have to pass the following variables on to your application:
 .. code-block:: shell
 
     export I_MPI_EXTRA_FILESYSTEM=on    
     export I_MPI_EXTRA_FILESYSTEM_LIST=lustre
 
 .. rubric:: Using PGI and mvapich2
-
- At least one of the MPI modules must be loaded before \*compiling\* and \*running\* MPI applications. This is done with as follows:
+At least one of the MPI modules must be loaded before \*compiling\* and \*running\* MPI applications. This is done with as follows:
 .. code-block:: shell
 
     module load pgi mvapich2
 
 .. rubric:: Compiling and Linking MPI applications with PGI and MVAPICH2
+When compiling with the PGI compilers, please use the wrappers: mpif90, mpif77, mpicc, and mpicpp.
 
- When compiling with the PGI compilers, please use the wrappers: mpif90, mpif77, mpicc, and mpicpp.
- For compiling add
+For compiling add
 .. code-block:: shell
 
     mpif90 -o hellof hellof.f90    mpicc -o helloc helloc.c    mpicpp -o hellocpp hellocpp.cpp
@@ -991,12 +990,108 @@ Some things should be intuitive, but we
 recommend you look through the vendor documentation links
 shown above if you have questions.
 
-.. rubric:: Using Allinea DDT debugger with mvapich2:
-
-
-
-Compiling
+Profiling Codes
 =========
+.. rubric:: Allinea Forge
+
+Allinea Forge allows easy profiling of applications.
+Very brief instructions are included below and will be updated after the training by ARM.
+
+-  Compile with -g
+-  **Do not** move your source files; the path is hardwired
+   and will not found if relocated
+-  Load the forge module with "module load forge"
+-  Run by prefixing with "map --profile" before the launch
+   command
+
+.. code-block:: shell
+
+   #SBATCH …
+   #SBATCH …
+
+   module load intel impi forge
+
+   map --profile mpirun -np 8 ./myexe
+
+Then, submit the job as you normally do.
+Once the job has completed, you should file "\*.map" files
+in your directory.
+
+You have to view those files using the allinea "map"
+utility:
+
+.. code-block:: shell
+
+   module load forge         # If not already loaded
+   map mg-intel-impi.D_128p_4n_1t_2019-09-13_18-07.map
+
+The above command will bring up a graphical viewer to view
+your profile
+
+Perf-report is another tool that provides the profiling
+capability.
+
+.. code-block:: shell
+
+   perf-report srun ./a.out
+
+.. rubric:: TAU
+The "TAU Performance System® is a portable profiling and
+tracing toolkit for performance analysis of parallel
+programs written in Fortran, C, C++, Java, Python." Supports
+application use of MPI and/or OpenMP. Also supports GPU.
+Portions of the TAU toolkit are used to instrument code at
+compile time. Environment variables control a number of
+things at runtime. A number of controls exist, permitting
+users to:
+
+-  specify which routines to instrument or to exclude
+-  specify loop level instrumentation
+-  instrument MPI and/or OpenMP usage
+-  throttle controls to limit overhead impact of small, high
+   frequency called routines
+-  generate event traces
+-  perform memory usage monitoring
+
+The toolkit includes the Paraprof visualizer (a Java app)
+permitting use on most desk and laptop systems (Linux,
+MacOS, Windows) for viewing instumentation data. The 3D
+display can be very useful. Paraprof supports the creation
+of user defined metrics based on the metrics directly
+collected (ex: FLOPS/CYCLE).
+
+The event traces can be displayed with the Vampir, Paraver,
+or JumpShot tools.
+
+.. rubric:: Quick-start Guide for TAU
+
+The Quick-start Guide for TAU only addresses basic usage. Please
+keep in mind that this is an evolving document! 
+
+Find the Quick Start `here <https://heradocs.rdhpcs.noaa.gov/wiki/index.php?title=Quick-start_guide,`_
+
+
+.. rubric:: Tutorial slides for TAU
+A set of slides presenting a recipe approach to beginning
+with Tau is available `here <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlMzcybEhXeUs2UjQ/view?usp=sharing>`__
+
+.. rubric:: MPI and OpenMP support
+
+TAU build supports profiling of both MPI and OpenMP applications.
+
+The Quick-start Guide mentions using Makefile.tau-icpc-papi-mpi-pdt. This supports profiling of
+MPI applications. You must use Makefile.tau-icpc-papi-mpi-pdt-openmp-opari for OpenMP
+profiling. Makefile.tau-icpc-papi-mpi-pdt-openmp-opari can be used for either MPI or OpenMP or both.
+
+.. rubric:: References
+
+Documentation `ARM: <https://developer.arm.com/tools-and-software/server-and-hpc/debug-and-profile/arm-forge>` _
+`Homepage for TAU (Tuning and Analysis Utilities) <http://www.cs.uoregon.edu/Research/tau/home.php TAU Video>`_
+`Tutorials and other documentation <http://www.cs.uoregon.edu/Research/tau/docs.php>`_`
+`Reference Guide  <tau-referenceguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlakhOd1lWVEREVmM/view?usp=sharing>`__
+`Users Guide <tau-usersguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlUWFLSFZBdlFuMDQ/view?usp=sharing>`__
+
+
 
 Running Jobs
 ============
