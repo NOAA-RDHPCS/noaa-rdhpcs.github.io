@@ -5,6 +5,7 @@ Systems
 .. toctree::
    :maxdepth: 2
 
+   common.rst
    gaea_user_guide.rst
    cloud_user_guide.rst
    common.rst
@@ -13,6 +14,6 @@ Systems
    niagara_user_guide.rst
    orion_user_guide.rst
    gaea
-   Cloud_test
+   Cloud_test.rst
   
    
