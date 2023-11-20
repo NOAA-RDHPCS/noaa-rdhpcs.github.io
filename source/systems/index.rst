@@ -13,6 +13,6 @@ Systems
    niagara_user_guide.rst
    orion_user_guide.rst
    gaea
-   Cloud _test
+   Cloud_test
   
    
