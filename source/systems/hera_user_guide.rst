@@ -14,8 +14,8 @@ Weather and Climate modeling as well as its other environmental research areas.
 
 There are currently two major systems at NESCC:
 
-- Hera - A 760 Tflop Cray Compute Cluster high performance computing system
-- HPSS - A 50 Petabyte IBM/Oracle hierarchical storage management system.
+- Hera* A 760 Tflop Cray Compute Cluster high performance computing system
+- HPSS* A 50 Petabyte IBM/Oracle hierarchical storage management system.
 
 .. _hera-system-overview:
 
@@ -74,14 +74,14 @@ System Configuration
 
 .. note::
 
-    - The Skylake 6148 CPU has two AVX-512 units and hence a theoretical peak of 32
+   * The Skylake 6148 CPU has two AVX-512 units and hence a theoretical peak of 32
       double precision floating point operations per cycle with a base clock rate
       for floating point operations of 1.6 GHz.
-    - Total flops is a measure of peak, and doesn’t necessarily represent actual
+   * Total flops is a measure of peak, and doesn’t necessarily represent actual
       performance.
-    - Juno is the Test and Development System. Users must be granted specific access
+   * Juno is the Test and Development System. Users must be granted specific access
       to the system for use.
-    - The FGA part (the nodes with GPUs) are the same as what was on Theia; But the
+   * The FGA part (the nodes with GPUs) are the same as what was on Theia; But the
       network has been upgraded to EDR.
 
 
@@ -128,10 +128,10 @@ The request has to be approved by the project's PI (orPortfolio Manager), so it 
 
 Lustre functionality is divided among four primarycomponents:
 
-* MDS - Metadata Server
-* MDT - Metadata Target
-* OSS - Object Storage Server
-* OST - Object Storage Target
+* MDS* Metadata Server
+* MDT* Metadata Target
+* OSS* Object Storage Server
+* OST* Object Storage Target
 
 An MDS is server that assigns and tracks all of the storagelocations associated with each file in order to direct fileI/O requests to the correct set of OSTs and correspondingOSSs.
 An MDT stores the metadata, filenames, directories,permissions and file layout.
@@ -153,7 +153,7 @@ Each user has access to one or more directories based on theproject which they a
 * 2 MDTs
 * 16 OSSs (active/active, embedded in DDN SFA18k storage   controllers)
 * 122 OSTs (106 are HDDs, 16 are SSDs)
-* 9.1 PiB of usable disk space (*df -hP /scratch{1,2}*)
+* 9.1 PiB of usable disk space (*df*hP /scratch{1,2}*)
 
 Since each file system has two metadata targets, each project directory is configured to use one of MDTs, and they are spread roughly evenly between the two MDTs. This means that approximately 25% of all Hera projects share metadata resources.
 
@@ -199,7 +199,7 @@ Here are the steps you should follow if you have any directories that had explic
 
 .. code-block:: shell 
 
-   *lfs setstripe -d <dir>*
+   *lfs setstripe*d <dir>*
 
 3. Open a `<help ticket https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
 
@@ -230,13 +230,13 @@ To check your usage details...
 
 .. code-block:: shell 
 
-   lfs quota -p <project ID number> /scratchX
+   lfs quota*p <project ID number> /scratchX
 
 User and Group usage (capacity and file count) is tracked but not limited. You can also find your usage and your unixgroup's usage:
 
 .. code-block:: shell
     
-    lfs quota -u <User.Name> /scratch1    lfs quota -g <groupname> /scratch1
+    lfs quota*u <User.Name> /scratch1    lfs quota*g <groupname> /scratch1
 
 .. note::
   This is the *group* that owns the data,*regardless of where it is stored in the file system directory hierarchy*.
@@ -246,7 +246,7 @@ For example, to get a summary of the disk usage for project "rtnim":
 .. code-block:: shell
 
    $ id   uid=5088(rtfim) gid=10052(rtfim) groups=10052(rtfim)...
-   $ lfs quota -p 10052 /scratch1   Disk quotas for prj 10052 (pid 10052):        Filesystem  kbytes   quota   limit   grace   files   quota   limit   grace         /scratch1       4  1048576 1258291      *      1  100000  120000       -
+   $ lfs quota*p 10052 /scratch1   Disk quotas for prj 10052 (pid 10052):        Filesystem  kbytes   quota   limit   grace   files   quota   limit   grace         /scratch1       4  1048576 1258291      *      1  100000  120000      *
    ("kbytes" = usage, "quota" = soft quota, "limit" = hard quota)
 
 .. rubric:: Finding Files
@@ -256,7 +256,7 @@ For example, finding fortran source files accessed within the last day:
 
 .. code-block:: shell
 
-    lfs find . -atime -1 -name '*.f90
+    lfs find .*atime*1*name '*.f90
 
 .. rubric:: Striping Information
   
@@ -271,10 +271,10 @@ The Hera default configuration uses “Progressive FileLayout” or PFL.
   * The first part of each file is stored on SSD
   * Up to 256 KB, single stripe (This is similar to how Panasas /scratch3,4 operated)
   * As the file grows bigger, it overflows to disks and it   stripes it across more disks and more disks
-  * Up to 32 MB - on HDD, single stripe  
-  * Up to 1 GB - on HDD, 4-way stripe  
-  * Up to 32 GB - on HDD, 8-way stripe  
-  * > 32 GB - on HDD, 32-way stripe, larger object size
+  * Up to 32 MB* on HDD, single stripe  
+  * Up to 1 GB* on HDD, 4-way stripe  
+  * Up to 32 GB* on HDD, 8-way stripe  
+  * > 32 GB* on HDD, 32-way stripe, larger object size
 
 So small files reside on SSDs, big files get striped“progressively” wider!
 The "getstripe" command above shows the full layout.Typically not all components are instantiated. Only theextents which have "l_ost_idx" (object storage target index)and "l_fid" (file identifier) listed actually have createdobjects on the OSTs.
@@ -305,12 +305,12 @@ These commands are often quicker as they reduce the numberof stat and remote pro
 .. rubric:: Avoid Wild Cards
 
 tar and rm are *inefficient* when operating on a large setof files on lustre.
-The reason lies in the time it takes to expand the wildcard. "*rm -rf \**" on millions of files could take days,and impact all other users. (And you shouldn't do just "\*"anyway, it is dangerous.
+The reason lies in the time it takes to expand the wildcard. "*rm*rf \**" on millions of files could take days,and impact all other users. (And you shouldn't do just "\*"anyway, it is dangerous.
 Instead, DO generate a list of files to be removed ortar-ed, and to act them one at a time, or in small sets.
 
 .. code-block:: shell
 
-   lfs find /path/to/old/dir/ -t f -print0 | xargs -0 -P 8 rm -f
+   lfs find /path/to/old/dir/*t f*print0 | xargs*0*P 8 rm*f
 
 .. rubric:: Broadcast Stat Between MPI or OpenMP Tasks
 
@@ -348,13 +348,13 @@ It is not always necessary to stripe files...
 
 .. code-block:: shell
 
-    mkdir dir1    lfs setstripe -c 8 dir1
+    mkdir dir1    lfs setstripe*c 8 dir1
 
 You can "pre-create" a file as a zero-length striped file byrunning lfs setstripe as part of your job script or as partof the I/O routine in your program. You can then write tothat file later. For example, to pre-create the file"bigdir.tar" with a stripe count of 20, and then add datafrom the large directory "bigdir," run:
 
 .. code-block:: shell
 
-    lfs setstripe -c 20 bigdir.tar    tar cf bigdir.tar bigdir
+    lfs setstripe*c 20 bigdir.tar    tar cf bigdir.tar bigdir
 
 Globally efficient I/O, from a system viewpoint, on a lustrefile system is similar to computational load balancing in aleader-worker programming model, from a user applicationviewpoint. The lustre file system can be called upon toservice many requests across a striped file systemasynchronously and this works best if best practices, asoutlined above, are followed. A very large file that is onlystriped across one or two OSTs can degrade the performanceof the entire Lustre system by filling up OSTsunnecessarily.
 By striping a large file over many OSTs, you increasebandwidth for accessing the file and can benefit from havingmany processes operating on a single file concurrently. Ifall large files accessed by all users are striped then I/Operformance levels can be enhanced for all users.
@@ -367,7 +367,7 @@ Small files should never be striped with large stripe countsif they are striped 
 
 .. code-block:: shell
 
-    lfs setstripe -c 30 /scratch1/your_project_dir/path/large_files/
+    lfs setstripe*c 30 /scratch1/your_project_dir/path/large_files/
 
 .. rubric:: Use a Small Stripe Count for Small Files
 
@@ -376,18 +376,18 @@ Small files should never be striped with large stripe countsif they are striped 
 
 .. code-block:: shell
 
-    lfs setstripe -c 1 /scratch1/your_project_dir/path/small_files/
+    lfs setstripe*c 1 /scratch1/your_project_dir/path/small_files/
 
 .. rubric:: Parallel IO Stripe Count
 
 * Single shared files should have a stripe count \**equal   to*\* (or a factor of) the number of processes which   access the file.
-* If the number of processes in your application is greater   than 106 (the number of HDD OSTs), use '-c -1' to use all   of the OSTs
+* If the number of processes in your application is greater   than 106 (the number of HDD OSTs), use '-c*1' to use all   of the OSTs
 * The stripe size should be set to allow as much stripe   alignment as possible.
 * Try to keep each process accessing as few OSTs as  possible.
 
 .. code-block:: shell
 
-    lfs setstripe -s 32m -c 24 /scratch1/your_project_dir/path/parallel/
+    lfs setstripe*s 32m*c 24 /scratch1/your_project_dir/path/parallel/
 
 You can specify the stripe count and size programmatically,by creating an MPI info object.
 
@@ -400,7 +400,7 @@ You can specify the stripe count and size programmatically,by creating an MPI in
 
 .. code-block:: shell
 
-    lfs setstripe -s 1m -c 1 /scratch1/your_project_dir/path/serial/
+    lfs setstripe*s 1m*c 1 /scratch1/your_project_dir/path/serial/
 
         
 Applications and Libraries
@@ -460,7 +460,7 @@ To run IDL on an “interactive queue”:
 
 .. code-block:: shell
 
-    salloc --x11=first --ntasks=40 -t 60 -A <account>
+    salloc*-x11=first*-ntasks=40*t 60*A <account>
     cd <your working directory>
     module load idl
     idl      (or idled)
@@ -590,8 +590,8 @@ Currently the following hierarchies are defined:
 
 .. code-block:: shell
 
-    compiler    - Currently: intel, pgi
-    mpi         - Currently: impi, mvapich2
+    compiler   * Currently: intel, pgi
+    mpi        * Currently: impi, mvapich2
 
 
 Use the "module spider" command to find all possible modules.
@@ -615,33 +615,33 @@ This is because you have not loaded any of the compiler modules, and HDF5 module
 
     tfe10.% module spider hdf5
 
-    ------------------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------------------
       hdf5:
-    ------------------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------------------
          Versions:
  hdf5/1.8.14
 
          Other possible modules matches:
  hdf5parallel, netcdf-hdf5parallel
 
-    ------------------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------------------
       To find other possible module matches do:
-          module -r spider '.*hdf5.*'
+          module*r spider '.*hdf5.*'
 
-    ------------------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------------------
       To find detailed information about hdf5 please enter the full name.
       For example:
 
          $ module spider hdf5/1.8.14
-    ------------------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------------------
 
     tfe10.%
     tfe10.%
     tfe10.% module spider hdf5/1.8.14
 
-    ------------------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------------------
       hdf5: hdf5/1.8.14
-    ------------------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------------------
 
          Other possible modules matches:
  hdf5parallel, netcdf-hdf5parallel
@@ -656,9 +656,9 @@ This is because you have not loaded any of the compiler modules, and HDF5 module
           pgi/14.10
           pgi/15.1
 
-    ------------------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------------------
       To find other possible module matches do:
-          module -r spider '.*hdf5/1.8.14.*'
+          module*r spider '.*hdf5/1.8.14.*'
 
     tfe10.%
 
@@ -693,10 +693,10 @@ The current configuration has no default modules loaded. Run:
 
     h3a03.hera% module avail
 
-    --------------------------------- /apps/lmod/lmod/modulefiles/Core ---------------------------------
+   *-------------------------------- /apps/lmod/lmod/modulefiles/Core*--------------------------------
        lmod/7.7.18    settarg/7.7.18
 
-    ------------------------------------ /apps/modules/modulefiles -------------------------------------
+   *----------------------------------- /apps/modules/modulefiles*------------------------------------
        advisor/2019         g2clib/1.4.0     intel/19.0.4.243   rocoto/1.3.1
        antlr/2.7.7          gempak/7.4.2     intelpython/3.6.8  szip/2.1
        antlr/4.2     (D)    grads/2.0.2      matlab/R2017b      udunits/2.1.24
@@ -722,9 +722,9 @@ Please note that, because LMOD is a hierarchical module system, you only see the
 
     h3a03.hera% module spider
 
-    ------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------
     The following is a list of the modules currently available:
-    ------------------------------------------------------------------------------------------------
+   *-----------------------------------------------------------------------------------------------
       advisor: advisor/2019
 
       anaconda: anaconda/anaconda2, anaconda/anaconda2-4.4.0, anaconda/anaconda3-4.4.0, ...
@@ -742,7 +742,7 @@ In this example, each module name represents a different package. In cases where
 
     h3a03.hera% module avail intel
 
-    ------------------------------------ /apps/modules/modulefiles -------------------------------------
+   *----------------------------------- /apps/modules/modulefiles*------------------------------------
        intel/18.0.5.274 (D)    intel/19.0.4.243    intelpython/3.6.8
 
       Where:
@@ -787,18 +787,18 @@ Any modules that you loaded when building your codes needs to be loaded when you
 
  .. rubric:: Modules with sh, bash, and ksh scripts
 
-Due to the way the POSIX standard is defined for bash, sh, and ksh you **MUST** add the -l option (that is a lowercase L) to the shebang (e.g. #!/bin/sh) line at the top of your script for all sh, bash, or ksh batch scripts. For example:
+Due to the way the POSIX standard is defined for bash, sh, and ksh you **MUST** add the*l option (that is a lowercase L) to the shebang (e.g. #!/bin/sh) line at the top of your script for all sh, bash, or ksh batch scripts. For example:
 
 .. code-block:: shell
 
-    #!/bin/ksh -l
+    #!/bin/ksh*l
 
     module load intel
     module load impi
 
-    srun -n 12 ​./xhpl
+    srun*n 12 ​./xhpl
 
-Failure to use -l will cause the module commands to fail and your job will not run properly and may crash in hard to diagnose ways.
+Failure to use*l will cause the module commands to fail and your job will not run properly and may crash in hard to diagnose ways.
 
  .. rubric::Additional Documentation on Lua modules
 
@@ -826,7 +826,7 @@ For the primary MPI library, IntelMPI, the easiest way to compile applications i
 
 .. code-block:: shell
 
-    mpiifort -o hellof hellof.f90    mpiicc -o helloc helloc.c    mpiicpc -o hellocpp hellocpp.cpp
+    mpiifort*o hellof hellof.f90    mpiicc*o helloc helloc.c    mpiicpc*o hellocpp hellocpp.cpp
 
 **Please note the extra "i" in "mpiifort" etc**
 
@@ -860,13 +860,13 @@ When compiling with the PGI compilers, please use the wrappers: mpif90, mpif77, 
 For compiling add
 .. code-block:: shell
 
-    mpif90 -o hellof hellof.f90    mpicc -o helloc helloc.c    mpicpp -o hellocpp hellocpp.cpp
+    mpif90*o hellof hellof.f90    mpicc*o helloc helloc.c    mpicpp*o hellocpp hellocpp.cpp
  
 .. rubric:: Launching MPI applications with MVAPICH2
  To launch MPI applications when using PGI and MVAPICH2, please use the srun command.
 .. code-block:: shell
 
-    module load pgi mvapich2    srun -n $NP ./application.exe
+    module load pgi mvapich2    srun*n $NP ./application.exe
 
 .. rubric:: Launching OpenMP/MPI hybrid jobs with MVAPICH2 (TBD)
 
@@ -918,8 +918,8 @@ the Intel MPI library are used. To do this,  use one of the following:
 
 .. code-block:: shell
 
-   mpiifort -O0 -g -traceback -check all -fpe0         -link_mpi=dbg ...         (if you are running non-multithreaded application)
-   mpiifort -O0 -g -traceback -check all -fpe0 -openmp -link_mpi=dbg_mt ...      (if you are running multi-threaded application)
+   mpiifort*O0*g*traceback*check all*fpe0        *link_mpi=dbg ...         (if you are running non-multithreaded application)
+   mpiifort*O0*g*traceback*check all*fpe0*openmp*link_mpi=dbg_mt ...      (if you are running multi-threaded application)
 
 Using the "-link_mpi=dbg" makes the wrappers use the debug versions of the MPI library, which may be helpful in getting additional traceback information.
 
@@ -930,7 +930,7 @@ initialization files in your home directory (the file name and the syntax depend
 .. code-block:: shell
 
    # For users with bash as their login shell, please add this in your "$HOME/.bashrc" file:
-   ulimit -c unlimited
+   ulimit*c unlimited
 
    # For users with csh/tcsh as their login shell, please add this in your "$HOME/.cshrc" file
    limit coredumpsize unlimited
@@ -954,7 +954,7 @@ the desired set of resources:
 
 .. code-block:: shell
 
-   j1a01% salloc --x11=first -N 2 --ntasks=4 -A nesccmgmt -t 300 -q batch
+   j1a01% salloc*-x11=first*N 2*-ntasks=4*A nesccmgmt*t 300*q batch
    %
 
 At this point you are on a compute node.
@@ -971,13 +971,13 @@ appropriate syntax for your shell.
 
 .. code-block:: shell
 
-   % setenv ALLINEA_DEBUG_SRUN_ARGS "%jobid% --gres=none --mem-per-cpu=0 -I -W0 --cpu-bind=none"
+   % setenv ALLINEA_DEBUG_SRUN_ARGS "%jobid%*-gres=none*-mem-per-cpu=0*I*W0*-cpu-bind=none"
    % 
 
 .. rubric:: Launch the application with the debugger
 .. code-block:: shell
 
-   % ddt srun -n 4 ./hello_mpi_c-intel-impi-debug     
+   % ddt srun*n 4 ./hello_mpi_c-intel-impi-debug     
 
 This will open GUI in which you can do your debugging.
 Please note that by default it seems to save your current
@@ -997,11 +997,11 @@ Profiling Codes
 Allinea Forge allows easy profiling of applications.
 Very brief instructions are included below and will be updated after the training by ARM.
 
--  Compile with -g
+-  Compile with*g
 -  **Do not** move your source files; the path is hardwired
    and will not found if relocated
 -  Load the forge module with "module load forge"
--  Run by prefixing with "map --profile" before the launch
+-  Run by prefixing with "map*-profile" before the launch
    command
 
 .. code-block:: shell
@@ -1011,7 +1011,7 @@ Very brief instructions are included below and will be updated after the trainin
 
    module load intel impi forge
 
-   map --profile mpirun -np 8 ./myexe
+   map*-profile mpirun*np 8 ./myexe
 
 Then, submit the job as you normally do.
 Once the job has completed, you should file "\*.map" files
@@ -1257,13 +1257,13 @@ Example:
 
 .. code-block:: shell
 
-   # ls -al
+   # ls*al
    total 20
    drwxr-xr-x 2 smith    gsd     4096 Dec 13 14:56 .
    drwxr-xr-x 3 root     root    4096 Dec  5 22:05 ..
-   -rw-r--r-- 1 root     root     152 Dec  5 22:11 .version
-   -rw-r--r-- 1 smith    gsd      875 Dec  5 22:27 3.2.6
-   -rw-r--r-- 1 smith    gsd      875 Dec  5 22:28 3.2.7
+  *rw-r--r-- 1 root     root     152 Dec  5 22:11 .version
+  *rw-r--r-- 1 smith    gsd      875 Dec  5 22:27 3.2.6
+  *rw-r--r-- 1 smith    gsd      875 Dec  5 22:28 3.2.7
 
 .. code-block:: shell
 
@@ -1280,7 +1280,7 @@ Example:
 
    ...
 
-   ------------------------------------------- /contrib/modulefiles/ -------------------------------------------
+  *------------------------------------------ /contrib/modulefiles/*------------------------------------------
    ferret/3.2.6(default) ferret/3.2.7
 
    # module load ferret
@@ -1370,7 +1370,7 @@ QoS by including the following:
 
 .. code-block:: shell
 
-      sbatch -p fgewf -q windfall ...
+      sbatch*p fgewf*q windfall ...
 
 .. rubric:: User Environment
 
@@ -1416,7 +1416,7 @@ and executing cuda programs:
    #       for compiling codes for the Pascal GPUs
 
 .. code-block:: shell
-   nvcc -gencode arch=compute_60,code=sm_60 mycode.cu
+   nvcc*gencode arch=compute_60,code=sm_60 mycode.cu
 
 .. rubric:: Compiling and Running Codes Using Intel MPI
 
@@ -1434,8 +1434,8 @@ also load these modules in the batch job before execution:
 
    module load intel impi
 
-   mpiicc   -o mycexe mycode.c
-   mpiifort -o myfxex mycode.f90
+   mpiicc  *o mycexe mycode.c
+   mpiifort*o myfxex mycode.f90
 
 .. note::
 Specific versions are listed only as examples; you
@@ -1476,8 +1476,8 @@ You need to load the following modules:
 
    module load intel cuda mvapich2-gdr    # Please consider using the latest versions of these
 
-   mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
-   mpicc  -o myc.exe    myccode.c
+   mpif90*o myfort.exe myfortcode.f90*L$CUDALIBDIR*lcuda*lcudart
+   mpicc *o myc.exe    myccode.c
 
 In addition to loading the modules mentioned above, at
 execution time you need to set the following environment
@@ -1492,7 +1492,7 @@ variables in your job file:
    # following variable to 0
    # setenv MV2_USE_GPUDIRECT_GDRCOPY 0
 
-   env LD_PRELOAD=$MPIROOT/lib64/libmpi.so mpirun -np $PBS_NP ./myexe
+   env LD_PRELOAD=$MPIROOT/lib64/libmpi.so mpirun*np $PBS_NP ./myexe
 
 .. rubric:: Compiling and Building Codes Using OpenMPI
 
@@ -1507,8 +1507,8 @@ You need to load the following modules:
 
    module load pgi cuda openmpi     # Please consider loading the latest versions of these
 
-   mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
-   mpicc  -o myc.exe    myccode.c
+   mpif90*o myfort.exe myfortcode.f90*L$CUDALIBDIR*lcuda*lcudart
+   mpicc *o myc.exe    myccode.c
 
 In addition to loading the modules mentioned above, at
 execution time you need to set the following environment
@@ -1517,7 +1517,7 @@ variables in your job file:
 .. code-block:: shell
 
    module load pgi cuda openmpi# Please consider loading the latest versions of these
-   mpirun -np $PBS_NP -hostfile $PBS_NODEFILE ./myexe
+   mpirun*np $PBS_NP*hostfile $PBS_NODEFILE ./myexe
 
 The following link has additional information on using
 OpenMPI, particularly for `CUDA enabled applications <https://www.open-mpi.org/faq/?category=runcuda>`_
@@ -1532,7 +1532,7 @@ compile a serial program that has OpenACC directives:
 ::
 
    module load pgi cuda        # Please consider loading the latest versions of these
-   pgf90 -acc -ta=nvidia,cc60,nofma -Minfo=accel -Msafeptr myprog.f90
+   pgf90*acc*ta=nvidia,cc60,nofma*Minfo=accel*Msafeptr myprog.f90
 
 .. rubric:: Compiling MPI codes with OpenACC directives on Hera
 
@@ -1579,15 +1579,15 @@ modified from actual examples used in the benchmarking run:
 
    tfe03.% cat ~/hello/place.sh
    #!/bin/bash
-   #set -x
+   #set*x
    #
    # Assumptions for this script:
    #    1) The arguments are: exe and args to the executable
    #    2) Local rank 0 is using GPU0, etc.
    #    3) If "offset" environment variable is set, that is added to
    #   to lrank.  Generally avoid core 0;
-   #       - Use an offset of  1 to place on first  socket
-   #       - Use an offset of 11 to place on second socket
+   #      * Use an offset of  1 to place on first  socket
+   #      * Use an offset of 11 to place on second socket
    #   Note:
    #First 4 GPUs connected to the first socket (cores 0-9)
    #Last  4 GPUs connected to the second socket (cores 10-19)
@@ -1597,14 +1597,14 @@ modified from actual examples used in the benchmarking run:
 
    let pos=( $lrank + $offset)
 
-   numactl -a -l --physcpubind=$pos $*
+   numactl*a*l*-physcpubind=$pos $*
    tfe03.%
 
 The job can be launched by using:
 
 .. code-block:: shell
 
-   mpirun -np ${nranks} ./place.sh $exe
+   mpirun*np ${nranks} ./place.sh $exe
 
 Based on the experience from the Cray benchmarking team, a
 couple of examples of achieving the desired pinning are
@@ -1619,7 +1619,7 @@ threads, and hence 2 cores are specified for each rank:
    #!/bin/bash
    #location of HPL
    HPL_DIR=`pwd`
-   # set -x
+   # set*x
    # Number of CPU cores
    CPU_CORES_PER_RANK=1
 
@@ -1641,19 +1641,19 @@ threads, and hence 2 cores are specified for each rank:
    case ${lrank} in
    [0])
      export DEV_ID=0
-     numactl -a -l --physcpubind=2,6 $APP $*
+     numactl*a*l*-physcpubind=2,6 $APP $*
      ;;
    [1])
      export DEV_ID=1
-     numactl -a -l --physcpubind=3,7 $APP $*
+     numactl*a*l*-physcpubind=3,7 $APP $*
      ;;
    [2])
      export DEV_ID=2
-     numactl -a -l --physcpubind=4,8 $APP $*
+     numactl*a*l*-physcpubind=4,8 $APP $*
      ;;
    [3])
      export DEV_ID=3
-     numactl -a -l --physcpubind=5,9 $APP $*
+     numactl*a*l*-physcpubind=5,9 $APP $*
      ;;
    esac
 
@@ -1670,7 +1670,7 @@ specific cores on the second socket is shown below:
    #!/bin/bash
    #location of HPL
    HPL_DIR=`pwd`
-   # set -x
+   # set*x
    # Number of CPU cores
    CPU_CORES_PER_RANK=1
 
@@ -1692,19 +1692,19 @@ specific cores on the second socket is shown below:
    case ${lrank} in
    [0])
      export DEV_ID=4
-     numactl -a -l --physcpubind=12,16 $APP $*
+     numactl*a*l*-physcpubind=12,16 $APP $*
      ;;
    [1])
      export DEV_ID=5
-     numactl -a -l --physcpubind=13,17 $APP $*
+     numactl*a*l*-physcpubind=13,17 $APP $*
      ;;
    [2])
      export DEV_ID=6
-     numactl -a -l --physcpubind=14,18 $APP $*
+     numactl*a*l*-physcpubind=14,18 $APP $*
      ;;
    [3])
      export DEV_ID=7
-     numactl -a -l --physcpubind=15,19 $APP $*
+     numactl*a*l*-physcpubind=15,19 $APP $*
      ;;
    esac
 
@@ -1721,7 +1721,7 @@ ranks on the second socket. In this example, I'm using two nodes, and trying to 
    tg001.% setenv MV2_ENABLE_AFFINITY 1
    tg001.%
 
-   tg001.% mpirun -np 8 -env MV2_CPU_MAPPING=16:17:18:19 ./$exe | sort -k 4
+   tg001.% mpirun*np 8*env MV2_CPU_MAPPING=16:17:18:19 ./$exe | sort*k 4
    Hello from rank 00 out of 8; procname = tg001, cpuid = 16
    Hello from rank 01 out of 8; procname = tg001, cpuid = 17
    Hello from rank 02 out of 8; procname = tg001, cpuid = 18
@@ -1794,15 +1794,15 @@ mentioned above:
    tg001.% setenv CUDA_MPS_PIPE_DIRECTORY /tmp/nvidia-pipe
    tg001.%
 
-   tg001.% nvidia-cuda-mps-control -d
+   tg001.% nvidia-cuda-mps-control*d
    tg001.%
 
 -  Confirm that MPS daemon is running
 
 .. code-block:: shell
 
-   tg002.% ps -elf | grep nvidia-cuda-mps-control | grep -v grep
-   1 S Raghu.R+  47724      1  0  80   0 -  2666 poll_s 16:56 ?        00:00:00 nvidia-cuda-mps-control -d
+   tg002.% ps*elf | grep nvidia-cuda-mps-control | grep*v grep
+   1 S Raghu.R+  47724      1  0  80   0*  2666 poll_s 16:56 ?        00:00:00 nvidia-cuda-mps-control*d
    tg002.%
 
 -  You can run some of the MPS commands.
@@ -1850,7 +1850,7 @@ are shown with bash.
 
 .. code-block:: shell
 
-   $ bash -l
+   $ bash*l
    $ module purge
    $ module load craype-hera
    $ module list
@@ -1865,9 +1865,9 @@ are shown with bash.
 
 Then compile the program. The compiler drivers are
 
--  cc - c code
--  ftn - fortran
--  CC - c++ code
+-  cc* c code
+-  ftn* fortran
+-  CC* c++ code
 
 .. note::
 Do not use the "mpi" drivers associated
@@ -1879,7 +1879,7 @@ in the examples below can be found in `directory on Hera: </apps/local/examples/
 
 .. code-block:: shell
 
-   $ cc -homp -o xthi xthi.c (-homp is default, so not explicitly needed)
+   $ cc*homp*o xthi xthi.c (-homp is default, so not explicitly needed)
    $
 
 To run the executable, secure the appropriate compute
@@ -1887,11 +1887,11 @@ node(s) and set the environment:
 
 .. code-block:: shell
 
-   -bash-4.2$ module load craype-hera
-   -bash-4.2$ export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
-   -bash-4.2$
-   -bash-4.2$ cc -homp -o xthi xthi.c
-   -bash-4.2$ mpirun -env OMP_NUM_THREADS 1 -n 4 -machinefile $PBS_NODEFILE ./xthi
+  *bash-4.2$ module load craype-hera
+  *bash-4.2$ export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+  *bash-4.2$
+  *bash-4.2$ cc*homp*o xthi xthi.c
+  *bash-4.2$ mpirun*env OMP_NUM_THREADS 1*n 4*machinefile $PBS_NODEFILE ./xthi
    Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (1) value
    If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
    To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
@@ -1900,7 +1900,7 @@ node(s) and set the environment:
    Hello from rank 1, thread 0, on sg001. (core affinity = 21)
    Hello from rank 2, thread 0, on sg002. (core affinity = 20)
    Hello from rank 3, thread 0, on sg002. (core affinity = 21)
-   -bash-4.2$
+  *bash-4.2$
 
 | All MPI ranks are running on unique cores in the fge
   queue. Alternatively, if you want
@@ -1909,20 +1909,20 @@ node(s) and set the environment:
 
 .. code-block:: shell
 
-   -bash-4.2$ mpirun -env OMP_NUM_THREADS 1 -env MV2_CPU_MAPPING=0:10 -n 2 -machinefile $PBS_NODEFILE ./xthi
+  *bash-4.2$ mpirun*env OMP_NUM_THREADS 1*env MV2_CPU_MAPPING=0:10*n 2*machinefile $PBS_NODEFILE ./xthi
    Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (1) value
    If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
    To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
    Use MV2_USE_THREAD_WARNING=0 to suppress this message
    Hello from rank 1, thread 0, on sg001. (core affinity = 10)
    Hello from rank 0, thread 0, on sg001. (core affinity = 0)
-   -bash-4.2$
+  *bash-4.2$
 
 Here, each rank is running on its own socket. If this strategy is used with OpenMP threaded codes, all threads will be placed on the same core as the master thread, leading to contention and reduced performance.
 
 .. code-block:: shell
 
-   -bash-4.2$ mpirun -env OMP_NUM_THREADS 4 -n 1 -machinefile $PBS_NODEFILE ./xthi
+  *bash-4.2$ mpirun*env OMP_NUM_THREADS 4*n 1*machinefile $PBS_NODEFILE ./xthi
    Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (4) value
    If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
    To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
@@ -1935,13 +1935,13 @@ Here, each rank is running on its own socket. If this strategy is used with Open
    Hello from rank 0, thread 0, on sg001. (core affinity = 0)
    Hello from rank 0, thread 3, on sg001. (core affinity = 0)
    Hello from rank 0, thread 1, on sg001. (core affinity = 0)
-   -bash-4.2$
+  *bash-4.2$
 
 Each thread is placed on core.0 with the master thread. To avoid this contention, the application must be launched with numactl like this using in a script (r4.sh in the example below):
 
 .. code-block:: shell
 
-   -bash-4.2$ cat r4.sh
+  *bash-4.2$ cat r4.sh
    #!/bin/bash
    HPL_DIR=`pwd`
    CPU_CORES_PER_RANK=4
@@ -1964,47 +1964,47 @@ Each thread is placed on core.0 with the master thread. To avoid this contention
    case ${lrank} in
    [0])
    #  export CUDA_VISIBLE_DEVICES=0
-   #  numactl -a -l --physcpubind=2,6 $APP
-     numactl -a -l --physcpubind=0,1,2,3 $APP
+   #  numactl*a*l*-physcpubind=2,6 $APP
+     numactl*a*l*-physcpubind=0,1,2,3 $APP
      ;;
    [1])
    #  export CUDA_VISIBLE_DEVICES=1
-   #  numactl -a -l --physcpubind=3,7 $APP
-     numactl -a -l --physcpubind=10,11,12,13 $APP
+   #  numactl*a*l*-physcpubind=3,7 $APP
+     numactl*a*l*-physcpubind=10,11,12,13 $APP
      ;;
    [2])
    #  export CUDA_VISIBLE_DEVICES=2
-   #  numactl -a -l --physcpubind=4,8 $APP
-     numactl -a -l --physcpubind=2 $APP
+   #  numactl*a*l*-physcpubind=4,8 $APP
+     numactl*a*l*-physcpubind=2 $APP
      ;;
    [3])
    #  export CUDA_VISIBLE_DEVICES=3
-   #  numactl -a -l --physcpubind=5,9 $APP
-     numactl -a -l --physcpubind=3 $APP
+   #  numactl*a*l*-physcpubind=5,9 $APP
+     numactl*a*l*-physcpubind=3 $APP
      ;;
    [4])
    #  export CUDA_VISIBLE_DEVICES=4
-   #  numactl -a -l --physcpubind=12,16 $APP
-     numactl -a -l --physcpubind=4 $APP
+   #  numactl*a*l*-physcpubind=12,16 $APP
+     numactl*a*l*-physcpubind=4 $APP
      ;;
    [5])
    #  export CUDA_VISIBLE_DEVICES=5
-   #  numactl -a -l --physcpubind=13,17 $APP
-     numactl -a -l --physcpubind=5 $APP
+   #  numactl*a*l*-physcpubind=13,17 $APP
+     numactl*a*l*-physcpubind=5 $APP
      ;;
    [6])
    #  export CUDA_VISIBLE_DEVICES=6
-   #  numactl -a -l --physcpubind=14,18 $APP
-     numactl -a -l --physcpubind=6 $APP
+   #  numactl*a*l*-physcpubind=14,18 $APP
+     numactl*a*l*-physcpubind=6 $APP
      ;;
    [7])
    #  export CUDA_VISIBLE_DEVICES=7
-   #  numactl -a -l --physcpubind=15,19 $APP
-     numactl -a -l --physcpubind=7 $APP
+   #  numactl*a*l*-physcpubind=15,19 $APP
+     numactl*a*l*-physcpubind=7 $APP
      ;;
    esac
 
-   -bash-4.2$
+  *bash-4.2$
 
 | In this case, we have a single node with two MPI ranks
   running each spawning 4 OpenMP threads. The
@@ -2013,7 +2013,7 @@ Each thread is placed on core.0 with the master thread. To avoid this contention
 
 .. code-block:: shell
 
-   -bash-4.2$ mpirun -env OMP_NUM_THREADS 4 -n 2 -machinefile $PBS_NODEFILE ./r4.sh
+  *bash-4.2$ mpirun*env OMP_NUM_THREADS 4*n 2*machinefile $PBS_NODEFILE ./r4.sh
    PMI_RANK: 1
    lrank:    1
    PMI_RANK: 0
@@ -2026,7 +2026,7 @@ Each thread is placed on core.0 with the master thread. To avoid this contention
    Hello from rank 1, thread 1, on sg001. (core affinity = 10-13)
    Hello from rank 1, thread 2, on sg001. (core affinity = 10-13)
    Hello from rank 1, thread 3, on sg001. (core affinity = 10-13)
-   -bash-4.2$
+  *bash-4.2$
 
 | Using this as a template, it is easy to place ranks and
   threads in many different ways. This
@@ -2054,14 +2054,14 @@ Policies and Best Practices
  Below is a list of policies that govern the use of the NESCC RDHPCS computing systems.
 
  In RDHPCS CommonDocs:
- 
- -  `Usage and Software Support Policies <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies>`__ 
- -  `Login (Front_End) Node Usage Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__  
- -  `Cron Usage  Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__    
- -  `Module Loading Best Practices <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Module_Loading_Best_Practices>`__ 
- -  `Managing Packages in    /contrib <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Managing_Packages_in_/contrib>`__   
- -  `Software Install Request    Policy </index.php/Software_install_request_policy>`__
- -  `Protecting Restricted    Data <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__  
+
+*  `Usage and Software Support Policies <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies>`__ 
+*  `Login (Front_End) Node Usage Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__  
+*  `Cron Usage  Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__    
+*  `Module Loading Best Practices <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Module_Loading_Best_Practices>`__ 
+*  `Managing Packages in    /contrib <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Managing_Packages_in_/contrib>`__   
+*  `Software Install Request    Policy </index.php/Software_install_request_policy>`__
+*  `Protecting Restricted    Data <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__  
 
 Known Issues
 ============
