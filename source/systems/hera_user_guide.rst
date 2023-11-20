@@ -2051,9 +2051,7 @@ rdhpcs.hera.help@noaa.gov.
 
 Policies and Best Practices
 ========================
- Below is a list of policies that govern the use of the NESCC RDHPCS computing systems.
-
- In RDHPCS CommonDocs:
+Below is a list of policies that govern the use of the NESCC RDHPCS computing systems. In RDHPCS CommonDocs, see:
 
 *  `Usage and Software Support Policies <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies>`__ 
 *  `Login (Front_End) Node Usage Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__  
@@ -2063,5 +2061,3 @@ Policies and Best Practices
 *  `Software Install Request    Policy </index.php/Software_install_request_policy>`__
 *  `Protecting Restricted    Data <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__  
 
-Known Issues
-============
