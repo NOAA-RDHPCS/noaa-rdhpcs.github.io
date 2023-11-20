@@ -1085,16 +1085,216 @@ profiling. Makefile.tau-icpc-papi-mpi-pdt-openmp-opari can be used for either MP
 
 .. rubric:: References
 
-Documentation `ARM: <https://developer.arm.com/tools-and-software/server-and-hpc/debug-and-profile/arm-forge>` _
+Documentation for `ARM <https://developer.arm.com/tools-and-software/server-and-hpc/debug-and-profile/arm-forge>`_
+
 `Homepage for TAU (Tuning and Analysis Utilities) <http://www.cs.uoregon.edu/Research/tau/home.php TAU Video>`_
-`Tutorials and other documentation <http://www.cs.uoregon.edu/Research/tau/docs.php>`_`
+
+`Tutorials and other documentation <http://www.cs.uoregon.edu/Research/tau/docs.php>`_
 `Reference Guide  <tau-referenceguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlakhOd1lWVEREVmM/view?usp=sharing>`__
+
 `Users Guide <tau-usersguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlUWFLSFZBdlFuMDQ/view?usp=sharing>`__
 
 
-
-Running Jobs
+Managing Contrib Projects
 ============
+
+.. rubric:: Overview of Contrib Package
+
+The system staff do not have the resources to maintain every
+piece of software requested. There are also cases where
+developers of the software are the system users, and putting
+a layer in between them and the rest of the system users is
+inefficient. To support these needs, we have developed a
+/contrib package process. A /contrib package is one that is
+maintained by a user on the system. The system staff are not
+responsible for the use or maintenance of these packages.
+
+.. rubric:: Responsibilities of a Contrib Package Maintainer
+Maintainers are expected to:
+
+-  Follow the naming conventions and guidelines outlined in
+   this document
+-  Apply security updates as quickly as possible after they
+   become availble
+-  Update software for bug fixes and functionality as users
+   request
+-  Respond to user email requests for help using the
+   software
+
+.. rubric:: Guidelines for Contrib Packages
+
+-  The package should be a single program or toolset.
+-  We want to prevent having a single directory being a
+   repository for many different packages. If you support multiple functions, please request
+      multiple packages
+-  The package may have build dependencies on other
+   packages, but it must otherwise be self-contained
+-  The package may not contain links to files in user or
+   project directories.
+-  We expect each package to be less than 100MB. If you need more, please tell us when you request your
+      package. We can support larger packages but we need to monitor
+      the space used.
+-  We expect each package to have less than 100 files. If you need more, please tell us when you request your
+   package.
+
+.. rubric:: Requesting to be a Contrib Package Maintainer
+If you wish to maintain a package in contrib, please send a
+request to the Help System with:
+
+-  a list of the packages you wish to maintain
+-  justification why each is needed
+-  the user who will be maintaining the package.
+
+(In certain cases, multiple users can manage a package,and
+unix group write permissions may be granted for the
+directory. In that case, specify the unix group that will be
+maintaining the package.)
+
+.. rubric:: Managing a Contrib Package
+
+After your request has been approved to use space in the
+/contrib directory, two directories will be created for you:
+
+.. code-block:: shell
+
+   /contrib/$MYDIR
+   /contrib/modulefiles/$MYDIR
+
+This is where you will install your software for this
+package and optionally install a module to allow users to
+load the environmental settings necessary to use this
+package. The variable $MYDIR is the name of the /contrib
+package you requested.
+
+The directory convention of /contrib is designed to match
+that of /apps. This means that one piece of software goes
+into a subdirectory under the /contrib level. If you want to
+manage multiple package, please request multiple /contrib
+package. You can do this all at one time when submitting
+your request to the Help System.
+
+.. rubric:: Contrib Package Directory Naming Conventions
+   
+When installing software into your /contrib directory, first
+determine if this is software that should be versioned
+(multiple versions may exist at one time) or unversioned
+(there will only ever be one version installed, and upgrade
+will overwrite the existing software). For verisoned
+software, please install it into a subdirectory of your
+package that is named after the version number. For
+supporting multiple versions of software the install path
+should be:
+
+.. code-block:: shell
+
+    /contrib/$MYDIR/$VER
+
+Where $MYDIR is the directory assigned to you and $VER is
+the version number. So if your package is named ferret, and
+you are installing the version 3.2.6, the software should be
+installed in:
+
+.. code-block:: shell
+
+    /contrib/ferret/3.2.6
+
+For supporting un-versioned software, just install the
+software directly into your package directory:
+
+.. code-block:: shell
+
+    /contrib/$MYDIR/
+
+.. rubric:: Providing Modules to Access Contrib Installed Software
+For each contrib package, a corresponding directory will be
+created for modules. The base directory name is
+"/contrib/modulefiles". Each package will have a
+subdirectory created named after the package. For example,
+for the ferret package, there will also be a directory
+created named:
+.. code-block:: shell
+
+   /contrib/modulefiles/ferret
+
+The *"/contrib/modulefiles"* directory will already be on
+the modules path by default, so all users will be able to
+see the modules when they run module list. Modules should
+follow the same naming convention as the directories that
+contain the software. Use some name that represents what it
+is (ex: tools or dat). For versioned software, the name of
+the module file should be the version number ($VER). See
+below for information on how to create modules.
+
+.. rubric:: Creating Modules for Contrib Packages
+
+There are example modules found here:
+
+.. code-block:: shell
+
+   /contrib/modulefiles.example/ferret
+
+Please use those as a template. Contrib package maintainers
+must follow these conventions:
+
+-  Modules must display the notice when loaded providing
+   contact information on how to get help.
+-  Module naming convention should be based on the version
+   number of the software.
+-  Please ask questions through the Help System regarding
+   how to construction modules.
+
+.. rubric:: Specifying a Default Module
+
+If you have multiple versions of a package installed, it is
+good practice to set which one is the default for the user.
+This way, the user does not have to explicitly specify which
+version they want to load. This is done by using a file
+called .version that is placed in the module directory.
+
+Example:
+
+.. code-block:: shell
+
+   # pwd
+   /contrib/modulefiles/ferret
+
+.. code-block:: shell
+
+   # ls -al
+   total 20
+   drwxr-xr-x 2 smith    gsd     4096 Dec 13 14:56 .
+   drwxr-xr-x 3 root     root    4096 Dec  5 22:05 ..
+   -rw-r--r-- 1 root     root     152 Dec  5 22:11 .version
+   -rw-r--r-- 1 smith    gsd      875 Dec  5 22:27 3.2.6
+   -rw-r--r-- 1 smith    gsd      875 Dec  5 22:28 3.2.7
+
+.. code-block:: shell
+
+   # cat .version
+   #%Module###########################################################
+   ##
+   ## version file for default module version
+   #
+   set ModulesVersion      "3.2.6"
+
+.. code-block:: shell
+
+   # module avail
+
+   ...
+
+   ------------------------------------------- /contrib/modulefiles/ -------------------------------------------
+   ferret/3.2.6(default) ferret/3.2.7
+
+   # module load ferret
+   NOTICE: This module, ferret, is a user contributed module.
+   NOTICE: For assistance, please contact [mailto:Joe.Smith@noaa.gov Joe.Smith@noaa.gov]
+
+   # module list
+   Currently Loaded Modulefiles:
+     1) /ferret/3.2.6
+
+       
 
 Debugging
 =========
