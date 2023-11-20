@@ -939,8 +939,8 @@ initialization files in your home directory (the file name and the syntax depend
 .. rubric:: Application Debuggers
 
 A GUI based debugger named DDT by ARM (Allinea) is available on Hera. Detailed documentation and video tutorials are available 
-`here <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/training/arm-hpc-tools-webinars>` _
-and `here. <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/documentation>` _
+`here <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/training/arm-hpc-tools-webinars>`_
+and `here. <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/documentation>`_
 
 .. rubric:: Invoking DDT on Hera with Intel IMPI
 Please note: Since DDT is GUI debugger, interactions over a wide area
@@ -961,9 +961,10 @@ the desired set of resources:
 At this point you are on a compute node.
 
 .. rubric:: Load the desired  modules
+.. code-block:: shell
 
-   % module load intel impi forge
-   %
+  % module load intel impi forge
+  %
 
 The following is a temporary workaround that is currently
 needed until it is fixed by the vendor. The example below uses csh; use the 
