@@ -806,8 +806,102 @@ Failure to use -l will cause the module commands to fail and your job will not r
 
 Click  `here <http://lmod.readthedocs.org/en/latest/>`_ for more detailed information on Lua module utility.
 
+Using MPI
+=========
+.. rubric:: Loading the MPI module
 
+There are two MPI implementations available on Hera: Intel MPI and MVAPICH2. We recommend one of the following two combinations:
+-  IntelMPI with the Intel compiler 
+-  MVAPICH2 with the PGI compiler.
+
+At least one of the MPI modules must be loaded before compiling and running MPI applications. These modules must be loaded before compiliing applications as well in your batch jobs before executing a parallel job.
+
+ .. rubric:: Working with Intel Compilers and IntelMPI
+
+ At least one of the MPI modules must be loaded before **compiling** and **running** MPI applications. This is done as follows:
+.. code-block:: shell
+
+    module load intel impi
+
+.. rubric:: Compiling and Linking MPI applications with IntelMPI
+For the primary MPI library, IntelMPI, the easiest way to compile applications is to use the appropriate wrappers: mpiifort, mpiicc, and mpiicpc.
+
+ **Please note the extra "i" in "mpiifort" etc**
+.. code-block:: shell
+
+    mpiifort -o hellof hellof.f90    mpiicc -o helloc helloc.c    mpiicpc -o hellocpp hellocpp.cpp
+
+.. rubric:: Launching MPI applications with IntelMPI
+
+ For instructions on how to run MPI applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
+
+ .. rubric:: Launching an MPMD application with intel-mpi-library-documentation
+ For instructions on how to run MPMD applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
+
+ .. rubric:: Launching OpenMP/MPI hybrid jobs with IntelMPI
+ For instructions on how to request nodes in a way to support OpenMP/MPI hybrid applications see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
+
+ .. rubric:: Note about MPI-IO and Intel MPI
+ Intel MPI doesn't detect the underlying filesystem by default when using MPI-IO. You have to pass the following variables on to your application:
+.. code-block:: shell
+
+    export I_MPI_EXTRA_FILESYSTEM=on    
+    export I_MPI_EXTRA_FILESYSTEM_LIST=lustre
+
+.. rubric:: Using PGI and mvapich2
+
+ At least one of the MPI modules must be loaded before \*compiling\* and \*running\* MPI applications. This is done with as follows:
+.. code-block:: shell
+
+    module load pgi mvapich2
+
+.. rubric:: Compiling and Linking MPI applications with PGI and MVAPICH2
+
+ When compiling with the PGI compilers, please use the wrappers: mpif90, mpif77, mpicc, and mpicpp.
+ For compiling add
+.. code-block:: shell
+
+    mpif90 -o hellof hellof.f90    mpicc -o helloc helloc.c    mpicpp -o hellocpp hellocpp.cpp
  
+.. rubric:: Launching MPI applications with MVAPICH2
+ To launch MPI applications when using PGI and MVAPICH2, please use the srun command.
+.. code-block:: shell
+
+    module load pgi mvapich2    srun -n $NP ./application.exe
+
+.. rubric:: Launching OpenMP/MPI hybrid jobs with MVAPICH2 (TBD)
+
+For instructions on how to request nodes in a way to support OpenMP/MPI hybrid applications see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
+ 
+.. rubric:: Tuning MPI (TBD)
+ Several options can be used to improve the performance of MPI jobs.
+
+.. rubric:: Profiling my MPI application with Intel MPI
+ Add the following variables to get profiling information from your runs:
+.. code-block:: shell
+
+    export I_MPI_STATS=# Can choose a value upto 10    
+    export I_MPI_STATS_SCOPE=col  # Statistics for collectives only
+
+The Intel® runtime library has the ability to bind OpenMP\* threads to physical processing units. The interface is controlled using the KMP_AFFINITY environment variable. Thread affinity can have a dramatic effect on the application speed. It is recommended to set KMP_AFFINITY to scatter to achieve optimal performance for most OpenMP applications. More information is available `here <https://software.intel.com/en-us/node/522691>' __
+
+.. rubric:: Additional documentation on Intel MPI
+Intel MPI is being tested. Some information will be added here as testing continues.
+The following is a link to the documentation for `Intel MPI 5: <https://software.intel.com/en-us/articles/intel-mpi-library-documentation>`__
+In addition, the following PSM documentation is very helpful for troubleshooting and turning purposes. This is because Intel MPI is based on the PSM layer:
+ `<https://www.intel.com/content/dam/support/us/en/documents/network-and-i-o/fabric-products/OFED_Host_Software_UserGuide_G91902_06.pdf>`_
+
+Extensive documentation exists on the `Intel website. <https://software.intel.com/en-us/intel-software-technical-documentation>`_
+The link above leads to the documentation library. There are options to control which documents are listed.
+Also see `<Intel documentation on Cluster-Specific Tuning: https://software.intel.com/en-us/node/535603>`_
+
+.. rubric:: Intel Trace Analyzer
+Intel Trace Analyzer (formerly known as Vampir Trace) can be used for analyzing and troubleshooting MPI programs. The documentation for that can be found `<here: https://software.intel.com/sites/default/files/intel-trace-collector-2018-user-and-reference-guide.pdf>`_
+Even though we have modules created for "itac" for this utility, it may better to follow the instructions from the link above as the instructions for more recent versions may be different than when we created the module.
+
+.. rubric:: Additional documentation on using MVAPICH2:
+`See the MVAPICH User Guide <https://mvapich.cse.ohio-state.edu/userguide/>`_
+
 
 
 Shell & Programming Environments
