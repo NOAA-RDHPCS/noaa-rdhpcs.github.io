@@ -938,22 +938,19 @@ initialization files in your home directory (the file name and the syntax depend
 
 .. rubric:: Application Debuggers
 
-A GUI based debugger named DDT by ARM (Allinea) is available on Hera. Detailed documentation and video tutorials are available at
-`here: 
-<https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/training/arm-hpc-tools-webinars>` _
-and `here
-<https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/documentation>` _
+A GUI based debugger named DDT by ARM (Allinea) is available on Hera. Detailed documentation and video tutorials are available 
+`here <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/training/arm-hpc-tools-webinars>` _
+and `here. <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/documentation>` _
 
 .. rubric:: Invoking DDT on Hera with Intel IMPI
 Please note: Since DDT is GUI debugger, interactions over a wide area
 network can be extremely slow. You may want to consider
 using a "Remote Desktop" which in our environment is X2GO as
-documented at `this link
-<https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Setting_up_and_using_x2go.`_`
+documented at `this link <https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Setting_up_and_using_x2go.>`_
 
 .. rubric:: Getting access to the compute resources for interactive use
  
-Fordebugging you will need interactive access to the desired set of compute nodes using salloc with
+For debugging you will need interactive access to the desired set of compute nodes using salloc with
 the desired set of resources:
 
 .. code-block:: shell
@@ -963,16 +960,14 @@ the desired set of resources:
 
 At this point you are on a compute node.
 
-.. rubric:: Load the desired  modules[\ `edit </index.php?title=Template:Debugging_codes&action=edit&section=T-6>`__\ ]
-.. code-block:: shell
+.. rubric:: Load the desired  modules
 
    % module load intel impi forge
    %
 
 The following is a temporary workaround that is currently
-needed until it is fixed by the vendor; Please use
-appropriate syntax for your shell, the example below uses
-csh:
+needed until it is fixed by the vendor. The example below uses csh; use the 
+appropriate syntax for your shell.
 
 .. code-block:: shell
 
