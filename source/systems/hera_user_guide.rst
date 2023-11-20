@@ -1397,7 +1397,7 @@ only on a compute node after obtaining a shell on one of the
 FGA compute nodes by submitting an interactive batch job to
 the "fge" or the "fgews" QoS.**
 
-Compiling and Running Codes Using CUDA
+.. rubric:: Compiling and Running Codes Using CUDA
 
 Compilation for non-MPI applications may be done either on
 the front-ends or on compute nodes. But generally we
@@ -1470,7 +1470,6 @@ the "fge" or the "fgedebug" queue.**
 
 Since the wait times for the fge queue are fairly short it
 should be fine to use just the regular "fge" queue.
-
 You need to load the following modules:
 
 .. code-block:: shell
@@ -1540,7 +1539,6 @@ compile a serial program that has OpenACC directives:
 We have limited experience of using these new technologies,
 so the best we can do with this point is point you to the
 `web resources <http://www.pgroup.com/doc/openaccmpi17tut.pdf>`_
-
 The following link has a presentation on some advanced
 topics on using `multiple GPUs <http://on-demand.gputechconf.com/gtc/2016/webinar/openacc-course/Advanced-OpenACC-Course-Lecture2--Multi-GPU-20160602.pdf>`_
 
@@ -1566,11 +1564,9 @@ This section is included below just as a
 suggestion and is being updated as we learn more. Please
 note that the following section seems to be applicable only
 to Intel MPI.
-
 Please keep in mind that there are
 4 GPUs connected to the first socket and 4 GPUs connected to
 the second socket.
-
 For best performance it will be necessary to pin the MPI
 processes such that they're not moving from core to core on
 the node during the run.
@@ -1612,9 +1608,7 @@ The job can be launched by using:
 
 Based on the experience from the Cray benchmarking team, a
 couple of examples of achieving the desired pinning are
-shown below.
-
-In the first example below, There are 4 MPI ranks on each
+shown below. In the first example, there are 4 MPI ranks on each
 node, the goal is to pin the 4 ranks to the first socket and
 specific cores; Also in this example each rank used 2
 threads, and hence 2 cores are specified for each rank:
@@ -1667,9 +1661,7 @@ threads, and hence 2 cores are specified for each rank:
 
 The script above is used in the mpirun command; please note
 that in the example above the name of the executable is
-passed in the environment variable "exe".
-
-Just as a second example a similar script for pinning to the
+passed in the environment variable "exe". Just as a second example a similar script for pinning to the
 specific cores on the second socket is shown below:
 
 .. code-block:: shell
@@ -1721,11 +1713,7 @@ specific cores on the second socket is shown below:
 .. rubric:: Rank placement when using mvapich2
 
 For MVAPICH2 the following seems to work to place all the
-ranks on the second socket.
-
-| In this example, I'm using two nodes, and trying to run
-  eight tasks, and place them only
-| on the second socket on each node:
+ranks on the second socket. In this example, I'm using two nodes, and trying to run eight tasks, and place them only| on the second socket on each node:
 
 .. code-block:: shell
 
@@ -1777,9 +1765,7 @@ stopping is not necessary any more.**
 
 In the example below, we describe the simplest use case and
 we will update the documentation as we gather more
-experience.
-
-For the simplest case, we will consider running an MPI
+experience. For the simplest case, we will consider running an MPI
 application on just one node after getting access to a FGA
 compute node by submitting an interactive batch job to the
 fge queue.
@@ -1834,9 +1820,7 @@ so typically you run the MPS commands as shown below:
    tg001.%
 
 Then you run your application like you normally would.
-
-At the end of your session, terminate the deamon
-   by running the command:
+At the end of your session, terminate the deamon by running the command:
 
 .. code-block:: shell
 
@@ -1934,12 +1918,7 @@ node(s) and set the environment:
    Hello from rank 0, thread 0, on sg001. (core affinity = 0)
    -bash-4.2$
 
-Here, each rank is running on its own socket.
-
-| If this strategy is used with OpenMP threaded codes, all
-  threads will be placed on the
-| same core as the master thread, leading to contention and
-  reduced performance.
+Here, each rank is running on its own socket. If this strategy is used with OpenMP threaded codes, all threads will be placed on the same core as the master thread, leading to contention and reduced performance.
 
 .. code-block:: shell
 
@@ -1958,10 +1937,7 @@ Here, each rank is running on its own socket.
    Hello from rank 0, thread 1, on sg001. (core affinity = 0)
    -bash-4.2$
 
-| Each thread is placed on core.0 with the master thread. To
-  avoid this contention, the application
-| must be launched with numactl like this using in a script
-  (r4.sh in the example below):
+Each thread is placed on core.0 with the master thread. To avoid this contention, the application must be launched with numactl like this using in a script (r4.sh in the example below):
 
 .. code-block:: shell
 
@@ -2060,11 +2036,12 @@ Here, each rank is running on its own socket.
 
 .. rubric:: Some helpful web resources
 `<https://www.openacc.org/>`_
+
 `<https://www.openacc.org/resources>`_
 
-`<http://www.pgroup.com/>`_`
+`<http://www.pgroup.com/>`_
 
-`<http://www.pgroup.com/resources/docs.php>`_`
+`<http://www.pgroup.com/resources/docs.php>`_
 
 `<http://www.pgroup.com/resources/articles.htm>`_
 
@@ -2079,11 +2056,18 @@ Here, each rank is running on its own socket.
 As with any Hera issue, send email to:
 rdhpcs.hera.help@noaa.gov.
 
- 
-
-
-Optimizing and Profiling
+Policies and Best Practices
 ========================
+ Below is a list of policies that govern the use of the NESCC RDHPCS computing systems.
 
+ In RDHPCS CommonDocs:
+ -  `Usage and Software Support Policies <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies>`__ 
+ -  `Login (Front_End) Node Usage Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__  
+ -  `Cron Usage  Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__    
+ -  `Module Loading Best Practices <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Module_Loading_Best_Practices>`__ 
+ -  `Managing Packages in    /contrib <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Managing_Packages_in_/contrib>`__   
+ -  `Software Install Request    Policy </index.php/Software_install_request_policy>`__
+ -  `Protecting Restricted    Data <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__  
+ 
 Known Issues
 ============
