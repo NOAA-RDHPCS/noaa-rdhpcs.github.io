@@ -1559,7 +1559,7 @@ Please see the following link regarding `Hera partitions
 
 .. rubric:: Hints on Rank Placement/Performance Tuning
 
-.. note:: 
+.. NOTE:: 
 This section is included below just as a
 suggestion and is being updated as we learn more. Please
 note that the following section seems to be applicable only
@@ -2035,20 +2035,14 @@ Each thread is placed on core.0 with the master thread. To avoid this contention
 | other placement strategies.
 
 .. rubric:: Some helpful web resources
-`<https://www.openacc.org/>`_ </br>
-`<https://www.openacc.org/resources>`_
-
-`<http://www.pgroup.com/>`_
-
-`<http://www.pgroup.com/resources/docs.php>`_
-
-`<http://www.pgroup.com/resources/articles.htm>`_
-
-`<https://www.olcf.ornl.gov/training-event/2017-gpu-hackathons/>`_
-
-`<http://www.pgroup.com/userforum/index.php>`_
-
-`<https://stackoverflow.com/questions/tagged/openacc>`_
+- `<https://www.openacc.org/>`_ 
+- `<https://www.openacc.org/resources>`_
+- `<http://www.pgroup.com/>`_
+- `<http://www.pgroup.com/resources/docs.php>`_
+- `<http://www.pgroup.com/resources/articles.htm>`_
+- `<https://www.olcf.ornl.gov/training-event/2017-gpu-hackathons/>`_
+- `<http://www.pgroup.com/userforum/index.php>`_
+- `<https://stackoverflow.com/questions/tagged/openacc>`_
 
 .. rubric:: Getting Help
 
@@ -2060,6 +2054,7 @@ Policies and Best Practices
  Below is a list of policies that govern the use of the NESCC RDHPCS computing systems.
 
  In RDHPCS CommonDocs:
+ 
  -  `Usage and Software Support Policies <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies>`__ 
  -  `Login (Front_End) Node Usage Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__  
  -  `Cron Usage  Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__    
