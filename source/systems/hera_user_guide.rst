@@ -903,9 +903,101 @@ Even though we have modules created for "itac" for this utility, it may better t
 `See the MVAPICH User Guide <https://mvapich.cse.ohio-state.edu/userguide/>`_
 
 
+Debugging Codes
+================
 
-Shell & Programming Environments
-================================
+.. rubric:: Program Troubleshooting Tips
+The following link from Intel offers general advice for
+`troubleshooting applications <https://software.intel.com/en-us/articles/determining-root-cause-of-sigsegv-or-sigbus-errors>`_
+
+If this isn't enough to determine the cause of the error you may have to use one of the debuggers
+(documented below) for further troubleshooting.
+
+.. rubric:: Debugging Intel MPI Applications
+When troubleshooting MPI applications using Intel MPI, it may be helpful if the debug versions of
+the Intel MPI library are used. To do this,  use one of the following:
+
+.. code-block:: shell
+
+   mpiifort -O0 -g -traceback -check all -fpe0         -link_mpi=dbg ...         (if you are running non-multithreaded application)
+   mpiifort -O0 -g -traceback -check all -fpe0 -openmp -link_mpi=dbg_mt ...      (if you are running multi-threaded application)
+
+Using the "-link_mpi=dbg" makes the wrappers use the debug versions of the MPI library, which may be helpful in getting additional traceback information.
+
+In addition to compiling with the options mentioned above, you may be able to get some additional trace back information and core files if you change the core file size to be unlimited (the default value for core file is zero;
+hence call filed generation is disabled). In order to enable it you need to have the following in your shell
+initialization files in your home directory (the file name and the syntax depends on your login shell):
+
+.. code-block:: shell
+
+   # For users with bash as their login shell, please add this in your "$HOME/.bashrc" file:
+   ulimit -c unlimited
+
+   # For users with csh/tcsh as their login shell, please add this in your "$HOME/.cshrc" file
+   limit coredumpsize unlimited
+
+.. rubric:: Application Debuggers
+
+A GUI based debugger named DDT by ARM (Allinea) is available on Hera. Detailed documentation and video tutorials are available at
+`here: 
+<https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/training/arm-hpc-tools-webinars>` _
+and `here
+<https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/documentation>` _
+
+.. rubric:: Invoking DDT on Hera with Intel IMPI
+Please note: Since DDT is GUI debugger, interactions over a wide area
+network can be extremely slow. You may want to consider
+using a "Remote Desktop" which in our environment is X2GO as
+documented at `this link
+<https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Setting_up_and_using_x2go.`_`
+
+.. rubric:: Getting access to the compute resources for interactive use
+ 
+Fordebugging you will need interactive access to the desired set of compute nodes using salloc with
+the desired set of resources:
+
+.. code-block:: shell
+
+   j1a01% salloc --x11=first -N 2 --ntasks=4 -A nesccmgmt -t 300 -q batch
+   %
+
+At this point you are on a compute node.
+
+.. rubric:: Load the desired  modules[\ `edit </index.php?title=Template:Debugging_codes&action=edit&section=T-6>`__\ ]
+.. code-block:: shell
+
+   % module load intel impi forge
+   %
+
+The following is a temporary workaround that is currently
+needed until it is fixed by the vendor; Please use
+appropriate syntax for your shell, the example below uses
+csh:
+
+.. code-block:: shell
+
+   % setenv ALLINEA_DEBUG_SRUN_ARGS "%jobid% --gres=none --mem-per-cpu=0 -I -W0 --cpu-bind=none"
+   % 
+
+.. rubric:: Launch the application with the debugger
+.. code-block:: shell
+
+   % ddt srun -n 4 ./hello_mpi_c-intel-impi-debug     
+
+This will open GUI in which you can do your debugging.
+Please note that by default it seems to save your current
+state (breakpoints etc are saved for your next debugging
+session).
+
+.. rubric:: Using DDT
+
+Some things should be intuitive, but we
+recommend you look through the vendor documentation links
+shown above if you have questions.
+
+.. rubric:: Using Allinea DDT debugger with mvapich2:
+
+
 
 Compiling
 =========
