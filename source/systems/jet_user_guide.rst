@@ -256,17 +256,16 @@ At a minimum you will want to load a compiler and an MPIstack:
 
    # module load intel   # module load mvapich2
 
-**Note:** Since you have to do this explicitly (for now), youalso have to do it in your job scripts. Or, you can put it in your .profile and make it permanent.
+**Note:** Since you have to do this explicitly (for now), you also have to do it in your job scripts. Or, you can put it in your .profile and make it permanent.
 
 .. rubric:: Modules on Jet
-The way to find the latest modules on Jet is to run moduleavail:
+The way to find the latest modules on Jet is to run module avail:
 
  .. code-block:: shell 
     
    # module aval
 
 to see the list of available modules for the compiler and the MPI modules currently loaded. 
-
 
 .. code-block:: shell 
 
@@ -292,13 +291,14 @@ Use "module keyword key1 key2 ..." to search for all possible modules matching a
 h3a03.hera%
 
 
-In the above, each module name represents a differentpackage. In cases where there are multiple versions of apackage, one will be set as a default. For example, for theintel compiler there are multiple choices:
+In the above, each module name represents a different package. In cases where there are multiple versions of a package, one will be set as a default. For example, for the intel compiler there are multiple choices:
 
 .. code-block:: shell
 
    intel/11.1.080    intel/12-12.1.4(default)    intel/12-12.1.5
 
 So if you run:
+
 .. code-block:: shell 
 
    # module load intel
@@ -310,7 +310,7 @@ If you want to load a specific version, you can. We highly recommend you use the
 
    # module load intel/11.1.080    # module list   Currently Loaded Modulefiles:    1) intel/11.1.080
 
-If you already have a particular module loaded and you wantto switch to a different version of the same module, you can either do
+If you already have a particular module loaded and you want to switch to a different version of the same module, you can either do
 
  .. code-block:: shell
 
@@ -322,15 +322,119 @@ or
 
    # module switch intel intel/11.1.080
 
-**Notes**
-When unloading modules, only unload those that you have loaded. The others are done automatically from master   modules.-  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
+**Notes:** When unloading modules, only unload those that you have loaded. The others are done automatically from master   modules.-  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
 
 
 Using Math Libraries
 ================
 
-Software
+The intel math kernel library (MKL) provides a wide variety
+of optimized math libraries including "BLAS, LAPACK,
+ScaLAPACK, sparse solvers, fast Fourier transforms, vector
+math, and more." The product documentation can be found here
+`<https://software.intel.com/en-us/articles/intel-math-kernel-library-documentation/>`__.
+
+Below are provided several examples that should help most of
+the users on our system.
+
+
+.. rubric:: Location of MKL on Jet
+MKL is specific to the version of the Intel compiler used.
+After loading the compiler version you require, the variable
+**$MKLROOT** will be defined that specifies the path to the
+MKL library. Use this variable.
+
+.. rubric:: Basic Linking with BLAS and LAPACK
+To link with the mathematical libraries such as BLAS,
+LAPACK, and the FFT routines, it is best to just add the
+following option to your link line:
+
+.. code-block:: shell
+
+   -mkl=sequential
+
+Note, there is no lower case L in front of mkl.
+This will include all of the libraries you will need. The
+sequential option is important because by default Intel MKL
+will use threaded (OpenMP like) versions of the library. In
+MPI applications you rarely want to do this. Even if you are
+using OpenMP/MPI hybrids, only consider removing the
+sequential option if you want the actual math routines to be
+parallel, not the whole code (Ex: GFS uses OpenMP, but
+relies on sequential math routines, so you would want to use
+sequential for that code).
+
+.. rubric:: Linking with FFT, and the FFTW interface
+Intel provides highly optimized FFT routines within MKL.
+They are documented `here <https://software.intel.com/en-us/articles/the-intel-math-kernel-library-and-its-fast-fourier-transform-routines/>`__.
+While Intel has a specific interface (DFTI), we recommend
+that you use the FFTW interface. `FFTW <http://www.fftw.org/>`__ is an open-source, highly
+optimized FFT library, that supports many different
+platforms. FFTW (specifically FFTW3 interface) can be
+supported on Intel, AMD, and IBM Power architectures. IBM is
+even supporting the FFTW interface through ESSL, meaning
+that using the FFTW3 interface will allow codes to be
+portable across the NOAA architectures.
+
+The best reference for the fftw interface can be found `here <http://www.fftw.org/>`__. For Fortran, you need to
+include the wrapper script **fftw3.f** in your source before
+using the functions. Add the following statement:
+
+.. code-block:: shell 
+
+   include 'fftw3.f'
+
+In the appropriate place in your source code.
+When compiling, add:
+
+.. code-block:: shell 
+
+    '-I$(MKLROOT)/include/fftw'
+
+to your CFLAGS and/or FFLAGS. When linking, use the steps
+described above.
+
+.. rubric:: Linking with Scalapack
+Linking with Scalapack is more complicated because it uses
+MPI. You have to specify which version of the MPI library
+you are using when linking with Scalapack. Examples are:
+
+.. rubric:: Linking with Scalapack and mvapich
+
+.. code-block:: shell 
+
+   LDFLAGS=-L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core
+
+.. rubric:: Linking with Scalapack and OpenMPI
+
+.. code-block:: shell 
+
+   LDFLAGS=-L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core
+
+In the example above, the variable $(MKLROOT) is used. Use
+this variable name, not the explicit path for the Intel
+compiler.
+
+.. rubric:: Linking math libraries with Portland Group
+For the PGI compiler, all you need to do is specify the
+library name.
+
+For blas:
+
+.. code-block:: shell 
+
+   -lblas
+
+For lapack:
+
+.. code-block:: shell 
+
+   -llapack
+
+Editing on Jet
 ========
+
+
 
 Shell & Programming Environments
 ================================
