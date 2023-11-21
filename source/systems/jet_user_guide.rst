@@ -231,7 +231,7 @@ systems in 2000, GSL is continuing to research potentially
 disruptive, next generation HPC technologies. Graphical
 Processing Units, GPUs, are traditionally used for graphics
 and video gaming, but their design is applicable to
-numerical modelling as well. Since their architecture is
+numerical modelling as well. Since their architecture is <br>
 fundamentally different from traditional CPUs, existing
 software usually does not run without modification.
 
@@ -240,12 +240,356 @@ developing new tools and techniques that will allow these
 systems to be used in the future by scientists to solve
 tomorrow's weather and hurricane prediction challenges.
 
-
-
-Connecting
+Using Modules
 ==========
+.. container:: noprint
+   :name: mw-page-base
 
-Data and Storage
+.. container:: noprint
+   :name: mw-head-base
+
+.. container:: mw-body
+   :name: content
+
+   .. container::
+      :name: siteNotice
+
+   .. container:: mw-indicators
+
+   .. rubric:: Using Modules
+      :name: firstHeading
+      :class: firstHeading mw-first-heading
+
+   .. container:: vector-body
+      :name: bodyContent
+
+      .. container:: noprint
+         :name: siteSub
+
+         From jetdocs
+
+      .. container::
+         :name: contentSub
+
+         .. container::
+            :name: mw-content-subtitle
+
+      .. container::
+         :name: contentSub2
+
+      .. container::
+         :name: jump-to-nav
+
+      `Jump to navigation <#mw-head>`__ `Jump to
+      search <#searchInput>`__
+
+      .. container:: mw-body-content mw-content-ltr
+         :name: mw-content-text
+
+         .. container:: mw-parser-output
+
+            .. rubric:: About
+               Modules[\ `edit </index.php?title=Using_Modules&action=edit&section=1>`__\ ]
+               :name: about-modulesedit
+
+            Modules is a tool that is used to manage the use of software
+            when multiple versions are installed. For packages that are
+            not provided with the OS (compilers, debuggers, MPI stacks,
+            etc), we install so that new versions to not overwrite old
+            versions.
+
+            By default, no modules are loaded. Therefore you must load
+            any modules that you wish to use. To see what modules are
+            available, run:
+
+            ::
+
+               # module avail
+
+            At a minimum you will want to load a compiler and an MPI
+            stack:
+
+            ::
+
+               # module load intel
+               # module load mvapich2
+
+            Note: Since you have to do this explicitly (for now), you
+            also have to do it in your job scripts. Or, you can put it
+            in your .profile and make it permanent.
+
+            .. rubric:: Modules on
+               Jet[\ `edit </index.php?title=Using_Modules&action=edit&section=2>`__\ ]
+               :name: modules-on-jetedit
+
+            The way to find the latest modules on Jet is to run module
+            avail:
+
+            ::
+
+               # module aval
+
+               --------------------------------------------------------------------------------------------------------- /apps/Modules/versions ----------------------------------------------------------------------------------------------------------
+               3.2.9
+
+               ----------------------------------------------------------------------------------------------------- /apps/Modules/3.2.9/modulefiles -----------------------------------------------------------------------------------------------------
+               bbcp/12.01.30.01.0(default)    grads/2.0.1(default)           intel/12.1.4(default)          modules                        pgi/12.5-0(default)            udunits/1.12.11
+               cnvgrib/1.2.3(default)         hpss                           intel/12.1.5                   ncl/6.0.0                      rocoto/1.0.2                   udunits/2.1.24(default)
+               cuda/4.2.9(default)            idl/8.2(default)               lahey/8.10b(default)           nco/4.1.0                      rocoto/1.0.3(default)          use.own
+               dot                            imagemagick/6.2.8(default)     module-cvs                     ncview/2.1.1(default)          szip/2.1                       wgrib/1.8.1.0b(default)
+               gempak/6.7.0-gfortran(default) intel/11.1.080                 module-info                    null                           totalview/8.9.2-2(default)     wgrib2/0.1.9.6a(default)
+
+               ---------------------------------------------------------------------------------------------------- /apps/Modules/default/admintools -----------------------------------------------------------------------------------------------------
+               cit   devel
+
+            In the above, each module name represents a different
+            package. In cases where there are multiple versions of a
+            package, one will be set as a default. For example, for the
+            intel compiler there are multiple choices:
+
+            ::
+
+               intel/11.1.080
+                intel/12-12.1.4(default)
+                intel/12-12.1.5
+
+            So if you run:
+
+            ::
+
+               # module load intel
+
+            Then default version will be loaded, in this case 12-12.1.4
+
+            If you want to load a specific version, you can. We highly
+            recommend you use the system defaults unless something is
+            not working or you need a different feature. To load a
+            specific version, specify the version number.
+
+            ::
+
+               # module load intel/11.1.080
+                # module list
+               Currently Loaded Modulefiles:
+                1) intel/11.1.080
+
+            If you already have a particular module loaded and you want
+            to switch to a different version of the same module, you can
+            either do
+
+            ::
+
+               # module unload intel
+               # module load intel/11.1.080
+
+            or
+
+            ::
+
+               # module switch intel intel/11.1.080
+
+            Notes:
+
+            -  When unloading modules, only unload those that you have
+               loaded. The others are done automatically from master
+               modules.
+            -  Modules is a work in progress, and we will be improving
+               their uses and making which modules you load more clear.
+
+         .. container:: printfooter
+
+            Retrieved from
+            "http://localhost:8180/index.php?title=Using_Modules&oldid=521"
+
+      .. container:: catlinks catlinks-allhidden
+         :name: catlinks
+
+.. container::
+   :name: mw-navigation
+
+   .. rubric:: Navigation menu
+      :name: navigation-menu
+
+   .. container::
+      :name: mw-head
+
+      .. rubric:: Personal tools
+         :name: p-personal-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  Not logged in
+         -  `Talk </index.php/Special:MyTalk>`__
+         -  `Contributions </index.php/Special:MyContributions>`__
+         -  `Create
+            account </index.php?title=Special:CreateAccount&returnto=Using+Modules>`__
+         -  `Log
+            in </index.php?title=Special:UserLogin&returnto=Using+Modules>`__
+
+      .. container::
+         :name: left-navigation
+
+         .. rubric:: Namespaces
+            :name: p-namespaces-label
+            :class: vector-menu-heading
+
+         .. container:: vector-menu-content
+
+            -  `Page </index.php/Using_Modules>`__
+            -  `Discussion </index.php?title=Talk:Using_Modules&action=edit&redlink=1>`__
+
+         English
+
+         .. container:: vector-menu-content
+
+      .. container::
+         :name: right-navigation
+
+         .. rubric:: Views
+            :name: p-views-label
+            :class: vector-menu-heading
+
+         .. container:: vector-menu-content
+
+            -  `Read </index.php/Using_Modules>`__
+            -  `Edit </index.php?title=Using_Modules&action=edit>`__
+            -  `View
+               history </index.php?title=Using_Modules&action=history>`__
+
+         More
+
+         .. container:: vector-menu-content
+
+         .. container::
+         vector-search-box-vue vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box
+            :name: p-search
+
+            .. container::
+
+               .. container:: vector-search-box-inner
+                  :name: simpleSearch
+
+   .. container:: vector-legacy-sidebar
+      :name: mw-panel
+
+      .. container::
+         :name: p-logo
+
+         ` </index.php/Start>`__
+
+      .. rubric:: Navigation
+         :name: p-navigation-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `Start </index.php/Start>`__
+
+      .. rubric:: Quick Links
+         :name: p-Quick_Links-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `Running
+            Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Hera(Theia)_-_SLURM>`__
+         -  `Project
+            Information <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Projects_-_SLURM>`__
+         -  `System
+            Overview <https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Jet_System_Overview>`__
+         -  `Project Data
+            Management <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Project_Data_Management>`__
+
+      .. rubric:: Submitting a Help Request
+         :name: p-Submitting_a_Help_Request-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `Help
+            Requests <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__
+
+      .. rubric:: Accessing RDHPCS Systems
+         :name: p-Accessing_RDHPCS_Systems-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `Logging
+            In <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
+         -  `Using
+            X2Go <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/X2go>`__
+
+      .. rubric:: Account Management
+         :name: p-Account_Management-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `Getting An RDHPCS
+            Account <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_an_RDHPCS_Account>`__
+         -  `Role
+            Accounts <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Role_Accounts>`__
+
+      .. rubric:: Policies and Best Practices
+         :name: p-Policies_and_Best_Practices-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `Cron Usage
+            Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__
+         -  `Project Data
+            Management <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Project_Data_Management>`__
+         -  `Projecting Restricted
+            Data <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__
+         -  `Managing Packages in
+            /contrib <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Managing_Packages_in_/contribManaging_Packages_in_/contrib>`__
+
+      .. rubric:: FAQs and Known Issues
+         :name: p-FAQs_and_Known_Issues-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `FAQs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/FAQs_-_Frequently_Asked_Questions>`__
+
+      .. rubric:: Applications
+         :name: p-Applications-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `Compiling
+            Applications <https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Compiling_Applications>`__
+         -  `Starting a Parallel
+            Application <https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Starting_a_Parallel_Application>`__
+         -  `Profiling
+            Applications <https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Profiling_Applications>`__
+         -  `Debugging a Parallel
+            Application <https://jetdocs.rdhpcs.noaa.gov/wiki/index.php/Debugging_a_Parallel_Application>`__
+
+      .. rubric:: Tools
+         :name: p-tb-label
+         :class: vector-menu-heading
+
+      .. container:: vector-menu-content
+
+         -  `What links
+            here </index.php/Special:WhatLinksHere/Using_Modules>`__
+         -  `Related
+            changes </index.php/Special:RecentChangesLinked/Using_Modules>`__
+         -  `Special pages </index.php/Special:SpecialPages>`__
+         -  `Printable version <javascript:print();>`__
+         -  `Permanent
+            link </index.php?title=Using_Modules&oldid=521>`__
+         -  `Page
+            information </index.php?title=Using_Modules&action=info>`__
+
+
+
+Using Math Libraries
 ================
 
 Software
