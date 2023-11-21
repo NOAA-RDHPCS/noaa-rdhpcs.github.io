@@ -430,9 +430,25 @@ For lapack:
 
    -llapack
 
+TEST:
++----------+----------+----------+-------+-------+--------+----------+
+| System   | Date     | P        | Nodes | Cores | Gflops | I        |
+|          |          | rocessor |       |       |        | ntegrato |
+|          |          |          |       |       |        | r/Vendor |
++----------+----------+----------+-------+-------+--------+----------+
+| Jet      | Jan 2000 | Compaq   | 276   | 276   | 368    | High     |
+|          |          | Alpha    |       |       |        | Per      |
+|          |          | 21264,   |       |       |        | formance |
+|          |          | 667Mhz   |       |       |        | Tech     |
+|          |          |          |       |       |        | nologies |
+|          |          |          |       |       |        | Inc.     |
+|          |          |          |       |       |        | (HPTi    |
+|          |          |          |       |       |        | )/Compaq |
++----------+----------+----------+-------+-------+--------+----------+
+
 Options for Editing on Jet
 ========
- To use any of these editors, type the name in at the command line.
+ To use any of these editors, type the name in at the command line:
 
  +----------+----------------------------------------------------------+
  | vi       | (http://www.linuxlookup.com/howto/using_vi_text_editor)  |
