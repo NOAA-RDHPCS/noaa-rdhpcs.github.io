@@ -224,7 +224,7 @@ history of those systems:
 |          |          | 2.4Ghz   |       |       |        | Systems  |
 +----------+----------+----------+-------+-------+--------+----------+
 
-.. rubric .. code-block:: shell GPU Clusters
+.. rubric:: GPU Clusters
 
 As GSL was researching and experimenting with clustered HPC
 systems in the late 1990s which drove adoption of clustered
@@ -241,27 +241,26 @@ developing new tools and techniques that will allow these
 systems to be used in the future by scientists to solve
 tomorrow's weather and hurricane prediction challenges.
 
-.. rubric .. code-block:: shell About Modules
+.. rubric:: About Modules
 Modules is a tool that is used to manage the use of softwarewhen multiple versions are installed. For packages that arenot provided with the OS (compilers, debuggers, MPI stacks,etc), we install so that new versions to not overwrite oldversions.
 By default, no modules are loaded. Therefore you must loadany modules that you wish to use. To see what modules areavailable, run:
 
-.. code-block .. code-block:: shell shell
-
+.. code-block:: shell
    # module avail
 
 At a minimum you will want to load a compiler and an MPIstack:
 
-.. code-block .. code-block:: shell shell
+.. code-block:: shell
    # module load intel   # module load mvapich2
 
- .. note .. code-block:: shell
+ .. note:: 
 
 Note: Since you have to do this explicitly (for now), youalso have to do it in your job scripts. Or, you can put it in your .profile and make it permanent.
 
-.. rubric .. code-block:: shell Modules on Jet
+.. rubric:: Modules on Jet
 The way to find the latest modules on Jet is to run moduleavail:
 
- .. code-block .. code-block:: shell shell
+ .. code-block:: shell 
     
    # module aval
    --------------------------------------------------------------------------------------------------------- /apps/Modules/versions ----------------------------------------------------------------------------------------------------------   3.2.9
@@ -269,19 +268,19 @@ The way to find the latest modules on Jet is to run moduleavail:
    ---------------------------------------------------------------------------------------------------- /apps/Modules/default/admintools -----------------------------------------------------------------------------------------------------   cit   devel
 In the above, each module name represents a differentpackage. In cases where there are multiple versions of apackage, one will be set as a default. For example, for theintel compiler there are multiple choices:
 
- .. code-block .. code-block:: shell shell
+.. code-block:: shell
 
    intel/11.1.080    intel/12-12.1.4(default)    intel/12-12.1.5
 
 So if you run:
- .. code-block .. code-block:: shell shell
+.. code-block:: shell 
 
    # module load intel
 
-Then default version will be loaded, in this case 12-12.1.4
+The default version will be loaded, in this case 12-12.1.4
 If you want to load a specific version, you can. We highly recommend you use the system defaults unless something is not working or you need a different feature. To load a specific version, specify the version number.
 
- .. code-block .. code-block:: shell shell
+.. code-block:: shell 
 
    # module load intel/11.1.080    # module list   Currently Loaded Modulefiles:    1) intel/11.1.080
 
