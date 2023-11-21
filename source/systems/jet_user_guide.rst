@@ -95,11 +95,11 @@ System Features:
 
 .. rubric .. code-block:: shell File Systems
 
-==== ====== =======
+==.. rubric:: ====.. rubric:: =======
 name type   size
 lfs1 Lustre 3540 TB
 lfs4 Lustre 4500 TB
-==== ====== =======
+==.. rubric:: ====.. rubric:: =======
 
 .. rubric .. code-block:: shell NOAA Boulder RDHPCS History
 
@@ -831,8 +831,59 @@ execute the following commands.
    papi/5.3.0       tm/1.1
 
 
-Debugging
+Using OpenMP and Hybrid OpenMP/MPI on Jet
 =========
+.. rubric:: Using OpenMP and Hybrid OpenMP/MPI on Jet 
+
+`OpenMP <http://en.wikipedia.org/wiki/OpenMP OpenMP>`_ is a programming extension for supporting parallel computing in Fortran and C using shared memory. It is relative easy to parallelize code using OpenMP. However, parallelization is restricted to a single node. As any programming model, there can be tricks to make to write efficient code.
+
+We support OpenMP on Jet, however, it is infrequently used and we have not figured out all the issues. If you want to use OpenMP, please submit a `help request <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_ and let us know so we can keep track of the users interested in using it.
+
+.. rubric:: Compiling codes with OpenMP 
+
+For Intel, add the option '''-openmp'''. For Portland Group, add the option '''-mp'''
+
+.. rubric:: Specifying the Number of Threads to use 
+
+Depending on the compiler used, the the default number of threads to use is different. Intel will use all the core available. For PGI, it will default to using 1. It is best to always explicitly set what you want. Use the OMP_NUM_THREADS variable to do this. Ex:
+
+.. code-blocK:: shell
+
+    setenv OMP_NUM_THREADS 4
+
+The number you want to use would generally be the total available on a node. See the [[system_information|System Information]] page for how many cores there are on each system.
+
+.. rubric:: Programming Tips for OpenMP ==
+
+Do not use implicit array setting when initializing arrays in Fortran. Since memory is not allocated until it is first used, there is no way for the implicit statement to understand what to do. What this will lead to is that your program won't understand memory locality and cannot allocate memory in the 'closest' memory. This will lead to performance and scalability issues.
+
+So, don't do this:
+
+  A=0.
+
+Do this:
+
+.. code-block:: shell
+ !$OMP PARALLEL DO SHARED(A)
+  for j=1,n
+    for i=1,m
+     A(i,j)=0.
+   enddo 
+  enddo
+
+
+This is not a Jet issue, but affects all architectures. By structuring your code in the fashion above then your code will be more portable.
+
+.. rubric:: Using MPI calls from OpenMP critical sections ==
+
+When using MPI and OpenMP, it is not necessary to worry about how threading is managed in MPI unless the MPI calls are from within OpenMP sections. You must disable processor affinity for this to work. To do this, you must pass the variable MV2_ENABLE_AFFINITY=0 to your application at run time. For example:
+
+.. code-block:: shell
+ 
+ mpiexec -v MV2_ENABLE_AFFINITY=0 ......
+
+See the `documentation <https://mvapich.cse.ohio-state.edu/userguide/>` _ mvapich2] for more information.
+
 
 Optimizing and Profiling
 ========================
