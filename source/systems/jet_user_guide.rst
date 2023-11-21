@@ -885,10 +885,10 @@ When using MPI and OpenMP, it is not necessary to worry about how threading is m
  
  mpiexec -v MV2_ENABLE_AFFINITY=0 ......
 
-See the `mvapich2 documentation <https://mvapich.cse.ohio-state.edu/userguide/>` _  for more information.
+See the `mvapich2 documentation <https://mvapich.cse.ohio-state.edu/userguide/>`_  for more information.
 
 
-Optimizing and Profiling
+Final Tuesday
 ========================
 
 Known Issues
