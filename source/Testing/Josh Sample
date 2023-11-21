@@ -1,0 +1,172 @@
+
+.. rubric:: Supported MPI Stacks
+
+We currently support two MPI stacks on Jet,
+`Mvapich2 <https://mvapich.cse.ohio-state.edu/overview/>`__
+and `OpenMPI <http://www.open-mpi.org/>`__. We consider
+Mvapich2 our primary MPI stack. OpenMPI is provided for
+software development and regression testing. In our
+experience, Mvapich2 provides better performance without
+requiring tuning. We do not have the depth of staff to fully
+support multiple stacks, but we will try our best. If you
+feel you need to use OpenMPI as your production stack,
+please send us a note through `Help
+Requests <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__
+and explain why so we can better understand your
+requirements.
+
+.. rubric:: Load MPI Stacks Via
+   Modules[\ `edit </index.php?title=Starting_a_Parallel_Application&action=edit&section=2>`__\ ]
+   :name: load-mpi-stacks-via-modulesedit
+
+The MPI libraries are compiler specific. Therefore a
+compiler must be loaded first before the MPI stacks become
+visible.
+
+::
+
+   # module load intel
+   # module avail
+
+   ...
+   ----------------------------------------------------------------- /apps/Modules/default/modulefamilies/intel -----------------------------------------------------------------
+   hdf4/4.2.7(default)      mvapich2/1.6 netcdf/3.6.3(default)    netcdf4/4.2.1.1(default)
+   hdf5/1.8.9(default)      mvapich2/1.8(default)    netcdf4/4.2  openmpi/1.6.3(default)
+
+You can see now that mvapich2 and openmpi available to be
+loaded. You can load the module with command:
+
+::
+
+   # module load mvapich2
+
+Note: Please use the default version of the MPI stack you
+require unless you are tracking down bugs or by request of
+the Jet Admin staff.
+
+.. rubric:: Launching
+   Jobs[\ `edit </index.php?title=Starting_a_Parallel_Application&action=edit&section=3>`__\ ]
+   :name: launching-jobsedit
+
+On Jet, please use mpiexec. This is a wrapper script that
+sets up your run environment to match your batch job and use
+process affinity (which provides better performance).
+
+::
+
+   mpiexec -np $NUM_OF_RANKS
+
+.. rubric:: Launching MPMD
+   jobs[\ `edit </index.php?title=Starting_a_Parallel_Application&action=edit&section=4>`__\ ]
+   :name: launching-mpmd-jobsedit
+
+MPMD (multi-program, multi-data) programs are typically used
+for coupled MPI jobs, for example oceans and atmosphere.
+Colons are used to separate the requirements of each launch.
+For example:
+
+::
+
+   mpiexec -np 36 ./ocean.exe : -np 24 ./atm.exe
+
+Of the 60 MPI ranks, the first 36 will be ocean.exe process,
+and the last 24 will be the atm.exe process.
+
+.. rubric:: MPI Library Specific
+   Options[\ `edit </index.php?title=Starting_a_Parallel_Application&action=edit&section=5>`__\ ]
+   :name: mpi-library-specific-optionsedit
+
+The MPI standard does not explicitly define how
+implementations are done between the libraries. Therefore, a
+single call to mpiexec can never be guaranteed to work
+across different libraries. Below are the important
+differences between the the ones that we support.
+
+.. rubric:: Mvapich2 Specific
+   Options[\ `edit </index.php?title=Starting_a_Parallel_Application&action=edit&section=6>`__\ ]
+   :name: mvapich2-specific-optionsedit
+
+.. rubric:: Passing Environment
+   Variables[\ `edit </index.php?title=Starting_a_Parallel_Application&action=edit&section=7>`__\ ]
+   :name: passing-environment-variablesedit
+
+There are two methods to pass variables to MPI processes,
+global (-genv) and local (-env). The global ones are applied
+to every executable. The local ones are only applied to the
+executable specified. The two methods are the same if the
+job launch is not MPMD. If you need to pass different
+variables with different values to different MPMD
+executables, use the local version. When using the global
+versions you should put them before the -np specification as
+that defines where the local parameters start.
+
+To pass a variable with its value:
+
+::
+
+   -genv VARNAME=VAL
+
+To pass multiple variables with values, list them all out:
+
+::
+
+   -genv VARNAME1=VAL1 -genv VARNAME2=VAL2
+
+If the variables are already defined, then you can just pass
+the list on the mpiexec line:
+
+-genvlist VARNAME1,VARNAME2
+
+If you want to just pass the entire environment, you can
+just do:
+
+::
+
+   -genvall
+
+Note, this may have unintended consequences and may not work
+depending how large your environment is. We recommend you
+explicitly pass what you need to pass to the MPI processes.
+
+If you need to pass different variables to different
+processes in an MPMD configuration, an example of the syntax
+would be:
+
+::
+
+   mpiexec -np 4 -env OMP_NUM_THREADS=2 ./ocean.exe | -np 8 -env OMP_NUM_THREADS=3 ./atm.exe
+
+.. rubric:: OpenMPI Specific
+   Options[\ `edit </index.php?title=Starting_a_Parallel_Application&action=edit&section=8>`__\ ]
+   :name: openmpi-specific-optionsedit
+
+.. rubric:: Passing Environment
+   Variables[\ `edit </index.php?title=Starting_a_Parallel_Application&action=edit&section=9>`__\ ]
+   :name: passing-environment-variablesedit-1
+
+The option -x is used to pass variables.
+
+To pass a variable with its value:
+
+::
+
+   -x VARNAME=VAL
+
+To pass the contents of an existing variable:
+
+::
+
+   -x VARNAME
+
+To pass multiple variables:
+
+::
+
+   -x VARNAME1,VARNAME2=VAL2,VARNAME3
+
+When comparing this to Mvapich2, these are all local
+definitions. There is no way to pass a variable to all
+processes of an MPMD application with a single usage of
+**-x**.
+
+      
