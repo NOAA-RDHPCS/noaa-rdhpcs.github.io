@@ -728,12 +728,108 @@ help system that we cannot answer will be forwarded to the
 package maintainer.
 
 If you wish to contribute a package to the system, please
-start a system help ticket:
-`HELP <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
+start a `system help ticket: <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
 
 
-Running Jobs
+System Software
 ============
+.. rubric:: How Software is Organized Through Modules
+Many software packages have compiler dependencies, and some
+also have MPI stack dependencies. To ensure that the correct
+packages are loaded, the module installation has been
+designed so that only valid packages are presented to you.
+For example, there are multiple versions of netcdf3, one for
+each compiler family we have. So when you run module avail:
+
+.. code-block:: shell
+
+   # module avail
+   
+   ------------------------------ /apps/Modules/3.2.9/modulefil------------------------------------------------
+   bbcp/12.01.30.01.0(default) hpssmodule-cvs      nulludunits/1.12.11
+   cnvgrib/1.2.3(default)      intel/11.1.080  module-info     pgi/12.5-0(default)         udunits/2.1.24(default)
+   cuda/4.2.9(default)         intel/12.1.4(default)       modules         rocoto/1.0.1(default)       use.own
+   dot intel/12.1.5    ncl/6.0.0       szip/2.1        wgrib/1.8.1.0b(default)
+   grads/2.0.1(default)        lahey/8.10b(default)        nco/4.1.0       totalview/8.9.2-2(default)  wgrib2/0.1.9.6a(default)
+
+There is no option for netcdf3. However, after load a
+compiler, then you have access to the packages that are
+dependent on that compiler.
+
+.. code-block:: shell
+
+   # module load mvapich
+   # module avail
+
+   ---------------------------- /apps/Modules/default/modulefamilies/intel -------------------------------------------
+   hdf4/4.2.7(default)   hdf5/1.8.9(default)   mvapich2/1.6    mvapich2/1.8(default) netcdf/3.6.3(default) netcdf4/4.2   openmpi/1.6
+
+The same method exists for packages that are dependent on
+both a compiler and MPI stack. If you wanted to use parallel
+hdf5 or parallel netcdf4, you would have to first specify
+the MPI stack you wanted to use.
+
+.. code-block:: shell
+
+   [ctierney@fe8 ~]$ module avail
+
+   -------------------------------------- /apps/Modules/default/modulefamilies/intel-mvapich2/1.8 ----------------------
+   hdf5parallel/1.8.9(default)       netcdf4-hdf5parallel/4.2(default)
+
+.. rubric:: Environment Variables
+For all packages on the system, environment variables have
+been set to ensure consistency in their use. We have defined
+the following variables for your use when using the
+different packages on the system:
+
+-  $NETCDF - Base directory of NetCDF3
+-  $NETCDF4 - Base directory of NetCDF4
+-  $NCO - Base directory of NCO
+-  $HDF4 - Base directory of HDF4
+-  $HDF5 - Base directory of HDF5
+-  $UDUNITS - Base directory of Udunits
+-  $SZIP - Base directory of szip
+-  $NCARG_ROOT - Base directory of NCAR Graphics and NCL
+-  $GEMPAK - Base directory of GEMPAK
+-  $GEMLIB - Location of GEMPAK libraries
+-  $CUDA - Base directory of Cuda
+-  $GADDIR - Location of Grads libraries
+
+When you are specifying the location of the libraries when
+compiling, use the variable name. For example:
+
+.. code-block:: shell
+
+   icc mycode.c -o mycode -I$NETCDF/include -L$NETCDF/lib -lnetcdf
+
+.. rubric:: User supported modules
+    
+Users who require access to packages not currently
+supported by the HPC staff are welcome to submit requests
+through the help system to install and support unique
+modules. To access these user supported modules you must
+first update the module path to include the
+/contrib/modulefiles. To access these additional modules
+execute the following commands.
+
+.. code-block:: shell
+
+   $ module use /contrib/modulefiles
+   $ module avail
+
+   . . .
+
+   ----------------------------- /contrib/modulefiles -----------------------------
+
+   anaconda/2.0.1   papi/5.3.2(default)
+   ferret/v6.9(default)         sbt/0.13.7(default)
+   gptl/5.3.2-mpi   scala/2.11.5(default)
+   gptl/5.3.2-mpi-papi(default) tau/2.22-p1-intel(default)
+   gptl/5.3.2-nompi tau/2.23-intel
+   papi/4.4.0       tau/2.23.1-intel
+   papi/5.0.1       test/1.0
+   papi/5.3.0       tm/1.1
+
 
 Debugging
 =========
