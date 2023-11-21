@@ -866,7 +866,7 @@ So, don't do this:
 Do this:
 
 .. code-block:: shell
-    
+
  !$OMP PARALLEL DO SHARED(A)
     for j=1,n
     for i=1,m
@@ -885,7 +885,7 @@ When using MPI and OpenMP, it is not necessary to worry about how threading is m
  
  mpiexec -v MV2_ENABLE_AFFINITY=0 ......
 
-See the `documentation <https://mvapich.cse.ohio-state.edu/userguide/>` _ mvapich2] for more information.
+See the `mvapich2 documentation <https://mvapich.cse.ohio-state.edu/userguide/>` _  for more information.
 
 
 Optimizing and Profiling
