@@ -434,28 +434,28 @@ Options for Editing on Jet
 ========
 To use any of these editors, type the name in at the command line:
 
-+----------+----------------------------------------------------------+
-| vi       | (http://www.linuxlookup.com/howto/using_vi_text_editor)  |
-|          | - The old school standard editor. It is a text based     |
-|          | editor (although X window versions do exist).            |
-+----------+----------------------------------------------------------+
-| emacs    | (http://www.nedit.org/help/index.php) - An editor most   |
-|          | like what you would find in Windows.                     |
-+----------+----------------------------------------------------------+
-| nedit    | (http://www.nedit.org/help/index.php) - An editor most   |
-|          | like what you would find in Windows.                     |
-+----------+----------------------------------------------------------+
-| nano     | It is just like nedit, easier to learn than vi, and does |
-|          | not require X11.                                         |
-+----------+----------------------------------------------------------+
-| vimdiff  | extremely useful for visualizing the difference between  |
-|          | source code files. It opens many files vi windows        |
-|          | side-by-side and highlights any differences between the  |
-|          | files. The user can edit the differences directly. Super |
-|          | useful for code development.                             |
-+----------+----------------------------------------------------------+
-| gvimdiff | X11 version of vimdiff with mouse support.               |
-+----------+----------------------------------------------------------+
++----------+--------------------------------------------------------------+
+| vi       | `<http://www.linuxlookup.com/howto/using_vi_text_editor>`_   |
+|          | - The old school standard editor. It is a text based         |
+|          | editor (although X window versions do exist).                |
++----------+--------------------------------------------------------------+
+| emacs    | `<http://www.nedit.org/help/index.php>`_ - An editor mos t   |
+|          | like what you would find in Windows.                         |
++----------+--------------------------------------------------------------+
+| nedit    | `<http://www.nedit.org/help/index.php>`_ - An editor most    |
+|          | like what you would find in Windows.                         |
++----------+--------------------------------------------------------------+
+| nano     | It is just like nedit, easier to learn than vi, and does     |
+|          | not require X11.                                             |
++----------+--------------------------------------------------------------+
+| vimdiff  | extremely useful for visualizing the difference between      |
+|          | source code files. It opens many files vi windows            |
+|          | side-by-side and highlights any differences between the      |
+|          | files. The user can edit the differences directly. Super     |
+|          | useful for code development.                                 |
++----------+--------------------------------------------------------------+
+| gvimdiff | X11 version of vimdiff with mouse support.                   |
++----------+--------------------------------------------------------------+
 
 
 Starting a Parallel Application
@@ -488,7 +488,7 @@ visible.
    # module avail
 
    ...
-   ----------------------------------------------------------------- /apps/Modules/default/modulefamilies/intel -----------------------------------------------------------------
+   ------------------------- /apps/Modules/default/modulefamilies/intel -- -------------------
    hdf4/4.2.7(default)      mvapich2/1.6 netcdf/3.6.3(default)    netcdf4/4.2.1.1(default)
    hdf5/1.8.9(default)      mvapich2/1.8(default)    netcdf4/4.2  openmpi/1.6.3(default)
 
@@ -561,7 +561,7 @@ the list on the mpiexec line:
 
 .. code-block:: shell
 
--genvlist VARNAME1,VARNAME2
+   -genvlist VARNAME1,VARNAME2
 
 If you want to just pass the entire environment, you can
 just do:
