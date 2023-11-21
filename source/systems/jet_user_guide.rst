@@ -430,48 +430,32 @@ For lapack:
 
    -llapack
 
-TEST:
-+----------+----------+----------+-------+-------+--------+----------+
-| System   | Date     | P        | Nodes | Cores | Gflops | I        |
-|          |          | rocessor |       |       |        | ntegrato |
-|          |          |          |       |       |        | r/Vendor |
-+----------+----------+----------+-------+-------+--------+----------+
-| Jet      | Jan 2000 | Compaq   | 276   | 276   | 368    | High     |
-|          |          | Alpha    |       |       |        | Per      |
-|          |          | 21264,   |       |       |        | formance |
-|          |          | 667Mhz   |       |       |        | Tech     |
-|          |          |          |       |       |        | nologies |
-|          |          |          |       |       |        | Inc.     |
-|          |          |          |       |       |        | (HPTi    |
-|          |          |          |       |       |        | )/Compaq |
-+----------+----------+----------+-------+-------+--------+----------+
-
 Options for Editing on Jet
 ========
- To use any of these editors, type the name in at the command line:
+To use any of these editors, type the name in at the command line:
 
- +----------+----------------------------------------------------------+
- | vi       | (http://www.linuxlookup.com/howto/using_vi_text_editor)  |
- |          | - The old school standard editor. It is a text based     |
- |          | editor (although X window versions do exist). |
- +----------+----------------------------------------------------------+
- | emacs    | (http://www.nedit.org/help/index.php) - An editor most   |
- |          | like what you would find in Windows.          |
- +----------+----------------------------------------------------------+
- | nedit    | (http://www.nedit.org/help/index.php) - An editor most   |
- |          | like what you would find in Windows.          |
- +----------+----------------------------------------------------------+
- | nano     | It is just like nedit, easier to learn than vi, and does |
- |          | not require X11.        |
- +----------+----------------------------------------------------------+
- | vimdiff  | extremely useful for visualizing the difference between  |
- |          | source code files. It opens many files vi windows        |
- |          | side-by-side and highlights any differences between the  |
- |          | files. The user can edit the differences directly. Super |
- |          | useful for code development.       |
- +----------+----------------------------------------------------------+
- | gvimdiff | X11 version of vimdiff with mouse support.    |
- +----------+----------------------------------------------------------+
++----------+----------------------------------------------------------+
+| vi       | (http://www.linuxlookup.com/howto/using_vi_text_editor)  |
+|          | - The old school standard editor. It is a text based     |
+|          | editor (although X window versions do exist).            |
++----------+----------------------------------------------------------+
+| emacs    | (http://www.nedit.org/help/index.php) - An editor most   |
+|          | like what you would find in Windows.                     |
++----------+----------------------------------------------------------+
+| nedit    | (http://www.nedit.org/help/index.php) - An editor most   |
+|          | like what you would find in Windows.                     |
++----------+----------------------------------------------------------+
+| nano     | It is just like nedit, easier to learn than vi, and does |
+|          | not require X11.                                         |
++----------+----------------------------------------------------------+
+| vimdiff  | extremely useful for visualizing the difference between  |
+|          | source code files. It opens many files vi windows        |
+|          | side-by-side and highlights any differences between the  |
+|          | files. The user can edit the differences directly. Super |
+|          | useful for code development.                             |
++----------+----------------------------------------------------------+
+| gvimdiff | X11 version of vimdiff with mouse support.               |
++----------+----------------------------------------------------------+
 
 
 Starting a Parallel Application
