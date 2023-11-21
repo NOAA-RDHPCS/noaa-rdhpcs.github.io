@@ -877,7 +877,7 @@ Do this:
 
 This is not a Jet issue, but affects all architectures. By structuring your code in the fashion above then your code will be more portable.
 
-.. rubric:: Using MPI calls from OpenMP critical sections ==
+.. rubric:: Using MPI calls from OpenMP critical sections 
 
 When using MPI and OpenMP, it is not necessary to worry about how threading is managed in MPI unless the MPI calls are from within OpenMP sections. You must disable processor affinity for this to work. To do this, you must pass the variable MV2_ENABLE_AFFINITY=0 to your application at run time. For example:
 
