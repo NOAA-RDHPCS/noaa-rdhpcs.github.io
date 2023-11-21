@@ -241,21 +241,22 @@ developing new tools and techniques that will allow these
 systems to be used in the future by scientists to solve
 tomorrow's weather and hurricane prediction challenges.
 
-.. rubric:: About Modules
+About Modules
+=============
 Modules is a tool that is used to manage the use of softwarewhen multiple versions are installed. For packages that arenot provided with the OS (compilers, debuggers, MPI stacks,etc), we install so that new versions to not overwrite oldversions.
 By default, no modules are loaded. Therefore you must loadany modules that you wish to use. To see what modules areavailable, run:
 
 .. code-block:: shell
+
    # module avail
 
 At a minimum you will want to load a compiler and an MPIstack:
 
 .. code-block:: shell
+
    # module load intel   # module load mvapich2
 
- .. note:: 
-
-Note: Since you have to do this explicitly (for now), youalso have to do it in your job scripts. Or, you can put it in your .profile and make it permanent.
+**Note:** Since you have to do this explicitly (for now), youalso have to do it in your job scripts. Or, you can put it in your .profile and make it permanent.
 
 .. rubric:: Modules on Jet
 The way to find the latest modules on Jet is to run moduleavail:
@@ -263,9 +264,34 @@ The way to find the latest modules on Jet is to run moduleavail:
  .. code-block:: shell 
     
    # module aval
-   --------------------------------------------------------------------------------------------------------- /apps/Modules/versions ----------------------------------------------------------------------------------------------------------   3.2.9
-   ----------------------------------------------------------------------------------------------------- /apps/Modules/3.2.9/modulefiles -----------------------------------------------------------------------------------------------------   bbcp/12.01.30.01.0(default)    grads/2.0.1(default)           intel/12.1.4(default)          modulepgi/12.5-0(defaultudunits/1.12.11   cnvgrib/1.2.3(default)         hps   intel/12.1.       ncl/6.0.          rocoto/1.0.       udunits/2.1.24(default)   cuda/4.2.9(defaultidl/8.2(default   lahey/8.10b(default)           nco/4.1.          rocoto/1.0.3(default)          use.own   do    imagemagick/6.2.8(default)     module-cv         ncview/2.1.1(default)          szip/2.           wgrib/1.8.1.0b(default)   gempak/6.7.0-gfortran(default) intel/11.1.08     module-inf        nul   totalview/8.9.2-2(default)     wgrib2/0.1.9.6a(default)
-   ---------------------------------------------------------------------------------------------------- /apps/Modules/default/admintools -----------------------------------------------------------------------------------------------------   cit   devel
+
+to see the list of available modules for the compiler and the MPI modules currently loaded. 
+
+
+.. code-block:: shell 
+
+--------------------------------- /apps/lmod/lmod/modulefiles/Core ---------------------------------
+   lmod/7.7.18    settarg/7.7.18
+
+------------------------------------ /apps/modules/modulefiles -------------------------------------
+   advisor/2019         g2clib/1.4.0                intel/19.0.4.243              rocoto/1.3.1
+   antlr/2.7.7          gempak/7.4.2                intelpython/3.6.8             szip/2.1
+   antlr/4.2     (D)    grads/2.0.2                 matlab/R2017b                 udunits/2.1.24
+   cairo/1.14.2         hpss/hpss                   nag-fortran/6.2               vtune/2019
+   cnvgrib/1.4.0        idl/8.7                     nccmp/1.8.2                   wgrib/1.8.1.0b
+   contrib              imagemagick/7.0.8-53        ncview/2.1.3                  xxdiff/3.2.Z1
+   ferret/6.93          inspector/2019              performance-reports/19.1.1
+   forge/19.1           intel/18.0.5.274     (D)    pgi/19.4
+
+  Where:
+   D:  Default Module   
+
+Use "module spider" to find all possible modules.
+Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+
+h3a03.hera%
+
+
 In the above, each module name represents a differentpackage. In cases where there are multiple versions of apackage, one will be set as a default. For example, for theintel compiler there are multiple choices:
 
 .. code-block:: shell
