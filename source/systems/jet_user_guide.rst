@@ -273,14 +273,14 @@ to see the list of available modules for the compiler and the MPI modules curren
    lmod/7.7.18    settarg/7.7.18
 
 ------------------------------------ /apps/modules/modulefiles -------------------------------------
-   advisor/2019         g2clib/1.4.0                intel/19.0.4.243              rocoto/1.3.1
-   antlr/2.7.7          gempak/7.4.2                intelpython/3.6.8             szip/2.1
-   antlr/4.2     (D)    grads/2.0.2                 matlab/R2017b                 udunits/2.1.24
-   cairo/1.14.2         hpss/hpss                   nag-fortran/6.2               vtune/2019
-   cnvgrib/1.4.0        idl/8.7                     nccmp/1.8.2                   wgrib/1.8.1.0b
-   contrib              imagemagick/7.0.8-53        ncview/2.1.3                  xxdiff/3.2.Z1
-   ferret/6.93          inspector/2019              performance-reports/19.1.1
-   forge/19.1           intel/18.0.5.274     (D)    pgi/19.4
+   advisor/2019         g2clib/1.4.0     intel/19.0.4.243   rocoto/1.3.1
+   antlr/2.7.7          gempak/7.4.2     intelpython/3.6.8  szip/2.1
+   antlr/4.2     (D)    grads/2.0.2      matlab/R2017b      udunits/2.1.24
+   cairo/1.14.2         hpss/hpss        nag-fortran/6.2    vtune/2019
+   cnvgrib/1.4.0        idl/8.7          nccmp/1.8.2        wgrib/1.8.1.0b
+   contrib   imagemagick/7.0.8-53        ncview/2.1.3       xxdiff/3.2.Z1
+   ferret/6.93          inspector/2019   performance-reports/19.1.1
+   forge/19.1intel/18.0.5.274     (D)    pgi/19.4
 
   Where:
    D:  Default Module   
@@ -322,7 +322,7 @@ or
 
    # module switch intel intel/11.1.080
 
-**Notes:** When unloading modules, only unload those that you have loaded. The others are done automatically from master   modules.-  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
+**Note:** When unloading modules, only unload those that you have loaded. The others are done automatically from master   modules.-  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
 
 
 Using Math Libraries
@@ -331,15 +331,14 @@ Using Math Libraries
 The intel math kernel library (MKL) provides a wide variety
 of optimized math libraries including "BLAS, LAPACK,
 ScaLAPACK, sparse solvers, fast Fourier transforms, vector
-math, and more." The product documentation can be found here
-`<https://software.intel.com/en-us/articles/intel-math-kernel-library-documentation/>`__.
+math, and more." The product documentation can be found `here <https://software.intel.com/en-us/articles/intel-math-kernel-library-documentation/>`__.
 
 Below are provided several examples that should help most of
 the users on our system.
 
 
 .. rubric:: Location of MKL on Jet
-MKL is specific to the version of the Intel compiler used.
+**MKL** is specific to the version of the Intel compiler used.
 After loading the compiler version you require, the variable
 **$MKLROOT** will be defined that specifies the path to the
 MKL library. Use this variable.
@@ -353,7 +352,7 @@ following option to your link line:
 
    -mkl=sequential
 
-Note, there is no lower case L in front of mkl.
+**Note:** There is no lower case L in front of mkl.
 This will include all of the libraries you will need. The
 sequential option is important because by default Intel MKL
 will use threaded (OpenMP like) versions of the library. In
@@ -431,13 +430,186 @@ For lapack:
 
    -llapack
 
-Editing on Jet
+Options for Editing on Jet
 ========
+ To use any of these editors, type the name in at the command line.
+
+ +----------+----------------------------------------------------------+
+ | vi       | (http://www.linuxlookup.com/howto/using_vi_text_editor)  |
+ |          | - The old school standard editor. It is a text based     |
+ |          | editor (although X window versions do exist). |
+ +----------+----------------------------------------------------------+
+ | emacs    | (http://www.nedit.org/help/index.php) - An editor most   |
+ |          | like what you would find in Windows.          |
+ +----------+----------------------------------------------------------+
+ | nedit    | (http://www.nedit.org/help/index.php) - An editor most   |
+ |          | like what you would find in Windows.          |
+ +----------+----------------------------------------------------------+
+ | nano     | It is just like nedit, easier to learn than vi, and does |
+ |          | not require X11.        |
+ +----------+----------------------------------------------------------+
+ | vimdiff  | extremely useful for visualizing the difference between  |
+ |          | source code files. It opens many files vi windows        |
+ |          | side-by-side and highlights any differences between the  |
+ |          | files. The user can edit the differences directly. Super |
+ |          | useful for code development.       |
+ +----------+----------------------------------------------------------+
+ | gvimdiff | X11 version of vimdiff with mouse support.    |
+ +----------+----------------------------------------------------------+
 
 
-
-Shell & Programming Environments
+Starting a Parallel Application
 ================================
+
+.. rubric:: Supported MPI Stacks
+
+We currently support two MPI stacks on Jet,
+`Mvapich2 <https://mvapich.cse.ohio-state.edu/overview/>`__
+and `OpenMPI <http://www.open-mpi.org/>`__. We consider
+Mvapich2 our primary MPI stack. OpenMPI is provided for
+software development and regression testing. In our
+experience, Mvapich2 provides better performance without
+requiring tuning. We do not have the depth of staff to fully
+support multiple stacks, but we will try our best. If you
+feel you need to use OpenMPI as your production stack,
+please send us a note through `Help
+Requests <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__
+and explain why so we can better understand your
+requirements.
+
+.. rubric:: Load MPI Stacks Via Modules
+The MPI libraries are compiler specific. Therefore a
+compiler must be loaded first before the MPI stacks become
+visible.
+
+.. code-block:: shell
+
+   # module load intel
+   # module avail
+
+   ...
+   ----------------------------------------------------------------- /apps/Modules/default/modulefamilies/intel -----------------------------------------------------------------
+   hdf4/4.2.7(default)      mvapich2/1.6 netcdf/3.6.3(default)    netcdf4/4.2.1.1(default)
+   hdf5/1.8.9(default)      mvapich2/1.8(default)    netcdf4/4.2  openmpi/1.6.3(default)
+
+You can see now that mvapich2 and openmpi available to be
+loaded. You can load the module with command:
+
+.. code-block:: shell
+
+   # module load mvapich2
+
+.. warning::
+Please use the default version of the MPI stack you
+require unless you are tracking down bugs or by request of
+the Jet Admin staff.
+
+.. rubric:: Launching Jobs
+On Jet, please use mpiexec. This is a wrapper script that
+sets up your run environment to match your batch job and use
+process affinity (which provides better performance).
+
+.. code-block:: shell
+
+   mpiexec -np $NUM_OF_RANKS
+
+.. rubric:: Launching MPMD jobs
+MPMD (multi-program, multi-data) programs are typically used
+for coupled MPI jobs, for example oceans and atmosphere.
+Colons are used to separate the requirements of each launch.
+For example:
+
+.. code-block:: shell
+
+   mpiexec -np 36 ./ocean.exe : -np 24 ./atm.exe
+
+Of the 60 MPI ranks, the first 36 will be ocean.exe process,
+and the last 24 will be the atm.exe process.
+
+.. rubric:: MPI Library Specific Options
+The MPI standard does not explicitly define how
+implementations are done between the libraries. Therefore, a
+single call to mpiexec can never be guaranteed to work
+across different libraries. Below are the important
+differences between the the ones that we support.
+
+.. rubric:: Passing Environment Variables
+There are two methods to pass variables to MPI processes,
+global (-genv) and local (-env). The global ones are applied
+to every executable. The local ones are only applied to the
+executable specified. The two methods are the same if the
+job launch is not MPMD. If you need to pass different
+variables with different values to different MPMD
+executables, use the local version. When using the global
+versions you should put them before the -np specification as
+that defines where the local parameters start.
+
+To pass a variable with its value:
+
+.. code-block:: shell
+
+   -genv VARNAME=VAL
+
+To pass multiple variables with values, list them all out:
+
+.. code-block:: shell
+
+   -genv VARNAME1=VAL1 -genv VARNAME2=VAL2
+
+If the variables are already defined, then you can just pass
+the list on the mpiexec line:
+
+.. code-block:: shell
+
+-genvlist VARNAME1,VARNAME2
+
+If you want to just pass the entire environment, you can
+just do:
+
+.. code-block:: shell
+
+   -genvall
+
+**Note:** This may have unintended consequences and may not work
+depending how large your environment is. We recommend you
+explicitly pass what you need to pass to the MPI processes.
+
+If you need to pass different variables to different
+processes in an MPMD configuration, an example of the syntax
+would be:
+
+.. code-block:: shell
+
+   mpiexec -np 4 -env OMP_NUM_THREADS=2 ./ocean.exe | -np 8 -env OMP_NUM_THREADS=3 ./atm.exe
+
+.. rubric:: OpenMPI Specific Options
+.. rubric:: Passing Environment Variables
+    
+The option -x is used to pass variables.
+To pass a variable with its value:
+
+.. code-block:: shell
+
+   -x VARNAME=VAL
+
+To pass the contents of an existing variable:
+
+.. code-block:: shell
+
+   -x VARNAME
+
+To pass multiple variables:
+
+.. code-block:: shell
+
+   -x VARNAME1,VARNAME2=VAL2,VARNAME3
+
+When comparing this to Mvapich2, these are all local
+definitions. There is no way to pass a variable to all
+processes of an MPMD application with a single usage of
+**-x**.
+
+
 
 Compiling
 =========
