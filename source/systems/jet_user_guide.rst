@@ -611,8 +611,126 @@ processes of an MPMD application with a single usage of
 
 
 
-Compiling
+Policies and Best Practices
 =========
+.. rubric:: Project Data Management
+
+`Project Data
+Management <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies#File_System_Usage_Practices>`__
+, in RDHPCS CommonDocs. This includes the High Performance
+File System (HPFS, Scratch), HFS (Home File System), the
+HPSS HSMS (tape).
+
+.. rubric:: Login (Front End) Node Usage Policy
+`Login (Front_End) Node Usage
+Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__
+, in RDHPCS CommonDocs
+
+.. rubric:: Cron Usage Policy
+`Cron Usage
+Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__
+, in RDHPCS CommonDocs
+
+.. rubric:: Maximum Job Length Policy
+See the section: `Specifying a Queue
+(QOS) <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php?title=Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM&action=edit&section=23>`__\ for
+maximum job length per partition and QOS. If you require
+jobs to run longer than this, it is expected that you use
+checkpoint/restart to save the state of your model. Then you
+can resubmit the job and have it pickup where it left off.
+This policy has been developed over a decade of different
+job patterns as a balance between user needs, fairness
+within the system, and reducing risk of losing too many CPU
+hours from failed jobs or system interruptions.
+
+.. rubric:: /tmp Usage Policy
+
+Every node in the Jet system has a /tmp directory. In most
+other Unix/Linux systems, users use this space used for
+temporary files. This generally works when the size of /tmp
+is somewhat similar to the working space (like /home) on a
+traditional workstation.
+
+However, Jet is not a workstation. The size of /tmp on Jet
+is much smaller than the working space of the project
+directories. In many cases, a typical file written in a
+project directory could be as large as the entire /tmp
+space. On the compute nodes, the problem is worse. The
+compute nodes have no disk, and the size of /tmp is on the
+order of 1 GB.
+
+For these reasons:
+
+-  Users should refrain from using /tmp. The /tmp directory
+   is for system tools and processes.
+-  All users have project space, use that space for
+   manipulating temporary files.
+
+The /tmp filesystem can be faster for accessing small files
+there are valid reasons to use /tmp for your processing.
+Only consider using /tmp if:
+
+-  The size of your files are less than a few MB
+-  Your files will not be need after the process is done
+   running
+
+Please clean up your temporary files after you are done
+using them.
+
+.. rubric:: Software Support Policy
+Our goal is to enable science on any RDHPCS system. This
+often includes installing additional software to improve the
+utility and usefulness of the system.
+
+.. rubric:: Systems Administrator Managed Software
+
+The HPCS support staff is not an unlimited resource and
+since every additional software package installed increases
+our effort level, we have to evaluate each request. The
+systems administrators will take on the responsibility of
+maintaining packages based on the usefulness of the tool to
+the user community, their complexity of installation and
+maintenance, as well as other factors.
+
+-  If the package is a part of the current OS base (Redhat),
+   these requests will *normally be honored*
+
+One notable exception is for 32-bit applications. 32-bit
+support requires a huge increase of installed packages which
+makes they system images harder to maintain and secure. We
+expect all applications to work in 64-bit mode.
+
+-  If the package is available from the `EPEL repository
+   <http://fedoraproject.org/wiki/EPEL>`_, it is likely that
+   we can install it unless it causes additional
+   complexities. However, if EPEL stops supporting it, we
+   may as well.
+-  If the software is not a part of the Redhat or EPEL
+   repositories, we can still consider it. Each request will
+   be considered on a case by case basis based on the value
+   to the community.
+
+.. rubric:: Single-user Managed Software
+Users are always free to install software packages and
+maintain them in their home or project directories.
+
+.. rubric:: "Contributor" Managed Software
+
+We have one other method to support software on the system.
+As we cannot be the experts of all system packages, we have
+to rely on the community to help out to provide as much
+value from the system as possible. To enable this, we have a
+user contributed software section. The user will be given
+access to a system level directory in which they can install
+software. We will make the minimal changes necessary to
+allow access to the installed tool. Any questions from the
+help system that we cannot answer will be forwarded to the
+package maintainer.
+
+If you wish to contribute a package to the system, please
+start a system help ticket:
+`HELP <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
+
 
 Running Jobs
 ============
