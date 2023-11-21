@@ -859,13 +859,16 @@ Do not use implicit array setting when initializing arrays in Fortran. Since mem
 
 So, don't do this:
 
+.. code-blocK:: shell
+
   A=0.
 
 Do this:
 
 .. code-block:: shell
+    
  !$OMP PARALLEL DO SHARED(A)
-  for j=1,n
+    for j=1,n
     for i=1,m
      A(i,j)=0.
    enddo 
