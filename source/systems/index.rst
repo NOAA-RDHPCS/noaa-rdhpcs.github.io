@@ -13,7 +13,6 @@ Systems
    niagara_user_guide.rst
    orion_user_guide.rst
    HPSS.rst
-   gaea
-   Cloud_test.rst
+ 
   
    
