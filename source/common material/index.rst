@@ -7,9 +7,9 @@ Common Material
 
    common
    accounts.rst
-   faqs.rst
    allocations
    status
    support.rst
    transfers
+   faqs.rst
    
