@@ -1,7 +1,6 @@
 =====
 Getting an RDHPCS Account
 =====
-lorum ipsum
 
 =======
 New Device - Software tokens
