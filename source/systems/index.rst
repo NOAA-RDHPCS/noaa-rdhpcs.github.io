@@ -12,7 +12,7 @@ Systems
    jet_user_guide.rst
    niagara_user_guide.rst
    orion_user_guide.rst
-   HPSS.rst
+   hpss.rst
  
   
    
