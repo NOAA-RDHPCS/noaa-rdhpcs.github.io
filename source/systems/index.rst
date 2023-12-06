@@ -10,11 +10,11 @@ Systems
    cloud_user_guide.rst
    jet_user_guide.rst
    hera_user_guide.rst
-   hpss_test.rst
    niagara_user_guide.rst
    using_the_HSMS_HPSS.rst
    orion_user_guide.rst
-  
+   hpss_test.rst
+   contents test.rst
  
   
    
