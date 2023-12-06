@@ -1,5 +1,5 @@
 ######
-Common Information
+General Information
 ######
 
 Welcome to RDHPCS CommonDocs -- Information and procedures that pertain across all RDHPCS systems.
