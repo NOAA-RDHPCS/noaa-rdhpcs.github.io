@@ -13,8 +13,8 @@ Systems
    niagara_user_guide.rst
    using_the_HSMS_HPSS.rst
    orion_user_guide.rst
-   hpss_test.rst
-   contents test.rst
+   hpss_guide.rst
+   
  
   
    
