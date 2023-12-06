@@ -14,9 +14,7 @@ Systems
    using_the_HSMS_HPSS.rst
    orion_user_guide.rst
    orion2_user_guide.rst
-   Storage.rst
-   Using_the_HMSS_HPSS.rst
-   orion_user_guide.rst
+  
    
  
   
