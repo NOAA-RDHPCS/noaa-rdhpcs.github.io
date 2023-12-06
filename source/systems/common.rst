@@ -1,5 +1,5 @@
 ######
-Common
+Common Information
 ######
 
 Welcome to RDHPCS CommonDocs -- Information and procedures that pertain across all RDHPCS systems.
@@ -58,12 +58,6 @@ View the Calendar `here <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb
       Platform to create and use HPC computatational clusters on an as-needed basis.
       `More Information <https://www.noaa.gov/information-technology/hpcc>`_
 
-Documents
----------
-
-.. raw:: html
-
-   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSXDvIeFif0_RJ5Po3y1i2gJdVVPpfbJ0QQUVATXBBqy68Ughdu9rkWI2lN9CsoaEwUa6449m2Nh7ZA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 .. note::
 

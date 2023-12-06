@@ -1,8 +1,6 @@
 
 Current Status
 ==============
-Making sure of this before we proceed...
-
 We are now allowing all users and projects to run Singularity Containers
 on Hera, Hera-FGE, Jet, and Niagara. Please see below:
 
@@ -14,7 +12,7 @@ currently not supporting the following items:
    Etc.) for supporting Containers
 
 Introduction
-============
+---------
 
 A container is a standard unit of software that packages up code and all
 its dependencies so the application runs quickly and reliably from one

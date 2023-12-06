@@ -2,7 +2,6 @@
 
 Login (Front End) Node Usage Policy
 ===================================
-
 The login (front end) nodes are a part of the service nodes that provide
 access to the rest of the cluster. They are intended for code and batch
 job management tasks, not for computation.
