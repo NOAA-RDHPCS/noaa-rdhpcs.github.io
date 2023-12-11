@@ -83,8 +83,9 @@ time pools will also be available. To add a project to the
 HPSS the Portfolio Manager should submit a help request with
 the following information:
 
--  Project name, associated users, maximum time retention
-   pool
+-  Project name
+-  associated users
+-  maximum time retention pool
 
 To remove a project from the HPSS the PfM should submit a
 help request with the project name and data disposition
@@ -92,12 +93,10 @@ directions. Requests are reviewed and approved by the HPSS
 Resource Manager and sent to the HPSS system administrator
 for implementation.
 
-**Requests for adding users and projects to HPSS is NOT
-supported in AIM, but instead the
+**Requests to add users and projects to HPSS iare NOT
+supported in AIM. Instead, the
 request/review/implementation/notification process is
-handled by the HPSS help ticket system.**
-
-Email: rdhpcs.hpss.help@noaa.gov.
+handled by the HPSS help ticket system.**  Email: rdhpcs.hpss.help@noaa.gov.
 
 .. rubric:: NESCC HPSS Data Structure
 
@@ -254,9 +253,7 @@ been assigned an expiration date based on the file create
 time and the retention period it was written to. Upon
 expiration files will be deleted from the HPSS archive.
 
-.. rubric:: Expired Data Deletion Process
-
-.. rubric:: User Notification
+.. rubric:: Expired Data Deletion Process -  User Notification
 
 Users will be notified of expired data via posted lists and
 email. These notifications will take place on or before the
@@ -436,27 +433,17 @@ The HTAR command line has the general form:
    Exclude options (note: multiple exclude options can be given)
        --exclude pattern      - do not include objects that match pattern
        --exclude-from file    - same as exclude, but read patterns from file
-       --exclude-ignore=file  - check for file in each new directory and read
-exclude patterns that apply just to that directory
-       --exclude-ignore-recursive=file - same as exclude-ignore, but apply
-patterns recursively
-       --exclude-backups      - exclude backup and lock file that match the
-shell globbing patterns '.#*', '*~', '#*#' 
-       --exclude-caches       - if directory contains a valid cache file 
-(CACHEDIR.TAG) include directory and cache file, but not contents
-       --exclude-caches-under - same as exclude-caches, but only archive
-the directory - omit the CACHEDIR.TAG file
-       --exclude-caches-all   - same as exclude-caches, but omit directory
-           completely
-       --exclude-tag=file     - if directory contains file, include only the
-           directory and the file, not the other contents
+       --exclude-ignore=file  - check for file in each new directory and read exclude patterns that apply just to that directory
+       --exclude-ignore-recursive=file - same as exclude-ignore, but apply patterns recursively
+       --exclude-backups      - exclude backup and lock file that match the shell globbing patterns '.#*', '*~', '#*#' 
+       --exclude-caches       - if directory contains a valid cache file (CACHEDIR.TAG) include directory and cache file, but not contents
+       --exclude-caches-under - same as exclude-caches, but only archive the directory, omit the CACHEDIR.TAG file
+       --exclude-caches-all   - same as exclude-caches, but omit directory completely
+       --exclude-tag=file     - if directory contains file, include only the directory and the file, not the other contents
        --exclude-tag-under    - same as exclude-tag, but omit the file
-       --exclude-tag-all      - same as exclude-tag, but completely omit the
-           directory and all its contents
-       --exclude-vcs-ignores  - exclude patterns that are ignored by version
-           control systems: .gitignore, cvsignore, .bzrignore,.hgignore
-       --exclude-vcs          - exclude files and directories used by version control systems
-           such as CVS, RCS, SCCS, .git, .gitignore,.svn, .bzr,.hg, ...
+       --exclude-tag-all      - same as exclude-tag, but completely omit the directory and all its contents
+       --exclude-vcs-ignores  - exclude patterns that are ignored by version control systems: .gitignore, cvsignore, .bzrignore,.hgignore
+       --exclude-vcs          - exclude files and directories used by version control systems such as CVS, RCS, SCCS, .git, .gitignore,.svn, .bzr,.hg, ...
 
    -f Archive   Specifies Archive file name (required option)
 
@@ -632,7 +619,6 @@ originally created by HTAR.
    htar -Xvf /SYSADMIN/nesccmgmt/1year/testuser/work/files.tar
 
 .. rubric:: HSI
-   :name: hsi
 
 HSI is a FTP-like interface to the HPSS. HSI is most useful
 for file and directory manipulation. HSI supports wild cards
