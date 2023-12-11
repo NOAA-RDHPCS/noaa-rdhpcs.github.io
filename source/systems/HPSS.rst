@@ -36,7 +36,9 @@ the HPSS system:
 For questions regarding the HPSS system, email
 rdhpcs.hpss.help@noaa.gov.
 
-.. rubric:: Gaining Access to use HPSS
+=======================
+Gaining Access to use HPSS
+=========================
 
 .. rubric:: New HPSS User Requests
 
@@ -72,7 +74,6 @@ All requests must have the following information:
    (Hera/Jet/Niagara/Gaea/WCOSS)
 
 .. rubric:: Adding New Projects to HPSS
-   :name: adding-new-projects-to-hpss
 
 Projects on a NOAA compute resource are not given access to
 the HPSS until requested by the Portfolio Manager (PfM). The
@@ -99,7 +100,6 @@ handled by the HPSS help ticket system.**
 Email: rdhpcs.hpss.help@noaa.gov.
 
 .. rubric:: NESCC HPSS Data Structure
-   :name: nescc-hpss-data-structure
 
 HPSS data at NESCC is organized by portfolio, project and
 retention period. Each retention period (1-5 Year &
@@ -114,6 +114,7 @@ other projects within the same retention directory. If data
 needs to be moved to another retention period (ex: /1year ->
 /2year) it must be copied.
 
+.. note::
 **Note:** Please be sure to store the data you write to HPSS
 in the appropriate retention directory, and in the correct
 project if you belong to multiple projects. This will avoid
@@ -239,7 +240,6 @@ NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
    ===== ======== ==========
 
 .. rubric:: Data Retention
-   :name: data-retention
 
 Retention based storage is the HPSS archive policy in
 Fairmont, to better manage data growth. Six retention
@@ -255,10 +255,8 @@ time and the retention period it was written to. Upon
 expiration files will be deleted from the HPSS archive.
 
 .. rubric:: Expired Data Deletion Process
-   :name: expired-data-deletion-process
 
 .. rubric:: User Notification
-   :name: user-notification
 
 Users will be notified of expired data via posted lists and
 email. These notifications will take place on or before the
@@ -277,10 +275,7 @@ data listed in this file. It is the user’s responsibility to
 regularly check the posted list for expired files they own.
 Once deleted these files cannot be recovered.
 
-| 
-
 .. rubric:: Expired Data - Deletions
-   :name: expired-data---deletions
 
 The following table maps out when future deletions will take
 place.
@@ -302,7 +297,6 @@ Nov 1 – Nov 30   December 1        January 1
 ================ ================= ===========
 
 .. rubric:: File Size Guidelines
-   :name: file-size-guidelines
 
 Archiving files to HPSS is a much different process than
 writing files to disk storage. Please be aware that the size
@@ -341,7 +335,6 @@ determining appropriate file sizes for your specific
 workload.
 
 .. rubric:: Data Recovery Policy
-   :name: data-recovery-policy
 
 Occasionally an archive tape is damaged or otherwise becomes
 partially unreadable. When that happens, the local RDHPCS
@@ -360,7 +353,6 @@ service and pay the fee, RDHPCS will handle the logistics of
 shipping and other coordination with the recovery service.
 
 .. rubric:: Getting Started on HPSS
-   :name: getting-started-on-hpss
 
 HPSS is only accessible from WCOSS, Theia, Jet and Gaea
 Remote Data Transfer Nodes (RDTN). Modules have been created
@@ -383,7 +375,6 @@ your environment, use the following module command:
    module use /sw/rdtn/modulefiles; module load hsi
 
 .. rubric:: HTAR
-   :name: htar
 
 HTAR has been optimized for creation of archive files
 directly in HPSS, without having to go through the
@@ -397,7 +388,6 @@ archive to be randomly retrieved without having to read
 through the archive file.
 
 .. rubric:: Limitations
-   :name: limitations
 
 Please be aware of the following limitations for HTAR:
 
@@ -409,15 +399,14 @@ Please be aware of the following limitations for HTAR:
    length.
 
 .. rubric:: Usage
-   :name: usage
 
 The HTAR command line has the general form:
 
-::
+.. code-block::
 
    htar action{create|extract|list} archive_file_name [options] [filelist]
 
-::
+.. code-block::
 
    htar  [-?]  -{c|D|K||t|U|x|X}  [-d debuglevel] -f Archive[-B] [-E] [exclude option(s)][-H opt[:opt...]] [-h]  [-J]  [-l login_name] [-L inputlist] [-M maxfiles]
         [-m] [-O] [-o] [-n time] [-N fifoname] [-P] [-p] [-q]  [-v] [-V [-w]
@@ -589,7 +578,6 @@ the directory - omit the CACHEDIR.TAG file
    "auto" will result in the COS being selected based upon the archive file size.
 
 .. rubric:: Creating an HTAR Archive File Example
-   :name: creating-an-htar-archive-file-example
 
 To write file1 and file2 to a new archive called "files.tar"
 into the HPSS directory
@@ -608,7 +596,6 @@ directory/SYSADMIN/nesccmgmt/1year/testuser/work
    htar -cvf /SYSADMIN/nesccmgmt/1year/testuser/work/time.tar time*
 
 .. rubric:: Retrieving an HTAR Archive File Example
-   :name: retrieving-an-htar-archive-file-example
 
 To extract file1 and file2 from the archive files.tar
 located in the HPSS directory
@@ -665,7 +652,6 @@ For example:
 -  mv moves files within the HPSS directory structure.
 
 .. rubric:: Usage
-   :name: usage-1
 
 HSI can accept input several different way. From a
 interactive command line:
@@ -722,11 +708,8 @@ inadvertently overwriting your HPSS files with these
 commands, establish directory permissions carefully.
 
 .. rubric:: HSI Examples
-   :name: hsi-examples
 
-.. rubric:: Moving Files/Directories in HPSS Using HSI
-   Example
-   :name: moving-filesdirectories-in-hpss-using-hsi-example
+.. rubric:: Moving Files/Directories in HPSS Using HSI Example
 
 To mv a directory or file to a new location in HPSS:
 
@@ -739,7 +722,6 @@ contact the HPSS helpdesk for steps on doing this
 efficiently.
 
 .. rubric:: Writing Files to HPSS Using HSI Example
-   :name: writing-files-to-hpss-using-hsi-example
 
 To put the file local_file into the HPSS directory
 /BMC/testproj/myid/work
@@ -747,7 +729,6 @@ To put the file local_file into the HPSS directory
 ``hsi put /full_local/path/local_file : /BMC/testproj/myid/work/local_file``
 
 .. rubric:: Reading a File from HPSS using HSI Example
-   :name: reading-a-file-from-hpss-using-hsi-example
 
 To get the HPSS file local_file located in the HPSS
 directory /BMC/testproj/myid/work
@@ -770,9 +751,7 @@ Retrieve file with keeping modification time:
 
    hsi get -p /full_local/path/new_name : /BMC/testproj/myid/work/local_file
 
-.. rubric:: Listing the Contents of an HPSS Directory using
-   HSI
-   :name: listing-the-contents-of-an-hpss-directory-using-hsi
+.. rubric:: Listing the Contents of an HPSS Directory using HSI
 
 To list the contents of the directory /BMC/testproj
 
@@ -782,7 +761,7 @@ To list the contents of the directory /BMC/testproj
 
 List the full path of files in a directory
 
-::
+.. code-block::
 
    [core]/->ls -N /bench1
    -rw-------    1 Skylar.Nelson  g01      54727283200 Mar 20  2016 /bench1/htar_jet_baseline-aftrupgrd1.tar
@@ -807,7 +786,6 @@ volume):
      Pos:    121+0   PV List: N0998300
 
 .. rubric:: File Expiration Commands
-   :name: file-expiration-commands
 
 Expls and Expfind are HSI commands used to show and find the
 expiration date of data stored in HPSS.
@@ -925,7 +903,6 @@ HPSS via a batch job on Theia:
 .. rubric:: HPSS Help
    :name: hpss-help
 
-For additional questions, please email:
-rdhpcs.hpss.help@noaa.gov.
+For additional questions, please email: rdhpcs.hpss.help@noaa.gov.
 
          
