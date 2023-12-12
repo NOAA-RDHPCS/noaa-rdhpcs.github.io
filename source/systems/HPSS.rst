@@ -36,9 +36,9 @@ the HPSS system:
 For questions regarding the HPSS system, email
 rdhpcs.hpss.help@noaa.gov.
 
-=======================
+------------------------
 Gaining Access to use HPSS
-=========================
+----------------------------
 
 .. rubric:: New HPSS User Requests
 
@@ -75,9 +75,9 @@ All requests must have the following information:
 
 .. rubric:: Adding New Projects to HPSS
 
-=====================
+--------------------
 Adding New Projects
-====================
+---------------------
 
 Projects on a NOAA compute resource are not given access to
 the HPSS until requested by the Portfolio Manager (PfM). The
@@ -96,12 +96,6 @@ help request with the project name and data disposition
 directions. Requests are reviewed and approved by the HPSS
 Resource Manager and sent to the HPSS system administrator
 for implementation.
-
-**Requests to add users and projects to HPSS are NOT
-supported in AIM. Instead, the
-request/review/implementation/notification process is
-handled by the HPSS help ticket system.**  
-Email: rdhpcs.hpss.help@noaa.gov.
 
 .. note::
 
@@ -123,10 +117,8 @@ needs to be moved to another retention period (ex: /1year ->
 /2year) it must be copied.
 
 .. note::
-**Note:** Please be sure to store the data you write to HPSS
-in the appropriate retention directory, and in the correct
-project if you belong to multiple projects. This will avoid
-movement of data once it is stored on tape.
+
+   Please be sure to store the data you write to HPSS in the appropriate retention directory, and in the correcproject if you belong to multiple projects. This will avoid movement of data once it is stored on tape.
 
 ``/$PORTFOLIO/$PROJECT/$RETENTION``
 
@@ -195,7 +187,6 @@ NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
    +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
 
 | 
-
 .. table:: /HFIP
 
    +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
@@ -896,12 +887,6 @@ HPSS via a batch job on Theia:
    save. Consider the cost of time and compute resources to
    regenerate data from the original input files. That is
    often cheaper than storing the data long term.
-
-.. note::
-
-    The first connection with an RSA token, you will be requested for a new PIN
-    which must be at least 6 alphanumeric characters.
-
 
 .. rubric:: HPSS Help
 
