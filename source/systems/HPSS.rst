@@ -1,7 +1,7 @@
 .. _HPSS:
 
 ****************
-HPSS
+NESC HPSS
 ****************
 
 The centralized, long-term data archive system at National
@@ -100,7 +100,8 @@ for implementation.
 
     Requests to add users and projects to HPSS are NOT supported in AIM. Instead, the request/review/implementation/notificaoitn process is handled by the HPSS help ticket system. Email: rdhpcs.hpss.help@noaa.gov.
 
-.. rubric:: NESCC HPSS Data Structure
+NESCC HPSS Data Structure
+=================
 
 HPSS data at NESCC is organized by portfolio, project and
 retention period. Each retention period (1-5 Year &
@@ -238,7 +239,8 @@ NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
    cmod/ jetmgmt/ nesccmgmt/
    ===== ======== ==========
 
-.. rubric:: Data Retention
+Data Retention
+===========
 
 Retention based storage is the HPSS archive policy in
 Fairmont, to better manage data growth. Six retention
@@ -293,7 +295,8 @@ Oct 1 – Oct 31   November 1        December 1
 Nov 1 – Nov 30   December 1        January 1
 ================ ================= ===========
 
-.. rubric:: File Size Guidelines
+File Size Guidelines
+=============
 
 Archiving files to HPSS is a much different process than
 writing files to disk storage. Please be aware that the size
@@ -331,7 +334,8 @@ Please contact the HPSS helpdesk if you need help
 determining appropriate file sizes for your specific
 workload.
 
-.. rubric:: Data Recovery Policy
+Data Recovery Policy
+===========
 
 Occasionally an archive tape is damaged or otherwise becomes
 partially unreadable. When that happens, the local RDHPCS
@@ -349,7 +353,8 @@ unable to recover. If the user wishes to sign up for such a
 service and pay the fee, RDHPCS will handle the logistics of
 shipping and other coordination with the recovery service.
 
-.. rubric:: Getting Started on HPSS
+Getting Started on HPSS
+=============
 
 HPSS is only accessible from WCOSS, Theia, Jet and Gaea
 Remote Data Transfer Nodes (RDTN). Modules have been created
