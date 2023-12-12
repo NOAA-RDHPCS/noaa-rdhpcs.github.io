@@ -879,7 +879,7 @@ HPSS via a batch job on Theia:
       exit 3
     fi
 
-**Note:**
+.. note::
 The HSMS is not an infinite resource. NOAA does not have
 an infinite budget. Quotas will be enabled over time to
 prevent uncontrolled use. Only save what you need to
