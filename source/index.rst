@@ -74,9 +74,6 @@ Common
 
    common/index
 
-
-
-
 Data
 ----
 .. toctree::
