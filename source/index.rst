@@ -45,13 +45,6 @@ Logging In
 
    Logging in/index
 
-Connecting
-----------
-.. toctree::
-   :maxdepth: 2
-
-   connecting/index
-
 Common Documentation
 ---------------
 .. toctree::
