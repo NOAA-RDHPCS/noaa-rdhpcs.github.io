@@ -75,6 +75,10 @@ All requests must have the following information:
 
 .. rubric:: Adding New Projects to HPSS
 
+=====================
+Adding New Projects
+====================
+
 Projects on a NOAA compute resource are not given access to
 the HPSS until requested by the Portfolio Manager (PfM). The
 PfM also approves the maximum time retention directory
@@ -93,10 +97,15 @@ directions. Requests are reviewed and approved by the HPSS
 Resource Manager and sent to the HPSS system administrator
 for implementation.
 
-**Requests to add users and projects to HPSS iare NOT
+**Requests to add users and projects to HPSS are NOT
 supported in AIM. Instead, the
 request/review/implementation/notification process is
-handled by the HPSS help ticket system.**  Email: rdhpcs.hpss.help@noaa.gov.
+handled by the HPSS help ticket system.**  
+Email: rdhpcs.hpss.help@noaa.gov.
+
+.. note::
+
+    Requests to add users and projects to HPSS are NOT supported in AIM. Instead, the request/review/implementation/notificaoitn process is handled by the HPSS help ticket system. Email: rdhpcs.hpss.help@noaa.gov.
 
 .. rubric:: NESCC HPSS Data Structure
 
@@ -880,12 +889,19 @@ HPSS via a batch job on Theia:
     fi
 
 .. note::
-The HSMS is not an infinite resource. NOAA does not have
-an infinite budget. Quotas will be enabled over time to
-prevent uncontrolled use. Only save what you need to
-save. Consider the cost of time and compute resources to
-regenerate data from the original input files. That is
-often cheaper than storing the data long term.
+
+   The HSMS is not an infinite resource. NOAA does not have
+   an infinite budget. Quotas will be enabled over time to
+   prevent uncontrolled use. Only save what you need to
+   save. Consider the cost of time and compute resources to
+   regenerate data from the original input files. That is
+   often cheaper than storing the data long term.
+
+.. note::
+
+    The first connection with an RSA token, you will be requested for a new PIN
+    which must be at least 6 alphanumeric characters.
+
 
 .. rubric:: HPSS Help
 
