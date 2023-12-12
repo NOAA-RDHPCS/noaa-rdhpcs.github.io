@@ -45,7 +45,7 @@ Logging In
 
    Logging in/index
 
-Common-docs
+Common Documentation
 ---------------
 .. toctree::
    :maxdepth: 2
