@@ -36,9 +36,8 @@ the HPSS system:
 For questions regarding the HPSS system, email
 rdhpcs.hpss.help@noaa.gov.
 
-------------------------
 Gaining Access to use HPSS
-----------------------------
+=================
 
 .. rubric:: New HPSS User Requests
 
@@ -75,7 +74,7 @@ All requests must have the following information:
 
 .. rubric:: Adding New Projects to HPSS
 
---------------------
+
 Adding New Projects
 ---------------------
 
@@ -116,13 +115,14 @@ other projects within the same retention directory. If data
 needs to be moved to another retention period (ex: /1year ->
 /2year) it must be copied.
 
+``/$PORTFOLIO/$PROJECT/$RETENTION``
+
+``(ex: /BMC/wrf-chem/2year or /NCEPDEV/emc-meso/5year)``
+
 .. note::
 
    Please be sure to store the data you write to HPSS in the appropriate retention directory, and in the correcproject if you belong to multiple projects. This will avoid movement of data once it is stored on tape.
 
-``/$PORTFOLIO/$PROJECT/$RETENTION``
-
-``(ex: /BMC/wrf-chem/2year or /NCEPDEV/emc-meso/5year)``
 
 Portfolios with projects currently storing data in HPSS are
 NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
