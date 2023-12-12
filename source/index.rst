@@ -67,7 +67,7 @@ Common
 
    common/index
 
-Common Material
+Common-docs
 ---------------
 .. toctree::
    :maxdepth: 2
