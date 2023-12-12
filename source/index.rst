@@ -45,6 +45,13 @@ Logging In
 
    Logging in/index
 
+Common-docs
+---------------
+.. toctree::
+   :maxdepth: 2
+
+   Common Documentation/index
+
 Systems
 -------
 .. toctree::
@@ -67,12 +74,7 @@ Common
 
    common/index
 
-Common-docs
----------------
-.. toctree::
-   :maxdepth: 2
 
-   common material/index
 
 
 Data
