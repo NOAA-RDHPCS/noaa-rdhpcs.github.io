@@ -1,7 +1,7 @@
-.. _orion-user-guide:
+.. _MSU-HPC-user-guide:
 
 ****************
-Orion User Guide
+MSU-HPC User Guide
 ****************
 
 .. _orion-system-overview:

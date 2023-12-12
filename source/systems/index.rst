@@ -12,7 +12,7 @@ Systems
    hera_user_guide.rst
    niagara_user_guide.rst
    using_the_HSMS_HPSS.rst
-   orion_user_guide.rst
+   MSU-HPC_user_guide.rst
    HPSS.rst
   
    
