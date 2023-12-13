@@ -11,6 +11,205 @@ General Information
 
 Logging In
 ----------
+.. rubric:: To login to Orion or Hercules via SSH, you will use your MSU account username, MSU password, and Duo two#factor
+   authentication.
+.. rubric:: Password Maintenance
+If you know your MSU password (or temporary password), use
+the MSU Training and Password System (TAPS) site to Manage
+your Multi#Factor Authentication settings with Duo and/or
+change your password.
+`TAPS <https://taps.hpc.msstate.edu/>`__ is also
+where you go to do MSU training required before you can
+login, and for yearly password resets and training to keep
+your account active.
+
+.. rubric:: Password Resets
+If you forgot your password, a password reset can only
+be done via phone during normal business days (M#F) from
+08:00#12:00 and 13:00# 17:00 Central Time. Please call:
+**662#325#9146**. If you do not get an answer keep calling
+every 30 minutes. If busy call again every 15 minutes. The
+MSU HPC2 admin will verify your ID, unlock your account, and
+issue a temporary password that is only valid to access the
+`TAPS portal <https://taps.hpc.msstate.edu/>`__. The
+user is then required to access TAPS and change their
+password **within 3 days** and complete any out of date
+training requirements.
+
+.. rubric:: DUO Multi#Factor Authentication
+Please see additional information about setting up and using
+DUO at `Multi#Factor Authentication <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Getting_an_Account#Dual#factor_authentication_and_Password_Change_.28user_responsibility.29>`__
+
+.. rubric:: Setting Up DUO on a New Device
+This section assumes:
+
+- You have already successfully configured DUO on an old
+   device. If you do not, please see the link above.
+- You have access to the old device.
+
+#  Go to TAPS (https://taps.hpc.msstate.edu/) > Manage DUO
+   and Password > Add new Device.
+#  Select "Send Me a Push".
+#  Open DUO on **OLD DEVICE** # you should be prompted to
+   accept a request for authentication.
+#  Approve that request and then on your PC, you should be
+   prompted to enter a device type. Keep following the
+   prompts to add a token to your new device.
+
+.. rubric:: Login nodes: Available externally via SSH
+To SSH to Orion, you'll need your MSU username, password and
+DUO authentication:
+
+``ssh <MSU username>@orion#login.hpc.msstate.edu``
+
+::
+
+    orion#login#1.hpc.msstate.edu
+    orion#login#2.hpc.msstate.edu
+    orion#login#3.hpc.msstate.edu
+    orion#login#4.hpc.msstate.edu
+    orion#login.hpc.msstate.edu  # DNS round#robin for orion#login#{1..4}
+
+``ssh <MSU username>@hercules#login.hpc.msstate.edu``
+
+::
+
+    hercules#login#1.hpc.msstate.edu
+    hercules#login#2.hpc.msstate.edu
+    hercules#login#3.hpc.msstate.edu
+    hercules#login#4.hpc.msstate.edu
+    hercules#login.hpc.msstate.edu  # DNS round#robin for hercules#login#{1..4}
+
+Orion Example:
+
+::
+
+   ssh jdoe@orion#login.hpc.msstate.edu
+
+   ********** N O T I C E **********
+
+   This system is under the control of and/or the property of Mississippi State
+   University (MSU).  It is for authorized use only.  By using this system, all
+   users acknowledge notice of and agree to comply with all MSU and High
+   Performance Computing Collaboratory (HPC2) policies governing use of
+   information systems.
+
+   Any use of this system and all files on this system may be intercepted,
+   monitored, recorded, copied, audited, inspected, and disclosed to authorized
+   university and law enforcement personnel, as well as authorized individuals of
+   other organizations.  By using this system, the user consents to such
+   interception, monitoring, recording, copying, auditing, inspection and
+   disclosure at the discretion of authorized university personnel.
+
+   Unauthorized, improper or negligent use of this system may result in
+   administrative disciplinary action, up to and including termination, civil
+   charges, criminal penalties, and/or other sanctions as determined by applicable
+   law, MSU policies, HPC2 policies, law enforcement or other authorized State
+   and Federal agencies.
+
+   ********** N O T I C E **********
+
+   Using keyboard#interactive authentication.
+   Password:
+   Using keyboard#interactive authentication.
+   Duo two#factor login for jdoe
+
+   Enter a passcode or select one of the following options:
+
+    1. Duo Push to XXX#XXX#1234
+
+   Passcode or option (1#1): 
+   Success. Logging you in...
+   Last login: Mon Apr 13 15:37:46 2020 from 73.83.153.210
+
+
+   NOTICE:
+
+   Orion is a cluster system running CentOS 7.6 configured as follows.
+
+   1800 nodes, 3600 processors, 72,000 processor cores
+
+
+   nivie@Orion#login#4 ~ $
+
+.. rubric:: Web Portal: Available via your web browser
+
+A browser based web interface, know as Open OnDemand (OOD),
+is available for accessing the Orion system. Through the web
+interface you can manage files, submit & monitor jobs,
+launch graphical applications, and run remote desktop
+session.
+
+#  The Orion Web Portal can be reached through this
+   `URL <https://orion#ood.hpc.msstate.edu/>`_
+
+#  The Hercules Web Portal is not yet available.
+
+.. Note::
+   You'll need your MSU username, password, and DUO authentication.
+
+#  OOD Documentation can be found `here <https://intranet.hpc.msstate.edu/helpdesk/resource#docs/ood_guide.php>`_
+
+.. rubric:: Data Transfer nodes: Available via SCP and SFTP
+
+::
+
+    orion#dtn#1.hpc.msstate.edu
+    orion#dtn#2.hpc.msstate.edu
+    orion#dtn#3.hpc.msstate.edu
+    orion#dtn#4.hpc.msstate.edu
+    orion#dtn.hpc.msstate.edu  # DNS round#robin for orion#dtn#{1..4}
+
+::
+
+    hercules#dtn#1.hpc.msstate.edu
+    hercules#dtn#2.hpc.msstate.edu
+    hercules#dtn#3.hpc.msstate.edu
+    hercules#dtn#4.hpc.msstate.edu
+    hercules#dtn.hpc.msstate.edu  # DNS round#robin for hercules#dtn#{1..4}
+
+.. rubric:: Globus EndPoints: Available via the Globus File Manager
+See the `Globus website <https://app.globus.org/file#manager>`_
+
+::
+
+    msuhpc2#Orion#dtn
+
+::
+
+    msuhpc2#Hercules
+
+.. rubric:: Development nodes: Available via SSH (internal access only)
+
+While compiles may be done on any of the nodes, the
+development nodes serve the purpose for software development
+and compiles in which additional system libraries may be
+requested to be installed that are normally not required for
+runtime.
+
+Also, the development nodes provide the only gateway for
+writing into the /apps/contrib/ directories.
+
+::
+
+    orion#devel#1.hpc.msstate.edu
+    orion#devel#2.hpc.msstate.edu
+
+::
+
+    hercules#devel#1.hpc.msstate.edu
+    hercules#devel#2.hpc.msstate.edu
+
+.. rubric:: Additional Information
+**Project Storage Space:** /work/noaa/
+**Applications:** /apps/
+**Contrib:** /apps/contrib (submit helpdesk ticket for
+directory creation)
+**Environment loading:** Lmod
+**Workload management:** SLURM
+**`MSU Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource#docs>`_**
+
+         
 
 Running Jobs on MSU-HPC Systems
 ==========
