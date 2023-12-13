@@ -626,317 +626,317 @@ There are several different QOS'es depending on your needs.
 If you have an allocation of "windfall only"
 (Allocation = 1) you can only submit to the "windfall" QOS.
 
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| QOS       | Min Nodes | Max Nodes | Max Wall  | Billing   | De        |
-|           |           |           | Clock     | TRes      | scription |
-|           |           |           |           | Factor    | - Limits  |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| All QOS's |           |           |           |           | **Across  |
-|           |           |           |           |           | all       |
-|           |           |           |           |           | QOS's:**  |
-|           |           |           |           |           | Max of    |
-|           |           |           |           |           | 400 jobs  |
-|           |           |           |           |           | pendin    |
-|           |           |           |           |           | g/running |
-|           |           |           |           |           | per       |
-|           |           |           |           |           | project   |
-|           |           |           |           |           | -account, |
-|           |           |           |           |           | a         |
-|           |           |           |           |           | dditional |
-|           |           |           |           |           | jobs will |
-|           |           |           |           |           | be        |
-|           |           |           |           |           | rejected. |
-|           |           |           |           |           | Max of 20 |
-|           |           |           |           |           | jobs per  |
-|           |           |           |           |           | projec    |
-|           |           |           |           |           | t-account |
-|           |           |           |           |           | will gain |
-|           |           |           |           |           | age       |
-|           |           |           |           |           | priority. |
-|           |           |           |           |           | E         |
-|           |           |           |           |           | xceptions |
-|           |           |           |           |           | are       |
-|           |           |           |           |           | stated    |
-|           |           |           |           |           | below.    |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| batch     | 1         | 500       | 8 hours   | 1.0       | **        |
-|           |           | (Orion) & | (         |           | Default** |
-|           |           | 250       | Partition |           | quality   |
-|           |           | (         | ex        |           | of        |
-|           |           | Hercules) | ceptions: |           | service   |
-|           |           |           | Service:  |           | for       |
-|           |           |           | 24 hrs)   |           | non-re    |
-|           |           |           |           |           | servation |
-|           |           |           |           |           | jobs with |
-|           |           |           |           |           | an        |
-|           |           |           |           |           | a         |
-|           |           |           |           |           | llocation |
-|           |           |           |           |           | more than |
-|           |           |           |           |           | "Windfall |
-|           |           |           |           |           | Only"(    |
-|           |           |           |           |           | RawShares |
-|           |           |           |           |           | =1).      |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| urgent    | 1         | 500       | 8 hours   | 2.0       | QOS for a |
-|           |           | (Orion) & |           |           | job that  |
-|           |           | 250       |           |           | requires  |
-|           |           | (         |           |           | more      |
-|           |           | Hercules) |           |           | urgency   |
-|           |           |           |           |           | than      |
-|           |           |           |           |           | batch.    |
-|           |           |           |           |           | Your      |
-|           |           |           |           |           | project's |
-|           |           |           |           |           | FairShare |
-|           |           |           |           |           | `         |
-|           |           |           |           |           | (Referenc |
-|           |           |           |           |           | e) <https |
-|           |           |           |           |           | ://rdhpcs |
-|           |           |           |           |           | -common-d |
-|           |           |           |           |           | ocs.rdhpc |
-|           |           |           |           |           | s.noaa.go |
-|           |           |           |           |           | v/wiki/in |
-|           |           |           |           |           | dex.php/S |
-|           |           |           |           |           | LURM_Fair |
-|           |           |           |           |           | Share>`__ |
-|           |           |           |           |           | will be   |
-|           |           |           |           |           | lowered   |
-|           |           |           |           |           | at 2.0x   |
-|           |           |           |           |           | the rate  |
-|           |           |           |           |           | as        |
-|           |           |           |           |           | compared  |
-|           |           |           |           |           | to Batch. |
-|           |           |           |           |           | Only 1    |
-|           |           |           |           |           | job per   |
-|           |           |           |           |           | projec    |
-|           |           |           |           |           | t-account |
-|           |           |           |           |           | can be    |
-|           |           |           |           |           | pendin    |
-|           |           |           |           |           | g/running |
-|           |           |           |           |           | at any    |
-|           |           |           |           |           | time.     |
-|           |           |           |           |           | When a    |
-|           |           |           |           |           | project's |
-|           |           |           |           |           | FairShare |
-|           |           |           |           |           | is below  |
-|           |           |           |           |           | 0.45 jobs |
-|           |           |           |           |           | submitted |
-|           |           |           |           |           | to Urgent |
-|           |           |           |           |           | are       |
-|           |           |           |           |           | auto      |
-|           |           |           |           |           | matically |
-|           |           |           |           |           | changed   |
-|           |           |           |           |           | to Batch  |
-|           |           |           |           |           | and users |
-|           |           |           |           |           | notified  |
-|           |           |           |           |           | via       |
-|           |           |           |           |           | stderr.   |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| debug     | 1         | 500       | 30        | 1.25      | Highest   |
-|           |           | (Orion) & | minutes   |           | priority  |
-|           |           | 250       |           |           | QOS,      |
-|           |           | (         |           |           | useful    |
-|           |           | Hercules) |           |           | for       |
-|           |           |           |           |           | debugging |
-|           |           |           |           |           | sessions. |
-|           |           |           |           |           | Your      |
-|           |           |           |           |           | project's |
-|           |           |           |           |           | FairShare |
-|           |           |           |           |           | `         |
-|           |           |           |           |           | (Referenc |
-|           |           |           |           |           | e) <https |
-|           |           |           |           |           | ://rdhpcs |
-|           |           |           |           |           | -common-d |
-|           |           |           |           |           | ocs.rdhpc |
-|           |           |           |           |           | s.noaa.go |
-|           |           |           |           |           | v/wiki/in |
-|           |           |           |           |           | dex.php/S |
-|           |           |           |           |           | LURM_Fair |
-|           |           |           |           |           | Share>`__ |
-|           |           |           |           |           | will be   |
-|           |           |           |           |           | lowered   |
-|           |           |           |           |           | at 1.25x  |
-|           |           |           |           |           | the rate  |
-|           |           |           |           |           | as        |
-|           |           |           |           |           | compared  |
-|           |           |           |           |           | to Batch. |
-|           |           |           |           |           | Only 2    |
-|           |           |           |           |           | jobs per  |
-|           |           |           |           |           | user can  |
-|           |           |           |           |           | be        |
-|           |           |           |           |           | pendin    |
-|           |           |           |           |           | g/running |
-|           |           |           |           |           | at any    |
-|           |           |           |           |           | time.     |
-|           |           |           |           |           | This QOS  |
-|           |           |           |           |           | should    |
-|           |           |           |           |           | NOT be    |
-|           |           |           |           |           | used for  |
-|           |           |           |           |           | fast-t    |
-|           |           |           |           |           | urnaround |
-|           |           |           |           |           | of        |
-|           |           |           |           |           | general   |
-|           |           |           |           |           | work.     |
-|           |           |           |           |           | While the |
-|           |           |           |           |           | debug QOS |
-|           |           |           |           |           | is        |
-|           |           |           |           |           | a         |
-|           |           |           |           |           | vailable, |
-|           |           |           |           |           | we        |
-|           |           |           |           |           | recommend |
-|           |           |           |           |           | that if   |
-|           |           |           |           |           | you need  |
-|           |           |           |           |           | to work   |
-|           |           |           |           |           | through   |
-|           |           |           |           |           | an        |
-|           |           |           |           |           | iterative |
-|           |           |           |           |           | process   |
-|           |           |           |           |           | to debug  |
-|           |           |           |           |           | a code,   |
-|           |           |           |           |           | that you  |
-|           |           |           |           |           | submit a  |
-|           |           |           |           |           | longer    |
-|           |           |           |           |           | running   |
-|           |           |           |           |           | in        |
-|           |           |           |           |           | teractive |
-|           |           |           |           |           | job to    |
-|           |           |           |           |           | the       |
-|           |           |           |           |           | default   |
-|           |           |           |           |           | QOS so    |
-|           |           |           |           |           | that you  |
-|           |           |           |           |           | can       |
-|           |           |           |           |           | restart   |
-|           |           |           |           |           | your      |
-|           |           |           |           |           | ap        |
-|           |           |           |           |           | plication |
-|           |           |           |           |           | over and  |
-|           |           |           |           |           | over      |
-|           |           |           |           |           | again     |
-|           |           |           |           |           | without   |
-|           |           |           |           |           | having to |
-|           |           |           |           |           | start a   |
-|           |           |           |           |           | new batch |
-|           |           |           |           |           | job.      |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| windfall  | 1         | 500       | 8 hours   | 0.0       | Lowest    |
-|           |           | (Orion) & | (         |           | priority  |
-|           |           | 250       | Partition |           | QOS. If   |
-|           |           | (         | ex        |           | you have  |
-|           |           | Hercules) | ceptions: |           | an        |
-|           |           |           | Service:  |           | a         |
-|           |           |           | 24 hrs)   |           | llocation |
-|           |           |           |           |           | of        |
-|           |           |           |           |           | "windfall |
-|           |           |           |           |           | only"     |
-|           |           |           |           |           | (Monthly  |
-|           |           |           |           |           | a         |
-|           |           |           |           |           | llocation |
-|           |           |           |           |           | = 1) you  |
-|           |           |           |           |           | can only  |
-|           |           |           |           |           | submit to |
-|           |           |           |           |           | this QOS. |
-|           |           |           |           |           | S         |
-|           |           |           |           |           | ubmitting |
-|           |           |           |           |           | to this   |
-|           |           |           |           |           | QOS will  |
-|           |           |           |           |           | NOT       |
-|           |           |           |           |           | affect    |
-|           |           |           |           |           | your      |
-|           |           |           |           |           | future    |
-|           |           |           |           |           | job       |
-|           |           |           |           |           | priority  |
-|           |           |           |           |           | FairShare |
-|           |           |           |           |           | Factor    |
-|           |           |           |           |           | (f).      |
-|           |           |           |           |           | Eff       |
-|           |           |           |           |           | ectvUsage |
-|           |           |           |           |           | = 0.      |
-|           |           |           |           |           | `         |
-|           |           |           |           |           | (Referenc |
-|           |           |           |           |           | e) <https |
-|           |           |           |           |           | ://rdhpcs |
-|           |           |           |           |           | -common-d |
-|           |           |           |           |           | ocs.rdhpc |
-|           |           |           |           |           | s.noaa.go |
-|           |           |           |           |           | v/wiki/in |
-|           |           |           |           |           | dex.php/S |
-|           |           |           |           |           | LURM_Fair |
-|           |           |           |           |           | Share>`__ |
-|           |           |           |           |           | for your  |
-|           |           |           |           |           | non       |
-|           |           |           |           |           | -windfall |
-|           |           |           |           |           | jobs.     |
-|           |           |           |           |           | Useful    |
-|           |           |           |           |           | for low   |
-|           |           |           |           |           | priorty   |
-|           |           |           |           |           | jobs that |
-|           |           |           |           |           | will only |
-|           |           |           |           |           | run when  |
-|           |           |           |           |           | the       |
-|           |           |           |           |           | sy        |
-|           |           |           |           |           | stem(part |
-|           |           |           |           |           | ition(s)) |
-|           |           |           |           |           | has       |
-|           |           |           |           |           | enough    |
-|           |           |           |           |           | unused    |
-|           |           |           |           |           | space     |
-|           |           |           |           |           | available |
-|           |           |           |           |           | while not |
-|           |           |           |           |           | effecting |
-|           |           |           |           |           | the       |
-|           |           |           |           |           | projects  |
-|           |           |           |           |           | FairShare |
-|           |           |           |           |           | priority. |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| novel     | 501       | Largest   | 8 hours   | 1.0       | QOS for   |
-|           | (Orion) & | partition |           |           | running   |
-|           | 251       | size      |           |           | novel or  |
-|           | (         |           |           |           | exp       |
-|           | Hercules) |           |           |           | erimental |
-|           |           |           |           |           | jobs      |
-|           |           |           |           |           | where     |
-|           |           |           |           |           | nearly    |
-|           |           |           |           |           | the full  |
-|           |           |           |           |           | system is |
-|           |           |           |           |           | required. |
-|           |           |           |           |           | If you    |
-|           |           |           |           |           | need to   |
-|           |           |           |           |           | use the   |
-|           |           |           |           |           | novel     |
-|           |           |           |           |           | QOS,      |
-|           |           |           |           |           | please    |
-|           |           |           |           |           | sumbit a  |
-|           |           |           |           |           | ticket to |
-|           |           |           |           |           | the `help |
-|           |           |           |           |           | sy        |
-|           |           |           |           |           | stem <htt |
-|           |           |           |           |           | ps://rdhp |
-|           |           |           |           |           | cs-common |
-|           |           |           |           |           | -docs.rdh |
-|           |           |           |           |           | pcs.noaa. |
-|           |           |           |           |           | gov/wiki/ |
-|           |           |           |           |           | index.php |
-|           |           |           |           |           | /Help_Req |
-|           |           |           |           |           | uests>`__ |
-|           |           |           |           |           | and tell  |
-|           |           |           |           |           | us what   |
-|           |           |           |           |           | you want  |
-|           |           |           |           |           | to do. We |
-|           |           |           |           |           | will      |
-|           |           |           |           |           | normally  |
-|           |           |           |           |           | have to   |
-|           |           |           |           |           | arrange   |
-|           |           |           |           |           | for some  |
-|           |           |           |           |           | time for  |
-|           |           |           |           |           | the job   |
-|           |           |           |           |           | to go     |
-|           |           |           |           |           | through,  |
-|           |           |           |           |           | and we    |
-|           |           |           |           |           | would     |
-|           |           |           |           |           | like to   |
-|           |           |           |           |           | plan the  |
-|           |           |           |           |           | process   |
-|           |           |           |           |           | with you. |
-+-----------+-----------+-----------+-----------+-----------+-----------+
++-----------+-----------+-----------+-----------+-----------+-------------+
+| QOS       | Min Nodes | Max Nodes | Max Wall  | Billing   | Description |
+|           |           |           | Clock     | TRes      | Limits      |
+|           |           |           |           | Factor    |             |
++-----------+-----------+-----------+-----------+-----------+-------------+
+| All QOS's |           |           |           |           | **Across    |
+|           |           |           |           |           | all         |
+|           |           |           |           |           | QOS's:**    |
+|           |           |           |           |           | Max of      |
+|           |           |           |           |           | 400 jobs    |
+|           |           |           |           |           | pendin      |
+|           |           |           |           |           | g/running   |
+|           |           |           |           |           | per         |
+|           |           |           |           |           | project     |
+|           |           |           |           |           | -account,   |
+|           |           |           |           |           | a           |
+|           |           |           |           |           | dditional   |
+|           |           |           |           |           | jobs will   |
+|           |           |           |           |           | be          |
+|           |           |           |           |           | rejected.   |
+|           |           |           |           |           | Max of 20   |
+|           |           |           |           |           | jobs per    |
+|           |           |           |           |           | projec      |
+|           |           |           |           |           | t-account   |
+|           |           |           |           |           | will gain   |
+|           |           |           |           |           | age         |
+|           |           |           |           |           | priority.   |
+|           |           |           |           |           | E           |
+|           |           |           |           |           | xceptions   |
+|           |           |           |           |           | are         |
+|           |           |           |           |           | stated      |
+|           |           |           |           |           | below.      |
++-----------+-----------+-----------+-----------+-----------+-------------+
+| batch     | 1         | 500       | 8 hours   | 1.0       | **          |
+|           |           | (Orion) & | (         |           | Default**   |
+|           |           | 250       | Partition |           | quality     |
+|           |           | (         | ex        |           | of          |
+|           |           | Hercules) | ceptions: |           | service     |
+|           |           |           | Service:  |           | for         |
+|           |           |           | 24 hrs)   |           | non-re      |
+|           |           |           |           |           | servation   |
+|           |           |           |           |           | jobs with   |
+|           |           |           |           |           | an          |
+|           |           |           |           |           | a           |
+|           |           |           |           |           | llocation   |
+|           |           |           |           |           | more than   |
+|           |           |           |           |           | "Windfall   |
+|           |           |           |           |           | Only"(      |
+|           |           |           |           |           | RawShares   |
+|           |           |           |           |           | =1).        |
++-----------+-----------+-----------+-----------+-----------+-------------+
+| urgent    | 1         | 500       | 8 hours   | 2.0       | QOS for a   |
+|           |           | (Orion) & |           |           | job that    |
+|           |           | 250       |           |           | requires    |
+|           |           | (         |           |           | more        |
+|           |           | Hercules) |           |           | urgency     |
+|           |           |           |           |           | than        |
+|           |           |           |           |           | batch.      |
+|           |           |           |           |           | Your        |
+|           |           |           |           |           | project's   |
+|           |           |           |           |           | FairShare   |
+|           |           |           |           |           | `           |
+|           |           |           |           |           | (Referenc   |
+|           |           |           |           |           | e) <https   |
+|           |           |           |           |           | ://rdhpcs   |
+|           |           |           |           |           | -common-d   |
+|           |           |           |           |           | ocs.rdhpc   |
+|           |           |           |           |           | s.noaa.go   |
+|           |           |           |           |           | v/wiki/in   |
+|           |           |           |           |           | dex.php/S   |
+|           |           |           |           |           | LURM_Fair   |
+|           |           |           |           |           | Share>`__   |
+|           |           |           |           |           | will be     |
+|           |           |           |           |           | lowered     |
+|           |           |           |           |           | at 2.0x     |
+|           |           |           |           |           | the rate    |
+|           |           |           |           |           | as          |
+|           |           |           |           |           | compared    |
+|           |           |           |           |           | to Batch.   |
+|           |           |           |           |           | Only 1      |
+|           |           |           |           |           | job per     |
+|           |           |           |           |           | projec      |
+|           |           |           |           |           | t-account   |
+|           |           |           |           |           | can be      |
+|           |           |           |           |           | pendin      |
+|           |           |           |           |           | g/running   |
+|           |           |           |           |           | at any      |
+|           |           |           |           |           | time.       |
+|           |           |           |           |           | When a      |
+|           |           |           |           |           | project's   |
+|           |           |           |           |           | FairShare   |
+|           |           |           |           |           | is below    |
+|           |           |           |           |           | 0.45 jobs   |
+|           |           |           |           |           | submitted   |
+|           |           |           |           |           | to Urgent   |
+|           |           |           |           |           | are         |
+|           |           |           |           |           | auto        |
+|           |           |           |           |           | matically   |
+|           |           |           |           |           | changed     |
+|           |           |           |           |           | to Batch    |
+|           |           |           |           |           | and users   |
+|           |           |           |           |           | notified    |
+|           |           |           |           |           | via         |
+|           |           |           |           |           | stderr.     |
++-----------+-----------+-----------+-----------+-----------+-------------+
+| debug     | 1         | 500       | 30        | 1.25      | Highest     |
+|           |           | (Orion) & | minutes   |           | priority    |
+|           |           | 250       |           |           | QOS,        |
+|           |           | (         |           |           | useful      |
+|           |           | Hercules) |           |           | for         |
+|           |           |           |           |           | debugging   |
+|           |           |           |           |           | sessions.   |
+|           |           |           |           |           | Your        |
+|           |           |           |           |           | project's   |
+|           |           |           |           |           | FairShare   |
+|           |           |           |           |           | `           |
+|           |           |           |           |           | (Referenc   |
+|           |           |           |           |           | e) <https   |
+|           |           |           |           |           | ://rdhpcs   |
+|           |           |           |           |           | -common-d   |
+|           |           |           |           |           | ocs.rdhpc   |
+|           |           |           |           |           | s.noaa.go   |
+|           |           |           |           |           | v/wiki/in   |
+|           |           |           |           |           | dex.php/S   |
+|           |           |           |           |           | LURM_Fair   |
+|           |           |           |           |           | Share>`__   |
+|           |           |           |           |           | will be     |
+|           |           |           |           |           | lowered     |
+|           |           |           |           |           | at 1.25x    |
+|           |           |           |           |           | the rate    |
+|           |           |           |           |           | as          |
+|           |           |           |           |           | compared    |
+|           |           |           |           |           | to Batch.   |
+|           |           |           |           |           | Only 2      |
+|           |           |           |           |           | jobs per    |
+|           |           |           |           |           | user can    |
+|           |           |           |           |           | be          |
+|           |           |           |           |           | pendin      |
+|           |           |           |           |           | g/running   |
+|           |           |           |           |           | at any      |
+|           |           |           |           |           | time.       |
+|           |           |           |           |           | This QOS    |
+|           |           |           |           |           | should      |
+|           |           |           |           |           | NOT be      |
+|           |           |           |           |           | used for    |
+|           |           |           |           |           | fast-t      |
+|           |           |           |           |           | urnaround   |
+|           |           |           |           |           | of          |
+|           |           |           |           |           | general     |
+|           |           |           |           |           | work.       |
+|           |           |           |           |           | While the   |
+|           |           |           |           |           | debug QOS   |
+|           |           |           |           |           | is          |
+|           |           |           |           |           | a           |
+|           |           |           |           |           | vailable,   |
+|           |           |           |           |           | we          |
+|           |           |           |           |           | recommend   |
+|           |           |           |           |           | that if     |
+|           |           |           |           |           | you need    |
+|           |           |           |           |           | to work     |
+|           |           |           |           |           | through     |
+|           |           |           |           |           | an          |
+|           |           |           |           |           | iterative   |
+|           |           |           |           |           | process     |
+|           |           |           |           |           | to debug    |
+|           |           |           |           |           | a code,     |
+|           |           |           |           |           | that you    |
+|           |           |           |           |           | submit a    |
+|           |           |           |           |           | longer      |
+|           |           |           |           |           | running     |
+|           |           |           |           |           | in          |
+|           |           |           |           |           | teractive   |
+|           |           |           |           |           | job to      |
+|           |           |           |           |           | the         |
+|           |           |           |           |           | default     |
+|           |           |           |           |           | QOS so      |
+|           |           |           |           |           | that you    |
+|           |           |           |           |           | can         |
+|           |           |           |           |           | restart     |
+|           |           |           |           |           | your        |
+|           |           |           |           |           | ap          |
+|           |           |           |           |           | plication   |
+|           |           |           |           |           | over and    |
+|           |           |           |           |           | over        |
+|           |           |           |           |           | again       |
+|           |           |           |           |           | without     |
+|           |           |           |           |           | having to   |
+|           |           |           |           |           | start a     |
+|           |           |           |           |           | new batch   |
+|           |           |           |           |           | job.        |
++-----------+-----------+-----------+-----------+-----------+-------------+
+| windfall  | 1         | 500       | 8 hours   | 0.0       | Lowest      |
+|           |           | (Orion) & | (         |           | priority    |
+|           |           | 250       | Partition |           | QOS. If     |
+|           |           | (         | ex        |           | you have    |
+|           |           | Hercules) | ceptions: |           | an          |
+|           |           |           | Service:  |           | a           |
+|           |           |           | 24 hrs)   |           | llocation   |
+|           |           |           |           |           | of          |
+|           |           |           |           |           | "windfall   |
+|           |           |           |           |           | only"       |
+|           |           |           |           |           | (Monthly    |
+|           |           |           |           |           | a           |
+|           |           |           |           |           | llocation   |
+|           |           |           |           |           | = 1) you    |
+|           |           |           |           |           | can only    |
+|           |           |           |           |           | submit to   |
+|           |           |           |           |           | this QOS.   |
+|           |           |           |           |           | S           |
+|           |           |           |           |           | ubmitting   |
+|           |           |           |           |           | to this     |
+|           |           |           |           |           | QOS will    |
+|           |           |           |           |           | NOT         |
+|           |           |           |           |           | affect      |
+|           |           |           |           |           | your        |
+|           |           |           |           |           | future      |
+|           |           |           |           |           | job         |
+|           |           |           |           |           | priority    |
+|           |           |           |           |           | FairShare   |
+|           |           |           |           |           | Factor      |
+|           |           |           |           |           | (f).        |
+|           |           |           |           |           | Eff         |
+|           |           |           |           |           | ectvUsage   |
+|           |           |           |           |           | = 0.        |
+|           |           |           |           |           | `           |
+|           |           |           |           |           | (Referenc   |
+|           |           |           |           |           | e) <https   |
+|           |           |           |           |           | ://rdhpcs   |
+|           |           |           |           |           | -common-d   |
+|           |           |           |           |           | ocs.rdhpc   |
+|           |           |           |           |           | s.noaa.go   |
+|           |           |           |           |           | v/wiki/in   |
+|           |           |           |           |           | dex.php/S   |
+|           |           |           |           |           | LURM_Fair   |
+|           |           |           |           |           | Share>`__   |
+|           |           |           |           |           | for your    |
+|           |           |           |           |           | non         |
+|           |           |           |           |           | -windfall   |
+|           |           |           |           |           | jobs.       |
+|           |           |           |           |           | Useful      |
+|           |           |           |           |           | for low     |
+|           |           |           |           |           | priorty     |
+|           |           |           |           |           | jobs that   |
+|           |           |           |           |           | will only   |
+|           |           |           |           |           | run when    |
+|           |           |           |           |           | the         |
+|           |           |           |           |           | sy          |
+|           |           |           |           |           | stem(part   |
+|           |           |           |           |           | ition(s))   |
+|           |           |           |           |           | has         |
+|           |           |           |           |           | enough      |
+|           |           |           |           |           | unused      |
+|           |           |           |           |           | space       |
+|           |           |           |           |           | available   |
+|           |           |           |           |           | while not   |
+|           |           |           |           |           | effecting   |
+|           |           |           |           |           | the         |
+|           |           |           |           |           | projects    |
+|           |           |           |           |           | FairShare   |
+|           |           |           |           |           | priority.   |
++-----------+-----------+-----------+-----------+-----------+-------------+
+| novel     | 501       | Largest   | 8 hours   | 1.0       | QOS for     |
+|           | (Orion) & | partition |           |           | running     |
+|           | 251       | size      |           |           | novel or    |
+|           | (         |           |           |           | exp         |
+|           | Hercules) |           |           |           | erimental   |
+|           |           |           |           |           | jobs        |
+|           |           |           |           |           | where       |
+|           |           |           |           |           | nearly      |
+|           |           |           |           |           | the full    |
+|           |           |           |           |           | system is   |
+|           |           |           |           |           | required.   |
+|           |           |           |           |           | If you      |
+|           |           |           |           |           | need to     |
+|           |           |           |           |           | use the     |
+|           |           |           |           |           | novel       |
+|           |           |           |           |           | QOS,        |
+|           |           |           |           |           | please      |
+|           |           |           |           |           | sumbit a    |
+|           |           |           |           |           | ticket to   |
+|           |           |           |           |           | the `help   |
+|           |           |           |           |           | sy          |
+|           |           |           |           |           | stem <htt   |
+|           |           |           |           |           | ps://rdhp   |
+|           |           |           |           |           | cs-common   |
+|           |           |           |           |           | -docs.rdh   |
+|           |           |           |           |           | pcs.noaa.   |
+|           |           |           |           |           | gov/wiki/   |
+|           |           |           |           |           | index.php   |
+|           |           |           |           |           | /Help_Req   |
+|           |           |           |           |           | uests>`__   |
+|           |           |           |           |           | and tell    |
+|           |           |           |           |           | us what     |
+|           |           |           |           |           | you want    |
+|           |           |           |           |           | to do. We   |
+|           |           |           |           |           | will        |
+|           |           |           |           |           | normally    |
+|           |           |           |           |           | have to     |
+|           |           |           |           |           | arrange     |
+|           |           |           |           |           | for some    |
+|           |           |           |           |           | time for    |
+|           |           |           |           |           | the job     |
+|           |           |           |           |           | to go       |
+|           |           |           |           |           | through,    |
+|           |           |           |           |           | and we      |
+|           |           |           |           |           | would       |
+|           |           |           |           |           | like to     |
+|           |           |           |           |           | plan the    |
+|           |           |           |           |           | process     |
+|           |           |           |           |           | with you.   |
++-----------+-----------+-----------+-----------+-----------+-------------+
 
 .. rubric:: Specifying a job name
 Giving your jobs meaningful names can help you locate them
@@ -1170,6 +1170,161 @@ To cancel a job use the scancel command
 
 Getting Information about your Projects
 ----------
+MSU-HPC uses SLURM as its batch scheduler as does NOAA's
+RDHPCS systems. SLURM allocations result in a % of total
+system priority. For more information on how SLURM
+prioritizes submitted jobs please refer to: `How SLURM with
+Fair-share
+Works <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/SLURM_Fair-share>`__
+and `Running and Monitoring Jobs in
+SLURM <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__.
+
+.. rubric:: Load contrib and noaatools Module
+The module tools work regardless of the MSU-HPC system in
+used. On the MSU-HPC side, load the noaatools module.
+
+::
+
+   Orion-login-3[1] jdoe$ module avail
+   Orion-login-3[2] jdoe$ module load contrib noaatools
+   Orion-login-3[3] jdoe$ module list
+
+.. rubric:: saccount_params
+Example:
+
+::
+
+   Orion-login-1[1] jdoe$ saccount_params
+   Account Params -- Information regarding project associations for eschnepp
+       Home Quota (/home/jdoe) Used: 1035 MB Quota: 8192 MB Grace: 10240
+
+       Project: noaa-hpc 
+           ProjectFairshare=N/A    Core Hours Used=N/A
+
+           Directory: /work/noaa/noaatest DiskInUse=0 GB, Quota=0 GB, Files=0, FileQUota=0
+
+       Project: noaatest 
+           ProjectFairshare=0.040 (356/414)    Core Hours Used (30 days)=96.6, 30-day Allocation=2
+           Partition Access: ALL
+           Available QOSes: batch,debug,novel,ood,special,urgent,windfall
+
+           Directory: /work/noaa/noaatest DiskInUse=83981 GB, Quota=95000 GB, Files=3633923, FileQUota=0
+
+       Project: role-noaatest 
+           ProjectFairshare=N/A    Core Hours Used=N/A
+
+.. note::
+   For an explanation of the meaning of these values and general scheduling information click `here <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/SLURM_Fair-share>`_.
+
+.. note::
+   The parenthetical values after project fairshare indicate the rank of the project with respect to all other allocated projects. If the first number is lower, your project is likely to have higher priority than other projects. (Of course, other factors weigh in to scheduling.)
+
+.. note::
+   Your must use the ``saccount_params`` command. There is no ``account_params`` command alias.
+
+.. rubric:: shpcrpt
+
+Example 1 (all NOAA projects):
+
+::
+
+   Orion-login-1[1] jdoe$  shpcrpt -c orion -s
+   =================================================================================================================
+    Report   Summary Report      
+    Report Run:          Tue 24 Aug 2021 11:30:31 PM  UTC
+    Report Period Beginning:         Sun 01 Aug 2021 12:00:00 AM  UTC
+    Report Period Ending:Wed 01 Sep 2021 12:00:00 AM  UTC
+    Percentage of Period Elapsed:    77.4%   
+    Percentage of Period Remaining:  22.6%   
+   =================================================================================================================
+   Project   NormShares      ProjFS  Allocation   Cr-HrUsed    Windfall   TotalUsed       %Used        Jobs
+   -------------------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- -----------
+   aeolus      0.000000         0.0           0           0           0           0       0.00%           0
+   amb-verif   0.000216         inf      10,405           0           0           0       0.00%           0
+   ... more projects ...
+   zrtrr       0.003801     1.35613     183,107      62,065           0      62,065      33.90%       1,040
+    -------------------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- -----------
+    Total       1.000000  48,168,012  32,643,860       1,068  32,644,928      67.77%     204,281
+
+   Total Report Runtime: 43.58 seconds (ver. 21.08.05)
+
+.. note::
+For Hercules use ``shpcrpt -c hercules -s``
+
+Example 2 (Specific NOAA project):
+
+::
+
+   Orion-login-1[1] jdoe$ shpcrpt -c orion -p noaatest
+   =================================================================================================================
+    Report   Project Report for:noaatest    
+    Report Run:          Tue 24 Aug 2021 11:33:10 PM  UTC
+    Report Period Beginning:         Sun 01 Aug 2021 12:00:00 AM  UTC
+    Report Period Ending:Wed 01 Sep 2021 12:00:00 AM  UTC
+    Percentage of Period Elapsed:    77.4%   
+    Percentage of Period Remaining:  22.6%   
+   =================================================================================================================
+    Machines:           orion
+    Initial Allocation in Hours:1,277,285
+    Net Allocation Adjustments:         0
+ ----------------
+    Adjusted Allocation:        1,277,285
+     
+    Core Hours Used:1,972,001
+    Windfall Core Hours Used:           0
+ ----------------
+    Total Core Hours Used:      1,972,001
+     
+    Project Normalized Shares:   0.026517
+    Project Fair Share:          0.652081
+     
+    Percentage of Period Elapsed:   77.4%
+    Percentage of Period Remaining: 22.6%
+    Percentage of Allocation Used: 100.0%
+
+   User     Cr-HrUsed    Windfall   TotalUsed       %Used      Jobs
+   ------------------------------ ----------- ----------- ----------- ----------- ---------
+   jdoe     1,972,001           0   1,972,001     100.00%    20,465
+   ------------------------------ ----------- ----------- ----------- ----------- ---------
+   Total    1,972,001           0   1,972,001     100.00%    20,465
+
+   Total Report Runtime: 11.95 seconds (ver. 21.08.05)
+
+.. note:: 
+   For Hercules use ``shpcrpt -c hercules -p <your project``.
+
+.. rubric:: reportFSUsage
+
+::
+
+   Orion-login-1[1] jdoe$ reportFSUsage 
+   ------------------------------------------------------------------------------------
+   LUSTRE QUOTA AND USAGE REPORT
+   ------------------------------------------------------------------------------------
+   Date: 2021.08.24
+   ------------------------------------------------------------------------------------
+   Directory/Group Usage(GB)   Quota(GB)   Limit(GB)      Files  Percentage
+   ------------------------------------------------------------------------------------
+   amb-verif   0        9500       10000         15         0.0
+   aoml-hafs1         864429     1045000     1100000    9255418        82.7
+   ... more projects ...
+   zrtrr   25007      153425      161500    1059162        16.3
+   ------------------------------------------------------------------------------------
+   TOTAL_USAGE(GB):  4570575     7327825     7713500  223683296        62.4
+   ------------------------------------------------------------------------------------
+   NOTE: ** indicates that this project is over quota.
+   ------------------------------------------------------------------------------------
+   END OF REPORT
+
+.. rubric:: Other useful Links
+
+`RDHPCS CommonDocs - Getting Information About Your Projects <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Projects_-_SLURM>`__
+
+`saccount_params command <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Account_-_SLURM#Get_Current_Core-hour_allocation.2Fusage.2C_Fair-share_Score.2C_and_Disk_quota.2Fusage_information>`__
+
+`shpcrpt commands <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Account_-_SLURM#Get_Current_Core-Hour_Allocation_and_MTD_Usage_Information>`__
+
+         
 
 MSU-HPC System Configuration
 ========
