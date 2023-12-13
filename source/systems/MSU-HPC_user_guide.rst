@@ -941,9 +941,7 @@ firmware upgrades.
 -  `NOAA's Niagara Docs (NOAA users) <https://niagaradocs.rdhpcs.noaa.gov>`_`
 -  `RDHPCS Maintenance/Events Calendar (NOAA users) <https://calendar.google.com/calendar/b/1?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
 
-.. rubric:: 08/25/2021[\ `edit </index.php?title=User_notifications&action=edit&section=8>`__\ ]
-   :name: edit-7
-
+.. rubric:: 08/25/2021
 Dear NOAA Orion Users,
 As with NOAA's R&D HPC systems, we plan to provide you with
 regular updates on Mississippi State University's Orion
@@ -1182,6 +1180,7 @@ definition of “NETCDF” in order to compile WRF. For example,
 I create a new directory for $NETCDF:
 
 ::
+
 cp -r $NETCDF_C_ROOT/\* $NETCDF/.
 cp -r NETCDF_FORTRAN_ROOT/\* $NETCDF/.
 
