@@ -1319,9 +1319,7 @@ Example 2 (Specific NOAA project):
 .. rubric:: Other useful Links
 
 `RDHPCS CommonDocs - Getting Information About Your Projects <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Projects_-_SLURM>`__
-
-`saccount_params command <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Account_-_SLURM#Get_Current_Core-hour_allocation.2Fusage.2C_Fair-share_Score.2C_and_Disk_quota.2Fusage_information>`__
-
+`The saccount_params command <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Account_-_SLURM#Get_Current_Core-hour_allocation.2Fusage.2C_Fair-share_Score.2C_and_Disk_quota.2Fusage_information>`__
 `shpcrpt commands <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Account_-_SLURM#Get_Current_Core-Hour_Allocation_and_MTD_Usage_Information>`__
 
          
