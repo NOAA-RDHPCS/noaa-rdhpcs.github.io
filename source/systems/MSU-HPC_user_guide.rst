@@ -6,32 +6,56 @@ MSU-HPC User Guide
 
 .. _orion-system-overview:
 
-System Overview
-===============
-
-Connecting
+General Information
 ==========
 
-Data and Storage
-================
+Logging In
+----------
 
-Software
+Running Jobs on MSU-HPC Systems
+==========
+
+Getting Information about your Projects
+----------
+
+MSU-HPC System Configuration
 ========
 
-Shell & Programming Environments
-================================
+Managing Packages in /contrib
+--------------------
 
-Compiling
+Account Management
 =========
 
-Running Jobs
+Getting An Account
+----------
+
+Account Renewal
+----------
+
+Managing Portfolios, Projects and Allocation
+----------
+
+Role Accounts
+----------
+
+Help, Policies, Best Practices, Issues
 ============
 
-Debugging
-=========
-
-Optimizing and Profiling
-========================
+MSU-HPC Help Requests
+---------------
 
 Known Issues
+------------
+
+Policies and Best Practices
+---------------------
+
+Protecting Restricted Data
+----------------
+
+User Training and Notifications
+-------------------
+
+FAQs
 ============
