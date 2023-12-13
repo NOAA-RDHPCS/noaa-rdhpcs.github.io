@@ -6,4 +6,5 @@ Common Documentation
    :maxdepth: 2
 
    commondocs.rst
+   intro.rst
    HPSS.rst
