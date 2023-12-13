@@ -6,9 +6,9 @@ Common Material
    :maxdepth: 2
 
    common
+   commondocs.rst
    accounts.rst
    allocations.rst
-   status.rst
    support.rst
    transfers.rst
 
