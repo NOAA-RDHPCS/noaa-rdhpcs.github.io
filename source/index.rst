@@ -59,14 +59,6 @@ Systems
 
    systems/index
 
-Connecting
-----------
-.. toctree::
-   :maxdepth: 2
-
-   connecting/index
-
-
 Common
 ------
 .. toctree::
