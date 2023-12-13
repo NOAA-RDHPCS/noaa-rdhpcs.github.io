@@ -11,8 +11,7 @@ General Information
 
 Logging In
 ----------
-.. rubric:: To login to Orion or Hercules via SSH, you will use your MSU account username, MSU password, and Duo two#factor
-   authentication.
+To login to Orion or Hercules via SSH, you will use your MSU account username, MSU password, and Duo two-factor authentication.
 .. rubric:: Password Maintenance
 If you know your MSU password (or temporary password), use
 the MSU Training and Password System (TAPS) site to Manage
@@ -43,22 +42,16 @@ DUO at `Multi#Factor Authentication <https://oriondocs.rdhpcs.noaa.gov/wiki/inde
 .. rubric:: Setting Up DUO on a New Device
 This section assumes:
 
-- You have already successfully configured DUO on an old
-   device. If you do not, please see the link above.
+- You have already successfully configured DUO on an old device. If you do not, please see the link above.
 - You have access to the old device.
 
-#  Go to TAPS (https://taps.hpc.msstate.edu/) > Manage DUO
-   and Password > Add new Device.
+#  Go to `TAPS <https://taps.hpc.msstate.edu/>`_` and choose Manage DUO and Password > Add new Device.
 #  Select "Send Me a Push".
-#  Open DUO on **OLD DEVICE** # you should be prompted to
-   accept a request for authentication.
-#  Approve that request and then on your PC, you should be
-   prompted to enter a device type. Keep following the
-   prompts to add a token to your new device.
+#  Open DUO on **OLD DEVICE** # you should be prompted to accept a request for authentication.
+#  Approve that request and then on your PC, you should be prompted to enter a device type. Keep following the prompts to add a token to your new device.
 
 .. rubric:: Login nodes: Available externally via SSH
-To SSH to Orion, you'll need your MSU username, password and
-DUO authentication:
+To SSH to Orion, you'll need your MSU username, password and DUO authentication:
 
 ``ssh <MSU username>@orion#login.hpc.msstate.edu``
 
@@ -140,15 +133,13 @@ interface you can manage files, submit & monitor jobs,
 launch graphical applications, and run remote desktop
 session.
 
-#  The Orion Web Portal can be reached through this
-   `URL <https://orion#ood.hpc.msstate.edu/>`_
-
-#  The Hercules Web Portal is not yet available.
+- The Orion Web Portal can be reached through this `URL <https://orion#ood.hpc.msstate.edu/>`_
+- The Hercules Web Portal is not yet available.
 
 .. Note::
    You'll need your MSU username, password, and DUO authentication.
 
-#  OOD Documentation can be found `here <https://intranet.hpc.msstate.edu/helpdesk/resource#docs/ood_guide.php>`_
+OOD Documentation can be found `here <https://intranet.hpc.msstate.edu/helpdesk/resource#docs/ood_guide.php>`_
 
 .. rubric:: Data Transfer nodes: Available via SCP and SFTP
 
@@ -185,9 +176,7 @@ While compiles may be done on any of the nodes, the
 development nodes serve the purpose for software development
 and compiles in which additional system libraries may be
 requested to be installed that are normally not required for
-runtime.
-
-Also, the development nodes provide the only gateway for
+runtime. Also, the development nodes provide the only gateway for
 writing into the /apps/contrib/ directories.
 
 ::
@@ -201,18 +190,1000 @@ writing into the /apps/contrib/ directories.
     hercules#devel#2.hpc.msstate.edu
 
 .. rubric:: Additional Information
-**Project Storage Space:** /work/noaa/
-**Applications:** /apps/
-**Contrib:** /apps/contrib (submit helpdesk ticket for
-directory creation)
-**Environment loading:** Lmod
-**Workload management:** SLURM
-**`MSU Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource#docs>`_**
+- **Project Storage Space:** /work/noaa/
+- **Applications:** /apps/
+- **Contrib:** /apps/contrib (submit helpdesk ticket for directory creation) 
+- **Environment loading:** Lmod
+- **Workload management:** SLURM
+- **`MSU Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource#docs>`_**
 
          
-
 Running Jobs on MSU-HPC Systems
 ==========
+.. rubric:: Running and Monitoring Jobs on Orion and Hercules
+
+All compute and memory-intensive tasks must be submitted to
+the batch system for execution on system compute resources.
+This section describes the requirements and common patterns
+for job submission and monitoring.
+
+**To improve your job turnaround** and efficiently use the
+system resources please read and follow instructions carefully.
+
+.. rubric:: Submitting a Job
+There are two types of jobs: batch jobs and interactive jobs.
+
+**Batch Jobs**
+Most jobs are batch jobs. These are jobs that do not require
+any interaction and consist of a shell script that contains
+the commands you want to run. The **sbatch** command is used
+to submit batch jobs.
+
+::
+
+   $ sbatch <options> <script>
+
+Typically some of the options you would specify:
+
+::
+
+   - The account to charge the run to (**this is mandatory**)
+   - The number of nodes/tasks needed for the job
+   - The time limit for the job
+   - The location of stdout/stderr
+   - A name for the job
+   - Etc
+
+SLURM provides command line options in both long form and
+short form and either form can be used. For example, to
+specify a time limit of 30 min, all of these following forms
+are valid:
+
+::
+
+   $ sbatch -t 30          jobfile
+   $ sbatch --time=30      jobfile
+   $ sbatch --time=0:30:00 jobfile
+
+In addition to the commands that you want to run, job files
+typically have SLURM directives at the top job files. The
+directives are of the form:
+
+::
+
+   #SBATCH <options>
+   #SBATCH <options>
+
+For example, to specify the time limit as a directive, you
+should have the following line before any of the executable
+commands in your job file:
+
+::
+
+   #SBATCH --time=0:30:00
+
+These directives can be used instead of specifying options
+on the command line. If an option is specified both as a
+directive and on the command line, the command line option
+takes precedence.
+
+It is also possible to specify some of the options by
+setting an environment variable. Please see the sbatch man
+page for details. If the same option is specified in
+multiple forms, the order of precedence is command-line,
+environment variable setting, and finally the directive in
+the job file.
+
+.. rubric:: Submitting a Batch Script
+
+The following script is a very basic template that provides examples
+for some common sbatch options. It also includes required options. This can be used as a general guide when
+constructing a new batch script.
+
+::
+
+   #!/bin/bash -l
+   #
+   # -- Request that this job run on orion
+   #SBATCH --partition=orion
+   #
+   # -- Request 40 cores
+   #SBATCH --ntasks=40
+   #
+   # -- Specify a maximum wallclock of 4 hours
+   #SBATCH --time=4:00:00
+   #
+   # -- Specify under which account a job should run
+   #SBATCH --account=hpl
+   #
+   # -- Set the name of the job, or Slurm will default to the name of the script
+   #SBATCH --job-name=HPL
+   #
+   # -- Tell the batch system to set the working directory to the current working directory
+   #SBATCH --chdir=.
+
+   nt=$SLURM_NTASKS
+
+   module load intel <version>
+   module load impi <version>
+
+   srun -n $nt ./xhpl
+
+.. note::
+
+   The variable $SLURM_NTASKS is used in the example above so that the rest of the script can stay portable. If you want to change the number of cores used, you only change the submission, not how that value is used in the rest of the script.
+
+To submit the above script, called jobscript.sh, you would
+type:
+
+::
+
+   $ sbatch jobscript.sh
+
+.. rubric:: Submitting a serial
+   job[\ `edit </index.php?title=Running_Jobs_on_MSU-HPC&action=edit&section=4>`__\ ]
+   :name: submitting-a-serial-jobedit
+
+A serial job can be run on a single node. These jobs are
+scheduled separately so that the scheduler can pack multiple
+jobs onto a single node, improving the overall usefulness of
+the system. You do not have to specify a specific queue
+name. Requesting a single processor will automatically allow
+sharing of the compute node.
+
+By default, a serial job gets only its share of the memory
+available on a node (memory per core = ~total memory / total
+cores). If your serial job needs more memory than the
+default, specify that using the "--mem=<mem>" option.
+
+.. rubric:: Submitting an Interactive Jobt
+
+An interactive job is useful for tasks, such as debugging,
+that require interactive access with a program as it runs.
+With SLURM there are two ways to run jobs interactively,
+srun or salloc. We recommend that you use salloc.
+
+For example, to request two nodes for 30 min (with X11
+forwarding so that you can use X-windows based tools) you
+can do the following:
+
+::
+
+   salloc --x11=first -q debug -t 0:30:00 --nodes=2 -A marine-cpu
+
+When you run the salloc command, you won't get a prompt back
+until the batch system scheduler is able to run the job.
+Once that happens, the scheduler will drop you into a login
+session on the head node allocated to your interactive job.
+At this point, you will have a prompt and may run commands,
+such as your codes or debuggers as desired. In the example
+above, an srun command is executed. salloc is similar to
+sbatch in that it creates an allocation for you to run in,
+however only interactive jobs can be run inside the salloc
+allocation.
+
+If you need to display X windows back to your desktop screen
+from within an interactive job, you must use **ssh -X** when
+logging in.
+
+.. rubric:: Submitting a job with arguments
+
+If you want to submit a script that accepts arguments you
+need to add the arguments after the job file name on the
+sbatch command. It is similar to the Unix method of passing
+arguments to a script as shown in the example below:
+
+::
+
+   sbatch batch.job arg1 arg2
+
+The command above passes "arg1" as $1 and "arg2" as $2 etc.
+similar to the Unix convention of argument passing.
+
+.. rubric:: Submitting jobs with job dependencies
+   
+SLURM supports the ability to submit a job with dependencies
+with other jobs. A simple example is where job Y cannot
+execute until job X completes. The use of the "-d <options>
+(--dependency=<options>)" is the way to specify the job
+dependency.
+
+Review the sbatch manpage for a list of dependency
+conditions (look for "--dependency" in the sbatch options
+list) that can be used. Usage format is illustrated in the
+example script below that includes "afterok" as a dependency
+condition.
+
+Here is a simple example of how to run a chain of jobs with
+dependencies, assuming that you have a parallel helloworld.f
+example program in your current directory. Note the
+--parsable option that returns just the Job ID from sbatch.
+
+create/edit the file "**depend**" with the contents:
+
+::
+
+   #!/bin/bash        
+   jid1=$(sbatch --parsable -n1 -A noaatest -J sim --wrap="srun sleep 10")
+   jid2=$(sbatch --parsable -n1 -A noaatest -J post --dependency=afterok:$jid1 --wrap="srun hostname")
+
+then make it executable:
+
+::
+
+   chmod 0755 depend
+
+Initiate the sequence of dependent jobs by executing
+**depend** from the command line:
+
+::
+
+   $ ./depend
+
+.. rubric:: Big runs - Using the "novel" QoS
+
+The **novel** QoS is set up to handle special situations,
+particularly for large jobs requiring a large number of
+nodes (typically for "limited" time):
+
+A couple of examples are given below:
+
+-  Users may have an occasional need to run very big jobs
+   that would normally not fit within the limits of the
+   "batch" QoS.
+-  Users may have a need to do some scalability studies that
+   may require running up to a very large node count.
+
+It would be very disruptive to schedule such big jobs during
+normal production time. So jobs in the novel QOS would
+typically be run at the end of maintenance downtimes.
+
+If you have such needs **please submit a helpdesk ticket**
+with the subject line "**Request for running jobs in novel
+QoS**" and provide the following information:
+
+-  How many jobs will you be submitting?
+-  What is the number of nodes your biggest job would need?
+-  What is the maximum length of estimated time your jobs
+   would need to be completed?
+-  If there are multiple jobs can they all be run at the
+   same time?
+-  Can other jobs be run at the same time as your jobs or do
+   you need "exclusive" access?
+-  Do you need to be able to monitor your runs when your
+   jobs are running? As mentioned above, jobs in the novel
+   QoS will normally be run during downtimes and users
+   typically don't have access to the machine to do the
+   monitoring.
+
+Best effort will be made to schedule those runs at the end
+of maintenance downtimes that typically happen once a month.
+
+.. rubric:: Job Submission Options
+The options you are allowed to specify are the set of
+options used for the SLURM batch system. For a list of
+options, you may look at the man page:
+
+::
+
+   $ man sbatch
+
+or the command usage statement:
+
+::
+
+   $ sbatch --help
+
+Additional sbatch information can be found at the `vendor's
+website <https://slurm.schedmd.com/sbatch.html>`__.
+ 
+.. rubric:: Command-line options vs directive options
+There are two way to specify sbatch options. The first is on
+the command line when issuing the sbatch command. For
+example,
+
+::
+
+   $ sbatch -A fim --ntasks=256 jobscript.sh
+
+The second method is to insert directives at the top of the
+batch script using #SBATCH syntax. For example,
+
+::
+
+   #!/bin/bash -l
+
+   #SBATCH -A fim
+   #SBATCH --ntasks=256
+
+The two methods may be mixed together, if desired. Options
+specified on the command line always override options
+specified in the script.
+
+.. rubric:: Specifying the project account
+   
+Use -A (--account) to specify the project that will be
+charged when your job is run. **You are required to specify
+an account when a job is launched**.
+
+::
+
+   $ sbatch -A fim
+
+Specifying a Partition
+--------------------
+
+.. rubric:: Orion Partitions
+
+The following Orion partitions and Orion Billable TRes
+Factors are defined:
+
++---------------+-------------------------+-------------------------+
+| **Partition** | **QOS's allowed**       | **Description**         |
++---------------+-------------------------+-------------------------+
+| orion         | batch,windfall, debug,  | General compute         |
+|   | urgent, novel           | resource    |
++---------------+-------------------------+-------------------------+
+| bigmem        | batch,windfall, debug,  | Large memory jobs       |
+|   | urgent      | |
++---------------+-------------------------+-------------------------+
+| service       | batch, windfall, debug, | Serial jobs (max 1      |
+|   | urgent      | core), with a 24 hr     |
+|   | | limit. Jobs will be run |
+|   | | on front end (login)    |
+|   | | nodes that have         |
+|   | | external network        |
+|   | | connectivity. Useful    |
+|   | | for data transfers or   |
+|   | | access to external      |
+|   | | resources like          |
+|   | | databases. If you have  |
+|   | | a workflow that         |
+|   | | requires pushing or     |
+|   | | pulling data to/from    |
+|   | | the HSMS(HPSS), this is |
+|   | | where they should be    |
+|   | | run. See the section    |
+|   | | **Login (Front End)     |
+|   | | Node Usage Policy**     |
+|   | | below for important     |
+|   | | information about using |
+|   | | Login nodes.|
++---------------+-------------------------+-------------------------+
+
+.. rubric:: Hercules Partitions
+
+The following partitions are defined:
+
++---------------+-------------------------+-------------------------+
+| **Partition** | **QOS's allowed**       | **Description**         |
++---------------+-------------------------+-------------------------+
+| hercules      | batch, windfall, debug, | General compute         |
+|   | urgent, novel           | resources   |
++---------------+-------------------------+-------------------------+
+| service       | batch, windfall, debug, | Serial jobs (max 1      |
+|   | urgent      | core), with a 24 hr     |
+|   | | limit. Jobs will be run |
+|   | | on front end nodes that |
+|   | | have external network   |
+|   | | connectivity. Useful    |
+|   | | for data transfers or   |
+|   | | access to external      |
+|   | | resources like          |
+|   | | databases. If you have  |
+|   | | a workflow that         |
+|   | | requires pushing or     |
+|   | | pulling data to/from    |
+|   | | the HSMS(HPSS), this is |
+|   | | where they should be    |
+|   | | run. See the section    |
+|   | | **Login (Front End)     |
+|   | | Node Usage Policy**     |
+|   | | below for important     |
+|   | | information about using |
+|   | | Login nodes.|
++---------------+-------------------------+-------------------------+
+
+To specify a partition for your job, use: **-p (--partition)**
+
+::
+
+   #SBATCH --partition=service
+
+to request service
+
+.. rubric:: Specifying Wall Clock Time
+
+You should specify a wall clock time for your job. If you do
+not set a wall clock time it will **default to 5 minutes**.
+**We recommend that you do NOT set a wall clock time less
+than 5 minutes**. If your jobs will take longer than 5
+minutes, request a wall clock time reasonably close to but
+not less than (see note below) the actual wall clock time
+that the job will take to run. Specifying an excessively
+large wall clock time will result in increased wait time for
+your job to start (qwait), and more importantly reduced
+scheduler efficiency and overall system utilization. When
+requesting Multiple Partitions (see below), as is
+recommended, take into account the longest run time
+partition. Due to several other factors that effect run time
+your job run time on a "slower" partition may be better as
+compared to the Billable TRes per Core Performance Factor
+listed in the Partition tables above. Therefore:
+
+**Frequently** review the wall clock time of the jobs you
+run in order to better estimate your requested wall clock
+time. Increased accuracy of specified wall clock time with
+your job submissions will shorten queue wait times, and
+increase scheduler efficiency and overall system
+utilization.
+
+.. note::
+   Any job that runs longer than its requested wall clock time or the partition's time limit will be terminatedby the scheduler. When specifying your wall clock time, add some extra time to your recent observed run time history to be sure it will finish: **10-20%** for short run times, **5-10%** for long run times, to allow for random fluctuations in run times caused by system load.
+
+For example, to set a one-hour time limit:
+
+::
+
+   #SBATCH --time=1:00:00
+
+For the maximum wall clock allowed see the Queue(QOS) tables
+below.
+
+.. rubric:: Specifying a Quality of Service (QOS)
+
+To specify a quality-of-service (QOS), use --qos (-q). For example:
+
+::
+
+   #SBATCH -q batch
+
+There are several different QOS'es depending on your needs.
+
+NOTE: If you have an allocation of "windfall only"
+(Allocation = 1) you can only submit to the "windfall" QOS.
+
++-----------+-----------+-----------+-----------+-----------+-----------+
+| QOS       | Min Nodes | Max Nodes | Max Wall  | Billing   | De        |
+|           |           |           | Clock     | TRes      | scription |
+|           |           |           |           | Factor    | - Limits  |
++-----------+-----------+-----------+-----------+-----------+-----------+
+| All QOS's |           |           |           |           | **Across  |
+|           |           |           |           |           | all       |
+|           |           |           |           |           | QOS's:**  |
+|           |           |           |           |           | Max of    |
+|           |           |           |           |           | 400 jobs  |
+|           |           |           |           |           | pendin    |
+|           |           |           |           |           | g/running |
+|           |           |           |           |           | per       |
+|           |           |           |           |           | project   |
+|           |           |           |           |           | -account, |
+|           |           |           |           |           | a         |
+|           |           |           |           |           | dditional |
+|           |           |           |           |           | jobs will |
+|           |           |           |           |           | be        |
+|           |           |           |           |           | rejected. |
+|           |           |           |           |           | Max of 20 |
+|           |           |           |           |           | jobs per  |
+|           |           |           |           |           | projec    |
+|           |           |           |           |           | t-account |
+|           |           |           |           |           | will gain |
+|           |           |           |           |           | age       |
+|           |           |           |           |           | priority. |
+|           |           |           |           |           | E         |
+|           |           |           |           |           | xceptions |
+|           |           |           |           |           | are       |
+|           |           |           |           |           | stated    |
+|           |           |           |           |           | below.    |
++-----------+-----------+-----------+-----------+-----------+-----------+
+| batch     | 1         | 500       | 8 hours   | 1.0       | **        |
+|           |           | (Orion) & | (         |           | Default** |
+|           |           | 250       | Partition |           | quality   |
+|           |           | (         | ex        |           | of        |
+|           |           | Hercules) | ceptions: |           | service   |
+|           |           |           | Service:  |           | for       |
+|           |           |           | 24 hrs)   |           | non-re    |
+|           |           |           |           |           | servation |
+|           |           |           |           |           | jobs with |
+|           |           |           |           |           | an        |
+|           |           |           |           |           | a         |
+|           |           |           |           |           | llocation |
+|           |           |           |           |           | more than |
+|           |           |           |           |           | "Windfall |
+|           |           |           |           |           | Only"(    |
+|           |           |           |           |           | RawShares |
+|           |           |           |           |           | =1).      |
++-----------+-----------+-----------+-----------+-----------+-----------+
+| urgent    | 1         | 500       | 8 hours   | 2.0       | QOS for a |
+|           |           | (Orion) & |           |           | job that  |
+|           |           | 250       |           |           | requires  |
+|           |           | (         |           |           | more      |
+|           |           | Hercules) |           |           | urgency   |
+|           |           |           |           |           | than      |
+|           |           |           |           |           | batch.    |
+|           |           |           |           |           | Your      |
+|           |           |           |           |           | project's |
+|           |           |           |           |           | FairShare |
+|           |           |           |           |           | `         |
+|           |           |           |           |           | (Referenc |
+|           |           |           |           |           | e) <https |
+|           |           |           |           |           | ://rdhpcs |
+|           |           |           |           |           | -common-d |
+|           |           |           |           |           | ocs.rdhpc |
+|           |           |           |           |           | s.noaa.go |
+|           |           |           |           |           | v/wiki/in |
+|           |           |           |           |           | dex.php/S |
+|           |           |           |           |           | LURM_Fair |
+|           |           |           |           |           | Share>`__ |
+|           |           |           |           |           | will be   |
+|           |           |           |           |           | lowered   |
+|           |           |           |           |           | at 2.0x   |
+|           |           |           |           |           | the rate  |
+|           |           |           |           |           | as        |
+|           |           |           |           |           | compared  |
+|           |           |           |           |           | to Batch. |
+|           |           |           |           |           | Only 1    |
+|           |           |           |           |           | job per   |
+|           |           |           |           |           | projec    |
+|           |           |           |           |           | t-account |
+|           |           |           |           |           | can be    |
+|           |           |           |           |           | pendin    |
+|           |           |           |           |           | g/running |
+|           |           |           |           |           | at any    |
+|           |           |           |           |           | time.     |
+|           |           |           |           |           | When a    |
+|           |           |           |           |           | project's |
+|           |           |           |           |           | FairShare |
+|           |           |           |           |           | is below  |
+|           |           |           |           |           | 0.45 jobs |
+|           |           |           |           |           | submitted |
+|           |           |           |           |           | to Urgent |
+|           |           |           |           |           | are       |
+|           |           |           |           |           | auto      |
+|           |           |           |           |           | matically |
+|           |           |           |           |           | changed   |
+|           |           |           |           |           | to Batch  |
+|           |           |           |           |           | and users |
+|           |           |           |           |           | notified  |
+|           |           |           |           |           | via       |
+|           |           |           |           |           | stderr.   |
++-----------+-----------+-----------+-----------+-----------+-----------+
+| debug     | 1         | 500       | 30        | 1.25      | Highest   |
+|           |           | (Orion) & | minutes   |           | priority  |
+|           |           | 250       |           |           | QOS,      |
+|           |           | (         |           |           | useful    |
+|           |           | Hercules) |           |           | for       |
+|           |           |           |           |           | debugging |
+|           |           |           |           |           | sessions. |
+|           |           |           |           |           | Your      |
+|           |           |           |           |           | project's |
+|           |           |           |           |           | FairShare |
+|           |           |           |           |           | `         |
+|           |           |           |           |           | (Referenc |
+|           |           |           |           |           | e) <https |
+|           |           |           |           |           | ://rdhpcs |
+|           |           |           |           |           | -common-d |
+|           |           |           |           |           | ocs.rdhpc |
+|           |           |           |           |           | s.noaa.go |
+|           |           |           |           |           | v/wiki/in |
+|           |           |           |           |           | dex.php/S |
+|           |           |           |           |           | LURM_Fair |
+|           |           |           |           |           | Share>`__ |
+|           |           |           |           |           | will be   |
+|           |           |           |           |           | lowered   |
+|           |           |           |           |           | at 1.25x  |
+|           |           |           |           |           | the rate  |
+|           |           |           |           |           | as        |
+|           |           |           |           |           | compared  |
+|           |           |           |           |           | to Batch. |
+|           |           |           |           |           | Only 2    |
+|           |           |           |           |           | jobs per  |
+|           |           |           |           |           | user can  |
+|           |           |           |           |           | be        |
+|           |           |           |           |           | pendin    |
+|           |           |           |           |           | g/running |
+|           |           |           |           |           | at any    |
+|           |           |           |           |           | time.     |
+|           |           |           |           |           | This QOS  |
+|           |           |           |           |           | should    |
+|           |           |           |           |           | NOT be    |
+|           |           |           |           |           | used for  |
+|           |           |           |           |           | fast-t    |
+|           |           |           |           |           | urnaround |
+|           |           |           |           |           | of        |
+|           |           |           |           |           | general   |
+|           |           |           |           |           | work.     |
+|           |           |           |           |           | While the |
+|           |           |           |           |           | debug QOS |
+|           |           |           |           |           | is        |
+|           |           |           |           |           | a         |
+|           |           |           |           |           | vailable, |
+|           |           |           |           |           | we        |
+|           |           |           |           |           | recommend |
+|           |           |           |           |           | that if   |
+|           |           |           |           |           | you need  |
+|           |           |           |           |           | to work   |
+|           |           |           |           |           | through   |
+|           |           |           |           |           | an        |
+|           |           |           |           |           | iterative |
+|           |           |           |           |           | process   |
+|           |           |           |           |           | to debug  |
+|           |           |           |           |           | a code,   |
+|           |           |           |           |           | that you  |
+|           |           |           |           |           | submit a  |
+|           |           |           |           |           | longer    |
+|           |           |           |           |           | running   |
+|           |           |           |           |           | in        |
+|           |           |           |           |           | teractive |
+|           |           |           |           |           | job to    |
+|           |           |           |           |           | the       |
+|           |           |           |           |           | default   |
+|           |           |           |           |           | QOS so    |
+|           |           |           |           |           | that you  |
+|           |           |           |           |           | can       |
+|           |           |           |           |           | restart   |
+|           |           |           |           |           | your      |
+|           |           |           |           |           | ap        |
+|           |           |           |           |           | plication |
+|           |           |           |           |           | over and  |
+|           |           |           |           |           | over      |
+|           |           |           |           |           | again     |
+|           |           |           |           |           | without   |
+|           |           |           |           |           | having to |
+|           |           |           |           |           | start a   |
+|           |           |           |           |           | new batch |
+|           |           |           |           |           | job.      |
++-----------+-----------+-----------+-----------+-----------+-----------+
+| windfall  | 1         | 500       | 8 hours   | 0.0       | Lowest    |
+|           |           | (Orion) & | (         |           | priority  |
+|           |           | 250       | Partition |           | QOS. If   |
+|           |           | (         | ex        |           | you have  |
+|           |           | Hercules) | ceptions: |           | an        |
+|           |           |           | Service:  |           | a         |
+|           |           |           | 24 hrs)   |           | llocation |
+|           |           |           |           |           | of        |
+|           |           |           |           |           | "windfall |
+|           |           |           |           |           | only"     |
+|           |           |           |           |           | (Monthly  |
+|           |           |           |           |           | a         |
+|           |           |           |           |           | llocation |
+|           |           |           |           |           | = 1) you  |
+|           |           |           |           |           | can only  |
+|           |           |           |           |           | submit to |
+|           |           |           |           |           | this QOS. |
+|           |           |           |           |           | S         |
+|           |           |           |           |           | ubmitting |
+|           |           |           |           |           | to this   |
+|           |           |           |           |           | QOS will  |
+|           |           |           |           |           | NOT       |
+|           |           |           |           |           | affect    |
+|           |           |           |           |           | your      |
+|           |           |           |           |           | future    |
+|           |           |           |           |           | job       |
+|           |           |           |           |           | priority  |
+|           |           |           |           |           | FairShare |
+|           |           |           |           |           | Factor    |
+|           |           |           |           |           | (f).      |
+|           |           |           |           |           | Eff       |
+|           |           |           |           |           | ectvUsage |
+|           |           |           |           |           | = 0.      |
+|           |           |           |           |           | `         |
+|           |           |           |           |           | (Referenc |
+|           |           |           |           |           | e) <https |
+|           |           |           |           |           | ://rdhpcs |
+|           |           |           |           |           | -common-d |
+|           |           |           |           |           | ocs.rdhpc |
+|           |           |           |           |           | s.noaa.go |
+|           |           |           |           |           | v/wiki/in |
+|           |           |           |           |           | dex.php/S |
+|           |           |           |           |           | LURM_Fair |
+|           |           |           |           |           | Share>`__ |
+|           |           |           |           |           | for your  |
+|           |           |           |           |           | non       |
+|           |           |           |           |           | -windfall |
+|           |           |           |           |           | jobs.     |
+|           |           |           |           |           | Useful    |
+|           |           |           |           |           | for low   |
+|           |           |           |           |           | priorty   |
+|           |           |           |           |           | jobs that |
+|           |           |           |           |           | will only |
+|           |           |           |           |           | run when  |
+|           |           |           |           |           | the       |
+|           |           |           |           |           | sy        |
+|           |           |           |           |           | stem(part |
+|           |           |           |           |           | ition(s)) |
+|           |           |           |           |           | has       |
+|           |           |           |           |           | enough    |
+|           |           |           |           |           | unused    |
+|           |           |           |           |           | space     |
+|           |           |           |           |           | available |
+|           |           |           |           |           | while not |
+|           |           |           |           |           | effecting |
+|           |           |           |           |           | the       |
+|           |           |           |           |           | projects  |
+|           |           |           |           |           | FairShare |
+|           |           |           |           |           | priority. |
++-----------+-----------+-----------+-----------+-----------+-----------+
+| novel     | 501       | Largest   | 8 hours   | 1.0       | QOS for   |
+|           | (Orion) & | partition |           |           | running   |
+|           | 251       | size      |           |           | novel or  |
+|           | (         |           |           |           | exp       |
+|           | Hercules) |           |           |           | erimental |
+|           |           |           |           |           | jobs      |
+|           |           |           |           |           | where     |
+|           |           |           |           |           | nearly    |
+|           |           |           |           |           | the full  |
+|           |           |           |           |           | system is |
+|           |           |           |           |           | required. |
+|           |           |           |           |           | If you    |
+|           |           |           |           |           | need to   |
+|           |           |           |           |           | use the   |
+|           |           |           |           |           | novel     |
+|           |           |           |           |           | QOS,      |
+|           |           |           |           |           | please    |
+|           |           |           |           |           | sumbit a  |
+|           |           |           |           |           | ticket to |
+|           |           |           |           |           | the `help |
+|           |           |           |           |           | sy        |
+|           |           |           |           |           | stem <htt |
+|           |           |           |           |           | ps://rdhp |
+|           |           |           |           |           | cs-common |
+|           |           |           |           |           | -docs.rdh |
+|           |           |           |           |           | pcs.noaa. |
+|           |           |           |           |           | gov/wiki/ |
+|           |           |           |           |           | index.php |
+|           |           |           |           |           | /Help_Req |
+|           |           |           |           |           | uests>`__ |
+|           |           |           |           |           | and tell  |
+|           |           |           |           |           | us what   |
+|           |           |           |           |           | you want  |
+|           |           |           |           |           | to do. We |
+|           |           |           |           |           | will      |
+|           |           |           |           |           | normally  |
+|           |           |           |           |           | have to   |
+|           |           |           |           |           | arrange   |
+|           |           |           |           |           | for some  |
+|           |           |           |           |           | time for  |
+|           |           |           |           |           | the job   |
+|           |           |           |           |           | to go     |
+|           |           |           |           |           | through,  |
+|           |           |           |           |           | and we    |
+|           |           |           |           |           | would     |
+|           |           |           |           |           | like to   |
+|           |           |           |           |           | plan the  |
+|           |           |           |           |           | process   |
+|           |           |           |           |           | with you. |
++-----------+-----------+-----------+-----------+-----------+-----------+
+
+.. rubric:: Specifying a job name
+Giving your jobs meaningful names can help you locate them
+when monitoring their progress. Use the -J (--job-name)
+option. For example,
+
+::
+
+   #SBATCH -J WRF_ARW_00Z
+
+The default name for a job is the name of the job script
+that is being submitted.
+
+.. rubric:: Setting the names of output files
+If you do not specify the names of the output files that
+contain the stdout and stderr from your job script, a file
+will be written to the directory in which you issued the
+sbatch command. A file containing both the stdout and stderr
+from your job script will be called: slurm-<jobid>.out where
+<jobid> is the SLURM job id of the job.
+
+Use the -o (--output) option to specify the name of the
+stdout file
+
+::
+
+   #SBATCH -o /full/path/of/stdout/file
+
+Use the -e (--error) option to specify the name of the
+stderr file
+
+::
+
+   #SBATCH -e /full/path/of/stderr/file
+
+If you want stdout and stderr to go to the same file, do not
+specify the -e option.
+
+.. rubric:: Passing environment variables to the job
+By default the environment variables set in the current
+shell is passed to the job that is submitted. However if any
+variable is explicitly passed into the script with a value,
+only that value is passed to the script!
+
+If you wish to pass local environment to the script and in
+addition set a specific variable that is currently not in
+the current environment ("ndays=20" in the example below),
+you can do it in the following way:
+
+::
+
+   sbatch --export=ALL,ndays=20 … sbatch.job
+     
+
+It is important to note that "ALL" is required if you want
+the local environment variables are to be exported to the
+script in addition to the value explicitly set. If "ALL" is
+left out, only the value of ndays=20 is passed in.
+
+If you do not want to export your local environment, please
+use the following syntax:
+
+::
+
+   sbatch --export=NONE … sbatch.job
+    
+.. caution::
+Not exporting the current environment can be a little tricky and likely to cause some errors unless the necessary environment is created in the job. It may also require setting "--export=ALL" on the "srun" command within the job.
+
+.. rubric:: Requesting email notification about jobs
+
+You can use the --mail-user and --mail-type options to
+request notifications by email when a job enters one or more
+states. Both options are required. Use the --mail-user
+option to specify a comma delimited list of email addresses
+where email notifications are to be sent. Use the
+--mail-type option to specify which job states you want
+email notifications for. The most useful notifications flags
+passed to --mail-type are NONE, BEGIN, END, and FAIL and can
+be combined. A full list of parameters can be found on the
+sbatch man page.
+
+-  FAIL: mail is sent when the job fails with non-zero exit code.
+-  BEGIN: mail is sent when the job begins execution.
+-  END: mail is sent when the job terminates.
+-  NONE: no email is sent.
+
+Example. To send email notification to Joe and Jane when
+your job starts and when it terminates, do:
+
+::
+
+   $ sbatch --mail-user=[mailto:Joe.User@noaa.gov Joe.User@noaa.gov],[mailto:Jane.User@noaa.gov Jane.User@noaa.gov]--mail-type=<the other options go here> myscript.sh
+
+.. rubric:: Specifying the working directory as the current directory
+
+It is good practice to keep your batch scripts portable, and when they get moved around the working directory is relative to where the script is. To do this, specify the working directory with the -D (--chdir) option as the current directory. Ex:
+
+::
+
+   #SBATCH -D .
+
+The other way to do this is with the $SLURM_SUBMIT_DIR
+variable. This variable stores the path from where your
+script was submitted. So at the top of your batch script,
+add:
+
+::
+
+   cd $SLURM_SUBMIT_DIR
+
+.. rubric:: Starting a job after a specific date/time
+
+If a job is waiting for data to arrive based on time of day
+(e.g. 12:30Z), the --begin option allows for a job to hold
+in the queue until at least the time (or date/time)
+specified with the option. For example:
+
+::
+
+   #SBATCH --begin=19:25
+
+The above option will cause the job to hold until 19:25 GMT.
+If resources are available shortly after 19:25, the job will
+run. If not, the job will wait until resources are available
+(this is not a reservation). Note that if the sbatch was
+submitted at 19:26 GMT, the job will hold until 19:25 GMT
+the next day!
+
+Date/time can be specified as:
+
+::
+
+   YYYY-MM-DD[Thh:mm[:ss]]
+
+YYYY is year, MM is month, DD is day, hh is hour, mm is
+minute and ss is second. The letter T is required as a
+delimiter if specifying both date and time. All times are
+considered to be in the future, so
+
+::
+
+   2110-12-21T06:30
+
+would be December 21, 2110 at 06:30 GMT.
+
+The --begin option also accepts an arbitrary amount of time
+to wait. For example:
+
+::
+
+   #SBATCH --begin=now+1hour
+
+will start the job 1 hour from when the job is launched, if
+resources are available.
+
+Monitoring Jobs
+--------
+
+.. rubric:: List jobs
+Use the squeue command to get a listing of the current jobs
+in the queue.
+
+::
+
+   $ squeue
+    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+    30049     orion     test Kyle.Ste  R       0:02      1 t758
+
+.. rubric:: List jobs that belong only to you
+
+Use the -u option to list only the jobs that belong to you.
+Provide your username as an argument to -u. This is
+preferable to using 'squeue \| grep' to extract the jobs
+that belong to you for two reasons. First, this method
+allows you to see which of the jobs are active, eligible,
+and blocked. Second, usernames are truncated in the squeue
+output, making it hard to grep.
+
+::
+
+   $ squeue -u <user name>
+
+.. rubric:: List jobs that have completed within the last 24 hours
+
+Use the sacct command option to list jobs that have run
+within the last 24 hours and to see their statuses (State).
+A full list of sacct options and job states can be found on
+the sacct man page.
+
+::
+
+   % sacct --user $USER --starttime `date --date="yesterday" +%F` -X --format=JobID,JobName%30,Partition,Account,AllocCPUS,State,Elapsed,QOS
+
+.. rubric:: Query detailed job status information for a specific job
+
+Use the "scontrol show job" command to query detailed
+information about queued or running jobs or jobs that have
+finished in the last 15 minutes. This could be useful when
+trying to determine why a job is not running and has
+remained queued for a long time.
+
+::
+
+   $ scontrol show job 251091
+
+   == Query a job's estimated start time ==
+
+Use the "squeue --start" command to get a point-in-time estimate of when your job may start. Reservation based start time estimation incorporates information regarding current administrative, user, and job reservations to determine the earliest time the specified job could allocate the needed resources and start running. In essence, this estimate will indicate the earliest time the job would start assuming this job was the highest priority job in the queue.
+
+::
+
+   $ squeue --start
+    JOBID PARTITION     NAME     USER ST          START_TIME  NODES SCHEDNODES           NODELIST(REASON)
+   251092     orion     test Kyle.Ste PD 2019-03-29T18:55:58     17 (null)   (BeginTime)
+
+Please note: The start time estimate can change drastically,
+depending on the number of partitions specified, new jobs
+being submitted to the queue, and how accurately idle jobs
+and running jobs have specified their wall clock time.
+
+.. rubric:: Deleting jobs
+
+To cancel a job use the scancel command
+
+::
+
+   $ scancel $JOBID
+
+         
 
 Getting Information about your Projects
 ----------
