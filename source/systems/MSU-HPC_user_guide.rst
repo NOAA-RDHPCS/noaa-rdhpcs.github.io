@@ -41,14 +41,13 @@ DUO at `Multi#Factor Authentication <https://oriondocs.rdhpcs.noaa.gov/wiki/inde
 
 .. rubric:: Setting Up DUO on a New Device
 This section assumes:
-
 - You have already successfully configured DUO on an old device. If you do not, please see the link above.
 - You have access to the old device.
 
-#  Go to `TAPS <https://taps.hpc.msstate.edu/>`_` and choose Manage DUO and Password > Add new Device.
-#  Select "Send Me a Push".
-#  Open DUO on **OLD DEVICE** # you should be prompted to accept a request for authentication.
-#  Approve that request and then on your PC, you should be prompted to enter a device type. Keep following the prompts to add a token to your new device.
+#.  Go to `TAPS <https://taps.hpc.msstate.edu/>`_` and choose Manage DUO and Password > Add new Device.
+#.  Select "Send Me a Push".
+#.  Open DUO on **OLD DEVICE** # you should be prompted to accept a request for authentication.
+#.  Approve that request and then on your PC, you should be prompted to enter a device type. Keep following the prompts to add a token to your new device.
 
 .. rubric:: Login nodes: Available externally via SSH
 To SSH to Orion, you'll need your MSU username, password and DUO authentication:
@@ -74,7 +73,6 @@ To SSH to Orion, you'll need your MSU username, password and DUO authentication:
     hercules#login.hpc.msstate.edu  # DNS round#robin for hercules#login#{1..4}
 
 Orion Example:
-
 ::
 
    ssh jdoe@orion#login.hpc.msstate.edu
@@ -126,7 +124,6 @@ Orion Example:
    nivie@Orion#login#4 ~ $
 
 .. rubric:: Web Portal: Available via your web browser
-
 A browser based web interface, know as Open OnDemand (OOD),
 is available for accessing the Orion system. Through the web
 interface you can manage files, submit & monitor jobs,
@@ -190,18 +187,17 @@ writing into the /apps/contrib/ directories.
     hercules#devel#2.hpc.msstate.edu
 
 .. rubric:: Additional Information
-- **Project Storage Space:** /work/noaa/
-- **Applications:** /apps/
-- **Contrib:** /apps/contrib (submit helpdesk ticket for directory creation) 
-- **Environment loading:** Lmod
-- **Workload management:** SLURM
-- **`MSU Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource#docs>`_**
+- Project Storage Space: /work/noaa/
+- Applications: /apps/
+- Contrib: /apps/contrib (submit helpdesk ticket for directory creation) 
+- Environment loading: Lmod
+- Workload management: SLURM
+- `MSU Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource#docs>`_**
 
          
 Running Jobs on MSU-HPC Systems
 ==========
 .. rubric:: Running and Monitoring Jobs on Orion and Hercules
-
 All compute and memory-intensive tasks must be submitted to
 the batch system for execution on system compute resources.
 This section describes the requirements and common patterns
@@ -275,7 +271,6 @@ environment variable setting, and finally the directive in
 the job file.
 
 .. rubric:: Submitting a Batch Script
-
 The following script is a very basic template that provides examples
 for some common sbatch options. It also includes required options. This can be used as a general guide when
 constructing a new batch script.
@@ -320,10 +315,7 @@ type:
 
    $ sbatch jobscript.sh
 
-.. rubric:: Submitting a serial
-   job[\ `edit </index.php?title=Running_Jobs_on_MSU-HPC&action=edit&section=4>`__\ ]
-   :name: submitting-a-serial-jobedit
-
+.. rubric:: Submitting a serial job
 A serial job can be run on a single node. These jobs are
 scheduled separately so that the scheduler can pack multiple
 jobs onto a single node, improving the overall usefulness of
@@ -337,7 +329,6 @@ cores). If your serial job needs more memory than the
 default, specify that using the "--mem=<mem>" option.
 
 .. rubric:: Submitting an Interactive Jobt
-
 An interactive job is useful for tasks, such as debugging,
 that require interactive access with a program as it runs.
 With SLURM there are two ways to run jobs interactively,
@@ -367,7 +358,6 @@ from within an interactive job, you must use **ssh -X** when
 logging in.
 
 .. rubric:: Submitting a job with arguments
-
 If you want to submit a script that accepts arguments you
 need to add the arguments after the job file name on the
 sbatch command. It is similar to the Unix method of passing
@@ -381,7 +371,6 @@ The command above passes "arg1" as $1 and "arg2" as $2 etc.
 similar to the Unix convention of argument passing.
 
 .. rubric:: Submitting jobs with job dependencies
-   
 SLURM supports the ability to submit a job with dependencies
 with other jobs. A simple example is where job Y cannot
 execute until job X completes. The use of the "-d <options>
@@ -400,7 +389,6 @@ example program in your current directory. Note the
 --parsable option that returns just the Job ID from sbatch.
 
 create/edit the file "**depend**" with the contents:
-
 ::
 
    #!/bin/bash        
@@ -408,20 +396,16 @@ create/edit the file "**depend**" with the contents:
    jid2=$(sbatch --parsable -n1 -A noaatest -J post --dependency=afterok:$jid1 --wrap="srun hostname")
 
 then make it executable:
-
 ::
 
    chmod 0755 depend
 
-Initiate the sequence of dependent jobs by executing
-**depend** from the command line:
-
+Initiate the sequence of dependent jobs by executing **depend** from the command line:
 ::
 
    $ ./depend
 
 .. rubric:: Big runs - Using the "novel" QoS
-
 The **novel** QoS is set up to handle special situations,
 particularly for large jobs requiring a large number of
 nodes (typically for "limited" time):
@@ -463,19 +447,16 @@ of maintenance downtimes that typically happen once a month.
 The options you are allowed to specify are the set of
 options used for the SLURM batch system. For a list of
 options, you may look at the man page:
-
 ::
 
    $ man sbatch
 
 or the command usage statement:
-
 ::
 
    $ sbatch --help
 
-Additional sbatch information can be found at the `vendor's
-website <https://slurm.schedmd.com/sbatch.html>`__.
+Additional sbatch information can be found at the `vendor's website <https://slurm.schedmd.com/sbatch.html>`__.
  
 .. rubric:: Command-line options vs directive options
 There are two way to specify sbatch options. The first is on
@@ -518,37 +499,38 @@ Specifying a Partition
 The following Orion partitions and Orion Billable TRes
 Factors are defined:
 
+
 +---------------+-------------------------+-------------------------+
 | **Partition** | **QOS's allowed**       | **Description**         |
 +---------------+-------------------------+-------------------------+
 | orion         | batch,windfall, debug,  | General compute         |
-|   | urgent, novel           | resource    |
+|               | urgent, novel           | resource                |
 +---------------+-------------------------+-------------------------+
 | bigmem        | batch,windfall, debug,  | Large memory jobs       |
-|   | urgent      | |
+|               | urgent                  |                         |
 +---------------+-------------------------+-------------------------+
 | service       | batch, windfall, debug, | Serial jobs (max 1      |
-|   | urgent      | core), with a 24 hr     |
-|   | | limit. Jobs will be run |
-|   | | on front end (login)    |
-|   | | nodes that have         |
-|   | | external network        |
-|   | | connectivity. Useful    |
-|   | | for data transfers or   |
-|   | | access to external      |
-|   | | resources like          |
-|   | | databases. If you have  |
-|   | | a workflow that         |
-|   | | requires pushing or     |
-|   | | pulling data to/from    |
-|   | | the HSMS(HPSS), this is |
-|   | | where they should be    |
-|   | | run. See the section    |
-|   | | **Login (Front End)     |
-|   | | Node Usage Policy**     |
-|   | | below for important     |
-|   | | information about using |
-|   | | Login nodes.|
+|               | urgent                  | core), with a 24 hr     |
+|               |                         | limit. Jobs will be run |
+|               |                         | on front end (login)    |
+|               |                         | nodes that have         |
+|               |                         | external network        |
+|               |                         | connectivity. Useful    |
+|               |                         | for data transfers or   |
+|               |                         | access to external      |
+|               |                         | resources like          |
+|               |                         | databases. If you have  |
+|               |                         | a workflow that         |
+|               |                         | requires pushing or     |
+|               |                         | pulling data to/from    |
+|               |                         | the HSMS(HPSS), this is |
+|               |                         | where they should be    |
+|               |                         | run. See the section    |
+|               |                         | **Login (Front End)     |
+|               |                         | Node Usage Policy**     |
+|               |                         | below for important     |
+|               |                         | information about using |
+|               |                         | Login nodes.            |
 +---------------+-------------------------+-------------------------+
 
 .. rubric:: Hercules Partitions
@@ -559,29 +541,29 @@ The following partitions are defined:
 | **Partition** | **QOS's allowed**       | **Description**         |
 +---------------+-------------------------+-------------------------+
 | hercules      | batch, windfall, debug, | General compute         |
-|   | urgent, novel           | resources   |
+|               | urgent, novel           | resources               |
 +---------------+-------------------------+-------------------------+
 | service       | batch, windfall, debug, | Serial jobs (max 1      |
-|   | urgent      | core), with a 24 hr     |
-|   | | limit. Jobs will be run |
-|   | | on front end nodes that |
-|   | | have external network   |
-|   | | connectivity. Useful    |
-|   | | for data transfers or   |
-|   | | access to external      |
-|   | | resources like          |
-|   | | databases. If you have  |
-|   | | a workflow that         |
-|   | | requires pushing or     |
-|   | | pulling data to/from    |
-|   | | the HSMS(HPSS), this is |
-|   | | where they should be    |
-|   | | run. See the section    |
-|   | | **Login (Front End)     |
-|   | | Node Usage Policy**     |
-|   | | below for important     |
-|   | | information about using |
-|   | | Login nodes.|
+|               | urgent                  | core), with a 24 hr     |
+|               |                         | limit. Jobs will be run |
+|               |                         | on front end nodes that |
+|               |                         | have external network   |
+|               |                         | connectivity. Useful    |
+|               |                         | for data transfers or   |
+|               |                         | access to external      |
+|               |                         | resources like          |
+|               |                         | databases. If you have  |
+|               |                         | a workflow that         |
+|               |                         | requires pushing or     |
+|               |                         | pulling data to/from    |
+|               |                         | the HSMS(HPSS), this is |
+|               |                         | where they should be    |
+|               |                         | run. See the section    |
+|               |                         | **Login (Front End)     |
+|               |                         | Node Usage Policy**     |
+|               |                         | below for important     |
+|               |                         | information about using |
+|               |                         | Login nodes.            |
 +---------------+-------------------------+-------------------------+
 
 To specify a partition for your job, use: **-p (--partition)**
@@ -640,7 +622,8 @@ To specify a quality-of-service (QOS), use --qos (-q). For example:
 
 There are several different QOS'es depending on your needs.
 
-NOTE: If you have an allocation of "windfall only"
+.. note::
+If you have an allocation of "windfall only"
 (Allocation = 1) you can only submit to the "windfall" QOS.
 
 +-----------+-----------+-----------+-----------+-----------+-----------+
