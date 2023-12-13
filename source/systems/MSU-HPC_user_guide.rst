@@ -251,7 +251,6 @@ that the supervisor can request a renewal or decide not to
 renew the account.
 
 Here is an example of the email:
-
 ::
 
    From: <null@hpc.msstate.edu>
@@ -273,7 +272,7 @@ If the renewal time has passed, or the initial account
 renewal email was missed, request an account renewal `here:
 <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/>`_
 
-.. rubric::  **Fill out the NOAA-HPC Computer Account Request Form
+.. rubric::  Fill out the NOAA-HPC Computer Account Request Form
 
 -  **Note the Expiration Date in the email.**
 -  **Follow the link to open a pre-populated webform.** You
@@ -328,7 +327,7 @@ information and request confirmation.
 
    help@hpc.msstate.edu
 
-.. rubric::  **Fill out the HPC2-NOAA User Account Request Confirmation Form
+.. rubric::  Fill out the HPC2-NOAA User Account Request Confirmation Form
 -  **Click on the link provided in the email**
 -  **Fill out the form.**
 
@@ -339,11 +338,10 @@ information and request confirmation.
       Organization, Phone, and Address you use in AIM.
       Otherwise, use your business contact information.
 
--  **Agree to the terms and conditions, and submit the form.
+-  **Agree to the terms and conditions, and submit the form.**
 
 | The form will then be submitted back to MSU for final
   approval.
-
 -  If the renewal is approved you will not be notified, and
    your access is maintained.
 
@@ -352,10 +350,107 @@ information and request confirmation.
 
 Managing Portfolios, Projects and Allocation
 ----------
+.. rubric:: Portfolio Management on MSU-HPC Systems
+
+On the MSU-HPC system, Portfolios, Projects, and Project
+Allocations are managed by Portfolio Managers (PfM's) and
+Principle Investigators (PI's) the exact same way as they
+are for NOAA's RDHPCS systems (Hera/Jet/Gaea/HPSS). The main
+difference for Account Management between NOAA RDHPCS
+systems and the MSU-HPC system is how Project members
+(users) are managed.
+
+.. rubric:: Managing Projects within a Portfolio
+
+Project changes (add or remove a project, changing the PI,
+changing compute allocation and disk quota) on MSU-HPC
+systems are requested by the Portfolio Manager, who emails
+the Orion Help System. Information concerning the help
+system can be found `here <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__
+
+.. note::
+Projects with the same name between RDHPCS systems
+and MSU-HPC systems will have the same PI, and the MSU-HPC
+project must have the same user membership on Hercules and
+Orion.
+
+.. note::
+The Portfolio Manager is responsible for the
+Portfolio across all R&D HPC resources
+(MSU-HPC/Hera/Jet/HPSS/Gaea).
+
+.. rubric:: Adding/Removing Project Members
+
+See `Adding/Removing Project
+Members <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Account_Management_Overview#Adding.2FRemoving_Project_Members>`__
+
+.. rubric:: Managing Allocations
+
+Allocations on this system are managed the exact same
+way as they are for NOAA's RDHPCS systems (Hera, Jet etc.)
+For more information, please see: `RDHPCS
+Allocations <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations>`__
 
 Role Accounts
 ----------
+Role accounts are available on the MSU-HPC system. A Role
+account allows multiple members of a project to manage a
+project's scientific work, including but not limited to
+automated workflows.
 
+Mississippi State University's MSU-HPC system has
+system-specific policies concerning Role Accounts. These are
+required for MSU to remain compliant with their security
+controls and security plan.
+
+ .. rubric:: Role Account Policies
+
+ -  A role account is a user account that is shared by one or
+    more users.
+ -  Role accounts follow the naming convention
+    ``role-baseprojectname``.
+ -  There can be **only one role account per MSU-HPC project,
+    and a role account can be only assigned to a single
+    project.**
+ -  Role accounts are managed by the same Account Managers as
+    the base project.
+ -  A role account is managed like a project (ex. membership
+    is managed by the Account Managers on the "NOAA-HPC
+    Project Management by Project" page). Any MSU-HPC user
+    can be a member of the role account, but it is
+    recommended that they also be a member of the base
+    project.
+ -  Role accounts are only created with approval of one of
+    the base projects Account Managers (Portfolio Mgr or PI).
+ -  No passwords or Duo will be assigned to Role accounts.
+ -  Role accounts may be used for setting up unattended data
+    transfers via SSH key pairs
+ -  Role accounts may run jobs, utilize cron services, and be
+    used to manage "contrib" directories.
+
+ -  Access to the Role account shall be done via the
+    ``sudo -su role-PROJECTNAME`` command.
+ -  The sudo command can be run on Login, Development, and
+    DTN nodes.
+
+ .. rubric:: To Request and/or perform Management on a Role Account
+ -  The PI or PfM should submit a request by emailing the
+    Help Desk at "rdhpcs.orion.help@noaa.gov".
+ -  The request should include:
+
+    -  Name:
+    -  PI:
+    -  Project:
+    -  Users:
+
+ -  The Role account will be created and the PI will be
+    assigned as the Account Manager. As with projects, the PI
+    may request that additional Account Managers be assigned
+    as well.
+ -  The PI/Account Managers must use the "Project Management"
+    web form to add and remove users from their Role account.
+
+         
 Help, Policies, Best Practices, Issues
 ============
 
