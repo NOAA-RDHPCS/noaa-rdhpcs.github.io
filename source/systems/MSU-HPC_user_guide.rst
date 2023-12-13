@@ -456,12 +456,71 @@ Help, Policies, Best Practices, Issues
 
 MSU-HPC Help Requests
 ---------------
+If you have any issues, questions, or comments, please email
+the Help System: rdhpcs.orion.help@noaa.gov
+
+.. note::
+    Help tickets are normally addressed by the RDHPCS   User Support team and the MSU Orion Support team from 0900 -1700 Eastern Time, Monday - Friday, except Government holidays.
+
 
 Known Issues
 ------------
 
+ *Last Updated: 11/29/23*
+
+ .. rubric:: General
+ -  No Major issues
+
+ .. rubric:: Hercules
+ -  IDL is not yet available on Hercules. MSU hopes to have
+    this available by the end of June. Please continue to use
+    Orion for IDL work.
+
+ -  There is not yet an Open OnDemand (OOD) service
+    available. This service won't be available until a while
+    after the system has been placed into production.
+
+ -  For the time being we will be using the `Oriondocs <
+    "https://oriondocs.rdhpcs.noaa.gov/>`_ wiki for both Orion
+    and Hercules.
+
+ .. rubric:: Orion
+ -  No Major issues
+
 Policies and Best Practices
 ---------------------
+#. All MSU-HPC accounts are managed outside of NOAA and are
+   therefore subject to MSU's Account Management and
+   Security Policies.
+#. If you have an active NOAA email account, then this must
+   be used when creating a MSU account.
+#. Only members of NOAA projects are allowed to access
+   NOAA's data directories ("/work/noaa" and "/work2/noaa").
+#. Only users with an active NOAA account will be able to
+   reach R&D HPCS documentation.
+#. Access to the Niagara system requires an active RDHPCS
+   account.
+
+.. note::
+A users Home File System directory (/home/userID)
+is **DELETED** when a user's account is deleted. User
+account deletion can occur any time after a user account is
+scheduled for deletion. User accounts are scheduled for
+deletion 2 weeks after a user accounts **Expiration Date**
+and the account is not renewed. Once your HFS data is
+deleted it will **NOT be recoverable**. Project data (/work
+and /work2) is **NOT** deleted when a users account is
+deleted.
+
+.. rubric:: Best Practices
+-  Due to limited disk space on Orion, it is highly
+   recommended that data be moved back to the R&D HPC
+   Niagara system.
+
+-  Due to limited network bandwidth, it is highly
+   recommended that  `Globus <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Transferring_Data_Globus>`__
+   be used for moving data between Orion and Niagara.
+
 
 Protecting Restricted Data
 ----------------
