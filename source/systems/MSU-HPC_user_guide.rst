@@ -41,7 +41,6 @@ The following procedure is intended for the Account Manager
 or the Portfolio Manager who has an active MSU account.
 
 .. rubric:: **Assemble User Information**
-
 Before you begin, collect the following details:
 
 -  First Name
@@ -60,8 +59,9 @@ Before you begin, collect the following details:
     When you request a new account, you become the
     account supervisor. As supervisor, you are responsible to
     renew the user's account when it approaches the Expiration
-    Date. See `Account
-Renewal <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Account_Renewal>`__
+    Date. 
+    
+See `Account Renewal <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Account_Renewal>`__
 
 .. rubric:: **Login to the MSU account management
    system**
@@ -71,18 +71,15 @@ Renewal <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Account_Renewal>`__
 -  Authenticate using your MSU username and password.
 
 .. Note::
-    If you do not remember your password, see: `Logging In -
-Password <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in#Password>`__
+    If you do not remember your password, see: `Logging In - Password <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in#Password>`__
 
 .. rubric:: **Check to see if the user already has an
    account. If not, request account.**
 
--  `NOAA-HPC Project Management by
-   User <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/manageProjects.php>`__
+-  `NOAA-HPC Project Management by User <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/manageProjects.php>`__
 -  If the user appears in the drop-down, their MSU account
    already exists. Select the user and assign them to your
-   projects. If not, navigate to: `NOAA-HPC Computer Account
-Request <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/requestAccount.php>`__
+   projects. If not, navigate to: `NOAA-HPC Computer Account Request <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/requestAccount.php>`__
 -  Complete the form.
 -  **Click save and Submit** This completes the initial account request. It's good
   practice to notify the prospective new user that the
@@ -93,15 +90,15 @@ will send the prospective user email similar to the
 following, to request the additional information needed for
 the background check and account finalization.
 
-::
-   From: <help@hpc.msstate.edu>
+.. code-block::
+   From: help@hpc.msstate.edu
    Date: Fri, Jan 31, 2020 at 12:21 PM
    Subject: NOAA-HPC Users Agreement confirmation
    To: <john.doe@noaa.gov>
 
    A computer account request has been submitted to the the Mississippi State University High Performance Computing Collaboratory (MSU HPC2) on your behalf.  In order to facilitate continued processing of this account request, you must complete the application via the below web address.
 
-   https://www.hpc.msstate.edu/computing/external_accounts/noaa/confirmAccount.php
+   `<https://www.hpc.msstate.edu/computing/external_accounts/noaa/confirmAccount.php>`__
 
    This request will be removed from the queue if no response is received by 02/14/20.
 
@@ -113,11 +110,9 @@ the background check and account finalization.
    Systems Administration Team
    High Performance Computing Collaboratory
    Mississippi State University
-
    help@hpc.msstate.edu
 
-.. rubric:: **Complete the HPC2-NOAA User Account Request
-   Confirmation form (User)**
+.. rubric:: **Complete the HPC2-NOAA User Account Request Confirmation form (User)**
 
 -  Click on the link provided in the email, fill out the
    form, agree to the terms and conditions, and submit the
@@ -126,15 +121,13 @@ the background check and account finalization.
 .. note::
     If you have an NOAA RDHPCS account, use the same Organization, Phone, and Address you use in AIM. Otherwise, use your business contact information.
 
-If you find you are unable to submit the form, try another
-  password. **Do not use the # character** as it has
-  periodically caused problems. Certain other characters in
-  the password might block the form submission, please
+If you find you are unable to submit the form, try another password. **Do not use the # character** as it has
+  periodically caused problems. Certain other characters in the password might block the form submission, please
   submit a help ticket if you experience a problem `Orion
   Help <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
 
 .. note:: 
-  The password that you enter will be your
+  The password that you enter will be your 
   temporary password. So please remember your password.
   This is critical to the next step of the on-boarding
   process.
@@ -143,9 +136,7 @@ If you find you are unable to submit the form, try another
 
 MSU vets the account request and creates the user account
 (1-2 weeks). MSU then sends email, similar to the one below,
-will be to the new prospective user.
-
-To find the email, search your emails with the following:
+will be to the new prospective user. To find the email, search your emails with the following:
 -  From: @hpc.msstate.edu
 -  Subject: new user account
 
@@ -167,7 +158,7 @@ To find the email, search your emails with the following:
 -  Within 3 days of receiving the email, navigate to
    `<https://taps.hpc.msstate.edu>`__
 
-  Authenticate using your username and your temporary
+- Authenticate using your username and your temporary
    password.
 
 .. note::
@@ -185,14 +176,13 @@ To find the email, search your emails with the following:
 
 .. rubric:: **Take MSU Insider Threat Training**
 
--  Click on the Insider Threat "Start training" button.
--  Upon successful completion of the training, you will get
+-  Click on the Insider Threat "Start training" button. Upon successful completion of the training, you will get
    a confirmation.
 -  Go back to the TAPS Home page.
 
 .. rubric:: **Dual-factor authentication and Password Change (User)**
 
--  Navigate to `<https://taps.hpc.msstate.edu>`_`
+-  Navigate to `TAPS <https://taps.hpc.msstate.edu>`_
 
 .. rubric:: **Setup Dual-factor authentication App**
 -  Click on the "Manage Duo and Password" button.
@@ -206,8 +196,9 @@ To find the email, search your emails with the following:
 .. rubric:: **Logout and log back in again**
 
 **Congratulations! Your account is now fully set up and you can login to MSU-HPC.**
+
 .. rubric:: **Account Reactivation**
-    
+
 If your account has expired, you will need to reactivate. To
 begin the process, start a Help ticket: `MSU-HPC Help
 Request <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
