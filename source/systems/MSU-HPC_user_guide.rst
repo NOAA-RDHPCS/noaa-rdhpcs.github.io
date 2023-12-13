@@ -453,7 +453,6 @@ controls and security plan.
          
 Help, Policies, Best Practices, Issues
 ============
-
 MSU-HPC Help Requests
 ---------------
 If you have any issues, questions, or comments, please email
@@ -465,12 +464,10 @@ the Help System: rdhpcs.orion.help@noaa.gov
 
 Known Issues
 ------------
-
  *Last Updated: 11/29/23*
 
  .. rubric:: General
  -  No Major issues
-
  .. rubric:: Hercules
  -  IDL is not yet available on Hercules. MSU hopes to have
     this available by the end of June. Please continue to use
@@ -483,7 +480,6 @@ Known Issues
  -  For the time being we will be using the `Oriondocs <
     "https://oriondocs.rdhpcs.noaa.gov/>`_ wiki for both Orion
     and Hercules.
-
  .. rubric:: Orion
  -  No Major issues
 
@@ -527,19 +523,17 @@ Protecting Restricted Data
 Restricted data (rstprod) is allowed on the MSU-HPC system.
 Be sure to follow all of NOAA's restricted data policies
 when using MSU-HPC.
-
 Request access via `AIM <https://aim.rdhpcs.noaa.gov>`_
-Request access to a new project > rstprod.
 
+Request access to a new project > rstprod.
 Provide the following information in your justification:
--  The machine(s) where you will need rstprod access on
-   (i.e. Hercules, Orion).
+
+-  The machine(s) where you will need rstprod access on (i.e. Hercules, Orion).
 -  The project(s) you will be using rstprod data for.
 
 User Notifications
 -------------------
 Below is a historical list of all significant user notifications.
-
    -  `1 06/02/2023 <#06/02/2023>`__
    -  `2 04/26/2023 <#04/26/2023>`__
    -  `3 02/17/2022 <#02/17/2022>`__
@@ -618,6 +612,7 @@ production in early May. Thank you for all your help!
    Other Node Types: Login nodes (4), Development nodes (2), and Data Transfer nodes (4)
 
 `MSU’s Official Hercules Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/hercules_guide.php>`_
+
 `How to run jobs <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Running_Jobs_on_MSU-HPC>`_
 
 Please note the following: During the pre-operational test
@@ -628,50 +623,38 @@ production then we will upload the core-hour allocations and
 make all QOSs available for use.
 
 `Known Issues (supplemental) <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Known_Issues>`_
-`Differences between Orion and Hercules <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Frequently_Asked_Questions#What_are_the_differences_between_Orion_and_Hercules.3F>`_
+
+`Differences between Orion and Hercules <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/
+Frequently_Asked_Questions#What_are_the_differences_between_Orion_and_Hercules.3F>`_
 
 .. rubric:: 02/17/2022
 Dear NOAA Orion Users,
-
 Please see this month's update on Mississippi State
 University's (MSU) Orion system.
 
 **System Issues:**
--  There has been an ongoing issue with the "/work2" file
-   system significantly underreporting disk usage. Although
-   we believe this issue has now been resolved, the storage
-   vendor is going to perform some additional verification
+-  There has been an ongoing issue with the "/work2" file system significantly underreporting disk usage. Although
+   we believe this issue has now been resolved, the storage vendor is going to perform some additional verification
    work during next week's downtime.
 
--  The Orion Systems Activity is in the process of being
-   relocated to a new web server. We hope to have it back up
+-  The Orion Systems Activity is in the process of being relocated to a new web server. We hope to have it back up
    and running as soon as possible.
 
 **New Features:**
--  Although there is nothing new to report, Orion hit its
-   highest usage yet in January by NOAA's projects and
+-  Although there is nothing new to report, Orion hit its highest usage yet in January by NOAA's projects and
    users. Keep up the great work!
 
 **Reminders:**
--  The deadline for taking your annual MSU security training
-   and changing your MSU password was January, 31st 2022.
-   Anyone who did not meet the deadline has had their
-   account disabled. If you still require access to Orion
-   then there is still time to take your training and change
-   your password. Cleck `here <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Orion_Password_and_Security_Training_Information>`_ 
-   more details.
--  There is no direct access to the HPSS system from Orion.
-   The Niagara system is available for all RDHPCS users to
-   use as an intermediary storage location for moving data
-   to and from HPSS.
--  CRON services are only available on Login node
-   “orion-login-1”. Please use this Login node when creating
+-  The deadline for taking your annual MSU security training and changing your MSU password was January, 31st 2022.
+   Anyone who did not meet the deadline has had their account disabled. If you still require access to Orion
+   then there is still time to take your training and change your password. Cleck `here <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Orion_Password_and_Security_Training_Information>`_  for more details.
+-  There is no direct access to the HPSS system from Orion. The Niagara system is available for all RDHPCS users to
+   use as an intermediary storage location for moving data to and from HPSS.
+-  CRON services are only available on Login node “orion-login-1”. Please use this Login node when creating
    and editing your crontab.
--  Role accounts (shared user) are now available for use on
-   Orion.
+-  Role accounts (shared user) are now available for use on Orion.
 
 For more information click `here <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Role_Accounts>`_
-
 -  If you have any comments, questions, or concerns then
    please email the RDHPCS Help Desk. The details are
    located below.
@@ -686,29 +669,20 @@ For more information click `here <https://oriondocs.rdhpcs.noaa.gov/wiki/index.p
 -  `RDHPCS Maintenance/Events Calendar (NOAA users) <https://calendar.google.com/calendar/b/1?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
 
 .. rubric:: 12/14/2021
-
 Dear NOAA Orion Users,
-
 Please see this month's update on Mississippi State
 University's (MSU) Orion system.
 
 **System Issues:**
--  There is an ongoing issue with the "/work2" file system
-   significantly underreporting disk usage. The root cause
+-  There is an ongoing issue with the "/work2" file system significantly underreporting disk usage. The root cause
    has yet to be determined by the file system vendor.
--  During the last downtime there was extensive testing
-   performed on the Infiniband fabric. As a result of this
-   testing, a handful of nodes have been identified as
-   having network bandwidth issues. This may have caused
-   intermittent job performance problems. The nodes have
-   been pulled from production for repair and revalidation.
--  The Orion Systems Activity page needs to be relocated to
-   a new web server. We hope to have this service back up
-   and available in January.
+-  During the last downtime there was extensive testing performed on the Infiniband fabric. As a result of this
+   testing, a handful of nodes have been identified as having network bandwidth issues. This may have caused
+   intermittent job performance problems. The nodes have been pulled from production for repair and revalidation.
+-  The Orion Systems Activity page needs to be relocated to a new web server. We hope to have this service back up and available in January.
 
 **New Features:**
 -  SLURM Batch System Changes
-
 As with NOAA's R&D HPC systems, the limits for Orion's
 special QOSs are as follow:
 
@@ -864,25 +838,15 @@ validation.
 Niagara maintenance is scheduled for Tuesday, 11/02/21 from
 0800 to 1800 ET.
 **General Information:**
--  Orion Help: Email "rdhpcs.orion.help@noaa.gov". Please
-   use your "@noaa.gov" email if you have a NOAA account.
--  MSU’s Orion Documentation (all users):
-   https://intranet.hpc.msstate.edu/helpdesk/resource-docs/
-
--  NOAA's Orion Docs (supplemental for NOAA users):
-   https://oriondocs.rdhpcs.noaa.gov
-
--  NOAA's Niagara Docs (NOAA users):
-   https://niagaradocs.rdhpcs.noaa.gov
-
--  RDHPCS Maintenance/Events Calendar (NOAA users):
-   https://calendar.google.com/calendar/b/1?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+-  Orion Help: Email "rdhpcs.orion.help@noaa.gov". Please use your "@noaa.gov" email if you have a NOAA account.
+-  `MSU’s Orion Documentation (all users) <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/>`_
+-  `NOAA's Orion Docs (supplemental for NOAA users) <https://oriondocs.rdhpcs.noaa.gov>`_
+-  `NOAA's Niagara Docs (NOAA users) <https://niagaradocs.rdhpcs.noaa.gov>`_
+-  `RDHPCS Maintenance/Events Calendar (NOAA users) <https://calendar.google.com/calendar/b/1?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
 
 Thank You, RDHPCS Management
 
-.. rubric:: 10/04/2021[\ `edit </index.php?title=User_notifications&action=edit&section=6>`__\ ]
-   :name: edit-5
-
+.. rubric:: 10/04/2021
 On Wednesday, October 6, beginning at 1:00pm CDT, changes to
 orion's slurm configuration will be made. These changes will
 be completed live and a short window of service interruption
@@ -904,14 +868,10 @@ have their priority/fairshare adjusted after the
 reconfiguration.
 
 For any associated problems, submit a help desk ticket.
-
 HPC2 users email: help@hpc.msstate.edu
-
 NOAA users email: rdhpcs.orion.help@noaa.gov
 
-.. rubric:: 09/30/2021[\ `edit </index.php?title=User_notifications&action=edit&section=7>`__\ ]
-   :name: edit-6
-
+.. rubric:: 09/30/2021
 Dear NOAA Orion Users,
 
 As with NOAA's R&D HPC systems, we plan to start providing
@@ -922,14 +882,11 @@ features, reminders, upcoming downtimes, and general
 information.
 
 **System Issues:**
-
 -  There have been some intermittent reports of the "/work"
    file system being unresponsive on the Login nodes. The
    Orion support staff if actively working with the file
    system vendor to investigate this issue.
-
 **New Features:**
-
 -  The new “/work2” file system on Orion is now available to
    all NOAA projects and users.
 
@@ -947,47 +904,36 @@ experience equal or slightly improved performance when using
 “/work2”. Due to a new caching feature, you may also see
 small file read performance improve with /work2.Instructions
 on how to see your project allocation, quota, and usage
-information is detailed here:
-https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Getting_Info_about_your_Projects-Orion
+information is detailed `here <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Getting_Info_about_your_Projects-Orion>`_
 
 -  Role accounts (shared user) are now available for use on
    Orion.
 
-For more information please see:
-https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Role_Accounts
+For more information please click `here <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Role_Accounts>`_`
 
 **Reminders:**
-
 -  There is no direct access to the HPSS system from Orion.
    The Niagara system is available for all RDHPCS users to
    use as an intermediary storage location for moving data
    to and from HPSS.
-
 -  CRON services are only available on Login node
    “orion-login-1”. Please use this Login node when creating
    and editing your crontab.
-
 -  If you have any comments, questions, or concerns then
    please email the RDHPCS Help Desk. The details are
    located below.
-
 **Upcoming Downtimes:**
 
 -  RDHPCS Niagara Maintenance
-
 Niagara maintenance is scheduled for Tuesday, 10/05/21 from
 0800 to 1800 ET.
-
 -  MSU Orion Maintenance
 
-The exact day and time for Orion’s October maintenance is
+The xact day and time for Orion’s October maintenance is
 still TBD. However it is expected to be later in the month
 and could require a 2 day downtime, due to extensive
 firmware upgrades.
-
-
 **General Information:**
-
 -  Orion Help: Email "rdhpcs.orion.help@noaa.gov". Please
    use your "@noaa.gov" email if you have a NOAA account.
 -  `MSU’s Orion Documentation (all users) <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/>`_
@@ -999,15 +945,12 @@ firmware upgrades.
    :name: edit-7
 
 Dear NOAA Orion Users,
-
 As with NOAA's R&D HPC systems, we plan to provide you with
 regular updates on Mississippi State University's Orion
 system. These updates will be directed towards providing you
 with information on general issues, new features, reminders,
 upcoming downtimes, and general information.
-
 **General Issues:**
-
 -  Earlier this month the "/work" file system became
    dangerously full and almost hit it's capacity limit. The
    issue was due to a Lustre quota configuration issue. The
@@ -1015,16 +958,12 @@ upcoming downtimes, and general information.
    an issue in the future. However some of you may have
    noticed a significant jump in your project's disk usage.
    This was a direct result of the quota fix being applied.
-
 **New Features:**
 
 -  Role accounts (shared user) are now available for use on
-   Orion. For more information please see:
-
-https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Role_Accounts
+   Orion. For more information click `here <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Role_Accounts>`_
 
 **Reminders:**
-
 -  There is no direct access to the HPSS system from Orion.
    The Niagara system is available for all RDHPCS users to
    use as an intermediary storage location for moving data
@@ -1035,7 +974,6 @@ https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Role_Accounts
    located below.
 
 **Upcoming Downtimes:**
-
 -  RDHPCS Niagara Maintenance
 
 Niagara maintenance is scheduled for Wednesday, 09/01/21
@@ -1045,9 +983,7 @@ from 0800 to 1800 ET.
 
 Orion maintenance is scheduled for Tuesday, 09/28/21 from
 0800 to 1700 CT.
-
 **General Information:**
-
 -  Orion Help: Email "rdhpcs.orion.help@noaa.gov". Please
    use your "@noaa.gov" email if you have a NOAA account.
 -  `MSU’s Orion Documentation (all users) <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/>`_
@@ -1059,8 +995,6 @@ Orion maintenance is scheduled for Tuesday, 09/28/21 from
 FAQs
 ============
 .. rubric:: What are the differences between Orion and  Hercules?
-*Last Updated: 05/31/23*
-
 Although the "/work" and "/work2" file systems are mounted
 on both Orion and Hercules (via a shared InfiniBand
 interconnect), you should expect Hercules to behave like a
@@ -1104,45 +1038,35 @@ standalone HPC system.
 
 -  Hercules has its own set of Login nodes, Development
    nodes, Compute nodes, Data Transfer nodes, Etc...
-
 -  Hercules has its own Home File System (HFS) and its own
    "/apps/contrib" directory. As with Orion, only the HFS is
    the ONLY file system which is backed up.
-
 -  Hercules has a completely separate CRON service.
    Workflows need to be managed independently on the two
    systems. Please use "<system name>-login-1" for editing
    your crontab file.
-
 -  The Batch system is completely separate between the two
    systems. A project's Fairshare on one system will not
    impact the project's Fairshare on the other system. Users
    cannot check the status or submit jobs between the two
    systems. There is no Federated configuration in place.
-
 -  Although core-hour("Fairshare") allocation will be
    managed independently, a project's disk allocation will
    be shared between the two systems. Users can follow the
    exact same directory path on each system to access their
    data.
-
 -  Core-hour usage reporting will be reported separately for
    each system
-
 -  You do not have to do anything different in regards to
    MSU's Account Management systems. All users have accounts
    on both systems. This is the same for Role accounts.
-
 -  Each NOAA project/group has the exact same user
    membership on both systems.
-
 -  Users have to login (via ssh or putty) to Hercules and
    Orion separately.
-
 -  The "screen" command has been replaced with "tmux"
 
 .. rubric:: Will Orion's software stack be upgraded to match Hercules?
-
 Although this is an ongoing discussion between NOAA and MSU,
 a decision has not yet been made. There are a lot of
 different variables which need to be considered first. The
@@ -1160,7 +1084,6 @@ software stack. If this were to happen then multiple user
 notices would be sent out over a period of multiple months.
 
 .. rubric:: Should I use the "/work" or "/work2" file system for my project?
-
 Although all NOAA projects have been provided with a disk
 allocation on both file systems, there are some
 architectural differences between the two file systems. The
@@ -1171,7 +1094,6 @@ try both file systems and then choose which one works better
 for your project.
 
 .. rubric:: Where do I find more information on how to login?
-
 Refer to `Logging
 In <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
 
@@ -1181,7 +1103,6 @@ In <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
   Information </index.php/Orion_Password_and_Security_Training_Information>`__
 
 .. rubric:: How do I use Jupyter Notebooks on Orion
-
 Typically, port forwarding is needed to launch and use
 jupyter from the command line. Orion's current security
 posture does not allow port forwarding, so the recommended
@@ -1201,16 +1122,13 @@ MSU has documentation for the Open OnDemand interface `here
 
 The OOD jupyter notebook instance is currently launched with
 the python/3.7.5 module that is available on Orion.
-
 You should be able to launch custom kernels by placing the
 kernel specs in ``$HOME/.local/share/jupyter/kernels``
 before launching jupyter notebook with OOD.
 
-.. rubric:: Why am I getting a "segmentation fault occurred"
-   error when I run my program?
+.. rubric:: Why am I getting a "segmentation fault occurred" error when I run my program?
 -  Job crashed due to small stack size (on both Orion and
    Hercules)
-
 Although this may be a bug in your code, it is more likely
 to be a stack size issue. Stack space is a segment of
 program memory that is typically used by temporary variables
@@ -1227,7 +1145,6 @@ can cause unintended consequences.
 
 -  Job crashed due to out of node memory (on both Orion and
    Hercules)
-
 The job crashed for large size and worked for small size.
 One possibility is out of node physical memory. The
 suggested solution is to use more nodes, or run less MPI
@@ -1236,7 +1153,6 @@ other jobs (#SBATCH --exclusive). job crashed due to out of
 MPI buffer size for intel compiler
 
 -  Job crashed due to MPI buffer size on Hercules only
-
 The job crashed for large size and worked for small size.
 The large size worked for a single MPI task and crashed with
 multiple MPI tasks. In intel compiler, the default
@@ -1247,7 +1163,6 @@ When too big, it will have the MPI initialization error as :
 unable to allocate shared memory.
 
 -  --ntasks-per-node option on Hercules only
-
 For the large domain, when “--ntasks-per-node” has been
 used, the model crashes. Since the hercules has much large
 memory on each node, user does not need to use this option.
@@ -1259,7 +1174,6 @@ used on other machines. Users should check and make sure.
 Following is an example when compile WRF model on Hercules.
 
 -  Netcdf
-
 The netcdf-c and netcdf-fortran have been installed in
 different directories. After loading the modules, it
 provides “NETCDF_C_ROOT” and “NETCDF_FORTRAN_ROOT”. Users
@@ -1268,12 +1182,10 @@ definition of “NETCDF” in order to compile WRF. For example,
 I create a new directory for $NETCDF:
 
 ::
-
 cp -r $NETCDF_C_ROOT/\* $NETCDF/.
 cp -r NETCDF_FORTRAN_ROOT/\* $NETCDF/.
 
 -  Parallel netcdf
-
 After loading the module, it provides
 “PARALLEL_NETCDF_ROOT”. Users need to define “PNETCDF”. For
 example: " export PNETCDF=$PARALLEL_NETCDF_ROOT ".
