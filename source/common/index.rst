@@ -7,6 +7,6 @@ Common Material
 
    commondoc.rst
    policies.rst
-   accounts.rst
+   applications.rst
 
 
