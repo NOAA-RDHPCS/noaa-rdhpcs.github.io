@@ -1,1 +1,3 @@
-This is a test file for containerizing the Common Docs pages. 
+.. _Intro:
+
+This is a file to test the index in Common Documentation
