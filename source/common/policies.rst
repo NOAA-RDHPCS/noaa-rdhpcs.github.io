@@ -1,5 +1,5 @@
 *******
-Policies and Best Practices
+Policies
 *******
 
 Login
