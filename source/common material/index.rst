@@ -7,9 +7,5 @@ Common Material
 
    common
    commondocs.rst
-   accounts.rst
-   allocations.rst
-   support.rst
-   transfers.rst
-
+   
    

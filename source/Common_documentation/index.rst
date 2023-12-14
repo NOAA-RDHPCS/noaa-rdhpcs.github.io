@@ -7,4 +7,3 @@ Common Documentation
 
    commondocs.rst
    intro.rst
-   HPSS.rst
