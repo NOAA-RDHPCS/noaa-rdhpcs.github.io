@@ -2,4 +2,4 @@
 Common Documentation
 *******
 
-Lorem Ipsum, topic one
+Common documentation covers information and procedures that pertain across RDHPCS sites and systems.
