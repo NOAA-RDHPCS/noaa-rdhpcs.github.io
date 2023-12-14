@@ -52,14 +52,6 @@ Common
 
    common/index
 
-
-Common Documentation
----------------
-.. toctree::
-   :maxdepth: 2
-
-   Common Documentation/index
-
 Systems
 -------
 .. toctree::
