@@ -7,7 +7,7 @@ Common Material
 
    
    introductory material.rst
-   common documentation.rst
+   commondoc.rst
    accounts.rst
 
 
