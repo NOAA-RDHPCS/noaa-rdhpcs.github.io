@@ -1,14 +1,11 @@
-*******
-Common Documentation
-*******
+#######
+Common Material
+#######
 
-This is an interesting puzzle.
+.. toctree::
+   :maxdepth: 2
 
-.. note::
-    And it will either be a container or one big file; we'll see
-
-
-Documentation
-=============
+   common documentation,rst
+   introductory material.rst
 
 
