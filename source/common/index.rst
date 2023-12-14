@@ -8,5 +8,6 @@ Common Material
    commondoc.rst
    policies.rst
    applications.rst
+   running_jobs.rst
 
 
