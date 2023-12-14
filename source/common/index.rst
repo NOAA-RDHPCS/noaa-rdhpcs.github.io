@@ -6,7 +6,7 @@ Common Material
    :maxdepth: 2
 
    commondoc.rst
-   policies and best practices.rst
+   policies.rst
    accounts.rst
 
 
