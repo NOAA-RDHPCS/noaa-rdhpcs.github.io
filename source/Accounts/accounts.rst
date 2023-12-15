@@ -1,19 +1,17 @@
-=====
-Getting an RDHPCS Account
-=====
+*******
+RDHPCS Accounts
+******
 
-=======
 New Device - Software tokens
 =======
 et et Etc
 
-======
+
 Accessing RDHPCS Systems
 ==========
-.. _first_time_rsa_token_login:
 
 First Time RSA token Login
-==========================
+-------
 
 **NOTE**: If you are using a PC, please install
 `PuTTY <https://www.putty.org/>`__ prior to logging in for the first
@@ -34,7 +32,7 @@ instructions about how to set your token pin.
 .. _bastion_login_timeouts:
 
 Bastion Login Timeouts
-======================
+------
 
 -  Bastion login timeouts are applicable to both bastion types (CAC and
    RSA.)
