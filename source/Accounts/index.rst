@@ -31,8 +31,6 @@ email to rdhpcs.aim.help@noaa.gov with the subject line: Enable token.
 You will be sent an email once your hardware token has been enabled with
 instructions about how to set your token pin.
 
-.. _bastion_login_timeouts:
-
 Bastion Login Timeouts
 ------
 
@@ -70,8 +68,7 @@ available to the user community:
 
 AIM Access
 ----------
-| Access to RDHPCS systems depends on your assigned project(s). To
-  request access to a project, please go to: `AIM <https://aim.rdhpcs.noaa.gov>`__
+Access to RDHPCS systems depends on your assigned project(s). To request access to a project, please go to: `AIM <https://aim.rdhpcs.noaa.gov>`__
 
 For Orion access, see `Logging Into Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
 
@@ -153,7 +150,7 @@ Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
 .. _rsa_token:
 
 RSA Token
--------
+======
 
 .. _rsa_token_login:
 
@@ -205,11 +202,10 @@ New Device - Software Tokens
 When you acquire a new device that your software token will be stored
 on, there is a three step process.
 
-#. Submit an OTRS ticket by emailing
-**rdhpcs.aim.help@noaa.gov**. In the email subject line, please type:
-**Token for New Device- First.Last**.
+#.  Submit an OTRS ticket by emailing
+**rdhpcs.aim.help@noaa.gov**. In the email subject line, please type: **Token for New Device- First.Last**.
 
-#. Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the
+#.  Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the
 "Make a request for an RSA token" link, fill out the form, and hit the
 submit button.
 
@@ -221,24 +217,23 @@ submit button.
    :width: 500px
 
 
---------
+
 Suspension, Deactivation, Reactivation
 --------
-text
 
---------
+
+
 Role Accounts
 --------
-text text
 
--------
+
+
 Request Additional Projects=
 ---------
-test test
 
----------
+
 Resetting Master Certificate Passphrase
 ---------
-Use it or lose it
+
 
 
