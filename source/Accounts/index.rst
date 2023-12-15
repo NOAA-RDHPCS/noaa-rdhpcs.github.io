@@ -25,9 +25,9 @@ First Time RSA token Login
 After you have been added to your first project, you will need to either
 initialize your RSA software token or enable your hardware token.
 
-#. **RSA software token**: Please follow the instructions contained in
+#. RSA software token: Please follow the instructions contained in
 the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
-#. **RSA hardware token**: Please submit an OTRS ticket by sending an
+#. RSA hardware token: Please submit an OTRS ticket by sending an
 email to rdhpcs.aim.help@noaa.gov with the subject line: Enable token.
 You will be sent an email once your hardware token has been enabled with
 instructions about how to set your token pin.
