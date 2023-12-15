@@ -6,7 +6,11 @@ Accounts
 
 New Device - Software tokens
 --------
-TB added
+When you acquire a new device, follow this three-step process to add an RSA software token:
+
+#. Submit an OTRS ticket by emailing rdhpcs.aim.help@noaa.gov. Use the subject line: Token for New Device- First.Last.
+#. Go to AIM, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button. When that form is received, you'll receive email that includes a URL and activation code. Open that URL from your device and submit the activation code.
+#. When the software token is working on your new phone, delete the token from your old device.
 
 
 Accessing RDHPCS Systems
@@ -14,19 +18,16 @@ Accessing RDHPCS Systems
 
 First Time RSA token Login
 -------
+.. note::
 
-**NOTE**: If you are using a PC, please install
-`PuTTY <https://www.putty.org/>`__ prior to logging in for the first
-time. Mac and Linux users will user a terminal to login.
+   If you are using a PC, please install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
 
 After you have been added to your first project, you will need to either
 initialize your RSA software token or enable your hardware token.
 
-1. **RSA software token**: Please follow the instructions contained in
-the `RSA Software Token USER
-Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
-
-2. **RSA hardware token**: Please submit an OTRS ticket by sending an
+#. **RSA software token**: Please follow the instructions contained in
+the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
+#. **RSA hardware token**: Please submit an OTRS ticket by sending an
 email to rdhpcs.aim.help@noaa.gov with the subject line: Enable token.
 You will be sent an email once your hardware token has been enabled with
 instructions about how to set your token pin.
