@@ -38,7 +38,7 @@ Getting Help
 
    help/index
 
-RDHPCS Accounts
+Accounts
 --------
 .. toctree::
    :maxdepth: 2
