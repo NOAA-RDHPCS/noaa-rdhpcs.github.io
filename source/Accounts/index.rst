@@ -1,16 +1,16 @@
 .. _Accounts:
 
-*******
+########
 Accounts
-******
+########
 
 New Device - Software tokens
-=======
+--------
 TB added
 
 
 Accessing RDHPCS Systems
-==========
+--------
 
 First Time RSA token Login
 -------
@@ -49,7 +49,7 @@ desktop, or data transfers of any kind.
 .. _accessing_rdhpcs_systems:
 
 Accessing RDHPCS Systems
-========================
+-----------------------
 
 **READ BEFORE CONTINUING:** Please log onto AIM (using ICAM credentials)
 and confirm that ALL your account information is up-to-date. If you
@@ -89,7 +89,7 @@ your certificate every time you login to the system.
 .. _common_access_card_cac:
 
 Common Access Card (CAC)
-========================
+------------------------
 
 .. _cac_login:
 
@@ -135,7 +135,8 @@ When you enter the site, the “Updated CAC detected. Information Updated”
 message appears at the top of your screen if your CAC needs to be
 updated.
 
-**NOTE:** If your CAC does not need to be updated, you will not receive
+.. note::
+If your CAC does not need to be updated, you will not receive
 this message. It might be worth noting, if your current CAC was updated
 within AIM or if users do not have a CAC they will not experience this
 event.
@@ -159,7 +160,7 @@ Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
 .. _rsa_token:
 
 RSA Token
-=========
+-------
 
 .. _rsa_token_login:
 
@@ -206,7 +207,7 @@ Your current RSA token will be used for all other RDHPCS authentications
 .. _new_device___software_tokens:
 
 New Device - Software Tokens
-============================
+--------------------------------
 
 When you acquire a new device that your software token will be stored
 on, there is a three step process.
@@ -227,24 +228,24 @@ submit button.
    :width: 500px
 
 
-==========
+--------
 Suspension, Deactivation, Reactivation
-==========
+--------
 text
 
-============
+--------
 Role Accounts
-============
+--------
 text text
 
-==========
+-------
 Request Additional Projects=
-===========
+---------
 test test
 
-===========
+---------
 Resetting Master Certificate Passphrase
-===========
+---------
 Use it or lose it
 
 
