@@ -76,8 +76,8 @@ AIM Access
   request access to a project, please go to:
   `AIM <https://aim.rdhpcs.noaa.gov>`__
 
-| === Logging into Orion === For Orion access, please see here: `Logging
-  Into
+Logging into Orion 
+For Orion access, see here: `Logging Into
   Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
 
 Two options exist for authenticating to RDHPCS (Internal Systems),
@@ -137,10 +137,8 @@ message appears at the top of your screen if your CAC needs to be
 updated.
 
 .. note::
-If your CAC does not need to be updated, you will not receive
-this message. It might be worth noting, if your current CAC was updated
-within AIM or if users do not have a CAC they will not experience this
-event.
+
+   If your CAC does not need to be updated, you will not receive this message. It might be worth noting, if your current CAC was updated within AIM or if users do not have a CAC they will not experience this event.
 
 If you experience any issues or have questions, please contact:
 rdhpcs.aim.help@noaa.gov
@@ -213,15 +211,15 @@ New Device - Software Tokens
 When you acquire a new device that your software token will be stored
 on, there is a three step process.
 
-**Step 1:** Submit an OTRS ticket by emailing
+#. Submit an OTRS ticket by emailing
 **rdhpcs.aim.help@noaa.gov**. In the email subject line, please type:
 **Token for New Device- First.Last**.
 
-**Step 2:** Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the
+#. Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the
 "Make a request for an RSA token" link, fill out the form, and hit the
 submit button.
 
-**Step 3:** Delete the token from your old device.
+#.  Delete the token from your old device.
 
 .. |aim_single_sign_on.png| image:: aim_single_sign_on.png
    :width: 500px
