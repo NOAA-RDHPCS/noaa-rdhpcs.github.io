@@ -22,12 +22,11 @@ First Time RSA token Login
 
    If you are using a PC, please install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
 
-After you have been added to your first project, you will need to either
-initialize your RSA software token or enable your hardware token.
+After you have been added to your first project, you will need to either 
 
-#. RSA software token: Please follow the instructions contained in
+**RSA software token:** Please follow the instructions contained in
 the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
-#. RSA hardware token: Please submit an OTRS ticket by sending an
+**RSA hardware token:** Please submit an OTRS ticket by sending an
 email to rdhpcs.aim.help@noaa.gov with the subject line: Enable token.
 You will be sent an email once your hardware token has been enabled with
 instructions about how to set your token pin.
@@ -71,14 +70,10 @@ available to the user community:
 
 AIM Access
 ----------
-
 | Access to RDHPCS systems depends on your assigned project(s). To
-  request access to a project, please go to:
-  `AIM <https://aim.rdhpcs.noaa.gov>`__
+  request access to a project, please go to: `AIM <https://aim.rdhpcs.noaa.gov>`__
 
-Logging into Orion 
-For Orion access, see here: `Logging Into
-  Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
+For Orion access, see `Logging Into Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
 
 Two options exist for authenticating to RDHPCS (Internal Systems),
 CAC/PIV and RSA Token. Additionally, X.509 certificates are used within
@@ -99,8 +94,7 @@ CAC Login
 
 | RDHPCS users with a CAC who are logging in from Windows, Mac, or Linux
   workstation/laptop are required to use CAC login.
-| Please see CAC instructions here: `CAC
-  Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
+| Please see CAC instructions here: `CAC Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
 
 .. _updating_or_renewing_cac_information_in_aim:
 
