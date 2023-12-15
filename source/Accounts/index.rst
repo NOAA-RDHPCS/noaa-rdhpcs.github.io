@@ -1,7 +1,7 @@
 .. _Accounts:
 
 *******
-RDHPCS Accounts
+Accounts
 ******
 
 New Device - Software tokens

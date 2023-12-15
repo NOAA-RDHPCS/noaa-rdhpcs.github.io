@@ -43,6 +43,8 @@ Accounts
 .. toctree::
    :maxdepth: 2
 
+   Accounts/index
+
 Logging In
 -----------
 .. toctree::
