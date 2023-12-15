@@ -201,17 +201,10 @@ New Device - Software Tokens
 
 When you acquire a new device that your software token will be stored on, there is a three step process.
 
-#. Submit an OTRS ticket. Email **rdhpcs.aim.help@noaa.gov**, with the subject line: **Token for New Device- First.Last**.
-#. Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the "Make a request for an RSA token" link, fill out the form, and hit the
+- Submit an OTRS ticket by emailing **rdhpcs.aim.help@noaa.gov**. In the email subject line, please type: **Token for New Device- First.Last**.
+- Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the "Make a request for an RSA token" link, fill out the form, and hit the
 submit button.
-#. Delete the token from your old device.
-
-1. Submit an OTRS ticket by emailing **rdhpcs.aim.help@noaa.gov**. In the email subject line, please type: **Token for New Device- First.Last**.
-
-2. Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the "Make a request for an RSA token" link, fill out the form, and hit the
-submit button.
-
-3. Delete the token from your old device.
+- Delete the token from your old device.
 
 .. |aim_single_sign_on.png| image:: aim_single_sign_on.png
    :width: 500px
