@@ -107,7 +107,6 @@ system with the issue.
 .. _good_hd_description:
 
 **Provide Detailed Description of the Problem**
-
 Include what you did, what didn't work, and why you believe there is a
 problem.  Specifically, tell us what commands you ran, and what error messages
 you received. If this information is short, you can cut and paste it into the
@@ -131,7 +130,6 @@ we can look at it.
 
 
 **Provide Job Information**
-
 Include as much information about the job as possible.  This includes the jobs'
 ID, date and time the jobs ran, location of source code, standard out file,  and
 submitted script.
@@ -177,8 +175,9 @@ can do this by simply replying to the last email sent to you by the help system
 PPAN tickets use the `GFDL customer portal
 <https://helpdesk.gfdl.noaa.gov/otrs/customer.pl>`_.
 
+*******************
 Required Information for Specific Types of Help
-=============
+*******************
 
 The information required for a technician to quickly investigate and resolve an
 issue differ based on the issue.  Adhering to the following guidelines will
@@ -266,8 +265,7 @@ need at the following information:
 A copy-and-paste of your screen session (copy the text on the screen and not a
 picture) is preferred.
 
-Providing a Reproducer
-----------------
+**Providing a Reproducer**
 
 There are times when the only way to troubleshoot a problem is to actually for
 us to be able to duplicate the problem by running as ourselves.  In those
@@ -281,9 +279,7 @@ below are combining both instances, first about building the code, and second
 about running a test case.
 
 Below are general things we will be looking for:
-
-Building Source
----------------
+**Building Source**
 
 * Which directory to copy
 * Which modules need to be loaded
@@ -291,8 +287,7 @@ Building Source
 * What is the command to start the build process
 * Where will the resulting executable be
 
-Running a Testcase
-------------------
+**Running a Testcase**
 
 * What all directories have to be copied
 * Which directory should we be in to run the test case
@@ -309,7 +304,9 @@ One general thing to keep in mind is if you're able to provide us with detailed
 instructions on how we can see the problem ourselves that will help us in
 troubleshooting the problem and helping you.
 
-**Reporting Data Transfer Issues**
+*****************
+Reporting Data Transfer Issues
+**************
 
 When you are having problems related to data transfer issues we will need the
 following information to assist you:
@@ -322,8 +319,9 @@ following information to assist you:
   the problem.
   * If the command does not include the source and destination directories please include that information too.
 
+************
 Managing Help Tickets
-======================
+************
 
 Help Tickets can be managed in two ways:
 
@@ -348,9 +346,7 @@ Help Tickets can be managed in two ways:
 
 
 Help Ticket System User Portal
-==============================
-
-
+======
 
 Login
 -----
@@ -434,20 +430,14 @@ routing your tickets to the appropriate resource.
 
 .. note:: Ignore the Service and SLA text boxes when creating a new ticket.
 
-Enter a Ticket Type
-===================
+**Enter a Ticket Type**
+Assign the appropriate type to the ticket based on your issue.
 
-Please assign the appropriate type to the ticket based on your issue.
-
-Enter a Subject
-===============
-
-Enter a subject that gives a clear and concise summary of the issue following
+**Enter a Subject**
+Use a subject that gives a clear and concise summary of the issue following
 the :ref:`guidelines <good_hd_subject>`.
 
-Enter Detailed Issue Description
-================================
-
+**Enter Detailed Issue Description**
 Enter a detailed description of the issue following the :ref:`guidelines
 <good_hd_description>`.
 
