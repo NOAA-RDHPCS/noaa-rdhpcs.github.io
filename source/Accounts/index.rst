@@ -214,7 +214,28 @@ When you acquire a new device that your software token will be stored on, there 
 
 Suspension, Deactivation, Reactivation
 --------
+A user account is suspended when it has been inactive for over 90 days. The user will be notified when the account has been suspended. 
+To re-activate your account, submit an OTRS ticket. Send an email to rdhpcs.aim.help@noaa.gov with the subject Reactivate User.Name. You will be notified when your account has been reactivated. A returning user maintains access to all projects.
 
+**Reactivate within seven days**
+If you reactivate your account within seven days, your token is re-enabled at the same time. Once your account and token are re-enabled, you may log into your respective resource and project.
+
+**Reactivate after seven days**
+If your account has been suspended for more than seven days and you had a software token, you must apply for a new token. Visiting AIM (Account Information Management) and select Make a Request for an RSA Token. Complete the form and Submit.
+
+Once your account has been reactivated and your token has been re-enabled, you will be required to set a new PIN only if you have a software token. Then you will be able to lot into your respective resource and project.
+
+**Deactivated Accounts**
+If your account remains suspended for more than 180 days, the account is deactivated. If your account is deactivated, you will be handled as a new user. 
+
+Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_ to apply for the rdhpcs project. Click on the "Request new access to a project" link. When you are fully approved for the rdhpcs project, you will be emailed further instructions. 
+
+.. Note::
+   Deactivation will reset your default shell to /bin/bash.  If you wish it to be anything else, log into AIM at the link below, click on the "View your information in the system, update the Sponsoring Organization" link. Scroll down to the section that displays your "Default shell" and change it, then scroll down to the bottom of the page and hit the "Submit changes" button.
+
+For best use of resources and availability, the preferred approach is to install the SecurID app on a smart phone for token generation. Hardware tokens are available on request.
+
+See `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Software_Token New User Software Token>`_ and `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Hardware_Token New User Hardware Token>`_ for details.
 
 
 Role Accounts
