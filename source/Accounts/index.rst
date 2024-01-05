@@ -272,21 +272,21 @@ Your RSA passcode is your PIN+Token code.
 **X Applications With Role Accounts**
 If you are planning to use X utilities with role accounts, you should use the xsudo utility to switch to the role account instead of using the "sudo" command directly. You need to explicitly set the DISPLAY environment variable after doing the xsudo to the role account. So for example, if you want to use role.rap-chem role account and would like the ability to use X applications:
 
-#. Note the DISPLAY environment variable in your current session before doing the xsudo to the role account:
+1. Note the DISPLAY environment variable in your current session before doing the xsudo to the role account:
 
 .. code-block:: shell
 
 
    echo $DISPLAY
 
-#. Use the xsudo command to switch to the role account:
+2. Use the xsudo command to switch to the role account:
 
 .. code-block:: shell
 
 
    xsudo role.rap-chem
 
-#. Set the DISPLAY environment variable to the value you obtained above just before doing xsudo; (please note that the next command you use depends on your shell):
+3. Set the DISPLAY environment variable to the value you obtained above just before doing xsudo; (please note that the next command you use depends on your shell):
 
 .. code-block:: shell
 
@@ -296,8 +296,42 @@ If you are planning to use X utilities with role accounts, you should use the xs
 
 This will enable your X applications. 
 
+**Using CRON with Role Accounts**
+Since Role accounts are  shared by multiple users in a project, the project members need a way to know which member is responsible for which section of the cron entries. The person responsible for the section of a cron entry of a role account should use the following guidelines:
+
+At the beginning of the section:
+
+- Add a comment about the who is adding these cron entries
+- Add a comment about when this entry was added
+- Add a comment about an end date if applicable
+- Add other comments as needed to document the purpose
+- Add a "MAILTO=First.Last@noaa.gov" at the beginning of the section
+- Add a "MAILTO=" at the end of the section so that whoever is responsible for the next section sets their own MAILTO filed.
+
+.. note::
+
+   Without the MAILTO directive, any errors/logs from the cron commands end up getting lost and one may never know there was a problem/failure!
+
 Request Additional Projects
 ---------
+These are instructions for current RDHPCS users on an active project who need to request access to an additional project resource on Jet, Hera, Gaea, or Niagara.
+
+#. Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_
+#. Select the link "Request new access to a project"
+#. Select the project from the dropdown list. Note that system access (Jet/Hera/Gaea/Niagara) is determined by project.
+#. Add justification for requesting project access
+#. Submit the request
+
+Approvals needed: PI, HR, ISSO
+
+After your request has been submitted, your request will be semi-auto approved from the HR and ISSO roles because you are a current user. The only approval that you'll need is from the PI of the project. Once that approval is submitted, your request will be considered fully approved and will pass through the hands of various admins who will configure your access to the project. Once that process has been completed, you will receive an email from Account Management stating that your request has been fully approved and you will be able to access the project.
+
+
+**Projects not listed?**
+
+If you have been advised to apply for a project that is not listed in AIM, please verify with your Project team that you have the correct project name. If you feel that the project name is correct, email RDHPCS.AIM.help@NOAA.gov to contact Account Management for assistance. This email will open a OTRS ticket that will be answered by an admin on the Account Management team.
+
+Please contact the Help Desk via email if you have further questions, rdhpcs.aim.help@noaa.gov
 
 
 Resetting Master Certificate Passphrase
