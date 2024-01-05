@@ -7,14 +7,13 @@ Accounts
 New Device - Software tokens
 --------
 When you acquire a new device, follow this three-step process to add an RSA software token:
-
 #. Submit an OTRS ticket by emailing rdhpcs.aim.help@noaa.gov. Use the subject line: Token for New Device- First.Last.
 #. Go to AIM, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button. When that form is received, you'll receive email that includes a URL and activation code. Open that URL from your device and submit the activation code.
 #. When the software token is working on your new phone, delete the token from your old device.
 
 
 Accessing RDHPCS Systems
---------
+=====
 
 First Time RSA token Login
 -------
@@ -22,7 +21,7 @@ First Time RSA token Login
 
    If you are using a PC, please install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
 
-After you have been added to your first project, you will need to either 
+After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
 
 **RSA software token:** Please follow the instructions contained in
 the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
@@ -57,7 +56,6 @@ information on updating the CAC, please see below.
 
 We currently have four (4) NOAA RDHPCS systems and one external system
 available to the user community:
-
 -  Gaea
 -  Hera
 -  Niagara
@@ -240,10 +238,44 @@ See `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Softwar
 
 Role Accounts
 --------
+A role account is a user account shared with one or more users as members, such that all group members share the account equally via the use of `sudo`, typically for the unified use of a project. Role accounts must have a name that reflects their project association or function.
+All changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
 
+**Accessing a Role Account**
+You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access. For example:
 
+::
+   jsmith# sudo su - roleuser
+   Access is via First.Last username only. Enter RSA PASSCODE:
+   bash-4.1$
+   bash-4.1$ whoami
+   roleuser
+   bash-4.1$
 
-Request Additional Projects=
+Your RSA passcode is your PIN+Token code.
+
+**X Applications With Role Accounts**
+If you are planning to use X utilities with role accounts, you should use the xsudo utility to switch to the role account instead of using the "sudo" command directly. You need to explicitly set the DISPLAY environment variable after doing the xsudo to the role account. So for example, if you want to use role.rap-chem role account and would like the ability to use X applications:
+
+#. Note the DISPLAY environment variable in your current session before doing the xsudo to the role account:
+
+::
+   echo $DISPLAY
+
+#. Use the xsudo command to switch to the role account:
+
+::
+   xsudo role.rap-chem
+
+#. Set the DISPLAY environment variable to the value you obtained above just before doing xsudo; (please note that the next command you use depends on your shell):
+
+::
+   export DISPLAY=localhost:14.0         # for bash like shells
+   setenv DISPLAY localhost:14.0         # for csh like shells
+
+This will enable your X applications. 
+
+Request Additional Projects
 ---------
 
 
