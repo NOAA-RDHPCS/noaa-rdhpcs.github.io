@@ -17,7 +17,9 @@ Accessing RDHPCS Systems
 
 First Time RSA token Login
 -------
-.. note::
+.. note.. code-block:: shell
+
+
 
    If you are using a PC, please install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
 
@@ -125,7 +127,9 @@ When you enter the site, the “Updated CAC detected. Information Updated”
 message appears at the top of your screen if your CAC needs to be
 updated.
 
-.. note::
+.. note.. code-block:: shell
+
+
 
    If your CAC does not need to be updated, you will not receive this message. It might be worth noting, if your current CAC was updated within AIM or if users do not have a CAC they will not experience this event.
 
@@ -136,7 +140,9 @@ After your CAC has been updated, the AIM home page will appear and in
 the upper lefthand corner, you will see the message, “Current CAC cn
 detected.”
 
-.. figure:: new_cac_login.png
+.. figure.. code-block:: shell
+   
+ new_cac_login.png
    :alt: new_cac_login.png
    :width: 500px
 
@@ -203,9 +209,13 @@ When you acquire a new device that your software token will be stored on, there 
 - Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button.
 - Delete the token from your old device.
 
-.. |aim_single_sign_on.png| image:: aim_single_sign_on.png
+.. |aim_single_sign_on.png| image.. code-block:: shell
+   
+ aim_single_sign_on.png
    :width: 500px
-.. |aim_single_sign_on_portal.png| image:: aim_single_sign_on_portal.png
+.. |aim_single_sign_on_portal.png| image.. code-block:: shell
+   
+ aim_single_sign_on_portal.png
    :width: 500px
 
 
@@ -228,7 +238,9 @@ If your account remains suspended for more than 180 days, the account is deactiv
 
 Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_ to apply for the rdhpcs project. Click on the "Request new access to a project" link. When you are fully approved for the rdhpcs project, you will be emailed further instructions. 
 
-.. Note::
+.. Note.. code-block:: shell
+
+
    Deactivation will reset your default shell to /bin/bash.  If you wish it to be anything else, log into AIM at the link below, click on the "View your information in the system, update the Sponsoring Organization" link. Scroll down to the section that displays your "Default shell" and change it, then scroll down to the bottom of the page and hit the "Submit changes" button.
 
 For best use of resources and availability, the preferred approach is to install the SecurID app on a smart phone for token generation. Hardware tokens are available on request.
@@ -244,7 +256,10 @@ All changes to a role account must be submitted by the role account Principal In
 **Accessing a Role Account**
 You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access. For example:
 
-::
+.. code-block.. code-block:: shell
+   
+ .. code-block:: shell
+
    jsmith# sudo su - roleuser
    Access is via First.Last username only. Enter RSA PASSCODE:
    bash-4.1$
@@ -259,17 +274,23 @@ If you are planning to use X utilities with role accounts, you should use the xs
 
 #. Note the DISPLAY environment variable in your current session before doing the xsudo to the role account:
 
-::
+.. code-block:: shell
+
+
    echo $DISPLAY
 
 #. Use the xsudo command to switch to the role account:
 
-::
+.. code-block:: shell
+
+
    xsudo role.rap-chem
 
 #. Set the DISPLAY environment variable to the value you obtained above just before doing xsudo; (please note that the next command you use depends on your shell):
 
-::
+.. code-block:: shell
+
+
    export DISPLAY=localhost:14.0         # for bash like shells
    setenv DISPLAY localhost:14.0         # for csh like shells
 
