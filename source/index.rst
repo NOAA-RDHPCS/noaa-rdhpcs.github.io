@@ -29,7 +29,7 @@ Maintenance Calendar
 .. toctree::
    :maxdepth: 2
 
-   help/Maintenance   
+   help/Maintenance
 
 Getting Help
 ------------
@@ -48,7 +48,7 @@ Accounts
 Logging In
 -----------
 .. toctree::
-   :maxdepth: 2 
+   :maxdepth: 2
 
    Logging in/index
 
@@ -65,6 +65,12 @@ Systems
    :maxdepth: 2
 
    systems/index
+
+.. toctree::
+   :hidden:
+
+   systems/gaea/index
+   systems/pan/index
 
 Data
 ----
