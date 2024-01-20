@@ -106,7 +106,7 @@ sites.
 .. _gfdl_workstations:
 
 GFDL Workstations
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 **Note:** You cannot transfer files from a GFDL workstation to any
 remote site. You must use GFDL's PAN cluster to push or pull files to a
@@ -121,7 +121,7 @@ Filesystems that GCP supports remotely from other sites:
 - /home - /ptmp - /work - /archive
 
 Gaea
-~~~~
+^^^^
 
 The Gaea site contains multiple node types. The nodes that are used for
 interactive work are called the eslogin nodes. Different filesystems are
@@ -161,7 +161,7 @@ Helpful Hints
 .. _creating_directories:
 
 Creating Directories
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 GCP provides an option for automatically creating new directories (-cd).
 

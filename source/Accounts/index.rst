@@ -4,36 +4,48 @@
 Accounts
 ########
 
-New Device - Software tokens
---------
-When you acquire a new device, follow this three-step process to add an RSA software token:
-#. Submit an OTRS ticket by emailing rdhpcs.aim.help@noaa.gov. Use the subject line: Token for New Device- First.Last.
-#. Go to AIM, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button. When that form is received, you'll receive email that includes a URL and activation code. Open that URL from your device and submit the activation code.
-#. When the software token is working on your new phone, delete the token from your old device.
+.. note:: **New Device - Software tokens**
+
+
+   When you acquire a new device, follow this three-step process to add an RSA
+   software token:
+
+   #. Submit an OTRS ticket by emailing rdhpcs.aim.help@noaa.gov. Use the
+      subject line: Token for New Device- First.Last.
+   #. Go to `AIM <https://aim.rdhpcs.noaa.gov>`__, click on the "Make a request
+      for an RSA token" link, fill out the form, and hit the submit button. When
+      that form is received, you'll receive email that includes a URL and
+      activation code. Open that URL from your device and submit the activation
+      code.
+   #. When the software token is working on your new phone, delete the token
+      from your old device.
 
 
 Accessing RDHPCS Systems
-=====
+========================
 
 First Time RSA token Login
--------
-.. note.. code-block:: shell
+--------------------------
 
+.. note::
 
+   If you are using a PC, please install `PuTTY <https://www.putty.org/>`__
+   prior to logging in for the first time. Mac and Linux users will user a
+   terminal to login.
 
-   If you are using a PC, please install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
-
-After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
+After you have been added to your first project, you will need to either
+initialize your RSA software token or enable your hardware token.
 
 **RSA software token:** Please follow the instructions contained in
 the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
+
 **RSA hardware token:** Please submit an OTRS ticket by sending an
 email to rdhpcs.aim.help@noaa.gov with the subject line: Enable token.
 You will be sent an email once your hardware token has been enabled with
 instructions about how to set your token pin.
 
 Bastion Login Timeouts
-------
+----------------------
 
 -  Bastion login timeouts are applicable to both bastion types (CAC and
    RSA.)
@@ -48,13 +60,15 @@ desktop, or data transfers of any kind.
 .. _accessing_rdhpcs_systems:
 
 Accessing RDHPCS Systems
------------------------
+------------------------
 
-**READ BEFORE CONTINUING:** Please log onto AIM (using ICAM credentials)
-and confirm that ALL your account information is up-to-date. If you
-recently were issued a new CAC OR renewed your CAC, please check that
-the CAC information in AIM matches your current CAC. For more
-information on updating the CAC, please see below.
+.. caution::
+
+   **READ BEFORE CONTINUING:** Please log onto AIM (using ICAM credentials)
+   and confirm that ALL your account information is up-to-date. If you
+   recently were issued a new CAC OR renewed your CAC, please check that
+   the CAC information in AIM matches your current CAC. For more
+   information on updating the CAC, please see below.
 
 We currently have four (4) NOAA RDHPCS systems and one external system
 available to the user community:
@@ -68,9 +82,12 @@ available to the user community:
 
 AIM Access
 ----------
-Access to RDHPCS systems depends on your assigned project(s). To request access to a project, please go to: `AIM <https://aim.rdhpcs.noaa.gov>`__
 
-For Orion access, see `Logging Into Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
+Access to RDHPCS systems depends on your assigned project(s). To request access
+to a project, please go to: `AIM <https://aim.rdhpcs.noaa.gov>`__
+
+For Orion access, see `Logging Into Orion
+<https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
 
 Two options exist for authenticating to RDHPCS (Internal Systems),
 CAC/PIV and RSA Token. Additionally, X.509 certificates are used within
@@ -89,25 +106,24 @@ Common Access Card (CAC)
 CAC Login
 ---------
 
-| RDHPCS users with a CAC who are logging in from Windows, Mac, or Linux
-  workstation/laptop are required to use CAC login.
-| Please see CAC instructions here: `CAC Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
+RDHPCS users with a CAC who are logging in from Windows, Mac, or Linux
+workstation/laptop are required to use CAC login. Please see CAC instructions
+here: `CAC Login
+<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
 
 .. _updating_or_renewing_cac_information_in_aim:
 
 Updating or Renewing CAC Information in AIM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **NEW as of July 2018**: AIM uses the new NOAA single user sign-on -
 please proceed through the prompts and sign in with your NEMS
 credentials as before:
 
-|aim_single_sign_on.png| |aim_single_sign_on_portal.png|
-
 .. _aim___auto_update_of_cac_entry:
 
 AIM - Auto-update of CAC Entry
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 IMPACTS: ONLY RDHPCS Users with a NOAA-issued CAC.
 
@@ -117,32 +133,30 @@ Recent updates to AIM now allow automatic detection and update of
 CAC-related information to your respective AIM record. Previously,
 RDHPCS users had to manually update their CAC.
 
-RDHPCS Account Management is requesting that you log into AIM to update
-your CAC information. Please navigate to the AIM website:
-https://aim.rdhpcs.noaa.gov and authenticate via SSO using your CAC.
-Please note that you might not always be asked to authenticate with CAC
-when logging onto the AIM site.
+RDHPCS Account Management is requesting that you log into AIM to update your CAC
+information. Please navigate to the `AIM website
+<https://aim.rdhpcs.noaa.gov>`__ and authenticate via SSO using your CAC. Please
+note that you might not always be asked to authenticate with CAC when logging
+onto the AIM site.
 
 When you enter the site, the “Updated CAC detected. Information Updated”
 message appears at the top of your screen if your CAC needs to be
 updated.
 
-.. note.. code-block:: shell
+.. note::
 
-
-
-   If your CAC does not need to be updated, you will not receive this message. It might be worth noting, if your current CAC was updated within AIM or if users do not have a CAC they will not experience this event.
+   If your CAC does not need to be updated, you will not receive this message.
+   It might be worth noting, if your current CAC was updated within AIM or if
+   users do not have a CAC they will not experience this event.
 
 If you experience any issues or have questions, please contact:
 rdhpcs.aim.help@noaa.gov
 
 After your CAC has been updated, the AIM home page will appear and in
-the upper lefthand corner, you will see the message, “Current CAC cn
+the upper left-hand corner, you will see the message, “Current CAC cn
 detected.”
 
-.. figure.. code-block:: shell
-   
- new_cac_login.png
+.. figure:: /images/new_cac_login.png
    :alt: new_cac_login.png
    :width: 500px
 
@@ -201,7 +215,7 @@ Your current RSA token will be used for all other RDHPCS authentications
 .. _new_device___software_tokens:
 
 New Device - Software Tokens
---------------------------------
+----------------------------
 
 When you acquire a new device that your software token will be stored on, there is a three step process.
 
@@ -209,20 +223,18 @@ When you acquire a new device that your software token will be stored on, there 
 - Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button.
 - Delete the token from your old device.
 
-.. |aim_single_sign_on.png| image.. code-block:: shell
-   
- aim_single_sign_on.png
+.. image:: /images/aim_single_sign_on.png
    :width: 500px
-.. |aim_single_sign_on_portal.png| image.. code-block:: shell
-   
- aim_single_sign_on_portal.png
+
+.. image:: /images/aim_single_sign_on_portal.png
    :width: 500px
 
 
 
 Suspension, Deactivation, Reactivation
---------
-A user account is suspended when it has been inactive for over 90 days. The user will be notified when the account has been suspended. 
+--------------------------------------
+
+A user account is suspended when it has been inactive for over 90 days. The user will be notified when the account has been suspended.
 To re-activate your account, submit an OTRS ticket. Send an email to rdhpcs.aim.help@noaa.gov with the subject Reactivate User.Name. You will be notified when your account has been reactivated. A returning user maintains access to all projects.
 
 **Reactivate within seven days**
@@ -234,9 +246,9 @@ If your account has been suspended for more than seven days and you had a softwa
 Once your account has been reactivated and your token has been re-enabled, you will be required to set a new PIN only if you have a software token. Then you will be able to lot into your respective resource and project.
 
 **Deactivated Accounts**
-If your account remains suspended for more than 180 days, the account is deactivated. If your account is deactivated, you will be handled as a new user. 
+If your account remains suspended for more than 180 days, the account is deactivated. If your account is deactivated, you will be handled as a new user.
 
-Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_ to apply for the rdhpcs project. Click on the "Request new access to a project" link. When you are fully approved for the rdhpcs project, you will be emailed further instructions. 
+Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_ to apply for the rdhpcs project. Click on the "Request new access to a project" link. When you are fully approved for the rdhpcs project, you will be emailed further instructions.
 
 .. Note.. code-block:: shell
 
@@ -249,7 +261,8 @@ See `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Softwar
 
 
 Role Accounts
---------
+-------------
+
 A role account is a user account shared with one or more users as members, such that all group members share the account equally via the use of `sudo`, typically for the unified use of a project. Role accounts must have a name that reflects their project association or function.
 All changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
 
@@ -257,7 +270,7 @@ All changes to a role account must be submitted by the role account Principal In
 You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access. For example:
 
 .. code-block.. code-block:: shell
-   
+
  .. code-block:: shell
 
    jsmith# sudo su - roleuser
@@ -294,7 +307,7 @@ If you are planning to use X utilities with role accounts, you should use the xs
    export DISPLAY=localhost:14.0         # for bash like shells
    setenv DISPLAY localhost:14.0         # for csh like shells
 
-This will enable your X applications. 
+This will enable your X applications.
 
 **Using CRON with Role Accounts**
 Since Role accounts are  shared by multiple users in a project, the project members need a way to know which member is responsible for which section of the cron entries. The person responsible for the section of a cron entry of a role account should use the following guidelines:
@@ -313,7 +326,8 @@ At the beginning of the section:
    Without the MAILTO directive, any errors/logs from the cron commands end up getting lost and one may never know there was a problem/failure!
 
 Request Additional Projects
----------
+---------------------------
+
 These are instructions for current RDHPCS users on an active project who need to request access to an additional project resource on Jet, Hera, Gaea, or Niagara.
 
 #. Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_
@@ -335,7 +349,4 @@ Please contact the Help Desk via email if you have further questions, rdhpcs.aim
 
 
 Resetting Master Certificate Passphrase
----------
-
-
-
+---------------------------------------
