@@ -1,8 +1,8 @@
 .. _getting_help:
 
-*****
+############
 Getting Help
-*****
+############
 
 The preferred method for submitting help requests is via email.  Each system
 across the RDHPCS has a specific email address to use for requesting help.
@@ -38,7 +38,8 @@ this address for all of your correspondence.
 | Rocoto Workflow Manager            | `rdhpcs.rocoto.help@noaa.gov <mailto:rdhpcs.rocoto.help@noaa.gov>`_ |
 +------------------------------------+---------------------------------------------------------------------+
 
-The RDHPCS program, along with the RDHPCS integrator manage help requests for most of the RDHPCS systems:
+The RDHPCS program, along with the RDHPCS integrator manage help requests for
+most of the RDHPCS systems:
 
 - Account Management
 - Jet
@@ -74,9 +75,8 @@ GFDL manages tickets for Gaea and PPAN.
 
 .. _good_hd_requests:
 
-******************************
 Submitting a Good Help Request
-******************************
+==============================
 
 When you submit a request for help, it is important to give us as much
 information about the problem as possible. The more information you provide, the
@@ -86,16 +86,13 @@ request:
 
 .. _good_hd_subject:
 
-**Use a Good Subject**
+Use a Good Subject
+------------------
 
 Enter a subject that gives a clear and concise summary of the issue, and the
 system with the issue.
 
 .. tab-set::
-
-    .. tab-item:: Bad Subject Example
-
-        Hera slow
 
     .. tab-item:: Good Subject Examples
 
@@ -104,9 +101,15 @@ system with the issue.
         - Downloading data to Jet front-end nodes (fe1) using curl
           hangs/timesout
 
+    .. tab-item:: Bad Subject Example
+
+        Hera slow
+
 .. _good_hd_description:
 
-**Provide Detailed Description of the Problem**
+Provide Detailed Description of the Problem
+-------------------------------------------
+
 Include what you did, what didn't work, and why you believe there is a
 problem.  Specifically, tell us what commands you ran, and what error messages
 you received. If this information is short, you can cut and paste it into the
@@ -114,10 +117,6 @@ email. If not, please give us paths to files containing this information so that
 we can look at it.
 
 .. tab-set::
-
-    .. tab-item:: Bad Description Example
-
-        I can't log in to Hera
 
     .. tab-item:: Good Description Example
 
@@ -128,17 +127,19 @@ we can look at it.
         $ ssh -l john.smith bastion-hera.boulder.rdhpcs.noaa.gov
         ssh: connect to host bastion-hera.boulder.rdhpcs.noaa.gov port 22: Connection timed out
 
+    .. tab-item:: Bad Description Example
 
-**Provide Job Information**
+        I can't log in to Hera
+
+
+Provide Job Information
+-----------------------
+
 Include as much information about the job as possible.  This includes the jobs'
 ID, date and time the jobs ran, location of source code, standard out file,  and
 submitted script.
 
 .. tab-set::
-
-    .. tab-item:: Bad Example
-
-        Job 123456789 Failed
 
     .. tab-item:: Good Example
 
@@ -149,7 +150,12 @@ submitted script.
           /path/to/output/job.log indicates a "bus error".  Source is located in
           /path/to/source.
 
-**Describe How to Reproduce the Problem**
+    .. tab-item:: Bad Example
+
+        Job 123456789 Failed
+
+Describe How to Reproduce the Problem
+-------------------------------------
 
 Remember, the technician is likely not an expert on the model, workflow, or
 application you are using.  Including step-by-step instructions on how to
@@ -157,14 +163,16 @@ reproduce the problem will help identify the issue and resolve the problem.
 
 Also include how to identify the issue.
 
-**Only Report One Problem Per Help Ticket**
+Only Report One Problem Per Help Ticket
+---------------------------------------
 
 Please submit one ticket per issue.  Combining multiple issues in one ticket may
 confuse the technician, and will likely lead to a delay in getting all issues
 resolved.  Likewise, searching for previous solutions for similar issues reported
 in the ticket system is difficult.
 
-**Follow up With Additional Information or Questions**
+Follow up With Additional Information or Questions
+--------------------------------------------------
 
 Often problems don't happen just once and may not occur in a repeatable fashion.
 If you have additional information that is potentially useful for your issue,
@@ -175,15 +183,15 @@ can do this by simply replying to the last email sent to you by the help system
 PPAN tickets use the `GFDL customer portal
 <https://helpdesk.gfdl.noaa.gov/otrs/customer.pl>`_.
 
-*******************
 Required Information for Specific Types of Help
-*******************
+===============================================
 
 The information required for a technician to quickly investigate and resolve an
 issue differ based on the issue.  Adhering to the following guidelines will
 generally be helpful in getting assistance in a timely fashion.
 
-**Basic Ticket Information**
+Basic Ticket Information
+------------------------
 
 Please include a brief description in the subject line.  Doing so will help us in
 directing ticket to the best resource possible.  In the body of the message
@@ -200,9 +208,10 @@ is about a job that is failing, it is very helpful to provide the following:
 
 Ideally, it will be very helpful if you can describe the procedure for
 replicating the problem, including the location of the source files, the data
-files, the makefiles, etc.
+files, the Makefiles, etc.
 
-**File System Problems**
+File System Problems
+--------------------
 
 For help with file system problems, please provide the following information:
 
@@ -211,7 +220,8 @@ For help with file system problems, please provide the following information:
 * The directory you are trying to list or access files from.
 * The actual command that seems to be causing the problem.
 
-**Compilation Problems**
+Compilation Problems
+--------------------
 
 If you are having problems at compile time, generally including the following
 will be helpful:
@@ -227,16 +237,17 @@ will be helpful:
 
   .. code-block:: shell
 
-    make FC=ifort
+      make FC=ifort
 
   You can do:
 
   .. code-block:: shell
 
-    make FC=ifort |& tee make.log
+      make FC=ifort |& tee make.log
 
 
-**Job Submission Problems**
+Job Submission Problems
+-----------------------
 
 If you are receiving an error message when you submit your job, we will need the
 following information:
@@ -249,7 +260,8 @@ following information:
 A copy-and-paste of your screen session (copy the text on the screen and not a
 picture) is preferred.
 
-**Job Completion Problems**
+Job Completion Problems
+-----------------------
 
 If you have successfully submitted a job and have questions about it, we will
 need at the following information:
@@ -260,12 +272,14 @@ need at the following information:
 * What was the command you used to submit the job
 * What was response to the command above
 * The location of the job stdout/stderr files
-* The location of the program output files (which is sometimes different from above)
+* The location of the program output files (which is sometimes different from
+  above)
 
 A copy-and-paste of your screen session (copy the text on the screen and not a
 picture) is preferred.
 
-**Providing a Reproducer**
+Providing a Reproducer
+----------------------
 
 There are times when the only way to troubleshoot a problem is to actually for
 us to be able to duplicate the problem by running as ourselves.  In those
@@ -279,7 +293,8 @@ below are combining both instances, first about building the code, and second
 about running a test case.
 
 Below are general things we will be looking for:
-**Building Source**
+
+.. rubric:: Building Source
 
 * Which directory to copy
 * Which modules need to be loaded
@@ -287,7 +302,7 @@ Below are general things we will be looking for:
 * What is the command to start the build process
 * Where will the resulting executable be
 
-**Running a Testcase**
+.. rubric:: Running a Test Case
 
 * What all directories have to be copied
 * Which directory should we be in to run the test case
@@ -295,18 +310,21 @@ Below are general things we will be looking for:
 * What modules need to be loaded
 * Any environment variables need set
 * What is the command to submit the job
-  * Pointers to some of the things that may need to be changed
-  * For example input file may be hardwired with full path and that would have to be modified to run from our environment.
-  * Some of the scripts may have hardwired paths
-* Location of the output files and where we should expect to find the error message
+
+    * Pointers to some of the things that may need to be changed
+    * For example input file may be hardwired with full path and that would have
+      to be modified to run from our environment.
+    * Some of the scripts may have hardwired paths
+
+* Location of the output files and where we should expect to find the error
+  message
 
 One general thing to keep in mind is if you're able to provide us with detailed
 instructions on how we can see the problem ourselves that will help us in
 troubleshooting the problem and helping you.
 
-*****************
 Reporting Data Transfer Issues
-**************
+------------------------------
 
 When you are having problems related to data transfer issues we will need the
 following information to assist you:
@@ -317,11 +335,12 @@ following information to assist you:
 * What is your working directory?
 * Please include the command and the response from the system that illustrates
   the problem.
-  * If the command does not include the source and destination directories please include that information too.
 
-************
+    * If the command does not include the source and destination directories
+      please include that information too.
+
 Managing Help Tickets
-************
+=====================
 
 Help Tickets can be managed in two ways:
 
@@ -332,21 +351,21 @@ Help Tickets can be managed in two ways:
         This method is recommended when you have only a few open tickets.  Reply
         to the email thread that is started by the OTRS system after you submit
         a help request.  The subject of that email thread starts with the
-        assigned ticket number (e.g., [RDHPCS#2018041954000023), followed by the
+        assigned ticket number (e.g., [RDHPCS#2018041954000023]), followed by the
         subject in your original email request. DO NOT reply to your original
         email request you sent or it will start a new ticket and add confusion
         to the process.
 
     .. tab-item:: User Portal
 
-         This method is recommended when you need to manage several open tickets
-         and can be used for viewing and relying to open or closed tickets.
-         Please refer to the :doc:`user portal documentation </help/user_portal>`.
+        This method is recommended when you need to manage several open tickets
+        and can be used for viewing and relying to open or closed tickets.
+        Please refer to the :doc:`user portal documentation </help/user_portal>`.
 
 
 
 Help Ticket System User Portal
-======
+==============================
 
 Login
 -----
@@ -374,7 +393,7 @@ options to see **All** or only **Closed** tickets.
 
 
 Reply to a Ticket
--------
+-----------------
 
 In order to reply to a ticket, locate the "Reply" button found at the
 end of the most recient ticket thread.
@@ -393,7 +412,7 @@ the RDHPCS Help Desk. Select Submit to send the ticket to the RDHPCS Help Desk.
 
 
 Search for a Ticket
----------------
+-------------------
 
 Search for an OTRS ticket by selecting the "Search" option in the
 Tickets Menu:
@@ -419,8 +438,8 @@ which allows for quick access to searches that you find yourself repeating.
 After building the search, check the "Save search as a template" checkbox.
 
 
-Create a New ticket
---------------
+Create a New Ticket
+-------------------
 
 New help tickets can be created by going to :menuselection:`Tickets --> New
 Ticket`.  Please only report one issue per help ticket. This will assist us in
@@ -454,7 +473,3 @@ Select Submit to send the ticket to the RDHPCS Help Desk. The ticket can now be
 viewed in the Open tickets tab.
 
 .. image:: /images/help_portal/otrsopentickettab.png
-
-
-
-
