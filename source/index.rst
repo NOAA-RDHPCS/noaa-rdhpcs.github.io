@@ -53,7 +53,8 @@ Logging In
 .. toctree::
    :maxdepth: 2
 
-   Logging in/index
+   logging_in/index
+   connecting/index
 
 Common
 ======

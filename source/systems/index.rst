@@ -5,17 +5,12 @@ Systems
 .. toctree::
    :maxdepth: 2
 
-   common.rst
-   gaea_user_guide.rst
-   cloud_user_guide.rst
-   jet_user_guide.rst
-   hera_user_guide.rst
-   niagara_user_guide.rst
-   using_the_HSMS_HPSS.rst
-   MSU-HPC_user_guide.rst
-   HPSS.rst
-  
-   
- 
-  
-   
+   common
+   gaea_user_guide
+   cloud_user_guide
+   jet_user_guide
+   hera_user_guide
+   niagara_user_guide
+   MSU-HPC_user_guide
+   HPSS
+   Storage
