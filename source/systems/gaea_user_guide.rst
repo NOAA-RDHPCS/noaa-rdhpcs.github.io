@@ -313,7 +313,7 @@ RSA_CODE is the 6-8 digit code from the RSA fob or RSA app.
     which must be at least 6 alphanumeric characters.
 
 Modules and Software
-===================
+====================
 
 LMOD
 ----
@@ -491,7 +491,7 @@ You can view existing scripts with:
 .. note::
 
   By default, vi is the editor for scrontab. For a different editor, you can set the ``EDITOR`` environment variable (e.g. ``export
-  EDITOR=/usr/bin/emacs).
+  EDITOR=/usr/bin/emacs``).
 
 For more information on scrontab, use ``man scrontab``.
 
