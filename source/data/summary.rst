@@ -195,13 +195,13 @@ contact the Help Desk. To view your current quota and usage, use the command
         - RealUse is the current group disk usage as reported by the system
         - EstUse is the amount measured by du, may not be accurate if group ownership is incorrect
 
-      Dir                             Quota   RealUse  EstUse  Percentage 	Last Estimated
-      /home/userid                        5        1                19%	  Tue Jan 17 10:01:32 2024
+      Dir                             Quota   RealUse  EstUse  Percentage   Last Estimated
+      /home/userid                        5        1                19%   Tue Jan 17 10:01:32 2024
 
-      /lfs1/projects/projid           25000    18220    23469     93.9% 	Tue Jan 17 10:01:32 2024
-                       dir1                                 2      0.0% 	Tue Jan 17 10:02:02 2024
-                       dir2                              2710     10.8% 	Mon Jan 18 04:30:02 2024
-                       dir3                                 1      0.0% 	Mon Jan 18 04:27:47 2024
+      /lfs1/projects/projid           25000    18220    23469     93.9%   Tue Jan 17 10:01:32 2024
+                       dir1                                 2      0.0%   Tue Jan 17 10:02:02 2024
+                       dir2                              2710     10.8%   Mon Jan 18 04:30:02 2024
+                       dir3                                 1      0.0%   Mon Jan 18 04:27:47 2024
                        ...
 
   .. tab-item:: Niagara

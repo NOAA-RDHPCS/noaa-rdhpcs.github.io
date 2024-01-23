@@ -328,7 +328,7 @@ The LMOD hierarchical system will automatically deactivate or swap an upstream m
     prompt> module unload cray-hdf5
 
     Inactive Modules:
-  	    1) cray-netcdf
+        1) cray-netcdf
 
 LMOD Search Commands
 --------------------

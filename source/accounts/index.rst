@@ -262,11 +262,10 @@ RSA Software Token Instructions
 -  **For new users**: You will be issued a token when you are assigned
    to your first project. The type of token will be determined by you
    when you fill out the token form.
--  **For existing software token holders**: Your current software token
-   cannot be transferred to another device. When you acquire a new
-   device, you will be issued a replacement token for that device.
-   Please follow the guidance on this wiki under the title, "New Device-
-   Software Tokens."
+-  **For existing software token holders**: Your current software token cannot
+   be transferred to another device. When you acquire a new device, you will be
+   issued a replacement token for that device. Please follow the guidance on
+   this wiki under the title, "New Device-Software Tokens."
 
 .. _other_authentications:
 

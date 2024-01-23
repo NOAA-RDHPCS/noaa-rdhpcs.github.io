@@ -136,8 +136,7 @@ Review questions and comments `here. <https://docs.google.com/document/d/1eXZvqb
 
 .. rubric:: Other Parallel Works Training
 
-Parallel Works Version
-2 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
+`Parallel Works Version 2 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
 March 23, 2022
 
 -  `Parallel Works Version 2 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__ January 20, 2022
