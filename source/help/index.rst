@@ -360,9 +360,10 @@ Help Tickets can be managed in two ways:
 
         This method is recommended when you need to manage several open tickets
         and can be used for viewing and relying to open or closed tickets.
-        Please refer to the :doc:`user portal documentation </help/user_portal>`.
+        Please refer to the :ref:`user portal documentation <help_user_portal>`.
 
 
+.. _help_user_portal:
 
 Help Ticket System User Portal
 ==============================

@@ -256,7 +256,7 @@ For example, finding fortran source files accessed within the last day:
 
 .. code-block:: shell
 
-    lfs find .*atime*1*name '*.f90
+    lfs find . -atime -1 -name '*.f90'
 
 .. rubric:: Striping Information
 

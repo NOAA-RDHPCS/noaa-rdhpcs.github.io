@@ -219,6 +219,7 @@ and for Hercules:
 - Workload management: Slurm
 - `MSU Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource#docs>`__
 
+.. _msu_hpc_running_jobs_on_msu_hpc_systems:
 
 Running Jobs on MSU-HPC Systems
 ===============================
@@ -1822,7 +1823,7 @@ Hercules System Overview:
 * `Hercules Per-Project Allocations (Core-Hour & Disk) <https://docs.google.com/spreadsheets/d/12hCDc_c9f1NYXszHB787gwhG-TK7Js7rVzftL3Qcv9Q/edit?usp=sharing>`__
 
 **NOAA’s RDHPCS Supplemental Documentation**
-* :ref:`How to run jobs <running-jobs-on-msu-hpc-systems>`
+* :ref:`How to run jobs <msu_hpc_running_jobs_on_msu_hpc_systems>`
 * :ref:`Known Issues (supplemental) <msu_known_issues>`
 * :ref:`Differences between Orion and Hercules <msu_faq_what_are_the_differences_between_orion_and_hercules>`
 
@@ -1856,7 +1857,7 @@ Hercules System Overview:
 :Other Node Types: Login nodes (4), Development nodes (2), and Data Transfer nodes (4)
 
 * `MSU’s Official Hercules Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/hercules_guide.php>`__
-* :ref:`How to run jobs <running-jobs-on-msu-hpc-systems>`
+* :ref:`How to run jobs <msu_hpc_running_jobs_on_msu_hpc_systems>`
 
 
 Please note the following: During the pre-operational test phase we are only

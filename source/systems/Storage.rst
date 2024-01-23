@@ -1,3 +1,7 @@
+*******
+Storage
+*******
+
 The centralized, long-term data archive system at National Environmental Security Computing Center (NESCC) is based on IBM's High Performance Storage System (HPSS). The NESCC HPSS environment includes 22 petabytes of front-end disk cache, five Oracle SL8500 enterprise tape libraries, three Spectra Logic TFinity tape libraries, and 148 tape drives. Total available capacity is 430 PB. HPSS is accessible from WCOSS2, Hera, Niagara, Jet, and Gaea.
 
 Users should keep the following things in mind when using the HPSS system:
