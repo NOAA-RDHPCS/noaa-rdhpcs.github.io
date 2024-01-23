@@ -1,11 +1,11 @@
-######
+*******************
 General Information
-######
+*******************
 
 Welcome to RDHPCS CommonDocs -- Information and procedures that pertain across all RDHPCS systems.
 
 The RDHPCS Maintenance Downtime Calendar has events for NESCC (Hera, HPSS, Niagara), Jet, Boulder and Princeton Bastions, and other RDHPCS system downtimes.
-View the Calendar `here <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
+`View the Calendar <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`__
 
 .. raw:: html
 
@@ -19,44 +19,41 @@ View the Calendar `here <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb
    <p>You must be logged in to your NOAA Gmail account to see the calendar.</p>
    </div>
 
-
-
-==================
- RDHPCS Platforms
-==================
+RDHPCS Platforms
+================
 
 .. tab-set::
 
    .. tab-item:: Gaea
 
       Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
-      `More Information <https://www.noaa.gov/organization/information-technology/gaea>`_
+      `More Information <https://www.noaa.gov/organization/information-technology/gaea>`__
 
    .. tab-item:: Hera
 
       Predicting high-impact weather events
-      `More Information <https://www.noaa.gov/organization/information-technology/hera>`_
+      `More Information <https://www.noaa.gov/organization/information-technology/hera>`__
 
    .. tab-item:: Jet
 
       Hurricane Forecast Improvement Program (HFIP)
-      `More Information <https://www.noaa.gov/organization/information-technology/jet>`_
+      `More Information <https://www.noaa.gov/organization/information-technology/jet>`__
 
    .. tab-item:: Niagara
 
       Collaborative resource for data transfer
-      `More Information <https://www.noaa.gov/organization/information-technology/niagara>`_
+      `More Information <https://www.noaa.gov/organization/information-technology/niagara>`__
 
    .. tab-item:: MSU-HPC
 
       High-performance Computing collaboration with Mississippi State University (MSU)
-      `More Information <https://www.noaa.gov/organization/information-technology/MSU-HPC>`_
+      `More Information <https://www.noaa.gov/organization/information-technology/MSU-HPC>`__
 
 
    .. tab-item:: Cloud
 
       Platform to create and use HPC computatational clusters on an as-needed basis.
-      `More Information <https://www.noaa.gov/information-technology/hpcc>`_
+      `More Information <https://www.noaa.gov/information-technology/hpcc>`__
 
 
 .. note::

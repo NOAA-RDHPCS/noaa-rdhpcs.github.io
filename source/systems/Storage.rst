@@ -1,3 +1,7 @@
+*******
+Storage
+*******
+
 The centralized, long-term data archive system at National Environmental Security Computing Center (NESCC) is based on IBM's High Performance Storage System (HPSS). The NESCC HPSS environment includes 22 petabytes of front-end disk cache, five Oracle SL8500 enterprise tape libraries, three Spectra Logic TFinity tape libraries, and 148 tape drives. Total available capacity is 430 PB. HPSS is accessible from WCOSS2, Hera, Niagara, Jet, and Gaea.
 
 Users should keep the following things in mind when using the HPSS system:
@@ -158,7 +162,7 @@ NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
    | mc-land | c-ocean | l-blend |         |         |         |         |
    +---------+---------+---------+---------+---------+---------+---------+
 
-| 
+|
 
 .. table:: /BMC
 
@@ -195,7 +199,7 @@ NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
    |       |       |       |       |       | jects |       |       |       |       |
    +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
 
-| 
+|
 
 .. table:: /HFIP
 
@@ -224,7 +228,7 @@ NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
    | arl/  |       |       |       |       |       |       |      |       |       |       |      |
    +-------+-------+-------+-------+-------+-------+-------+------+-------+-------+-------+------+
 
-| 
+|
 
 .. table:: /CPO
 
@@ -232,7 +236,7 @@ NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
    | cpo_ngrr_e/ |
    +-------------+
 
-| 
+|
 
 .. table:: /NOS
 
@@ -240,7 +244,7 @@ NCEPPROD, NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
    coast/ crs/ nosofs/
    ====== ==== =======
 
-| 
+|
 
 .. table:: /SYSADMIN
 
@@ -287,7 +291,7 @@ data listed in this file. It is the user’s responsibility to
 regularly check the posted list for expired files they own.
 Once deleted these files cannot be recovered.
 
-| 
+|
 
 .. rubric:: Expired Data - Deletions
    :name: expired-data---deletions
@@ -441,10 +445,10 @@ The HTAR command line has the general form:
    -K      Verify the contents of an existing Archive file
    -t      Lists contents of Archive file, using the Index file.
    -U      Undeletes soft-deleted member files in the Archive file
-   -x      Extracts files from the Archive file to local file(s). 
+   -x      Extracts files from the Archive file to local file(s).
    -X      builds a new Index file by reading an existing tar Archive file.
 
-   Options 
+   Options
 
    -?      Display help message
 
@@ -458,15 +462,15 @@ The HTAR command line has the general form:
        --exclude pattern      - do not include objects that match pattern
        --exclude-from file    - same as exclude, but read patterns from file
        --exclude-ignore=file  - check for file in each new directory and read
-exclude patterns that apply just to that directory
+                                exclude patterns that apply just to that directory
        --exclude-ignore-recursive=file - same as exclude-ignore, but apply
-patterns recursively
+                                         patterns recursively
        --exclude-backups      - exclude backup and lock file that match the
-shell globbing patterns '.#*', '*~', '#*#' 
-       --exclude-caches       - if directory contains a valid cache file 
-(CACHEDIR.TAG) include directory and cache file, but not contents
+                                shell globbing patterns '.#*', '*~', '#*#'
+       --exclude-caches       - if directory contains a valid cache file
+                              (CACHEDIR.TAG) include directory and cache file, but not contents
        --exclude-caches-under - same as exclude-caches, but only archive
-the directory - omit the CACHEDIR.TAG file
+                                the directory - omit the CACHEDIR.TAG file
        --exclude-caches-all   - same as exclude-caches, but omit directory
            completely
        --exclude-tag=file     - if directory contains file, include only the
@@ -485,7 +489,7 @@ the directory - omit the CACHEDIR.TAG file
        acct=id|name - set the account ID or account name to use for this run.
 
        crc - enable CRC checksum generation when copying member files to the archive.
-          Enabling this option can cause I/O performance to be degraded and CPU  
+          Enabling this option can cause I/O performance to be degraded and CPU
           utilization to be increased
 
        cix - for extract operations from HPSS archives, precopies the index file to
@@ -494,7 +498,7 @@ the directory - omit the CACHEDIR.TAG file
        copies=x - sets number of copies to specify when using auto-COS selection
        during a <create> operation
 
-       nocfchk - disables consistency file vs index file checking 
+       nocfchk - disables consistency file vs index file checking
 
        exfile=path - specifies path to a file containing an "exceptions list"
 
@@ -508,7 +512,7 @@ the directory - omit the CACHEDIR.TAG file
 
        okfile=path - specifies path to a file to contain a list of successfully transferred files
 
-       nocrc - [Default] disable CRC checksum generation when copying 
+       nocrc - [Default] disable CRC checksum generation when copying
 
        noglob - do not expand wildcard characters in pathnames
 
@@ -522,7 +526,7 @@ the directory - omit the CACHEDIR.TAG file
 
        rmlocal - remove local member files after successfully writing them to the archive file
 
-       server=host - specify the htar server hostname or IP address. 
+       server=host - specify the htar server hostname or IP address.
 
        tss=stack_size - specify the thread stacksize to use. Value can include k,kb,m,or mb
           case-insensitive suffix to specify kilobytes or megabytes
@@ -535,7 +539,7 @@ the directory - omit the CACHEDIR.TAG file
 
           info - compares tar header info with the corresponding values in the
      index
-          crc/nocrc - enable/disable verifying member file CRC value by reading the archive 
+          crc/nocrc - enable/disable verifying member file CRC value by reading the archive
      file and comparing the regenerated CRC with that of the index file
           compare/nocompare - enable/disable byte-by-byte comparison of the local member
      files with the corresponding archive files.
@@ -551,7 +555,7 @@ the directory - omit the CACHEDIR.TAG file
    -h      Follow symbolic links as if they were normal files or directories.
 
    -I index_name   Specifies the Index file name or suffix.  If the first
-   character of the index_name is a period, then a suffix (e.g. .idx) 
+   character of the index_name is a period, then a suffix (e.g. .idx)
    is assumed
 
    -J      Extract/List files based upon index ordinals instead of pathnames
@@ -592,9 +596,9 @@ the directory - omit the CACHEDIR.TAG file
 
    -v      Verbose mode - displays -V info plus list of files operated upon
 
-   -w      Wait for interactive OK 
+   -w      Wait for interactive OK
 
-   -Y auto or Archive_cosID:Index_cosID  Specifies Archive File and/or Index File 
+   -Y auto or Archive_cosID:Index_cosID  Specifies Archive File and/or Index File
    Class of Service ID to be used when creating new Archive and/or Index File.
    "auto" will result in the COS being selected based upon the archive file size.
 
@@ -876,7 +880,7 @@ expiration date of data stored in HPSS.
    Expiring: /bench1/htar_thiea_baseline.tar.idx (Thu Jan 28 20:58:11 2016) Owner: Skylar.Nelson [2407] Group: g01 [201]
 
 .. rubric:: Sample HPSS Batch Job
-   :name: sample-hpss-batch-job
+   :name: storage_sample-hpss-batch-job
 
 The following sample script shows how to transfer data to
 HPSS via a batch job on Theia:
@@ -937,5 +941,3 @@ HPSS via a batch job on Theia:
 
 For additional questions, please email:
 rdhpcs.hpss.help@noaa.gov.
-
-         

@@ -1,13 +1,11 @@
-#######
+###############
 Common Material
-#######
+###############
 
 .. toctree::
    :maxdepth: 2
 
-   commondoc.rst
-   policies.rst
-   applications.rst
-   running_jobs.rst
-
-
+   commondoc
+   policies
+   applications
+   running_jobs

@@ -184,3 +184,28 @@ sprio
 .. code-block:: shell
 
    sprio -j 12345
+
+.. _slurm_tips_fairshare:
+
+Understanding Slurm FairShare
+=============================
+
+.. _slurm_tips_running_monitoring:
+
+Running and Monitoring Jobs
+===========================
+
+.. _slurm_tips_getting_project_information:
+
+Getting Information About Your Projects
+=======================================
+
+.. _slurm_tips_saccount_params:
+
+The ``saccout_params`` Command
+------------------------------
+
+.. _slurm_tips_shpcrpt:
+
+The ``shpcrpt`` Command
+-----------------------

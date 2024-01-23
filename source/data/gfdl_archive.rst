@@ -35,7 +35,7 @@ All users with a GFDL account will have a personal archive directory.
 .. _gfdl_archive_data_structure:
 
 GFDL Archive Data Structure
-=========================
+===========================
 
 The users archive area is located at ``/archive/$USER``.  The ``/archive/$USER``
 is be a symbolic link to ``/arch[0-8bcfgh]/$USER``.  These ``arch[0-8bcfgh]``
