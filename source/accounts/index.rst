@@ -4,21 +4,57 @@
 Accounts
 ########
 
-.. note:: **New Device - Software tokens**
+.. note::
 
+   System maintenance will affect access to RDHPCS systems. Check the  `RDHPCS Maintenance Downtime Calendar <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`__.
 
-   When you acquire a new device, follow this three-step process to add an RSA
-   software token:
+Account Process Overview
+========================
 
-   #. Submit an OTRS ticket by emailing rdhpcs.aim.help@noaa.gov. Use the
-      subject line: Token for New Device- First.Last.
-   #. Go to `AIM <https://aim.rdhpcs.noaa.gov>`__, click on the "Make a request
-      for an RSA token" link, fill out the form, and hit the submit button. When
-      that form is received, you'll receive email that includes a URL and
-      activation code. Open that URL from your device and submit the activation
-      code.
-   #. When the software token is working on your new phone, delete the token
-      from your old device.
+This figure is an overview of the timeline and process for system access.
+
+.. image:: /images/access1.png
+
+Once you have a NOAA.gov email address, you can request an RDHPCS account.
+Visit the `Account Information Management (AIM) website <https://aim.rdhpcs.noaa.gov>`__ and  request access to the RDHPCS project.  Log into AIM using your NOAA email credentials, review your profile for accuracy, and request the RDHPCS project.
+
+.. image:: /images/AIM2.png
+
+Once this request is approved, you will receive an email containing instructions about your next steps. These include requesting access to further projects and completing the RSA token request form.  Confer with your supervisor and colleagues to identify the  project(s) to request.
+
+RSA Software Token
+==================
+
+RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS systems for SSH access. When you’re assigned to your first project, the RSA token form will be used to assign your software token. Your RSA token will include instructions about how to initialize it. You can find more information on RSA tokens here: Logging in - rdhpcs-common-docs (noaa.gov).
+
+.. note::
+
+     If you don’t have a smartphone, you can request an RSA hardware token. The activation process is found here: `New User Activation <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Activation#RSA_Token_Activation>`__.  RSA software tokens are preferred.
+
+CAC Access
+==========
+
+The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is `ID Card Office Online <https://idco.dmdc.osd.mil/idco/locator>`_.  SSH logins with a CAC require additional software.
+
+Accessing the Systems
+=====================
+
+.. NOTE::
+
+   To access a system, you must be on a project assigned to that system.
+
+On-Premise RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  See the following pages for detailed instructions:
+
+* `RSA logins <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/RSA_Login>`__
+* `CAC logins <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
+
+MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__ for detailed instructions.
+
+Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via `NOAA ParallelWorks <https://noaa.parallel.works>`__ via a web browser.
+
+**Cloud Computing**
+
+The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. An overview of the Cloud workflow, and links to detailed instructions, can be found in `Cloud Computing User Information. <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Cloud_Computing_User_Information>`_
 
 
 Accessing RDHPCS Systems
@@ -35,6 +71,26 @@ First Time RSA token Login
 
 After you have been added to your first project, you will need to either
 initialize your RSA software token or enable your hardware token.
+
+New Device - Software tokens
+----------------------------
+
+When you acquire a new device, follow this three-step process to add an RSA software token:
+#. Submit an OTRS ticket by emailing rdhpcs.aim.help@noaa.gov. Use the subject line: Token for New Device- First.Last.
+#. Go to AIM, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button. When that form is received, you'll receive email that includes a URL and activation code. Open that URL from your device and submit the activation code.
+#. When the software token is working on your new phone, delete the token from your old device.
+
+Access Information
+==================
+
+First Time RSA token Login
+--------------------------
+
+.. note::
+
+      If you are using a PC, please install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
+
+After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
 
 **RSA software token:** Please follow the instructions contained in
 the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
@@ -160,10 +216,9 @@ detected.”
    :alt: new_cac_login.png
    :width: 500px
 
-NOTE: With current CAC information on file, you should be authenticating
-into RDHPCS with CAC as your primary means. If you need assistance with
-authenticating via CAC, please visit: `CAC
-Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
+.. note::
+
+   With current CAC information on file, you should be authenticating into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
 
 .. _rsa_token:
 
@@ -230,7 +285,6 @@ When you acquire a new device that your software token will be stored on, there 
    :width: 500px
 
 
-
 Suspension, Deactivation, Reactivation
 --------------------------------------
 
@@ -258,7 +312,6 @@ Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_ to apply for the rdhpcs project. Cli
 For best use of resources and availability, the preferred approach is to install the SecurID app on a smart phone for token generation. Hardware tokens are available on request.
 
 See `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Software_Token New User Software Token>`_ and `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Hardware_Token New User Hardware Token>`_ for details.
-
 
 Role Accounts
 -------------
@@ -295,7 +348,6 @@ If you are planning to use X utilities with role accounts, you should use the xs
 2. Use the xsudo command to switch to the role account:
 
 .. code-block:: shell
-
 
    xsudo role.rap-chem
 
@@ -347,9 +399,45 @@ If you have been advised to apply for a project that is not listed in AIM, pleas
 
 Please contact the Help Desk via email if you have further questions, rdhpcs.aim.help@noaa.gov
 
+RDHPCS certificates
+===================
 
+When a user first logs into a R&D HPC system, a one-year master certificate must be generated. On the next login, after the master certificate is signed, a 30-day proxy certificate is generated. Every future login renews the 30-day proxy certificate.
+
+**Master Certificate:** The master certificate is valid across all bastions, for one year from date of creation. After one year the master certificate will need to be renewed. When it expires, any related proxy certificate expires as well.
+
+**Proxy Certificate:** The proxy certificate is local to each bastion, is valid for 30 days and is renewed every time you login to each bastion. If you do not log in at least once every 30 days to each bastion, the proxy certificate will expire on that bastion. To renew your certificate, you will have to log in to the bastion and enter your master certificate passphrase. This will renew the proxy certificate, as usual, for 30 days.
+
+
+Generating a Master Certificate
+-------------------------------
+
+1. Prepare your Master Certificate Passphrase
+
+A passphrase must consist of at least three separate words and be at least 30 characters in length.
+You will be prompted for you Master Certificate Passphrase from time to time. Therefore, your certificate passphrase should be something you can remember. For example: "G0 Down The 4lley & Yell Fi$h ." Notice that this passphrase is made more complex by the use of numbers in place of look-alike letters and the use or omission of spaces.
+
+2. Create your Passphrase
+
+Log into the system with your username (User.Name). The system will prompt you to create your master certificate passphrase. Your master certificate must be signed by the system before further access is allowed. This takes approximately fifteen minutes. You will receive an email stating that your certificate has been signed. After you receive the notification, please wait one hour before attempting to sign on to any resource. Following the waiting period, login with your username (User.Name) as usual.
+You will be prompted for your master certificate passphrase. Enter the passphrase that you created with your master certificate, and your proxy will be renewed. After this step, you will only need your master certificate passphrase if your proxy completely expires (after 30 days).
 Resetting Master Certificate Passphrase
----------------------------------------
+
+.. note::
+   You will have to renew your Master Certificate annually. About a month before it expires, you will be prompted to renew your master certificate, with a Y/N option. When you renew the master certificate, you may have to wait for one day before you can log in again. Plan ahead for a time when you can be offline for up to a day, and choose that time to renew the Master Certificate.
+
+
+Resetting your Master Certificate Passphrase
+--------------------------------------------
+
+If you do not remember your Master Certificate passphrase, it can be reset. First check the guidance in the Prepare your Master Certificate Passphrase section, and choose an appropriate passphrase. Then follow the instructions below:
+
+Hit Enter 4 times. The system will ask: "Have you forgotten your master certificate passphrase?" Answer "Yes".
+Answer the questions, then enter the new master certificate passphrase at the prompt.
+Once the new master certificate has been created, it will automatically be signed by the system. You will receive an email, confirming that the certificate has been signed. Wait for an hour, then sign into the system. When you are prompted for the Master Certificate passphrase, enter your new passphrase.
+
+If you have further issues, submit an RDHPCS help ticket. Send an email to rdhpcs.aim.help@noaa.gov with the subject Master Certificate Passphrase.
+
 
 .. _account_management:
 
