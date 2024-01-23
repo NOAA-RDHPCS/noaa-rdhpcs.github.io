@@ -66,6 +66,16 @@ Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web
 
 The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. An overview of the Cloud workflow, and links to detailed instructions, can be found in `Cloud Computing User Information. <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Cloud_Computing_User_Information>`_
 
+Role Accounts
+----
+A role account is a user account shared with one or more users as members. All group members share the account equally via the use of `sudo`, typically for the unified use of a project. The role accounts name should reflects their project association or function.
+
+You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access.
+
+Any changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
+
+
+
 *****
 New Device - Software tokens
 *****
