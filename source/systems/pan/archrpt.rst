@@ -1,7 +1,8 @@
 .. _about_archrpt:
 
+*************
 About Archrpt
-=============
+*************
 
 | Archprt displays detailed information about archive data usage for
   user and group.
@@ -62,7 +63,7 @@ Command:
 
    archrpt -r o
 
-| 
+|
 | Output:
 
 ::
@@ -111,7 +112,7 @@ Command:
 
    archrpt -r rwh
 
-| 
+|
 | Output:
 
 ::
@@ -135,7 +136,7 @@ Command:
 
    archrpt -r o files
 
-| 
+|
 | Output:
 
 ::
@@ -187,7 +188,7 @@ Command:
 
    archrpt -r o bytes
 
-| 
+|
 | Output:
 
 ::
@@ -251,7 +252,7 @@ The commands above can also be used with the date option.
 
    archrpt -r o 120119
 
-| 
+|
 | Show Archive Report By Specified User:
 | Command:
 
@@ -259,7 +260,7 @@ The commands above can also be used with the date option.
 
    archrpt -r rwh 120119
 
-| 
+|
 | Show Archive Report By Specified Group and Sort By Files:
 | Command:
 
@@ -267,7 +268,7 @@ The commands above can also be used with the date option.
 
    archrpt -r o files 120119
 
-| 
+|
 | Show Archive Report By Specified Group and Sort By Bytes:
 | Command:
 

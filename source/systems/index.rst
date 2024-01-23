@@ -12,5 +12,9 @@ Systems
    hera_user_guide
    niagara_user_guide
    MSU-HPC_user_guide
-   HPSS
-   Storage
+   pan/index
+
+.. toctree::
+   :hidden:
+
+   gaea/index

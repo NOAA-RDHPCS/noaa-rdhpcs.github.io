@@ -72,12 +72,6 @@ Systems
 
    systems/index
 
-.. toctree::
-   :hidden:
-
-   systems/gaea/index
-   systems/pan/index
-
 Data Storage and Transfers
 ==========================
 
