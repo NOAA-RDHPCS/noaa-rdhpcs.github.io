@@ -72,6 +72,15 @@ First Time RSA token Login
 After you have been added to your first project, you will need to either
 initialize your RSA software token or enable your hardware token.
 
+Role Accounts
+-------------
+
+A role account is a user account shared with one or more users as members. All group members share the account equally via the use of `sudo`, typically for the unified use of a project. The role accounts name should reflects their project association or function.
+
+You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access.
+
+Any changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
+
 New Device - Software tokens
 ----------------------------
 
@@ -342,7 +351,6 @@ If you are planning to use X utilities with role accounts, you should use the xs
 
 .. code-block:: shell
 
-
    echo $DISPLAY
 
 2. Use the xsudo command to switch to the role account:
@@ -354,7 +362,6 @@ If you are planning to use X utilities with role accounts, you should use the xs
 3. Set the DISPLAY environment variable to the value you obtained above just before doing xsudo; (please note that the next command you use depends on your shell):
 
 .. code-block:: shell
-
 
    export DISPLAY=localhost:14.0         # for bash like shells
    setenv DISPLAY localhost:14.0         # for csh like shells
