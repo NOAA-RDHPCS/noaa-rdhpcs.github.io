@@ -37,39 +37,39 @@ System Configuration
 --------------------
 
 +---------------------+---------------+------------------+---------------+------------------+
-|         | Hera TCA      | Hera FGA         | Juno TCA      | Juno FGA         |
+|                     | Hera TCA      | Hera FGA         | Juno TCA      | Juno FGA         |
 +=====================+===============+==================+===============+==================+
-| CPU Type| Intel SkyLake | Intel Haswell    | Intel SkyLake | Intel Haswell    |
+| CPU Type            | Intel SkyLake | Intel Haswell    | Intel SkyLake | Intel Haswell    |
 +---------------------+---------------+------------------+---------------+------------------+
-| CPU Speed| 2.40 GHz      | 2.460 GHz        | 2.40 GHz      | 2.460 GHz        |
+| CPU Speed           | 2.40 GHz      | 2.460 GHz        | 2.40 GHz      | 2.460 GHz        |
 +---------------------+---------------+------------------+---------------+------------------+
-| Reg Compute Nodes   | 1328          | 100  | 14| 2    |
+| Reg Compute Nodes   | 1328          | 100              | 14            | 2                |
 +---------------------+---------------+------------------+---------------+------------------+
-| Cores/node          | 40| 20   | 40| 20   |
+| Cores/node          | 40            | 20               | 40            | 20               |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total Cores         | 53,120        | 2000 | 560| 40   |
+| Total Cores         | 53,120        | 2000             | 560           | 40               |
 +---------------------+---------------+------------------+---------------+------------------+
-| Memory/Core         | 96 GB         | 256 GB| 90 GB         | 256 GB|
+| Memory/Core         | 96 GB         | 256 GB           | 90 GB         | 256 GB           |
 +---------------------+---------------+------------------+---------------+------------------+
-| Peak Flops/node     | 12| NA   | 12| NA   |
+| Peak Flops/node     | 12            | NA               | 12            | NA               |
 +---------------------+---------------+------------------+---------------+------------------+
-| Service Code Memory | 187 GB        | NA   | 187 GB        | NA   |
+| Service Code Memory | 187 GB        | NA               | 187 GB        | NA               |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total BigMem Nodes  | 268| NA   | 268| NA   |
+| Total BigMem Nodes  | 268           | NA               | 268           | NA               |
 +---------------------+---------------+------------------+---------------+------------------+
-| BibMem Node Memory  | 384 GB        | NA   | 384 GB        | NA   |
+| BibMem Node Memory  | 384 GB        | NA               | 384 GB        | NA               |
 +---------------------+---------------+------------------+---------------+------------------+
-| CPU Flops| 2672 TF       | 83.1 TF          | 28 TF         | 1.6 TF|
+| CPU Flops           | 2672 TF       | 83.1 TF          | 28 TF         | 1.6 TF           |
 +---------------------+---------------+------------------+---------------+------------------+
-| GPUs/Node| NA| 8 P100| NA| 8 P100|
+| GPUs/Node           | NA            | 8 P100           | NA            | 8 P100           |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total GPUs          | NA| 800  | NA| 16   |
+| Total GPUs          | NA            | 800              | NA            | 16               |
 +---------------------+---------------+------------------+---------------+------------------+
-| GPU Flops/GPU       | NA| 4.7  | NA| 4.7  |
+| GPU Flops/GPU       | NA            | 4.7              | NA            | 4.7              |
 +---------------------+---------------+------------------+---------------+------------------+
 | Interconnect        | HDR-100 IB    | FDR-10 (40 Gbps) | HDR-100 IB    | FDR-10 (40 Gbps) |
 +---------------------+---------------+------------------+---------------+------------------+
-| Total GPU Flops     | NA| 3760 TF          | NA| 75 TF|
+| Total GPU Flops     | NA            | 3760 TF          | NA            | 75 TF            |
 +---------------------+---------------+------------------+---------------+------------------+
 
 .. note::
@@ -86,7 +86,7 @@ System Configuration
 
 
 Lustre File System Usage
-==========
+========================
 
 
 Lustre is a parallel, distributed file system often used to support the requirements for high-performance I/O in large
@@ -100,7 +100,7 @@ The serial transfer rate of a single stream is generally greater than 1 GB/s but
 
 For efficient resource usage, Hera's /scratch1 and /scratch2Lustre file systems have project based volume and file countquotas. Each project has an assigned quota which is sharedby all users on the project. File count quotas are new andare implemented to preserve the increased performance of the2 tier storage architecture where the first 128 KB of eachfile is stored on SSD and the remainder if any on HDD.Historical data from Theia and Jet show that the averagefile count per GB is ~100. By default projects on Hera aregiven a file count quota of 200 files per GB of volume quotaor 100,000 files whichever is higher.
 Users will receive warning emails when their quota isexceeded. When either the volume or file count quota isexceed by more than 1.2x, writes will not be allowed.
-| 
+|
 Summary and detailed information on finding your project's disk volume and file count quota and usage is found at:  `Getting Information About Your  Projects <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Projects_-_SLURM>`__
 
 .. rubric:: Volume Quota Increase
@@ -117,8 +117,8 @@ If you are approaching your quota, the first step should beto delete old files a
 If you are approaching your quota or your file count quotaor are running over 200 files/GB, the first step should beto delete old small files. If you want to keep them aroundbut they are not accessed frequently, you should tar up manysmall files into one big files. If you have an exceptionalsituation and believe you need a quota increase, pleasestart a Hera help ticket including the followinginformation:
 
 
-1. Project name.   
-2. Justification, including an analysis of your workload detailing the files/GB needed.   
+1. Project name.
+2. Justification, including an analysis of your workload detailing the files/GB needed.
 3. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
 
 
@@ -136,7 +136,7 @@ Lustre functionality is divided among four primarycomponents:
 An MDS is server that assigns and tracks all of the storagelocations associated with each file in order to direct fileI/O requests to the correct set of OSTs and correspondingOSSs.
 An MDT stores the metadata, filenames, directories,permissions and file layout.
 An OSS manages a small set of OSTs by controlling I/O accessand handling network requests to them.
-An OST is a block storage device, often several disks in a RAID configuration.  
+An OST is a block storage device, often several disks in a RAID configuration.
 
 .. rubric:: Hera Lustre configuration
 
@@ -144,7 +144,7 @@ All nodes (login and compute) access the lustre file-systemsmounted at /scratch1
 Each user has access to one or more directories based on theproject which they are a member of, such as:
 
 .. code-block:: shell
-    
+
     /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
 ...where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
@@ -184,24 +184,24 @@ A file is split into segments and consecutive segments arestored on different ph
 
 The /scratch1 and /scratch2 file systems are enabled with afeature called "Progressive File Layouts" (PFL) that does file layout in a way which is efficient for the vast majority of use cases. It uses a single stripe count for small files (reducing overhead) and increases the striping as the file gets bigger (increasing bandwidth and balancingcapacity), all without any user involvement.
 These file systems are also augmented by a set of SSD OSTs (described above) and with the PFL capability is further optimized for small file performance. By default, smaller files are stored completely in SSD, which further decreases random operation latency and allows the HDDs to run more efficiently for streaming reads and writes. The default configuration will automatically stripe and place files in a generally optimal fashion to improve I/O performance for varying file sizes, including the use of SSDs for better small-file performance. The defaults also attempt to makethe best use of the SSD targets (which are faster, but have much less capacity than HDDs).
-More details on PFL are available `<here: http://wiki.lustre.org/Progressive_File_Layoutshttp://doc.lustre.org/lustre_manual.xhtml#pfl>`_
+More details on PFL are available `here: <http://doc.lustre.org/lustre_manual.xhtml#pfl>`__
 
 **Important Note:** The PFL feature makes much of the information documented below regarding customizing striping unnecessary.
 
 * Users should not need to adjust stripe count and size on   /scratch1 and /scratch2.*
 * With PFL enabled, setting your own stripe layout may   reduce I/O performance for your files and the overall I/O   performance of the file system.
-* If you have already used "lfs setstripe" commands   documented below, you should probably remove the striping   that may have already been set. 
+* If you have already used "lfs setstripe" commands   documented below, you should probably remove the striping   that may have already been set.
 
 Here are the steps you should follow if you have any directories that had explicitly set non-default striping:
 
 1. Remove all "lfs setstripe" commands from your scripts.
-2. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping: 
+2. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping:
 
-.. code-block:: shell 
+.. code-block:: shell
 
    *lfs setstripe*d <dir>*
 
-3. Open a `<help ticket https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
+3. Open a `help ticket <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`__  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
 
 .. rubric:: Userspace Commands
 
@@ -225,17 +225,17 @@ Tracking and enforcement includes maximum file count, not just capacity.
 To check your usage details...
 
 
-1. Look up your project ID number (not the name)  id  
-2. Query your usage and limits using that number, for a given file system.  
+1. Look up your project ID number (not the name)  id
+2. Query your usage and limits using that number, for a given file system.
 
-.. code-block:: shell 
+.. code-block:: shell
 
    lfs quota*p <project ID number> /scratchX
 
 User and Group usage (capacity and file count) is tracked but not limited. You can also find your usage and your unixgroup's usage:
 
 .. code-block:: shell
-    
+
     lfs quota*u <User.Name> /scratch1    lfs quota*g <groupname> /scratch1
 
 .. note::
@@ -256,10 +256,10 @@ For example, finding fortran source files accessed within the last day:
 
 .. code-block:: shell
 
-    lfs find .*atime*1*name '*.f90
+    lfs find . -atime -1 -name '*.f90'
 
 .. rubric:: Striping Information
-  
+
 You can view the file striping (layout on disk) of a file with:
 
 .. code-block:: shell
@@ -271,9 +271,9 @@ The Hera default configuration uses “Progressive FileLayout” or PFL.
   * The first part of each file is stored on SSD
   * Up to 256 KB, single stripe (This is similar to how Panasas /scratch3,4 operated)
   * As the file grows bigger, it overflows to disks and it   stripes it across more disks and more disks
-  * Up to 32 MB* on HDD, single stripe  
-  * Up to 1 GB* on HDD, 4-way stripe  
-  * Up to 32 GB* on HDD, 8-way stripe  
+  * Up to 32 MB* on HDD, single stripe
+  * Up to 1 GB* on HDD, 4-way stripe
+  * Up to 32 GB* on HDD, 8-way stripe
   * > 32 GB* on HDD, 32-way stripe, larger object size
 
 So small files reside on SSDs, big files get striped“progressively” wider!
@@ -284,13 +284,13 @@ The "getstripe" command above shows the full layout.Typically not all components
 
 .. code-block:: shell
 
-  * lfs cp – 
+  * lfs cp –
 
 to copy files.
 
 .. code-block:: shell
 
-  * lfs ls – 
+  * lfs ls –
 
 to list directories and files.
 
@@ -321,9 +321,9 @@ If many processes need the information from stat(), do it**once**, as follows:
 
 .. rubric:: Tuning Stripe Count (not typically needed)
 
-  .. note::
+.. note::
 
-**IMPORTANT:** *The following steps are not typicallyneeded on the Hera Lustre file systems. See the "ProgressiveFile Layouts" description above. Please open a supportticket prior to changing stripe parameters on your /scratch1or /scratch2 files.*
+   **IMPORTANT:** *The following steps are not typically needed on the Hera Lustre file systems. See the "ProgressiveFile Layouts" description above. Please open a support ticket prior to changing stripe parameters on your /scratch1or /scratch2 files.*
 
 .. rubric:: General Guidelines
 
@@ -331,14 +331,16 @@ It is *beneficial* to stripe a file when...
 
 * Your program reads a single large input file and performs the input operation from many nodes at the same time.
 * Your program reads or writes different parts of the same file at the same time.
-You should stripe these files to prevent all the nodes from reading from the same OST at the same time. This will avoid creating a bottleneck in which your processes try to read from a single set of disks.
-Your program waits while a large output file is written.
+
+   * You should stripe these files to prevent all the nodes from reading from the same OST at the same time. This will avoid creating a bottleneck in which your processes try to read from a single set of disks.
+   * Your program waits while a large output file is written.
+
 * You should stripe this large file so that it can perform the operation in parallel. The write will complete sooner and the amount of time the processors are idle will be reduced.
 * You have a large file that will not be accessed very frequently. You should stripe this file widely (with a larger stripe count), to balance the capacity across more OSTs. * This (in current Lustre version) requires rewriting the file.
 
 It is not always necessary to stripe files...
 
- * If your program periodically writes several small files from each processor, you don't need to stripe the files   because they will be randomly distributed across the   OSTs.
+* If your program periodically writes several small files from each processor, you don't need to stripe the files   because they will be randomly distributed across the   OSTs.
 
 .. rubric:: Striping Best Practices
 
@@ -396,15 +398,15 @@ You can specify the stripe count and size programmatically,by creating an MPI in
 * Set the stripe count to 1 on a directory.
 * Write all files in this directory.
 * Compute
-* Otherwise set the stripe count to 1 for the file. 
+* Otherwise set the stripe count to 1 for the file.
 
 .. code-block:: shell
 
     lfs setstripe*s 1m*c 1 /scratch1/your_project_dir/path/serial/
 
-        
+
 Applications and Libraries
-================
+==========================
 
 A number of applications are available on Hera. They should
 be run on a compute node. They are serial tasks, not
@@ -414,12 +416,12 @@ entire node even though you are using only a single core.
 
 .. note::
 
-The qsub command refers to “account”. Think of this as your group or project of which you might have several. Your “group” name is what you should provide as your “account”.
+   The qsub command refers to “account”. Think of this as your group or project of which you might have several. Your “group” name is what you should provide as your “account”.
 
 .. rubric:: Using Anaconda Python on Hera
 
 Please see
-`Anaconda/Miniconda <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=anaconda>`_
+`Anaconda/Miniconda <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=anaconda>`__
 for installation instructions.
 
 These installers have been modified in three ways:
@@ -432,14 +434,14 @@ To stop logging your dependencies, delete the
 
 .. code-block:: shell
 
-  $conda_root/lib/pythonX.Y/site-packages/sitecustomize.py 
-  
+  $conda_root/lib/pythonX.Y/site-packages/sitecustomize.py
+
 
   script.
 
 .. warning::
 
-RDHPCS support staff does not have the available resources to support or maintain these packages. You will be responsible for the installation and troubleshooting of the packages you choose to install. Due to architectural and software differences some of the functionality in these packages may not work.
+   RDHPCS support staff does not have the available resources to support or maintain these packages. You will be responsible for the installation and troubleshooting of the packages you choose to install. Due to architectural and software differences some of the functionality in these packages may not work.
 
 .. rubric:: MATLAB
 
@@ -571,9 +573,10 @@ utilities:
 
    module spider
 
-      
+
 Using Modules
-========
+=============
+
 Hera uses the LMOD hierarchical modules system, which is
 slightly different from the traditional "Modules" but is
 compatible with it.
@@ -606,23 +609,23 @@ Use "module spider" to find all possible modules.
 Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 .. code-block:: shell
-    
+
     tfe10.%
 
 This is because you have not loaded any of the compiler modules, and HDF5 modules installed on the system require one of the compiler modules. But if you're still interested in finding out which versions are available, and when you want to find more details about which compilers will have to be loaded in order to use that module, you have to use the "module spider" command as shown below:
 
-.. code-block:: shell
+.. code:: shell
 
-    tfe10.% module spider hdf5
+   $ module spider hdf5
 
    *-----------------------------------------------------------------------------------------------------------
       hdf5:
    *-----------------------------------------------------------------------------------------------------------
          Versions:
- hdf5/1.8.14
+            hdf5/1.8.14
 
          Other possible modules matches:
- hdf5parallel, netcdf-hdf5parallel
+            hdf5parallel, netcdf-hdf5parallel
 
    *-----------------------------------------------------------------------------------------------------------
       To find other possible module matches do:
@@ -635,16 +638,14 @@ This is because you have not loaded any of the compiler modules, and HDF5 module
          $ module spider hdf5/1.8.14
    *-----------------------------------------------------------------------------------------------------------
 
-    tfe10.%
-    tfe10.%
-    tfe10.% module spider hdf5/1.8.14
+   $ module spider hdf5/1.8.14
 
    *-----------------------------------------------------------------------------------------------------------
       hdf5: hdf5/1.8.14
    *-----------------------------------------------------------------------------------------------------------
 
          Other possible modules matches:
- hdf5parallel, netcdf-hdf5parallel
+            hdf5parallel, netcdf-hdf5parallel
 
         This module can only be loaded through the following modules:
 
@@ -660,38 +661,32 @@ This is because you have not loaded any of the compiler modules, and HDF5 module
       To find other possible module matches do:
           module*r spider '.*hdf5/1.8.14.*'
 
-    tfe10.%
-
-
 The current configuration has no default modules loaded. Run:
 
- .. code-block:: shell
+ .. code:: shell
 
-    # module avail
+   $ module avail
 
- to see the list of modules available for you load now.
- At a minimum you will want to do:
+to see the list of modules available for you load now.
+At a minimum you will want to do:
 
 .. code-block:: shell
 
-    h3a03.hera% module load intel impi
-    h3a03.hera% module list
+   $ module load intel impi
+   $ module list
 
- Currently Loaded Modules:
+   Currently Loaded Modules:
       1) intel/18.0.5.274   2) impi/2018.0.4
-
-    h3a03.hera%
-
 
 .. rubric:: Modules on Hera
 
- The way to find the latest modules on Hera is to run
- **module avail** to see the list of available modules for
- the compiler and the MPI modules currently loaded:
+The way to find the latest modules on Hera is to run
+**module avail** to see the list of available modules for
+the compiler and the MPI modules currently loaded:
 
 .. code-block:: shell
 
-    h3a03.hera% module avail
+   $ module avail
 
    *-------------------------------- /apps/lmod/lmod/modulefiles/Core*--------------------------------
        lmod/7.7.18    settarg/7.7.18
@@ -709,18 +704,14 @@ The current configuration has no default modules loaded. Run:
       Where:
        D:  Default Module
 
-Use "module spider" to find all possible modules.
-Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
-
-.. code-block:: shell
-
-    h3a03.hera%
+   Use "module spider" to find all possible modules.
+   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 Please note that, because LMOD is a hierarchical module system, you only see the list of modules that you can load at this point in time (based on what other modules you may have loaded). To see the complete list of modules available on the system, use the "module spider" command:
 
 .. code-block:: shell
 
-    h3a03.hera% module spider
+   $ module spider
 
    *-----------------------------------------------------------------------------------------------
     The following is a list of the modules currently available:
@@ -732,15 +723,13 @@ Please note that, because LMOD is a hierarchical module system, you only see the
       antlr: antlr/2.7.7, antlr/4.2
 
       bitrep: bitrep/1.0
-    …
-
-    h3a03.hera%
+   …
 
 In this example, each module name represents a different package. In cases where there are multiple versions of a package, one will be set as a default. For example, for the intel compiler there are multiple choices:
 
 .. code-block:: shell
 
-    h3a03.hera% module avail intel
+   h3a03.hera% module avail intel
 
    *----------------------------------- /apps/modules/modulefiles*------------------------------------
        intel/18.0.5.274 (D)    intel/19.0.4.243    intelpython/3.6.8
@@ -748,38 +737,34 @@ In this example, each module name represents a different package. In cases where
       Where:
        D:  Default Module
 
-    Use "module spider" to find all possible modules.
-    Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
-
-    h3a03.hera%
+   Use "module spider" to find all possible modules.
+   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 So if you run:
 
 .. code-block:: shell
 
-    # module load intel
+   $ module load intel
 
 the default version will be loaded, in this case intel/18.0.5.274.
-  
+
 If you want to load a specific version, you can. We highly recommend you use the system defaults unless something is not working or you need a different feature. To load a specific version, specify the version number.
 
 .. code-block:: shell
 
-    sfe01% module purge
-    sfe01% module load intel/19.0.4.243
-    sfe01% module list
+   $ module purge
+   $ module load intel/19.0.4.243
+   $ module list
 
-    Currently Loaded Modules:
+   Currently Loaded Modules:
       1) intel/19.0.4.243
-
-    sfe01%
 
 In some cases other required modules may be loaded for you. The Intel module manages all the sub modules, you do not have to worry about it.
 
-Notes:
+.. note::
 
--  When unloading modules, only unload those that you have loaded. The others are done automatically from master modules.
--  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
+   -  When unloading modules, only unload those that you have loaded. The others are done automatically from master modules.
+   -  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
 
 .. rubric:: Loading Modules in batch jobs
 
@@ -791,25 +776,27 @@ Due to the way the POSIX standard is defined for bash, sh, and ksh you **MUST** 
 
 .. code-block:: shell
 
-    #!/bin/ksh*l
+   #!/bin/ksh*l
 
-    module load intel
-    module load impi
+   module load intel
+   module load impi
 
-    srun*n 12 ​./xhpl
+   srun*n 12 ​./xhpl
 
 Failure to use*l will cause the module commands to fail and your job will not run properly and may crash in hard to diagnose ways.
 
  .. rubric::Additional Documentation on Lua modules
 
-Click  `here <http://lmod.readthedocs.org/en/latest/>`_ for more detailed information on Lua module utility.
+Click  `here <http://lmod.readthedocs.org/en/latest/>`__ for more detailed information on Lua module utility.
 
 Using MPI
 =========
+
 .. rubric:: Loading the MPI module
 
 There are two MPI implementations available on Hera: Intel MPI and MVAPICH2. We recommend one of the following two combinations:
--  IntelMPI with the Intel compiler 
+
+-  IntelMPI with the Intel compiler
 -  MVAPICH2 with the PGI compiler.
 
 At least one of the MPI modules must be loaded before compiling and running MPI applications. These modules must be loaded before compiliing applications as well in your batch jobs before executing a parallel job.
@@ -817,11 +804,13 @@ At least one of the MPI modules must be loaded before compiling and running MPI 
 .. rubric:: Working with Intel Compilers and IntelMPI
 
 At least one of the MPI modules must be loaded before **compiling** and **running** MPI applications. This is done as follows:
+
 .. code-block:: shell
 
     module load intel impi
 
 .. rubric:: Compiling and Linking MPI applications with IntelMPI
+
 For the primary MPI library, IntelMPI, the easiest way to compile applications is to use the appropriate wrappers: mpiifort, mpiicc, and mpiicpc.
 
 .. code-block:: shell
@@ -832,87 +821,109 @@ For the primary MPI library, IntelMPI, the easiest way to compile applications i
 
 
 .. rubric:: Launching MPI applications with IntelMPI
+
 For instructions on how to run MPI applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
 .. rubric:: Launching an MPMD application with intel-mpi-library-documentation
+
 For instructions on how to run MPMD applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
 .. rubric:: Launching OpenMP/MPI hybrid jobs with IntelMPI
+
 For instructions on how to request nodes in a way to support OpenMP/MPI hybrid applications see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
 .. rubric:: Note about MPI-IO and Intel MPI
+
 Intel MPI doesn't detect the underlying filesystem by default when using MPI-IO. You have to pass the following variables on to your application:
 
 .. code-block:: shell
 
-    export I_MPI_EXTRA_FILESYSTEM=on    
-    export I_MPI_EXTRA_FILESYSTEM_LIST=lustre
+   export I_MPI_EXTRA_FILESYSTEM=on
+   export I_MPI_EXTRA_FILESYSTEM_LIST=lustre
 
 .. rubric:: Using PGI and mvapich2
+
 At least one of the MPI modules must be loaded before \*compiling\* and \*running\* MPI applications. This is done with as follows:
+
 .. code-block:: shell
 
-    module load pgi mvapich2
+   module load pgi mvapich2
 
 .. rubric:: Compiling and Linking MPI applications with PGI and MVAPICH2
+
 When compiling with the PGI compilers, please use the wrappers: mpif90, mpif77, mpicc, and mpicpp.
 
 For compiling add
+
 .. code-block:: shell
 
-    mpif90*o hellof hellof.f90    mpicc*o helloc helloc.c    mpicpp*o hellocpp hellocpp.cpp
- 
+   mpif90*o hellof hellof.f90    mpicc*o helloc helloc.c    mpicpp*o hellocpp hellocpp.cpp
+
 .. rubric:: Launching MPI applications with MVAPICH2
- To launch MPI applications when using PGI and MVAPICH2, please use the srun command.
+
+To launch MPI applications when using PGI and MVAPICH2, please use the srun command.
+
 .. code-block:: shell
 
-    module load pgi mvapich2    srun*n $NP ./application.exe
+   module load pgi mvapich2    srun*n $NP ./application.exe
 
 .. rubric:: Launching OpenMP/MPI hybrid jobs with MVAPICH2 (TBD)
 
 For instructions on how to request nodes in a way to support OpenMP/MPI hybrid applications see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
- 
+
 .. rubric:: Tuning MPI (TBD)
- Several options can be used to improve the performance of MPI jobs.
+
+Several options can be used to improve the performance of MPI jobs.
 
 .. rubric:: Profiling my MPI application with Intel MPI
- Add the following variables to get profiling information from your runs:
+
+Add the following variables to get profiling information from your runs:
+
 .. code-block:: shell
 
-    export I_MPI_STATS=# Can choose a value upto 10    
-    export I_MPI_STATS_SCOPE=col  # Statistics for collectives only
+   export I_MPI_STATS= # Can choose a value upto 10
+   export I_MPI_STATS_SCOPE=col  # Statistics for collectives only
 
-The Intel® runtime library has the ability to bind OpenMP\* threads to physical processing units. The interface is controlled using the KMP_AFFINITY environment variable. Thread affinity can have a dramatic effect on the application speed. It is recommended to set KMP_AFFINITY to scatter to achieve optimal performance for most OpenMP applications. More information is available `here <https://software.intel.com/en-us/node/522691>' __
+The Intel runtime library has the ability to bind OpenMP threads to physical
+processing units. The interface is controlled using the KMP_AFFINITY environment
+variable. Thread affinity can have a dramatic effect on the application speed.
+It is recommended to set KMP_AFFINITY to scatter to achieve optimal performance
+for most OpenMP applications. More information is `available <https://software.intel.com/en-us/node/522691>`__
 
 .. rubric:: Additional documentation on Intel MPI
+
 Intel MPI is being tested. Some information will be added here as testing continues.
 The following is a link to the documentation for `Intel MPI 5: <https://software.intel.com/en-us/articles/intel-mpi-library-documentation>`__
-In addition, the following PSM documentation is very helpful for troubleshooting and turning purposes. This is because Intel MPI is based on the PSM layer:
- `<https://www.intel.com/content/dam/support/us/en/documents/network-and-i-o/fabric-products/OFED_Host_Software_UserGuide_G91902_06.pdf>`_
+In addition, the following PSM documentation is very helpful for troubleshooting and turning purposes. This is because Intel MPI is based on the `PSM layer
+<https://www.intel.com/content/dam/support/us/en/documents/network-and-i-o/fabric-products/OFED_Host_Software_UserGuide_G91902_06.pdf>`__
 
-Extensive documentation exists on the `Intel website. <https://software.intel.com/en-us/intel-software-technical-documentation>`_
+Extensive documentation exists on the `Intel website. <https://software.intel.com/en-us/intel-software-technical-documentation>`__
 The link above leads to the documentation library. There are options to control which documents are listed.
-Also see `<Intel documentation on Cluster-Specific Tuning: https://software.intel.com/en-us/node/535603>`_
+Also see `Intel documentation on Cluster-Specific Tuning <https://software.intel.com/en-us/node/535603>`__.
 
 .. rubric:: Intel Trace Analyzer
-Intel Trace Analyzer (formerly known as Vampir Trace) can be used for analyzing and troubleshooting MPI programs. The documentation for that can be found `<here: https://software.intel.com/sites/default/files/intel-trace-collector-2018-user-and-reference-guide.pdf>`_
+
+Intel Trace Analyzer (formerly known as Vampir Trace) can be used for analyzing and troubleshooting MPI programs. The documentation for that can be found `here: <https://software.intel.com/sites/default/files/intel-trace-collector-2018-user-and-reference-guide.pdf>`__
 Even though we have modules created for "itac" for this utility, it may better to follow the instructions from the link above as the instructions for more recent versions may be different than when we created the module.
 
 .. rubric:: Additional documentation on using MVAPICH2:
-`See the MVAPICH User Guide <https://mvapich.cse.ohio-state.edu/userguide/>`_
+
+`See the MVAPICH User Guide <https://mvapich.cse.ohio-state.edu/userguide/>`__
 
 
 Debugging Codes
-================
+===============
 
 .. rubric:: Program Troubleshooting Tips
+
 The following link from Intel offers general advice for
-`troubleshooting applications <https://software.intel.com/en-us/articles/determining-root-cause-of-sigsegv-or-sigbus-errors>`_
+`troubleshooting applications <https://software.intel.com/en-us/articles/determining-root-cause-of-sigsegv-or-sigbus-errors>`__
 
 If this isn't enough to determine the cause of the error you may have to use one of the debuggers
 (documented below) for further troubleshooting.
 
 .. rubric:: Debugging Intel MPI Applications
+
 When troubleshooting MPI applications using Intel MPI, it may be helpful if the debug versions of
 the Intel MPI library are used. To do this,  use one of the following:
 
@@ -937,47 +948,48 @@ initialization files in your home directory (the file name and the syntax depend
 
 .. rubric:: Application Debuggers
 
-A GUI based debugger named DDT by ARM (Allinea) is available on Hera. Detailed documentation and video tutorials are available 
-`here <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/training/arm-hpc-tools-webinars>`_
-and `here. <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/documentation>`_
+A GUI based debugger named DDT by ARM (Allinea) is available on Hera. Detailed documentation and video tutorials are available
+`here <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/training/arm-hpc-tools-webinars>`__
+and `here. <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/documentation>`__
 
 .. rubric:: Invoking DDT on Hera with Intel IMPI
+
 Please note: Since DDT is GUI debugger, interactions over a wide area
 network can be extremely slow. You may want to consider
 using a "Remote Desktop" which in our environment is X2GO as
-documented at `this link <https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Setting_up_and_using_x2go.>`_
+`documented  <https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Setting_up_and_using_x2go.>`__
 
 .. rubric:: Getting access to the compute resources for interactive use
- 
+
 For debugging you will need interactive access to the desired set of compute nodes using salloc with
 the desired set of resources:
 
 .. code-block:: shell
 
-   j1a01% salloc*-x11=first*N 2*-ntasks=4*A nesccmgmt*t 300*q batch
-   %
+   $ salloc*-x11=first*N 2*-ntasks=4*A nesccmgmt*t 300*q batch
 
 At this point you are on a compute node.
 
 .. rubric:: Load the desired  modules
+
 .. code-block:: shell
 
   % module load intel impi forge
   %
 
 The following is a temporary workaround that is currently
-needed until it is fixed by the vendor. The example below uses csh; use the 
+needed until it is fixed by the vendor. The example below uses csh; use the
 appropriate syntax for your shell.
 
 .. code-block:: shell
 
    % setenv ALLINEA_DEBUG_SRUN_ARGS "%jobid%*-gres=none*-mem-per-cpu=0*I*W0*-cpu-bind=none"
-   % 
+   %
 
 .. rubric:: Launch the application with the debugger
 .. code-block:: shell
 
-   % ddt srun*n 4 ./hello_mpi_c-intel-impi-debug     
+   % ddt srun*n 4 ./hello_mpi_c-intel-impi-debug
 
 This will open GUI in which you can do your debugging.
 Please note that by default it seems to save your current
@@ -991,7 +1003,8 @@ recommend you look through the vendor documentation links
 shown above if you have questions.
 
 Profiling Codes
-=========
+===============
+
 .. rubric:: Allinea Forge
 
 Allinea Forge allows easy profiling of applications.
@@ -1036,6 +1049,7 @@ capability.
    perf-report srun ./a.out
 
 .. rubric:: TAU
+
 The "TAU Performance System® is a portable profiling and
 tracing toolkit for performance analysis of parallel
 programs written in Fortran, C, C++, Java, Python." Supports
@@ -1066,12 +1080,13 @@ or JumpShot tools.
 .. rubric:: Quick-start Guide for TAU
 
 The Quick-start Guide for TAU only addresses basic usage. Please
-keep in mind that this is an evolving document! 
+keep in mind that this is an evolving document!
 
-Find the Quick Start `here <https://heradocs.rdhpcs.noaa.gov/wiki/index.php?title=Quick-start_guide,`_
+Find the Quick Start `here <https://heradocs.rdhpcs.noaa.gov/wiki/index.php?title=Quick-start_guide>`__
 
 
 .. rubric:: Tutorial slides for TAU
+
 A set of slides presenting a recipe approach to beginning
 with Tau is available `here <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlMzcybEhXeUs2UjQ/view?usp=sharing>`__
 
@@ -1085,18 +1100,18 @@ profiling. Makefile.tau-icpc-papi-mpi-pdt-openmp-opari can be used for either MP
 
 .. rubric:: References
 
-Documentation for `ARM <https://developer.arm.com/tools-and-software/server-and-hpc/debug-and-profile/arm-forge>`_
+Documentation for `ARM <https://developer.arm.com/tools-and-software/server-and-hpc/debug-and-profile/arm-forge>`__
 
-`Homepage for TAU (Tuning and Analysis Utilities) <http://www.cs.uoregon.edu/Research/tau/home.php TAU Video>`_
+`Homepage for TAU (Tuning and Analysis Utilities) <http://www.cs.uoregon.edu/Research/tau/home.php TAU Video>`__
 
-`Tutorials and other documentation <http://www.cs.uoregon.edu/Research/tau/docs.php>`_
+`Tutorials and other documentation <http://www.cs.uoregon.edu/Research/tau/docs.php>`__
 `Reference Guide  tau-referenceguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlakhOd1lWVEREVmM/view?usp=sharing>`__
 
 `Users' Guide tau-usersguide.pdf <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlUWFLSFZBdlFuMDQ/view?usp=sharing>`__
 
 
 Managing Contrib Projects
-============
+=========================q
 
 .. rubric:: Overview of Contrib Package
 
@@ -1110,6 +1125,7 @@ maintained by a user on the system. The system staff are not
 responsible for the use or maintenance of these packages.
 
 .. rubric:: Responsibilities of a Contrib Package Maintainer
+
 Maintainers are expected to:
 
 -  Follow the naming conventions and guidelines outlined in
@@ -1135,6 +1151,7 @@ Maintainers are expected to:
    package.
 
 .. rubric:: Requesting to be a Contrib Package Maintainer
+
 If you wish to maintain a package in contrib, please send a
 request to the Help System with:
 
@@ -1171,7 +1188,7 @@ package. You can do this all at one time when submitting
 your request to the Help System.
 
 .. rubric:: Contrib Package Directory Naming Conventions
-   
+
 When installing software into your /contrib directory, first
 determine if this is software that should be versioned
 (multiple versions may exist at one time) or unversioned
@@ -1203,12 +1220,14 @@ software directly into your package directory:
     /contrib/$MYDIR/
 
 .. rubric:: Providing Modules to Access Contrib Installed Software
+
 For each contrib package, a corresponding directory will be
 created for modules. The base directory name is
 "/contrib/modulefiles". Each package will have a
 subdirectory created named after the package. For example,
 for the ferret package, there will also be a directory
 created named:
+
 .. code-block:: shell
 
    /contrib/modulefiles/ferret
@@ -1252,22 +1271,22 @@ Example:
 
 .. code-block:: shell
 
-   # pwd
+   $ pwd
    /contrib/modulefiles/ferret
 
 .. code-block:: shell
 
-   # ls*al
+   $ ls*al
    total 20
    drwxr-xr-x 2 smith    gsd     4096 Dec 13 14:56 .
    drwxr-xr-x 3 root     root    4096 Dec  5 22:05 ..
-  *rw-r--r-- 1 root     root     152 Dec  5 22:11 .version
-  *rw-r--r-- 1 smith    gsd      875 Dec  5 22:27 3.2.6
-  *rw-r--r-- 1 smith    gsd      875 Dec  5 22:28 3.2.7
+   *rw-r--r-- 1 root     root     152 Dec  5 22:11 .version
+   *rw-r--r-- 1 smith    gsd      875 Dec  5 22:27 3.2.6
+   *rw-r--r-- 1 smith    gsd      875 Dec  5 22:28 3.2.7
 
 .. code-block:: shell
 
-   # cat .version
+   $ cat .version
    #%Module###########################################################
    ##
    ## version file for default module version
@@ -1276,25 +1295,24 @@ Example:
 
 .. code-block:: shell
 
-   # module avail
+   $ module avail
 
    ...
 
-  *------------------------------------------ /contrib/modulefiles/*------------------------------------------
+   *------------------------------------------ /contrib/modulefiles/*------------------------------------------
    ferret/3.2.6(default) ferret/3.2.7
 
-   # module load ferret
+   $ module load ferret
    NOTICE: This module, ferret, is a user contributed module.
    NOTICE: For assistance, please contact [mailto:Joe.Smith@noaa.gov Joe.Smith@noaa.gov]
 
-   # module list
+   $ module list
    Currently Loaded Modulefiles:
      1) /ferret/3.2.6
 
-       
-
 Fine Grain Architecture (FGA) System
-=========
+====================================
+
 The Fine Grain Architecture (FGA) system has been installed
 as an addition to Hera to facilitate experimentation with
 emerging architectures. In addition to the traditional
@@ -1307,6 +1325,7 @@ Architecture (TCA) and these two abbreviation TCA and FGA
 will be used in this document to refer to these two systems.
 
 .. rubric:: System Information
+
 -  The FGA system consists of a total of 100 nodes (named
    tg001 through tg100)
 -  Each node has two 10 core Haswell processors (20 cores
@@ -1329,8 +1348,9 @@ Just as an example about how this may impact users,
 depending on the application it may be necessary to compile
 your application on a FGA compute node by getting access to
 an interactive compute node in the "fge" queue.
-   
-.. rubric:: Getting an allocation for FGA resources  
+
+.. rubric:: Getting an allocation for FGA resources
+
 All projects with an
 allocation on Hera have windfall access to FGA resources.
 All FGA projects (RDARCH portfolio) have windfall access to
@@ -1408,15 +1428,18 @@ and executing cuda programs:
 
 .. code-block:: shell
 
-   module load cuda      
-   
-   # Generally you should use the latest cuda available
-   # Note: We have limited experience with cuda.
-   #       The following flags were seen in sample codes
-   #       for compiling codes for the Pascal GPUs
+   module load cuda
+
+Generally you should use the latest cuda available
+
+.. note:: We have limited experience with cuda.
+
+The following flags were seen in sample codes
+for compiling codes for the Pascal GPUs
 
 .. code-block:: shell
-   nvcc*gencode arch=compute_60,code=sm_60 mycode.cu
+
+   $ nvcc -gencode arch=compute_60,code=sm_60 mycode.cu
 
 .. rubric:: Compiling and Running Codes Using Intel MPI
 
@@ -1433,13 +1456,13 @@ also load these modules in the batch job before execution:
 .. code-block:: shell
 
    module load intel impi
-
-   mpiicc  *o mycexe mycode.c
-   mpiifort*o myfxex mycode.f90
+   mpiicc -o mycexe mycode.c
+   mpiifort -o myfxex mycode.f90
 
 .. note::
-Specific versions are listed only as examples; you
-can load any of the available versions
+
+   Specific versions are listed only as examples; you
+   can load any of the available versions
 
 In addition, the following environment variables will have
 to be set in the job file before execution (using the syntax
@@ -1459,6 +1482,7 @@ do not support the TMI fabric setting which is the default
 on the regular Hera nodes.
 
 .. rubric:: Compiling and Building Codes Using mvapich2-gdr Library
+
 The MVAPICH2-GDR (GDR stands for GPUDirect RDMA) from Ohio
 State University is available for experimentation and
 testing on the FGA nodes.
@@ -1475,9 +1499,8 @@ You need to load the following modules:
 .. code-block:: shell
 
    module load intel cuda mvapich2-gdr    # Please consider using the latest versions of these
-
-   mpif90*o myfort.exe myfortcode.f90*L$CUDALIBDIR*lcuda*lcudart
-   mpicc *o myc.exe    myccode.c
+   mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
+   mpicc -o myc.exe    myccode.c
 
 In addition to loading the modules mentioned above, at
 execution time you need to set the following environment
@@ -1492,7 +1515,8 @@ variables in your job file:
    # following variable to 0
    # setenv MV2_USE_GPUDIRECT_GDRCOPY 0
 
-   env LD_PRELOAD=$MPIROOT/lib64/libmpi.so mpirun*np $PBS_NP ./myexe
+   env LD_PRELOAD=$MPIROOT/lib64/libmpi.so
+   mpirun -np $PBS_NP ./myexe
 
 .. rubric:: Compiling and Building Codes Using OpenMPI
 
@@ -1507,8 +1531,8 @@ You need to load the following modules:
 
    module load pgi cuda openmpi     # Please consider loading the latest versions of these
 
-   mpif90*o myfort.exe myfortcode.f90*L$CUDALIBDIR*lcuda*lcudart
-   mpicc *o myc.exe    myccode.c
+   mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
+   mpicc  -o myc.exe myccode.c
 
 In addition to loading the modules mentioned above, at
 execution time you need to set the following environment
@@ -1516,11 +1540,11 @@ variables in your job file:
 
 .. code-block:: shell
 
-   module load pgi cuda openmpi# Please consider loading the latest versions of these
-   mpirun*np $PBS_NP*hostfile $PBS_NODEFILE ./myexe
+   module load pgi cuda openmpi # Please consider loading the latest versions of these
+   mpirun -np $PBS_NP -hostfile $PBS_NODEFILE ./myexe
 
 The following link has additional information on using
-OpenMPI, particularly for `CUDA enabled applications <https://www.open-mpi.org/faq/?category=runcuda>`_
+OpenMPI, particularly for `CUDA enabled applications <https://www.open-mpi.org/faq/?category=runcuda>`__
 
 .. rubric:: Compiling codes with OpenACC directives on Hera
 
@@ -1529,18 +1553,18 @@ PGI compilers. It is best to load the most recent PGI
 compiler available for this. The example below shows how to
 compile a serial program that has OpenACC directives:
 
-::
+.. code:: shell
 
    module load pgi cuda        # Please consider loading the latest versions of these
-   pgf90*acc*ta=nvidia,cc60,nofma*Minfo=accel*Msafeptr myprog.f90
+   pgf90 -acc -ta=nvidia,cc60,nofma -Minfo=accel -Msafeptr myprog.f90
 
 .. rubric:: Compiling MPI codes with OpenACC directives on Hera
 
 We have limited experience of using these new technologies,
 so the best we can do with this point is point you to the
-`web resources <http://www.pgroup.com/doc/openaccmpi17tut.pdf>`_
+`web resources <http://www.pgroup.com/doc/openaccmpi17tut.pdf>`__
 The following link has a presentation on some advanced
-topics on using `multiple GPUs <http://on-demand.gputechconf.com/gtc/2016/webinar/openacc-course/Advanced-OpenACC-Course-Lecture2--Multi-GPU-20160602.pdf>`_
+topics on using `multiple GPUs <http://on-demand.gputechconf.com/gtc/2016/webinar/openacc-course/Advanced-OpenACC-Course-Lecture2--Multi-GPU-20160602.pdf>`__
 
 .. rubric:: Submitting Batch Jobs to the FGA System
 
@@ -1554,16 +1578,18 @@ One thing to keep in mind is that unlike the TCA, the
 FGA nodes have a maximum of 20 cores per node (Hera TCA has
 24 cores per node).
 
-Please see the following link regarding `Hera partitions 
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Hera(Theia)_-_SLURM#Hera_Partitions>`_
+Please see the following link regarding `Hera partitions
+<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Hera(Theia)_-_SLURM#Hera_Partitions>`__
 
 .. rubric:: Hints on Rank Placement/Performance Tuning
 
-.. NOTE:: 
-This section is included below just as a
-suggestion and is being updated as we learn more. Please
-note that the following section seems to be applicable only
-to Intel MPI.
+.. NOTE::
+
+   This section is included below just as a
+   suggestion and is being updated as we learn more. Please
+   note that the following section seems to be applicable only
+   to Intel MPI.
+
 Please keep in mind that there are
 4 GPUs connected to the first socket and 4 GPUs connected to
 the second socket.
@@ -1577,7 +1603,6 @@ modified from actual examples used in the benchmarking run:
 
 .. code-block:: shell
 
-   tfe03.% cat ~/hello/place.sh
    #!/bin/bash
    #set*x
    #
@@ -1598,13 +1623,12 @@ modified from actual examples used in the benchmarking run:
    let pos=( $lrank + $offset)
 
    numactl*a*l*-physcpubind=$pos $*
-   tfe03.%
 
 The job can be launched by using:
 
 .. code-block:: shell
 
-   mpirun*np ${nranks} ./place.sh $exe
+   mpirun -np ${nranks} ./place.sh $exe
 
 Based on the experience from the Cray benchmarking team, a
 couple of examples of achieving the desired pinning are
@@ -1615,7 +1639,6 @@ threads, and hence 2 cores are specified for each rank:
 
 .. code-block:: shell
 
-   tfe09.% cat r4_sock1.sh
    #!/bin/bash
    #location of HPL
    HPL_DIR=`pwd`
@@ -1657,8 +1680,6 @@ threads, and hence 2 cores are specified for each rank:
      ;;
    esac
 
-   tfe09.%
-
 The script above is used in the mpirun command; please note
 that in the example above the name of the executable is
 passed in the environment variable "exe". Just as a second example a similar script for pinning to the
@@ -1666,7 +1687,6 @@ specific cores on the second socket is shown below:
 
 .. code-block:: shell
 
-   tfe09.% cat r4_sock2.sh
    #!/bin/bash
    #location of HPL
    HPL_DIR=`pwd`
@@ -1708,8 +1728,6 @@ specific cores on the second socket is shown below:
      ;;
    esac
 
-   tfe09.%
-
 .. rubric:: Rank placement when using mvapich2
 
 For MVAPICH2 the following seems to work to place all the
@@ -1717,11 +1735,9 @@ ranks on the second socket. In this example, I'm using two nodes, and trying to 
 
 .. code-block:: shell
 
-   tg001.% setenv MV2_USE_GPUDIRECT_GDRCOPY 1
-   tg001.% setenv MV2_ENABLE_AFFINITY 1
-   tg001.%
-
-   tg001.% mpirun*np 8*env MV2_CPU_MAPPING=16:17:18:19 ./$exe | sort*k 4
+   $ setenv MV2_USE_GPUDIRECT_GDRCOPY 1
+   $ setenv MV2_ENABLE_AFFINITY 1
+   $ mpirun -np 8 -env MV2_CPU_MAPPING=16:17:18:19 ./$exe | sort -k 4
    Hello from rank 00 out of 8; procname = tg001, cpuid = 16
    Hello from rank 01 out of 8; procname = tg001, cpuid = 17
    Hello from rank 02 out of 8; procname = tg001, cpuid = 18
@@ -1730,18 +1746,18 @@ ranks on the second socket. In this example, I'm using two nodes, and trying to 
    Hello from rank 05 out of 8; procname = tg002, cpuid = 17
    Hello from rank 06 out of 8; procname = tg002, cpuid = 18
    Hello from rank 07 out of 8; procname = tg002, cpuid = 19
-   tg001.%
 
 Please note that the two environment variables shown above
 need to be set as currently they're not set by default. But
 this one is subject to change and the module may be modified
 in the future to set it by default.
 
-For more details, see the `MVAPICH2 user guide <http://mvapich.cse.ohio-state.edu/static/media/mvapich/mvapich2-2.2-userguide.pdf>`_
+For more details, see the `MVAPICH2 user guide <http://mvapich.cse.ohio-state.edu/static/media/mvapich/mvapich2-2.2-userguide.pdf>`__
 
 .. rubric:: Using Nvidia Multi-Process Servi
 
 .. rubric:: What is MPS
+
 Multi-Process Service (MPS) is a service that allows
 multiple tasks on a node to share a GPU.
 
@@ -1758,6 +1774,7 @@ The performance benefits of taking this approach are very
 much application dependent.
 
 .. rubric:: How do I use MPS
+
 **Please ignore the section below on starting and stopping
 the MPS daemon; It is configured to automatically start on
 all the FGE nodes, so this part about starting and the
@@ -1778,79 +1795,70 @@ apply.
 Assuming you have obtained an interactive compute node as
 mentioned above:
 
--  Load the necessary modules. The MPS services available
-   after the cuda module is loaded:
+- Load the necessary modules. The MPS services available
+  after the cuda module is loaded:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-   tg001.% module load intel/16.1.150 cuda/8.0 mvapich2-gdr/2.2-3-cuda-8.0-intel
-   tg001.%
+      $ module load intel/16.1.150 cuda/8.0 mvapich2-gdr/2.2-3-cuda-8.0-intel
 
--  Start the MPS daemon:
+- Start the MPS daemon:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-   tg001.% setenv CUDA_MPS_LOG_DIRECTORY /tmp/nvidia-log
-   tg001.% setenv CUDA_MPS_PIPE_DIRECTORY /tmp/nvidia-pipe
-   tg001.%
+      $ setenv CUDA_MPS_LOG_DIRECTORY /tmp/nvidia-log
+      $ setenv CUDA_MPS_PIPE_DIRECTORY /tmp/nvidia-pipe
+      $ nvidia-cuda-mps-control* -d
 
-   tg001.% nvidia-cuda-mps-control*d
-   tg001.%
+- Confirm that MPS daemon is running
 
--  Confirm that MPS daemon is running
+  .. code-block:: shell
 
-.. code-block:: shell
+      $ ps -elf | grep nvidia-cuda-mps-control | grep -v grep
+      1 S User.Id  47724      1  0  80   0*  2666 poll_s 16:56 ?        00:00:00 nvidia-cuda-mps-control -d
 
-   tg002.% ps*elf | grep nvidia-cuda-mps-control | grep*v grep
-   1 S Raghu.R+  47724      1  0  80   0*  2666 poll_s 16:56 ?        00:00:00 nvidia-cuda-mps-control*d
-   tg002.%
+- You can run some of the MPS commands.
 
--  You can run some of the MPS commands.
+  Please keep in mind that MPS does not have a command prompt,
+  so typically you run the MPS commands as shown below:
 
-Please keep in mind that MPS does not have a command prompt,
-so typically you run the MPS commands as shown below:
+  .. code-block:: shell
 
-.. code-block:: shell
-
-   tg001.% echo get_server_list | nvidia-cuda-mps-control
-   tg001.%
-
-   tg001.% echo get_client_list | nvidia-cuda-mps-control
+   $ echo get_server_list | nvidia-cuda-mps-control
    Server 0 not found
-   tg001.%
 
-Then you run your application like you normally would.
-At the end of your session, terminate the deamon by running the command:
+  Then you run your application like you normally would.
+  At the end of your session, terminate the deamon by running the command:
 
-.. code-block:: shell
+  .. code-block:: shell
 
-   tg001.% echo quit | nvidia-cuda-mps-control
-   tg001.%
+      $ echo quit | nvidia-cuda-mps-control
 
 .. rubric:: Documentation for MPS
-For additional details see the `Overview <https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf>`_
+
+For additional details see the `Overview <https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf>`__
 
 .. rubric:: Compiling and Building Codes With The Cray Programming Environment
 
-| A custom built version of mvapich2 must be used when
-  compiling and running with
-| the Cray Programming Environment (CrayPE). To run an MPI
-  program using the Cray
-| Programming Environment (CrayPE), you must first set up
-  the proper environment.
-| This has been rolled into a single "module load" command
-  that brings in all required
-| modules:
+A custom built version of mvapich2 must be used when compiling and running with
+the Cray Programming Environment (CrayPE). To run an MPI
+program using the Cray
+Programming Environment (CrayPE), you must first set up
+the proper environment.
+This has been rolled into a single "module load" command
+that brings in all required
+modules:
 
 .. note::
-Currently because of a compatibility issue between
-regular Modules and Lmod (which Hera uses), the CrayPE
-modules don't work with tcsh. Hence all of these examples
-are shown with bash.
+
+   Currently because of a compatibility issue between
+   regular Modules and Lmod (which Hera uses), the CrayPE
+   modules don't work with tcsh. Hence all of these examples
+   are shown with bash.
 
 .. code-block:: shell
 
-   $ bash*l
+   $ bash -l
    $ module purge
    $ module load craype-hera
    $ module list
@@ -1865,33 +1873,33 @@ are shown with bash.
 
 Then compile the program. The compiler drivers are
 
--  cc* c code
--  ftn* fortran
--  CC* c++ code
+:cc: c code
+:ftn: fortran
+:CC: c++ code
 
 .. note::
-Do not use the "mpi" drivers associated
-with the mvapich2 library.
+
+   Do not use the "mpi" drivers associated
+   with the mvapich2 library.
 
 .. note::
-The sample programs and scripts used
-in the examples below can be found in `directory on Hera: </apps/local/examples/craype/XTHI_SIMPLE>`_
+
+   The sample programs and scripts used
+   in the examples below can be found in `directory on Hera: </apps/local/examples/craype/XTHI_SIMPLE>`__
 
 .. code-block:: shell
 
-   $ cc*homp*o xthi xthi.c (-homp is default, so not explicitly needed)
-   $
+   $ cc -homp -o xthi xthi.c  # (-homp is default, so not explicitly needed)
 
 To run the executable, secure the appropriate compute
 node(s) and set the environment:
 
 .. code-block:: shell
 
-  *bash-4.2$ module load craype-hera
-  *bash-4.2$ export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
-  *bash-4.2$
-  *bash-4.2$ cc*homp*o xthi xthi.c
-  *bash-4.2$ mpirun*env OMP_NUM_THREADS 1*n 4*machinefile $PBS_NODEFILE ./xthi
+   $ module load craype-hera
+   $ export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+   $ cc -homp -o xthi xthi.c
+   $ mpirun -env OMP_NUM_THREADS 1 -n 4 -machinefile $PBS_NODEFILE ./xthi
    Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (1) value
    If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
    To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
@@ -1900,29 +1908,27 @@ node(s) and set the environment:
    Hello from rank 1, thread 0, on sg001. (core affinity = 21)
    Hello from rank 2, thread 0, on sg002. (core affinity = 20)
    Hello from rank 3, thread 0, on sg002. (core affinity = 21)
-  *bash-4.2$
 
-| All MPI ranks are running on unique cores in the fge
-  queue. Alternatively, if you want
-| to place ranks on specific cores, you can use the
-  MV2_CPU_MAPPING environment variable:
+All MPI ranks are running on unique cores in the fge
+queue. Alternatively, if you want
+to place ranks on specific cores, you can use the
+MV2_CPU_MAPPING environment variable:
 
 .. code-block:: shell
 
-  *bash-4.2$ mpirun*env OMP_NUM_THREADS 1*env MV2_CPU_MAPPING=0:10*n 2*machinefile $PBS_NODEFILE ./xthi
+   $ mpirun -env OMP_NUM_THREADS 1 -env MV2_CPU_MAPPING=0:10 -n 2 -machinefile $PBS_NODEFILE ./xthi
    Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (1) value
    If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
    To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
    Use MV2_USE_THREAD_WARNING=0 to suppress this message
    Hello from rank 1, thread 0, on sg001. (core affinity = 10)
    Hello from rank 0, thread 0, on sg001. (core affinity = 0)
-  *bash-4.2$
 
 Here, each rank is running on its own socket. If this strategy is used with OpenMP threaded codes, all threads will be placed on the same core as the master thread, leading to contention and reduced performance.
 
 .. code-block:: shell
 
-  *bash-4.2$ mpirun*env OMP_NUM_THREADS 4*n 1*machinefile $PBS_NODEFILE ./xthi
+   $ mpirun -env OMP_NUM_THREADS 4 -n 1 -machinefile $PBS_NODEFILE ./xthi
    Warning: Process to core binding is enabled and OMP_NUM_THREADS is set to non-zero (4) value
    If your program has OpenMP sections, this can cause over-subscription of cores and consequently poor performance
    To avoid this, please re-run your application after setting MV2_ENABLE_AFFINITY=0
@@ -1935,13 +1941,11 @@ Here, each rank is running on its own socket. If this strategy is used with Open
    Hello from rank 0, thread 0, on sg001. (core affinity = 0)
    Hello from rank 0, thread 3, on sg001. (core affinity = 0)
    Hello from rank 0, thread 1, on sg001. (core affinity = 0)
-  *bash-4.2$
 
 Each thread is placed on core.0 with the master thread. To avoid this contention, the application must be launched with numactl like this using in a script (r4.sh in the example below):
 
 .. code-block:: shell
 
-  *bash-4.2$ cat r4.sh
    #!/bin/bash
    HPL_DIR=`pwd`
    CPU_CORES_PER_RANK=4
@@ -2004,16 +2008,13 @@ Each thread is placed on core.0 with the master thread. To avoid this contention
      ;;
    esac
 
-  *bash-4.2$
-
-| In this case, we have a single node with two MPI ranks
-  running each spawning 4 OpenMP threads. The
-| threads are placed such that each set is running on its
-  own socket:
+In this case, we have a single node with two MPI ranks running each spawning 4 OpenMP threads. The
+threads are placed such that each set is running on its
+own socket:
 
 .. code-block:: shell
 
-  *bash-4.2$ mpirun*env OMP_NUM_THREADS 4*n 2*machinefile $PBS_NODEFILE ./r4.sh
+   $ mpirun -env OMP_NUM_THREADS 4 -n 2 -machinefile $PBS_NODEFILE ./r4.sh
    PMI_RANK: 1
    lrank:    1
    PMI_RANK: 0
@@ -2026,23 +2027,23 @@ Each thread is placed on core.0 with the master thread. To avoid this contention
    Hello from rank 1, thread 1, on sg001. (core affinity = 10-13)
    Hello from rank 1, thread 2, on sg001. (core affinity = 10-13)
    Hello from rank 1, thread 3, on sg001. (core affinity = 10-13)
-  *bash-4.2$
 
-| Using this as a template, it is easy to place ranks and
-  threads in many different ways. This
-| example only uses the lrank=0,1 case branches but the user
-  is encouraged to exeriment with
-| other placement strategies.
+Using this as a template, it is easy to place ranks and
+threads in many different ways. This
+example only uses the lrank=0,1 case branches but the user
+is encouraged to exeriment with
+other placement strategies.
 
 .. rubric:: Some helpful web resources
-- `<https://www.openacc.org/>`_ 
-- `<https://www.openacc.org/resources>`_
-- `<http://www.pgroup.com/>`_
-- `<http://www.pgroup.com/resources/docs.php>`_
-- `<http://www.pgroup.com/resources/articles.htm>`_
-- `<https://www.olcf.ornl.gov/training-event/2017-gpu-hackathons/>`_
-- `<http://www.pgroup.com/userforum/index.php>`_
-- `<https://stackoverflow.com/questions/tagged/openacc>`_
+
+- https://www.openacc.org/
+- https://www.openacc.org/resources
+- http://www.pgroup.com/
+- http://www.pgroup.com/resources/docs.php
+- http://www.pgroup.com/resources/articles.htm
+- https://www.olcf.ornl.gov/training-event/2017-gpu-hackathons/
+- http://www.pgroup.com/userforum/index.php
+- https://stackoverflow.com/questions/tagged/openacc
 
 .. rubric:: Getting Help
 
@@ -2050,14 +2051,14 @@ As with any Hera issue, send email to:
 rdhpcs.hera.help@noaa.gov.
 
 Policies and Best Practices
-========================
+===========================
+
 Below is a list of policies that govern the use of the NESCC RDHPCS computing systems. In RDHPCS CommonDocs, see:
 
-*  `Usage and Software Support Policies <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies>`__ 
-*  `Login (Front_End) Node Usage Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__  
-*  `Cron Usage  Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__    
-*  `Module Loading Best Practices <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Module_Loading_Best_Practices>`__ 
-*  `Managing Packages in    /contrib <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Managing_Packages_in_/contrib>`__   
+*  `Usage and Software Support Policies <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies>`__
+*  `Login (Front_End) Node Usage Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__
+*  `Cron Usage  Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__
+*  `Module Loading Best Practices <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Module_Loading_Best_Practices>`__
+*  `Managing Packages in    /contrib <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Managing_Packages_in_/contrib>`__
 *  `Software Install Request    Policy </index.php/Software_install_request_policy>`__
-*  `Protecting Restricted    Data <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__  
-
+*  `Protecting Restricted    Data <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__

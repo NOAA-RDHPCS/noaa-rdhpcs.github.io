@@ -4,12 +4,14 @@ Conda Basics
 ************
 
 .. warning::
+
    Because there is no conda module on Frontier, this guide only applies if you installed a personal Miniconda first.
    See our :doc:`Installing Miniconda Guide </software/python/miniconda>` for more details.
 
 This guide has been shortened and adapted from a challenge in OLCF's `Hands-On with Summit <https://github.com/olcf/hands-on-with-summit>`__ GitHub repository (`Python: Conda Basics <https://github.com/olcf/hands-on-with-summit/tree/master/challenges/Python_Conda_Basics>`__).
 
 .. note::
+
    The guide is designed to be followed from start to finish, as certain steps must be completed in the correct order before some commands work properly.
    For those that just want a quick-reference list of common conda commands, see the :ref:`conda-quick` section.
 
@@ -20,7 +22,7 @@ This guide introduces a user to the basic workflow of using conda environments, 
 Although Summit is being used in this guide, all of the concepts still apply to other OLCF systems.
 If using Frontier, this assumes you already have installed your own version of conda (e.g., by :doc:`installing Miniconda </software/python/miniconda>`).
 
-OLCF Systems this guide applies to: 
+OLCF Systems this guide applies to:
 
 * Summit
 * Andes
@@ -62,20 +64,20 @@ To see what packages are installed in the active environment, use ``conda list``
    # packages in environment at /sw/summit/python/3.8/anaconda3/2020.07-rhel8:
    #
    # Name                    Version                   Build  Channel
-   _ipyw_jlab_nb_ext_conf    0.1.0                    py38_0  
-   _libgcc_mutex             0.1                        main  
-   alabaster                 0.7.12                     py_0  
-   anaconda                  2020.07                  py38_0  
-   anaconda-client           1.7.2                    py38_0  
-   anaconda-project          0.8.4                      py_0  
-   asn1crypto                1.3.0                    py38_0  
-   astroid                   2.4.2                    py38_0  
-   astropy                   4.0.1.post1      py38h7b6447c_1  
+   _ipyw_jlab_nb_ext_conf    0.1.0                    py38_0
+   _libgcc_mutex             0.1                        main
+   alabaster                 0.7.12                     py_0
+   anaconda                  2020.07                  py38_0
+   anaconda-client           1.7.2                    py38_0
+   anaconda-project          0.8.4                      py_0
+   asn1crypto                1.3.0                    py38_0
+   astroid                   2.4.2                    py38_0
+   astropy                   4.0.1.post1      py38h7b6447c_1
    .
    .
    .
 
-You can find the version of Python that exists in this base environment by executing: 
+You can find the version of Python that exists in this base environment by executing:
 
 .. code-block:: bash
 
@@ -143,7 +145,7 @@ And if you check with ``conda env list`` again, you should see that the ``*`` ma
 Installing packages
 ===================
 
-Next, let's install a package (`NumPy <https://numpy.org/>`__). 
+Next, let's install a package (`NumPy <https://numpy.org/>`__).
 There are a few different approaches.
 
 Installing with pip
@@ -192,7 +194,7 @@ Testing your new environment
 ============================
 
 Let's run a test to make sure everything installed properly.
-Since you are running a small test, you can do this without having to run on a compute node. 
+Since you are running a small test, you can do this without having to run on a compute node.
 
 .. warning::
    Remember, at larger scales both your performance and your fellow users' performance will suffer if you do not run on the compute nodes.
@@ -259,15 +261,15 @@ Additional Tips
     A different way (the method described below) is to export a list of all the packages and versions of your environment (an ``environment.yml`` file).
     If a different user provides conda the list you made, conda will install all the same package versions and recreate your environment for them -- essentially "sharing" your environment.
     To export your environment list:
-    
+
     .. code-block:: bash
 
        $ source activate my_env
        $ conda env export > environment.yml
-    
+
     You can then email or otherwise provide the ``environment.yml`` file to the desired person.
     The person would then be able to create the environment like so:
-    
+
     .. code-block:: bash
 
        $ conda env create -f environment.yml

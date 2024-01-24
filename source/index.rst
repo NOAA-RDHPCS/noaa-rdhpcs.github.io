@@ -3,106 +3,118 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to RDHPDS's documentation.
-====================================
+#################################
+Welcome to RDHPCS's Documentation
+#################################
 
 .. note::
-   Test documentation
-   This site is a test version of the NOAA RDHPCS sites.  All documentation here
-   is not current, and may not even reflect anything within the RDHPCS.  Do
-   not rely on these documents.
+   **Documentation Migration in Process**
 
-   This is an attempt to add a line to the description:
-   Lasciate ogne speranza, voi ch’intrate.
-
-
+   We are in the process of migrating from the current `RDHPCS wikis
+   <https://wiki.rdhpcs.noaa.gov>`__ The documentation contained on this site is
+   a migration from the current RDHPCS wikis.  The information here may not be
+   full, and in a sub-optimal layout.
 
 Getting Started
-----------------
+===============
+
 .. toctree::
    :maxdepth: 2
 
-   Getting Started/index
+   getting_started/index
 
 Maintenance Calendar
-------------
+====================
+
 .. toctree::
    :maxdepth: 2
 
-   help/Maintenance   
+   help/maintenance
 
 Getting Help
-------------
+============
+
 .. toctree::
    :maxdepth: 2
 
    help/index
 
 Accounts
---------
+========
+
 .. toctree::
    :maxdepth: 2
 
-   Accounts/index
+   accounts/index
 
 Logging In
------------
-.. toctree::
-   :maxdepth: 2 
+==========
 
-   Logging in/index
+.. toctree::
+   :maxdepth: 2
+
+   logging_in/index
+   connecting/index
 
 Common
-------
+======
+
 .. toctree::
    :maxdepth: 2
 
    common/index
 
 Systems
--------
+=======
+
 .. toctree::
    :maxdepth: 2
 
    systems/index
 
-Data
-----
+Data Storage and Transfers
+==========================
+
 .. toctree::
    :maxdepth: 2
 
    data/index
 
 Modules
--------
+=======
+
 .. toctree::
    :maxdepth: 2
 
    modules/index
 
 Queue Policy
-------------
+============
+
 .. toctree::
    :maxdepth: 2
 
    queue_policy/index
 
 Software
---------
+========
+
 .. toctree::
    :maxdepth: 2
 
    software/index
 
 SLURM Tips
-------------
+==========
+
 .. toctree::
    :maxdepth: 2
 
    slurm_tips/index
 
-How to contribute to this documentation
----------------------------------------
+How to contribute to the Documentation
+======================================
+
 .. toctree::
    :maxdepth: 2
 

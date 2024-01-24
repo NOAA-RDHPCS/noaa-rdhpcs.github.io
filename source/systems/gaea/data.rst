@@ -1,11 +1,9 @@
-##################
-Data and Transfers
-##################
 
 Available on Gaea is a tool called GCP, which allows for internal transfers on
 Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please
 reference System Details if you are unfamiliar with the filesystems or expected
 use of each variety of node on Gaea.
+
 
 Available Tools
 ===============

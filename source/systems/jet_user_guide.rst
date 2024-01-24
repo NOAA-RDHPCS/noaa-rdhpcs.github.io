@@ -4,7 +4,7 @@
 Jet User Guide
 **************
 
-.. rubric .. code-block:: shell Jet System Information
+.. rubric Jet System Information
 
 The Jet system includes several partitions that have been
 installed over time. Currently Jet consists of six compute
@@ -71,7 +71,7 @@ partitions, plus four bigmem nodes, totaling 57,744 coes, @
 +-------+-------+-------+-------+-------+-------+-------+-------+
 
 .. Note .. code-block:: shell
-   
+
 Notes:
 
 -  Jet's Front Ends (service partition) are of the same
@@ -112,7 +112,7 @@ of cutting edge hardware technologies to push forward the
 envelope of what is computationally feasible.
 
 .. rubric .. code-block:: shell Intel Paragon
- 
+
 Intel Paragon was an early parallel system, delivered in
 1991 and was used for the development of a parallel RUC
 model. Researchers at GSL also developed the Scalable
@@ -232,7 +232,7 @@ systems in 2000, GSL is continuing to research potentially
 disruptive, next generation HPC technologies. Graphical
 Processing Units, GPUs, are traditionally used for graphics
 and video gaming, but their design is applicable to
-numerical modelling as well. Since their architecture is 
+numerical modelling as well. Since their architecture is
 fundamentally different from traditional CPUs, existing
 software usually does not run without modification.
 
@@ -254,25 +254,27 @@ At a minimum you will want to load a compiler and an MPIstack:
 
 .. code-block:: shell
 
-   # module load intel   # module load mvapich2
+   $ module load intel
+   $ module load mvapich2
 
 **Note:** Since you have to do this explicitly (for now), you also have to do it in your job scripts. Or, you can put it in your .profile and make it permanent.
 
 .. rubric:: Modules on Jet
+
 The way to find the latest modules on Jet is to run module avail:
 
- .. code-block:: shell 
-    
-   # module aval
+.. code-block:: shell
 
-to see the list of available modules for the compiler and the MPI modules currently loaded. 
+   $ module aval
 
-.. code-block:: shell 
+to see the list of available modules for the compiler and the MPI modules currently loaded.
 
---------------------------------- /apps/lmod/lmod/modulefiles/Core ---------------------------------
+.. code-block:: shell
+
+   --------------------------------- /apps/lmod/lmod/modulefiles/Core ---------------------------------
    lmod/7.7.18    settarg/7.7.18
 
------------------------------------- /apps/modules/modulefiles -------------------------------------
+   ------------------------------------ /apps/modules/modulefiles -------------------------------------
    advisor/2019         g2clib/1.4.0     intel/19.0.4.243   rocoto/1.3.1
    antlr/2.7.7          gempak/7.4.2     intelpython/3.6.8  szip/2.1
    antlr/4.2     (D)    grads/2.0.2      matlab/R2017b      udunits/2.1.24
@@ -283,13 +285,10 @@ to see the list of available modules for the compiler and the MPI modules curren
    forge/19.1intel/18.0.5.274     (D)    pgi/19.4
 
   Where:
-   D:  Default Module   
+   D:  Default Module
 
-Use "module spider" to find all possible modules.
-Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
-
-h3a03.hera%
-
+   Use "module spider" to find all possible modules.
+   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
 In the above, each module name represents a different package. In cases where there are multiple versions of a package, one will be set as a default. For example, for the intel compiler there are multiple choices:
 
@@ -299,14 +298,14 @@ In the above, each module name represents a different package. In cases where th
 
 So if you run:
 
-.. code-block:: shell 
+.. code-block:: shell
 
    # module load intel
 
 The default version will be loaded, in this case 12-12.1.4
 If you want to load a specific version, you can. We highly recommend you use the system defaults unless something is not working or you need a different feature. To load a specific version, specify the version number.
 
-.. code-block:: shell 
+.. code-block:: shell
 
    # module load intel/11.1.080    # module list   Currently Loaded Modulefiles:    1) intel/11.1.080
 
@@ -326,7 +325,7 @@ or
 
 
 Using Math Libraries
-================
+====================
 
 The intel math kernel library (MKL) provides a wide variety
 of optimized math libraries including "BLAS, LAPACK,
@@ -338,12 +337,14 @@ the users on our system.
 
 
 .. rubric:: Location of MKL on Jet
+
 **MKL** is specific to the version of the Intel compiler used.
 After loading the compiler version you require, the variable
 **$MKLROOT** will be defined that specifies the path to the
 MKL library. Use this variable.
 
 .. rubric:: Basic Linking with BLAS and LAPACK
+
 To link with the mathematical libraries such as BLAS,
 LAPACK, and the FFT routines, it is best to just add the
 following option to your link line:
@@ -364,6 +365,7 @@ relies on sequential math routines, so you would want to use
 sequential for that code).
 
 .. rubric:: Linking with FFT, and the FFTW interface
+
 Intel provides highly optimized FFT routines within MKL.
 They are documented `here <https://software.intel.com/en-us/articles/the-intel-math-kernel-library-and-its-fast-fourier-transform-routines/>`__.
 While Intel has a specific interface (DFTI), we recommend
@@ -379,14 +381,14 @@ The best reference for the fftw interface can be found `here <http://www.fftw.or
 include the wrapper script **fftw3.f** in your source before
 using the functions. Add the following statement:
 
-.. code-block:: shell 
+.. code-block:: shell
 
    include 'fftw3.f'
 
 In the appropriate place in your source code.
 When compiling, add:
 
-.. code-block:: shell 
+.. code-block:: shell
 
     '-I$(MKLROOT)/include/fftw'
 
@@ -394,19 +396,20 @@ to your CFLAGS and/or FFLAGS. When linking, use the steps
 described above.
 
 .. rubric:: Linking with Scalapack
+
 Linking with Scalapack is more complicated because it uses
 MPI. You have to specify which version of the MPI library
 you are using when linking with Scalapack. Examples are:
 
 .. rubric:: Linking with Scalapack and mvapich
 
-.. code-block:: shell 
+.. code-block:: shell
 
    LDFLAGS=-L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core
 
 .. rubric:: Linking with Scalapack and OpenMPI
 
-.. code-block:: shell 
+.. code-block:: shell
 
    LDFLAGS=-L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core
 
@@ -415,23 +418,25 @@ this variable name, not the explicit path for the Intel
 compiler.
 
 .. rubric:: Linking math libraries with Portland Group
+
 For the PGI compiler, all you need to do is specify the
 library name.
 
 For blas:
 
-.. code-block:: shell 
+.. code-block:: shell
 
    -lblas
 
 For lapack:
 
-.. code-block:: shell 
+.. code-block:: shell
 
    -llapack
 
 Options for Editing on Jet
-========
+==========================
+
 To use any of these editors, type the name in at the command line:
 
 +----------+--------------------------------------------------------------+
@@ -459,7 +464,7 @@ To use any of these editors, type the name in at the command line:
 
 
 Starting a Parallel Application
-================================
+===============================
 
 .. rubric:: Supported MPI Stacks
 
@@ -478,14 +483,15 @@ and explain why so we can better understand your
 requirements.
 
 .. rubric:: Load MPI Stacks Via Modules
+
 The MPI libraries are compiler specific. Therefore a
 compiler must be loaded first before the MPI stacks become
 visible.
 
 .. code-block:: shell
 
-   # module load intel
-   # module avail
+   $ module load intel
+   $ module avail
 
    ...
    ------------------------- /apps/Modules/default/modulefamilies/intel -- -------------------
@@ -500,11 +506,13 @@ loaded. You can load the module with command:
    # module load mvapich2
 
 .. warning::
-Please use the default version of the MPI stack you
-require unless you are tracking down bugs or by request of
-the Jet Admin staff.
+
+   Please use the default version of the MPI stack you
+   require unless you are tracking down bugs or by request of
+   the Jet Admin staff.
 
 .. rubric:: Launching Jobs
+
 On Jet, please use mpiexec. This is a wrapper script that
 sets up your run environment to match your batch job and use
 process affinity (which provides better performance).
@@ -514,6 +522,7 @@ process affinity (which provides better performance).
    mpiexec -np $NUM_OF_RANKS
 
 .. rubric:: Launching MPMD jobs
+
 MPMD (multi-program, multi-data) programs are typically used
 for coupled MPI jobs, for example oceans and atmosphere.
 Colons are used to separate the requirements of each launch.
@@ -527,6 +536,7 @@ Of the 60 MPI ranks, the first 36 will be ocean.exe process,
 and the last 24 will be the atm.exe process.
 
 .. rubric:: MPI Library Specific Options
+
 The MPI standard does not explicitly define how
 implementations are done between the libraries. Therefore, a
 single call to mpiexec can never be guaranteed to work
@@ -534,6 +544,7 @@ across different libraries. Below are the important
 differences between the the ones that we support.
 
 .. rubric:: Passing Environment Variables
+
 There are two methods to pass variables to MPI processes,
 global (-genv) and local (-env). The global ones are applied
 to every executable. The local ones are only applied to the
@@ -583,8 +594,9 @@ would be:
    mpiexec -np 4 -env OMP_NUM_THREADS=2 ./ocean.exe | -np 8 -env OMP_NUM_THREADS=3 ./atm.exe
 
 .. rubric:: OpenMPI Specific Options
+
 .. rubric:: Passing Environment Variables
-    
+
 The option -x is used to pass variables.
 To pass a variable with its value:
 
@@ -612,7 +624,8 @@ processes of an MPMD application with a single usage of
 
 
 Policies and Best Practices
-=========
+===========================
+
 .. rubric:: Project Data Management
 
 `Project Data
@@ -622,16 +635,19 @@ File System (HPFS, Scratch), HFS (Home File System), the
 HPSS HSMS (tape).
 
 .. rubric:: Login (Front End) Node Usage Policy
+
 `Login (Front_End) Node Usage
 Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__
 , in RDHPCS CommonDocs
 
 .. rubric:: Cron Usage Policy
+
 `Cron Usage
 Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__
 , in RDHPCS CommonDocs
 
 .. rubric:: Maximum Job Length Policy
+
 See the section: `Specifying a Queue
 (QOS) <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php?title=Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM&action=edit&section=23>`__\ for
 maximum job length per partition and QOS. If you require
@@ -678,6 +694,7 @@ Please clean up your temporary files after you are done
 using them.
 
 .. rubric:: Software Support Policy
+
 Our goal is to enable science on any RDHPCS system. This
 often includes installing additional software to improve the
 utility and usefulness of the system.
@@ -711,6 +728,7 @@ expect all applications to work in 64-bit mode.
    to the community.
 
 .. rubric:: Single-user Managed Software
+
 Users are always free to install software packages and
 maintain them in their home or project directories.
 
@@ -732,8 +750,10 @@ start a `system help ticket: <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/in
 
 
 System Software
-============
+===============
+
 .. rubric:: How Software is Organized Through Modules
+
 Many software packages have compiler dependencies, and some
 also have MPI stack dependencies. To ensure that the correct
 packages are loaded, the module installation has been
@@ -744,7 +764,7 @@ each compiler family we have. So when you run module avail:
 .. code-block:: shell
 
    # module avail
-   
+
    ------------------------------ /apps/Modules/3.2.9/modulefil------------------------------------------------
    bbcp/12.01.30.01.0(default) hpssmodule-cvs      nulludunits/1.12.11
    cnvgrib/1.2.3(default)      intel/11.1.080  module-info     pgi/12.5-0(default)         udunits/2.1.24(default)
@@ -777,6 +797,7 @@ the MPI stack you wanted to use.
    hdf5parallel/1.8.9(default)       netcdf4-hdf5parallel/4.2(default)
 
 .. rubric:: Environment Variables
+
 For all packages on the system, environment variables have
 been set to ensure consistency in their use. We have defined
 the following variables for your use when using the
@@ -803,7 +824,7 @@ compiling, use the variable name. For example:
    icc mycode.c -o mycode -I$NETCDF/include -L$NETCDF/lib -lnetcdf
 
 .. rubric:: User supported modules
-    
+
 Users who require access to packages not currently
 supported by the HPC staff are welcome to submit requests
 through the help system to install and support unique
@@ -832,18 +853,19 @@ execute the following commands.
 
 
 Using OpenMP and Hybrid OpenMP/MPI on Jet
-=========
-.. rubric:: Using OpenMP and Hybrid OpenMP/MPI on Jet 
+=========================================
+
+.. rubric:: Using OpenMP and Hybrid OpenMP/MPI on Jet
 
 `OpenMP <http://en.wikipedia.org/wiki/OpenMP OpenMP>`_ is a programming extension for supporting parallel computing in Fortran and C using shared memory. It is relative easy to parallelize code using OpenMP. However, parallelization is restricted to a single node. As any programming model, there can be tricks to make to write efficient code.
 
 We support OpenMP on Jet, however, it is infrequently used and we have not figured out all the issues. If you want to use OpenMP, please submit a `help request <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_ and let us know so we can keep track of the users interested in using it.
 
-.. rubric:: Compiling codes with OpenMP 
+.. rubric:: Compiling codes with OpenMP
 
 For Intel, add the option '''-openmp'''. For Portland Group, add the option '''-mp'''
 
-.. rubric:: Specifying the Number of Threads to use 
+.. rubric:: Specifying the Number of Threads to use
 
 Depending on the compiler used, the the default number of threads to use is different. Intel will use all the core available. For PGI, it will default to using 1. It is best to always explicitly set what you want. Use the OMP_NUM_THREADS variable to do this. Ex:
 
@@ -871,25 +893,25 @@ Do this:
     for j=1,n
     for i=1,m
      A(i,j)=0.
-   enddo 
+   enddo
   enddo
 
 
 This is not a Jet issue, but affects all architectures. By structuring your code in the fashion above then your code will be more portable.
 
-.. rubric:: Using MPI calls from OpenMP critical sections 
+.. rubric:: Using MPI calls from OpenMP critical sections
 
 When using MPI and OpenMP, it is not necessary to worry about how threading is managed in MPI unless the MPI calls are from within OpenMP sections. You must disable processor affinity for this to work. To do this, you must pass the variable MV2_ENABLE_AFFINITY=0 to your application at run time. For example:
 
 .. code-block:: shell
- 
+
  mpiexec -v MV2_ENABLE_AFFINITY=0 ......
 
-See the `mvapich2 documentation <https://mvapich.cse.ohio-state.edu/userguide/>`_  for more information.
+See the `mvapich2 documentation <https://mvapich.cse.ohio-state.edu/userguide/>`__  for more information.
 
 
 Final Tuesday
-========================
+=============
 
 Known Issues
 ============
