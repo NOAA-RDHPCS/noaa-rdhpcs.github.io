@@ -15,7 +15,7 @@ Account Process Overview
 
 
 Getting Access
-----
+--------------
 
 This figure is an overview of the timeline and process for system access. 
 
@@ -30,7 +30,7 @@ Once this request is approved, you will receive an email containing instructions
 
 
 RSA Software Token
-----
+------------------
 
 RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS systems for SSH access. When you’re assigned to your first project, the RSA token form will be used to assign your software token. Your RSA token will include instructions about how to initialize it. You can find more information on RSA tokens here: Logging in - rdhpcs-common-docs (noaa.gov). 
 
@@ -73,7 +73,6 @@ A role account is a user account shared with one or more users as members. All g
 You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access.
 
 Any changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
-
 
 
 *****
@@ -326,7 +325,8 @@ Role Accounts
 A role account is a user account shared with one or more users as members, such that all group members share the account equally via the use of `sudo`, typically for the unified use of a project. Role accounts must have a name that reflects their project association or function.
 All changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
 
-**Accessing a Role Account**
+Accessing a Role Account
+------------
 You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access. For example:
 
 .. code-block.. code-block:: shell
