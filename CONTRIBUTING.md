@@ -6,7 +6,7 @@ This repository contains the source for the RDHPCS Documentation located at
 https://docs.rdhpcs.noaa.gov.
 
 Contributions to this project are released to the public under the
-[projects open source license](LICENSE.md).
+[project's open source license](LICENSE.md).
 
 What follows is a set of guidelines and how-tos for contributing to libFMS.
 These are guidelines, not rules.  Use your best judgement and feel free to

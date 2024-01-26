@@ -22,7 +22,7 @@ Suffix filenames with the `.rst` extension.
 
 :warning: RST files are human-readable text files.  Some programs will parse
 `.rst` files with `rst2html`, which cannot interpret some of Sphinx's directives
-such as `..code-block::`.  Such readers, e.g., the GitHub platform, will not
+such as `.. code-block::`.  Such readers, e.g., the GitHub platform, will not
 display all content.
 
 When you need to read HTML builds of the documentation, best practice is to
@@ -125,9 +125,8 @@ creating a new document.
 
 There should be only one H1 in a document.
 
-.. note::
-
-  See also [Sphinx's documentation about sections](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections).
+See also [Sphinx's documentation about
+sections](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections).
 
 ### H1 Headings
 
