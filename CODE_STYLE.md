@@ -76,12 +76,12 @@ Exception: tables and long URLs.
 
 Use the following symbols to create headings:
 
-#. `#` with overline
-#. `*` with overline
-#. `=`
-#. `-`
-#. `^`
-#. `"`
+# `#` with overline
+# `*` with overline
+# `=`
+# `-`
+# `^`
+# `"`
 
 As an example:
 
