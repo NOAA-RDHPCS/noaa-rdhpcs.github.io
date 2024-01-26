@@ -396,7 +396,7 @@ FairShare (f) = 2^-(EffectvUsage / NormShares ) (see definitions below)
 
 Fairshare Definitions
 ^^^^^^^^^^^^^^^^^^^^^
-FairShare Definitions
+
 
 **NormShares** is the project’s RawShares (allocated core-hours) divided by the total number of RawShares allocated to all projects on the system, or the fraction of the system the project has been allocated, which represents the projects system level priority without regard to QOS and recent usage priority adjustments. 
 
@@ -411,6 +411,7 @@ Projects with a windfall allocation always have a FairShare, Normshares, and Eff
 **Note**: Jobs run in the windfall QOS will NOT count toward RawUsage (and EffectvUsage) and hence will not lower FairShare.
 
 For a new job to run sooner, regardless of your current FairShare value, it is important that you do the following:
+
 - Select the appropriate QOS. 
 - Submit your job ASAP as a job’s priority increases with time in the queue regardless of other priority factors.
 - Enter an appropriate wall clock time. Excessive wall clock times will delay that start of your job, and contributes to overall inefficient scheduling and system utilization.
@@ -457,14 +458,16 @@ sprio
 
 .. _slurm_tips_fairshare:
 
+
 Getting Information About Your Projects
-=======================================
+---------------------------------------
 
 Use the sfairshare command to show the current FairShare priority status of all projects. Of particular interest will likely be the , the -u option to list just your projects, -w option (these projects always have the lowest priority) to exclude listing windfall projects, and the -T <threshold> option, which will give you a list of all projects and their FairShare value with a higher value than the threshold value you enter. For more options on sfairshare use the sfairshare -h command. 
 
 Here are examples from Hera:
 
 .. code-block:: shell
+
    [First.Last@hfe12 ~]$ sfairshare -w
    Project         FairShare       Rank    NormShares      EffUsage
    -----------     ----------      ------  ----------      ----------
@@ -477,7 +480,6 @@ Here are examples from Hera:
    .
    .
    .
-
    [First.Last@hfe12 ~]$ sfairshare -w -T 0.5
    Project         FairShare       Rank    NormShares      EffUsage
    -----------     ----------      ------  ----------      ----------
@@ -512,6 +514,7 @@ Use the saccount_params or account_params command to get your current:
 .. code-block:: shell
 
    [First.Last @hfe07 ~]$ saccount_params
+
 
 shpcrpt
 ^^^^^^^
