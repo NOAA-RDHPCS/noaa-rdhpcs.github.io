@@ -169,7 +169,7 @@ CAC Login
 .. _updating_or_renewing_cac_information_in_aim:
 
 Updating or Renewing CAC Information in AIM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------
 
 **NEW as of July 2018**: AIM uses the new NOAA single user sign-on -
 please proceed through the prompts and sign in with your NEMS
@@ -180,7 +180,7 @@ credentials as before:
 .. _aim___auto_update_of_cac_entry:
 
 AIM - Auto-update of CAC Entry
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 IMPACTS: ONLY RDHPCS Users with a NOAA-issued CAC.
 
