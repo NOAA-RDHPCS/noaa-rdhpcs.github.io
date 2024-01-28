@@ -3,23 +3,16 @@
 Installing CuPy
 ***************
 
-.. warning::
-   This guide has been adapted for Frontier following ``venv`` syntax. If you
-   are using a personal :doc:`Miniconda distribution on Frontier </software/python/miniconda>`,
-   the workflow will be similar to the Summit ``conda`` scenario.  If
-   that is your use-case, then ignore the mention of the ``cray-python`` module in
-   the workflow (other modules still apply).
-
-This guide has been adapted from a challenge in OLCF's `Hands-On with Summit <https://github.com/olcf/hands-on-with-summit>`__ GitHub repository (`Python: CuPy Basics <https://github.com/olcf/hands-on-with-summit/tree/master/challenges/Python_Cupy_Basics>`__).
-
 .. note::
-   The guide is designed to be followed from start to finish, as certain steps must be completed in the correct order before some commands work properly.
+
+   The guide is designed to be followed from start to finish, as certain steps
+   must be completed in the correct order before some commands work properly.
 
 Overview
 ========
 
-This guide teaches you how to build CuPy from source into a custom virtual environment.
-On Summit, this is done using ``conda``, while on Frontier this is done using ``venv``.
+This guide teaches you how to build CuPy from source into a custom virtual
+environment. This is done using ``conda``.
 
 In this guide, you will:
 
@@ -27,31 +20,43 @@ In this guide, you will:
 * Learn the basics of CuPy
 * Compare speeds to NumPy
 
-OLCF Systems this guide applies to:
-
-* Summit
-* Frontier
-
 CuPy
 ====
 
-GPU computing has become a big part of the data science landscape, as array operations with NVIDIA GPUs can provide considerable speedups over CPU computing.
-Although GPU computing on Summit is often utilized in codes that are written in Fortran and C, GPU-related Python packages are quickly becoming popular in the data science community.
-One of these packages is `CuPy <https://cupy.dev/>`__, a NumPy/SciPy-compatible array library accelerated with NVIDIA CUDA.
+GPU computing has become a big part of the data science landscape, as array
+operations with NVIDIA GPUs can provide considerable speedups over CPU
+computing. Although GPU computing is often utilized in codes that are written in
+Fortran and C, GPU-related Python packages are quickly becoming popular in the
+data science community. One of these packages is `CuPy <https://cupy.dev/>`__, a
+NumPy/SciPy-compatible array library accelerated with NVIDIA CUDA.
 
-CuPy is a library that implements NumPy arrays on NVIDIA GPUs by utilizing CUDA Toolkit libraries like cuBLAS, cuRAND, cuSOLVER, cuSPARSE, cuFFT, cuDNN and NCCL.
-Although optimized NumPy is a significant step up from Python in terms of speed, performance is still limited by the CPU (especially at larger data sizes) -- this is where CuPy comes in.
-Because CuPy's interface is nearly a mirror of NumPy, it acts as a replacement to run existing NumPy/SciPy code on NVIDIA CUDA platforms, which helps speed up calculations further.
-CuPy supports most of the array operations that NumPy provides, including array indexing, math, and transformations.
-Most operations provide an immediate speed-up out of the box, and some operations are sped up by over a factor of 100 (see CuPy benchmark timings below, from the `Single-GPU CuPy Speedups <https://medium.com/rapids-ai/single-gpu-cupy-speedups-ea99cbbb0cbb>`__ article).
+CuPy is a library that implements NumPy arrays on NVIDIA GPUs by utilizing CUDA
+Toolkit libraries like cuBLAS, cuRAND, cuSOLVER, cuSPARSE, cuFFT, cuDNN and
+NCCL. Although optimized NumPy is a significant step up from Python in terms of
+speed, performance is still limited by the CPU (especially at larger data sizes)
+-- this is where CuPy comes in. Because CuPy's interface is nearly a mirror of
+NumPy, it acts as a replacement to run existing NumPy/SciPy code on NVIDIA CUDA
+platforms, which helps speed up calculations further. CuPy supports most of the
+array operations that NumPy provides, including array indexing, math, and
+transformations. Most operations provide an immediate speed-up out of the box,
+and some operations are sped up by over a factor of 100 (see CuPy benchmark
+timings below, from the `Single-GPU CuPy Speedups
+<https://medium.com/rapids-ai/single-gpu-cupy-speedups-ea99cbbb0cbb>`__
+article).
 
 .. image:: /images/python_cupy_1.png
    :align: center
    :width: 50%
 
-Compute nodes equipped with NVIDIA GPUs will be able to take full advantage of CuPy's capabilities on the system, providing significant speedups over NumPy-written code.
-**CuPy with AMD GPUs is still being explored, and the same performance is not guaranteed (especially with larger data sizes).**
-**Instructions for Frontier are available in this guide, but users must note that the CuPy developers have labeled this method as** `experimental <https://docs.cupy.dev/en/stable/install.html#using-cupy-on-amd-gpu-experimental>`__ **and has** `limitations <https://docs.cupy.dev/en/stable/install.html#limitations>`__.
+Compute nodes equipped with NVIDIA GPUs will be able to take full advantage of
+CuPy's capabilities on the system, providing significant speedups over
+NumPy-written code. **CuPy with AMD GPUs is still being explored, and the same
+performance is not guaranteed (especially with larger data sizes).**
+**Instructions for Hera's fge partition are available in this guide, but users
+must note that the CuPy developers have labeled this method as** `experimental
+<https://docs.cupy.dev/en/stable/install.html#using-cupy-on-amd-gpu-experimental>`__
+**and has** `limitations
+<https://docs.cupy.dev/en/stable/install.html#limitations>`__.
 
 .. _cupy-envs:
 
@@ -59,212 +64,158 @@ Installing CuPy
 ===============
 
 .. warning::
-   Before setting up your environment, you must exit and log back in so that you have a fresh login shell.
-   This is to ensure that no previously activated environments exist in your ``$PATH`` environment variable.
-   Additionally, you should execute ``module reset``.
 
-Building CuPy from source is highly sensitive to the current environment variables set in your profile.
-Because of this, it is extremely important that all the modules and environments you plan to load are done in the correct order, so that all the environment variables are set correctly.
+   Before setting up your environment, you must exit and log back in so that you
+   have a fresh login shell. This is to ensure that no previously activated
+   environments exist in your ``$PATH`` environment variable. Additionally, you
+   should execute ``module reset``.
 
-First, load the gnu compiler module (most Python packages assume GCC), relevant GPU module (necessary for CuPy), and the python module (allows you to create a new environment):
+Building CuPy from source is highly sensitive to the current environment
+variables set in your profile. Because of this, it is extremely important that
+all the modules and environments you plan to load are done in the correct order,
+so that all the environment variables are set correctly.
 
-.. tab-set::
+First, load the gnu compiler module (most Python packages assume GCC), relevant
+GPU module (necessary for CuPy), and the python module (allows you to create a
+new environment):
 
-   .. tab-item:: Summit
-      :sync: summit
+.. code-block:: bash
 
-      .. code-block:: bash
+   $ module load gnu/9.2.0 # might work with other GCC versions
+   $ module load cuda/12.1.0
+   $ module use /contrib/miniconda/modulefiles
+   $ module load miniconda3/4.12.0
 
-         $ module load gcc/7.5.0 # might work with other GCC versions
-         $ module load cuda/11.0.3
-         $ module load python
-
-   .. tab-item:: Frontier
-      :sync: frontier
-
-      .. code-block:: bash
-
-         $ module load PrgEnv-gnu
-         $ module load rocm/5.3.0
-         $ module load craype-accel-amd-gfx90a
-         $ module load cray-python # only if not using Miniconda on Frontier
-
-.. note::
-   If you are using a :doc:`Miniconda distribution on Frontier </software/python/miniconda>`, the above ``module load cray-python`` should not be loaded.
-
-Loading a python module puts you in a "base" environment, but you need to create a new environment using the ``conda create`` command (Summit) or the ``venv`` command (Frontier):
+Loading a python module puts you in a "base" environment, but you need to create
+a new environment using the ``conda create`` command or the ``venv``
+command:
 
 .. tab-set::
 
-   .. tab-item:: Summit
-      :sync: summit
+   .. tab-item:: Conda
+      :sync: conda
 
       .. code-block:: bash
 
-         $ conda create -p /ccs/proj/<project_id>/<user_id>/envs/summit/cupy-summit python=3.9
+         $ conda create -p /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy python=3.10.13
 
-   .. tab-item:: Frontier
-      :sync: frontier
+   .. tab-item:: Venv
+      :sync: venv
 
       .. code-block:: bash
 
-         $ python3 -m venv /ccs/proj/<project_id>/<user_id>/envs/frontier/cupy-frontier
+         $ python3 -m venv /scrtch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy
 
 
 .. note::
-   As noted in the :doc:`/software/python/index` page, it is highly recommended to create new environments in the "Project Home" directory.
+
+   As noted in the :doc:`/software/python/index` page, it is highly recommended
+   to create new environments in the "Project Home" directory.
 
 After following the prompts for creating your new environment, you can now activate it:
 
 .. tab-set::
 
-   .. tab-item:: Summit
-      :sync: summit
+   .. tab-item:: Conda
+      :sync: conda
 
       .. code-block:: bash
 
-         $ source activate /ccs/proj/<project_id>/<user_id>/envs/summit/cupy-summit
+         $ source activate /scrtch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy
 
-   .. tab-item:: Frontier
-      :sync: frontier
+   .. tab-item:: Venv
+      :sync: venv
 
       .. code-block:: bash
 
-         $ source /ccs/proj/<project_id>/<user_id>/envs/frontier/cupy-frontier/bin/activate
+         $ source /scrtch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy/bin/activate
 
-CuPy depends on NumPy, so let's install an optimized version of NumPy into your fresh environment:
+CuPy depends on NumPy, so let's install an optimized version of NumPy into your
+fresh environment:
 
 .. tab-set::
 
-   .. tab-item:: Summit
-      :sync: summit
+   .. tab-item:: Conda
+      :sync: conda
 
       .. code-block:: bash
 
          $ conda install -c defaults --override-channels numpy scipy
 
-   .. tab-item:: Frontier
-      :sync: frontier
+   .. tab-item:: Venv
+      :sync: venv
 
       .. code-block:: bash
 
          $ pip install --no-cache-dir --upgrade pip
          $ pip install numpy scipy --no-cache-dir
 
-After following the prompts, NumPy and its linear algebra dependencies should successfully install.
-SciPy is an optional dependency, but it would allow you to use the additional SciPy-based routines in CuPy:
+After following the prompts, NumPy and its linear algebra dependencies should
+successfully install. SciPy is an optional dependency, but it would allow you to
+use the additional SciPy-based routines in CuPy:
 
-Finally, install CuPy from source into your environment.
-To make sure that you are building from source, and not a pre-compiled binary, use ``pip``:
+Finally, install CuPy from source into your environment. To make sure that you
+are building from source, and not a pre-compiled binary, use ``pip``:
 
-.. tab-set::
+.. code-block:: bash
 
-   .. tab-item:: Summit
-      :sync: summit
+   $ CC=gcc NVCC=nvcc pip install --no-cache-dir --no-binary=cupy cupy
 
-      .. code-block:: bash
-
-         $ CC=gcc NVCC=nvcc pip install --no-cache-dir --no-binary=cupy cupy
-
-   .. tab-item:: Frontier
-      :sync: frontier
-
-      .. code-block:: bash
-
-         $ export CUPY_INSTALL_USE_HIP=1
-         $ export ROCM_HOME=/opt/rocm-5.3.0
-         $ export HCC_AMDGPU_TARGET=gfx90a
-         $ CC=gcc pip install --no-cache-dir --no-binary=cupy cupy
-
-The ``CC`` and ``NVCC`` flags ensure that you are passing the correct wrappers, while the various flags for Frontier tell CuPy to build for AMD GPUs.
-Note that, on Summit, if you are using the instructions for installing CuPy with OpenCE below, the ``cuda/11.0.3`` module will automatically be loaded.
-This installation takes, on average, 10-20 minutes to complete (due to building everything from scratch), so don't panic if it looks like the install timed-out.
+The ``CC`` and ``NVCC`` flags ensure that you are passing the correct wrappers.
+This installation takes, on average, 10-20 minutes to complete (due to building
+everything from scratch), so don't panic if it looks like the install timed-out.
 Eventually you should see output similar to this (versions will vary):
 
 .. code-block::
 
    Successfully installed cupy-9.5.0 fastrlock-0.6
 
-Installing CuPy in an OpenCE Environment (Summit only)
-------------------------------------------------------
-
-If you wish to use CuPy within a clone of the OpenCE environment, the installation process is very similar to what we do in the regular CuPy installation we saw above.
-
-.. warning::
-   The open-ce/1.2.0-pyXY-0 (which is the current default) will not support this. So make sure you are using open-ce/1.5.0-pyXY-0 or higher.
-
-The contents of the open-ce module cannot be modified so you need to make your own clone of the open-ce environment.
-
-.. code-block::
-
-   $ module purge
-   $ module load DefApps
-   $ module unload xl
-   $ module load open-ce/1.5.2-py39-0
-   $ conda create --clone open-ce-1.5.2-py39-0 -p /ccs/proj/<project_id>/<user_id>/envs/summit/opence_cupy_summit
-   $ conda activate /ccs/proj/<project_id>/<user_id>/envs/summit/opence_cupy_summit
-
-Next, install CuPy the way you did before. This installation will use the system GCC /usr/bin/gcc which is currently 8.3.1.
-
-.. code-block::
-
-   $ CC=gcc NVCC=nvcc pip install --no-binary=cupy cupy
-
-Now, everytime you want to use this environment with CuPy on a new login or in a job, you will have to do the sequence of the following
-
-.. code-block::
-
-   module purge
-   module load DefApps
-   module unload xl
-   module load open-ce/1.5.2-py39-0
-   conda activate /ccs/proj/<project_id>/<user_id>/envs/summit/opence_cupy_summit
-
-
-
-
 Getting Started With CuPy
 =========================
 
 .. note::
-   Assuming you are continuing from the previous sections, you do not need to
-   load any modules. Otherwise, you need to load the modules associated with your
-   system covered in the :ref:`Installing CuPy section <cupy-envs>`.
 
-When a kernel call is required in CuPy, it compiles a kernel code optimized for the shapes and data types of given arguments, sends it to the GPU device, and executes the kernel.
-Due to this, CuPy runs slower on its initial execution.
-This slowdown will be resolved at the second execution because CuPy caches the kernel code sent to GPU device.
-By default, the compiled code is cached to the ``$HOME/.cupy/kernel_cache`` directory, which the compute nodes will not be able to access.
-It is good practice to change it to your scratch directory:
+   Assuming you are continuing from the previous sections, you do not need to
+   load any modules. Otherwise, you need to load the modules associated with
+   your system covered in the :ref:`Installing CuPy section <cupy-envs>`.
+
+When a kernel call is required in CuPy, it compiles a kernel code optimized for
+the shapes and data types of given arguments, sends it to the GPU device, and
+executes the kernel. Due to this, CuPy runs slower on its initial execution.
+This slowdown will be resolved at the second execution because CuPy caches the
+kernel code sent to GPU device. By default, the compiled code is cached to the
+``$HOME/.cupy/kernel_cache`` directory, which the compute nodes will not be able
+to access. It is good practice to change it to your scratch directory:
 
 .. code-block:: bash
 
-   $ export CUPY_CACHE_DIR="/gpfs/alpine/scratch/<YOUR_USER_ID>/<YOUR_PROJECT_ID>/.cupy/kernel_cache"
+   $ export CUPY_CACHE_DIR="/scratch[12]/<LAB>/<PROJECT_ID>/<YOUR_USER_ID>/.cupy/kernel_cache"
 
-Before you start testing CuPy with Python scripts, let's go over some of the basics.
-The developers provide a great introduction to using CuPy in their user guide under the `CuPy Basics <https://docs.cupy.dev/en/stable/user_guide/basic.html>`__ section.
-We will be following this walkthrough on Summit.
-The syntax below assumes being in a Python shell with access to 4 GPUs (through a ``jsrun -g4 ...`` command).
+Before you start testing CuPy with Python scripts, let's go over some of the
+basics. The developers provide a great introduction to using CuPy in their user
+guide under the `CuPy Basics
+<https://docs.cupy.dev/en/stable/user_guide/basic.html>`__ section. We will be
+following this walkthrough. 
 
-.. note::
-   On Frontier, running in an interactive job will return 8 GPUs available to CuPy.
-
-As is the standard with NumPy being imported as "np", CuPy is often imported in a similar fashion:
+As is the standard with NumPy being imported as "np", CuPy is often imported in
+a similar fashion:
 
 .. code-block:: python
 
    >>> import numpy as np
    >>> import cupy as cp
 
-Similar to NumPy arrays, CuPy arrays can be declared with the ``cupy.ndarray`` class.
-NumPy arrays will be created on the CPU (the "host"), while CuPy arrays will be created on the GPU (the "device"):
+Similar to NumPy arrays, CuPy arrays can be declared with the ``cupy.ndarray``
+class. NumPy arrays will be created on the CPU (the "host"), while CuPy arrays
+will be created on the GPU (the "device"):
 
 .. code-block:: python
 
    >>> x_cpu = np.array([1,2,3])
    >>> x_gpu = cp.array([1,2,3])
 
-Manipulating a CuPy array can also be done in the same way as manipulating NumPy arrays:
+Manipulating a CuPy array can also be done in the same way as manipulating NumPy
+arrays:
 
 .. code-block:: python
 
@@ -277,7 +228,8 @@ Manipulating a CuPy array can also be done in the same way as manipulating NumPy
    >>> print(l2_cpu,l2_gpu)
    3.7416573867739413 3.7416573867739413
 
-Useful functions for initializing arrays like ``np.linspace``, ``np.arange``, and ``np.zeros`` also have a CuPy equivalent:
+Useful functions for initializing arrays like ``np.linspace``, ``np.arange``,
+and ``np.zeros`` also have a CuPy equivalent:
 
 .. code-block:: python
 
@@ -288,16 +240,19 @@ Useful functions for initializing arrays like ``np.linspace``, ``np.arange``, an
    >>> cp.arange(0,11,1)
    array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
 
-CuPy has a concept of a "current device", which is the current activated GPU device that will operate on an array or where future arrays will be allocated.
-Most of the time, if not explicitly declared or switched, the initial default device will be GPU 0.
-To find out what device a CuPy array is allocated on, you can call the ``cupy.ndarray.device`` attribute:
+CuPy has a concept of a "current device", which is the current activated GPU
+device that will operate on an array or where future arrays will be allocated.
+Most of the time, if not explicitly declared or switched, the initial default
+device will be GPU 0. To find out what device a CuPy array is allocated on, you
+can call the ``cupy.ndarray.device`` attribute:
 
 .. code-block:: python
 
    >>> x_gpu.device
    <CUDA Device 0>
 
-To get a total number of devices that you can access, use the ``getDeviceCount`` function:
+To get a total number of devices that you can access, use the ``getDeviceCount``
+function:
 
 .. code-block:: python
 
@@ -327,13 +282,8 @@ Similarly, you can temporarily switch to a device using the ``with`` context:
    >>> x_gpu_3.device
    <CUDA Device 3>
 
-Trying to perform operations on an array stored on a different GPU will result in an error:
-
-.. warning::
-   The below code block should **not** be run on Frontier, as it causes problems for the
-   subsequent code blocks further below. With recent updates to CuPy, peer access is
-   enabled by default, which "passes" the below error. This causes problems with
-   AMD GPUs, resulting in inaccurate data.
+Trying to perform operations on an array stored on a different GPU will result
+in an error:
 
 .. code-block:: python
 
@@ -346,8 +296,9 @@ Trying to perform operations on an array stored on a different GPU will result i
    Traceback (most recent call last):
    ValueError: Array device must be same as the current device: array device = 0 while current = 1
 
-To solve the above error, you must transfer ``x_gpu_0`` to "Device 1".
-A CuPy array can be transferred to a specific GPU using the ``cupy.asarray()`` function while on the specific device:
+To solve the above error, you must transfer ``x_gpu_0`` to "Device 1". A CuPy
+array can be transferred to a specific GPU using the ``cupy.asarray()`` function
+while on the specific device:
 
 .. code-block:: python
 
@@ -356,7 +307,8 @@ A CuPy array can be transferred to a specific GPU using the ``cupy.asarray()`` f
    ...
    array([ 2,  4,  6,  8, 10])
 
-A NumPy array on the CPU can also be transferred to a GPU using the same ``cupy.asarray()`` function:
+A NumPy array on the CPU can also be transferred to a GPU using the same
+``cupy.asarray()`` function:
 
 .. code-block:: python
 
@@ -365,7 +317,8 @@ A NumPy array on the CPU can also be transferred to a GPU using the same ``cupy.
    >>> x_gpu
    array([1, 1, 1])
 
-To transfer from a GPU back to the CPU, you use the ``cupy.asnumpy()`` function instead:
+To transfer from a GPU back to the CPU, you use the ``cupy.asnumpy()`` function
+instead:
 
 .. code-block:: python
 
@@ -374,23 +327,24 @@ To transfer from a GPU back to the CPU, you use the ``cupy.asnumpy()`` function 
    >>> x_cpu
    array([ 0., 0., 0.])
 
-Associated with the concept of current devices are current "streams".
-In CuPy, all CUDA operations are enqueued onto the current stream, and the queued tasks on the same stream will be executed in serial (but asynchronously with respect to the CPU).
-This can result in some GPU operations finishing before some CPU operations.
-As CuPy streams are out of the scope of this guide, you can find additional information in the `CuPy User Guide <https://docs.cupy.dev/en/stable/user_guide/index.html>`__.
+Associated with the concept of current devices are current "streams". In CuPy,
+all CUDA operations are enqueued onto the current stream, and the queued tasks
+on the same stream will be executed in serial (but asynchronously with respect
+to the CPU). This can result in some GPU operations finishing before some CPU
+operations. As CuPy streams are out of the scope of this guide, you can find
+additional information in the `CuPy User Guide
+<https://docs.cupy.dev/en/stable/user_guide/index.html>`__.
 
-NumPy Speed Comparison (Summit only)
-==========================================
+NumPy Speed Comparison
+======================
 
-.. warning::
-   As noted in `AMD+CuPy limitations <https://docs.cupy.dev/en/stable/install.html#limitations>`__,
-   data sizes explored here hang. So, this section currently does not apply to Frontier.
+Now that you know how to use CuPy, time to see the actual benefits that CuPy
+provides for large datasets. More specifically, let's see how much faster CuPy
+can be than NumPy on Summit. You won't need to fix any errors; this is mainly a
+demonstration on what CuPy is capable of.
 
-Now that you know how to use CuPy, time to see the actual benefits that CuPy provides for large datasets.
-More specifically, let's see how much faster CuPy can be than NumPy on Summit.
-You won't need to fix any errors; this is mainly a demonstration on what CuPy is capable of.
-
-There are a few things to consider when running on GPUs, which also apply to using CuPy:
+There are a few things to consider when running on GPUs, which also apply to
+using CuPy:
 
 * Higher precision means higher cost (time and space)
 * The structuring of your data is important
@@ -433,65 +387,60 @@ These points are explored in the example script ``timings.py``:
    t8 = tp.time()
    print("GPU float32 restructured time: ", t8-t7)
 
-This script times the decomposition of a matrix with 9 million elements across four different methods.
-First, NumPy is timed for a 3000x3000 dimension matrix.
-Then, a 3000x3000 matrix in CuPy is timed.
-As you will see shortly, the use of CuPy will result in a major performance boost when compared to NumPy, even though the matrices are structured the same way.
-This is improved upon further by switching the data type to ``float32`` from ``float64`` (the default).
-Lastly, a 9000x1000 matrix is timed, which contains the same number of elements as the original matrix, just rearranged.
-Although you may not expect it, the restructuring results in a big performance boost as well.
+This script times the decomposition of a matrix with 9 million elements across
+four different methods. First, NumPy is timed for a 3000x3000 dimension matrix.
+Then, a 3000x3000 matrix in CuPy is timed. As you will see shortly, the use of
+CuPy will result in a major performance boost when compared to NumPy, even
+though the matrices are structured the same way. This is improved upon further
+by switching the data type to ``float32`` from ``float64`` (the default).
+Lastly, a 9000x1000 matrix is timed, which contains the same number of elements
+as the original matrix, just rearranged. Although you may not expect it, the
+restructuring results in a big performance boost as well.
 
-Before asking for a compute node, change into your GPFS scratch directory:
+Before asking for a compute node, change into your scratch directory:
 
 .. code-block:: bash
 
-   $ cd $MEMBERWORK/<YOUR_PROJECT_ID>
+   $ cd /scratch[12]<LAB>/<PROJECT_ID>/<USER_ID>
    $ mkdir cupy_test
    $ cd cupy_test
 
-Let's see the boosts explicitly by running the ``timings.py`` script.
-To do so, you must submit ``submit_timings`` to the queue:
+Let's see the boosts explicitly by running the ``timings.py`` script. To do so,
+you must submit ``submit_timings`` to the queue:
 
-.. tab-set::
+.. code-block:: bash
 
-   .. tab-item:: Summit
-      :sync: summit
-
-      .. code-block:: bash
-
-         $ bsub -L $SHELL submit_timings.lsf
+   $ sbatch submit_timings.sl
 
 Example "submit_timings" batch script:
 
-.. tab-set::
+.. code-block:: bash
 
-   .. tab-item:: Summit
-      :sync: summit
+   #!/bin/bash
+   #SBATCH -A <PROJECT_ID>
+   #SBATCH -t 00:05
+   #SBATCH -p fge
+   #SBATCH -N 1
+   #SBATCH -J cupy_timings
+   #SBATCH -o cupy_timings.%J.out
+   #SBATCH -e cupy_timings.%J.err
 
-      .. code-block:: bash
+   cd $SLURM_SUBMIT_DIR
+   date
 
-         #!/bin/bash
-         #BSUB -P <PROJECT_ID>
-         #BSUB -W 00:05
-         #BSUB -nnodes 1
-         #BSUB -J cupy_timings
-         #BSUB -o cupy_timings.%J.out
-         #BSUB -e cupy_timings.%J.err
+   module load gnu/9.2.0
+   module load cuda/12.1.0
+   module use /contrib/miniconda/modulefiles
+   module load miniconda3/4.12.0
 
-         cd $LSB_OUTDIR
-         date
+   conda activate /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy
+   export CUPY_CACHE_DIR="/scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/.cupy/kernel_cache"
 
-         module load gcc/7.5.0
-         module load cuda/11.0.3
-         module load python
-
-         source activate /ccs/proj/<project_id>/<user_id>/envs/summit/cupy-summit
-         export CUPY_CACHE_DIR="${MEMBERWORK}/<project_id>/.cupy/kernel_cache"
-
-         jsrun -n1 -g1 python3 timings.py
+   srun -n 1 -G 1 python3 timings.py
 
 
-After the job completes, in ``cupy_timings.<JOB_ID>.out`` you will see something similar to:
+After the job completes, in ``cupy_timings.<JOB_ID>.out`` you will see something
+similar to:
 
 .. code-block::
 
@@ -500,14 +449,17 @@ After the job completes, in ``cupy_timings.<JOB_ID>.out`` you will see something
    GPU float32 time:  4.066986799240112
    GPU float32 restructured time:  0.8666532039642334
 
-The exact numbers may be slightly different, but you should see a speedup factor of approximately 2 or better when comparing "GPU time" to "CPU time".
-Switching to ``float32`` was easier on memory for the GPU, which improved the time further.
-Things are even better when you look at "GPU float32 restructured time", which represents an additional factor of 4 speedup when compared to "GPU float32 time".
-Overall, using CuPy and restructuring the data led to a speedup factor of >20 when compared to traditional NumPy!
-This factor would diminish with smaller datasets, but represents what CuPy is capable of at this scale.
+The exact numbers may be slightly different, but you should see a speedup factor
+of approximately 2 or better when comparing "GPU time" to "CPU time". Switching
+to ``float32`` was easier on memory for the GPU, which improved the time
+further. Things are even better when you look at "GPU float32 restructured
+time", which represents an additional factor of 4 speedup when compared to "GPU
+float32 time". Overall, using CuPy and restructuring the data led to a speedup
+factor of >20 when compared to traditional NumPy! This factor would diminish
+with smaller datasets, but represents what CuPy is capable of at this scale.
 
-You have now discovered what CuPy can provide!
-Now you can try speeding up your own codes by swapping CuPy and NumPy where you can.
+You have now discovered what CuPy can provide! Now you can try speeding up your
+own codes by swapping CuPy and NumPy where you can.
 
 Additional Resources
 ====================
