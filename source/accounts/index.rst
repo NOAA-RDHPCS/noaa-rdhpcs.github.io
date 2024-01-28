@@ -4,9 +4,9 @@
 Accounts
 ########
 
-******
+************************
 Account Process Overview
-******
+************************
 
 .. note::
 
@@ -40,14 +40,14 @@ RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS syst
 
 
 CAC Access
-----
+----------
 
 The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is `ID Card Office Online <https://idco.dmdc.osd.mil/idco/locator>`_.  SSH logins with a CAC require additional software.
 
 
 
 Accessing the RDHPCS Systems
-----
+----------------------------
 
 .. NOTE::
 
@@ -67,7 +67,7 @@ Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web
 The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. An overview of the Cloud workflow, and links to detailed instructions, can be found in `Cloud Computing User Information. <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Cloud_Computing_User_Information>`_
 
 Role Accounts
-----
+-------------
 A role account is a user account shared with one or more users as members. All group members share the account equally via the use of `sudo`, typically for the unified use of a project. The role accounts name should reflects their project association or function.
 
 You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access.
@@ -75,21 +75,21 @@ You can access any role account if you are a member of the account. Use sudo wit
 Any changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
 
 
-*****
+****************************
 New Device - Software tokens
-*****
+****************************
 
 When you acquire a new device, follow this three-step process to add an RSA software token:
 #. Submit an OTRS ticket by emailing rdhpcs.aim.help@noaa.gov. Use the subject line: Token for New Device- First.Last.
 #. Go to AIM, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button. When that form is received, you'll receive email that includes a URL and activation code. Open that URL from your device and submit the activation code.
 #. When the software token is working on your new phone, delete the token from your old device.
 
-****
+******************
 Access Information
-****
+******************
 
 First Time RSA token Login
--------
+--------------------------
 .. note::
 
       If you are using a PC, please install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
@@ -105,7 +105,7 @@ You will be sent an email once your hardware token has been enabled with
 instructions about how to set your token pin.
 
 Bastion Login Timeouts
-------
+----------------------
 
 -  Bastion login timeouts are applicable to both bastion types (CAC and
    RSA.)
@@ -119,9 +119,9 @@ desktop, or data transfers of any kind.
 
 .. _accessing_rdhpcs_systems:
 
-*****
+************************
 Accessing RDHPCS Systems
-*****
+************************
 
 **READ BEFORE CONTINUING:** Please log onto AIM (using ICAM credentials)
 and confirm that ALL your account information is up-to-date. If you
@@ -289,9 +289,9 @@ When you acquire a new device that your software token will be stored on, there 
    :width: 500px
 
 
-*****
+**************************************
 Suspension, Deactivation, Reactivation
-*****
+**************************************
 
 A user account is suspended when it has been inactive for over 90 days. The user will be notified when the account has been suspended. 
 To re-activate your account, submit an OTRS ticket. Send an email to rdhpcs.aim.help@noaa.gov with the subject Reactivate User.Name. You will be notified when your account has been reactivated. A returning user maintains access to all projects.
@@ -318,15 +318,15 @@ For best use of resources and availability, the preferred approach is to install
 
 See `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Software_Token New User Software Token>`_ and `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Hardware_Token New User Hardware Token>`_ for details.
 
-*****
+*************
 Role Accounts
-*****
+*************
 
 A role account is a user account shared with one or more users as members, such that all group members share the account equally via the use of `sudo`, typically for the unified use of a project. Role accounts must have a name that reflects their project association or function.
 All changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
 
 Accessing a Role Account
-------------
+------------------------
 You can access any role account if you are a member of the account. Use sudo with your RSA token to gain access. For example:
 
 .. code-block.. code-block:: shell
@@ -384,9 +384,10 @@ At the beginning of the section:
 
    Without the MAILTO directive, any errors/logs from the cron commands end up getting lost and one may never know there was a problem/failure!
 
-*****
+***************************
 Request Additional Projects
-*****
+***************************
+
 These are instructions for current RDHPCS users on an active project who need to request access to an additional project resource on Jet, Hera, Gaea, or Niagara.
 
 #. Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_
@@ -406,9 +407,9 @@ If you have been advised to apply for a project that is not listed in AIM, pleas
 
 Please contact the Help Desk via email if you have further questions, rdhpcs.aim.help@noaa.gov
 
-***********
+*******************
 RDHPCS certificates
-************
+*******************
 
 When a user first logs into a R&D HPC system, a one-year master certificate must be generated. On the next login, after the master certificate is signed, a 30-day proxy certificate is generated. Every future login renews the 30-day proxy certificate.
 
@@ -416,9 +417,9 @@ When a user first logs into a R&D HPC system, a one-year master certificate must
 
 **Proxy Certificate:** The proxy certificate is local to each bastion, is valid for 30 days and is renewed every time you login to each bastion. If you do not log in at least once every 30 days to each bastion, the proxy certificate will expire on that bastion. To renew your certificate, you will have to log in to the bastion and enter your master certificate passphrase. This will renew the proxy certificate, as usual, for 30 days.
 
-*****
+*******************************
 Generating a Master Certificate
-***********
+*******************************
 
 1. Prepare your Master Certificate Passphrase
 
@@ -434,9 +435,9 @@ Resetting Master Certificate Passphrase
 .. note::
    You will have to renew your Master Certificate annually. About a month before it expires, you will be prompted to renew your master certificate, with a Y/N option. When you renew the master certificate, you may have to wait for one day before you can log in again. Plan ahead for a time when you can be offline for up to a day, and choose that time to renew the Master Certificate.
 
-*************
+********************************************
 Resetting your Master Certificate Passphrase
-**************
+********************************************
 
 If you do not remember your Master Certificate passphrase, it can be reset. First check the guidance in the Prepare your Master Certificate Passphrase section, and choose an appropriate passphrase. Then follow the instructions below:
 
