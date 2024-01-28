@@ -1,0 +1,24 @@
+# CODEOWNERS file for RDHPCS Documentation Site
+#
+# Owners listed in this file will be added as reviewers of pull Requests.
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# for more information.
+
+# The tech-writer owns all files
+* @elisabethpatterson
+
+# Per GitHub documentation, this is to protect the CODEOWNERS file from
+# unwanted changes.
+/.github/CODEOWNERS @elisabethpatterson @underwoo
+/.github/ @underwoo
+
+# Owners of utilities and script files
+/utils/ @josh-eisinger
+/requirements.txt @underwoo @josh-eisinger
+/Makefile @underwoo @josh-eisinger
+/make.bat @underwoo @josh-eisinger
+
+# Owners of specific documentation pages
+/source/systems/gaea/ @hderry @josh-eisinger @underwoo
+/source/systems/pan/ @chanwilson @underwoo
+/source/systems/gaea_user_guild.rst @hderry @josh-eisinger @underwoo
