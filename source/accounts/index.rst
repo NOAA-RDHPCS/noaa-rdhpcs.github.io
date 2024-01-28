@@ -175,7 +175,7 @@ Updating or Renewing CAC Information in AIM
 please proceed through the prompts and sign in with your NEMS
 credentials as before:
 
-|aim_single_sign_on.png| |aim_single_sign_on_portal.png|
+|aim_single_sign_on.png| 
 
 .. _aim___auto_update_of_cac_entry:
 
@@ -211,15 +211,14 @@ After your CAC has been updated, the AIM home page will appear and in
 the upper lefthand corner, you will see the message, “Current CAC cn
 detected.”
 
-.. figure.. code-block:: shell
+.. figure.. 
    
  new_cac_login.png
    :alt: new_cac_login.png
    :width: 500px
 
 NOTE: 
-   With current CAC information on file, you should be authenticating into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC
-Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`__
+   With current CAC information on file, you should be authenticating into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`_
 
 .. _rsa_token:
 
@@ -279,11 +278,11 @@ When you acquire a new device that your software token will be stored on, there 
 - Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button.
 - Delete the token from your old device.
 
-.. |aim_single_sign_on.png| image.. code-block:: shell
+.. |aim_single_sign_on.png| image.. 
    
  aim_single_sign_on.png
    :width: 500px
-.. |aim_single_sign_on_portal.png| image.. code-block:: shell
+.. |aim_single_sign_on_portal.png| image.. 
    
  aim_single_sign_on_portal.png
    :width: 500px
