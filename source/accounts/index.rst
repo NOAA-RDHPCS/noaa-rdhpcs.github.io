@@ -4,9 +4,9 @@
 Accounts
 ########
 
-*****
+******
 Account Process Overview
-*****
+******
 
 .. note::
 
