@@ -118,15 +118,13 @@ General Access Requirements
 -  MSU's Account Management system requires user authentication. PIs and
    Portfolio Managers must maintain an active MSU account to manage their projects online.
 
-Complete the following steps for MSU-HPC access:
+Complete the following steps for MSU-HPC access.
 
-   -  Collaborate with a NOAA research lab and be associated with an active NOAA research project. Each project has an assigned Principal Investigator (PI) who is responsible for the project and the project members.
-
-   .. note::
+ .. note::
 
    The designated PI or Portfolio Manager (PfM) must request that a MSU user account be created and the user assigned to their project.
-   
 
+   -  Collaborate with a NOAA research lab and be associated with an active NOAA research project. Each project has an assigned Principal Investigator (PI) who is responsible for the project and the project members.
    -  New user completes NOAA account request form.
    -  New user receives an email from MSU to change password, complete
       required training, and setup the Duo dual-factor authentication.
