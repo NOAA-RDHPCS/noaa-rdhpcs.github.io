@@ -83,7 +83,7 @@ new environment):
 
    $ module load gnu/9.2.0 # might work with other GCC versions
    $ module load cuda/12.1.0
-   $ module use /contrib/miniconda/modulefiles
+   $ module use /contrib/miniconda3/modulefiles
    $ module load miniconda3/4.12.0
 
 Loading a python module puts you in a "base" environment, but you need to create
@@ -104,7 +104,7 @@ command:
 
       .. code-block:: bash
 
-         $ python3 -m venv /scrtch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy
+         $ python3 -m venv /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy
 
 
 .. note::
