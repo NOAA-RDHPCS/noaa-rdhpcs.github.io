@@ -78,6 +78,8 @@ Overview: Getting an RDHPCS Account
 ***********************************
 
 The following steps must be completed before you receive an RDHPCS account.
+
+
 1. Security Investigation: An inquiry into a person's identifiable character traits and conduct. You must undergo the appropriate type of suitability check/security including
 -  favorable background investigation, with an FBI fingerprint check
 -  Department of Commerce public trust security investigation. This can take 6-12 weeks
