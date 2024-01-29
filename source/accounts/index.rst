@@ -45,7 +45,6 @@ CAC Access
 The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is `ID Card Office Online <https://idco.dmdc.osd.mil/idco/locator>`_.  SSH logins with a CAC require additional software.
 
 
-
 Accessing the RDHPCS Systems
 ----------------------------
 
@@ -77,82 +76,30 @@ Any changes to a role account must be submitted by the role account Principal In
 ***********************************
 Overview: Getting an RDHPCS Account
 ***********************************
-1. Suitability Check/Security Investigation: A suitability investigation
-is an inquiry into a person's identifiable character traits and conduct
-which should be sufficient enough to make a determination whether an
-individual's employment or continued employment would or would not
-represent an unacceptable risk.
 
--  This type of investigation is for positions that are considered
-   risk-designated, i.e., Low, Moderate, or High-Risk, and individuals
-   do not have nor are they eligible for a “clearance.”
--  You must undergo the appropriate type of suitability check/security
-   investigation process for your position within NOAA.
--  All personnel issued a PIV card must have a favorable background
-   investigation, including an FBI fingerprint check; for most people,
-   this will mean a Tier I investigation [formerly the National Agency
-   Check with Inquiries (NACI)].
--  Personnel meeting the criteria for PIV-I card issuance must have a
-   minimum of a Department of Commerce Special Agreement Check (SAC)
-   background investigation and a favorable fingerprint check.
--  For access to the RDHPCS resources, a Tier 1 Investigation is
-   required. You will need to initiate or have completed a Department of
-   Commerce public trust security investigation. This can take between 6
-   -12 weeks to initiate and 60-90 days to complete. Once this has been
-   completed , your Federal Sponsor will work with the line office's
-   Trusted Agent to forward your OSY clearance email to the RDHPCS’
-   HR/TA POC. If you are unsure of how to complete this process, you
-   should contact your Trusted Agent for more information.
+The following steps must be completed before you receive an RDHPCS account.
+1. Security Investigation: An inquiry into a person's identifiable character traits and conduct. You must undergo the appropriate type of suitability check/security including
+-  favorable background investigation, with an FBI fingerprint check
+-  Department of Commerce public trust security investigation. This can take 6-12 weeks
 
-2. NOAA Email Account: Obtain a valid @noaa.gov email address via the
-NOAA IT department you are associated with. You are required to utilize
-your NOAA email address to communicate regarding all NOAA issues.
+2. Obtain a valid @noaa.gov email address your NOAA IT department you are associated with. Use your NOAA email address to communicate regarding all NOAA issues. Note that you may have a NOAA email account prior to concluding the security review.
+ 
+3. NOAA IT Security Awareness Training: An annual MANDATORY requirement
+for all NOAA employees, contractors, and temporary personnel. 
 
-3. NOAA IT Security Awareness Training: This course is for users of NOAA
-information systems. As an annual requirement, this course is MANDATORY
-for all NOAA employees, contractors, and temporary personnel. Temporary
-personnel include visitors, guest workers, associates, etc., who plan to
-work at a NOAA site and use NOAA IT resources for more than a month.
-Temporary and new employees must take the course within three days of
-being assigned use of IT equipment that will allow them access to the
-`course <https://campus.noaasecure.us/index.k2>`__.
+4. RDHPCS Account Request: Request Access to vetting project RDHPCS.
+- Navigate to AIM and submit a request to be added as a New User to the RDHPCS (vetting) project.  RDHPCS is an AIM-only project to verify account details.
+-  Once you have been approved for vetting project RDHPCS, request
+   membership to the project(s)as direced by your PI(s) or PfM(s). 
 
--  For users with a NOAA.gov account, please click a login method on the
-   right—either your NOAA PIV/CAC or your NOAA User ID and password. For
-   users without a NOAA.gov account, please click the External button to
-   the right to proceed to the Sign In page. Need login assistance or
-   access to the course? Please contact your respective `Line Office
-   ITSO <https://securitytraining.noaa.gov/user_defined_content.k2?contentID=6>`__
-   for help.
+5. Request a RSA token.
+-  Once you are fully approved you will receive an email with directions to initialize your RSA token and log on.
 
-4. RDHPCS Account Request: Request Access to vetting project RDHPCS:
-Note: A prospective new user should have communicated with a PI(s) or a
-Portfolio Manager(s) to determine what project(s) they should request.
+Currently AIM manages and maintains the following functionality on Niagara, Gaea,Hera, and Jet compute resources:
 
-5. New users access AIM: AIM is a web application used for NOAA RDHPCS
-account management/administration and is used to request access to
-projects. New users should navigate to AIM and provide required
-information to submit a request to be added as a New User to the RDHPCS
-project. Your PI or PfM will provide details on which project you should
-request access to.
-
--  Vetting project RDHPCS is an AIM-only project for new or fully
-   deactivated returning users in order to verify their account details.
-   Established on 02-14-2020.
--  Once you have been approved for vetting project RDHPCS, you will
-   receive an email from the Account Management Team to request
-   membership to the project(s) previously communicated to you via your
-   PI(s) or PfM(s). You will also receive a form to request a RSA token.
--  Once you are fully approved for an active project by the PI, you will
-   receive an email directing you how to initialize your RSA token and
-   log on.
-
-Currently AIM manages the following functionality on Niagara, Gaea,
-Hera, and Jet compute resources:
-
--  Maintains/manages RDHPCS user information.
--  Maintains/manages RDHPCS project information and membership.
--  Maintains/manages RDHPCS role account information and membership.
+-  RDHPCS user information.
+-  RDHPCS project information and membership.
+-  RDHPCS role account information and membership.
 
 
 ***********************************************
@@ -165,128 +112,32 @@ General Access Requirements
 ---------------------------
 
 -  All users, regardless of citizenship, follow the same process to
-   receive Orion access.
+   receive MSU-HPC access.
 -  NOAA's RDHPCS users will need to use MSU’s HPC Account Management
-   System and Process. All existing RDHPCS Portfolio Managers have been
-   provided access to MSU's Account Management Tool.
--  The PfM needs to have allocations to use the Orion system.
+   System and Process. RDHPCS Portfolio Managers have access to MSU's Account Management Tool.
+-  The PfM must have allocations to use the MSU-HPC system.
 -  MSU's Account Management system requires user authentication. PIs and
-   Portfolio Managers must maintain an active MSU account in order to be
-   able to manage their projects online.
+   Portfolio Managers must maintain an active MSU account to manage their projects online.
 
-Steps to receive access to the Orion System are -
+Complete the following steps for MSU-HPC access:
 
-   -  Users need to collaborate with a NOAA research lab and be
-      associated with an active NOAA research project. Each of NOAA's
-      projects will have an assigned Principal Investigator (PI) who is
-      responsible for the project and the project members.
+   -  Cllaborate with a NOAA research lab and be
+      associated with an active NOAA research project. Each project has an assigned Principal Investigator (PI) who is responsible for the project and the project members.
    -  The designated PI or Portfolio Manager (PfM) must request that a MSU user account be created and the user assigned to their project.
    -  New user completes NOAA account request form.
    -  New user receives an email from MSU to change password, complete
       required training, and setup the Duo dual-factor authentication.
-   -  The user changes their password within 3 days of getting the
-      email.
+   -  WQithin three days, the user changes their password.
    -  The user completes required training
    -  The user sets up the Duo App on their device.
-   -  The User now has login access to Orion.
 
--  If a Portfolio Manager or PI loses their MSU account and cannot
-   manage their project online, please start an Orion help request at
-   RDHPCS Orion Help - email address rdhpcs.orion.help@noaa.gov
--  If a new user has any issues with completing MSU process, please
-   email rdhpcs.orion.help@noaa.gov
--  Review Orion user training for more info `Orion
-   Quickstart <https://oriondocs.rdhpcs.noaa.gov/images/oriondocs/Orion_Quickstart_Jan_31st_2020.pdf>`__
--  Getting an Account on `Orion
-   documentation <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Getting_an_Account>`__
+The User now has login access to MSU-HPC.
 
-User Accounts
--------------
+.. note::
 
-MSU Account Management Policy:
+   A Portfolio Manager or PI who loses their MSU account access must issue a help request. Send email to rdhpcs.orion.help@noaa.gov to open an OTRS ticket.
+   A new user who has any issues with completing MSU process, should send email to rdhpcs.orion.help@noaa.gov to open a help ticket.
 
-
--  User accounts have an expiration date set by the PI/Account Manager
-   when the user account is requested. The maximum expiration date is 12
-   months from the initiation date.
--  After 90 days of inactivity (no successful login) a user account is
-   locked.
--  If a locked account is not renewed, when it passes its expiration
-   date the locked account is marked for deletion. The account will be
-   deleted after a 1 month grace period. After deletion the user may
-   start over as a new user.
--  A locked account can be requested to be renewed (unlocked) by a
-   PI/Account Manager using the MSU online account management tools MSU
-   Account Management.
--  Yearly password changes are required each January. Users have three
-   weeks to comply.
--  Duo (Cisco) two factor authentication with application or physical
-   token (upon request only). If approved, the token will be shipped to
-   the address provided during the Account Management on-boarding
-   process.
--  Users can only submit jobs to those Projects/Funds which they have
-   been granted access to by the PI/Account Manager.
--  Any user can submit to the Windfall QOS but the job priority will be
-   set as not to compete with any job which specifies an active
-   Project/Fund.
-
-Allocations
------------
-
--  NOAA RDHPCS program has approximately 90% of the monthly core hours
-   and disk allocation on Orion.
--  Allocations on this system are managed by the NOAA Allocation
-   Committee.
--  Initial portfolios and projects have been set up by the RDHPCS team.
-
-.. _noaa_portfolios_and_projects:
-
-NOAA Portfolios and Projects
-----------------------------
-
--  Portfolios, projects, and project allocations are managed by
-   Portfolio Managers (PfM's) and Principle Investigators (PI's) as they
-   are for NOAA's RDHPCS Internal Systems. Portfolio Managers are
-   responsible to manage projects and PIs in their portfolio, including
-   CPU allocations and scratch disk quotas. PIs are responsible to
-   manage project members, CPU and storage usage for their projects. An
-   active user must be a member of at least one project but can be a
-   member of multiple projects in one or more Portfolios. The PI or PfM
-   will be able to grant you access to any project that they are
-   responsible for and can provide guidance on how to utilize the
-   resources.
--  To access MSU's Orion resources, a user must become a member of at
-   least one project. This requires that the PI or PfM submit a new user
-   request or assign an existing user to one or more of their projects.
-   This is completed through MSU's Account Management Tool.
-
-To create a new project within a Portfolio, the Portfolio Manager must:
-
-   -  Allocate CPU and/or disk quota from within their approved
-      allocation from the RDHPCS Allocation Committee
-   -  Specify which RDHPCS resource the project shall be used on
-   -  Designate an eligible PI
-   -  Designate at least one project member
-   -  Provide a project name, preferred project acronym, and project
-      description.
-
-.. _pi_requirements_at_msu:
-
-PI Requirements at MSU
-----------------------
-
-Must meet the same eligibility requirements as a user:
-
--  The PI must approve each user on the project.
--  The PI is responsible for the users on the project.
--  The PI is responsible for user behavior on the project.
--  The PI is preferred to be a federal employee.
--  The PI must not be a FN.
-
-The gathered information should then be emailed in the form of a help
-ticket or submitted via the `OTRS User
-Interface <https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`__ to the
-`RDHPCS Orion Help Desk <rdhpcs.orion.help@noaa.gov>`__ by the PfM.
 
 ****************************
 New Device - Software tokens
