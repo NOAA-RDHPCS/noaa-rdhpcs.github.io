@@ -74,10 +74,10 @@ You can access any role account if you are a member of the account. Use sudo wit
 
 Any changes to a role account must be submitted by the role account Principal Investigator (PI) via OTRS ticket. Send email to rdhpcs.aim.help@noaa.gov with the subject line: Role account changes - first.last (role account name).
 
-*************************
+***********************************
 Overview: Getting an RDHPCS Account
-*************************
-1) Suitability Check/Security Investigation: A suitability investigation
+***********************************
+1. Suitability Check/Security Investigation: A suitability investigation
 is an inquiry into a person's identifiable character traits and conduct
 which should be sufficient enough to make a determination whether an
 individual's employment or continued employment would or would not
@@ -104,11 +104,11 @@ represent an unacceptable risk.
    HR/TA POC. If you are unsure of how to complete this process, you
    should contact your Trusted Agent for more information.
 
-2) NOAA Email Account: Obtain a valid @noaa.gov email address via the
+2. NOAA Email Account: Obtain a valid @noaa.gov email address via the
 NOAA IT department you are associated with. You are required to utilize
 your NOAA email address to communicate regarding all NOAA issues.
 
-3) NOAA IT Security Awareness Training: This course is for users of NOAA
+3. NOAA IT Security Awareness Training: This course is for users of NOAA
 information systems. As an annual requirement, this course is MANDATORY
 for all NOAA employees, contractors, and temporary personnel. Temporary
 personnel include visitors, guest workers, associates, etc., who plan to
@@ -125,11 +125,11 @@ being assigned use of IT equipment that will allow them access to the
    ITSO <https://securitytraining.noaa.gov/user_defined_content.k2?contentID=6>`__
    for help.
 
-4.) RDHPCS Account Request: Request Access to vetting project RDHPCS:
+4. RDHPCS Account Request: Request Access to vetting project RDHPCS:
 Note: A prospective new user should have communicated with a PI(s) or a
 Portfolio Manager(s) to determine what project(s) they should request.
 
-5.) New users access AIM: AIM is a web application used for NOAA RDHPCS
+5. New users access AIM: AIM is a web application used for NOAA RDHPCS
 account management/administration and is used to request access to
 projects. New users should navigate to AIM and provide required
 information to submit a request to be added as a New User to the RDHPCS
@@ -165,7 +165,7 @@ General Access Requirements
 ---------------------------
 
 .. figure:: Access_Orion.png
-   :alt: Access_Orion.png
+
 
 -  All users, regardless of citizenship, follow the same process to
    receive Orion access.
@@ -493,15 +493,6 @@ When you acquire a new device that your software token will be stored on, there 
 - Submit an OTRS ticket by emailing **rdhpcs.aim.help@noaa.gov**. In the email subject line, please type: **Token for New Device- First.Last**.
 - Go to `AIM <https://aim.rdhpcs.noaa.gov/>`__, click on the "Make a request for an RSA token" link, fill out the form, and hit the submit button.
 - Delete the token from your old device.
-
-.. |aim_single_sign_on.png| image.. 
-   
- aim_single_sign_on.png
-   :width: 500px
-.. |aim_single_sign_on_portal.png| image.. 
-   
- aim_single_sign_on_portal.png
-   :width: 500px
 
 
 **************************************
