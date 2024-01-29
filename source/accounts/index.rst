@@ -164,9 +164,6 @@ The Hercules and Orion systems comprise MSU-HPC, which is managed by Mississippi
 General Access Requirements
 ---------------------------
 
-.. figure:: Access_Orion.png
-
-
 -  All users, regardless of citizenship, follow the same process to
    receive Orion access.
 -  NOAA's RDHPCS users will need to use MSU’s HPC Account Management
@@ -387,13 +384,9 @@ CAC Login
 Updating or Renewing CAC Information in AIM
 -------------------------------------------
 
-**NEW as of July 2018**: AIM uses the new NOAA single user sign-on -
-please proceed through the prompts and sign in with your NEMS
-credentials as before:
+AIM uses the new NOAA single user sign-on. Proceed through the prompts and sign in with your NEMS
+credentials as before.
 
-|aim_single_sign_on.png| 
-
-.. _aim___auto_update_of_cac_entry:
 
 AIM - Auto-update of CAC Entry
 ------------------------------
