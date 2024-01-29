@@ -105,7 +105,7 @@ Currently AIM manages and maintains the following functionality on Niagara, Gaea
 Overview: Getting an External Account - MSU-HPC
 ***********************************************
 
-The Hercules and Orion systems comprise MSU-HPC, which is managed by Mississippi State University. Follow thesesteps to get an Account for MSU-HPC
+The Hercules and Orion systems comprise MSU-HPC, managed by Mississippi State University. Follow thesesteps to get an Account for MSU-HPC.
 
 General Access Requirements
 ---------------------------
@@ -120,14 +120,13 @@ General Access Requirements
 
 Complete the following steps for MSU-HPC access:
 
-   -  Cllaborate with a NOAA research lab and be
-      associated with an active NOAA research project. Each project has an assigned Principal Investigator (PI) who is responsible for the project and the project members.
+   -  Collaborate with a NOAA research lab and be associated with an active NOAA research project. Each project has an assigned Principal Investigator (PI) who is responsible for the project and the project members.
    -  The designated PI or Portfolio Manager (PfM) must request that a MSU user account be created and the user assigned to their project.
    -  New user completes NOAA account request form.
    -  New user receives an email from MSU to change password, complete
       required training, and setup the Duo dual-factor authentication.
-   -  WQithin three days, the user changes their password.
-   -  The user completes required training
+   -  Within three days, the user changes their password.
+   -  The user completes required training.
    -  The user sets up the Duo App on their device.
 
 The User now has login access to MSU-HPC.
