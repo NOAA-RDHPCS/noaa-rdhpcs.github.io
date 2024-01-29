@@ -121,14 +121,14 @@ After following the prompts for creating your new environment, you can now activ
 
       .. code-block:: bash
 
-         $ source activate /scrtch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy
+         $ conda activate /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy
 
    .. tab-item:: Venv
       :sync: venv
 
       .. code-block:: bash
 
-         $ source /scrtch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy/bin/activate
+         $ source /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/cupy/bin/activate
 
 CuPy depends on NumPy, so let's install an optimized version of NumPy into your
 fresh environment:
