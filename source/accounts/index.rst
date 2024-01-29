@@ -94,11 +94,11 @@ for all NOAA employees, contractors, and temporary personnel.
 5. Request a RSA token.
 -  Once you are fully approved you will receive an email with directions to initialize your RSA token and log on.
 
-Currently AIM manages and maintains the following functionality on Niagara, Gaea,Hera, and Jet compute resources:
+Currently AIM manages and maintains the following functionality on Niagara, Gaea,Hera, and Jet RDHPCS compute resources:
 
--  RDHPCS user information.
--  RDHPCS project information and membership.
--  RDHPCS role account information and membership.
+-  user information.
+-  project information and membership.
+-  role account information and membership.
 
 
 ***********************************************
