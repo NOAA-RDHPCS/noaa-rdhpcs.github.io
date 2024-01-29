@@ -89,8 +89,7 @@ for all NOAA employees, contractors, and temporary personnel.
 
 4. RDHPCS Account Request: Request Access to vetting project RDHPCS.
 - Navigate to AIM and submit a request to be added as a New User to the RDHPCS (vetting) project.  RDHPCS is an AIM-only project to verify account details.
--  Once you have been approved for vetting project RDHPCS, request
-   membership to the project(s)as direced by your PI(s) or PfM(s). 
+-  Once you have been approved for vetting project RDHPCS, request membership to the project(s)as direced by your PI(s) or PfM(s). 
 
 5. Request a RSA token.
 -  Once you are fully approved you will receive an email with directions to initialize your RSA token and log on.
