@@ -103,20 +103,13 @@ RSA Token Login
 After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
 
 
-RSA Software Token Instructions
--------------------------------
+RSA Software Token Activation
+-----------------------------
 
-After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
-
-**RSA software token:** Please follow the instructions contained in
-the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
+#. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject line: Token for New Device - First.Last.
+#. Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_. Click **Make a request for an RSA token**, fill out the form and submit. When that form is received, you'll receive email including a URL and activation code. Open that URL from your device and submit the activation code.
 
 
--  **For existing software token holders**: Your current software token
-   cannot be transferred to another device. When you acquire a new
-   device, you will be issued a replacement token for that device.
-   Please follow the guidance on this wiki under the title, "New Device-
-   Software Tokens."
 .. _rsa_hardware_token_activation:
 
 RSA Hardware Token Activation
@@ -131,6 +124,7 @@ Other Authentications
 
 Your current RSA token will be used for all other RDHPCS authentications
 (sudo to role accounts, attended data transfers, x2go, etc…)
+
 
 .. _new_device___software_tokens:
 
