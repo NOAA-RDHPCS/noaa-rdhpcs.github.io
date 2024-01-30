@@ -17,10 +17,10 @@ Accessing RDHPCS Systems
 
 There are five NOAA RDHPCS systems and one external system available to the user community:
 * Gaea
-*  Hera
-*  Niagara
-*  Jet
-*  Orion (MSU - external)
+* Hera
+* Niagara
+* Jet
+* Orion (MSU - external)
 
 .. _aim_access:
 
@@ -41,11 +41,6 @@ your certificate every time you login to the system.
 
 Common Access Card (CAC)
 ------------------------
-
-.. _cac_login:
-
-CAC Login
----------
 
 | RDHPCS users with a CAC who are logging in from Windows, Mac, or Linux
   workstation/laptop are required to use CAC login.
@@ -90,19 +85,15 @@ Send email to rdhpcs.aim.help@noaa.gov if you have issues or questions.
    :width: 500px
 
 NOTE: 
-   With current CAC information on file, you should be authenticating into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`_
+   With current CAC information on file, you should authenticate into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`_
 
 .. _rsa_token:
 
-RSA Token
-=========
-
-.. _rsa_token_login:
 
 RSA Token Login
 ---------------
 
-| RDHPCS users without a CAC will continue to log in via their current
+| RDHPCS users without a CAC will  log in via their current
   RSA token. Alternatively, any RDHPCS user who has a CAC but is having
   problems with their login via CAC, is authorized to login via RSA
   token while they work through their technical issues.
@@ -114,8 +105,8 @@ RSA Token Login
 RSA Hardware Token Activation
 -----------------------------
 
-RSA Hardware token activation, please go here: `RSA Token
-Activation <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Activation#RSA_Token_Activation>`__
+RSA Hardware token activation, click `RSA Token
+Activation <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Activation#RSA_Token_Activation here>`__
 
 .. _rsa_software_token_instructions:
 
@@ -403,9 +394,9 @@ This does not impact batch jobs, cron scripts, screen sessions, remote
 desktop, or data transfers of any kind.
 
 
-***********************************
-Overview: Getting an RDHPCS Account
-***********************************
+**********************************************
+Overview: Getting an Internal Account - RDHPCS
+**********************************************
 
 The following steps must be completed before you receive an RDHPCS account.
 
