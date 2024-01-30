@@ -29,7 +29,7 @@ AIM Access
 ----------
 Access to RDHPCS systems depends on your assigned project(s). To request access to a project, please go to: `AIM <https://aim.rdhpcs.noaa.gov>`__
 
-For OMSU-HPC access, see `Logging Into Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
+For MSU-HPC access, see `Logging Into Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
 
 You can authenticate to RDHPCS (Internal Systems) using either CAC/PIV, or RSA Token.
 Additionally, X.509 certificates are used within
@@ -60,10 +60,8 @@ AIM - Auto-update of CAC Entry
 
 IMPACTS: ONLY RDHPCS Users with a NOAA-issued CAC.
 
-RDHPCS Account Management has made improvements in the
-function to collect CAC-related information from each user within AIM.
-AIM can now automatically detect and update
-CAC-related information to your AIM record. 
+RDHPCS Account Management collects CAC-related information from each user within AIM.
+AIM  automatically detecst and updates CAC-related information to your AIM record. 
 
 RDHPCS Account Management requests that you log into AIM to update
 your CAC information. Navigate to `<https://aim.rehpcs.noaa.gov AIM>`_
@@ -94,34 +92,37 @@ NOTE:
 RSA Token Login
 ---------------
 
-| RDHPCS users without a CAC will  log in via their current
+| RDHPCS users without a CAC log in via their current
   RSA token. Alternatively, any RDHPCS user who has a CAC but is having
   problems with their login via CAC, is authorized to login via RSA
   token while they work through their technical issues.
 | Please see instructions here: `RSA Token
   Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/RSA_Login>`__
 
-.. _rsa_hardware_token_activation:
+  
+After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
 
-RSA Hardware Token Activation
------------------------------
-
-RSA Hardware token activation, click `RSA Token
-Activation <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Activation#RSA_Token_Activation here>`__
-
-.. _rsa_software_token_instructions:
 
 RSA Software Token Instructions
 -------------------------------
 
--  **For new users**: You will be issued a token when you are assigned
-   to your first project. The type of token will be determined by you
-   when you fill out the token form.
+After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
+
+**RSA software token:** Please follow the instructions contained in
+the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
+
+
 -  **For existing software token holders**: Your current software token
    cannot be transferred to another device. When you acquire a new
    device, you will be issued a replacement token for that device.
    Please follow the guidance on this wiki under the title, "New Device-
    Software Tokens."
+.. _rsa_hardware_token_activation:
+
+RSA Hardware Token Activation
+-----------------------------
+
+Submit an OTRS ticket.  Send email to rdhpcs.aim.help@noaa.gov, using **Enable token** as the subject. Once the hardware token is enabled, you will receive email with  to set your token pin.
 
 .. _other_authentications:
 
@@ -369,7 +370,7 @@ First Time RSA token Login
 
 .. note::
 
-      If you are using a PC, please install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
+      If you are using a PC, install `PuTTY <https://www.putty.org/>`__ prior to logging in for the first time. Mac and Linux users will user a terminal to login.
 
 After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
 
@@ -380,19 +381,6 @@ the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-
 email to rdhpcs.aim.help@noaa.gov using the subject line: Enable token.
 You will be sent an email once your hardware token has been enabled with
 instructions about how to set your token pin.
-
-Bastion Login Timeouts
-----------------------
-
-*  Bastion login timeouts are applicable to both bastion types (CAC and
-   RSA.)
-* Every Sunday morning all Boulder Bastion sessions will terminate at
-   0400 ET (0200 MT).
-*  Every Monday morning all Princeton Bastion sessions will terminate at
-   0400 ET (0200 MT).
-
-This does not impact batch jobs, cron scripts, screen sessions, remote
-desktop, or data transfers of any kind.
 
 
 **********************************************
@@ -460,7 +448,7 @@ The User now has login access to MSU-HPC.
 
 .. note::
 
-   A Portfolio Manager or PI who loses their MSU account access must issue a help request. Send email to rdhpcs.orion.help@noaa.gov to open an OTRS ticket.
+   A Portfolio Manager or PI who loses MSU account access must issue a help request. Send email to rdhpcs.orion.help@noaa.gov to open an OTRS ticket.
    A new user who has any issues with completing MSU process, should send email to rdhpcs.orion.help@noaa.gov to open a help ticket.
 
 
