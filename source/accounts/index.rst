@@ -16,11 +16,11 @@ Accessing RDHPCS Systems
 ************************
 
 There are five NOAA RDHPCS systems and one external system available to the user community:
--  Gaea
--  Hera
--  Niagara
--  Jet
--  Orion (MSU - external)
+* Gaea
+*  Hera
+*  Niagara
+*  Jet
+*  Orion (MSU - external)
 
 .. _aim_access:
 
@@ -392,17 +392,18 @@ instructions about how to set your token pin.
 Bastion Login Timeouts
 ----------------------
 
--  Bastion login timeouts are applicable to both bastion types (CAC and
+*  Bastion login timeouts are applicable to both bastion types (CAC and
    RSA.)
--  Every Sunday morning all Boulder Bastion sessions will terminate at
+* Every Sunday morning all Boulder Bastion sessions will terminate at
    0400 ET (0200 MT).
--  Every Monday morning all Princeton Bastion sessions will terminate at
+*  Every Monday morning all Princeton Bastion sessions will terminate at
    0400 ET (0200 MT).
 
-This will not impact batch jobs, cron scripts, screen sessions, remote
+This does not impact batch jobs, cron scripts, screen sessions, remote
 desktop, or data transfers of any kind.
 
-**********************************
+
+***********************************
 Overview: Getting an RDHPCS Account
 ***********************************
 
@@ -427,9 +428,9 @@ for all NOAA employees, contractors, and temporary personnel.
 
 Currently AIM manages and maintains the following functionality on Niagara, Gaea,Hera, and Jet RDHPCS compute resources:
 
--  user information.
--  project information and membership.
--  role account information and membership.
+*  user information.
+*  project information and membership.
+*  role account information and membership.
 
 
 ***********************************************
