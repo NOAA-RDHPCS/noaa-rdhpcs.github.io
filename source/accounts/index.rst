@@ -16,11 +16,12 @@ Accessing RDHPCS Systems
 ************************
 
 There are five NOAA RDHPCS systems and one external system available to the user community:
-* Gaea
-* Hera
-* Niagara
-* Jet
-* Orion (MSU - external)
+
+- Gaea
+- Hera
+- Niagara
+- Jet
+- Orion (MSU - external)
 
 .. _aim_access:
 
