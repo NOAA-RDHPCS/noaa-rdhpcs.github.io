@@ -14,5 +14,5 @@ jobs:
           cache: 'pip'
       - name: Install Python Requirements
         run: pip install -r requirements.txt
-      - name: Lint RST files
+      - name: Check for Broken Links
         run: make linkcheck
