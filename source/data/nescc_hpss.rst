@@ -45,7 +45,7 @@ added to a HPSS project that you are already a member of on a NOAA compute
 resource is done without PI or Portfolio Manager approval, but both are
 notified that you are being added. If you are not a member of the project on a
 NOAA compute resource then PI or Portfolio manager approval is required before
-you will be added. To the process please send an email to
+you will be added. To start the process please send an email to
 rdhpcs.hpss.help@noaa.gov with the following subject line ``USERNAME requests
 access to HPSS - PORTFOLIO/PROJECT``, replacing ``USERNAME`` and
 ``PORTFOLIO/PROJECT`` with your username and project request. If PI or
