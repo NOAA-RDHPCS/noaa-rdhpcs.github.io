@@ -8,20 +8,20 @@ The centralized, long-term data archive system at National Environmental
 Security Computing Center (NESCC) is based on IBM's High Performance Storage
 System (HPSS). The NESCC HPSS environment includes 22 petabytes of front-end
 disk cache, five Oracle SL8500 enterprise tape libraries, three Spectra Logic
-TFinity tape libraries, and 148 tape drives. Total available capacity is 430 PB.
-HPSS is accessible from WCOSS2, Hera, Niagara, Jet, and Gaea.
+TFinity tape libraries, and 148 tape drives. Total available capacity is 430
+PB. HPSS is accessible from WCOSS2, Hera, Niagara, Jet, and Gaea.
 
 Users should keep the following things in mind when using the HPSS system:
 
 -  The HPSS system is well suited for storing large volumes of data.
 -  Users should avoid transferring many small files (in the megabyte range or
    smaller) to HPSS since the process of moving numerous individual small files
-   to and from tape is inefficient. Please tar up small files into one large tar
-   file before storing data into HPSS, or use HTAR.
+   to and from tape is inefficient. Please tar up small files into one large
+   tar file before storing data into HPSS, or use HTAR.
 -  All data stored in HPSS is single copy. Deleted data cannot be recovered.
 -  HPSS is not accessible from compute nodes. Access is available via
-   Hera/Niagara/Jet front-end nodes (FEs), Gaea Data Transfer Nodes (DTN’s), and
-   WCOSS2 transfer nodes.
+   Hera/Niagara/Jet front-end nodes (FEs), Gaea Data Transfer Nodes (DTN’s),
+   and WCOSS2 transfer nodes.
 -  Batch jobs that require access to HPSS should be submitted to the respective
    systems service or transfer queues.
 
@@ -37,19 +37,19 @@ Gaining Access to use HPSS
 New HPSS User Requests
 ----------------------
 
-Access to an HPSS project must be requested.  A HPSS user must be a current user
-of a NOAA HPC compute resource (RDHPC or WCOSS) to have access to HPSS.  When
-you are a member of a project on a compute resource you are not automatically
-added to the companion HPSS project (if there is one). Being added to a HPSS
-project that you are already a member of on a NOAA compute resource is done
-without PI or Portfolio Manager approval, but both are notified that you are
-being added. If you are not a member of the project on a NOAA compute resource
-then PI or Portfolio manager approval is required before you will be added. To
-the process please send an email to rdhpcs.hpss.help@noaa.gov with the following
-subject line ``USERNAME requests access to HPSS - PORTFOLIO/PROJECT``, replacing
-``USERNAME`` and ``PORTFOLIO/PROJECT`` with your username and project request.
-If PI or Portfolio Manager approval is required, the email should come from
-them.
+Access to an HPSS project must be requested.  A HPSS user must be a current
+user of a NOAA HPC compute resource (RDHPC or WCOSS) to have access to HPSS.
+When you are a member of a project on a compute resource you are not
+automatically added to the companion HPSS project (if there is one). Being
+added to a HPSS project that you are already a member of on a NOAA compute
+resource is done without PI or Portfolio Manager approval, but both are
+notified that you are being added. If you are not a member of the project on a
+NOAA compute resource then PI or Portfolio manager approval is required before
+you will be added. To the process please send an email to
+rdhpcs.hpss.help@noaa.gov with the following subject line ``USERNAME requests
+access to HPSS - PORTFOLIO/PROJECT``, replacing ``USERNAME`` and
+``PORTFOLIO/PROJECT`` with your username and project request. If PI or
+Portfolio Manager approval is required, the email should come from them.
 
 All requests must have the following information:
 
@@ -64,19 +64,19 @@ Adding New Projects to HPSS
 ---------------------------
 
 Projects on a NOAA compute resource are not given access to the HPSS until
-requested by the Portfolio Manager (PfM). The PfM also approves the maximum time
-retention directory (pool) that a project is allowed to use on HPSS. All lesser
-time pools will also be available. To add a project to the HPSS the Portfolio
-Manager should submit a help request with the following information:
+requested by the Portfolio Manager (PfM). The PfM also approves the maximum
+time retention directory (pool) that a project is allowed to use on HPSS. All
+lesser time pools will also be available. To add a project to the HPSS the
+Portfolio Manager should submit a help request with the following information:
 
 - Project name
 - Associated users
 - Maximum time retention pool
 
 To remove a project from the HPSS the PfM should submit a help request with the
-project name and data disposition directions. Requests are reviewed and approved
-by the HPSS Resource Manager and sent to the HPSS system administrator for
-implementation.
+project name and data disposition directions. Requests are reviewed and
+approved by the HPSS Resource Manager and sent to the HPSS system administrator
+for implementation.
 
 .. note::
 
@@ -91,17 +91,17 @@ implementation.
 NESCC HPSS Data Structure
 =========================
 
-HPSS data at NESCC is organized by portfolio, project and retention period, with
-a directory structure of ``PORTFOLIO/PROJECT/RETENTION``.  Each retention period
-(1-5 year & permanent) is set up as a separate file family, e.g., ``1year``,
-``2year``, ``3year``, ``4year``, ``5year``, and ``permanent``.  This means that
-all data for a retention period is stored on the same tapes.  Projects live
-under the appropriate portfolio and have been assigned access to specific
-retention directories.  Project users have access to write data to any of their
-projects' retention directories.  Data within the same retention directory can
-be moved to other projects within the same retention directory. If data needs to
-be moved to another retention period (ex: ``/1year`` -> ``/2year``) it must be
-copied.
+HPSS data at NESCC is organized by portfolio, project and retention period,
+with a directory structure of ``PORTFOLIO/PROJECT/RETENTION``.  Each retention
+period (1-5 year & permanent) is set up as a separate file family, e.g.,
+``1year``, ``2year``, ``3year``, ``4year``, ``5year``, and ``permanent``.  This
+means that all data for a retention period is stored on the same tapes.
+Projects live under the appropriate portfolio and have been assigned access to
+specific retention directories.  Project users have access to write data to any
+of their projects' retention directories.  Data within the same retention
+directory can be moved to other projects within the same retention directory.
+If data needs to be moved to another retention period (ex: ``/1year`` ->
+``/2year``) it must be copied.
 
 The structure has the following syntax:
 
@@ -356,16 +356,15 @@ NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
 Data Retention
 ==============
 
-Retention based storage is the HPSS archive policy in Fairmont, to
-better manage data growth. Six retention storage pools (1-5year and
-permanent) were created. Each retention period is setup as a separate
-file family. This means all data for a retention period is stored on the
-same tapes. All HPSS projects were then configured to write to one or
-more of these pools. Data in these pools expires based upon the
-retention pool it was written in and would be deleted upon expiration.
-All files in the HPSS archive have been assigned an expiration date
-based on the file create time and the retention period it was written
-to. Upon expiration files will be deleted from the HPSS archive.
+Retention based storage is the HPSS archive policy in Fairmont, to better
+manage data growth. Six retention storage pools (1-5year and permanent) were
+created. Each retention period is setup as a separate file family. This means
+all data for a retention period is stored on the same tapes. All HPSS projects
+were then configured to write to one or more of these pools. Data in these
+pools expires based upon the retention pool it was written in and would be
+deleted upon expiration. All files in the HPSS archive have been assigned an
+expiration date based on the file create time and the retention period it was
+written to. Upon expiration files will be deleted from the HPSS archive.
 
 .. _expired_data_deletion_process:
 
@@ -378,15 +377,14 @@ User Notification
 ~~~~~~~~~~~~~~~~~
 
 Users will be notified of expired data via posted lists and email. These
-notifications will take place on or before the first day of the month
-following the data’s expiration. For example, data that has an
-expiration date between October 1 and October 31 2016 will have its
-notification posted on or before November 1, 2016. The expired file list
-is located on HPSS in ``/Expired_Data_Lists/expired.YYYY-MM.txt``. All HPSS
-users have read access to this file and can retrieve it for review. The
-file is easily searchable by HPSS username. For each file included in
-the expired list the file owner, file group, filename/path, and expire
-date are shown. For example:
+notifications will take place on or before the first day of the month following
+the data’s expiration. For example, data that has an expiration date between
+October 1 and October 31 2016 will have its notification posted on or before
+November 1, 2016. The expired file list is located on HPSS in
+``/Expired_Data_Lists/expired.YYYY-MM.txt``. All HPSS users have read access to
+this file and can retrieve it for review. The file is easily searchable by HPSS
+username. For each file included in the expired list the file owner, file
+group, filename/path, and expire date are shown. For example:
 
 .. code::
 
@@ -425,9 +423,9 @@ Nov 1 – Nov 30   December 1        January 1
 File Size Guidelines
 ====================
 
-Archiving files to HPSS is a much different process than writing files
-to disk storage. Please be aware that the size of the files you write to
-HPSS can impact the performance and efficiency of the system.
+Archiving files to HPSS is a much different process than writing files to disk
+storage. Please be aware that the size of the files you write to HPSS can
+impact the performance and efficiency of the system.
 
 .. rubric:: Preferred file size range
 
@@ -443,17 +441,17 @@ a large amount of data. We recommend storing files that are 1 TB or smaller.
 .. rubric:: Avoid small files
 
 Avoid transferring many small files — those in the megabyte range or smaller.
-The process of moving numerous individual files to and from tape is inefficient.
-It can become very time consuming and result in slowing the system for all
-users.
+The process of moving numerous individual files to and from tape is
+inefficient. It can become very time consuming and result in slowing the system
+for all users.
 
 When you need to store many small files, use one of these two approaches:
 
 -  Use :ref:`htar <using-htar>` to transfer them together as a single archive
    file.
 -  Use an archiving utility, e.g. ``tar``, on the source system to bundle the
-   member files and then transfer the resulting archive file with ``hsi put`` or
-   or ``hsi cput``.
+   member files and then transfer the resulting archive file with ``hsi put``
+   or or ``hsi cput``.
 
 Please contact the HPSS helpdesk if you need help determining appropriate file
 sizes for your specific workload.
@@ -466,28 +464,28 @@ Data Recovery Policy
 Occasionally an archive tape is damaged or otherwise becomes partially
 unreadable. When that happens, the local RDHPCS staff works with the
 manufacturer to troubleshoot the problem and take steps to attempt to recover
-the missing data. Very rarely, even with these efforts, we are unable to recover
-the missing files. The user will then be informed of the files we cannot
-recover.
+the missing data. Very rarely, even with these efforts, we are unable to
+recover the missing files. The user will then be informed of the files we
+cannot recover.
 
 In that case, the user has one further option. There are a number of outside
 recovery services which will make further attempts at recovery for a fee. Some
-charge a flat fee, some charge more if they are able to recover than if they are
-unable to recover. If the user wishes to sign up for such a service and pay the
-fee, RDHPCS will handle the logistics of shipping and other coordination with
-the recovery service.
+charge a flat fee, some charge more if they are able to recover than if they
+are unable to recover. If the user wishes to sign up for such a service and pay
+the fee, RDHPCS will handle the logistics of shipping and other coordination
+with the recovery service.
 
 .. _nescc_hpss_getting_started:
 
 Getting Started
 ===============
 
-HPSS is only accessible from WCOSS, Theia, Jet and Gaea Remote Data
-Transfer Nodes (RDTN). Modules have been created on each system to
-provide the proper user environment and tools to access HPSS from these
-systems. These modules are not loaded by default and will need to be
-loaded before you can use any of the HPSS commands. To add the HPSS
-tools to your environment, use the following module command:
+HPSS is only accessible from WCOSS, Theia, Jet and Gaea Remote Data Transfer
+Nodes (RDTN). Modules have been created on each system to provide the proper
+user environment and tools to access HPSS from these systems. These modules are
+not loaded by default and will need to be loaded before you can use any of the
+HPSS commands. To add the HPSS tools to your environment, use the following
+module command:
 
 .. tab-set::
 
@@ -512,8 +510,8 @@ HTAR
 HTAR allows the creation of archive files directly in HPSS without the need to
 do an intermediate step of first creating the archive (tar) file on local disk
 storage before copying the archive file to HPSS.  In addition, HTAR creates a
-separate index file, which contains the names and locations of all of the member
-files in the archive file. The index file allows individual files and
+separate index file, which contains the names and locations of all of the
+member files in the archive file. The index file allows individual files and
 directories in the archive to be randomly retrieved without the need to read
 through the archive file.
 
@@ -521,8 +519,8 @@ through the archive file.
 
    HTAR has the following limitations:
 
-      * File size: An individual file within the tar file may not be larger than
-        68 GB.
+      * File size: An individual file within the tar file may not be larger
+        than 68 GB.
       * Directory paths: The directory path of any file may not exceed 154
         characters in length.
       * File names: File names may not exceed 99 characters in length.
@@ -543,8 +541,9 @@ To create a new archive file ``files.tar``  that contains ``file1`` and
 
    htar -cvf /SYSADMIN/nesccmgmt/1year/testuser/work/files.tar file1 file2
 
-To create a new archive file ``time.tar`` that contains all files that match the
-glob pattern ``time*`` in the HPSS directory ``/SYSADMIN/nesccmgmt/1year/testuser/work``:
+To create a new archive file ``time.tar`` that contains all files that match
+the glob pattern ``time*`` in the HPSS directory
+``/SYSADMIN/nesccmgmt/1year/testuser/work``:
 
 .. code::
 
@@ -554,15 +553,15 @@ glob pattern ``time*`` in the HPSS directory ``/SYSADMIN/nesccmgmt/1year/testuse
 
 .. rubric:: Retrieving an HTAR Archive File Examples
 
-To extract ``file1`` and ``file2`` from the archive ``files.tar`` located in the
-HPSS directory ``/SYSADMIN/nesccmgmt/1year/testuser/work``:
+To extract ``file1`` and ``file2`` from the archive ``files.tar`` located in
+the HPSS directory ``/SYSADMIN/nesccmgmt/1year/testuser/work``:
 
 .. code::
 
    $ htar -xvf /SYSADMIN/nesccmgmt/1year/testuser/work/files.tar ./file1 ./file2
 
-To extract all files from the archive ``files.tar`` located in the HPSS directory
-``/SYSADMIN/nesccmgmt/1year/testuser/work``:
+To extract all files from the archive ``files.tar`` located in the HPSS
+directory ``/SYSADMIN/nesccmgmt/1year/testuser/work``:
 
 .. code::
 
@@ -584,8 +583,8 @@ directory ``/SYSADMIN/nesccmgmt/1year/testuser/work``:
 .. rubric:: Recreating a HTAR Index File Example
 
 This operation is used either to reconstruct an index for tar files whose index
-file is unavailable (e.g., accidentally deleted), or for tar files that were not
-originally created by HTAR.
+file is unavailable (e.g., accidentally deleted), or for tar files that were
+not originally created by HTAR.
 
 .. code::
 
@@ -666,8 +665,9 @@ Use the HSI ``in`` operation to read HSI operations from a file
 
 .. rubric:: Using a Heredoc
 
-Similar to using operations contained in a file, the shell's heredoc feature can
-be used to pass to HSI the operations.  This method is useful in a batch job script.
+Similar to using operations contained in a file, the shell's heredoc feature
+can be used to pass to HSI the operations.  This method is useful in a batch
+job script.
 
 In this example, we get a file from HPSS, ``hpss_file``, and place it in a new
 directory foo on the local system.
@@ -732,8 +732,8 @@ To place ``hpss_file`` in your current directory:
 
    $ hsi get /BMC/testproj/myid/work/hpss_file
 
-To place ``hpss_file`` in the local directory ``/full_local/path`` with the name
-``new_name``:
+To place ``hpss_file`` in the local directory ``/full_local/path`` with the
+name ``new_name``:
 
 .. code::
 
@@ -786,8 +786,8 @@ File Expiration Commands
 ------------------------
 
 The HSI operations ``expls`` and ``expfind`` are used to show and find the
-expiration date of data stored in HPSS.  Each operation has the ``-h`` option to
-display the usage information.
+expiration date of data stored in HPSS.  Each operation has the ``-h`` option
+to display the usage information.
 
 .. rubric:: Operation expls Help
 
