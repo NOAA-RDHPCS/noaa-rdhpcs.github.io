@@ -38,7 +38,7 @@ GFDL Archive Data Structure
 ===========================
 
 The users archive area is located at ``/archive/$USER``.  The
-``/archive/$USER`` is be a symbolic link to ``/arch[0-8bcfgh]/$USER``.  These
+``/archive/$USER`` is a symbolic link to ``/arch[0-8bcfgh]/$USER``.  These
 ``arch[0-8bcfgh]`` directories are used to better distribute the load on the
 front-end cache drives.
 
