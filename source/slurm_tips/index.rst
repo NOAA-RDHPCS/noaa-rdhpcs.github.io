@@ -1,5 +1,5 @@
 #####
-Slurm 
+Slurm
 #####
 
 Slurm is an open-source cluster management and job scheduler, originally
@@ -10,7 +10,7 @@ specific information for the RDHPCS systems.  The SchedMD site maintains `full
 documentation <https://slurm.schedmd.com/>`__ and basic `tutorials
 <https://slurm.schedmd.com/tutorials.html>`__.
 
-Some common Slurm commands are summarized in the table below. 
+Some common Slurm commands are summarized in the table below.
 
 .. _slurm-common-commands:
 
@@ -41,13 +41,13 @@ All Slurm commands have on-line manual pages viewable via the ``man`` command
 option (e.g., ``sinfo --help``).  See :ref:`slurm-references` for links to the
 SchedMD documentation.
 
-Running a Job 
+Running a Job
 =============
 
 Computational work on the RDHPCS is performed by *jobs*. Jobs typically consist
 of several components:
 
--  A batch submission script 
+-  A batch submission script
 -  A binary executable
 -  A set of input files for the executable
 -  A set of output files created by the executable
@@ -165,14 +165,14 @@ Common ``sbatch`` Options
 -------------------------
 
 There are two ways to specify sbatch options. The first is on the command line
-when using the sbatch command. 
+when using the sbatch command.
 
 .. code-block:: shell
 
    $ sbatch --clusters=<cluster> --account=abc123 myrunScript.sh
-    
+
 The second method is to insert directives at the top of the batch script using
-#SBATCH syntax. For example, 
+#SBATCH syntax. For example,
 
 .. code-block:: shell
 
@@ -180,10 +180,10 @@ The second method is to insert directives at the top of the batch script using
    #SBATCH --account=abc123
 
 The two methods can be mixed together. However, options specified on the
-command line always override options specified in the script. 
+command line always override options specified in the script.
 
 The table below summarizes options for submitted jobs. Check the Slurm Man
-Pages for a more complete list. 
+Pages for a more complete list.
 
 .. list-table::
    :widths: 20 30 50
@@ -193,7 +193,7 @@ Pages for a more complete list.
      - Example Usage
      - Description
    * - ``-A``, ``--account``\
-     - ``$SBATCH --account=abc123`` 
+     - ``$SBATCH --account=abc123``
      - Specifies the project to which the job should be charged.
    * - ``-t``, ``--time``
      - ``#SBATCH -t 4:00:00``
@@ -271,7 +271,9 @@ your job (e.g. for naming output log files):
 | ``$SLURM_NODELIST``      | The list of nodes assigned to the job.           |
 +--------------------------+--------------------------------------------------+
 
-State Codes 
+.. _slurm-state-codes:
+
+State Codes
 -----------
 
 A job will transition through several states during its lifetime. Common ones
@@ -284,7 +286,7 @@ include:
 |     |               | system administrator                                  |
 +-----+---------------+-------------------------------------------------------+
 | CD  | Completed     | Job has terminated all processes on all nodes. Exit   |
-|     |               | code of zero.                                         | 
+|     |               | code of zero.                                         |
 +-----+---------------+-------------------------------------------------------+
 | F   | Failed        | Job terminated with non-zero exit code or other       |
 |     |               | failure condition.                                    |
@@ -331,7 +333,7 @@ Job Dependencies
 SLURM supports the ability to submit a job with constraints that will keep it
 running until these dependencies are met. A simple example is where job X
 cannot execute until job Y completes. Dependencies are specified with the
-``-d`` option to Slurm. 
+``-d`` option to Slurm.
 
 +----------------------------------+------------------------------------------+
 | Flag                             | Meaning                                  |
@@ -343,7 +345,7 @@ cannot execute until job Y completes. Dependencies are specified with the
 |                                  | start until that many minutes have       |
 |                                  | passed since the listed jobs start/are   |
 |                                  | cancelled. If not specified, there is no |
-|                                  | delay.                                   |                
+|                                  | delay.                                   |
 +----------------------------------+------------------------------------------+
 | ``SBATCH -d afterany:jobid``     | The job can start after the specified    |
 |                                  | jobs have ended, regardless of exit      |
@@ -368,7 +370,7 @@ Srun
 ----
 
 Your job scripts will usually call ``srun`` to run an executable on multiple
-nodes.  
+nodes.
 
 .. code-block:: shell
 
@@ -430,15 +432,15 @@ Use the ``squeue`` command to view a list of current jobs in the queue.  See
 
    $ squeue -a
 
-To list jobs that belong to you 
+To list jobs that belong to a specific user
 
 .. code-block:: shell
 
-   $ squeue -u <user name>
+   $ squeue -u <userid>
 
 
 Show Completed Jobs
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 Slurm does not keep completed jobs in ``squeue``.
 
@@ -446,9 +448,12 @@ Slurm does not keep completed jobs in ``squeue``.
 
    $ sacct -S 2019-03-01 -E now -a
 
-If you don’t specify ``-S`` and ``-E`` options ``sacct`` gives you data from today.
+If you don’t specify ``-S`` and ``-E`` options ``sacct`` gives you data from
+the current day.
 
-Use the ``sacct`` command option to list jobs that have run within the last 24 hours and to see their statuses (State). A full list of sacct options and job states can be found on the sacct man page. 
+Use the ``sacct`` command option to list jobs that have run within the last 24
+hours and to see their statuses (State). A full list of ``sacct`` options and
+:ref:`job states <slurm-state-codes>` can be found on the ``sacct`` man page.
 
 .. code-block:: shell
 
@@ -456,11 +461,11 @@ Use the ``sacct`` command option to list jobs that have run within the last 24 h
 
 
 Getting Details About a Job
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
-Slurm only keeps information about completed jobs available via scontrol for 5
-minutes after completion. After that time, sacct is the currently available way
-of getting information about completed jobs.
+Slurm only keeps information about completed jobs available via ``scontrol``
+for 5 minutes after a job completes.  After that time, ``sacct`` is the way of
+getting information about completed jobs.
 
 .. code-block:: shell
 
@@ -470,50 +475,99 @@ of getting information about completed jobs.
 Priority and Fairshare
 ======================
 
+Slurm uses a priority-based scheduling system to allocate resources to jobs.
+The priority of a job is calculated based on several factors, including the
+job's requested resources, the time at which the job was submitted, and any
+user-defined priority adjustments.
+
+Slurm's fairshare system is a way of allocating resources based on the
+historical usage of different users and groups. Fairshare is designed to ensure
+that resources are distributed fairly over time, so that no one user or group
+dominates the system.
+
 Understanding Slurm Fairshare
 -----------------------------
-SLURM utilizes a “FairShare” prioritization system. It uses the project’s allocation (RawShares) set by the Portfolio Manager and the RDHPCS Allocation Committee. SLURM normalizes the allocation into a % of system priority (Normshares). See definitions below. 
 
-SLURM uses various job request parameters (submit time, partition, QOS, cores requested, requested wall clock time, etc.) and a calculated project's FairShare Factor (f) to continually assign/adjust the requested jobs’ priority until the job runs. 
+SLURM utilizes a “FairShare” prioritization system. It uses the project’s
+allocation (RawShares) set by the Portfolio Manager and the RDHPCS Allocation
+Committee. Slurm normalizes the allocation into a percentage of system priority
+(Normshares). See definitions below.
 
-FairShare is calculated from current allocation information (NormShares) and recent project and system usage data (EffectvUsage) such that more recent usage compared to your allocation and total system usage lowers the project's FairShare value and less recent usage compared to your allocation and total system usage increases the project's FairShare.
+Slurm uses various job request parameters (submit time, partition, QOS, job
+size, requested wall clock time, etc.) and a calculated project's FairShare
+Factor (f) to continually assign/adjust the requested jobs’ priority until the
+job runs.
+
+FairShare is calculated from current allocation information (NormShares) and
+recent project and system usage data (EffectvUsage) such that more recent usage
+compared to your allocation and total system usage lowers the project's
+FairShare value and less recent usage compared to your allocation and total
+system usage increases the project's FairShare.
 
 Fairshare Priority Factor
-^^^^^^^^^^^^^^^^^^^^^^^^^
-FairShare (f) = 2^-(EffectvUsage / NormShares ) (see definitions below)
+-------------------------
 
-**0.0 < f < 0.5**: The project is recently over utilizing their allocation relative to total system usage. 
+The fairshare factor serves to prioritize queued jobs such that those jobs
+charging accounts that are under-serviced are scheduled first, while jobs
+charging accounts that are over-serviced are scheduled when the machine would
+otherwise go idle.
 
-**f ~0.5**: Recently the project has consistently utilized an amount ~equal to its allocation.
+Slurm's fair-share factor is a floating point number between 0.0 and 1.0 that
+reflects the shares of a computing resource that a user has been allocated and
+the amount of computing resources the user's jobs have consumed. The higher the
+value, the higher is the placement in the queue of jobs waiting to be
+scheduled.
 
-**0.5 < f < 1.0**: The project is recently underutilizing their allocation. 
+Slurm on the RDHPCS systems use the `Classic Fairshare Algorithm
+<https://slurm.schedmd.com/classic_fair_share.html>`__ that is calculated by
+the equation
+
+.. math::
+
+   fairshare\_factor = 2^{-(EffectvUsage / NormShares)}
+
+A fairshare factor value :math:`<0.5` indicates that a project is over
+utilizing their allocation relative to total system usage, whereas a factor
+:math:`>0.5` indicates the project is underutilizing.
 
 Fairshare Definitions
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
+:EffectvUsage:: the project's ProjUsage (RawUsage) divided by the total
+    RawUsage for the system.
+:NormShares: the project’s RawShares (allocated core-hours) divided by the
+   total number of RawShares allocated to all projects on the system, or the
+   fraction of the system the project has been allocated, which represents the
+   projects system level priority without regard to QOS and recent usage
+   priority adjustments.
+:RawShares: the Core-hours allocation that has been assigned to project1 by the
+   Portfolio Manager as discussed above. Rawshares means little toward job
+   priority until it is compared to the total allocation of the system, which
+   is the next parameter NormShares. Each user of project1 has the RawShare of
+   parent, this means that all the users pull from the total RawShares of
+   project1 and do not have their own individual sub-Shares. Thus all users on
+   project1 have equal access to the full allocation of project1.
+:RawUsage: the amount of core-seconds the project has used. RawUsage decays
+    over time scaled linearly by the 1/2 life priority factor that is set for
+    the system, which is currently 5-days (ex. current usage 100%, 5 day old
+    usage 50%, 10 day old usage 25%, etc).
 
-**NormShares** is the project’s RawShares (allocated core-hours) divided by the total number of RawShares allocated to all projects on the system, or the fraction of the system the project has been allocated, which represents the projects system level priority without regard to QOS and recent usage priority adjustments. 
+Projects with a windfall allocation always have a FairShare, Normshares, and
+EffectvUsage of 0 and therefore always have the lowest priority.
 
-**RawShares** is the Core-hours allocation that has been assigned to project1 by the Portfolio Manager as discussed above. Rawshares means little toward job priority until it is compared to the total allocation of the system, which is the next parameter NormShares. Each user of project1 has the RawShare of parent, this means that all the users pull from the total RawShares of project1 and do not have their own individual sub-Shares. Thus all users on project1 have equal access to the full allocation of project1.
+.. note::
 
-**EffectvUsage** is the project's ProjUsage (RawUsage) divided by the total RawUsage for the system.
-
-**RawUsage** is the amount of core-seconds the project has used. RawUsage decays over time scaled linearly by the 1/2 life priority factor that is set for the system, which is currently 5-days (ex. current usage 100%, 5 day old usage 50%, 10 day old usage 25%, etc).
-
-Projects with a windfall allocation always have a FairShare, Normshares, and EffectvUsage of 0 and therefore always have the lowest priority.
-
-**Note**: Jobs run in the windfall QOS will NOT count toward RawUsage (and EffectvUsage) and hence will not lower FairShare.
+   Jobs run in the windfall QOS will NOT count toward RawUsage (and
+   EffectvUsage) and hence will not lower FairShare.
 
 For a new job to run sooner, regardless of your current FairShare value, it is important that you do the following:
 
-- Select the appropriate QOS. 
+- Select the appropriate QOS.
 - Submit your job ASAP as a job’s priority increases with time in the queue regardless of other priority factors.
 - Enter an appropriate wall clock time. Excessive wall clock times will delay that start of your job, and contributes to overall inefficient scheduling and system utilization.
 
-
-
 Fairshare Reporting
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 Summary of all accounts
 
@@ -539,30 +593,44 @@ Details by user of all accounts
 
    $ sshare -a
 
+Priority Reporting
+------------------
 
-Priority Analysis of Your Job
------------------------------
-
-sprio
-^^^^^
+As mentioned earlier, Slurm uses `multiple factors
+<https://slurm.schedmd.com/priority_multifactor.html>`__ to determine a job's
+priority.  The ``sprio`` command reports the job's priority.
 
 .. code-block:: shell
 
-   sprio -j 12345
+   $ sprio -j 12345
+      JOBID PARTITION   PRIORITY   SITE       AGE   ASSOC  FAIRSHARE        QOS     TRES
+      12345 hera        18302014      0   5000000       0    3301977   10000000   cpu=38
 
 .. _slurm_tips_fairshare:
 
 
 Getting Information About Your Projects
----------------------------------------
+=======================================
 
-Use the sfairshare command to show the current FairShare priority status of all projects. Of particular interest will likely be the , the -u option to list just your projects, -w option (these projects always have the lowest priority) to exclude listing windfall projects, and the -T <threshold> option, which will give you a list of all projects and their FairShare value with a higher value than the threshold value you enter. For more options on sfairshare use the sfairshare -h command. 
+The RDHPCS system administrators have supplied additional tools to help the
+users gather information concerning their jobs, job's fairshare, and allocation
+usage.  The tools listed in this section may not be available on all RDHPCS
+systems.
 
-Here are examples from Hera:
+sfairshare
+----------
+
+The ``sfairshare`` command will show the current FairShare priority status of
+all projects. Of particular interest will likely be the , the ``-u`` option to
+list just your projects, ``-w`` option (these projects always have the lowest
+priority) to exclude listing windfall projects, and the ``-T <threshold>``
+option, which will give you a list of all projects and their FairShare value
+with a higher value than the threshold value you enter. For more options on
+sfairshare use the sfairshare ``-h`` command.
 
 .. code-block:: shell
 
-   [First.Last@hfe12 ~]$ sfairshare -w
+   $ sfairshare -w
    Project         FairShare       Rank    NormShares      EffUsage
    -----------     ----------      ------  ----------      ----------
    amb-verif            0.974      23/90      0.00105         0.00004
@@ -574,7 +642,7 @@ Here are examples from Hera:
    .
    .
    .
-   [First.Last@hfe12 ~]$ sfairshare -w -T 0.5
+   $ sfairshare -w -T 0.5
    Project         FairShare       Rank    NormShares      EffUsage
    -----------     ----------      ------  ----------      ----------
    amb-verif            0.974      23/90      0.00105         0.00004
@@ -587,110 +655,138 @@ Here are examples from Hera:
    .
    .
 
+The Slurm ``sshare`` command to get project FairShare priority information
+sorted by Portfolio and sub-Portfolio. Note that Slurm only uses a project's
+Fairshare value in priority calculations, not the Portfolio's or
+sub-Portfolio's FairShare.
 
-Use the SLURM sshare command to get project FairShare priority information sorted by Portfolio and sub-Portfolio. Note: SLURM only uses a project's Fairshare value in priority calculations, not the Portfolio's or sub-Portfolio's FairShare.
+.. note::
+
+   ``sfairshare`` is only available on Hera and Jet.
 
 saccount_params
-^^^^^^^^^^^^^^^
+---------------
 
-Available on Hera, Jet, Orion
-
-Use the saccount_params or account_params command to get your current:
+The ``saccount_params`` will show your current:
 
 - Home File System usage/quota (MB)
-
 - For each of your projects
-    - Compute: FairShare priority value, (FairShare rank vs all other projects), partition access and available QOS's for all your projects. Include -l (for long) if you want to see current 30-day allocation, last 30-day usage, and FairShare to 6 digits(``saccount_params -l``).
+
+    - Compute: FairShare priority value, (FairShare rank vs all other
+      projects), partition access and available QOS's for all your projects.
+      Include -l (for long) if you want to see current 30-day allocation, last
+      30-day usage, and FairShare to 6 digits(``saccount_params -l``).
     - Scratch disk usage/quota (GB), files on disk and file count quota.
 
-``NOTE``: Projects with a windfall allocation of 1 will show an allocation of 0, but you will see the correct Available QOS: windfall. Projects with an allocation of 2 will show an allocation of 1, but you will see the correct Available QOS: Batch, debug, etc.
+.. note::
+
+   Projects with a windfall allocation of 1 will show an allocation of 0, but you
+   will see the correct Available QOS: windfall. Projects with an allocation of 2
+   will show an allocation of 1, but you will see the correct Available QOS:
+   Batch, debug, etc.
+
+.. note::
+
+   ``saccount_params`` is only available on Hera, Jet, Orion.
 
 .. code-block:: shell
 
-   [First.Last @hfe07 ~]$ saccount_params
+   $ saccount_params
 
+   Account Params -- Information regarding project associations for userid
+	   Home Quota (/home/userid) Used: 4149 MB Quota: 5120 MB
+
+	   Project: projid
+		   FairShare=1.000 (91/91)
+		   Partition Access: ALL
+		   Available QOSes: gpuwf,windfall
+			Directory: /scratch[12]/[portfolio]/projid DiskInUse=206372 GB, Quota=255000 GB, Files=5721717, FileQUota=51000000
 
 shpcrpt
-^^^^^^^
+-------
 
-Use the shpcrpt tool to get current project's FairShare factor and rank, allocation, and ~current month to date (MTD) Compute usage information on all your project(s), detailed project information by user, and summary information for all projects on the system. 
+The ``shpcrpt`` tool will report a project's FairShare factor and rank,
+allocation, and the current month to date (MTD) compute usage information on
+all your project(s), detailed project information by user, and summary
+information for all projects on the system.
 
-To execute shpcrpt, load the module (if not already in present in env) and then call the script with the necessary parameters
+By default, ``shpcprt`` ithout any arguments, you will receive an error message. You must use `-c` or ``--cluster`` to identify the cluster.
 
-If you call shpcprt without any arguments, you will receive an error message. You must use `-c` or ``--cluster`` to identify the cluster. 
+On some RDHPCS system, ``shpcrpt`` is available after loading the ``shpcrpt``
+module.
 
-Use ``shpcrpt --help`` for more details. 
-
-
-Example:
+Use ``shpcrpt --help`` for more details.
 
 .. code-block:: shell
 
    $ shpcrpt -c <cluster>
+   =================================================================================================================
+   Report                           Summary Report
+   Report Run:                      Fri 02 Feb 2024 09:48:57 PM  UTC
+   Report Period Beginning:         Thu 01 Feb 2024 12:00:00 AM  UTC
+   Report Period Ending:            Fri 01 Mar 2024 12:00:00 AM  UTC
+   Percentage of Period Elapsed:    6.6%
+   Percentage of Period Remaining:  93.4%
+   =================================================================================================================
+   Project               NormShares   FairShare        Rank  Allocation   Cr-HrUsed    Windfall   TotalUsed       %Used        Jobs
+   -------------------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- -----------
+   proj01                  0.010531    0.501784       64/90     476,712      65,412           0      65,412      13.72%       1,600
+   proj02                  0.000000    1.000000       90/90           1           0           0           0       0.00%           0
+   proj03                  0.001050    0.920788       35/90      47,520         456           0         456       0.96%      23,469
+   proj04                  0.154815    0.619112       46/90   7,008,123     505,651           0     505,651       7.22%      27,067
+   .
+   .
+   .
 
 To see a specific group’s hpc report, specify the group:
 
 .. code-block:: shell
 
    $ shpcrpt -p <project> -c <cluster>
+   =================================================================================================================
+   Report                           Project Report for:projid
+   Report Run:                      Fri 02 Feb 2024 09:50:20 PM  UTC
+   Report Period Beginning:         Thu 01 Feb 2024 12:00:00 AM  UTC
+   Report Period Ending:            Fri 01 Mar 2024 12:00:00 AM  UTC
+   Percentage of Period Elapsed:    6.6%
+   Percentage of Period Remaining:  93.4%
+   =================================================================================================================
+   Machines:                               clusterid
+   Initial Allocation in Hours:              493,151
+   Net Allocation Adjustments:               -16,439
+                                    ----------------
+   Adjusted Allocation:                      476,712
 
-Getting Portfolio or Sub-portfolio Information 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   Core Hours Used:                           65,444
+   Windfall Core Hours Used:                       0
+                                    ----------------
+   Total Core Hours Used:                     65,444
 
-The shpcprt tool includes three options to display Portfolio or Sub-portfolio project information. Typically, this can help provide a faster report since less data needs to be gathered and processed from the database. 
+   Project Normalized Shares:               0.010531
+   Project Fair Share:                      0.501784
+   Project Rank:                               64/90
 
-These options are:
+   Percentage of Period Elapsed:                6.6%
+   Percentage of Period Remaining:             93.4%
+   Percentage of Allocation Used:              13.7%
 
-- H - Displays the Portfolio and SubPortfolio columns containing that information for each project
-- P - Follow 'P' with portfolio name to display projects associated with that portfolio, only.
-- S - Follow 'S' with sub-portfolio name to display projects associated with that sub-portfolio, only
+   User                             Cr-HrUsed    Windfall   TotalUsed       %Used      Jobs
+   ------------------------------ ----------- ----------- ----------- ----------- ---------
+   Johana.Romero-Alvarez               40,085           0      40,085       8.41%     1,547
+   Sudheer.R.Bhimireddy                25,359           0      25,359       5.32%        53
+   ------------------------------ ----------- ----------- ----------- ----------- ---------
+   Total                               65,444           0      65,444      13.73%     1,600
 
-The options only apply to the summary report (not user (-u) or project (-p) reports). Here are examples on how to use these options: 
+   Total Report Runtime: 2.49 seconds (ver. 23.07.06-FNJT)
 
-.. code-block:: shell
+.. note::
 
-   $ shpcrpt -c hera -H
+   The ``shpcrpt`` command requires the ``-c <clusterid>`` option.
 
-Portfolio-specific summary report using -H and -P options 
+.. note::
 
-.. code-block:: shell
-
-   $ shpcrpt -c hera -H -P bmc
-
-Sub-portfolio-specific summary report using -H and -S options
-
-.. code-block:: shell
-
-   $ shpcrpt -c hera -H -S csd
-
-
-Useful Slurm Commands 
----------------------
-
-To see available clusters
-
-.. code-block:: shell
-
-   $ sacctmgr show clusters 
-
-To find the accounts to which you belong
-
-.. code-block:: shell
-
-   $ sacctmgr show assoc where user=$USER formatcluster,partition,account,user%20,qos%60
-
-To submit a job to a specific cluster
-
-.. code-block:: shell
-    
-   $ sbatch --clusters=<cluster> --nodes=1 --account=<account_name> --qos=normal --export=NONE /path/to/job/script
-
-To submit an interactive job 
-
-.. code-block:: shell
-
-   $ salloc --qos=<qos_name> --nodes=1 --x11 -t1:00:00
-
+   The ``shpcrpt`` command can take a while to return results.  This is due to
+   ``shpcrpt`` pulling data directly from Slurm to generate the reports.
 
 .. _slurm-references:
 
@@ -698,18 +794,16 @@ References
 ==========
 
 * `Slurm Documentation`_
-
-  * sacct_
-  * salloc_
-  * sacctmgr_
-  * sbatch_
-  * scancel_
-  * scontrol_
-  * sinfo_
-  * squeue_
-  * srun_
-
-* asdf
+* sacct_
+* salloc_
+* sacctmgr_
+* sbatch_
+* scancel_
+* scontrol_
+* sinfo_
+* squeue_
+* srun_
+* `Slurm Fairshare`_
 
 .. _`Slurm Documentation`: https://slurm.schedmd.com/
 .. _`squeue`: https://slurm.schedmd.com/squeue.html
@@ -721,4 +815,4 @@ References
 .. _`sacctmgr`: https://slurm.schedmd.com/sacctmgr.html
 .. _`scancel`: https://slurm.schedmd.com/scancel.html
 .. _`scontrol`: https://slurm.schedmd.com/scontrol.html
-.. _`Slurm Fairshare`: 
+.. _`Slurm Fairshare`: https://slurm.schedmd.com/classic_fair_share.html
