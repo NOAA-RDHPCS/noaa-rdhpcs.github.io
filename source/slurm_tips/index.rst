@@ -38,7 +38,8 @@ Some common Slurm commands are summarized in the table below.
 
 All Slurm commands have on-line manual pages viewable via the ``man`` command
 (e.g., ``man sbatch``) and extensive usage information using the ``--help``
-option (e.g., ``sinfo --help``). 
+option (e.g., ``sinfo --help``).  See :ref:`slurm-references` for links to the
+SchedMD documentation.
 
 Running a Job 
 =============
@@ -375,49 +376,42 @@ nodes.
 
 ``srun`` accepts the following options:
 
-+------------------------------------------------+----------------------------------------------------------------------------------+
-| Option                                         | Description                                                                      |
-+================================================+==================================================================================+
-| ``-N``                                         | Number of nodes                                                                  |
-+------------------------------------------------+----------------------------------------------------------------------------------+
-| ``-n``                                         | Total number of MPI tasks (default is 1)                                         | 
-+------------------------------------------------+----------------------------------------------------------------------------------+
-| ``-c, --cpus-per-task=``                       | Logical cores per MPI task (default is 1)                                        |
-|                                                | When used with ``--threads-per-core=1``:``c`` is equivalent to *physical* cores  |
-|                                                | per task.                                                                        |
-+------------------------------------------------+----------------------------------------------------------------------------------+
-| ``--threads-per-core=``                        | In task layout, use the specified maximum number of hardware threads per core.   |
-|                                                | Must also be set in ``salloc`` or ``sbatch`` if using ``--threads--per-core=2``. |
-+------------------------------------------------+----------------------------------------------------------------------------------+
-|   ``--ntasks-per-node=``                       | If used without ``-n``: requests that a specific number of tasks be invoked on   |
-|                                                | each node.                                                                       |
-|                                                | If used with ``-n``: treated as a maximum count of tasks per node.               |
-|                                                |                                                                                  |
-+------------------------------------------------+----------------------------------------------------------------------------------+
+.. list-table::
+   :widths: 25 75
+   :header-rows: 1
 
-Running your models
--------------------
+   * - Option
+     - Description
+   * - ``-N``,  ``--nodes``
+     - Number of nodes to use.
+   * - ``-n``, ``--ntasks``
+     - Total number of MPI tasks (default is 1).
+   * - ``-c``, ``--cpus-per-task``
+     - Logical cores per MPI task (default is 1).  When used with
+       ``--threads-per-core=1``, ``-c`` is equivalent to *physical* cores per
+       task.
+   * - ``--threads-per-core``
+     - In task layout, use the specified maximum number of hardware threads per
+       core.  Must also be set in ``salloc`` or ``sbatch`` if using
+       ``--threads--per-core=2``.
+   * - ``--ntasks-per-node``
+     - If used without ``-n``, requests that a specific number of tasks be
+       invoked on each node.  If used with ``-n``, treated as a maximum count
+       of tasks per node.
 
-Run a simple executable on all allocated processes
+Heterogeneous Jobs
+^^^^^^^^^^^^^^^^^^
+A heterogeneous job is a job in which each component has virtually all job
+options available including partition, account and QOS (Quality Of Service).
+For example, part of a job might require four cores and 4 GB for each of 128
+tasks while another part of the job would require 16 GB of memory and one CPU.
 
-.. code-block:: shell
-
-   srun ./executable
-
-To run a heterogeneous job
+To run a heterogeneous job use ``srun`` and separate the different components
+with the colon (``:``) character.  This is similar to ``mpirun``.
 
 .. code-block:: shell
 
    srun --ntasks=1 --cpus-per-task=32 ./executable : --ntasks=128 --cpus-per-task=1 ./executable
-
-.. note::
-
-   We are working an issue where modulecmd is not initialized in all shells. If you
-   find that modulecmd is missing, add the following to your job script:
-
-.. code-block:: shell
-
-   source /opt/modules/default/init/&lt;your_job_script_shell_type&gt;
 
 Monitoring Jobs
 ===============
@@ -429,7 +423,8 @@ monitor, cancel, and discover information about their jobs on the system.
 Show Pending and Running Jobs
 -----------------------------
 
-Use the ``squeue`` command to view a list of current jobs in the queue. See ``man squeue`` for more information.
+Use the ``squeue`` command to view a list of current jobs in the queue.  See
+``man squeue`` for more `information <squeue>`_.
 
 .. code-block:: shell
 
@@ -471,6 +466,9 @@ of getting information about completed jobs.
 
    $ scontrol show job <jobid>
 
+
+Priority and Fairshare
+======================
 
 Understanding Slurm Fairshare
 -----------------------------
@@ -694,3 +692,33 @@ To submit an interactive job
    $ salloc --qos=<qos_name> --nodes=1 --x11 -t1:00:00
 
 
+.. _slurm-references:
+
+References
+==========
+
+* `Slurm Documentation`_
+
+  * sacct_
+  * salloc_
+  * sacctmgr_
+  * sbatch_
+  * scancel_
+  * scontrol_
+  * sinfo_
+  * squeue_
+  * srun_
+
+* asdf
+
+.. _`Slurm Documentation`: https://slurm.schedmd.com/
+.. _`squeue`: https://slurm.schedmd.com/squeue.html
+.. _`sbatch`: https://slurm.schedmd.com/sbatch.html
+.. _`salloc`: https://slurm.schedmd.com/salloc.html
+.. _`srun`: https://slurm.schedmd.com/srun.html
+.. _`sinfo`: https://slurm.schedmd.com/sinfo.html
+.. _`sacct`: https://slurm.schedmd.com/sacct.html
+.. _`sacctmgr`: https://slurm.schedmd.com/sacctmgr.html
+.. _`scancel`: https://slurm.schedmd.com/scancel.html
+.. _`scontrol`: https://slurm.schedmd.com/scontrol.html
+.. _`Slurm Fairshare`: 
