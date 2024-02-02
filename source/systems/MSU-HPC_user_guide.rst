@@ -667,7 +667,7 @@ There are several different QOS'es depending on your needs.
 +-----------+------------+------------+------------+-----------+-----------------------------------------+
 | urgent    | 1          | 500        | 8 hours    | 2.0       | QOS for a job that requires more        |
 |           |            | (Orion),   |            |           | urgency than *batch*.  Your project     |
-|           |            | 250        |            |           | :ref:`FairShare <slurm_tips_fairshare>` |
+|           |            | 250        |            |           | :ref:`FairShare <slurm-fairshare>`      |
 |           |            | (Hercules) |            |           | will be lowered at 2.0x the rate as     |
 |           |            |            |            |           | compared to *batch*.  Only one job per  |
 |           |            |            |            |           | project/account can be pending/running  |
@@ -679,7 +679,7 @@ There are several different QOS'es depending on your needs.
 +-----------+------------+------------+------------+-----------+-----------------------------------------+
 | debug     | 1          | 500        | 30         | 1.25      | Highest priority QOS, useful for        |
 |           |            | (Orion),   | minutes    |           | debugging sessions.  Your project       |
-|           |            | 250        |            |           | :ref:`FairShare <slurm_tips_fairshare>` |
+|           |            | 250        |            |           | :ref:`FairShare <slurm-fairshare>`      |
 |           |            | (Hercules) |            |           | will be lowered at 1.25x the rate as    |
 |           |            |            |            |           | compared to *batch*.  Only two jobs per |
 |           |            |            |            |           | user can be pending/running at any      |
@@ -699,7 +699,7 @@ There are several different QOS'es depending on your needs.
 |           |            | 250        | exceptions |           | allocation is 1) you can only submit to |
 |           |            | (Hercules) | *service*  |           | this QOS.  Submitting to this QOS will  |
 |           |            |            |            |           | NOT affect your future job priority     |
-|           |            |            |            |           | :ref:`FairShare <slurm_tips_fairshare>` |
+|           |            |            |            |           | :ref:`FairShare <slurm-fairshare>`      |
 |           |            |            |            |           | factor (f) for your non-windfall jobs.  |
 |           |            |            |            |           | Useful for low priority jobs that will  |
 |           |            |            |            |           | only run when the system/partition has  |
@@ -957,8 +957,7 @@ Getting Information about your Projects
 MSU-HPC uses SLURM as its batch scheduler as does NOAA's RDHPCS systems. SLURM
 allocations result in a percentage of total system priority. For more
 information on how SLURM prioritizes submitted jobs please refer to
-:ref:`understaning Fairshare <slurm_tips_fairshare>` and :ref:`Running and
-Monitoring Jobs <slurm_tips_running_monitoring>`.
+:ref:`Priority and Fairshare <slurm-priority-and-fairshare>`.
 
 .. rubric:: Load contrib and noaatools Module
 
@@ -1116,9 +1115,9 @@ Use ``reportFSUsage`` to see a summary of all project disk usage.
 
 .. rubric:: Other useful Links
 
-- :ref:`Getting Information About Your Projects <slurm_tips_getting_project_information>`
-- :ref:`The saccount_params Command <slurm_tips_saccount_params>`
-- :ref:`The shpcrpt Command <slurm_tips_shpcrpt>`
+- :ref:`Getting Information About Your Projects <slurm-getting-information-about-your-projects>`
+- :ref:`The saccount_params Command <slurm-saccount-params>`
+- :ref:`The shpcrpt Command <slurm-shpcrpt>`
 
 MSU-HPC System Configuration
 ============================
@@ -1640,8 +1639,8 @@ Manager, who emails the :ref:`Orion Help System <getting_help>`.
 
 .. rubric:: Adding/Removing Project Members
 
-See :ref:`Adding/Removing Project Members
-<account_adding_and_removing_project_members>`.
+.. See :ref:`Adding/Removing Project Members
+.. <account_adding_and_removing_project_members>`.
 
 .. rubric:: Managing Allocations
 

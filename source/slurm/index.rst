@@ -471,6 +471,7 @@ getting information about completed jobs.
 
    $ scontrol show job <jobid>
 
+.. _slurm-priority-and-fairshare:
 
 Priority and Fairshare
 ======================
@@ -484,6 +485,8 @@ Slurm's fairshare system is a way of allocating resources based on the
 historical usage of different users and groups. Fairshare is designed to ensure
 that resources are distributed fairly over time, so that no one user or group
 dominates the system.
+
+.. _slurm-fairshare:
 
 Understanding Slurm Fairshare
 -----------------------------
@@ -600,8 +603,7 @@ priority.  The ``sprio`` command reports the job's priority.
       JOBID PARTITION   PRIORITY   SITE       AGE   ASSOC  FAIRSHARE        QOS     TRES
       12345 hera        18302014      0   5000000       0    3301977   10000000   cpu=38
 
-.. _slurm_tips_fairshare:
-
+.. _slurm-getting-information-about-your-projects:
 
 Getting Information About Your Projects
 =======================================
@@ -658,6 +660,8 @@ sub-Portfolio's FairShare.
 
    ``sfairshare`` is only available on Hera and Jet.
 
+.. _slurm-saccount-params:
+
 saccount_params
 ---------------
 
@@ -695,6 +699,8 @@ The ``saccount_params`` will show your current:
          Partition Access: ALL
          Available QOSes: gpuwf,windfall
          Directory: /scratch[12]/[portfolio]/projid DiskInUse=206372 GB, Quota=255000 GB, Files=5721717, FileQUota=51000000
+
+.. _slurm-shpcrpt:
 
 shpcrpt
 -------
