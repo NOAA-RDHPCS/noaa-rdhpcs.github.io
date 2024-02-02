@@ -560,12 +560,6 @@ EffectvUsage of 0 and therefore always have the lowest priority.
    Jobs run in the windfall QOS will NOT count toward RawUsage (and
    EffectvUsage) and hence will not lower FairShare.
 
-For a new job to run sooner, regardless of your current FairShare value, it is important that you do the following:
-
-- Select the appropriate QOS.
-- Submit your job ASAP as a job’s priority increases with time in the queue regardless of other priority factors.
-- Enter an appropriate wall clock time. Excessive wall clock times will delay that start of your job, and contributes to overall inefficient scheduling and system utilization.
-
 Fairshare Reporting
 -------------------
 
@@ -694,13 +688,13 @@ The ``saccount_params`` will show your current:
    $ saccount_params
 
    Account Params -- Information regarding project associations for userid
-	   Home Quota (/home/userid) Used: 4149 MB Quota: 5120 MB
+      Home Quota (/home/userid) Used: 4149 MB Quota: 5120 MB
 
-	   Project: projid
-		   FairShare=1.000 (91/91)
-		   Partition Access: ALL
-		   Available QOSes: gpuwf,windfall
-			Directory: /scratch[12]/[portfolio]/projid DiskInUse=206372 GB, Quota=255000 GB, Files=5721717, FileQUota=51000000
+      Project: projid
+         FairShare=1.000 (91/91)
+         Partition Access: ALL
+         Available QOSes: gpuwf,windfall
+         Directory: /scratch[12]/[portfolio]/projid DiskInUse=206372 GB, Quota=255000 GB, Files=5721717, FileQUota=51000000
 
 shpcrpt
 -------
@@ -710,10 +704,18 @@ allocation, and the current month to date (MTD) compute usage information on
 all your project(s), detailed project information by user, and summary
 information for all projects on the system.
 
-By default, ``shpcprt`` ithout any arguments, you will receive an error message. You must use `-c` or ``--cluster`` to identify the cluster.
-
 On some RDHPCS system, ``shpcrpt`` is available after loading the ``shpcrpt``
 module.
+
+.. tab-set::
+
+  .. tab-item:: Gaea
+    :sync: gaea
+
+    .. code-block:: shell
+
+      $ module use /usw/shpcrpt/modulefiles
+      $ module load shpcrpt
 
 Use ``shpcrpt --help`` for more details.
 
