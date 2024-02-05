@@ -15,3 +15,4 @@ Below we give an overview and explain where each storage area is mounted.
     summary
     nescc_hpss
     gfdl_archive
+    globus_online_data_transfer
