@@ -104,13 +104,13 @@ Software
 
    software/index
 
-SLURM Tips
-==========
+SLURM
+=====
 
 .. toctree::
    :maxdepth: 2
 
-   slurm_tips/index
+   slurm/index
 
 How to contribute to the Documentation
 ======================================
