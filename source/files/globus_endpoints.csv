@@ -1,0 +1,12 @@
+Collection/Endpoint,Display name,Environment Variable,UUID
+JET,noaardhpcs#jet,UUID_JET_DTN,7ce34faf-671d-4bfc-bacc-7346abdefe14
+JET UNTRUSTED,noaardhpcs#jet_untrusted,UUID_JET_UDTN,c3cb49a8-6781-4e2a-8f70-d7af33a6f601
+HERA,noaardhpcs#hera,UUID_HERA_DTN,8417f291-7633-4b36-b653-5bfcbf8b2800
+HERA UNTRUSTED,noaardhpcs#hera_untrusted,UUID_HERA_UDTN,d75f3e86-df3c-4734-8b9d-f182346b4bbd
+NIAGARA,noaardhpcs#niagara,UUID_NIAGARA_DTN,1bfd8a79-52b2-4589-88b2-0648e0c0b35d
+NIAGARA UNTRUSTED,noaardhpcs#niagara_untrusted,UUID_NIAGARA_UDTN,7db5c899-a074-4836-9f34-52372e0945bd
+PPAN,noaardhpcs#ppan,UUID_PPAN_DTN,56986f8d-5d30-4a47-b3e8-e35b62bcb638
+PPAN UNTRUSTED,noaardhpcs#ppan_untrusted,UUID_PPAN_UDTN,6ba73d87-08f2-463e-bf8f-83cc3e7a871f
+GAEA,noaardhpcs#gaea,UUID_GAEA_DTN,57da978b-4434-4ac0-ae5e-3de5161305e1
+MSU/ORION,msuhpc2#Orion-dtn,UUID_ORION_DTN,2cf2c281-cafc-4b20-900b-45abeb042854
+MSU/Hercules,msuhpc2#Hercules-dtn,UUID_HERCULES_DTN,869912fe-f6de-46c0-af10-b22efd84a022
