@@ -29,7 +29,7 @@ AIM Access
 ----------
 Access to RDHPCS systems depends on your assigned project(s). To request access to a project, please go to: `AIM <https://aim.rdhpcs.noaa.gov>`__
 
-For MSU-HPC access, see `Logging Into Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
+For MSU-HPC access, see `<https://noaa-rdhpcs.github.io/systems/MSU-HPC_user_guide.html#account-management MSU Account Management>`__
 
 You can authenticate to RDHPCS (Internal Systems) using either CAC/PIV, or RSA Token.
 Additionally, X.509 certificates are used within
@@ -45,7 +45,7 @@ Common Access Card (CAC)
 
 | RDHPCS users with a CAC who are logging in from Windows, Mac, or Linux
   workstation/laptop are required to use CAC login.
-| See CAC instructions here: `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login here>`__
+| See CAC instructions `<https://noaa-rdhpcs.github.io/logging_in/index.html#connecting-with-a-cac here.>`_
 
 .. _updating_or_renewing_cac_information_in_aim:
 
@@ -64,14 +64,12 @@ RDHPCS Account Management collects CAC-related information from each user within
 AIM  automatically detecst and updates CAC-related information to your AIM record. 
 
 RDHPCS Account Management requests that you log into AIM to update
-your CAC information. Navigate to `<https://aim.rehpcs.noaa.gov AIM>`_
+your CAC information. Navigate to `AIM <https://aim.rdhpcs.noaa.gov>`__
 and authenticate via SSO using your CAC if prompted.
 
 When you enter the site, the **Updated CAC detected. Information Updated**
 message appears at the top of your screen if your CAC needs to be
-updated.
-
-After you've done so, the AIM home page will appear, with the message, **Current CAC cn
+updated. After you've done so, the AIM home page will appear, with the message, **Current CAC cn
 detected**.
 
 Send email to rdhpcs.aim.help@noaa.gov if you have issues or questions.
@@ -83,8 +81,11 @@ Send email to rdhpcs.aim.help@noaa.gov if you have issues or questions.
    :alt: new_cac_login.png
    :width: 500px
 
-NOTE: 
-   With current CAC information on file, you should authenticate into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`_
+.. Note:: 
+   With current CAC information on file, you should authenticate into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC Login 
+   
+   
+   `<https://noaa-rdhpcs.github.io/logging_in/index.html#connecting-with-a-cac>`_
 
 .. _rsa_token:
 
@@ -134,6 +135,7 @@ New Device - Software tokens
 ****************************
 
 When you acquire a new device, follow this three-step process to add an RSA software token:
+
 #. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject line: Token for New Device - First.Last.
 #. Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_. Click **Make a request for an RSA token**, fill out the form, submit. When that form is received, you'll receive email including a URL and activation code. Open that URL from your device and submit the activation code.
 #. When the software token is working on your new phone, delete the token from your old device.

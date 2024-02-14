@@ -499,8 +499,11 @@ Other Software
 --------------
 
 - Debuggers
-- X2go
-- Shpcrpt
+
+
+
+
+
 - Lustre Filesystem Tools
 - Software Requests
 
