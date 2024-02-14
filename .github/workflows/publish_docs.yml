@@ -1,27 +1,35 @@
 name: Build and Deploy Documentation
 
-on: push
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Code Checkout
-      uses: actions/checkout@v3
-    - name: Prepare Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-        cache: 'pip'
-    - name: Install Python Requirements
-      run: pip install -r requirements.txt
-    - name: Build HTML Documentation
-      run: make html
-    - name: Upload Pages Artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: 'build/html'
+      - name: Code Checkout
+        uses: actions/checkout@v4
+      - name: Prepare Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - name: Install Python Requirements
+        run: pip install -r requirements.txt
+      - name: Build HTML Documentation
+        run: make html
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'build/html'
   deploy:
+    # Only run deploy on push events.  This will also trigger after a PR is
+    # approved.  Sincet push will only trigger to the main branch, this will
+    # only deploy the main branch.
+    if: github.event_name == 'push'
     needs: build
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
@@ -39,4 +47,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

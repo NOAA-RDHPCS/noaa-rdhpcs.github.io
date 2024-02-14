@@ -4,7 +4,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "make html",
+            "command": "${command:python.interpreterPath} -m sphinx.cmd.build -E -b html source build/html",
             "windows": {
                 "command": "make.bat html"
             },
@@ -12,6 +12,52 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "start server",
+            "type": "shell",
+            "isBackground": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "command": "${command:python.interpreterPath}",
+            "args": ["-m", "http.server", "-d", "build/html"],
+            "problemMatcher": [{
+                "pattern": [{
+                    "regexp": ".",
+                    "file": 1,
+                    "line": 1,
+                    "column": 1,
+                    "message": 1
+                }],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": {
+                        "regexp": "."
+                    },
+                    "endsPattern": {
+                        "regexp": "."
+                    }
+                },
+            }]
+        },
+        {
+            "label": "stop server",
+            "command": "echo ${input:terminate}",
+            "type": "shell"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "terminate",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "terminateAll"
         }
     ]
 }
