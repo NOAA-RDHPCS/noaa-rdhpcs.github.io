@@ -83,10 +83,8 @@ Send email to rdhpcs.aim.help@noaa.gov if you have issues or questions.
 
 .. Note:: 
    With current CAC information on file, you should authenticate into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC Login 
+      
    
-   
-   `<https://noaa-rdhpcs.github.io/logging_in/index.html#connecting-with-a-cac>`_
-
 .. _rsa_token:
 
 
