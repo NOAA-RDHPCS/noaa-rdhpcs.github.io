@@ -70,14 +70,14 @@ Access time is defined as the last time the file was opened for reading or writi
 Niagara System Configuration
 ============================
 ======================= =============
-\           Niagara
-Front End / Login Nodes 4
+\                       Niagara
+Front End /             Login Nodes 4
 Compute Nodes           25
-CPU Type    Intel SkyLake
-CPU Speed   2.50 GHz
-Cores/node  40
-Memory/Core 4.8 GB
-Memory/Node 192 GB
+CPU Type                Intel SkyLake
+CPU Speed               2.50 GHz
+Cores/node              40
+Memory/Core             4.8 GB
+Memory/Node             192 GB
 Peak Flops/node         2048 GFlops
 ======================= =============
 
@@ -87,7 +87,7 @@ Peak Flops/node         2048 GFlops
       -  Total flops is a measure of peak, and doesn’t necessarily represent actual performance.
 
 
- File Systems
+File Systems
 -------------
 
 ======= ====== ======= =========
@@ -219,7 +219,8 @@ last day.
 
 .. code-block:: shell
 
-    lfs find . -atime -1 -name '*.f90
+    lfs
+    lfs find . -atime -1 -name `*.f90
 
 Other lfs Commands
 
@@ -273,31 +274,19 @@ Tuning Stripe Count
     The following steps are not typicallyneeded on the Niagara Lustre file systems. See the "Progressive File Layouts" description above. Please open a support ticket prior to changing stripe parameters on your /collab1 files.*
 
 General Guidelines
+------------------
 
 It is *beneficial* to stripe a file when:
 
--  Your program reads a single large input file and performs
-   the input operation from many nodes at the same time.
--  Your program reads or writes different parts of the same
-   file at the same time. You should stripe these files to prevent all the nodes from reading from the same OST at the same time.
-This will avoid creating a bottleneck in which your processes try to read from a single set of disks.
+-  Your program reads a single large input file and performs the input operation from many nodes at the same time.
+-  Your program reads or writes different parts of the same file at the same time. You should stripe these files to prevent all the nodes from reading from the same OST at the same time. This will avoid creating a bottleneck in which your processes try to read from a single set of disks.
+-  Your program waits while a large output file is written. You should stripe this large file so that it can perform the operation in parallel. The write will complete sooner and the amount of time the processors are idle will be reduced.
+-  You have a large file that will not be accessed very frequently. You should stripe this file widely (with a larger stripe count), to balance the capacity across more OSTs. This (in current Lustre version) requires rewriting the file.
 
--  Your program waits while a large output file is written.
-You should stripe this large file so that it can perform the operation in parallel. 
-The write will complete sooner and the amount of time the processors are idle will be reduced.
-
-   -  You have a large file that will not be accessed very
-      frequently.
- You should stripe this file widely (with a larger stripe count), to balance the capacity across more
-         OSTs. This (in current Lustre version) requires rewriting
-         the file.
 
 It is not always necessary to stripe files...
 
--  If your program periodically writes several small files
-   from each processor, you don't need to stripe the files
-   because they will be randomly distributed across the
-   OSTs.
+-  If your program periodically writes several small files from each processor, you don't need to stripe the files because they will be randomly distributed across the OSTs.
 
 Striping Best Practices
 -----------------------
