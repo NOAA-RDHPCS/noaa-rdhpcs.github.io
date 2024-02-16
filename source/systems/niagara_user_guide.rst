@@ -271,7 +271,7 @@ Tuning Stripe Count
 
 .. note::
 
-    The following steps are not typicallyneeded on the Niagara Lustre file systems. See the "Progressive File Layouts" description above. Please open a support ticket prior to changing stripe parameters on your /collab1 files.*
+    The following steps are not typically needed on the Niagara Lustre file systems. See the "Progressive File Layouts" description above. Please open a support ticket prior to changing stripe parameters on your /collab1 files.*
 
 General Guidelines
 ------------------
