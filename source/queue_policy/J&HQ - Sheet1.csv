@@ -1,0 +1,22 @@
+QOS,Min Cores,Max Cores,Max Wall Clock,Billing TRES Factor,Description - Limits
+All QOS's,,,,,"Across all QOS's: Max of 400 jobs pending/running per project-account, additional jobs will be rejected. Max of 20 jobs per project-account will gain age priority. Exceptions are stated below."
+batch,1,8400*,8 hours (Partition exceptions: Service: 24 hrs),1,"Default quality of service for non-reservation jobs with an allocation more than ""Windfall Only""(RawShares =1)."
+urgent,1,8400*,8 hours,2,QOS for a job that requires more urgency than batch. Your project's FairShare will be lowered at 2.0x the rate as compared to Batch. Only 1 job per project-account can be pending/running at any time. When a project's FairShare is below 0.45 jobs submitted to Urgent are automatically changed to Batch and users notified via stderr.
+debug,1,8400*,30 minutes,1.25,"Highest priority QOS, useful for debugging sessions. Your project's FairShare will be lowered at 1.25x the rate as compared to Batch. Only 2 jobs per user can be pending/running at any time. This QOS should NOT be used for fast-turnaround of general work.
+NOTE: If you need to debug your code through an iterative process, we recommend that you submit a long running interactive job to the default QOS. This lets you restart your application as needed, without having to start a new batch job."
+gpu,20 (1 node),800 (40 nodes)*,168 hours (7 days),1,"This QOS can only be used on Hera in combination with the fge partition.
+Max total “GrpTRESRunMins” of 720,000 core-minutes (600 node-hours) of running jobs at any time, per project-account. “GrpTRESRunMins” is defined as cores_allocated * wallclock_requested of running jobs.
+ A project can have up to the max number of jobs pending/running as defined above, but the queued jobs will NOT be considered for scheduling if the project’s running jobs exceed this limit. Use this gsheet as a reference: Grp TRES Run Minutes
+ For example, the following combinations of the max running jobs per project-account are permitted:
+ 1. A project can have three 1-node jobs at 168 hours of wallclock and one 1-node job at 96 hours of wallclock.
+ 2. A project can have one 8-node job at 75 hours of wallclock."
+gpuwf,20 (1 node),800*,168 hours (7 days),0,"This QOS can only be used on Hera in combination with the fge partition.
+Max total “GrpTRESRunMins” of 201,600 core-minutes (168 node-hours) of running jobs at any time, per project-account. “GrpTRESRunMins” is defined as cores_allocated * wallclock_requested of running jobs.
+ A project can have up to the max number of jobs pending/running as defined above, but the queued jobs will NOT be considered for scheduling if the project’s running jobs exceed this limit. Use this gsheet as a reference: Grp TRES Run Minutes For example the following are combinations of the max running jobs per project-account that are permitted:
+ 1. A project can have two 2-node jobs at 24 hours of wallclock and one 1-node job at 72 hours of wallclock.
+ 2. A project can have one 1-node job at 168 hours of wallclock.
+ Lowest priority QOS for use with GPU nodes. If you have an allocation of ""windfall only"" (Monthly allocation = 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority FairShare Factor (f). EffectvUsage = 0. See How FairShare Works. This QOS is useful for low priority jobs that will only run when the system (partition(s)) has enough unused space available, while not lowering the project's FairShare priority."
+windfall,1,8400*,8 hours (Partition exceptions: Service: 24 hrs),0,"Lowest priority QOS. If you have an allocation of ""windfall only"" (Monthly allocation = 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority FairShare Factor (f). EffectvUsage = 0. See How FairShare Works.
+Windfall QOS is useful for low priorty jobs that will only run when the system (partition(s)) has enough unused space available, while not lowering the projects FairShare priority."
+novel,8401,Largest partition size,8 hours,1,"QOS for running novel or experimental jobs where nearly the full system is required. If you need to use the novel QOS, please submit a ticket to the Help system and tell us what you want to do. We will normally have to arrange for some time for the job to go through, and we would like to plan the process with you.
+NOTE: The novel QOS can only be used with the novel partition."
