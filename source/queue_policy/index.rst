@@ -23,32 +23,35 @@ Use compute nodes for processes that require more cores, longer run times, or mo
 Cron Usage
 ==========
 
-To schedule recurring jobs, cron is provided for users. On most systems, cron jobs will be started on service/login nodes; therefore the login node usage policy applies to cron jobs. However, on systems such as Gaea, cron is no longer permitted–instead, scrontab is used. Scrontab is a Slurm-managed crontab that runs on a designated partition rather than the login nodes. 
+To schedule recurring jobs, cron is provided for users. On most systems, cron jobs will be started on service/login nodes; therefore the login node usage policy applies to cron jobs. 
+
+However, on systems such as Gaea, cron is no longer permitted–instead, **scrontab** is used. 
+
+**Scrontab** is a Slurm-managed crontab that runs on a designated partition rather than the login nodes. 
 
 Best Practices: 
 	
-- Please DO review your crontab/scrontab entries once a month and remove unneeded entries to assure efficient RDHPCS resource utilization! It is easy to forget to remove your crontab entries at the conclusion of your experiment!
-- DO NOT redirect the output of your cron jobs to /dev/null. This will make it impossible for you to be notified of problems with your cron job.
-- DO NOT rely on cron jobs running on specific hosts. Your crontab will be visible from all frontends, and jobs may be launched from any available frontend. (See Chron for more details).
-- DO NOT run "scp", "rsync", and "tar" processes which last more than 2 minutes directly on the cron servers. They are most likely suited for the "service" or one of the "serial" parallel environments:
-- DO Remove all "busy waits" (tight loops without sleeps) from workflow management scripts.
-- DO add a line like: "MAILTO=First.Last@noaa.gov" to the top of your crontab or add scron directive “--mail-user=<email>” to your scrontab, so you get emails for cron job output (errors).
+- Please **DO** review your crontab/scrontab entries once a month and remove unneeded entries to assure efficient RDHPCS resource utilization! It is easy to forget to remove your crontab entries at the conclusion of your experiment!
+- **DO NOT** redirect the output of your cron jobs to /dev/null. This will make it impossible for you to be notified of problems with your cron job.
+- **DO NOT** rely on cron jobs running on specific hosts. Your crontab will be visible from all frontends, and jobs may be launched from any available frontend. (See Chron for more details).
+- **DO NOT** run "scp", "rsync", and "tar" processes which last more than 2 minutes directly on the cron servers. They are most likely suited for the "service" or one of the "serial" parallel environments:
+- **DO** Remove all "busy waits" (tight loops without sleeps) from workflow management scripts.
+- **DO** add a line like: "MAILTO=First.Last@noaa.gov" to the top of your crontab or add scron directive “--mail-user=<email>” to your scrontab, so you get emails for cron job output (errors).
 
 For Rocoto, it is always advisable to use the "default" version rather than a specific version as shown below:
-  /apps/rocoto/default/bin/rocotorun -w /path/to/myxml/wrf.xml -d /path/to/mydb/wrf.db
+  ``/apps/rocoto/default/bin/rocotorun -w /path/to/myxml/wrf.xml -d /path/to/mydb/wrf.db``
 
-Any process launched from cron MUST be one of the following:
+Any process launched from cron **MUST** be one of the following:
 
 - call to "workflowmgr" for controlling recurring tasks, or
 - other scripts that submits or manages jobs in the batch system, or
 - short running (less than 1 minute) data manipulation task.
-
-**DO NOT** run compute tasks or large data management tasks from cron, as they will have a negative impact on all users and may cause system instability problems. Such processes may be killed without warning.
+- **DO NOT** run compute tasks or large data management tasks from cron, as they will have a negative impact on all users and may cause system instability problems. Such processes may be killed without warning.
 
 Cron Job Frequency 
 ------------------
 
-DO NOT create crontabs that execute every minute. There is no reason to do so and it creates an unnecessary load on the system. This rule also applies to all instances of the Workflow Manager.
+**DO NOT** create crontabs that execute every minute. There is no reason to do so and it creates an unnecessary load on the system. This rule also applies to all instances of the Workflow Manager.
 
 Please use the following rules as to how often (at most) to call a repeating processes:
 
@@ -71,20 +74,18 @@ HPFS (Scratch)
 
 The High Performance File Systems (HPFS): Hera's /scratch(1,2), Jet's /lfs(1,4), and Niagara's /collab1 are scratch file systems for your input and output project data for running current jobs, **NOT** for long term data storage. 
 
-Data in scratch is **NOT** 
-
-- backed up 
-
+Data on scratch is **NOT** backed up 
 
 1. Keep source code and critical configuration files on /home, and back up critical data to HPSS.
 2. Data unused over 30 days is considered old and should be removed or moved to a different storage vehicle.
 3. Tar up old small files (or delete them) to free up space on the SSD pool and stay under your file count quota.
 4. Large files are still optimal for HPC batch job performance.
 5. Do not open with O_APPEND unless you really need it.
-6. High performance file systems such as Lustre Filesystems are designed for high performance and high resiliency. While they are good at what they do, they're not very good for very high Meta data intensive operations such as du, find, etc. Please avoid running such commands to monitor your file space space usage, especially from the top of your project level directory. Please see the following link for information on your specific usage as documented here:
+6. High performance file systems such as Lustre Filesystems are designed for high performance and high resiliency. While they are good at what they do, they're not very good for very high Meta data intensive operations such as du, find, etc. Please avoid running such commands to monitor your file space space usage, especially from the top of your project level directory. 
 
+Getting More Information About Projects - `Slurm`_
 
-Getting Information About Your Projects - <Slurm>_
+.. _Slurm: https://noaa-rdhpcs.github.io/slurm/index.html/
 
 
 GPFS
@@ -104,14 +105,15 @@ Your inaction to remove old data from this directory could negatively impact oth
 HFS
 ---
 
-The /home file system (HFS) is for small amounts of critical labor-intensive data, like source code, that needs timely access. The HFS is backed up nightly and weekly. Nightly backups are kept for a week, and weekly backups are kept for at least 6 months. HFS data can be retrieved from our snapshots - please see: Recover recently deleted files from /home. Each RDHPCS user is given a home directory (/home/First.Last) and a 50GB quota on each system (Hera, Jet, etc.) they have an account on. All files owned by you in /home are counted not just files in your /home/First.Last directory. Usage and quota can be checked using the "quota" command or the "sacccount_params" command (See `Slurm`). If more quota is required, start a system help ticket with a request and justification.
+The /home file system (HFS) is for small amounts of critical labor-intensive data, like source code, that needs timely access. The HFS is backed up nightly and weekly. Nightly backups are kept for a week, and weekly backups are kept for at least 6 months. HFS data can be retrieved from our snapshots - please see: Recover recently deleted files from /home. 
+
+Each RDHPCS user is given a home directory (/home/First.Last) and a **50GB** quota on each system (Hera, Jet, etc.) they have an account on. All files owned by you in /home are counted not just files in your /home/First.Last directory. Usage and quota can be checked using the "quota" command or the "sacccount_params" command (See `Slurm`_). If more quota is required, start a system help ticket with a request and justification.
 
 
 
-CAUTION: Please **DO NOT** run jobs against files in your Home File System (HFS). This includes keeping input/output files or executable files for a parallel run in your home directory or even using symlinks in your home directories that point to your files in your project space in the scratch filesystem. This puts a tremendous burden on the HFS and has an adverse impact on all the users on the system.
+**CAUTION**: Please **DO NOT** run jobs against files in your Home File System (HFS). This includes keeping input/output files or executable files for a parallel run in your home directory or even using symlinks in your home directories that point to your files in your project space in the scratch filesystem. This puts a tremendous burden on the HFS and has an adverse impact on all the users on the system.
 
 
-.. _`Slurm`: https://noaa-rdhpcs.github.io/slurm/index.html#
 
 
 Filesystem Backup and Data Retention 
@@ -181,7 +183,12 @@ HPSS (Data Retention)
 ---------------------
 
 Retention based storage is the HPSS archive policy in Fairmont, to better manage data growth. 
-Six retention storage pools (1-5year and Permanent) were created. Each retention period is setup as a separate file family. This means all data for a retention period is stored on the same tapes. All HPSS projects were then configured to write to one or more of these pools. Data in these pools expires based upon the retention pool it was written in and would be deleted upon expiration. All files in the HPSS archive have been assigned an expiration date based on the file create time and the retention period it was written to. Upon expiration files will be deleted from the HPSS archive.
+
+Six retention storage pools (1-5year and Permanent) were created. Each retention period is setup as a separate file family. This means all data for a retention period is stored on the same tapes. 
+
+All HPSS projects were then configured to write to one or more of these pools. Data in these pools expires based upon the retention pool it was written in and would be deleted upon expiration. 
+
+All files in the HPSS archive have been assigned an expiration date based on the file create time and the retention period it was written to. Upon expiration files will be deleted from the HPSS archive.
 
 
 Expired Data Deletion Process
@@ -205,54 +212,47 @@ Email notification will also be sent to all users who have data listed in this f
 
 The following table maps out when future deletions will take place.
 
-Expire Date
-Notification Date
-Delete Date
-Dec 1 – Dec 31
-January 1
-February 1
-Jan 1 – Jan 31
-February 1
-March 1
-Feb 1 – Feb 28
-March 1
-April 1
-Mar 1 – Mar 31
-April 1
-May 1
-Apr 1 – Apr 30
-May 1
-June 1
-May 1 – May 31
-June 1
-July 1
-Jun 1 – June 30
-July 1
-August 1
-Jul 1 – Jul 31
-August 1
-September 1
-Aug 1 – Aug 30
-September 1
-October 1
-Sept 1 – Sept 30
-October 1
-November 1
-Oct 1 – Oct 31
-November 1
-December 1
-Nov 1 – Nov 30
-December 1
-January 1
+
++----------------+-----------------+-----------+
+|Expire Date     |Notification Date|Delete Date|
++================+=================+===========+
+|Dec 1 – Dec 31  |January 1        |February 1 |
++----------------+-----------------+-----------+
+|Jan 1 – Jan 31  |February 1       |March 1    |
++----------------+-----------------+-----------+
+|Feb 1 – Feb 28  |March 1          |April 1    |
++----------------+-----------------+-----------+
+|Mar 1 – Mar 31  |April 1          |May 1      |
++----------------+-----------------+-----------+
+|Apr 1 – Apr 30  |May 1            |June 1     |
++----------------+-----------------+-----------+
+|May 1 – May 31  |June 1           |July 1     |
++----------------+-----------------+-----------+
+|Jun 1 – June 30 |July 1           |August 1   |
++----------------+-----------------+-----------+
+|Jul 1 – Jul 31  |August 1         |September 1|
++----------------+-----------------+-----------+
+|Aug 1 – Aug 30  |September 1      |October 1  |
++----------------+-----------------+-----------+
+|Sept 1 – Sept 30|October 1        |November 1 |
++----------------+-----------------+-----------+
+|Oct 1 – Oct 31  |November 1       |December 1 |
++----------------+-----------------+-----------+
+|Nov 1 – Nov 30  |December 1       |January 1  |
++----------------+-----------------+-----------+
+
 
 
 Data Recovery Policy
 ^^^^^^^^^^^^^^^^^^^^
 
 Occasionally an archive tape is damaged or otherwise becomes partially unreadable. When that happens, the local RDHPCS staff works with the manufacturer to troubleshoot the problem and take additional steps to attempt to recover the missing data. 
+
 Very rarely, even with these additional efforts, we are unable to recover the missing files. The user will then be informed of the files we cannot recover.
 
-In that case, the user has one further option. There are a number of outside recovery services which will make further attempts at recovery for a fee. Some charge a flat fee, some charge more if they are able to recover than if they are unable to recover. If the user wishes to sign up for such a service and pay the fee, RDHPCS will handle the logistics of shipping and other coordination with the recovery service.
+In that case, the user has one further option. There are a number of outside recovery services which will make further attempts at recovery for a fee. Some charge a flat fee, some charge more if they are able to recover than if they are unable to recover. 
+
+If the user wishes to sign up for such a service and pay the fee, RDHPCS will handle the logistics of shipping and other coordination with the recovery service.
 
 
 
@@ -266,6 +266,8 @@ HPFS (Scratch) Data
 -------------------
 
 Inactive users’ and closed projects’ data shall be dispositioned by the PI or Portfolio Manager to maintain efficient usage of RDHPCS resources. If the PI or Portfolio Manager cannot personally implement the disposition of the data, the PI or PM can issue a help ticket, and request that RDHPCS System Management do so.
+
+
 The RDHPCS program policy is to NOT delete active project HPFS data. If the PI or Portfolio Manager so directs in a help request, we will change ownership of active HPFS project data to another project member.
 
 Niagara Per User Data
@@ -287,7 +289,9 @@ The definition of access time is the last time the file was opened for reading o
 Home File System (HFS) Data
 ----------------------------
 
-The RDHPCS program policy is to **NOT** delete active users Home File System (HFS or /home) data, or to change ownership of HFS data. The Portfolio Manager may issue a help ticket to request special dispositioning of HFS data. Deactivated users' HFS data may be removed and saved to the tape archive system in a retention pool of at least 5 years.
+The RDHPCS program policy is to **NOT** delete active users Home File System (HFS or /home) data, or to change ownership of HFS data. The Portfolio Manager may issue a help ticket to request special dispositioning of HFS data.
+
+Deactivated users' HFS data may be removed and saved to the tape archive system in a retention pool of at least 5 years.
 
 
 Managing Packages in /contrib
@@ -297,7 +301,7 @@ Overview of Contrib Packages
 ----------------------------
 
 
-The system staff do not have the resources to maintain every piece of software requested. There are also cases where developers of the software are the system users, and putting a layer in between them and the rest of the system users is inefficient. To support these needs, we have developed a /contrib package process. A /contrib package is one that is maintained by a user on the system. The system staff are not responsible for the use or maintenance of these packages.
+The system staff do not have the resources to maintain every piece of software requested. There are also cases where developers of the software are the system users, and putting a layer in between them and the rest of the system users is inefficient. To support these needs, we have developed a ``/contrib`` package process. A /contrib package is one that is maintained by a user on the system. The system staff are not responsible for the use or maintenance of these packages.
 
 
 Responsibilities of a Contrib Package Maintainer
@@ -379,8 +383,6 @@ Queue Policy
 Overview
 --------
 
-Changes and fine-tuning to the queue structure can be done on a weekly basis through the Configuration Management process.
-
 * The queuing system should allow groups/projects to spend their allocation each month.
 
 * The tension between keeping persistent jobs in the system and running very large jobs suggests that there should be a limit on the number of cores a job may use, but with a capability to make exceptions for “novel” jobs that may require up to the entire system.
@@ -436,12 +438,31 @@ You can change the QOS of all your pending job(s) in a QOS to another QOS after 
 Jet and Hera
 ------------
 
-NOTE: If you have an allocation of "windfall only" (Allocation = 1) you can only submit to the windfall or gpuwf QOS.
+**NOTE**: If you have an allocation of "windfall only" (Allocation = 1) you can only submit to the windfall or gpuwf QOS.
+
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|QOS      |Min Cores  |Max Cores             |Max Wall Clock                                 |Billing TRES Factor|Description - Limits                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
++=========+===========+======================+===============================================+===================+========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================+
+|All QOS's|           |                      |                                               |                   |Across all QOS's: Max of 400 jobs pending/running per project-account, additional jobs will be rejected. Max of 20 jobs per project-account will gain age priority. Exceptions are stated below.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|batch    |1          |8400*                 |8 hours (Partition exceptions: Service: 24 hrs)|1                  |Default quality of service for non-reservation jobs with an allocation more than "Windfall Only"(RawShares =1).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|urgent   |1          |8400*                 |8 hours                                        |2                  |QOS for a job that requires more urgency than batch. Your project's FairShare will be lowered at 2.0x the rate as compared to Batch. Only 1 job per project-account can be pending/running at any time. When a project's FairShare is below 0.45 jobs submitted to Urgent are automatically changed to Batch and users notified via stderr.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|debug    |1          |8400*                 |30 minutes                                     |1.25               |Highest priority QOS, useful for debugging sessions. Your project's FairShare will be lowered at 1.25x the rate as compared to Batch. Only 2 jobs per user can be pending/running at any time. This QOS should NOT be used for fast-turnaround of general work. NOTE: If you need to debug your code through an iterative process, we recommend that you submit a long running interactive job to the default QOS. This lets you restart your application as needed, without having to start a new batch job.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|gpu      |20 (1 node)|800 (40 nodes)*       |168 hours (7 days)                             |1                  |This QOS can only be used on Hera in combination with the fge partition. Max total “GrpTRESRunMins” of 720,000 core-minutes (600 node-hours) of running jobs at any time, per project-account. “GrpTRESRunMins” is defined as cores_allocated * wallclock_requested of running jobs.  A project can have up to the max number of jobs pending/running as defined above, but the queued jobs will NOT be considered for scheduling if the project’s running jobs exceed this limit. Use this gsheet as a reference: Grp TRES Run Minutes  For example, the following combinations of the max running jobs per project-account are permitted:  1. A project can have three 1-node jobs at 168 hours of wallclock and one 1-node job at 96 hours of wallclock.  2. A project can have one 8-node job at 75 hours of wallclock.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|gpuwf    |20 (1 node)|800*                  |168 hours (7 days)                             |0                  |This QOS can only be used on Hera in combination with the fge partition. Max total “GrpTRESRunMins” of 201,600 core-minutes (168 node-hours) of running jobs at any time, per project-account. “GrpTRESRunMins” is defined as cores_allocated * wallclock_requested of running jobs.  A project can have up to the max number of jobs pending/running as defined above, but the queued jobs will NOT be considered for scheduling if the project’s running jobs exceed this limit. Use this gsheet as a reference: Grp TRES Run Minutes For example the following are combinations of the max running jobs per project-account that are permitted:  1. A project can have two 2-node jobs at 24 hours of wallclock and one 1-node job at 72 hours of wallclock.  2. A project can have one 1-node job at 168 hours of wallclock.  Lowest priority QOS for use with GPU nodes. If you have an allocation of "windfall only" (Monthly allocation = 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority FairShare Factor (f). EffectvUsage = 0. See How FairShare Works. This QOS is useful for low priority jobs that will only run when the system (partition(s)) has enough unused space available, while not lowering the project's FairShare priority.|
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|windfall |1          |8400*                 |8 hours (Partition exceptions: Service: 24 hrs)|0                  |Lowest priority QOS. If you have an allocation of "windfall only" (Monthly allocation = 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority FairShare Factor (f). EffectvUsage = 0. See How FairShare Works. Windfall QOS is useful for low priorty jobs that will only run when the system (partition(s)) has enough unused space available, while not lowering the projects FairShare priority.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|novel    |8401       |Largest partition size|8 hours                                        |1                  |QOS for running novel or experimental jobs where nearly the full system is required. If you need to use the novel QOS, please submit a ticket to the Help system and tell us what you want to do. We will normally have to arrange for some time for the job to go through, and we would like to plan the process with you. NOTE: The novel QOS can only be used with the novel partition.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
++---------+-----------+----------------------+-----------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-NOTE: Some partitions are smaller than the "Max Cores" QOS limit. Jobs submitted only to partitions with an insufficient number of cores will get stuck in pending, will not run, and will have to be manually deleted by the user. The max nodes allowed per partition is the min of the max cores allowed divided by the cores per node of the partition (Hera and kJet: 8400/40=210 nodes) or the max number of nodes in the partition (vJet: 288 nodes). Ref Partition sections above for details
+**NOTE**: Some partitions are smaller than the "Max Cores" QOS limit. Jobs submitted only to partitions with an insufficient number of cores will get stuck in pending, will not run, and will have to be manually deleted by the user. The max nodes allowed per partition is the min of the max cores allowed divided by the cores per node of the partition (Hera and kJet: 8400/40=210 nodes) or the max number of nodes in the partition (vJet: 288 nodes). Ref Partition sections above for details
 
-CHART 
 
 Gaea
 ----
