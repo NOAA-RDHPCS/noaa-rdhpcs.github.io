@@ -20,7 +20,7 @@ results, and descriptions.
 JupyterLab is a web-based interactive development environment for Jupyter. It
 provide a way to use notebooks, text editors, terminals, and custom components
 together. You can configure and arrange the user interface to support a wide
-range of workflows in data science, scientific computing, and machine learning. 
+range of workflows in data science, scientific computing, and machine learning.
 
 .. rubric:: JupyterHub
 
@@ -86,8 +86,8 @@ lab`` command:
             $ conda activate /path/to/venv/jupyter
             $ jupyter lab --no-browser --port=<port#>  # Choose a port value between 8800-8900
 
-The ``jupyter lab`` command will print many lines to the screen.  Look for lines
-that resemble:
+The ``jupyter lab`` command will print many lines to the screen.  Look for
+lines that resemble:
 
 .. code-block:: shell
 
@@ -127,7 +127,7 @@ running JupyterLab port on the head or compute node.
     The last command in the second session window will not give you a shell
     prompt on the HPC head node.
 
-.. warning:: 
+.. warning::
 
     Both terminal sessions must remain open and active.  Closing either window
     will terminate the tunnels, causing the connection to the JupyterLab session
@@ -139,8 +139,8 @@ JupyterLab on Head Nodes
 window 1
 """"""""
 
-Login to the HPC system and establish your tunnel using your assigned user local
-port number:
+Login to the HPC system and establish your tunnel using your assigned user
+local port number:
 
 .. code-block:: shell
 
@@ -168,7 +168,7 @@ Once logged in, start the JupyterLab session using a port number in the range
             $ jupyter lab --no-browser --port=<port#>  # Choose a port value between 8800-8900
 
 .. note::
-    
+
     Take note of the URL provided to you by Jupyter for a later step.  It will
     resemble
     ``http://localhost:<port#>/lab?token=################################################``.
@@ -177,8 +177,8 @@ Once logged in, start the JupyterLab session using a port number in the range
 window 2
 """"""""
 
-Establish a tunnel for traffic on port ``<port#>`` used to launch the JupyterLab
-session between your localhost and the RDHPCS system:
+Establish a tunnel for traffic on port ``<port#>`` used to launch the
+JupyterLab session between your localhost and the RDHPCS system:
 
 .. code-block:: shell
 
@@ -197,8 +197,8 @@ JupyterLab on Compute Nodes
 window 1
 """"""""
 
-Login to the HPC system and establish your tunnel using your assigned user local
-port number:
+Login to the HPC system and establish your tunnel using your assigned user
+local port number:
 
 .. code-block:: shell
 
@@ -236,7 +236,7 @@ Start the JupyterLab session using a port number in the range 8800-8900 range:
             $ jupyter lab --no-browser --port=<port#>  # Choose a port value between 8800-8900
 
 .. note::
-    
+
     Take note of the URL provided to you by Jupyter for a later step.  It will
     resemble
     ``http://localhost:<port#>/lab?token=################################################``.
@@ -245,15 +245,15 @@ Start the JupyterLab session using a port number in the range 8800-8900 range:
 window 2
 """"""""
 
-Establish a tunnel for traffic on port ``<port#>`` used to launch the JupyterLab
-session between your localhost and the RDHPCS system:
+Establish a tunnel for traffic on port ``<port#>`` used to launch the
+JupyterLab session between your localhost and the RDHPCS system:
 
 .. code-block:: shell
 
     $ ssh -p 12345 -L <port#>:localhost:<port#> J.Doe@localhost
 
-Once the connection is established, using the compute node host name establish a
-connection to the compute node with tunnels to the JupyterLab session port:
+Once the connection is established, using the compute node host name establish
+a connection to the compute node with tunnels to the JupyterLab session port:
 
 .. code-block:: shell
 

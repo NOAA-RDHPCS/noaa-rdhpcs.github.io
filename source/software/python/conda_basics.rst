@@ -15,15 +15,15 @@ Overview
 ========
 
 This guide introduces a user to the basic workflow of using conda environments,
-as well as providing an example of how to create a conda environment that uses a
-different version of Python than the base environment. Although
-hera is being used in this guide, all of the concepts still apply to other
-RDHPCS systems.
+as well as providing an example of how to create a conda environment that uses
+a different version of Python than the base environment. Although hera is being
+used in this guide, all of the concepts still apply to other RDHPCS systems.
 
 Inspecting and setting up an environment
 ========================================
 
-First, load the python module and the gnu compiler, if available as most Python packages assume use of GCC.
+First, load the python module and the gnu compiler, if available as most Python
+packages assume use of GCC.
 
 .. code-block:: bash
 
@@ -50,7 +50,8 @@ This also is a great way to keep track of the locations and names of all other
 environments that have been created. The current environment is indicated by
 ``*``.
 
-To see what packages are installed in the active environment, use ``conda list``:
+To see what packages are installed in the active environment, use ``conda
+list``:
 
 .. code-block:: bash
 
@@ -67,12 +68,13 @@ To see what packages are installed in the active environment, use ``conda list``
    ca-certificates           2022.5.18.1           ha878542_0    conda-forge
    certifi                   2022.5.18.1       py39hf3d152e_0    conda-forge
    cffi                      1.15.0            py39hd667e15_1
-   charset-normalizer        2.0.4              pyhd3eb1b0_0   
+   charset-normalizer        2.0.4              pyhd3eb1b0_0
    .
    .
    .
 
-You can find the version of Python that exists in this base environment by executing:
+You can find the version of Python that exists in this base environment by
+executing:
 
 .. code-block:: bash
 
@@ -103,10 +105,11 @@ your ``$HOME`` directory.
    It is highly recommended to create new environments in the "Project Home"
    directory. This space avoids purges, allows for potential collaboration
    within your project, and works better with the compute nodes.
-   
+
 After executing the ``conda create`` command, you will be prompted to install
-"the following NEW packages" -- type "y" then hit Enter/Return. Downloads of the
-fresh packages will start and eventually you should see something similar to:
+"the following NEW packages" -- type "y" then hit Enter/Return. Downloads of
+the fresh packages will start and eventually you should see something similar
+to:
 
 .. code-block:: bash
 
@@ -128,10 +131,11 @@ Let's activate the new environment:
 
    $ conda activate /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013
 
-The path to the environment should now be displayed in "( )" at the beginning of
-your terminal lines, which indicate that you are currently using that specific
-conda environment.  And if you check with ``conda env list`` again, you should
-see that the ``*`` marker has moved to your newly activated environment:
+The path to the environment should now be displayed in "( )" at the beginning
+of your terminal lines, which indicate that you are currently using that
+specific conda environment.  And if you check with ``conda env list`` again,
+you should see that the ``*`` marker has moved to your newly activated
+environment:
 
 .. code-block:: bash
 
@@ -160,9 +164,9 @@ from source using `pip <https://pip.pypa.io/en/stable/>`__. This approach is
 useful if a specific package or package version is not available in the conda
 repository, or if the pre-compiled binaries don't work on the HPC resources
 (which is common). However, building from source means you need to take care of
-some of the dependencies yourself, especially for optimization. Pip is available
-to use after installing Python into your conda environment, which you have
-already done.
+some of the dependencies yourself, especially for optimization. Pip is
+available to use after installing Python into your conda environment, which you
+have already done.
 
 .. warning::
 
@@ -170,7 +174,8 @@ already done.
    :ref:`conda-refs`), it is recommended to do this only if absolutely
    necessary.
 
-To build a package from source, use ``pip install --no-binary=<package_name> <package_name>``:
+To build a package from source, use ``pip install --no-binary=<package_name>
+<package_name>``:
 
 .. code-block:: bash
 
@@ -195,17 +200,18 @@ Installing with conda commands
 
 The traditional, and more basic, approach to installing/uninstalling packages
 into a conda environment is to use the commands ``conda install`` and ``conda
-remove``. Installing packages with this method checks the `Anaconda Distribution
-Repository <https://docs.anaconda.com/anaconda/packages/pkg-docs/>`__ for
-pre-built binary packages to install. Let's do this to install NumPy:
+remove``. Installing packages with this method checks the `Anaconda
+Distribution Repository
+<https://docs.anaconda.com/anaconda/packages/pkg-docs/>`__ for pre-built binary
+packages to install. Let's do this to install NumPy:
 
 .. code-block:: bash
 
    $ conda install numpy
 
-Because NumPy depends on other packages for optimization, this will also install
-all of its dependencies. You have just installed an optimized version of NumPy,
-now let's test it.
+Because NumPy depends on other packages for optimization, this will also
+install all of its dependencies. You have just installed an optimized version
+of NumPy, now let's test it.
 
 .. warning::
 
@@ -273,8 +279,8 @@ executing:
 
    $ conda config --show envs_dirs
 
-On RDHPCS systems, the default location is your ``$HOME`` directory. If you plan
-to frequently create environments in a different location other than the
+On RDHPCS systems, the default location is your ``$HOME`` directory. If you
+plan to frequently create environments in a different location other than the
 default, then there is an option to add directories to the ``envs_dirs`` list.
 
 For example, to track conda environments in a subdirectory called in
@@ -288,9 +294,9 @@ This will create a ``.condarc`` file in your ``$HOME`` directory if you do not
 have one already, which will now contain this new envs_dirs location. This will
 now enable you to use the ``--name env_name`` flag when using conda commands,
 instead of having to use the ``-p
-<project_home>/<PROJECT_ID>/<USER_ID>/envs/summit/env_name`` flag and specifying
-the full path to the environment. For example, you can do ``conda activate
-py31013`` instead of ``conda activate
+<project_home>/<PROJECT_ID>/<USER_ID>/envs/summit/env_name`` flag and
+specifying the full path to the environment. For example, you can do ``conda
+activate py31013`` instead of ``conda activate
 <project_home>/<PROJECT_ID>/<USER_ID>/envs/py31013``.
 
 Exporting (sharing) an environment
@@ -300,9 +306,9 @@ You may want to share your environment with someone else. One way to do this is
 by creating your environment in a shared location where other users can access
 it. A different way (the method described below) is to export a list of all the
 packages and versions of your environment (an ``environment.yml`` file). If a
-different user provides conda the list you made, conda will install all the same
-package versions and recreate your environment for them -- essentially "sharing"
-your environment. To export your environment list:
+different user provides conda the list you made, conda will install all the
+same package versions and recreate your environment for them -- essentially
+"sharing" your environment. To export your environment list:
 
 .. code-block:: bash
 
@@ -310,7 +316,8 @@ your environment. To export your environment list:
    $ conda env export > environment.yml
 
 You can then email or otherwise provide the ``environment.yml`` file to the
-desired person. The person would then be able to create the environment like so:
+desired person. The person would then be able to create the environment like
+so:
 
 .. code-block:: bash
 
@@ -318,17 +325,17 @@ desired person. The person would then be able to create the environment like so:
 
 .. _managing_conda_cache:
 
-Managing Conda Cache 
+Managing Conda Cache
 --------------------
 
-The default location for Conda to cache files is the user's ``$HOME`` directory,
-which can rapidly fill and cause issues. This behavior can be changed by setting
-the ``pkgs_dirs`` entry in the ``.condarc`` file or setting the
-``CONDA_PKGS_DIRS`` environment variable. First, to see the current cache
+The default location for Conda to cache files is the user's ``$HOME``
+directory, which can rapidly fill and cause issues. This behavior can be
+changed by setting the ``pkgs_dirs`` entry in the ``.condarc`` file or setting
+the ``CONDA_PKGS_DIRS`` environment variable. First, to see the current cache
 directory, issue:
 
 .. code-block:: bash
-   
+
    $ conda info
 
 The package cache entry will display the current package cache directories. The
@@ -337,7 +344,8 @@ Editing/creating the ``pkgs_dirs`` entry in the ``.condarc`` file will change
 the cache directory:
 
 * Open the user ``.condarc`` file.  By default it is located at
-  ``$HOME/.condarc`` and add the ``pkgs_dirs`` entry with desired cache directory:
+  ``$HOME/.condarc`` and add the ``pkgs_dirs`` entry with desired cache
+  directory:
 
   .. code-block:: bash
 
