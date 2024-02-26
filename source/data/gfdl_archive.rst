@@ -37,13 +37,13 @@ All users with a GFDL account will have a personal archive directory.
 GFDL Archive Data Structure
 ===========================
 
-The users archive area is located at ``/archive/$USER``.  The ``/archive/$USER``
-is be a symbolic link to ``/arch[0-8bcfgh]/$USER``.  These ``arch[0-8bcfgh]``
-directories are used to better distribute the load on the front-end cache
-drives.
+The users archive area is located at ``/archive/$USER``.  The
+``/archive/$USER`` is a symbolic link to ``/arch[0-8bcfgh]/$USER``.  These
+``arch[0-8bcfgh]`` directories are used to better distribute the load on the
+front-end cache drives.
 
-All files are ultimately stored on tapes housed in the tape libraries, access to
-those files is using the Linux file system structure on the front-end cache.
+All files are ultimately stored on tapes housed in the tape libraries, access
+to those files is using the Linux file system structure on the front-end cache.
 When a file is accessed, DMF will automatically recall the file from tape and
 place it on the front-end cache disk.
 
@@ -65,29 +65,29 @@ Data Recovery Policy
 Occasionally an archive tape is damaged or otherwise becomes partially
 unreadable. When that happens, the local RDHPCS staff works with the
 manufacturer to troubleshoot the problem and take steps to attempt to recover
-the missing data. Very rarely, even with these efforts, we are unable to recover
-the missing files. The user will then be informed of the files we cannot
-recover.
+the missing data. Very rarely, even with these efforts, we are unable to
+recover the missing files. The user will then be informed of the files we
+cannot recover.
 
 In that case, the user has one further option. There are a number of outside
 recovery services which will make further attempts at recovery for a fee. Some
-charge a flat fee, some charge more if they are able to recover than if they are
-unable to recover. If the user wishes to sign up for such a service and pay the
-fee, RDHPCS will handle the logistics of shipping and other coordination with
-the recovery service.
+charge a flat fee, some charge more if they are able to recover than if they
+are unable to recover. If the user wishes to sign up for such a service and pay
+the fee, RDHPCS will handle the logistics of shipping and other coordination
+with the recovery service.
 
 .. _gfdl_archive_getting_started:
 
 Getting Started
 ===============
 
-The GFDL archive is accessible from all Pan nodes, including all DTNs, and via a
-Globus endpoint.  The GFDL archive is also available as read-only from the GFDL
-workstations.
+The GFDL archive is accessible from all Pan nodes, including all DTNs, and via
+a Globus endpoint.  The GFDL archive is also available as read-only from the
+GFDL workstations.
 
 DMF has a few utilities to help manage files stored on in the tape library and
-their residency on the front-end disk cache.  The list, with a brief description
-is in the table below.  See ``man <command>`` for more information.
+their residency on the front-end disk cache.  The list, with a brief
+description is in the table below.  See ``man <command>`` for more information.
 
 +---------------------+-----------------------------------------------+
 | Commands            | Description                                   |

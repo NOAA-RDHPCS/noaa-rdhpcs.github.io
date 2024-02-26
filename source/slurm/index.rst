@@ -197,7 +197,7 @@ Pages for a more complete list.
      - Specifies the project to which the job should be charged.
    * - ``-t``, ``--time``
      - ``#SBATCH -t 4:00:00``
-     - Specify a maximum wallclock.
+     - Specify a maximum wall clock limit.
    * - ``-J``, ``-job-name``
      - ``#SBATCH -J jobname``
      - Set the name of the job.
@@ -531,7 +531,7 @@ the equation
 
 A fairshare factor value :math:`<0.5` indicates that a project is over
 utilizing their allocation relative to total system usage, whereas a factor
-:math:`>0.5` indicates the project is underutilizing.
+:math:`>0.5` indicates the project is underutilized.
 
 Fairshare Definitions
 ---------------------
@@ -622,7 +622,7 @@ list just your projects, ``-w`` option (these projects always have the lowest
 priority) to exclude listing windfall projects, and the ``-T <threshold>``
 option, which will give you a list of all projects and their FairShare value
 with a higher value than the threshold value you enter. For more options on
-sfairshare use the sfairshare ``-h`` command.
+sfairshare use the ``sfairshare -h`` command.
 
 .. code-block:: shell
 
@@ -700,106 +700,29 @@ The ``saccount_params`` will show your current:
          Available QOSes: gpuwf,windfall
          Directory: /scratch[12]/[portfolio]/projid DiskInUse=206372 GB, Quota=255000 GB, Files=5721717, FileQUota=51000000
 
-.. _slurm-shpcrpt:
+.. _slurm-generating-reports:
 
-shpcrpt
--------
+Generating Reports
+==================
 
-The ``shpcrpt`` tool will report a project's FairShare factor and rank,
-allocation, and the current month to date (MTD) compute usage information on
-all your project(s), detailed project information by user, and summary
-information for all projects on the system.
+Several of the Slurm utilities can be used to generate usage reports.  Slurm
+supplies :ref:`slurm-sreport`.  The RDHPCS team supplies :ref:`slurm-shpcrpt`.
+Both tools can generate similar reports.
 
-On some RDHPCS system, ``shpcrpt`` is available after loading the ``shpcrpt``
-module.
+See the following for more information:
 
-.. tab-set::
+.. toctree::
 
-  .. tab-item:: Gaea
-    :sync: gaea
-
-    .. code-block:: shell
-
-      $ module use /usw/shpcrpt/modulefiles
-      $ module load shpcrpt
-
-Use ``shpcrpt --help`` for more details.
-
-.. code-block:: shell
-
-   $ shpcrpt -c <cluster>
-   =================================================================================================================
-   Report                           Summary Report
-   Report Run:                      Fri 02 Feb 2024 09:48:57 PM  UTC
-   Report Period Beginning:         Thu 01 Feb 2024 12:00:00 AM  UTC
-   Report Period Ending:            Fri 01 Mar 2024 12:00:00 AM  UTC
-   Percentage of Period Elapsed:    6.6%
-   Percentage of Period Remaining:  93.4%
-   =================================================================================================================
-   Project               NormShares   FairShare        Rank  Allocation   Cr-HrUsed    Windfall   TotalUsed       %Used        Jobs
-   -------------------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- -----------
-   proj01                  0.010531    0.501784       64/90     476,712      65,412           0      65,412      13.72%       1,600
-   proj02                  0.000000    1.000000       90/90           1           0           0           0       0.00%           0
-   proj03                  0.001050    0.920788       35/90      47,520         456           0         456       0.96%      23,469
-   proj04                  0.154815    0.619112       46/90   7,008,123     505,651           0     505,651       7.22%      27,067
-   .
-   .
-   .
-
-To see a specific group’s hpc report, specify the group:
-
-.. code-block:: shell
-
-   $ shpcrpt -p <project> -c <cluster>
-   =================================================================================================================
-   Report                           Project Report for:projid
-   Report Run:                      Fri 02 Feb 2024 09:50:20 PM  UTC
-   Report Period Beginning:         Thu 01 Feb 2024 12:00:00 AM  UTC
-   Report Period Ending:            Fri 01 Mar 2024 12:00:00 AM  UTC
-   Percentage of Period Elapsed:    6.6%
-   Percentage of Period Remaining:  93.4%
-   =================================================================================================================
-   Machines:                               clusterid
-   Initial Allocation in Hours:              493,151
-   Net Allocation Adjustments:               -16,439
-                                    ----------------
-   Adjusted Allocation:                      476,712
-
-   Core Hours Used:                           65,444
-   Windfall Core Hours Used:                       0
-                                    ----------------
-   Total Core Hours Used:                     65,444
-
-   Project Normalized Shares:               0.010531
-   Project Fair Share:                      0.501784
-   Project Rank:                               64/90
-
-   Percentage of Period Elapsed:                6.6%
-   Percentage of Period Remaining:             93.4%
-   Percentage of Allocation Used:              13.7%
-
-   User                             Cr-HrUsed    Windfall   TotalUsed       %Used      Jobs
-   ------------------------------ ----------- ----------- ----------- ----------- ---------
-   Johana.Romero-Alvarez               40,085           0      40,085       8.41%     1,547
-   Sudheer.R.Bhimireddy                25,359           0      25,359       5.32%        53
-   ------------------------------ ----------- ----------- ----------- ----------- ---------
-   Total                               65,444           0      65,444      13.73%     1,600
-
-   Total Report Runtime: 2.49 seconds (ver. 23.07.06-FNJT)
-
-.. note::
-
-   The ``shpcrpt`` command requires the ``-c <clusterid>`` option.
-
-.. note::
-
-   The ``shpcrpt`` command can take a while to return results.  This is due to
-   ``shpcrpt`` pulling data directly from Slurm to generate the reports.
+   sreport
+   shpcrpt
 
 .. _slurm-references:
 
 References
 ==========
+
+Further information about Slurm, and the Slurm commands are available using
+``man <command>`` on all RDHPCS systems, or on the SchedMD documentation site.
 
 * `Slurm Documentation`_
 * sacct_

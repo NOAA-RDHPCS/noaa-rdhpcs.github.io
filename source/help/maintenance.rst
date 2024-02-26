@@ -3,8 +3,8 @@ RDHPCS Maintenance Calendar
 ***************************
 
 The RDHPCS Maintenance Downtime Calendar has events for NESCC (Hera, HPSS,
-Niagara), Jet, Gaea, PPAN, and the Boulder and Princeton Bastions, and other RDHPCS system
-downtimes. Users can subscribe to the `calendar
+Niagara), Jet, Gaea, PPAN, and the Boulder and Princeton Bastions, and other
+RDHPCS system downtimes. Users can subscribe to the `calendar
 <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
 
 .. raw:: html
