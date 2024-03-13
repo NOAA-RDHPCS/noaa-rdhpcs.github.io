@@ -910,9 +910,3 @@ When using MPI and OpenMP, it is not necessary to worry about how threading is m
 See the `mvapich2 documentation <https://mvapich.cse.ohio-state.edu/userguide/>`__  for more information.
 
 
-Final Tuesday
-=============
-
-Known Issues
-============
-jet
