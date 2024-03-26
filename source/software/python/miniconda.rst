@@ -27,7 +27,8 @@ Cautionary Notes
 
 While running the installer, you will be prompted with something like this:
 
-``Do you wish the installer to initialize Miniconda3 by running conda init? [yes|no]``
+``Do you wish the installer to initialize Miniconda3 by running conda init?
+[yes|no]``
 
 If "yes", your ``.bashrc`` (or equivalent shell configuration file) will be
 updated with something like this:

@@ -4,10 +4,8 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "${command:python.interpreterPath} -m sphinx.cmd.build -E -b html source build/html",
-            "windows": {
-                "command": "make.bat html"
-            },
+            "command": "${command:python.interpreterPath}",
+            "args": ["-m", "sphinx.cmd.build", "-E", "-b", "html", "source", "build/html"],
             "group": {
                 "kind": "build",
                 "isDefault": true

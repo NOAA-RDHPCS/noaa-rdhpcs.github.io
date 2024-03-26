@@ -7,36 +7,36 @@ Getting Help
 The preferred method for submitting help requests is via email.  Each system
 across the RDHPCS has a specific email address to use for requesting help.
 Please send help requests to the email address below that corresponds with the
-system or function you need help with.  If you have a NOAA email then please use
-this address for all of your correspondence.
+system or function you need help with.  If you have a NOAA email then please
+use this address for all of your correspondence.
 
-+------------------+-----------------------------------------------------------------------+
-| System           | Email Address                                                         |
-+==================+=======================================================================+
-| Jet              | `rdhpcs.jet.help@noaa.gov <mailto:rdhpcs.jet.help@noaa.gov>`_         |
-+------------------+-----------------------------------------------------------------------+
-| Hera             | `rdhpcs.hera.help@noaa.gov <mailto:rdhpcs.hera.help@noaa.gov>`_       |
-+------------------+-----------------------------------------------------------------------+
-| Niagara          | `rdhpcs.niagara.help@noaa.gov <mailto:rdhpcs.niagara.help@noaa.gov>`_ |
-+------------------+-----------------------------------------------------------------------+
-| Orion / Hercules | `rdhpcs.orion.help@noaa.gov <mailto:rdhpcs.orion.help@noaa.gov>`_     |
-+------------------+-----------------------------------------------------------------------+
-| RDHPCS Cloud     | `rdhpcs.cloud.help@noaa.gov <mailto:rdhpcs.cloud.help@noaa.gov>`_     |
-+------------------+-----------------------------------------------------------------------+
-| HPSS             | `rdhpcs.hpss.help@noaa.gov <mailto:rdhpcs.hpss.help@noaa.gov>`_       |
-+------------------+-----------------------------------------------------------------------+
-| Gaea / PPAN      | `oar.gfdl.help@noaa.gov <mailto:oar.gfdl.help@noaa.gov>`_             |
-+------------------+-----------------------------------------------------------------------+
-| AIM / Accounts   | `rdhpcs.aim.help@noaa.gov <mailto:rdhpcs.aim.help@noaa.gov>`_         |
-+------------------+-----------------------------------------------------------------------+
++------------------+------------------------------+
+| System           | Email Address                |
++==================+==============================+
+| Jet              | rdhpcs.jet.help@noaa.gov     |
++------------------+------------------------------+
+| Hera             | rdhpcs.hera.help@noaa.gov    |
++------------------+------------------------------+
+| Niagara          | rdhpcs.niagara.help@noaa.gov |
++------------------+------------------------------+
+| Orion / Hercules | rdhpcs.orion.help@noaa.gov   |
++------------------+------------------------------+
+| RDHPCS Cloud     | rdhpcs.cloud.help@noaa.gov   |
++------------------+------------------------------+
+| HPSS             | rdhpcs.hpss.help@noaa.gov    |
++------------------+------------------------------+
+| Gaea / PPAN      | oar.gfdl.help@noaa.gov       |
++------------------+------------------------------+
+| AIM / Accounts   | rdhpcs.aim.help@noaa.gov     |
++------------------+------------------------------+
 
-+------------------------------------+---------------------------------------------------------------------+
-| Workflow                           | Email Address                                                       |
-+====================================+=====================================================================+
-| FRE - Flexible Runtime Environment | `oar.gfdl.help@noaa.gov <mailto:oar.gfdl.help@noaa.gov>`_           |
-+------------------------------------+---------------------------------------------------------------------+
-| Rocoto Workflow Manager            | `rdhpcs.rocoto.help@noaa.gov <mailto:rdhpcs.rocoto.help@noaa.gov>`_ |
-+------------------------------------+---------------------------------------------------------------------+
++------------------------------------+-----------------------------+
+| Workflow                           | Email Address               |
++====================================+=============================+
+| FRE - Flexible Runtime Environment | oar.gfdl.help@noaa.gov      |
++------------------------------------+-----------------------------+
+| Rocoto Workflow Manager            | rdhpcs.rocoto.help@noaa.gov |
++------------------------------------+-----------------------------+
 
 The RDHPCS program, along with the RDHPCS integrator manage help requests for
 most of the RDHPCS systems:
@@ -55,23 +55,23 @@ GFDL manages tickets for Gaea and PPAN.
     **Email Communication Policy**
 
     Per the RDHPCS User Requirements and NOAA Security Policy, all NOAA related
-    email communication must be completed utilizing your @noaa.gov email address.
-    Please only submit and reply to help tickets from your @noaa.gov email address.
-    With the exception of those Orion users who do not have a NOAA email address,
-    help requests from other email addresses will not be processed until the request
-    is received from @noaa.gov.
+    email communication must be completed utilizing your @noaa.gov email
+    address. Please only submit and reply to help tickets from your @noaa.gov
+    email address. With the exception of those Orion users who do not have a
+    NOAA email address, help requests from other email addresses will not be
+    processed until the request is received from @noaa.gov.
 
 .. note::
     **Personal Information (PII)**
 
-    PII is defined as information in a system or online collection that directly or
-    indirectly identifies an individual. Per DOC Policy, you should never include
-    nor be requested to provide any PII in a help request.
+    PII is defined as information in a system or online collection that
+    directly or indirectly identifies an individual. Per DOC Policy, you should
+    never include nor be requested to provide any PII in a help request.
 
 .. note::
 
-    Help tickets are normally addressed by the RDHPCS User Support team from 0900 -
-    1700 Eastern Time, Monday - Friday, except Government holidays.
+    Help tickets are normally addressed by the RDHPCS User Support team from
+    0900 - 1700 Eastern Time, Monday - Friday, except Government holidays.
 
 .. _good_hd_requests:
 
@@ -79,8 +79,8 @@ Submitting a Good Help Request
 ==============================
 
 When you submit a request for help, it is important to give us as much
-information about the problem as possible. The more information you provide, the
-faster we can diagnose and solve the issue. To help us assist you
+information about the problem as possible. The more information you provide,
+the faster we can diagnose and solve the issue. To help us assist you
 efficiently, please include the following information when submitting your help
 request:
 
@@ -110,19 +110,20 @@ system with the issue.
 Provide Detailed Description of the Problem
 -------------------------------------------
 
-Include what you did, what didn't work, and why you believe there is a
-problem.  Specifically, tell us what commands you ran, and what error messages
-you received. If this information is short, you can cut and paste it into the
-email. If not, please give us paths to files containing this information so that
-we can look at it.
+Include what you did, what didn't work, and why you believe there is a problem.
+Specifically, tell us what commands you ran, and what error messages you
+received. If this information is short, you can cut and paste it into the
+email. If not, please give us paths to files containing this information so
+that we can look at it.
 
 .. tab-set::
 
     .. tab-item:: Good Description Example
 
-        When I tried to log in to Theia from my workstation (habanero.fsl.noaa.gov) this
-        morning, about 9:17AM MDT, my ssh command hung, and then eventually reported
-        that my connection timed out. See below:
+        When I tried to log in to Theia from my workstation
+        (habanero.fsl.noaa.gov) this morning, about 9:17AM MDT, my ssh command
+        hung, and then eventually reported that my connection timed out. See
+        below:
 
         $ ssh -l john.smith bastion-hera.boulder.rdhpcs.noaa.gov
         ssh: connect to host bastion-hera.boulder.rdhpcs.noaa.gov port 22: Connection timed out
@@ -136,19 +137,19 @@ Provide Job Information
 -----------------------
 
 Include as much information about the job as possible.  This includes the jobs'
-ID, date and time the jobs ran, location of source code, standard out file,  and
-submitted script.
+ID, date and time the jobs ran, location of source code, standard out file,
+and submitted script.
 
 .. tab-set::
 
     .. tab-item:: Good Example
 
-        - My WRF job this morning at about 9:24AM MDT crashed with the following strange
-          error. The job id was 123456789. Submitted script: /path/to/script/wrf.ksh
-          stdout: /path/to/stdout/wrf.out
-        - Gaea c4 job 123456789 failed on 2/14/23 at 17:32 EDT.  The stdout file
-          /path/to/output/job.log indicates a "bus error".  Source is located in
-          /path/to/source.
+        - My WRF job this morning at about 9:24AM MDT crashed with the
+          following strange error. The job id was 123456789. Submitted script:
+          /path/to/script/wrf.ksh stdout: /path/to/stdout/wrf.out
+        - Gaea c4 job 123456789 failed on 2/14/23 at 17:32 EDT.  The stdout
+          file /path/to/output/job.log indicates a "bus error".  Source is
+          located in /path/to/source.
 
     .. tab-item:: Bad Example
 
@@ -166,21 +167,22 @@ Also include how to identify the issue.
 Only Report One Problem Per Help Ticket
 ---------------------------------------
 
-Please submit one ticket per issue.  Combining multiple issues in one ticket may
-confuse the technician, and will likely lead to a delay in getting all issues
-resolved.  Likewise, searching for previous solutions for similar issues reported
-in the ticket system is difficult.
+Please submit one ticket per issue.  Combining multiple issues in one ticket
+may confuse the technician, and will likely lead to a delay in getting all
+issues resolved.  Likewise, searching for previous solutions for similar issues
+reported in the ticket system is difficult.
 
 Follow up With Additional Information or Questions
 --------------------------------------------------
 
-Often problems don't happen just once and may not occur in a repeatable fashion.
-If you have additional information that is potentially useful for your issue,
-please submit the new information to your **existing help ticket number**. You
-can do this by simply replying to the last email sent to you by the help system
-(the ticket ID should be in the subject line), or replying to the ticket in the
-`customer portal <https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_.  For Gaea and
-PPAN tickets use the `GFDL customer portal
+Often problems don't happen just once and may not occur in a repeatable
+fashion. If you have additional information that is potentially useful for your
+issue, please submit the new information to your **existing help ticket
+number**. You can do this by simply replying to the last email sent to you by
+the help system (the ticket ID should be in the subject line), or replying to
+the ticket in the `customer portal
+<https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_.  For Gaea and PPAN
+tickets use the `GFDL customer portal
 <https://helpdesk.gfdl.noaa.gov/otrs/customer.pl>`_.
 
 Required Information for Specific Types of Help
@@ -193,10 +195,11 @@ generally be helpful in getting assistance in a timely fashion.
 Basic Ticket Information
 ------------------------
 
-Please include a brief description in the subject line.  Doing so will help us in
-directing ticket to the best resource possible.  In the body of the message
-please provide a good description of the problem.  In particular, if the problem
-is about a job that is failing, it is very helpful to provide the following:
+Please include a brief description in the subject line.  Doing so will help us
+in directing ticket to the best resource possible.  In the body of the message
+please provide a good description of the problem.  In particular, if the
+problem is about a job that is failing, it is very helpful to provide the
+following:
 
 * Job number
 * The location of the script that was used for submitting the job
@@ -249,8 +252,8 @@ will be helpful:
 Job Submission Problems
 -----------------------
 
-If you are receiving an error message when you submit your job, we will need the
-following information:
+If you are receiving an error message when you submit your job, we will need
+the following information:
 
 * What is your working directory (output of ``pwd``)
 * What modules have been loaded (output of ``module list``)
@@ -286,11 +289,11 @@ us to be able to duplicate the problem by running as ourselves.  In those
 instance we will ask for a simple reproducer. Ideally a reproducer is a simple
 test case that we can experiment with, but we also understand that that may not
 always be possible.  In those instances we will need detailed instructions on
-what we need to do to duplicate the problem.  At first we will simply want to be
-able to run the test case that is failing.  If we need additional debugging help
-we may also need a way build your executable from source code. The instructions
-below are combining both instances, first about building the code, and second
-about running a test case.
+what we need to do to duplicate the problem.  At first we will simply want to
+be able to run the test case that is failing.  If we need additional debugging
+help we may also need a way build your executable from source code. The
+instructions below are combining both instances, first about building the code,
+and second about running a test case.
 
 Below are general things we will be looking for:
 
@@ -312,8 +315,8 @@ Below are general things we will be looking for:
 * What is the command to submit the job
 
     * Pointers to some of the things that may need to be changed
-    * For example input file may be hardwired with full path and that would have
-      to be modified to run from our environment.
+    * For example input file may be hardwired with full path and that would
+      have to be modified to run from our environment.
     * Some of the scripts may have hardwired paths
 
 * Location of the output files and where we should expect to find the error
@@ -331,7 +334,8 @@ following information to assist you:
 
 * What is the full hostname on which you are initiating the transfer?
 * What is the full hostname of the destination?
-* What is the command you are using to do the transfer (scp, rsync, globus, etc.)?
+* What is the command you are using to do the transfer (scp, rsync, globus,
+  etc.)?
 * What is your working directory?
 * Please include the command and the response from the system that illustrates
   the problem.
@@ -348,19 +352,20 @@ Help Tickets can be managed in two ways:
 
     .. tab-item:: Email
 
-        This method is recommended when you have only a few open tickets.  Reply
-        to the email thread that is started by the OTRS system after you submit
-        a help request.  The subject of that email thread starts with the
-        assigned ticket number (e.g., [RDHPCS#2018041954000023]), followed by the
-        subject in your original email request. DO NOT reply to your original
-        email request you sent or it will start a new ticket and add confusion
-        to the process.
+        This method is recommended when you have only a few open tickets.
+        Reply to the email thread that is started by the OTRS system after you
+        submit a help request.  The subject of that email thread starts with
+        the assigned ticket number (e.g., [RDHPCS#2018041954000023]), followed
+        by the subject in your original email request. DO NOT reply to your
+        original email request you sent or it will start a new ticket and add
+        confusion to the process.
 
     .. tab-item:: User Portal
 
         This method is recommended when you need to manage several open tickets
         and can be used for viewing and relying to open or closed tickets.
-        Please refer to the :ref:`user portal documentation <help_user_portal>`.
+        Please refer to the :ref:`user portal documentation
+        <help_user_portal>`.
 
 
 .. _help_user_portal:

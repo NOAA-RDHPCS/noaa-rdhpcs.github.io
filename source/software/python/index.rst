@@ -8,26 +8,26 @@ Overview
 
 In high-performance computing, `Python <https://www.python.org/>`__ is heavily
 used to analyze scientific data on the system. Some users require specific
-versions of Python or niche scientific packages to analyze their data, which may
-further depend on numerous other Python packages. Because of all the
+versions of Python or niche scientific packages to analyze their data, which
+may further depend on numerous other Python packages. Because of all the
 dependencies that some Python packages require, and all the types of data that
 exist, it can be quite troublesome to get different Python installations to
 "play nicely" with each-other, especially on an HPC system where the system
 environment is complicated. Virtual environments help alleviate these issues by
 isolating package installations into self-contained directory trees.
 
-Although Python has a native virtual environment feature (``venv``), one popular
-virtual environment manager is `Conda
-<https://conda.io/projects/conda/en/latest/index.html>`__, a package and virtual
-environment manager from the `Anaconda <https://www.anaconda.com/>`__
+Although Python has a native virtual environment feature (``venv``), one
+popular virtual environment manager is `Conda
+<https://conda.io/projects/conda/en/latest/index.html>`__, a package and
+virtual environment manager from the `Anaconda <https://www.anaconda.com/>`__
 distribution. Conda allows users to easily install different versions of binary
 software packages and any required libraries appropriate for their computing
-platform.  The versatility of conda allows a user to essentially build their own
-isolated Python environment, without having to worry about clashing dependencies
-and other system installations of Python. Conda is available on all RDHPCS
-systems, and loading the default Python module loads an Anaconda Python
-distribution.  Loading this distribution automatically puts you in a "base"
-conda environment, which already includes packages that one can use for
+platform.  The versatility of conda allows a user to essentially build their
+own isolated Python environment, without having to worry about clashing
+dependencies and other system installations of Python. Conda is available on
+all RDHPCS systems, and loading the default Python module loads an Anaconda
+Python distribution.  Loading this distribution automatically puts you in a
+"base" conda environment, which already includes packages that one can use for
 simulation, analysis, and machine learning.
 
 For users interested in using Python with Jupyter, see our
@@ -57,10 +57,10 @@ Below is a list of guides created for using Python on RDHPCS systems.
    miniconda
    jupyter
 
-* :doc:`Conda Basics Guide </software/python/conda_basics>`: Goes over the basic
-  workflow and commands of Conda
-* :doc:`Installing mpi4py and h5py Guide </software/python/parallel_h5py>`: Teaches
-  you how to install parallel-enabled h5py and mpi4py
+* :doc:`Conda Basics Guide </software/python/conda_basics>`: Goes over the
+  basic workflow and commands of Conda
+* :doc:`Installing mpi4py and h5py Guide </software/python/parallel_h5py>`:
+  Teaches you how to install parallel-enabled h5py and mpi4py
 * :doc:`Installing CuPy Guide </software/python/cupy>`: Teaches you how to
   install CuPy
 * :doc:`Installing Miniconda Guide </software/python/miniconda>`: Teaches you
@@ -269,8 +269,8 @@ Custom Environments
 -------------------
 
 You can also create your own custom environments after loading the Python
-module. This option is recommended for users that require a different version of
-Python than the default version available, or for users that want a personal
+module. This option is recommended for users that require a different version
+of Python than the default version available, or for users that want a personal
 environment to manage specialized packages. This is possible via ``conda`` or
 using Python's native ``venv`` feature instead.
 
@@ -447,10 +447,10 @@ batch job.  Therefore, you only need to use ``srun`` if you plan to run
 parallel-enabled Python, and you *do not* need to specify ``srun`` if you are
 running a serial application.
 
-Additionally, ``$PATH`` issues are known to occur if not submitting from a fresh
-login shell, which can result in the wrong environment being detected. To avoid
-this, you must use the ``--export=NONE`` flag, which ensures that no previously
-set environment variables are passed into the batch job:
+Additionally, ``$PATH`` issues are known to occur if not submitting from a
+fresh login shell, which can result in the wrong environment being detected. To
+avoid this, you must use the ``--export=NONE`` flag, which ensures that no
+previously set environment variables are passed into the batch job:
 
 .. code-block:: bash
 
@@ -657,14 +657,14 @@ Best Practices
 
     It is highly recommended to create new environments in the "Project Home"
     directory (see :ref:`file system summary <data-filesystem-summary>`). This
-    space avoids purges, allows for potential collaboration within your project,
-    and works better with the compute nodes.
+    space avoids purges, allows for potential collaboration within your
+    project, and works better with the compute nodes.
 
 * **Adding known conda environment locations**:
 
     For a conda environment to be callable by a "name", it must be installed in
-    one of the ``envs_dirs`` directories. The list of known directories can be seen
-    by executing:
+    one of the ``envs_dirs`` directories. The list of known directories can be
+    seen by executing:
 
     .. code-block:: bash
 

@@ -5,10 +5,10 @@ Summary of Storage Areas
 ************************
 
 The storage area to use in any given situation depends upon the activity you
-wish to carry out. Storage areas are either user-centric or project-centric, and
-are further divided by the underlying storage type (e.g., Network File System
-(NFS), High Performance Storage System (HPSS), Lustre, IBM Spectrum Scale). Each
-storage type has a different intended use as described below.
+wish to carry out. Storage areas are either user-centric or project-centric,
+and are further divided by the underlying storage type (e.g., Network File
+System (NFS), High Performance Storage System (HPSS), Lustre, IBM Spectrum
+Scale). Each storage type has a different intended use as described below.
 
 On each system, each user has a User Home area, and may have a User Archive
 area. Each project has a Project Home area, Work areas, and Archive areas. The
@@ -18,10 +18,10 @@ different storage areas are summarized in the list and table below.
   project. It is mounted on compute nodes as read/write.  We strongly recommend
   that users launch and run jobs from one of the Work file systems due to its
   larger storage capacity and superior performance.
-- **Project Home:** Long-term project data for routine access that's shared with
-  other project members. It is mounted on compute as read/write.  We strongly
-  recommend that users launch and run jobs from one of the Work file systems
-  due to its larger storage capacity and superior performance.
+- **Project Home:** Long-term project data for routine access that's shared
+  with other project members. It is mounted on compute as read/write.  We
+  strongly recommend that users launch and run jobs from one of the Work file
+  systems due to its larger storage capacity and superior performance.
 - **Member Work:** Short-term user data for fast, batch-job access that is not
   shared with other project members.
 - **Project Work:** Short-term project data for fast, batch-job access that's
@@ -240,13 +240,13 @@ User Home Backups
 -----------------
 
 If you accidentally delete files from your home directory, you may be able to
-retrieve them. Online backups are performed at regular intervals. Hourly backups
-for the past 24 hours, daily backups for the last 7 days, and once-weekly
-backups are available. It is possible that the deleted files are available in
-one of those backups. The backup directories are named ``hourly.*``,
-``daily.*``, and ``weekly.*`` where ``*`` is the date/time stamp of backup
-creation. For example, ``hourly.2020-01-01-0905`` is an hourly backup made on
-January 1st, 2020 at 9:05 AM.
+retrieve them. Online backups are performed at regular intervals. Hourly
+backups for the past 24 hours, daily backups for the last 7 days, and
+once-weekly backups are available. It is possible that the deleted files are
+available in one of those backups. The backup directories are named
+``hourly.*``, ``daily.*``, and ``weekly.*`` where ``*`` is the date/time stamp
+of backup creation. For example, ``hourly.2020-01-01-0905`` is an hourly backup
+made on January 1st, 2020 at 9:05 AM.
 
 The backups are accessed via the ``.snapshot`` subdirectory. Note that ``ls``
 alone (or even ``ls -a``) will not show the ``.snapshot`` subdirectory exists,
@@ -264,7 +264,8 @@ The GFDL archive provides longer-term storage for the large amounts of data
 created on the NOAA compute systems. The mass storage facility consists of tape
 and disk storage components, servers, and the Data Migration Facility (DMF)
 software. After data is uploaded, it persists on disk for some period of time.
-The length of its life on disk is determined by how full the disk caches become.
+The length of its life on disk is determined by how full the disk caches
+become.
 
 User archive areas on HPSS are intended for storage of data not immediately
 needed in either User Home directories (NFS) or User Work directories (GPFS or
@@ -305,10 +306,10 @@ code, data, and other files related to their project.
 Project Home Directories (NFS)
 ==============================
 
-On some RDHPCS systems, projects are provided with a Project Home storage area in the
-NFS-mounted filesystem. This area is intended for storage of data, code, and
-other files that are of interest to all members of a project. Since Project Home
-is an NFS-mounted filesystem, its performance will not be as high as other
+On some RDHPCS systems, projects are provided with a Project Home storage area
+in the NFS-mounted filesystem. This area is intended for storage of data, code,
+and other files that are of interest to all members of a project. Since Project
+Home is an NFS-mounted filesystem, its performance will not be as high as other
 file systems.
 
 .. note::
@@ -323,16 +324,16 @@ The path, quota, and permissions for Project Home directories are summarized in
 the :ref:`Filesystem Summary Table <data-filesystem-summary>`.
 
 Quotas are enforced on Project Home directories. To check a Project Home
-directory’s usage on gaea, run ``df -h /ncrc/proj/[projid]`` (where ``[projid]``
-is the project ID). Note, however, that permission settings on some
-subdirectories may prevent you from accessing them, and in that case you will
-not be able to obtain the correct usage. If this is the case, contact
+directory’s usage on gaea, run ``df -h /ncrc/proj/[projid]`` (where
+``[projid]`` is the project ID). Note, however, that permission settings on
+some subdirectories may prevent you from accessing them, and in that case you
+will not be able to obtain the correct usage. If this is the case, contact
 help@olcf.ornl.gov for the usage information.
 
 Project Home directories are root-owned and are associated with the project's
 Unix group. Default permissions are set such that only members of the project
-can access the directory, and project members are not able to change permissions
-of the top-level directory.
+can access the directory, and project members are not able to change
+permissions of the top-level directory.
 
 Project Home Backups
 --------------------
@@ -388,8 +389,8 @@ For example, if you have data that must be restricted only to yourself, keep
 them in your Member Work directory for that project (and leave the default
 permissions unchanged). If you have data that you intend to share with
 researchers within your project, keep them in the project’s Project Work
-directory. If you have data that you intend to share with researchers outside of
-a project, keep them in the project’s World Work directory.
+directory. If you have data that you intend to share with researchers outside
+of a project, keep them in the project’s World Work directory.
 
 Backups
 -------
@@ -421,8 +422,8 @@ For example, if you have data that must be restricted only to yourself, keep
 them in your Member Archive directory for that project (and leave the default
 permissions unchanged). If you have data that you intend to share with
 researchers within your project, keep them in the project’s Project Archive
-directory. If you have data that you intend to share with researchers outside of
-a project, keep them in the project’s World Archive directory.
+directory. If you have data that you intend to share with researchers outside
+of a project, keep them in the project’s World Archive directory.
 
 Project Archive Access
 ----------------------
@@ -431,5 +432,5 @@ Project Archive directories stored on HPSS may only be accessed via utilities
 called HSI and HTAR. For more information on using HSI or HTAR, see the
 :ref:`nescc_hpss` page.
 
-Project Archive directories stored on GFDL archive can be accessed from Pan, the
-GFDL workstations, and using Globus.
+Project Archive directories stored on GFDL archive can be accessed from Pan,
+the GFDL workstations, and using Globus.

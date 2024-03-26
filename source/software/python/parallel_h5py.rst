@@ -11,8 +11,8 @@ Installing mpi4py and h5py
 Overview
 ========
 
-This guide teaches you how to build a personal, parallel-enabled version of h5py
-and how to write an HDF5 file in parallel using mpi4py and h5py.
+This guide teaches you how to build a personal, parallel-enabled version of
+h5py and how to write an HDF5 file in parallel using mpi4py and h5py.
 
 In this guide, you will:
 
@@ -37,37 +37,37 @@ is a container for two kinds of objects: "datasets", which are array-like
 collections of data, and "groups", which are folder-like containers that hold
 datasets and other groups.
 
-There are various tools that allow users to interact with HDF5 data, but we will
-be focusing on `h5py <https://docs.h5py.org/en/stable/>`__ -- a Python interface
-to the HDF5 library. h5py provides a simple interface to exploring and
-manipulating HDF5 data as if they were Python dictionaries or NumPy arrays. For
-example, you can extract specific variables through slicing, manipulate the
+There are various tools that allow users to interact with HDF5 data, but we
+will be focusing on `h5py <https://docs.h5py.org/en/stable/>`__ -- a Python
+interface to the HDF5 library. h5py provides a simple interface to exploring
+and manipulating HDF5 data as if they were Python dictionaries or NumPy arrays.
+For example, you can extract specific variables through slicing, manipulate the
 shapes of datasets, and even write completely new datasets from external NumPy
 arrays.
 
 Both HDF5 and h5py can be compiled with MPI support, which allows you to
 optimize your HDF5 I/O in parallel. MPI support in Python is accomplished
-through the `mpi4py <https://mpi4py.readthedocs.io/en/stable/>`__ package, which
-provides complete Python bindings for MPI. Building h5py against mpi4py allows
-you to write to an HDF5 file using multiple parallel processes, which can be
-helpful for users handling large datasets in Python. h5Py is available after
-loading the default Python module on either Summit or Andes, but it has not been
-built with parallel support.
+through the `mpi4py <https://mpi4py.readthedocs.io/en/stable/>`__ package,
+which provides complete Python bindings for MPI. Building h5py against mpi4py
+allows you to write to an HDF5 file using multiple parallel processes, which
+can be helpful for users handling large datasets in Python. h5Py is available
+after loading the default Python module on either Summit or Andes, but it has
+not been built with parallel support.
 
 Setting up the environment
 ==========================
 
 .. warning::
 
-   Before setting up your environment, you must exit and log back in so that you
-   have a fresh login shell. This is to ensure that no previously activated
+   Before setting up your environment, you must exit and log back in so that
+   you have a fresh login shell. This is to ensure that no previously activated
    environments exist in your ``$PATH`` environment variable. Additionally, you
    should execute ``module reset``.
 
 Building h5py from source is highly sensitive to the current environment
 variables set in your profile. Because of this, it is extremely important that
-all the modules and environments you plan to load are done in the correct order,
-so that all the environment variables are set correctly.
+all the modules and environments you plan to load are done in the correct
+order, so that all the environment variables are set correctly.
 
 First, load the gnu compiler module (most Python packages assume GCC), hdf5
 module (necessary for h5py), and the python module (allows you to create a new
@@ -112,8 +112,8 @@ environment):
          $ module load hdf5
          $ module load python
 
-Loading a python module puts you in a "base" environment, but you need to create
-a new environment using the ``conda create`` command:
+Loading a python module puts you in a "base" environment, but you need to
+create a new environment using the ``conda create`` command:
 
 
 .. code-block:: bash
@@ -185,8 +185,8 @@ optimized version of the NumPy package:
    $ conda install -c defaults --override-channels numpy
 
 The ``-c defaults --override-channels`` flags ensure that conda will search for
-NumPy only on the "defaults" channel. Installing NumPy in this manner results in
-an optimized NumPy that is built against linear algebra libraries, which
+NumPy only on the "defaults" channel. Installing NumPy in this manner results
+in an optimized NumPy that is built against linear algebra libraries, which
 performs operations much faster.
 
 Next, you are finally ready to install h5py from source:
@@ -240,8 +240,8 @@ First, change directories to your scratch area:
    $ mkdir h5py_test
    $ cd h5py_test
 
-Let's test that mpi4py is working properly first by executing the example Python
-script ``hello_mpi.py``:
+Let's test that mpi4py is working properly first by executing the example
+Python script ``hello_mpi.py``:
 
 .. code-block:: python
 
@@ -275,7 +275,7 @@ Example "submit_hello" batch script:
 
    module load PrgEnv-gnu
    module load hdf5
-   
+
    conda activate /project_home>/<PROJECT_ID>/<USER_ID>/envs/h5pympi
 
    srun -n42 python3 hello_mpi.py
@@ -321,11 +321,11 @@ parallel using the "hdf5_parallel.py" script:
    if (mpi_rank == 0):
        print('42 MPI ranks have finished writing!')
 
-The MPI tasks are going to write to a file named ``output.h5``, which contains a
-dataset called "test" that is of size 42 (assigned to the ``dset`` variable in
-Python). Each MPI task is going to assign their rank value to the ``dset`` array
-in Python, so you should end up with a dataset that contains 0-41 in ascending
-order.
+The MPI tasks are going to write to a file named ``output.h5``, which contains
+a dataset called "test" that is of size 42 (assigned to the ``dset`` variable
+in Python). Each MPI task is going to assign their rank value to the ``dset``
+array in Python, so you should end up with a dataset that contains 0-41 in
+ascending order.
 
 Time to execute ``hdf5_parallel.py`` by submitting ``submit_h5py`` to the batch
 queue:
@@ -359,9 +359,10 @@ Example "submit_h5py" batch script:
 
 
 Provided there are no errors, you should see "42 MPI ranks have finished
-writing!" in your output file, and there should be a new file called ``output.h5``
-in your directory. To see explicitly that the MPI tasks did their job, you can
-use the ``h5dump`` command to view the dataset named "test" in output.h5:
+writing!" in your output file, and there should be a new file called
+``output.h5`` in your directory. To see explicitly that the MPI tasks did their
+job, you can use the ``h5dump`` command to view the dataset named "test" in
+output.h5:
 
 .. code-block:: bash
 
