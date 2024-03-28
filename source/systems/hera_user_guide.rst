@@ -74,71 +74,68 @@ System Configuration
 
 .. note::
 
-   * The Skylake 6148 CPU has two AVX-512 units and hence a theoretical peak of 32
-      double precision floating point operations per cycle with a base clock rate
-      for floating point operations of 1.6 GHz.
-   * Total flops is a measure of peak, and doesn’t necessarily represent actual
-      performance.
-   * Juno is the Test and Development System. Users must be granted specific access
-      to the system for use.
-   * The FGA part (the nodes with GPUs) are the same as what was on Theia; But the
-      network has been upgraded to EDR.
+   - The Skylake 6148 CPU has two AVX-512 units and hence a theoretical peak of 32 double precision floating point operations per cycle with a base clock rate for floating point operations of 1.6 GHz.
+   - Total flops is a measure of peak, and doesn’t necessarily represent actual performance.
+   - Juno is the Test and Development System. Users must be granted specific access to the system for use.
+   - The nodes with GPUs are the same as what was on Theia; But the network has been upgraded to EDR.
 
 
 Lustre File System Usage
 ========================
 
-
 Lustre is a parallel, distributed file system often used to support the requirements for high-performance I/O in large
 scale clusters by supporting a parallel I/O framework that scales to thousands of nodes and petabytes of storage. Lustre features include high-availability and POSIX compliance.
 
-On the RDHPCS Hera cluster there are two Lustre file systems available for use, /scratch1 and /scratch2
+On the RDHPCS Hera cluster there are two Lustre file systems available for use: /scratch1 and /scratch2
 
 The serial transfer rate of a single stream is generally greater than 1 GB/s but can easily increase to 6.5 GB/s from a single client, and more than 10 GB/s if performed in a properly configured parallel operation.
 
-  .. rubric:: Lustre Volume and File Count
+Lustre Volume and File Count
+----------------------------
 
 For efficient resource usage, Hera's /scratch1 and /scratch2Lustre file systems have project based volume and file countquotas. Each project has an assigned quota which is sharedby all users on the project. File count quotas are new andare implemented to preserve the increased performance of the2 tier storage architecture where the first 128 KB of eachfile is stored on SSD and the remainder if any on HDD.Historical data from Theia and Jet show that the averagefile count per GB is ~100. By default projects on Hera aregiven a file count quota of 200 files per GB of volume quotaor 100,000 files whichever is higher.
 Users will receive warning emails when their quota isexceeded. When either the volume or file count quota isexceed by more than 1.2x, writes will not be allowed.
 |
 Summary and detailed information on finding your project's disk volume and file count quota and usage is found at:  `Getting Information About Your  Projects <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Projects_-_SLURM>`__
 
-.. rubric:: Volume Quota Increase
+**Volume Quota Increase**
 
-If you are approaching your quota, the first step should beto delete old files and/or move files to HPSS tape systemsas appropriate. If more volume is still needed, as withprevious systems, volume quota increases are requested bysubmitting a Hera help ticket with a justification,including:
+If you are approaching your quota, your first step should be to delete old files and/or move files to HPSS tape systems as appropriate. If more volume is still needed, request a volume quota increases by submitting a Hera help ticket with a justification, including:
 
-1. Project name.
-2. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
-3. Justification, including an analysis of your workload detailing the volume needed
-
-
-.. rubric:: File Count Quota Increase
-
-If you are approaching your quota or your file count quotaor are running over 200 files/GB, the first step should beto delete old small files. If you want to keep them aroundbut they are not accessed frequently, you should tar up manysmall files into one big files. If you have an exceptionalsituation and believe you need a quota increase, pleasestart a Hera help ticket including the followinginformation:
+* Project name.
+* Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
+* Justification, including an analysis of your workload detailing the volume needed
 
 
-1. Project name.
-2. Justification, including an analysis of your workload detailing the files/GB needed.
-3. Requested quota. Is the increase request temporary or permanent? If temporary, for how long?
+**File Count Quota Increase**
+
+If you are approaching your quota or your file count quotaor are running over 200 files/GB, your first step should be to delete old small files. If you want to keep them around but they are not accessed frequently, you should tar up many small files into one big file. If you have an exceptional situation and believe you need a quota increase, start a Hera help ticket including the following information:
 
 
-The request has to be approved by the project's PI (orPortfolio Manager), so it will save time if the requestcomes from the PI (or Portfolio Manager). Once requests areapproved by the PI (or Portfolio Manager) they will bereviewed by the Hera resource manager.
+* Project name.
+* Justification, including an analysis of your workload detailing the files/GB needed.
+* Requested quota. Is the increase request temporary or permanent? And if temporary, for how long?
 
-.. rubric:: Lustre
 
-Lustre functionality is divided among four primarycomponents:
+It will save time if the request comes directly from the or Portfolio Manager. Once requests are approved by the PI they will be reviewed by the Hera resource manager.
+
+Lustre
+======
+
+Lustre functionality is divided among four primary components:
 
 * MDS* Metadata Server
 * MDT* Metadata Target
 * OSS* Object Storage Server
 * OST* Object Storage Target
 
-An MDS is server that assigns and tracks all of the storagelocations associated with each file in order to direct fileI/O requests to the correct set of OSTs and correspondingOSSs.
-An MDT stores the metadata, filenames, directories,permissions and file layout.
+An MDS server assigns and tracks all of the storage locations associated with each file in order to direct fileI/O requests to the correct set of OSTs and corresponding OSSs.
+An MDT stores the metadata, filenames, directories, permissions and file layout.
 An OSS manages a small set of OSTs by controlling I/O accessand handling network requests to them.
 An OST is a block storage device, often several disks in a RAID configuration.
 
-.. rubric:: Hera Lustre configuration
+Hera Lustre Configuration
+-------------------------
 
 All nodes (login and compute) access the lustre file-systemsmounted at /scratch1 and /scratch2.
 Each user has access to one or more directories based on theproject which they are a member of, such as:
@@ -147,63 +144,65 @@ Each user has access to one or more directories based on theproject which they a
 
     /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
-...where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
+where ${TASK} is \**often but not necessarily*\* the individual user's login ID, as defined by the project lead. The number of servers and targets on *each* of the two Herafile systems is:
 
 * 2 MDSs (active/active)
 * 2 MDTs
-* 16 OSSs (active/active, embedded in DDN SFA18k storage   controllers)
+* 16 OSSs (active/active, embedded in DDN SFA 18k storage controllers)
 * 122 OSTs (106 are HDDs, 16 are SSDs)
 * 9.1 PiB of usable disk space (*df*hP /scratch{1,2}*)
 
 Since each file system has two metadata targets, each project directory is configured to use one of MDTs, and they are spread roughly evenly between the two MDTs. This means that approximately 25% of all Hera projects share metadata resources.
 
-.. rubric:: File Operations
+**File Operations**
 
-* When a compute node needs to create or access a file, it   requests the associated storage locations from the MDS   and the associated MDT.
-* I/O operations then occur directly with the OSSs and OSTs   associated with the file, bypassing the MDS.
-* For read operations file data flows from the OSTs to the   compute node.
+* When a compute node needs to create or access a file, it requests the associated storage locations from the MDS and the associated MDT.
+* I/O operations then occur directly with the OSSs and OSTs associated with the file, bypassing the MDS.
+* For read operations file data flows from the OSTs to the compute node.
 
-.. rubric:: Types of file I/O
+**Types of file I/O**
 
-With Lustre, there are three basic ways which an applicationaccesses data:
+With Lustre, an application accesses data in the following ways:
 
 * Single stream
 * Single stream through a master
 * Parallel
 
-.. rubric:: File Striping
+**File Striping**
 
 A file is split into segments and consecutive segments arestored on different physical storage devices (OSTs).
 
-.. rubric:: Aligned vs Unaligned Stripes
+**Aligned vs Unaligned Stripes**
 
-* Aligned stripes is where each segment fits fully onto a   single OST. Processes accessing the file do so at   corresponding stripe boundaries.
-* Unaligned stripes means some file segments are split   across OSTs.
+* Aligned stripes is where each segment fits fully onto a single OST. Processes accessing the file do so at   corresponding stripe boundaries.
+* Unaligned stripes means some file segments are split across OSTs.
 
-.. rubric:: Progressive File Layouts
+**Progressive File Layouts**
 
-The /scratch1 and /scratch2 file systems are enabled with afeature called "Progressive File Layouts" (PFL) that does file layout in a way which is efficient for the vast majority of use cases. It uses a single stripe count for small files (reducing overhead) and increases the striping as the file gets bigger (increasing bandwidth and balancingcapacity), all without any user involvement.
+The /scratch1 and /scratch2 file systems are enabled with a feature called "Progressive File Layouts" (PFL) that does file layout in a way which is efficient for the vast majority of use cases. It uses a single stripe count for small files (reducing overhead) and increases the striping as the file gets bigger (increasing bandwidth and balancing capacity), all without any user involvement.
 These file systems are also augmented by a set of SSD OSTs (described above) and with the PFL capability is further optimized for small file performance. By default, smaller files are stored completely in SSD, which further decreases random operation latency and allows the HDDs to run more efficiently for streaming reads and writes. The default configuration will automatically stripe and place files in a generally optimal fashion to improve I/O performance for varying file sizes, including the use of SSDs for better small-file performance. The defaults also attempt to makethe best use of the SSD targets (which are faster, but have much less capacity than HDDs).
 More details on PFL are available `here: <http://doc.lustre.org/lustre_manual.xhtml#pfl>`__
 
-**Important Note:** The PFL feature makes much of the information documented below regarding customizing striping unnecessary.
+.. Note::
 
-* Users should not need to adjust stripe count and size on   /scratch1 and /scratch2.*
-* With PFL enabled, setting your own stripe layout may   reduce I/O performance for your files and the overall I/O   performance of the file system.
-* If you have already used "lfs setstripe" commands   documented below, you should probably remove the striping   that may have already been set.
+   The PFL feature makes much of the information documented below regarding customized striping unnecessary.
+
+* Users should not need to adjust stripe count and size on /scratch1 and /scratch2.*
+* With PFL enabled, setting your own stripe layout may reduce I/O performance for your files and the overall I/O   performance of the file system.
+* If you have already used "lfs setstripe" commands documented below, you should probably remove the striping   that may have already been set.
 
 Here are the steps you should follow if you have any directories that had explicitly set non-default striping:
 
-1. Remove all "lfs setstripe" commands from your scripts.
-2. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping:
+#. Remove all "lfs setstripe" commands from your scripts.
+#. Run the following command which changes the stiping back to default for each of the directories on which you may have set striping:
 
 .. code-block:: shell
 
    *lfs setstripe*d <dir>*
 
-3. Open a `help ticket <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`__  with the subject like "/scratchX/<portfolio>/<project>   striped directories". We will examine the files and   assist with migrating files to an optimal layout if necessary.
+3. Open a help ticket with the subject like "/scratchX/<portfolio>/<project> striped directories. We will examine the files and   assist with migrating files to an optimal layout if necessary.
 
-.. rubric:: Userspace Commands
+**Userspace Commands**
 
 Lustre provides a utility to query and set access to the file system.
 For a complete list of available options:
@@ -218,7 +217,7 @@ To get more information on a specific option:
 
   lfs help <option>
 
-.. rubric:: Checking Diskspace
+**Checking Diskspace**
 
 Hera file system allocations are “project” based. Lustre quotas are tracked and limited by “Project ID” (usually the same as group ID and directory name). The Project ID is assigned to top-level project directories and will be inherited for all new subdirs.
 Tracking and enforcement includes maximum file count, not just capacity.
@@ -239,7 +238,8 @@ User and Group usage (capacity and file count) is tracked but not limited. You c
     lfs quota*u <User.Name> /scratch1    lfs quota*g <groupname> /scratch1
 
 .. note::
-  This is the *group* that owns the data,*regardless of where it is stored in the file system directory hierarchy*.
+
+  This is the *group* that owns the data, **regardless of where it is stored in the file system directory hierarchy**.
 
 For example, to get a summary of the disk usage for project "rtnim":
 
@@ -249,7 +249,7 @@ For example, to get a summary of the disk usage for project "rtnim":
    $ lfs quota*p 10052 /scratch1   Disk quotas for prj 10052 (pid 10052):        Filesystem  kbytes   quota   limit   grace   files   quota   limit   grace         /scratch1       4  1048576 1258291      *      1  100000  120000      *
    ("kbytes" = usage, "quota" = soft quota, "limit" = hard quota)
 
-.. rubric:: Finding Files
+**Finding Files**
 
 The *lfs find* command is more *efficient* than the GNUfind, it may be faster too.
 For example, finding fortran source files accessed within the last day:
@@ -258,7 +258,7 @@ For example, finding fortran source files accessed within the last day:
 
     lfs find . -atime -1 -name '*.f90'
 
-.. rubric:: Striping Information
+**Striping Information**
 
 You can view the file striping (layout on disk) of a file with:
 
@@ -266,7 +266,7 @@ You can view the file striping (layout on disk) of a file with:
 
     lfs getstripe <filename>
 
-The Hera default configuration uses “Progressive FileLayout” or PFL.
+The Hera default configuration uses “Progressive File Layout” or PFL.
 
   * The first part of each file is stored on SSD
   * Up to 256 KB, single stripe (This is similar to how Panasas /scratch3,4 operated)
@@ -277,10 +277,13 @@ The Hera default configuration uses “Progressive FileLayout” or PFL.
   * > 32 GB* on HDD, 32-way stripe, larger object size
 
 So small files reside on SSDs, big files get striped“progressively” wider!
-The "getstripe" command above shows the full layout.Typically not all components are instantiated. Only theextents which have "l_ost_idx" (object storage target index)and "l_fid" (file identifier) listed actually have createdobjects on the OSTs.
-*Do not attempt to set striping!! If you think the default is not working for you, please let us know by submitting a help ticket.*
+The "getstripe" command above shows the full layout.Typically not all components are instantiated. Only the extents which have "l_ost_idx" (object storage target index)and "l_fid" (file identifier) listed actually have created objects on the OSTs.
 
-.. rubric:: Other lfs Commands
+.. warning::
+
+   Do not attempt to set striping!! If you think the default is not working for you, submit a help ticket to let us know and assist.
+
+**Other lfs Commands**
 
 .. code-block:: shell
 
@@ -296,15 +299,15 @@ to list directories and files.
 
 These commands are often quicker as they reduce the numberof stat and remote procedure calls needed.
 
-.. rubric:: Read Only Access
+**Read Only Access**
 
 * If a file is only going to be read, open it as O_RDONLY.
 * If you don’t care about the access time, open it as   O_RDONLY|O_NOATIME.
 * If you need access time information and you are doing   parallel IO, let the master open it as O_RDONLY and all   other ranks as O_RDONLY|O_NOATIME.
 
-.. rubric:: Avoid Wild Cards
+**Avoid Wild Cards**
 
-tar and rm are *inefficient* when operating on a large setof files on lustre.
+tar and rm are **inefficient** when operating on a large set of files on lustre.
 The reason lies in the time it takes to expand the wildcard. "*rm*rf \**" on millions of files could take days,and impact all other users. (And you shouldn't do just "\*"anyway, it is dangerous.
 Instead, DO generate a list of files to be removed ortar-ed, and to act them one at a time, or in small sets.
 
@@ -312,20 +315,20 @@ Instead, DO generate a list of files to be removed ortar-ed, and to act them one
 
    lfs find /path/to/old/dir/*t f*print0 | xargs*0*P 8 rm*f
 
-.. rubric:: Broadcast Stat Between MPI or OpenMP Tasks
+**Broadcast Stat Between MPI or OpenMP Tasks**
 
 If many processes need the information from stat(), do it**once**, as follows:
 
 * Have the master process perform the stat() call.
 * Then broadcast it to all processes.
 
-.. rubric:: Tuning Stripe Count (not typically needed)
+**Tuning Stripe Count (not typically needed)**
 
 .. note::
 
-   **IMPORTANT:** *The following steps are not typically needed on the Hera Lustre file systems. See the "ProgressiveFile Layouts" description above. Please open a support ticket prior to changing stripe parameters on your /scratch1or /scratch2 files.*
+   *The following steps are not typically needed on the Hera Lustre file systems. See the "Progressive File Layouts" description above. Please open a support ticket prior to changing stripe parameters on your /scratch1or /scratch2 files.*
 
-.. rubric:: General Guidelines
+**General Guidelines**
 
 It is *beneficial* to stripe a file when...
 
@@ -338,11 +341,11 @@ It is *beneficial* to stripe a file when...
 * You should stripe this large file so that it can perform the operation in parallel. The write will complete sooner and the amount of time the processors are idle will be reduced.
 * You have a large file that will not be accessed very frequently. You should stripe this file widely (with a larger stripe count), to balance the capacity across more OSTs. * This (in current Lustre version) requires rewriting the file.
 
-It is not always necessary to stripe files...
+It is not always necessary to stripe files.
 
 * If your program periodically writes several small files from each processor, you don't need to stripe the files   because they will be randomly distributed across the   OSTs.
 
-.. rubric:: Striping Best Practices
+**Striping Best Practices**
 
 * Newly created files and directories inherit the stripe settings of their parent directories.
 * You can take advantage of this feature by organizing your large and small files into separate directories, then setting a stripe count on the large-file directory so that all new files created in the directory will be automatically striped.
@@ -352,17 +355,17 @@ It is not always necessary to stripe files...
 
     mkdir dir1    lfs setstripe*c 8 dir1
 
-You can "pre-create" a file as a zero-length striped file byrunning lfs setstripe as part of your job script or as partof the I/O routine in your program. You can then write tothat file later. For example, to pre-create the file"bigdir.tar" with a stripe count of 20, and then add datafrom the large directory "bigdir," run:
+You can "pre-create" a file as a zero-length striped file by running lfs setstripe as part of your job script or as part of the I/O routine in your program. You can then write to that file later. For example, to pre-create the file"bigdir.tar" with a stripe count of 20, and then add data from the large directory "bigdir," run:
 
 .. code-block:: shell
 
     lfs setstripe*c 20 bigdir.tar    tar cf bigdir.tar bigdir
 
-Globally efficient I/O, from a system viewpoint, on a lustrefile system is similar to computational load balancing in aleader-worker programming model, from a user applicationviewpoint. The lustre file system can be called upon toservice many requests across a striped file systemasynchronously and this works best if best practices, asoutlined above, are followed. A very large file that is onlystriped across one or two OSTs can degrade the performanceof the entire Lustre system by filling up OSTsunnecessarily.
-By striping a large file over many OSTs, you increasebandwidth for accessing the file and can benefit from havingmany processes operating on a single file concurrently. Ifall large files accessed by all users are striped then I/Operformance levels can be enhanced for all users.
-Small files should never be striped with large stripe countsif they are striped at all. A good practice is to make suresmall files are written to a directory with a stripe countof 1... effectively no striping.
+Globally efficient I/O, from a system viewpoint, on a lustre file system is similar to computational load balancing in aleader-worker programming model, from a user application viewpoint. The lustre file system can be called upon to service many requests across a striped file system asynchronously, and this works best if best practices, outlined above, are followed. A very large file that is only striped across one or two OSTs can degrade the performanceof the entire Lustre system by filling up OST sunnecessarily.
+By striping a large file over many OSTs, you increase bandwidth for accessing the file and can benefit from having many processes operating on a single file concurrently. If all large files accessed by all users are striped then I/O performance levels can be enhanced for all users.
+Small files should never be striped with large stripe counts if they are striped at all. A good practice is to make sure small files are written to a directory with a stripe countof 1... effectively no striping.
 
-.. rubric:: Increase Stripe Count for Large Files
+**Increase Stripe Count for Large Files**
 
 * Set the stripe count of the directory to a large value.
 * This spreads the reads/writes across more OSTs, therefore   \**balancing*\* the load and data.
@@ -371,29 +374,29 @@ Small files should never be striped with large stripe countsif they are striped 
 
     lfs setstripe*c 30 /scratch1/your_project_dir/path/large_files/
 
-.. rubric:: Use a Small Stripe Count for Small Files
+**Use a Small Stripe Count for Small Files**
 
 * Place \**small files*\* on a single OST.
-* This causes the small files not to be spread   out/\**fragmented*\* across OSTs.
+* This causes the small files not to be spread out/\**fragmented*\* across OSTs.
 
 .. code-block:: shell
 
     lfs setstripe*c 1 /scratch1/your_project_dir/path/small_files/
 
-.. rubric:: Parallel IO Stripe Count
+**Parallel IO Stripe Count**
 
-* Single shared files should have a stripe count \**equal   to*\* (or a factor of) the number of processes which   access the file.
-* If the number of processes in your application is greater   than 106 (the number of HDD OSTs), use '-c*1' to use all   of the OSTs
-* The stripe size should be set to allow as much stripe   alignment as possible.
-* Try to keep each process accessing as few OSTs as  possible.
+* Single shared files should have a stripe count \**equal to*\* (or a factor of) the number of processes which access the file.
+* If the number of processes in your application is greater than 106 (the number of HDD OSTs), use '-c*1' to use all   of the OSTs
+* The stripe size should be set to allow as much stripe alignment as possible.
+* Try to keep each process accessing as few OSTs as possible.
 
 .. code-block:: shell
 
     lfs setstripe*s 32m*c 24 /scratch1/your_project_dir/path/parallel/
 
-You can specify the stripe count and size programmatically,by creating an MPI info object.
+You can specify the stripe count and size programmatically, by creating an MPI info object.
 
-.. rubric:: Single Stream IO
+**Single Stream IO**
 
 * Set the stripe count to 1 on a directory.
 * Write all files in this directory.
@@ -418,7 +421,7 @@ entire node even though you are using only a single core.
 
    The qsub command refers to “account”. Think of this as your group or project of which you might have several. Your “group” name is what you should provide as your “account”.
 
-.. rubric:: Using Anaconda Python on Hera
+**Using Anaconda Python on Hera**
 
 Please see
 `Anaconda/Miniconda <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=anaconda>`__
@@ -443,11 +446,11 @@ To stop logging your dependencies, delete the
 
    RDHPCS support staff does not have the available resources to support or maintain these packages. You will be responsible for the installation and troubleshooting of the packages you choose to install. Due to architectural and software differences some of the functionality in these packages may not work.
 
-.. rubric:: MATLAB
+**MATLAB**
 
 Information is available `here: <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Applications#MATLAB>`__
 
-.. rubric:: Using IDL on Hera
+**Using IDL on Hera**
 
 The IDL task can require considerable resources. It
 should not be run on a frontend node. It is recommended that
@@ -469,7 +472,7 @@ To run IDL on an “interactive queue”:
 
 IDL can be run from a normal batch job as well.
 
-.. rubric:: Multi-Threading in IDL
+**Multi-Threading in IDL**
 
 IDL is a multi-threaded program. By default, the number of
 threads is set to the number of CPUs present in the
@@ -487,7 +490,7 @@ TPOOL_NTHREADS = 1 . If a job requires larger than 10
 GBmemory, it is recommended to run the job on either the
 bigmem node or a whole node.
 
-.. rubric:: Using ImageMagick on Hera
+**Using ImageMagick on Hera**
 
 The ImageMagick module can be loaded on Hera with the
 following command:
@@ -512,7 +515,7 @@ including “convert”) should be run on a compute node for
 gang processing of many files, either via a normal batch job
 or via an interactive job.
 
-.. rubric:: Using R on Hera
+**Using R on Hera**
 
 R is a software environment for statistical computing and
 graphics. It is available on Hera as a module within the
@@ -563,7 +566,7 @@ Warning in install.packages("chron") :
 
 Reply with *y* and it will prompt you for a location.
 
-.. rubric:: Libraries
+**Libraries**
 
 A number of libraries are available on Hera. The following
 command can be used to list all the available libraries and
@@ -678,7 +681,7 @@ At a minimum you will want to do:
    Currently Loaded Modules:
       1) intel/18.0.5.274   2) impi/2018.0.4
 
-.. rubric:: Modules on Hera
+**Modules on Hera**
 
 The way to find the latest modules on Hera is to run
 **module avail** to see the list of available modules for
@@ -766,11 +769,11 @@ In some cases other required modules may be loaded for you. The Intel module man
    -  When unloading modules, only unload those that you have loaded. The others are done automatically from master modules.
    -  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
 
-.. rubric:: Loading Modules in batch jobs
+**Loading Modules in batch jobs**
 
 Any modules that you loaded when building your codes needs to be loaded when your job runs as well. This means that you must put the same module commands in your batch scripts that you ran before building your code.
 
- .. rubric:: Modules with sh, bash, and ksh scripts
+ **Modules with sh, bash, and ksh scripts**
 
 Due to the way the POSIX standard is defined for bash, sh, and ksh you **MUST** add the*l option (that is a lowercase L) to the shebang (e.g. #!/bin/sh) line at the top of your script for all sh, bash, or ksh batch scripts. For example:
 
@@ -785,14 +788,14 @@ Due to the way the POSIX standard is defined for bash, sh, and ksh you **MUST** 
 
 Failure to use*l will cause the module commands to fail and your job will not run properly and may crash in hard to diagnose ways.
 
- .. rubric::Additional Documentation on Lua modules
+ **dditional Documentation on Lua modules**
 
 Click  `here <http://lmod.readthedocs.org/en/latest/>`__ for more detailed information on Lua module utility.
 
 Using MPI
 =========
 
-.. rubric:: Loading the MPI module
+**Loading the MPI module**
 
 There are two MPI implementations available on Hera: Intel MPI and MVAPICH2. We recommend one of the following two combinations:
 
@@ -801,7 +804,7 @@ There are two MPI implementations available on Hera: Intel MPI and MVAPICH2. We 
 
 At least one of the MPI modules must be loaded before compiling and running MPI applications. These modules must be loaded before compiliing applications as well in your batch jobs before executing a parallel job.
 
-.. rubric:: Working with Intel Compilers and IntelMPI
+**Working with Intel Compilers and IntelMPI**
 
 At least one of the MPI modules must be loaded before **compiling** and **running** MPI applications. This is done as follows:
 
@@ -809,7 +812,7 @@ At least one of the MPI modules must be loaded before **compiling** and **runnin
 
     module load intel impi
 
-.. rubric:: Compiling and Linking MPI applications with IntelMPI
+**Compiling and Linking MPI applications with IntelMPI**
 
 For the primary MPI library, IntelMPI, the easiest way to compile applications is to use the appropriate wrappers: mpiifort, mpiicc, and mpiicpc.
 
@@ -820,19 +823,19 @@ For the primary MPI library, IntelMPI, the easiest way to compile applications i
 **Please note the extra "i" in "mpiifort" etc**
 
 
-.. rubric:: Launching MPI applications with IntelMPI
+**Launching MPI applications with IntelMPI**
 
 For instructions on how to run MPI applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
-.. rubric:: Launching an MPMD application with intel-mpi-library-documentation
+**Launching an MPMD application with intel-mpi-library-documentation**
 
 For instructions on how to run MPMD applications please see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
-.. rubric:: Launching OpenMP/MPI hybrid jobs with IntelMPI
+**Launching OpenMP/MPI hybrid jobs with IntelMPI**
 
 For instructions on how to request nodes in a way to support OpenMP/MPI hybrid applications see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
-.. rubric:: Note about MPI-IO and Intel MPI
+**Note about MPI-IO and Intel MPI**
 
 Intel MPI doesn't detect the underlying filesystem by default when using MPI-IO. You have to pass the following variables on to your application:
 
@@ -841,7 +844,7 @@ Intel MPI doesn't detect the underlying filesystem by default when using MPI-IO.
    export I_MPI_EXTRA_FILESYSTEM=on
    export I_MPI_EXTRA_FILESYSTEM_LIST=lustre
 
-.. rubric:: Using PGI and mvapich2
+**Using PGI and mvapich2**
 
 At least one of the MPI modules must be loaded before \*compiling\* and \*running\* MPI applications. This is done with as follows:
 
@@ -849,7 +852,7 @@ At least one of the MPI modules must be loaded before \*compiling\* and \*runnin
 
    module load pgi mvapich2
 
-.. rubric:: Compiling and Linking MPI applications with PGI and MVAPICH2
+**Compiling and Linking MPI applications with PGI and MVAPICH2**
 
 When compiling with the PGI compilers, please use the wrappers: mpif90, mpif77, mpicc, and mpicpp.
 
@@ -859,7 +862,7 @@ For compiling add
 
    mpif90*o hellof hellof.f90    mpicc*o helloc helloc.c    mpicpp*o hellocpp hellocpp.cpp
 
-.. rubric:: Launching MPI applications with MVAPICH2
+**Launching MPI applications with MVAPICH2**
 
 To launch MPI applications when using PGI and MVAPICH2, please use the srun command.
 
@@ -867,15 +870,15 @@ To launch MPI applications when using PGI and MVAPICH2, please use the srun comm
 
    module load pgi mvapich2    srun*n $NP ./application.exe
 
-.. rubric:: Launching OpenMP/MPI hybrid jobs with MVAPICH2 (TBD)
+**Launching OpenMP/MPI hybrid jobs with MVAPICH2 (TBD)**
 
 For instructions on how to request nodes in a way to support OpenMP/MPI hybrid applications see: `Running and Monitoring Jobs <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM>`__
 
-.. rubric:: Tuning MPI (TBD)
+**Tuning MPI (TBD)**
 
 Several options can be used to improve the performance of MPI jobs.
 
-.. rubric:: Profiling my MPI application with Intel MPI
+**Profiling my MPI application with Intel MPI**
 
 Add the following variables to get profiling information from your runs:
 
@@ -890,7 +893,7 @@ variable. Thread affinity can have a dramatic effect on the application speed.
 It is recommended to set KMP_AFFINITY to scatter to achieve optimal performance
 for most OpenMP applications. More information is `available <https://software.intel.com/en-us/node/522691>`__
 
-.. rubric:: Additional documentation on Intel MPI
+**Additional documentation on Intel MPI**
 
 Intel MPI is being tested. Some information will be added here as testing continues.
 The following is a link to the documentation for `Intel MPI 5: <https://software.intel.com/en-us/articles/intel-mpi-library-documentation>`__
@@ -901,20 +904,20 @@ Extensive documentation exists on the `Intel website. <https://software.intel.co
 The link above leads to the documentation library. There are options to control which documents are listed.
 Also see `Intel documentation on Cluster-Specific Tuning <https://software.intel.com/en-us/node/535603>`__.
 
-.. rubric:: Intel Trace Analyzer
+**Intel Trace Analyzer**
 
 Intel Trace Analyzer (formerly known as Vampir Trace) can be used for analyzing and troubleshooting MPI programs. The documentation for that can be found `here: <https://software.intel.com/sites/default/files/intel-trace-collector-2018-user-and-reference-guide.pdf>`__
 Even though we have modules created for "itac" for this utility, it may better to follow the instructions from the link above as the instructions for more recent versions may be different than when we created the module.
 
-.. rubric:: Additional documentation on using MVAPICH2:
+**Additional documentation on using MVAPICH2**
 
-`See the MVAPICH User Guide <https://mvapich.cse.ohio-state.edu/userguide/>`__
+See the `MVAPICH User Guide <https://mvapich.cse.ohio-state.edu/userguide/>`__
 
 
 Debugging Codes
 ===============
 
-.. rubric:: Program Troubleshooting Tips
+**Program Troubleshooting Tips**
 
 The following link from Intel offers general advice for
 `troubleshooting applications <https://software.intel.com/en-us/articles/determining-root-cause-of-sigsegv-or-sigbus-errors>`__
@@ -922,7 +925,7 @@ The following link from Intel offers general advice for
 If this isn't enough to determine the cause of the error you may have to use one of the debuggers
 (documented below) for further troubleshooting.
 
-.. rubric:: Debugging Intel MPI Applications
+**Debugging Intel MPI Applications**
 
 When troubleshooting MPI applications using Intel MPI, it may be helpful if the debug versions of
 the Intel MPI library are used. To do this,  use one of the following:
@@ -946,20 +949,20 @@ initialization files in your home directory (the file name and the syntax depend
    # For users with csh/tcsh as their login shell, please add this in your "$HOME/.cshrc" file
    limit coredumpsize unlimited
 
-.. rubric:: Application Debuggers
+**Application Debuggers**
 
 A GUI based debugger named DDT by ARM (Allinea) is available on Hera. Detailed documentation and video tutorials are available
 `here <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/training/arm-hpc-tools-webinars>`__
 and `here. <https://developer.arm.com/tools-and-software/server-and-hpc/arm-architecture-tools/documentation>`__
 
-.. rubric:: Invoking DDT on Hera with Intel IMPI
+**Invoking DDT on Hera with Intel IMPI**
 
 Please note: Since DDT is GUI debugger, interactions over a wide area
 network can be extremely slow. You may want to consider
 using a "Remote Desktop" which in our environment is X2GO as
 `documented  <https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Setting_up_and_using_x2go.>`__
 
-.. rubric:: Getting access to the compute resources for interactive use
+**Getting access to the compute resources for interactive use**
 
 For debugging you will need interactive access to the desired set of compute nodes using salloc with
 the desired set of resources:
@@ -970,7 +973,7 @@ the desired set of resources:
 
 At this point you are on a compute node.
 
-.. rubric:: Load the desired  modules
+**Load the desired  modules**
 
 .. code-block:: shell
 
@@ -986,7 +989,8 @@ appropriate syntax for your shell.
    % setenv ALLINEA_DEBUG_SRUN_ARGS "%jobid%*-gres=none*-mem-per-cpu=0*I*W0*-cpu-bind=none"
    %
 
-.. rubric:: Launch the application with the debugger
+**Launch the application with the debugger**
+
 .. code-block:: shell
 
    % ddt srun*n 4 ./hello_mpi_c-intel-impi-debug
@@ -996,7 +1000,7 @@ Please note that by default it seems to save your current
 state (breakpoints etc are saved for your next debugging
 session).
 
-.. rubric:: Using DDT
+**Using DDT**
 
 Some things should be intuitive, but we
 recommend you look through the vendor documentation links
@@ -1005,12 +1009,12 @@ shown above if you have questions.
 Profiling Codes
 ===============
 
-.. rubric:: Allinea Forge
+**Allinea Forge**
 
 Allinea Forge allows easy profiling of applications.
 Very brief instructions are included below and will be updated after the training by ARM.
 
--  Compile with*g
+-  Compile with *g*
 -  **Do not** move your source files; the path is hardwired
    and will not found if relocated
 -  Load the forge module with "module load forge"
@@ -1048,7 +1052,7 @@ capability.
 
    perf-report srun ./a.out
 
-.. rubric:: TAU
+**TAU**
 
 The "TAU Performance System® is a portable profiling and
 tracing toolkit for performance analysis of parallel
@@ -1077,7 +1081,7 @@ collected (ex: FLOPS/CYCLE).
 The event traces can be displayed with the Vampir, Paraver,
 or JumpShot tools.
 
-.. rubric:: Quick-start Guide for TAU
+**Quick-start Guide for TAU**
 
 The Quick-start Guide for TAU only addresses basic usage. Please
 keep in mind that this is an evolving document!
@@ -1085,12 +1089,12 @@ keep in mind that this is an evolving document!
 Find the Quick Start `here <https://heradocs.rdhpcs.noaa.gov/wiki/index.php?title=Quick-start_guide>`__
 
 
-.. rubric:: Tutorial slides for TAU
+**Tutorial slides for TAU**
 
 A set of slides presenting a recipe approach to beginning
 with Tau is available `here <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlMzcybEhXeUs2UjQ/view?usp=sharing>`__
 
-.. rubric:: MPI and OpenMP support
+**MPI and OpenMP support**
 
 TAU build supports profiling of both MPI and OpenMP applications.
 
@@ -1098,7 +1102,7 @@ The Quick-start Guide mentions using Makefile.tau-icpc-papi-mpi-pdt. This suppor
 MPI applications. You must use Makefile.tau-icpc-papi-mpi-pdt-openmp-opari for OpenMP
 profiling. Makefile.tau-icpc-papi-mpi-pdt-openmp-opari can be used for either MPI or OpenMP or both.
 
-.. rubric:: References
+**References**
 
 Documentation for `ARM <https://developer.arm.com/tools-and-software/server-and-hpc/debug-and-profile/arm-forge>`__
 
@@ -1111,9 +1115,9 @@ Documentation for `ARM <https://developer.arm.com/tools-and-software/server-and-
 
 
 Managing Contrib Projects
-=========================q
+=========================
 
-.. rubric:: Overview of Contrib Package
+**Overview of Contrib Package****
 
 The system staff do not have the resources to maintain every
 piece of software requested. There are also cases where
@@ -1124,7 +1128,7 @@ inefficient. To support these needs, we have developed a
 maintained by a user on the system. The system staff are not
 responsible for the use or maintenance of these packages.
 
-.. rubric:: Responsibilities of a Contrib Package Maintainer
+**Responsibilities of a Contrib Package Maintainer**
 
 Maintainers are expected to:
 
@@ -1137,7 +1141,7 @@ Maintainers are expected to:
 -  Respond to user email requests for help using the
    software
 
-.. rubric:: Guidelines for Contrib Packages
+**Guidelines for Contrib Packages**
 
 -  The package should be a single program or toolset.
 -  We want to prevent having a single directory being a
@@ -1150,7 +1154,7 @@ Maintainers are expected to:
 -  We expect each package to have less than 100 files. If you need more, please tell us when you request your
    package.
 
-.. rubric:: Requesting to be a Contrib Package Maintainer
+**Requesting to be a Contrib Package Maintainer**
 
 If you wish to maintain a package in contrib, please send a
 request to the Help System with:
@@ -1164,7 +1168,7 @@ unix group write permissions may be granted for the
 directory. In that case, specify the unix group that will be
 maintaining the package.)
 
-.. rubric:: Managing a Contrib Package
+**Managing a Contrib Package**
 
 After your request has been approved to use space in the
 /contrib directory, two directories will be created for you:
@@ -1187,7 +1191,7 @@ manage multiple package, please request multiple /contrib
 package. You can do this all at one time when submitting
 your request to the Help System.
 
-.. rubric:: Contrib Package Directory Naming Conventions
+**Contrib Package Directory Naming Conventions**
 
 When installing software into your /contrib directory, first
 determine if this is software that should be versioned
@@ -1219,7 +1223,7 @@ software directly into your package directory:
 
     /contrib/$MYDIR/
 
-.. rubric:: Providing Modules to Access Contrib Installed Software
+**Providing Modules to Access Contrib Installed Software**
 
 For each contrib package, a corresponding directory will be
 created for modules. The base directory name is
@@ -1241,7 +1245,7 @@ is (ex: tools or dat). For versioned software, the name of
 the module file should be the version number ($VER). See
 below for information on how to create modules.
 
-.. rubric:: Creating Modules for Contrib Packages
+**Creating Modules for Contrib Packages**
 
 There are example modules found here:
 
@@ -1259,7 +1263,7 @@ must follow these conventions:
 -  Please ask questions through the Help System regarding
    how to construction modules.
 
-.. rubric:: Specifying a Default Module
+**Specifying a Default Module**
 
 If you have multiple versions of a package installed, it is
 good practice to set which one is the default for the user.
@@ -1324,7 +1328,7 @@ been generally referred to as the Traditional Computing
 Architecture (TCA) and these two abbreviation TCA and FGA
 will be used in this document to refer to these two systems.
 
-.. rubric:: System Information
+**System Information**
 
 -  The FGA system consists of a total of 100 nodes (named
    tg001 through tg100)
@@ -1349,7 +1353,7 @@ depending on the application it may be necessary to compile
 your application on a FGA compute node by getting access to
 an interactive compute node in the "fge" queue.
 
-.. rubric:: Getting an allocation for FGA resources
+**Getting an allocation for FGA resources**
 
 All projects with an
 allocation on Hera have windfall access to FGA resources.
@@ -1376,7 +1380,7 @@ an entire node (including the GPUs) only full node will be
 available for allocation (although the bookkeeping will be
 done in core-hours).
 
-.. rubric:: Using FGA resources without an allocation
+**Using FGA resources without an allocation**
 
 Users that do not have allocations on the FGA system will
 have access to the FGA system at windfall priority.　 Which
@@ -1392,7 +1396,7 @@ QoS by including the following:
 
       sbatch*p fgewf*q windfall ...
 
-.. rubric:: User Environment
+**User Environment**
 
 Since the FGA is part of Hera, there are no separate login
 nodes for using the FGA. When you log in to Hera you will be
@@ -1403,7 +1407,7 @@ their associated modules that are useful only on the FGA. A
 couple of examples of this are cuda and mvapich2-gdr
 libraries.
 
-.. rubric:: Compiling and Running Codes on the FGA
+**Compiling and Running Codes on the FGA**
 
 Please keep in mind that the software stacks on the FGA
 machines are slightly different from regular Hera TCA nodes
@@ -1417,7 +1421,7 @@ only on a compute node after obtaining a shell on one of the
 FGA compute nodes by submitting an interactive batch job to
 the "fge" or the "fgews" QoS.**
 
-.. rubric:: Compiling and Running Codes Using CUDA
+**Compiling and Running Codes Using CUDA**
 
 Compilation for non-MPI applications may be done either on
 the front-ends or on compute nodes. But generally we
@@ -1441,7 +1445,7 @@ for compiling codes for the Pascal GPUs
 
    $ nvcc -gencode arch=compute_60,code=sm_60 mycode.cu
 
-.. rubric:: Compiling and Running Codes Using Intel MPI
+**Compiling and Running Codes Using Intel MPI**
 
 If you're using Intel MPI (with or without cuda; see the
 note above if you're using cuda), compilation may be done on
@@ -1481,7 +1485,7 @@ software is also different on the FGA nodes. The FGA nodes
 do not support the TMI fabric setting which is the default
 on the regular Hera nodes.
 
-.. rubric:: Compiling and Building Codes Using mvapich2-gdr Library
+**Compiling and Building Codes Using mvapich2-gdr Library**
 
 The MVAPICH2-GDR (GDR stands for GPUDirect RDMA) from Ohio
 State University is available for experimentation and
@@ -1518,7 +1522,7 @@ variables in your job file:
    env LD_PRELOAD=$MPIROOT/lib64/libmpi.so
    mpirun -np $PBS_NP ./myexe
 
-.. rubric:: Compiling and Building Codes Using OpenMPI
+**Compiling and Building Codes Using OpenMPI**
 
 The OpenMPI implimentation of MPI is available for
 experimentation and testing on the FGA nodes. The current
@@ -1546,7 +1550,7 @@ variables in your job file:
 The following link has additional information on using
 OpenMPI, particularly for `CUDA enabled applications <https://www.open-mpi.org/faq/?category=runcuda>`__
 
-.. rubric:: Compiling codes with OpenACC directives on Hera
+**Compiling codes with OpenACC directives on Hera**
 
 OpenACC directive based programming is available with the
 PGI compilers. It is best to load the most recent PGI
@@ -1558,7 +1562,7 @@ compile a serial program that has OpenACC directives:
    module load pgi cuda        # Please consider loading the latest versions of these
    pgf90 -acc -ta=nvidia,cc60,nofma -Minfo=accel -Msafeptr myprog.f90
 
-.. rubric:: Compiling MPI codes with OpenACC directives on Hera
+**Compiling MPI codes with OpenACC directives on Hera**
 
 We have limited experience of using these new technologies,
 so the best we can do with this point is point you to the
@@ -1566,7 +1570,7 @@ so the best we can do with this point is point you to the
 The following link has a presentation on some advanced
 topics on using `multiple GPUs <http://on-demand.gputechconf.com/gtc/2016/webinar/openacc-course/Advanced-OpenACC-Course-Lecture2--Multi-GPU-20160602.pdf>`__
 
-.. rubric:: Submitting Batch Jobs to the FGA System
+**Submitting Batch Jobs to the FGA System**
 
 Users that have FGE specific allocation they can submit jobs
 to the "fge" partition. Users that don't have an FGE
@@ -1581,7 +1585,7 @@ FGA nodes have a maximum of 20 cores per node (Hera TCA has
 Please see the following link regarding `Hera partitions
 <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs_on_Jet_and_Hera(Theia)_-_SLURM#Hera_Partitions>`__
 
-.. rubric:: Hints on Rank Placement/Performance Tuning
+**Hints on Rank Placement/Performance Tuning**
 
 .. NOTE::
 
@@ -1728,7 +1732,7 @@ specific cores on the second socket is shown below:
      ;;
    esac
 
-.. rubric:: Rank placement when using mvapich2
+**Rank placement when using mvapich2**
 
 For MVAPICH2 the following seems to work to place all the
 ranks on the second socket. In this example, I'm using two nodes, and trying to run eight tasks, and place them only| on the second socket on each node:
@@ -1754,9 +1758,9 @@ in the future to set it by default.
 
 For more details, see the `MVAPICH2 user guide <http://mvapich.cse.ohio-state.edu/static/media/mvapich/mvapich2-2.2-userguide.pdf>`__
 
-.. rubric:: Using Nvidia Multi-Process Servi
+**Using Nvidia Multi-Process Servi**
 
-.. rubric:: What is MPS
+**What is MPS**
 
 Multi-Process Service (MPS) is a service that allows
 multiple tasks on a node to share a GPU.
@@ -1773,12 +1777,7 @@ the GPU and have more MPI tasks on each node.
 The performance benefits of taking this approach are very
 much application dependent.
 
-.. rubric:: How do I use MPS
-
-**Please ignore the section below on starting and stopping
-the MPS daemon; It is configured to automatically start on
-all the FGE nodes, so this part about starting and the
-stopping is not necessary any more.**
+**How do I use MPS**
 
 In the example below, we describe the simplest use case and
 we will update the documentation as we gather more
@@ -1786,11 +1785,6 @@ experience. For the simplest case, we will consider running an MPI
 application on just one node after getting access to a FGA
 compute node by submitting an interactive batch job to the
 fge queue.
-
-Note: For the more advanced use case, the necessary setup
-for starting the deamon on all the nodes etc. may be a
-little more complicated, but the same principle should
-apply.
 
 Assuming you have obtained an interactive compute node as
 mentioned above:
@@ -1834,11 +1828,11 @@ mentioned above:
 
       $ echo quit | nvidia-cuda-mps-control
 
-.. rubric:: Documentation for MPS
+**Documentation for MPS**
 
 For additional details see the `Overview <https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf>`__
 
-.. rubric:: Compiling and Building Codes With The Cray Programming Environment
+**Compiling and Building Codes With The Cray Programming Environment**
 
 A custom built version of mvapich2 must be used when compiling and running with
 the Cray Programming Environment (CrayPE). To run an MPI
@@ -1873,9 +1867,11 @@ modules:
 
 Then compile the program. The compiler drivers are
 
-:cc: c code
-:ftn: fortran
-:CC: c++ code
+.. code-block:: shell
+
+   :cc: c code
+   :ftn: fortran
+   :CC: c++ code
 
 .. note::
 
@@ -2034,7 +2030,7 @@ example only uses the lrank=0,1 case branches but the user
 is encouraged to exeriment with
 other placement strategies.
 
-.. rubric:: Some helpful web resources
+**Some helpful web resources**
 
 - https://www.openacc.org/
 - https://www.openacc.org/resources
@@ -2045,7 +2041,7 @@ other placement strategies.
 - http://www.pgroup.com/userforum/index.php
 - https://stackoverflow.com/questions/tagged/openacc
 
-.. rubric:: Getting Help
+**Getting Help**
 
 As with any Hera issue, send email to:
 rdhpcs.hera.help@noaa.gov.
