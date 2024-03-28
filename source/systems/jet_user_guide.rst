@@ -4,104 +4,68 @@
 Jet User Guide
 **************
 
-.. rubric Jet System Information
 
 The Jet system includes several partitions that have been
 installed over time. Currently Jet consists of six compute
 partitions, plus four bigmem nodes, totaling 57,744 coes, @
 1.884 PF.
 
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Part  | tJet  | uJet  | sJet  | vJet  | x     | b     | kJet  |
-| ition |       |       |       |       | Jet\* | igmem |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Year  | 2010  | 2011  | 2012  | 2014  | 2015  | 2015  | 2018  |
-|       |       |       |       |       | /2016 |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| CPU   | Intel | Intel | Intel | Intel | Intel | Intel | Intel |
-| Type  | Wes   | Wes   | S     | IvyB  | Ha    | Ha    | Sk    |
-|       | tmere | tmere | andyB | ridge | swell | swell | ylake |
-|       |       |       | ridge |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| CPU   | X5650 | X5650 | X5    | E5-2  | E5-2  | E5-2  | 6148  |
-| Model |       |       | -2670 | 650v2 | 670v3 | 670v3 |       |
-| #     |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| CPU   | 2.66  | 2.66  | 2.6   | 2.6   | 2.3   | 2.3   | 2.4   |
-| Speed | GHz   | GHz   | GHz   | GHz   | GHz   | GHz   | GHz   |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Total | 758   | 238   | 330   | 288   | 812   | 4     | 404   |
-| Nodes |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Total | 9096  | 2856  | 5120  | 4608  | 19488 | 96    | 14400 |
-| Cores |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Cores | 12    | 12    | 16    | 16    | 24    | 24    | 40    |
-| /node |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| M     | 2 GB  | 2 GB  | 2GB   | 4 GB  | 2.66  | 10.6  | 2.4   |
-| emory |       |       |       |       | GB    | GB    | GB    |
-| /Core |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| M     | 24 GB | 24 GB | 32 GB | 64 GB | 64 GB | 256   | 96 GB |
-| emory |       |       |       |       |       | GB    |       |
-| /Node |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Avai  | 21 GB | 21 GB | 29 GB | 61 GB | 61 GB | 253   | 93 GB |
-| lable |       |       |       |       |       | GB    |       |
-| Mem/N |       |       |       |       |       |       |       |
-| ode\* |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Peak  | 127.7 | 127.7 | 332.8 | 332.8 | 883   | 883   | 2048  |
-| Flops | GF    | GF    | GF    | GF    | GF    | GF    | GF    |
-| /node |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Rel   | 1.00  | 1.00  | 1.44  | 1.65  | 1.5   | 1.5   | 1.68  |
-| ative |       |       |       |       |       |       |       |
-| Perf  |       |       |       |       |       |       |       |
-| /Core |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| In    | QDR   | QDR   | QDR   | FDR   | FDR   | FDR   | EDR   |
-| terco | Infin | Infin | Infin | Infin | Infin | Infin | Infin |
-| nnect | iband | iband | iband | iband | iband | iband | iband |
-+-------+-------+-------+-------+-------+-------+-------+-------+
-| Total | 96.8  | 30.4  | 113.2 | 93.6  | 717.4 | 3.5   | 827   |
-| Fl    | TF    | TF    | TF    | TF    | TF    | TF    | TF    |
-| ops\* |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Partition          | tJet           | uJet           | sJet           | vJet           | xJet\*         | bigmem         | kJet           |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Year               | 2010           | 2011           | 2012           | 2014           | 2015/16        | 2015           | 2018           |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| CPU Type           | Intel          | Intel          | Intel          | Intel          | Intel          | Intel          | Intel          |
+|                    | Westmere       | Westmere       | SandyBridge    | IvyBridge      | Haswell        | Haswell        | Skylake        |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| CPU Model#         | X5650          | X5650          | X5-2670        | E5-2650v2      | E5-2670v3      | E5-2670v3      | 6148           |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| CPU Speed          | 2.66 GHz       | 2.66 GHz       | 2.6 GHz        | 2.6 GHz        | 2.3 GHz        | 2.3 GHz        | 2.4 GHz        |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Total Nodes        | 758             | 238           | 330            | 288            | 812            | 4              | 404            |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Total Cores        | 9096           | 2856           | 5120           | 4608           | 19488          | 96             | 14400          |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Cores/node         | 12             | 12             | 16             | 16             | 24             | 24             | 40             |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Memory/Core        | 2 GB           | 2 GB           | 2GB            | 4 GB           | 2.66 GB        | 10.6 GB        | 2.4 GB         |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Memory/Node        | 24 GB          | 24 GB          | 32 GB          | 64 GB          | 64 GB          | 256            | 96 GB          |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Available Mem/Node | 21 GB          | 21 GB          | 29 GB          | 61 GB          | 61 GB          | 253            | 93 GB          |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Peak Flops/Node    | 127.7 GF       | 127.7          | 332.8          | 332.8          | 883            | 883            | 2048           |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Relative Perf/Core | 1.00           | 1.00           | 1.44           | 1.65           | 1.5            | 1.5            | 1.68           |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Interconnect       | QDR Infiniband | QDR Infiniband | QDR Infiniband | FDR Infiniband | FDR Infiniband | FDR Infiniband | EDR Infiniband |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| Total Flops*       | 96.8 TF        | 30.4           | 113.2          | 93.6           | 717.4          | 3.5            | 827            |
++--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
 
-.. Note .. code-block:: shell
+.. Note :: 
 
-Notes:
+   - Jet's Front Ends (service partition) are of the same architecture as the xJet compute nodes.
+   - Total flops is a theoretical peak and does not represent actual performance.
+   - Relative performance is based on SPEC CPU 2017 (specifically SPECrate 2017 Floating Point) benchmark. It is normalized by the slowest core in production.
+   -  Available Memory/Node is the total memory available to application. The difference between this value and the total available memory is due to OS overhead and other system buffers.
 
--  Jet's Front Ends (service partition) are of the same
-   architecture as the xJet compute nodes.
--  Total flops is a theoretical peak and does not represent
-   actual performance.
--  Relative performance is based on SPEC CPU 2017
-   (specifically SPECrate 2017 Floating Point) benchmark. It
-   is normalized by the slowest core in production.
--  Available Memory/Node is the total memory available to
-   application. The difference between this value and the
-   total available memory is due to OS overhead and other
-   system buffers.
-
-System Features:
+**System Features:**
 
 -  Total of 55,984 cores of 64-bit Intel CPU’s,
 -  Capability of 1,795 trillion floating point operations
    per second – or 1.79 petaflops,
 -  Total scratch disk capacity of 6.6 Petabytes
 
-.. rubric .. code-block:: shell File Systems
+**File Systems**
 
-==.. rubric:: ====.. rubric:: =======
-name type   size
-lfs1 Lustre 3540 TB
-lfs4 Lustre 4500 TB
-==.. rubric:: ====.. rubric:: =======
-
-.. rubric .. code-block:: shell NOAA Boulder RDHPCS History
++------+--------+---------+
+| Name | Type   | Size    |
++------+--------+---------+
+| lfs1 | Lustre | 3540 TB |
++------+--------+---------+
+| lfs4 | Lustre | 4500 TB |
++------+--------+---------+
 
 For decades, NOAA weather research has relied on High Performance
 Computing to further its mission of developing
@@ -111,8 +75,6 @@ development of leading edge software as well as the adoption
 of cutting edge hardware technologies to push forward the
 envelope of what is computationally feasible.
 
-.. rubric .. code-block:: shell Intel Paragon
-
 Intel Paragon was an early parallel system, delivered in
 1991 and was used for the development of a parallel RUC
 model. Researchers at GSL also developed the Scalable
@@ -121,8 +83,6 @@ codes. To further development of parallel programming
 standards GSL staff members participated in the development
 of the MPI-1 and MPI-2 standards, which provided a common
 basis for the parallel computational methods used today.
-
-.. rubric .. code-block:: shell Jet
 
 In 2000, GSL took delivery of an HPC system relying on a
 relatively new concept, clustering. Very similar to a
@@ -136,99 +96,14 @@ Now Jet refers to any of the clustered systems that have
 passed through GSL since 2000 and are used to support NOAA
 Research and Development High Performance Computing (RDHPC)
 requirements for GSL and other NOAA offices, including the
-Hurricane Forecast Improvement Project (HFIP) since 2009. A
-history of those systems:
+Hurricane Forecast Improvement Project (HFIP) since 2009. 
 
-+----------+----------+----------+-------+-------+--------+----------+
-| System   | Date     | P        | Nodes | Cores | Gflops | I        |
-|          |          | rocessor |       |       |        | ntegrato |
-|          |          |          |       |       |        | r/Vendor |
-+----------+----------+----------+-------+-------+--------+----------+
-| Jet      | Jan 2000 | Compaq   | 276   | 276   | 368    | High     |
-|          |          | Alpha    |       |       |        | Per      |
-|          |          | 21264,   |       |       |        | formance |
-|          |          | 667Mhz   |       |       |        | Tech     |
-|          |          |          |       |       |        | nologies |
-|          |          |          |       |       |        | Inc.     |
-|          |          |          |       |       |        | (HPTi    |
-|          |          |          |       |       |        | )/Compaq |
-+----------+----------+----------+-------+-------+--------+----------+
-| aJet     | Aug 2001 | Alpha    | 276   | 284   | 473    | HP       |
-|          |          | P        |       |       |        | Ti/Alpha |
-|          |          | rocessor |       |       |        | P        |
-|          |          | Inc.     |       |       |        | rocessor |
-|          |          | 21264,   |       |       |        | Inco     |
-|          |          | 833Mhz   |       |       |        | rporated |
-+----------+----------+----------+-------+-------+--------+----------+
-| iJet     | Aug 2002 | Intel    | 276   | 1536  | 6758   | HP       |
-|          |          | Pentium  |       |       |        | Ti/Aspen |
-|          |          | 4,       |       |       |        | Systems  |
-|          |          | 2.2Ghz   |       |       |        |          |
-+----------+----------+----------+-------+-------+--------+----------+
-| eJet     | Aug 2004 | Intel    | 276   | 598   | 3827   | HP       |
-|          |          | Nocona,  |       |       |        | Ti/Aspen |
-|          |          | 3.2Ghz   |       |       |        | Systems  |
-+----------+----------+----------+-------+-------+--------+----------+
-| wJet     | Jan 2006 | Intel    | 276   | 1440  | 15321  | R        |
-|          |          | Wo       |       |       |        | aytheon/ |
-|          |          | odcrest, |       |       |        | Rackable |
-|          |          | 2.66Ghz  |       |       |        |          |
-+----------+----------+----------+-------+-------+--------+----------+
-| hJet     | Aug 2008 | Intel    | 276   | 2016  | 23244  | Raythe   |
-|          |          | Har      |       |       |        | on/Aspen |
-|          |          | pertown, |       |       |        | Systems  |
-|          |          | 2.8Ghz   |       |       |        |          |
-+----------+----------+----------+-------+-------+--------+----------+
-| nJet     | Aug 2009 | Intel    | 448   | 3584  | 40140  | Raythe   |
-|          |          | Nehalem, |       |       |        | on/Aspen |
-|          |          | 2.8Ghz   |       |       |        | Systems  |
-+----------+----------+----------+-------+-------+--------+----------+
-| tJet     | Aug 2010 | Intel    | 844   | 10128 | 107762 | Raythe   |
-|          |          | W        |       |       |        | on/Aspen |
-|          |          | estmere, |       |       |        | Systems  |
-|          |          | 2.66Ghz  |       |       |        |          |
-+----------+----------+----------+-------+-------+--------+----------+
-| uJet     | Aug 2011 | Intel    | 504   | 6048  | 64351  | Computer |
-|          |          | W        |       |       |        | Sciences |
-|          |          | estmere, |       |       |        | Cor      |
-|          |          | 2.66Ghz  |       |       |        | poration |
-|          |          |          |       |       |        | (CS      |
-|          |          |          |       |       |        | C)/Aspen |
-|          |          |          |       |       |        | Systems  |
-+----------+----------+----------+-------+-------+--------+----------+
-| sJet     | Aug 2012 | Intel    | 340   | 5440  | 113152 | C        |
-|          |          | Sandy    |       |       |        | SC/Appro |
-|          |          | Bridge,  |       |       |        |          |
-|          |          | 2.6Ghz   |       |       |        |          |
-+----------+----------+----------+-------+-------+--------+----------+
-| vJet     | Aug 2014 | Intel    | 288   | 4680  | 97344  | C        |
-|          |          | Ivy      |       |       |        | SC/Aspen |
-|          |          | Bridge,  |       |       |        | Systems  |
-|          |          | 2.6Ghz   |       |       |        |          |
-+----------+----------+----------+-------+-------+--------+----------+
-| xJet     | Aug 2015 | Intel    | 336   | 8064  | 296755 | C        |
-|          |          | Haswell, |       |       |        | SC/Aspen |
-|          |          | 2.3Ghz   |       |       |        | Systems  |
-+----------+----------+----------+-------+-------+--------+----------+
-| xJet     | Aug 2016 | Intel    | 480   | 11520 | 423936 | CSRA     |
-| E        |          | Haswell, |       |       |        | /Silicon |
-| xpansion |          | 2.3Ghz   |       |       |        | M        |
-|          |          |          |       |       |        | echanics |
-+----------+----------+----------+-------+-------+--------+----------+
-| kJet     | Feb 2019 | Intel    | 360   | 14400 | 754688 | CS       |
-|          |          | Skylake, |       |       |        | RA/Aspen |
-|          |          | 2.4Ghz   |       |       |        | Systems  |
-+----------+----------+----------+-------+-------+--------+----------+
-| kJet exp | Dec 2019 | Intel    | 44    | 1760  | 92240  | CS       |
-|          |          | Skylake, |       |       |        | RA/Aspen |
-|          |          | 2.4Ghz   |       |       |        | Systems  |
-+----------+----------+----------+-------+-------+--------+----------+
+GPU Clusters
+------------
 
-.. rubric:: GPU Clusters
-
-As GSL was researching and experimenting with clustered HPC
-systems in the late 1990s which drove adoption of clustered
-systems in 2000, GSL is continuing to research potentially
+GSL researched and experimented with clustered HPC
+systems in the late 1990s, which drove adoption of clustered
+systems in 2000. GSL continues to research potentially
 disruptive, next generation HPC technologies. Graphical
 Processing Units, GPUs, are traditionally used for graphics
 and video gaming, but their design is applicable to
@@ -243,7 +118,8 @@ tomorrow's weather and hurricane prediction challenges.
 
 About Modules
 =============
-Modules is a tool that is used to manage the use of softwarewhen multiple versions are installed. For packages that arenot provided with the OS (compilers, debuggers, MPI stacks,etc), we install so that new versions to not overwrite oldversions.
+
+Modules is a tool to manage the use of software when multiple versions are installed. For packages that are not provided with the OS (compilers, debuggers, MPI stacks,etc), we install them so that new versions to not overwrite old versions.
 By default, no modules are loaded. Therefore you must loadany modules that you wish to use. To see what modules areavailable, run:
 
 .. code-block:: shell
@@ -257,11 +133,14 @@ At a minimum you will want to load a compiler and an MPIstack:
    $ module load intel
    $ module load mvapich2
 
-**Note:** Since you have to do this explicitly (for now), you also have to do it in your job scripts. Or, you can put it in your .profile and make it permanent.
+.. note::
 
-.. rubric:: Modules on Jet
+   Since you have to do this explicitly (for now), you also have to do it in your job scripts. Or, you can put it in your .profile and make it permanent.
 
-The way to find the latest modules on Jet is to run module avail:
+Modules on Jet
+---------------
+
+To find the latest modules on Jet, run module avail:
 
 .. code-block:: shell
 
@@ -321,7 +200,9 @@ or
 
    # module switch intel intel/11.1.080
 
-**Note:** When unloading modules, only unload those that you have loaded. The others are done automatically from master   modules.-  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
+.. Note::
+
+   When unloading modules, only unload those that you have loaded. The others are done automatically from master   modules.-  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
 
 
 Using Math Libraries
@@ -336,14 +217,16 @@ Below are provided several examples that should help most of
 the users on our system.
 
 
-.. rubric:: Location of MKL on Jet
+Location of MKL on Jet
+----------------------
 
 **MKL** is specific to the version of the Intel compiler used.
 After loading the compiler version you require, the variable
 **$MKLROOT** will be defined that specifies the path to the
 MKL library. Use this variable.
 
-.. rubric:: Basic Linking with BLAS and LAPACK
+Basic Linking with BLAS and LAPACK
+----------------------------------
 
 To link with the mathematical libraries such as BLAS,
 LAPACK, and the FFT routines, it is best to just add the
@@ -353,18 +236,12 @@ following option to your link line:
 
    -mkl=sequential
 
-**Note:** There is no lower case L in front of mkl.
-This will include all of the libraries you will need. The
-sequential option is important because by default Intel MKL
-will use threaded (OpenMP like) versions of the library. In
-MPI applications you rarely want to do this. Even if you are
-using OpenMP/MPI hybrids, only consider removing the
-sequential option if you want the actual math routines to be
-parallel, not the whole code (Ex: GFS uses OpenMP, but
-relies on sequential math routines, so you would want to use
-sequential for that code).
+.. Note::
 
-.. rubric:: Linking with FFT, and the FFTW interface
+   There is no lower case L in front of mkl.This will include all of the libraries you will need. The sequential option is important because by default Intel MKL will use threaded (OpenMP like) versions of the library. InMPI applications you rarely want to do this. Even if you are using OpenMP/MPI hybrids, only consider removing the sequential option if you want the actual math routines to be parallel, not the whole code (Ex: GFS uses OpenMP, butrelies on sequential math routines, so you would want to usesequential for that code).
+
+Linking with FFT, and the FFTW interface
+----------------------------------------
 
 Intel provides highly optimized FFT routines within MKL.
 They are documented `here <https://software.intel.com/en-us/articles/the-intel-math-kernel-library-and-its-fast-fourier-transform-routines/>`__.
@@ -395,19 +272,20 @@ When compiling, add:
 to your CFLAGS and/or FFLAGS. When linking, use the steps
 described above.
 
-.. rubric:: Linking with Scalapack
+Linking with Scalapack
+----------------------
 
 Linking with Scalapack is more complicated because it uses
 MPI. You have to specify which version of the MPI library
 you are using when linking with Scalapack. Examples are:
 
-.. rubric:: Linking with Scalapack and mvapich
+**Linking with Scalapack and mvapich**
 
 .. code-block:: shell
 
    LDFLAGS=-L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core
 
-.. rubric:: Linking with Scalapack and OpenMPI
+**Linking with Scalapack and OpenMPI**
 
 .. code-block:: shell
 
@@ -417,7 +295,7 @@ In the example above, the variable $(MKLROOT) is used. Use
 this variable name, not the explicit path for the Intel
 compiler.
 
-.. rubric:: Linking math libraries with Portland Group
+**Linking math libraries with Portland Group**
 
 For the PGI compiler, all you need to do is specify the
 library name.
@@ -434,39 +312,12 @@ For lapack:
 
    -llapack
 
-Options for Editing on Jet
-==========================
-
-To use any of these editors, type the name in at the command line:
-
-+----------+--------------------------------------------------------------+
-| vi       | `<http://www.linuxlookup.com/howto/using_vi_text_editor>`_   |
-|          | - The old school standard editor. It is a text based         |
-|          | editor (although X window versions do exist).                |
-+----------+--------------------------------------------------------------+
-| emacs    | `<http://www.nedit.org/help/index.php>`_ - An editor mos t   |
-|          | like what you would find in Windows.                         |
-+----------+--------------------------------------------------------------+
-| nedit    | `<http://www.nedit.org/help/index.php>`_ - An editor most    |
-|          | like what you would find in Windows.                         |
-+----------+--------------------------------------------------------------+
-| nano     | It is just like nedit, easier to learn than vi, and does     |
-|          | not require X11.                                             |
-+----------+--------------------------------------------------------------+
-| vimdiff  | extremely useful for visualizing the difference between      |
-|          | source code files. It opens many files vi windows            |
-|          | side-by-side and highlights any differences between the      |
-|          | files. The user can edit the differences directly. Super     |
-|          | useful for code development.                                 |
-+----------+--------------------------------------------------------------+
-| gvimdiff | X11 version of vimdiff with mouse support.                   |
-+----------+--------------------------------------------------------------+
-
 
 Starting a Parallel Application
 ===============================
 
-.. rubric:: Supported MPI Stacks
+Supported MPI Stacks
+--------------------
 
 We currently support two MPI stacks on Jet,
 `Mvapich2 <https://mvapich.cse.ohio-state.edu/overview/>`__
@@ -482,7 +333,8 @@ Requests <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Request
 and explain why so we can better understand your
 requirements.
 
-.. rubric:: Load MPI Stacks Via Modules
+Load MPI Stacks Via Modules
+---------------------------
 
 The MPI libraries are compiler specific. Therefore a
 compiler must be loaded first before the MPI stacks become
@@ -511,7 +363,8 @@ loaded. You can load the module with command:
    require unless you are tracking down bugs or by request of
    the Jet Admin staff.
 
-.. rubric:: Launching Jobs
+Launching Jobs
+--------------
 
 On Jet, please use mpiexec. This is a wrapper script that
 sets up your run environment to match your batch job and use
@@ -521,7 +374,8 @@ process affinity (which provides better performance).
 
    mpiexec -np $NUM_OF_RANKS
 
-.. rubric:: Launching MPMD jobs
+Launching MPMD jobs
+-------------------
 
 MPMD (multi-program, multi-data) programs are typically used
 for coupled MPI jobs, for example oceans and atmosphere.
@@ -535,7 +389,8 @@ For example:
 Of the 60 MPI ranks, the first 36 will be ocean.exe process,
 and the last 24 will be the atm.exe process.
 
-.. rubric:: MPI Library Specific Options
+MPI Library Specific Options
+----------------------------
 
 The MPI standard does not explicitly define how
 implementations are done between the libraries. Therefore, a
@@ -543,7 +398,7 @@ single call to mpiexec can never be guaranteed to work
 across different libraries. Below are the important
 differences between the the ones that we support.
 
-.. rubric:: Passing Environment Variables
+**Passing Environment Variables**
 
 There are two methods to pass variables to MPI processes,
 global (-genv) and local (-env). The global ones are applied
@@ -581,21 +436,21 @@ just do:
 
    -genvall
 
-**Note:** This may have unintended consequences and may not work
-depending how large your environment is. We recommend you
-explicitly pass what you need to pass to the MPI processes.
+.. Note::
 
-If you need to pass different variables to different
-processes in an MPMD configuration, an example of the syntax
+   This may have unintended consequences and may not work depending how large your environment is. We recommend you explicitly pass what you need to pass to the MPI processes. 
+   
+If you need to pass different variables to different processes in an MPMD configuration, an example of the syntax
 would be:
 
 .. code-block:: shell
 
    mpiexec -np 4 -env OMP_NUM_THREADS=2 ./ocean.exe | -np 8 -env OMP_NUM_THREADS=3 ./atm.exe
 
-.. rubric:: OpenMPI Specific Options
+OpenMPI Specific Options
+------------------------
 
-.. rubric:: Passing Environment Variables
+**Passing Environment Variables**
 
 The option -x is used to pass variables.
 To pass a variable with its value:
@@ -621,45 +476,93 @@ definitions. There is no way to pass a variable to all
 processes of an MPMD application with a single usage of
 **-x**.
 
+Profiling Applications
+======================
+Application profiling is the process by which performance
+deficiencies are identified in applications. Gaining this
+insight is the first step to improving the performance of
+your code (which is always good).
 
+If you work with any of the techniques below, please let us know how things
+go so that we can improve the documentation and the process over
+time.
+
+Profiling Serial Applications
+-----------------------------
+
+The standard Linux tool **gprof** can be used to obtain
+stastical sampling
+
+Profiling Parallel applications
+===============================
+
+**OpenSpeedShop**
+
+The vendor `homepage <http://www.openspeedshop.org/wp/>`__ can be found here, and includes user
+documentation and tutorials.
+
+**TAU**
+
+The "TAU Performance System® is a portable profiling and
+tracing toolkit for performance analysis of parallel
+programs written in Fortran, C, C++, Java, Python." Supports
+application use of MPI and/or OpenMP. Portions of the TAU
+toolkit are used to instrument code at compile time.
+Environment variables control a number of things at runtime.
+A number of controls exist, permitting users to:
+
+-  specify which routines to instrument or to exclude
+-  specify loop level instrumentation
+-  instrument MPI and/or OpenMP usage
+-  throttle controls to limit overhead impact of small, high
+   frequency called routines
+-  generate event traces
+-  perform memory usage monitoring
+
+The toolkit includes the Paraprof visualizer (a Java app)
+permitting use on most desk and laptop systems (Linux,
+MacOS, Windows) for viewing instumentation data. The 3D
+display can be very useful. Paraprof supports the creation
+of user defined metrics based on the metrics directly
+collected (ex: FLOPS/CYCLE).
+
+The event traces can be displayed with the Vampir, Paraver,
+or JumpShot tools.
+
+
+**MPI and OpenMP support** 
+
+TAU supports profiling of both MPI and OpenMP
+applications.
+
+The Quick-start Guide mentions using
+Makefile.tau-icpc-papi-mpi-pdt. This supports profiling of
+MPI applications. You must use
+Makefile.tau-icpc-papi-mpi-pdt-openmp-opari for OpenMP
+profiling. Makefile.tau-icpc-papi-mpi-pdt-openmp-opari can
+be used for either MPI or OpenMP or both.
+
+
+GPTL
+----
+
+GPTL is an open source profiling package that allows for profiling both parallel and serial
+applications. It is covered by a GNU General Public License.
+GPTL is an auto-instrumentation tool that can profile
+serial, MPI, or MPI/OpenMP applications.
+
+Click here for `GPTL Documentation <http://jmrosinski.github.com/GPTL>`_ 
+
+The first installation supports use of the Intel Compiler
+and is set not to profile MPI routines.
+The tool is installed in /contrib/GPTL/PMPINO.
+A module will be generated.
 
 Policies and Best Practices
 ===========================
 
-.. rubric:: Project Data Management
-
-`Project Data
-Management <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies#File_System_Usage_Practices>`__
-, in RDHPCS CommonDocs. This includes the High Performance
-File System (HPFS, Scratch), HFS (Home File System), the
-HPSS HSMS (tape).
-
-.. rubric:: Login (Front End) Node Usage Policy
-
-`Login (Front_End) Node Usage
-Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__
-, in RDHPCS CommonDocs
-
-.. rubric:: Cron Usage Policy
-
-`Cron Usage
-Policy <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__
-, in RDHPCS CommonDocs
-
-.. rubric:: Maximum Job Length Policy
-
-See the section: `Specifying a Queue
-(QOS) <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php?title=Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM&action=edit&section=23>`__\ for
-maximum job length per partition and QOS. If you require
-jobs to run longer than this, it is expected that you use
-checkpoint/restart to save the state of your model. Then you
-can resubmit the job and have it pickup where it left off.
-This policy has been developed over a decade of different
-job patterns as a balance between user needs, fairness
-within the system, and reducing risk of losing too many CPU
-hours from failed jobs or system interruptions.
-
-.. rubric:: /tmp Usage Policy
+/tmp Usage Policy
+-----------------
 
 Every node in the Jet system has a /tmp directory. In most
 other Unix/Linux systems, users use this space used for
@@ -693,13 +596,15 @@ Only consider using /tmp if:
 Please clean up your temporary files after you are done
 using them.
 
-.. rubric:: Software Support Policy
+Software Support Policy
+-----------------------
 
 Our goal is to enable science on any RDHPCS system. This
 often includes installing additional software to improve the
 utility and usefulness of the system.
 
-.. rubric:: Systems Administrator Managed Software
+Systems Administrator Managed Software
+--------------------------------------
 
 The HPCS support staff is not an unlimited resource and
 since every additional software package installed increases
@@ -727,12 +632,14 @@ expect all applications to work in 64-bit mode.
    be considered on a case by case basis based on the value
    to the community.
 
-.. rubric:: Single-user Managed Software
+Single-user Managed Software
+----------------------------
 
 Users are always free to install software packages and
 maintain them in their home or project directories.
 
-.. rubric:: "Contributor" Managed Software
+"Contributor" Managed Software
+------------------------------
 
 We have one other method to support software on the system.
 As we cannot be the experts of all system packages, we have
@@ -752,7 +659,8 @@ start a `system help ticket: <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/in
 System Software
 ===============
 
-.. rubric:: How Software is Organized Through Modules
+How Software is Organized Through Modules
+-----------------------------------------
 
 Many software packages have compiler dependencies, and some
 also have MPI stack dependencies. To ensure that the correct
@@ -855,17 +763,17 @@ execute the following commands.
 Using OpenMP and Hybrid OpenMP/MPI on Jet
 =========================================
 
-.. rubric:: Using OpenMP and Hybrid OpenMP/MPI on Jet
-
 `OpenMP <http://en.wikipedia.org/wiki/OpenMP OpenMP>`_ is a programming extension for supporting parallel computing in Fortran and C using shared memory. It is relative easy to parallelize code using OpenMP. However, parallelization is restricted to a single node. As any programming model, there can be tricks to make to write efficient code.
 
 We support OpenMP on Jet, however, it is infrequently used and we have not figured out all the issues. If you want to use OpenMP, please submit a `help request <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_ and let us know so we can keep track of the users interested in using it.
 
-.. rubric:: Compiling codes with OpenMP
+Compiling codes with OpenMP
+---------------------------
 
-For Intel, add the option '''-openmp'''. For Portland Group, add the option '''-mp'''
+For Intel, add the option **-openmp**. For Portland Group, add the option **-mp**
 
-.. rubric:: Specifying the Number of Threads to use
+Specifying the Number of Threads to use
+---------------------------------------
 
 Depending on the compiler used, the the default number of threads to use is different. Intel will use all the core available. For PGI, it will default to using 1. It is best to always explicitly set what you want. Use the OMP_NUM_THREADS variable to do this. Ex:
 
@@ -875,7 +783,8 @@ Depending on the compiler used, the the default number of threads to use is diff
 
 The number you want to use would generally be the total available on a node. See the [[system_information|System Information]] page for how many cores there are on each system.
 
-.. rubric:: Programming Tips for OpenMP ==
+Programming Tips for OpenMP
+---------------------------
 
 Do not use implicit array setting when initializing arrays in Fortran. Since memory is not allocated until it is first used, there is no way for the implicit statement to understand what to do. What this will lead to is that your program won't understand memory locality and cannot allocate memory in the 'closest' memory. This will lead to performance and scalability issues.
 
@@ -899,7 +808,8 @@ Do this:
 
 This is not a Jet issue, but affects all architectures. By structuring your code in the fashion above then your code will be more portable.
 
-.. rubric:: Using MPI calls from OpenMP critical sections
+Using MPI calls from OpenMP critical sections
+---------------------------------------------
 
 When using MPI and OpenMP, it is not necessary to worry about how threading is managed in MPI unless the MPI calls are from within OpenMP sections. You must disable processor affinity for this to work. To do this, you must pass the variable MV2_ENABLE_AFFINITY=0 to your application at run time. For example:
 
@@ -908,5 +818,211 @@ When using MPI and OpenMP, it is not necessary to worry about how threading is m
  mpiexec -v MV2_ENABLE_AFFINITY=0 ......
 
 See the `mvapich2 documentation <https://mvapich.cse.ohio-state.edu/userguide/>`__  for more information.
+
+Managing Packages in Contrib
+============================
+The system staff do not have the resources to maintain every
+piece of software requested. There are also cases where
+developers of the software are the system users, and putting
+a layer in between them and the rest of the system users is
+inefficient. To support these needs, we have developed a
+/contrib package process. A /contrib package is one that is
+maintained by a user on the system. The system staff are not
+responsible for the use or maintenance of these packages.
+
+The system staff do not have the resources to maintain every
+piece of software requested. There are also cases where
+developers of the software are the system users, and putting
+a layer in between them and the rest of the system users is
+inefficient. To support these needs, we have developed a
+/contrib package process. A /contrib package is one that is
+maintained by a user on the system. The system staff are not
+responsible for the use or maintenance of these packages.
+
+**Responsibilities of a Contrib Package Maintainer**
+
+Maintainers are expected to:
+
+-  Apply security updates as quickly as possible after they
+   become availble
+-  Update software for bug fixes and functionality as users
+   request
+-  Respond to user email requests for help using the
+   software
+-  etc.
+
+**Guidelines for Contrib Packages**
+
+-  The package should be a single program or toolset.
+
+   -  We want to prevent having a single directory being a
+      repository for many different packages.
+      If you support multiple functions, please request
+      multiple packages.
+
+-  We expect each package to be less than 100MB.
+
+   -  If you need more, please tell us when you request your
+      package.
+      We can support larger packages but we need to monitor
+      the space used.
+
+-  We expect each package to have less than 100 files.
+
+   -  If you need more, please tell us when you request your
+      package.
+
+**Requesting to be a Contrib Package Maintainer**
+
+If you wish to maintain a package in contrib, please send Help
+Request with:
+
+-  a list of the packages you wish to maintain
+-  justification why each is needed
+-  the user who will be maintaining the package.
+
+(In certain cases, multiple users can manage a package, and
+unix group write permissions may be granted for the
+directory. In that case, specify the unix group that will be
+maintaining the package.)
+
+**Managing a Contrib Package**
+
+After your request has been approved to use space in the
+/contrib directory, two directories will be created for you:
+
+::
+
+   /contrib/$MYDIR
+   /contrib/modulefiles/$MYDIR
+
+This is where you will install your software for this
+package and optionally install a module to allow users to
+load the environmental settings necessary to use this
+package. The variable $MYDIR is the name of the /contrib
+package you requested.
+
+The directory convention of /contrib is designed to match
+that of /apps. This means that one piece of software goes
+into a subdirectory under the /contrib level. If you want to
+manage multiple package, please request multiple /contrib
+package. You can do this all at one time when submitting
+your Help Request.
+
+**Contrib Package Directory Naming Conventions**
+
+When installing software into your /contrib directory, first
+determine if this is software that should be versioned
+(multiple versions may exist at one time) or unversioned
+(there will only ever be one version installed, and upgrade
+will overwrite the existing software). For verisoned
+software, please install it into a subdirectory of your
+package that is named after the version number. For
+supporting multiple versions of software the install path
+should be:
+
+::
+
+   /contrib/$MYDIR/$VER
+
+Where $MYDIR is the directory assigned to you and $VER is
+the version number. So if your package is named **ferret**,
+and you are installing the version 3.2.6, the software
+should be installed in:
+
+::
+
+   /contrib/ferret/3.2.6
+
+For supporting un-versioned software, just install the
+software directly into your package directory:
+
+::
+
+   /contrib/$MYDIR/
+
+.. rubric:: Providing Modules to Access Contrib Installed
+   Software[\ `edit </index.php?title=Managing_Packages_in_Contrib&action=edit&section=8>`__\ ]
+   :name: providing-modules-to-access-contrib-installed-softwareedit
+
+For each contrib package, a corresponding directory will be
+created for modules. The base directory name is
+"/contrib/modulefiles". Each package will have a
+subdirectory created named after the package. For example,
+for the ferret package, there will also be a directory
+created named:
+
+::
+
+   /contrib/modulefiles/ferret
+
+The "/contrib/modulefiles" directory will already be on the
+modules path by default, so all users will be able to see
+the modules when they run module list. Modules should follow
+the same naming convention as the directories that contain
+the software. Use some name that represents what it is (ex:
+tools or dat). For versioned software, the name of the
+module file should be the version number ($VER). See below
+for information on how to create modules.
+
+**Creating Modules for Contrib Packages**
+
+There are example modules found here:
+
+::
+
+   /contrib/modulefiles.example/ferret
+
+Please use those as a template.
+
+Contrib package maintainers must follow these conventions:
+
+-  Modules must display the notice when loaded providing
+   contact information on how to get help.
+-  Module naming convention should be based on the version
+   number of the software.
+-  Please ask questions through via `Help
+   Request <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`__
+   regarding how to construction modules.
+
+**Specifying a Default Module**
+
+If you have multiple versions of a package installed, it is
+good practice to set which one is the default for the user.
+This way, the user does not have to explicitly specify which
+version they want to load. This is done by using a file
+called .version that is placed in the module directory.
+
+**Example:**
+
+.. code block:: shell
+
+   # pwd
+   /contrib/modulefiles/ferret
+   # ls -al
+   total 20
+   drwxr-xr-x 2 smith    gsd     4096 Dec 13 14:56 .
+   drwxr-xr-x 3 root     root    4096 Dec  5 22:05 ..
+   -rw-r--r-- 1 root     root     152 Dec  5 22:11 .version
+   -rw-r--r-- 1 smith    gsd      875 Dec  5 22:27 3.2.6
+   -rw-r--r-- 1 smith    gsd      875 Dec  5 22:28 3.2.7
+   # cat .version
+   #%Module###########################################################
+   ##
+   ## version file for default module version
+   #
+   set ModulesVersion      "3.2.6"
+   # module avail
+
+   ...
+
+   ------------------------------------------- /contrib/modulefiles/ -------------------------------------------
+   ferret/3.2.6(default) ferret/3.2.7
+   # module load ferret
+   NOTICE: This module, ferret, is a user contributed module.
+   NOTICE: For assistance, please contact [mailto:Joe.Smith@noaa.gov Joe.Smith@noaa.gov]
+   # module list
+   Currently Loaded Modulefiles:
+     1) /ferret/3.2.6
 
 

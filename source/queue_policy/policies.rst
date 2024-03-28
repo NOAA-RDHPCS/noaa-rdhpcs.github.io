@@ -429,6 +429,7 @@ You can immediately change the QOS of your pending job(s).
 The following is an example of immediately changing 2 pending jobs (26866 and 26867) to the “batch” QOS:
 
 .. code-block:: shell
+
     $ scontrol update job 26866,26867 qos=batch
 
 
@@ -438,12 +439,15 @@ When submitting a job to a certain QOS, you can tell Slurm to change it to a dif
 
 
 .. code-block:: shell
+  
     jfe01.% sbatch -q windfall jobfile
     
     Submitted batch job 26990
     jfe01.% 
 
+
 .. code-block:: shell
+
     jfe01.% echo scontrol update job 26990 qos=batch | at -M now +5min
     warning: commands will be executed using /bin/sh
     job 6 at Sun Dec 17 16:07:00 2023
