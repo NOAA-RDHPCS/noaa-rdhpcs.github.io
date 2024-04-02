@@ -94,7 +94,7 @@ Queue Policy
 .. toctree::
    :maxdepth: 2
 
-   queue_policy/index
+   queue_policy/policies
 
 Software
 ========

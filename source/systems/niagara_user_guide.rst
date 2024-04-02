@@ -48,10 +48,10 @@ The following directories will automatically be created with your first login:
 .. note::
 
     When using the DTNs for data transfers:
-
 - /home tree is not accessible from the DTNs
 - /collab1/data/ tree is only accessible from the "Trusted DTN".
 - /clooab1/data_untrusted tree is only accessible from the "Untrusted DTN"
+
 
     Per User Data Management on Niagara:
 
@@ -68,23 +68,3 @@ Access time is defined as the last time the file was opened for reading or writi
 
 - A default 10GB Lustre quota on each user's home directory "/collab1/home/$USER" .
 
-Software
-========
-
-Shell & Programming Environments
-================================
-
-Compiling
-=========
-
-Running Jobs
-============
-
-Debugging
-=========
-
-Optimizing and Profiling
-========================
-
-Known Issues
-============
