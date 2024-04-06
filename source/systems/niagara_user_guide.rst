@@ -8,7 +8,15 @@ Niagara User Guide
 
 System Overview
 ===============
-As NOAA's R&D severe weather and climate projects expand  to geographically dispersed private and public HPC clouds, it is imperative that the the NOAA RDHPCS program provide a service for data dissemination and analysis outside of the traditional HPC environment. The Niagara system is intended to be a collaborative location where data can be securely copied to and from any location, by any authorized user. It can also be used to disseminate R&D data to NOAA's collaborators around the globe.
+
+As NOAA's R&D severe weather and climate projects expand to
+geographically dispersed private and public HPC clouds, it is
+imperative that the the NOAA RDHPCS program provide a service for data
+dissemination and analysis outside of the traditional HPC environment.
+The Niagara system is intended to be a collaborative location where
+data can be securely copied to and from any location, by any
+authorized user. It can also be used to disseminate R&D data to NOAA's
+collaborators around the globe.
 
 The Niagara system includes:
 
@@ -18,7 +26,15 @@ The Niagara system includes:
 - Software
 - Account Management.
 
-Users can connect to the Data Transfer Nodes (DTN) from any remote system to push or pull data. Beyond the Back-end storage and DTNs, the cluster allows for data analysis, visualization, verification, validation and data analytics. It is provided through a combination of hardware and software, which mirrors the user environment and a subset of the tools available on the legacy RDHPCS systems (Hera & Jet) and legacy Analysis systems (PPAN), but can also include software which is unique to this system and not traditionally found on traditional HPC systems.
+Users can connect to the Data Transfer Nodes (DTN) from any remote
+system to push or pull data. Beyond the Back-end storage and DTNs, the
+cluster allows for data analysis, visualization, verification,
+validation and data analytics. It is provided through a combination of
+hardware and software, which mirrors the user environment and a subset
+of the tools available on the legacy RDHPCS systems (Hera & Jet) and
+legacy Analysis systems (PPAN), but can also include software which is
+unique to this system and not traditionally found on traditional HPC
+systems.
 
 Niagara System Features:
 
@@ -26,7 +42,8 @@ Niagara System Features:
 - 12 Login Nodes
 - 25 Compute Nodes
 - 2 DTNs available from trusted (pre-approved) NOAA and non-NOAA sites
-- 2 Untrusted Data Transfer Nodes (UDTNs) available from anywhere on the internet
+- 2 Untrusted Data Transfer Nodes (UDTNs) available from anywhere on
+  the internet
 - 2 Web servers
 
 Connecting
@@ -37,41 +54,65 @@ Connecting
 Data Transfer
 -------------
 
-In order to use Niagara for file transfers, your must create user account directories. These directories are automatically created with your first login to a Niagara front end. The Niagara front ends may be accessed using either CAC or RSA credentials. Host names for CAC access can be found on this CAC login page. Host names for RSA access can be found on this RSA login page.
+In order to use Niagara for file transfers, your must create user
+account directories. These directories are automatically created with
+your first login to a Niagara front end. The Niagara front ends may be
+accessed using either CAC or RSA credentials. Host names for CAC
+access can be found on this CAC login page. Host names for RSA access
+can be found on this RSA login page.
 
-The following directories will automatically be created with your first login:
+The following directories will automatically be created with your
+first login:
 
-- /home/First.Last (your home directory)
-- /collab1/data/First.Last (for your trusted data)
-- /collab1/data_untrusted/First.Last(for your untrusted data)
+- ``/home/First.Last`` (your home directory)
+- ``/collab1/data/First.Last`` (for your trusted data)
+- ``/collab1/data_untrusted/First.Last`` (for your untrusted data)
 
 .. note::
 
     When using the DTNs for data transfers:
-        * /home tree is not accessible from the DTNs
-        * /collab1/data/ tree is only accessible from the "Trusted DTN".
-        * /clooab1/data_untrusted tree is only accessible from the "Untrusted DTN"
+        * ``/home`` tree is not accessible from the DTNs
+        * ``/collab1/data/`` tree is only accessible from the "Trusted
+          DTN".
+        * ``/collab1/data_untrusted`` tree is only accessible from the
+          "Untrusted DTN"
 
 
 Niagara Data Management
 -----------------------
 
-Niagara is a hybrid system, a cross between a traditional HPC system and a data transfer/collaboration system, available to all RDHPCS users. File system management must be handled differently on Niagara than on other HPC systems. The following are Niagara data management policies:
+Niagara is a hybrid system, a cross between a traditional HPC system
+and a data transfer/collaboration system, available to all RDHPCS
+users. File system management must be handled differently on Niagara
+than on other HPC systems. The following are Niagara data management
+policies:
 
-- All files under the "/collab1/data_untrusted/$USER" directory tree which have not been accessed in the last 5 days will be automatically purged.
-- All files under the "/collab1/data/$USER" directory tree which have not been accessed in the last 60 days will be automatically purged.
-- Access time is defined as the last time the file was opened for reading or writing.
-- A default 10GB Lustre quota on each user's home directory "/collab1/home/$USER".
+- All files under the``/collab1/data_untrusted/$USER`` directory tree
+  which have not been accessed in the last 5 days will be
+  automatically purged.
+- All files under the ``/collab1/data/$USER`` directory tree which
+  have not been accessed in the last 60 days will be automatically
+  purged.
+- Access time is defined as the last time the file was opened for
+  reading or writing.
+- A default 10GB Lustre quota on each user's home directory
+  ``/collab1/home/$USER``.
 
 .. note::
 
-    If the file system's usage approaches to the total capacity, we will be forced implement a more aggressive purge policy (i.e., 30 day or 15 day purge). So please actively manage your data!
+    If the file system's usage approaches to the total capacity, we
+    will be forced implement a more aggressive purge policy (i.e., 30
+    day or 15 day purge). So please actively manage your data!
 
 
 About NESCC
 ===========
 
- The NOAA Environmental Security Computing Center (NESCC), located in Fairmont, West Virginia, hosts NOAA's newest High Performance Computing Data Center. This site provides computing resources to support NOAA's research in Weather and Climate modeling, as well as its other environmental research areas.
+The NOAA Environmental Security Computing Center (NESCC), located in
+Fairmont, West Virginia, hosts NOAA's newest High Performance
+Computing Data Center. This site provides computing resources to
+support NOAA's research in Weather and Climate modeling, as well as
+its other environmental research areas.
 
 Niagara System Configuration
 ============================
@@ -87,13 +128,17 @@ Memory/Node             192 GB
 Peak Flops/node         2048 GFlops
 ======================= =============
 
-.. Note::
+.. note::
 
-    -  The Skylake 6148 CPU has two AVX-512 units and hence a theoretical peak of 32 double precision floating point operations per cycle with a base clock rate for floating point operations of 1.6 GHz.
-    -  Total flops is a measure of peak, and doesn’t necessarily represent actual performance.
+   - The Skylake 6148 CPU has two AVX-512 units and hence a theoretical
+     peak of 32 double precision floating point operations per cycle
+     with a base clock rate for floating point operations of 1.6 GHz.
+   - Total FLOPS is a measure of peak, and doesn’t necessarily
+     represent actual performance.
 
 File Systems
 ------------
+
 ======= ====== ======= =========
 name    type   size    Bandwidth
 collab1 Lustre 1.7 PiB > 27 GB/s
@@ -101,49 +146,51 @@ collab1 Lustre 1.7 PiB > 27 GB/s
 
 Lustre File System Usage
 ========================
-Lustre is a parallel, distributed file system often used to
-support the requirements for high-performance I/O in large
-scale clusters by supporting a parallel I/O framework that
-scales to thousands of nodes and petabytes of storage.
-Lustre features include high-availability and POSIX
-compliance.
 
-On the RDHPCS Niagara system there is one Lustre file
-systems available for use, /collab1
+Lustre is a parallel, distributed file system often used to support
+the requirements for high-performance I/O in large scale clusters by
+supporting a parallel I/O framework that scales to thousands of nodes
+and petabytes of storage. Lustre features include high-availability
+and POSIX compliance.
 
-The serial transfer rate of a single stream is generally
-greater than 1 GB/s but can easily increase to 6.5 GB/s from
-a single client, and more than 10 GB/s if performed in a
-properly configured parallel operation.
+On the RDHPCS Niagara system there is one Lustre file systems
+available for use: ``/collab1``.
+
+The serial transfer rate of a single stream is generally greater than
+1 GB/s but can easily increase to 6.5 GB/s from a single client, and
+more than 10 GB/s if performed in a properly configured parallel
+operation.
 
 Lustre Components
 -----------------
-Lustre functionality is divided among four primary
-components:
 
--  MDS - Metadata Server
--  MDT - Metadata Target
--  OSS - Object Storage Server
--  OST - Object Storage Target
+Lustre functionality is divided among four primary components:
 
-An MDS is server that assigns and tracks all of the storage
-locations associated with each file in order to direct file
-I/O requests to the correct set of OSTs and corresponding
-OSSs.
+:MDS: Metadata Server
+:MDT: Metadata Target
+:OSS: Object Storage Server
+:OST: Object Storage Target
 
-An MDT stores the metadata, filenames, directories,
-permissions and file layout.
-An OSS manages a small set of OSTs by controlling I/O access
-and handling network requests to them.
-An OST is a block storage device, often several disks in a
-RAID configuration.
+An MDS is a server that assigns and tracks all of the storage
+locations associated with each file in order to direct file I/O
+requests to the correct set of OSTs and corresponding OSSs.
 
-**Niagara Lustre Configuration**
+An MDT stores the metadata, filenames, directories, permissions and
+file layout.
 
-All nodes access the lustre file-systems mounted at /collab1
+An OSS manages a small set of OSTs by controlling I/O access and
+handling network requests to them.
 
-The number of servers and targets on *each* of the two
-Niagara file systems is:
+An OST is a block storage device, often several disks in a RAID
+configuration.
+
+Niagara Lustre Configuration
+----------------------------
+
+All nodes access the lustre file system mounted at ``/collab1``.
+
+The number of servers and targets on *each* of the two Niagara file
+systems is:
 
 -  2 MDSs (active/active)
 -  2 MDTs
@@ -152,262 +199,275 @@ Niagara file systems is:
 -  24 OSTs (all are HDDs)
 -  1.9 PiB of usable disk space (*df -hP /collab1*)
 
-**File Operations**
+File Operations
+---------------
 
--  When a compute node needs to create or access a file, it requests the associated storage locations from the MDS and the associated MDT.
--  I/O operations then occur directly with the OSSs and OSTs associated with the file, bypassing the MDS.
--  For read operations file data flows from the OSTs to the compute node.
+When a compute node needs to create or access a file, it requests the
+associated storage locations from the MDS and the associated MDT.  I/O
+operations then occur directly with the OSSs and OSTs associated with
+the file, bypassing the MDS.  For read operations file data flows from
+the OSTs to the compute node.
 
-**Types of File I/O**
+Types of File I/O
+-----------------
 
-With Lustre, there are three basic ways which an application
-accesses data:
+With Lustre, there are three basic ways which an application accesses
+data:
 
 -  Single stream
 -  Single stream through a master
 -  Parallel
 
-**File Striping**
+File Striping
+-------------
 
-A file is split into segments and consecutive segments ar stored on different physical storage devices (OSTs).
+A file is split into segments and consecutive segments ar stored on
+different physical storage devices (OSTs).
 
-**Aligned vs Unaligned Stripes**
+Aligned vs Unaligned Stripes
+----------------------------
 
-    -  Aligned stripes imeans that each segment fits fully onto a single OST. Processes accessing the file do so at corresponding stripe boundaries.
-    -  Unaligned stripes means some file segments are split across OSTs.
+Aligned stripes mean that each segment fits fully onto a single OST.
+Processes accessing the file do so at corresponding stripe boundaries.
+
+Unaligned stripes means some file segments are split across OSTs.
 
 Userspace Commands
-==================
-Lustre provides a utility to query and set access to the
+------------------
+
+Lustre provides the ``lfs`` utility to query and set access to the
 file system.
 
-For a complete list of available options:
+For a complete list of available options run ``lfs help``.
+
+To get more information on a specific option run ``lfs help <option>``
+
+The ``lfs find`` command is more *efficient* than the standard
+``find``, and may be faster too.
+
+Example: finding Fortran source files accessed within the last day.
+
+.. code-block:: shell
+
+   $ lfs find . -atime -1 -name '*.f90'
+
+Other lfs Commands
+^^^^^^^^^^^^^^^^^^
+
+- ``lfs cp`` to copy files.
+- ``lfs ls`` to list directories and files.
+
+These commands are often quicker as they reduce the number of stat and
+remote procedure calls needed.
+
+Read Only Access
+----------------
+
+If a file is only going to be read, open it as ``O_RDONLY``.  If you
+don’t care about the access time, open it as ``O_RDONLY`` or
+``O_NOATIME``.  If you need access time information and you are doing
+parallel IO, let the master open it as ``O_RDONLY`` and all other
+ranks as ``O_RDONLY`` or ``O_NOATIME``.
+
+Avoid Wild Cards
+----------------
+
+The ``tar`` and ``rm`` commands are *inefficient* when operating on a
+large set of files on Lustre.
+
+The reason lies in the time it takes to expand the wild card. ``rm -rf
+`` on millions of files could take days, and impact all other users.
+(And you shouldn't do just ``*`` anyway, it is dangerous.)
+
+Instead, generate a list of files to be removed or tar-ed, and to
+act them one at a time, or in small sets.
 
 .. code:: shell
 
-    lfs help
+   $ lfs find /path/to/old/dir/ -t f -print0 | xargs -0 -P 8 rm -f
 
-To get more information on a specific option:
+Broadcast Stat Between MPI or OpenMP Tasks
+------------------------------------------
 
-.. code:: shell
+If many processes need the information from ``stat()``, do it
+*once*, as follows:
 
-    lfs help <option>
+- Have the master process perform the ``stat()`` call
+- Then broadcast it to all processes
 
-
-The *lfs find* command is more *efficient* than the GNU find, and may be faster too.
-
-Example: finding fortran source files accessed within the
-last day.
-
-::
-
-    lfs find . -atime -1 -name '*.f90
-
-**Other lfs Commands**
-
--  lfs cp – to copy files.
-
--  lfs ls – to list directories and files.
-
-These commands are often quicker as they reduce the number
-of stat and remote procedure calls needed.
-
-**Read Only Access**
-
--  If a file is only going to be read, open it as O_RDONLY.
--  If you don’t care about the access time, open it as
-   O_RDONLY|O_NOATIME.
--  If you need access time information and you are doing
-   parallel IO, let the master open it as O_RDONLY and all
-   other ranks as O_RDONLY|O_NOATIME.
-
-**Avoid Wild Cards**
-
-tar and rm are *inefficient* when operating on a large set
-of files on lustre.
-
-The reason lies in the time it takes to expand the wild
-card. "*rm -rf \**" on millions of files could take days,
-and impact all other users. (And you shouldn't do just "\*"
-anyway, it is dangerous.
-
-Instead, DO generate a list of files to be removed or
-tar-ed, and to act them one at a time, or in small sets.
-
-.. code:: shell
-
-   lfs find /path/to/old/dir/ -t f -print0 | xargs -0 -P 8 rm -f
-
-**Broadcast Stat Between MPI or OpenMP Tasks**
-  
-If many processes need the information from stat(), do it
-**once**, as follows:
-
--  Have the master process perform the stat() call. 
--  Then broadcast it to all processes.
-
-**Tuning Stripe Count**
+Tuning Stripe Count
+-------------------
 
 .. Note::
- The following steps are not typically needed on the Niagara Lustre file systems. See the **Progressive File Layouts** description above. Open a support ticket prior to changing stripe parameters on your /collab1 files.*
 
-**General Guidelines**
+   The following steps are not typically needed on the Niagara Lustre
+   file systems.  Open a :ref:`support ticket <getting_help>` prior to
+   changing stripe parameters on your ``/collab1`` files.*
+
+General Guidelines
+^^^^^^^^^^^^^^^^^^
 
 It is *beneficial* to stripe a file when...
 
--  Your program reads a single large input file and performs the input operation from many nodes at the same time.
+- Your program reads a single large input file and performs the input
+  operation from many nodes at the same time.
+- Your program reads or writes different parts of the same file at the
+  same time
 
--  Your program reads or writes different parts of the same file at the same time
-    -  You should stripe these files to prevent all the nodes from reading from the same OST at the same time.
-    -  This will avoid creating a bottleneck in which your processes try to read from a single set of disks.
+   - You should stripe these files to prevent all the nodes from
+     reading from the same OST at the same time.
+   - This will avoid creating a bottleneck in which your processes try
+     to read from a single set of disks.
 
--  Your program waits while a large output file is written.
-    -  You should stripe this large file so that it can perform the operation in parallel.
-    -  The write will complete sooner and the amount of time the processors are idle will be reduced.
-    -  You have a large file that will not be accessed very frequently.
-    -  You should stripe this file widely (with a larger stripe count), to balance the capacity across more OSTs. This (in current Lustre version) requires rewriting the file.
+- Your program waits while a large output file is written.
 
-It is not always necessary to stripe files...
+   - You should stripe this large file so that it can perform the
+     operation in parallel.
+   - The write will complete sooner and the amount of time the
+     processors are idle will be reduced.
+   - You have a large file that will not be accessed very frequently.
+   - You should stripe this file widely (with a larger stripe count),
+     to balance the capacity across more OSTs. This (in current Lustre
+     version) requires rewriting the file.
 
--  If your program periodically writes several small files from each processor, you don't need to stripe the files
-   because they will be randomly distributed across the OSTs.
+It is not always necessary to stripe files if your program
+periodically writes several small files from each processor, you don't
+need to stripe the files because they will be randomly distributed
+across the OSTs.
 
-**Striping Best Practices**
-
--  Newly created files and directories inherit the stripe settings of their parent directories.
--  You can take advantage of this feature by organizing your large and small files into separate directories, then setting a stripe count on the large-file directory so that all new files created in the directory will be automatically striped.
--  For example, to create a directory called "dir1" with a stripe size of 1 MB and a stripe count of 8, run:
-
-.. code:: shell
-
-    mkdir dir1
-    lfs setstripe -c 8 dir1
-
-You can "pre-create" a file as a zero-length striped file by
-running lfs setstripe as part of your job script or as part
-of the I/O routine in your program. You can then write to
-that file later. For example, to pre-create the file
-"bigdir.tar" with a stripe count of 20, and then add data
-from the large directory "bigdir," run:
-
-.. code:: shell
-
-    lfs setstripe -c 20 bigdir.tar
-    tar cf bigdir.tar bigdir
-
-Globally efficient I/O, from a system viewpoint, on a lustre
-file system is similar to computational load balancing in a
-leader-worker programming model, from a user application
-viewpoint. The lustre file system can be called upon to
-service many requests across a striped file system
-asynchronously and this works best if best practices, as
-outlined above, are followed. A very large file that is only
-striped across one or two OSTs can degrade the performance
-of the entire Lustre system by filling up OSTs
-unnecessarily.
-
-By striping a large file over many OSTs, you increase
-bandwidth for accessing the file and can benefit from having
-many processes operating on a single file concurrently. If
-all large files accessed by all users are striped then I/O
-performance levels can be enhanced for all users.
-
-Small files should never be striped with large stripe counts
-if they are striped at all. A good practice is to make sure
-small files are written to a directory with a stripe count
-of 1... effectively no striping.
-
-**Increase Stripe Count for Large Files**
-
--  Set the stripe count of the directory to a large value.
--  This spreads the reads/writes across more OSTs, therefore \**balancing*\* the load and data.
+Striping Best Practices
+^^^^^^^^^^^^^^^^^^^^^^^
+Newly created files and directories inherit the stripe settings of
+their parent directories.  You can take advantage of this feature by
+organizing your large and small files into separate directories, then
+setting a stripe count on the large-file directory so that all new
+files created in the directory will be automatically striped. For
+example, to create a directory called ``dir1`` with a stripe size of 1
+MB and a stripe count of 8, run:
 
 .. code:: shell
 
-    lfs setstripe -c 30 /collab1/data/path/large_files/
+   $ mkdir dir1
+   $ lfs setstripe -c 8 dir1
 
-**Use a Small Stripe Count for Small Files**
-
--  Place \**small files*\* on a single OST.
--  This causes the small files not to be spread out/\**fragmented*\* across OSTs.
-
-.. code:: shell
-
-    lfs setstripe -c 1 /collab1/data/path/small_files/
-
-**Parallel IO Stripe Count**
-
--  Single shared files should have a stripe count \**equal to*\* (or a factor of) the number of processes which access the file.
--  If the number of processes in your application is greater than 106 (the number of HDD OSTs), use '-c -1' to use all of the OSTs
--  The stripe size should be set to allow as much stripe alignment as possible.
--  Try to keep each process accessing as few OSTs as possible.
+You can *pre-create* a file as a zero-length striped file by running
+``lfs setstripe`` as part of your job script or as part of the I/O
+routine in your program. You can then write to that file later. For
+example, to pre-create the file ``bigdir.tar`` with a stripe count of
+20, and then add data from the large directory ``bigdir``, run:
 
 .. code:: shell
 
-    lfs setstripe -s 32m -c 24 /collab1/data/path/parallel/
+   $ lfs setstripe -c 20 bigdir.tar
+   $ tar cf bigdir.tar bigdir
 
-You can specify the stripe count and size programmatically, by creating an MPI info object.
+Globally efficient I/O, from a system viewpoint, on a lustre file
+system is similar to computational load balancing in a leader-worker
+programming model, from a user application viewpoint. The lustre file
+system can be called upon to service many requests across a striped
+file system asynchronously and this works best if best practices, as
+outlined above, are followed. A very large file that is only striped
+across one or two OSTs can degrade the performance of the entire
+Lustre system by filling up OSTs unnecessarily.
 
-**Single Stream IO**
+By striping a large file over many OSTs, you increase bandwidth for
+accessing the file and can benefit from having many processes
+operating on a single file concurrently. If all large files accessed
+by all users are striped then I/O performance levels can be enhanced
+for all users.
 
--  Set the stripe count to 1 on a directory.
--  Write all files in this directory.
--  Compute
--  Otherwise set the stripe count to 1 for the file.
+Small files should never be striped with large stripe counts if they
+are striped at all. A good practice is to make sure small files are
+written to a directory with a stripe count of 1, effectively no
+striping.
+
+Increase Stripe Count for Large Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set the stripe count of the directory to a large value.  This spreads
+the reads/writes across more OSTs, therefore \**balancing*\* the load
+and data.
 
 .. code:: shell
 
-    lfs setstripe -s 1m -c 1 /collab1/data/path/serial/
+   $ lfs setstripe -c 30 /collab1/data/path/large_files/
+
+Use a Small Stripe Count for Small Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Place small files on a single OST.  This causes the small files not to
+be spread out, fragmented, across OSTs.
+
+.. code:: shell
+
+   $ lfs setstripe -c 1 /collab1/data/path/small_files/
+
+Parallel IO Stripe Count
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Single shared files should have a stripe count equal to, or a factor
+of, the number of processes which access the file. If the number of
+processes in your application is greater than 106 (the number of HDD
+OSTs), use ``-c -1`` to use all of the OSTs The stripe size should be
+set to allow as much stripe alignment as possible. Try to keep each
+process accessing as few OSTs as possible.
+
+.. code:: shell
+
+   $ lfs setstripe -s 32m -c 24 /collab1/data/path/parallel/
+
+You can specify the stripe count and size programmatically, by
+creating an MPI info object.
+
+Single Stream IO
+^^^^^^^^^^^^^^^^
+
+Set the stripe count to 1 on a directory.
+
+.. code:: shell
+
+   $ lfs setstripe -s 1m -c 1 /collab1/data/path/serial/
 
 Using Modules
 =============
-Niagara uses the LMOD hierarchical modules system, which
-is slightly different from the traditional "Modules" but is
-compatible with it.
 
-LMOD is a Lua based module system that makes it easy to
-place modules in a hierarchical arrangement. So you may not
-see all the available modules when you type the "module
-avail" command.
+Niagara uses the `LMOD hierarchical modules system
+<https://lmod.readthedocs.io/en/latest/>`_.  LMOD is a Lua based
+module system that makes it easy to place modules in a hierarchical
+arrangement. So you may not see all the available modules when you
+type the "module avail" command.
 
-For example, when you load the Intel module, only libraries
-compiled with the Intel compiler will be listed when you
-list with the "module avail" command.
+For example, when you load the Intel module, only libraries compiled
+with the Intel compiler will be listed when you list with the ``module
+avail`` command.
 
 Currently the following hierarchies are defined:
 
+:compiler: Currently: intel, pgi
+:mpi: Currently: impi, mvapich2
 
-.. code:: shell 
+Use the ``module spider`` command to find all possible modules.
 
-   compiler    - Currently: intel, pgi
-   mpi         - Currently: impi, mvapich2
+For example, assuming you have not loaded any of the compiler or mpi
+modules, if you're interested in finding out which versions of HDF5
+are available, if you type the command ``module avail hdf5`` you will
+not see any of the modules listed:
 
-Use "module spider" command to find all possible modules.
+.. code:: shell
 
-For example, assuming you have not loaded any of the
-compiler or mpi modules, if you're interested in finding out
-which versions of HDF5 are available, if you type the
-command "module avail hdf5" you will not see any of the
-modules listed:
-
-.. code:: shell 
-
-   $ module av hdf5
+   $ module avail hdf5
 
    Use "module spider" to find all possible modules.
    Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
-   $
+This is because you have not loaded any of the compiler modules, and
+HDF5 modules installed on the system require one of the compiler
+modules.  But if you're still interested in finding out which versions
+are available, and when you want to find more details about which
+compilers will have to be loaded in order to use that module, you have
+to use the ``module spider`` command:
 
-This is because you have not loaded any of the compiler
-modules, and HDF5 modules installed on the system require
-one of the compiler modules. But if you're still interested
-in finding out which versions are available, and when you
-want to find more details about which compilers will have to
-be loaded in order to use that module, you have to use the
-"module spider" command has shown below:
-
-.. code:: shell  
+.. code:: shell
 
    $ module spider hdf5
 
@@ -431,8 +491,12 @@ be loaded in order to use that module, you have to use the
         $ module spider hdf5/1.8.14
    ------------------------------------------------------------------------------------------------------------
 
-   $
-   $
+Specifiying a specific module and version to ``module spider`` will
+indicate what modules will need to be loaded to load the specified
+module.
+
+.. code-block:: shell
+
    $ module spider hdf5/1.8.14
 
    ------------------------------------------------------------------------------------------------------------
@@ -456,20 +520,13 @@ be loaded in order to use that module, you have to use the
      To find other possible module matches do:
          module -r spider '.*hdf5/1.8.14.*'
 
-   $
 
-The current configuration has no default modules loaded.
-Run:
+The base configuration has no default modules loaded. To see a list of
+what modules are availalbe to load, run ``module avail``.
 
-.. code:: shell  
+At a minimum you will may want to do:
 
-   $ module avail
-
-to see the list of modules available for you load now.
-
-At a minimum you will want to do:
-
-.. code:: shell  
+.. code:: shell
 
    $ module load intel impi
    $ module list
@@ -477,17 +534,14 @@ At a minimum you will want to do:
    Currently Loaded Modules:
      1) intel/18.0.5.274   2) impi/2018.0.4
 
-
-   $
-
-
 Modules on Niagara
 -------------------
-The way to find the latest modules on Niagara is to run
-**module avail** to see the list of available modules for
-the compiler and the MPI modules currently loaded:
 
-.. code:: shell  
+The way to find the latest modules on Niagara is to run ``module
+avail`` to see the list of available modules for the compiler and the
+MPI modules currently loaded:
+
+.. code:: shell
 
    $ module avail
 
@@ -495,13 +549,13 @@ the compiler and the MPI modules currently loaded:
       lmod/7.7.18    settarg/7.7.18
 
    ------------------------------------ /apps/modules/modulefiles -------------------------------------
-      advisor/2019         g2clib/1.4.0    intel/19.0.4.243  rocoto/1.3.1
-      antlr/2.7.7          gempak/7.4.2    intelpython/3.6.8 szip/2.1
-      antlr/4.2     (D)    grads/2.0.2     matlab/R2017b     udunits/2.1.24
-      cairo/1.14.2         hpss/hpss       nag-fortran/6.2   vtune/2019
-      cnvgrib/1.4.0        idl/8.7         nccmp/1.8.2       wgrib/1.8.1.0b
-      contrib  imagemagick/7.0.8-53        ncview/2.1.3      xxdiff/3.2.Z1
-      ferret/6.93          inspector/2019  performance-reports/19.1.1
+      advisor/2019         g2clib/1.4.0                intel/19.0.4.243           rocoto/1.3.1
+      antlr/2.7.7          gempak/7.4.2                intelpython/3.6.8          szip/2.1
+      antlr/4.2     (D)    grads/2.0.2                 matlab/R2017b              udunits/2.1.24
+      cairo/1.14.2         hpss/hpss                   nag-fortran/6.2            vtune/2019
+      cnvgrib/1.4.0        idl/8.7                     nccmp/1.8.2                wgrib/1.8.1.0b
+      contrib              imagemagick/7.0.8-53        ncview/2.1.3               xxdiff/3.2.Z1
+      ferret/6.93          inspector/2019              performance-reports/19.1.1
       forge/19.1           intel/18.0.5.274     (D)    pgi/19.4
 
      Where:
@@ -510,16 +564,16 @@ the compiler and the MPI modules currently loaded:
    Use "module spider" to find all possible modules.
    Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
 
-
-   $
-
 .. Note::
 
-    Because LMOD is a hierarchical module system you only see the list of modules that you can load now, based on what other modules you may have loaded). 
-    
-To see the complete list of modules available on the system, use the "module spider" command:
+   Because LMOD is a hierarchical module system you only see the list
+   of modules that you can load now, based on what other modules you
+   may have loaded.
 
-.. code:: shell 
+To see the complete list of modules available on the system, use the
+``module spider`` command:
+
+.. code:: shell
 
    $ module spider
 
@@ -533,17 +587,14 @@ To see the complete list of modules available on the system, use the "module spi
      antlr: antlr/2.7.7, antlr/4.2
 
      bitrep: bitrep/1.0
-   …
+   ...
 
-   $
+In this example, each module name represents a different package. In
+cases where there are multiple versions of a package, one will be set
+as a default. For example, for the intel compiler there are multiple
+choices:
 
-
-In this example, each module name represents a different
-package. In cases where there are multiple versions of a
-package, one will be set as a default. For example, for the
-intel compiler there are multiple choices:
-
-.. code:: shell 
+.. code:: shell
 
    $ module avail intel
 
@@ -553,60 +604,50 @@ intel compiler there are multiple choices:
      Where:
       D:  Default Module
 
-   Use "module spider" to find all possible modules.
-   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+Running ``module load intel``, without a specific version will load
+the default intel module, which in this case intel/18.0.5.274.
 
-   $
+If you want to load a specific version, you can. We highly recommend
+you use the system defaults unless something is not working or you
+need a different feature. To load a specific version, specify the
+version number.
 
-So if you run:
+.. code:: shell
 
-.. code:: shell 
-
-   $ module load intel
-
-The default version will be loaded, in this case intel/18.0.5.274.
-
-If you want to load a specific version, you can. We highly
-recommend you use the system defaults unless something is
-not working or you need a different feature. To load a
-specific version, specify the version number.
-
-.. code:: shell 
-
-   $ module purge
    $ module load intel/19.0.4.243
    $ module list
 
    Currently Loaded Modules:
      1) intel/19.0.4.243
 
-   $
-
-
-In some cases other required modules may be loaded for you.
-The Intel module manages all the sub modules, you do not
-have to worry about it.
+In some cases other required modules may be loaded for you. The Intel
+module manages all the sub modules, you do not have to worry about it.
 
 .. note::
 
-    -  When unloading modules, only unload those that you have loaded. The others are done automatically from master modules.
-    -  Modules is a work in progress, and we will be improving their uses and making which modules you load more clear.
+   When unloading modules, only unload those that you have loaded. The
+   others are done automatically from master modules.
 
-**Loading Modules in batch jobs**
+   Modules is a work in progress, and we will be improving their uses
+   and making which modules you load more clear.
 
-Any modules that you loaded when building your codes needs
-to be loaded when your job runs as well. This means that you
-must put the same module commands in your batch scripts that
-you ran before building your code.
+Loading Modules in batch jobs
+-----------------------------
 
-**Modules with sh, bash, and ksh scripts**
+Any modules that you loaded when building your codes needs to be
+loaded when your job runs as well. This means that you must put the
+same module commands in your batch scripts that you ran before
+building your code.
 
-Due to the way the POSIX standard is defined for bash, sh,
-and ksh you **MUST** add the -l option (that is a lowercase
-L) to the shebang (e.g. #!/bin/sh) line at the top of your
-script for all sh, bash, or ksh batch scripts. For example:
+Modules with sh, bash, and ksh scripts
+--------------------------------------
 
-.. code:: shell 
+Due to the way the POSIX standard is defined for bash, sh, and ksh you
+MUST add the ``-l`` option (that is a lowercase L) to the shebang
+(e.g. ``#!/bin/sh``) line at the top of your script for all sh, bash,
+or ksh batch scripts. For example:
+
+.. code:: shell
 
    #!/bin/ksh -l
 
@@ -615,66 +656,67 @@ script for all sh, bash, or ksh batch scripts. For example:
 
    srun -n 12 ​./xhpl
 
-If you omit the -l, the module commands will fail and
-your job will not run properly and may crash in hard to
-diagnose ways.
+If you omit the ``-l``, the module commands will fail and your job
+will not run properly and may crash in hard to diagnose ways.
 
-**Additional Documentaion on Lua modules**
-Please see the following link for more detailed information
-on the `Lua Module Utility <http://lmod.readthedocs.org/en/latest/>`_.
+Additional Documentaion on Lua modules
+--------------------------------------
+
+Please refer to the `Lua Module Utility
+<http://lmod.readthedocs.org/en/latest/>`_ documentation for more
+detailed information.
 
 Frequently Asked Questions
 ==========================
 
-**Why can't I reach external sites via git, wget, scp, or other tools?**
+Why can't I reach external sites via ``git``, ``wget``, ``scp``, or other tools?
+--------------------------------------------------------------------------------
 
-By default, outbound HTTP/HTTPS access is blocked by the
-RDHPCS firewalls. A firewall change request must be
-submitted and vetted by security before the site is allowed
-to be accessed. Access is almost always granted for
-government and university sites. I will submit a firewall
-change request to allow access to NSIDC from any R&D HPC
-system (Niagara, Hera, or Jet). It will take about 1-2
-weeks. Are there any other sites that you need access to?
+By default, outbound HTTP/HTTPS access is blocked by the RDHPCS
+firewalls. A firewall change request must be submitted and vetted by
+security before the site is allowed to be accessed. Access is almost
+always granted for government and university sites. I will submit a
+firewall change request to allow access to NSIDC from any R&D HPC
+system (Niagara, Hera, or Jet). It will take about 1-2 weeks. Are
+there any other sites that you need access to?
 
-**Why can't I access HPSS from anywhere but WCOSS and R&D HPC systems?** 
+Why can't I access HPSS from anywhere but WCOSS and R&D HPC systems?
+--------------------------------------------------------------------
 
-Since the Orion and other external systems are non-NOAA HPC
-systems and managed completely independently, there is no
-way that we can allow direct HPSS access from these systems.
-This has been a major issue for many of our users.
+Since the Orion and other external systems are non-NOAA HPC systems
+and managed completely independently, there is no way that we can
+allow direct HPSS access from these systems. This has been a major
+issue for many of our users.
 
-Niagara was deployed so that users could retrieve data from
-HPSS and move it to an external NOAA or non-NOAA sites. Data
-can of course be moved in the opposite direction as well.
-The CRON service is available on all R&D HPC systems for
-creating automated scripts and workflows for moving data. If
-automated workflows are required and justified by the user,
-then it is possible to set up `Unattended Data
-Transfers <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Transferring_Data#Unattended_Data_Transfers_or_Password-less_Transfers_to.2Ffrom_HPC_Systems>`__
-via the use of scp and key-pair authentication.
+Niagara was deployed so that users could retrieve data from HPSS and
+move it to an external NOAA or non-NOAA sites. Data can of course be
+moved in the opposite direction as well. The CRON service is available
+on all R&D HPC systems for creating automated scripts and workflows
+for moving data. If automated workflows are required and justified by
+the user, then it is possible to set up `Unattended Data Transfers
+<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Transferring_Data#Unattended_Data_Transfers_or_Password-less_Transfers_to.2Ffrom_HPC_Systems>`__
+via the use of ``scp`` and key-pair authentication.
 
-**Why am I seeing slow data rates when moving data to/from Niagara?**
+Why am I seeing slow data rates when moving data to/from Niagara?
+-----------------------------------------------------------------
 
-We realized early on that scp transfer rates would not
-suffice for moving large amounts of data between Niagara and
-external systems. To provide a solution to this problem we
-have deployed a new service called Globus Online. Although
-it is still very much a new service for us and we are still
-flushing out the user documentation, users should be able to
-move large amounts of data at somewhere around 100-200MB/s.
-Since Niagara sites at the same site as HPSS, you should
-also get decent data rates when moving data to and from
-HPSS.
+We realized early on that scp transfer rates would not suffice for
+moving large amounts of data between Niagara and external systems. To
+provide a solution to this problem we have deployed a new service
+called Globus Online. Although it is still very much a new service for
+us and we are still flushing out the user documentation, users should
+be able to move large amounts of data at somewhere around 100-200MB/s.
+Since Niagara sites at the same site as HPSS, you should also get
+decent data rates when moving data to and from HPSS.
 
-For more information please see the following: `Globus
-Online Data Transfer <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Globus_Online_Data_Transfer>`__
+For more information please see the following: :ref:`Globus Online
+Data Transfer <globus_online_data_transfer>`.
 
-**I am confused by what the documentation is telling me. Why have you done this to me?**
+I am confused by what the documentation is telling me. Why have you done this to me?
+------------------------------------------------------------------------------------
 
 If you have specific issues or requests for missing or confusing
-documentation, please open up a help ticket and let us know.
-Since our support team is stretched pretty thin, it is
-always helpful to get feedback from users on where we have
-deficiencies.
+documentation, please open up a help ticket and let us know. Since our
+support team is stretched pretty thin, it is always helpful to get
+feedback from users on where we have deficiencies.
 
