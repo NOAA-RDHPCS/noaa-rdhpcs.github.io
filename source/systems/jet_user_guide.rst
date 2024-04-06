@@ -244,10 +244,10 @@ Math Libraries
 
 The Intel Math Kernel Library (MKL) provides a wide variety of
 optimized math libraries including BLAS, LAPACK, ScaLAPACK, sparse
-solvers, fast Fourier transforms, vector math, and more. 
+solvers, fast Fourier transforms, vector math, and more.
 
 Please refer to the `product documentation
-<https://software.intel.com/en-us/articles/intel-math-kernel-library-documentation/>`_
+<https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html>`_
 for information on the availale APIs.
 
 Below are provided several examples that should help most of
@@ -287,15 +287,15 @@ your link line:
 Linking with FFT, and the FFTW interface
 ----------------------------------------
 
-Intel provides highly optimized `FFT routines within MKL
-<https://software.intel.com/en-us/articles/the-intel-math-kernel-library-and-its-fast-fourier-transform-routines/>`_.
-While Intel has a specific interface (DFTI), we recommend that you use
-the FFTW interface. `FFTW <http://www.fftw.org/>`_ is an open-source,
-highly-optimized FFT library, that supports many different platforms.
-FFTW (specifically the FFTW3 interface) can be supported on Intel, AMD,
-and IBM Power architectures. IBM is even supporting the FFTW interface
-through ESSL, meaning that using the FFTW3 interface will allow codes
-to be portable across the NOAA RDHPCS architectures.
+Intel provides highly optimized FFT routines within MKL. While Intel
+has a specific direct Fourier Transform Interface (DFTI), we recommend
+that you use the FFTW interface. `FFTW <http://www.fftw.org/>`_ is an
+open-source, highly-optimized FFT library, that supports many
+different platforms. FFTW (specifically the FFTW3 interface) can be
+supported on Intel, AMD, and IBM Power architectures. IBM is even
+supporting the FFTW interface through ESSL, meaning that using the
+FFTW3 interface will allow codes to be portable across the NOAA RDHPCS
+architectures.
 
 The `FFTW orgainzation <http://www.fftw.org/>`_ has the best reference
 for the FFTW interface. For Fortran, you need to ``include`` the FFTW
@@ -315,7 +315,7 @@ Linking with ScaLAPACK
 
 Linking with ScaLAPACK is more complicated because it uses MPI. You
 have to specify which MPI library you are using when
-linking. 
+linking.
 
 When using the MVAPICH MPI library, use
 
@@ -331,7 +331,7 @@ When using the OpenMPI MPI library, use
    LDFLAGS=-L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core
 
 
-.. note:: 
+.. note::
 
    Use the environment variable ``$(MKLROOT)`` and not the explicit
    path for the Intel compiler.
@@ -363,7 +363,7 @@ Supported MPI Stacks
 
 We currently support two MPI stacks on Jet, `MVAPICH
 <https://mvapich.cse.ohio-state.edu/overview/>`_ and `OpenMPI
-<http://www.open-mpi.org/>`__. We consider MVAPICH our primary MPI
+<https://www.open-mpi.org/>`__. We consider MVAPICH our primary MPI
 stack. OpenMPI is provided for software development and regression
 testing. In our experience, MVAPICH provides better performance
 without requiring tuning. We do not have the depth of staff to fully
@@ -601,7 +601,7 @@ an auto-instrumentation tool that can profile serial, MPI, or
 MPI/OpenMP applications.
 
 Please refer to the `GPTL Documentation
-<http://jmrosinski.github.com/GPTL>`_.
+<https://jmrosinski.github.io/GPTL>`_.
 
 The first installation supports use of the Intel Compiler and is set
 not to profile MPI routines. The tool is installed in
@@ -667,9 +667,9 @@ images harder to maintain and secure. We expect all applications to
 work in 64-bit mode.
 
 -  If the package is available from the `EPEL repository
-   <http://fedoraproject.org/wiki/EPEL>`_, it is likely that we can
-   install it unless it causes additional complexities. However, if
-   EPEL stops supporting it, we may as well.
+   <https://docs.fedoraproject.org/en-US/epel/>`_, it is likely that
+   we can install it unless it causes additional complexities.
+   However, if EPEL stops supporting it, we may as well.
 -  If the software is not a part of the Redhat or EPEL repositories,
    we can still consider it. Each request will be considered on a case
    by case basis based on the value to the community.
@@ -830,7 +830,7 @@ use is different. Intel will use all the core available. PGI will
 default to using 1. It is best to always explicitly set what you want.
 Use the ``OMP_NUM_THREADS`` environment variable to do this. Ex:
 
-.. tab-set:: 
+.. tab-set::
 
    .. tab-item:: bash
       :sync: bash

@@ -663,7 +663,7 @@ Additional Documentaion on Lua modules
 --------------------------------------
 
 Please refer to the `Lua Module Utility
-<http://lmod.readthedocs.org/en/latest/>`_ documentation for more
+<https://lmod.readthedocs.io/en/latest/>`_ documentation for more
 detailed information.
 
 Frequently Asked Questions
