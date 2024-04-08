@@ -1127,5 +1127,527 @@ Additional Resources
 .. toctree::
   :maxdepth: 1
 
+<<<<<<< Updated upstream
   gaea/quickstart
   gaea/accounts
+=======
+.. code-block:: shell
+
+  $sstat --jobs=job-id
+
+Use man sstat for more information.
+
+- Completed Jobs
+
+Slurm does not keep completed jobs in squeue.
+
+.. code-block:: shell
+
+  sacct -S 2019-03-01 -E now -a
+
+If you don’t specify -S and -E options, sacct gives you data from today.
+
+- Getting details about a job
+
+Slurm only keeps information about completed jobs available via scontrol for 5 minutes after completion. After that time, sacct is the currently available way of getting information about completed jobs.
+
+.. code-block:: shell
+
+  scontrol show job --clusters=es 5978
+
+Fair Share Reporting
+--------------------
+
+- Summary of all accounts
+.. code-block:: shell
+
+  sshare
+
+- Summary of one account
+.. code-block:: shell
+
+  sshare -A aoml
+
+- Details by user of one account
+.. code-block:: shell
+
+  sshare -a -A gefs
+
+- Details by user of all accounts
+.. code-block:: shell
+
+  sshare -a
+
+- Priority Analysis of Your Job: sprio
+.. code-block:: shell
+
+  sprio -j 12345
+
+Data transfers
+==============
+Available on Gaea is a tool called GCP, which allows for internal transfers on Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please reference System Details if you are unfamiliar with the filesystems or expected use of each variety of node on Gaea.
+
+Available Tools
+---------------
+- GCP
+- spdcp - lustre to lustre specific
+- globus-url-copy (GridFTP)
+- scp
+- rsync
+- cp
+- hsi and htar (for Zeus' HPSS)
+
+We suggest all users use GCP as the primary data transfer tool. Examples are presented below.
+
+f2 <-> f2
+----------
+Users can transfer data between the lustre f2 filesystem using GCP. This can be done on the login nodes, and ldtns Gco commands issued on the compute nodes will result in a [L|R]DTN job being created and gcp will block until that job is completed by default.
+
+.. code-block:: shell
+
+  module load gcp
+  gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
+
+Gaea <-> GFDL
+--------------
+Users can transfer data between GFDL and Gaea filesystems with GCP. This can be done on the login nodes and rdtn's only. Users can interactively run gcp commands from a login node or submit gcp calls in scripts to run in the rdtn queue.
+
+.. code-block:: shell
+
+  module load gcp
+  gcp gaea:/lustre/f2/scratch/$USER/file gfdl:/gfdl/specific/path/file
+  gcp gfdl:/gfdl/specific/path/file gaea:/lustre/f2/dev/$USER/path/file
+
+Gaea <-> Remote NOAA Site
+-------------------------
+Users can transfer data between GFDL and Gaea filesystems with GridFTP, rsync or scp. This can be done on the login nodes and RDTNs only. Please place large transfers (>1GB) in batch jobs on the RDTN queue. This will respect other users on the login nodes by reducing interactive impact.
+
+.. code-block:: shell
+
+  scp /lustre/f2/scratch/$USER/path/name/here some.remote.site:/a/path/over/there
+  globus-url-copy file:/path/on/Gaea/file gsiftp://some.remote.site/path/to/destination/file
+  globus-url-copy gsiftp://some.remote.site/path/to/remote/file file:/destination/path/on/Gaea/file
+
+Gaea <-> External
+-----------------
+1. Find Local Port Number
+To find your unique local port number, log onto your specified HPC system (Gaea). Make a note of this number, and once you've recorded it, close all sessions.
+
+.. code-block:: shell
+
+  You will now be connected to NOAA RDHPCS: Gaea (CMRS/NCRC) C5 system.
+  To select a specific host, hit ^C within 5 seconds.
+  Local port XXXXX forwarded to remote host.
+  Remote port XXXXX forwarded to local host.
+
+.. note::
+
+  Open two terminal windows for this process.
+
+**Local Client Window #1**
+Enter the following (remember to replace XXXXX with the local port number identified in Step 1 or as needed):
+
+.. code-block:: shell
+
+  ssh-LXXXXX:localhost:XXXXX 
+  First.Last@gaea-rsa.princeton.rdhpcs.noaa.gov
+
+Once you have established the port tunnel it is a good idea to verify that the tunnel is working. To verify, use another local window from your local machine, and enter the following:
+
+.. code-block:: shell
+
+  ssh -p <port> First.Last@localhost
+
+2. Complete the Transfer using SCP
+
+**Local Client Window #2**
+Once the session is open, you will be able to use this forwarded port for data transfers, as long as this ssh window is kept open. After the first session has been opened with the port forwarding, any further connections (login via ssh, copy via scp) will work as expected.
+
+**To transfer a file to HPC Systems**
+
+.. note::
+
+  Your username is case sensitive when used in the scp command. For example, username should be in the form of John.Smith rather than john.smith.
+
+.. code-block:: shell
+
+  >> scp -P XXXXX /local/path/to/file $USER@localhost:/path/to/file/on/HPCSystems
+
+  >> rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX' /local/path/to/files $USER@localhost:/path/to/files/on/HPCSystems
+
+**To transfer a file from HPC Systems**
+
+.. code-block:: shell
+
+  >> scp -P XXXXX $USER@localhost:/path/to/file/on/HPCSystems /local/path/to/file
+
+  >> rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX' $USER@localhost:/path/to/files/on/HPCSystems /local/path/to/files
+
+In either case, you will be asked for a password. Enter the password you from your RSA token (not your passphrase). Your response should be your PIN+Token code.
+
+Gaea <-> Fairmont HPSS
+----------------------
+Users can transfer data between Gaea and Zeus' High Performance Storage System (HPSS) through the use of the HSI and HTAR commands. These commands are only available on Gaea's Remote Data Transfer Nodes (RDTNs). A user can submit a script to run on the RDTNs.
+
+- Minimum Headers for a submitted RDTN job.
+
+.. code-block:: shell
+
+  #SBATCH --clusters=es
+  #SBATCH --partition=rdtn
+
+- Load the HSI module and list the contents of your directory
+.. code-block:: shell
+
+  module use -a /sw/rdtn/modulefiles
+  module load hsi
+
+- Check connectivity to the hsi, replacing the below file path with yours on HPSS
+
+.. code-block:: shell
+
+  hsi "ls -P /BMC/nesccmgmt/$USER/"
+
+- Retrieve Files using HSI into the current directory on the RDTN. The -q option limits output spam.
+.. code-block:: shell
+
+  hsi -q "get /BMC/nesccmgmt/Karol.Zieba/sample_file"
+
+- Upload Files using HSI
+.. code-block:: shell
+
+  hsi -q "put /lustre/f2/scratch/$USER/file_to_upload : /BMC/nesccmgmt/$USER/file_to_upload"
+
+- Tar many small files from the RDTN using HTAR. (Note that using asterisk will not work.)
+.. code-block:: shell
+
+  htar cf /BMC/nesccmgmt/$USER/tarred_file.tar file1 file2 path/file3
+
+- Untar many small files into your current directory on the RDTN using HTAR
+.. code-block:: shell
+
+  htar xf /BMC/nesccmgmt/$USER/tarred_file.tar
+
+Further information on interfacing with HPSS and the HSI/HTAR commands can be found `here <http://www.mgleicher.us/GEL/htar/htar_user_guide.html>`_ and `here <https://nesccdocs.rdhpcs.noaa.gov/wiki/index.php/Using_The_HSMS_%28HPSS%29>`_.
+
+External (Untrusted) Data Transfers
+------------------------------------
+To support external data transfers with methods that are faster and simpler than the port tunnel method, NOAA RDHPCS has a data transfer node. This means data can be transferred to Gaea without the use of the port tunnel or existing ssh connection. Not only is this simpler, but provides for much faster transfers. The difference between the eDTN and the DTN as described above is that the eDTN does not mount the Gaea filesystems. 
+
+Transferring through the eDTN to Gaea requires a two step process. First, files are transferred from external hosts to the eDTN. Second, from Gaea, the files are pulled back from the eDTN.
+
+For authentication, use of your token is required from external transfers to the eDTN. From within Gaea, use of your token is not required.
+
+The eDTN supports the use of scp, sftp, bbcp, and ssh based globus-url-copy.
+
+**Copying files from external systems to the eDTN**
+
+.. code-block:: shell
+
+  jsmith# scp WRF.tar.gz John.Smith@edtn.fairmont.rdhpcs.noaa.gov:
+ Access is via First.Last username only.  Enter RSA PASSCODE:
+
+The trailing colon (':') is critical. You can also specify ":/home/John.Smith/"
+
+Your response should be your pin+PASSCODE.
+
+**Retrieving files on Gaea from the eDTN**
+To transfer files from the eDTN server to Gaea without requiring your token, you must use GSI enabled transfer methods. For scp, sftp, and bbcp, this mean appending "gsi" to the front of the command. So the commands that are best to use are gsiscp, gsisftp, and gsibbcp.
+
+To pull the files back from the eDTN, initiate on of these commands:
+
+.. code-block:: shell
+
+  John.Smith# gsiscp -S `which gsissh` edtn.fairmont.rdhpcs.noaa.gov:WRF.tar.gz .
+
+**eDTN Purge Policy**
+Files older than 7 days will be automatically removed. This policy may change based on disk space and management needs.
+
+**Managing files on the eDTN**
+If you need to login and manage any files, create or remove directories, or any other tasks on the eDTN, use gsisftp from Gaea. This provides and FTP like interface through ssh.
+
+.. code-block:: shell
+
+  # sftp -S `which gsissh` John.Smith@edtn.fairmont.rdhpcs.noaa.gov
+  Access is via First.Last username only. Enter RSA PASSCODE:
+  Connected to edtn.fairmont.rdhpcs.noaa.gov.
+  sftp> ls
+  bigfile    bigfile1   bigfileA
+  sftp> rm bigfile
+  Removing /home/Craig.Tierney/bigfile
+  sftp> rm bigfile*
+  Removing /home/Craig.Tierney/bigfile1
+  Removing /home/Craig.Tierney/bigfileA
+  sftp> ls
+  sftp> mkdir newdir1
+  sftp> ls
+  newdir1
+  sftp> cd newdir1
+  sftp> pwd
+  Remote working directory: /home/Craig.Tierney/newdir1
+  sftp> cd ..
+  sftp> rmdir newdir1
+  sftp> ls
+
+  sftp> help
+  Available commands:
+  bye                                Quit sftp
+  cd path                            Change remote directory to 'path'
+  chgrp grp path                     Change group of file 'path' to 'grp'
+  chmod mode path                    Change permissions of file 'path' to 'mode'
+  chown own path                     Change owner of file 'path' to 'own'
+  df [-hi] [path]                    Display statistics for current directory or
+                                    filesystem containing 'path'
+  exit                               Quit sftp
+  get [-Ppr] remote [local]          Download file
+  help                               Display this help text
+  lcd path                           Change local directory to 'path'
+  lls [ls-options [path]]            Display local directory listing
+  lmkdir path                        Create local directory
+  ln oldpath newpath                 Symlink remote file
+  lpwd                               Print local working directory
+  ls [-1afhlnrSt] [path]             Display remote directory listing
+  lumask umask                       Set local umask to 'umask'
+  mkdir path                         Create remote directory
+  progress                           Toggle display of progress meter
+  put [-Ppr] local [remote]          Upload file
+  pwd                                Display remote working directory
+  quit                               Quit sftp
+  rename oldpath newpath             Rename remote file
+  rm path                            Delete remote file
+  rmdir path                         Remove remote directory
+  symlink oldpath newpath            Symlink remote file
+  version                            Show SFTP version
+  !command                           Execute 'command' in local shell
+  !                                  Escape to local shell
+  ?                                  Synonym for help
+
+
+GCP
+===
+GCP (general copy) is a convenience wrapper for copying data between the Gaea and PPAN Analysis NOAA RDHPCS sites, as well as the NOAA GFDL site. GCP abstracts away the complexities of transferring data efficiently between the various NOAA sites and their filesystems. Its syntax is similar to the standard UNIX copy tool, cp.
+
+GCP 2.3.30 is available on Gaea, PPAN, and GFDL Linux Workstations. It is obtainable via “module load gcp” or “module load gcp/2.3”, This version is the latest on systems as of 2023-12-01; all other versions are considered obsolete and will not function properly due to system updates.
+
+User Guide
+-----------
+Using GCP is simple – just use a variant of the commands below to perform a transfer:
+
+.. code-block:: shell
+
+  module load gcp
+  gcp -v /path/to/some/source/file /path/to/some/destination/file
+
+The -v option enables verbose output, including some very useful information for debugging.
+
+You can obtain a detailed list of all of the available options with:
+
+.. code-block:: shell
+  gcp --help
+
+Smartsites
+----------
+
+GCP introduces a concept known as smartsites. This concept enables the transfer of files from one NOAA system to another. Each NOAA site has its own smartsite. The currently supported smartsites in GCP are:
+
+.. code-block:: shell
+
+  - gfdl - gaea
+
+To transfer data from one site to another, simple prepend the smartsite and a colon to your file location (example: gaea:/path/to/file).
+
+This smartsite example pushes data from a source site (GFDL) to a remote site (Gaea). Note that we are not required to use a smartsite for the local site we are currently operating from (but it is not an error to include it). The following commands are equivalent:
+
+gcp -v /path/to/some/file gaea:/path/to/remote/destination
+gcp -v gfdl:/path/to/some/file gaea:/path/to/remote/destination
+The smartsite needn't always be part of the destination file path, as gcp is capable of pulling data from a remote site as well as pushing it:
+
+.. code-block:: shell
+
+  gcp -v gaea:/path/to/a/file /path/to/a/local/destination
+
+**Log Session ID**
+
+GCP includes a comprehensive logging system. Each transfer is recorded and is easily searchable by the GCP development team in the event that debugging is needed.
+
+Each transfer is given a unique log session id, but this session id is only visible if the -v option is used. It is highly recommended that this option always be enabled in your transfers. A sample of the expected output is below:
+
+.. code-block:: shell
+
+  gcp -v /path/to/source/file /path/to/destination
+  gcp 2.3.26 on an204.princeton.rdhpcs.noaa.gov by Chandin.Wilson at Mon Aug 8 16:39:28 2022
+  Unique log session id is 07f6dd51-6c4d-4e51-86b4-e3344c01c3ae at 2022-08-08Z20:39
+
+If you experience any problems while using GCP, please re-run your transfer using the -v option and provide the session id with your help desk ticket.
+
+**Supported Filesystems**
+
+GCP can copy data from many filesystems, but not all. Below is a list of supported filesystems for each site. Note that sometimes GCP is able to support a filesystem from within the local site, but not from external sites.
+
+**GFDL Workstations**
+
+.. note::
+  You cannot transfer files from a GFDL workstation to any remote site. You must use GFDL's PAN cluster to push or pull files to a remote site.
+
+Filesystems that GCP supports locally from GFDL workstations:
+
+- /net - /net2 - /home - /work - /archive
+
+Filesystems that GCP supports remotely from other sites:
+
+- /home - /ptmp - /work - /archive
+
+**Gaea**
+The Gaea site contains multiple node types. The nodes that are used for interactive work are called the eslogin nodes. Different filesystems are supported on each node type, so please refer to the list below.
+
+Filesystems that GCP supports locally from Gaea:
+
+- eslogin
+.. code-block:: shell
+
+  - /lustre/f2
+  - /ncrc/home
+
+- ldtn
+.. code-block:: shell
+
+  - /lustre/f2
+  - /ncrc/home
+
+- rdtn
+.. code-block:: shell
+
+  - /ncrc/home
+  - /lustre/f2
+
+- compute 
+.. code-block:: shell
+
+  - /ncrc/home
+  - /lustre/f2
+
+Filesystems that GCP supports remotely from other sites:
+
+- /ncrc/home - /lustre/f2
+
+**Helpful Hints**
+
+- Creating Directories
+GCP provides an option for automatically creating new directories (-cd).
+
+The final segment of the path is interpreted as a directory if a trailing slash is included. Otherwise, it will be interpreted as a file. A few examples are below.
+
+- Transferring into new directories:
+.. code-block:: shell
+
+  gcp -cd /path/to/a/file /path/to/a/nonexistent/directory/
+
+The above results in a file called 'file' being created in a directory called 'directory':
+
+.. code-block:: shell
+
+  /path/to/a/nonexistent/directory/file
+
+Transferring into a file:
+
+.. code-block:: shell
+
+  gcp -cd /path/to/a/file /path/to/a/nonexistent/directory
+
+The above results in a file called 'directory' being created in a directory called 'nonexistent':
+
+.. code-block:: shell
+
+  /path/to/a/nonexistent/directory
+
+Changes
+-------
+GCP development and releases are tracked in the GFDL Gitlab project. See https://gitlab.gfdl.noaa.gov/gcp/gcp for further detail.
+
+GridFTP
+=======
+This article describes the process of configuring and utilizing GridFTP directly for file transfers. Please note that in most cases users should rely on GCP for file transfers. The GridFTP tools are located in the globus module:
+
+.. code-block:: shell
+
+  module load globus
+
+The main command is:
+
+.. code-block:: shell
+
+  globus-url-copy
+
+Security
+--------
+GridFTP, like standard FTP, divides transfer data into two channels. The control channel sends instructions between the client and server, while the data channel is responsible for transferring the specific data requested. Authentication can be performed in the control channel via SSH (gsissh:) or GSI (gsiftp:). SSH utilizes existing ssh certificates and is the simpler of the two to configure in most environments. GSI relies on your analysis certificate and is simple to utilize at GFDL. It is recommended that the GSI protocol be used, as it provides a wealth of additional GridFTP options that are unsupported by the ssh authentication mechanism. If you see certificate failure messages when trying to use gsiftp, check the output of the grid-proxy-info command. If all looks well there, contact the GridFTP administrator to ensure that GridFTP is configured to allow the transfer of files to your chosen destination.
+
+Firewall Configuration
+----------------------
+You can use the environmental variables GLOBUS_TCP_PORT_RANGE=min,max and GLOBUS_TCP_SOURCE_RANGE=min,max to control the inbound and outbound ports to the client, respectively. Globus recommends a set of at least 1000 ports (e.g., 40000-46999).
+
+Transfer Options
+----------------
+**Small File Performance**
+Transferring many small files via globus-url-copy greatly diminishes its performance. For most copy tools, the usual solution is to tar the files prior to transfer and untar once they have arrived at the destination. Globus has implemented some functionality called pipelining into the globus-url-copy command (only usable when gsiftp is the authentication mechanism), which instructs GridFTP to not wait for an acknowledgment after a single file has been transferred. The result is that many files can be in transit to the destination, thus making efficient use of available bandwidth. The pipelining option is -pp.
+
+**Recovery**
+Globus-url-copy has a few options to recover transfers should problems arise. The -rst argument can be passed which instructs GridFTP to retry failed transfers. The number of retries is specified by the -rst-retries <retries> option, which has a default value of 5 if not provided on the command line (use 0 for unlimited). To instruct GridFTP to only retry sending the files that were not sent prior to failure (rather than the entire file list again), use the -df <file> option. This option saves all failed transfer URLs to a file, which is used by globus-url-copy if a retry is needed.
+
+You can use --stall-timeout <time> to specify how long to wait before idle transfers will be killed.
+
+**Bulk Transfers**
+If you want to transfer entire directories or lists of files, there are two options. Use -r to recursively transfer a directory in the normal way. Alternatively, specify -f <file> to instruct GridFTP to look in the file indicated for a list of source-destination URL pairs:
+
+.. code-block:: shell
+
+  "gsiftp://nfs02.princeton.rdhpcs.noaa.gov/archive/keo/file1.nc" "gsiftp://pcmdi@data1.gfdl.noaa.gov/home/keo/"
+  "gsiftp://nfs02.princeton.rdhpcs.noaa.gov/archive/keo/file2.nc" "gsiftp://pcmdi@data1.gfdl.noaa.gov/home/keo/"
+  "gsiftp://nfs02.princeton.rdhpcs.noaa.gov/archive/keo/file3.nc" "gsiftp://pcmdi@data1.gfdl.noaa.gov/home/keo/"
+
+Network Options
+---------------
+
+**Buffer Size**
+
+You can specify the tcp buffer size with the -tcp-bs <size> command. To calculate an appropriate value for <size> use the bandwidth delay product:
+
+
+.. code-block:: shell
+
+  buffer_size = bandwidth in Megabits per second (Mbs) * RTT in milliseconds (ms) * 1000 / 8
+
+Where RTT can be obtained via the ping or traceroute command and bandwidth is determined as the maximum bandwidth between the source and destination (best determined by talking to your network administrator).
+
+**Parallelism**
+
+You can specify the number of parallel data connections using -pp <streams>. A good default value is 4, and there is no formula for determining the ideal number for your network. The GridFTP user's manual specifies that values between 2 and 10 generally provide the best performance. When in doubt, use the defaults! There is a reason why they are defaults!
+
+Using the -p <streams> option with gsiftp will put GridFTP in a special transfer mode called "Mode E" (also specified via the -fast option). This mode utilizes data channel caching to keep the data channel open for multiple file transfers. It is also needed for parallelism as it allows data to arrive in any order.
+
+**Misc Options**
+
+Some other important options are -vb (verbose) and -cd (create directories at the destination).
+
+**Examples**
+
+Here is a sample GridFTP transfer utilizing the transfer file (-f) option:
+
+.. code-block:: shell
+
+  globus-url-copy -bs 6MB -pp -p 4 -vb -stall-timeout 14400 -rst -cd -df /tmp/grid-state -f /tmp/grid-transfer
+
+This command specifies that we should transfer with the block size at 6MB, pipelining enabled, 4 parallel streams, verbose, idle timeout at 14400 seconds (4 hours), retry on failures, create directories, a retry file holding failed URLs, and a transfer file holding URL pairs of files to be transferred. Perhaps the last command was more than you require. A simple transfer can be accomplished via a job on the RDTNs:
+
+.. code-block:: shell
+
+  set hn=`hostname --fqdn`
+  globus-url-copy gsiftp://rdtn.lb.princeton.rdhpcs.noaa.gov/archive/$user/file gsiftp://${hn}/lustre/f2/dev/${user}/
+
+or from Zeus:
+
+.. code-block:: shell
+  
+  set hn=`hostname --fqdn`
+  globus-url-copy gsiftp://dtn-zeus.rdhpcs.noaa.gov/archive/$user/file gsiftp://${hn}/lustre/f2/dev/${user}/
+>>>>>>> Stashed changes
