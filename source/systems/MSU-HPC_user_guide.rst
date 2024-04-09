@@ -45,8 +45,7 @@ This section assumes that:
   please see the link above.
 - You have access to the old device.
 
-#.  Go to TAPS and choose Manage DUO and
-    :menuselection:`Password --> Add new Device`.
+#.  Go to TAPS and choose Manage DUO and select  **Password --> Add new Device**.
 #.  Select "Send Me a Push".
 #.  Open DUO on the old device -- you should be prompted to accept a request for
     authentication.
@@ -144,8 +143,7 @@ accessing the Orion system. Through the web interface you can manage files,
 submit & monitor jobs, launch graphical applications, and run remote desktop
 session.
 
-- The Orion Web Portal can be reached through this `URL
-  <https://orion-ood.hpc.msstate.edu/>`__
+- The Orion Web Portal can be reached through TBD
 - The Hercules Web Portal is not yet available.
 
 .. Note::
@@ -181,9 +179,7 @@ and for hercules:
 
 The Globus EndPoints ``msuhpc2-Orion-dtn`` and ``msuhpc2-Hercules`` can be used
 to transfer data to and from Orion and Hercules respectively.  This can be
-accomplished using the `Globus File Manager App
-<https://app.globus.org/file#manager>`__, or the `Globus CLI
-<https://docs.globus.org/cli/>`__.
+accomplished using the Globus File Manager App or the Globus CLI.
 
 **Development nodes: Available via SSH (internal access only)**
 
@@ -405,7 +401,9 @@ directory.  Create/edit the file "**depend**" with the content:
    jid1=$(sbatch --parsable -n1 -A noaatest -J sim --wrap="srun sleep 10")
    jid2=$(sbatch --parsable -n1 -A noaatest -J post --dependency=afterok:$jid1 --wrap="srun hostname")
 
-.. note:: The ``--parsable`` option returns just the Job ID from sbatch.
+.. note:: 
+   
+   The ``--parsable`` option returns just the Job ID from sbatch.
 
 Make it executable:
 
@@ -609,7 +607,9 @@ scheduler efficiency and overall system utilization.
    times caused by system load.  For example, 10-20% for short run times, 5-10%
    for long run times.
 
-For example, to set a one-hour time lim:: shell
+For example, to set a one-hour time limit:
+
+.. code-block:: shell
 
    #SBATCH --time=1:00:00
 
@@ -1372,7 +1372,7 @@ find the email, search your emails with the following:
    required within 3 days. Security training must then be completed before HPC2
    resources can be accessed.
 
-   Visit https://taps.hpc.msstate.edu to complete these requirements.
+   Visit TAPS to complete these requirements.
 
 
 **Login to MSU's Training and Password System**
@@ -1485,7 +1485,7 @@ Here is an example of the email:
 If the renewal time has passed, or the initial account renewal email was missed,
 request an account renewal through the MSU intranet.
 
-** Fill out the NOAA-HPC Computer Account Request Form
+** Fill out the NOAA-HPC Computer Account Request Form **
 
 #.  Note the Expiration Date in the email.
 #.  Follow the link to open a pre-populated webform. You may be required to
@@ -1584,7 +1584,7 @@ Manager, who emails the :ref:`Orion Help System <getting_help>`.
    The portfolio manager is responsible for the portfolio across all R&D HPC
    resources (MSU-HPC/Hera/Jet/HPSS/Gaea).
 
-**Managing Allocations
+**Managing Allocations**
 
 Allocations on this system are managed the exact same way as they are for NOAA's
 RDHPCS systems (Hera, Jet etc.) 
@@ -1700,7 +1700,7 @@ all of NOAA's restricted data policies when using MSU-HPC. Request access to
 MSU FAQ
 =======
 
-**What are the differences between Orion and  Hercules?
+**What are the differences between Orion and  Hercules?**
 
 Although the ``/work`` and ``/work2`` file systems are mounted on both Orion and
 Hercules (via a shared InfiniBand interconnect), you should expect Hercules to
@@ -1755,7 +1755,7 @@ Here are other items of interest:
 -  The ``screen`` command has been replaced with ``tmux``.
 
 
-**Will Orion's software stack be upgraded to match Hercules?
+**Will Orion's software stack be upgraded to match Hercules?**
 
 Although this is an ongoing discussion between NOAA and MSU, a decision has not
 yet been made. There are a lot of different variables which need to be
@@ -1770,7 +1770,7 @@ drive the need to upgrade Orion to the new software stack. If this were to
 happen then multiple user notices would be sent out over a period of multiple
 months.
 
-**Should I use the ``/work`` or ``/work2`` file system for my project?
+**Should I use the ``/work`` or ``/work2`` file system for my project?**
 
 Although all NOAA projects have been provided with a disk allocation on both
 file systems, there are some architectural differences between the two file
@@ -1779,13 +1779,12 @@ also has a Solid State Disk (SSD) storage, which may improve small file
 performance and random I/O. We recommend that you try both file systems and then
 choose which one works better for your project.
 
-**How do I use Jupyter Notebooks on Orion?
+**How do I use Jupyter Notebooks on Orion?**
 
 Typically, port forwarding is needed to launch and use jupyter from the command
 line. Orion's current security posture does not allow port forwarding, so the
 recommended method for using Jupyter on Orion is to use the interactive Jupyter
-Notebooks application or the Virtual Desktop on our Open OnDemand HPC portal:
-https://orion-ood.hpc.msstate.edu
+Notebooks application or the Virtual Desktop on our Open OnDemand HPC portal.
 
 Implementation of Open OnDemand includes a Jupyter Notebook interactive server
 application under the :menuselection:`Interactive Apps`` dropdown menu. When you
@@ -1793,15 +1792,14 @@ select the jupyter notebook application, on the next page you can enter in slurm
 job parameters then launch the server application on one of the Orion nodes as a
 job.
 
-MSU has documentation for the Open OnDemand interface `here
-<https://intranet.hpc.msstate.edu/helpdesk/resource-docs/ood_guide.php>`__
+MSU has documentation for the Open OnDemand interface
 
 The OOD jupyter notebook instance is currently launched with the python/3.7.5
 module that is available on Orion. You should be able to launch custom kernels
 by placing the kernel specs in ``$HOME/.local/share/jupyter/kernels`` before
 launching jupyter notebook with OOD.
 
-**Why am I getting a "segmentation fault occurred" error when I run my program?
+**Why am I getting a "segmentation fault occurred" error when I run my program?**
 
 -  Job crashed due to small stack size (on both Orion and Hercules)
 
@@ -1840,7 +1838,7 @@ crashes. Since the hercules has much large memory on each node, user does not
 need to use this option.
 
 
-**Use modules on Hercules - For WRF model as an example
+**Use modules on Hercules - For WRF model as an example**
 
 Loading modules will provide the defined environment variables. However the
 variable name may not be what you used on other machines. Users should check and
