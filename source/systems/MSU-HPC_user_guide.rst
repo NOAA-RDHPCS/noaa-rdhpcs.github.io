@@ -6,42 +6,6 @@ MSU-HPC User Guide
 
 .. _orion-system-overview:
 
-Introduction
-============
-NOAA has provided Mississippi State University (MSU) with Gr- - ants to install and manage High Performance Computing (HPC) Systems to further NOAA’s scientific research and collaboration. Through this close partnership NOAA hopes to advance its research goals in the areas of Severe Weather and Climate research. The exchange of technical information between NOAA and MSU should be of great value and be beneficial to both HPC programs.
-
-The MSU-HPC system consists of two components, Orion and Hercules. Orion and Hercules share a InfiniBand interconnect and two Lustre file systems, "/work" and "/work2/".
-
-Orion System Features:
-
-- Total of 72,000 cores of 2.4GHz Xeon Gold CPU
-- Capability of 5,000 trillion floating point operations per second – or 5.0 petaflops
-- Nearly 350 terabytes of Random Access Memory (RAM)
-
-Hercules System Features:
-
-- Total of 40,960 cores of 2.3GHz Xeon Platinum CPU
-- Capability of 3,000 trillion floating point operations per second – or 3.0 petaflops
-- Nearly 256 terabytes of Random Access Memory (RAM)
-
-Shared Between the Two HPC Systems:
-
-- Total scratch disk capacity of 9 Petabytes on the "work" file system
-- Total scratch disk capacity of 18 Petabytes on the "work2" file system
-
-MSU Official HPC Documentation
-------------------------------
-
-`Orion Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/orion_guide.php>`_
-
-`Hercules Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/hercules_guide.php>`_
-
-`General HPC Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/>`_
-
-.. note::
-   An MSU user account is required to access documentation.
-
-
 General Information
 ===================
 
@@ -51,7 +15,6 @@ Logging In
 To login to Orion or Hercules via SSH, you will use your MSU account username,
 MSU password, and Duo two-factor authentication.
 
-
 **Password Maintenance**
 
 If you know your MSU password (or temporary password), use the MSU Training and
@@ -59,7 +22,6 @@ Password System (TAPS) site to Manage your Multi#Factor Authentication settings
 with Duo and/or change your password. `TAPS <https://taps.hpc.msstate.edu/>`__
 is also where you go to do MSU training required before you can login, and for
 yearly password resets and training to keep your account active.
-
 
 **Password Resets**
 
@@ -75,17 +37,9 @@ to access the `TAPS portal <https://taps.hpc.msstate.edu/>`__.
    The user is then required to access TAPS and change their password **within 3
    days** and complete any out-of-date training requirements.
 
-
-**DUO Multi-Factor Authentication**
-
-Please see additional information about setting up and using DUO at
-`Multi-Factor Authentication
-<https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Getting_an_Account#Dual#factor_authentication_and_Password_Change_.28user_responsibility.29>`__
-
-
 **Setting Up DUO on a New Device**
 
-This section assumes:
+This section assumes that:
 
 - You have already successfully configured DUO on an old device. If you do not,
   please see the link above.
@@ -99,19 +53,18 @@ This section assumes:
 #.  Approve that request and then on your PC, you should be prompted to enter a
     device type. Keep following the prompts to add a token to your new device.
 
-
 **Login nodes: Available externally via SSH**
 
 To SSH to Orion or hercules, you'll need your MSU username, password and DUO
 authentication:
 
-.. code::
+.. code-block:: shell
 
    $ ssh <MSU username>@orion-login.hpc.msstate.edu
 
 
 
-.. code::
+.. code-block:: shell
 
    $ ssh <MSU username>@hercules#login.hpc.msstate.edu
 
@@ -185,7 +138,6 @@ Orion Example:
 
    jdoe@Orion-login-4 ~ $
 
-
 **Web Portal: Available via your web browser**
 
 A browser based web interface, know as Open OnDemand (OOD), is available for
@@ -193,7 +145,7 @@ accessing the Orion system. Through the web interface you can manage files,
 submit & monitor jobs, launch graphical applications, and run remote desktop
 session.
 
-- The Orion Web Portal can be reached through `this URL
+- The Orion Web Portal can be reached through this `URL
   <https://orion-ood.hpc.msstate.edu/>`__
 - The Hercules Web Portal is not yet available.
 
@@ -204,7 +156,6 @@ session.
 Please refer to MSU's `OOD Documentation
 <https://intranet.hpc.msstate.edu/helpdesk/resource#docs/ood_guide.php>`__ for
 more information.
-
 
 
 **Data Transfer nodes: Available via SCP and SFTP**
@@ -227,7 +178,6 @@ and for hercules:
    * ``hercules#dtn#4.hpc.msstate.edu``
    * ``hercules#dtn.hpc.msstate.edu`` the DNS round-robin for ``hercules#dtn#{1..4}``.
 
-
 **Globus EndPoints: Available via the Globus File Manager**
 
 The Globus EndPoints ``msuhpc2-Orion-dtn`` and ``msuhpc2-Hercules`` can be used
@@ -235,7 +185,6 @@ to transfer data to and from Orion and Hercules respectively.  This can be
 accomplished using the `Globus File Manager App
 <https://app.globus.org/file#manager>`__, or the `Globus CLI
 <https://docs.globus.org/cli/>`__.
-
 
 **Development nodes: Available via SSH (internal access only)**
 
@@ -255,7 +204,6 @@ and for Hercules:
    * ``hercules-devel-1.hpc.msstate.edu``
    * ``hercules-devel-2.hpc.msstate.edu``
 
-
 **Additional Information**
 
 - Project Storage Space: ``/work/noaa/``
@@ -264,12 +212,10 @@ and for Hercules:
 - Environment loading: Lmod
 - Workload management: Slurm
 - `MSU Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource#docs>`__
-
 .. _msu_hpc_running_jobs_on_msu_hpc_systems:
 
 Running Jobs on MSU-HPC Systems
 ===============================
-
 
 **Running and Monitoring Jobs on Orion and Hercules**
 
@@ -277,9 +223,8 @@ All compute and memory-intensive tasks must be submitted to the batch system for
 execution on system compute resources. This section describes the requirements
 and common patterns for job submission and monitoring.
 
-.. note::
-   To improve your job turnaround and efficiently use the system resources please read and follow instructions carefully.
-
+**To improve your job turnaround** and efficiently use the system resources
+please read and follow instructions carefully.
 
 **Submitting a Job**
 
@@ -289,9 +234,7 @@ There are two types of jobs: batch jobs and interactive jobs.
 
 Most jobs are batch jobs. These are jobs that do not require any interaction and
 consist of a shell script that contains the commands you want to run. The
-``sbatch`` command is used to submit batch jobs.
-
-.. code::
+``sbatch`` command is used to submit batch jo:: shell
 
    $ sbatch <options> <script>
 
@@ -307,16 +250,16 @@ Slurm provides command line options in both long form and short form and either
 form can be used. For example, to specify a time limit of 30 min, all of these
 following forms are valid:
 
-.. code::
+.. code-block:: shell
 
    $ sbatch -t 30          jobfile
    $ sbatch --time=30      jobfile
    $ sbatch --time=0:30:00 jobfile
 
 In addition to the commands that you want to run, job files typically have Slurm
-directives at the top job files. The directives are of the form:
+directives at the top job files. The directives are of the form
 
-.. code::
+.. code-block:: shell
 
    #SBATCH <options>
    #SBATCH <options>
@@ -324,7 +267,7 @@ directives at the top job files. The directives are of the form:
 For example, to specify the time limit as a directive, you should have the
 following line before any of the executable commands in your job file:
 
-.. code::
+.. code-block:: shell
 
    #SBATCH --time=0:30:00
 
@@ -343,14 +286,13 @@ environment variable setting, and finally the directive in the job file.
    <https://slurm.schedmd.com/sbatch.html>`__ for more information and all
    available options.
 
-
 **Submitting a Batch Script**
 
 The following script is a very basic template that provides examples for some
 common sbatch options. It also includes required options. This can be used as a
-general guide when constructing a new batch script.
+general guide when constructing a new batch script:
 
-.. code::
+.. code-block:: shell
 
    #!/bin/bash -l
    #
@@ -388,10 +330,9 @@ general guide when constructing a new batch script.
 
 To submit the above script, called ``jobscript.sh``, you would type:
 
-.. code::
+.. code-block:: shell
 
    $ sbatch jobscript.sh
-
 
 **Submitting a serial job**
 
@@ -405,7 +346,6 @@ By default, a serial job gets only its share of the memory available on a node
 (memory per core = ~total memory / total cores). If your serial job needs more
 memory than the default, specify that using the ``--mem=<mem>`` option.
 
-
 **Submitting an Interactive Job**
 
 An interactive job is useful for tasks, such as debugging, that require
@@ -415,7 +355,7 @@ run jobs interactively, ``srun`` or ``salloc``. We recommend that you use ``sall
 For example, to request two nodes for 30 min (with X11 forwarding so that you
 can use X-windows based tools) you can do the following:
 
-.. code::
+.. code-block:: shell
 
    salloc --x11=first -q debug -t 0:30:00 --nodes=2 -A marine-cpu
 
@@ -431,20 +371,18 @@ allocation.
 If you need to display X windows back to your desktop screen from within an
 interactive job, you must use ``ssh -X`` when logging in.
 
-
 **Submitting a job with arguments**
 
 If you want to submit a script that accepts arguments you need to add the
 arguments after the job file name on the sbatch command. It is similar to the
 Unix method of passing arguments to a script as shown in the example below:
 
-.. code::
+.. code-block:: shell
 
    sbatch batch.job arg1 arg2
 
 The command above passes ``arg1`` as ``$1`` and ``arg2`` as ``$2`` etc., similar
 to the Unix convention of argument passing.
-
 
 **Submitting jobs with job dependencies**
 
@@ -460,9 +398,9 @@ condition.
 
 Here is a simple example of how to run a chain of jobs with dependencies,
 assuming that you have a parallel ``helloworld.f`` example program in your current
-directory.  Create/edit the file "**depend**" with the contents:
+directory.  Create/edit the file "**depend**" with the content:
 
-.. code::
+.. code-block:: shell
 
    #!/bin/bash
    jid1=$(sbatch --parsable -n1 -A noaatest -J sim --wrap="srun sleep 10")
@@ -472,18 +410,17 @@ directory.  Create/edit the file "**depend**" with the contents:
 
 Make it executable:
 
-.. code::
+.. code-block:: shell
 
    $
    chmod 0755 depend
 
 Initiate the sequence of dependent jobs by executing ``depend`` from the command
-line:
+line
 
-.. code::
-
+.. code-block:: shell
+   
    $ ./depend
-
 
 **Big runs - Using the "novel" QoS**
 
@@ -518,28 +455,25 @@ If you have such needs please submit a help desk ticket with the subject line
 Best effort will be made to schedule those runs at the end of maintenance
 downtimes that typically happen once a month.
 
-
 **Job Submission Options**
 
 The options you are allowed to specify are the set of options used for the Slurm
 batch system.  For a list of options refer to ``man sbatch``, run ``sbatch
---help``, or refer to the `Slurm documentation
-<https://slurm.schedmd.com/sbatch.html>`__.
-
+--help``, or refer to the `Slurm documentation <https://slurm.schedmd.com/sbatch.html>`__.
 
 **Command-line options vs directive options**
 
 There are two way to specify sbatch options. The first is on the command line
-when issuing the sbatch command. For example,
+when issuing the sbatch command. For example:
 
-.. code::
+.. code-block:: shell
 
    $ sbatch -A fim --ntasks=256 jobscript.sh
 
 The second method is to insert directives at the top of the batch script using
-#SBATCH syntax. For example,
+#SBATCH syntax. For example:
 
-.. code::
+.. code-block:: shell
 
    #!/bin/bash -l
 
@@ -549,22 +483,21 @@ The second method is to insert directives at the top of the batch script using
 The two methods may be mixed together, if desired. Options specified on the
 command line always override options specified in the script.
 
-
 **Specifying the project account**
 
 Use the ``-A`` (``--account``) option to specify the project that will be
 charged when your job is run.
 
 .. note:: 
-   You are required to specify an account when a job is submitted.
-
-.. code::
+   
+   You are required to specify an account when a job is submitted
+   
+.. code-block:: shell
 
    $ sbatch -A fim
 
 Specifying a Partition
 ----------------------
-
 
 **Orion Partitions**
 
@@ -604,7 +537,6 @@ The following Orion partitions and Orion Billable TRes Factors are defined:
 |               |                         | Login nodes.            |
 +---------------+-------------------------+-------------------------+
 
-
 **Hercules Partitions**
 
 The following partitions are defined:
@@ -638,14 +570,11 @@ The following partitions are defined:
 |               |                         | Login nodes.            |
 +---------------+-------------------------+-------------------------+
 
-To specify a partition for your job, use the ``-p`` (``--partition``) option.  For example,
-
-.. code::
+To specify a partition for your job, use the ``-p`` (``--partition``) option.  For examp:: shell
 
    #SBATCH --partition=service
 
 to request the *service* partition.
-
 
 **Specifying Wall Clock Time**
 
@@ -679,22 +608,16 @@ scheduler efficiency and overall system utilization.
    times caused by system load.  For example, 10-20% for short run times, 5-10%
    for long run times.
 
-For example, to set a one-hour time limit:
-
-.. code::
+For example, to set a one-hour time lim:: shell
 
    #SBATCH --time=1:00:00
-
-For the maximum wall clock allowed, see the :ref:`Quality of Service (QOS)
-tables <msu_hpc_qos_table>`.
-
 
 **Specifying a Quality of Service (QOS)**
 
 To specify a quality-of-service (QOS), use the ``--qos`` (``-q``) option. For
-example:
+example
 
-.. code::
+.. code-block:: shell
 
    #SBATCH -q batch
 
@@ -781,19 +704,15 @@ There are several different QOS'es depending on your needs.
 |           |            |            |            |           | you.                                    |
 +-----------+------------+------------+------------+-----------+-----------------------------------------+
 
-
 **Specifying a job name**
 
 Giving your jobs meaningful names can help you locate them when monitoring their
-progress. Use the ``-J`` (``--job-name``) option. For example,
-
-.. code::
+progress. Use the ``-J`` (``--job-name``) option. For examp:: shell
 
    #SBATCH -J WRF_ARW_00Z
 
 The default name for a job is the name of the job script that is being
 submitted.
-
 
 **Setting the names of output files**
 
@@ -805,19 +724,18 @@ Slurm job ID.
 
 Use the ``-o`` (``--output``) option to specify the name of the stdout file
 
-.. code::
+.. code-block:: shell
 
    #SBATCH -o /full/path/of/stdout/file
 
 Use the ``-e`` (``--error``) option to specify the name of the stderr file
 
-.. code::
+.. code-block:: shell
 
    #SBATCH -e /full/path/of/stderr/file
 
 If you want stdout and stderr to go to the same file, do not specify the ``-e``
 option.
-
 
 **Passing environment variables to the job**
 
@@ -827,9 +745,9 @@ script with a value, only that value is passed to the script!
 
 If you wish to pass local environment to the script and in addition set a
 specific variable that is currently not in the current environment (``ndays=20``
-in the example below), you can do it in the following way:
+in the example below), you can do it in the following way
 
-.. code::
+.. code-block:: shell
 
    sbatch --export=ALL,ndays=20 … sbatch.job
 
@@ -841,7 +759,7 @@ explicitly set. If ``ALL`` is left out, only the value of ``ndays=20`` is passed
 If you do not want to export your local environment, please use the following
 syntax:
 
-.. code::
+.. code-block:: shell
 
    sbatch --export=NONE … sbatch.job
 
@@ -851,7 +769,6 @@ syntax:
    cause some errors unless the necessary environment is created in the job. It
    may also require setting ``--export=ALL`` on the ``srun`` command within the
    job.
-
 
 **Requesting email notification about jobs**
 
@@ -870,33 +787,29 @@ found on the sbatch man page.
 -  NONE: no email is sent.
 
 To send email notification to Joe and Jane when your job starts and when it
-terminates, do:
+terminates, 
 
-.. code::
+.. code-block:: shell
 
    $ sbatch --mail-user=Joe.User@noaa.gov,Jane.User@noaa.gov \
       --mail-type=<the other options go here> myscript.sh
-
 
 **Specifying the working directory as the current directory**
 
 It is good practice to keep your batch scripts portable, and when they get moved
 around the working directory is relative to where the script is. To do this,
 specify the working directory with the ``-D`` (``--chdir``) option as the current
-directory. Ex:
+directory. 
 
-.. code::
+.. code-block:: shell
 
    #SBATCH -D .
 
 The other way to do this is with the ``$SLURM_SUBMIT_DIR`` variable. This
 variable stores the path from where your script was submitted. So at the top of
-your batch script, add:
-
-.. code::
+your batch script, a:: shell
 
    cd $SLURM_SUBMIT_DIR
-
 
 **Starting a job after a specific date/time**
 
@@ -904,7 +817,7 @@ If a job is waiting for data to arrive based on time of day (e.g., 12:30Z), the
 ``--begin`` option allows for a job to hold in the queue until at least the time
 (or date/time) specified with the option. For example:
 
-.. code::
+.. code-block:: shell
 
    #SBATCH --begin=19:25
 
@@ -913,9 +826,9 @@ available shortly after 19:25, the job will run. If not, the job will wait until
 resources are available (this is not a reservation). Note that if the sbatch was
 submitted at 19:26 GMT, the job will hold until 19:25 GMT the next day!
 
-Date/time can be specified as:
+Date/time can be specified:
 
-.. code::
+.. code-block:: shell
 
    YYYY-MM-DD[Thh:mm[:ss]]
 
@@ -924,7 +837,7 @@ minute and *ss* is second. The letter "T" is required as a
 delimiter if specifying both date and time. All times are
 considered to be in the future, so
 
-.. code::
+.. code-block:: shell
 
    2110-12-21T06:30
 
@@ -933,7 +846,7 @@ would be December 21, 2110 at 06:30 GMT.
 The ``--begin`` option also accepts an arbitrary amount of time to wait. For
 example:
 
-.. code::
+.. code-block:: shell
 
    #SBATCH --begin=now+1hour
 
@@ -945,14 +858,13 @@ Monitoring Jobs
 
 **List jobs**
 
-Use the ``squeue`` command to get a listing of the current jobs in the queue.
+Use the ``squeue`` command to get a listing of the current jobs in the queue
 
-.. code::
+.. code-block:: shell
 
    $ squeue
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
     30049     orion     test Kyle.Ste  R       0:02      1 t758
-
 
 **List jobs that belong only to you**
 
@@ -960,12 +872,11 @@ Use the ``-u`` option to list only the jobs that belong to you. Provide your
 username as an argument to ``-u``. This is preferable to using ``squeue \| grep`` to
 extract the jobs that belong to you for two reasons. First, this method allows
 you to see which of the jobs are active, eligible, and blocked. Second,
-usernames are truncated in the ``squeue`` output, making it hard to grep.
+usernames are truncated in the ``squeue`` output, making it hard to grep
 
-.. code::
+.. code-block:: shell
 
    $ squeue -u <user name>
-
 
 **List jobs that have completed within the last 24 hours**
 
@@ -980,15 +891,14 @@ states can be found on the ``sacct`` man page.
            -X \
            --format=JobID,JobName%30,Partition,Account,AllocCPUS,State,Elapsed,QOS
 
-
 **Query detailed job status information for a specific job**
 
 Use the ``scontrol show job`` command to query detailed information about queued
 or running jobs or jobs that have finished in the last 15 minutes. This could be
 useful when trying to determine why a job is not running and has remained queued
-for a long time.
+for a long time:
 
-.. code::
+.. code-block:: shell
 
    $ scontrol show job 251091
 
@@ -1000,9 +910,9 @@ job may start. Reservation based start time estimation incorporates information
 regarding current administrative, user, and job reservations to determine the
 earliest time the specified job could allocate the needed resources and start
 running. In essence, this estimate will indicate the earliest time the job would
-start assuming this job was the highest priority job in the queue.
+start assuming this job was the highest priority job in the queue:
 
-.. code::
+.. code-block:: shell
 
    $ squeue --start
     JOBID PARTITION     NAME     USER ST          START_TIME  NODES SCHEDNODES           NODELIST(REASON)
@@ -1014,12 +924,11 @@ start assuming this job was the highest priority job in the queue.
    partitions specified, new jobs being submitted to the queue, and how
    accurately idle jobs and running jobs have specified their wall clock time.
 
-
 **Deleting jobs**
 
-To cancel a job use the scancel command
+To cancel a job use the scancel command:
 
-.. code::
+.. code-block:: shell
 
    $ scancel $JOBID
 
@@ -1027,29 +936,23 @@ Getting Information about your Projects
 ---------------------------------------
 
 MSU-HPC uses SLURM as its batch scheduler as does NOAA's RDHPCS systems. SLURM
-allocations result in a percentage of total system priority. For more
-information on how SLURM prioritizes submitted jobs please refer to
-:ref:`Priority and Fairshare <slurm-priority-and-fairshare>`.
-
+allocations result in a percentage of total system priority.
 
 **Load contrib and noaatools Module**
 
 The module tools work on all MSU-HPC systems. On the MSU-HPC
-side, load the noaatools module.
-
-.. code::
+side, load the noaatools modu:: shell
 
    $ module avail
    $ module load contrib noaatools
    $ module list
 
-
 **saccount_params**
 
 Use ``saccount_params`` to get information on your projects and disk
-usage, and quota.
+usage, and quota:
 
-.. code::
+.. code-block:: shell
 
    $ saccount_params
    Account Params -- Information regarding project associations for userid
@@ -1087,14 +990,13 @@ usage, and quota.
 
    Your must use the ``saccount_params`` command.  There is no ``account_params`` command alias.
 
-
 **shpcrpt**
 
 Use ``shpcrpt`` to get project usage information.
 
 To get a summary of all project on orion:
 
-.. code::
+.. code-block:: shell
 
    $  shpcrpt -c orion -s
    =================================================================================================================
@@ -1122,7 +1024,7 @@ To get a summary of all project on orion:
 
 To see information for a single project:
 
-.. code::
+.. code-block:: shell
 
    $ shpcrpt -c orion -p noaatest
    =================================================================================================================
@@ -1163,12 +1065,11 @@ To see information for a single project:
 
    For Hercules use ``shpcrpt -c hercules -p <your project``.
 
-
 **reportFSUsage**
 
-Use ``reportFSUsage`` to see a summary of all project disk usage.
+Use ``reportFSUsage`` to see a summary of all project disk usage:
 
-.. code::
+.. code-block:: shell
 
    $ reportFSUsage
    ------------------------------------------------------------------------------------
@@ -1189,7 +1090,6 @@ Use ``reportFSUsage`` to see a summary of all project disk usage.
    ------------------------------------------------------------------------------------
    END OF REPORT
 
-
 MSU-HPC System Configuration
 ============================
 
@@ -1206,7 +1106,6 @@ process. A /apps/contrib package is one that is maintained by a user on the
 system. The system staff are not responsible for the use or maintenance of these
 packages.
 
-
 **Responsibilities of a Contrib Package Maintainer**
 
 Maintainers are expected to:
@@ -1216,18 +1115,18 @@ Maintainers are expected to:
 - Update software for bug fixes and functionality as users request
 - Respond to user email requests for help using the software
 
-
 **Contrib Packages Guidelines**
 
-- The package should be a single program or toolset. We want to prevent having a single directory being a repository for many different packages.
+- The package should be a single program or toolset. We want to prevent having a
+  single directory being a repository for many different packages.
 - If you support multiple functions, please request multiple packages.
-- The package may have build dependencies on other packages, but it must otherwise be self-contained.
+- The package may have build dependencies on other packages, but it must
+  otherwise be self-contained.
 - The package may not contain links to files in user or project directories.
 - We expect each package to be less than 100MB.
 - If you need more, please tell us when you request your package.
 - We can support larger packages but we need to monitor the space used.
 - We expect each package to have less than 100 files.
-
 
 **Contrib Package Maintainer Requests**
 
@@ -1242,13 +1141,10 @@ In certain cases, multiple users can manage a package, and unix group write
 permissions may be granted for the directory. In that case, specify the unix
 group or Role account that will be maintaining the package.
 
-
 **Managing a Contrib Package**
 
 After your request has been approved to use space in the /contrib directory, two
-directories will be created for you:
-
-.. code::
+directories will be created for y:: shell
 
     /apps/contrib/<package>
     /apps/contrib/<package>/modulefiles
@@ -1260,7 +1156,6 @@ use this package. The variable ``<package>`` is the name of the
 subdirectory under the ``/apps/contrib`` level. If you want to manage multiple
 packages, please request multiple /apps/contrib package. You can do this all at
 one time when submitting your request to the Help System.
-
 
 **Maintaining "Metadata" for the contrib Package**
 
@@ -1274,7 +1169,6 @@ at least the following information:
 - Contact info for questions/help:
 - Any other info that will be useful for general users to know
 
-
 **Contrib Package Directory Naming Conventions**
 
 When installing software into your /apps/contrib directory, first determine if
@@ -1282,43 +1176,36 @@ this is software that should be versioned (multiple versions may exist at one
 time) or un-versioned (there will only ever be one version installed, and
 upgrade will overwrite the existing software). For versioned software, please
 install it into a subdirectory of your package that is named after the version
-number. For supporting multiple versions of software the install path should be:
-
-.. code::
+number. For supporting multiple versions of software the install path should :: shell
 
     /apps/contrib/<package>/<version>
 
 Where ``<package>`` is the directory assigned to you and $VER is the version
 number. Thus, if your package is named *ferret* and you are installing the
-version *3.2.6*, the software should be installed in:
-
-.. code::
+version *3.2.6*, the software should be installed :: shell
 
     /apps/contrib/ferret/3.2.6
 
 For supporting un-versioned software, only install the software directly into
-your package directory:
-
-.. code::
+your package directo:: shell
 
     /apps/contrib/<package>/
-
 
 **Providing Modules to Access Contrib Installed Software**
 
 For each contrib package, a corresponding directory will be created for modules.
 The base directory name is ``/apps/contrib/<package>/modulefiles``. Each package
 will have a subdirectory created named after the package. For example, for the
-ferret package, there will also be a directory created named:
+ferret package, there will also be a directory created name:
 
-.. code::
+.. code-block:: shell
 
     /apps/contrib/ferret/modulefiles
 
 In order for users to know what contrib software is available and who the "Point
 of Contact" is, users should do a listing of the ``/apps/contrib directory``:
 
-::
+.. code-block:: shell
 
    ls -l /apps/contrib
 
@@ -1326,17 +1213,16 @@ Once they which software in cotrib they need to use, then can add that package
 to their module path and then load the module. For example, *sutil* is a contrib
 package, and in order to use it, users would do the following:
 
-::
+.. code-block:: shell
 
     module use -a /apps/contrib/sutils/modulefiles
     module load sutils
-
 
 **Creating Modules for Contrib Packages**
 
 Example modules can be found here:
 
-.. code::
+.. code-block:: shell
 
    /apps/contrib/modulefiles.example/ferret
 
@@ -1366,12 +1252,10 @@ account request must come from a project's Account Manager (like a RDHPCS
 Principal Investigator - PI) or a project's Portfolio Manager (PfM) who holds an
 MSU account.
 
-
 **Submit a New User Account Request (Account Manager/PI/PfM Responsibility)**
 
 The following procedure is intended for the Account Manager or the Portfolio
 Manager who has an active MSU account.
-
 
 **Assemble User Information**
 
@@ -1393,18 +1277,11 @@ Before you begin, collect the following details:
    supervisor, you are responsible to renew the user's account when it
    approaches the expiration date.
 
-
 **Login to the MSU account management system**
 
 -  Navigate to MSU's account management system: `MSU Account
    Management <https://intranet.hpc.msstate.edu/services/external_accounts/noaa>`__
 -  Authenticate using your MSU username and password.
-
-.. Note::
-
-   If you do not remember your password, see `Logging In - Password
-   <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in#Password>`__
-
 
 **Check to see if the user already has an account. If not, request account.**
 
@@ -1420,9 +1297,9 @@ Before you begin, collect the following details:
 
 Once the initial account request has been submitted, MSU will send the
 prospective user email similar to the following, to request the additional
-information needed for the background check and account finalization.
+information needed for the background check and account finalizatize:
 
-.. code::
+.. code-block:: shell
 
    From: help@hpc.msstate.edu
    Date: Fri, Jan 31, 2020 at 12:21 PM
@@ -1451,7 +1328,6 @@ information needed for the background check and account finalization.
    Mississippi State University
    help@hpc.msstate.edu
 
-
 **Complete the HPC2-NOAA User Account Request Confirmation form (User)**
 
 -  Click on the link provided in the email, fill out the form, agree to the
@@ -1465,8 +1341,7 @@ information needed for the background check and account finalization.
 If you find you are unable to submit the form, try another password. **Do not
 use the # character** as it has periodically caused problems.  Certain other
 characters in the password might block the form submission, please submit a help
-ticket if you experience a problem `Orion Help
-<https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
+ticket if you experience a problem.
 
 .. note::
 
@@ -1474,14 +1349,13 @@ ticket if you experience a problem `Orion Help
    remember your password.  This is critical to the next step of the on-boarding
    process.
 
-
 **Set Password and Complete Training (User)**
 
 MSU vets the account request and creates the user account (1-2 weeks). MSU then
 sends email, similar to the one below, will be to the new prospective user. To
 find the email, search your emails with the following:
 
-.. code::
+.. code-block:: shell
 
    From: @hpc.msstate.edu
    Subject: new user account
@@ -1500,7 +1374,6 @@ find the email, search your emails with the following:
    Visit https://taps.hpc.msstate.edu to complete these requirements.
 
 
-
 **Login to MSU's Training and Password System**
 
 - Within 3 days of receiving the email, navigate to
@@ -1515,13 +1388,11 @@ find the email, search your emails with the following:
 
 -  Upon successful login, you will see the TAPS Home page.
 
-
 **Take MSU Security Training**
 
 -  Click on the IT Security *Start training* button.
 -  Upon successful completion of the training, you will get a confirmation.
 -  Go back to the TAPS Home page.
-
 
 **Take MSU Insider Threat Training**
 
@@ -1529,11 +1400,9 @@ find the email, search your emails with the following:
    completion of the training, you will get a confirmation.
 -  Go back to the TAPS Home page.
 
-
 **Dual-factor authentication and Password Change (User)**
 
 -  Navigate to `TAPS <https://taps.hpc.msstate.edu>`__
-
 
 **Setup Dual-factor authentication App**
 
@@ -1549,13 +1418,12 @@ find the email, search your emails with the following:
 
 Congratulations! Your account is now fully set up and you can login to MSU-HPC.
 
-
 **Account Reactivation**
 
 If your account has expired, you will need to reactivate. To begin the process,
-start a Help ticket: `MSU-HPC Help Request
-<https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
+start a Help ticket.
 
+.. _msu_account_renewal:
 
 Account Renewal
 ---------------
@@ -1577,7 +1445,7 @@ locked. The expiration date is set by the account supervisor when the user
 account is created or renewed, and cannot be more than one (1) year from the
 effective date. The user account renewal request can only be completed by the
 supervisor of record. If the supervisor is to be on an extend absence, then the
-supervisor should start an :ref:`Orion help ticket <getting_help>` to assign an
+supervisor should start an Orion help ticket to assign a
 new supervisor so the user may maintain their account during your absence.
 
 .. note::
@@ -1589,7 +1457,6 @@ new supervisor so the user may maintain their account during your absence.
    not renewed.  Once your HFS data is deleted it will NOT be recoverable.
    Project data (``/work``) is not deleted when a users account is deleted.
 
-
 **Renewal Request Email from MSU (Supervisor)**
 
 When an active user's account approaches the expiration date, an email will
@@ -1598,7 +1465,7 @@ or decide not to renew the account.
 
 Here is an example of the email:
 
-.. code::
+.. code-block:: shell
 
    From: <null@hpc.msstate.edu>
    Date: Thu, Jan 21, 2021 at 8:11 AM
@@ -1622,14 +1489,12 @@ If the renewal time has passed, or the initial account renewal email was missed,
 request an account renewal `here:
 <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/>`__
 
-
-**Fill out the NOAA-HPC Computer Account Request Form**
+** Fill out the NOAA-HPC Computer Account Request Form
 
 #.  Note the Expiration Date in the email.
 #.  Follow the link to open a pre-populated webform. You may be required to
     provide your MSU login credentials. If you don't know your password start an
-    `Orion help ticket
-    <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
+    Orion help ticket
 #. Verify the email address. Change it if needed.
 #. Set the Effective Date.  The effective date may pre-populate with the current
    date instead of the Expiration Date. Change the Effective Date to be the
@@ -1645,14 +1510,13 @@ user that the renewal request has been made so they will be vigilant for an
 email from MSU. MSU will email the user to provide additional information and
 confirm the request.
 
-
 **HPC2-NOAA User Account Request Confirmation (User)**
 
 Once the account renewal request has been submitted by the supervisor, an email
 similar to the one below will be sent from MSU directly to the user, asking for
-additional information and request confirmation.
+additional information and request confirmation:
 
-.. code::
+.. code-block:: shell
 
    From: help@HPC.MsState.Edu <help@HPC.MsState.Edu>
    Sent: January 21, 2021 13:03
@@ -1680,15 +1544,13 @@ additional information and request confirmation.
 
    help@hpc.msstate.edu
 
-
-** Fill out the HPC2-NOAA User Account Request Confirmation Form
+**Fill out the HPC2-NOAA User Account Request Confirmation Form**
 
 #.  Click on the link provided in the email
 #.  Fill out the form.
 
    -  Your password is your current MSU password. If you don't know your
-      password start an `Orion help ticket
-      <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
+      password start an Orion help ticket.
    -  If you have an NOAA RDHPCS account use the same Organization, Phone, and
       Address you use in AIM. Otherwise, use your business contact information.
 
@@ -1701,7 +1563,6 @@ renewal is denied the supervisor will be notified by email.
 Managing Portfolios, Projects and Allocation
 --------------------------------------------
 
-
 **Portfolio Management on MSU-HPC Systems**
 
 On the MSU-HPC system, Portfolios, Projects, and Project Allocations are managed
@@ -1709,7 +1570,6 @@ by Portfolio Managers (PfM's) and Principle Investigators (PI's) the exact same
 way as they are for NOAA's RDHPCS systems (Hera/Jet/Gaea/HPSS). The main
 difference for Account Management between NOAA RDHPCS systems and the MSU-HPC
 system is how Project members (users) are managed.
-
 
 **Managing Projects within a Portfolio**
 
@@ -1728,19 +1588,10 @@ Manager, who emails the :ref:`Orion Help System <getting_help>`.
    The portfolio manager is responsible for the portfolio across all R&D HPC
    resources (MSU-HPC/Hera/Jet/HPSS/Gaea).
 
-
-**Adding/Removing Project Members**
-
-.. See :ref:`Adding/Removing Project Members
-.. <account_adding_and_removing_project_members>`.
-
-
-**Managing Allocations**
+**Managing Allocations
 
 Allocations on this system are managed the exact same way as they are for NOAA's
-RDHPCS systems (Hera, Jet etc.) For more information, please see: `RDHPCS
-Allocations
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations>`__
+RDHPCS systems (Hera, Jet etc.) 
 
 Role Accounts
 -------------
@@ -1753,10 +1604,9 @@ Mississippi State University's MSU-HPC system has system-specific policies
 concerning Role Accounts. These are required for MSU to remain compliant with
 their security controls and security plan.
 
- 
  **Role Account Policies**
 
- -  A role account is a user account that is shared by one or more users.
+ -  A role account is a user account shared by one or more users.
  -  Role accounts follow the naming convention ``role-baseprojectname``.
  -  There can be only one role account per MSU-HPC project, and a role account
     can be only assigned to a single project.
@@ -1777,7 +1627,6 @@ their security controls and security plan.
     role-PROJECTNAME`` command.
  -  The sudo command can be run on Login, Development, and DTN nodes.
 
- 
  **To Request and/or perform Management on a Role Account**
 
  -  The PI or PfM should submit a request by emailing the Help Desk at
@@ -1811,13 +1660,6 @@ rdhpcs.orion.help@noaa.gov
    MSU Orion Support team from 0900 -1700 Eastern Time, Monday - Friday, except
    Government holidays.
 
-.. note::
-
--  IDL is not yet available on Hercules. MSU hopes to have this available by the
-   end of June. Please continue to use Orion for IDL work.
--  There is not yet an Open OnDemand (OOD) service available. This service won't
-   be available until a while after the system has been placed into production.
-
 
 Policies and Best Practices
 ---------------------------
@@ -1841,13 +1683,11 @@ Policies and Best Practices
    Once your HFS data is deleted it will NOT be recoverable. Project data
    (``/work`` and ``/work2``) is not deleted when a users account is deleted.
 
-
 **Best Practices**
 
 -  Due to limited disk space on Orion, it is highly recommended that data be
    moved back to the R&D HPC Niagara system.
--  Due to limited network bandwidth, it is highly recommended that  `Globus
-   <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Transferring_Data_Globus>`__
+-  Due to limited network bandwidth, it is highly recommended that  Globus
    be used for moving data between Orion and Niagara.
 
 Protecting Restricted Data
@@ -1855,9 +1695,177 @@ Protecting Restricted Data
 
 Restricted data (*rstprod*) is allowed on the MSU-HPC system. Be sure to follow
 all of NOAA's restricted data policies when using MSU-HPC. Request access to
-*rstprod* via `AIM <https://aim.rdhpcs.noaa.gov>`__  Provide the following
-information in your justification:
+*rstprod* via AIM.  Provide the following information in your justification:
 
 -  The machine(s) where you will need rstprod access on (i.e. Hercules, Orion).
 -  The project(s) you will be using rstprod data for.
 
+
+MSU FAQ
+=======
+
+**What are the differences between Orion and  Hercules?
+
+Although the ``/work`` and ``/work2`` file systems are mounted on both Orion and
+Hercules (via a shared InfiniBand interconnect), you should expect Hercules to
+behave like a standalone HPC system.
+
+Here are some of the key differences:
+
+-  Orion runs CentOS 7.x for its Operating System. Hercules runs Rocky Linux 9.x
+   for its Operating System. There may be subtle differences between the two.
+-  Hercules has all of the same basic software packages as Orion, but with the
+   latest version of each package installed. MSU will consider installing older
+   software versions upon request. This should be done via a help ticket and
+   should include a justification as to why the older version is needed and an
+   estimate as to how long it will be needed.
+-  With a few exceptions, Spack is being used to build and manage the
+   Open-source software stack on Hercules. This includes the module file for
+   each Open-source software package. The directory and module names are
+   different then Orion.
+-  The "/apps" directory structure is significantly different between the two
+   system. Software built on Hercules, using Spack, will be installed in its own
+   ``/apps/spack/<package-hash>`` subdirectory. Any software package built with
+   Spack will have a Spack generated hash as part of it's directory name. Any
+   time ``/apps/spack`` software package are rebuilt they will get a new hash.
+   This may occur often. So it is imperative to not use hard coded paths and
+   instead, us modules for loading the required build and run environment.
+-  The name and order by which module files are loaded is different between the
+   two systems.
+
+Here are other items of interest:
+
+-  Hercules has its own set of Login nodes, Development nodes, Compute nodes,
+   Data Transfer nodes, etc.
+-  Hercules has its own Home File System (HFS) and its own ``/apps/contrib``
+   directory. As with Orion, only the HFS is the ONLY file system which is
+   backed up.
+-  Hercules has a completely separate CRON service. Workflows need to be managed
+   independently on the two systems. Please use ``<system name>-login-1`` for
+   editing your crontab file.
+-  The Batch system is completely separate between the two systems. A project's
+   Fairshare on one system will not impact the project's Fairshare on the other
+   system. Users cannot check the status or submit jobs between the two systems.
+   There is no Federated configuration in place.
+-  Although core-hour (Fairshare) allocation will be managed independently, a
+   project's disk allocation will be shared between the two systems. Users can
+   follow the exact same directory path on each system to access their data.
+-  Core-hour usage reporting will be reported separately for each system.
+-  You do not have to do anything different in regards to MSU's Account
+   Management systems. All users have accounts on both systems. This is the same
+   for Role accounts.
+-  Each NOAA project/group has the exact same user membership on both systems.
+-  Users have to login (via ssh or putty) to Hercules and Orion separately.
+-  The ``screen`` command has been replaced with ``tmux``.
+
+
+**Will Orion's software stack be upgraded to match Hercules?
+
+Although this is an ongoing discussion between NOAA and MSU, a decision has not
+yet been made. There are a lot of different variables which need to be
+considered first. The most prudent approach at this time, is to flush out any
+issues with the new software stack on Hercules, allow NOAA projects to port over
+their workflows and models to Hercules, let these models and workflows run for a
+while on Hercules, and then reevaluate the potential impact of running the new
+software stack on Orion. It will also depend greatly on the projected longevity
+of the Orion system. Orion runs the CentOS 7.x Operating System. Vendor support
+for this OS ends on June 30th, 2024. The OS's end of vendor support date may
+drive the need to upgrade Orion to the new software stack. If this were to
+happen then multiple user notices would be sent out over a period of multiple
+months.
+
+**Should I use the ``/work`` or ``/work2`` file system for my project?
+
+Although all NOAA projects have been provided with a disk allocation on both
+file systems, there are some architectural differences between the two file
+systems. The ``/work2`` file system has over 2x the capacity of ``/work``. It
+also has a Solid State Disk (SSD) storage, which may improve small file
+performance and random I/O. We recommend that you try both file systems and then
+choose which one works better for your project.
+
+**How do I use Jupyter Notebooks on Orion?
+
+Typically, port forwarding is needed to launch and use jupyter from the command
+line. Orion's current security posture does not allow port forwarding, so the
+recommended method for using Jupyter on Orion is to use the interactive Jupyter
+Notebooks application or the Virtual Desktop on our Open OnDemand HPC portal:
+https://orion-ood.hpc.msstate.edu
+
+Implementation of Open OnDemand includes a Jupyter Notebook interactive server
+application under the :menuselection:`Interactive Apps`` dropdown menu. When you
+select the jupyter notebook application, on the next page you can enter in slurm
+job parameters then launch the server application on one of the Orion nodes as a
+job.
+
+MSU has documentation for the Open OnDemand interface `here
+<https://intranet.hpc.msstate.edu/helpdesk/resource-docs/ood_guide.php>`__
+
+The OOD jupyter notebook instance is currently launched with the python/3.7.5
+module that is available on Orion. You should be able to launch custom kernels
+by placing the kernel specs in ``$HOME/.local/share/jupyter/kernels`` before
+launching jupyter notebook with OOD.
+
+**Why am I getting a "segmentation fault occurred" error when I run my program?
+
+-  Job crashed due to small stack size (on both Orion and Hercules)
+
+Although this may be a bug in your code, it is more likely to be a stack size
+issue. Stack space is a segment of program memory that is typically used by
+temporary variables in the program's subroutines and functions. Attempting to
+access a variable that resides beyond the stack space boundary will cause
+segmentation faults. The usual remedy is to increase the stack size and re-run
+your program. The soft limit (default) for the stack size on Orion and Hercules
+is set to 16KB. You can set this limit higher by running ``ulimit -s
+<stack_size>`` and then running ``ulimit -s`` to verify. We recommend that you
+set this within your batch scripts and do not add this to your ``~/.bashrc`` file,
+as it can cause unintended consequences.
+
+-  Job crashed due to out of node memory (on both Orion and Hercules)
+
+The job crashed for large size and worked for small size. One possibility is out
+of node physical memory. The suggested solution is to use more nodes, or run
+less MPI tasks per node. Make sure that the node is not shared with other jobs
+(``#SBATCH --exclusive``). job crashed due to out of MPI buffer size for intel
+compiler
+
+-  Job crashed due to MPI buffer size on Hercules only
+
+The job crashed for large size and worked for small size. The large size worked
+for a single MPI task and crashed with multiple MPI tasks. In intel compiler,
+the default ``I_MPI_SHM_HEAP_VSIZE`` is 8192 (unit is MB). Users can redefine this
+value before ``srun`` command based on the maximum node memory (not exceeding the
+maximum node memory). When too big, it will have the MPI initialization error
+as: unable to allocate shared memory.
+
+-  ``--ntasks-per-node`` option on Hercules only
+
+For the large domain, when ``--ntasks-per-node`` has been used, the model
+crashes. Since the hercules has much large memory on each node, user does not
+need to use this option.
+
+
+**Use modules on Hercules - For WRF model as an example
+
+Loading modules will provide the defined environment variables. However the
+variable name may not be what you used on other machines. Users should check and
+make sure. Following is an example when compile WRF model on Hercules.
+
+-  Netcdf
+
+The netcdf-c and netcdf-fortran have been installed in different directories.
+After loading the modules, it provides ``NETCDF_C_ROOT`` and
+``NETCDF_FORTRAN_ROOT``. Users need to copy them to the same directory and provide
+the definition of “NETCDF” in order to compile WRF. For example, I create a new
+directory for ``$NETCDF
+
+.. code-block:: shell
+
+   $ cp -r $NETCDF_C_ROOT/\* $NETCDF/.
+   $ cp -r NETCDF_FORTRAN_ROOT/\* $NETCDF/.
+
+-  Parallel netcdf
+
+After loading the module, it provides ``PARALLEL_NETCDF_ROOT``. Users need to
+define “PNETCDF”. For example: ``export PNETCDF=$PARALLEL_NETCDF_ROOT``.
+Otherwise, the WRF model compiles successfully. But fails when you use parallel
+IO (such as set ``io_form_input=11`` in ``namelist.input``).
