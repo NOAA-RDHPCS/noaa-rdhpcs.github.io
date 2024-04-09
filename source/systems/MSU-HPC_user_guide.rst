@@ -19,7 +19,7 @@ MSU password, and Duo two-factor authentication.
 
 If you know your MSU password (or temporary password), use the MSU Training and
 Password System (TAPS) site to Manage your Multi#Factor Authentication settings
-with Duo and/or change your password. `TAPS <https://taps.hpc.msstate.edu/>`__
+with Duo and/or change your password. The TAPS system 
 is also where you go to do MSU training required before you can login, and for
 yearly password resets and training to keep your account active.
 
@@ -30,7 +30,7 @@ normal business days (M-F) from 08:00-12:00 and 13:00-17:00 Central Time. Please
 call: *(662) 325-9146*. If you do not get an answer keep calling every 30
 minutes. If busy call again every 15 minutes. The MSU HPC2 admin will verify
 your ID, unlock your account, and issue a temporary password that is only valid
-to access the `TAPS portal <https://taps.hpc.msstate.edu/>`__.
+to access the TAPs portal.
 
 .. note::
 
@@ -45,7 +45,7 @@ This section assumes that:
   please see the link above.
 - You have access to the old device.
 
-#.  Go to `TAPS <https://taps.hpc.msstate.edu/>`__ and choose Manage DUO and
+#.  Go to TAPS and choose Manage DUO and
     :menuselection:`Password --> Add new Device`.
 #.  Select "Send Me a Push".
 #.  Open DUO on the old device -- you should be prompted to accept a request for
@@ -61,7 +61,6 @@ authentication:
 .. code-block:: shell
 
    $ ssh <MSU username>@orion-login.hpc.msstate.edu
-
 
 
 .. code-block:: shell
@@ -153,9 +152,7 @@ session.
 
    You'll need your MSU username, password, and DUO authentication.
 
-Please refer to MSU's `OOD Documentation
-<https://intranet.hpc.msstate.edu/helpdesk/resource#docs/ood_guide.php>`__ for
-more information.
+Please refer to MSU's OOD Documentation for more information.
 
 
 **Data Transfer nodes: Available via SCP and SFTP**
@@ -168,7 +165,8 @@ for the DTNs are for orion:
    * ``orion-dtn-2.hpc.msstate.edu``
    * ``orion-dtn-3.hpc.msstate.edu``
    * ``orion-dtn-4.hpc.msstate.edu``
-   * ``orion-dtn.hpc.msstate.edu`` the DNS round-robin for ``orion-dtn-{1..4}``,
+   * ``orion-dtn.hpc.msstate.edu`` 
+   * the DNS round-robin for ``orion-dtn-{1..4}``,
 
 and for hercules:
 
@@ -176,7 +174,8 @@ and for hercules:
    * ``hercules#dtn#2.hpc.msstate.edu``
    * ``hercules#dtn#3.hpc.msstate.edu``
    * ``hercules#dtn#4.hpc.msstate.edu``
-   * ``hercules#dtn.hpc.msstate.edu`` the DNS round-robin for ``hercules#dtn#{1..4}``.
+   * ``hercules#dtn.hpc.msstate.edu`` 
+   * the DNS round-robin for ``hercules#dtn#{1..4}``.
 
 **Globus EndPoints: Available via the Globus File Manager**
 
@@ -211,8 +210,7 @@ and for Hercules:
 - Contrib: ``/apps/contrib`` (submit a help desk ticket for directory creation)
 - Environment loading: Lmod
 - Workload management: Slurm
-- `MSU Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource#docs>`__
-.. _msu_hpc_running_jobs_on_msu_hpc_systems:
+- MSU Resource Documentation 
 
 Running Jobs on MSU-HPC Systems
 ===============================
@@ -234,7 +232,9 @@ There are two types of jobs: batch jobs and interactive jobs.
 
 Most jobs are batch jobs. These are jobs that do not require any interaction and
 consist of a shell script that contains the commands you want to run. The
-``sbatch`` command is used to submit batch jo:: shell
+``sbatch`` command is used to submit batch jobs
+
+.. code-block:: shell
 
    $ sbatch <options> <script>
 
@@ -282,8 +282,7 @@ environment variable setting, and finally the directive in the job file.
 
 .. note::
 
-   Refer to ``man sbatch`` or the `Slurm documentation
-   <https://slurm.schedmd.com/sbatch.html>`__ for more information and all
+   Refer to ``man sbatch`` or the Slurm documentation for more information and all
    available options.
 
 **Submitting a Batch Script**
@@ -459,7 +458,7 @@ downtimes that typically happen once a month.
 
 The options you are allowed to specify are the set of options used for the Slurm
 batch system.  For a list of options refer to ``man sbatch``, run ``sbatch
---help``, or refer to the `Slurm documentation <https://slurm.schedmd.com/sbatch.html>`__.
+--help``, or refer to the Slurm documentation.
 
 **Command-line options vs directive options**
 
@@ -570,7 +569,9 @@ The following partitions are defined:
 |               |                         | Login nodes.            |
 +---------------+-------------------------+-------------------------+
 
-To specify a partition for your job, use the ``-p`` (``--partition``) option.  For examp:: shell
+To specify a partition for your job, use the ``-p`` (``--partition``) option.  For example:
+
+.. code-block:: shell
 
    #SBATCH --partition=service
 
@@ -627,8 +628,6 @@ There are several different QOS'es depending on your needs.
 
    If you have an windfall only allocation (allocation = 1) you can only
    submit to the *windfall* QOS.
-
-.. _msu_hpc_qos_table:
 
 +-----------+------------+------------+------------+-----------+-----------------------------------------+
 | QOS       | Min Nodes  | Max Nodes  | Max Wall   | Billing   | Description                             |
@@ -976,8 +975,7 @@ usage, and quota:
 .. note::
 
    For an explanation of the meaning of these values and general scheduling
-   information click `here
-   <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/SLURM_Fair-share>`__.
+   information review SLURM documentation.
 
 .. note::
 
@@ -1176,18 +1174,24 @@ this is software that should be versioned (multiple versions may exist at one
 time) or un-versioned (there will only ever be one version installed, and
 upgrade will overwrite the existing software). For versioned software, please
 install it into a subdirectory of your package that is named after the version
-number. For supporting multiple versions of software the install path should :: shell
+number. For supporting multiple versions of software the install path should be
+
+.. code-block:: shell
 
     /apps/contrib/<package>/<version>
 
 Where ``<package>`` is the directory assigned to you and $VER is the version
 number. Thus, if your package is named *ferret* and you are installing the
-version *3.2.6*, the software should be installed :: shell
+version *3.2.6*, the software should be installed as
+
+.. code-block:: shell
 
     /apps/contrib/ferret/3.2.6
 
 For supporting un-versioned software, only install the software directly into
-your package directo:: shell
+your package directory:
+
+.. code-block:: shell
 
     /apps/contrib/<package>/
 
@@ -1279,17 +1283,14 @@ Before you begin, collect the following details:
 
 **Login to the MSU account management system**
 
--  Navigate to MSU's account management system: `MSU Account
-   Management <https://intranet.hpc.msstate.edu/services/external_accounts/noaa>`__
--  Authenticate using your MSU username and password.
+-  Navigate to MSU's account management system.
 
 **Check to see if the user already has an account. If not, request account.**
 
--  `NOAA-HPC Project Management by User <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/manageProjects.php>`__
+-  NOAA-HPC Project Management by User 
 -  If the user appears in the drop-down, their MSU account already exists.
    Select the user and assign them to your projects. If not, navigate to:
-   `NOAA-HPC Computer Account Request
-   <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/requestAccount.php>`__
+   NOAA-HPC Computer Account Request
 -  Complete the form.
 -  Click save and Submit. This completes the initial account request. It's good
    practice to notify the prospective new user that the request has been made, so
@@ -1376,15 +1377,12 @@ find the email, search your emails with the following:
 
 **Login to MSU's Training and Password System**
 
-- Within 3 days of receiving the email, navigate to
-  `<https://taps.hpc.msstate.edu>`__
+- Within 3 days of receiving the email, navigate to TAPS.
 - Authenticate using your username and your temporary password.
 
 .. note::
 
-   If your temporary 3-day password has expired, it will need to be reset. See:
-   `Logging In - Reset Password
-   <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in#Password>`__
+   If your temporary 3-day password has expired, it will need to be reset. 
 
 -  Upon successful login, you will see the TAPS Home page.
 
@@ -1402,7 +1400,7 @@ find the email, search your emails with the following:
 
 **Dual-factor authentication and Password Change (User)**
 
--  Navigate to `TAPS <https://taps.hpc.msstate.edu>`__
+-  Navigate to TAPS
 
 **Setup Dual-factor authentication App**
 
@@ -1423,7 +1421,6 @@ Congratulations! Your account is now fully set up and you can login to MSU-HPC.
 If your account has expired, you will need to reactivate. To begin the process,
 start a Help ticket.
 
-.. _msu_account_renewal:
 
 Account Renewal
 ---------------
@@ -1435,7 +1432,7 @@ To keep your MSU account current and active:
 -  Complete yearly password changes and security training updates, which are
    required each January (regardless of your effective date). Users have
    until the end of January to comply, using the online MSU HPC2 Training and
-   Password System `TAPS <https://taps.hpc.msstate.edu/>`__, otherwise the user
+   Password System TAPS, otherwise the user
    account will be locked.
 -  Make sure your supervisor renews your account before the account expiration
    date.
@@ -1486,8 +1483,7 @@ Here is an example of the email:
    help@hpc.msstate.edu
 
 If the renewal time has passed, or the initial account renewal email was missed,
-request an account renewal `here:
-<https://intranet.hpc.msstate.edu/services/external_accounts/noaa/>`__
+request an account renewal through the MSU intranet.
 
 ** Fill out the NOAA-HPC Computer Account Request Form
 
