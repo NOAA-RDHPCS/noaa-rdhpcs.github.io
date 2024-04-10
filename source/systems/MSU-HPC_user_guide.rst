@@ -341,7 +341,7 @@ By default, a serial job gets only its share of the memory available on a node
 (memory per core = ~total memory / total cores). If your serial job needs more
 memory than the default, specify that using the ``--mem=<mem>`` option.
 
-**Submitting an Interactive Job**
+**Submitting an interactive Job**
 
 An interactive job is useful for tasks, such as debugging, that require
 interactive access with a program as it runs. With Slurm there are two ways to
@@ -1091,8 +1091,84 @@ Use ``reportFSUsage`` to see a summary of all project disk usage:
 MSU-HPC System Configuration
 ============================
 
+File Systems
+------------
+
+**Name: work**
+
+- Manufacturer: DDN Lustre
+- Model: SFA18k
+- Usable Capacity: 9PB
+
+
+**Name: work2**
+
+- Manufacturer: DDN Lustre
+- Model: SFA18k with "Hot Pool" SSD disk cache
+- Usable Capacity: 18PB
+
+.. note::
+   Both the work and work2 file systems are considered scratch space and are not backed up.
+
+Orion Compute System
+--------------------
+
+- Manufacturer: Dell EMC
+- Model: PowerEdge C6420
+- Interconnect: Mellanox Infiniband HDR-100
+- Processor: Xeon Gold 6148 20C 2.4GHz
+- Total System Memory: 338,688 GB
+- Total Nodes: 1,800 (1,792 Compute and 8 Bigmem)
+- Total Cores: 72,000
+- Cores per Node: 40
+
+Additional Information:
+The orion compute nodes have the following: 12 x 16GB DDR-4 Dual Rank 2666MHz for a total of 192GB per node.
+The bigmem nodes have the following: 12x 32GB DDR-4 Dual Rank 2666MHz for a total of 384GB per node.
+
+**HPC Services**
+
+- Number of Login Nodes: 4
+- Number of DTNs: 4
+- Number of Development Nodes: 2
+- Cron Services: Available on Orion-login-1
+- Batch System: SLURM
+- Home File System: NFS with 10GB of space per user
+- Modules: LMOD
+
+.. note::
+
+   The home file system is backed up on a nightly basis.
+
+Hercules Compute System
+-----------------------
+
+- Manufacturer: Dell EMC
+- Model: PowerEdge C6520
+- Interconnect: Mellanox Infiniband NDR-200
+- Processor: Xeon Platinum 8380 40C 2.3GHz
+- Total System Memory: 262,144 GB
+- Total Nodes: 512
+- Total Cores: 40,960
+- Cores per Node: 80
+
+
+Additional Information:
+
+Due to each compute node having 512 GB of RAM there are no bigmem nodes.
+
+**HPC Services**
+
+- Number of Login Nodes: 4
+- Number of DTNs: 4
+- Number of Devel Nodes: 4
+- Cron Services: Available on hercules-login-1 (VERIFY)
+- Batch System: SLURM
+- Home File System: NFS with 10GB of space per user
+- Modules: LMOD
+
 Managing Packages in /contrib
------------------------------
+=============================
 
 **Overview**
 
@@ -1242,6 +1318,57 @@ Please ask questions through the Help Desk regarding how to construct modules.
 
 Account Management
 ==================
+
+Overview
+--------
+
+MSU user accounts are completely independent of NOAA RDHPCS Accounts. The MSU’s HPC2 Account Management System and Process is used to create and manage users' accounts for all NOAA work performed on the MSU-HPC system.
+
+.. note::
+
+   MSU's Account Management system requires user authentication. Account Managers and Portfolio Managers must maintain an active MSU account to manage their projects online. If an Account Manager or Portfolio Manager has an issue with their MSU account access, they should enter an MSU-HPC Help Request.
+
+MSU Account Management Policies
+-------------------------------
+
+- New user accounts are requested by a supervisor/sponsor using the MSU HPC2 Account Management website. Only current Account Managers may be a supervisor/sponsor. The same website is used for project assignments. Users can only submit jobs to those Projects to which they have access.
+- All user accounts have an expiration date set by the supervisor/sponsor when the user account is requested. The maximum expiration date is 12 months from the initiation date. When a user account approaches its expiration date, the supervisor/sponsor is notified via email, and may extend the user account for up to one year, using the MSU online account management tools MSU Account Management.
+- Training updates are required each January 1. Users have until the end of January to comply, using the online MSU HPC2 Training and Password System TAPS, otherwise the user account is locked..
+- MSU uses Duo (Cisco) two factor authentication. You may install the application on your smartphone or request a physical token. If approved, the token will be shipped to the address provided during the Account Management on-boarding process.
+- After seven (7) unsuccessful login attempts, user login attempts will be denied for ten (10) minutes.
+- After 90 days of inactivity (no successful login to MSU-HPC or authentication to one of the MSU Account Management web pages) a user account is locked. To unlock the account please see: Password Resets
+- If a locked (inactive) account is not renewed, when it passes its expiration date the locked account is marked for deletion (TBD). The account may be deleted after a 1 month grace period. After deletion the user must start over as a new user to regain an MSU account.
+
+
+Managing Project and Role Account Members
+-----------------------------------------
+
+MSU users have their accounts created and are added and removed from both projects and Role accounts, by the Account Manager or Portfolio Manager of the project. Go to Getting an Account for details. PfMs and AMs use the MSU Account Management Pages to add or remove an existing user from a project or a Role Account. 
+
+NOAA Portfolio, Project, and User Management on MSU-HPC
+-------------------------------------------------------
+
+NOAA's Research and Development HPC (RDHPCS) efforts are organized into Portfolios. Portfolio allocations on each system are assigned by the NOAA RDHPCS Allocation Committee and are managed by a Portfolio Manager (PfM). Portfolios in turn are sub-organized into Projects (Accounts or Groups). At MSU a project is managed by its Account Managers (similar to PI's on NOAA RDHPCS systems) who are the Portfolio Manager and other Account Managers as requested by the Portfolio Manager and approved by the NOAA resource management.
+
+Portfolio Managers (PfMs) are responsible for the projects and Account Managers in their portfolio, including CPU allocations and scratch disk quotas. PfMs request active users to be Account Managers via a help ticket: MSU-HPC Help Request. Account Managers are responsible to add, remove, and control project members usage and behavior, provide guidance on resource utilization, and monitor CPU and storage usage for their projects. At MSU Account Managers also request new user accounts and request renewal of current user accounts when it approaches its expiration date as the user's supervisor/sponsor.
+
+To access the MSU-HPC resources, an existing active user must be a member of at least one project. An Account Managers assigns an existing user to one or more of their projects, using MSU's Account Management Tool. To add new users, an Account Manager makes a new user request using MSU's Account Management Tool. The requestor becomes the new user's sponsor/supervisor.
+
+To create a new MSU-HPC project within a Portfolio, the Portfolio Manager must provide the following information in a help ticket:
+
+- Project name
+- Project acronym
+- Project description
+- Core-hour CPU allocation. Re-distribute CPU allocation across their projects to give the new project a CPU allocation
+- Request a scratch disk quota, if needed
+- Optionally, Designate another Account Manager(s)
+- Designate at least one member who is an active MSU-HPC user
+
+To close a MSU-HPC project, the Portfolio Manager must provide the following information in a help ticket: MSU-HPC Help Request.
+
+- Project to be closed
+- Re-distribute core-hour CPU allocation across their remaining projects
+- Data disposition information for any remaining scratch data
 
 .. note::
 
@@ -1485,7 +1612,7 @@ Here is an example of the email:
 If the renewal time has passed, or the initial account renewal email was missed,
 request an account renewal through the MSU intranet.
 
-** Fill out the NOAA-HPC Computer Account Request Form **
+**Fill out the NOAA-HPC Computer Account Request Form**
 
 #.  Note the Expiration Date in the email.
 #.  Follow the link to open a pre-populated webform. You may be required to
@@ -1539,6 +1666,7 @@ additional information and request confirmation:
    Mississippi State University
 
    help@hpc.msstate.edu
+
 
 **Fill out the HPC2-NOAA User Account Request Confirmation Form**
 
