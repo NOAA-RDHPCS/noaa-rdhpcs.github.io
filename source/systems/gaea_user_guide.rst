@@ -74,7 +74,7 @@ Gaea is the largest of the four NOAA RDHPCS, and is used to study the earth's no
   
 * help unlock the climate role played by the oceans that cover nearly three-quarters of the globe.
 
-GAEA quickstart
+GAEA Quickstart
 ===============
 
 This simple overview explains the elements of a basic job in Gaea. It includes compiling, running, combining, data transfer, and allocation.
@@ -125,13 +125,13 @@ Once your executable is compiled and in place with your data on a given file sys
 
 .. note::
 
-  c# refers to a computer cluster. Current clusters are c4 and c5, but this is subject to change.)
+  c# refers to a computer cluster. The current cluster is c5, but this is subject to change.
 
 .. code-block:: shell
 
   #SBATCH --clusters=c#
   #SBATCH --nodes=4
-  #SBATCH --ntasks-per-node=32 # Gaea charges for node use.  Nodes are 36 core on c4 and 128 core on c5.  This example will get charged for 4 nodes.
+  #SBATCH --ntasks-per-node=32 # Gaea charges for node use.  Nodes are 128 core on c5.  This example will get charged for 4 nodes.
 
 or, from the sbatch command line:
 
@@ -211,13 +211,13 @@ Running a Simple Job Script
 
 This script assumes that the data and executable are staged to /gpfs/f2/<project>/scratch/$USER. The scripts and data are located at /usw/user_scripts/
 
-- Use gcp to get the skeleton script from /usw/user_scripts/runscript to your local home directory:
+- Use gcp to get the skeleton script from /usw/user_scripts/runscript to your local home directory.
 
 .. code-block:: shell
 
   gcp /usw/user_scripts/runscript ~$USER/
 
-- Use gcp to get other files from /usw/user_scripts/ to your gpfs directory
+- Use gcp to get other files from /usw/user_scripts/ to your gpfs directory.
 
 .. code-block:: shell
 
@@ -231,7 +231,7 @@ This script assumes that the data and executable are staged to /gpfs/f2/<project
 
 The comments in the script will help you understand what each item does.
 
-- Return to the directory where you copied the run script, and submit your job
+- Return to the directory where you copied the run script, and submit your job.
 
 .. code-block:: shell
 
@@ -265,11 +265,16 @@ Once the job is finished, it should produce an output file.
 
 System Architechture
 ====================
+Gaea is the largest of the NOAA research and development HPC systems,and is operated by DOE/ORNL. The aggregate Gaea system:
+
+- consists of 95,616 Intel cores;
+- consists of 245,760 AMD cores;
+- contains 646 TiB of memory
+- can perform 13.7 petaflops, or 13,700 trillion calculation each second.
 
 Node Types
 ----------
 
-- **Compute Nodes (C4):** 36 cores, intel broadwell based, 64GB memory, run model executable, filesystem mount - F2
 - **Compute Nodes (C5):** 128 cores, HPE EX Rome, 251GB memory, run model executable, filesystem mount - F2
 - **Batch Nodes:** 2 cores, 8GB memory, run scripts only (cores are not charged)
 
@@ -281,12 +286,9 @@ Node Types
 - **LDTN Nodes:** 16 cores, 24GB memory, I/O intensive jobs (combines, etc.)
 - **RDTN Nodes:** 8 cores, 48GB memory, Data transfer jobs
 
-.. image:: /images/c3-c5.png
-
-
 Clusters
 --------
-- **C4 and C5** Gaea compute partitions. Please see "System Architecture" and "Hardware" for details.
+- **C5** Gaea compute partition. Please see "System Architecture" and "Hardware" for details.
 - **es** login nodes, local data transfer node queue (ldtn) and remote data transfer node queue (rdtn)
 
 
@@ -295,107 +297,12 @@ Examples:
 .. code-block:: shell
 
   sbatch --clusters=c5 scriptname
-  #SBATCH --clusters=c4
+  #SBATCH --clusters=c5
 
 .. code-block:: shell
 
   sbatch --clusters=es scriptname
   #SBATCH --clusters=es
-
-What is C4?
------------
-
-C4 is a Cray XC40 with 95,616 Intel Broadwell cores and 166TB of memory (1.78GB/core). There are an additional 4 login nodes with 24 cores and 256GB of memory each. The total cores for c4 and its login nodes are 95,712.
-
-**Accessing the C4 login nodes**
-
-C4 is available from all Gaea login nodes. To access these login nodes, ssh or sshg3 (Tectia CAC card authenticated SSH) to the Gaea bastion of your choice (sshg3 gaea.rdhpcs.noaa.gov, ssh gaea-rsa.princeton.rdhpcs.noaa.gov, sshg3 gaea.boulder.rdhpcs.noaa.gov, or ssh gaea-rsa.boulder.rdhpcs.noaa.gov). If you want a specific Gaea login node, wait for the list of nodes and press 'ctrl'+'c', then enter the name of the login node you would like to use and press return. Your ssh session will be forwarded to that gaea login node.
-
-You can use C4 in batch or software mode.
-
-**Batch System** 
-
-From gaea9-15 you caninteract with c4's Slurm cluster. See Slurm Tips for details.
-
-Your C4 job scripts will usually call srun or srun-multi if you have a multi-executable model e.g. a coupled model with different ocean and atmospheric model executables.
-
-**Software**
-
-Make sure that your shell init scripts (~/.cshrc and/or ~/.bashrc, etc.) include some or all of the following lines to allow your jobs access to important software accessible on Gaea. You may need to rearrange or remove some of these in order to access the exact builds of software you're interested in using.
-
-.. code-block:: shell
-
-  module use /sw/xc40/modulefiles
-  module use /usw/xc40/modulefiles
-  module use /sw/xc40-c4/modulefiles
-  module usw /sw/eslogin-c3/modulefiles
-  module use /sw/eslogin-c4/modulefiles
-  module use /usw/eslogin/modulefiles-c3
-  module use /usw/eslogin/modulefiles-c4
-
-You must recompile your application and all libraries it links to must be compiled for C4.
-Remember to use the 'cc' and 'ftn' aliases provided by the PrgEnv modules to compile statically linked executables for use on the c4 compute nodes. The default PrgEnv module on c4 is PrgEnv-intel.
-
-**C4 Known Issues**
-
-- Intel 15 with OpenMP fails with segmentation violations
-The Modeling Systems group has identified a problem with the Intel version 15 compiler installed on the c4 nodes. Models compiled with Intel 15 with OpenMP enabled will fail with a segmentation error. ORNL is aware there is an issue, and is working on a solution.
-
-Workaround: Use the default Intel version 16 compiler (module intel/16.0.3.210)
-
-- GCP module not available on C4 nodes/GCP does not work on C4 nodes
-The gcp modulefile is not yet available on the C4 nodes. This is due to GCP is not yet fully configured to run on the C4 login/batch nodes and software dependencies of GCP not being available on C4 yet. Modeling Systems has requested the last few software packages to be installed on the C4 nodes. Since a modulefile for GCP does not exist on the c4 nodes, FRE generated run scripts will fail as they are unable to load GCP.
-
-Workaround: Add the following to your user shell initialization scripts (e.g. ~/.cshrc, ~/.bashrc) and/or job scripts:
-
-- module use -a /usw/eslogin/modulefiles-c3
-
-If the production workflow requires gcp to be called on the c4 batch nodes, these calls may need to be commented out, and the files transferred by those calls should be done manually from a c3 login node.
-
-- /usw modules not available on C4
-
-In addition to gcp several other modules provisioned via /usw are not available in the default shell environment on C4. Some of the software packages in the C3 /usw location need to be recompiled to work on the newer operating system present on C4.
-
-**Site Specific Documentation for C4**
-
-`Modeling Systems C4 On-boarding Guide <http://wiki.gfdl.noaa.gov/index.php/C4_Guide_from_Modeling_Systems>`_
-
-**C4 cpuinfo and memory**
-
-.. code-block:: shell
-
-  processor    : 71
-  vendor_id    : GenuineIntel
-  cpu family    : 6
-  model        : 79
-  model name    : Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz
-  stepping    : 1
-  microcode    : 0xb000021
-  cpu MHz        : 2301.000
-  cache size    : 46080 KB
-  physical id    : 1
-  siblings    : 36
-  core id        : 27
-  cpu cores    : 18
-  apicid        : 119
-  initial apicid    : 119
-  fpu        : yes
-  fpu_exception    : yes
-  cpuid level    : 20
-  wp        : yes
-  flags        : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch ida arat epb invpcid_single pln pts dtherm intel_pt kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm rdseed adx smap xsaveopt cqm_llc cqm_occup_llc
-  bugs        :
-  bogomips    : 4603.23
-  clflush size    : 64
-  cache_alignment    : 64
-  address sizes    : 46 bits physical, 48 bits virtual
-  power management:
-
-  > free -g
-              total       used       free     shared    buffers     cached
-  Mem:            62          3         59          2          0          2
-  -/+ buffers/cache:          1         61
-  Swap:            0          0          0
 
 
 What is C5?
@@ -427,10 +334,6 @@ There is a known incompatibility with the cray-libsci module and the following i
   intel-oneapi/2022.0.2
   
 A recommended workaround to this issue is to either module unload cray-libsci or use another intel compiler.
-
-- Executables from C3/C4 not working on C5
-
-The C3/C4 and C5 nodes have different interconnects. The C3/C4 and C5 clusters are not binary compatible. Binaries compiled for C3/C4 will not execute on C5. Likewise, executables compiled for C5 will not run on C3/C4. Attempting to run an incompatible binary on C3, C4, or C5 will produce an error.
 
 **Site Specific Documentation for C5**
 
@@ -469,8 +372,6 @@ See the C5 On-boarding Guide.
 
 Job Submission
 ---------------
-See the following Slurm details.
-
 There are two job types:
 
 - Batch
@@ -478,10 +379,6 @@ There are two job types:
 
 - Interactive/Debug
   -salloc --x11 --clusters=c3 --nodes=2 --ntasks-per-node=32
-
-.. note::
-
-  The size is the number of desired cores in increments of 32 for c3 and 36 for c4.
 
 Queues
 ------
@@ -564,6 +461,7 @@ More information on using modules is available at Gaea Modules.
 Do's and Don'ts
 ---------------
 **Do**
+
 - Compile on login nodes
 - Copy data back to archive location (off gaea) using RDTN's
 - Put source files and commonly used files in /lustre/f2/dev/$user
@@ -573,6 +471,7 @@ Do's and Don'ts
 - lfs manual
 
 **Don't** use the following on Gaea:
+
 - combines on batch (they will be killed)
 - combines on compute nodes
 - compile on batch
@@ -769,7 +668,7 @@ Module Command line variables and descriptions
   xt-mpt/5.2.0                         xt-shmem/5.0.1(default               xt-shmem/5.2.0
 
 .. note::
-  This is not the complete print out of what your shell might print out.
+  Your shell might print out something more, or different.
 
 **module add module_file:** Load module file(s) into the shell environment
 
@@ -781,10 +680,10 @@ Module Command line variables and descriptions
 
 
 **module list:** List of Loaded modules.
-> module list
 
 .. code-block:: shell
 
+  > module list
   1) modules/3.2.6.6                            6) xt-mpt/5.0.1                              11) PrgEnv-pgi/3.1.29
   2) xt-sysroot/3.1.29.securitypatch.20100707   7) pmi/1.0-1.0000.7901.22.1.ss               12) eswrap/1.0.9
   3) xtpe-network-seastar                       8) xt-sysroot/3.1.29                         13) moab/5.4.1
@@ -838,9 +737,11 @@ Module Command line variables and descriptions
 
   Note: the gcp is now version 1.5.0
 
-**module show modulefile:** Display information about one or more modulefiles. The display sub-command will list the full path of the modulefile(s) and all (or most) of the environment changes the modulefile(s) will make if loaded. (It will not display any environment changes found within conditional statements.)
+**module show modulefile:** 
+Display information about one or more modulefiles. The display sub-command will list the full path of the modulefile(s) and all (or most) of the environment changes the modulefile(s) will make if loaded. (It will not display any environment changes found within conditional statements.)
 
-**module display modulefile** Display information about one or more modulefiles. The display sub-command will list the full path of the modulefile(s) and all (or most) of the environment changes the modulefile(s) will make if loaded. (It will not display any environment changes found within conditional statements.)
+**module display modulefile** 
+Display information about one or more modulefiles. The display sub-command will list the full path of the modulefile(s) and all (or most) of the environment changes the modulefile(s) will make if loaded. (It will not display any environment changes found within conditional statements.)
 
 .. code-block:: shell
 
@@ -855,7 +756,8 @@ Module Command line variables and descriptions
   -------------------------------------------------------------------
 
 
-**module use [-a]–append] directory:** Prepend one or more directories to the MODULEPATH environment variable. The –append flag will append the directory to MODULEPATH.
+**module use [-a]–append] directory:** 
+Prepend one or more directories to the MODULEPATH environment variable. The –append flag will append the directory to MODULEPATH.
 
 .. warning::
 
@@ -1105,6 +1007,7 @@ At the very least, run-time variability would need to be assessed before we coul
 1. Use a fair-share algorithm that can throttle scheduling priority by comparing how much of a particular allocation has been used at a given time with how much should have been used, assuming constant proportional usage. This will promote steady usage throughout the month.
 
 2. Use two separate allocations, renewed monthly, with multiple queues drawing down each of them: 
+
   - 50% of the available time for high-priority and urgent work. That should minimize queue wait time. Queues are:
 
     - Urgent, for schedule-driven work that must be completed ASAP.
@@ -1241,26 +1144,34 @@ where user=$USER format=cluster,partition,account,user%20,qos%60
 .. code-block:: shell
 
   sbatch --clusters=c# --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
+
 - To c5
 
 .. code-block:: shell
   
-  sbatch --clusters=c5 --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script	
+  sbatch --clusters=c5 --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
+
+
 - To c4:
+
 .. code-block:: shell
   
   sbatch --clusters=c4 --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
+
 - To the LDTNs:
+
 .. code-block:: shell
   
   sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
 
 - To the RDTNs:
+
 .. code-block:: shell
   
   sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
 
 - To submit interactive work to c#
+
 .. code-block:: shell
   
   salloc --clusters=c# --qos=interactive --nodes=1 --x11
@@ -1269,6 +1180,7 @@ Running your models
 -------------------
 
 In your c3 job scripts or interactive sessions you will want to run your model executable. If your model is simple (single component, etc) then use srun. If it is a coupled model or otherwise has multiple execution contexts and/or executables, you will need to use srun-multi.
+
 .. code-block:: shell
 
   srun ./executable
@@ -1280,6 +1192,7 @@ Monitoring your jobs: Shell Setup
 Do not set these in jobs/shells you intend to submit work from, as they will override your job submission script #SBATCH directives, causing warnings and errors. Use them in shells you intend to monitor jobs from.
 
 - In [t]csh
+
 .. code-block:: shell
   
   setenv SLURM_CLUSTERS t4,c3,c4,gfdl,es
@@ -1333,26 +1246,31 @@ Fair Share Reporting
 --------------------
 
 - Summary of all accounts
+
 .. code-block:: shell
 
   sshare
 
 - Summary of one account
+
 .. code-block:: shell
 
   sshare -A aoml
 
 - Details by user of one account
+
 .. code-block:: shell
 
   sshare -a -A gefs
 
 - Details by user of all accounts
+
 .. code-block:: shell
 
   sshare -a
 
 - Priority Analysis of Your Job: sprio
+
 .. code-block:: shell
 
   sprio -j 12345
@@ -1471,6 +1389,7 @@ Users can transfer data between Gaea and Zeus' High Performance Storage System (
   #SBATCH --partition=rdtn
 
 - Load the HSI module and list the contents of your directory
+
 .. code-block:: shell
 
   module use -a /sw/rdtn/modulefiles
@@ -1483,21 +1402,25 @@ Users can transfer data between Gaea and Zeus' High Performance Storage System (
   hsi "ls -P /BMC/nesccmgmt/$USER/"
 
 - Retrieve Files using HSI into the current directory on the RDTN. The -q option limits output spam.
+
 .. code-block:: shell
 
   hsi -q "get /BMC/nesccmgmt/Karol.Zieba/sample_file"
 
 - Upload Files using HSI
+
 .. code-block:: shell
 
   hsi -q "put /lustre/f2/scratch/$USER/file_to_upload : /BMC/nesccmgmt/$USER/file_to_upload"
 
 - Tar many small files from the RDTN using HTAR. (Note that using asterisk will not work.)
+
 .. code-block:: shell
 
   htar cf /BMC/nesccmgmt/$USER/tarred_file.tar file1 file2 path/file3
 
 - Untar many small files into your current directory on the RDTN using HTAR
+
 .. code-block:: shell
 
   htar xf /BMC/nesccmgmt/$USER/tarred_file.tar
@@ -1519,7 +1442,8 @@ The eDTN supports the use of scp, sftp, bbcp, and ssh based globus-url-copy.
 .. code-block:: shell
 
   jsmith# scp WRF.tar.gz John.Smith@edtn.fairmont.rdhpcs.noaa.gov:
- Access is via First.Last username only.  Enter RSA PASSCODE:
+  
+  Access is via First.Last username only.  Enter RSA PASSCODE:
 
 The trailing colon (':') is critical. You can also specify ":/home/John.Smith/"
 
@@ -1677,24 +1601,28 @@ The Gaea site contains multiple node types. The nodes that are used for interact
 Filesystems that GCP supports locally from Gaea:
 
 - eslogin
+
 .. code-block:: shell
 
   - /lustre/f2
   - /ncrc/home
 
 - ldtn
+
 .. code-block:: shell
 
   - /lustre/f2
   - /ncrc/home
 
 - rdtn
+
 .. code-block:: shell
 
   - /ncrc/home
   - /lustre/f2
 
 - compute 
+
 .. code-block:: shell
 
   - /ncrc/home
@@ -1821,5 +1749,6 @@ This command specifies that we should transfer with the block size at 6MB, pipel
 or from Zeus:
 
 .. code-block:: shell
+
   set hn=`hostname --fqdn`
   globus-url-copy gsiftp://dtn-zeus.rdhpcs.noaa.gov/archive/$user/file gsiftp://${hn}/lustre/f2/dev/${user}/
