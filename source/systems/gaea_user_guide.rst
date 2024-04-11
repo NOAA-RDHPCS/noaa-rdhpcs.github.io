@@ -4,7 +4,6 @@
 Gaea User Guide
 ***************
 
-.. _gaea-system-overview:
 
 .. image:: /images/Gaea_web.jpg
 
@@ -668,7 +667,7 @@ Module Command line variables and descriptions
   xt-mpt/5.2.0                         xt-shmem/5.0.1(default               xt-shmem/5.2.0
 
 .. note::
-  Your shell might print out something more, or different.
+  Your shell might print out something more, or something different.
 
 **module add module_file:** Load module file(s) into the shell environment
 
@@ -752,7 +751,7 @@ Display information about one or more modulefiles. The display sub-command will 
   setenv           CSCRATCH /lustre/fs/scratch
   setenv           CSTAGE /lustre/ltfs/stage
   setenv           CWORK /lustre/ltfs/scratch
-  setenv           CHOME /ncrc/home1/Naresh.Kosgi
+  setenv           CHOME /ncrc/home1/John.Smith
   -------------------------------------------------------------------
 
 
@@ -765,7 +764,7 @@ Prepend one or more directories to the MODULEPATH environment variable. The –a
 
 Compilers
 =========
-Compiling code on Cray machines is different than compiling code for commodity or beowulf-style HPC linux clusters. Among the most prominent differences:
+Compiling code on Cray machines is different from compiling code for commodity or beowulf-style HPC linux clusters. Among the most prominent differences:
 
 - Cray provides a sophisticated set of compiler wrappers to ensure that the compile environment is setup correctly. Their use is highly encouraged.
 - In general, linking/using shared object libraries on compute partitions is not supported.
@@ -816,7 +815,7 @@ With Intel 2022 compilers on C5 users should replace the -xsse2 compiler option 
 
 LMOD uses hierarchical modules. This helps ensures that only one module in a hierarchical level is loaded, and that modules depending on a given hierarchy are loaded properly, thus reducing module conflicts. The compiler modules are one of the hierarchical levels. However, some compilers (e.g., the Intel compilers) rely on the GNU Compiler Collection (GCC) compilers to know which C and Fortran standards to support. HPE has included the <compiler>-mixed modules to address this. These mixed modules will allow multiple compiler modules to be loaded. This is typically not needed in GFDL workflows but is available. MSD recommends loading the compiler module that does not have -mixed on the end.
 
-Cray Compiler wrappers
+Cray Compiler Wrappers
 ----------------------
 Cray provides a number of compiler wrappers that substitute for the traditional compiler invocation commands. The wrappers call the appropriate compiler, add the appropriate header files, and link against the appropriate libraries based on the currently loaded programming environment module. To build codes for the compute nodes, you should invoke the Cray wrappers via:
 
@@ -908,7 +907,7 @@ To use a specific compiler version, you must first ensure the compiler's PrgEnv 
 We recommend the following general guidelines for using the programming environment modules:
 
 - Do not purge all modules; rather, use the default module environment provided at the time of login, and modify it.
-- Do not swap or unload any of the Cray provided modules (those with names like xt-*).
+- Do not swap or unload any of the Cray provided modules (those with names like xt-'*').
 - Do not swap moab, torque, or MySQL modules after loading a programming environment modulefile.
 
 Compiling Threaded Codes
@@ -946,17 +945,6 @@ For SHMEM codes, users must load the xt-shmem module before compiling:
 
 Hardware
 ========
-
-c4 partition
-------------
-- 1.99 petaflop Cray XC40
-- 54,144 Cores
-- 36 cores/node
-- 1504 nodes
-- 98 TB of memory
-- Intel Broadwell Processors
-- 4 Login nodes (Gaea13-16)
-
 
 c5 partition
 ------------
@@ -1038,6 +1026,7 @@ At any given time, the suite of jobs drawn from the Urgent queue and running on 
 - Limit the largest job to 25% of the available cores except in the Novel queue.
 - Limit time requested for individual job segments to 12 hours.
 - Interactive/debugging jobs have a tiered limit:
+
   - < or = 72 cores (3 nodes) 12 hour limit
   - < or = 504 cores (21 nodes) 6 hour limit
   - can't go over 504
@@ -1068,6 +1057,7 @@ Debug & Batch Queues
 Note that each cluster may have different wallclock restrictions.
 
 **Interactive queue job time limits**
+
 - 24-72 processors = 12 hours
 - 96-504 processors = 6 hours
 - Over 528 processors = 4 hours
@@ -1121,7 +1111,7 @@ Scheduler/Priority Specifics
 |Fairshare   | # of minutes   | 1                       | (<>) 5% user (+/-) 30 mins,  |
 |            |                |                         | (<>) 5% user (+/-) 60 mins   |
 +------------+----------------+-------------------------+------------------------------+
-| Queue Time | 1 Minute       | 1                       | Provided by Moab             |
+| Queue Time | 1 Minute       | 1                       |                              |
 +------------+----------------+-------------------------+------------------------------+
 
 Slurm Tips
@@ -1150,13 +1140,6 @@ where user=$USER format=cluster,partition,account,user%20,qos%60
 .. code-block:: shell
   
   sbatch --clusters=c5 --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
-
-
-- To c4:
-
-.. code-block:: shell
-  
-  sbatch --clusters=c4 --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
 
 - To the LDTNs:
 
@@ -1196,7 +1179,7 @@ Do not set these in jobs/shells you intend to submit work from, as they will ove
 .. code-block:: shell
   
   setenv SLURM_CLUSTERS t4,c3,c4,gfdl,es
-- In bash
+  - In bash
 
 .. code-block:: shell
 
@@ -1275,7 +1258,7 @@ Fair Share Reporting
 
   sprio -j 12345
 
-Data transfers
+Data Transfers
 ==============
 Available on Gaea is a tool called GCP, which allows for internal transfers on Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please reference System Details if you are unfamiliar with the filesystems or expected use of each variety of node on Gaea.
 
@@ -1337,6 +1320,7 @@ To find your unique local port number, log onto your specified HPC system (Gaea)
   Open two terminal windows for this process.
 
 **Local Client Window #1**
+
 Enter the following (remember to replace XXXXX with the local port number identified in Step 1 or as needed):
 
 .. code-block:: shell
@@ -1353,19 +1337,21 @@ Once you have established the port tunnel it is a good idea to verify that the t
 2. Complete the Transfer using SCP
 
 **Local Client Window #2**
+
 Once the session is open, you will be able to use this forwarded port for data transfers, as long as this ssh window is kept open. After the first session has been opened with the port forwarding, any further connections (login via ssh, copy via scp) will work as expected.
 
 **To transfer a file to HPC Systems**
-
-.. note::
-
-  Your username is case sensitive when used in the scp command. For example, username should be in the form of John.Smith rather than john.smith.
 
 .. code-block:: shell
 
   >> scp -P XXXXX /local/path/to/file $USER@localhost:/path/to/file/on/HPCSystems
 
   >> rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX' /local/path/to/files $USER@localhost:/path/to/files/on/HPCSystems
+
+
+.. note::
+
+  Your username is case sensitive when used in the scp command. For example, username should be in the form of John.Smith rather than john.smith.
 
 **To transfer a file from HPC Systems**
 
@@ -1425,7 +1411,6 @@ Users can transfer data between Gaea and Zeus' High Performance Storage System (
 
   htar xf /BMC/nesccmgmt/$USER/tarred_file.tar
 
-Further information on interfacing with HPSS and the HSI/HTAR commands can be found `here <http://www.mgleicher.us/GEL/htar/htar_user_guide.html>`_ and `here <https://nesccdocs.rdhpcs.noaa.gov/wiki/index.php/Using_The_HSMS_%28HPSS%29>`_.
 
 External (Untrusted) Data Transfers
 ------------------------------------
@@ -1541,6 +1526,7 @@ The -v option enables verbose output, including some very useful information for
 You can obtain a detailed list of all of the available options with:
 
 .. code-block:: shell
+
   gcp --help
 
 Smartsites
@@ -1596,6 +1582,7 @@ Filesystems that GCP supports remotely from other sites:
 - /home - /ptmp - /work - /archive
 
 **Gaea**
+
 The Gaea site contains multiple node types. The nodes that are used for interactive work are called the eslogin nodes. Different filesystems are supported on each node type, so please refer to the list below.
 
 Filesystems that GCP supports locally from Gaea:
@@ -1635,11 +1622,12 @@ Filesystems that GCP supports remotely from other sites:
 **Helpful Hints**
 
 - Creating Directories
-GCP provides an option for automatically creating new directories (-cd).
 
+GCP provides an option for automatically creating new directories (-cd).
 The final segment of the path is interpreted as a directory if a trailing slash is included. Otherwise, it will be interpreted as a file. A few examples are below.
 
 - Transferring into new directories:
+
 .. code-block:: shell
 
   gcp -cd /path/to/a/file /path/to/a/nonexistent/directory/
