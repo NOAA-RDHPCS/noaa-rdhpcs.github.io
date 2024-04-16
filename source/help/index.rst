@@ -4,11 +4,9 @@
 Getting Help
 ############
 
-The preferred method for submitting help requests is via email.  Each system
-across the RDHPCS has a specific email address to use for requesting help.
-Please send help requests to the email address below that corresponds with the
-system or function you need help with.  If you have a NOAA email then please
-use this address for all of your correspondence.
+Each system in RDHPCS has a specific email address to use for requesting help. To get help for an RDHPCS issue, send email to open a help ticket. 
+Send your help request to the email address below that corresponds with the
+system or function you need help with.  Use your noaa.gov email address for all of your correspondence.
 
 +------------------+------------------------------+
 | System           | Email Address                |
@@ -38,8 +36,8 @@ use this address for all of your correspondence.
 | Rocoto Workflow Manager            | rdhpcs.rocoto.help@noaa.gov |
 +------------------------------------+-----------------------------+
 
-The RDHPCS program, along with the RDHPCS integrator manage help requests for
-most of the RDHPCS systems:
+The RDHPCS program, along with the RDHPCS integrator, manages help requests for
+these the RDHPCS systems:
 
 - Account Management
 - Jet
@@ -68,10 +66,6 @@ GFDL manages tickets for Gaea and PPAN.
     directly or indirectly identifies an individual. Per DOC Policy, you should
     never include nor be requested to provide any PII in a help request.
 
-.. note::
-
-    Help tickets are normally addressed by the RDHPCS User Support team from
-    0900 - 1700 Eastern Time, Monday - Friday, except Government holidays.
 
 .. _good_hd_requests:
 
@@ -120,7 +114,7 @@ that we can look at it.
 
     .. tab-item:: Good Description Example
 
-        When I tried to log in to Theia from my workstation
+        When I tried to log in to hera from my workstation
         (habanero.fsl.noaa.gov) this morning, about 9:17AM MDT, my ssh command
         hung, and then eventually reported that my connection timed out. See
         below:
@@ -260,8 +254,7 @@ the following information:
 * What is the command you used to submit the job
 * What was response to the command above
 
-A copy-and-paste of your screen session (copy the text on the screen and not a
-picture) is preferred.
+A copy-and-paste of your screen session is most helpful. Please copy the text on the screen, rather than taking a screen shot.
 
 Job Completion Problems
 -----------------------
@@ -278,17 +271,16 @@ need at the following information:
 * The location of the program output files (which is sometimes different from
   above)
 
-A copy-and-paste of your screen session (copy the text on the screen and not a
-picture) is preferred.
+A copy-and-paste of your screen session. Please copy the text on the screen, rather than taking a screen shot.
 
 Providing a Reproducer
 ----------------------
 
 There are times when the only way to troubleshoot a problem is to actually for
-us to be able to duplicate the problem by running as ourselves.  In those
-instance we will ask for a simple reproducer. Ideally a reproducer is a simple
+us to be able to duplicate the problem by running it ourselves.  In those
+instances we will ask for a simple reproducer. Ideally, a reproducer is a simple
 test case that we can experiment with, but we also understand that that may not
-always be possible.  In those instances we will need detailed instructions on
+always be possible.  In that case we will need detailed instructions on
 what we need to do to duplicate the problem.  At first we will simply want to
 be able to run the test case that is failing.  If we need additional debugging
 help we may also need a way build your executable from source code. The
@@ -297,7 +289,7 @@ and second about running a test case.
 
 Below are general things we will be looking for:
 
-.. rubric:: Building Source
+**Building Source**
 
 * Which directory to copy
 * Which modules need to be loaded
@@ -305,7 +297,7 @@ Below are general things we will be looking for:
 * What is the command to start the build process
 * Where will the resulting executable be
 
-.. rubric:: Running a Test Case
+**Running a Test Case**
 
 * What all directories have to be copied
 * Which directory should we be in to run the test case
@@ -378,13 +370,10 @@ Login
 
 The ticket system allows an alternative access point to view RDHPCS help
 tickets. It is recommended to use the portal if you have multiple open help
-tickets and/or need to search through old help tickets. Log on to the `RDHPCS
-portal <https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_ NOAA SSO
-credentials.  Gaea and PPAN tickets can be accessed using the `GFDL portal
-<https://helpdesk.gfdl.noaa.gov/otrs.customer.pl>`_ using the GFDL Active
-Directory (AD) password.
-
-.. image:: /images/help_portal/otrswiki.png
+tickets and/or need to search through old help tickets. Log on to the RDHPCS
+portal using NOAA SSO
+credentials.  Gaea and PPAN tickets can be accessed using the GFDL portal
+using the GFDL Active Directory (AD) password.
 
 .. note::
 
@@ -401,12 +390,10 @@ options to see **All** or only **Closed** tickets.
 Reply to a Ticket
 -----------------
 
-In order to reply to a ticket, locate the "Reply" button found at the
+In order to reply to a ticket, locate the **Reply** button found at the
 end of the most recient ticket thread.
 
-.. image:: /images/help_portal/otrsreply.png
-
-Ticket replies can be expanded and collapsed by using the "Show All Articles"
+Ticket replies can be expanded and collapsed using the "Show All Articles"
 button, as shown below circled in red.  Select "Submit" to send the ticket to
 the RDHPCS Help Desk. Select Submit to send the ticket to the RDHPCS Help Desk.
 
@@ -425,7 +412,7 @@ Tickets Menu:
 
 .. image:: /images/help_portal/otrsticketsearch.png
 
-There are multiple options that can be used to search for a ticket.
+You can search for a ticket using any of these options:
 
 * RDHPCS Ticket #
 * Full Text Search (From, To, CC, etc)
@@ -435,25 +422,27 @@ There are multiple options that can be used to search for a ticket.
 * Time
 
 It is not necessary to use all of these search options at once. The more
-information provided, the more refined your ticket search will be.
+information you provide, the more refined your ticket search will be.
 
 .. image:: /images/help_portal/otrssearchwindow.png
 
-The search feature also includes an option to save the search as a template,
-which allows for quick access to searches that you find yourself repeating.
-After building the search, check the "Save search as a template" checkbox.
+The search feature also includes an option to save the search as a template.
+This provides quick access to searches that you find yourself repeating.
+After you build the search, check the "Save search as a template" checkbox.
 
 
 Create a New Ticket
 -------------------
 
-New help tickets can be created by going to :menuselection:`Tickets --> New
-Ticket`.  Please only report one issue per help ticket. This will assist us in
+You can use :menuselection:`Tickets --> New Ticket` to create a new ticket.
+Please only report one issue per help ticket. This will assist us in
 routing your tickets to the appropriate resource.
 
 .. image:: /images/help_portal/otrsnewticket.png
 
-.. note:: Ignore the Service and SLA text boxes when creating a new ticket.
+.. note:: 
+    
+  Ignore the Service and SLA text boxes when create a ticket this way.
 
 **Enter a Ticket Type**
 Assign the appropriate type to the ticket based on your issue.
