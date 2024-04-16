@@ -29,10 +29,6 @@ Niagara System Features:
 - 2 Untrusted Data Transfer Nodes (UDTNs) available from anywhere on the internet
 - 2 Web servers
 
-Connecting
-==========
-
-.. _niagara-data-transfer:
 
 Data Transfer
 ================
@@ -48,17 +44,21 @@ The following directories will automatically be created with your first login:
 .. note::
 
     When using the DTNs for data transfers:
-- /home tree is not accessible from the DTNs
-- /collab1/data/ tree is only accessible from the "Trusted DTN".
-- /clooab1/data_untrusted tree is only accessible from the "Untrusted DTN"
+        - /home tree is not accessible from the DTNs
+        - /collab1/data/ tree is only accessible from the "Trusted DTN".
+        - /clooab1/data_untrusted tree is only accessible from the "Untrusted DTN"
 
 
-    Per User Data Management on Niagara:
+    
+Per User Data Management on Niagara
+-----------------------------------
 
-As Niagara is a hybrid system, a cross between a traditional HPC system and a data transfer/collaboration system, available to all RDHPCS users, the file system management needs to be handled differently then our more traditional HPC systems (Hera and Jet). The following are data management policies:
+As Niagara is a hybrid system, a cross between a traditional HPC system and a data transfer/collaboration system, available to all RDHPCS users, the file system management has special requirements. The following are data management policies:
 
 - All files under the "/collab1/data_untrusted/$USER" directory tree which have not been accessed in the last 5 days will be automatically purged.
 - All files under the "/collab1/data/$USER" directory tree which have not been accessed in the last 60 days will be automatically purged.
+- All files under the "/collab1/data/$PROJECT" directory are treated the same as HPFS (sratach) data and are not deleted.
+- A default 10GB Lustre quota on each user's home directory "/collab1/home/$USER" .
 
 Access time is defined as the last time the file was opened for reading or writing.
 
@@ -66,5 +66,106 @@ Access time is defined as the last time the file was opened for reading or writi
 
     If the file system's usage starts getting close to the total capacity then we will be forced implement a more aggressive purge policy (i.e., 30 day or 15 day purge) . So please actively manage your data.
 
-- A default 10GB Lustre quota on each user's home directory "/collab1/home/$USER" .
+Lustre File System Usage
+========================
+
+Lustre is a parallel, distributed file system often used to
+support the requirements for high-performance I/O in large
+scale clusters by supporting a parallel I/O framework that
+scales to thousands of nodes and petabytes of storage.
+Lustre features include high-availability and POSIX
+compliance.
+
+On the RDHPCS Niagara system there is one Lustre file
+systems available for use, /collab1
+
+The serial transfer rate of a single stream is generally
+greater than 1 GB/s but can easily increase to 6.5 GB/s from
+a single client, and more than 10 GB/s if performed in a
+properly configured parallel operation.
+
+Components
+----------
+Lustre functionality is divided among four primary
+components:
+
+-  MDS - Metadata Server
+-  MDT - Metadata Target
+-  OSS - Object Storage Server
+-  OST - Object Storage Target
+
+An MDS is server that assigns and tracks all of the storage
+locations associated with each file in order to direct file
+I/O requests to the correct set of OSTs and corresponding
+OSSs.
+
+An MDT stores the metadata, filenames, directories,
+permissions and file layout.
+
+An OSS manages a small set of OSTs by controlling I/O access
+and handling network requests to them.
+
+An OST is a block storage device, often several disks in a
+RAID configuration.
+
+Configuration
+-------------
+ll nodes access the lustre file-systems mounted at /collab1
+
+The number of servers and targets on *each* of the two
+Niagara file systems is:
+
+-  2 MDSs (active/active)
+-  2 MDTs
+-  4 OSSs (active/active, embedded in DDN SFA14kx storage
+   controllers)
+-  24 OSTs (all are HDDs)
+-  1.9 PiB of usable disk space (*df -hP /collab1*)
+
+File Operations
+---------------
+-  When a compute node needs to create or access a file, it
+   requests the associated storage locations from the MDS
+   and the associated MDT.
+-  I/O operations then occur directly with the OSSs and OSTs
+   associated with the file, bypassing the MDS.
+-  For read operations file data flows from the OSTs to the
+   compute node.
+
+With Lustre, there are three basic ways which an application
+accesses data:
+
+-  Single stream
+-  Single stream through a master
+-  Parallel
+
+**File Striping**
+A file is split into segments and consecutive segments are
+stored on different physical storage devices (OSTs).
+
+-  Aligned stripes is where each segment fits fully onto a
+   single OST. Processes accessing the file do so at
+   corresponding stripe boundaries.
+
+-  Unaligned stripes means some file segments are split
+   across OSTs.
+
+**Userspace Commands**
+Lustre provides a utility to query and set access to the
+file system.
+
+For a complete list of available options:
+
+::
+
+    lfs help
+
+To get more information on a specific option:
+
+::
+
+    lfs help <option>
+
+THUS ENDETH THE LESSON
+
 
