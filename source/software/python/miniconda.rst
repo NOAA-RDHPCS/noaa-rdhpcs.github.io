@@ -1,3 +1,5 @@
+.. _installing-miniconda:
+
 ********************
 Installing Miniconda
 ********************
