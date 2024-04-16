@@ -7,8 +7,6 @@ RDHPCS Cloud Computing
 
 Welcome to the NOAA RDHPCS Cloud Computing Platform. The Cloud Platform allows NOAA users to create an HPC cluster on an as-needed basis, with the type of resources that are appropriate for the task at hand.
 
-You can find directions to log into the NOAA RDHPCS Cloud Gateway `here. <https://noaa.parallel.works.>`__
-
 
 Parallel Works User Guide
 =========================
@@ -50,67 +48,80 @@ Getting Help
 ------------
 
 For questions or assistance, email a ticket to: rdhpcs.cloud.help@noaa.gov, with the subject line Cloud Support.
-Please send your feedback on product, support, and documentation to Unni Kirandumkara, at: Unni.Kirandumkara@noaa.gov.
 
 Training Videos
 ===============
 
 Training Videos are available for Cloud Computing Platform users. Click a link to view the video.
 
+**A Beginner's Guide to Rstudio Docker Containers, November 2023**
+
+`Training Session <https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/view?ts=6543d955>`_
+
+
 Parallel Works
 --------------
 
-.. rubric:: Parallel Works New Features Training, September 27, 2023
+**April 10, 2024**
+`Job monitor and VNC settings <https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`_
 
-| `Workshop with Matt Long <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
-| Matt Long demonstrated enhancements to Parallel Works
+**February 28, 2024**
+`Rocky8: Linux Image and New Storage Features <https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`_
 
-features:
+**February 9, 2024**
+`On-Demand Provisioning on On-Premise HPC systems <https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`_
+
+**Parallel Works New Features Training, September 27, 2023**
+`Workshop  <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
+
+Enhancements to Parallel Works features:
   -  Updates to Notifications, with expanded notification types and email notification options
   -  Short term credentials, which can be used effectively for cluster and storage resources
   -  Updates to the Marketplace feature. Cluster and storage configurations can now be shared with team members through the Marketplace.
   -  Lustre configurations can now be designated persistent, and saved separately from the clusters. This potentially saves storage costs.
 
-.. rubric:: Parallel Works New Features Training, June 14, 2023
+**Parallel Works New Features Training, June 14, 2023**
 
-`Workshop with Matt Long <https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
+`Workshop <https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
 
-Matt Long demonstrated the Parallel Works platform,
-including the new feature on storage, and enhanced cost
-dashboard. New users start here.
+Especially useful for new users:
+ - Parallel Works platform
+ - new feature on storage
+ - enhanced cost dashboard.
 
-.. rubric:: Parallel Works New Features Training, March 23, 2023
+**Parallel Works New Features Training, March 23, 2023**
 
-`Workshop with Matt Long <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
+`Workshop <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
 
-The training will cover the following topics:
+- Show estimated costs to run a given cluster configuration
+- SSH keys configurable from inside platform, at user level
+- Configurable slurm timeouts (and other slurm settings) 
+- building a custom snapshot.
 
-- Show estimated costs to run a given cluster configuration,
-- SSH keys configurable from inside platform, at user level,
-- Configurable slurm timeouts (and other slurm settings), and
-- **building a custom snapshot.**
+**Platform Enhancements Training, February 16, 2023**
+`Presentation <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`_
 
-.. rubric:: Parallel Works Platform Enhancements, February 16, 2023
+**Parallel Works Foundation, February 16, 2023**
+`Workshop <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
 
-.. rubric:: Training Presentation
-
-`Slide deck - February 16 2023 <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`__
-
-.. rubric:: Foundation
-
-**New users start here.** Foundational topics include
-Creation of a cluster configuration, multi-user setup,
-hiding a resource, duplicating a resource, monitor to view
-cluster status, cost dashboard, connect to a controller
-node, running an interactive job, storage options, Scheduler
-and deletion tabs from the Resource monitor link.
+Foundational topics include:
+- Creation of a cluster configuration
+- multi-user setup
+- hiding a resource
+- duplicating a resource
+- monitor to view cluster status
+- cost dashboard
+- connect to a controller node
+- running an interactive job
+- storage options
+- Scheduler and deletion tabs from the Resource monitor link.
 
 Review the presentation `here. <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
 
-.. rubric:: Workflows
+**Workflows**
+`Presentation <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
 
 Workflow topics include:
-
 - subscribing a workflow from the PW Marketplace, example **Juypter Notebook**
 - running a job from the head node and compute node
 - canceling a job,
@@ -120,28 +131,22 @@ Workflow topics include:
 - sharing a cluster with project members, and
 - bootstrap script.
 
-Review the presentation `here. <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`__
-
-.. rubric:: Workflow Interactive
-
-Session
+**Workflow Interactive Session**
+`Presentation <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
 
 Molecular dynamics simulation and visualization on a multi-cluster model.
 
-Review the presentation `here. <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
+**Training Q & A**
+`Questions and comments <https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`__
 
-.. rubric:: Training Q & A
+**Parallel Works Training**
+- `Parallel Works Version 2, March 23, 2022 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
 
-Review questions and comments `here. <https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`__
+- `Parallel Works Version 2, January 20, 2022 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__ 
 
-.. rubric:: Other Parallel Works Training
+- `Parallel Works Platform Training II, July 15, 2021 <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`__  
 
-`Parallel Works Version 2 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
-March 23, 2022
-
--  `Parallel Works Version 2 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__ January 20, 2022
--  `Parallel Works Platform Training II <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`__ July 15, 2021. Topics include:
-
+Topics include:
   -  Connecting to a transient cluster head node from a remote host
   -  Configuration settings to re-size the nodes count
   -  Lustre file system; Use of different processors
@@ -151,168 +156,75 @@ March 23, 2022
   -  Singularity container example
   -  Budget allocation
 
-.. rubric:: Use Case Sessions
+**Use Case Sessions**
+`JupyterHub Installation on a Conda, and R Troubleshooting, April 7, 2023 <https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`__ 
 
--  `JupyterHub Installation on a Conda, and R Troubleshooting <https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`__ April 7, 2023
--  This recorded session details JupyterHub installation on a Conda, and R troubleshooting.
+`Globus Training: Setup and Data Transfer March 17, 2023 <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`__
 
-.. rubric:: Globus
-
--  `Globus Training: Setup and Data Transfer <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`__ March 17, 2023
--  This training walks you through the process of setting up an endpoint, and transfering files to the CSP classification.
-
--  `Useful tutorials from Globus <https://docs.globus.org/how-to/instructional-videos/>`__
+`Useful tutorials from Globus <https://docs.globus.org/how-to/instructional-videos/>`__
 
 Cloud Success Stories
 =====================
 
--  `NOS Team: Storm Surge Modelling <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__ September 27, 2022
--  `NWS Team: Rapid Refresh Forecast System <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__ September 21, 2022
--  `EPIC Cloud Success Story <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__ September 15, 2022
+-  `NOS Team: Storm Surge Modelling, September 27, 2022 <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__ 
+-  `NWS Team: Rapid Refresh Forecast System, September 21, 2022 <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__ 
+-  `EPIC Cloud Success Story, September 15, 2022 <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__ 
 
 Office Hours
 ============
 
-The Cloud Computing support team hosts bi-weekly sessions for demonstrations, questions and answers. Submit questions in advance to unni.kirandumkara@noaa.gov.
+The Cloud Computing support team hosts bi-weekly sessions for demonstrations, questions and answers. 
 
-| `14 September 2023 <https://drive.google.com/file/d/1INH-x7Cz025UtwMQDjlQX9Yn5MdQ_xE5/view?ts=6504735f>`__
-| Workshop with Matt and Steve.
+`14 September 2023 <https://drive.google.com/file/d/1INH-x7Cz025UtwMQDjlQX9Yn5MdQ_xE5/view?ts=6504735f>`__
+`30 August 2023 <https://drive.google.com/file/d/1qbZHqXSfH2V5J_SL2Nt7Huq86v4nqjBK/view?ts=64f0bb3e>`__
 
-| `30 August 2023 <https://drive.google.com/file/d/1qbZHqXSfH2V5J_SL2Nt7Huq86v4nqjBK/view?ts=64f0bb3e>`__
-| In this session, users submitted questions in advance, and Matt and Unni responded.
-
-- A user is trying to balance the relative cost of computation and storage
-  capacity -- storage costs are especially high. The user may switch from GCP to
-  AWS in the coming year, to access available GPUs, which have been hard to
-  access in GCP.
-
-  - **Answer:** Matt suggested where information on GPUs could
-    be found, and how one might deduce where GPUs could be
-    expected, based naming connections. G4 nodes should contain
-    GPUs.
-
--  A user had a question about Allocation questionnaire for the coming year.
-
-  - **Answer:** The questionnaire comes from the Program
-    Management team. Specific questions can be raised to PIs and
-    PMs.
-
--  A user had issues with GPUs, storage costs and reservations.
-
-  - **Answer:** GPUs from GCP are harder to access. However, AWS
-    platform with On-Demand Capacity reservation (large capacity
-    for four weeks) is working out. Switching from GCP to AWS
-    would reduce costs, with a higher probability of getting
-    GPUs. Reservations are available in AWS only, with admin
-    support. Parallel Works has not yet been able to mirror that
-    functionality on Google.
-
+- Balancing the relative cost of computation and storage
+- Allocation questionnaire for the coming year
+- Issues with GPUs, storage costs and reservations
 - A user requested that estimation costs and GPU
-  information should be added to documentation/Wiki.
+  information should be added to documentation/Wiki
+- Using a Jupityr notebook, and whether it can be set up on Contrib
+- A request more allocation on AWS
+- Transitioning from Linux to Cloud
 
-  - **Answer:** Will investigate.
 
-- A user had question about using a Jupityr notebook, and
-  whether it can be set up on Contrib.
+`16 August 2023 <https://drive.google.com/file/d/1Sybufzev_MEl7o0k41B5wKaCM1Nne6qG/view?ts=64de6f71>`__
 
-  - **Answer:** That's one right way to proceed. Installation
-    takes a lot of time, but everything should be fine once it’s
-    installed. If the user knows in advance what packages he
-    needs, he can make a custom snapshot of the package.
-    Singularity and Docker and Podman are all available.
-
--  A user needs to request more allocation on AWS.
-
-  - **Answer:** Send an email to Gonzalo Lassally to request
-    allocation. Can be done in a few days.
-
-- A user is used to a Linux environment and is slowly
-  getting used to Cloud. He's been looking at available
-  videos and finding resolution to be poor -- are there
-  other videos available.
-
-  - **Answer:** Probably not many, but the Cloud team will
-    research for them.
-
-| `16 August 2023 <https://drive.google.com/file/d/1Sybufzev_MEl7o0k41B5wKaCM1Nne6qG/view?ts=64de6f71>`__
-| In this Q&A session, Matt and Unni answered questions as follows:
-
-- For questions concerning Azure file transfers - Matt gave
-  a demonstration
-- Andy raised issues with access. Matt discussed firewalls,
-  and export and send commands.
-- Issue concerning the file path from Parallel Works.
+- Azure file transfers
+- Access issues
+- File path from Parallel Works
 - Questions on Jupyter
-- Andy asked how users can know what's updated and what's
-  obsolete in Parallel Works, and requested that users be
-  informed when changes are made, because of impacts to
-  their work.
--  Questions concerning confidential data.
--  Question about ssh key versus api key.
--  Question concerning R Studio.
--  Kimani asked about cluster persistence.
+- Confidential data
+- ssh key versus api key
+- R Studio.
+- cluster persistence
 
 
-| `2 August 2023 <https://drive.google.com/file/d/1yRvdLWIsQo9K7sSCs01Gm9fRduizekcZ/view?ts=64cd5bb3>`__
-| This Q&A session was attended by some new GFDL team
-| members, looking for the information they needed to get
-| started. There's a dataset that can only be accessed on
-| AWS Cloud, and these users need background and transfer
-| information.
+ `2 August 2023 <https://drive.google.com/file/d/1yRvdLWIsQo9K7sSCs01Gm9fRduizekcZ/view?ts=64cd5bb3>`__
 
-- Matt gave an overview of new features in Parallel Works,
-  particularly temporary credentials for buckets. The
-  Buckets and Storage pages can be used obtain temporary
-  credentials. (This feature is not yet available on
-  Azure.) Matt also mentioned ephemeral lustres, a new
-  enhancement.
-- Unni pointed the new users to the Clouddocs wiki, citing
-  a June training that provides background to access
-  storage, and links to Parallel Works documentation. This
-  may help the new users to get started.
-- Raghu offered some specific guidance.
-- Unni proposed a meeting with the new users, himself and
-  Matt, to move their task forward.
+- new GFDL team getting started
+- verview of new features in Parallel Works, particularly temporary credentials for buckets. 
 
-| 19 July 2023
-| A technical difficulty prevented the team from recording
-| the Office Hours session. Questions and responses are
-| `available. <https://docs.google.com/document/d/1S1162ePlycBjpylL0cggp-6p_RtEX_LQZ_0kLbG3qrk/edit>`__
-
-| `5 July 2023 <https://drive.google.com/file/d/1e7lkH3esEToYEBvL53P0DJm8Sm0L4G33/view?ts=64a6ee9f>`__
-| In this Q&A session, Matt and Unni addressed the following topics:
+`5 July 2023 <https://drive.google.com/file/d/1e7lkH3esEToYEBvL53P0DJm8Sm0L4G33/view?ts=64a6ee9f>`__
 
 - GPU selection and constraints, especially on Azure
 - Can a user configure the Cloud account to send email when
-  a job completes or fails? More than one user has this
-  request; Matt will assist them.
+  a job completes or fails?
 - Users have had clusters that completed work but did not
-  shut down. This results in extensive charges for nothing.
-  Matt says this is a known issue being actively worked. In
-  the meantime he recommends users look in the Log tabs for
-  job and cluster status.
-- Matt demonstrated the new Properties tab in Parallel
-  Works. Among other things it can be used to enable email
-  alerts.
-- Unni mentioned the upcoming Super Computing Conference in
-  Denver, 12-17 November. Anyone interested in submitting a
-  paper to the Birds of a Feather session `may do so <https://sc23.supercomputing.org/program/birds-of-a-feather/>`__.
+  shut down. 
+- new Properties tab in Parallel Works
+- Super Computing Conference in Denver, 12-17 November. 
 
-| `21 June 2023 <https://drive.google.com/file/d/1PPj6ZM6cZTPE6FVGt9luDDiouAo9RRty/view?ts=64944e9f>`__
-| No questions were submitted prior to this session, but a lively discussion took place.
+`21 June 2023 <https://drive.google.com/file/d/1PPj6ZM6cZTPE6FVGt9luDDiouAo9RRty/view?ts=64944e9f>`__
 
-- Some users discussed their challenges in getting
-  on-demand Nvidia GPU processors.
-- Matt recommended on-demand reservations and described how
-  reservations work in some detail.
-- Users discussed the cost of jobs submitted under the
+- Challenges in getting on-demand Nvidia GPU processors.
+- On-demand reservations
+- Cost of jobs submitted under the
   reservation system.
-- Unni recommended the Cost Estimation feature available
-  with the AWS system.
+- Cost Estimation feature available with the AWS system.
 
 
-| `7 June 2023 <https://drive.google.com/file/d/1N7PwnfYu5aD0Fo8Z8GYwCF9brw0m9J72/view?ts=6481d78c>`__
-| In this open Q&A session, Matt and Unni addressed the following topics:
+`7 June 2023 <https://drive.google.com/file/d/1N7PwnfYu5aD0Fo8Z8GYwCF9brw0m9J72/view?ts=6481d78c>`__
 
 -  Account problems
 -  Studio workflows
@@ -322,64 +234,50 @@ The Cloud Computing support team hosts bi-weekly sessions for demonstrations, qu
 
 Notes are `available. <https://docs.google.com/document/d/1FUDebrZ_lYv3VgUTKvxWGvpDE6VMNQaJmwVy5g_8Jx8/edit>`__
 
-| `24 May 2023 <https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
-| In this session, users submitted questions in advance, including:
+`24 May 2023 <https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
 
-- Disk space allowance on /contrib, /home, and the Cloud
-  environment.
-- The difference between MDS and OST boot disk size, and
-  access to each.
-- Cluster activation and de-activation, and timing and
-  configuration changes.
-- Methods currently in use to move data to and from the
-  Cloud.
-- Syncing global-workflow fixed files for \`develop\` to
-  AWS s3, and related AWS s3 issues
-- Optimized IC staging for regression testing
-- Mitigating FS latency
+- Disk space allowance on /contrib, /home, and the Cloud environment.
+- The difference between MDS and OST boot disk size, and access to each.
+- Cluster activation and de-activation, and timing and configuration changes.
+- Methods currently in use to move data to and from the Cloud.
+- Syncing global-workflow fixed files for \`develop\` to AWS s3, and related AWS s3 issues
+- Optimized IC staging for regression testing  Mitigating FS latency
 - Azure operation questions.
 
 
-| `10 May 2023 <https://drive.google.com/file/d/1zL8TQ68qa3Nh0s3JB11VnvrJtwqEhvaH/view?ts=646d0527>`__
-| This was an open question-answer session covering the following:
+`10 May 2023 <https://drive.google.com/file/d/1zL8TQ68qa3Nh0s3JB11VnvrJtwqEhvaH/view?ts=646d0527>`__
 
 - The Podman application
 - Reported queueing problems in Parallel Works
 - Could the frequent version increments in Parallel
-  Work have an impact on clusters or other operations in
-  progress. (Parallel Works said no.)
-- Features in future update:
-- Partition settings in Google Cloud configuration
+  Work have an impact on clusters or other operations in progress?
+- Features in future update: Partition settings in Google Cloud configuration
 
+`26 April 2023 <https://drive.google.com/file/d/1ZtZuZoJ28-M8qEvwZERvOENaUrNcCdmU/view?ts=64528126>`__
 
-| `26 April 2023 <https://drive.google.com/file/d/1ZtZuZoJ28-M8qEvwZERvOENaUrNcCdmU/view?ts=64528126>`__
-| This video references the creation of a cloud/custom snapshot in these steps:
+This video references the creation of a cloud/custom snapshot in these steps:
 
 - Resource definition
 - Activate conda at boot
 - Update ``.bashrc`` using bootstrap script
-- Copy files from laptop to contrib using scp, rsync, and
-  Globus
+- Copy files from laptop to contrib using scp, rsync, and Globus
 - Cluster health check
 - Copy file between contrib and bucket using gsutil
 
 
 
-| `12 April 2023 <https://drive.google.com/file/d/1WEhr5aJ37FLTqIoCbFbxt1vXi4I0yZtd/view?ts=64381afa>`__
-| Topics discussed in this session include:
+`12 April 2023 <https://drive.google.com/file/d/1WEhr5aJ37FLTqIoCbFbxt1vXi4I0yZtd/view?ts=64381afa>`__
 
 - Google contrib storage use best practices
 - Finding a project bucket
 - The ``gsutil`` command
 - Azure’s contrib and block storage as the same storage
-- Storage issues, including centralized storage of user
-  public ssh keys
-- upcoming features, storage,
-- health check scripts and custom snapshots
+- Storage issues, including centralized storage of user public ssh keys
+- upcoming features, storage, health check scripts and custom snapshots
 
-.. rubric:: Features in Development
+**Features in Development**
 
-There are new features and capabilities under discussion at
+There are new features and capabilities under discussion at 
 Parallel Works. If you are interested in these features,
 send an email ticket to: rdhpcs.cloud.help@noaa.gov, with
 the subject line PW Features.
@@ -388,11 +286,10 @@ the subject line PW Features.
 Frequently Asked Questions
 ==========================
 
-.. rubric:: General Cloud
+General Cloud Issues
+--------------------
 
-Issues
-
-.. rubric:: How do I open a cloud help desk ticket?
+** How do I open a cloud help desk ticket?**
 
 Send an email to rdhpcs.cloud.help@noaa.gov. Your email
 automatically generates a case in the OTRS system.
@@ -401,15 +298,15 @@ The OTRS system does not have an option to set a priority
 level. Typically, your ticket is responded to within 2
 hours.
 
-.. rubric:: Where do I find instructions to connect the controller node from outside the network?
+**Where do I find instructions to connect the controller node from outside the network?**
 
-Refer the Parallel works user guide, section `From outside
+Refer the Parallel works user guide, section `From outside 
 the platform <https://docs.parallel.works/interacting-with-clusters/logging-in-controller>`__
 
-.. rubric:: What are the project allocation usage limits and actions?
+**What are the project allocation usage limits and actions?**
 
-**Used allocation at 85% of the budget allocation:**  When
-an existing project usage reaches 85% of the allocation, the
+Used allocation at 85% of the budget allocation: 
+When an existing project usage reaches 85% of the allocation, the
 Parallel Works [PW] platform sends an email message to
 principal investigator [PI], tech lead [TL] and admin
 staff.   
@@ -421,51 +318,49 @@ staff.   
 - PI should work with the allocation committee on
   remediation efforts. 
 
-**Used allocation at 90% of the budget allocation:** When
-an existing project usage reaches 90% of the allocation, the
+- Used allocation at 90% of the budget allocation:
+
+When an existing project usage reaches 90% of the allocation, the
 Parallel Works platform sends an email message to principal
 investigator, tech lead and admin staff.   
 
-- Users can no longer start a new cluster and may continue
-  the currently running clusters, but no new jobs can be
-  started. 
-- Users must move data from the contrib and object storage
-  to on-premise storage. 
-- A “Freeze” message appears on the PW compute dashboard
-  against the project.
-- PI should work with the allocation committee on
-  remediation efforts. 
+  - Users can no longer start a new cluster and may continue the currently running clusters, but no new jobs can be started. 
+  - Users must move data from the contrib and object storage to on-premise storage. 
+  - A “Freeze” message appears on the PW compute dashboard against the project.
+  - PI should work with the allocation committee on remediation efforts. 
 
-**Used allocation at 95% of the budget allocation:** When
-an existing project usage reaches 95% of the allocation, the
+- Used allocation at 95% of the budget allocation:
+
+When an existing project usage reaches 95% of the allocation, the
 Parallel Works platform sends an email message to principal
 investigator, tech lead and admin staff.
 
-- Terminate and remove all computing/cluster resources.
-- Data at buckets will remain available as will data in
-  /contrib. However, only data in the object storage will
-  be directly available to users.
-- Notify all affected users, PI, Tech Lead, Accounting Lead
-  via email that all resources have been removed.
-- Disable the project. 
+  - Terminate and remove all computing/cluster resources.
+  - Data at buckets will remain available as will data in
+    /contrib. However, only data in the object storage will
+    be directly available to users.
+  - Notify all affected users, PI, Tech Lead, Accounting Lead
+    via email that all resources have been removed.
+  - Disable the project. 
 
-**Used allocation at 99.5% of the budget allocation:** 
+- Used allocation at 99.5% of the budget allocation: 
 
-- Manually remove the project resources. 
-- Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
-  email all resources have been removed.
+  - Manually remove the project resources. 
+  - Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
+    email all resources have been removed.
 
-.. rubric:: How do I get a project allocation or an allocatin increase?
+How do I get a project allocation or an allocation increase?
+------------------------------------------------------------
 
 RDHPCS System compute allocations are decided upon by the
 RDHPCS Allocation Committee (AC), with oversight from the
-NOAA HPC Board. The information for allocation is contained
-on the `RHPCS common docs wiki <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Allocations_and_Quotas#Request_an_Increase_in_Allocations>`__
+NOAA HPC Board. 
 
 Update the the Allocation Request Form located under the
-section "Allocations" from the above link.
+section "Allocations" from link TBD
 
-.. rubric:: Storage functionalities
+Storage functionalities
+-----------------------
 
 **Cluster runtime notification**
 
@@ -505,8 +400,7 @@ bucket, Azure’s block blob storage, and GCP’s bucket], and
 lustre file system [ephemeral and persistent storage] on
 your Cloud platform.
 
-.. rubric:: How do I resize the root disk?
-  :name: how-do-i-resize-the-root-diskedit
+**How do I resize the root disk?**
 
 Open up the resource name definition, click on the \_JSON
 tab, add a parameter "root_size" with a value in the
@@ -520,8 +414,7 @@ In the below example, the root disk size is set to 256 GiB
   "cluster_config": {
     "root_size": "256",
 
-.. rubric:: Where do I get detailed Workflow instructions?
-  :name: where-do-i-get-detailed-workflow-instructions
+**Where do I get detailed Workflow instructions?**
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the Parallel
@@ -530,8 +423,7 @@ located on the top right menu bar, looks like an Earth icon.
 
 Learn more on the `workflow <https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk>`__
 
-.. rubric:: What are the different storage types and costs available on the PW platform?
-  :name: what-are-the-different-storage-types-and-costs-available-on-the-pw-platform
+**What are the different storage types and costs available on the PW platform?**
 
 There are three types of storage available on a cluster,
 those are lustre, object storage [ for backup & restore,
@@ -625,39 +517,22 @@ public internet are $0.09 per GB for the first 10 TB,
 dropping to $0.085 per GB for the next 40 GB, $0.07 per GB
 for the next 100 TB, and $. 05/GB greater than 150 TB.
 
-Azure:
+`Azure <https://azure.microsoft.com/en-us/pricing/details/bandwidth/>`_`
 
-https://azure.microsoft.com/en-us/pricing/details/bandwidth/
+`GCP <https://cloud.google.com/network-tiers/pricing>`_
 
-GCP:
+Parallel works
+--------------
 
-https://cloud.google.com/network-tiers/pricing
+**Where do I find the Parallel Works User Guide?**
+`User Guide <https://docs.parallel.works/>`__
 
-.. rubric:: Parallel Works
-  :name: parallel-works
+**How do I get access to the Parallel Works Platform?**
 
-.. rubric:: Where do I find the Parallel Works User Guide?
-  :name: where-do-i-find-the-parallel-works-user-guide
-
-The link to the user guide below:-
-https://docs.parallel.works/
-
-.. rubric:: How do I get access to the Parallel Works Platform?
-  :name: how-do-i-get-access-to-the-parallel-works-platform
-
-Pre-requisite for getting an account access to the Parallel
-Works platform is to have a NOAA email address.
-
-The next step is to request access to a project and RSA
-token from the “Account Management Home”.
-
-Use the URL AIM: https://aim.rdhpcs.noaa.gov/ to request for
-a project and RSA token. No CAC is necessary to access the
-Parallel Works platform.
-
-From the Account Management Home, click the link: “Click
-here to Request Access to a Project” and select a project
-the list of projects.
+- Pre-requisite for getting an account access to the Parallel Works platform is to have a NOAA email address.
+- The next step is to request access to a project and RSA token from the “Account Management Home”.
+- Access AIM to request a project and RSA token. No CAC is necessary to access the Parallel Works platform.
+- From the Account Management Home, click the link: “Click here to Request Access to a Project” and select a project the list of projects.
 
 The drop-down list is long. You can type the first character
 to move the cursor towards your project name.
@@ -672,16 +547,14 @@ cz-budget-test: This is the Azure platform project used for
 cost specific tests. cg-budget-test: This is the GCP
 platform project used for cost specific tests.
 
-After selecting the project, click the “Submit Request”
-button.
+- After selecting the project, click “Submit Request”.
 
-Click the link: “Make a request for an RSA token”
+- Click the link: “Make a request for an RSA token”
 
-After your request is approved, you can login on to the
-platform: https://noaa.parallel.works/
+After your request is approved, you can `login on to the
+platform: <https://noaa.parallel.works/>`_
 
-.. rubric:: How is a new user added to a project on the Parallel Works?
-  :name: how-is-a-new-user-added-to-a-project-on-the-parallel-works
+**How is a new user added to a project on the Parallel Works?**
 
 If you would like to join an existing project, ask your PI,
 TL, or Portfolio manager the project name. The cloud project
@@ -690,14 +563,13 @@ Google platform, and followed by the project name. An
 example, ca-budget-test implies that project budget-test
 runs from the AWS platform.
 
-Use the AIM link https://aim.rdhpcs.noaa.gov/ and click on
+Use the AIM link and click on
 the link "Request new access to a project" to add yourself
 to a project.
 
 Access to the project is contingent on PI's approval.
 
-.. rubric:: How do I set up a new project in the Parallel Works Platform?
-  :name: how-do-i-set-up-a-new-project-in-the-parallel-works-platform
+**How do I set up a new project in the Parallel Works Platform?**
 
 To set up your project setup in Parallel Works follow the
 below steps.
@@ -711,12 +583,7 @@ below steps.
    help you translate your business case into an allocation
    estimate.
 
-   Email to POC for allocation approval: Gonzalo Lassally,
-   NOAA.
-
-   Follow the link to update allocation form.
-
-   https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_get_a_project_allocation_or_an_allocation_increase.3F
+   Email to POC for allocation approval.
 
 #. Create an AIM ticket to create your project by
    emailing to the AIM administrator.
@@ -726,7 +593,6 @@ below steps.
    providing the following information:
 
    a. Project short name. Please provide in this format: ``<cloud platform abbreviation>-<project name>``
-
       Example ca-epic stands for AWS Epic, cz-epic for Azure epic,
       and cg-epic for Google cloud Epic.
    b. Brief description of your project.
@@ -748,13 +614,11 @@ with the project status.
 
 Read the cloud FAQ to learn on adding users to a project.
 
-.. rubric:: What is the certified browser for Parallel Works Platform?
-  :name: what-is-the-certified-browser-for-parallel-works-platform
+**What is the certified browser for Parallel Works Platform?**
 
 Google Chrome browser.
 
-.. rubric:: Cost Calculator
-  :name: cost-calculator
+**Cost Calculator**
 
 You can estimate an hourly cost of your experiment’s from
 the Parallel Works(PW) platform. After login on the
@@ -782,18 +646,14 @@ cost would be 100x$20 = $2,000.00.
 
 Note that there are costs associated with maintaining your
 project, like contrib file system, object storage to store
-backup, and egress. Use the link below to find the
-`cost <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#What_are_the_different_storage_types_and_costs_available_on_the_PW_platform.3F>`__.
+backup, and egress.
 
 
-.. rubric:: Cost dashboard explained
-  :name: cost-dashboard-explained
+**Cost dashboard explained**
 
-Refer the user guide link:
-https://parallelworks.com/docs/monitoring-costs
+Refer the `user guide <https://parallelworks.com/docs/monitoring-costs>`_
 
-.. rubric:: How do I find a real time cost estimate of my session?
-  :name: how-do-i-find-a-real-time-cost-estimate-of-my-session
+**How do I find a real time cost estimate of my session?**
 
 Cloud vendors publish the cost once every 24 hours, that is
 not an adequate measure in an HPC environment. PW Cost
@@ -807,8 +667,7 @@ select the value “RT” [Real time]. Make sure the “User
 Filter” section has your name. The page automatically
 refreshes with the cost details.
 
-.. rubric:: How do I estimate core-hours?
-  :name: how-do-i-estimate-core-hours
+**How do I estimate core-hours?**
 
 An example, your project requests a dedicated number of HPC
 compute nodes or has an HPC system reservation for some
@@ -818,9 +677,8 @@ the dedication/reservation is 1 week (7 days), then the
 core-hours used would be 33,600 core-hours (200 cores \* 24
 hrs/day \* 7 days).
 
-GCP's GPU to vCPUs conversation can be found here:
-https://cloud.google.com/compute/docs/gpus In GCP, two vCPUs
-makes one physical core.
+GCP's GPU to vCPUs conversation can be found `here <https://cloud.google.com/compute/docs/gpus>`__
+In GCP, two vCPUs makes one physical core.
 
 So, a2-highgpu-1 has 12 vCPUs that means 6 physical core. If
 your job is taking 4 hours to complete so that means the
@@ -830,12 +688,7 @@ number of cores = 1 x 4 x 6 = 24 core hours.
 PW’s cost dashboard is a good tool to find unit cost, and
 extrapolate it to estimate usage for PoP.
 
-https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_find_a_real_time_cost_estimate_of_my_session.3F
-
-
-
-.. rubric:: How to access the head node from the Parallel Works [PW] web interface?
-  :name: how-to-access-the-head-node-from-the-parallel-works-pw-web-interface
+**How to access the head node from the Parallel Works [PW] web interface?**
 
 You can connect to the head node from the PW portal, or
 Xterm window if you have added your public key in the
@@ -879,8 +732,7 @@ multiple of 2.8 TB.
 
 Note that LFS is an expensive storage.
 
-.. rubric:: How do I add a workflow to my account?
-  :name: how-do-i-add-a-workflow-to-my-account
+**How do I add a workflow to my account?**
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the PW main page,
@@ -888,7 +740,7 @@ click the workflow marketplace button on the top menu bar.
 This button should be on the right side of the screen, and
 looks like an Earth icon.
 
-How do I ssh to other nodes in my cluster?
+**How do I ssh to other nodes in my cluster?**
 
 It is possible to ssh to compute nodes in your cluster from
 the head node by using the node's hostname. You do not
@@ -917,15 +769,12 @@ inactivity)
       [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
       [compute-dy-c5n18xlarge-1]$
 
-.. rubric:: How do I request a new feature or report feedback?
-  :name: how-do-i-request-a-new-feature-or-report-feedback
+**How do I request a new feature or report feedback?**
 
 You may request a new feature on the PW platform or provide
-a feedback to the NOAA RDHPCS leadership using the link:
-https://forms.gle/FGkdQoCUkAGm63mc7
+a feedback to the NOAA RDHPCS leadership using the link TBD
 
-.. rubric:: How to address an authentication issue on the Parallel Works [PW] login?
-  :name: how-to-address-an-authentication-issue-on-the-parallel-works-pw-login
+**How to address an authentication issue on the Parallel Works [PW] login?**
 
 Authentication to the PW system can be due to an expired RSA
 Token or inconsistent account status in the PW system. If
@@ -969,11 +818,10 @@ long, it could be an issue with your VPN. In that case,
 disconnect the VPN and try login. If the login succeeds, it
 implies an issue with the VPN.
 
-.. rubric:: Clusters and Snapshots
-  :name: clusters-and-snapshots
+Clusters and snapshots
+----------------------
 
-.. rubric:: Cluster Cost types explained.
-  :name: cluster-cost-types-explained
+**Cluster Cost types explained**
 
 There are several resource types that are part of a user
 cluster.
@@ -983,9 +831,7 @@ type naming and cost. Broadly, the following cost types are
 explained below.
 
 UnknownUsageType: Network cost related virtual private
-network. Additional reading,
-https://cloud.google.com/vpc/network-pricing,
-https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/
+network. Additional `reading here <https://cloud.google.com/vpc/network-pricing>`_ and `here <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`_
 
 Other Node: Controller node cost.
 
@@ -996,8 +842,7 @@ is based on the storage used.
 
 Storage-Disk : Boot disk and apps volume disk cost.
 
-.. rubric:: How do I resize my resource cluster size?
-  :name: how-do-i-resize-my-resource-cluster-size
+**How do I resize my resource cluster size?**
 
 The default CSP resource definition in the platform is
 fv3gfs model at 768 resolution 48-hours best performance
@@ -1028,8 +873,7 @@ Lustre filesystem is an expensive resource. You can disable
 the filesystem or resize it. The default lustre filesystem
 size is about 14TiB.
 
-.. rubric:: How do I create a custom snapshot [a.k.a AMI, Snapshot, Boot disk, or machine] image?
-  :name: how-do-i-create-a-custom-snapshot-a.k.a-ami-snapshot-boot-disk-or-machine-image
+**How do I create a custom snapshot [a.k.a AMI, Snapshot, Boot disk, or machine] image?**
 
 If a user finds specific packages are not present in the
 base boot image, the user can add it by creating own custom
@@ -1060,8 +904,7 @@ Now launch a new cluster using the custom snapshot from the
 “Compute” page. After the cluster is up, verify the
 existence of custom installed packages.
 
-.. rubric:: How to automatically find the hostname of a cluster?
-  :name: how-to-automatically-find-the-hostname-of-a-cluster
+**How to automatically find the hostname of a cluster?**
 
 By default, the host names are always going to be different
 each time you start a cluster.
@@ -1082,8 +925,7 @@ as well:
 :PW_SESSION_LONG:
 :PW_CSP:
 
-.. rubric:: How do I setup an ssh tunnel to my cluster?
-  :name: how-do-i-setup-an-ssh-tunnel-to-my-cluster
+**How do I setup an ssh tunnel to my cluster?**
 
 ssh tunnels are a useful way to connect to services running
 on the head node when they aren't exposed to the internet.
@@ -1115,8 +957,7 @@ on my local machine. This lets me direct my browser to the
 URL 'localhost:8888' and see the page being served by the
 remote machine over that port.
 
-.. rubric:: How do I turn off Lustre filesystem from the cluster?
-  :name: how-do-i-turn-off-lustre-filesystem-from-the-cluster
+**How do I turn off Lustre filesystem from the cluster?**
 
 From the Resources tab, select a configuration and click the
 edit link.
@@ -1126,8 +967,7 @@ system" section. Use the toggle button to "No" to turn off
 the lustre file system [LFS]. This setting lets you create a
 cluster without a lustre file system.
 
-.. rubric:: How do I activate conda at cluster login?
-  :name: how-do-i-activate-conda-at-cluster-login
+**How do I activate conda at cluster login?**
 
 Running conda init bash will setup the ~/.bashrc file so it
 will activate the default environment when you login.
@@ -1155,23 +995,18 @@ or
 
   ln -s /contrib/Nastassia.Patin/home/.bashrc ~/.bashrc
 
-.. rubric:: How do I create a resource configuration?
-  :name: how-do-i-create-a-resource-configuration
+**How do I create a resource configuration?**
 
 If your cluster requires lustre file system [ephemeral or
 persistent], or additional storage for backup, start at the
 "Storage" section and then use the "Resource" section.
 
-Managing the Storage:
+`Managing the Storage:
+<https://docs.parallel.works/managing-storage/>`_
 
-https://docs.parallel.works/managing-storage/
+`Create a cluster configuration <https://docs.parallel.works/interacting-with-clusters/configuring-clusters>`_
 
-Create a cluster configuration:
-
-https://docs.parallel.works/interacting-with-clusters/configuring-clusters
-
-.. rubric:: How do I enable run time alerts on my cluster?
-  :name: how-do-i-enable-run-time-alerts-on-my-cluster
+How do I enable run time alerts on my cluster?**
 
 You can enable this functionality on your active or new
 cluster. This setup will help you send a reminder when your
@@ -1185,11 +1020,9 @@ You can enable this functionality on a running cluster, by
 navigating to the “properties” tab of your resource name
 under the “Resource” tab.
 
-Reference:
-https://docs.parallel.works/interacting-with-clusters/creating-clusters
+`Reference <https://docs.parallel.works/interacting-with-clusters/creating-clusters>`_
 
-.. rubric:: Missing user directory in the group's contrib volume.
-  :name: missing-user-directory-in-the-groups-contrib-volume
+Missing user directory in the group's contrib volume.**
 
 A user directory on a group's contrib volume can only be
 created by an owner of a cluster, as the cluster owner only
@@ -1246,8 +1079,7 @@ Contrib is a permanent storage for your group.
 You may shutdown the cluster if the purpose was to create
 your contrib directory.
 
-.. rubric:: Why does the owner's home directory look different from the shared users’ home directory?
-  :name: why-does-the-owners-home-directory-look-different-from-the-shared-users-home-directory
+Why does the owner's home directory look different from the shared users’ home directory?**
 
 Every cluster is set up where the owner of it has an
 ephemeral home directory that isn't linked from contrib, but
@@ -1262,8 +1094,7 @@ So when people start clusters in some cases they may not
 have a contrib dir so owners don't want to link home
 directory to their contrib directory.
 
-.. rubric:: What are “Compute” and “Batch” sections in a cluster definition?
-  :name: what-are-compute-and-batch-sections-in-a-cluster-definition
+What are “Compute” and “Batch” sections in a cluster definition?**
 
 The sections “Compute” and “Batch” are partitions. You may
 change the partition name at the name field to fit your
@@ -1285,7 +1116,7 @@ Default Partition details.
   PartitionName=batch Nodes=mattlong-azv2-00115-2-[0001-0013]
   MaxTime=INFINITE State=UP Default=NO OverSubscribe=NO
 
-.. rubric:: How do I manually shutdown the compute nodes?
+** How do I manually shutdown the compute nodes?
   :name: how-do-i-manually-shutdown-the-compute-nodes
 
 .. code::
@@ -1307,8 +1138,7 @@ You can then use that list to stop the nodes:
 
   $ sudo scontrol update nodename=userid-gcp-00141-2-[0001-0002] state=power_down
 
-.. rubric:: How to sudo in as root or a role account on a cluster?
-  :name: how-to-sudo-in-as-root-or-a-role-account-on-a-cluster
+How to sudo in as root or a role account on a cluster?**
 
 The owner of a cluster can sudo in as root and grant sudo
 privilege to the project members by adding their user id in
@@ -1334,8 +1164,7 @@ Assuming the cluster setup as multi-user in the resource
 definition, and in the sharing tab, view and edit button are
 selected.
 
-.. rubric:: How to enable a role account?
-  :name: how-to-enable-a-role-accountedit
+**How to enable a role account?**
 
 A role account is a shared workspace for project members on
 a cluster. By su'd to a role account, project members can
@@ -1354,7 +1183,7 @@ from /etc/passwd is.
 
   $ grep -i role /etc/passwd
 
-.. rubric:: Bootstrap script example
+** Bootstrap script example
   :name: bootstrap-script-example
 
 By default bootstrap script changes only runs on the MASTER
@@ -1418,18 +1247,15 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
-.. rubric:: Configuration Questions
+** Configuration Questions
   :name: configuration-questions
 
-.. rubric:: How do I create Parallel Works resource configuration on my account?
+** How do I create Parallel Works resource configuration on my account?
   :name: how-do-i-create-parallel-works-resource-configuration-on-my-account
 
-Follow the instructions on this link:
+Follow the instructions on this `link <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit#slide=id.g11424a5fc64_0_29>`_
 
-https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit#slide=id.g11424a5fc64_0_29
-
-.. rubric:: How do I get AMD processor resources configuration?
-  :name: how-do-i-get-amd-processor-resources-configuration
+How do I get AMD processor resources configuration?**
 
 AMD processor based instances or VMs are relatively less
 expensive than Intel. Cloud services providers have
@@ -1443,13 +1269,10 @@ explained in the link below. The instructions will direct
 you to restore configuration, then choose the AMD Config
 option from the list.
 
-https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_create_Parallel_Works_version_2_resource_configuration_on_my_account.3F
-
 You may resize the cluster size by adjusting max node count,
 and enable or disable lustre as appropriate to your model.
 
-.. rubric:: How do I restore a default configuration?
-  :name: how-do-i-restore-a-default-configurationedit
+How do I restore a default configuration?**
 
 You can restore a configuration by navigating to the
 “Resources” tab, double click on a resource name, shows up
@@ -1458,8 +1281,7 @@ the “(restore configuration)” link, then select a resource
 configuration from the drop down list, click on the
 "Restore" button, and then click “Save Resource”.
 
-.. rubric:: What is a default instance/vm type?
-  :name: what-is-a-default-instancevm-typeedit
+What is a default instance/vm type?**
 
 By "default instance/vm type" we refer to the instance/vm
 types in a precreated cluster configuration. This
@@ -1468,8 +1290,7 @@ and also when creating a new configuration by selecting a
 configuration from the "Restore Configuration" link at the
 resource definition page.
 
-.. rubric:: How do I restore customization after the default configuration restore?
-  :name: how-do-i-restore-customization-after-the-default-configuration-restore
+**How do I restore customization after the default configuration restore?**
 
 The Parallel Works default configuration release updates
 depend on the changes made to the platform. You can protect
@@ -1490,12 +1311,7 @@ the "Compute" dashboard. Hide a resource configuration
 option can be found on the “Settings” box on the Resource
 definition page.
 
-.. rubric:: What is NOAA RDHPCS preferred container solution?
-  :name: what-is-noaa-rdhpcs-preferred-container-solutionedit
-
-NOAA RDHPCS official communication on containers:-
-
-https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Containers
+**What is NOAA RDHPCS preferred container solution?**
 
 On security issues and capabilities to run the weather model
 across the nodes, NOAA's RDHPC systems chose Singularity as
@@ -1556,8 +1372,6 @@ files which performs a parallel
 
   gsutil -m cp -r folder-name gs://bucketname
 
-.. rubric:: Best practice in resource configuration page.
-  :name: best-practice-in-resource-configuration-page
 
 **Maintain SSH authentication key under account, and use
 it in all clusters.**
@@ -1566,12 +1380,9 @@ The resource configuration has an “Access Public Key” box,
 to store your SSH public key, and the key stored there is
 only available in a cluster launched with that
 configuration. Instead store your key under “account” ->
-“Authentication” tab
-`[1] <https://noaa.parallel.works/u/settings/authentication>`__
-that automatically populates into your all clusters.
+“Authentication” tab that automatically populates into your all clusters.
 
-Reference:
-https://docs.parallel.works/navigating-the-platform#account
+`Reference <https://docs.parallel.works/navigating-the-platform#account>`_
 
 **User bootstrap script**
 
@@ -1588,16 +1399,13 @@ Example:
 
   /contrib/Unni.Kirandumkara/pw_support/config-cluster.sh
 
-Reference:
-
-https://docs.parallel.works/managing-organizations/organization-bootstrap-script#testing-a-sample-bootstrap-script
+`Reference <https://docs.parallel.works/managing-organizations/organization-bootstrap-script#testing-a-sample-bootstrap-script>`_
 
 Configuration page has a 16k metadata size limitation.
 Following these settings can reduce your possibility of a
 cluster provisioning error.
 
-.. rubric:: An example Singularity Container build, job array that uses bind mounts
-  :name: an-example-singularity-container-build-job-array-that-uses-bind-mounts
+An example Singularity Container build, job array that uses bind mounts**
 
 Example that demonstrates a Singularity container build, and
 a job array that uses two bind mounts (input and output
@@ -1668,10 +1476,10 @@ image out of it
 
 should do the trick with that recipe file.
 
-.. rubric:: Working with Slurm
+** Working with Slurm
   :name: working-with-slurmedit
 
-.. rubric:: How to send emails from a Slurm job script?
+** How to send emails from a Slurm job script?
   :name: how-to-send-emails-from-a-slurm-job-script
 
 Below is an example of a job script with a couple sbatch
@@ -1698,13 +1506,10 @@ COMPLETED, ExitCode 0
 This email may go to your spam folder as it is not domain
 validated, that is one downside.
 
-.. rubric:: Introduction to Slurm
-  :name: introduction-to-slurm
+Slurm
+-----
 
-https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Introduction_to_SLURM
-
-.. rubric:: Running and monitoring SLURM
-  :name: running-and-monitoring-slurm
+**Running and monitoring Slurm**
 
 Use sinfo command to find the status of your job.
 
@@ -1741,13 +1546,8 @@ You can manually start with ``sudo scontrol update nodename=<nodename> state=res
   PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
   compute\* up    infinite  1     mix#  userid-gcpv2-00094-1-0001
 
-The content references on-prem systems, but somewhat
-applicable in the cloud.
 
-https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Running_and_Monitoring_Jobs
-
-.. rubric:: How to set custom memory for slurm jobs?
-  :name: how-to-set-custom-memory-for-slurm-jobs
+**How to set custom memory for Slurm jobs?**
 
 In order to get non-exclusive scheduling to work with Slurm,
 you need to reconfigure the scheduler to treat memory as a
@@ -1782,8 +1582,7 @@ The script itself looks like this:
     sudo service slurmd restart
   fi
 
-.. rubric:: How do I change the slurm Suspend time on an active cluster? [shutdown early or shutdown delay]
-  :name: how-do-i-change-the-slurm-suspend-time-on-an-active-cluster-shutdown-early-or-shutdown-delayedit
+**How do I change the slurm Suspend time on an active cluster? [shutdown early or shutdown delay]**
 
 You can modify a cluster’s slurm suspend time from the
 Resource Definition form prior to starting a cluster.
@@ -1821,8 +1620,7 @@ after:
   $ scontrol show config \| grep -i suspendtime
   SuspendTime = 3600 sec
 
-.. rubric:: What logs are needed for the support to research slurm or node not terminated issues?
-   :name: what-logs-are-needed-for-the-support-to-research-slurm-or-node-not-terminated-issues
+**What logs are needed for the support to research slurm or node not terminated issues?**
 
 The following four log files required to research the root
 cause. Please copy the following log files from the
@@ -1846,7 +1644,7 @@ change user as root when copying the files, for example.
 :/var/log/syslog: Reports global system messages.
 :/var/log/messages: Reports system operations.
 
-.. rubric:: How do I distribute slurm scripts on different nodes?
+** How do I distribute slurm scripts on different nodes?
  :name: how-do-i-distribute-slurm-scripts-on-different-nodes
 
 By default the slurm sbatch job lands on a single node. You
@@ -1899,8 +1697,7 @@ Removing the exclusive flag and resubmitting, then jobs all land on a single nod
   7     compute   testjob. User.Id  R    0:10  1     userid-gcpv2-00060-1-0001
   8     compute   testjob. User.Id  R    0:08  1     userid-gcpv2-00060-1-0001
 
-.. rubric:: User Bootstrap fails when copy files to lustre
-  :name: user-bootstrap-fails-when-copy-files-to-lustre
+**User Bootstrap fails when copy files to lustre**
 
 A recent modification on the cluster provisioning starts
 compute and lustre clusters execution in parallel to speed
@@ -1928,8 +1725,7 @@ You can use the following code snippet as a workaround.
 
   cp -rf /contrib/Andrew.Penny/psurge_dev /lustre
 
-.. rubric:: What is the command to get max nodes count on a cluster?
-  :name: what-is-the-command-to-get-max-nodes-count-on-a-cluster
+**What is the command to get max nodes count on a cluster?**
 
 Default sinfo output (including a busy node so it shows
 outside of the idle list)
@@ -1956,7 +1752,7 @@ nodes by state as well as total:
 Note the NODES(A/I/O/T) section, which indicates nodes
 that are Active, Idle, Offline, and Total
 
-.. rubric:: Manually reset the node status
+** Manually reset the node status
   :name: manually-reset-the-node-status
 
 You may manually resume the nodes like this:
@@ -1972,11 +1768,10 @@ below:
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
 
-.. rubric:: Errors
-  :name: errors
+Errors
+------
 
-.. rubric:: Error: Error launching source instance: InvalidParameterValue: User data is limited to 16384 bytes
-  :name: error-error-launching-source-instance-invalidparametervalue-user-data-is-limited-to-16384-bytesedit
+**Error launching source instance: InvalidParameterValue: User data is limited to 16384 bytes**
 
 Resource configuration page has a 16k metadata size
 limitation. Recent feature updates on the configuration page
@@ -1997,11 +1792,9 @@ tab, and your SSH public keys.
 Remove the SSH key from the “Access Public Key” box, and
 save your configuration.
 
-Reference:
-https://docs.parallel.works/navigating-the-platform#account
+`Reference <https://docs.parallel.works/navigating-the-platform#account>`_
 
-.. rubric:: Where do I enter my public SSH key in the PW platform?
-  :name: where-do-i-enter-my-public-ssh-key-in-the-pw-platform
+**Where do I enter my public SSH key in the PW platform?**
 
 Navigate to your account, the Account -> Authentication,
 then click on the "add SSH key" button to your public SSH
@@ -2009,8 +1802,7 @@ Keys. There is a system key "User Workspace", which is used
 by the system to connect from a user's workspace to your
 cluster.
 
-.. rubric:: Error “the requested VM size not available in the current region”, when requesting a non-default compute VM/instance
-  :name: error-the-requested-vm-size-not-available-in-the-current-region-when-requesting-a-non-default-compute-vminstance
+**Error “the requested VM size not available in the current region”, when requesting a non-default compute VM/instance**
 
 Each Cloud provider offers a variety of VMs/Instances to
 meet the user requirements. The Parallel Works platform’s
@@ -2028,8 +1820,7 @@ for an a on-demand quota. Depending on the VM/instance type
 and count, quota allocation may take a day or up to 2 weeks
 depending on the cloud provider.
 
-.. rubric:: What is causing access denied message when trying to access a project’s cluster?
-  :name: what-is-causing-access-denied-message-when-trying-to-access-a-projects-cluster
+**What is causing access denied message when trying to access a project’s cluster?**
 
 This message appears if a user account was created after the
 cluster was started. The cluster owner can check whether
@@ -2044,7 +1835,7 @@ Cluster owner can fix the access denied error by restarting
 the cluster. When you restart the cluster, a user record
 will be added in the /etc/passwd file.
 
-.. rubric:: Why is my API script reporting “No cluster found”?
+** Why is my API script reporting “No cluster found”?
   :name: why-is-my-api-script-reporting-no-cluster-found
 
 PW made a change on storing the resource pool name
@@ -2059,9 +1850,7 @@ previously.
 As a result, any API requests that references the pool name
 should now be updated to use the name without underscores.
 
-.. rubric:: What is causing the "Permission denied (publickey,gssapi-keyex,gssapi-with-mic)."?
-  :name: what-is-causing-the-permission-denied-publickeygssapi-keyexgssapi-with-mic
-
+**What is causing the "Permission denied (publickey,gssapi-keyex,gssapi-with-mic)."?**
 The message appears in the Resource Monitor log file is:
 
 .. code::
@@ -2089,8 +1878,7 @@ controller node from the PW's IDE located at the top right
 of the page. Access from IDE uses an internal public and
 private key, and therefore you can narrow down the cause.
 
-.. rubric:: What is causing the "do not have sufficient capacity for the requested VM size in this region."?
-  :name: what-is-causing-the-do-not-have-sufficient-capacity-for-the-requested-vm-size-in-this-region
+**What is causing the "do not have sufficient capacity for the requested VM size in this region."?**
 
 You can find error message from the "Logs", navigate to tab
 "scheduler".
@@ -2112,21 +1900,14 @@ below:
 
   $ sudo scontrol update nodename=philippegion-azurestream5-00002-1-[0001-0021] state=idle
 
-.. rubric:: Miscellaneous
-  :name: miscellaneous
+Miscellaneous
+-------------
 
-.. rubric:: Parallel Works new features blog posts
-  :name: parallel-works-new-features-blog-posts
+`Parallel Works new features blog posts <https://parallelworks.com/blog/2023-august-recap>`_
 
-https://parallelworks.com/blog/2023-august-recap
+`Instance Types explained <https://parallelworks.com/docs/compute/instance-types>`_
 
-.. rubric:: Instance Types explained
-  :name: instance-types-explained
-
-https://parallelworks.com/docs/compute/instance-types
-
-.. rubric:: How to find cores and threads on a node?
-  :name: how-to-find-cores-and-threads-on-a-node
+**How to find cores and threads on a node?**
 
 .. code::
 
@@ -2178,8 +1959,7 @@ General rule of thumb will pretty much be that any Intel
 based instance has HT disabled, and core counts will be
 half of the vCPU count advertised for the instance.
 
-.. rubric:: How do I remove my project’s GCP contrib volume?
-  :name: how-do-i-remove-my-projects-gcp-contrib-volume
+How do I remove my project’s GCP contrib volume?**
 
 Contrib volume is a permanent storage for custom software by
 project members. In Google cloud this storage is charged on
@@ -2188,8 +1968,7 @@ per month. If the project does not require this storage, PI
 may create a cloud help desk ticket to remove it. Only
 Parallel Works Cloud administrator can remove this storage.
 
-.. rubric:: How do I find my project’s object storage [aka bucket or block storage] and access keys from Parallel Works?
-  :name: how-do-i-find-my-projects-object-storage-aka-bucket-or-block-storage-and-access-keys-from-parallel-worksedit
+**How do I find my project’s object storage [aka bucket or block storage] and access keys from Parallel Works?**
 
 From the login page, click on the IDE icon located at the
 top right of the page, you will see file manager with
@@ -2225,26 +2004,22 @@ On GCP platform:
 
 You may use the Globus Connect or Cloud service provider’s
 command line interface to access the object storage.
-Globus training material link: `12 Aug 2021
-Training <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Training_Videos#Globus_Connect_for_CSPs_-_August_13.2C_2021>`__
 
-.. rubric:: Can I transfer files with external object storage [aka bucket or block storage] from Parallel Works's cluster?
-  :name: can-i-transfer-files-with-external-object-storage-aka-bucket-or-block-storage-from-parallel-workss-cluster
+**Can I transfer files with external object storage [aka bucket or block storage] from Parallel Works's cluster?**
 
 If you have the access credentials of external AWS/Azure/GCP
 object storage, you can transfer files. Use the Globus
 connector or cloud provider's command line interface for
 file transfer.
 
-.. rubric:: Azure: How to copy a file from the controller node to the project's permanent storage?
-  :name: azure-how-to-copy-a-file-from-the-controller-node-to-the-projects-permanent-storage
-
+**Azure: How to copy a file from the controller node to the project's permanent storage?**
 #. Start a cluster and login into the controller node.
 
    An example use the project cz-c4-id’s secret file.
 
    Your project’s permanent storage file name is the same as
    the secret key file name.
+
 #. Copy and paste the secret key file located at PW’s file
    manager storage:storage/project_keys/azure/gfdl-non-cz-c4-id
    in the controller node terminal.
@@ -2257,6 +2032,7 @@ file transfer.
 
    Indicating Service Principal Name (SPN) by using a secret
    succeeded.
+
 #. Copy a file:
 
    Use the Azure destination as:
@@ -2290,8 +2066,7 @@ file transfer.
    a ssh key file. The firewall settings on the GFDL are not
    open to allow a file copy.
 
-.. rubric:: How do I use GCP gsutil transfer files to a project bucket?
-  :name: how-do-i-use-gcp-gsutil-transfer-files-to-a-project-bucket
+**How do I use GCP gsutil transfer files to a project bucket?**
 
 GCP uses the gsutil utility to transfer data into HPC
 on-prem system. The “gsutil” command can run either from the
@@ -2299,8 +2074,7 @@ user’s local machine or the RDHPCS systems, such as Niagara.
 The gsutil utility is preinstalled on clusters launched
 through Parallel Works.
 
-.. rubric:: How do I get nvhpc NVidia HPC compiler, and netcdf, and hdf5 packages in my environment?
-  :name: how-do-i-get-nvhpc-nvidia-hpc-compiler-and-netcdf-and-hdf5-packages-in-my-environment
+**How do I get nvhpc NVidia HPC compiler, and netcdf, and hdf5 packages in my environment?**
 
 Parallel Works Platform is installed with Intel processors
 and compilers for the FV3GFS performance benchmark test. It
@@ -2319,22 +2093,12 @@ software management. Note that you are responsible for your
 custom software stack, although we will try our best to help
 you.
 
-Instructions to create a custom image can be found at the
-Cloud Wiki doc:
-https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/FAQ#How_do_I_create_a_custom_image_.5Ba.k.a_AMI_or_machine_image.5D.3F
-
-Instructions to install NVidia HPC compiler can be found
-here:
-https://docs.nvidia.com/hpc-sdk/hpc-sdk-install-guide/index.html
+`Instructions to install NVidia HPC compiler <https://docs.nvidia.com/hpc-sdk/hpc-sdk-install-guide/index.html>`_
 
 Various netcdf and hdf5 packages are available from the yum
 repos. yum search netcdf and yum search hdf
 
-.. rubric:: Which AWS Availability Zones [AZ] AMD and Intel processors are concentrated [Answer to InsufficientInstanceCapacity]?
-  :name: which-aws-availability-zones-az-amd-and-intel-processors-are-concentrated-answer-to-insufficientinstancecapacity
-
-This information is subject to change based on the demand.
-This is in-order by best opportunity for capacity.
+**Which AWS Availability Zones [AZ] AMD and Intel processors are concentrated [Answer to InsufficientInstanceCapacity]**
 
 AMD
 
@@ -2346,7 +2110,7 @@ Intel
 :c6i.24xlarge: us-east-1f
 :c6i.32xlarge: us-east-2b us-east-1f us-east-2a
 
-.. rubric:: What does GCP resource GVNIC and Tier_1 flags represent?
+** What does GCP resource GVNIC and Tier_1 flags represent?
   :name: what-does-gcp-resource-gvnic-and-tier_1-flags-represent
 
 Tier1 is the 100gbps network. GVNIC is a high performance
@@ -2364,18 +2128,15 @@ increases the maximum egress bandwidth for VMs, and ranges
 from 50 Gbps to 100 Gbps depending on the size of your N2,
 N2D, C2 or C2D VM.
 
-Additional reference:
-https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration
+`Additional reference <https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration>`_
 
-.. rubric:: Why are all instance types are labeled as AMD64?
-  :name: why-are-all-instance-types-are-labeled-as-amd64edit
+**Why are all instance types are labeled as AMD64?**
 
 AMD64 is the name of the architecture, not the cpu platform.
 Intel and AMD chips are both "amd64". Additional reference:
 https://en.m.wikipedia.org/wiki/X86-64
 
-.. rubric:: Data access via globus CLI tools in the cloud
-  :name: data-access-via-globus-cli-tools-in-the-cloud
+**Data access via globus CLI tools in the cloud**
 
 This capability is similar to what has been recently made
 available on NOAA HPC systems. Implementation is simply the
@@ -2565,7 +2326,7 @@ Conduct a Transfer:
   created and queued for execution Task ID:
   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 
-.. rubric:: Container singularity replaced by singularity-ce, and syntax remains the same
+** Container singularity replaced by singularity-ce, and syntax remains the same
   :name: container-singularity-replaced-by-singularity-ce-and-syntax-remains-the-same
 
 When it comes to the software package on the PW platform, it
@@ -2584,7 +2345,7 @@ usage.
 
   $ rpm -ql singularity-ce \| grep bin /usr/bin/singularity
 
-.. rubric:: How to list the files in an s3 bucket using a script?
+** How to list the files in an s3 bucket using a script?
   :name: how-to-list-the-files-in-an-s3-bucket-using-a-script
 
 .. code::
@@ -2611,7 +2372,7 @@ S3 credentials should be set automatically in your
 environment on the cluster, but these credentials are
 scoped at a project level, and not to individual users.
 
-.. rubric:: What is the best practice in hiding credentials, when code is pushed in Github?
+** What is the best practice in hiding credentials, when code is pushed in Github?
   :name: what-is-the-best-practice-in-hiding-credentials-when-code-is-pushed-in-github
 
 Use your programming language command to call out
@@ -2621,7 +2382,7 @@ os.environ['AWS_ACCESS_KEY_ID']
 It is very important not to commit a full print out of the
 shell environment.
 
-.. rubric:: Where should I clone the GitHub repository?
+** Where should I clone the GitHub repository?
   :name: where-should-i-clone-the-github-repository
 
 If you want to keep the repository around between cluster
@@ -2632,52 +2393,38 @@ small, doing everything from the controller would be fine.
 Big compiles would probably be better on a compute node
 since you can assign more processors to the build.
 
-.. rubric:: GCP Region/AZs on GPUs and models
-  :name: gcp-regionazs-on-gpus-and-models
+**GCP Region/AZs on GPUs and models**
 
-From the below link, select a location “North America” and
+Select a location “North America” and
 machine type “A2” to view different types of GPUs available
-on different regions/AZs.
+on different regions/AZs from this `link <https://cloud.google.com/compute/docs/regions-zones#available>`_
 
-https://cloud.google.com/compute/docs/regions-zones#available
+To learn more about GPU models, refer to this 
+`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones#gpu_regions_and_zones>`_
 
-To learn more about GPU models, refer to the link below.
+**What are the GPU models available on AWS, Azure, and GCP**
 
-https://cloud.google.com/compute/docs/gpus/gpu-regions-zones#gpu_regions_and_zones
-
-.. rubric:: What are the GPU models available on AWS, Azure, and GCP
-  :name: what-are-the-gpu-models-available-on-aws-azure-and-gcp
-
-AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g.
-
-https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html
+AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g 
+`here <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`_
 
 Azure GPUs can be found by typing Standard_NC,
 Standard_ND, Standard_NV, and Standard_NG
-
-https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu
+`here <https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu>`_
 
 GCP GPUs can be found by typing a2. Other GPUs are found to
 be unavailable.
 
-https://cloud.google.com/gpu
 
-.. rubric:: What are the Cloud regions supported by Parallel Works?
-  :name: what-are-the-cloud-regions-supported-by-parallel-works
+**What are the Cloud regions supported by Parallel Works?**
 
 :AWS: us-east1 and us-east2. Preferred region is us-east-1
 :Azure: EastUS and SouthCentralUS. Preferred region is EastUS.
 :GCP: regions are us-central1, and us-east-1. Preferred region is us-central1
 
-.. rubric:: X2go Passwordless authentication using ssh-keys
+** X2go Passwordless authentication using ssh-keys
   :name: x2go-passwordless-authentication-using-ssh-keys
 
-Refer the link:
-
-https://wiki.x2go.org/doku.php/wiki:advanced:authentication:passwordless-ssh
-
-.. rubric:: How to tunnel back from a compute node to the controller/head node?
-  :name: how-to-tunnel-back-from-a-compute-node-to-the-controllerhead-node
+**How to tunnel back from a compute node to the controller/head node?**
 
 A case where the users have added their keys to the account
 and can login to the head node and run jobs. However, when
@@ -2694,7 +2441,7 @@ This works.
 
   ssh-keygen -t rsa -f ~/.ssh/id_rsa -N * && cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys*
 
-.. rubric:: On Azure, missing /apps fs system or modules not loaded case
+** On Azure, missing /apps fs system or modules not loaded case
   :name: on-azure-missing-apps-fs-system-or-modules-not-loaded-case
 
 We are working to fix this bug. If you own the Azure
