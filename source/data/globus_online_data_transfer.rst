@@ -11,7 +11,7 @@ invoke Globus functions either through a web interface or from a
 command line interface (CLI).
 
 * Click here to access `Globus Documentation
-  <https://docs.globus.org/guides/>`_. 
+  <https://docs.globus.org/guides/>`_.
 * Click here to review the `Globus Tutorial
   <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`_
 
@@ -27,7 +27,7 @@ you can see what collections are shared with you, and also those that
 you share with others. Globus lets you navigate through collections to
 find source and target endpoints for your transfer, then select
 directories or files to be transferred. The transfer itself is a
-background process. 
+background process.
 
 To copy a file, several files, or an entire directory between two
 systems, navigate to `Globus <https://app.globus.org/>`_. Locate the
@@ -66,7 +66,7 @@ partner clusters.
     :sync: hera
 
     +-----------+----------------------------+--------------------------+---------+---------------+
-    | Cluster   | Display Name               | File Systems             | Site    | Access        | 
+    | Cluster   | Display Name               | File Systems             | Site    | Access        |
     +===========+============================+==========================+=========+===============+
     | Hera      | noaardhpcs#hera            | /scratch1, /scratch2     | NESCC   | Trusted hosts |
     +-----------+----------------------------+--------------------------+---------+---------------+
@@ -78,7 +78,7 @@ partner clusters.
    :sync: jet
 
    +-----------+----------------------------+--------------------------+---------+---------------+
-   | Cluster   | Display Name               | File Systems             | Site    | Access        | 
+   | Cluster   | Display Name               | File Systems             | Site    | Access        |
    +===========+============================+==========================+=========+===============+
    | Jet       | noaardhpcs#jet             | /mnt/lfs1, /mnt/lfs4     | NESCC   | Trusted hosts |
    +-----------+----------------------------+--------------------------+---------+---------------+
@@ -90,7 +90,7 @@ partner clusters.
    :sync: niagara
 
    +-----------+------------------------------+--------------------------+---------+---------------+
-   | Cluster   | Display Name                 | File Systems             | Site    | Access        | 
+   | Cluster   | Display Name                 | File Systems             | Site    | Access        |
    +===========+==============================+==========================+=========+===============+
    | Niagara   | noaardhpcs#niagara           | /collab1/data            | NESCC   | Trusted hosts |
    +-----------+------------------------------+--------------------------+---------+---------------+
@@ -102,17 +102,17 @@ partner clusters.
    :sync: gaea
 
    +-----------+-------------------+--------------------+---------+---------------+
-   | Cluster   | Display Name      | File Systems       | Site    | Access        | 
+   | Cluster   | Display Name      | File Systems       | Site    | Access        |
    +===========+===================+====================+=========+===============+
    | PPAN      | ncrc#dtn          | /gpfs/f5           | NCRC    | Trusted hosts |
    +-----------+-------------------+--------------------+---------+---------------+
 
-  
+
 .. tab-item:: Orion
    :sync: orion
 
    +-----------+---------------------+--------------------+-------------------+---------------+
-   | Cluster   | Display Name        | File Systems       | Site              | Access        | 
+   | Cluster   | Display Name        | File Systems       | Site              | Access        |
    +===========+=====================+====================+===================+===============+
    | orion     | msuhpc2#Orion-dtn   | /work, /work2      | Orion DTN at MSU  | Anywhere      |
    +-----------+---------------------+--------------------+-------------------+---------------+
@@ -121,19 +121,19 @@ partner clusters.
    :sync: hercules
 
    +-----------+---------------------+--------------------+---------------------+---------------+
-   | Cluster   | Display Name        | File Systems       | Site                | Access        | 
+   | Cluster   | Display Name        | File Systems       | Site                | Access        |
    +===========+=====================+====================+=====================+===============+
    | Hercules  | msuhpc2#Hercules    | /work, /work2      | Hercules DTN at MSU | Anywhere      |
    +-----------+---------------------+--------------------+---------------------+---------------+
 
 
-NOAA RDHPCS Globus Endpoint Types 
+NOAA RDHPCS Globus Endpoint Types
 =================================
 
 NOAA RDHPCS Globus Endpoints are either **trusted** or **untrusted**.
 
 .. note::
-  
+
   It is preferable to use Trusted Endpoints for data transfer.
 
 NOAA RDHPCS DTNs (Globus Trusted Endpoint)
@@ -195,12 +195,12 @@ Transferring Data to and from Your Computer
 ===========================================
 
 To transfer data from your laptop/workstation to a NOAA RDHPCS system,
-you have the following options: 
+you have the following options:
 
 * use scp to a NOAA RDHPCS DTN (using pre-configured ssh port tunnels)
-* use scp to a NOAA RDHPCS UDTN 
+* use scp to a NOAA RDHPCS UDTN
 * use Globus Connect Personal to transfer data between a NOAA RDHPCS
-  UDTN and your local laptop/workstation. 
+  UDTN and your local laptop/workstation.
 
 .. note::
 
