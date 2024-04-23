@@ -14,7 +14,7 @@ Parallel Works User Guide
 =========================
 
 NOAA Cloud Computing uses the `Parallel Works
-<https://parallelworks.com>`_computing platform to allow users to
+<https://parallelworks.com>`_ computing platform to allow users to
 manage their cloud computing resources across Amazon Web Services
 (AWS), Google Compute Platform (GCP), and Microsoft Azure Cloud
 Computing Services (Azure) via a customized for `NOAA RDHPCS Portal
