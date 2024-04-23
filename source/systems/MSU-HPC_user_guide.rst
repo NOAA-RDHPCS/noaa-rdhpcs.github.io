@@ -16,6 +16,7 @@ To login to Orion or Hercules via SSH, you will use your MSU account username,
 MSU password, and Duo two-factor authentication.
 
 **Password Maintenance**
+**Password Maintenance**
 
 If you know your MSU password (or temporary password), use the MSU Training and
 Password System (TAPS) site to Manage your Multi#Factor Authentication settings
@@ -341,7 +342,7 @@ By default, a serial job gets only its share of the memory available on a node
 (memory per core = ~total memory / total cores). If your serial job needs more
 memory than the default, specify that using the ``--mem=<mem>`` option.
 
-**Submitting an interactive Job**
+**Submitting an Interactive Job**
 
 An interactive job is useful for tasks, such as debugging, that require
 interactive access with a program as it runs. With Slurm there are two ways to
@@ -1666,7 +1667,6 @@ additional information and request confirmation:
    Mississippi State University
 
    help@hpc.msstate.edu
-
 
 **Fill out the HPC2-NOAA User Account Request Confirmation Form**
 

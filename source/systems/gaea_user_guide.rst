@@ -1591,152 +1591,87 @@ Filesystems that GCP supports locally from Gaea:
 
 .. code-block:: shell
 
-  - /lustre/f2
-  - /ncrc/home
+  Please verify that both the operating system and the processor support Intel(R) X87, CMOV, MMX, FXSAVE, SSE, SSE2, SSE3, SSSE3, SSE4_1, SSE4_2, MOVBE, POPCNT, AVX, F16C, FMA, BMI, LZCNT and AVX2 instructions.
 
-- ldtn
+CAC bastions refusing login attempts without asking for PIN
+-----------------------------------------------------------
 
-.. code-block:: shell
+We have had reports of users being unable to connect to the CAC bastions via
+TECTIA client. As documented, CAC bastions are the servers you connect to with
+the ``sshg3 gaea.rdhpcs.noaa.gov``.  They maintain your Globus certificate and
+put your connection through to the Gaea login nodes. On Linux clients one
+workaround is to kill the ssh-broker-g3 process and try your login again.
 
-  - /lustre/f2
-  - /ncrc/home
+.. code-block: shell
 
-- rdtn
+  > ps -ef | grep ssh-broker-g3
+  4060     15451 15184  0 14:05 pts/4    00:00:00 grep ssh-broker-g3
+  4060     29775 29765  0 Dec22 ?        00:00:42 /opt/tectia/bin/ssh-broker-g3 --run-on-demand
+  > kill -9 29775
+  sshg3 gaea
 
-.. code-block:: shell
+Shell hang on login
+-------------------
 
-  - /ncrc/home
-  - /lustre/f2
+Users have often reported issues where their sessions freeze or hang on C3 login
+nodes unless Ctrl+c is pressed.  This issue can also result in your jobs timing
+out either at the start of the job or the end.  This hang might be due to a
+corrupted tcsh ``~/.history`` file.  The current workaround is to delete the
+``~/.history`` file.
 
-- compute 
+Lustre (F2) Performance
+-----------------------
 
-.. code-block:: shell
+The Gaea system intermittently has issues with the Lustre F2 performance.  This
+typically appears as file operations hangs in interactive sessions, and as jobs
+taking longer than normal to complete, or timming out. Many jobs on Gaea are
+currently experiencing longer than normal run times.  While we do not yet have
+an underlying cause for this, we have found certain changes to the user's
+interactions and workflows that use the Lustre F2 file system help alleviate the
+problem.
 
-  - /ncrc/home
-  - /lustre/f2
+Files Accesses by Multiple Jobs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Filesystems that GCP supports remotely from other sites:
+Users should not have multiple batch jobs access the same files.  This is
+typically done using hard- or soft-links.  Access the same file from multiple
+batch jobs increases the load on the Lustre metadata servers (MDS), and can lead
+to a MDS locking up affecting all files served on that MDS.
 
-- /ncrc/home - /lustre/f2
+Another method used for sharing files is referencing files stored in pdata
+(*/lustre/f2/pdata*) directly.  Users should copy files out of pdata for each
+batch job that will use the file.
 
-**Helpful Hints**
+Users should clean up files after the job runs successfully to ensure the Lustre
+file system has enough free space for all user's jobs.
 
-- Creating Directories
+Software Environments
+^^^^^^^^^^^^^^^^^^^^^
 
-GCP provides an option for automatically creating new directories (-cd).
-The final segment of the path is interpreted as a directory if a trailing slash is included. Otherwise, it will be interpreted as a file. A few examples are below.
+Users should not store software environments, e.g., conda, spack, on the Lustre
+file system.  These environments have many small files that will be accessed
+from multiple compute nodes when used in batch jobs.
 
-- Transferring into new directories:
+These environments should be stored in user's home space.  If the environment is
+to be shared by several users or groups, the environment can be installed in
+either the /ncrc/proj space, or /usw.
 
-.. code-block:: shell
+Development
+^^^^^^^^^^^
 
-  gcp -cd /path/to/a/file /path/to/a/nonexistent/directory/
+Lustre F2 should not be used for development.  Development should be done in the
+user's home space.  This is especially true if using a source code management
+system (e.g., git).
 
-The above results in a file called 'file' being created in a directory called 'directory':
+Users should remember that Lustre F2 is not backed up.  Data loss on Lustre F2
+is rare, but Gaea has suffered two data losses on F2.  The user home area is
+backed up, with hourly and daily snapshots.
 
-.. code-block:: shell
+Additional Resources
+====================
 
-  /path/to/a/nonexistent/directory/file
+.. toctree::
+  :maxdepth: 1
 
-Transferring into a file:
-
-.. code-block:: shell
-
-  gcp -cd /path/to/a/file /path/to/a/nonexistent/directory
-
-The above results in a file called 'directory' being created in a directory called 'nonexistent':
-
-.. code-block:: shell
-
-  /path/to/a/nonexistent/directory
-
-Changes
--------
-GCP development and releases are tracked in the GFDL Gitlab project. See https://gitlab.gfdl.noaa.gov/gcp/gcp for further detail.
-
-GridFTP
-=======
-This article describes the process of configuring and utilizing GridFTP directly for file transfers. Please note that in most cases users should rely on GCP for file transfers. The GridFTP tools are located in the globus module:
-
-.. code-block:: shell
-
-  module load globus
-
-The main command is:
-
-.. code-block:: shell
-
-  globus-url-copy
-
-Security
---------
-GridFTP, like standard FTP, divides transfer data into two channels. The control channel sends instructions between the client and server, while the data channel is responsible for transferring the specific data requested. Authentication can be performed in the control channel via SSH (gsissh:) or GSI (gsiftp:). SSH utilizes existing ssh certificates and is the simpler of the two to configure in most environments. GSI relies on your analysis certificate and is simple to utilize at GFDL. It is recommended that the GSI protocol be used, as it provides a wealth of additional GridFTP options that are unsupported by the ssh authentication mechanism. If you see certificate failure messages when trying to use gsiftp, check the output of the grid-proxy-info command. If all looks well there, contact the GridFTP administrator to ensure that GridFTP is configured to allow the transfer of files to your chosen destination.
-
-Firewall Configuration
-----------------------
-You can use the environmental variables GLOBUS_TCP_PORT_RANGE=min,max and GLOBUS_TCP_SOURCE_RANGE=min,max to control the inbound and outbound ports to the client, respectively. Globus recommends a set of at least 1000 ports (e.g., 40000-46999).
-
-Transfer Options
-----------------
-**Small File Performance**
-Transferring many small files via globus-url-copy greatly diminishes its performance. For most copy tools, the usual solution is to tar the files prior to transfer and untar once they have arrived at the destination. Globus has implemented some functionality called pipelining into the globus-url-copy command (only usable when gsiftp is the authentication mechanism), which instructs GridFTP to not wait for an acknowledgment after a single file has been transferred. The result is that many files can be in transit to the destination, thus making efficient use of available bandwidth. The pipelining option is -pp.
-
-**Recovery**
-Globus-url-copy has a few options to recover transfers should problems arise. The -rst argument can be passed which instructs GridFTP to retry failed transfers. The number of retries is specified by the -rst-retries <retries> option, which has a default value of 5 if not provided on the command line (use 0 for unlimited). To instruct GridFTP to only retry sending the files that were not sent prior to failure (rather than the entire file list again), use the -df <file> option. This option saves all failed transfer URLs to a file, which is used by globus-url-copy if a retry is needed.
-
-You can use --stall-timeout <time> to specify how long to wait before idle transfers will be killed.
-
-**Bulk Transfers**
-If you want to transfer entire directories or lists of files, there are two options. Use -r to recursively transfer a directory in the normal way. Alternatively, specify -f <file> to instruct GridFTP to look in the file indicated for a list of source-destination URL pairs:
-
-.. code-block:: shell
-
-  "gsiftp://nfs02.princeton.rdhpcs.noaa.gov/archive/keo/file1.nc" "gsiftp://pcmdi@data1.gfdl.noaa.gov/home/keo/"
-  "gsiftp://nfs02.princeton.rdhpcs.noaa.gov/archive/keo/file2.nc" "gsiftp://pcmdi@data1.gfdl.noaa.gov/home/keo/"
-  "gsiftp://nfs02.princeton.rdhpcs.noaa.gov/archive/keo/file3.nc" "gsiftp://pcmdi@data1.gfdl.noaa.gov/home/keo/"
-
-Network Options
----------------
-
-**Buffer Size**
-
-You can specify the tcp buffer size with the -tcp-bs <size> command. To calculate an appropriate value for <size> use the bandwidth delay product:
-
-
-.. code-block:: shell
-
-  buffer_size = bandwidth in Megabits per second (Mbs) * RTT in milliseconds (ms) * 1000 / 8
-
-Where RTT can be obtained via the ping or traceroute command and bandwidth is determined as the maximum bandwidth between the source and destination (best determined by talking to your network administrator).
-
-**Parallelism**
-
-You can specify the number of parallel data connections using -pp <streams>. A good default value is 4, and there is no formula for determining the ideal number for your network. The GridFTP user's manual specifies that values between 2 and 10 generally provide the best performance. When in doubt, use the defaults! There is a reason why they are defaults!
-
-Using the -p <streams> option with gsiftp will put GridFTP in a special transfer mode called "Mode E" (also specified via the -fast option). This mode utilizes data channel caching to keep the data channel open for multiple file transfers. It is also needed for parallelism as it allows data to arrive in any order.
-
-**Misc Options**
-
-Some other important options are -vb (verbose) and -cd (create directories at the destination).
-
-**Examples**
-
-Here is a sample GridFTP transfer utilizing the transfer file (-f) option:
-
-.. code-block:: shell
-
-  globus-url-copy -bs 6MB -pp -p 4 -vb -stall-timeout 14400 -rst -cd -df /tmp/grid-state -f /tmp/grid-transfer
-
-This command specifies that we should transfer with the block size at 6MB, pipelining enabled, 4 parallel streams, verbose, idle timeout at 14400 seconds (4 hours), retry on failures, create directories, a retry file holding failed URLs, and a transfer file holding URL pairs of files to be transferred. Perhaps the last command was more than you require. A simple transfer can be accomplished via a job on the RDTNs:
-
-.. code-block:: shell
-
-  set hn=`hostname --fqdn`
-  globus-url-copy gsiftp://rdtn.lb.princeton.rdhpcs.noaa.gov/archive/$user/file gsiftp://${hn}/lustre/f2/dev/${user}/
-
-or from Zeus:
-
-.. code-block:: shell
-
-  set hn=`hostname --fqdn`
-  globus-url-copy gsiftp://dtn-zeus.rdhpcs.noaa.gov/archive/$user/file gsiftp://${hn}/lustre/f2/dev/${user}/
+  gaea/quickstart
+  gaea/accounts
