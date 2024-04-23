@@ -5,84 +5,130 @@
 RDHPCS Cloud Computing
 **********************
 
-Welcome to the NOAA RDHPCS Cloud Computing Platform. The Cloud Platform allows NOAA users to create an HPC cluster on an as-needed basis, with the type of resources that are appropriate for the task at hand.
+The RDHPCS Cloud Platform allows NOAA users to create an custom HPC
+cluster on an as-needed basis, with the type of resources that are
+appropriate for the task at hand.
 
 
 Parallel Works User Guide
 =========================
 
-NOAA Cloud Computing uses the Parallel Works software application, in a version customized for NOAA RDHPCS.  The Parallel Works User Guide is their standard documentation. NOAA users will find minor differences, for example, the login authentication, and project allocation, between the standard and customized applications.
+NOAA Cloud Computing uses the `Parallel Works
+<https://parallelworks.com>`_computing platform to allow users to
+manage their cloud computing resources across Amazon Web Services
+(AWS), Google Compute Platform (GCP), and Microsoft Azure Cloud
+Computing Services (Azure) via a customized for `NOAA RDHPCS Portal
+<https://noaa.parallel.works>`_.  The `Parallel Works User Guide
+<https://docs.parallel.works>`_ is their standard documentation. NOAA
+users will find minor differences, for example, the login
+authentication, and project allocation, between the standard and
+customized applications.
 
-We recommend the Parallel Works User Guide for comprehensive information about the product. Users should click the FAQ link located on the sidebar to learn about the NOAA RDHPCS-specific topics.
+We recommend the `Parallel Works User Guide`_ for comprehensive
+information about the product. Users should click the FAQ link located
+on the sidebar to learn about the NOAA RDHPCS-specific topics.
 
-Click here to access the `Parallel Works User Guide <https://docs.parallel.works/>`__ . Note that when you click this link, you will navigate away from the NOAA Cloud information page.
+NOAA's Parallel Works Portal
+============================
 
-Click here for the `NOAA RDHPCS login to Parallel Works <https://noaa.parallel.works/login>`__ .
-
-
-.. note::
-
-  When you click this link, you will navigate away from the NOAA Cloud information page.
-
-**User Name** is case sensitive, and is First.Last name, where the first character of first, and last name is an uppercase letter.
-**Password:** Combination of your passphrase and 8 digits PIN from NOAA-RDHPCS RSA token.
+Access to the NOAA RDHPCS Cloud Computing envrironment is through the
+`NOAA RDHPCS Portal` located at https://noaa.parallel.works, and uses
+the :ref:`RSA Token <rsa_token>` authentication method.
 
 
 Workflow
 ========
 
-The typical workflow for using the cloud resources is as follows:
+The typical workflow for using the cloud resources is presented in the
+following diagram.
+
+.. figure:: /images/CloudProcessing.jpg
+  :alt: typical NOAA compute workflow diagram
+
+  Diagram that details a typical NOAA Compute workflow.
 
 
-.. image:: /images/CloudProcessing.jpg
-
-
-
-Globus Connect
+Data Transfers
 --------------
 
-Globus is a tool for online data transfer.
-See the `Globus Connect documentation <https://clouddocs.rdhpcs.noaa.gov/wiki/index.php/Additional_Topics#Globus_Connect>`__ for further information.
+The best way to get data in and out of the RDHPCS Cloud platforms is
+using :ref:`globus_online_data_transfer`.
 
 Getting Help
 ------------
 
-For questions or assistance, email a ticket to: rdhpcs.cloud.help@noaa.gov, with the subject line Cloud Support.
+Please use the :ref:`RDHPCS Cloud Help Desk <getting_help>` for
+questions or assistance.
 
 Training Videos
 ===============
 
-Training Videos are available for Cloud Computing Platform users. Click a link to view the video.
+Occasionally, the NOAA RDHPCS Cloud Computing team, along with
+Parallel Works will present training sessions.  Below are some of the
+recorded sessions and other material.
 
-**A Beginner's Guide to Rstudio Docker Containers, November 2023**
+.. note::
 
-`Training Session <https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/view?ts=6543d955>`_
+  You must login using your NOAA email credentials to access the
+  videos and other material.
 
+Beginner's Guide to NOAA's HPC Cloud
+------------------------------------
+
+Presented on November 2023, Parallel Works presents the basics on
+using the Parallel Works platform to create, start, monitor and
+interact with the compute clusters, and the use of workflows on the
+clusters.  This includes working interactively with services like
+`Jupyter notebooks <https://jupyter.org>`_, and using integrated
+development environments (IDE) like `RStudio
+<https://posit.co/products/open-source/rstudio/>`_.
+
+.. raw:: html
+
+  <iframe src="https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/preview"
+          frameborder="0"
+          width="500"
+          height="300"></iframe>
 
 Parallel Works
 --------------
 
 **April 10, 2024**
-`Job monitor and VNC settings <https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`_
+
+`Job monitor and VNC settings
+<https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`_
 
 **February 28, 2024**
-`Rocky8: Linux Image and New Storage Features <https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`_
+
+`Rocky8: Linux Image and New Storage Features
+<https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`_
 
 **February 9, 2024**
-`On-Demand Provisioning on On-Premise HPC systems <https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`_
+
+`On-Demand Provisioning on On-Premise HPC systems
+<https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`_
 
 **Parallel Works New Features Training, September 27, 2023**
-`Workshop  <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
+
+`Workshop
+<https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
 
 Enhancements to Parallel Works features:
-  -  Updates to Notifications, with expanded notification types and email notification options
-  -  Short term credentials, which can be used effectively for cluster and storage resources
-  -  Updates to the Marketplace feature. Cluster and storage configurations can now be shared with team members through the Marketplace.
-  -  Lustre configurations can now be designated persistent, and saved separately from the clusters. This potentially saves storage costs.
+  -  Updates to Notifications, with expanded notification types and
+     email notification options
+  -  Short term credentials, which can be used effectively for cluster
+     and storage resources
+  -  Updates to the Marketplace feature. Cluster and storage
+     configurations can now be shared with team members through the
+     Marketplace.
+  -  Lustre configurations can now be designated persistent, and saved
+     separately from the clusters. This potentially saves storage
+     costs.
 
 **Parallel Works New Features Training, June 14, 2023**
 
-`Workshop <https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
+`Workshop
+<https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
 
 Especially useful for new users:
  - Parallel Works platform
@@ -91,17 +137,20 @@ Especially useful for new users:
 
 **Parallel Works New Features Training, March 23, 2023**
 
-`Workshop <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
+`Workshop
+<https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
 
 - Show estimated costs to run a given cluster configuration
 - SSH keys configurable from inside platform, at user level
-- Configurable slurm timeouts (and other slurm settings) 
+- Configurable slurm timeouts (and other slurm settings)
 - building a custom snapshot.
 
 **Platform Enhancements Training, February 16, 2023**
-`Presentation <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`_
+
+`Presentation <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`__
 
 **Parallel Works Foundation, February 16, 2023**
+
 `Workshop <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
 
 Foundational topics include:
@@ -119,10 +168,13 @@ Foundational topics include:
 Review the presentation `here. <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
 
 **Workflows**
+
 `Presentation <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
 
 Workflow topics include:
-- subscribing a workflow from the PW Marketplace, example **Juypter Notebook**
+
+- subscribing a workflow from the PW Marketplace, example **Juypter
+  Notebook**
 - running a job from the head node and compute node
 - canceling a job,
 - deletion of a cluster
@@ -132,51 +184,70 @@ Workflow topics include:
 - bootstrap script.
 
 **Workflow Interactive Session**
+
 `Presentation <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
 
 Molecular dynamics simulation and visualization on a multi-cluster model.
 
 **Training Q & A**
-`Questions and comments <https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`__
+
+`Questions and comments
+<https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`__
 
 **Parallel Works Training**
-- `Parallel Works Version 2, March 23, 2022 <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
 
-- `Parallel Works Version 2, January 20, 2022 <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__ 
+- `Parallel Works Version 2, March 23, 2022
+  <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
 
-- `Parallel Works Platform Training II, July 15, 2021 <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`__  
+- `Parallel Works Version 2, January 20, 2022
+  <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__
+
+- `Parallel Works Platform Training II, July 15, 2021
+  <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`__
 
 Topics include:
-  -  Connecting to a transient cluster head node from a remote host
-  -  Configuration settings to re-size the nodes count
-  -  Lustre file system; Use of different processors
-  -  Monitoring workers
-  -  Slurm jobs
-  -  workflow Jupyter Notebook
-  -  Singularity container example
-  -  Budget allocation
+
+-  Connecting to a transient cluster head node from a remote host
+-  Configuration settings to re-size the nodes count
+-  Lustre file system; Use of different processors
+-  Monitoring workers
+-  Slurm jobs
+-  workflow Jupyter Notebook
+-  Singularity container example
+-  Budget allocation
 
 **Use Case Sessions**
-`JupyterHub Installation on a Conda, and R Troubleshooting, April 7, 2023 <https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`__ 
 
-`Globus Training: Setup and Data Transfer March 17, 2023 <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`__
+`JupyterHub Installation on a Conda, and R Troubleshooting, April 7,
+2023
+<https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`__
 
-`Useful tutorials from Globus <https://docs.globus.org/how-to/instructional-videos/>`__
+`Globus Training: Setup and Data Transfer March 17, 2023
+<https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`__
+
+`Useful tutorials from Globus
+<https://docs.globus.org/how-to/instructional-videos/>`__
 
 Cloud Success Stories
 =====================
 
--  `NOS Team: Storm Surge Modelling, September 27, 2022 <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__ 
--  `NWS Team: Rapid Refresh Forecast System, September 21, 2022 <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__ 
--  `EPIC Cloud Success Story, September 15, 2022 <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__ 
+-  `NOS Team: Storm Surge Modelling, September 27, 2022
+   <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__
+-  `NWS Team: Rapid Refresh Forecast System, September 21, 2022
+   <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__
+-  `EPIC Cloud Success Story, September 15, 2022
+   <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__
 
 Office Hours
 ============
 
-The Cloud Computing support team hosts bi-weekly sessions for demonstrations, questions and answers. 
+The Cloud Computing support team hosts bi-weekly sessions for
+demonstrations, questions and answers.
 
-`14 September 2023 <https://drive.google.com/file/d/1INH-x7Cz025UtwMQDjlQX9Yn5MdQ_xE5/view?ts=6504735f>`__
-`30 August 2023 <https://drive.google.com/file/d/1qbZHqXSfH2V5J_SL2Nt7Huq86v4nqjBK/view?ts=64f0bb3e>`__
+`14 September 2023
+<https://drive.google.com/file/d/1INH-x7Cz025UtwMQDjlQX9Yn5MdQ_xE5/view?ts=6504735f>`__
+`30 August 2023
+<https://drive.google.com/file/d/1qbZHqXSfH2V5J_SL2Nt7Huq86v4nqjBK/view?ts=64f0bb3e>`__
 
 - Balancing the relative cost of computation and storage
 - Allocation questionnaire for the coming year
@@ -188,7 +259,8 @@ The Cloud Computing support team hosts bi-weekly sessions for demonstrations, qu
 - Transitioning from Linux to Cloud
 
 
-`16 August 2023 <https://drive.google.com/file/d/1Sybufzev_MEl7o0k41B5wKaCM1Nne6qG/view?ts=64de6f71>`__
+`16 August 2023
+<https://drive.google.com/file/d/1Sybufzev_MEl7o0k41B5wKaCM1Nne6qG/view?ts=64de6f71>`__
 
 - Azure file transfers
 - Access issues
@@ -200,22 +272,26 @@ The Cloud Computing support team hosts bi-weekly sessions for demonstrations, qu
 - cluster persistence
 
 
- `2 August 2023 <https://drive.google.com/file/d/1yRvdLWIsQo9K7sSCs01Gm9fRduizekcZ/view?ts=64cd5bb3>`__
+`2 August 2023
+<https://drive.google.com/file/d/1yRvdLWIsQo9K7sSCs01Gm9fRduizekcZ/view?ts=64cd5bb3>`__
 
 - new GFDL team getting started
-- verview of new features in Parallel Works, particularly temporary credentials for buckets. 
+- verview of new features in Parallel Works, particularly temporary
+  credentials for buckets.
 
-`5 July 2023 <https://drive.google.com/file/d/1e7lkH3esEToYEBvL53P0DJm8Sm0L4G33/view?ts=64a6ee9f>`__
+`5 July 2023
+<https://drive.google.com/file/d/1e7lkH3esEToYEBvL53P0DJm8Sm0L4G33/view?ts=64a6ee9f>`__
 
 - GPU selection and constraints, especially on Azure
 - Can a user configure the Cloud account to send email when
   a job completes or fails?
 - Users have had clusters that completed work but did not
-  shut down. 
+  shut down.
 - new Properties tab in Parallel Works
-- Super Computing Conference in Denver, 12-17 November. 
+- Super Computing Conference in Denver, 12-17 November.
 
-`21 June 2023 <https://drive.google.com/file/d/1PPj6ZM6cZTPE6FVGt9luDDiouAo9RRty/view?ts=64944e9f>`__
+`21 June 2023
+<https://drive.google.com/file/d/1PPj6ZM6cZTPE6FVGt9luDDiouAo9RRty/view?ts=64944e9f>`__
 
 - Challenges in getting on-demand Nvidia GPU processors.
 - On-demand reservations
@@ -224,7 +300,8 @@ The Cloud Computing support team hosts bi-weekly sessions for demonstrations, qu
 - Cost Estimation feature available with the AWS system.
 
 
-`7 June 2023 <https://drive.google.com/file/d/1N7PwnfYu5aD0Fo8Z8GYwCF9brw0m9J72/view?ts=6481d78c>`__
+`7 June 2023
+<https://drive.google.com/file/d/1N7PwnfYu5aD0Fo8Z8GYwCF9brw0m9J72/view?ts=6481d78c>`__
 
 -  Account problems
 -  Studio workflows
@@ -232,30 +309,38 @@ The Cloud Computing support team hosts bi-weekly sessions for demonstrations, qu
 -  Lustre configuration issues
 -  Azure cold storage options.
 
-Notes are `available. <https://docs.google.com/document/d/1FUDebrZ_lYv3VgUTKvxWGvpDE6VMNQaJmwVy5g_8Jx8/edit>`__
+Notes are `available.
+<https://docs.google.com/document/d/1FUDebrZ_lYv3VgUTKvxWGvpDE6VMNQaJmwVy5g_8Jx8/edit>`__
 
-`24 May 2023 <https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
+`24 May 2023
+<https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
 
 - Disk space allowance on /contrib, /home, and the Cloud environment.
 - The difference between MDS and OST boot disk size, and access to each.
-- Cluster activation and de-activation, and timing and configuration changes.
+- Cluster activation and de-activation, and timing and configuration
+  changes.
 - Methods currently in use to move data to and from the Cloud.
-- Syncing global-workflow fixed files for \`develop\` to AWS s3, and related AWS s3 issues
+- Syncing global-workflow fixed files for \`develop\` to AWS s3, and
+  related AWS s3 issues
 - Optimized IC staging for regression testing  Mitigating FS latency
 - Azure operation questions.
 
 
-`10 May 2023 <https://drive.google.com/file/d/1zL8TQ68qa3Nh0s3JB11VnvrJtwqEhvaH/view?ts=646d0527>`__
+`10 May 2023
+<https://drive.google.com/file/d/1zL8TQ68qa3Nh0s3JB11VnvrJtwqEhvaH/view?ts=646d0527>`__
 
 - The Podman application
 - Reported queueing problems in Parallel Works
-- Could the frequent version increments in Parallel
-  Work have an impact on clusters or other operations in progress?
-- Features in future update: Partition settings in Google Cloud configuration
+- Could the frequent version increments in Parallel Work have an
+  impact on clusters or other operations in progress?
+- Features in future update: Partition settings in Google Cloud
+  configuration
 
-`26 April 2023 <https://drive.google.com/file/d/1ZtZuZoJ28-M8qEvwZERvOENaUrNcCdmU/view?ts=64528126>`__
+`26 April 2023
+<https://drive.google.com/file/d/1ZtZuZoJ28-M8qEvwZERvOENaUrNcCdmU/view?ts=64528126>`__
 
-This video references the creation of a cloud/custom snapshot in these steps:
+This video references the creation of a cloud/custom snapshot in these
+steps:
 
 - Resource definition
 - Activate conda at boot
@@ -266,21 +351,23 @@ This video references the creation of a cloud/custom snapshot in these steps:
 
 
 
-`12 April 2023 <https://drive.google.com/file/d/1WEhr5aJ37FLTqIoCbFbxt1vXi4I0yZtd/view?ts=64381afa>`__
+`12 April 2023
+<https://drive.google.com/file/d/1WEhr5aJ37FLTqIoCbFbxt1vXi4I0yZtd/view?ts=64381afa>`__
 
 - Google contrib storage use best practices
 - Finding a project bucket
 - The ``gsutil`` command
 - Azure’s contrib and block storage as the same storage
-- Storage issues, including centralized storage of user public ssh keys
-- upcoming features, storage, health check scripts and custom snapshots
+- Storage issues, including centralized storage of user public ssh
+  keys
+- upcoming features, storage, health check scripts and custom
+  snapshots
 
 **Features in Development**
 
-There are new features and capabilities under discussion at 
-Parallel Works. If you are interested in these features,
-send an email ticket to: rdhpcs.cloud.help@noaa.gov, with
-the subject line PW Features.
+There are new features and capabilities under discussion at Parallel
+Works. If you are interested in these features, send an email ticket
+to: rdhpcs.cloud.help@noaa.gov, with the subject line PW Features.
 
 
 Frequently Asked Questions
@@ -289,51 +376,56 @@ Frequently Asked Questions
 General Cloud Issues
 --------------------
 
-** How do I open a cloud help desk ticket?**
+**How do I open a cloud help desk ticket?**
 
-Send an email to rdhpcs.cloud.help@noaa.gov. Your email
-automatically generates a case in the OTRS system.
+Send an email to rdhpcs.cloud.help@noaa.gov. Your email automatically
+generates a case in the OTRS system.
 
-The OTRS system does not have an option to set a priority
-level. Typically, your ticket is responded to within 2
-hours.
+The OTRS system does not have an option to set a priority level.
+Typically, your ticket is responded to within 2 hours.
 
-**Where do I find instructions to connect the controller node from outside the network?**
+**Where do I find instructions to connect the controller node from
+outside the network?**
 
-Refer the Parallel works user guide, section `From outside 
-the platform <https://docs.parallel.works/interacting-with-clusters/logging-in-controller>`__
+Refer the Parallel works user guide, section `From outside the
+platform
+<https://docs.parallel.works/interacting-with-clusters/logging-in-controller>`__
 
 **What are the project allocation usage limits and actions?**
 
-Used allocation at 85% of the budget allocation: 
-When an existing project usage reaches 85% of the allocation, the
-Parallel Works [PW] platform sends an email message to
-principal investigator [PI], tech lead [TL] and admin
-staff.   
+- Used allocation at 85% of the budget allocation:
 
-- Users can continue to start new clusters and continue the
-  currently running clusters. 
-- A warning message appears on the PW compute dashboard
-  against the project.
-- PI should work with the allocation committee on
-  remediation efforts. 
+  When an existing project usage reaches 85% of the allocation, the
+  Parallel Works [PW] platform sends an email message to principal
+  investigator [PI], tech lead [TL] and admin staff.
+
+  - Users can continue to start new clusters and continue the
+    currently running clusters.
+  - A warning message appears on the PW compute dashboard
+    against the project.
+  - PI should work with the allocation committee on
+    remediation efforts.
 
 - Used allocation at 90% of the budget allocation:
 
-When an existing project usage reaches 90% of the allocation, the
-Parallel Works platform sends an email message to principal
-investigator, tech lead and admin staff.   
+  When an existing project usage reaches 90% of the allocation, the
+  Parallel Works platform sends an email message to principal
+  investigator, tech lead and admin staff.
 
-  - Users can no longer start a new cluster and may continue the currently running clusters, but no new jobs can be started. 
-  - Users must move data from the contrib and object storage to on-premise storage. 
-  - A “Freeze” message appears on the PW compute dashboard against the project.
-  - PI should work with the allocation committee on remediation efforts. 
+  - Users can no longer start a new cluster and may continue the
+    currently running clusters, but no new jobs can be started.
+  - Users must move data from the contrib and object storage to
+    on-premise storage.
+  - A “Freeze” message appears on the PW compute dashboard against the
+    project.
+  - PI should work with the allocation committee on remediation
+    efforts.
 
 - Used allocation at 95% of the budget allocation:
 
-When an existing project usage reaches 95% of the allocation, the
-Parallel Works platform sends an email message to principal
-investigator, tech lead and admin staff.
+  When an existing project usage reaches 95% of the allocation, the
+  Parallel Works platform sends an email message to principal
+  investigator, tech lead and admin staff.
 
   - Terminate and remove all computing/cluster resources.
   - Data at buckets will remain available as will data in
@@ -341,11 +433,11 @@ investigator, tech lead and admin staff.
     be directly available to users.
   - Notify all affected users, PI, Tech Lead, Accounting Lead
     via email that all resources have been removed.
-  - Disable the project. 
+  - Disable the project.
 
-- Used allocation at 99.5% of the budget allocation: 
+- Used allocation at 99.5% of the budget allocation:
 
-  - Manually remove the project resources. 
+  - Manually remove the project resources.
   - Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
     email all resources have been removed.
 
@@ -354,7 +446,7 @@ How do I get a project allocation or an allocation increase?
 
 RDHPCS System compute allocations are decided upon by the
 RDHPCS Allocation Committee (AC), with oversight from the
-NOAA HPC Board. 
+NOAA HPC Board.
 
 Update the the Allocation Request Form located under the
 section "Allocations" from link TBD
@@ -421,9 +513,11 @@ need to add it to your account first. From the Parallel
 Works main page, click the workflow marketplace button
 located on the top right menu bar, looks like an Earth icon.
 
-Learn more on the `workflow <https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk>`__
+Learn more on the `workflow
+<https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk>`__
 
-**What are the different storage types and costs available on the PW platform?**
+**What are the different storage types and costs available on the PW
+platform?**
 
 There are three types of storage available on a cluster,
 those are lustre, object storage [ for backup & restore,
@@ -437,7 +531,8 @@ storage on the AWS, Azure, and GCP cloud platforms. You can
 create as many lustre file systems as you want from the PW
 Storage tab by selecting the “add storage” button.
 
-Refer the user guide section on `adding storage link <https://docs.parallel.works/managing-storage/creating-storage>`__
+Refer the user guide section on `adding storage link
+<https://docs.parallel.works/managing-storage/creating-storage>`__
 
 Cost for lustre storage can be found at the definition
 page when creating storage.
@@ -517,7 +612,8 @@ public internet are $0.09 per GB for the first 10 TB,
 dropping to $0.085 per GB for the next 40 GB, $0.07 per GB
 for the next 100 TB, and $. 05/GB greater than 150 TB.
 
-`Azure <https://azure.microsoft.com/en-us/pricing/details/bandwidth/>`_`
+`Azure
+<https://azure.microsoft.com/en-us/pricing/details/bandwidth/>`_`
 
 `GCP <https://cloud.google.com/network-tiers/pricing>`_
 
@@ -529,10 +625,15 @@ Parallel works
 
 **How do I get access to the Parallel Works Platform?**
 
-- Pre-requisite for getting an account access to the Parallel Works platform is to have a NOAA email address.
-- The next step is to request access to a project and RSA token from the “Account Management Home”.
-- Access AIM to request a project and RSA token. No CAC is necessary to access the Parallel Works platform.
-- From the Account Management Home, click the link: “Click here to Request Access to a Project” and select a project the list of projects.
+- Pre-requisite for getting an account access to the Parallel Works
+  platform is to have a NOAA email address.
+- The next step is to request access to a project and RSA token from
+  the “Account Management Home”.
+- Access AIM to request a project and RSA token. No CAC is necessary
+  to access the Parallel Works platform.
+- From the Account Management Home, click the link: “Click here to
+  Request Access to a Project” and select a project the list of
+  projects.
 
 The drop-down list is long. You can type the first character
 to move the cursor towards your project name.
@@ -873,7 +974,8 @@ Lustre filesystem is an expensive resource. You can disable
 the filesystem or resize it. The default lustre filesystem
 size is about 14TiB.
 
-**How do I create a custom snapshot [a.k.a AMI, Snapshot, Boot disk, or machine] image?**
+**How do I create a custom snapshot [a.k.a AMI, Snapshot, Boot disk,
+or machine] image?**
 
 If a user finds specific packages are not present in the
 base boot image, the user can add it by creating own custom
@@ -1020,7 +1122,7 @@ You can enable this functionality on a running cluster, by
 navigating to the “properties” tab of your resource name
 under the “Resource” tab.
 
-`Reference <https://docs.parallel.works/interacting-with-clusters/creating-clusters>`_
+`Reference <https://docs.parallel.works/interacting-with-clusters/creating-clusters>`__
 
 Missing user directory in the group's contrib volume.**
 
@@ -1079,7 +1181,8 @@ Contrib is a permanent storage for your group.
 You may shutdown the cluster if the purpose was to create
 your contrib directory.
 
-Why does the owner's home directory look different from the shared users’ home directory?**
+Why does the owner's home directory look different from the shared
+users’ home directory?**
 
 Every cluster is set up where the owner of it has an
 ephemeral home directory that isn't linked from contrib, but
@@ -1116,8 +1219,7 @@ Default Partition details.
   PartitionName=batch Nodes=mattlong-azv2-00115-2-[0001-0013]
   MaxTime=INFINITE State=UP Default=NO OverSubscribe=NO
 
-** How do I manually shutdown the compute nodes?
-  :name: how-do-i-manually-shutdown-the-compute-nodes
+**How do I manually shutdown the compute nodes?**
 
 .. code::
 
@@ -1183,8 +1285,7 @@ from /etc/passwd is.
 
   $ grep -i role /etc/passwd
 
-** Bootstrap script example
-  :name: bootstrap-script-example
+**Bootstrap script example**
 
 By default bootstrap script changes only runs on the MASTER
 node of a cluster.
@@ -1247,11 +1348,9 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
-** Configuration Questions
-  :name: configuration-questions
+**Configuration Questions**
 
-** How do I create Parallel Works resource configuration on my account?
-  :name: how-do-i-create-parallel-works-resource-configuration-on-my-account
+**How do I create Parallel Works resource configuration on my account?**
 
 Follow the instructions on this `link <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit#slide=id.g11424a5fc64_0_29>`_
 
@@ -1382,7 +1481,7 @@ only available in a cluster launched with that
 configuration. Instead store your key under “account” ->
 “Authentication” tab that automatically populates into your all clusters.
 
-`Reference <https://docs.parallel.works/navigating-the-platform#account>`_
+`Reference <https://docs.parallel.works/navigating-the-platform#account>`__
 
 **User bootstrap script**
 
@@ -1399,7 +1498,7 @@ Example:
 
   /contrib/Unni.Kirandumkara/pw_support/config-cluster.sh
 
-`Reference <https://docs.parallel.works/managing-organizations/organization-bootstrap-script#testing-a-sample-bootstrap-script>`_
+`Reference <https://docs.parallel.works/managing-organizations/organization-bootstrap-script#testing-a-sample-bootstrap-script>`__
 
 Configuration page has a 16k metadata size limitation.
 Following these settings can reduce your possibility of a
@@ -1476,11 +1575,9 @@ image out of it
 
 should do the trick with that recipe file.
 
-** Working with Slurm
-  :name: working-with-slurmedit
+**Working with Slurm**
 
-** How to send emails from a Slurm job script?
-  :name: how-to-send-emails-from-a-slurm-job-script
+**How to send emails from a Slurm job script?**
 
 Below is an example of a job script with a couple sbatch
 options that should notify you when a job starts and ends
@@ -1530,14 +1627,20 @@ list/description of the possible state codes that a slurm
 node might have. Bolded the ones that you are most likely to
 see while using the cluster:
 
-:\*: The  node  is  presently  not responding and will not be allocated any new work.  If the node remains non-responsive, it will be placed in the DOWN state (except in the case of COMPLETING, DRAINED, DRAINING, FAIL, FAILING nodes).
-:~: The node is presently in a power saving mode (typically running at reduced frequency).
+:\*: The  node  is  presently  not responding and will not be
+    allocated any new work.  If the node remains non-responsive, it
+    will be placed in the DOWN state (except in the case of
+    COMPLETING, DRAINED, DRAINING, FAIL, FAILING nodes).
+:~: The node is presently in a power saving mode (typically running at
+    reduced frequency).
 :#: The node is presently being powered up or configured.
 :%: The node is presently being powered down.
-:$: The node is currently in a reservation with a flag value of "maintenance".
+:$: The node is currently in a reservation with a flag value of
+    "maintenance".
 :@: The node is pending reboot.
 
-You can manually start with ``sudo scontrol update nodename=<nodename> state=resume``
+You can manually start with ``sudo scontrol update nodename=<nodename>
+state=resume``
 
 .. code::
 
@@ -1582,7 +1685,8 @@ The script itself looks like this:
     sudo service slurmd restart
   fi
 
-**How do I change the slurm Suspend time on an active cluster? [shutdown early or shutdown delay]**
+**How do I change the slurm Suspend time on an active cluster?
+[shutdown early or shutdown delay]**
 
 You can modify a cluster’s slurm suspend time from the
 Resource Definition form prior to starting a cluster.
@@ -1620,7 +1724,8 @@ after:
   $ scontrol show config \| grep -i suspendtime
   SuspendTime = 3600 sec
 
-**What logs are needed for the support to research slurm or node not terminated issues?**
+**What logs are needed for the support to research slurm or node not
+terminated issues?**
 
 The following four log files required to research the root
 cause. Please copy the following log files from the
@@ -1644,8 +1749,7 @@ change user as root when copying the files, for example.
 :/var/log/syslog: Reports global system messages.
 :/var/log/messages: Reports system operations.
 
-** How do I distribute slurm scripts on different nodes?
- :name: how-do-i-distribute-slurm-scripts-on-different-nodes
+**How do I distribute slurm scripts on different nodes?**
 
 By default the slurm sbatch job lands on a single node. You
 can distribute the scripts to run on different nodes by
@@ -1672,7 +1776,7 @@ For example,
 Submitting the job three times in succession, see how each
 job lands on its own node:
 
-.. code::
+.. code-block:: shell
 
   $ sinfo
   PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
@@ -1687,9 +1791,10 @@ job lands on its own node:
   5     compute   testjob. User.Id  R    0:05  1     userid-gcpv2-00060-1-0003
 
 
-Removing the exclusive flag and resubmitting, then jobs all land on a single node:
+Removing the exclusive flag and resubmitting, then jobs all land on a
+single node:
 
-.. code::
+.. code-block:: shell
 
   $ squeue
   JOBID PARTITION NAME     USER     ST   TIME  NODES NODELIST(REASON)
@@ -1752,8 +1857,7 @@ nodes by state as well as total:
 Note the NODES(A/I/O/T) section, which indicates nodes
 that are Active, Idle, Offline, and Total
 
-** Manually reset the node status
-  :name: manually-reset-the-node-status
+**How do I manually reset the node status?**
 
 You may manually resume the nodes like this:
 
@@ -1771,7 +1875,8 @@ below:
 Errors
 ------
 
-**Error launching source instance: InvalidParameterValue: User data is limited to 16384 bytes**
+**Error launching source instance: InvalidParameterValue: User data is
+limited to 16384 bytes**
 
 Resource configuration page has a 16k metadata size
 limitation. Recent feature updates on the configuration page
@@ -1792,7 +1897,7 @@ tab, and your SSH public keys.
 Remove the SSH key from the “Access Public Key” box, and
 save your configuration.
 
-`Reference <https://docs.parallel.works/navigating-the-platform#account>`_
+`Reference <https://docs.parallel.works/navigating-the-platform#account>`__
 
 **Where do I enter my public SSH key in the PW platform?**
 
@@ -1802,7 +1907,8 @@ Keys. There is a system key "User Workspace", which is used
 by the system to connect from a user's workspace to your
 cluster.
 
-**Error “the requested VM size not available in the current region”, when requesting a non-default compute VM/instance**
+**Error “the requested VM size not available in the current region”,
+when requesting a non-default compute VM/instance**
 
 Each Cloud provider offers a variety of VMs/Instances to
 meet the user requirements. The Parallel Works platform’s
@@ -1820,7 +1926,8 @@ for an a on-demand quota. Depending on the VM/instance type
 and count, quota allocation may take a day or up to 2 weeks
 depending on the cloud provider.
 
-**What is causing access denied message when trying to access a project’s cluster?**
+**What is causing access denied message when trying to access a
+project’s cluster?**
 
 This message appears if a user account was created after the
 cluster was started. The cluster owner can check whether
@@ -1835,8 +1942,7 @@ Cluster owner can fix the access denied error by restarting
 the cluster. When you restart the cluster, a user record
 will be added in the /etc/passwd file.
 
-** Why is my API script reporting “No cluster found”?
-  :name: why-is-my-api-script-reporting-no-cluster-found
+**Why is my API script reporting “No cluster found”?**
 
 PW made a change on storing the resource pool name
 internally in order to prevent naming edge cases where
@@ -1850,7 +1956,9 @@ previously.
 As a result, any API requests that references the pool name
 should now be updated to use the name without underscores.
 
-**What is causing the "Permission denied (publickey,gssapi-keyex,gssapi-with-mic)."?**
+**What is causing the "Permission denied
+(publickey,gssapi-keyex,gssapi-with-mic)."?**
+
 The message appears in the Resource Monitor log file is:
 
 .. code::
@@ -1858,16 +1966,16 @@ The message appears in the Resource Monitor log file is:
   Waiting to establish tunnel, retrying in 5 seconds
 
   Permission denied
-  (publickey,gssapi-keyex,gssapi-with-mic).  
+  (publickey,gssapi-keyex,gssapi-with-mic).
 
 During a cluster launch process, an ssh tunnel is created
 between the controller node and the user container. The user
 container is trying to create the tunnel before the host can
 accept it, so a few attempts are failed before the host is
-ready to accept the request.  You may ignore this message.
+ready to accept the request.  You may ignore this message.
 
 Also you may also notice an "x" number of failed login
-attempts when log in on the controller node.  This is from
+attempts when log in on the controller node.  This is from
 the failed ssh tunnel attempts.
 
 If the message is getting when trying to access the
@@ -1878,7 +1986,8 @@ controller node from the PW's IDE located at the top right
 of the page. Access from IDE uses an internal public and
 private key, and therefore you can narrow down the cause.
 
-**What is causing the "do not have sufficient capacity for the requested VM size in this region."?**
+**What is causing the "do not have sufficient capacity for the
+requested VM size in this region."?**
 
 You can find error message from the "Logs", navigate to tab
 "scheduler".
@@ -1921,7 +2030,8 @@ Miscellaneous
 
 The other option is use ``nproc``
 
-There are a couple ways. You can use scontrol  and a node name to print a lot of info about it, including number of available cores:
+There are a couple ways. You can use scontrol  and a node name to
+print a lot of info about it, including number of available cores:
 
 .. code::
 
@@ -1968,7 +2078,8 @@ per month. If the project does not require this storage, PI
 may create a cloud help desk ticket to remove it. Only
 Parallel Works Cloud administrator can remove this storage.
 
-**How do I find my project’s object storage [aka bucket or block storage] and access keys from Parallel Works?**
+**How do I find my project’s object storage [aka bucket or block
+storage] and access keys from Parallel Works?**
 
 From the login page, click on the IDE icon located at the
 top right of the page, you will see file manager with
@@ -2005,15 +2116,17 @@ On GCP platform:
 You may use the Globus Connect or Cloud service provider’s
 command line interface to access the object storage.
 
-**Can I transfer files with external object storage [aka bucket or block storage] from Parallel Works's cluster?**
+**Can I transfer files with external object storage [aka bucket or
+block storage] from Parallel Works's cluster?**
 
 If you have the access credentials of external AWS/Azure/GCP
 object storage, you can transfer files. Use the Globus
 connector or cloud provider's command line interface for
 file transfer.
 
-**Azure: How to copy a file from the controller node to the project's permanent storage?**
-#. Start a cluster and login into the controller node.
+**Azure: How to copy a file from the controller node to the project's
+permanent storage?** #. Start a cluster and login into the controller
+node.
 
    An example use the project cz-c4-id’s secret file.
 
@@ -2074,7 +2187,8 @@ user’s local machine or the RDHPCS systems, such as Niagara.
 The gsutil utility is preinstalled on clusters launched
 through Parallel Works.
 
-**How do I get nvhpc NVidia HPC compiler, and netcdf, and hdf5 packages in my environment?**
+**How do I get nvhpc NVidia HPC compiler, and netcdf, and hdf5
+packages in my environment?**
 
 Parallel Works Platform is installed with Intel processors
 and compilers for the FV3GFS performance benchmark test. It
@@ -2098,7 +2212,8 @@ you.
 Various netcdf and hdf5 packages are available from the yum
 repos. yum search netcdf and yum search hdf
 
-**Which AWS Availability Zones [AZ] AMD and Intel processors are concentrated [Answer to InsufficientInstanceCapacity]**
+**Which AWS Availability Zones [AZ] AMD and Intel processors are
+concentrated [Answer to InsufficientInstanceCapacity]**
 
 AMD
 
@@ -2110,8 +2225,7 @@ Intel
 :c6i.24xlarge: us-east-1f
 :c6i.32xlarge: us-east-2b us-east-1f us-east-2a
 
-** What does GCP resource GVNIC and Tier_1 flags represent?
-  :name: what-does-gcp-resource-gvnic-and-tier_1-flags-represent
+**What does GCP resource GVNIC and Tier_1 flags represent?**
 
 Tier1 is the 100gbps network. GVNIC is a high performance
 interconnect that bypasses their virtual interconnect for
@@ -2128,7 +2242,7 @@ increases the maximum egress bandwidth for VMs, and ranges
 from 50 Gbps to 100 Gbps depending on the size of your N2,
 N2D, C2 or C2D VM.
 
-`Additional reference <https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration>`_
+`Additional reference <https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration>`__
 
 **Why are all instance types are labeled as AMD64?**
 
@@ -2326,8 +2440,8 @@ Conduct a Transfer:
   created and queued for execution Task ID:
   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 
-** Container singularity replaced by singularity-ce, and syntax remains the same
-  :name: container-singularity-replaced-by-singularity-ce-and-syntax-remains-the-same
+**Container singularity replaced by singularity-ce, and syntax remains
+the same**
 
 When it comes to the software package on the PW platform, it
 follows on-prem guidance to provide a consistent user
@@ -2345,8 +2459,7 @@ usage.
 
   $ rpm -ql singularity-ce \| grep bin /usr/bin/singularity
 
-** How to list the files in an s3 bucket using a script?
-  :name: how-to-list-the-files-in-an-s3-bucket-using-a-script
+**How to list the files in an s3 bucket using a script?**
 
 .. code::
 
@@ -2372,8 +2485,8 @@ S3 credentials should be set automatically in your
 environment on the cluster, but these credentials are
 scoped at a project level, and not to individual users.
 
-** What is the best practice in hiding credentials, when code is pushed in Github?
-  :name: what-is-the-best-practice-in-hiding-credentials-when-code-is-pushed-in-github
+**What is the best practice in hiding credentials, when code is pushed
+in Github?**
 
 Use your programming language command to call out
 environment variables. For example in Python: key_value =
@@ -2382,8 +2495,7 @@ os.environ['AWS_ACCESS_KEY_ID']
 It is very important not to commit a full print out of the
 shell environment.
 
-** Where should I clone the GitHub repository?
-  :name: where-should-i-clone-the-github-repository
+**Where should I clone the GitHub repository?**
 
 If you want to keep the repository around between cluster
 sessions, working with it from contrib would be the right
@@ -2395,21 +2507,22 @@ since you can assign more processors to the build.
 
 **GCP Region/AZs on GPUs and models**
 
-Select a location “North America” and
-machine type “A2” to view different types of GPUs available
-on different regions/AZs from this `link <https://cloud.google.com/compute/docs/regions-zones#available>`_
+Select a location “North America” and machine type “A2” to view
+different types of GPUs available on different regions/AZs from this
+`link
+<https://cloud.google.com/compute/docs/regions-zones#available>`__
 
-To learn more about GPU models, refer to this 
-`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones#gpu_regions_and_zones>`_
+To learn more about GPU models, refer to this
+`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones#gpu_regions_and_zones>`__
 
 **What are the GPU models available on AWS, Azure, and GCP**
 
-AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g 
-`here <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`_
+AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g
+`here <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`__
 
 Azure GPUs can be found by typing Standard_NC,
 Standard_ND, Standard_NV, and Standard_NG
-`here <https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu>`_
+`here <https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu>`__
 
 GCP GPUs can be found by typing a2. Other GPUs are found to
 be unavailable.
@@ -2420,9 +2533,6 @@ be unavailable.
 :AWS: us-east1 and us-east2. Preferred region is us-east-1
 :Azure: EastUS and SouthCentralUS. Preferred region is EastUS.
 :GCP: regions are us-central1, and us-east-1. Preferred region is us-central1
-
-** X2go Passwordless authentication using ssh-keys
-  :name: x2go-passwordless-authentication-using-ssh-keys
 
 **How to tunnel back from a compute node to the controller/head node?**
 
@@ -2441,8 +2551,7 @@ This works.
 
   ssh-keygen -t rsa -f ~/.ssh/id_rsa -N * && cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys*
 
-** On Azure, missing /apps fs system or modules not loaded case
-  :name: on-azure-missing-apps-fs-system-or-modules-not-loaded-case
+**On Azure, missing /apps fs system or modules not loaded case**
 
 We are working to fix this bug. If you own the Azure
 cluster, please run the command : sudo /root/run_ansible
