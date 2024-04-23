@@ -41,6 +41,8 @@ All Slurm commands have on-line manual pages viewable via the ``man`` command
 option (e.g., ``sinfo --help``).  See :ref:`slurm-references` for links to the
 SchedMD documentation.
 
+.. _slurm-running-a-job:
+
 Running a Job
 =============
 
@@ -414,6 +416,8 @@ with the colon (``:``) character.  This is similar to ``mpirun``.
 .. code-block:: shell
 
    srun --ntasks=1 --cpus-per-task=32 ./executable : --ntasks=128 --cpus-per-task=1 ./executable
+
+.. _slurm-monitoring-jobs:
 
 Monitoring Jobs
 ===============

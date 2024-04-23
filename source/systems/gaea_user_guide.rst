@@ -4,7 +4,6 @@
 Gaea User Guide
 ***************
 
-.. _gaea-system-overview:
 
 .. image:: /images/Gaea_web.jpg
 
@@ -23,77 +22,25 @@ collaborative effort between the `Department of Energy
 <https://www.energy.gov/>`_ and the `National Atmospheric and Oceanic
 Administration <https://www.noaa.gov/>`_.
 
-The Gaea System consists of two HPE Cray XC40 supercomputers and an HPE Cray EX
-supercomputer.  The XC40 systems have an aggregate of more than 200 terabytes of
-memory and a peak calculating capacity greater than 5.25 petaflops.  The EX system
-has 482 terabytes of memory and a peak calculating capacity of 10.2 petaflops.
+The Gaea System consists of an HPE Cray XC40 supercomputer (named C4) with Intel (Broadwell) processors, and an HPE Cray EX supercomputer (named C5) with AMD (Rome) processors. The XC40 system has 164 terabytes of memory and a peak calculating capacity of 3.52 petaflops. The EX system has 482 terabytes of memory and a peak calculating capacity of 10.2 petaflops.
+The aggregate Gaea system:
 
-Gaea uses a high-capacity Lustre file system with over 32 petabytes
-of storage.  The file system is connected to the Gaea system using
-FDR InfiniBand.
+* consists of 95,616 Intel cores;
+* consists of 245,760 AMD cores; 
+* contains 646 TiB of memory
+* can perform 13.7 petaflops, or 13,700 trillion calculation each second.
 
-.. csv-table:: Gaea Cluster Stats
-    :file: /files/gaea_stats.csv
-    :header-rows: 1
+In Q2FY24, the Gaea System will receive a new compute cluster, named C6. C6 will be an HPE Cray EX supercomputer with 584 TB of memory and a peak calculating capacity of 9.81 petaflops.
 
-.. list-table:: Gaea Cluster Stats (list)
-    :header-rows: 1
+Gaea uses a high-capacity Lustre file system with over 32 petabytes of storage. The file system is connected to the Gaea system using FDR InfiniBand.
 
-    * - C3
-      - C4
-      - C5
-      - F2 File System
-    * - Cray XC40-LC Haswell
-      - Cray XC40-LC Broadwell
-      - HPE EX Rome
-      - DDN Lustre
-    * - 1,504 compute nodes
-        (2 x Intel Haswell 16-cores per node)
-      - 2,656 compute nodes (2 x Intel Broadwell 18-cores per node)
-      - 1,920 compute nodes (2 x AMD Rome 64-cores per node)
-      - 32 PB total usable; ZFS compression
-    * - 64GB DDR4 per node; 96TB total
-      - 64GB DDR4 per node; 145TB total
-      - 251 GB DDR5 per node; 449TB total
-      - 36 OSS; 72 OST; 4 MDS
-    * - 1.77 PF peak
-      - 3.52 PF peak
-      - 10.2 PF peak
-      -
+Access to Gaea is managed through two 10-gigabit lambdas, or optical waves, connected to NOAA's NWAVE network through peering points at Atlanta, GA and Chicago, IL.
 
-.. grid:: 4
+.. grid:: 2
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
 
-    C3
-    ^^^
-
-    Cray XC40-LC
-
-    1,504 compute nodes
-    (2 x Intel Haswell 16-cores per node)
-
-    64GB DDR4 per node; 96TB total
-
-    1.77 PF peak
-
-  .. grid-item-card::
-    :class-header: sd-bg-muted sd-text-light
-
-    C4
-    ^^^
-
-    Cray XC40-LC
-
-    2,656 compute nodes (2 x Intel Broadwell 18-cores per node)
-
-    64GB DDR4 per node; 145TB total
-
-    3.52 PF peak
-
-  .. grid-item-card::
-    :class-header: sd-bg-muted sd-text-light
 
     C5
     ^^^
@@ -109,260 +56,490 @@ FDR InfiniBand.
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
 
-    F2 File System
+    F5 File System
     ^^^
 
-    DDN Lustre
+    General Parallel File System (GPFS)
 
-    32 PB total usable; ZFS compression
+    50 PB total usable
 
-    36 OSS; 72 OST; 4 MDS
+
+Gaea is the largest of the four NOAA RDHPCS, and is used to study the earth's notoriously complex climate from a variety of angles by enabling scientists to:
+
+* understand the relationship between 
+
+  * climate change and extreme weather such as hurricanes
+  * the atmosphere’s chemical makeup and climate
+  
+* help unlock the climate role played by the oceans that cover nearly three-quarters of the globe.
+
+GAEA Quickstart
+===============
+
+This simple overview explains the elements of a basic job in Gaea. It includes compiling, running, combining, data transfer, and allocation.
+
+.. Note::
+  Ensure that you have done your first login to Gaea and generated a certificate.
+
+Connecting and General Info
+----------------------------
+
+There are two ways to access Gaea. The oldest is to use PuTTY or ssh to gaea-rsa.rdhpcs.noaa.gov and authenticate using your RDHPCS-issued RSA token. Alternatively, use Tectia sshg3 to gaea.rdhpcs.noaa.gov and authenticate with your CAC and CAC PIN. How to do this is also described in detail in Login with additional useful information like how to set up port tunnels to Gaea (needed to use X-windows applications like DDT.) You can also use the RDHPCS login documentation at Logging_in, but you will want to know that the port tunnel ranges for Gaea are 20000 + your UID number for LocalForward and 30000 + your UID number for RemoteForward (in ssh config file language.)
+
+- If you want more information on using your CAC to authenticate to RDHPCS systems, see CAC_Login
+- If you want more information on configuring PuTTY, see Configuring_PuTTY
+
+Gaea uses modules software to let users change which software is accessible to their environment. There is no module man page. Instead use:
+
+.. code-block:: shell
+
+  module help
+
+Gaea uses Slurm as its batch scheduler.
+
+Compiling
+---------
+
+Gaea offers PrgEnv-intel, Prg-Env-aocc, Prg-Env-nvhpc, and several other modules that make it as easy as possible to get your programs running. You compile by calling either cc or ftn, according to the language your code is written in. See Compilers for more detail, especially for compiling multithreaded applications.
+
+You may either compile live in your login shell on a Gaea login node, or in a job in the eslogin queue in the es partition of Gaea's batch system. To tell a job script to run on the login nodes, specify the following in your script:
+
+.. code-block:: shell
+
+  #SBATCH --clusters=es
+  #SBATCH --partition=eslogin
+  #SBATCH --ntasks=1 
+
+or, from the sbatch command line:
+
+.. code-block:: shell
+
+  sbatch --clusters=es --partition=eslogin --ntasks=1 /path/to/compile_script
+
+
+Running
+-------
+
+Once your executable is compiled and in place with your data on a given file system (f5 for example), you are ready to submit your compute job. Submit your job to c#
+
+.. note::
+
+  c# refers to a computer cluster. The current cluster is c5, but this is subject to change.
+
+.. code-block:: shell
+
+  #SBATCH --clusters=c#
+  #SBATCH --nodes=4
+  #SBATCH --ntasks-per-node=32 # Gaea charges for node use.  Nodes are 128 core on c5.  This example will get charged for 4 nodes.
+
+or, from the sbatch command line:
+
+.. code-block:: shell
+
+  sbatch --clusters=c# --nodes=4 --ntasks-per-node=128 /path/to/run_script
+
+Your compute job script will run on one of the compute nodes allocated to your job. To run your executable on them use the srun or srun-multi command. A simple example is shown here:
+
+.. code-block:: shell
+
+  cd /gpfs/f5/<project>/scratch/$USER
+  srun --nodes=128 --ntasks-per-node=32 
+  /gpfs/f5/<project>/$USER/path/to/executable
+
+Staging/Combining
+-----------------
+
+Staging data to and from model run directories is a common task on Gaea. So is combining model output when your model uses multiple output writers for scalability of your MPI communications. The Local Data Transfer Nodes (LDTNs) are the resource provided for these tasks. Please keep these tasks off the compute nodes and eslogin nodes. There is a NOAA-developed tool called **gcp** which is available for data transfers on Gaea. To tell a job script to run on the LDTN nodes, specify the following in your script:
+
+.. code-block:: shell
+
+  #SBATCH --clusters=es
+  #SBATCH --partition=ldtn
+  #SBATCH --nodes=1
+  #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 16
+
+or, from the sbatch command line:
+
+.. code-block:: shell
+
+  sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 /path/to/staging_script
+
+Transferring Data to/from Gaea
+------------------------------
+
+Data transfers between Gaea and the world outside of Gaea should be performed on the Remote Data Transfer Nodes (RDTNs). There is a NOAA-developed tool called gcp, which is available for data transfers on Gaea. HPSS users are only able to access HPSS from jobs on the RDTNs. To tell a job script to run on the login nodes, specify the following in your script:
+
+.. code-block:: shell
+
+  #SBATCH --clusters=es
+  #SBATCH --partition=rdtn
+  #SBATCH --nodes=1
+  #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 8
+
+or, from the sbatch command line:
+
+.. code-block:: shell
+
+  sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
+
+Allocation
+----------
+
+Gaea users have default projects. If you are only a member of a single project, or if your experiments always run under your default project, you don't need to do anything special to run. Users who are members of more than one project need to enter their preferred project via the --account option to sbatch to correctly charge to each experiment's project.
+
+You can use AIM to request access to new projects. Once access is granted in AIM it can take up to two days to be reflected in Gaea's Slurm scheduler. If you still don't have the granted access after two days, please put in a help desk ticket so admins can investigate your issue. To determine your Slurm account memberships, run the following command:
+
+.. code-block:: shell
+
+  sacctmgr list associations user=First.Last
+
+To submit jobs to the scheduler under a specific account do the following from the sbatch command line:
+
+.. code-block:: shell
+
+  sbatch --account=gfdl_z
+
+or add the following to your job script's #SBATCH headers:
+
+.. code-block:: shell
+
+  #SBATCH --account=gfdl_z
+
+Running a Simple Job Script
+---------------------------
+
+This script assumes that the data and executable are staged to /gpfs/f2/<project>/scratch/$USER. The scripts and data are located at /usw/user_scripts/
+
+- Use gcp to get the skeleton script from /usw/user_scripts/runscript to your local home directory.
+
+.. code-block:: shell
+
+  gcp /usw/user_scripts/runscript ~$USER/
+
+- Use gcp to get other files from /usw/user_scripts/ to your gpfs directory.
+
+.. code-block:: shell
+
+  gcp -r /usw/user_scripts/ /gpfs/f2/<project>/scratch/$USER/runscript 
+
+- Open the runscript.
+
+.. code-block:: shell
+
+  vim ~$/gpfs/f2/<project>/scratch/$USER/runscript
+
+The comments in the script will help you understand what each item does.
+
+- Return to the directory where you copied the run script, and submit your job.
+
+.. code-block:: shell
+
+  sbatch /gpfs/f2/<project>/scratch/$USER/runscript 
+
+Make sure that the sbatch directives (--account, --walltime) have been changed.
+
+**Once the job is submitted**
+
+You can use the following commands to check on your job.
+
+- To view job status:
+
+.. code-block:: shell
+
+  squeue -u $USER
+
+- For a detailed status check, use the scontrol commnand, and replace "jobid" with your job's id.
+
+.. code-block:: shell
+
+  scontrol show job <jobid> 
+
+For example:
+
+.. code-block:: shell
+
+  scontrol show job 123456789
+
+Once the job is finished, it should produce an output file.
+
+System Architechture
+====================
+Gaea is the largest of the NOAA research and development HPC systems,and is operated by DOE/ORNL. The aggregate Gaea system:
+
+- consists of 95,616 Intel cores;
+- consists of 245,760 AMD cores;
+- contains 646 TiB of memory
+- can perform 13.7 petaflops, or 13,700 trillion calculation each second.
 
 Node Types
 ----------
 
-Gaea has three node types: login, compute, and data transfer (DTN).  All are similar
-in terms of hardware, but differ in their intended use.
+- **Compute Nodes (C5):** 128 cores, HPE EX Rome, 251GB memory, run model executable, filesystem mount - F2
+- **Batch Nodes:** 2 cores, 8GB memory, run scripts only (cores are not charged)
 
-+---------------+----------------------------------------------------------------------------------+
-| Node Type     | Description                                                                      |
-+===============+==================================================================================+
-| Login         | When you connect to Gaea, you're placed on a login node.  This is the place to   |
-|               | write, edit, and compile your code; manage data; submit jobs; etc.  You should   |
-|               | not launch parallel jobs from the login nodes, nor should you run threaded jobs. |
-|               | Login nodes are shared resources that are in use by many users simultaneously.   |
-+---------------+----------------------------------------------------------------------------------+
-| Compute       | The compute nodes are where parallel jobs are executed.  They're accessed via the|
-|               | ``srun`` command.                                                                |
-+---------------+----------------------------------------------------------------------------------+
-| Data Transfer | The data transfer nodes are used to perform IO intensive file manipulation, e.g.,|
-|               | combining multiple data files into a single file, and to transfer large files    |
-|               | locally and to external sites.                                                   |
-+---------------+----------------------------------------------------------------------------------+
+.. Note::
 
-Login Nodes
+  Batch Nodes are not very powerful. Do not write code/jobs that will use Batch nodes to do CPU intensive work
+
+- **ESLogin Nodes:**  32 cores, 512GB memory, run interactive sessions, Matlab, compiles
+- **LDTN Nodes:** 16 cores, 24GB memory, I/O intensive jobs (combines, etc.)
+- **RDTN Nodes:** 8 cores, 48GB memory, Data transfer jobs
+
+Clusters
+--------
+- **C5** Gaea compute partition. Please see "System Architecture" and "Hardware" for details.
+- **es** login nodes, local data transfer node queue (ldtn) and remote data transfer node queue (rdtn)
+
+
+Examples:
+
+.. code-block:: shell
+
+  sbatch --clusters=c5 scriptname
+  #SBATCH --clusters=c5
+
+.. code-block:: shell
+
+  sbatch --clusters=es scriptname
+  #SBATCH --clusters=es
+
+
+What is C5?
 -----------
 
-The C3/C4 and C5 clusters have different login nodes.  The C3/C4 login nodes are
-named gaea10-gaea15.  The C5 login nodes are named gaea51-gaea58.  Each cluster
-specific login node has hardware similar the cluster they serve.
+C5 is an HPE Cray EX with 482 terabytes of memory and a peak calculating capacity of 10.2 petaflops. There are an additional 8 login nodes with 128 cores and 503GB of memory each. The total cores for c5 and its login nodes are 245,760.
 
-.. tab-set::
+**Accessing the C5 login nodes**
 
-  .. tab-item:: C3/C4 Login Nodes
+C5 is available from all Gaea login nodes. To access these login nodes, ssh or sshg3 (Tectia CAC card authenticated SSH) to the Gaea bastion of your choice (sshg3 gaea.rdhpcs.noaa.gov, ssh gaea-rsa.princeton.rdhpcs.noaa.gov, sshg3 gaea.boulder.rdhpcs.noaa.gov, or ssh gaea-rsa.boulder.rdhpcs.noaa.gov). If you want a specific Gaea login node, wait for the list of nodes and press 'ctrl'+'c', then enter the name of the login node you would like to use and press return. Your ssh session will be forwarded to that gaea login node.
 
-    +-----------------+----------------------------+
-    | CPU Type        | Intel Haswell (E5-2690 v3) |
-    +-----------------+----------------------------+
-    | CPU Speed       | 2.6 GHz                    |
-    +-----------------+----------------------------+
-    | Number of Nodes | 5                          |
-    +-----------------+----------------------------+
-    | Cores per Node  | 48                         |
-    +-----------------+----------------------------+
-    | Memory per Node | 251 GiB                    |
-    +-----------------+----------------------------+
+You can use C5 in batch or software mode.
 
-  .. tab-item:: C5 Login Nodes
+**Batch System**
 
-    +-----------------+----------------------------+
-    | CPU Type        | AMD Rome (7662)            |
-    +-----------------+----------------------------+
-    | CPU Speed       | 2.0 GHz                    |
-    +-----------------+----------------------------+
-    | Number of Nodes | 8                          |
-    +-----------------+----------------------------+
-    | Cores per Node  | 128                        |
-    +-----------------+----------------------------+
-    | Memory per Node | 503 GiB                    |
-    +-----------------+----------------------------+
+From gaea9-15 you caninteract with c5's Slurm cluster. See Slurm Tips for details.
 
-Data Transfer Nodes (DTN)
--------------------------
+Your C5 job scripts will usually call srun or srun-multi if you have a multi-executable model e.g. a coupled model with different ocean and atmospheric model executables.
 
-+-----------------+----------------------------+
-| CPU Type        | AMD Rome (7702)            |
-+-----------------+----------------------------+
-| CPU Speed       | 2.0 GHz                    |
-+-----------------+----------------------------+
-| Number of Nodes | 16                         |
-+-----------------+----------------------------+
-| Cores per Node  | 128                        |
-+-----------------+----------------------------+
-| Memory per Node | 503 GiB                    |
-+-----------------+----------------------------+
+**C5 Known Issues**
 
-Compute Nodes
--------------
+- Known Module Incompatibility on C5
 
-+------------------------+----------------------------+------------------------------+------------------+
-|                        | C3                         | C4                           | C5               |
-+========================+============================+==============================+==================+
-| CPU Type               | Intel Haswell (E5-2698 v3) | Intel Broadwell (E5-2697 v4) | AMD Rome (7H12)  |
-+------------------------+----------------------------+------------------------------+------------------+
-| CPU Speed              | 2.3 GHz                    | 2.3 GHz                      | 2.6 GHz          |
-+------------------------+----------------------------+------------------------------+------------------+
-| Number of Nodes        | 1,504                      | 2,656                        | 1,920            |
-+------------------------+----------------------------+------------------------------+------------------+
-| Number of Sockets      | 2                          | 2                            | 2                |
-+------------------------+----------------------------+------------------------------+------------------+
-| Cores per Socket       | 16                         | 18                           | 64               |
-+------------------------+----------------------------+------------------------------+------------------+
-| Threads per Core       | 2                          | 2                            | 2                |
-+------------------------+----------------------------+------------------------------+------------------+
-| Total Cores per Node   | 32                         | 36                           | 128              |
-+------------------------+----------------------------+------------------------------+------------------+
-| Total Threads per Node | 64                         | 72                           | 256              |
-+------------------------+----------------------------+------------------------------+------------------+
-| Total Cores            | 48,128                     | 95,616                       | 245,760          |
-+------------------------+----------------------------+------------------------------+------------------+
-| Memory per Node        | 64 GiB                     | 64 GiB                       | 251 GiB          |
-+------------------------+----------------------------+------------------------------+------------------+
-| Total Memory           | 96,256 GiB                 | 169,984 GiB                  | 481,902 GiB      |
-+------------------------+----------------------------+------------------------------+------------------+
-| Interconnect           | Cray Aires                 | Cray Aires                   | HPE Slingshot 10 |
-+------------------------+----------------------------+------------------------------+------------------+
-| Total Flops            | 1.77 PF                    | 3.52 PF                      | 10.2 PF          |
-+------------------------+----------------------------+------------------------------+------------------+
-
-C5 Nodes and Cores
-------------------
-
-Login Nodes
-^^^^^^^^^^^
-
-There are eight new login nodes for the C5 cluster. You may submit batch jobs to the C5 login nodes using eslogin_c5 partition name.
+There is a known incompatibility with the cray-libsci module and the following intel modules:
 
 .. code-block:: shell
 
-   sbatch --cluster=es --partition=eslogin_c5
+  intel-classic/2022.0.2
+  intel-oneapi/2022.0.2
+  
+A recommended workaround to this issue is to either module unload cray-libsci or use another intel compiler.
 
-Slurm allows batch jobs to request hardware resources in addition to nodes and cores, such as memory. If not explicitly set with sbatch options (e.g., sbatch --mem=20G), batch jobs request a default memory per requested (logical) core (e.g., sbatch --ntasks=8). The default memory per core for the C5 login nodes is 2GB.
+**Site Specific Documentation for C5**
 
-
-Compute Nodes
-^^^^^^^^^^^^^
-
-Each C5 compute node consists of [2x] 64-core AMD Rome EPYC Rome "Zen 2" 7H12 CPUs (with 2 hardware threads per physical core) with access to 251 GB of DDR4 memory. The nodes are dual socket systems with eight memory channels per socket. AMD has technology known as Simultaneous Multithreading, similar to Intel's Hyper-Threading technology, which doubles the number of logical CPUs on a node allowing for 256 logical cores.
-
-The compute nodes are configured in high-bandwidth mode in order to minimize local memory latency for NUMA-aware or highly parallelizable workloads by defining multiple NUMA zones per socket.
-* 4 memory "NUMANodes" per socket
-* Allocates memory channels to core groups
-* 16 cores per memory "node"
-
-Applications runnnig with OpenMP are supported and run well on C5. On C3 and C4 clusters, OpenMP appplications have been able to utilize HyperThreads for a slight performance benefit.
-
-
-System Interconnect
--------------------
-The C5 nodes are connected using the HPE Slingshot Interconnect (version 10)
-
-
-Connecting
-==========
-
-Connecting with a CAC
----------------------
-
-The preferred method to to access Gaea is to use the CAC bastion.  This will use
-your CAC for authentication.  This method requires the TECTIA SSH client. RDHPCS
-has obtained licenses for all RDHPCS users.  Please follow the
-:ref:`instructions <cac_instructions>` to obtain the TECTIA client and license.
-
-With the TECTIA client, use the CAC bastion hosts are at the URLs
-``gaea.princeton.rdhpcs.noaa.gov`` and ``gaea.boulder.rdhpcs.noaa.gov``.  Follow
-the :ref:`CAC instructions <cac_instructions>` on additional configuration
-settings.  Once the Gaea host is configured in TECTIA, open a connection with
+See the C5 On-boarding Guide.
 
 .. code-block:: shell
 
-    sshg3 gaea.princeton.rdhpcs.noaa.gov
+  C5 cpuinfo and memory
+  processor	: 208
+  vendor_id	: AuthenticAMD
+  cpu family	: 23
+  model		: 49
+  model name	: AMD EPYC 7662 64-Core Processor
+  stepping	: 0
+  microcode	: 0x830107a
+  cpu MHz		: 2000.000
+  cache size	: 512 KB
+  physical id	: 1
+  siblings	: 128
+  core id		: 16
+  cpu cores	: 64
+  apicid		: 161
+  initial apicid	: 161
+  fpu		: yes
+  fpu_exception	: yes
+  cpuid level	: 16
+  wp		: yes
+  flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr rdpru wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl umip rdpid overflow_recov succor smca
+  bugs		: sysret_ss_attrs spectre_v1 spectre_v2 spec_store_bypass retbleed smt_rsb
+  bogomips	: 3985.40
+  TLB size	: 3072 4K pages
+  clflush size	: 64
+  cache_alignment	: 64
+  address sizes	: 48 bits physical, 48 bits virtual
+  power management: ts ttp tm hwpstate cpb eff_freq_ro [13] [14]
 
-or
-
-.. code-block:: shell
-
-    sshg3 gaea.boulder.rdhpcs.noaa.gov
-
-When propted, enter your CAC PIN.
-
-Connecting with an RSA token
-----------------------------
-
-Users who do not have a CAC, or are connecting using a system that does not have
-a TECTIA client (e.g., Mac OS, Android, ChromeOS, etc.) will need to use the RSA
-bastion.  The RSA bastion hosts are at the URLs
-``gaea-rsa.princeton.rdhpcs.noaa.gov`` and ``gaea-rsa.boulder.rdhpcs.noaa.gov``.
-
-.. code-block:: shell
-
-    ssh gaea-rsa.princeton.rdhpcs.noaa.gov
-
-or
-
-.. code-block:: shell
-
-    ssh gaea-rsa.boulder.rdhpcs.noaa.gov
-
-When propted, enter your PASSCODE which consists of your PIN+RSA_CODE.  The
-RSA_CODE is the 6-8 digit code from the RSA fob or RSA app.
-
-.. note::
-
-    The first connection with an RSA token, you will be requested for a new PIN
-    which must be at least 6 alphanumeric characters.
-
-Modules and Software
-====================
-
-LMOD
-----
-LMOD is the modules software management system used on C5 and the C5 login nodes. Unlike the module system on C3/C4, LMOD employs a hierarchical system that, when used properly, considers dependencies and prerequisites for a given software package. For example, the **cray-netcdf** module depends on the **cray-hdf5** module and cannot be seen by the standard **module avail** commands nor be loaded until the **cray-hdf5** module is loaded.
-
-The LMOD hierarchical system will automatically deactivate or swap an upstream module dependency. Two examples are given below. Another feature of LMOD is swapping or unloading an upstream dependency. When that happens, any downstream module will still be loaded but inactivated.
-
-.. code-block:: shell
-
-    prompt> module load cray-hdf5
-    prompt> module load cray-netcdf
-    prompt> module unload cray-hdf5
-
-    Inactive Modules:
-        1) cray-netcdf
-
-LMOD Search Commands
---------------------
-
-To find a specific module, use ``module spider``. The command will show all modules and versions with the name. This includes modules that cannot be loaded in the current environment.
-
-.. code-block:: shell
-
-    module spider <module>
-
-
-``module avail`` will show only modules that can be loaded in the current environment.
-
-Adding Additional Module Paths
-------------------------------
-
-**Do not manually set the MODULESPATH environment variable.** Manually setting the MODULESPATH environment variable will produce unknown behavior. Use ``module use <path>`` or ``module use -a <path>`` to add more module paths.
-
-Data and Storage
-================
-
-Filesystems
------------
-
-Gaea has two filesystems: Home and F2, a parallel filesystem based on Lustre.
-
-Home Filesystem
+Job Submission
 ---------------
+There are two job types:
 
-The home filesystem is split into two sections both of which are backed up. For load balance purposes, there is a home1 and home2.
+- Batch
+  -Regular jobs - use sbatch
+
+- Interactive/Debug
+  -salloc --x11 --clusters=c3 --nodes=2 --ntasks-per-node=32
+
+Queues
+------
+There are four different queues.
+
+- batch - no specification needed
+- eslogin - compiles and data processing jobs
+- ldtn - data movement queue (local)
+- rdtn - data movement (remote)
+
+Examples:
+
+.. code-block:: shell
+
+  sbatch --clusters=es --partition=eslogin scriptname
+  sbatch --clusters=es --partition=ldtn scriptname
+
+Job Monitoring
+--------------
+
+The following are job monitoring commands with examples:
+
+- squeue: displays the queues. All jobs are commingled.
+
+.. code-block:: shell
+
+  squeue
+  squeue -u $USER
+  
+- scontrol show job: provides job information.
+
+.. code-block:: shell
+
+  scontrol show job jobid
+
+- sinfo: system state information
+
+.. code-block:: shell
+
+  sinfo
+
+- scontrol: control holds on jobs
+
+.. code-block:: shell
+
+  scontrol hold jobid
+  scontrol release jobid
+
+- scancel: cancel jobs
+
+.. code-block:: shell
+  
+  scancel jobid
+
+Terminology
+-----------
+
++---------------+------------------------------------------------------------------------------------------+
+|**Slurm**      |The scheduler for all new NOAA research and development systems.                          |
++---------------+------------------------------------------------------------------------------------------+
+|**Cluster**    |A section of Gaea that has its own scheduler. It is a logical unit in Slurm.              | 
++---------------+------------------------------------------------------------------------------------------+
+|**Partition**  |A group of nodes with a specific purpose. It is a logical unit in Slurm.                  |
++---------------+------------------------------------------------------------------------------------------+
+|**DTN**        |Data transfer node                                                                        |
++---------------+------------------------------------------------------------------------------------------+
+|**CMRS**       |Climate Modeling and Research System; an alternate name for Gaea.                         |  
++---------------+------------------------------------------------------------------------------------------+
+
+.. note::
+  MPMD capability will not be supported on Gaea. Users who need MPMD functionality can open a help desk ticket. NCEP users should continue to filter tickets and requests through Kate.Howard@noaa.gov. Users requesting this support via help desk ticket will be given access to a Gaea application analyst who will assist them.
+
+Environment
+------------
+
+Gaea is implemented to use the Environment Modules system. This tool helps users manage their Unix or Linux shell environment. It allows groups of related environment-variable settings to be made or removed dynamically. Modules provides commands to dynamically load, remove and view software.
+
+More information on using modules is available at Gaea Modules.
+
+Do's and Don'ts
+---------------
+**Do**
+
+- Compile on login nodes
+- Copy data back to archive location (off gaea) using RDTN's
+- Put source files and commonly used files in /lustre/f2/dev/$user
+- Put transient data in /lustre/f2/scratch/$user
+- Use gcp for transfers
+- Use lfs (lustre) version of commands on the F2 lustre filesystem
+- lfs manual
+
+**Don't** use the following on Gaea:
+
+- combines on batch (they will be killed)
+- combines on compute nodes
+- compile on batch
+- cp
+- cron jobs (not permitted)
+- deep large scale use of "find" on the F2 lustre filesystem (please use 'lfs find' instead)
+- fs as permanent storage
+- module purge
+- recursive operations like ls -R
+- run applications natively
+- transfers on batch nodes
+- unalias*
+
+File Systems
+============
+Gaea has three filesystems: Home, F2 (a parallel file system based on Lustre, soon to be decommissioned), and F5 (a General Parallel File System).
+
+Summary of Storage Areas
+------------------------
+
+**NFS File System**
+
++--------------+----------------------+------+--------------+-------+--------+---------+-----------+---------------+
+| Area         | Path                 | Type | Permissions  | Quota | Backup | Purged  | Retention | Compute Nodes |
++--------------+----------------------+------+--------------+-------+--------+---------+-----------+---------------+
+| User Home    | /ncrc/home[12]/$USER | NFS  | User Set     | 50 GB | Yes    | No      | N/A       | Yes           |
++--------------+----------------------+------+--------------+-------+--------+---------+-----------+---------------+
+| Project Home | /ncrc/proj/<project> | NFS  | Project Set  | N/A   | Yes    | No      | N/A       | Yes           |
++--------------+----------------------+------+--------------+-------+--------+---------+-----------+---------------+
+
+**Lustre File System (F2)**
+
+
++--------------+--------------------------+--------+-------------+-------+--------+------------+-----------+---------------+
+| Area         | Path                     | Type   | Permissions | Quota | Backup | Purged     | Retention | Compute Nodes |
++--------------+--------------------------+--------+-------------+-------+--------+------------+-----------+---------------+
+| User Scratch | /lustre/f2/scratch/$USER | Lustre | User Set    | NA    | NO     | Subject to | NA        | YES           |
+|              |                          |        |             |       |        | sweeping   |           |               |
++--------------+--------------------------+--------+-------------+-------+--------+------------+-----------+---------------+
+| User Scratch | /lustre/f2/scratch/$USER | Lustre | User Set    | NA    | NO     | When       | NA        | YES           |
+|              |                          |        |             |       |        | necessary  |           |               |
++--------------+--------------------------+--------+-------------+-------+--------+------------+-----------+---------------+
+| User Scratch | /lustre/f2/scratch/$USER | Lustre | Project Set | NA    | NO     | No         | NA        | YES           |
++--------------+--------------------------+--------+-------------+-------+--------+------------+-----------+---------------+
+
+**GPFS (F5)**
+
+
++--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
+| Area         | Path                     | Type   | Permissions | Quota   | Backup | Purged | Retention | Compute Nodes |
++--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
+| Member Work  | /lustre/f2/scratch/$USER | GPFS   | User Set    | Project | NO     | NO     | NA        | YES           |
+|              |                          |        |             | based   |        |        |           |               |
++--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
+| Project Work | /lustre/f2/scratch/$USER | GPFS   | Project Set | Project | NO     | NO     | NA        | YES           |
+|              |                          |        |             | based   |        |        |           |               |
++--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
+| World work   | /lustre/f2/scratch/$USER | GPFS   | Project Set | Project | NO     | NO     |           |               |
+|              |                          |        |             | based   |        |        |           |               |
++--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
+
+HOME
+----
+
+The home filesystem is split into two sections both of which are backed up. For load balance purposes, there is a home1 and home2. Note: 
 
 .. note::
 
-    Each user has a 5GB limit.
+  Each user has a 50 GB limit.
 
 Home is mounted on:
 
@@ -371,677 +548,1046 @@ Home is mounted on:
 - RDTN
 - Login nodes
 
+A snapshot can be accessed at
 
-A snapshot can be accessed at ``/ncrc/home1|2/.snapshot/{daily or hourly}/$USER``
+.. code-block:: shell
+
+  /ncrc/home1|2/.snapshot/{daily or hourly}/$USER
 
 You can use this path to restore files or subdirectories. The permissions will be the same as the originals and users can simply copy from that location to any destination.
 
+**General Parallel File System**
 
+F5 is a 50 PB General Parallel File System. F5 will not be swept. Any project jobs will be blocked if the project is significantly over quota.
 
-Lustre Filesystems (F2)
------------------------
+F5 will be mounted on:
 
-F2 is a 33PB Lustre Filesystem. Certain limitations apply to F2. For instance, performance will start to degrade after utilization exceeds 80% on a file system. Therefore, using well-formed I/O, managing the quota, and using lustre storage tools (when searching your files or managing your spcae) is important.
-
-User directories are available at:
-
-.. code-block:: shell
-
-    lustre/f2/scratch/$USER/
-
-and
-
-.. code-block:: shell
-
-    lustre/f2/dev/$USER
-
-
-NCEP users' directories are available at:
-
-.. code-block:: shell
-
-    lustre/f2/scratch/ncep/$USER
-
-and
-
-.. code-block:: shell
-
-   lustre/f2/dev/ncep/$USER
-
-
-All files over 2 weeks old will be scrubbed within the ``lustre/f2/scratch/$USER`` and ``lustre/f2/scratch/ncep/$USER`` directories. Directories under /lustre/f2/dev are not swept. Files that have not been accessed or used within 2 weeks will be scrubbed.
-
-.. note::
-
-  F2 is **NOT** backed up. Users are responsible for monitoring their files and transferring what they do not want to lose to a location without a scrubbing policy and with data back-ups.
-
-F2 is mounted on:
-
-- C4 (batch and compute nodes)
-- C5 (batch and compute nodes)
+- Login nodes (gaea51-gaea58)
+- Compute nodes
 - LDTN
 - RDTN
-- Login nodes
 
-You should have directories in the following locations:
+**Directory Hierarchy**
 
-- ``lustre/f2/scratch/$USER`` (symlinked from ``lustre/f2/scratch/<YOUR_CENTER>/$USER``)
-- ``lustre/f2/dev$USER`` (symlinked from ``lustre/f2/dev/<YOUR_CENTER>/$USER``)
+.. code-block:: shell
 
-F2 Specs
---------
+  /gpfs/f5/<project>/scratch/$USER
+  /gpfs/f5/<project>/proj-shared
+  /gpfs/f5/<project>/world-shared
 
-- Improved I/O performance
-- 33 PB of usable storage
-- Automatic lossless compression of files
-- Additional metadata capacity
+Where <project> is the Slurm project
 
-Environment Variables for F2 locations
---------------------------------------
+Example:
 
-- PDATA = ``/lustre/f2/pdata``
-- DEV = ``/lustre/f2/dev``
-- SCRATCH = ``/lustre/f2/scratch``
+.. code-block:: shell
+
+  /gpfs/f5/epic 
+  /gpfs/f5/gfdl_sd
 
 
-Software
-========
+Allocations and Quotas
+======================
 
-Python
-------
+CPU allocations on Gaea are defined by the allocation board, with allocations allotted among different groups and systems. Each of these currently has a portion of time allocated. Dual running is done within the standard allocations under a QOS (Quality of Service) tag of "dual." Windfall is a catch-all quality of service account for users who have exhausted their groups monthly CPU allocation, or who wish to run without charging to their groups CPU allocation and forfeit job priority factors.
 
-PythonEnv
-^^^^^^^^^
+SLURM is a Resource Manager and Scheduler. For Gaea-specific SLURM information, see SLURM Tips. For a general introduction to SLURM, see SLURM.
 
-Conda
-^^^^^
+.. note::
+  Link this to commondocs when that material is complete
 
-Jupyter Notebooks
-^^^^^^^^^^^^^^^^^
+Modules
+=======
 
-Cron
+The Environment Modules system is a tool to help users manage their Unix or Linux shell environment, by allowing groups of related environment-variable settings to be made or removed dynamically. Modules provides commands to dynamically load, remove and view software.
+
+LMOD
 ----
+LMOD is the modules software management system used on C5 and the C5 login nodes. Unlike the module system on C3/C4, LMOD employs a hierarchical system that, when used properly, considers dependencies and prerequisites for a given software package. For example, the cray-netcdf module depends on the cray-hdf5 module and cannot be seen by the standard module avail commands, nor can it be loaded until the cray-hdf5 module is loaded.
+
+The LMOD hierarchical system will automatically deactivate or swap an upstream module dependency. Two examples are given below.
+
+Another feature of LMOD is swapping or unloading an upstream dependency. In these cases, any downstream module will still be loaded but inactivated.
+
+.. code-block:: shell
+ 
+  $> module load cray-hdf5 
+  $> module load cray-netcdf 
+  $> module unload cray-hdf5
+
+LMOD Search Commands
+--------------------
+
+To find a specific module, use module spider. This command will show all modules and versions with the specified name. This includes modules that cannot be loaded in the current environment.
+
+.. code-block:: shell
+
+  $> module spider <module>
+
+.. code-block:: shell
+
+ module avail 
+
+will show only modules that can be loaded in the current environment.
+
+Adding Additional Module Paths
+------------------------------
+
+Do not manually set the MODULESPATH environment variable. Manually setting the MODULESPATH environment variable will produce unknown behavior. Instead, use module use <path> or module use -a <path> to add more module paths.
+
+Module Commands
+---------------
+Module Command line variables and descriptions
+
+**module help [module]:** Print the usage of each sub-command. If an argument is given, print the Module-specific help information for the module file(s)
+
+.. code-block:: shell
+
+  > module help gcp
+
+  ----------- Module Specific Help for 'gcp/2.2' --------------------
+
+  Sets up the shell environment for gcp
+
+
+**module avail:** List all available modulefiles in the current MODULEPATH.
+
+.. code-block:: shell
+
+  ------------------------------------------ /opt/cray/ss/modulefiles ---------------------------------------
+  portals/2.2.0-1.0301.22039.18.1.ss(default) rca/1.0.0-2.0301.21810.11.20.ss(default)
+  ------------------------------------------ /opt/cray/xt-asyncpe/default/modulefiles -----------------------
+  xtpe-accel-nvidia20  xtpe-barcelona       xtpe-istanbul        xtpe-mc12            xtpe-mc8             xtpe-network-gemini
+  xtpe-network-seastar xtpe-shanghai        xtpe-target-native
+  ------------------------------------------ /opt/cray/modulefiles ------------------------------------------
+  atp/1.0.2(default)                   perftools/5.1.0(default)             portals/2.2.0-1.0300.20621.14.2.ss   trilinos/10.2.0(default)
+  atp/1.1.1                            perftools/5.1.2                      rca/1.0.0-2.0300.20198.8.26.ss       trilinos/10.6.2.0
+  ga/4.3.3(default)                    pmi/1.0-1.0000.7628.10.2.ss          rca/3.0.20                           xt-mpich2/5.0.1(default)
+  gdb/7.2(default)                     pmi/1.0-1.0000.7901.22.1.ss(default) stat/1.0.0(default)                  xt-mpich2/5.2.0
+  iobuf/2.0.1(default)                 pmi/1.0-1.0000.8256.50.1.ss          stat/1.1.3                           xt-mpt/5.0.1(default)
+  xt-mpt/5.2.0                         xt-shmem/5.0.1(default               xt-shmem/5.2.0
+
+.. note::
+  Your shell might print out something more, or something different.
+
+**module add module_file:** Load module file(s) into the shell environment
+
+**module load module_file:** Load module file(s) into the shell environment
+
+.. code-block:: shell
+
+  > module load gcp/1.1
+
+
+**module list:** List of Loaded modules.
+
+.. code-block:: shell
+
+  > module list
+  1) modules/3.2.6.6                            6) xt-mpt/5.0.1                              11) PrgEnv-pgi/3.1.29
+  2) xt-sysroot/3.1.29.securitypatch.20100707   7) pmi/1.0-1.0000.7901.22.1.ss               12) eswrap/1.0.9
+  3) xtpe-network-seastar                       8) xt-sysroot/3.1.29                         13) moab/5.4.1
+  4) pgi/10.6.0                                 9) portals/2.2.0-1.0301.22039.18.1.ss        14) torque/2.4.9-snap.201006181312
+  5) xt-libsci/10.4.6                          10) xt-asyncpe/4.4                            15) xtpe-mc12
+  16) TimeZoneEDT                              17) CmrsEnv                                   18) gcp/1.4.3
+
+  note gcp/1.4.3 is now Loaded at no.18
+
+**module rm module_file:** unload the module
+
+**module unload module_file:** unload the module
+
+.. code-block:: shell
+
+  > module unload gcp/1.4.3
+  module list
+  1) modules/3.2.6.6                            6) xt-mpt/5.0.1                              11) PrgEnv-pgi/3.1.29
+  2) xt-sysroot/3.1.29.securitypatch.20100707   7) pmi/1.0-1.0000.7901.22.1.ss               12) eswrap/1.0.9
+  3) xtpe-network-seastar                       8) xt-sysroot/3.1.29                         13) moab/5.4.1
+  4) pgi/10.6.0                                 9) portals/2.2.0-1.0301.22039.18.1.ss        14) torque/2.4.9-snap.201006181312
+  5) xt-libsci/10.4.6                          10) xt-asyncpe/4.4                            15) xtpe-mc12
+  16) TimeZoneEDT                              17) CmrsEnv
+
+  note gcp/1.4.3 is not Loaded
+
+
+**module Switch [available_module] replacement_module:** Switch loaded modulefile1 with modulefile2. If modulefile1 is not specified, then it is assumed to be the currently loaded module with the same root name as modulefile2
+
+**module swap [available_module] replacement_module:** Switch loaded modulefile1 with modulefile2. If modulefile1 is not specified, then it is assumed to be the currently loaded module with the same root name as modulefile2
+
+.. code-block:: shell
+
+  > module load gcp/1.1
+  module list
+  Currently Loaded Modulefiles:
+  1) modules/3.2.6.6                            6) xt-mpt/5.0.1                              11) PrgEnv-pgi/3.1.29
+  2) xt-sysroot/3.1.29.securitypatch.20100707   7) pmi/1.0-1.0000.7901.22.1.ss               12) eswrap/1.0.9
+  3) xtpe-network-seastar                       8) xt-sysroot/3.1.29                         13) moab/5.4.1
+  4) pgi/10.6.0                                 9) portals/2.2.0-1.0301.22039.18.1.ss        14) torque/2.4.9-snap.201006181312
+  5) xt-libsci/10.4.6                          10) xt-asyncpe/4.4                            15) xtpe-mc12
+  16) TimeZoneEDT                              17) CmrsEnv                                   18) gcp/1.1
+
+  module swap gcp/1.1 gcp/1.5.0
+  1) modules/3.2.6.6                            6) xt-mpt/5.0.1                              11) PrgEnv-pgi/3.1.29
+  2) xt-sysroot/3.1.29.securitypatch.20100707   7) pmi/1.0-1.0000.7901.22.1.ss               12) eswrap/1.0.9
+  3) xtpe-network-seastar                       8) xt-sysroot/3.1.29                         13) moab/5.4.1
+  4) pgi/10.6.0                                 9) portals/2.2.0-1.0301.22039.18.1.ss        14) torque/2.4.9-snap.201006181312
+  5) xt-libsci/10.4.6                          10) xt-asyncpe/4.4                            15) xtpe-mc12
+  16) TimeZoneEDT                              17) CmrsEnv                                   18) gcp/1.5.0
+
+  Note: the gcp is now version 1.5.0
+
+**module show modulefile:** 
+Display information about one or more modulefiles. The display sub-command will list the full path of the modulefile(s) and all (or most) of the environment changes the modulefile(s) will make if loaded. (It will not display any environment changes found within conditional statements.)
+
+**module display modulefile** 
+Display information about one or more modulefiles. The display sub-command will list the full path of the modulefile(s) and all (or most) of the environment changes the modulefile(s) will make if loaded. (It will not display any environment changes found within conditional statements.)
+
+.. code-block:: shell
+
+  > module show CmrsEnv
+  -------------------------------------------------------------------
+  /sw/eslogin/modulefiles/CmrsEnv:
+  module-whatis    Sets up environment variables for the NCRC CMRS.
+  setenv           CSCRATCH /lustre/fs/scratch
+  setenv           CSTAGE /lustre/ltfs/stage
+  setenv           CWORK /lustre/ltfs/scratch
+  setenv           CHOME /ncrc/home1/John.Smith
+  -------------------------------------------------------------------
+
+
+**module use [-a]–append] directory:** 
+Prepend one or more directories to the MODULEPATH environment variable. The –append flag will append the directory to MODULEPATH.
 
 .. warning::
 
-  Cron is only functional on C4.
+  Please DO NOT use the command module purge. This will remove all modules currently loaded by default in your environment and will lead to major errors. If you have accidentally used the command purge, log out of GAEA and log in. This will give you the default environment with the default modules loaded.
 
-
-Cron is a job scheduler that allows users to run commands at specifically chosen, time-based intervals. Gaea's login nodes can access and modify a central crontab. Each user has an individual crontab which can be accessed using the ``crontab -e`` command-line tool from any of the Gaea login nodes.
-
-By default, ``crontab -e`` command will open a vi-based editor environment. A user can set the ``VISUAL`` or ``EDITOR`` environment variables. See ``man crontab`` for more information.
-
-Scrontab
---------
-
-Traditionaly cron functionality has been replaced on C5 with the the Slurm crontab tool called ``scrontab``. Scrontab is used to set, edit, and remove a user's Slurm-managed crontab. This combines the same functionality as cron with the resiliency of the batch system. Jobs are run on a pool of nodes, so unlike regular cron, a single node going down will not keep you scrontab job from running.
-
-You can edit your scrontab script with:
-
-.. code-block:: shell
-
-   $ scrontab -e
-
-You can view existing scripts with:
-
-.. code-block:: shell
-
-   $ scrontab -l
-
-.. note::
-
-  By default, vi is the editor for scrontab. For a different editor, you can set the ``EDITOR`` environment variable (e.g. ``export
-  EDITOR=/usr/bin/emacs``).
-
-For more information on scrontab, use ``man scrontab``.
-
-Other Software
---------------
-
-- Debuggers
-- X2go
-- Shpcrpt
-- Lustre Filesystem Tools
-- Software Requests
-
-Shell & Programming Environments
-================================
-
-Gaea is implemented using the Environment Modules system. This tool helps users
-manage their Unix or Linux shell environment. It allows groups of related
-environment variable settings to be made or removed dynamically.  Modules
-provide commands to dynamically load, remove and view software.
-
-More information on using modules is available at :ref:`modules <modules>`.
-
-.. gaea_compiling:
-
-Compiling
+Compilers
 =========
+Compiling code on Cray machines is different from compiling code for commodity or beowulf-style HPC linux clusters. Among the most prominent differences:
 
-Compiling code on Cray machines is different than compiling code for commodity
-or beowulf-style HPC linux clusters. Among the most prominent differences:
-
-- Cray provides a sophisticated set of compiler wrappers to ensure that the
-  compile environment is setup correctly. Their use is highly encouraged.
-- In general, linking/using shared object libraries on compute partitions is not
-  supported.
+- Cray provides a sophisticated set of compiler wrappers to ensure that the compile environment is setup correctly. Their use is highly encouraged.
+- In general, linking/using shared object libraries on compute partitions is not supported.
 
 Available Compilers
 -------------------
-
 The following compilers are available:
 
-- The Intel Classic Compiler Suite
-- The Intel OneAPI Compiler Suite
-- GCC, the GNU Compiler Collection
-- The Cray Compiler Suite
+- NVHPC Compiler Suite (8.3.3)
+- AOCC Compiler Suite (8.3.3)
+- PGI, the Portland Group Compiler Suite (default) (12.5.0)
+- GCC, the GNU Compiler Collection (4.7.0)
+- The Cray Compiler Suite (8.1.3)
+- The Intel Compiler Suite (12.1.3.293)
 
-New Compilers on C5
-^^^^^^^^^^^^^^^^^^^
+Compilers on C5
+---------------
 
-NVHPC is the replacement for the PGI compiler.
-AOCC is the AMD Optimizing C/C++ and Fortran Compiler.
-All of MSD's testing has been experimental and limited with these compilers.
-
+NVHPC replaces the PGI compiler. AOCC is the AMD Optimizing C/C++ and Fortran Compiler.
 The following compilers and programming environments are available on C5 as modules:
 
 - PrgEnv-aocc/8.3.3 aocc/3.2.0
-
 - PrgEnv-cray/8.3.3 cce/14.0.4
-
 - PrgEnv-cray/8.3.3 cce/15.0.1
-
 - PrgEnv-gnu/8.3.3 gcc/10.3.0
-
 - PrgEnv-gnu/8.3.3 gcc/11.2.0
-
 - PrgEnv-gnu/8.3.3 gcc/12.1.0
-
 - PrgEnv-gnu/8.3.3 gcc/12.2.0
-
 - PrgEnv-intel/8.3.3 intel-classic/2022.0.2
-
 - PrgEnv-intel/8.3.3 intel-classic/2022.2.1
-
 - PrgEnv-intel/8.3.3 intel-oneapi/2022.0.2
-
 - PrgEnv-intel/8.3.3 intel-oneapi/2022.2.1
-
 - PrgEnv-intel/8.3.3 intel/2022.0.2
-
 - PrgEnv-intel/8.3.3 intel/2022.2.1
-
 - PrgEnv-nvhpc/8.3.3 nvhpc/22.7
-
 
 With Intel 2022 compilers on C5 users should replace the -xsse2 compiler option with one of the following:
 
-- ``-march=core-axv-i``: **Recommended** for production. MSD is using this for regression testing. A limited number of MOM6-solo tests on t5 even bitwise produce c4 answers with this option unlike the next. MSD has found no reproducibility issues with this option so far. This option is used for FRE targets prod and repro
+- march=core-axv-i: Recommended for production. MSD uses this for regression testing. A limited number of MOM6-solo tests on t5 even bitwise produce c4 answers with this option. MSD has found no reproducibility issues with this option so far. This option is used for FRE targets prod and repro.
 
-- ``-march=core-avx2``: **Not Recommended** for production, at the moment, for GFDL climate models. Should only be used for exploratory testing with advanced AVX optimizations. There are known restart reproducibility issues with GFDL climate models potentially affecting multi-segment runs, but no repeatability issues have been seen so far for single-segement runs.
+- march=core-avx2: Not Recommended at this time for production for GFDL climate models. It should only be used for exploratory testing with advanced AVX optimizations. There are known restart reproducibility issues with GFDL climate models potentially affecting multi-segment runs, but no repeatability issues have been seen so far for single-segment runs.
 
-**Caution**: When building a production executable, please review the compilation output to ensure that ``-march=core-avx-i`` is used.
+.. caution::
 
+  When building a production executable, please review the compilation output to ensure that -march=core-avx-iis used.
 
-Cray Compiler wrappers
+**Intel Compilers (mixed compiler modules)**
+
+LMOD uses hierarchical modules. This helps ensures that only one module in a hierarchical level is loaded, and that modules depending on a given hierarchy are loaded properly, thus reducing module conflicts. The compiler modules are one of the hierarchical levels. However, some compilers (e.g., the Intel compilers) rely on the GNU Compiler Collection (GCC) compilers to know which C and Fortran standards to support. HPE has included the <compiler>-mixed modules to address this. These mixed modules will allow multiple compiler modules to be loaded. This is typically not needed in GFDL workflows but is available. MSD recommends loading the compiler module that does not have -mixed on the end.
+
+Cray Compiler Wrappers
 ----------------------
+Cray provides a number of compiler wrappers that substitute for the traditional compiler invocation commands. The wrappers call the appropriate compiler, add the appropriate header files, and link against the appropriate libraries based on the currently loaded programming environment module. To build codes for the compute nodes, you should invoke the Cray wrappers via:
 
-Cray provides a number of compiler wrappers that substitute for the traditional
-compiler invocation commands. The wrappers call the appropriate compiler, add
-the appropriate header files, and link against the appropriate libraries based
-on the currently loaded programming environment module. To build codes for the
-compute nodes, you should invoke the Cray wrappers via:
+- cc To use the C compiler
+- CC To use the C++ compiler
+- ftn To use the FORTRAN 90 compiler
 
-cc
-  To use the C compiler
-CC
-  To use the C++ compiler
-ftn
-  To use the Fortran compiler
+These wrappers are provided by PrgEnv-[intel|gnu|pgi|cray] modules. PrgEnv-pgi is the default module when you login to Gaea.
 
-These wrappers are provided by ``PrgEnv-[intel|gnu|pgi|cray]`` modules.
-``PrgEnv-intel`` is the default module when you login to Gaea.
+Compiling and Node Types
+------------------------
 
-Compiling for Compute Nodes
----------------------------
+Cray systems are comprised of different types of nodes:
 
-Cray compute nodes are the nodes that carry out the vast majority of
-computations on the system.  Using the Cray compiler wrappers, your
-code will be built targeting the compute nodes. All parallel codes should run on
-the compute nodes.
-
-.. note::
-
-  We highly recommend that the Cray-provided cc, CC, and ftn compiler wrappers be
-  used when compiling and linking source code for use on the compute nodes.
+- Login nodes running traditional Linux
+- Batch nodes running traditional Linux
+- Compute nodes running the Cray Node Linux (CNL) microkernel
+  - Your code will run on these nodes.
 
 .. warning::
-  Always compile on the login nodes. Never compile on the compute nodes.
+  Always compile on the login nodes. Never compile on the batch nodes.
 
 .. note::
 
-  Gaea also has LDTN and RDTN nodes. These are for combining model output
-  (LDTN) and data transfer (RDTN) only, not compiling.
+  Gaea also has LDTN and RDTN nodes. These are for combining model output (LDTN) and data transfer (RDTN) only, not compiling. They are not Cray nodes.
 
-.. warning::
+**Compiling for Compute Node**
 
-  Long-running or memory-intensive codes should not be compiled for use on login
-  nodes.
-
-
-Support for Shared Object Libraries
------------------------------------
-
-Cray systems support linking with both static and dynamic libraries.  The Cray
-compiler wrappers use an environment variable ``SOME_ENV_VAR`` to determine how
-to link external libraries.  The default link method for the C3 and C4 clusters
-is static, while C5's default is dynamic.
+Cray compute nodes are the nodes that carry out the vast majority of computations on the system. Compute nodes are running the CNL microkernel, which is markedly different than the OS running on the login and batch nodes. Your code will be built targeting the compute nodes. All parallel codes should run on the compute nodes. Compute nodes are accessible only by invoking aprun within a batch job. To build codes for the compute nodes, you should use the Cray compiler wrappers.
 
 .. note::
+  We highly recommend that the Cray-provided cc, CC, and ftn compiler wrappers be used when compiling and linking source code for use on the compute nodes.
 
-  Dynamic linking will create smaller executable.  However, the environment must
-  be identical when running the executable as was configured when building.
-  Static binaries are larger, but do not require the build and runtime
-  environments to be identical.
+**Support for Shared Object Libraries**
 
-Within C5, the Cray Programming Environement (CrayPE) now defaults to dynamically linked libraries. The executable will not include copies of the assocaited libraries at link time but will look for the libraries using the LD_LIBRARY_PATH variable and load them when executed. For this reason, batch scripts must load the appropriate modules for a given executable. If not loaded, the executable will issue an error similar to:
+Cray systems support linking with both static and dynamic libraries.
+
+The Cray compiler wrappers use an environment variable SOME_ENV_VAR to determine how to link external libraries. The default link method for the C3 and C4 clusters is static, while C5's default is dynamic.
+
+.. note::
+  Dynamic linking will create a smaller executable. However, the run environment configuration must be identical to the environment where the executable was built. Static binaries are larger, but do not require the build and runtime environments to be identical.
+
+Within C5, the Cray Programming Environment (CrayPE) now defaults to dynamically linked libraries. The executable will not include copies of the associated libraries at link time but will look for the libraries using the LD_LIBRARY_PATH variable, and load them when executed. For this reason, batch scripts must load the appropriate modules for a given executable. If not loaded, the executable will issue an error similar to shell <executable> error while loading shared libraries:
 
 .. code-block:: shell
 
-   <executable>: error while loading shared libraries: cannot open shared object file: No such file or directory
+  cannot open shared object file: No such file or directory
 
-Changing Compilers
-------------------
+**Do Not Compile on Batch Nodes**
 
-If a different compiler is required, it is important to use the correct
-environment for each compiler. To aid users in pairing the correct compiler and
-environment, programming environment modules are provided. The programming
-environment modules will load the correct pairing of compiler version, message
-passing libraries, and other items required to build and run. We highly
-recommend that the programming environment modules be used when changing
-compiler vendors. The following programming environment modules are available:
+When you log into a Cray system you are placed on a login node. When you submit a job for execution on c1/c2, your job script is launched on one of a small number of shared batch nodes. To run your application, use the Cray utility aprun. aprun will run your application on the compute nodes associated with your job. All tasks not launched through aprun will run on a batch node. Users should note that there are a small number of these login and batch nodes, and they are shared by all users. Because of this, long-running or memory-intensive work should not be performed on login nodes or batch nodes.
 
+.. warning::
+  Long-running or memory-intensive codes should not be compiled for use on login nodes nor batch nodes.
+
+.. warning::
+  Always compile on the login nodes. Never compile on the batch nodes.
+
+Controlling the Programming Environment
+---------------------------------------
+
+Upon login, the default versions of the PGI compiler and associated Message Passing Interface (MPI) libraries are added to each user's environment through a programming environment module. Users do not need to make any environment changes to use the default version of PGI and MPI.
+
+**Changing Compilers**
+
+If a different compiler is required, it is important to use the correct environment for each compiler. To aid users in pairing the correct compiler and environment, programming environment modules are provided. The programming environment modules will load the correct pairing of compiler version, message passing libraries, and other items required to build and run. We highly recommend that the programming environment modules be used when changing compiler vendors. The following programming environment modules are available:
+
+- PrgEnv-pgi
 - PrgEnv-gnu
 - PrgEnv-cray
 - PrgEnv-intel
 
-To change the compiler, use the ``module swap`` command.  For example, to change
-from the Intel compiler to the GNU compiler run the command:
+To change the default loaded PGI environment to the default version of GNU use:
 
 .. code-block:: shell
 
-  module swap PrgEnv-intel Prgenv-gnu
+  $ module unload PrgEnv-pgi $ module load PrgEnv-gnu
 
-Changing Versions of the Same Compiler
---------------------------------------
+**Changing Versions of the Same Compiler**
 
-To use a specific compiler version, you must first ensure the compiler's PrgEnv
-module is loaded, and then use ``module swap`` to the desired version.
+To use a specific compiler version, you must first ensure the compiler's PrgEnv module is loaded, and then swap to the correct compiler version. For example, the following will configure the environment to use the GCC compilers, then load a non-default GCC compiler version:
 
 .. code-block:: shell
 
-  module swap gcc/12.0.2
+  $ module swap PrgEnv-pgi PrgEnv-gnu $ module swap gcc gcc/4.6.2
 
-.. danger::
+**General Programming Environment Guidelines**
 
-  Do not run ``module purge`` on any Gaea node.  The Cray Operating System (COS)
-  requires several modules to be loaded to work properly, and several of the
-  modules will not reload properly if unloaded.
+We recommend the following general guidelines for using the programming environment modules:
 
-Running Jobs
+- Do not purge all modules; rather, use the default module environment provided at the time of login, and modify it.
+- Do not swap or unload any of the Cray provided modules (those with names like xt-'*').
+- Do not swap moab, torque, or MySQL modules after loading a programming environment modulefile.
+
+Compiling Threaded Codes
+------------------------
+
+When building threaded codes, you may need to take additional steps to ensure a proper build.
+
+**OpenMP**
+
+For PGI, add "-mp" to the build line:
+
+.. code-block:: shell
+
+  $ cc -mp test.c -o test.x $ setenv OMP_NUM_THREADS 2 $ aprun -n2 -d2 ./test.x
+
+For Cray and GNU no additional flags are required:
+
+.. code-block:: shell
+
+  $ module swap PrgEnv-pgi PrgEnv-cray $ cc test.c -o test.x $ setenv OMP_NUM_THREADS 2 $ aprun -n2 -d2 ./test.x
+
+For Intel:
+
+.. code-block:: shell
+
+  $ module swap PrgEnv-pgi PrgEnv-intel $ cc -openmp test.c -o test.x $ setenv OMP_NUM_THREADS 2 $ aprun -n2 -d2 ./test.x
+
+**SHMEM**
+
+For SHMEM codes, users must load the xt-shmem module before compiling:
+
+.. code-block:: shell
+
+  $ module load xt-shmem
+
+Hardware
+========
+
+c5 partition
+------------
+- 10.2 petaflop HPE Cray Ex
+- 245,760 cores
+- 128 cores/node
+- 1,920 nodes
+- 449 TB of memory
+- AMD Rome processors
+- 8 Login Nodes
+
+
+es partition
+------------
+**rdtn queue**
+- Remote Data Transfer Nodes - used for transferring data to/from the world outside of Gaea
+- 8 nodes (rdtn01-08)
+- 8 slots per node
+- 64 total slots
+
+**ldtn queue**
+- Local Data Transfer Nodes - used for I/O intensive operations, like model output combining
+- 16 nodes (ldtn1-16)
+- 8 cores/node
+- 128 cores
+
+**eslogin queue**
+
+- login nodes - used for compiling
+- 8 total
+- gaea9-12 = c3
+- gaea13-16 = c4
+- 24 cores
+- 256 GB memory
+
+Queue Policy
 ============
+**Some overall points**
 
-Slurm
------
+The queuing system should allow groups/projects to spend their allocation each month.
+The contest between keeping urgent jobs in the system and running very large jobs suggests that, in general, there should be a limit on the number of cores a job may use, but with a capability to make exceptions for “novel” jobs that may require up to the entire system. This will promote consideration of whether a job requires a large number of cores due to, for example, memory or schedule constraints, or whether it is simply desired.
 
-Gaea uses a batch scheduling system known as SchedMD’s Slurm Workload Manager for scheduling and managing jobs. Users can run programs by submitting scripts to the Slurm job scheduler.
+Queues should exist with different priority levels usable by the scheduling algorithm.
+At the very least, run-time variability would need to be assessed before we could even think of implementing this.
 
-A runscript must do the following:
+**Recommendations**
 
-1. Set the environment
-2. Apply directives in order to specify instructions on setting up a job
-3. Specify the work to be carried out in the form of shell commands
+1. Use a fair-share algorithm that can throttle scheduling priority by comparing how much of a particular allocation has been used at a given time with how much should have been used, assuming constant proportional usage. This will promote steady usage throughout the month.
 
+2. Use two separate allocations, renewed monthly, with multiple queues drawing down each of them: 
 
-Login v. Compute Nodes
-----------------------
+  - 50% of the available time for high-priority and urgent work. That should minimize queue wait time. Queues are:
 
-As previously stated in 'System Overview', Gaea contains two node types: Login and Compute. When you connect to the system, you are placed on a login node. On a login node you can submit jobs, edit files, and monitor your jobs. These nodes are not intended for real computation. Running computationally intensive processes on the login nodes is discouraged.
+    - Urgent, for schedule-driven work that must be completed ASAP.
+    - Novel, for jobs that have unusual resource requirements, typically needing more than 25% of the system’s cores. These can be run during an 8-hour period immediately after Preventative Maintenance is complete, since no other jobs will be running at that time.
 
-.. warning::
+  - 50% for all other **normal-priority** allocated work. Queues would be:
+    - Batch, for regular allocated jobs
+    - Debugging/Interactive work
+    - Windfall, a quality of service (QOS) tag, for work that will not be charged against an allocation. 
+    
+    Windfall can be specified with '-l qos=' directive, as:
 
-  Do not run heavy computation on login nodes. Doing so may negatively impact other users who interact with the cluster.
+.. code-block:: shell
 
+  > sbatch –-qos=windfall
 
-In constrast, a compute node is intended for heavy computation. All of the real computation occurs on compute nodes and most of the nodes fall into this category. When starting a batch job, your batch script runs on one of the allocated compute nodes.
+or in your job script:
 
+.. code-block:: shell
 
-Basic Job Submission
+  #SBATCH -–qos=windfall
+
+**Priorities between queues**
+
+Normally, the Urgent queue will have the highest priority but remain subject to the fair-share algorithm. This will discourage groups from hoarding high-priority time for the end of the month. Within a group/project, jobs in the Urgent queue are higher priority than jobs in the Normal queue, with each group expected to manage the intra-group mix per their allocation.
+At any given time, the suite of jobs drawn from the Urgent queue and running on the system should use about 50% of the available cores (per the fair-share algorithm), but that suite is permitted to use more than 50% as needed (with the implication that less than 50% will be used at other times of the month).
+
+- Limit the largest job to 25% of the available cores except in the Novel queue.
+- Limit time requested for individual job segments to 12 hours.
+- Interactive/debugging jobs have a tiered limit:
+
+  - < or = 72 cores (3 nodes) 12 hour limit
+  - < or = 504 cores (21 nodes) 6 hour limit
+  - can't go over 504
+
+**Partitions**
+
+Users are encouraged to add the following to their job submissions and/or job script cluster=c#
+
+.. code-block:: shell
+
+  sbatch --cluster=c# /path/to/job/script
+
+or in your job script:
+
+.. code-block:: shell
+
+  #SBATCH --cluster=c#
+
+Debug & Batch Queues
 --------------------
 
-Generally, users submit jobs by writing a batch script and submitting the job to Slurm with the ``sbatch`` command. The ``sbatch`` command takes a number of options. The options you are allowed to specify are the set of options used for the SLURM batch system. For a list of options, use the ``man sbatch`` page.
-
-
-It is also possible to submit an interactive job, but that is usually most useful for debugging purposes.
-
-
-Batch Scripts
--------------
-
-Batch jobs require a batch script that runs the commands and applications you want to execute. A batch script is essentially a shell script with added directives. Directives specify the resources requirements of your jobs and provide certain information to the scheduling system. The sbatch command is used to submit batch jobs.
-
+**Interactive / Debug** The interactive queue may have different time limits based on the size of the submitted job. To see the current queue wallclock limits, run
 
 .. code-block:: shell
 
-    $ sbatch <options> <script>
+ sacctmgr show qos format=Name,MaxWall
 
-Typical options include:
+Note that each cluster may have different wallclock restrictions.
 
-- The account to charge the run to
-- The number of nodes/tasls for the job
-- The time limit for the job
-- The location of stdout/stderr
-- A name for the job
+**Interactive queue job time limits**
 
-Job files usually have Slurm directives at the top. The directives are of the form:
+- 24-72 processors = 12 hours
+- 96-504 processors = 6 hours
+- Over 528 processors = 4 hours
+
+**Debug queue job time limits:**  1 hour
+
+**Batch:** Default queue for all compute partitions.
+
+**Novel:** Jobs larger than roughly 25% of the total nodes on a given cluster will automatically be added to the novel queue. The novel queue does not run until after a periodic maintenance in order to prevent large amounts of the system being idled as jobs complete naturally to make room for the novel jobs.
+
+Priority Queues
+---------------
+Priority queues are allocated one per group, and allow for a single eligible job per user. These only work for compute partitions. They do not work on the es partition (eslogin, ldtn, and rdtn queues).
+
+**Urgent:** The urgent queue is for work of the highest priority and holds the highest weight. It is for schedule-driven work that must be completed ASAP.
+
+Queues per Partition
+--------------------
+**es**
+
+- eslogn (compiling)
+- ldtn (combining model output, other postprocessing)
+- rdtn (data transfers to/from non-Gaea resources)
+- compute
+
+**batch**
+
+- interactive
+- debug (1 hour limit)
+- persistent
+- urgent
+- novel
+
+
+Scheduler/Priority Specifics
+----------------------------
+
++------------+----------------+-------------------------+------------------------------+
+| Factor     | Unit of Weight | Actual Weight (Minutes) | Value                        |
++------------+----------------+-------------------------+------------------------------+
+| Class      | # of days      | 1440                    | Urgent (10),                 |
+|            |                |                         | Persistent (1),              |
+|            |                |                         | Debug/Interactive (2),       |
+|            |                |                         | Batch (1),                   |
+|            |                |                         | Windfall (-365)              |
++------------+----------------+-------------------------+------------------------------+
+| Account    | # of days      | 1440                    | Allocated project (1),       |
+| Priority   |                |                         | No allocation (Staff) (-365),|  
+|            |                |                         | No hours (-365)              | 
++------------+----------------+-------------------------+------------------------------+
+|Fairshare   | # of minutes   | 1                       | (<>) 5% user (+/-) 30 mins,  |
+|            |                |                         | (<>) 5% user (+/-) 60 mins   |
++------------+----------------+-------------------------+------------------------------+
+| Queue Time | 1 Minute       | 1                       |                              |
++------------+----------------+-------------------------+------------------------------+
+
+Slurm Tips
+==========
+Please be aware that Gaea is not like a usual Slurm cluster. Slurm expects that all nodes are homogeneous and capable of being used for any purpose. Gaea is a heterogeneous set of clusters (hence the need to specify a cluster as shown below.) This also means that partitions (queues) for resources with different purposes will need to set up your job's environment to provide access to the software for that purpose.(data transfer nodes being chief among these.) Under Slurm your job will only have the system shell init scripts run if you specify --export=NONE. The result is that --export=NONE is a required argument to get your job to see software specific to a given node type, e.g. HSI/HTAR for HPSS on the data transfer nodes.
+
+Useful Commands
+-----------------
+
+- To find the accounts to which you belong:
 
 .. code-block:: shell
 
-    #SBATCH <options>
-    #SBATCH <options>
+  sacctmgr show assoc 
 
+where user=$USER format=cluster,partition,account,user%20,qos%60
 
-These directives can be used instead of specifiying options on the command line. If an option is specified both as a directive and on the command line, the command line option takes precedence.
-
-
-Interactive Jobs
-----------------
-
-Individual compute nodes do not allow direct shell access except when the node is allocated to a job owned by you. If you need shell access to one or more nodes, you can request the scheduler assign some to you by launching an interactive batch job.
-
-Interactive jobs can be used for developing, testing, modifying, or debugging code--allowing for interactive access with a program as it runs. Requesting an interactive job will allocate resources and log you into a shell on a compute node. Interactive jobs are submitted with the ``salloc`` command.
+- To c#
 
 .. code-block:: shell
 
-    $ salloc [options] [<command> [command args]]
+  sbatch --clusters=c# --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
 
+- To c5
 
-When you run the salloc command, you won't get a prompt back until the batch system scheduler is able to run the job. Once that happens, the scheduler will drop you into a login session on the head node allocated to your interactive job. At this point, you will have a prompt and may run commands in this shell as needed.
+.. code-block:: shell
+  
+  sbatch --clusters=c5 --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
 
+- To the LDTNs:
 
-Batch Script Example
+.. code-block:: shell
+  
+  sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
+
+- To the RDTNs:
+
+.. code-block:: shell
+  
+  sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
+
+- To submit interactive work to c#
+
+.. code-block:: shell
+  
+  salloc --clusters=c# --qos=interactive --nodes=1 --x11
+
+Running your models
+-------------------
+
+In your c3 job scripts or interactive sessions you will want to run your model executable. If your model is simple (single component, etc) then use srun. If it is a coupled model or otherwise has multiple execution contexts and/or executables, you will need to use srun-multi.
+
+.. code-block:: shell
+
+  srun ./executable
+
+  srun-multi --ntasks=1 --cpus-per-task=32 ./executable : --ntasks 128 --cpus-per-task=1 ./executable
+
+Monitoring your jobs: Shell Setup
+---------------------------------
+Do not set these in jobs/shells you intend to submit work from, as they will override your job submission script #SBATCH directives, causing warnings and errors. Use them in shells you intend to monitor jobs from.
+
+- In [t]csh
+
+.. code-block:: shell
+  
+  setenv SLURM_CLUSTERS t4,c3,c4,gfdl,es
+  - In bash
+
+.. code-block:: shell
+
+  export SLURM_CLUSTERS=t4,c3,c4,gfdl,es
+
+- Jobs in the queue
+
+The squeue command is used to pull up information about the jobs in a queue. By default, squeue will print out the Job ID, partition, username, job status, and number of nodes.
+
+Example:
+
+.. code-block:: shell
+
+  $squeue  -u $USER
+
+Use man squeue for more information.
+
+- The sstat command allows users to pull up status information about a currently running job/step
+
+Example:
+
+.. code-block:: shell
+
+  $sstat --jobs=job-id
+
+Use man sstat for more information.
+
+- Completed Jobs
+
+Slurm does not keep completed jobs in squeue.
+
+.. code-block:: shell
+
+  sacct -S 2019-03-01 -E now -a
+
+If you don’t specify -S and -E options, sacct gives you data from today.
+
+- Getting details about a job
+
+Slurm only keeps information about completed jobs available via scontrol for 5 minutes after completion. After that time, sacct is the currently available way of getting information about completed jobs.
+
+.. code-block:: shell
+
+  scontrol show job --clusters=es 5978
+
+Fair Share Reporting
 --------------------
 
-.. code-block:: shell
-
-    #!/bin/bash
-    #
-    # -- Request 16 cores
-    #SBATCH --ntasks=16
-    #
-    # -- Specify a maximum wallclock of 4 hours
-    #SBATCH --time=4:00:00
-    #
-    # -- Specify under which account a job should run
-    #SBATCH --account=gfdl_x
-    #
-    # -- Set the name of the job, or Slurm will default to the name of the script
-    #SBATCH --job-name=xyz
-    #
-    # -- Tell the batch system to set the working directory
-    #SBATCH --chdir=/some/path/
-
-    nt=$SLURM_NTASKS
-    module load intel <version>
-
-    srun -n $nt ./{executable}
-
-To submit the script above, called jobscript.sh, you would type:
+- Summary of all accounts
 
 .. code-block:: shell
 
-    $ sbatch jobscript.sh
+  sshare
+
+- Summary of one account
+
+.. code-block:: shell
+
+  sshare -A aoml
+
+- Details by user of one account
+
+.. code-block:: shell
+
+  sshare -a -A gefs
+
+- Details by user of all accounts
+
+.. code-block:: shell
+
+  sshare -a
+
+- Priority Analysis of Your Job: sprio
+
+.. code-block:: shell
+
+  sprio -j 12345
+
+Data Transfers
+==============
+Available on Gaea is a tool called GCP, which allows for internal transfers on Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please reference System Details if you are unfamiliar with the filesystems or expected use of each variety of node on Gaea.
+
+Available Tools
+---------------
+- GCP
+- spdcp - lustre to lustre specific
+- globus-url-copy (GridFTP)
+- scp
+- rsync
+- cp
+- hsi and htar (for Zeus' HPSS)
+
+We suggest all users use GCP as the primary data transfer tool. Examples are presented below.
+
+f2 <-> f2
+----------
+Users can transfer data between the lustre f2 filesystem using GCP. This can be done on the login nodes, and ldtns Gco commands issued on the compute nodes will result in a [L|R]DTN job being created and gcp will block until that job is completed by default.
+
+.. code-block:: shell
+
+  module load gcp
+  gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
+
+Gaea <-> GFDL
+--------------
+Users can transfer data between GFDL and Gaea filesystems with GCP. This can be done on the login nodes and rdtn's only. Users can interactively run gcp commands from a login node or submit gcp calls in scripts to run in the rdtn queue.
+
+.. code-block:: shell
+
+  module load gcp
+  gcp gaea:/lustre/f2/scratch/$USER/file gfdl:/gfdl/specific/path/file
+  gcp gfdl:/gfdl/specific/path/file gaea:/lustre/f2/dev/$USER/path/file
+
+Gaea <-> Remote NOAA Site
+-------------------------
+Users can transfer data between GFDL and Gaea filesystems with GridFTP, rsync or scp. This can be done on the login nodes and RDTNs only. Please place large transfers (>1GB) in batch jobs on the RDTN queue. This will respect other users on the login nodes by reducing interactive impact.
+
+.. code-block:: shell
+
+  scp /lustre/f2/scratch/$USER/path/name/here some.remote.site:/a/path/over/there
+  globus-url-copy file:/path/on/Gaea/file gsiftp://some.remote.site/path/to/destination/file
+  globus-url-copy gsiftp://some.remote.site/path/to/remote/file file:/destination/path/on/Gaea/file
+
+Gaea <-> External
+-----------------
+1. Find Local Port Number
+To find your unique local port number, log onto your specified HPC system (Gaea). Make a note of this number, and once you've recorded it, close all sessions.
+
+.. code-block:: shell
+
+  You will now be connected to NOAA RDHPCS: Gaea (CMRS/NCRC) C5 system.
+  To select a specific host, hit ^C within 5 seconds.
+  Local port XXXXX forwarded to remote host.
+  Remote port XXXXX forwarded to local host.
+
+.. note::
+
+  Open two terminal windows for this process.
+
+**Local Client Window #1**
+
+Enter the following (remember to replace XXXXX with the local port number identified in Step 1 or as needed):
+
+.. code-block:: shell
+
+  ssh-LXXXXX:localhost:XXXXX 
+  First.Last@gaea-rsa.princeton.rdhpcs.noaa.gov
+
+Once you have established the port tunnel it is a good idea to verify that the tunnel is working. To verify, use another local window from your local machine, and enter the following:
+
+.. code-block:: shell
+
+  ssh -p <port> First.Last@localhost
+
+2. Complete the Transfer using SCP
+
+**Local Client Window #2**
+
+Once the session is open, you will be able to use this forwarded port for data transfers, as long as this ssh window is kept open. After the first session has been opened with the port forwarding, any further connections (login via ssh, copy via scp) will work as expected.
+
+**To transfer a file to HPC Systems**
+
+.. code-block:: shell
+
+  >> scp -P XXXXX /local/path/to/file $USER@localhost:/path/to/file/on/HPCSystems
+
+  >> rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX' /local/path/to/files $USER@localhost:/path/to/files/on/HPCSystems
 
 
+.. note::
 
-Job Submission Options
+  Your username is case sensitive when used in the scp command. For example, username should be in the form of John.Smith rather than john.smith.
+
+**To transfer a file from HPC Systems**
+
+.. code-block:: shell
+
+  >> scp -P XXXXX $USER@localhost:/path/to/file/on/HPCSystems /local/path/to/file
+
+  >> rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX' $USER@localhost:/path/to/files/on/HPCSystems /local/path/to/files
+
+In either case, you will be asked for a password. Enter the password you from your RSA token (not your passphrase). Your response should be your PIN+Token code.
+
+Gaea <-> Fairmont HPSS
 ----------------------
+Users can transfer data between Gaea and Zeus' High Performance Storage System (HPSS) through the use of the HSI and HTAR commands. These commands are only available on Gaea's Remote Data Transfer Nodes (RDTNs). A user can submit a script to run on the RDTNs.
 
-Command-line options vs directives
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-There are two ways to specify sbatch options. The first is on the command line when using the sbatch command.
-
+- Minimum Headers for a submitted RDTN job.
 
 .. code-block:: shell
 
-    $ sbatch --clusters=c5 --account=abc123 myrunScript.sh
+  #SBATCH --clusters=es
+  #SBATCH --partition=rdtn
 
-
-The second method is to insert directives at the top of the batch script using #SBATCH syntax. For example,
+- Load the HSI module and list the contents of your directory
 
 .. code-block:: shell
 
-    #SBATCH --clusters=c5
-    #SBATCH --account=abc123
+  module use -a /sw/rdtn/modulefiles
+  module load hsi
+
+- Check connectivity to the hsi, replacing the below file path with yours on HPSS
+
+.. code-block:: shell
+
+  hsi "ls -P /BMC/nesccmgmt/$USER/"
+
+- Retrieve Files using HSI into the current directory on the RDTN. The -q option limits output spam.
+
+.. code-block:: shell
+
+  hsi -q "get /BMC/nesccmgmt/Karol.Zieba/sample_file"
+
+- Upload Files using HSI
+
+.. code-block:: shell
+
+  hsi -q "put /lustre/f2/scratch/$USER/file_to_upload : /BMC/nesccmgmt/$USER/file_to_upload"
+
+- Tar many small files from the RDTN using HTAR. (Note that using asterisk will not work.)
+
+.. code-block:: shell
+
+  htar cf /BMC/nesccmgmt/$USER/tarred_file.tar file1 file2 path/file3
+
+- Untar many small files into your current directory on the RDTN using HTAR
+
+.. code-block:: shell
+
+  htar xf /BMC/nesccmgmt/$USER/tarred_file.tar
 
 
-The two methods can be mixed together. However, options specified on the command line always override options specified in the script.
+External (Untrusted) Data Transfers
+------------------------------------
+To support external data transfers with methods that are faster and simpler than the port tunnel method, NOAA RDHPCS has a data transfer node. This means data can be transferred to Gaea without the use of the port tunnel or existing ssh connection. Not only is this simpler, but provides for much faster transfers. The difference between the eDTN and the DTN as described above is that the eDTN does not mount the Gaea filesystems. 
+
+Transferring through the eDTN to Gaea requires a two step process. First, files are transferred from external hosts to the eDTN. Second, from Gaea, the files are pulled back from the eDTN.
+
+For authentication, use of your token is required from external transfers to the eDTN. From within Gaea, use of your token is not required.
+
+The eDTN supports the use of scp, sftp, bbcp, and ssh based globus-url-copy.
+
+**Copying files from external systems to the eDTN**
+
+.. code-block:: shell
+
+  jsmith# scp WRF.tar.gz John.Smith@edtn.fairmont.rdhpcs.noaa.gov:
+  
+  Access is via First.Last username only.  Enter RSA PASSCODE:
+
+The trailing colon (':') is critical. You can also specify ":/home/John.Smith/"
+
+Your response should be your pin+PASSCODE.
+
+**Retrieving files on Gaea from the eDTN**
+To transfer files from the eDTN server to Gaea without requiring your token, you must use GSI enabled transfer methods. For scp, sftp, and bbcp, this mean appending "gsi" to the front of the command. So the commands that are best to use are gsiscp, gsisftp, and gsibbcp.
+
+To pull the files back from the eDTN, initiate on of these commands:
+
+.. code-block:: shell
+
+  John.Smith# gsiscp -S `which gsissh` edtn.fairmont.rdhpcs.noaa.gov:WRF.tar.gz .
+
+**eDTN Purge Policy**
+Files older than 7 days will be automatically removed. This policy may change based on disk space and management needs.
+
+**Managing files on the eDTN**
+If you need to login and manage any files, create or remove directories, or any other tasks on the eDTN, use gsisftp from Gaea. This provides and FTP like interface through ssh.
+
+.. code-block:: shell
+
+  # sftp -S `which gsissh` John.Smith@edtn.fairmont.rdhpcs.noaa.gov
+  Access is via First.Last username only. Enter RSA PASSCODE:
+  Connected to edtn.fairmont.rdhpcs.noaa.gov.
+  sftp> ls
+  bigfile    bigfile1   bigfileA
+  sftp> rm bigfile
+  Removing /home/Craig.Tierney/bigfile
+  sftp> rm bigfile*
+  Removing /home/Craig.Tierney/bigfile1
+  Removing /home/Craig.Tierney/bigfileA
+  sftp> ls
+  sftp> mkdir newdir1
+  sftp> ls
+  newdir1
+  sftp> cd newdir1
+  sftp> pwd
+  Remote working directory: /home/Craig.Tierney/newdir1
+  sftp> cd ..
+  sftp> rmdir newdir1
+  sftp> ls
+
+  sftp> help
+  Available commands:
+  bye                                Quit sftp
+  cd path                            Change remote directory to 'path'
+  chgrp grp path                     Change group of file 'path' to 'grp'
+  chmod mode path                    Change permissions of file 'path' to 'mode'
+  chown own path                     Change owner of file 'path' to 'own'
+  df [-hi] [path]                    Display statistics for current directory or
+                                    filesystem containing 'path'
+  exit                               Quit sftp
+  get [-Ppr] remote [local]          Download file
+  help                               Display this help text
+  lcd path                           Change local directory to 'path'
+  lls [ls-options [path]]            Display local directory listing
+  lmkdir path                        Create local directory
+  ln oldpath newpath                 Symlink remote file
+  lpwd                               Print local working directory
+  ls [-1afhlnrSt] [path]             Display remote directory listing
+  lumask umask                       Set local umask to 'umask'
+  mkdir path                         Create remote directory
+  progress                           Toggle display of progress meter
+  put [-Ppr] local [remote]          Upload file
+  pwd                                Display remote working directory
+  quit                               Quit sftp
+  rename oldpath newpath             Rename remote file
+  rm path                            Delete remote file
+  rmdir path                         Remove remote directory
+  symlink oldpath newpath            Symlink remote file
+  version                            Show SFTP version
+  !command                           Execute 'command' in local shell
+  !                                  Escape to local shell
+  ?                                  Synonym for help
 
 
-The table below summarizes options for submitted jobs. Check the Slurm Man Pages for a more complete list.
+GCP
+===
+GCP (general copy) is a convenience wrapper for copying data between the Gaea and PPAN Analysis NOAA RDHPCS sites, as well as the NOAA GFDL site. GCP abstracts away the complexities of transferring data efficiently between the various NOAA sites and their filesystems. Its syntax is similar to the standard UNIX copy tool, cp.
 
-+------------------------+----------------------------+------------------------------+
-|    Option              | Example Usage              | Description                  |
-+========================+============================+==============================+
-| ``-A`` ``--account``   | $SBATCH --account=abc123   | Specifies the project to     |
-|                        |                            | which the job should be      |
-+------------------------+----------------------------+------------------------------+
-| ``-t`` ``--time``      | #SBATCH -t 4:00:00         | Specify a maximum wallclock. |
-+------------------------+----------------------------+------------------------------+
-| ``-J`` ``--job-name``  | #SBATCH -J jobname         | Set the name of the job.     |
-+------------------------+----------------------------+------------------------------+
-| ``-N`` ``--nodes``     | #SBATCH -N 1024            | Request that a minimum       |
-|                        |                            | of X be allocated to a job   |
-+------------------------+----------------------------+------------------------------+
-| ``-n`` ``--ntasks``    | #SBATCH -n 8               | Requests for X tasks         |
-+------------------------+----------------------------+------------------------------+
-| ``--mem``              | #SBATCH --mem=4g           | Specify the real memory      |
-|                        |                            | required per node.           |
-+------------------------+----------------------------+------------------------------+
-| ``-q`` ``--qos``       | #SBATCH --qos=normal       | Request a quality of service |
-|                        |                            | for the job.                 |
-+------------------------+----------------------------+------------------------------+
-| ``-o`` ``--output``    | #SBATCH jobout.%j          | File where job STDOUT will   |
-|                        |                            | be directed. (%j will be     |
-|                        |                            | replaced with job ID)        |
-+------------------------+----------------------------+------------------------------+
-| ``-e`` ``--error``     | #SBATCH joberr.%j          | File where job STDERR will   |
-|                        |                            | be directed. (%j will be     |
-|                        |                            | replaced with the job ID)    |
-+------------------------+----------------------------+------------------------------+
-| ``--mail-user``        | #SBATCH --mail-            | Email address to be used for |
-|                        |  user=user@somewhere.com   | notifications                |
-|                        |                            |                              |
-+------------------------+----------------------------+------------------------------+
-| ``-M`` ``--clusters``  | #SBATCH -M clustername     | clusters to issue commands to|
-+------------------------+----------------------------+------------------------------+
+GCP 2.3.30 is available on Gaea, PPAN, and GFDL Linux Workstations. It is obtainable via “module load gcp” or “module load gcp/2.3”, This version is the latest on systems as of 2023-12-01; all other versions are considered obsolete and will not function properly due to system updates.
 
-
-Slurm Environment Variables
----------------------------
-
-+--------------------------+----------------------------------------------------------------------------------+
-| Variable                 | Description                                                                      |
-+==========================+==================================================================================+
-| $SLURM_SUBMIT_DIR        | The directory from which the batch job was submitted. By default, a new job      |
-|                          | starts in your home directory. You can get back to the directory of job          |
-|                          | submission with ``cd $SLURM_SUBMIT_DIR``. Note that this is not necessarily the  |
-|                          | same directory in which the batch script resides.                                |
-|                          |                                                                                  |
-+--------------------------+----------------------------------------------------------------------------------+
-| $SLURM_JOBID             | The job's full identifier. A common use for $SLURM_JOBID is to append the job's  |
-|                          | ID to the standard output and error files.                                       |
-+--------------------------+----------------------------------------------------------------------------------+
-| $SLURM_JOB_NUM_NODES     | The number of nodes requested.                                                   |
-+--------------------------+----------------------------------------------------------------------------------+
-| $SLURM_JOB_NAME          | The job name supplied by the user.                                               |
-+--------------------------+----------------------------------------------------------------------------------+
-| $SLURM_NODELIST          | The list of nodes assigned to the job.                                           |
-+--------------------------+----------------------------------------------------------------------------------+
-
-
-State Codes
+User Guide
 -----------
-+--------------------------+----------------------------------------------------------------------------------+
-| State Code               | Description                                                                      |
-+==========================+==================================================================================+
-| CA | Cancelled           | The job was explicitly cancelled by the user or system administrator             |
-+--------------------------+----------------------------------------------------------------------------------+
-| CD | Completed           | Job has terminated all processes on all nodes. Exit code of zero.                |
-+--------------------------+----------------------------------------------------------------------------------+
-| F | Failed               | Job terminated with non-zero exit code or other failure condition.               |
-+--------------------------+----------------------------------------------------------------------------------+
-| R | Running              | Job currently has an allocation.                                                 |
-+--------------------------+----------------------------------------------------------------------------------+
-| TO | Timeout             | Job terminated upon reaching its time limit.                                     |
-+--------------------------+----------------------------------------------------------------------------------+
-| PD | Pending             | Job is awaiting resource allocation.                                             |
-+--------------------------+----------------------------------------------------------------------------------+
-| OOM | Out Of Memory      | Job experienced out of memory error.                                             |
-+--------------------------+----------------------------------------------------------------------------------+
-| NF | Node Fail           | The list of nodes assigned to the job.                                           |
-+--------------------------+----------------------------------------------------------------------------------+
-
-Job Reason Codes
-----------------
-
-+--------------------------+----------------------------------------------------------------------------------+
-| Reason                   | Meaning                                                                          |
-+==========================+==================================================================================+
-| InvalidQOS               | The job's QOS is invalid.                                                        |
-+--------------------------+----------------------------------------------------------------------------------+
-| InvalidAccount           | The job's account is invalid                                                     |
-+--------------------------+----------------------------------------------------------------------------------+
-| NonZeroExitCode          | The job terminated with a non-zero exit code.                                    |
-+--------------------------+----------------------------------------------------------------------------------+
-| NodeDown                 | A node required by the job is down.                                              |
-+--------------------------+----------------------------------------------------------------------------------+
-| TimeLimit                | The job exhausted its time limit                                                 |
-+--------------------------+----------------------------------------------------------------------------------+
-| SystemFailure            | Failure of the Slurm system, a file system, the network, etc.                    |
-+--------------------------+----------------------------------------------------------------------------------+
-| JobLaunchFailure         | The job cannot be launched. This may be due to a file system problem, invalid    |
-|                          | program name, etc.                                                               |
-+--------------------------+----------------------------------------------------------------------------------+
-| WaitingForScheduling     | The list of nodes assigned to the job.                                           |
-+--------------------------+----------------------------------------------------------------------------------+
-
-
-Job Dependencies
-----------------
-SLURM supports the ability to submit a job with constraints that will keep it running until these dependencies are met. A simple example is where job X cannot execute until job Y completes. Dependencies are specified with the ``-d`` option to Slurm.
-
-+----------------------------------+----------------------------------------------------------------------------------+
-| Flag                             | Meaning                                                                          |
-+==================================+==================================================================================+
-|``SBATCH -d after:jobid[+time]``  | The job can start after the specified jobs start or are cancelled. The           |
-|                                  | optional +time argument is a number of minutes. If specified, the job            |
-|                                  | cannot start until that many minutes have passed since the listed jobs           |
-|                                  | start/are cancelled. If not specified, there is no delay.                        |
-+----------------------------------+----------------------------------------------------------------------------------+
-| ``SBATCH -d afterany:jobid``     | The job can start after the specified jobs have ended (regardless of exit state) |
-+----------------------------------+----------------------------------------------------------------------------------+
-| ``SBATCH -d afternotok:jobid``   | The job can start after the specified jobs terminate in a failed (non-zero) state|
-+----------------------------------+----------------------------------------------------------------------------------+
-| ``SBATCH -d afterok:jobid``      | The job can start after the specified jobs complete successfully                 |
-+----------------------------------+----------------------------------------------------------------------------------+
-| ``SBATCH -d singleton``          | Job can begin after any previously-launched job with the same name and from the  |
-|                                  | same user have completed. In other words, serialize the running jobs based on    |
-|                                  | username+jobname pairs.                                                          |
-+----------------------------------+----------------------------------------------------------------------------------+
-
-Srun
-----
-Your C4/C5 job scripts will usually call ``srun`` to run an executable (or ``srun-multi`` if you have a multi-executable model).
+Using GCP is simple – just use a variant of the commands below to perform a transfer:
 
 .. code-block:: shell
 
-    srun [OPTIONS... [executable [args...]]]
+  module load gcp
+  gcp -v /path/to/some/source/file /path/to/some/destination/file
 
-``srun`` accepts the following options:
+The -v option enables verbose output, including some very useful information for debugging.
 
-+------------------------------------------------+----------------------------------------------------------------------------------+
-| Option                                         | Description                                                                      |
-+================================================+==================================================================================+
-| ``-N``                                         | Number of nodes                                                                  |
-+------------------------------------------------+----------------------------------------------------------------------------------+
-| ``-n``                                         | Total number of MPI tasks (default is 1)                                         |
-+------------------------------------------------+----------------------------------------------------------------------------------+
-| ``-c, --cpus-per-task=``                       | Logical cores per MPI task (default is 1)                                        |
-|                                                | When used with ``--threads-per-core=1``:``c`` is equivalent to *physical* cores  |
-|                                                | per task.                                                                        |
-+------------------------------------------------+----------------------------------------------------------------------------------+
-| ``--threads-per-core=``                        | In task layout, use the specified maximum number of hardware threads per core.   |
-|                                                | Must also be set in ``salloc`` or ``sbatch`` if using ``--threads--per-core=2``. |
-+------------------------------------------------+----------------------------------------------------------------------------------+
-|   ``--ntasks-per-node=``                       | If used without ``-n``: requests that a specific number of tasks be invoked on   |
-|                                                | each node.                                                                       |
-|                                                | If used with ``-n``: treated as a maximum count of tasks per node.               |
-|                                                |                                                                                  |
-+------------------------------------------------+----------------------------------------------------------------------------------+
+You can obtain a detailed list of all of the available options with:
 
+.. code-block:: shell
 
+  gcp --help
 
+Smartsites
+----------
 
-Debugging
-=========
+GCP introduces a concept known as smartsites. This concept enables the transfer of files from one NOAA system to another. Each NOAA site has its own smartsite. The currently supported smartsites in GCP are:
 
-Arm DDT
--------
+.. code-block:: shell
 
-Arm DDT is a powerful, easy-to-use graphical debugger. With Arm DDT it is possible to debug:
+  - gfdl - gaea
 
-- Single process and multithreaded software
-- Parallel (MPI) Software
-- OpenMP
-- Hybrid codes mixing paradigms such as MPI + OpenMP, or MPI + CUDA
+To transfer data from one site to another, simple prepend the smartsite and a colon to your file location (example: gaea:/path/to/file).
 
-Arm DDT supports:
+This smartsite example pushes data from a source site (GFDL) to a remote site (Gaea). Note that we are not required to use a smartsite for the local site we are currently operating from (but it is not an error to include it). The following commands are equivalent:
 
-- C, C++, and all derivatives of Fotran, including Fortran 90,
-- Limited support for Python (CPython 2.7)
-- Parallel languages/models including MPI, UPCm and fortran 2008 Co-arrays.
-- GPU languages such as HMPP, OpenMP Accelerators, CUDA and CUDA Fortran.
+gcp -v /path/to/some/file gaea:/path/to/remote/destination
+gcp -v gfdl:/path/to/some/file gaea:/path/to/remote/destination
+The smartsite needn't always be part of the destination file path, as gcp is capable of pulling data from a remote site as well as pushing it:
 
-Arm DDT helps you to find and fix problems on a single thread or across hundreds of thousands of threads. It includes static analysis to highlight potential code problems, integrated memory debugging to identify reads and writes that are outside of array bounds, and integration with MPI message queues.
+.. code-block:: shell
 
-In addition to traditional debugging features, DDT also supports attaching to already-running processes and offline (non-interactive) debugging for long running jobs.
+  gcp -v gaea:/path/to/a/file /path/to/a/local/destination
 
+**Log Session ID**
 
-Optimizing and Profiling
-========================
+GCP includes a comprehensive logging system. Each transfer is recorded and is easily searchable by the GCP development team in the event that debugging is needed.
 
-Known Issues
-============
+Each transfer is given a unique log session id, but this session id is only visible if the -v option is used. It is highly recommended that this option always be enabled in your transfers. A sample of the expected output is below:
 
-Known Module Incompatibility on C5
-----------------------------------
+.. code-block:: shell
 
-There is a known incompatibility with the cray-libsci module and the following intel modules:
+  gcp -v /path/to/source/file /path/to/destination
+  gcp 2.3.26 on an204.princeton.rdhpcs.noaa.gov by Chandin.Wilson at Mon Aug 8 16:39:28 2022
+  Unique log session id is 07f6dd51-6c4d-4e51-86b4-e3344c01c3ae at 2022-08-08Z20:39
 
-- intel-classic/2022.0.2
-- intel-oneapi/2022.0.2
+If you experience any problems while using GCP, please re-run your transfer using the -v option and provide the session id with your help desk ticket.
 
-A recommended workaround to this issue is to either module unload cray-libsci or use another intel compiler.
+**Supported Filesystems**
 
-Executables from C3/C4 not working on C5
-----------------------------------------
+GCP can copy data from many filesystems, but not all. Below is a list of supported filesystems for each site. Note that sometimes GCP is able to support a filesystem from within the local site, but not from external sites.
 
-The C3/C4 and C5 nodes have different interconnects. The C3/C4 and C5 clusters are not binary compatible. Binaries compiled for C3/C4 will not execute on C5. Likewise, executables compiled for C5 will not run on C3/C4. Attempting to run an incompatible binary on C3, C4, or C5 will produce an error.
+**GFDL Workstations**
 
-Examples of the error are:
+.. note::
+  You cannot transfer files from a GFDL workstation to any remote site. You must use GFDL's PAN cluster to push or pull files to a remote site.
+
+Filesystems that GCP supports locally from GFDL workstations:
+
+- /net - /net2 - /home - /work - /archive
+
+Filesystems that GCP supports remotely from other sites:
+
+- /home - /ptmp - /work - /archive
+
+**Gaea**
+
+The Gaea site contains multiple node types. The nodes that are used for interactive work are called the eslogin nodes. Different filesystems are supported on each node type, so please refer to the list below.
+
+Filesystems that GCP supports locally from Gaea:
+
+- eslogin
 
 .. code-block:: shell
 
