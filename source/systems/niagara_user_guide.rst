@@ -46,10 +46,6 @@ Niagara System Features:
   the internet
 - 2 Web servers
 
-Connecting
-==========
-
-.. _niagara-data-transfer:
 
 Data Transfer
 -------------
