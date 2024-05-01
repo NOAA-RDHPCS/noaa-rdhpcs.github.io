@@ -16,38 +16,39 @@ To login to Orion or Hercules via SSH, you will use your MSU account username,
 MSU password, and Duo two-factor authentication.
 
 **Password Maintenance**
-**Password Maintenance**
 
 If you know your MSU password (or temporary password), use the MSU Training and
 Password System (TAPS) site to Manage your Multi#Factor Authentication settings
 with Duo and/or change your password. The TAPS system 
-is also where you go to do MSU training required before you can login, and for
+is also where you go to take the MSU training required before you can login, and for the
 yearly password resets and training to keep your account active.
 
 **Password Resets**
 
-If you forgot your password, a password reset can only be done via phone during
-normal business days (M-F) from 08:00-12:00 and 13:00-17:00 Central Time. Please
+A password reset can only be done by phone during
+normal business days (M-F) from 08:00-12:00 and 13:00-17:00 Central Time. If you forget your password, please
 call: *(662) 325-9146*. If you do not get an answer keep calling every 30
-minutes. If busy call again every 15 minutes. The MSU HPC2 admin will verify
+minutes. If busy, call again every 15 minutes. The MSU HPC2 admin will verify
 your ID, unlock your account, and issue a temporary password that is only valid
 to access the TAPs portal.
 
 .. note::
 
-   The user is then required to access TAPS and change their password **within 3
-   days** and complete any out-of-date training requirements.
+   The user is then required to access TAPS and change the temporary password **within 3
+   days**. The user must also complete any out-of-date training requirements.
 
 **Setting Up DUO on a New Device**
 
-This section assumes that:
+.. note::
 
-- You have already successfully configured DUO on an old device. If you do not,
-  please see the link above.
-- You have access to the old device.
+   This section assumes that:
+
+   - You have already successfully configured DUO on an old device. If not, please review information on Getting an Account.
+   - You have access to the old device.
+
 
 #.  Go to TAPS and choose Manage DUO and select  **Password --> Add new Device**.
-#.  Select "Send Me a Push".
+#.  Select **Send Me a Push**.
 #.  Open DUO on the old device -- you should be prompted to accept a request for
     authentication.
 #.  Approve that request and then on your PC, you should be prompted to enter a
@@ -55,7 +56,7 @@ This section assumes that:
 
 **Login nodes: Available externally via SSH**
 
-To SSH to Orion or hercules, you'll need your MSU username, password and DUO
+To SSH to Orion or Hercules, you'll need your MSU username, password and DUO
 authentication:
 
 .. code-block:: shell
@@ -190,7 +191,7 @@ libraries may be requested to be installed that are normally not required for
 runtime. Also, the development nodes provide the only gateway for writing into
 the ``/apps/contrib/`` directories.
 
-The development nodes for orion are:
+The development nodes for Orion are:
 
    * ``orion-devel-1.hpc.msstate.edu``
    * ``orion-devel-2.hpc.msstate.edu``
@@ -218,16 +219,17 @@ All compute and memory-intensive tasks must be submitted to the batch system for
 execution on system compute resources. This section describes the requirements
 and common patterns for job submission and monitoring.
 
-**To improve your job turnaround** and efficiently use the system resources
+**To improve your job turnaround** and efficiently use the system resources,
 please read and follow instructions carefully.
 
-**Submitting a Job**
+Submitting a Job
+----------------
 
 There are two types of jobs: batch jobs and interactive jobs.
 
 **Batch Jobs**
 
-Most jobs are batch jobs. These are jobs that do not require any interaction and
+Most jobs are batch jobs. These jobs do not require any interaction and
 consist of a shell script that contains the commands you want to run. The
 ``sbatch`` command is used to submit batch jobs
 
@@ -235,15 +237,15 @@ consist of a shell script that contains the commands you want to run. The
 
    $ sbatch <options> <script>
 
-Typically some of the options you would specify are:
+Typical options    are:
 
    - The account to charge the run to (**this is mandatory**)
    - The number of nodes/tasks needed for the job
    - The time limit for the job
    - The location of stdout/stderr
-   - A name for the job
+   - A job name
 
-Slurm provides command line options in both long form and short form and either
+Slurm provides command line options in both long form and short form, and either
 form can be used. For example, to specify a time limit of 30 min, all of these
 following forms are valid:
 

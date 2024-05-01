@@ -56,14 +56,6 @@ Logging In
    logging_in/index
    connecting/index
 
-Common
-======
-
-.. toctree::
-   :maxdepth: 2
-
-   common/index
-
 Systems
 =======
 
