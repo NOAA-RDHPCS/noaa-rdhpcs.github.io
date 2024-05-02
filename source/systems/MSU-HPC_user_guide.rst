@@ -6,6 +6,45 @@ MSU-HPC User Guide
 
 .. _orion-system-overview:
 
+Introduction
+============
+NOAA has provided Mississippi State University (MSU) with Grants to install and manage High Performance Computing (HPC) Systems to further NOAA’s scientific research and collaboration. Through this close partnership NOAA hopes to advance its research goals in the areas of Severe Weather and Climate research. The exchange of technical information between NOAA and MSU should be of great value and be beneficial to both HPC programs.
+
+The MSU-HPC system consists of two components, Orion and Hercules. Orion and Hercules share a InfiniBand interconnect and two Lustre file systems, ``/wor`` and ``/work2/``.
+
+Orion System Features:
+
+* Total of 72,000 cores of 2.4GHz Xeon Gold CPU
+* Capability of 5,000 trillion floating point operations per second – or 5.0 petaflops
+* Nearly 350 terabytes of Random Access Memory (RAM)
+
+Hercules System Features:
+
+* Total of 40,960 cores of 2.3GHz Xeon Platinum CPU
+* Capability of 3,000 trillion floating point operations per second – or 3.0 petaflops
+* Nearly 256 terabytes of Random Access Memory (RAM)
+
+Shared Between the Two HPC Systems:
+
+* Total scratch disk capacity of 9 Petabytes on the "work" file system
+* Total scratch disk capacity of 18 Petabytes on the "work2" file system
+
+This guide contains information specific to NOAA users regarding the use of Mississippi State University's High Performance Computing System (MSU-HPC). It is not intended to be the official system documentation. It only exists to assist NOAA users, Portfolio Managers and Principal Investigators in using and managing accounts on the MSU-HPC system. If you have any questions or comments regarding the material, please email the Help System using your @noaa.gov address, at help@rdhpcs.orion.help@noaa.gov.
+
+MSU's Official HPC Documentation
+--------------------------------
+
+`Orion Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/orion_guide.php>`_
+
+`Hercules Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/hercules_guide.php>`_
+
+`General HPC Resource Documentation <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/>`_
+
+.. note::
+   An MSU user account is required to access documentation.
+
+
+
 General Information
 ===================
 
@@ -17,9 +56,9 @@ MSU password, and Duo two-factor authentication.
 
 **Password Maintenance**
 
-If you know your MSU password (or temporary password), use the MSU Training and
-Password System (TAPS) site to Manage your Multi#Factor Authentication settings
-with Duo and/or change your password. The TAPS system 
+If you know your MSU password (or temporary password), use the `MSU Training and
+Password System (TAPS) site <https://taps.hpc.msstate.edu/>`_ to manage your Multi#Factor Authentication settings
+with Duo, or to change your password. The TAPS system 
 is also where you go to take the MSU training required before you can login, and for the
 yearly password resets and training to keep your account active.
 
@@ -43,7 +82,7 @@ to access the TAPs portal.
 
    This section assumes that:
 
-   - You have already successfully configured DUO on an old device. If not, please review information on Getting an Account.
+   - You have already successfully configured DUO on an old device. (If not, please review information on Getting an Account.)
    - You have access to the old device.
 
 
@@ -237,7 +276,7 @@ consist of a shell script that contains the commands you want to run. The
 
    $ sbatch <options> <script>
 
-Typical options    are:
+Typical options are:
 
    - The account to charge the run to (**this is mandatory**)
    - The number of nodes/tasks needed for the job
@@ -396,7 +435,9 @@ condition.
 
 Here is a simple example of how to run a chain of jobs with dependencies,
 assuming that you have a parallel ``helloworld.f`` example program in your current
-directory.  Create/edit the file "**depend**" with the content:
+directory.  
+
+- Create/edit the file "**depend**" with the content:
 
 .. code-block:: shell
 
@@ -408,21 +449,21 @@ directory.  Create/edit the file "**depend**" with the content:
    
    The ``--parsable`` option returns just the Job ID from sbatch.
 
-Make it executable:
+- Make it executable:
 
 .. code-block:: shell
 
    $
    chmod 0755 depend
 
-Initiate the sequence of dependent jobs by executing ``depend`` from the command
-line
+- Initiate the sequence of dependent jobs by executing ``depend`` from the command line.
+
 
 .. code-block:: shell
    
    $ ./depend
 
-**Big runs - Using the "novel" QoS**
+**Big runs:  Using the "novel" QoS**
 
 The *novel* QoS is set up to handle special situations, particularly for large
 jobs requiring a large number of nodes (typically for limited time):
@@ -709,7 +750,9 @@ There are several different QOS'es depending on your needs.
 **Specifying a job name**
 
 Giving your jobs meaningful names can help you locate them when monitoring their
-progress. Use the ``-J`` (``--job-name``) option. For examp:: shell
+progress. Use the ``-J`` (``--job-name``) option. For example:
+
+.. code-block:: shell
 
    #SBATCH -J WRF_ARW_00Z
 
@@ -758,8 +801,7 @@ It is important to note that ``ALL`` is required if you want the local
 environment variables are to be exported to the script in addition to the value
 explicitly set. If ``ALL`` is left out, only the value of ``ndays=20`` is passed in.
 
-If you do not want to export your local environment, please use the following
-syntax:
+If you do not want to export your local environment, use the following syntax:
 
 .. code-block:: shell
 
@@ -809,7 +851,9 @@ directory.
 
 The other way to do this is with the ``$SLURM_SUBMIT_DIR`` variable. This
 variable stores the path from where your script was submitted. So at the top of
-your batch script, a:: shell
+your batch script, add
+
+.. code-block:: shell
 
    cd $SLURM_SUBMIT_DIR
 
@@ -904,8 +948,8 @@ for a long time:
 
    $ scontrol show job 251091
 
-Query a job's estimated start time
-----------------------------------
+**Query a job's estimated start time**
+
 
 Use the ``squeue --start`` command to get a point-in-time estimate of when your
 job may start. Reservation based start time estimation incorporates information
@@ -937,7 +981,7 @@ To cancel a job use the scancel command:
 Getting Information about your Projects
 ---------------------------------------
 
-MSU-HPC uses SLURM as its batch scheduler as does NOAA's RDHPCS systems. SLURM
+MSU-HPC uses Slurm as its batch scheduler, as does NOAA's RDHPCS systems. SLURM
 allocations result in a percentage of total system priority.
 
 **Load contrib and noaatools Module**
@@ -978,7 +1022,7 @@ usage, and quota:
 .. note::
 
    For an explanation of the meaning of these values and general scheduling
-   information review SLURM documentation.
+   information review Slurm documentation.
 
 .. note::
 
@@ -1111,7 +1155,8 @@ File Systems
 - Usable Capacity: 18PB
 
 .. note::
-   Both the work and work2 file systems are considered scratch space and are not backed up.
+
+   Both the ``work`` and ``work2`` file systems are considered scratch space and are not backed up.
 
 Orion Compute System
 --------------------
@@ -1156,9 +1201,9 @@ Hercules Compute System
 - Cores per Node: 80
 
 
-Additional Information:
+.. note::
 
-Due to each compute node having 512 GB of RAM there are no bigmem nodes.
+   Since each compute node has 512 GB of RAM, there are no bigmem nodes.
 
 **HPC Services**
 
@@ -1334,9 +1379,9 @@ MSU user accounts are completely independent of NOAA RDHPCS Accounts. The MSU’
 MSU Account Management Policies
 -------------------------------
 
-- New user accounts are requested by a supervisor/sponsor using the MSU HPC2 Account Management website. Only current Account Managers may be a supervisor/sponsor. The same website is used for project assignments. Users can only submit jobs to those Projects to which they have access.
-- All user accounts have an expiration date set by the supervisor/sponsor when the user account is requested. The maximum expiration date is 12 months from the initiation date. When a user account approaches its expiration date, the supervisor/sponsor is notified via email, and may extend the user account for up to one year, using the MSU online account management tools MSU Account Management.
-- Training updates are required each January 1. Users have until the end of January to comply, using the online MSU HPC2 Training and Password System TAPS, otherwise the user account is locked..
+- New user accounts are requested by a supervisor/sponsor using the `MSU HPC2 Account Management website <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/>`_.  Only current Account Managers may be a supervisor/sponsor. The same website is used for project assignments. Users can only submit jobs to those Projects to which they have access.
+- All user accounts have an expiration date set by the supervisor/sponsor when the user account is requested. The maximum expiration date is 12 months from the initiation date. When a user account approaches its expiration date, the supervisor/sponsor is notified via email, and may extend the user account for up to one year, using the `MSU online account management tools <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/>`__
+- Training updates are required each January 1. Users have until the end of January to comply, using the online MSU HPC2 Training and Password System `TAPS <https://taps.hpc.msstate.edu/ TAPS>`_, otherwise the user account is locked.
 - MSU uses Duo (Cisco) two factor authentication. You may install the application on your smartphone or request a physical token. If approved, the token will be shipped to the address provided during the Account Management on-boarding process.
 - After seven (7) unsuccessful login attempts, user login attempts will be denied for ten (10) minutes.
 - After 90 days of inactivity (no successful login to MSU-HPC or authentication to one of the MSU Account Management web pages) a user account is locked. To unlock the account please see: Password Resets
@@ -1413,7 +1458,7 @@ Before you begin, collect the following details:
 
 **Login to the MSU account management system**
 
--  Navigate to MSU's account management system.
+-  Navigate to the `MSU Account Management website <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/>`_
 
 **Check to see if the user already has an account. If not, request account.**
 
@@ -1476,8 +1521,8 @@ ticket if you experience a problem.
 
 .. note::
 
-   The password that you enter will be your temporary password. So please
-   remember your password.  This is critical to the next step of the on-boarding
+   The password that you enter will be your temporary password. So **please
+   remember your password.**  This is critical to the next step of the on-boarding
    process.
 
 **Set Password and Complete Training (User)**
@@ -1507,7 +1552,7 @@ find the email, search your emails with the following:
 
 **Login to MSU's Training and Password System**
 
-- Within 3 days of receiving the email, navigate to TAPS.
+- Within 3 days of receiving the email, navigate to `TAPS <https://taps.hpc.msstate.edu>`_.
 - Authenticate using your username and your temporary password.
 
 .. note::
@@ -1626,8 +1671,8 @@ request an account renewal through the MSU intranet.
    date instead of the Expiration Date. Change the Effective Date to be the
    Expiration Date in the email.
 #. Set the new Expiration Date.  This should be set to 1 year after the new
-   Effective Date (if your Effective Date is 02/05/21, the Expiration Date
-   should be 02/05/22), unless you want the user account to expire sooner than 1
+   Effective Date (if your Effective Date is 02/05/23, the Expiration Date
+   should be 02/05/24), unless you want the user account to expire sooner than 1
    year. 1 year is the max allowed by MSU.
 #.  Save Request when complete
 
@@ -1716,7 +1761,7 @@ Manager, who emails the :ref:`Orion Help System <getting_help>`.
 
 **Managing Allocations**
 
-Allocations on this system are managed the exact same way as they are for NOAA's
+Allocations on this system are managed exactly as they are for NOAA's
 RDHPCS systems (Hera, Jet etc.) 
 
 Role Accounts
@@ -1782,7 +1827,7 @@ rdhpcs.orion.help@noaa.gov
 
 .. note::
 
-   Help tickets are normally addressed by the RDHPCS   User Support team and the
+   Help tickets are normally addressed by the RDHPCS User Support team and the
    MSU Orion Support team from 0900 -1700 Eastern Time, Monday - Friday, except
    Government holidays.
 
@@ -1813,7 +1858,7 @@ Policies and Best Practices
 
 -  Due to limited disk space on Orion, it is highly recommended that data be
    moved back to the R&D HPC Niagara system.
--  Due to limited network bandwidth, it is highly recommended that  Globus
+-  Due to limited network bandwidth, it is highly recommended that Globus
    be used for moving data between Orion and Niagara.
 
 Protecting Restricted Data
@@ -1900,7 +1945,7 @@ drive the need to upgrade Orion to the new software stack. If this were to
 happen then multiple user notices would be sent out over a period of multiple
 months.
 
-**Should I use the ``/work`` or ``/work2`` file system for my project?**
+**Should I use the** ``/work`` **or** ``/work2`` **file system for my project?**
 
 Although all NOAA projects have been provided with a disk allocation on both
 file systems, there are some architectural differences between the two file
@@ -1911,7 +1956,7 @@ choose which one works better for your project.
 
 **How do I use Jupyter Notebooks on Orion?**
 
-Typically, port forwarding is needed to launch and use jupyter from the command
+Typically, port forwarding is needed to launch and use Jupyter from the command
 line. Orion's current security posture does not allow port forwarding, so the
 recommended method for using Jupyter on Orion is to use the interactive Jupyter
 Notebooks application or the Virtual Desktop on our Open OnDemand HPC portal.
@@ -1922,7 +1967,7 @@ select the jupyter notebook application, on the next page you can enter in slurm
 job parameters then launch the server application on one of the Orion nodes as a
 job.
 
-MSU has documentation for the Open OnDemand interface
+MSU has documentation for the Open OnDemand interface.
 
 The OOD jupyter notebook instance is currently launched with the python/3.7.5
 module that is available on Orion. You should be able to launch custom kernels
@@ -1980,7 +2025,8 @@ The netcdf-c and netcdf-fortran have been installed in different directories.
 After loading the modules, it provides ``NETCDF_C_ROOT`` and
 ``NETCDF_FORTRAN_ROOT``. Users need to copy them to the same directory and provide
 the definition of “NETCDF” in order to compile WRF. For example, I create a new
-directory for ``$NETCDF
+directory for ``$NETCDF``.
+
 
 .. code-block:: shell
 
