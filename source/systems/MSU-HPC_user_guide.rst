@@ -10,7 +10,7 @@ Introduction
 ============
 NOAA has provided Mississippi State University (MSU) with Grants to install and manage High Performance Computing (HPC) Systems to further NOAA’s scientific research and collaboration. Through this close partnership NOAA hopes to advance its research goals in the areas of Severe Weather and Climate research. The exchange of technical information between NOAA and MSU should be of great value and be beneficial to both HPC programs.
 
-The MSU-HPC system consists of two components, Orion and Hercules. Orion and Hercules share a InfiniBand interconnect and two Lustre file systems, ``/wor`` and ``/work2/``.
+The MSU-HPC system consists of two components, Orion and Hercules. Orion and Hercules share a InfiniBand interconnect and two Lustre file systems, ``/work`` and ``/work2/``.
 
 Orion System Features:
 
@@ -29,7 +29,7 @@ Shared Between the Two HPC Systems:
 * Total scratch disk capacity of 9 Petabytes on the "work" file system
 * Total scratch disk capacity of 18 Petabytes on the "work2" file system
 
-This guide contains information specific to NOAA users regarding the use of Mississippi State University's High Performance Computing System (MSU-HPC). It is not intended to be the official system documentation. It only exists to assist NOAA users, Portfolio Managers and Principal Investigators in using and managing accounts on the MSU-HPC system. If you have any questions or comments regarding the material, please email the Help System using your @noaa.gov address, at help@rdhpcs.orion.help@noaa.gov.
+This guide contains information specific to NOAA users regarding the use of Mississippi State University's High Performance Computing System (MSU-HPC). It is not intended to be the official system documentation. It only exists to assist NOAA users, Portfolio Managers and Principal Investigators in using and managing accounts on the MSU-HPC system. If you have any questions or comments regarding the material, please email the Help System using your noaa.gov address, at rdhpcs.orion.help@noaa.gov.
 
 MSU's Official HPC Documentation
 --------------------------------
@@ -303,10 +303,6 @@ directives at the top job files. The directives are of the form
    #SBATCH <options>
 
 For example, to specify the time limit as a directive, you should have the
-following line before any of the executable commands in your job file:
-
-.. code-block:: shell
-
    #SBATCH --time=0:30:00
 
 These directives can be used instead of specifying options on the command line.
@@ -981,7 +977,7 @@ To cancel a job use the scancel command:
 Getting Information about your Projects
 ---------------------------------------
 
-MSU-HPC uses Slurm as its batch scheduler, as does NOAA's RDHPCS systems. SLURM
+MSU-HPC uses Slurm as its batch scheduler, as does NOAA's RDHPCS systems. Slurm
 allocations result in a percentage of total system priority.
 
 **Load contrib and noaatools Module**
@@ -1180,7 +1176,7 @@ The bigmem nodes have the following: 12x 32GB DDR-4 Dual Rank 2666MHz for a tota
 - Number of DTNs: 4
 - Number of Development Nodes: 2
 - Cron Services: Available on Orion-login-1
-- Batch System: SLURM
+- Batch System: Slurm
 - Home File System: NFS with 10GB of space per user
 - Modules: LMOD
 
@@ -1211,7 +1207,7 @@ Hercules Compute System
 - Number of DTNs: 4
 - Number of Devel Nodes: 4
 - Cron Services: Available on hercules-login-1 (VERIFY)
-- Batch System: SLURM
+- Batch System: Slurm
 - Home File System: NFS with 10GB of space per user
 - Modules: LMOD
 
@@ -1963,7 +1959,7 @@ Notebooks application or the Virtual Desktop on our Open OnDemand HPC portal.
 
 Implementation of Open OnDemand includes a Jupyter Notebook interactive server
 application under the :menuselection:`Interactive Apps`` dropdown menu. When you
-select the jupyter notebook application, on the next page you can enter in slurm
+select the jupyter notebook application, on the next page you can enter in Slurm
 job parameters then launch the server application on one of the Orion nodes as a
 job.
 
