@@ -107,31 +107,28 @@ Lustre Volume and File Count
 ----------------------------
 
 For efficient resource usage, Hera's ``/scratch1`` and ``/scratch2``
-Lustre file systems have project based volume and file countquotas.
-Each project has an assigned quota which is sharedby all users on the
+Lustre file systems have project based volume and file count quotas.
+Each project has an assigned quota which is shared by all users on the
 project. File count quotas are implemented to preserve the increased
-performance of the2 tier storage architecture where the first 128 KB
-of eachfile is stored on SSD and the remainder if any on HDD.
-Historical data from Theia and Jet show that the average file count
-per GB is ~100. By default projects on Hera are given a file count
-quota of 200 files per GB of volume quotaor 100,000 files whichever is
+performance of the 2-tier storage architecture, where the first 128 KB
+of each file is stored on SSD and the remainder if any on HDD.
+Historical data from Jet show that the average file count
+per GB is ~100. By default, projects on Hera are given a file count
+quota of 200 files per GB of volume quota or 100,000 files, whichever is
 higher. Users will receive warning emails when their quota is
 exceeded. When either the volume or file count quota is exceed by more
 than 1.2x, writes will not be allowed.
 
 Summary and detailed information on finding your project's disk volume
-and file count quota and usage is found at:  `Getting Information
-About Your  Projects
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Getting_Information_About_Your_Projects_-_SLURM>`__
+and file count quota and usage is found :ref: `here <Getting_Information_about_your_Projects>`.
 
 Volume Quota Increase
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you are approaching your quota, your first step should be to delete
+If you are approaching your quota, you should first delete
 old files and/or move files to HPSS tape systems as appropriate. If
-more volume is still needed, request a volume quota increases by
-submitting a Hera :ref:`help ticket <getting_help>` with a
-justification, including:
+more volume is still needed, open a Help ticket to request a volume quota increase. Send email to rdhpcs.hera.help@noaa.gov, 
+with the subject line Quota Increase, and a justification, including:
 
 * Project name.
 * Requested quota. Is the increase request temporary or permanent? If
@@ -144,11 +141,11 @@ File Count Quota Increase
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you are approaching your quota or your file count quota or are
-running over 200 files/GB, your first step should be to delete old
+running over 200 files/GB, you should first delete old
 small files. If you want to keep them around but they are not accessed
 frequently, you should tar up many small files into one big file. If
 you have an exceptional situation and believe you need a quota
-increase, start a Hera :ref:`help ticket <getting_help>` including the
+increase, open a Help ticket. Send email to rdhpcs.hera.help@noaa.gov that includes the
 following information:
 
 
@@ -201,7 +198,7 @@ as:
 where ``${TASK}`` is often, but not necessarily, the individual user's
 login ID, as defined by the project lead. 
 
-The number of servers and targets on each of the two Herafile systems
+The number of servers and targets on each of the two Hera file systems
 is:
 
 * 2 MDSs (active/active)
@@ -244,7 +241,7 @@ Aligned vs Unaligned Stripes
 
 Aligned stripes is where each segment fits fully onto a single OST.
 Processes accessing the file do so at corresponding stripe
-boundaries. Unaligned stripes means some file segments are split
+boundaries. Unaligned stripes means that some file segments are split
 across OSTs.
 
 .. _hera-progressive-file-layouts:
@@ -253,8 +250,7 @@ Progressive File Layouts
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``/scratch1`` and ``/scratch2`` file systems are enabled with a
-feature called Progressive File Layouts (PFL) that does file layout in
-a way which is efficient for the vast majority of use cases. It uses a
+feature called Progressive File Layouts (PFL), which is efficient for the vast majority of use cases. It uses a
 single stripe count for small files (reducing overhead) and increases
 the striping as the file gets bigger (increasing bandwidth and
 balancing capacity), all without any user involvement. These file
@@ -294,7 +290,7 @@ had explicitly set non-default striping:
 
       $ lfs setstripe -d <dir>
 
-#. Open a help ticket with the subject like
+#. Open a help ticket with the subject line
    */scratchX/<portfolio>/<project> striped directories*. We will
    examine the files and assist with migrating files to an optimal
    layout if necessary.
@@ -313,11 +309,11 @@ Checking Diskspace
 Hera file system allocations are project based. Lustre quotas are
 tracked and limited by Project ID (usually the same as group ID and
 directory name). The Project ID is assigned to top-level project
-directories and will be inherited for all new subdirs. Tracking and
+directories and will be inherited for all new subdirectories. Tracking and
 enforcement includes maximum file count, not just capacity. To check
-your usage details...
+your usage details:
 
-#. Look up your project ID number (not the name)  id
+#. Look up your project ID number (not the name)
 #. Query your usage and limits using that number, for a given file
    system.
 
@@ -354,7 +350,7 @@ Finding Files
 ^^^^^^^^^^^^^
 
 The ``lfs find`` command is more efficient than the standard ``find``,
-it may be faster too. For example, finding fortran source files
+and may be faster too. For example, to find fortran source files
 accessed within the last day:
 
 .. code-block:: shell
@@ -364,7 +360,7 @@ accessed within the last day:
 Striping Information
 ^^^^^^^^^^^^^^^^^^^^
 
-You can view the file striping (layout on disk) of a file with:
+You can view the file striping layout with the command:
 
 .. code-block:: shell
 
@@ -390,8 +386,7 @@ identifier) listed actually have created objects on the OSTs.
 .. warning::
 
    Do not attempt to set striping!! If you think the default is not
-   working for you, submit a :ref:`help ticket <getting_help>` to let
-   us know and assist.
+   working for you, submit a  help ticket to let us know and assist.
 
 Other lfs Commands
 ^^^^^^^^^^^^^^^^^^
@@ -508,15 +503,15 @@ programming model, from a user application viewpoint. The Lustre file
 system can be called upon to service many requests across a striped
 file system asynchronously, and this works best if best practices,
 outlined above, are followed. A very large file that is only striped
-across one or two OSTs can degrade the performanceof the entire Lustre
-system by filling up OST sunnecessarily. By striping a large file over
-many OSTs, you increase bandwidth for accessing the file and can
+across one or two OSTs can degrade the performance of the entire Lustre
+system by filling up OSTs unnecessarily. By striping a large file over
+many OSTs, you increase bandwidth to access the file and can
 benefit from having many processes operating on a single file
-concurrently. If all large files accessed by all users are striped
-then I/O performance levels can be enhanced for all users. Small files
-should never be striped with large stripe counts if they are striped
+concurrently. If all large files accessed by all users are striped,
+I/O performance levels can be enhanced for all users. Small files
+should never be striped with large stripe counts, if they are striped
 at all. A good practice is to make sure small files are written to a
-directory with a stripe countof 1... effectively no striping.
+directory with a stripe count of 1, effectively no striping.
 
 Increase Stripe Count for Large Files
 """""""""""""""""""""""""""""""""""""
@@ -531,8 +526,7 @@ the reads/writes across more OSTs, balancing the load and data.
 Use a Small Stripe Count for Small Files
 """"""""""""""""""""""""""""""""""""""""
 
-Place small files on a single OST. This causes the small files not to
-be spread out, fragmented, across OSTs.
+Place small files on a single OST. Small files will then not be spread out across OSTs.
 
 .. code-block:: shell
 
@@ -542,7 +536,7 @@ Parallel IO Stripe Count
 """"""""""""""""""""""""
 
 Single shared files should have a stripe count equal to, or a factor
-of the number of processes which access the file. If the number of
+of, the number of processes which access the file. If the number of
 processes in your application is greater than 106 (the number of HDD
 OSTs), use '-c 1' to use all of the OSTs.  The stripe size should be
 set to allow as much stripe alignment as possible. Try to keep each
@@ -580,7 +574,7 @@ entire node even though you are using only a single core.
 Using Anaconda Python on Hera
 -----------------------------
 
-Please see :ref:`Installing Miniconda <installing-miniconda>` for
+See :ref:`Installing Miniconda <installing-miniconda>` for
 installation instructions.
 
 .. warning::
@@ -594,8 +588,7 @@ installation instructions.
 MATLAB
 ------
 
-Information is available `here:
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php?title=Applications_and_Libraries#MATLAB>`_.
+Information is available *TBD*
 
 Using IDL on Hera
 -----------------
@@ -625,16 +618,16 @@ Multi-Threading in IDL
 IDL is a multi-threaded program. By default, the number of
 threads is set to the number of CPUs present in the
 underlying hardware. The default number of threads for Hera
-compute node is 48 (the number of virtual CPUs). It should
-not be run as a serial job with the default thread number as
+compute nodes is 48 (the number of virtual CPUs). It should
+not be run as a serial job with the default thread number, as
 the threaded program will affect other jobs on the same
 node.
 
-The number of threads needs to be set as 1 if a job is going to be
+The number of threads needs to be set to 1 if a job is going to be
 submitted as a serial job, which can be achieved by setting the
 environment variable ``IDL_CPU_TPOOL_NTHREADS`` to 1, or setting it
 with the CPU procedure in IDL: ``CPU, TPOOL_NTHREADS = 1``. If a job
-requires larger than 10 GB memory, it is recommended to run the job on
+requires larger than 10 GB memory, you should run the job on
 either the bigmem node or a whole node.
 
 Using ImageMagick on Hera
@@ -678,8 +671,8 @@ R has many contributed packages that can be added to standard R. `CRAN
 open-source packages that extend the capabiltiies of R, has a complete
 list of R packages as well as the packages for download.
 
-Due to the access restrictions from Hera to the CRAN repository, you
-may need to download an R package first to your local workstation and
+Due to access restrictions from Hera to the CRAN repository, you
+may need to download an R package to your local workstation first, 
 then copy it to your space on Hera to install the package as detailed
 below.
 
@@ -728,228 +721,8 @@ module system that makes it easy to place modules in a hierarchical
 arrangement. So you may not see all the available modules when you
 type the ``module avail`` command.
 
-For example, when you load the Intel module, only libraries compiled
-with the Intel compiler will be listed when you list with the ``module
-avail`` command.
+See :ref:`Modules <modules>`
 
-Currently the following hierarchies are defined:
-
-:compiler: Currently: intel, pgi
-:mpi: Currently: impi, mvapich2
-
-Use the ``module spider`` command to find all possible modules.
-
-For example, assuming you have not loaded any of the compiler or mpi
-modules, if you're interested in finding out which versions of HDF5
-are available, if you type the command ``module avail hdf5`` you will
-not see any of the modules listed:
-
-.. code-block:: shell
-
-   $ module avail hdf5
-
-   Use "module spider" to find all possible modules.
-   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
-
-This is because you have not loaded any of the compiler modules, and
-HDF5 modules installed on the system require one of the compiler
-modules. But if you're still interested in finding out which versions
-are available, and when you want to find more details about which
-compilers will have to be loaded in order to use that module, you have
-to use the "module spider" command as shown below:
-
-.. code:: shell
-
-   $ module spider hdf5
-
-   *-----------------------------------------------------------------------------------------------------------
-      hdf5:
-   *-----------------------------------------------------------------------------------------------------------
-         Versions:
-            hdf5/1.8.14
-
-         Other possible modules matches:
-            hdf5parallel, netcdf-hdf5parallel
-
-   *-----------------------------------------------------------------------------------------------------------
-      To find other possible module matches do:
-          module*r spider '.*hdf5.*'
-
-   *-----------------------------------------------------------------------------------------------------------
-      To find detailed information about hdf5 please enter the full name.
-      For example:
-
-         $ module spider hdf5/1.8.14
-   *-----------------------------------------------------------------------------------------------------------
-
-   $ module spider hdf5/1.8.14
-
-   *-----------------------------------------------------------------------------------------------------------
-      hdf5: hdf5/1.8.14
-   *-----------------------------------------------------------------------------------------------------------
-
-         Other possible modules matches:
-            hdf5parallel, netcdf-hdf5parallel
-
-        This module can only be loaded through the following modules:
-
-          intel/13.1.3
-          intel/14.0.2
-          intel/15.0.0
-          intel/15.1.133
-          pgi/12.5
-          pgi/14.10
-          pgi/15.1
-
-   *-----------------------------------------------------------------------------------------------------------
-      To find other possible module matches do:
-          module*r spider '.*hdf5/1.8.14.*'
-
-The current configuration has no default modules loaded. Run:
-
- .. code:: shell
-
-   $ module avail
-
-to see the list of modules available for you load now.
-At a minimum you will want to do:
-
-.. code-block:: shell
-
-   $ module load intel impi
-   $ module list
-
-   Currently Loaded Modules:
-      1) intel/18.0.5.274   2) impi/2018.0.4
-
-Modules on Hera
----------------
-
-The way to find the latest modules on Hera is to run
-``module avail`` to see the list of available modules for
-the compiler and the MPI modules currently loaded:
-
-.. code-block:: shell
-
-   $ module avail
-
-   *-------------------------------- /apps/lmod/lmod/modulefiles/Core*--------------------------------
-       lmod/7.7.18    settarg/7.7.18
-
-   *----------------------------------- /apps/modules/modulefiles*------------------------------------
-       advisor/2019         g2clib/1.4.0           intel/19.0.4.243            rocoto/1.3.1
-       antlr/2.7.7          gempak/7.4.2           intelpython/3.6.8           szip/2.1
-       antlr/4.2     (D)    grads/2.0.2            matlab/R2017b               udunits/2.1.24
-       cairo/1.14.2         hpss/hpss              nag-fortran/6.2             vtune/2019
-       cnvgrib/1.4.0        idl/8.7                nccmp/1.8.2                 wgrib/1.8.1.0b
-       contrib              imagemagick/7.0.8-53   ncview/2.1.3                xxdiff/3.2.Z1
-       ferret/6.93          inspector/2019         performance-reports/19.1.1
-       forge/19.1intel/18.0.5.274     (D)          pgi/19.4
-
-      Where:
-       D:  Default Module
-
-Please note that, because LMOD is a hierarchical module system, you
-only see the list of modules that you can load at this point in time
-(based on what other modules you may have loaded). To see the complete
-list of modules available on the system, use the ``module spider``
-command:
-
-.. code-block:: shell
-
-   $ module spider
-
-   *-----------------------------------------------------------------------------------------------
-    The following is a list of the modules currently available:
-   *-----------------------------------------------------------------------------------------------
-      advisor: advisor/2019
-
-      anaconda: anaconda/anaconda2, anaconda/anaconda2-4.4.0, anaconda/anaconda3-4.4.0, ...
-
-      antlr: antlr/2.7.7, antlr/4.2
-
-      bitrep: bitrep/1.0
-   ...
-
-In this example, each module name represents a different package. In
-cases where there are multiple versions of a package, one will be set
-as a default. For example, for the intel compiler there are multiple
-choices:
-
-.. code-block:: shell
-
-   $ module avail intel
-
-   *----------------------------------- /apps/modules/modulefiles*------------------------------------
-       intel/18.0.5.274 (D)    intel/19.0.4.243    intelpython/3.6.8
-
-      Where:
-       D:  Default Module
-
-   Use "module spider" to find all possible modules.
-   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
-
-So if you run:
-
-.. code-block:: shell
-
-   $ module load intel
-
-the default version will be loaded, in this case intel/18.0.5.274.
-
-If you want to load a specific version, you can. We highly recommend
-you use the system defaults unless something is not working or you
-need a different feature. To load a specific version, specify the
-version number.
-
-.. code-block:: shell
-
-   $ module load intel/19.0.4.243
-
-In some cases other required modules may be loaded for you. The Intel
-module manages all the sub modules, you do not have to worry about it.
-
-.. note::
-
-   - When unloading modules, only unload those that you have loaded.
-     The others are done automatically from master modules.
-   - Modules is a work in progress, and we will be improving their
-     uses and making which modules you load more clear.
-
-Loading Modules in batch jobs
------------------------------
-
-Any modules that you loaded when building your codes needs to be
-loaded when your job runs as well. This means that you must put the
-same module commands in your batch scripts that you ran before
-building your code.
-
-Modules with sh, bash, and ksh scripts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Due to the way the POSIX standard is defined for bash, sh, and ksh you
-**MUST** add the ``-l`` option (that is a lowercase L) to the shebang
-(e.g. ``#!/bin/sh``) line at the top of your script for all sh, bash,
-or ksh batch scripts. For example:
-
-.. code-block:: shell
-
-   #!/bin/ksh -l
-
-   module load intel
-   module load impi
-
-   srun -n 12 /xhpl
-
-Failure to use ``-l`` will cause the module commands to fail and your
-job will not run properly and may crash in hard to diagnose ways.
-
-Additional Documentation on Lua modules
----------------------------------------
-
-Refer to the `LMOD documentation
-<https://lmod.readthedocs.io/en/latest/>`_ for more detailed
-information on Lua module utility.
 
 Using MPI
 =========
@@ -1090,7 +863,7 @@ Tuning MPI (TBD)
 
 Several options can be used to improve the performance of MPI jobs.
 
-Profiling my MPI application with Intel MPI
+Profiling an MPI application with Intel MPI
 -------------------------------------------
 
 Add the following variables to get profiling information from your runs:
@@ -1118,7 +891,7 @@ physical processing units. The interface is controlled using the
 KMP_AFFINITY environment variable. Thread affinity can have a dramatic
 effect on the application speed. It is recommended to set
 ``KMP_AFFINITY=scatter`` to achieve optimal performance for most
-OpenMP applications. Review the information is on the `Intel
+OpenMP applications. For details, review the information in the `Intel
 documentation library`_.
 
 Intel Trace Analyzer
@@ -1260,7 +1033,7 @@ Linaro Forge
 Linaro Forge allows easy profiling of applications. Very brief
 instructions are included below.
 
-- Compile with the debug flag (usually ``-g``
+- Compile with the debug flag 
 - Do not move your source files; the path is hardwired
   and will not found if relocated
 - Load the *forge* module with ``module load forge``
@@ -1302,8 +1075,8 @@ TAU
 
 The TAU Performance System® is a portable profiling and
 tracing toolkit for performance analysis of parallel
-programs written in Fortran, C, C++, Java, Python. Supports
-application use of MPI and/or OpenMP. Also supports GPU.
+programs written in Fortran, C, C++, Java, and Python. It supports
+application use of MPI and/or OpenMP, and also supports GPU.
 Portions of the TAU toolkit are used to instrument code at
 compile time. Environment variables control a number of
 things at runtime. A number of controls exist, permitting
@@ -1319,7 +1092,7 @@ users to:
 
 The toolkit includes the Paraprof visualizer (a Java app)
 permitting use on most desk and laptop systems (Linux,
-MacOS, Windows) for viewing instumentation data. The 3D
+MacOS, Windows) to view instumentation data. The 3D
 display can be very useful. Paraprof supports the creation
 of user defined metrics based on the metrics directly
 collected (ex: FLOPS/CYCLE).
@@ -1333,13 +1106,13 @@ Quick-start Guide for TAU
 The Quick-start Guide for TAU only addresses basic usage. Please
 keep in mind that this is an evolving document!
 
-Find the Quick Start `here <https://heradocs.rdhpcs.noaa.gov/wiki/index.php?title=Quick-start_guide>`__
+Find the Quick Start *TBD*
 
 Tutorial slides for TAU
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 A set of slides presenting a recipe approach to beginning
-with Tau is available `here <https://drive.google.com/a/noaa.gov/file/d/0B6Oipp_vs9tlMzcybEhXeUs2UjQ/view?usp=sharing>`__
+with Tau is available *TBD*
 
 MPI and OpenMP support
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -1355,158 +1128,8 @@ MPI or OpenMP or both.
 
 Managing Contrib Projects
 =========================
-
-Overview of Contrib Package
----------------------------
-
-The system staff do not have the resources to maintain every piece of
-software requested. There are also cases where developers of the
-software are the system users, and putting a layer in between them and
-the rest of the system users is inefficient. To support these needs,
-we have developed a ``/contrib`` package process. A ``/contrib``
-package is one that is maintained by a user on the system. The system
-staff are not responsible for the use or maintenance of these
-packages.
-
-Responsibilities of a Contrib Package Maintainer
-------------------------------------------------
-
-Maintainers are expected to:
-
--  Follow the naming conventions and guidelines outlined in
-   this document
--  Apply security updates as quickly as possible after they
-   become availble
--  Update software for bug fixes and functionality as users
-   request
--  Respond to user email requests for help using the
-   software
-
-Guidelines for Contrib Packages
--------------------------------
-
-- The package should be a single program or toolset.
-- We want to prevent having a single directory being a repository for
-  many different packages. If you support multiple functions, please
-  request multiple packages
-- The package may have build dependencies on other packages, but it
-  must otherwise be self-contained
-- The package may not contain links to files in user or project
-  directories.
-- We expect each package to be less than 100MB. If you need more,
-  please tell us when you request your package. We can support larger
-  packages but we need to monitor the space used.
-- We expect each package to have less than 100 files. If you need
-  more, please tell us when you request your package.
-
-Requesting to be a Contrib Package Maintainer
----------------------------------------------
-
-If you wish to maintain a package in contrib, please open a :ref:`help
-request <getting_help>` with:
-
--  a list of the packages you wish to maintain
--  justification why each is needed
--  the user who will be maintaining the package.
-
-In certain cases, multiple users can manage a package,and
-unix group write permissions may be granted for the
-directory. In that case, specify the unix group that will be
-maintaining the package.
-
-Managing a Contrib Package
---------------------------
-
-After your request has been approved to use space in the
-``/contrib`` directory, two directories will be created for you:
-
-* ``/contrib/$MYDIR``
-* ``/contrib/modulefiles/$MYDIR``
-
-This is where you will install your software for this package and
-optionally install a module to allow users to load the environmental
-settings necessary to use this package. The variable ``$MYDIR`` is the
-name of the ``/contrib`` package you requested.
-
-The directory convention of ``/contrib`` is designed to match
-that of ``/apps``. This means that one piece of software goes
-into a subdirectory under the ``/contrib`` level. If you want to
-manage multiple package, please request multiple ``/contrib``
-package. You can do this all at one time when submitting
-your request to the Help System.
-
-Contrib Package Directory Naming Conventions
---------------------------------------------
-
-When installing software into your ``/contrib`` directory, first
-determine if this is software that should be versioned (multiple
-versions may exist at one time) or unversioned (there will only ever
-be one version installed, and upgrade will overwrite the existing
-software). For verisoned software, please install it into a
-subdirectory of your package that is named after the version number.
-For supporting multiple versions of software the install path should
-be ``/contrib/$MYDIR/$VER``, where ``$MYDIR`` is the directory
-assigned to you and $VER is the version number. 
-
-So if your package is named ferret, and you are installing the version
-3.2.6, the software should be installed in ``/contrib/ferret/3.2.6``
-
-For supporting un-versioned software, just install the software
-directly into your package directory ``/contrib/$MYDIR/``.
-
-Providing Modules to Access Contrib Installed Software
-------------------------------------------------------
-
-For each contrib package, a corresponding directory will be
-created for modules. The base directory name is
-``/contrib/modulefiles``. Each package will have a
-subdirectory created named after the package. For example,
-for the ferret package, there will also be a directory
-created named ``/contrib/modulefiles/ferret``
-
-The ``/contrib/modulefiles`` directory will already be on
-the modules path by default, so all users will be able to
-see the modules when they run module list. Modules should
-follow the same naming convention as the directories that
-contain the software. Use some name that represents what it
-is (ex: tools or dat). For versioned software, the name of
-the module file should be the version number ($VER). See
-below for information on how to create modules.
-
-Creating Modules for Contrib Packages
--------------------------------------
-
-There are example modules found in
-``/contrib/modulefiles.example/ferret``
-
-Please use those as a template. Contrib package maintainers
-must follow these conventions:
-
--  Modules must display the notice when loaded providing
-   contact information on how to get help.
--  Module naming convention should be based on the version
-   number of the software.
--  Please ask questions through the Help System regarding
-   how to construction modules.
-
-Specifying a Default Module
----------------------------
-
-If you have multiple versions of a package installed, it is
-good practice to set which one is the default for the user.
-This way, the user does not have to explicitly specify which
-version they want to load. This is done by using a file
-called .version that is placed in the module directory that has the format:
-
-.. code-block:: tcl
-
-   #%Module
-   ##
-   ## version file for default module version
-   #
-   set ModulesVersion      "<version>"
-
-Where ``<version>`` is the desired default version.
+A /contrib package is one that is maintained by a user on the system. The system staff are not responsible for the use or maintenance of these packages.
+See :ref:`Contrib <contrib>` for details.
 
 Fine Grain Architecture (FGA) System
 ====================================
@@ -1571,7 +1194,7 @@ The paragraphs should contain the following information:
 
 Note that there are approximately 64,000 node-hours
 (1,270,000 core-hours) available. Since the intent is to use
-an entire node (including the GPUs) only full node will be
+an entire node (including the GPUs) only full nodes will be
 available for allocation (although the bookkeeping will be
 done in core-hours).
 
@@ -1579,7 +1202,7 @@ Using FGA resources without an allocation
 -----------------------------------------
 
 Users that do not have allocations on the FGA system will
-have access to the FGA system at windfall priority.  Which
+get access to the FGA system at windfall priority.  Which
 means users will be able to submit jobs to the system, but
 they will only run when the resources are not being used by
 projects that do have an FGA allocation. This is helpful for
@@ -1610,7 +1233,7 @@ Compiling and Running Codes on the FGA
 Please keep in mind that the software stacks on the FGA
 machines are slightly different from regular Hera TCA nodes
 (including the FE nodes) as mentioned above. This is because
-the TCA and FGA nodes have different network cards which
+the TCA and FGA nodes have different network cards, which
 necessitates that we have different images for these two
 systems.
 
@@ -1637,7 +1260,9 @@ and executing cuda programs:
 
 Generally you should use the latest cuda available
 
-.. note:: We have limited experience with cuda.
+.. note:: 
+   
+   We have limited experience with cuda.
 
 The following flags were seen in sample codes
 for compiling codes for the Pascal GPUs
@@ -1651,8 +1276,8 @@ Compiling and Running Codes Using Intel MPI
 
 If you're using Intel MPI (with or without cuda; see the
 note above if you're using cuda), compilation may be done on
-the front-ends or on the computes nodes in an
-interactive-batch job. But we would still recommend
+the front-ends or on the compute nodes in an
+interactive-batch job. We would still recommend
 compiling on an FGA compute node by submitting an
 interactive batch job to the "fge" queue.
 
@@ -1696,7 +1321,7 @@ appropriate for the shell you are using):
 
 This is necessary because the FGA nodes have Mellanox IB
 cards as opposed to the Intel IB cards as in the regular
-Hera nodes. Because of this difference in hardware the
+Hera nodes. Because of this difference in hardware, the
 software is also different on the FGA nodes. The FGA nodes
 do not support the TMI fabric setting which is the default
 on the regular Hera nodes.
@@ -1704,7 +1329,7 @@ on the regular Hera nodes.
 Compiling and Building Codes Using mvapich2-gdr Library
 -------------------------------------------------------
 
-The MVAPICH2-GDR (GDR stands for GPUDirect RDMA) from Ohio
+The MVAPICH2-GDR (GDR stands for GPU Direct RDMA) from Ohio
 State University is available for experimentation and
 testing on the FGA nodes.
 
@@ -1725,7 +1350,7 @@ You need to load the following modules:
    $ mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
    $ mpicc -o myc.exe    myccode.c
 
-In addition to loading the modules mentioned above, at
+In addition to loading these modules, at
 execution time you need to set the following environment
 variables in your job file:
 
@@ -1749,7 +1374,7 @@ experimentation and testing on the FGA nodes. The current
 installed version is the one that came with the PGI
 compiler, so PGI examples are shown below.
 
-You need to load the following modules:
+Load the following modules:
 
 .. code-block:: shell
 
@@ -1757,7 +1382,7 @@ You need to load the following modules:
    $ mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
    $ mpicc  -o myc.exe myccode.c
 
-In addition to loading the modules mentioned above, at
+In addition to loading these modules, at
 execution time you need to set the following environment
 variables in your job file:
 
@@ -1795,10 +1420,8 @@ has a presentation on some advanced topics on using `multiple GPUs
 Submitting Batch Jobs to the FGA System
 ---------------------------------------
 
-Users that have FGE specific allocation they can submit jobs
-to the *fge* partition. Users that don't have an FGE
-specific allocation can submit to the GPU nodes by
-submitting to the *fgewf* partition and will run with
+Users who have FGE specific allocation can submit jobs
+to the *fge* partition. Other users can submit jobs to the *fgewf* partition and will run with
 windfall priority.
 
 One thing to keep in mind is that unlike the TCA, the
@@ -1811,8 +1434,7 @@ Hints on Rank Placement/Performance Tuning
 .. NOTE::
 
    This section is included below just as a
-   suggestion and is being updated as we learn more. Please
-   note that the following section seems to be applicable only
+   suggestion and is being updated as we learn more. The following information seems to be applicable only
    to Intel MPI.
 
 Please keep in mind that there are
@@ -1823,8 +1445,7 @@ processes such that they're not moving from core to core on
 the node during the run.
 
 First a simple script for pinning in a straightforward way
-is shown below, followed by a couple of examples that were
-modified from actual examples used in the benchmarking run:
+is shown below, followed by modified examples that were used in the benchmarking run:
 
 .. code-block:: shell
 
@@ -1855,8 +1476,8 @@ The job can be launched by using:
 
    mpirun -np ${nranks} ./place.sh $exe
 
-Based on the experience from the Cray benchmarking team, a
-couple of examples of achieving the desired pinning are
+From the experience from the Cray benchmarking team, a
+couple of examples that achieve the desired pinning are
 shown below. In the first example, there are 4 MPI ranks on each
 node, the goal is to pin the 4 ranks to the first socket and
 specific cores; Also in this example each rank used 2
@@ -1905,9 +1526,11 @@ threads, and hence 2 cores are specified for each rank:
      ;;
    esac
 
-The script above is used in the mpirun command; please note
-that in the example above the name of the executable is
-passed in the environment variable "exe". Just as a second example a similar script for pinning to the
+This script is used in the mpirun command. 
+In the example above, the name of the executable is
+passed in the environment variable "exe". 
+
+As a second example a similar script for pinning to the
 specific cores on the second socket is shown below:
 
 .. code-block:: shell
@@ -1974,9 +1597,9 @@ eight tasks, and place them only| on the second socket on each node:
    Hello from rank 06 out of 8; procname = tg002, cpuid = 18
    Hello from rank 07 out of 8; procname = tg002, cpuid = 19
 
-Please note that the two environment variables shown above
-need to be set as currently they're not set by default. But
-this one is subject to change and the module may be modified
+Note that the two environment variables shown above
+are currently not set by default. But
+this is subject to change and the module may be modified
 in the future to set it by default.
 
 For more details, see the `MVAPICH2 user guide
@@ -1988,7 +1611,7 @@ Using Nvidia Multi-Process Service
 What is MPS
 ^^^^^^^^^^^
 
-Multi-Process Service (MPS) is a service that allows
+Multi-Process Service (MPS) allows
 multiple tasks on a node to share a GPU.
 
 On Hera for example, we have 20 cores on a node and only 8
@@ -2003,12 +1626,12 @@ the GPU and have more MPI tasks on each node.
 The performance benefits of taking this approach are very
 much application dependent.
 
-How do I use MPS
-^^^^^^^^^^^^^^^^
+How do I use MPS?
+^^^^^^^^^^^^^^^^^
 
-In the example below, we describe the simplest use case and
-we will update the documentation as we gather more
-experience. For the simplest case, we will consider running an MPI
+In the example below, we describe the simplest use case. 
+(We will update the documentation as we gather more
+experience.) For the simplest case, we will consider running an MPI
 application on just one node after getting access to a FGA
 compute node by submitting an interactive batch job to the
 fge queue.
@@ -2038,7 +1661,7 @@ mentioned above:
       $ ps -elf | grep nvidia-cuda-mps-control | grep -v grep
       1 S User.Id  47724      1  0  80   0*  2666 poll_s 16:56 ?        00:00:00 nvidia-cuda-mps-control -d
 
-- You can run some of the MPS commands.
+- Run some of the MPS commands.
 
   Please keep in mind that MPS does not have a command prompt,
   so typically you run the MPS commands as shown below:
@@ -2048,7 +1671,7 @@ mentioned above:
    $ echo get_server_list | nvidia-cuda-mps-control
    Server 0 not found
 
-  Then you run your application like you normally would.
+  Then, run your application as you normally would.
   At the end of your session, terminate the deamon by running the command:
 
   .. code-block:: shell
@@ -2066,16 +1689,14 @@ Compiling and Building Codes With The Cray Programming Environment
 
 A custom built version of mvapich2 must be used when compiling and running with
 the Cray Programming Environment (CrayPE). To run an MPI
-program using the Cray
-Programming Environment (CrayPE), you must first set up
-the proper environment.
+program using the CrayPE, you must first set up the proper environment.
 This has been rolled into a single ``module load`` command
 that brings in all required
 modules:
 
 .. note::
 
-   Currently because of a compatibility issue between
+   Because of a compatibility issue between
    regular Modules and Lmod (which Hera uses), the CrayPE
    modules don't work with tcsh. Hence all of these examples
    are shown with bash.
@@ -2116,8 +1737,7 @@ Then compile the program. The compiler drivers are
 
    $ cc -homp -o xthi xthi.c  # (-homp is default, so not explicitly needed)
 
-To run the executable, secure the appropriate compute
-node(s) and set the environment:
+To run the executable, secure the appropriate compute node(s) and set the environment:
 
 .. code-block:: shell
 
@@ -2170,9 +1790,9 @@ performance.
    Hello from rank 0, thread 3, on sg001. (core affinity = 0)
    Hello from rank 0, thread 1, on sg001. (core affinity = 0)
 
-Each thread is placed on core.0 with the master thread. To avoid this
-contention, the application must be launched with numactl like this
-using in a script (r4.sh in the example below):
+Each thread is placed on core.0 with the master thread. To avoid
+contention, the application must be launched with numactl as in this
+script (r4.sh in the example below):
 
 .. code-block:: shell
 
@@ -2238,9 +1858,9 @@ using in a script (r4.sh in the example below):
      ;;
    esac
 
-In this case, we have a single node with two MPI ranks running each
+In this case, we have a single node with two MPI ranks running, each
 spawning 4 OpenMP threads. The threads are placed such that each set
-is running on its own socket:
+is running on its own socket.
 
 .. code-block:: shell
 
@@ -2277,23 +1897,3 @@ Getting Help
 
 As with any Hera issue, open a :ref:`help request <getting_help>`.
 
-Policies and Best Practices
-===========================
-
-Below is a list of policies that govern the use of the NESCC RDHPCS
-computing systems. In RDHPCS CommonDocs, see:
-
-*  `Usage and Software Support Policies
-   <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies>`__
-*  `Login (Front_End) Node Usage Policy
-   <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__
-*  `Cron Usage Policy
-   <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__
-*  `Module Loading Best Practices
-   <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Module_Loading_Best_Practices>`__
-*  `Managing Packages in /contrib
-   <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Managing_Packages_in_/contrib>`__
-*  `Software Install Request Policy
-   </index.php/Software_install_request_policy>`
-*  `Protecting Restricted Data
-   <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Protecting_Restricted_Data>`__
