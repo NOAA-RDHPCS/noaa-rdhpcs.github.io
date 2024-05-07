@@ -395,7 +395,7 @@ There are two job types:
   -Regular jobs - use sbatch
 
 - Interactive/Debug
-  -salloc --x11 --clusters=c5 --nodes=2 --ntasks-per-node=32
+  -salloc --x11 --clusters=c# --nodes=2 --ntasks-per-node=32
 
 Queues
 ------
@@ -986,8 +986,7 @@ es partition
 
 - login nodes - used for compiling
 - 8 total
-- gaea9-12 = c3
-- gaea13-16 = c4
+- gaea51-58 = c5
 - 24 cores
 - 256 GB memory
 
@@ -1187,12 +1186,12 @@ Do not set these in jobs/shells you intend to submit work from, as they will ove
 
 .. code-block:: shell
   
-  setenv SLURM_CLUSTERS t4,c3,c4,gfdl,es
+  setenv SLURM_CLUSTERS t#,c#,gfdl,es
   - In bash
 
 .. code-block:: shell
 
-  export SLURM_CLUSTERS=t4,c3,c4,gfdl,es
+  export SLURM_CLUSTERS=t#,c#,gfdl,es
 
 - Jobs in the queue
 
