@@ -22,17 +22,16 @@ collaborative effort between the `Department of Energy
 <https://www.energy.gov/>`_ and the `National Atmospheric and Oceanic
 Administration <https://www.noaa.gov/>`_.
 
-The Gaea System consists of an HPE Cray XC40 supercomputer (named C4) with Intel (Broadwell) processors, and an HPE Cray EX supercomputer (named C5) with AMD (Rome) processors. The XC40 system has 164 terabytes of memory and a peak calculating capacity of 3.52 petaflops. The EX system has 482 terabytes of memory and a peak calculating capacity of 10.2 petaflops.
+The Gaea System consists of an HPE Cray EX supercomputer (named C5) with AMD (Rome) processors. The EX system has 482 terabytes of memory and a peak calculating capacity of 10.2 petaflops.
 The aggregate Gaea system:
 
-* consists of 95,616 Intel cores;
 * consists of 245,760 AMD cores; 
 * contains 646 TiB of memory
 * can perform 13.7 petaflops, or 13,700 trillion calculation each second.
 
 In Q2FY24, the Gaea System will receive a new compute cluster, named C6. C6 will be an HPE Cray EX supercomputer with 584 TB of memory and a peak calculating capacity of 9.81 petaflops.
 
-Gaea uses a high-capacity Lustre file system with over 32 petabytes of storage. The file system is connected to the Gaea system using FDR InfiniBand.
+Gaea uses a 50 PB General Parallel File System (GPFS) which has replaced the legacy Lustre file system (F2). 
 
 Access to Gaea is managed through two 10-gigabit lambdas, or optical waves, connected to NOAA's NWAVE network through peering points at Atlanta, GA and Chicago, IL.
 
@@ -107,15 +106,18 @@ You may either compile live in your login shell on a Gaea login node, or in a jo
 .. code-block:: shell
 
   #SBATCH --clusters=es
-  #SBATCH --partition=eslogin
+  #SBATCH --partition=eslogin_c#
   #SBATCH --ntasks=1 
 
 or, from the sbatch command line:
 
 .. code-block:: shell
 
-  sbatch --clusters=es --partition=eslogin --ntasks=1 /path/to/compile_script
+  sbatch --clusters=es --partition=eslogin_c# --ntasks=1 /path/to/compile_script
 
+.. note::
+
+  c# refers to a computer cluster. The current cluster is c5, but this is subject to change.
 
 Running
 -------
@@ -146,6 +148,7 @@ Your compute job script will run on one of the compute nodes allocated to your j
   srun --nodes=128 --ntasks-per-node=32 
   /gpfs/f5/<project>/$USER/path/to/executable
 
+
 Staging/Combining
 -----------------
 
@@ -154,7 +157,7 @@ Staging data to and from model run directories is a common task on Gaea. So is c
 .. code-block:: shell
 
   #SBATCH --clusters=es
-  #SBATCH --partition=ldtn
+  #SBATCH --partition=ldtn_c#
   #SBATCH --nodes=1
   #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 16
 
@@ -162,7 +165,7 @@ or, from the sbatch command line:
 
 .. code-block:: shell
 
-  sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 /path/to/staging_script
+  sbatch --clusters=es --partition=ldtn_c# --nodes=1 --ntasks-per-node=1 /path/to/staging_script
 
 Transferring Data to/from Gaea
 ------------------------------
@@ -172,7 +175,7 @@ Data transfers between Gaea and the world outside of Gaea should be performed on
 .. code-block:: shell
 
   #SBATCH --clusters=es
-  #SBATCH --partition=rdtn
+  #SBATCH --partition=rdtn_c#
   #SBATCH --nodes=1
   #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 8
 
@@ -181,6 +184,22 @@ or, from the sbatch command line:
 .. code-block:: shell
 
   sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
+
+.. note::
+
+  The data transfer nodes are assigned to a site specific partition on the es cluster.
+
+  Use the following command to view current and, or available partitions:
+
+  .. code-block:: shell
+
+    $ scontrol show partitions
+
+  or
+
+  .. code-block:: shell
+  
+    $ scontrol show partitions | grep dtn
 
 Allocation
 ----------
@@ -208,7 +227,7 @@ or add the following to your job script's #SBATCH headers:
 Running a Simple Job Script
 ---------------------------
 
-This script assumes that the data and executable are staged to /gpfs/f2/<project>/scratch/$USER. The scripts and data are located at /usw/user_scripts/
+This script assumes that the data and executable are staged to /gpfs/f5/<project>/scratch/$USER. The scripts and data are located at /usw/user_scripts/
 
 - Use gcp to get the skeleton script from /usw/user_scripts/runscript to your local home directory.
 
@@ -220,13 +239,13 @@ This script assumes that the data and executable are staged to /gpfs/f2/<project
 
 .. code-block:: shell
 
-  gcp -r /usw/user_scripts/ /gpfs/f2/<project>/scratch/$USER/runscript 
+  gcp -r /usw/user_scripts/ /gpfs/f5/<project>/scratch/$USER/runscript 
 
 - Open the runscript.
 
 .. code-block:: shell
 
-  vim ~$/gpfs/f2/<project>/scratch/$USER/runscript
+  vim ~$/gpfs/f5/<project>/scratch/$USER/runscript
 
 The comments in the script will help you understand what each item does.
 
@@ -234,7 +253,7 @@ The comments in the script will help you understand what each item does.
 
 .. code-block:: shell
 
-  sbatch /gpfs/f2/<project>/scratch/$USER/runscript 
+  sbatch /gpfs/f5/<project>/scratch/$USER/runscript 
 
 Make sure that the sbatch directives (--account, --walltime) have been changed.
 
@@ -266,7 +285,6 @@ System Architechture
 ====================
 Gaea is the largest of the NOAA research and development HPC systems,and is operated by DOE/ORNL. The aggregate Gaea system:
 
-- consists of 95,616 Intel cores;
 - consists of 245,760 AMD cores;
 - contains 646 TiB of memory
 - can perform 13.7 petaflops, or 13,700 trillion calculation each second.
@@ -274,7 +292,7 @@ Gaea is the largest of the NOAA research and development HPC systems,and is oper
 Node Types
 ----------
 
-- **Compute Nodes (C5):** 128 cores, HPE EX Rome, 251GB memory, run model executable, filesystem mount - F2
+- **Compute Nodes (C5):** 128 cores, HPE EX Rome, 251GB memory, run model executable, filesystem mount - F5
 - **Batch Nodes:** 2 cores, 8GB memory, run scripts only (cores are not charged)
 
 .. Note::
@@ -377,7 +395,7 @@ There are two job types:
   -Regular jobs - use sbatch
 
 - Interactive/Debug
-  -salloc --x11 --clusters=c3 --nodes=2 --ntasks-per-node=32
+  -salloc --x11 --clusters=c# --nodes=2 --ntasks-per-node=32
 
 Queues
 ------
@@ -392,8 +410,8 @@ Examples:
 
 .. code-block:: shell
 
-  sbatch --clusters=es --partition=eslogin scriptname
-  sbatch --clusters=es --partition=ldtn scriptname
+  sbatch --clusters=es --partition=eslogin_c# scriptname
+  sbatch --clusters=es --partition=ldtn_c# scriptname
 
 Job Monitoring
 --------------
@@ -404,14 +422,13 @@ The following are job monitoring commands with examples:
 
 .. code-block:: shell
 
-  squeue
   squeue -u $USER
   
 - scontrol show job: provides job information.
 
 .. code-block:: shell
 
-  scontrol show job jobid
+  scontrol show job <jobid>
 
 - sinfo: system state information
 
@@ -463,11 +480,8 @@ Do's and Don'ts
 
 - Compile on login nodes
 - Copy data back to archive location (off gaea) using RDTN's
-- Put source files and commonly used files in /lustre/f2/dev/$user
-- Put transient data in /lustre/f2/scratch/$user
+- Put transient data in /gpfs/f5/<project>/scratch/$USER
 - Use gcp for transfers
-- Use lfs (lustre) version of commands on the F2 lustre filesystem
-- lfs manual
 
 **Don't** use the following on Gaea:
 
@@ -476,7 +490,7 @@ Do's and Don'ts
 - compile on batch
 - cp
 - cron jobs (not permitted)
-- deep large scale use of "find" on the F2 lustre filesystem (please use 'lfs find' instead)
+- deep large scale use of "find" on the F5 filesystem (please use 'lfs find' instead)
 - fs as permanent storage
 - module purge
 - recursive operations like ls -R
@@ -486,7 +500,7 @@ Do's and Don'ts
 
 File Systems
 ============
-Gaea has three filesystems: Home, F2 (a parallel file system based on Lustre, soon to be decommissioned), and F5 (a General Parallel File System).
+Gaea has three filesystems: Home, F2 (a parallel file system based on Lustre, **decommissioned**), and F5 (a General Parallel File System).
 
 Summary of Storage Areas
 ------------------------
@@ -518,19 +532,16 @@ Summary of Storage Areas
 
 **GPFS (F5)**
 
++------------+-------------------------------+----+-----------+-------------+-------+------+---------+----------------+
+|Area        |Path                           |Type|Permissions|Quota        |Backups|Purged|Retention|On Compute Nodes|
++============+===============================+====+===========+=============+=======+======+=========+================+
+|Member Work |/gpfs/f5/<project>/$USER       |GPFS|User Set   |Project-Based|No     |No    |N/A      |Yes             |
++------------+-------------------------------+----+-----------+-------------+-------+------+---------+----------------+
+|Project Work|/gpfs/f5/<project>/proj-shared |GPFS|Project Set|Project-Based|No     |No    |N/A      |Yes             |
++------------+-------------------------------+----+-----------+-------------+-------+------+---------+----------------+
+|World Work  |/gpfs/f5/<project>/world-shared|GPFS|Project Set|Project-Based|No     |No    |N/A      |Yes             |
++------------+-------------------------------+----+-----------+-------------+-------+------+---------+----------------+
 
-+--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
-| Area         | Path                     | Type   | Permissions | Quota   | Backup | Purged | Retention | Compute Nodes |
-+--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
-| Member Work  | /lustre/f2/scratch/$USER | GPFS   | User Set    | Project | NO     | NO     | NA        | YES           |
-|              |                          |        |             | based   |        |        |           |               |
-+--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
-| Project Work | /lustre/f2/scratch/$USER | GPFS   | Project Set | Project | NO     | NO     | NA        | YES           |
-|              |                          |        |             | based   |        |        |           |               |
-+--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
-| World work   | /lustre/f2/scratch/$USER | GPFS   | Project Set | Project | NO     | NO     |           |               |
-|              |                          |        |             | based   |        |        |           |               |
-+--------------+--------------------------+--------+-------------+---------+--------+--------+-----------+---------------+
 
 HOME
 ----
@@ -975,8 +986,7 @@ es partition
 
 - login nodes - used for compiling
 - 8 total
-- gaea9-12 = c3
-- gaea13-16 = c4
+- gaea51-58 = c5
 - 24 cores
 - 256 GB memory
 
@@ -1114,8 +1124,8 @@ Scheduler/Priority Specifics
 | Queue Time | 1 Minute       | 1                       |                              |
 +------------+----------------+-------------------------+------------------------------+
 
-Slurm Tips
-==========
+Slurm Queueing System
+=====================
 Please be aware that Gaea is not like a usual Slurm cluster. Slurm expects that all nodes are homogeneous and capable of being used for any purpose. Gaea is a heterogeneous set of clusters (hence the need to specify a cluster as shown below.) This also means that partitions (queues) for resources with different purposes will need to set up your job's environment to provide access to the software for that purpose.(data transfer nodes being chief among these.) Under Slurm your job will only have the system shell init scripts run if you specify --export=NONE. The result is that --export=NONE is a required argument to get your job to see software specific to a given node type, e.g. HSI/HTAR for HPSS on the data transfer nodes.
 
 Useful Commands
@@ -1125,50 +1135,48 @@ Useful Commands
 
 .. code-block:: shell
 
-  sacctmgr show assoc 
+  sacctmgr show assoc user=$USER format=cluster,partition,account,user%20,qos%60
 
-where user=$USER format=cluster,partition,account,user%20,qos%60
-
-- To c#
+- To submit a job to a compute cluster c#:
 
 .. code-block:: shell
 
   sbatch --clusters=c# --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
 
-- To c5
+- To submit interactive work to c#:
 
 .. code-block:: shell
   
-  sbatch --clusters=c5 --nodes=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
+  salloc --x11 --clusters=c# --qos=interactive --nodes=1
 
-- To the LDTNs:
-
-.. code-block:: shell
-  
-  sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
-
-- To the RDTNs:
+- View accounting data for a specifc job
 
 .. code-block:: shell
-  
-  sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 --account=gfdl_z --qos=normal --export=NONE /path/to/job/script
 
-- To submit interactive work to c#
+  sacct -j <jobid> --format=jobid,jobname,submit,exitcode,elapsed,reqnodes,reqcpus,reqmem
+
+- To cancel a job 
 
 .. code-block:: shell
-  
-  salloc --clusters=c# --qos=interactive --nodes=1 --x11
+
+  scancel <jobid> 
+
+- To cancel a jobs on a specific partition
+
+.. code-block:: shell
+
+  scancel -u $USER -p <partition>
 
 Running your models
 -------------------
 
-In your c3 job scripts or interactive sessions you will want to run your model executable. If your model is simple (single component, etc) then use srun. If it is a coupled model or otherwise has multiple execution contexts and/or executables, you will need to use srun-multi.
+In your c# job scripts or interactive sessions you will want to run your model executable. If your model is simple (single component, etc) then use srun. If it is a coupled model or otherwise has multiple execution contexts and/or executables, you will need to use srun-multi.
 
 .. code-block:: shell
 
   srun ./executable
 
-  srun-multi --ntasks=1 --cpus-per-task=32 ./executable : --ntasks 128 --cpus-per-task=1 ./executable
+  srun-multi --ntasks 128 --cpus-per-task=1 ./executable
 
 Monitoring your jobs: Shell Setup
 ---------------------------------
@@ -1178,12 +1186,12 @@ Do not set these in jobs/shells you intend to submit work from, as they will ove
 
 .. code-block:: shell
   
-  setenv SLURM_CLUSTERS t4,c3,c4,gfdl,es
+  setenv SLURM_CLUSTERS t#,c#,gfdl,es
   - In bash
 
 .. code-block:: shell
 
-  export SLURM_CLUSTERS=t4,c3,c4,gfdl,es
+  export SLURM_CLUSTERS=t#,c#,gfdl,es
 
 - Jobs in the queue
 
@@ -1262,6 +1270,22 @@ Data Transfers
 ==============
 Available on Gaea is a tool called GCP, which allows for internal transfers on Gaea and to/from other NOAA RDHPCS resources (ZEUS and GFDL PPAN). Please reference System Details if you are unfamiliar with the filesystems or expected use of each variety of node on Gaea.
 
+.. note::
+
+  The data transfer nodes are assigned to a site specific partition on the es cluster.
+
+  Use the following command to view current and, or available partitions:
+
+  .. code-block:: shell
+
+    $ scontrol show partitions
+
+  or
+
+  .. code-block:: shell
+  
+    $ scontrol show partitions | grep dtn
+
 Available Tools
 ---------------
 - GCP
@@ -1274,14 +1298,14 @@ Available Tools
 
 We suggest all users use GCP as the primary data transfer tool. Examples are presented below.
 
-f2 <-> f2
+f5 <-> f5
 ----------
-Users can transfer data between the lustre f2 filesystem using GCP. This can be done on the login nodes, and ldtns Gco commands issued on the compute nodes will result in a [L|R]DTN job being created and gcp will block until that job is completed by default.
+Users can transfer data between the F5 filesystem using GCP. This can be done on the login nodes, and ldtns. Gcp commands issued on the compute nodes will result in a [L|R]DTN job being created and gcp will block until that job is completed by default.
 
 .. code-block:: shell
 
   module load gcp
-  gcp /lustre/f2/dev/$USER/file /lustre/f2/scratch/$USER/path/file
+  gcp /gpfs/f5/<project>/world-shared/file /gpfs/f5/<project>/scratch/$USER/path/file
 
 Gaea <-> GFDL
 --------------
@@ -1290,8 +1314,8 @@ Users can transfer data between GFDL and Gaea filesystems with GCP. This can be 
 .. code-block:: shell
 
   module load gcp
-  gcp gaea:/lustre/f2/scratch/$USER/file gfdl:/gfdl/specific/path/file
-  gcp gfdl:/gfdl/specific/path/file gaea:/lustre/f2/dev/$USER/path/file
+  gcp gaea:/gpfs/f5/<project>/scratch/$USER/file gfdl:/gfdl/specific/path/file
+  gcp gfdl:/gfdl/specific/path/file gaea:/gpfs/f5/<project>/scratch/$USER/path/file
 
 Gaea <-> Remote NOAA Site
 -------------------------
@@ -1299,7 +1323,7 @@ Users can transfer data between GFDL and Gaea filesystems with GridFTP, rsync or
 
 .. code-block:: shell
 
-  scp /lustre/f2/scratch/$USER/path/name/here some.remote.site:/a/path/over/there
+  scp /gpfs/f5/<project>/scratch/$USER/path/name/here some.remote.site:/a/path/over/there
   globus-url-copy file:/path/on/Gaea/file gsiftp://some.remote.site/path/to/destination/file
   globus-url-copy gsiftp://some.remote.site/path/to/remote/file file:/destination/path/on/Gaea/file
 
@@ -1372,7 +1396,7 @@ Users can transfer data between Gaea and Zeus' High Performance Storage System (
 .. code-block:: shell
 
   #SBATCH --clusters=es
-  #SBATCH --partition=rdtn
+  #SBATCH --partition=rdtn_c#
 
 - Load the HSI module and list the contents of your directory
 
@@ -1397,7 +1421,7 @@ Users can transfer data between Gaea and Zeus' High Performance Storage System (
 
 .. code-block:: shell
 
-  hsi -q "put /lustre/f2/scratch/$USER/file_to_upload : /BMC/nesccmgmt/$USER/file_to_upload"
+  hsi -q "put /gpfs/f5/<project>/scratch/$USER/file_to_upload : /BMC/nesccmgmt/$USER/file_to_upload"
 
 - Tar many small files from the RDTN using HTAR. (Note that using asterisk will not work.)
 
