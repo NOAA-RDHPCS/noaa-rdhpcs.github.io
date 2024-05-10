@@ -4,7 +4,7 @@
 Modules
 #######
 
-Lmod is a Lua based module software management system that helps manage the user environment (PATH, LD_LIBRARY_PATH) through module files. LMOD is used on various HPC systems including Gaea, Hera, and Jet. 
+Lmod is a Lua based module software management system that helps manage the user environment (PATH, LD_LIBRARY_PATH) through module files. LMOD is used on various HPC systems including Gaea, Hera, and Jet. The `Lmod documentation <https://lmod.readthedocs.io/en/latest/010_user.html>`_ explains the use of Modules in detail.
 
 View Active Modules
 ===================
