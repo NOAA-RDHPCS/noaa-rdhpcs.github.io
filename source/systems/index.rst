@@ -18,4 +18,4 @@ Systems
 .. toctree::
    :hidden:
 
-   gaea/index
+

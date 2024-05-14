@@ -1691,11 +1691,4 @@ Users should remember that Lustre F2 is not backed up.  Data loss on Lustre F2
 is rare, but Gaea has suffered two data losses on F2.  The user home area is
 backed up, with hourly and daily snapshots.
 
-Additional Resources
-====================
 
-.. toctree::
-  :maxdepth: 1
-
-  gaea/quickstart
-  gaea/accounts
