@@ -72,6 +72,14 @@ Data Storage and Transfers
 
    data/index
 
+Tectia
+======
+
+.. toctree::
+   :maxdepth: 2
+
+   Tectia/index
+
 Modules
 =======
 
