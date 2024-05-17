@@ -9,7 +9,19 @@ Maintenance Schedule
 ====================
 
 System maintenance will affect access to RDHPCS systems. Click `here
-<https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
+<https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
+
+.. raw:: html
+
+   <div>
+   <iframe src="https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs%40group.calendar.google.com&ctz=America%2FNew_York"
+           style="border: 0"
+           width="800"
+           height="600"
+           frameborder="0"
+           scrolling="no"></iframe>
+   </div>
+
 to view the RDHPCS Maintenance Downtime Calendar.
 
 Getting Access
