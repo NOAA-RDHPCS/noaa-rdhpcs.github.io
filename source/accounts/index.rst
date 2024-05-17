@@ -324,8 +324,13 @@ RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS syst
      If you don’t have a smartphone, you can request an RSA hardware token. The activation process is found here: `New User Activation <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Activation#RSA_Token_Activation>`_.  RSA software tokens are preferred.
 
 
+<<<<<<< Updated upstream
 Accessing the RDHPCS Systems:  CAC Access
 *****************************************
+=======
+Accessing the RDHPCS Systems
+============================
+>>>>>>> Stashed changes
 
 The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is `ID Card Office Online <https://idco.dmdc.osd.mil/idco/locator>`_.  SSH logins with a CAC require additional software.
 
@@ -333,13 +338,16 @@ The Common Access Card (CAC), is the preferred means of access to RDHPCS resourc
 
    To access a system, you must be on a project assigned to that system.
 
+<<<<<<< Updated upstream
 **Cloud Computing**
 
 The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. Login `here. <https://noaa.parallel.works/log>`_
 
 MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_ for detailed instructions.
+=======
+>>>>>>> Stashed changes
 
-On-Premise RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  See the RSA and CAC login sections for further information.
+On-Premises RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  See the RSA and CAC login sections for further information.
 
 Tectia SSH solution
 -------------------
@@ -384,6 +392,68 @@ The following OS-specific sections (Windows, Linux, MAC) describe how to do the 
 * Set up port tunneling
 
 See :ref: Tectia for complete information.
+
+
+MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_ for detailed instructions.
+
+On-Premises RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  
+
+Common Access Card (CAC) Login
+==============================
+
+Tectia SSH Client software has been selected to meet the remote CAC login requirements for the RDHPCS program. Two licenses have been purchased for each RDHPCS user (if you currently have an RDHPCS RSA token).
+
+The following features are supported:
+
+* Port forwarding
+* X11 tunneling
+
+Access to RDHPCS Systems is not supported from a system which does not have the ability to access a user's CAC directly.
+
+RDHPCS users with a CAC who are logging in from a Windows, Mac, or Linux workstation/laptop are required to use CAC login. This requires a CAC reader and necessary software. If you recently were issued a new CAC or renewed your CAC, please check that the CAC information in AIM matches your current CAC.
+
+Tectia Initial Setup Procedures
+-------------------------------
+
+Host names for the CAC bastion Server in Boulder, CO:
+
+.. code:: shell
+
+   bastion-jet.boulder.rdhpcs.noaa.gov
+   bastion-hera.boulder.rdhpcs.noaa.gov
+   bastion-niagara.boulder.rdhpcs.noaa.gov
+   bastion-gaea.boulder.rdhpcs.noaa.gov
+
+Host names for the CAC Bastion Server in Princeton, NJ:
+
+.. code:: shell
+
+   bastion-jet.princeton.rdhpcs.noaa.gov
+   bastion-hera.princeton.rdhpcs.noaa.gov
+   bastion-niagara.princeton.rdhpcs.noaa.gov
+   bastion-gaea.princeton.rdhpcs.noaa.gov
+
+The following OS-specific sections (Windows, Linux, MAC) describe how to do the following:
+
+   * Download the Tectia software
+   * Install the Tectia software on your local laptop or workstation
+   * Install the license file on your local laptop or workstation
+   * Configure the Tectia software
+   * Use the client software to connect to R&amp;D HPC Systems
+   * Set up port tunneling
+
+Windows Tectia Procedures
+-------------------------
+
+
+RHEL/Centos Tectia Procedures
+-----------------------------
+
+MAC Tectia Procedures
+---------------------
+
+
+
 
 
 Role Accounts
