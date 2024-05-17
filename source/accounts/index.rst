@@ -344,7 +344,7 @@ The Common Access Card (CAC), is the preferred means of access to RDHPCS resourc
 The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. Login `here. <https://noaa.parallel.works/log>`_
 
 MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_ for detailed instructions.
-=======
+ 
 >>>>>>> Stashed changes
 
 On-Premises RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  See the RSA and CAC login sections for further information.
