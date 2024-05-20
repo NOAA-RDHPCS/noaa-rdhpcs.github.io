@@ -29,7 +29,8 @@ AIM Access
 ----------
 Access to RDHPCS systems depends on your assigned project(s). To request access to a project, please go to: `AIM <https://aim.rdhpcs.noaa.gov>`__
 
-For MSU-HPC access, see `Logging Into Orion <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`__
+For MSU-HPC access, see the MSU-HPC pages.
+
 
 You can authenticate to RDHPCS (Internal Systems) using either CAC/PIV, or RSA Token.
 Additionally, X.509 certificates are used within
@@ -43,16 +44,15 @@ your certificate every time you login to the system.
 Common Access Card (CAC)
 ------------------------
 
-| RDHPCS users with a CAC who are logging in from Windows, Mac, or Linux
-  workstation/laptop are required to use CAC login.
-| See CAC instructions here: `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login here>`__
+RDHPCS users with a CAC who log in from Windows, Mac, or Linux workstation/laptop are required to use CAC login. Access is configured through Tectia. See the Tectia pages for details.
+
 
 .. _updating_or_renewing_cac_information_in_aim:
 
 Updating or Renewing CAC Information in AIM
 -------------------------------------------
 
-AIM uses the NOAA single user sign-on. Proceed through the prompts and sign in with your NEMS
+AIM is NOAA's Account Management system. AIM uses the NOAA single user sign-on. Proceed through the prompts and sign in with your NEMS
 credentials.
 
 AIM - Auto-update of CAC Entry
@@ -61,7 +61,7 @@ AIM - Auto-update of CAC Entry
 IMPACTS: ONLY RDHPCS Users with a NOAA-issued CAC.
 
 RDHPCS Account Management collects CAC-related information from each user within AIM.
-AIM  automatically detecst and updates CAC-related information to your AIM record. 
+AIM  automatically detects and updates CAC-related information to your AIM record. 
 
 RDHPCS Account Management requests that you log into AIM to update
 your CAC information. Navigate to `<https://aim.rehpcs.noaa.gov AIM>`_
@@ -84,10 +84,9 @@ Send email to rdhpcs.aim.help@noaa.gov if you have issues or questions.
    :width: 500px
 
 NOTE: 
-   With current CAC information on file, you should authenticate into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please visit: `CAC Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/CAC_Login>`_
+   With current CAC information on file, you should authenticate into RDHPCS with CAC as your primary means. If you need assistance with authenticating via CAC, please see: :ref:`common-access-card`.
 
 .. _rsa_token:
-
 
 RSA Token Login
 ---------------
@@ -96,9 +95,6 @@ RSA Token Login
   RSA token. Alternatively, any RDHPCS user who has a CAC but is having
   problems with their login via CAC, is authorized to login via RSA
   token while they work through their technical issues.
-| Please see instructions here: `RSA Token
-  Login <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/RSA_Login>`__
-
   
 After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
 
@@ -128,16 +124,18 @@ Your current RSA token will be used for all other RDHPCS authentications
 
 .. _new_device___software_tokens:
 
-
 ****************************
 New Device - Software tokens
 ****************************
 
 When you acquire a new device, follow this three-step process to add an RSA software token:
+
 #. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject line: Token for New Device - First.Last.
 #. Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_. Click **Make a request for an RSA token**, fill out the form, submit. When that form is received, you'll receive email including a URL and activation code. Open that URL from your device and submit the activation code.
 #. When the software token is working on your new phone, delete the token from your old device.
 
+
+.. _suspension_deactivation_reactivation:
 
 **************************************
 Suspension, Deactivation, Reactivation
@@ -165,7 +163,7 @@ Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_ to apply for the rdhpcs project. Cli
 
 For best use of resources and availability, the preferred approach is to install the SecurID app on a smart phone for token generation. Hardware tokens are available on request.
 
-See `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Software_Token New User Software Token>`_ and `<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Hardware_Token New User Hardware Token>`_ for details.
+.. _role_accounts:
 
 *************
 Role Accounts
@@ -251,7 +249,7 @@ Your request will automatically be approved from the HR and ISSO roles because y
 
 **Projects not listed?**
 
-If you have been advised to apply for a project that is not listed in AIM, first verify the project name with your Project team.. If the project name is correct, email RDHPCS.AIM.help@NOAA.gov to contact Account Management for assistance. 
+If you have been advised to apply for a project that is not listed in AIM, first verify the project name with your Project team. If the project name is correct, email RDHPCS.AIM.help@NOAA.gov to contact Account Management for assistance. 
 
 If you have further questions, send email to rdhpcs.aim.help@noaa.gov for assistance.
 
@@ -282,6 +280,7 @@ You will be prompted for your master certificate passphrase. Enter the passphras
 Resetting Master Certificate Passphrase
 
 .. note::
+
    You will have to renew your Master Certificate annually. About a month before it expires, you will be prompted to renew your master certificate, with a Y/N option. When you renew the master certificate, you may have to wait for one day before you can log in again. Plan ahead for a time when you can be offline for up to a day, and choose that time to renew the Master Certificate.
 
 Resetting your Master Certificate Passphrase
@@ -306,31 +305,27 @@ This figure is an overview of the timeline and process for system access.
 
 .. image:: /images/access1.png
 
-Once you have a NOAA.gov email address, you can request an RDHPCS account. 
-Visit the `Account Information Management (AIM) website <https://aim.rdhpcs.noaa.gov>`_ and  request access to the RDHPCS project.  Log into AIM using your NOAA email credentials, review your profile for accuracy, and request the RDHPCS project.
+Once you have a NOAA.gov email address, you can request an RDHPCS account through the Account Iformation Managment system, AIM.
+Visit the `Account Information Management (AIM) website <https://aim.rdhpcs.noaa.gov>`_ and request access to the RDHPCS project.  Log into AIM using your NOAA email credentials, review your profile for accuracy, and request the RDHPCS project.
 
 .. image:: /images/AIM2.png
 
 Once this request is approved, you will receive an email containing instructions about your next steps. These include requesting access to further projects and completing the RSA token request form.  Confer with your supervisor and colleagues to identify the  project(s) to request.
 
+.. _RSA-software-token: 
 
 RSA Software Token
 ------------------
 
-RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS systems for SSH access. When you’re assigned to your first project, the RSA token form will be used to assign your software token. Your RSA token will include instructions about how to initialize it. You can find more information on RSA tokens here: Logging in - rdhpcs-common-docs (noaa.gov). 
+RSA software tokens provide two factor authentication (2FA) for NOAA RDHPCS systems for SSH access. When you’re assigned to your first project, the RSA token form will be used to assign your software token. Your RSA token will include instructions about how to initialize it. You can find more information at :ref:`rsa_token`.
 
 .. NOTE::
 
-     If you don’t have a smartphone, you can request an RSA hardware token. The activation process is found here: `New User Activation <https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/New_User_Activation#RSA_Token_Activation>`_.  RSA software tokens are preferred.
+     If you don’t have a smartphone, you can request an RSA hardware token. The activation process is found at :ref:`rsa_hardware_token_activation`. RSA software tokens are preferred.
 
 
-<<<<<<< Updated upstream
-Accessing the RDHPCS Systems:  CAC Access
-*****************************************
-=======
 Accessing the RDHPCS Systems
 ============================
->>>>>>> Stashed changes
 
 The Common Access Card (CAC), is the preferred means of access to RDHPCS resources for both Web and SSH access. To obtain a CAC, work with your local admin services team as they need to start the application process.  Some labs can issue CACs on-site, otherwise you will have to visit a RAPIDS site. The site locator website is `ID Card Office Online <https://idco.dmdc.osd.mil/idco/locator>`_.  SSH logins with a CAC require additional software.
 
@@ -338,14 +333,12 @@ The Common Access Card (CAC), is the preferred means of access to RDHPCS resourc
 
    To access a system, you must be on a project assigned to that system.
 
-<<<<<<< Updated upstream
 **Cloud Computing**
 
-The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. Login `here. <https://noaa.parallel.works/log>`_
+The Cloud Platform allows RDHPCS users to create a high-performance computational cluster on a cloud-based platform (AWS, Azure or GCP) with resources that are appropriate for specific processing tasks. Cloud access is mediated through the Parallel Works application. Login `here. <https://noaa.parallel.works>`_
 
-MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_ for detailed instructions.
+MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See MSUHPC :ref:`MSUHPC-logging-in` for detailed instructions.
  
->>>>>>> Stashed changes
 
 On-Premises RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  See the RSA and CAC login sections for further information.
 
@@ -391,12 +384,15 @@ The following OS-specific sections (Windows, Linux, MAC) describe how to do the 
 * Use the client software to connect to R&amp;D HPC Systems
 * Set up port tunneling
 
-See :ref: Tectia for complete information.
 
+See the :ref:`Tectia` pages for complete information.
 
-MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See `Orion login: <https://oriondocs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_ for detailed instructions.
+MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand. See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 
 On-Premises RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.  
+
+
+.. _Common-access-card: 
 
 Common Access Card (CAC) Login
 ==============================
@@ -433,7 +429,7 @@ Host names for the CAC Bastion Server in Princeton, NJ:
    bastion-niagara.princeton.rdhpcs.noaa.gov
    bastion-gaea.princeton.rdhpcs.noaa.gov
 
-The following OS-specific sections (Windows, Linux, MAC) describe how to do the following:
+The Tectia pages (Windows, Linux, MAC) describe how to do the following:
 
    * Download the Tectia software
    * Install the Tectia software on your local laptop or workstation
@@ -441,19 +437,6 @@ The following OS-specific sections (Windows, Linux, MAC) describe how to do the 
    * Configure the Tectia software
    * Use the client software to connect to R&amp;D HPC Systems
    * Set up port tunneling
-
-Windows Tectia Procedures
--------------------------
-
-
-RHEL/Centos Tectia Procedures
------------------------------
-
-MAC Tectia Procedures
----------------------
-
-
-
 
 
 Role Accounts
@@ -474,10 +457,11 @@ First Time RSA token Login
 
 After you have been added to your first project, you will need to either initialize your RSA software token or enable your hardware token.
 
-**RSA software token:** Please follow the instructions contained in
-the `RSA Software Token USER Instructions <https://docs.google.com/document/d/1-UMv1K62nQkKS0etbuLsXHZE2KBtjLl0/edit>`__.
+**RSA software token:** Please follow the instructions contained in the :ref:`RSA-software-token` User Instructions.
 
-**RSA hardware token:** Submit an OTRS ticket. Send an
+.. _RSA-hardware-token: 
+
+**RSA hardware token:** Submit an OTRS ticket to obtain a hardware token. Send an
 email to rdhpcs.aim.help@noaa.gov using the subject line: Enable token.
 You will be sent an email once your hardware token has been enabled with
 instructions about how to set your token pin.

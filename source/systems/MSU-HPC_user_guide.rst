@@ -48,6 +48,8 @@ MSU's Official HPC Documentation
 General Information
 ===================
 
+.. _MSUHPC-logging-in:
+
 Logging In
 ----------
 

@@ -63,7 +63,7 @@ These are the steps to install and configure Tectia for a Windows system:
 
 **Requirements**
 
-* Your CAC information must be in AIM for the Tectia CAC logon to work. To verify AIM has your CAC information start a AIM help ticket requesting verification that your CAC information in in AIM. Account Management (AIM) Help - email - rdhpcs.aim.help@noaa.gov rdhpcs.aim.help@noaa.gov.
+* Your CAC information must be in AIM for the Tectia CAC logon to work. To confirm that your CAC information is correct in AIM, visit https://aim.rdhpcs.noaa.gov USING YOUR CAC TO AUTHENTICATE. If your CAC information has been refreshed, wait 15 minutes before attempting to log in using Tectia.
 
 Tectia SSH should install on the following Microsoft Windows versions, but only those versions supported by your NOAA IT department will be supported on your NOAA PC:
 
@@ -229,10 +229,10 @@ Tectia SSH will install on the following RHEL/CentOS version:
 .. code:: shell
 
     RHEL/CentOS (x86)
-    Version 6 and 7
+    Version 7 and 8
 
     RHEL/CentOS (x86_64)
-    Version 6 and 7
+    Version 7 and 7
 
 
 In order to install the Tectia SSH Client, you must have the necessary administrator privileges. You will either need to login as the root account or be able to sudo to root using the command "sudo su -". If you do not have this access, contact your IT system administrator for assistance.
@@ -363,22 +363,24 @@ Once the Tectia Client has been configured, you can connect to any of the follow
 
    Boulder, CO
 
-   bastion-jet.boulder.rdhpcs.noaa.gov
-   bastion-theia.boulder.rdhpcs.noaa.gov
+   bastions-jet.boulder.rdhpcs.noaa.gov
+   bastion-hera.boulder.rdhpcs.noaa.gov
    bastion-gaea.boulder.rdhpcs.noaa.gov
+   bastion-analysis.boulder.rdhpcs.noaa.gov
 
    Princeton, NJ
 
    bastion-jet.princeton.rdhpcs.noaa.gov
-   bastion-theia.princeton.rdhpcs.noaa.gov
+   bastion-hera.princeton.rdhpcs.noaa.gov
    bastion-gaea.princeton.rdhpcs.noaa.gov
+   bastion-analysis.princeton.rdhpcs.noaa.gov
 
 **Using the Tectia SSH Client**
 
 Once Tectia has been configured and the binary directory has been added to your path. You can ssh into to Jet using your CAC. The Tetica ssh command is “sshg3”.
 
 1. In a terminal window type “sshg3 jet” where “jet” is the name of the connection profile created under step 5 of the configuration.
-2. You will be prompted to save and accept the key for this bastion. The RFC4716 fingerprint is "c9:06:04:cf:e5:d3:07:e5:8e:3f:f2:c1:a6:22:fb:d8" for bastion-jet.boulder.rdhpcs.noaa.gov. You need to type “save”.
+2. You will be prompted to save and accept a key for this bastion. Then type “save”.
 3. Once the key is accepted you will be ** prompted for your CAC Pin ** (“Passphrase for the private key:”); Please note that the prompt is very misleading! It is ** not ** asking for your "pass phrase for the certificate" (which the 3 word that you use to renew your certificate)!
 4. If successful you will see the message “Authentication successful.” and you will be forwarded to a Jet front-end host.
 
