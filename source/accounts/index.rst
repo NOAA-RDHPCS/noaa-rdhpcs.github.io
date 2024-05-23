@@ -305,7 +305,7 @@ This figure is an overview of the timeline and process for system access.
 
 .. image:: /images/access1.png
 
-Once you have a NOAA.gov email address, you can request an RDHPCS account through the Account Iformation Managment system, AIM.
+Once you have a NOAA.gov email address, you can request an RDHPCS account through the Account Information Managment system, AIM.
 Visit the `Account Information Management (AIM) website <https://aim.rdhpcs.noaa.gov>`_ and request access to the RDHPCS project.  Log into AIM using your NOAA email credentials, review your profile for accuracy, and request the RDHPCS project.
 
 .. image:: /images/AIM2.png
