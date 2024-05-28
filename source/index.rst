@@ -72,14 +72,6 @@ Data Storage and Transfers
 
    data/index
 
-Tectia
-======
-
-.. toctree::
-   :maxdepth: 2
-
-   Tectia/index
-
 Modules
 =======
 
@@ -103,6 +95,7 @@ Software
    :maxdepth: 2
 
    software/index
+   software/ssh_clients/Tectia/index
 
 SLURM
 =====
