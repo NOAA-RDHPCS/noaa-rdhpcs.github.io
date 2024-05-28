@@ -441,7 +441,7 @@ Configure the Tectia Client
            *bastion-jet.boulder.rdhpcs.noaa.gov*.
          * Apply the changes and then click OK.
 
-      .. topic:: Using the Tectia SSH Client
+      **Using the Tectia SSH Client**
 
          Once Tectia has been configured and the binary directory has
          been added to your path. You can ssh into to Jet using your
