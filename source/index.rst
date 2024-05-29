@@ -95,6 +95,7 @@ Software
    :maxdepth: 2
 
    software/index
+   software/ssh_clients/Tectia/index
 
 SLURM
 =====
