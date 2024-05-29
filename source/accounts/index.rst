@@ -190,7 +190,7 @@ steps to fully reactivate your account:
    re-enabled at the same time. Once your account and token are
    re-enabled, you may log into your respective resource and project.
 
-.. topic :: Reactivate after seven days
+.. topic:: Reactivate after seven days
 
    If your account has been suspended for more than seven days and you
    had a software token, you must apply for a new token. Visiting AIM
@@ -385,7 +385,7 @@ future login renews the 30-day proxy certificate.
 
 
 Generating a Master Certificate
--------------------------------
+===============================
 
 1. Prepare your Master Certificate Passphrase
 
@@ -563,7 +563,8 @@ Host names for the CAC Bastion Server in Princeton, NJ:
    bastion-gaea.princeton.rdhpcs.noaa.gov
 
 
-The following OS-specific sections (Windows, Linux, MAC) describe how to do the following:
+The following OS-specific sections (Windows, Linux, MAC) describe how
+to do the following:
 
 * Download the Tectia software
 * Install the Tectia software on your local laptop or workstation
@@ -578,7 +579,8 @@ See the :ref:`Tectia` pages for complete information.
 MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
 See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 
-On-Premises RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are accessed via SSH.
+On-Premises RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are
+accessed via SSH.
 
 
 .. _Common-access-card:
@@ -732,7 +734,7 @@ Mississippi State University. Follow these steps to get an Account for
 MSU-HPC.
 
 General Access Requirements
----------------------------
+===========================
 
 -  All users, regardless of citizenship, follow the same process to
    receive MSU-HPC access.
