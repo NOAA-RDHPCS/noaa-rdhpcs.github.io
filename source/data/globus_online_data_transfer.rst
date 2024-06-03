@@ -100,7 +100,8 @@ Globus Connect Service is available on the following RDHPCS and partner clusters
 
 
   .. tab-item:: Hercules
-:sync: hercules
+   :sync: hercules
+
 
    +-----------+---------------------+--------------------+----------------------+---------------+
    | Cluster   | Display Name        | File Systems       | Site                 | Access        | 
@@ -171,5 +172,6 @@ Some benefits of using Globus Connect Personal with UDTNs:
 * Data transfers automatically suspends and resumes as your computer goes to sleep, wakes up, or reboots.
 * The mechanism for transferring data between your laptop/workstation (Untrusted Endpoint) and a NOAA RDHPCS UDTN is exactly the same.
 
-Please see `Globus Connect Personal <https://www.globus.org/globus-connect-personal>`_ for information about setting up your laptop/workstation as a Globus Personal Endpoint.
+See `Globus Connect Personal documentation 
+<https://www.globus.org/globus-connect-personal>`_ for information about setting up your laptop/workstation as a Globus Personal Endpoint.
 

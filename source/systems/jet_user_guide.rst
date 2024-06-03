@@ -42,11 +42,11 @@ partitions, plus four bigmem nodes, totaling 57,744 coes, @
 | Interconnect  | QDR        | QDR        | QDR        | FDR      | FDR        | FDR        | EDR        |
 |               | Infiniband | Infiniband | Infiniband |Infiniband| Infiniband | Infiniband | Infiniband |
 +---------------+------------+------------+------------+----------+------------+------------+------------+
-| Total Flops\* | 96.8 TF    | 30.4 TF    | 113.2 TF   | 93.6 TF  | 717.4 TF   | 3.5 TF     | 827 TF     |
+| Total Flops   | 96.8 TF    | 30.4 TF    | 113.2 TF   | 93.6 TF  | 717.4 TF   | 3.5 TF     | 827 TF     |
 +---------------+------------+------------+------------+----------+------------+------------+------------+
 
 
-Notes:
+**Notes:**
 
 -  Jet's Front Ends (service partition) have the same architecture as the xJet compute nodes.
 -  Total flops is a theoretical peak and does not represent actual performance.
