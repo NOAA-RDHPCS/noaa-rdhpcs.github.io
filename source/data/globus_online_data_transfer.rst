@@ -100,7 +100,7 @@ Globus Connect Service is available on the following RDHPCS and partner clusters
 
 
   .. tab-item:: Hercules
-:sync: hercules
+   :sync: hercules
 
    +-----------+---------------------+--------------------+----------------------+---------------+
    | Cluster   | Display Name        | File Systems       | Site                 | Access        | 
