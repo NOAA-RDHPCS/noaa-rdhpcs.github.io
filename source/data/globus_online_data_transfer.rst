@@ -14,7 +14,7 @@ Overview
 ========
 
 An endpoint is a file transfer location (computer/server) accessible to Globus. A collection is a server with a related access method to files. Untrusted collections can transfer data to and from
-anywhere.Trusted collections can transfer data to and from other vetted collections. When you log into Globus and click Collections, you can see what collections are shared with you, and also those that you share with others. Globus lets you navigate through collections to find source and target endpoints for your transfer, then select directories or files to be transferred. The transfer itself is a background process. 
+anywhere. Trusted collections can transfer data to and from other vetted collections. When you log into Globus and click Collections, you can see what collections are shared with you, and also those that you share with others. Globus lets you navigate through collections to find source and target endpoints for your transfer, then select directories or files to be transferred. The transfer itself is a background process.
 
 To copy a file, several files, or an entire directory between two systems, navigate to `Globus <https://app.globus.org/>`_.
  Locate the source and target endpoints by their given names and follow these steps:
@@ -47,7 +47,7 @@ Globus Connect Service is available on the following RDHPCS and partner clusters
     :sync: hera
 
     +-----------+----------------------------+--------------------------+---------+---------------+
-    | Cluster   | Display Name               | File Systems             | Site    | Access        | 
+    | Cluster   | Display Name               | File Systems             | Site    | Access        |
     +===========+============================+==========================+=========+===============+
     | Hera      | noaardhpcs#hera            | /scratch1, /scratch2     | NESCC   | Trusted hosts |
     +-----------+----------------------------+--------------------------+---------+---------------+
@@ -59,7 +59,7 @@ Globus Connect Service is available on the following RDHPCS and partner clusters
    :sync: jet
 
    +-----------+----------------------------+--------------------------+---------+---------------+
-   | Cluster   | Display Name               | File Systems             | Site    | Access        | 
+   | Cluster   | Display Name               | File Systems             | Site    | Access        |
    +===========+============================+==========================+=========+===============+
    | Jet       | noaardhpcs#jet             | /mnt/lfs1, /mnt/lfs4     | NESCC   | Trusted hosts |
    +-----------+----------------------------+--------------------------+---------+---------------+
@@ -71,7 +71,7 @@ Globus Connect Service is available on the following RDHPCS and partner clusters
    :sync: niagara
 
    +-----------+------------------------------+--------------------------+---------+---------------+
-   | Cluster   | Display Name                 | File Systems             | Site    | Access        | 
+   | Cluster   | Display Name                 | File Systems             | Site    | Access        |
    +===========+==============================+==========================+=========+===============+
    | Niagara   | noaardhpcs#niagara           | /collab1/data            | NESCC   | Trusted hosts |
    +-----------+------------------------------+--------------------------+---------+---------------+
@@ -83,7 +83,7 @@ Globus Connect Service is available on the following RDHPCS and partner clusters
    :sync: gaea
 
    +-----------+-------------------+--------------------+---------+---------------+
-   | Cluster   | Display Name      | File Systems       | Site    | Access        | 
+   | Cluster   | Display Name      | File Systems       | Site    | Access        |
    +===========+===================+====================+=========+===============+
    | PPAN      | ncrc#dtn          | /lustre/f2/scratch | NCRC    | Trusted hosts |
    +-----------+-------------------+--------------------+---------+---------------+
@@ -93,17 +93,17 @@ Globus Connect Service is available on the following RDHPCS and partner clusters
    :sync: orion
 
    +-----------+---------------------+--------------------+-------------------+---------------+
-   | Cluster   | Display Name        | File Systems       | Site              | Access        | 
+   | Cluster   | Display Name        | File Systems       | Site              | Access        |
    +===========+=====================+====================+===================+===============+
    | orion     | msuhpc2#Orion-dtn   | /work, /work2      | Orion DTN at MSU  | Anywhere      |
    +-----------+---------------------+--------------------+-------------------+---------------+
 
 
   .. tab-item:: Hercules
-:sync: hercules
+   :sync: hercules
 
    +-----------+---------------------+--------------------+----------------------+---------------+
-   | Cluster   | Display Name        | File Systems       | Site                 | Access        | 
+   | Cluster   | Display Name        | File Systems       | Site                 | Access        |
    +===========+=====================+====================+======================+===============+
    | Hercules  | msuhpc2#Hercules    | /work, /work2      | Hercules DTN at MSU  | Anywhere      |
    +-----------+---------------------+--------------------+----------------------+---------------+
@@ -118,7 +118,7 @@ NOAA RDHPCS Globus Endpoint Types
 NOAA RDHPCS Globus Endpoints are either ''trusted'' or ''untrusted''.
 
 * All RDHPCS systems provide DTN's
-* DTNs have full access to the back-end file systems. 
+* DTNs have full access to the back-end file systems.
 * DTNs only accept connections from pre-authorized sites. If your site can’t access the DTNs and you need that capability, submit a help desk ticket. If the security team approves, your site will be pre-authorized.
 
 NOAA RDHPCS UDTN's (Globus Untrusted Endpoint)
@@ -151,14 +151,14 @@ The CLI is available on Jet, Hera, and Niagara.
 
 If you would like to use Globus-cli, either on your personal machine or on a system where globus-cli is not installed, you can install it easily . Instructions to install and use the Globus CLI are available at this `link <https://docs.globus.org/cli/ Globus CLI>`_.
 
-Transferring Data to and from Your Computer 
+Transferring Data to and from Your Computer
 ===========================================
 
-To transfer data from your laptop/workstation to a NOAA RDHPCS system, you can 
+To transfer data from your laptop/workstation to a NOAA RDHPCS system, you can
 
 * use scp to a NOAA RDHPCS DTN (using pre-configured ssh port tunnels)
-* use scp to a NOAA RDHPCS UDTN 
-* use Globus Connect Personal to transfer data between a NOAA RDHPCS UDTN and your local laptop/workstation. 
+* use scp to a NOAA RDHPCS UDTN
+* use Globus Connect Personal to transfer data between a NOAA RDHPCS UDTN and your local laptop/workstation.
 
 .. note::
 
