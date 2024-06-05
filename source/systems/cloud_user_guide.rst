@@ -54,6 +54,26 @@ Data Transfers
 The best way to get data in and out of the RDHPCS Cloud platforms is
 using :ref:`globus_online_data_transfer`.
 
+.. warning::
+
+  At this time, the NOAA RDHPCS Cloud Globus endpoints are disabled
+  until the RDHPCS can develop a method to apply all egress charges
+  back to the originating project.  While the Globus endpoints are
+  disabled, transfers to and from the NOAA RDHPCS Cloud should be done
+  using the Cloud Service Provider's (CSP) Command-line Interface
+  (CLI) tools (see `AWS CLI <https://aws.amazon.com/cli/>`__, `Azure
+  CLI <https://learn.microsoft.com/en-us/cli/azure/>`__, and `GCloud
+  CLI <https://cloud.google.com/sdk/gcloud>`__ for information on
+  installation and use).
+
+  Users can install and use a `Globus Connect Personal
+  <https://www.globus.org/globus-connect-personal>`__ endpoint to
+  transfer larger files.  The RDHPCS reminds all users who perform
+  transfers out of the cloud of using a Globus endpoint, all egress
+  charges will be applied to the project.  This includes data stored
+  in a CSP public, free to access, repositories, like the NOAA `NODD
+  <https://www.noaa.gov/information-technology/open-data-dissemination>`__.
+
 Getting Help
 ------------
 
