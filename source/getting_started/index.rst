@@ -1,8 +1,8 @@
 .. _Getting Started:
 
-###############
+################
 Getting Started
-###############
+################
 
 
 Maintenance Schedule
