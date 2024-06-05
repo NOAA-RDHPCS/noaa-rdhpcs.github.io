@@ -14,7 +14,7 @@ Overview
 ========
 
 An endpoint is a file transfer location (computer/server) accessible to Globus. A collection is a server with a related access method to files. Untrusted collections can transfer data to and from
-anywhere.Trusted collections can transfer data to and from other vetted collections. When you log into Globus and click Collections, you can see what collections are shared with you, and also those that you share with others. Globus lets you navigate through collections to find source and target endpoints for your transfer, then select directories or files to be transferred. The transfer itself is a background process.
+anywhere. Trusted collections can transfer data to and from other vetted collections. When you log into Globus and click Collections, you can see what collections are shared with you, and also those that you share with others. Globus lets you navigate through collections to find source and target endpoints for your transfer, then select directories or files to be transferred. The transfer itself is a background process.
 
 To copy a file, several files, or an entire directory between two systems, navigate to `Globus <https://app.globus.org/>`_.
  Locate the source and target endpoints by their given names and follow these steps:
