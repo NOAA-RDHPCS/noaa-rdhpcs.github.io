@@ -1,6 +1,6 @@
-#####
-Slurm
-#####
+#####################
+Submitting Batch Jobs
+#####################
 
 Slurm is an open-source cluster management and job scheduler, originally
 developed at the Lawrence Livermore National Laboratory.  Commercial support is
