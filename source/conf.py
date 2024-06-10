@@ -36,6 +36,10 @@ html_css_files = [
     "css/theme_overrides.css",
 ]
 
+html_sidebars = {
+    '**': ['searchbox.html']
+}
+
 html_js_files = [
     "js/custom.js",
 ]
@@ -47,6 +51,7 @@ html_context = {
     "github_repo": "noaa-rdhpcs.github.io",  # Repo name
     "github_version": "main",  # Version
     "conf_py_path": "/source/",  # Path in the checkout to the docs root
+    "gsce_id": "", # GSCE ID number.  Manage at https://programmablesearchengine.google.com
 }
 
 # see https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html
