@@ -4,16 +4,8 @@
 Accounts
 ########
 
-.. note::
-
-   System maintenance will affect access to RDHPCS systems. Click `here <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_ to view the RDHPCS Maintenance Downtime Calendar.
-
-
-.. _accessing_rdhpcs_systems:
-
-************************
-Accessing RDHPCS Systems
-************************
+Getting an RDHPCS Account
+=========================
 
 There are four NOAA RDHPCS systems and one external system available
 to the user community:
@@ -22,18 +14,43 @@ to the user community:
 - Hera
 - Niagara
 - Jet
-- Orion (MSU - external)
+- Orion/Hercules (MSU - external)
+
+The RDHPCS account gives the user access to the Gaea, Hera, Niagara and Jet, depending on git their assigned project. 
+
+What NOAA Does
+---------------
+
+#. Conducts security investigation (6-12 weeks).  This includes a fingerprint check, background check, and DOC public trust investigation
+#. Provides a **@noaa.gov** email account and initial password. You may have access to the NOAA email account before the security review is complete. Once you have a noaa.gov email address, you also have access to several internal systems.
+
+What You Do
+-----------
+
+#. Take the NOAA IT Security Awareness Training (annual requirement).
+#. Use the Account Identity Management (AIM) system to request access to a vetting project. You access AIM using your NOAA.gov email address and password.
+#. When you are approved for a vetting project, request membership to other projects as directed by your management.
+#. Request an :ref:`rsa_token` for access to several NOAA systems.
+
+.. note::
+
+   AIM is accessed `at this link <https://aim.rdhpcs.noaa.gov/>`_.
+
+
+.. _accessing_rdhpcs_systems:
+
+************************
+Accessing RDHPCS Systems
+************************
 
 .. _aim_access:
 
 Access and Identity Management (AIM)
 ====================================
 
-Access to RDHPCS systems depends on your assigned project(s). Aceess
+Access to RDHPCS systems depends on your assigned project(s). Access
 to projects is managed in the `Access and Identity Management (AIM)
-<https://aim.rdhpcs.noaa.gov>`__ software.  Users can use `AIM
-<https://aim.rdhpcs.noaa.gov>`_ to request access to a project.
-
+<https://aim.rdhpcs.noaa.gov>`__ software.  Users can use AIM to request access to a project.
 AIM uses the NOAA single sign-on (SSO) for authentication. Proceed
 through the prompts and sign in with your NEMS credentials.
 
@@ -54,7 +71,7 @@ validated, the master X.509 certificate remains valid for one year.
 At each successive log in, a new thirty-day certificate is created.
 This thriy-day certifiate can be used to initiate password-less access
 to other RDHPCS resources.  A typical use of this thirty-day
-certifiate is to transfer data files between RDHPCS resources.
+certificate is to transfer data files between RDHPCS resources.
 
 
 .. _common_access_card:
@@ -78,9 +95,9 @@ Updating CAC Information in AIM
    This only works for RDHPCS Users with a NOAA-issued CAC.
 
 RDHPCS Account Management collects CAC-related information from each
-user in AIM.  AIM can automatically detects and updates CAC-related
+user in AIM.  AIM automatically detects and updates CAC-related
 information to your AIM record.  To allow this, you must log into
-`AIM`_ using your CAC.
+AIM using your CAC.
 
 When you enter AIM the message, Updated CAC detected. Information
 Updated, will appear at the top of the screen if your CAC needs to be
@@ -129,8 +146,7 @@ RSA Software Token Activation
    subject line: Token for New Device - First.Last.
 #. Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_. Click **Make a request
    for an RSA token**, fill out the form and submit. When that form is
-   received, you'll receive email including a URL and activation code.
-   Open that URL from your device and submit the activation code.
+   received, you'll receive an email that will include a URL with instructions about how to activate and import your software token.
 
 .. _new_device_software_tokens:
 
@@ -140,14 +156,12 @@ New Device
 When you acquire a new device, follow this three-step process to add
 an RSA software token:
 
-#. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the
-   subject line: Token for New Device - First.Last.
-#. Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_. Click **Make a request
-   for an RSA token**, fill out the form, submit. When that form is
-   received, you'll receive email including a URL and activation code.
-   Open that URL from your device and submit the activation code.
-#. When the software token is working on your new phone, delete the
-   token from your old device.
+Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the
+subject line: Token for New Device - First.Last. 
+Go to `<https://aim.rdhpcs.noaa.gov/ AIM>`_. Click **Make a request
+for an RSA token**, fill out the form, submit. When that form is received, you'll receive an email with instructions about how to activate and import your software token. 
+Copy and paste the URL from the email using your device and submit the activation code.
+When the software token is working on your new phone, delete the token from your old device.
 
 
 .. _rsa_hardware_token_activation:
@@ -155,9 +169,8 @@ an RSA software token:
 RSA Hardware Token Activation
 -----------------------------
 
-Submit an OTRS ticket.  Send email to rdhpcs.aim.help@noaa.gov, using
-**Enable token** as the subject. Once the hardware token is enabled,
-you will receive email with  to set your token pin.
+Submit an OTRS ticket by sending an email to rdhpcs.aim.help@noaa.gov, using
+**Enable token** as the subject. You will receive a return email with instructions about how to set your pin and login with it.
 
 .. _other_authentications:
 
@@ -174,9 +187,9 @@ Your current RSA token will be used for all other RDHPCS authentications
 Account Suspension, Deactivation, Reactivation
 **********************************************
 
-A user account is suspended when it has been inactive for over 90
-days. The user will be notified when the account has been suspended.
-To re-activate your account, submit an OTRS ticket. Send an email to
+A user's account is suspended when it has been inactive for over 90
+days. The user will be notified when their account has been suspended.
+To re-activate your account, submit an OTRS ticket by sending an email to
 rdhpcs.aim.help@noaa.gov with the subject *Reactivate User.Name*. You
 will be notified when your account has been reactivated. A reactivated
 user maintains access to all projects.
@@ -193,21 +206,20 @@ steps to fully reactivate your account:
 .. topic:: Reactivate after seven days
 
    If your account has been suspended for more than seven days and you
-   had a software token, you must apply for a new token. Visiting AIM
-   (Account Information Management) and select Make a Request for an
+   had a software token, you must apply for a new token. You can do this by visiting AIM
+   (Account Information Management) and selecting Make a Request for an
    RSA Token. Complete the form and Submit.
 
    Once your account has been reactivated and your token has been
    re-enabled, you will be required to set a new PIN only if you have a
-   software token. Then you will be able to lot into your respective
+   software token. After you complete this process, you will be required to log into your respective
    resource and project.
 
 Deactivated Accounts
 ====================
 
-If your account remains suspended for more than 180 days, the account
-is deactivated. If your account is deactivated, you will be handled as
-a new user.
+If your account remains suspended for more than 270 days, the account
+is deactivated. If your account is deactivated and you would like it reactivated, you will need to go to AIM and apply for the rdhpcs project to begin the vetting process again. When you arrive at the AIM website, click on the “Request new access to a project” link. When you are fully approved for the rdhpcs project, you will be emailed further instructions.
 
 Use `AIM` to apply for the rdhpcs project. Click on the "Request new
 access to a project" link. When you are fully approved for the rdhpcs
@@ -326,9 +338,9 @@ Request Additional Projects
 
 These are instructions for current RDHPCS users on an active project
 who need to request access to an additional project resource on Jet,
-Hera, Gaea, or Niagara.
+Hera, Gaea, Niagara, or any Cloud project.
 
-#. Go to `AIM`.
+#. Go to `AIM <https://aim.rdhpcs.noaa.gov/AIM.>`_.
 #. Select *Request new access to a project*.
 #. Select the project from the dropdown list. Note that system access
    (Jet/Hera/Gaea/Niagara) is determined by project.
@@ -341,7 +353,7 @@ Your request will automatically be approved from the HR and ISSO roles
 because you are a current user. You'll need actual approval from the
 PI of the project. Once that approval is submitted, your request will
 be considered fully approved and various admins will configure your
-access to the project. Once that is done, you will receive an aproval
+access to the project. Once that is done, you will receive an approval
 email from Account Management and you will be able to access the
 project.
 
@@ -350,7 +362,7 @@ project.
 
    If you have been advised to apply for a project that is not listed in
    AIM, first verify the project name with your Project team. If the
-   project name is correct, email RDHPCS.AIM.help@NOAA.gov to contact
+   project name is correct, email rdhpcs.aim.help@NOAA.gov to contact
    the Account Management team for assistance.
 
    If you have further questions, send email to rdhpcs.aim.help@noaa.gov
@@ -377,11 +389,12 @@ future login renews the 30-day proxy certificate.
 
    The proxy certificate is local to each bastion, is valid for 30
    days and is renewed every time you login to each bastion. If you
-   do not log in at least once every 30 days to each bastion, the
-   proxy certificate will expire on that bastion. To renew your
+   do not log in at least once every 30 days, you may be prompted to enter your master certificate passphrase To renew your
    certificate, you will have to log in to the bastion and enter your
    master certificate passphrase. This will renew the proxy
    certificate, as usual, for 30 days.
+
+   The proxy certificate is local to each bastion, is valid for 30 days and is renewed every time you login to each bastion. If you do not log in a bastion at least once every 30 days, you will be prompted to enter your master certificate passphrase and then wait for your certificate to be signed. The certificate is valid across all bastions.  For example, if you have access to Hera and Jet, and renew your certificate by logging into Hera, it will also be renewed on Jet as well. This will renew the proxy certificate for 30 days. However, when you log into Jet, you may be asked to enter your master certificate passphrase, but you will not have to wait for your certificate to be signed again.  
 
 
 Generating a Master Certificate
