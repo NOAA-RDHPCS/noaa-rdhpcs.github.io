@@ -270,8 +270,10 @@ demonstrations, questions and answers.
 
 `5 June 2024
 <https://drive.google.com/file/d/18AzIwzGIjrB1CTCCyOG6yQJB5gciFgs0/view?ts=6661daa2>`_
+
 `14 September 2023
 <https://drive.google.com/file/d/1INH-x7Cz025UtwMQDjlQX9Yn5MdQ_xE5/view?ts=6504735f>`__
+
 `30 August 2023
 <https://drive.google.com/file/d/1qbZHqXSfH2V5J_SL2Nt7Huq86v4nqjBK/view?ts=64f0bb3e>`__
 
@@ -392,6 +394,14 @@ steps:
 There are new features and capabilities under discussion at Parallel
 Works. If you are interested in these features, send an email ticket
 to: rdhpcs.cloud.help@noaa.gov, with the subject line PW Features.
+
+Monthly Utilization Reports
+===========================
+
+FY2024 Usage
+------------
+
+`Cumulative usage through end of May <https://docs.google.com/presentation/d/1fzqbYr1ma-ajJWRJQDcxPpgOAsojFKG_1-S_Y7f3Y3s/edit#slide=id.p>`_
 
 
 Frequently Asked Questions
