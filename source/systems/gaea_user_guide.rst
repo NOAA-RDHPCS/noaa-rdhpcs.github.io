@@ -22,20 +22,11 @@ collaborative effort between the `Department of Energy
 <https://www.energy.gov/>`_ and the `National Atmospheric and Oceanic
 Administration <https://www.noaa.gov/>`_.
 
-The Gaea System consists of an HPE Cray EX supercomputer (named C5) with AMD (Rome) processors. The EX system has 482 terabytes of memory and a peak calculating capacity of 10.2 petaflops.
-The aggregate Gaea system:
+The Gaea System consists of two HPE-Cray EX 3000 systems.  Two high-capacity parallel filesystems provide over 150 petabytes of fast access storage. The center-wide filesystem is connected using FDR InfiniBand to the center’s compute and data-transfer resources. The aggregate Gaea system contains a peak calculating capability greater than 20 petaflops (quadrillion floating point operations per second).
 
-* consists of 245,760 AMD cores; 
-* contains 646 TiB of memory
-* can perform 13.7 petaflops, or 13,700 trillion calculation each second.
+NOAA research partners access data remotely through speedy interconnections. Two 10-gigabit (billion bit) lambdas, or optical waves, pass data to NOAA’s national research network through peering points at Atlanta and Chicago.
 
-In Q2FY24, the Gaea System will receive a new compute cluster, named C6. C6 will be an HPE Cray EX supercomputer with 584 TB of memory and a peak calculating capacity of 9.81 petaflops.
-
-Gaea uses a 50 PB General Parallel File System (GPFS) which has replaced the legacy Lustre file system (F2). 
-
-Access to Gaea is managed through two 10-gigabit lambdas, or optical waves, connected to NOAA's NWAVE network through peering points at Atlanta, GA and Chicago, IL.
-
-.. grid:: 2
+.. grid:: 4
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -44,13 +35,15 @@ Access to Gaea is managed through two 10-gigabit lambdas, or optical waves, conn
     C5
     ^^^
 
-    HPE EX
+    * HPE-EX Cray X3000
 
-    1,792 compute nodes (2 x AMD Rome 64-cores per node)
+    * 1,920 compute nodes (2 x AMD EPYC 7H12 2.6GHz 64-cores per node)
 
-    251 GB DDR5 per node; 449TB total
+    * HPE Slingshot Interconnect
 
-    10.2 PF peak
+    * 264GB DDR4 per node; 500TB total
+
+    * 10.22 PF peak
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
@@ -58,9 +51,40 @@ Access to Gaea is managed through two 10-gigabit lambdas, or optical waves, conn
     F5 File System
     ^^^
 
-    General Parallel File System (GPFS)
+    * IBM Spectrum Scale
 
-    50 PB total usable
+    * 75 PB
+
+    * IBM Elastic Storage Server 3500 running GPFS 5.1
+
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
+
+    C6
+    ^^^
+    *  HPE-EX Cray X3000
+
+    * 1,520 compute nodes (2 x AMD EPYC 9654 2.4GHz base 96-cores per node)
+
+    * HPE Slingshot Interconnect
+
+    * 384GB DDR4 per node; 584TB total
+
+    * 11.21 PF peak (base)
+
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
+
+    F6
+    ^^^
+    
+    * IBM Spectrum Scale
+
+    
+    * 75 PB
+
+    * IBM Elastic Storage Server 3500 running GPFS 5.1
+
 
 
 Gaea is the largest of the four NOAA RDHPCS, and is used to study the earth's notoriously complex climate from a variety of angles by enabling scientists to:
@@ -83,12 +107,12 @@ This simple overview explains the elements of a basic job in Gaea. It includes c
 Connecting and General Info
 ----------------------------
 
-There are two ways to access Gaea. The oldest is to use PuTTY or ssh to gaea-rsa.rdhpcs.noaa.gov and authenticate using your RDHPCS-issued RSA token. Alternatively, use Tectia sshg3 to gaea.rdhpcs.noaa.gov and authenticate with your CAC and CAC PIN. How to do this is also described in detail in Login with additional useful information like how to set up port tunnels to Gaea (needed to use X-windows applications like DDT.) You can also use the RDHPCS login documentation at Logging_in, but you will want to know that the port tunnel ranges for Gaea are 20000 + your UID number for LocalForward and 30000 + your UID number for RemoteForward (in ssh config file language.)
+There are two ways to access Gaea. The oldest is to use PuTTY or ssh to gaea-rsa.rdhpcs.noaa.gov and authenticate using your RDHPCS-issued RSA token. Alternatively, use Tectia sshg3 to gaea.rdhpcs.noaa.gov and authenticate with your CAC and CAC PIN. The :ref:'login' section describes this in detail, with additional useful information like how to set up port tunnels to Gaea (needed to use X-windows applications like DDT.) You can also use the RDHPCS login documentation at :ref:`Logging_in`, but in that case you will want to know that the port tunnel ranges for Gaea are 20000 + your UID number for LocalForward and 30000 + your UID number for RemoteForward (in ssh config file language.)
 
-- If you want more information on using your CAC to authenticate to RDHPCS systems, see CAC_Login
-- If you want more information on configuring PuTTY, see Configuring_PuTTY
+- If you want more information on using your CAC to authenticate to RDHPCS systems, see **CAC_Login**.
+- If you want more information on configuring PuTTY, see **Configuring_PuTTY**.
 
-Gaea uses modules software to let users change which software is accessible to their environment. There is no module man page. Instead use:
+Gaea uses modules software to let users change which software is accessible to their environment. There is no module man page. Instead use the command:
 
 .. code-block:: shell
 
@@ -99,9 +123,9 @@ Gaea uses Slurm as its batch scheduler.
 Compiling
 ---------
 
-Gaea offers PrgEnv-intel, Prg-Env-aocc, Prg-Env-nvhpc, and several other modules that make it as easy as possible to get your programs running. You compile by calling either cc or ftn, according to the language your code is written in. See Compilers for more detail, especially for compiling multithreaded applications.
+Gaea offers PrgEnv-intel, Prg-Env-aocc, Prg-Env-nvhpc, and several other modules that make it as easy as possible to get your programs running. To compile, call either cc or ftn, according to the language your code is written in. See **Compilers** for more detail, especially for compiling multithreaded applications.
 
-You may either compile live in your login shell on a Gaea login node, or in a job in the eslogin queue in the es partition of Gaea's batch system. To tell a job script to run on the login nodes, specify the following in your script:
+You may compile live in your login shell on a Gaea login node, or in a job in the eslogin queue in the es partition of Gaea's batch system. To tell a job script to run on the login nodes, specify the following in your script:
 
 .. code-block:: shell
 
@@ -117,7 +141,7 @@ or, from the sbatch command line:
 
 .. note::
 
-  c# refers to a computer cluster. The current cluster is c5, but this is subject to change.
+  c# refers to a computer cluster. 
 
 Running
 -------
@@ -126,7 +150,7 @@ Once your executable is compiled and in place with your data on a given file sys
 
 .. note::
 
-  c# refers to a computer cluster. The current cluster is c5, but this is subject to change.
+  c# refers to a computer cluster. The current clusters are c5 and c6, but this is subject to change.
 
 .. code-block:: shell
 
@@ -152,7 +176,9 @@ Your compute job script will run on one of the compute nodes allocated to your j
 Staging/Combining
 -----------------
 
-Staging data to and from model run directories is a common task on Gaea. So is combining model output when your model uses multiple output writers for scalability of your MPI communications. The Local Data Transfer Nodes (LDTNs) are the resource provided for these tasks. Please keep these tasks off the compute nodes and eslogin nodes. There is a NOAA-developed tool called **gcp** which is available for data transfers on Gaea. To tell a job script to run on the LDTN nodes, specify the following in your script:
+Staging data to and from model run directories is a common task on Gaea. So is combining model output when your model uses multiple output writers for scalability of your MPI communications. The Local Data Transfer Nodes (LDTNs) are the resource provided for these tasks. Please keep these tasks off the compute nodes and eslogin nodes. There is a NOAA-developed tool called **gcp** which is available for data transfers on Gaea. 
+
+To tell a job script to run on the LDTN nodes, specify the following in your script:
 
 .. code-block:: shell
 
@@ -167,10 +193,24 @@ or, from the sbatch command line:
 
   sbatch --clusters=es --partition=ldtn_c# --nodes=1 --ntasks-per-node=1 /path/to/staging_script
 
+The data transfer nodes are assigned to a site specific partition on the **es cluster**. Use the following command to view current and/or available partitions:
+
+ .. code-block:: shell
+
+     $ scontrol show partitions
+
+     or
+
+  .. code-block:: shell
+
+     $ scontrol show partitions | grep dtn
+
+
+
 Transferring Data to/from Gaea
 ------------------------------
 
-Data transfers between Gaea and the world outside of Gaea should be performed on the Remote Data Transfer Nodes (RDTNs). There is a NOAA-developed tool called gcp, which is available for data transfers on Gaea. HPSS users are only able to access HPSS from jobs on the RDTNs. To tell a job script to run on the login nodes, specify the following in your script:
+Data transfers between Gaea and the world outside of Gaea should be performed on the Remote Data Transfer Nodes (RDTNs). There is a NOAA-developed tool called **gcp**, which is available for data transfers on Gaea. HPSS users are only able to access HPSS from jobs on the RDTNs. To tell a job script to run on the login nodes, specify the following in your script:
 
 .. code-block:: shell
 
@@ -206,13 +246,15 @@ Allocation
 
 Gaea users have default projects. If you are only a member of a single project, or if your experiments always run under your default project, you don't need to do anything special to run. Users who are members of more than one project need to enter their preferred project via the --account option to sbatch to correctly charge to each experiment's project.
 
-You can use AIM to request access to new projects. Once access is granted in AIM it can take up to two days to be reflected in Gaea's Slurm scheduler. If you still don't have the granted access after two days, please put in a help desk ticket so admins can investigate your issue. To determine your Slurm account memberships, run the following command:
+You can use AIM to request access to new projects. Once access is granted in AIM, it can take up to two days to be reflected in Gaea's Slurm scheduler. If you still don't have the granted access after two days, please submit a help desk ticket so administrators can investigate your issue. 
+
+To determine your Slurm account memberships, run the following command:
 
 .. code-block:: shell
 
   sacctmgr list associations user=First.Last
 
-To submit jobs to the scheduler under a specific account do the following from the sbatch command line:
+To submit jobs to the scheduler under a specific account enter the following from the sbatch command line:
 
 .. code-block:: shell
 
@@ -227,21 +269,21 @@ or add the following to your job script's #SBATCH headers:
 Running a Simple Job Script
 ---------------------------
 
-This script assumes that the data and executable are staged to /gpfs/f5/<project>/scratch/$USER. The scripts and data are located at /usw/user_scripts/
+This script assumes that the data and executable are staged to /gpfs/f5/<project>/scratch/$USER. The scripts and data are located at /usw/user_scripts/.
 
-- Use gcp to get the skeleton script from /usw/user_scripts/runscript to your local home directory.
+1. Use gcp to get the skeleton script from /usw/user_scripts/runscript to your local home directory.
 
 .. code-block:: shell
 
   gcp /usw/user_scripts/runscript ~$USER/
 
-- Use gcp to get other files from /usw/user_scripts/ to your gpfs directory.
+2. Use gcp to get other files from /usw/user_scripts/ to your gpfs directory.
 
 .. code-block:: shell
 
   gcp -r /usw/user_scripts/ /gpfs/f5/<project>/scratch/$USER/runscript 
 
-- Open the runscript.
+3. Open the runscript.
 
 .. code-block:: shell
 
@@ -249,7 +291,7 @@ This script assumes that the data and executable are staged to /gpfs/f5/<project
 
 The comments in the script will help you understand what each item does.
 
-- Return to the directory where you copied the run script, and submit your job.
+4. Return to the directory where you copied the run script, and submit your job.
 
 .. code-block:: shell
 
@@ -257,9 +299,7 @@ The comments in the script will help you understand what each item does.
 
 Make sure that the sbatch directives (--account, --walltime) have been changed.
 
-**Once the job is submitted**
-
-You can use the following commands to check on your job.
+**Once the job is submitted**, you can use the following commands to check on your job.
 
 - To view job status:
 
@@ -283,7 +323,12 @@ Once the job is finished, it should produce an output file.
 
 System Architechture
 ====================
-Gaea is the largest of the NOAA research and development HPC systems,and is operated by DOE/ORNL. The aggregate Gaea system:
+Gaea is the largest of the NOAA research and development HPC systems, and is operated by DOE/ORNL.
+
+
+.. figure:: /images/GaeaC5.png
+
+The aggregate Gaea system:
 
 - consists of 245,760 AMD cores;
 - contains 646 TiB of memory
