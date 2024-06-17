@@ -1,5 +1,10 @@
 .. _logging_in:
 
+NOTE:  I'm unable to search for topics that exist in the Wiki Documentation today.  Example: searching for  "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED" and it gives you unrelated links.
+On Wiki it gives you this : https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php?title=FAQs_-_Frequently_Asked_Questions#WARNING:_REMOTE_HOST_IDENTIFICATION_HAS_CHANGED!
+And it doesn't give a lot of false links.  This will make users unable to find simple things in the documentation.  Overall, I could probably provide 100 examples if I had enough time to add them all here.  
+Another good one is "reset passphrase" - it should take you right to the spot in the documentation where we reset the passphrase, but it does not and I think users will get lost.
+
 ##########
 Logging In
 ##########
