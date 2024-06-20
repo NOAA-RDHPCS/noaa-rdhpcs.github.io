@@ -127,7 +127,7 @@ Volume Quota Increase
 
 If you are approaching your quota, you should first delete
 old files and/or move files to HPSS tape systems as appropriate. If
-more volume is still needed, open a Help ticket to request a volume quota increase. Send email to rdhpcs.hera.help@noaa.gov, 
+more volume is still needed, open a Help ticket to request a volume quota increase. Send email to rdhpcs.hera.help@noaa.gov,
 with the subject line Quota Increase, and a justification, including:
 
 * Project name.
@@ -196,7 +196,7 @@ as:
    /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
 
 where ``${TASK}`` is often, but not necessarily, the individual user's
-login ID, as defined by the project lead. 
+login ID, as defined by the project lead.
 
 The number of servers and targets on each of the two Hera file systems
 is:
@@ -338,7 +338,7 @@ For example, to get a summary of the disk usage for project *rtnim*:
 
 .. code-block:: shell
 
-   $ id   
+   $ id
    uid=5088(rtfim) gid=10052(rtfim) groups=10052(rtfim)...
    $ lfs quota -p 10052 /scratch1
    Disk quotas for prj 10052 (pid 10052):
@@ -483,7 +483,7 @@ Striping Best Practices
 
 .. code-block:: shell
 
-   $ mkdir dir1    
+   $ mkdir dir1
    $ lfs setstripe -c 8 dir1
 
 You can pre-create a file as a zero-length striped file by running
@@ -672,7 +672,7 @@ open-source packages that extend the capabiltiies of R, has a complete
 list of R packages as well as the packages for download.
 
 Due to access restrictions from Hera to the CRAN repository, you
-may need to download an R package to your local workstation first, 
+may need to download an R package to your local workstation first,
 then copy it to your space on Hera to install the package as detailed
 below.
 
@@ -1033,7 +1033,7 @@ Linaro Forge
 Linaro Forge allows easy profiling of applications. Very brief
 instructions are included below.
 
-- Compile with the debug flag 
+- Compile with the debug flag
 - Do not move your source files; the path is hardwired
   and will not found if relocated
 - Load the *forge* module with ``module load forge``
@@ -1128,8 +1128,10 @@ MPI or OpenMP or both.
 
 Managing Contrib Projects
 =========================
-A /contrib package is one that is maintained by a user on the system. The system staff are not responsible for the use or maintenance of these packages.
-See :ref:`Contrib <contrib>` for details.
+
+A /contrib package is one that is maintained by a user on the system.
+The system staff are not responsible for the use or maintenance of
+these packages. See :ref:`Contrib <contrib>` for details.
 
 Fine Grain Architecture (FGA) System
 ====================================
@@ -1260,8 +1262,8 @@ and executing cuda programs:
 
 Generally you should use the latest cuda available
 
-.. note:: 
-   
+.. note::
+
    We have limited experience with cuda.
 
 The following flags were seen in sample codes
@@ -1333,7 +1335,7 @@ The MVAPICH2-GDR (GDR stands for GPU Direct RDMA) from Ohio
 State University is available for experimentation and
 testing on the FGA nodes.
 
-.. note:: 
+.. note::
 
    We recommend that compilation be done for FGA applications
    only on a compute node after obtaining a shell on one of the
@@ -1526,9 +1528,9 @@ threads, and hence 2 cores are specified for each rank:
      ;;
    esac
 
-This script is used in the mpirun command. 
+This script is used in the mpirun command.
 In the example above, the name of the executable is
-passed in the environment variable "exe". 
+passed in the environment variable "exe".
 
 As a second example a similar script for pinning to the
 specific cores on the second socket is shown below:
@@ -1629,7 +1631,7 @@ much application dependent.
 How do I use MPS?
 ^^^^^^^^^^^^^^^^^
 
-In the example below, we describe the simplest use case. 
+In the example below, we describe the simplest use case.
 (We will update the documentation as we gather more
 experience.) For the simplest case, we will consider running an MPI
 application on just one node after getting access to a FGA
