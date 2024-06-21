@@ -51,5 +51,6 @@
         "wckey",
         "xtmp"
     ],
-    "esbonio.sphinx.confDir": "${workspaceFolder}/source"
+    "esbonio.sphinx.confDir": "${workspaceFolder}/source",
+    "files.trimTrailingWhitespace": true
 }
