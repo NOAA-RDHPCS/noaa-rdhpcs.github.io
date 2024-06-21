@@ -80,13 +80,14 @@ username, MSU password, and Duo two-factor authentication.
 
 **Password Maintenance**
 
-If you know your MSU password (or temporary password), use the `MSU
-Training and Password System (TAPS) site
-<https://taps.hpc.msstate.edu/>`_ to manage your Multi#Factor
-Authentication settings with Duo, or to change your password. The TAPS
-system is also where you go to take the MSU training required before
-you can login, and for the yearly password resets and training to keep
-your account active.
+If you know your MSU password (or temporary password), use the MSU
+`Training and Password System (TAPS) <TAPS_>`_ site to manage your
+Multi-Factor Authentication settings with Duo, or to change your
+password. The TAPS_ system is also where you go to take the MSU
+training required before you can login, and for the yearly password
+resets and training to keep your account active.
+
+.. _TAPS: https://taps.hpc.msstate.edu
 
 **Password Resets**
 
@@ -95,12 +96,12 @@ A password reset can only be done by phone during normal business days
 your password, please call: *(662) 325-9146*. If you do not get an
 answer keep calling every 30 minutes. If busy, call again every 15
 minutes. The MSU HPC2 admin will verify your ID, unlock your account,
-and issue a temporary password that is only valid to access the TAPs
+and issue a temporary password that is only valid to access the TAPS_
 portal.
 
 .. note::
 
-   The user is then required to access TAPS and change the temporary
+   The user is then required to access TAPS_ and change the temporary
    password **within 3 days**. The user must also complete any
    out-of-date training requirements.
 
@@ -115,7 +116,7 @@ portal.
    - You have access to the old device.
 
 
-#.  Go to TAPS and choose Manage DUO and select  **Password --> Add
+#.  Go to TAPS_ and choose Manage DUO and select  **Password --> Add
     new Device**.
 #.  Select **Send Me a Push**.
 #.  Open DUO on the old device -- you should be prompted to accept a
@@ -338,8 +339,11 @@ form
    #SBATCH <options>
    #SBATCH <options>
 
-For example, to specify the time limit as a directive, you should have
-the
+For example, to specify the time limit as a directive, you should add
+the ``--time=<time>`` option:
+
+.. code-block:: shell
+
    #SBATCH --time=0:30:00
 
 These directives can be used instead of specifying options on the
@@ -722,79 +726,81 @@ There are several different QOS'es depending on your needs.
    If you have an windfall only allocation (allocation = 1) you can
    only submit to the *windfall* QOS.
 
-+-----------+------------+------------+------------+-----------+-----------------------------------------+
-| QOS       | Min Nodes  | Max Nodes  | Max Wall   | Billing   | Description                             |
-|           |            |            | Clock      | TRes      | Limits                                  |
-|           |            |            |            | Factor    |                                         |
-+===========+============+============+============+===========+=========================================+
-| All QOS's |            |            |            |           | **Across all QOS**                      |
-|           |            |            |            |           | Max of 400 pending/running jobs         |
-|           |            |            |            |           | per project/account,                    |
-|           |            |            |            |           | additional jobs will be rejected.       |
-|           |            |            |            |           | Max of 20 jobs per project/account      |
-|           |            |            |            |           | will gain age priority.                 |
-|           |            |            |            |           | Exceptions are stated below.            |
-+-----------+------------+------------+------------+-----------+-----------------------------------------+
-| batch     | 1          | 500        | 8 hours    | 1.0       | Default QOS for non-reservation         |
-|           |            | (Orion) &  | (Partition |           | jobs with an allocation more then       |
-|           |            | 250        | exceptions |           | *Windfall-Only* (``RawShare=1``).       |
-|           |            | (Hercules) | --         |           |                                         |
-|           |            | Hercules)  | *service*  |           |                                         |
-|           |            |            | 24 hrs)    |           |                                         |
-+-----------+------------+------------+------------+-----------+-----------------------------------------+
-| urgent    | 1          | 500        | 8 hours    | 2.0       | QOS for a job that requires more        |
-|           |            | (Orion),   |            |           | urgency than *batch*.  Your project     |
-|           |            | 250        |            |           | :ref:`FairShare <slurm-fairshare>`      |
-|           |            | (Hercules) |            |           | will be lowered at 2.0x the rate as     |
-|           |            |            |            |           | compared to *batch*.  Only one job per  |
-|           |            |            |            |           | project/account can be pending/running  |
-|           |            |            |            |           | at any time.  When a project's          |
-|           |            |            |            |           | FairShare is below 0.45, jobs submmited |
-|           |            |            |            |           | to *urgent* are automatically changed   |
-|           |            |            |            |           | to *batch* and users notified via       |
-|           |            |            |            |           | stderr.                                 |
-+-----------+------------+------------+------------+-----------+-----------------------------------------+
-| debug     | 1          | 500        | 30         | 1.25      | Highest priority QOS, useful for        |
-|           |            | (Orion),   | minutes    |           | debugging sessions.  Your project       |
-|           |            | 250        |            |           | :ref:`FairShare <slurm-fairshare>`      |
-|           |            | (Hercules) |            |           | will be lowered at 1.25x the rate as    |
-|           |            |            |            |           | compared to *batch*.  Only two jobs per |
-|           |            |            |            |           | user can be pending/running at any      |
-|           |            |            |            |           | time.  This QOS should NOT be used for  |
-|           |            |            |            |           | fast-turnaround of general work.        |
-|           |            |            |            |           | While the *debug* QOS is available, we  |
-|           |            |            |            |           | recommend that if you need to work      |
-|           |            |            |            |           | through an iterative process to debug   |
-|           |            |            |            |           | a code, that you submit a longer        |
-|           |            |            |            |           | running interactive job to the default  |
-|           |            |            |            |           | QOS so that you can restart your        |
-|           |            |            |            |           | application over and over again without |
-|           |            |            |            |           | having to start a new batch job.        |
-+-----------+------------+------------+------------+-----------+-----------------------------------------+
-| windfall  | 1          | 500        | 8 hours    | 0.0       | Lowest priority QOS.  If you have an    |
-|           |            | (Orion),   | (Partition |           | allocation of windfall-only (monthly    |
-|           |            | 250        | exceptions |           | allocation is 1) you can only submit to |
-|           |            | (Hercules) | *service*  |           | this QOS.  Submitting to this QOS will  |
-|           |            |            |            |           | NOT affect your future job priority     |
-|           |            |            |            |           | :ref:`FairShare <slurm-fairshare>`      |
-|           |            |            |            |           | factor (f) for your non-windfall jobs.  |
-|           |            |            |            |           | Useful for low priority jobs that will  |
-|           |            |            |            |           | only run when the system/partition has  |
-|           |            |            |            |           | enough unused space available while not |
-|           |            |            |            |           | effecting the project's FairShare       |
-|           |            |            |            |           | priority.                               |
-+-----------+------------+------------+------------+-----------+-----------------------------------------+
-| novel     | 501        | Largest    | 8 hours    | 1.0       | QOS for running novel or experimental   |
-|           | (Orion),   | partition  |            |           | where nearly the full system is         |
-|           | 251        | size       |            |           | required.  If you need to use the       |
-|           | (Hercules) |            |            |           | *novel* QOS, please submit a ticket to  |
-|           |            |            |            |           | the :ref:`help system <getting_help>`   |
-|           |            |            |            |           | and tell us what you want to do.  We    |
-|           |            |            |            |           | will normally have to arrange for some  |
-|           |            |            |            |           | time for the job to go through, and we  |
-|           |            |            |            |           | would like to plan the process with     |
-|           |            |            |            |           | you.                                    |
-+-----------+------------+------------+------------+-----------+-----------------------------------------+
+.. list-table::
+   :header-rows: 1
+   :align: left
+
+   * - QOS
+     - Minimum Nodes
+     - Maximum Nodes
+     - Maximum Wall Clock
+     - Billing TRES Factor
+     - Description and Limits
+   * - All QOS's
+     -
+     -
+     -
+     -
+     - Max of 400 pending/running jobs per project/account, additional
+       jobs will be rejected. Max of 20 jobs per project/account will
+       gain age priority. Exceptions are stated below.
+   * - batch
+     - 1
+     - 500
+     - 8 hours
+     - 1.0
+     -  Default QOS for non-reservation jobs with an allocation more
+        then *Windfall-Only* (``RawShare=1``).
+   * - urgent
+     - 1
+     - 500 (Orion), 250 (Hercules)
+     - 8 hours
+     - 2.0
+     -  QOS for a job that requires more urgency than *batch*. Your
+        project :ref:`FairShare <slurm-fairshare>` will be lowered at
+        2.0x the rate as compared to *batch*.  Only one job pe
+        project/account can be pending/runnin at any time. When a
+        project's FairShare is below 0.45, jobs submmit to *urgent*
+        are automatically changed to *batch* and users notified via
+        stderr.
+   * - debug
+     - 1
+     - 500 (Orion), 250 (Hercules)
+     - 30 minutes
+     - 1.25
+     - Highest priority QOS, useful for debugging sessions.  Your
+       project :ref:`FairShare <slurm-fairshare>` will be lowered at
+       1.25x the rate as compared to *batch*.  Only two jobs per user
+       can be pending/running at any time.  This QOS should NOT be
+       used for fast-turnaround of general work. While the *debug* QOS
+       is available, we recommend that if you need to work through an
+       iterative process to debug a code, that you submit a longer
+       running interactive job to the default QOS so that you can
+       restart your application over and over again without having to
+       start a new batch job.
+   * - windfall
+     - 1
+     - 500 (Orion), 250 (Hercules)
+     - 8 hours (Partition exception: *service*)
+     - 0.0
+     - Lowest priority QOS.  If you have an allocation of
+       windfall-only (monthly allocation is 1) you can only submit to
+       this QOS.  Submitting to this QOS will NOT affect your future
+       job priority :ref:`FairShare <slurm-fairshare>` factor (f) for
+       your non-windfall jobs. Useful for low priority jobs that will
+       only run when the system/partition has enough unused space
+       available while not effecting the project's FairShare priority.
+   * - novel
+     - 501 (Orion), 251 (Hercules)
+     - Largest partition size
+     - 8 hours
+     - 1.0
+     - QOS for running novel or experimental where nearly the full
+       system is required.  If you need to use the *novel* QOS, please
+       submit a ticket to the :ref:`help system <getting_help>` and
+       tell us what you want to do.  We will normally have to arrange
+       for some time for the job to go through, and we would like to
+       plan the process with you.
 
 **Specifying a job name**
 
@@ -1324,9 +1330,8 @@ MSU Account Management Policies
   year, using the `MSU online account management tools
   <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/>`__
 - Training updates are required each January 1. Users have until the
-  end of January to comply, using the online MSU HPC2 Training and
-  Password System `TAPS <https://taps.hpc.msstate.edu/ TAPS>`_,
-  otherwise the user account is locked.
+  end of January to comply, using the online MSU HPC2 `Training and
+  Password System <TAPS_>`_, otherwise the user account is locked.
 - MSU uses Duo (Cisco) two factor authentication. You may install the
   application on your smartphone or request a physical token. If
   approved, the token will be shipped to the address provided during
@@ -1541,33 +1546,31 @@ following:
 
 **Login to MSU's Training and Password System**
 
-- Within 3 days of receiving the email, navigate to `TAPS
-  <https://taps.hpc.msstate.edu>`_.
+- Within 3 days of receiving the email, navigate to TAPS_.
 - Authenticate using your username and your temporary password.
+-  Upon successful login, you will see the TAPS_ Home page.
 
 .. note::
 
    If your temporary 3-day password has expired, it will need to be
    reset.
 
--  Upon successful login, you will see the TAPS Home page.
-
 **Take MSU Security Training**
 
 -  Click on the IT Security *Start training* button.
 -  Upon successful completion of the training, you will get a
    confirmation.
--  Go back to the TAPS Home page.
+-  Go back to the TAPS_ Home page.
 
 **Take MSU Insider Threat Training**
 
 -  Click on the Insider Threat *Start training* button. Upon
    successful completion of the training, you will get a confirmation.
--  Go back to the TAPS Home page.
+-  Go back to the TAPS_ Home page.
 
 **Dual-factor authentication and Password Change (User)**
 
--  Navigate to TAPS
+-  Navigate to TAPS_
 
 **Setup Dual-factor authentication App**
 
@@ -1600,7 +1603,7 @@ To keep your MSU account current and active:
 -  Complete yearly password changes and security training updates,
    which are required each January (regardless of your effective
    date). Users have until the end of January to comply, using the
-   online MSU HPC2 Training and Password System TAPS, otherwise the
+   online MSU HPC2 Training and Password System TAPS_, otherwise the
    user account will be locked.
 -  Make sure your supervisor renews your account before the account
    expiration date.
@@ -1960,7 +1963,8 @@ end of vendor support date may drive the need to upgrade Orion to the
 new software stack. If this were to happen then multiple user notices
 would be sent out over a period of multiple months.
 
-**Should I use the** ``/work`` **or** ``/work2`` **file system for my project?**
+**Should I use the** ``/work`` **or** ``/work2`` **file system for my
+project?**
 
 Although all NOAA projects have been provided with a disk allocation
 on both file systems, there are some architectural differences between
@@ -1992,7 +1996,8 @@ launch custom kernels by placing the kernel specs in
 ``$HOME/.local/share/jupyter/kernels`` before launching jupyter
 notebook with OOD.
 
-**Why am I getting a "segmentation fault occurred" error when I run my program?**
+**Why am I getting a "segmentation fault occurred" error when I run my
+program?**
 
 -  Job crashed due to small stack size (on both Orion and Hercules)
 
