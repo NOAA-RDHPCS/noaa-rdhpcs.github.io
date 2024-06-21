@@ -6,7 +6,7 @@ Submitting suggestions
 ====================================
 
 Have a suggestion for improvement? Share it with us by `opening an issue
-<https://github.com/NOAA-RDHPCS/rdhpcs-user-docs/issues/new>`_.
+<https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/issues/new>`_.
 
 
 Authoring content
