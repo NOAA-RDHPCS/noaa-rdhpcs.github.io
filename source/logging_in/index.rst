@@ -19,8 +19,8 @@ Obtaining an Account
 3. The principle investigator (PI) of project approves.
 4. HR approves.
 5. The Information System Security Officer (ISSO) approves.
-6. The resource manager (RM) approves.  This last is the system owner for e.g. Gaea,
-   Hera, Jet, Niagara.
+6. The resource manager (RM) approves. This last is the system owner
+   for e.g. Gaea, Hera, Jet, Niagara.
 7. Automation and manual account creation processes proceed. If needed, an RSA
    fob is issued.
 
@@ -33,16 +33,18 @@ Obtaining an Account
 First Time Login
 =================
 
-Access to most RDHPCS systems require a signed x.509 certificate.  The first
-login attempt will generate a master certificate and send a request to have it
-signed.  Users cannot fully log on to a system until that certificate is signed.
-It can take up to one business day for the certificate to be signed.
+Access to most RDHPCS systems require a signed x.509 certificate.  The
+first login attempt will generate a master certificate and send a
+request to have it signed.  Users cannot fully log on to a system
+until that certificate is signed. It can take up to one business day
+for the certificate to be signed.
 
-The prompt will ask you to create a passphrase. Create a minimum of three words pass
-phrase for your grid certificate. This only occurs if you did not already
-generate a passphrase. Confirm the passphrase. Once confirmed it will take up to
-24 hours for the certificate to be processed. Once the certificate is processed,
-login using the regular login instructions.
+The prompt will ask you to create a passphrase. Create a minimum of
+three words pass phrase for your grid certificate. This only occurs if
+you did not already generate a passphrase. Confirm the passphrase.
+Once confirmed it will take up to 24 hours for the certificate to be
+processed. Once the certificate is processed, login using the regular
+login instructions.
 
 .. note::
 
@@ -92,9 +94,9 @@ When propted, enter your CAC PIN.
 Connecting with an RSA token
 ----------------------------
 
-Users who do not have a CAC, or are connecting through a system that does not have
-a TECTIA client (e.g., Mac OS, Android, ChromeOS, etc.) will need to use the RSA
-bastion.
+Users who do not have a CAC, or are connecting through a system that
+does not have a TECTIA client (e.g., Mac OS, Android, ChromeOS, etc.)
+will need to use the RSA bastion.
 
 .. code-block:: shell
 
@@ -131,9 +133,10 @@ RSA_CODE is the 6-8 digit code from the RSA fob or RSA app.
 Selecting a Node
 ----------------
 
-Many RDHPCS systems allow users to select a specific host at login.  After successful
-authentication at the bastion host, the output displays a list of available
-nodes, and then waits for 5 seconds.  An example is below.
+Many RDHPCS systems allow users to select a specific host at login.
+After successful authentication at the bastion host, the output
+displays a list of available nodes, and then waits for 5 seconds.  An
+example is below.
 
 The gaea bastion host then displays the menu:
 
@@ -148,8 +151,8 @@ The gaea bastion host then displays the menu:
     You will now be connected to OneNOAA RDHPCS: RDHPCS system.
     To select a specific host, hit ^C within 5 seconds.
 
-To select a specific host, press Control+C (^C) and enter the desired host.  The
-last selected node will be the default node.
+To select a specific host, press Control+C (^C) and enter the desired
+host.  The last selected node will be the default node.
 
 .. note::
 
