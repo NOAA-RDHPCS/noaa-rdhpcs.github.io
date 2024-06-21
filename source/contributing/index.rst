@@ -81,7 +81,8 @@ local environment to make multiple changes.
 
 #. Preview your edits
 
-    Follow the steps in the previous section to rebuild and locally view changes
+    Follow the steps in the previous section to rebuild and locally
+    view changes
 
 #. Add and commit your edits to your branch::
 
@@ -113,9 +114,9 @@ GitHub Guidelines
 
 Here are some guidelines and common practices that we use in this project.
 
-- When you want to work on an issue, assign it to yourself if no one is assigned
-  yet. If there is somebody assigned, check in with that person about
-  collaborating.
+- When you want to work on an issue, assign it to yourself if no one
+  is assigned yet. If there is somebody assigned, check in with that
+  person about collaborating.
 - Reference the issue(s) that your PR addresses with GitHub's '#' notation.
 - Use "WIP" in your PR title to indicate that it should not be merged yet.
   Remove just the WIP when you are ready for it to be merged.
