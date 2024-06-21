@@ -160,35 +160,40 @@ You can also do the following in your script before using the module command
 Command Summary
 ---------------
 
-+--------------------------------+---------------------------------------------------------+
-|Command                         |Description                                              |
-+================================+=========================================================+
-|module list                     |List active modules in the user environment              |
-+--------------------------------+---------------------------------------------------------+
-|module avail [module]           |List available modules in MODULEPATH                     |
-+--------------------------------+---------------------------------------------------------+
-|module spider [module]          |Query all modules in MODULEPATH and any module hierarchy |
-+--------------------------------+---------------------------------------------------------+
-|module load [module]            |Load a module file in the users environment              |
-+--------------------------------+---------------------------------------------------------+
-|module unload [module]          |Remove a loaded module from the user environment         |
-+--------------------------------+---------------------------------------------------------+
-|module swap [module1] [module2] |Replace module1 with module2                             |
-+--------------------------------+---------------------------------------------------------+
-|module use [-a] [path]          |Prepend or Append path to MODULEPATH                     |
-+--------------------------------+---------------------------------------------------------+
-|module unuse [path]             |Remove path from MODULEPATH                              |
-+--------------------------------+---------------------------------------------------------+
-|module show [module]            |Show content of commands performed by loading module file|
-+--------------------------------+---------------------------------------------------------+
-
++---------------------------------+-------------------------------------------+
+| Command                         | Description                               |
++=================================+===========================================+
+| module list                     | List active modules in the user           |
+|                                 | environment                               |
++---------------------------------+-------------------------------------------+
+| module avail [module]           | List available modules in MODULEPATH      |
++---------------------------------+-------------------------------------------+
+| module spider [module]          | Query all modules in MODULEPATH and any   |
+|                                 | module hierarchy                          |
++---------------------------------+-------------------------------------------+
+| module load [module]            | Load a module file in the users           |
+|                                 | environment                               |
++---------------------------------+-------------------------------------------+
+| module unload [module]          | Remove a loaded module from the user      |
+|                                 | environment                               |
++---------------------------------+-------------------------------------------+
+| module swap [module1] [module2] | Replace module1 with module2              |
++---------------------------------+-------------------------------------------+
+| module use [-a] [path]          | Prepend or Append path to MODULEPATH      |
++---------------------------------+-------------------------------------------+
+| module unuse [path]             | Remove path from MODULEPATH               |
++---------------------------------+-------------------------------------------+
+| module show [module]            | Show content of commands performed by     |
+|                                 | loading module file                       |
++---------------------------------+-------------------------------------------+
 
 .. warning::
 
-    Please **DO NOT** use the command module purge. This will remove all
-    modules currently loaded by default in your environment and will lead
-    to major errors. If you have accidentally used the command purge, log
-    out of GAEA and log in. This will give you the default environment
-    with the default modules loaded.
+    Do not use the command ``module purge`` on Gaea. This will remove
+    all modules currently loaded by default in your environment and
+    may lead to errors, and can make your session unusable. If you do
+    run the command to purge your module environment, log out and back
+    in to Gaea to restore the default environment with the default
+    modules loaded.
 
 
