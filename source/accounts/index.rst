@@ -17,7 +17,12 @@ to the user community:
 - Orion/Hercules (MSU - external)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 The RDHPCS account gives the user access to the Gaea, Hera, Niagara and Jet, depending on git their assigned project. 
+=======
+The RDHPCS account gives the user access to the Gaea, Hera, Niagara
+and Jet, depending on git their assigned project.
+>>>>>>> Stashed changes
 =======
 The RDHPCS account gives the user access to the Gaea, Hera, Niagara
 and Jet, depending on git their assigned project.
