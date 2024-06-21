@@ -4,7 +4,10 @@
 Modules
 #######
 
-Lmod is a Lua based module software management system that helps manage the user environment (PATH, LD_LIBRARY_PATH) through module files. LMOD is used on various HPC systems including Gaea, Hera, and Jet. 
+Lmod is a Lua based module software management system that helps
+manage the user environment (PATH, LD_LIBRARY_PATH) through module
+files. LMOD is used on various HPC systems including Gaea, Hera, and
+Jet.
 
 View Active Modules
 ===================
@@ -13,21 +16,26 @@ Use ``module list`` to see what modules are loaded in your environment.
 
 .. code-block:: shell
 
-    $ module list 
+    $ module list
 
 Find Modules
-============ 
+============
 
-Lmod provides several commands to help you find modules including module avail, and module spider.
+Lmod provides several commands to help you find modules including
+module avail, and module spider.
 
-To view a list of available modules in MODULEPATH use ``module avail <module>``. The command will show only modules that can be loaded in the current environment.
+To view a list of available modules in MODULEPATH use ``module avail
+<module>``. The command will show only modules that can be loaded in
+the current environment.
 
 .. code-block:: shell
 
-    $module avail 
+    $module avail
 
 
-The command ``module spider <module>`` will show all modules and versions with the name.  This includes modules that cannot be loaded in the current environment.
+The command ``module spider <module>`` will show all modules and
+versions with the name.  This includes modules that cannot be loaded
+in the current environment.
 
 .. code-block:: shell
 
@@ -36,25 +44,27 @@ The command ``module spider <module>`` will show all modules and versions with t
     cray-netcdf: cray-netcdf/4.9.0.1
     ----------------------------------
 
-	You will need to load all module(s) on any one of the lines below before the "cray-netcdf/4.9.0.1" module is available to load.
+    You will need to load all module(s) on any one of the lines below
+    before the "cray-netcdf/4.9.0.1" module is available to load.
 
-  	aocc/3.2.0  cray-hdf5/1.12.2.1
-  	aocc/3.2.0  cray-hdf5/1.12.2.3
-  	aocc/3.2.0  cray-hdf5/1.12.2.7
-  	gcc/10.3.0  cray-hdf5/1.12.2.1
-  	gcc/10.3.0  cray-hdf5/1.12.2.3
+    aocc/3.2.0  cray-hdf5/1.12.2.1
+    aocc/3.2.0  cray-hdf5/1.12.2.3
+    aocc/3.2.0  cray-hdf5/1.12.2.7
+    gcc/10.3.0  cray-hdf5/1.12.2.1
+    gcc/10.3.0  cray-hdf5/1.12.2.3
 
 
-
-
-**NOTE**: ``module spider`` command reports all modules along with all module trees in the hierarchical system while ``module avail`` does not. To see all possible modules and their versions, use ``module spider``
+**NOTE**: ``module spider`` command reports all modules along with all
+module trees in the hierarchical system while ``module avail`` does
+not. To see all possible modules and their versions, use ``module spider``
 
 
 
 Load Modules
-============ 
+============
 
-User ``module load`` to load a module into the current environment of a session or job.
+User ``module load`` to load a module into the current environment of
+a session or job.
 
 .. code-block:: shell
 
@@ -66,27 +76,33 @@ Use ``module unload`` to remove a loaded module
 
     $ module unload <module>
 
-LMOD employs a hierarchical system that, when used properly, considers dependencies and prerequisites for a given software package.  
+LMOD employs a hierarchical system that, when used properly, considers
+dependencies and prerequisites for a given software package.
 
-For example, the ``cray-netcdf`` module depends on the ``cray-hdf5`` module and cannot be seen by the standard module avail commands nor be loaded until the cray-hdf5 module is loaded.
+For example, the ``cray-netcdf`` module depends on the ``cray-hdf5``
+module and cannot be seen by the standard module avail commands nor be
+loaded until the cray-hdf5 module is loaded.
 
-The LMOD hierarchical system will automatically deactivate or swap an upstream module dependency. 
+The LMOD hierarchical system will automatically deactivate or swap an
+upstream module dependency.
 
-When that happens, any downstream module will still be loaded but inactivated. 
+When that happens, any downstream module will still be loaded but inactivated.
 
 .. code-block:: shell
 
-    $ module load cray-hdf5 
-    
+    $ module load cray-hdf5
+
     $ module load cray-netcdf
-    
+
     $ module unload cray-hdf5
-    
+
     Inactive Modules:
     cray-netcdf
 
 
-In this example, the cray-netcdf module depends on the cray-hdf5 module.  When the cray-hdf5 module is unloaded, the cray-netcdf module becomes inactive.  
+In this example, the cray-netcdf module depends on the cray-hdf5
+module.  When the cray-hdf5 module is unloaded, the cray-netcdf module
+becomes inactive.
 
 Reloading the cray-hdf5 module will reactivate the cray-netcdf module.
 
@@ -94,7 +110,9 @@ Reloading the cray-hdf5 module will reactivate the cray-netcdf module.
 Adding Additional Module Paths
 ==============================
 
-Do not manually set the ``MODULESPATH`` environment variable.  Manually setting the ``MODULESPATH`` environment variable will produce unknown behavior.  
+Do not manually set the ``MODULESPATH`` environment variable.
+Manually setting the ``MODULESPATH`` environment variable will produce
+unknown behavior.
 
 Use ``module use <path>`` or ``module use -a <path>`` to add more module paths.
 
@@ -103,10 +121,12 @@ Modules with sh, bash, and ksh scripts
 ======================================
 
 
-How can I get the shell functions created by modules in bash shell scripts such as job submission scripts?
-----------------------------------------------------------------------------------------------------------
+How can I get the shell functions created by modules in bash shell
+scripts such as job submission scripts?
 
-Make sure that shell functions and alias works correctly in bash interactive sub-shells.
+
+Make sure that shell functions and alias works correctly in bash
+interactive sub-shells.
 
 Once that works then change the first line of the shell script to be:
 
@@ -114,16 +134,20 @@ Once that works then change the first line of the shell script to be:
 
     #!/bin/bash -l
 
-**Note**: That is not a minus one. 
+**Note**: That is not a minus one.
 
-This will cause the startup scripts to be sourced before the first executable statement in the script.
+This will cause the startup scripts to be sourced before the first
+executable statement in the script.
 
 Why doesn’t the module command work in shell scripts?
 -----------------------------------------------------
 
-First it is recommended that the script be a bash script and not a shell script, so start the script with ``#!/bin/bash``. 
+First it is recommended that the script be a bash script and not a
+shell script, so start the script with ``#!/bin/bash``.
 
-The environment variable ``BASH_ENV`` must point to a file which defines the module command. ``MODULEHOME`` should point to the file that defines the module command. 
+The environment variable ``BASH_ENV`` must point to a file which
+defines the module command. ``MODULEHOME`` should point to the file
+that defines the module command.
 
 You can also do the following in your script before using the module command
 
@@ -159,9 +183,12 @@ Command Summary
 +--------------------------------+---------------------------------------------------------+
 
 
-**Warning**
+.. warning::
 
-Please **DO NOT** use the command module purge. This will remove all modules currently loaded by default in your environment and will lead to major errors. 
-If you have accidentally used the command purge, log out of GAEA and log in. This will give you the default environment with the default modules loaded.
+    Please **DO NOT** use the command module purge. This will remove all
+    modules currently loaded by default in your environment and will lead
+    to major errors. If you have accidentally used the command purge, log
+    out of GAEA and log in. This will give you the default environment
+    with the default modules loaded.
 
 
