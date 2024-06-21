@@ -16,20 +16,29 @@ to the user community:
 - Jet
 - Orion/Hercules (MSU - external)
 
-The RDHPCS account gives the user access to the Gaea, Hera, Niagara and Jet, depending on git their assigned project.
+The RDHPCS account gives the user access to the Gaea, Hera, Niagara
+and Jet, depending on their assigned project.
 
 What NOAA Does
 ---------------
 
-#. Conducts security investigation (6-12 weeks).  This includes a fingerprint check, background check, and DOC public trust investigation
-#. Provides a **@noaa.gov** email account and initial password. You may have access to the NOAA email account before the security review is complete. Once you have a noaa.gov email address, you also have access to several internal systems.
+#. Conducts security investigation (6-12 weeks).  This includes a
+   fingerprint check, background check, and DOC public trust
+   investigation
+#. Provides a **@noaa.gov** email account and initial password. You
+   may have access to the NOAA email account before the security
+   review is complete. Once you have a noaa.gov email address, you
+   also have access to several internal systems.
 
 What You Do
 -----------
 
 #. Take the NOAA IT Security Awareness Training (annual requirement).
-#. Use the Account Identity Management (AIM) system to request access to a vetting project. You access AIM using your NOAA.gov email address and password.
-#. When you are approved for a vetting project, request membership to other projects as directed by your management.
+#. Use the Account Identity Management (AIM) system to request access
+   to a vetting project. You access AIM using your NOAA.gov email
+   address and password.
+#. When you are approved for a vetting project, request membership to
+   other projects as directed by your management.
 #. Request an :ref:`rsa_token` for access to several NOAA systems.
 
 .. note::
@@ -185,7 +194,7 @@ with instructions about how to set your pin and login with it.
 .. _other_authentications:
 
 Other Authentications
-=====================
+---------------------
 
 Your current RSA token will be used for all other RDHPCS authentications
 (sudo to role accounts, attended data transfers, x2go, etc…)
@@ -193,9 +202,8 @@ Your current RSA token will be used for all other RDHPCS authentications
 
 .. _account_suspension_deactivation_reactivation:
 
-**********************************************
 Account Suspension, Deactivation, Reactivation
-**********************************************
+==============================================
 
 A user's account is suspended when it has been inactive for over 90
 days. The user will be notified when their account has been suspended.
