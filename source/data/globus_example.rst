@@ -4,7 +4,6 @@
 Globus Example
 **************
 
-
 Globus is the preferred and most efficient and robust way to transfer
 data between Globus Collections and Endpoints (also known as DTNs) and
 external storage systems. To use this service, you must have an RDHPCS
@@ -20,37 +19,24 @@ without delay.
 What you need to have on hand
 -----------------------------
 
-+-------------------------------------------+-----------------------------+
-| The name and source of the                | noaardhpcs#ppan_untrusted   |
-| destination endpoints                     | noaardhpcs#hera             |
-+-------------------------------------------+-----------------------------+
-| Your NOAA username                        | Robin.Lee                   |
-+-------------------------------------------+-----------------------------+
-| The names of filesystems exposed          | /collab1/data_untrusted/    |
-| by the endpoints                          | /scratch1/                  |
-+-------------------------------------------+-----------------------------+
+* Your NOAA username (First.Last), and your RDHPCS MFA token.
+* The name and source of the destination endpoints, e.g.,
+  *noaardhpcs#ppan_untrusted*, *noaardhpcs#hera*.
+* The file systems exposed to the endpoints (e.g.,
+  ``/collab1/data_untrusted``, ``/scratch1/``).
 
 What you need to do
 -------------------
 
-+---------------------------------------------------+---------------------------------------+
-| 1. Navigate your browser to this address          | https://app.globus.org                |
-+---------------------------------------------------+---------------------------------------+
-| 2. Login with "existing organizational login"     | NOAA RDHPCS                           |
-+---------------------------------------------------+---------------------------------------+
-| 3. In the Globus File Manager, select Collectio   | noaardhpcs#ppan_untrusted             |
-+---------------------------------------------------+---------------------------------------+
-| If necessary, authenticate your identity          |                                       |
-+---------------------------------------------------+---------------------------------------+
-| 4. In the File Manager, select Path               | /collab1/data_untrusted/Robin.Lee/... |
-+---------------------------------------------------+---------------------------------------+
-| 5. Repeat for second endpoint                     | noaardhpcs#hera/scratch1/NCEPDEV/...  |
-+---------------------------------------------------+---------------------------------------+
-| 6. Select the files/directories you to transfe    |                                       |
-+---------------------------------------------------+---------------------------------------+
-| 7. Click Start                                    |                                       |
-+---------------------------------------------------+---------------------------------------+
-
+1. Navigate to the `Globus Web App <https://app.globus.org>`_
+2. Login with an existing organizational login, e.g., *NOAA RDHPCS*.
+3. In the Globus File Manager's *Collection* dialog, search for the
+   destination endpoint (e.g., *noaardhpcs#ppan_untrusted*).
+4. In the *Path* dialog, select the endpoint's file system path (e.g.,
+   ``/collab1/data_untrusted/First.Last``).
+5. Repeat steps 3 and 4 for the second endpoint.
+6. Select the files/directory to transfer.
+7. Click the *Start* button.
 
 Using Globus Online Data Transfer
 =================================
@@ -75,7 +61,7 @@ their given names and follow these steps:
 #. Pick a directory in each panel for your source and destination.
 #. Click START to initiate the transfer.
 
-**For Example**
+For Example:
 
 #. Navigate to globus.org.
 #. Select “existing organizational login” NOAA RDHPCS. The File
@@ -93,31 +79,83 @@ partner clusters:
 
 **RDHPCS clusters with GCS**
 
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| Cluster           | Display Name                 |File Systems                |Site                   | Access            |
-+===================+==============================+============================+=======================+===================+
-| Hera              | noaardhpcs#hera              | /scratch1/, /scratch2/     | NESCC                 | trusted hosts     |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| Jet               | noaardhpcs#jet               | /mnt/lfs4, /mnt/lfs5       | GSL                   | trusted hosts     |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| Jet               | noaardhpcs#jet_untrusted     | /mnt/lfs4/data_untrusted   | GSL                   | anywhere          |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| Niagara           | noaardhpcs#niagara           | /collab1/data              | NESCC                 | trusted hosts     |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| Niagara           | noaardhpcs#niagara_untrusted | /collab1/data_untrusted    | NESCC                 | anywhere          |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| PPAN              | noaardhpcs#ppan_rdtn         | /archive, /home/, /nbhome, | GFDL                  | trusted hosts     |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-|                   |                              | /work, /ptmp               |                       |                   |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| PPAN              | noaardhpcs#ppan_untrusted    | /collab1/data_untrusted    | GFDL                  | anywhere          |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| Gaea              | ncrc#dtn                     | /lustre/f2/scratch         | NCRC                  | trusted hosts     |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| Orion             | Msuhpc2#Orion-dtn            | /work, /work2              | Orion DTN at MSU      | anywhere          |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
-| Hercules          | msuhpc2#Hercules             | /work, /work2              | Hercules DTN at MSU   | anywhere          |
-+-------------------+------------------------------+----------------------------+-----------------------+-------------------+
+.. list-table::
+   :header-rows: 1
+   :align: left
+
+   * - Cluster
+     - Endpoint Name
+     - File System(s)
+     - RDHPCS Site
+     - Host Access
+   * - Hera
+     - noaardhpcs#hera
+     - /scratch1
+
+       /scratch2
+     - NESCC
+     - Trusted hosts
+   * - Niagara
+     - noaardhpcs#niagara
+     - /collab1/data
+     - NESCC
+     - Trusted hosts
+   * - Niagara
+     - noaardhpcs#niagara_untrusted
+     - /collab1/data_untrusted
+     - NESCC
+     - Anywhere
+   * - Jet
+     - noaardhpcs#jet
+     - /mnt/lfs4
+
+       /mnt/lfs5
+     - GSL
+     - Trusted hosts
+   * - Jet
+     - noaardhpcs#jet_untrusted
+     - /mnt/lfs4/data_untrusted
+     - GSL
+     - Anywhere
+   * - PPAN
+     - noaardhpcs#ppan_rdtn
+     - /archive
+
+       /home
+
+       /nbhome
+
+       /work
+
+       /ptmp
+     - GFDL
+     - Trusted hosts
+   * - PPAN
+     - noaardhpcs#ppan_untrusted
+     - /collab1/data_untrusted
+     - GFDL
+     - Anywhere
+   * - Gaea
+     - ncrc#dtn
+     - /gpfs/f5
+
+       /gpfs/f6
+     - NCRC
+     - Trusted hosts
+   * - Orion
+     - msuhpc2#Orion-dtn
+     - /work
+
+       /work2
+     - MSU HPC\ :superscript:`2`
+     - Anywhere
+   * - Orion
+     - msuhpc2#Hercules
+     - /work
+
+       /work2
+     - MSU HPC\ :superscript:`2`
+     - Anywhere
 
 
 **RDHPCS Object Stores in the Cloud**
@@ -184,18 +222,23 @@ public site available via AWS resources.
 Globus Command Line Interface (CLI)
 ===================================
 
-The CLI is available on Jet, Hera, and Niagara.
-If you would like to use Globus-cli, either on your personal machine or on a system where globus-cli is not installed, you can install it easily . Instructions to install and use the Globus CLI are available `here <https://docs.globus.org/cli/GlobusCLI>`_.
+The CLI is available on Jet, Hera, and Niagara. If you would like to
+use Globus-cli, either on your personal machine or on a system where
+globus-cli is not installed, you can install it easily. Refer to the
+instructions to install and use the `Globus CLI
+<https://docs.globus.org/cli/GlobusCLI>`_.
 
 Transferring Data to and from Your Computer
 ===========================================
 
 To transfer data from your laptop/workstation to a NOAA RDHPCS system, you can
 
-* use scp to a NOAA RDHPCS DTN (using pre-configured ssh port tunnels)
-* use scp to a NOAA RDHPCS UDTN
-* use Globus Connect Personal to tr ansfer data between a NOAA RDHPCS
-  UDTN and your local laptop/workstation.
+* use *scp* to a NOAA RDHPCS DTN (using pre-configured :ref:`SSH port
+  tunnels <logging_in>`).
+* use *scp* to a NOAA RDHPCS UDTN
+* use `Globus Connect Personal
+  <https://www.globus.org/globus-connect-personal>`_ to transfer data
+  between a NOAA RDHPCS UDTN and your local laptop/workstation.
 
 NOAA RDHPCS considers your laptop/workstation as a Globus Untrusted Endpoint.
 
@@ -207,8 +250,10 @@ Some benefits of using Globus Connect Personal with UDTNs:
 * Data transfers automatically suspends and resumes as your computer
   goes to sleep, wakes up, or reboots.
 
-The mechanism for transferring data between your laptop/workstation (Untrusted Endpoint) and a NOAA RDHPCS UDTN is exactly the same.
-See `<Globus Connect Personal <https://www.globus.org/globus-connect-personal>`_ for information about setting up your laptop/workstation as a Globus Personal Endpoint.
+The mechanism for transferring data between your laptop/workstation
+(Untrusted Endpoint) and a NOAA RDHPCS UDTN is exactly the same. See
+`Globus Connect Personal`_ for information about setting up your
+laptop/workstation as a Globus Personal Endpoint.
 
 GFDL Data Services
 ==================
@@ -223,56 +268,22 @@ GFDL Data Services
 * GFDL Data Services helps build a community that leverages data
   management best practices to build analytics, workflows, etc.
 
-If you need assistance with any of the above, email oar.gfdl.workflow@noaa.gov.
-
 GFDL Data Digital Object Identifier (DOI) Policy
 ================================================
 
 Sharing NOAA data as openly and widely as possible, maximizing its
 utilization by NOAA partners, stakeholders, and the public, is
 foundational to NOAA’s mission, and thus central to NOAA’s Data
-Strategy. The complete GFDL Policy pertaining to externally facing
-data may be found `at this link.
-<gfdl-data-digital-object-identifier-doi-policy>`_
+Strategy. The complete `GFDL Policy pertaining to externally facing
+data
+<https://intranet.gfdl.noaa.gov/admin-services/forms-and-policies/gfdl-data-digital-object-identifier-doi-policy>`__\
+[#]_ is available.
 
-Data hosted in the GFDL Data portal servers is accessible through
-Globus, and available on request through the data hosting request
-forms. The Data Hosting Request (for papers, collaborations, other
-projects) (google.com) is accessible `here
-<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`_.
+Data hosted on the GFDL Data portal servers is accessible through
+Globus, and available on request through the `data hosting request
+form
+<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__
+for papers, collaborations, other projects. The requester will be
+notified of the Globus URL when the request is completed.
 
-The requester will be notified of the globus url when  the request is
-completed.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--------
-
-#. Navigate to globus.org.
-#. Select “existing organizational login” NOAA RDHPCS. The File
-   Manager page displays.
-#. Select Collection, and choose the file system
-   “noaardhpcs#niagara_untrusted”. If necessary, authenticate with
-   username and RSA password.
-#. In the File Manager, select Path:
-
-   /collab1/data_untrusted/anonymous/from Orion
-#. Repeat for the other endpoint: msuhpc2#Orion-dtn
-#. Select files and directories, and click Start.
-
+.. [#] A GFDL Active Directory (AD) account is required.
