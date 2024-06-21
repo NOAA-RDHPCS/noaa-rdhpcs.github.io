@@ -4,9 +4,11 @@
 Getting Help
 ############
 
-Each system in RDHPCS has a specific email address to use for requesting help. To get help for an RDHPCS issue, send email to open a help ticket. 
-Send your help request to the email address below that corresponds with the
-system or function you need help with.  Use your noaa.gov email address for all of your correspondence.
+Each system in RDHPCS has a specific email address to use for
+requesting help. To get help for an RDHPCS issue, send email to open a
+help ticket. Send your help request to the email address below that
+corresponds with the system or function you need help with.  Use your
+noaa.gov email address for all of your correspondence.
 
 +------------------+------------------------------+
 | System           | Email Address                |
@@ -254,7 +256,8 @@ the following information:
 * What is the command you used to submit the job
 * What was response to the command above
 
-A copy-and-paste of your screen session is most helpful. Please copy the text on the screen, rather than taking a screen shot.
+A copy-and-paste of your screen session is most helpful. Please copy
+the text on the screen, rather than taking a screen shot.
 
 Job Completion Problems
 -----------------------
@@ -271,21 +274,23 @@ need at the following information:
 * The location of the program output files (which is sometimes different from
   above)
 
-A copy-and-paste of your screen session. Please copy the text on the screen, rather than taking a screen shot.
+A copy-and-paste of your screen session. Please copy the text on the
+screen, rather than taking a screen shot.
 
 Providing a Reproducer
 ----------------------
 
-There are times when the only way to troubleshoot a problem is to actually for
-us to be able to duplicate the problem by running it ourselves.  In those
-instances we will ask for a simple reproducer. Ideally, a reproducer is a simple
-test case that we can experiment with, but we also understand that that may not
-always be possible.  In that case we will need detailed instructions on
-what we need to do to duplicate the problem.  At first we will simply want to
-be able to run the test case that is failing.  If we need additional debugging
-help we may also need a way build your executable from source code. The
-instructions below are combining both instances, first about building the code,
-and second about running a test case.
+There are times when the only way to troubleshoot a problem is to
+actually for us to be able to duplicate the problem by running it
+ourselves.  In those instances we will ask for a simple reproducer.
+Ideally, a reproducer is a simple test case that we can experiment
+with, but we also understand that that may not always be possible.  In
+that case we will need detailed instructions on what we need to do to
+duplicate the problem.  At first we will simply want to be able to run
+the test case that is failing.  If we need additional debugging help
+we may also need a way build your executable from source code. The
+instructions below are combining both instances, first about building
+the code, and second about running a test case.
 
 Below are general things we will be looking for:
 
@@ -440,8 +445,8 @@ routing your tickets to the appropriate resource.
 
 .. image:: /images/help_portal/otrsnewticket.png
 
-.. note:: 
-    
+.. note::
+
   Ignore the Service and SLA text boxes when create a ticket this way.
 
 **Enter a Ticket Type**
