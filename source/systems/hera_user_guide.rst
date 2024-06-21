@@ -7,70 +7,129 @@ Hera User Guide
 About NESCC
 ===========
 
-The NOAA Environmental Security Computing Center (NESCC), located in Fairmont,
-West Virginia, is the location of NOAA's newest High Performance Computing Data
-Center. This site provides computing resources to support NOAA's research in
-Weather and Climate modeling as well as its other environmental research areas.
+The NOAA Environmental Security Computing Center (NESCC), located in
+Fairmont, West Virginia, is the location of NOAA's newest High
+Performance Computing Data Center. This site provides computing
+resources to support NOAA's research in Weather and Climate modeling
+as well as its other environmental research areas.
 
 There are currently two major systems at NESCC:
 
-- Hera* A 760 Tflop Cray Compute Cluster high performance computing system
-- HPSS* A 50 Petabyte IBM/Oracle hierarchical storage management system.
+- Hera* A 760 Tflop Cray Compute Cluster high performance computing
+  system
+- HPSS* A 50 Petabyte IBM/Oracle hierarchical storage management
+  system.
 
 .. _hera-system-overview:
 
 System Overview
 ===============
 
-- Capacity of 3,270 trillion floating point operations per second – or 3.27
+- Capacity of 3,270 trillion floating point operations per second – or
+  3.27 petaFLOPS
+- The Fine Grain Graphical Processing Units have a total capacity of
+  2,000 trillion floating point operations per second, or 2.0
   petaFLOPS
-- The Fine Grain Graphical Processing Units have a total capacity of 2,000
-  trillion floating point operations per second, or 2.0 petaFLOPS
 - 45 million hours per month with 63,840 cores and a total scratch
   disk capacity of 18.5 Petabytes.
 
-NESCC is also home to Niagara, a cloud-based computing resource. In addition,
-Test and Development systems are available through NESCC for system and
-application testing.
+NESCC is also home to Niagara, a cloud-based computing resource. In
+addition, Test and Development systems are available through NESCC for
+system and application testing.
 
 System Configuration
 --------------------
 
-+-------------------------+---------------+------------------+---------------+------------------+
-|                         | Hera TCA      | Hera FGA         | Juno TCA      | Juno FGA         |
-+=========================+===============+==================+===============+==================+
-| **CPU Type**            | Intel SkyLake | Intel Haswell    | Intel SkyLake | Intel Haswell    |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **CPU Speed**           | 2.40 GHz      | 2.460 GHz        | 2.40 GHz      | 2.460 GHz        |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Reg Compute Nodes**   | 1328          | 100              | 14            | 2                |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Cores/node**          | 40            | 20               | 40            | 20               |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Total Cores**         | 53,120        | 2000             | 560           | 40               |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Memory/Core**         | 96 GB         | 256 GB           | 90 GB         | 256 GB           |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Peak FLOPS/node**     | 12            | NA               | 12            | NA               |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Service Code Memory** | 187 GB        | NA               | 187 GB        | NA               |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Total BigMem Nodes**  | 268           | NA               | 268           | NA               |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **BigMem Node Memory**  | 384 GB        | NA               | 384 GB        | NA               |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **CPU FLOPS**           | 2672 TF       | 83.1 TF          | 28 TF         | 1.6 TF           |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **GPUs/Node**           | NA            | 8 P100           | NA            | 8 P100           |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Total GPUs**          | NA            | 800              | NA            | 16               |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **GPU FLOPS/GPU**       | NA            | 4.7              | NA            | 4.7              |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Interconnect**        | HDR-100 IB    | FDR-10 (40 Gbps) | HDR-100 IB    | FDR-10 (40 Gbps) |
-+-------------------------+---------------+------------------+---------------+------------------+
-| **Total GPU FLOPS**     | NA            | 3760 TF          | NA            | 75 TF            |
-+-------------------------+---------------+------------------+---------------+------------------+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
+
+   * -
+     - Hera TCA
+     - Hera FGA
+     - Juno TCA
+     - Juno FGA
+   * - CPU Type
+     - Intel SkyLake
+     - Intel Haswell
+     - Intel SkyLake
+     - Intel Haswell
+   * - CPU Speed (GHz)
+     - 2.40
+     - 2.46
+     - 2.40
+     - 2.46
+   * - Reg Compute Nodes
+     - 1,328
+     - 100
+     - 14
+     - 2
+   * - Cores/Node
+     - 40
+     - 20
+     - 40
+     - 20
+   * - Total Cores
+     - 53,120
+     - 2,000
+     - 560
+     - 40
+   * - Memory/Core (GB)
+     - 96
+     - 256
+     - 90
+     - 256
+   * - Peak FLOPS/Node
+     - 12
+     - N/A
+     - 12
+     - N/A
+   * - Service Code Memory (GB)
+     - 187
+     - N/A
+     - 187
+     - N/A
+   * - Total BigMem Nodes
+     - 268
+     - N/A
+     - 268
+     - N/A
+   * - BigMem Node Memory (GB)
+     - 384
+     - N/A
+     - 384
+     - N/A
+   * - CPU FLOPS (TFLOPS)
+     - 2,672
+     - 83.1
+     - 28
+     - 1.6
+   * - GPUs/Node
+     - N/A
+     - 8 x P100
+     - N/A
+     - 8 x P100
+   * - Total GPUs
+     - N/A
+     - 800
+     - N/A
+     - 16
+   * - GPU FLOPS/GPU
+     - N/A
+     - 4.7
+     - N/A
+     - 4.7
+   * - Interconnect
+     - HDR-100 IB
+     - FDR-10 (40 Gbps)
+     - HDR-100
+     - FDR-10 (40 Gbps)
+   * - Total GPU FLOPS (TFLOPS)
+     - N/A
+     - 3,760
+     - N/A
+     - 75
 
 .. note::
 
@@ -112,23 +171,25 @@ Each project has an assigned quota which is shared by all users on the
 project. File count quotas are implemented to preserve the increased
 performance of the 2-tier storage architecture, where the first 128 KB
 of each file is stored on SSD and the remainder if any on HDD.
-Historical data from Jet show that the average file count
-per GB is ~100. By default, projects on Hera are given a file count
-quota of 200 files per GB of volume quota or 100,000 files, whichever is
-higher. Users will receive warning emails when their quota is
-exceeded. When either the volume or file count quota is exceed by more
-than 1.2x, writes will not be allowed.
+Historical data from Jet show that the average file count per GB is
+~100. By default, projects on Hera are given a file count quota of 200
+files per GB of volume quota or 100,000 files, whichever is higher.
+Users will receive warning emails when their quota is exceeded. When
+either the volume or file count quota is exceed by more than 1.2x,
+writes will not be allowed.
 
 Summary and detailed information on finding your project's disk volume
-and file count quota and usage is found :ref: `here <Getting_Information_about_your_Projects>`.
+and file count quota and usage is found :ref: `here
+<Getting_Information_about_your_Projects>`.
 
 Volume Quota Increase
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you are approaching your quota, you should first delete
-old files and/or move files to HPSS tape systems as appropriate. If
-more volume is still needed, open a Help ticket to request a volume quota increase. Send email to rdhpcs.hera.help@noaa.gov,
-with the subject line Quota Increase, and a justification, including:
+If you are approaching your quota, you should first delete old files
+and/or move files to HPSS tape systems as appropriate. If more volume
+is still needed, open a Help ticket to request a volume quota
+increase. Send email to rdhpcs.hera.help@noaa.gov, with the subject
+line Quota Increase, and a justification, including:
 
 * Project name.
 * Requested quota. Is the increase request temporary or permanent? If
@@ -141,11 +202,11 @@ File Count Quota Increase
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you are approaching your quota or your file count quota or are
-running over 200 files/GB, you should first delete old
-small files. If you want to keep them around but they are not accessed
-frequently, you should tar up many small files into one big file. If
-you have an exceptional situation and believe you need a quota
-increase, open a Help ticket. Send email to rdhpcs.hera.help@noaa.gov that includes the
+running over 200 files/GB, you should first delete old small files. If
+you want to keep them around but they are not accessed frequently, you
+should tar up many small files into one big file. If you have an
+exceptional situation and believe you need a quota increase, open a
+Help ticket. Send email to rdhpcs.hera.help@noaa.gov that includes the
 following information:
 
 
@@ -240,9 +301,8 @@ Aligned vs Unaligned Stripes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aligned stripes is where each segment fits fully onto a single OST.
-Processes accessing the file do so at corresponding stripe
-boundaries. Unaligned stripes means that some file segments are split
-across OSTs.
+Processes accessing the file do so at corresponding stripe boundaries.
+Unaligned stripes means that some file segments are split across OSTs.
 
 .. _hera-progressive-file-layouts:
 
@@ -250,22 +310,22 @@ Progressive File Layouts
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``/scratch1`` and ``/scratch2`` file systems are enabled with a
-feature called Progressive File Layouts (PFL), which is efficient for the vast majority of use cases. It uses a
-single stripe count for small files (reducing overhead) and increases
-the striping as the file gets bigger (increasing bandwidth and
-balancing capacity), all without any user involvement. These file
-systems are also augmented by a set of SSD OSTs (described above) and
-with the PFL capability is further optimized for small file
-performance. By default, smaller files are stored completely in SSD,
-which further decreases random operation latency and allows the HDDs
-to run more efficiently for streaming reads and writes. The default
-configuration will automatically stripe and place files in a generally
-optimal fashion to improve I/O performance for varying file sizes,
-including the use of SSDs for better small-file performance. The
-defaults also attempt to makethe best use of the SSD targets (which
-are faster, but have much less capacity than HDDs). More details on
-PFL are available in the `Lustre documentation
-<https://doc.lustre.org/lustre_manual.xhtml>`_.
+feature called Progressive File Layouts (PFL), which is efficient for
+the vast majority of use cases. It uses a single stripe count for
+small files (reducing overhead) and increases the striping as the file
+gets bigger (increasing bandwidth and balancing capacity), all without
+any user involvement. These file systems are also augmented by a set
+of SSD OSTs (described above) and with the PFL capability is further
+optimized for small file performance. By default, smaller files are
+stored completely in SSD, which further decreases random operation
+latency and allows the HDDs to run more efficiently for streaming
+reads and writes. The default configuration will automatically stripe
+and place files in a generally optimal fashion to improve I/O
+performance for varying file sizes, including the use of SSDs for
+better small-file performance. The defaults also attempt to makethe
+best use of the SSD targets (which are faster, but have much less
+capacity than HDDs). More details on PFL are available in the `Lustre
+documentation <https://doc.lustre.org/lustre_manual.xhtml>`_.
 
 .. Note::
 
@@ -309,9 +369,9 @@ Checking Diskspace
 Hera file system allocations are project based. Lustre quotas are
 tracked and limited by Project ID (usually the same as group ID and
 directory name). The Project ID is assigned to top-level project
-directories and will be inherited for all new subdirectories. Tracking and
-enforcement includes maximum file count, not just capacity. To check
-your usage details:
+directories and will be inherited for all new subdirectories. Tracking
+and enforcement includes maximum file count, not just capacity. To
+check your usage details:
 
 #. Look up your project ID number (not the name)
 #. Query your usage and limits using that number, for a given file
@@ -526,7 +586,8 @@ the reads/writes across more OSTs, balancing the load and data.
 Use a Small Stripe Count for Small Files
 """"""""""""""""""""""""""""""""""""""""
 
-Place small files on a single OST. Small files will then not be spread out across OSTs.
+Place small files on a single OST. Small files will then not be spread
+out across OSTs.
 
 .. code-block:: shell
 
@@ -1159,19 +1220,19 @@ System Information
 
 * GPUs 0-3 are connected to Socket0, and
 * GPUs 4-7 are connected to Socket1
-* The interconnect fabric is a fat tree network, made up of 1 Mellanox Connect-X 3 IB card connected to Socket1
+* The interconnect fabric is a fat tree network, made up of 1 Mellanox
+  Connect-X 3 IB card connected to Socket1
 * The FGA system has access to all the same file systems that TCA has
 
-Please note that the network fabric on the FGA system has
-the Mellanox IB cards which are different from the regular
-Hera (or TCA) which has Intel TrueScale IB cards; this
-distinction becomes important because the kernel running on
-these FGA nodes is different from the TCA.
+Please note that the network fabric on the FGA system has the Mellanox
+IB cards which are different from the regular Hera (or TCA) which has
+Intel TrueScale IB cards; this distinction becomes important because
+the kernel running on these FGA nodes is different from the TCA.
 
-Just as an example about how this may impact users,
-depending on the application it may be necessary to compile
-your application on a FGA compute node by getting access to
-an interactive compute node in the "fge" queue.
+Just as an example about how this may impact users, depending on the
+application it may be necessary to compile your application on a FGA
+compute node by getting access to an interactive compute node in the
+"fge" queue.
 
 Getting an allocation for FGA resources
 ---------------------------------------
@@ -1181,37 +1242,35 @@ resources. All FGA projects (RDARCH portfolio) have windfall access to
 Hera TCA resources. We are soliciting project requests for compute
 allocations on the FGA system.
 
-Users interested in an allocation on the fine-grain
-augmentation may request an FGA allocation by sending a
-couple of paragraphs (through their PIs if they are not a
-PI) to the :ref:`help system <getting_help>`.
+Users interested in an allocation on the fine-grain augmentation may
+request an FGA allocation by sending a couple of paragraphs (through
+their PIs if they are not a PI) to the :ref:`help system
+<getting_help>`.
 
 The paragraphs should contain the following information:
 
 -  The number of node-hours requested.
 -  Disk space (in terabytes) requested.
--  A brief description of the project in terms of science
-   objectives and computer science objectives.
+-  A brief description of the project in terms of science objectives
+   and computer science objectives.
 -  Planned way to exploit (or learning to exploit) the GPUs.
 
-Note that there are approximately 64,000 node-hours
-(1,270,000 core-hours) available. Since the intent is to use
-an entire node (including the GPUs) only full nodes will be
-available for allocation (although the bookkeeping will be
-done in core-hours).
+Note that there are approximately 64,000 node-hours (1,270,000
+core-hours) available. Since the intent is to use an entire node
+(including the GPUs) only full nodes will be available for allocation
+(although the bookkeeping will be done in core-hours).
 
 Using FGA resources without an allocation
 -----------------------------------------
 
-Users that do not have allocations on the FGA system will
-get access to the FGA system at windfall priority.  Which
-means users will be able to submit jobs to the system, but
-they will only run when the resources are not being used by
-projects that do have an FGA allocation. This is helpful for
-users who are in interested in exploring the GPU resources
-for their applications. To use the system in this mode
-please submit the jobs to the fgewf partition and windfall
-QoS by including the following:
+Users that do not have allocations on the FGA system will get access
+to the FGA system at windfall priority.  Which means users will be
+able to submit jobs to the system, but they will only run when the
+resources are not being used by projects that do have an FGA
+allocation. This is helpful for users who are in interested in
+exploring the GPU resources for their applications. To use the system
+in this mode please submit the jobs to the fgewf partition and
+windfall QoS by including the following:
 
 .. code-block:: shell
 
@@ -1220,41 +1279,39 @@ QoS by including the following:
 User Environment
 ----------------
 
-Since the FGA is part of Hera, there are no separate login
-nodes for using the FGA. When you log in to Hera you will be
-connected to one of the front end nodes on Hera.
+Since the FGA is part of Hera, there are no separate login nodes for
+using the FGA. When you log in to Hera you will be connected to one of
+the front end nodes on Hera.
 
-There are however some additional software packages and
-their associated modules that are useful only on the FGA. A
-couple of examples of this are cuda and mvapich2-gdr
-libraries.
+There are however some additional software packages and their
+associated modules that are useful only on the FGA. A couple of
+examples of this are cuda and mvapich2-gdr libraries.
 
 Compiling and Running Codes on the FGA
 --------------------------------------
 
-Please keep in mind that the software stacks on the FGA
-machines are slightly different from regular Hera TCA nodes
-(including the FE nodes) as mentioned above. This is because
-the TCA and FGA nodes have different network cards, which
-necessitates that we have different images for these two
-systems.
+Please keep in mind that the software stacks on the FGA machines are
+slightly different from regular Hera TCA nodes (including the FE
+nodes) as mentioned above. This is because the TCA and FGA nodes have
+different network cards, which necessitates that we have different
+images for these two systems.
 
 .. note::
 
-   We recommend that compilation be done for FGA applications
-   only on a compute node after obtaining a shell on one of the
-   FGA compute nodes by submitting an interactive batch job to
-   the *fge* or the *fgews* QoS.
+   We recommend that compilation be done for FGA applications only on
+   a compute node after obtaining a shell on one of the FGA compute
+   nodes by submitting an interactive batch job to the *fge* or the
+   *fgews* QoS.
 
 Compiling and Running Codes Using CUDA
 --------------------------------------
 
-Compilation for non-MPI applications may be done either on
-the front-ends or on compute nodes. But generally we
-recommend compiling on an FGA compute node.
+Compilation for non-MPI applications may be done either on the
+front-ends or on compute nodes. But generally we recommend compiling
+on an FGA compute node.
 
-The following module will have to be loaded before compiling
-and executing cuda programs:
+The following module will have to be loaded before compiling and
+executing cuda programs:
 
 .. code-block:: shell
 
@@ -1266,8 +1323,8 @@ Generally you should use the latest cuda available
 
    We have limited experience with cuda.
 
-The following flags were seen in sample codes
-for compiling codes for the Pascal GPUs
+The following flags were seen in sample codes for compiling codes for
+the Pascal GPUs
 
 .. code-block:: shell
 
@@ -1276,15 +1333,14 @@ for compiling codes for the Pascal GPUs
 Compiling and Running Codes Using Intel MPI
 -------------------------------------------
 
-If you're using Intel MPI (with or without cuda; see the
-note above if you're using cuda), compilation may be done on
-the front-ends or on the compute nodes in an
-interactive-batch job. We would still recommend
-compiling on an FGA compute node by submitting an
+If you're using Intel MPI (with or without cuda; see the note above if
+you're using cuda), compilation may be done on the front-ends or on
+the compute nodes in an interactive-batch job. We would still
+recommend compiling on an FGA compute node by submitting an
 interactive batch job to the "fge" queue.
 
-Please load the following modules before compilation and
-also load these modules in the batch job before execution:
+Please load the following modules before compilation and also load
+these modules in the batch job before execution:
 
 .. code-block:: shell
 
@@ -1294,12 +1350,12 @@ also load these modules in the batch job before execution:
 
 .. note::
 
-   Specific versions are listed only as examples; you
-   can load any of the available versions
+   Specific versions are listed only as examples; you can load any of
+   the available versions
 
-In addition, the following environment variables will have
-to be set in the job file before execution (using the syntax
-appropriate for the shell you are using):
+In addition, the following environment variables will have to be set
+in the job file before execution (using the syntax appropriate for the
+shell you are using):
 
 .. tab-set::
 
@@ -1321,30 +1377,29 @@ appropriate for the shell you are using):
          $ setenv I_MPI_FABRICS shm:ofa
          $ srun ./myexe
 
-This is necessary because the FGA nodes have Mellanox IB
-cards as opposed to the Intel IB cards as in the regular
-Hera nodes. Because of this difference in hardware, the
-software is also different on the FGA nodes. The FGA nodes
-do not support the TMI fabric setting which is the default
-on the regular Hera nodes.
+This is necessary because the FGA nodes have Mellanox IB cards as
+opposed to the Intel IB cards as in the regular Hera nodes. Because of
+this difference in hardware, the software is also different on the FGA
+nodes. The FGA nodes do not support the TMI fabric setting which is
+the default on the regular Hera nodes.
 
 Compiling and Building Codes Using mvapich2-gdr Library
 -------------------------------------------------------
 
-The MVAPICH2-GDR (GDR stands for GPU Direct RDMA) from Ohio
-State University is available for experimentation and
-testing on the FGA nodes.
+The MVAPICH2-GDR (GDR stands for GPU Direct RDMA) from Ohio State
+University is available for experimentation and testing on the FGA
+nodes.
 
 .. note::
 
-   We recommend that compilation be done for FGA applications
-   only on a compute node after obtaining a shell on one of the
-   FGA compute nodes by submitting an interactive batch job to
-   the *fge* or the *fgedebug* queue.
+   We recommend that compilation be done for FGA applications only on
+   a compute node after obtaining a shell on one of the FGA compute
+   nodes by submitting an interactive batch job to the *fge* or the
+   *fgedebug* queue.
 
-Since the wait times for the fge queue are fairly short it
-should be fine to use just the regular "fge" queue.
-You need to load the following modules:
+Since the wait times for the fge queue are fairly short it should be
+fine to use just the regular "fge" queue. You need to load the
+following modules:
 
 .. code-block:: shell
 
@@ -1352,9 +1407,8 @@ You need to load the following modules:
    $ mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
    $ mpicc -o myc.exe    myccode.c
 
-In addition to loading these modules, at
-execution time you need to set the following environment
-variables in your job file:
+In addition to loading these modules, at execution time you need to
+set the following environment variables in your job file:
 
 .. code-block:: shell
 
@@ -1371,10 +1425,9 @@ variables in your job file:
 Compiling and Building Codes Using OpenMPI
 ------------------------------------------
 
-The OpenMPI implimentation of MPI is available for
-experimentation and testing on the FGA nodes. The current
-installed version is the one that came with the PGI
-compiler, so PGI examples are shown below.
+The OpenMPI implimentation of MPI is available for experimentation and
+testing on the FGA nodes. The current installed version is the one
+that came with the PGI compiler, so PGI examples are shown below.
 
 Load the following modules:
 
@@ -1384,9 +1437,8 @@ Load the following modules:
    $ mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
    $ mpicc  -o myc.exe myccode.c
 
-In addition to loading these modules, at
-execution time you need to set the following environment
-variables in your job file:
+In addition to loading these modules, at execution time you need to
+set the following environment variables in your job file:
 
 .. code-block:: shell
 
@@ -1400,10 +1452,10 @@ particularly for `CUDA enabled applications
 Compiling codes with OpenACC directives on Hera
 -----------------------------------------------
 
-OpenACC directive based programming is available with the
-PGI compilers. It is best to load the most recent PGI
-compiler available for this. The example below shows how to
-compile a serial program that has OpenACC directives:
+OpenACC directive based programming is available with the PGI
+compilers. It is best to load the most recent PGI compiler available
+for this. The example below shows how to compile a serial program that
+has OpenACC directives:
 
 .. code:: shell
 
@@ -1415,39 +1467,38 @@ Compiling MPI codes with OpenACC directives on Hera
 
 We have limited experience of using these new technologies, so the
 best we can do with this point is point you to the `web resources
-<https://developer.nvidia.com/legacy-pgi-support>`__ The following link
-has a presentation on some advanced topics on using `multiple GPUs
+<https://developer.nvidia.com/legacy-pgi-support>`__ The following
+link has a presentation on some advanced topics on using `multiple
+GPUs
 <https://on-demand.gputechconf.com/gtc/2016/webinar/openacc-course/Advanced-OpenACC-Course-Lecture2--Multi-GPU-20160602.pdf>`__
 
 Submitting Batch Jobs to the FGA System
 ---------------------------------------
 
-Users who have FGE specific allocation can submit jobs
-to the *fge* partition. Other users can submit jobs to the *fgewf* partition and will run with
-windfall priority.
+Users who have FGE specific allocation can submit jobs to the *fge*
+partition. Other users can submit jobs to the *fgewf* partition and
+will run with windfall priority.
 
-One thing to keep in mind is that unlike the TCA, the
-FGA nodes have a maximum of 20 cores per node (Hera TCA has
-24 cores per node).
+One thing to keep in mind is that unlike the TCA, the FGA nodes have a
+maximum of 20 cores per node (Hera TCA has 24 cores per node).
 
 Hints on Rank Placement/Performance Tuning
 ------------------------------------------
 
 .. NOTE::
 
-   This section is included below just as a
-   suggestion and is being updated as we learn more. The following information seems to be applicable only
-   to Intel MPI.
+   This section is included below just as a suggestion and is being
+   updated as we learn more. The following information seems to be
+   applicable only to Intel MPI.
 
-Please keep in mind that there are
-4 GPUs connected to the first socket and 4 GPUs connected to
-the second socket.
-For best performance it will be necessary to pin the MPI
-processes such that they're not moving from core to core on
-the node during the run.
+Please keep in mind that there are 4 GPUs connected to the first
+socket and 4 GPUs connected to the second socket. For best performance
+it will be necessary to pin the MPI processes such that they're not
+moving from core to core on the node during the run.
 
-First a simple script for pinning in a straightforward way
-is shown below, followed by modified examples that were used in the benchmarking run:
+First a simple script for pinning in a straightforward way is shown
+below, followed by modified examples that were used in the
+benchmarking run:
 
 .. code-block:: shell
 
@@ -1478,12 +1529,12 @@ The job can be launched by using:
 
    mpirun -np ${nranks} ./place.sh $exe
 
-From the experience from the Cray benchmarking team, a
-couple of examples that achieve the desired pinning are
-shown below. In the first example, there are 4 MPI ranks on each
-node, the goal is to pin the 4 ranks to the first socket and
-specific cores; Also in this example each rank used 2
-threads, and hence 2 cores are specified for each rank:
+From the experience from the Cray benchmarking team, a couple of
+examples that achieve the desired pinning are shown below. In the
+first example, there are 4 MPI ranks on each node, the goal is to pin
+the 4 ranks to the first socket and specific cores; Also in this
+example each rank used 2 threads, and hence 2 cores are specified for
+each rank:
 
 .. code-block:: shell
 
@@ -1528,12 +1579,11 @@ threads, and hence 2 cores are specified for each rank:
      ;;
    esac
 
-This script is used in the mpirun command.
-In the example above, the name of the executable is
-passed in the environment variable "exe".
+This script is used in the mpirun command. In the example above, the
+name of the executable is passed in the environment variable "exe".
 
-As a second example a similar script for pinning to the
-specific cores on the second socket is shown below:
+As a second example a similar script for pinning to the specific cores
+on the second socket is shown below:
 
 .. code-block:: shell
 
@@ -1563,19 +1613,19 @@ specific cores on the second socket is shown below:
    [0])
      export DEV_ID=4
      numactl*a*l*-physcpubind=12,16 $APP $*
-     ;;
+     ;;
    [1])
      export DEV_ID=5
      numactl*a*l*-physcpubind=13,17 $APP $*
-     ;;
+     ;;
    [2])
      export DEV_ID=6
      numactl*a*l*-physcpubind=14,18 $APP $*
-     ;;
+     ;;
    [3])
      export DEV_ID=7
      numactl*a*l*-physcpubind=15,19 $APP $*
-     ;;
+     ;;
    esac
 
 Rank placement when using mvapich2
@@ -1599,10 +1649,9 @@ eight tasks, and place them only| on the second socket on each node:
    Hello from rank 06 out of 8; procname = tg002, cpuid = 18
    Hello from rank 07 out of 8; procname = tg002, cpuid = 19
 
-Note that the two environment variables shown above
-are currently not set by default. But
-this is subject to change and the module may be modified
-in the future to set it by default.
+Note that the two environment variables shown above are currently not
+set by default. But this is subject to change and the module may be
+modified in the future to set it by default.
 
 For more details, see the `MVAPICH2 user guide
 <https://mvapich.cse.ohio-state.edu/userguide/>`__.
@@ -1613,36 +1662,34 @@ Using Nvidia Multi-Process Service
 What is MPS
 ^^^^^^^^^^^
 
-Multi-Process Service (MPS) allows
-multiple tasks on a node to share a GPU.
+Multi-Process Service (MPS) allows multiple tasks on a node to share a
+GPU.
 
-On Hera for example, we have 20 cores on a node and only 8
-GPU. Under normal circumstances, one could use just 8 MPI
-tasks on each node, and have each of those tasks to
-exclusively use 1 GPU.
+On Hera for example, we have 20 cores on a node and only 8 GPU. Under
+normal circumstances, one could use just 8 MPI tasks on each node, and
+have each of those tasks to exclusively use 1 GPU.
 
-Sometimes there may not be enough work from one task to keep
-the GPU busy, in which case it may be beneficial to share
-the GPU and have more MPI tasks on each node.
+Sometimes there may not be enough work from one task to keep the GPU
+busy, in which case it may be beneficial to share the GPU and have
+more MPI tasks on each node.
 
-The performance benefits of taking this approach are very
-much application dependent.
+The performance benefits of taking this approach are very much
+application dependent.
 
 How do I use MPS?
 ^^^^^^^^^^^^^^^^^
 
-In the example below, we describe the simplest use case.
-(We will update the documentation as we gather more
-experience.) For the simplest case, we will consider running an MPI
-application on just one node after getting access to a FGA
-compute node by submitting an interactive batch job to the
-fge queue.
+In the example below, we describe the simplest use case. (We will
+update the documentation as we gather more experience.) For the
+simplest case, we will consider running an MPI application on just one
+node after getting access to a FGA compute node by submitting an
+interactive batch job to the fge queue.
 
-Assuming you have obtained an interactive compute node as
-mentioned above:
+Assuming you have obtained an interactive compute node as mentioned
+above:
 
-- Load the necessary modules. The MPS services available
-  after the cuda module is loaded:
+- Load the necessary modules. The MPS services available after the
+  cuda module is loaded:
 
    .. code-block:: shell
 
@@ -1665,16 +1712,16 @@ mentioned above:
 
 - Run some of the MPS commands.
 
-  Please keep in mind that MPS does not have a command prompt,
-  so typically you run the MPS commands as shown below:
+  Please keep in mind that MPS does not have a command prompt, so
+  typically you run the MPS commands as shown below:
 
   .. code-block:: shell
 
    $ echo get_server_list | nvidia-cuda-mps-control
    Server 0 not found
 
-  Then, run your application as you normally would.
-  At the end of your session, terminate the deamon by running the command:
+  Then, run your application as you normally would. At the end of your
+  session, terminate the deamon by running the command:
 
   .. code-block:: shell
 
@@ -1689,19 +1736,17 @@ For additional details see the `Overview
 Compiling and Building Codes With The Cray Programming Environment
 ------------------------------------------------------------------
 
-A custom built version of mvapich2 must be used when compiling and running with
-the Cray Programming Environment (CrayPE). To run an MPI
-program using the CrayPE, you must first set up the proper environment.
-This has been rolled into a single ``module load`` command
-that brings in all required
-modules:
+A custom built version of mvapich2 must be used when compiling and
+running with the Cray Programming Environment (CrayPE). To run an MPI
+program using the CrayPE, you must first set up the proper
+environment. This has been rolled into a single ``module load``
+command that brings in all required modules:
 
 .. note::
 
-   Because of a compatibility issue between
-   regular Modules and Lmod (which Hera uses), the CrayPE
-   modules don't work with tcsh. Hence all of these examples
-   are shown with bash.
+   Because of a compatibility issue between regular Modules and Lmod
+   (which Hera uses), the CrayPE modules don't work with tcsh. Hence
+   all of these examples are shown with bash.
 
 .. code-block:: shell
 
@@ -1726,8 +1771,7 @@ Then compile the program. The compiler drivers are
 
 .. note::
 
-   Do not use the "mpi" drivers associated
-   with the mvapich2 library.
+   Do not use the "mpi" drivers associated with the mvapich2 library.
 
 .. note::
 
@@ -1739,7 +1783,8 @@ Then compile the program. The compiler drivers are
 
    $ cc -homp -o xthi xthi.c  # (-homp is default, so not explicitly needed)
 
-To run the executable, secure the appropriate compute node(s) and set the environment:
+To run the executable, secure the appropriate compute node(s) and set
+the environment:
 
 .. code-block:: shell
 
@@ -1756,10 +1801,9 @@ To run the executable, secure the appropriate compute node(s) and set the enviro
    Hello from rank 2, thread 0, on sg002. (core affinity = 20)
    Hello from rank 3, thread 0, on sg002. (core affinity = 21)
 
-All MPI ranks are running on unique cores in the fge
-queue. Alternatively, if you want
-to place ranks on specific cores, you can use the
-``MV2_CPU_MAPPING`` environment variable:
+All MPI ranks are running on unique cores in the fge queue.
+Alternatively, if you want to place ranks on specific cores, you can
+use the ``MV2_CPU_MAPPING`` environment variable:
 
 .. code-block:: shell
 
@@ -1822,42 +1866,42 @@ script (r4.sh in the example below):
    #  export CUDA_VISIBLE_DEVICES=0
    #  numactl*a*l*-physcpubind=2,6 $APP
      numactl*a*l*-physcpubind=0,1,2,3 $APP
-     ;;
+     ;;
    [1])
    #  export CUDA_VISIBLE_DEVICES=1
    #  numactl*a*l*-physcpubind=3,7 $APP
      numactl*a*l*-physcpubind=10,11,12,13 $APP
-     ;;
+     ;;
    [2])
    #  export CUDA_VISIBLE_DEVICES=2
    #  numactl*a*l*-physcpubind=4,8 $APP
      numactl*a*l*-physcpubind=2 $APP
-     ;;
+     ;;
    [3])
    #  export CUDA_VISIBLE_DEVICES=3
    #  numactl*a*l*-physcpubind=5,9 $APP
      numactl*a*l*-physcpubind=3 $APP
-     ;;
+     ;;
    [4])
    #  export CUDA_VISIBLE_DEVICES=4
    #  numactl*a*l*-physcpubind=12,16 $APP
      numactl*a*l*-physcpubind=4 $APP
-     ;;
+     ;;
    [5])
    #  export CUDA_VISIBLE_DEVICES=5
    #  numactl*a*l*-physcpubind=13,17 $APP
      numactl*a*l*-physcpubind=5 $APP
-     ;;
+     ;;
    [6])
    #  export CUDA_VISIBLE_DEVICES=6
    #  numactl*a*l*-physcpubind=14,18 $APP
      numactl*a*l*-physcpubind=6 $APP
-     ;;
+     ;;
    [7])
    #  export CUDA_VISIBLE_DEVICES=7
    #  numactl*a*l*-physcpubind=15,19 $APP
      numactl*a*l*-physcpubind=7 $APP
-     ;;
+     ;;
    esac
 
 In this case, we have a single node with two MPI ranks running, each
@@ -1880,11 +1924,10 @@ is running on its own socket.
    Hello from rank 1, thread 2, on sg001. (core affinity = 10-13)
    Hello from rank 1, thread 3, on sg001. (core affinity = 10-13)
 
-Using this as a template, it is easy to place ranks and
-threads in many different ways. This
-example only uses the lrank=0,1 case branches but the user
-is encouraged to exeriment with
-other placement strategies.
+Using this as a template, it is easy to place ranks and threads in
+many different ways. This example only uses the lrank=0,1 case
+branches but the user is encouraged to exeriment with other placement
+strategies.
 
 Some helpful web resources
 --------------------------
@@ -1898,4 +1941,3 @@ Getting Help
 ------------
 
 As with any Hera issue, open a :ref:`help request <getting_help>`.
-
