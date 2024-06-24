@@ -2,9 +2,20 @@
 PPAN User Guide
 ###############
 
-Post Processing and Analysis (PPAN) is a small cluster comprised of over 130 Dell servers located in GFDL in Princeton, NJ. These systems have over one petabyte of disk storage and access to nearly 200 petabytes of archive storage. Combined with various generations of Intel processors, from Sandy Bridge to Coffee Lake, each has specifications that range from 48-512GB of memory and is designed to provide a system that can meet any user's demand.
+Post Processing and Analysis (PPAN) is a small cluster comprised of
+over 130 Dell servers located in GFDL in Princeton, NJ. These systems
+have over one petabyte of disk storage and access to nearly 200
+petabytes of archive storage. Combined with various generations of
+Intel processors, from Sandy Bridge to Coffee Lake, each has
+specifications that range from 48-512GB of memory and is designed to
+provide a system that can meet any user's demand.
 
-PPAN supports GFDL’s science community by providing a place to further analyze and interpret models generated on other HPC systems. This gives users a local system to experiment and evaluate with various degrees of control and validation of complex processes and tasks. PPAN is also a host to various software packages including MATLAB and other complex combinations of Python & R libraries.
+PPAN supports GFDL’s science community by providing a place to further
+analyze and interpret models generated on other HPC systems. This
+gives users a local system to experiment and evaluate with various
+degrees of control and validation of complex processes and tasks. PPAN
+is also a host to various software packages including MATLAB and other
+complex combinations of Python & R libraries.
 
 *************
 About Archrpt
@@ -496,9 +507,9 @@ User Quotas
 Info
 ----
 
-User quotas have been added to archrpt. These quotas are defined by the
-group head and are either a percentage of the group quota or an absolute
-size.
+User quotas have been added to archrpt. These quotas are defined by
+the group head and are either a percentage of the group quota or an
+absolute size.
 
 Example:
 
@@ -527,14 +538,14 @@ Example:
 Configuration
 -------------
 
-User quotas are authorized by the group head and defined in a text file.
-Group heads may choose any path name for the file, but once selected
-please inform Garrett Power and/or Ed Weiss so that it can be linked
-into archrpt. This file is owned by the group head or his designee, and
-only the owner should have write access to the file. Once linked to the
-archrpt configuration directory, the quota file owner can adjust users'
-quotas by editing this file. The format of the user quota file is as
-follows:
+User quotas are authorized by the group head and defined in a text
+file. Group heads may choose any path name for the file, but once
+selected please inform Garrett Power and/or Ed Weiss so that it can be
+linked into archrpt. This file is owned by the group head or his
+designee, and only the owner should have write access to the file.
+Once linked to the archrpt configuration directory, the quota file
+owner can adjust users' quotas by editing this file. The format of the
+user quota file is as follows:
 
 filename: **x.quota**
 
@@ -547,9 +558,10 @@ filename: **x.quota**
 
 In the file, each line is a defined user with the **first column being
 the user's initials**, **second column user's First.Last name**, and
-**third column the user's quota size**. Each column should be separated
-with **tab spacing**. If a user in the group is omitted, that user has
-no individual quota limit, but is still restricted by the group quota.
+**third column the user's quota size**. Each column should be
+separated with **tab spacing**. If a user in the group is omitted,
+that user has no individual quota limit, but is still restricted by
+the group quota.
 
 ::
 
@@ -575,10 +587,10 @@ directory.
 Enforcing Quotas
 ================
 
-Group and User quotas are enforced by another script that will check to
-see if users are over their quotas. If a group is over its quota, each
-user in that group will receive an email stating the group is over its
-quota limit. If an individual user is over quota, a warning email is
-sent to just that user.
+Group and User quotas are enforced by another script that will check
+to see if users are over their quotas. If a group is over its quota,
+each user in that group will receive an email stating the group is
+over its quota limit. If an individual user is over quota, a warning
+email is sent to just that user.
 
 
