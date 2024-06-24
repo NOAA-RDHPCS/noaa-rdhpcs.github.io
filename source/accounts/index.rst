@@ -17,7 +17,11 @@ to the user community:
 - Orion/Hercules (MSU - external)
 
 The RDHPCS account gives the user access to the Gaea, Hera, Niagara
+<<<<<<< Updated upstream
 and Jet, depending on their assigned project.
+=======
+and Jet, depending on git their assigned project.
+>>>>>>> Stashed changes
 
 What NOAA Does
 ---------------
@@ -202,8 +206,14 @@ Your current RSA token will be used for all other RDHPCS authentications
 
 .. _account_suspension_deactivation_reactivation:
 
+<<<<<<< Updated upstream
 Account Suspension, Deactivation, Reactivation
 ==============================================
+=======
+
+Account Suspension, Deactivation, Reactivation
+----------------------------------------------
+>>>>>>> Stashed changes
 
 A user's account is suspended when it has been inactive for over 90
 days. The user will be notified when their account has been suspended.
@@ -260,8 +270,14 @@ project, you will be emailed further instructions.
 
 .. _role_accounts:
 
+<<<<<<< Updated upstream
 Role Accounts
 =============
+=======
+
+Role Accounts
+-------------
+>>>>>>> Stashed changes
 
 A role account is a user account shared with one or more users as
 members, such that all group members share the account equally via the

@@ -2,6 +2,8 @@
 PPAN User Guide
 ###############
 
+.. image:: /images/PPAN.png
+
 Post Processing and Analysis (PPAN) is a small cluster comprised of
 over 130 Dell servers located in GFDL in Princeton, NJ. These systems
 have over one petabyte of disk storage and access to nearly 200

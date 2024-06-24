@@ -4,6 +4,10 @@
 Niagara User Guide
 ******************
 
+.. image:: /images/Niagara.jpg
+   :scale: 25%
+
+
 .. _niagara-system-overview:
 
 System Overview

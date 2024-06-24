@@ -4,6 +4,9 @@
 HSMS HPSS User Guide
 ********************
 
+.. image:: /images/Niagara.jpg
+   :scale: 25%
+
 NESCC HPSS
 ==========
 The centralized, long-term data archive system at National

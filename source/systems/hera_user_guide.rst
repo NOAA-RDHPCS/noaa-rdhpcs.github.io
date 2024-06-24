@@ -4,6 +4,8 @@
 Hera User Guide
 ***************
 
+.. image:: /images/Hera.jpg
+
 About NESCC
 ===========
 
@@ -1190,7 +1192,7 @@ MPI or OpenMP or both.
 Managing Contrib Projects
 =========================
 
-A /contrib package is one that is maintained by a user on the system.
+Contrib packages are maintained by a user on the system.
 The system staff are not responsible for the use or maintenance of
 these packages. See :ref:`Contrib <contrib>` for details.
 

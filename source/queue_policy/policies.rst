@@ -9,9 +9,15 @@ System Usage
 Login Node Usage
 ----------------
 
+<<<<<<< Updated upstream
 The login (front end) nodes are a part of the service nodes–providing
 access to the rest of the cluster. Login nodes are not intended for
 computation, instead they should be used for code and batch job
+=======
+The login (front end) nodes are a part of the service nodes, providing
+access to the rest of the cluster. Login nodes are not intended for
+computation. Instead, they should be used for code and batch job
+>>>>>>> Stashed changes
 management tasks. Running heavy processes directly on the login nodes
 may negatively impact other users who interact with the cluster.
 
@@ -19,8 +25,13 @@ Login nodes should be used for tasks similar to the following:
 
 - Editing and compiling code
 - Organizing data on project and home directories
+<<<<<<< Updated upstream
 - Submit jobs (batch, dtn, etc, ...)
 - Monitor jobs
+=======
+- Submit jobs (batch, dtn, etc, …)
+- Monitor jobs.
+>>>>>>> Stashed changes
 
 Use compute nodes for processes that require more cores, longer run
 times, or more memory.
@@ -63,9 +74,14 @@ Best Practices:
 For Rocoto, it is always advisable to use the "default" version rather
 than a specific version as shown below:
 
+<<<<<<< Updated upstream
 .. code-block:: shell
 
    $ /apps/rocoto/default/bin/rocotorun -w /path/to/myxml/wrf.xml -d /path/to/mydb/wrf.db
+=======
+  ``/apps/rocoto/default/bin/rocotorun -w /path/to/myxml/wrf.xml -d
+  /path/to/mydb/wrf.db``
+>>>>>>> Stashed changes
 
 Any process launched from cron **MUST** be one of the following:
 
@@ -88,11 +104,16 @@ Please use the following rules as to how often (at most) to call a
 repeating processes:
 
 - Does not run in an approved real-time reservation:
+<<<<<<< Updated upstream
 
   - No more than every 10 minutes.
 
 - Runs in an approved real-time reservation:
+=======
+>>>>>>> Stashed changes
 
+  - No more than every 10 minutes.
+  - Runs in an approved real-time reservation:
   - No more than every 3 minutes.
 
 File System Usage Practices and Policies
@@ -106,7 +127,11 @@ The High Performance File Systems (HPFS): Hera's /scratch(1,2), Jet's
 input and output project data for running current jobs, **NOT** for
 long term data storage.
 
+<<<<<<< Updated upstream
 Data on scratch is **NOT** backed up
+=======
+Data on scratch is **NOT** backed up.
+>>>>>>> Stashed changes
 
 1. Keep source code and critical configuration files on /home, and
    back up critical data to HPSS.
@@ -132,7 +157,11 @@ GPFS
 General Parallel File Systems: Gaea’s /gpfs/f5 is a general parallel
 file system which provides project directories for short term project
 data. F5 is not backed up. Users must ensure important files are
+<<<<<<< Updated upstream
 replicated to another off-site location
+=======
+replicated to another off-site location.
+>>>>>>> Stashed changes
 
 /data_untrusted
 ---------------
@@ -159,6 +188,7 @@ labor-intensive data, like source code, that needs timely access. The
 HFS is backed up nightly and weekly. Nightly backups are kept for a
 week, and weekly backups are kept for at least 6 months.
 
+<<<<<<< Updated upstream
 HFS data can be retrieved from our snapshots - please see
 :ref:`home_snapshot` for more information.
 
@@ -183,14 +213,49 @@ and justification.
    the HFS and has an adverse impact on all the users on the system.
 
 
+=======
+HFS data can be retrieved from our snapshots - please see section:
+**Recover recently deleted files from /home**.
+
+
+Each RDHPCS user is given a home directory (/home/First.Last) and a
+**50GB** quota on each system (Hera, Jet, etc.) they have an account
+on. All files owned by you in /home are counted not just files in your
+/home/First.Last directory.
+
+Usage and quota can be checked using the "quota" command or the
+"sacccount_params" command (See `Slurm`_).
+
+If more quota is required,
+start a system help ticket with a request and justification.
+
+
+.. caution::
+
+  Please **DO NOT** run jobs against files in your Home File System
+  (HFS). This includes keeping input/output files or executable files
+  for a parallel run in your home directory or even using symlinks in
+  your home directories that point to your files in your project space
+  in the scratch filesystem. This puts a tremendous burden on the HFS
+  and has an adverse impact on all the users on the system.
+
+
+
+>>>>>>> Stashed changes
 Filesystem Backup and Data Retention
 ====================================
 
 * /home
 
   * For code and important source files
+<<<<<<< Updated upstream
   * Is backed up nightly.  Look at the snapshot directory
     (/home/.snapshot) to see what options are available
+=======
+  * Is backed up nightly
+  * Look at the snapshot directory (/home/.snapshot) to see what
+    options are available
+>>>>>>> Stashed changes
 
 * /scratch
 
@@ -220,6 +285,7 @@ also supports snapshots, which will allow you to retrieve your own
 files if they have been deleted over the last few days. The number of
 days is different for Hera and Jet clusters.
 
+<<<<<<< Updated upstream
 Look at the snapshot directory (/home/$USER/.snapshot) to see what options
 are available. Each directory listed there represent a day.
 
@@ -233,6 +299,28 @@ As an example:
     2021-09-11_0015-0600.daily  2021-09-16_0015-0600.daily  2021-09-21_0015-0600.daily
     2021-09-12_0015-0600.daily	2021-09-17_0015-0600.daily  2021-09-22_0015-0600.daily
     2021-09-13_0015-0600.daily	2021-09-18_0015-0600.daily  2021-09-23_0015-0600.daily
+=======
+The home filesystem is backed up regularly. However, the filesystem
+also supports snapshots, which will allow you to retrieve your own
+files if they have been deleted over the last few days. The number of
+days is different for Hera and Jet clusters.
+
+Look at the snapshot directory (/home/.snapshot) to see what options
+are available. Each directory listed there represent a day.
+
+As an example on Jet:
+
+.. code-block:: shell
+
+    $ 2021-09-09_0015-0600.daily  2021-09-12_0015-0600.daily
+    2021-09-15_0015-0600.daily  2021-09-18_0015-0600.daily
+    2021-09-21_0015-0600.daily 2021-09-10_0015-0600.daily
+    2021-09-13_0015-0600.daily	2021-09-16_0015-0600.daily
+    2021-09-19_0015-0600.daily	2021-09-22_0015-0600.daily
+    2021-09-11_0015-0600.daily  2021-09-14_0015-0600.daily
+    2021-09-17_0015-0600.daily  2021-09-20_0015-0600.daily
+    2021-09-23_0015-0600.daily
+>>>>>>> Stashed changes
 
 You can then access the old files in your copy of your home directory
 under the appropriate snapshot.
@@ -242,11 +330,34 @@ For example, if you want to recover files in your $HOME from Janurary,
 
 .. code-block:: shell
 
+<<<<<<< Updated upstream
     $ cd $HOME/.snapshot/2021-09-22_0015+0000.homeSnap
 
 Copy the files you want from the here, the snapshot,  to anywhere in
 your real home.
 
+=======
+    $ 2021-09-17_0015+0000.homeSnap  2021-09-20_0015+0000.homeSnap
+    2021-09-23_0015+0000.homeSna 2021-09-18_0015+0000.homeSnap
+    2021-09-21_0015+0000.homeSnap
+    AUTO_SNAPSHOT_8820a150-8f27-11d5-95ff-040403080604_694
+    2021-09-19_0015+0000.homeSnap
+    2021-09-22_0015+0000.homeSnap
+
+You can then access the old files in your copy of your home directory
+under the appropriate snapshot.
+
+For example, if you want to recover Hera files in your $HOME from
+Janurary, 22nd, 2024, and your user name is John.Smith:
+
+.. code-block:: shell
+
+    $ cd /home/.snapshot/2021-09-22_0015+0000.homeSnap/John.Smith
+
+# – Copy the files you want from the here, the snapshot,  to anywhere
+in your real home.
+
+>>>>>>> Stashed changes
 
 HPSS (Data Retention)
 ---------------------
@@ -261,6 +372,13 @@ data for a retention period is stored on the same tapes.
 All HPSS projects were then configured to write to one or more of
 these pools. Data in these pools expires based upon the retention pool
 it was written in and would be deleted upon expiration.
+<<<<<<< Updated upstream
+=======
+
+All files in the HPSS archive have been assigned an expiration date
+based on the file create time and the retention period it was written
+to. Upon expiration files will be deleted from the HPSS archive.
+>>>>>>> Stashed changes
 
 All files in the HPSS archive have been assigned an expiration date
 based on the file create time and the retention period it was written
@@ -281,6 +399,18 @@ November 1, 2016. The expired file list is located on HPSS in
 /Expired_Data_Lists/expired.YYYY-MM.txt. All HPSS users have read
 access to this file and can retrieve it for review. The file is easily
 searchable by HPSS username.
+<<<<<<< Updated upstream
+=======
+
+For each file included in the expired list the file owner, file group,
+filename/path, and expire date are shown. ex: ``root system
+/1year/SYSADMIN/nesccmgmt/test_file-1G-11 Jul-6-2016``.
+
+Email notification will also be sent to all users who have data listed
+in this file. It is the user’s responsibility to regularly check the
+posted list for expired files they own. Once deleted these files
+cannot be recovered.
+>>>>>>> Stashed changes
 
 For each file included in the expired list the file owner, file group,
 filename/path, and expire date are shown. ex: ``root system
@@ -339,6 +469,13 @@ In that case, the user has one further option. There are a number of
 outside recovery services which will make further attempts at recovery
 for a fee. Some charge a flat fee, some charge more if they are able
 to recover than if they are unable to recover.
+<<<<<<< Updated upstream
+=======
+
+If the user wishes to sign up for such a service and pay the fee,
+RDHPCS will handle the logistics of shipping and other coordination
+with the recovery service.
+>>>>>>> Stashed changes
 
 If the user wishes to sign up for such a service and pay the fee,
 RDHPCS will handle the logistics of shipping and other coordination
@@ -353,6 +490,10 @@ Portfolio Manager. The PI or Portfolio Manager, as appropriate, can
 initiate a help request to manage data. As a policy matter, RDHPCS
 System Management does not initiate the deletion of data belonging to
 active users or active projects, except as detailed below.
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 HPFS (Scratch) Data
 -------------------
@@ -363,6 +504,10 @@ resources. If the PI or Portfolio Manager cannot personally implement
 the disposition of the data, the PI or PM can issue a help ticket, and
 request that RDHPCS System Management do so.
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 The RDHPCS program policy is to NOT delete active project HPFS data.
 If the PI or Portfolio Manager so directs in a help request, we will
 change ownership of active HPFS project data to another project
@@ -390,7 +535,17 @@ Niagara starting Thursday, 6/18/20.
 The definition of access time is the last time the file was opened for
 reading or writing.
 
+<<<<<<< Updated upstream
 .. note::
+=======
+The definition of access time is the last time the file was opened for
+reading or writing.
+
+.. note::
+  If the file system's usage starts getting close tothe total capacity, we will be forced implement a more aggressive purge policy
+  (i.e. 30 day or 15 day purge). So please actively manage your data.
+
+>>>>>>> Stashed changes
 
    If the file system's usage starts getting close to the total
    capacity then we will be forced implement a more aggressive purge
@@ -423,7 +578,18 @@ we have developed a ``/contrib`` package process. A /contrib package
 is one that is maintained by a user on the system. The system staff
 are not responsible for the use or maintenance of these packages.
 
+<<<<<<< Updated upstream
 .. _contrib:
+=======
+The system staff do not have the resources to maintain every piece of
+software requested. There are also cases where developers of the
+software are the system users, and putting a layer in between them and
+the rest of the system users is inefficient. To support these needs,
+we have developed a ``/contrib`` package process. A /contrib package
+is one that is maintained by a user on the system. The system staff
+are not responsible for the use or maintenance of these packages.
+
+>>>>>>> Stashed changes
 
 Responsibilities of a Contrib Package Maintainer
 ------------------------------------------------
@@ -440,6 +606,7 @@ Maintainers are expected to:
 Contrib Packages Guidelines
 ---------------------------
 
+<<<<<<< Updated upstream
 * The package should be a single program or toolset.  We want to
   prevent having a single directory being a repository for many
   different packages.
@@ -448,6 +615,16 @@ Contrib Packages Guidelines
   must otherwise be self-contained.
 * The package may not contain links to files in user or project
   directories.
+=======
+
+* The package should be a single program or toolset.
+   * We want to prevent having a single directory being a repository
+     for many different packages.
+* If you support multiple functions, please request multiple packages.
+* The package may have build dependencies on other packages, but it
+  must otherwise be self-contained.
+* The package may not contain links to files in user or project directories.
+>>>>>>> Stashed changes
 * We expect each package to be less than 100MB.
 * If you need more, please tell us when you request your package.
 * We can support larger packages but we need to monitor the space
@@ -456,19 +633,29 @@ Contrib Packages Guidelines
 
 Contrib Package Maintainer Requests
 -----------------------------------
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 If you wish to maintain a package in contrib, please send a request to
 the Help System with:
 
 * List of the packages you wish to maintain.
 * Justification why each is needed.
 * The user who will be maintaining the package.
+<<<<<<< Updated upstream
 
 .. note::
 
    In certain cases, multiple users can manage a package, and unix
    group write permissions may be granted for the directory. In that
    case, specify the unix group that will be maintaining the package.
+=======
+   * In certain cases, multiple users can manage a package, and unix
+     group write permissions may be granted for the directory. In that
+     case, specify the unix group that will be maintaining the
+     package.
+>>>>>>> Stashed changes
 
 Managing a Contrib Package
 --------------------------
@@ -476,8 +663,24 @@ Managing a Contrib Package
 After your request has been approved to use space in the /contrib
 directory, two directories will be created for you:
 
+<<<<<<< Updated upstream
 * ``/contrib/<package>``, and
 * ``/contrib/<package>/modulefiles``
+=======
+``/contrib/<package>``
+
+``/contrib/<package>/modulefiles``
+
+This is where you will install your software for this package and
+optionally install a module to allow users to load the environmental
+settings necessary to use this package. The variable <package> is the
+name of the /contrib package you requested. The directory convention
+of /contrib is designed to match that of /apps. Thus, one piece of
+software goes into a subdirectory under the /contrib level. If you
+want to manage multiple packages, please request multiple /contrib
+package. You can do this all at one time when submitting your request
+to the Help System.
+>>>>>>> Stashed changes
 
 This is where you will install your software for this package and
 optionally install a module to allow users to load the environmental
@@ -505,7 +708,10 @@ that contains at least the following information:
 
 Contrib Package Directory Naming Conventions
 --------------------------------------------
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 When installing software into your /contrib directory, first determine
 if this is software that should be versioned (multiple versions may
 exist at one time) or unversioned (there will only ever be one version
@@ -536,6 +742,7 @@ Overview
 
 * The queuing system should allow groups/projects to spend their
   allocation each month.
+<<<<<<< Updated upstream
 * The tension between keeping persistent jobs in the system and
   running very large jobs suggests that there should be a limit on the
   number of cores a job may use, but with a capability to make
@@ -549,6 +756,24 @@ Overview
   scheduling algorithm. At the very least, run-time variability would
   need to be assessed before we could even think of implementing this.
 
+=======
+
+* The tension between keeping persistent jobs in the system and
+  running very large jobs suggests that there should be a limit on the
+  number of cores a job may use, but with a capability to make
+  exceptions for “novel” jobs that may require up to the entire
+  system.
+
+  * This will promote consideration of whether a job requires a large
+    number of cores due to, for example, memory or schedule
+    constraints, or whether it is simply desired.
+
+* There should be queues with different priority levels usable by the
+  scheduling algorithm. At the very least, run-time variability would
+  need to be assessed before we could even think of implementing this.
+
+
+>>>>>>> Stashed changes
 Specifying a Quality of Service (QOS)
 -------------------------------------
 
@@ -565,24 +790,48 @@ Several different QOS's are usually available.
 Changing QOS's
 --------------
 
+<<<<<<< Updated upstream
 You can change the QOS of jobs at submission and post submission.
+=======
+You can change the QOS of jobs, at submission and post submission.
+>>>>>>> Stashed changes
 While you can use this feature in many different ways, one practical
 situation where this may be useful is to maintain your fairshare
 priority by starting jobs in the “windfall” QOS, then changing to the
 “batch” QOS if it is still pending. See `Slurm_` for more information
+<<<<<<< Updated upstream
 on Fairshare
 
 .. note::
+=======
+on Fairshare.
+>>>>>>> Stashed changes
 
    If your job does not meet the criteria of the QOS that you change
    it to, it will remain pending indefinitely.
 
+<<<<<<< Updated upstream
 You can immediately change the QOS of your pending job(s).
 
 The following is an example of immediately changing 2 pending jobs
 (26866 and 26867) to the “batch” QOS:
 
 .. code-block:: shell
+=======
+
+.. note::
+  If your job does not meet the criteria of the QOS that you change it to, it will remain pending indefinitely.
+
+
+You can immediately change the QOS of your pending job(s).
+
+The following example immediately changes 2 pending jobs (26866 and
+26867) to the “batch” QOS:
+
+.. code-block:: shell
+
+    $ scontrol update job 26866,26867 qos=batch
+>>>>>>> Stashed changes
 
    $ scontrol update job 26866,26867 qos=batch
 
@@ -594,11 +843,16 @@ Slurm to change the job to the “batch” QOS if it’s still pending after
 
 .. note::
 
+<<<<<<< Updated upstream
    On Orion and Hercules the “at” functionality is only available on login1.
+=======
+  On Orion and Hercules the “at” functionality is only available on login1.
+>>>>>>> Stashed changes
 
 
 .. code-block:: shell
 
+<<<<<<< Updated upstream
    $ sbatch -q windfall jobfile
    Submitted batch job 26990
 
@@ -607,6 +861,31 @@ Slurm to change the job to the “batch” QOS if it’s still pending after
    $ echo scontrol update job 26990 qos=batch | at -M now +5min
    warning: commands will be executed using /bin/sh
    job 6 at Sun Dec 17 16:07:00 2023
+=======
+    jfe01.% sbatch -q windfall jobfile
+
+    Submitted batch job 26990
+    jfe01.%
+
+
+.. code-block:: shell
+
+    jfe01.% echo scontrol update job 26990 qos=batch | at -M now +5min
+    warning: commands will be executed using /bin/sh
+    job 6 at Sun Dec 17 16:07:00 2023
+    jfe01.%
+
+You can change the QOS of all your pending job(s) in a QOS to another
+QOS after it has been pending for a certain time. The following
+example script will change all your pending “windfall” jobs to “batch”
+if they have been pending for at least 600 seconds (10 min), whenever
+you run it.
+
+
+.. note::
+
+  Do not use a time less than 120 seconds (2 min).
+>>>>>>> Stashed changes
 
 You can change the QOS of all your pending job(s) in a QOS to another
 QOS after it has been pending for a certain time. The following
@@ -622,6 +901,12 @@ Jet and Hera
 ------------
 
 .. note::
+<<<<<<< Updated upstream
+=======
+  If you have an allocation of "windfall only" (Allocation = 1)
+  you can only submit to the windfall or gpuwf QOS.
+
+>>>>>>> Stashed changes
 
   If you have an allocation of "windfall only" (Allocation = 1) you
   can only submit to the windfall or gpuwf QOS.
@@ -630,6 +915,7 @@ Jet and Hera
    :header-rows: 1
    :align: left
 
+<<<<<<< Updated upstream
    * - QOS
      - Minimum Nodes
      - Maximum Nodes
@@ -745,6 +1031,11 @@ Jet and Hera
        tell us what you want to do.  We will normally have to arrange
        for some time for the job to go through, and we would like to
        plan the process with you.
+=======
+.. note::
+
+  Some partitions are smaller than the "Max Cores" QOS limit. Jobs submitted only to partitions with an insufficient number of cores will get stuck in pending, will not run, and will have to be manually deleted by the user. The max nodes allowed per partition is the min of the max cores allowed divided by the cores per node of the partition (Hera and kJet: 8400/40=210 nodes) or the max number of nodes in the partition (vJet: 288 nodes). Ref Partition sections above for details
+>>>>>>> Stashed changes
 
 .. [1] Some partitions are small than the **Max Cores** QOS limit.
    Jobs submitted only to partitions with an insufficient number of
@@ -777,6 +1068,7 @@ General Recommendations
 * Use two separate allocations, renewed monthly, with multiple queues
   drawing down each of them:
 
+<<<<<<< Updated upstream
   * 50% of the available time for high-priority and urgent work. That
     should minimize queue wait time. Queues are:
 
@@ -794,6 +1086,31 @@ General Recommendations
     * Windfall, a quality of service (QOS) tag, for work that will not
       be charged against an allocation. Windfall can be specified with
       '-l qos=' directive, as:
+=======
+* Use a fair-share algorithm that can throttle scheduling priority by
+  comparing how much of a particular allocation has been used at a
+  given time with how much should have been used, assuming constant
+  proportional usage. This will promote steady usage throughout the
+  month.
+* Use two separate allocations, renewed monthly, with multiple queues
+  drawing down each of them:
+
+  * 50% of the available time for high-priority and urgent work. That
+    should minimize queue wait time. Queues are:
+
+         * Urgent, for schedule-driven work that must be completed ASAP.
+         * Novel, for jobs that have unusual resource requirements,
+           typically needing more than 25% of the system’s cores.
+           These can be run during an 8-hour period immediately after
+           Preventative Maintenance is complete, since no other jobs
+           will be running at that time.
+  * 50% for all other **normal-priority** allocated work. Queues would be:
+         * Batch, for regular allocated jobs
+         * Debugging/Interactive work
+         * Windfall, a quality of service (QOS) tag, for work that
+           will not be charged against an allocation. Windfall can be
+           specified with '-l qos=' directive, as:
+>>>>>>> Stashed changes
 
 .. code-block:: shell
 
@@ -805,8 +1122,29 @@ or in your job script:
 
     #SBATCH -–qos=windfall
 
+<<<<<<< Updated upstream
 Priorities Between QOS
 -------------------------
+=======
+**Priorities between queues**
+
+* Normally, the Urgent queue will have the highest priority but remain
+  subject to the fair-share algorithm. This will discourage groups
+  from hoarding high-priority time for the end of the month.
+
+* Within a group/project, jobs in the Urgent queue are higher priority
+  than jobs in the Normal queue, with each group expected to manage
+  the intra-group mix per their allocation.
+
+* At any given time, the suite of jobs drawn from the Urgent queue and
+  running on the system should use about 50% of the available cores
+  (per the fair-share algorithm), but that suite is permitted to use
+  more than 50% as needed (with the implication that less than 50%
+  will be used at other times of the month).
+
+* Limit the largest job to 25% of the available cores except in the
+  Novel queue.
+>>>>>>> Stashed changes
 
 * Normally, the Urgent QOS will have the highest priority but remain
   subject to the fair-share algorithm. This will discourage groups

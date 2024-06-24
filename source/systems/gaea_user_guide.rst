@@ -1,4 +1,5 @@
-.. _gaea-user-guide:
+.. _
+:
 
 ***************
 Gaea User Guide
