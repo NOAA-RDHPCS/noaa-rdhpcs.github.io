@@ -4,6 +4,7 @@ This document focuses on expected styles used in the RDHPCS documentation. This
 coding standards applies to documentation files. It is not about documentation
 content.
 
+
 ## Markup Language
 
 The documentation in this repository uses [Python
@@ -16,7 +17,8 @@ markup.
 
 ## Filenames
 
-Filenames should use only lowercase alphanumeric characters and `-` (minus) symbol.
+Filenames used in the source should use only lowercase alphanumeric
+characters and `-` (minus) symbol.
 
 Suffix filenames with the `.rst` extension.
 
@@ -31,15 +33,12 @@ and serve these builds as static files. Refer to the [Contributing to these
 docs](source/contributing/index.rst) for information on how to build and host
 these pages.
 
+
 ## Whitespaces
 
 ### Indentation
 
-Indent with 2 spaces.
-
-Except:
-
-* `toctree` directive requires a 3 spaces indentation.
+Indent with 2-4 spaces.  Follow the indentation already established in the file.
 
 ### Blank lines
 
@@ -71,6 +70,7 @@ line long.
 Limit all lines to a maximum of 79 characters.
 
 Exception: tables and long URLs.
+
 
 ## Headings
 
@@ -134,6 +134,7 @@ The H1 headings should only be used in the `index.rst` file, and must be the
 first heading of the document.  Other files in a given directory will use the H2
 heading as the first heading of the document.
 
+
 ## Code blocks
 
 Use the `.. code-block::` directive **and** specify the programming language. As
@@ -148,6 +149,10 @@ an example:
 
 :information_source: Use of the `.. code::` directive may also be used.
 However, it does not have as many options as the `.. code-block::` directive.
+
+The code block directive uses [Pygments](https://pygments.org).
+Please refer to the [list of supported
+languages](https://pygments.org/languages/).
 
 ### Shell Code Blocks
 
@@ -181,3 +186,14 @@ As an example:
 
   .. _`Example website`: http://www.example.com/
 ```
+
+## Tables
+
+As much as possible, use simple tables or grid tables.  If keeping the
+lines of the tables under the 79 characters is too difficult with one
+of those tables, use the list table directive (`.. list-table`).
+
+## Page meta information
+
+Use the meta (`.. meta`) directive to add additional meta information
+to the page.
