@@ -197,3 +197,42 @@ of those tables, use the list table directive (`.. list-table`).
 
 Use the meta (`.. meta`) directive to add additional meta information
 to the page.
+
+## Tests
+
+We run several tests prior to accepting all documentation modification.  The tests include:
+
+* build test
+* lint test
+* valid link test
+
+### Build test
+
+The information in [CONTRIBUTING.md](CONTRIBUTING.md) and
+[Contributing to these docs](source/contributing/index.rst) has
+instruction on how to build the pages.  All warnings and error must be
+resolved.
+
+### Lint test
+
+We use the [doc8](https://pygments.org/languages/) style checking tool
+for RST.  The included checks are:
+
+- invalid RST format
+- lines should not be longer than 79 characters
+  - RST exception: line with no whitespace except in the beginning
+  - RST exception: lines with http or https urls
+  - RST exception: literal blocks
+  - RST exception: rst target directives
+- no trailing whitespace
+- no tabulation for indentation
+- no carriage returns (use unix newlines)
+- no newline at end of file
+
+All RST files must pass the lint checks.
+
+### Valid link test
+
+To run the link test, run `make linkcheck`.  All links must be valid
+and resolvable.  Redirects will be allowed to sites that require the
+user to login.  All other redirects must be resolved.
