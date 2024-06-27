@@ -210,8 +210,8 @@ We run several tests prior to accepting all documentation modification.  The tes
 
 The information in [CONTRIBUTING.md](CONTRIBUTING.md) and
 [Contributing to these docs](source/contributing/index.rst) has
-instruction on how to build the pages.  All warnings and error must be
-resolved.
+instruction on how to build the pages.  All warnings and errors must
+be resolved.
 
 ### Lint test
 
