@@ -4,9 +4,8 @@
 Logging In
 ##########
 
-Access to Gaea requires an RDHPCS account.  Please review the :ref:`Obtaining an
-Account <accounts>` page, or `see the link below
-<https://rdhpcs2.common2.docs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_
+Access to Gaea requires an RDHPCS account.  Please review the
+:ref:`Obtaining an Account <accounts>` page for details.
 
 Obtaining an Account
 ====================
@@ -198,8 +197,7 @@ systems, the bastion configures SSH port-forwarding tunnels.  To use these
 tunnels, the user must configure their local SSH client to create tunnels
 to/from the bastion.
 
-.. note::
+See `Port Tunneling <https://docs.rdhpcs.noaa.gov/software/ssh_clients/Tectia/index.html#port-tunnelling>`_ for details.
 
-    **TODO**
+One last One
 
-    Need to add this information.
