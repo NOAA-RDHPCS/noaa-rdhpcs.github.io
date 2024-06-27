@@ -198,8 +198,6 @@ systems, the bastion configures SSH port-forwarding tunnels.  To use these
 tunnels, the user must configure their local SSH client to create tunnels
 to/from the bastion.
 
-.. note::
+See the Port Tunnel section of the :ref:`Tectia` page for details.
 
-    **TODO**
 
-    Need to add this information.
