@@ -197,5 +197,7 @@ systems, the bastion configures SSH port-forwarding tunnels.  To use these
 tunnels, the user must configure their local SSH client to create tunnels
 to/from the bastion.
 
-See `Port Tunneling <https://docs.rdhpcs.noaa.gov/software/ssh_clients/Tectia/index.html#port-tunnelling>`_ for details.
+See the Port Tunnel section of the :ref:`Tectia` page for details.
+
+
 
