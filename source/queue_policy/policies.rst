@@ -125,7 +125,7 @@ long term data storage.
    such commands to monitor your file space space usage, especially
    from the top of your project level directory.
 
-For more information about project, see :doc:`Slurm </slurm/index>`
+For more information about projects, see :doc:`Slurm </slurm/index>`
 
 
 General Parallel File System (GPFS)
@@ -491,8 +491,8 @@ want to manage multiple packages, please request multiple /contrib
 package. You can do this all at one time when submitting your request
 to the Help System.
 
-Maintaining "Metadata" for the Contrib Package
-----------------------------------------------
+Maintaining "Metadata" for ``contrib`` Packages
+-----------------------------------------------
 
 Since contrib packages are intended to be used by other users on the
 system it will be helpful to have a /contrib/<package>/README file
@@ -719,8 +719,8 @@ Jet and Hera
        Lowest priority QOS for use with GPU nodes. If you have an
        allocation of “windfall only” (Monthly allocation = 1) you can
        only submit to this QOS. Submitting to this QOS will NOT affect
-       your future job priority FairShare Factor (f). EffectvUsage =
-       1. See How FairShare Works. This QOS is useful for low priority
+       your future job priority FairShare Factor (f). EffectvUsage = 0.
+       See How FairShare Works. This QOS is useful for low priority
        jobs that will only run when the system (partition(s)) has
        enough unused space available, while not lowering the project’s
        FairShare priority.

@@ -14,8 +14,7 @@ Obtaining an Account
 1. User gets NEMS/Gmail account from sponsoring lab's process.
    (Get this done before starting the Gaea account request process.)
 2. User uses NEMS/Gmail (First.Last username and password) to access the RDHPCS
-   `Account Information Management (AIM) <https://aim.rdhpcs.noaa.gov>`_ and
-   requests access to one or more projects.
+   Account Information Management system, or `AIM <https://aim.rdhpcs.noaa.gov>`_
 3. The principle investigator (PI) of project approves.
 4. HR approves.
 5. The Information System Security Officer (ISSO) approves.
@@ -200,4 +199,8 @@ to/from the bastion.
 
 See the Port Tunnel section of the :ref:`Tectia` page for details.
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
