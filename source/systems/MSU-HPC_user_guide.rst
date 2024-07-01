@@ -4,6 +4,8 @@
 MSU-HPC User Guide
 ******************
 
+.. image:: /images/orion.jpg
+
 .. _orion-system-overview:
 
 Introduction
