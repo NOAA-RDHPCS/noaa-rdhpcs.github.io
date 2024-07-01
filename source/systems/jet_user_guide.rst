@@ -4,6 +4,8 @@
 Jet User Guide
 **************
 
+.. image:: /images/JET.jpeg
+
 Currently Jet consists of six compute
 partitions, plus four bigmem nodes, totaling 57,744 coes, @
 1.884 PF.
