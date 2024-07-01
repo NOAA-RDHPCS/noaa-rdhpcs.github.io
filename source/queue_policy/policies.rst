@@ -411,24 +411,24 @@ Deactivated users' HFS data may be removed and saved to the tape
 archive system in a retention pool of at least 5 years.
 
 
-Managing Packages in /contrib
-=============================
+Managing Packages in ``/contrib``
+=================================
 
-Overview of Contrib Packages
-----------------------------
+Overview of ``contrib`` Packages
+--------------------------------
 
 The system staff do not have the resources to maintain every piece of
 software requested. There are also cases where developers of the
 software are the system users, and putting a layer in between them and
 the rest of the system users is inefficient. To support these needs,
-we have developed a ``/contrib`` package process. A /contrib package
+we have developed a ``/contrib`` package process. A ``/contrib`` package
 is one that is maintained by a user on the system. The system staff
 are not responsible for the use or maintenance of these packages.
 
 .. _contrib:
 
-Responsibilities of a Contrib Package Maintainer
-------------------------------------------------
+Responsibilities of a ``contrib`` Package Maintainer
+----------------------------------------------------
 
 Maintainers are expected to:
 
@@ -439,8 +439,8 @@ Maintainers are expected to:
 * Update software for bug fixes and functionality as users request
 * Respond to user email requests for help using the software
 
-Contrib Packages Guidelines
----------------------------
+``contrib`` Packages Guidelines
+-------------------------------
 
 * The package should be a single program or toolset.  We want to
   prevent having a single directory being a repository for many
@@ -456,10 +456,10 @@ Contrib Packages Guidelines
   used.
 * We expect each package to have less than 100 files.
 
-Contrib Package Maintainer Requests
------------------------------------
+``contrib`` Package Maintainer Requests
+---------------------------------------
 
-If you wish to maintain a package in contrib, please send a request to
+If you wish to maintain a package in ``contrib``, please send a request to
 the Help System with:
 
 * List of the packages you wish to maintain.
@@ -472,10 +472,10 @@ the Help System with:
    group write permissions may be granted for the directory. In that
    case, specify the unix group that will be maintaining the package.
 
-Managing a Contrib Package
---------------------------
+Managing a ``contrib`` Package
+------------------------------
 
-After your request has been approved to use space in the /contrib
+After your request has been approved to use space in the ``/contrib``
 directory, two directories will be created for you:
 
 * ``/contrib/<package>``, and
@@ -484,18 +484,18 @@ directory, two directories will be created for you:
 This is where you will install your software for this package and
 optionally install a module to allow users to load the environmental
 settings necessary to use this package. The variable <package> is the
-name of the /contrib package you requested. The directory convention
-of /contrib is designed to match that of /apps. Thus, one piece of
-software goes into a subdirectory under the /contrib level. If you
-want to manage multiple packages, please request multiple /contrib
+name of the ``/contrib`` package you requested. The directory convention
+of ``/contrib`` is designed to match that of /apps. Thus, one piece of
+software goes into a subdirectory under the ``/contrib`` level. If you
+want to manage multiple packages, please request multiple ``/contrib``
 package. You can do this all at one time when submitting your request
 to the Help System.
 
 Maintaining "Metadata" for ``contrib`` Packages
 -----------------------------------------------
 
-Since contrib packages are intended to be used by other users on the
-system it will be helpful to have a /contrib/<package>/README file
+Since ``contrib`` packages are intended to be used by other users on the
+system it will be helpful to have a ``/contrib/<package>/README`` file
 that contains at least the following information:
 
 * Package Name:
@@ -505,10 +505,10 @@ that contains at least the following information:
 * Any other info that will be useful for general users to know
 
 
-Contrib Package Directory Naming Conventions
---------------------------------------------
+``contrib`` Package Directory Naming Conventions
+------------------------------------------------
 
-When installing software into your /contrib directory, first determine
+When installing software into your ``/contrib`` directory, first determine
 if this is software that should be versioned (multiple versions may
 exist at one time) or unversioned (there will only ever be one version
 installed, and upgrade will overwrite the existing software). For
@@ -660,7 +660,7 @@ Jet and Hera
      - 2.0
      -  QOS for a job that requires more urgency than *batch*. Your
         project's :ref:`FairShare <slurm-fairshare>` will be lowered
-        at 2.0x the rate as compared to *batch*.  Only one job pe
+        at 2.0x the rate as compared to *batch*.  Only one job per
         project/account can be pending/runnin at any time. When a
         project's FairShare is below 0.45, jobs submmit to *urgent*
         are automatically changed to *batch* and users notified via

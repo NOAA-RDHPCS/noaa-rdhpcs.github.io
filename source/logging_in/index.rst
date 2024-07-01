@@ -199,8 +199,4 @@ to/from the bastion.
 
 See the Port Tunnel section of the :ref:`Tectia` page for details.
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
