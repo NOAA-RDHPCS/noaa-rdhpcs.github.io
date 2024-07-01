@@ -172,17 +172,6 @@ New Device
 When you acquire a new device, follow this process to add an RSA
 software token:
 
-<<<<<<< Updated upstream
-Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject
-line: Token for New Device - First.Last. Go to
-`AIM`_. Click **Make a request for an
-RSA token**, fill out the form and submit. When that form is received,
-you'll receive an email with instructions about how to activate and
-import your software token. Copy and paste the URL from the email
-using your device and submit the activation code. When the software
-token is working on your new phone, delete the token from your old
-device.
-=======
 1. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject
 line: Token for New Device - First.Last.
 
@@ -196,7 +185,6 @@ to activate and import your software token.
 
 4. When the software token is working on your new phone, delete the token from
 your old device.
->>>>>>> Stashed changes
 
 
 .. _rsa_hardware_token_activation:
@@ -261,13 +249,9 @@ website, click the **Request new access to a project** link. When you
 are fully approved for the rdhpcs project, you will be emailed further
 instructions.
 
-<<<<<<< Updated upstream
 Use `AIM` to apply for the rdhpcs project. Click **Request new
 access to a project**. When you are fully approved for the rdhpcs
 project, you will be emailed further instructions.
-=======
-At that point, return to AIM and request access to your RDHPCS project.
->>>>>>> Stashed changes
 
 .. Note::
 
