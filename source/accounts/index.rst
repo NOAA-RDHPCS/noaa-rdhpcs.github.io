@@ -44,9 +44,7 @@ What You Do
 
 .. note::
 
-   System maintenance will affect access to RDHPCS systems.
-   Click `here <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
-   to view the RDHPCS Maintenance Downtime Calendar.
+      System maintenance will affect access to RDHPCS systems. Click `here <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_ to view the RDHPCS Maintenance Downtime Calendar.
 
 
 .. _accessing_rdhpcs_systems:
@@ -62,10 +60,10 @@ Access and Identity Management (AIM)
 ------------------------------------
 
 Access to RDHPCS systems depends on your assigned project(s). Access
-to projects is managed in the Access and Identity Management (`AIM`_)
-software.  Users can use AIM to request access to a project. AIM uses
-the NOAA single sign-on (SSO) for authentication. Proceed through the
-prompts and sign in with your NEMS credentials.
+to projects is managed in the `Access and Identity Management (AIM)
+<https://aim.rdhpcs.noaa.gov>`_ software.  Users can use AIM to request access to a project.
+AIM uses the NOAA single sign-on (SSO) for authentication. Proceed
+through the prompts and sign in with your NEMS credentials.
 
 For access to the MSU HPC systems, please review the :ref:`MSU-HPC
 <MSU-HPC-user-guide>` document pages.
@@ -113,8 +111,8 @@ user in AIM.  AIM automatically detects and updates CAC-related
 information to your AIM record.  To allow this, you must log into
 AIM using your CAC.
 
-When you enter `AIM`_, the message, **Updated CAC detected. Information
-Updated**, will appear at the top of the screen if your CAC needs to be
+When you enter AIM the message, Updated CAC detected. Information
+Updated, will appear at the top of the screen if your CAC needs to be
 updated.
 
 .. image:: /images/AIM_CAC_passed_in.png
@@ -172,19 +170,15 @@ New Device
 When you acquire a new device, follow this process to add an RSA
 software token:
 
-1. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject
-line: Token for New Device - First.Last.
-
-2. #. Go to `AIM`_. Click **Make
-a request for an RSA token**, fill out the form, submit. When that
-form is received, you'll receive an email with instructions about how
-to activate and import your software token.
-
-3. Copy and paste the URL from the email using your device and submit
-   the activation code.
-
-4. When the software token is working on your new phone, delete the token from
-your old device.
+Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject
+line: Token for New Device - First.Last. Go to
+`<https://aim.rdhpcs.noaa.gov/ AIM>`_. Click **Make a request for an
+RSA token**, fill out the form, submit. When that form is received,
+you'll receive an email with instructions about how to activate and
+import your software token. Copy and paste the URL from the email
+using your device and submit the activation code. When the software
+token is working on your new phone, delete the token from your old
+device.
 
 
 .. _rsa_hardware_token_activation:
@@ -229,9 +223,9 @@ steps to fully reactivate your account:
 .. topic:: Reactivate after seven days
 
    If your account has been suspended for more than seven days and you
-   had a software token, you must apply for a new token. To do so,
-   visit AIM (Account Information Management) and select **Make a
-   Request for an RSA Token**. Complete the form and Submit.
+   had a software token, you must apply for a new token. You can do this by visiting AIM
+   (Account Information Management) and selecting Make a Request for an
+   RSA Token. Complete the form and Submit.
 
    Once your account has been reactivated and your token has been
    re-enabled, you will be required to set a new PIN only if you have
@@ -245,7 +239,7 @@ If your account remains suspended for more than 270 days, the account
 is deactivated. If your account is deactivated and you would like it
 reactivated, you will need to go to `AIM`_ and apply for the rdhpcs
 project to begin the vetting process again. When you arrive at the AIM
-website, click the **Request new access to a project** link. When you
+website, click on the “Request new access to a project” link. When you
 are fully approved for the rdhpcs project, you will be emailed further
 instructions.
 
@@ -367,8 +361,8 @@ These are instructions for current RDHPCS users on an active project
 who need to request access to an additional project resource on Jet,
 Hera, Gaea, Niagara, or any Cloud project.
 
-#. Go to `AIM`_.
-#. Select **Request new access to a project**.
+#. Go to `AIM <https://aim.rdhpcs.noaa.gov/AIM.>`_.
+#. Select *Request new access to a project*.
 #. Select the project from the dropdown list. Note that system access
    (Jet/Hera/Gaea/Niagara) is determined by project.
 #. Add justification for requesting project access
@@ -512,9 +506,10 @@ access.
 
 Once you have a NOAA.gov email address, you can request an RDHPCS
 account through the Account Information Managment system, AIM. Visit
-the `AIM`_ website and request access to the RDHPCS project.  Log into
-AIM using your NOAA email credentials, review your profile for
-accuracy, and request the RDHPCS project.
+the `Account Information Management (AIM) website <AIM>` and request
+access to the RDHPCS project.  Log into AIM using your NOAA email
+credentials, review your profile for accuracy, and request the RDHPCS
+project.
 
 .. image:: /images/AIM2.png
 
@@ -755,7 +750,7 @@ account.
 
 4. RDHPCS Account Request: Request Access to vetting project RDHPCS.
 
-   - Navigate to AIM and submit a request to be added as a New User to
+   - Navigate to `AIM`_ and submit a request to be added as a New User to
      the RDHPCS (vetting) project.  RDHPCS is an AIM-only project to
      verify account details.
    - Once you have been approved for vetting project RDHPCS, request
