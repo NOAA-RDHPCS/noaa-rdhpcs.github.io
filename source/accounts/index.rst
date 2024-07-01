@@ -172,6 +172,7 @@ New Device
 When you acquire a new device, follow this process to add an RSA
 software token:
 
+<<<<<<< Updated upstream
 Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject
 line: Token for New Device - First.Last. Go to
 `AIM`_. Click **Make a request for an
@@ -181,6 +182,21 @@ import your software token. Copy and paste the URL from the email
 using your device and submit the activation code. When the software
 token is working on your new phone, delete the token from your old
 device.
+=======
+1. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject
+line: Token for New Device - First.Last.
+
+2. #. Go to `AIM`_. Click **Make
+a request for an RSA token**, fill out the form, submit. When that
+form is received, you'll receive an email with instructions about how
+to activate and import your software token.
+
+3. Copy and paste the URL from the email using your device and submit
+   the activation code.
+
+4. When the software token is working on your new phone, delete the token from
+your old device.
+>>>>>>> Stashed changes
 
 
 .. _rsa_hardware_token_activation:
@@ -225,9 +241,9 @@ steps to fully reactivate your account:
 .. topic:: Reactivate after seven days
 
    If your account has been suspended for more than seven days and you
-   had a software token, you must apply for a new token. To do this. visit `AIM`_
-   (Account Information Management) and select **Make a Request for an
-   RSA Token**. Complete the form and Submit.
+   had a software token, you must apply for a new token. To do so,
+   visit AIM (Account Information Management) and select **Make a
+   Request for an RSA Token**. Complete the form and Submit.
 
    Once your account has been reactivated and your token has been
    re-enabled, you will be required to set a new PIN only if you have
@@ -245,14 +261,18 @@ website, click the **Request new access to a project** link. When you
 are fully approved for the rdhpcs project, you will be emailed further
 instructions.
 
+<<<<<<< Updated upstream
 Use `AIM` to apply for the rdhpcs project. Click **Request new
 access to a project**. When you are fully approved for the rdhpcs
 project, you will be emailed further instructions.
+=======
+At that point, return to AIM and request access to your RDHPCS project.
+>>>>>>> Stashed changes
 
 .. Note::
 
    Deactivation will reset your default shell to ``/bin/bash``.  If
-   you wish it to be anything else, log into `AIM`, click on the *View
+   you wish it to be anything else, log into `AIM`_, click on the *View
    your information in the system, update the Sponsoring
    Organization*. Scroll down to the section that displays your
    Default shell and change it, then scroll down to the bottom of the
@@ -508,10 +528,9 @@ access.
 
 Once you have a NOAA.gov email address, you can request an RDHPCS
 account through the Account Information Managment system, AIM. Visit
-the `Account Information Management (AIM) website <AIM>` and request
-access to the RDHPCS project.  Log into AIM using your NOAA email
-credentials, review your profile for accuracy, and request the RDHPCS
-project.
+the `AIM`_ website and request access to the RDHPCS project.  Log into
+AIM using your NOAA email credentials, review your profile for
+accuracy, and request the RDHPCS project.
 
 .. image:: /images/AIM2.png
 
@@ -778,6 +797,7 @@ Overview: Getting an External Account - MSU-HPC
 The Hercules and Orion systems comprise MSU-HPC, managed by
 Mississippi State University. Follow these steps to get an Account for
 MSU-HPC.
+
 
 
 General Access Requirements
