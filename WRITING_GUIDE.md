@@ -26,7 +26,7 @@ users.  This range includes first-time High Performance Computing
 written at a level that all users can understand and follow.
 
 Use the second person ("you") to refer to the reader.  Do not overuse
-"you" and "your".  It is often implied who you are addressing in the
+"you" and "your" as they are often implied who you are addressing in the
 instructions.
 
 ## Use plain language
@@ -41,13 +41,12 @@ produce better output for non-native English users.
 
 ### Be concise
 
-In technical documentation, typically *less is more*.  Avoiding long,
-complex sentences that contain multiple phrases and clauses.  This
-will make the content easier for the users to read and understand. The
-[United [States Plain
-](https://www.plainlanguage.gov/guidelines/concise/)Language[
-Guidelines](https://www.plainlanguage.gov/guidelines/concise/) several
-tips and examples to implement concise language.  These include:
+In technical documentation, typically, _less is_ more*.  Short, simple
+sentences are easier for users to read and understand.  The [United
+States Plain [Language
+Guidelines](https://www.plainlanguage.gov/guidelines/concise/) have
+several tips and examples to implement concise language.  These
+include:
 
 * check your prepositions
 * omit redundant words
@@ -85,8 +84,8 @@ Keep the following items in mind while adding content.
   is, use "for example" instead of "e.g." and "that is" instead of
   "i.e.".  The abbreviation "etc." is acceptable.
 * Use "must" to indicate requirements.
-* Do not use slashes, unless when they are part of a standard
-  technical term, such as *TCP/IP* or *client/server*.
+* Do not use slashes unless they are part of a standard technical
+  term, such as *TCP/IP* or *client/server*.
 
 ### Avoid duplication
 
@@ -105,13 +104,13 @@ instead of listing the email address.
 
 ## Documentation content
 
-When determining what to include in the RDHPCS documentation, consider
+As you decide what to include in the RDHPCS documentation, consider
 the following:
 
-* The documentation must contain enough information the help all users.
-* Do not reproduce the full documentation that is already available at
-  other, authoritative sites.
-* Do not promise future features.  Document only features/items that
+* The documentation must contain enough information to help all users.
+* Do not reproduce the complete documentation that is already available on
+  other authoritative sites.
+* Do not promise future features.  Document only features and items that
   are supported and that exist already or that will be available
   before the documentation is published.
 * If the date is known, it is appropriate to warn of future changes
@@ -152,9 +151,9 @@ example, *The General Services Administration (GSA)*.
 
 Some acronyms are more recognizable than their full spellings. For
 example, *NASA*, *NAACP*, and *FBI*. In such instances, the acronym is
-always acceptable, at the writer’s discretion.
+always acceptable.
 
-You may use abbreviations of common units of measurement.
+You may use abbreviations of standard units of measurement.
 
 ### Capitalization
 
@@ -172,8 +171,8 @@ capitalization guidelines:
 
 #### Headings
 
-Headlines, page titles, subheads and similar content should follow
-sentence case, and should not include a trailing colon. For example:
+Headlines, page titles, subheads, and similar content should follow
+sentence case and should not include a trailing colon. For example:
 
 > _Getting help_
 
@@ -208,7 +207,7 @@ prefers.
 Strive for diversity and avoid stereotypes.  Do not make
 generalizations about people, countries, regions, and cultures.
 
-Do not use slang, profane or derogatory terms.
+Do not use slang, profane, or derogatory terms.
 
 Do not use terms that may carry unconscious racial bias, terms that
 use color to represent good or bad, or terms associated with military
@@ -224,9 +223,9 @@ guidelines](https://guides.18f.gov/content-guide/our-style/inclusive-language/).
 Use `example.com` and `example.org` as example domains.  The `www`
 subdomain for each has been registered for use in documentation.
 
-#### Host Names
+#### Host names
 
-Example host names that refer to an RDHPCS host, shall include
+Example host names that refer to an RDHPCS host shall include
 information that defines what type of host.  For example, an RDHPCS
 bastion host name shall include the text *bastion*, like
 `bastion-host`.
@@ -234,6 +233,7 @@ bastion host name shall include the text *bastion*, like
 Host names that refer to non-RDHPCS hosts shall indicate how they
 relate to the command or the user, for example, `local-host`, or
 `remote-host`.
+
 If generic hostnames are to be used, using objects in the solar
 system is appropriate.  That is, *earth*, *venus*, etc.
 
@@ -270,7 +270,7 @@ the number.  Add a non-breaking space between the numeral and its
 corresponding unit abbreviation.  Do not include a space between the
 numeral and the percent (%) sign.
 
-Spell out specific dates such as "October 22, 2024", rather than
+Spell out specific dates, such as "October 22, 2024", rather than
 abbreviating the month or using numbers as in "10/22/2024".  Use the
 full four-digit year.
 
@@ -280,11 +280,11 @@ full four-digit year.
 
 Capitalize the first word of every bullet. Don't use semicolons after
 points in a bulleted list. Include a period at the end of the bullet
-only if that point is a complete sentence. For example:
+only if that point is a complete sentence.
 
 #### Colons
 
-Capitalize the first word after a colon, only if what follows is a
+Capitalize the first word after a colon only if what follows is a
 complete sentence. For example:
 
 > I have several favorite foods: apples, bananas, and naan chips.
@@ -351,13 +351,11 @@ documentation.
 
 ### Topical structure
 
-Users read documentation looking for answers to their questions
-quickly.  We recommend a topic-based approach where the documentation
-is maintained in modular chunks or topics.  Topics shall have a single
-focus on one specific subject and have one distinct purpose.  Topics
-shall be written in a way that they can stand alone as well as in
-context with other topics, and shall be reusable in different
-contexts.
+Users read documentation looking to answer their questions quickly. We
+recommend a topic-based approach where the documentation is maintained
+in modular chunks or topics.  Topics shall focus on one specific
+subject and have one distinct purpose.  Topics shall be written such
+that they can stand alone as well as in context with other topics.
 
 Some recommendations are:
 
