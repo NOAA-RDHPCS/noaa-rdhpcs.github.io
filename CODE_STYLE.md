@@ -1,14 +1,14 @@
 # Documentation style guide
 
-This document focuses on expected styles used in the RDHPCS documentation. This
-coding standards applies to documentation files. It is not about documentation
-content.
+This document focuses on the expected styles used in the RDHPCS
+documentation. This coding standard applies to documentation files. It
+is not about documentation content.
 
 
 ## Markup language
 
 The documentation in this repository uses [Python
-Sphinx](https://www.sphinx-doc.org/en/master/), with the [Read the Docs
+Sphinx](https://www.sphinx-doc.org/en/master/) with the [Read the Docs
 Theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/).  As much as
 possible, we use the
 [reStructuredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html)
@@ -18,7 +18,7 @@ markup.
 ## Filenames
 
 Filenames used in the source should use only lowercase alphanumeric
-characters and `-` (minus) symbol.
+characters and `-` (minus) symbols.
 
 Suffix filenames with the `.rst` extension.
 
@@ -27,11 +27,12 @@ Suffix filenames with the `.rst` extension.
 such as `.. code-block::`.  Such readers, e.g., the GitHub platform, will not
 display all content.
 
-When you need to read HTML builds of the documentation, best practice is to
-export documentation as static builds with ``sphinx-build`` command, then host
-and serve these builds as static files. Refer to the [Contributing to these
-docs](source/contributing/index.rst) for information on how to build and host
-these pages.
+When you need to read HTML builds of the documentation, the best
+practice is to export documentation as static builds with the
+``sphinx-build`` command, then host and serve these builds as static
+files. Refer to the [Contributing to these
+docs](source/contributing/index.rst) for information on how to build
+and host these pages.
 
 
 ## Whitespaces
@@ -42,8 +43,9 @@ Indent with 2-4 spaces.  Follow the indentation already established in the file.
 
 ### Blank lines
 
-Two blank lines before overlined sections, i.e. before H1 and H2. One blank line
-before other sections. See [Headings](#headings) for an example.
+Two blank lines before overlined sections, that is, before H1 and H2.
+One blank line before other sections. See [Headings](#headings) for an
+example.
 
 One blank line to separate directives.
 
@@ -120,8 +122,8 @@ As an example:
   And some text.
 ```
 
-If you need more than heading level 4 (i.e. H5 or H6), then you should consider
-creating a new document.
+If you need more than heading level 4 (that is, H5 or H6), then you
+should consider creating a new document.
 
 There should be only one H1 in a document.
 
@@ -156,12 +158,12 @@ languages](https://pygments.org/languages/).
 
 ### Shell code blocks
 
-Shell code blocks, `.. code-block:: shell`, if representing commands a user will
-type shall use the `$` to represent the prompt.
+Shell code blocks, `.. code-block:: shell`, shall use the `$` to
+represent the prompt if representing commands a user will type.
 
 ## Links
 
-Linking to other documentation, both internal and external, help
+Linking to other documentation, both internal and external, helps
 improve the user experience when exploring the documentation.  Linking
 to good references will improve the user's confidence in the quality
 of our documentation.
@@ -170,9 +172,8 @@ of our documentation.
 
 External links should use the [hypertext
 reference](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#hyperlink-references)
-with all the references defined at the end of the document.  The
-references can then be used inline as frequently as needed.  As an
-example:
+with all the references defined at the end of the document.  You can
+use the references inline as frequently as needed.  As an example:
 
 ```rst
   Some text which includes links to `example website`_, and my have other
@@ -184,9 +185,9 @@ example:
   .. _Example website: http://www.example.com
 ```
 
-If desired, a reference section can be added to the end of the
-document with the link references placed inline in a bullted list.  As
-an example:
+If desired, you can add a reference section to the end of the document
+with the link references placed inline in a bulleted list. As an
+example:
 
 ```rst
   References
@@ -196,10 +197,10 @@ an example:
   * `Another site <http://www.example.org>`_
 ```
 
-As in the directive example above, each site can be referenced using
+As in the directive example above, you can reference each site using
 the reference name.
 
-:information_source: The reference name should be the most frequent
+:information_source: The reference name should be the most frequently
 way the link will be used in the text.  For example, if the text to
 the link will be an acronym, then the link target name should be the
 acronym.  Use the inline method to reference the link when different
@@ -214,9 +215,9 @@ text is needed.  As an example:
   .. _AIM: https://aim.rdhpcs.noaa.gov
 ```
 
-If the link will only be used once, use the one-off, or [anonymous
+If the link is only used once, use the one-off or [anonymous
 hyperlink](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#anonymous-hyperlinks)
-inline.  These link references cannot be referrenced again, and end
+inline.  These link references cannot be referred to again and end
 with two underscore (`_`) characters:
 
 ```rst
@@ -242,12 +243,13 @@ directive](https://docutils.sourceforge.io/docs/ref/rst/directives.html#list-tab
 
 ## Page meta information
 
-Use the meta (`.. meta`) directive to add additional meta information
-to the page.
+Use the meta (`.. meta`) directive to add meta information to the
+page.
 
 ## Tests
 
-We run several tests prior to accepting all documentation modification.  The tests include:
+We run several tests before accepting all documentation modifications.
+The tests include:
 
 * build test
 * lint test
@@ -256,8 +258,8 @@ We run several tests prior to accepting all documentation modification.  The tes
 ### Build test
 
 The information in [CONTRIBUTING.md](CONTRIBUTING.md) and
-[Contributing to these docs](source/contributing/index.rst) has
-instruction on how to build the pages.  All warnings and errors must
+[Contributing to these [docs](source/contributing/index.rst) has
+instructions on how to build the pages.  All warnings and errors must
 be resolved.
 
 ### Lint test
@@ -268,13 +270,13 @@ for RST.  The included checks are:
 - invalid RST format
 - lines should not be longer than 79 characters
   - RST exception: line with no whitespace except in the beginning
-  - RST exception: lines with http or https urls
+  - RST exception: lines with http or https URLs
   - RST exception: literal blocks
   - RST exception: rst target directives
 - no trailing whitespace
 - no tabulation for indentation
-- no carriage returns (use unix newlines)
-- no newline at end of file
+- no carriage returns (use Unix newlines)
+- no newline at the end of the file
 
 All RST files must pass the lint checks.
 
@@ -282,4 +284,4 @@ All RST files must pass the lint checks.
 
 To run the link test, run `make linkcheck`.  All links must be valid
 and resolvable.  Redirects will be allowed to sites that require the
-user to login.  All other redirects must be resolved.
+user to log in.  All other redirects must be resolved.
