@@ -1,11 +1,11 @@
-# Documentation Style Guide
+# Documentation style guide
 
 This document focuses on expected styles used in the RDHPCS documentation. This
 coding standards applies to documentation files. It is not about documentation
 content.
 
 
-## Markup Language
+## Markup language
 
 The documentation in this repository uses [Python
 Sphinx](https://www.sphinx-doc.org/en/master/), with the [Read the Docs
@@ -128,7 +128,7 @@ There should be only one H1 in a document.
 See also [Sphinx's documentation about
 sections](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections).
 
-### H1 Headings
+### H1 headings
 
 The H1 headings should only be used in the `index.rst` file, and must be the
 first heading of the document.  Other files in a given directory will use the H2
@@ -154,44 +154,91 @@ The code block directive uses [Pygments](https://pygments.org).
 Please refer to the [list of supported
 languages](https://pygments.org/languages/).
 
-### Shell Code Blocks
+### Shell code blocks
 
 Shell code blocks, `.. code-block:: shell`, if representing commands a user will
 type shall use the `$` to represent the prompt.
 
-## Links and references
+## Links
 
-Use links and references footnotes with the ``target-notes`` directive.
-As an example:
+Linking to other documentation, both internal and external, help
+improve the user experience when exploring the documentation.  Linking
+to good references will improve the user's confidence in the quality
+of our documentation.
+
+### External links
+
+External links should use the [hypertext
+reference](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#hyperlink-references)
+with all the references defined at the end of the document.  The
+references can then be used inline as frequently as needed.  As an
+example:
 
 ```rst
+  Some text which includes links to `example website`_, and my have other
+  links.
 
-  #############
-  Some document
-  #############
+  `Example website`_ can be referenced multiple times.  Capitalization of
+  the link reference does not matter.
 
-  Some text which includes links to `Example website`_ and many other links.
-
-  `Example website`_ can be referenced multiple times.
-
-  (... document content...)
-
-  And at the end of the document...
-
-  **********
-  References
-  **********
-
-  .. target-notes::
-
-  .. _`Example website`: http://www.example.com/
+  .. _Example website: http://www.example.com
 ```
+
+If desired, a reference section can be added to the end of the
+document with the link references placed inline in a bullted list.  As
+an example:
+
+```rst
+  References
+  ==========
+
+  * `Example website <http://www.example.com>`_
+  * `Another site <http://www.example.org>`_
+```
+
+As in the directive example above, each site can be referenced using
+the reference name.
+
+:information_source: The reference name should be the most frequent
+way the link will be used in the text.  For example, if the text to
+the link will be an acronym, then the link target name should be the
+acronym.  Use the inline method to reference the link when different
+text is needed.  As an example:
+
+```rst
+  The `Accounts Informationtion Management (AIM) <AIM_>`_ system will
+  be mentioned most often as `AIM`_.  As done in the previous sentence,
+  the first time used we spelled out the acronym but still used the
+  `AIM` target name using the inline link reference.
+
+  .. _AIM: https://aim.rdhpcs.noaa.gov
+```
+
+If the link will only be used once, use the one-off, or [anonymous
+hyperlink](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#anonymous-hyperlinks)
+inline.  These link references cannot be referrenced again, and end
+with two underscore (`_`) characters:
+
+```rst
+  This is a `link <http://www.example.org>`__ that is only used once.
+  Note the double underscore.
+```
+
+### Internal links
+
+Use the `:ref:` or `:doc:` [Sphinx
+roles](https://www.sphinx-doc.org/en/master/usage/referencing.html) to
+reference other internal locations, even if the link is within the
+same document.
 
 ## Tables
 
-As much as possible, use simple tables or grid tables.  If keeping the
-lines of the tables under the 79 characters is too difficult with one
-of those tables, use the list table directive (`.. list-table`).
+As much as possible, use simple or grid
+[tables](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#tables).
+If keeping the lines of the tables under the 79 characters is too
+difficult with one of those tables, use the [list table
+directive](https://docutils.sourceforge.io/docs/ref/rst/directives.html#list-table)
+(`.. list-table`).
 
 ## Page meta information
 
