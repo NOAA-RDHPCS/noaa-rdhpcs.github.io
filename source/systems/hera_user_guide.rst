@@ -4,6 +4,8 @@
 Hera User Guide
 ***************
 
+.. image:: /images/Hera.jpg
+
 About NESCC
 ===========
 

@@ -32,13 +32,13 @@ To schedule recurring jobs, cron is provided for users. On most
 systems, cron jobs will be started on service/login nodes; therefore
 the login node usage policy applies to cron jobs.
 
-However, on systems such as Gaea, cron is no longer permitted–instead,
+However, on systems such as Gaea, cron is no longer permitted. Instead,
 **scrontab** is used.
 
 **Scrontab** is a Slurm-managed crontab that runs on a designated
 partition rather than the login nodes.
 
-Best Practices:
+**Best Practices:**
 
 - Please **DO** review your crontab/scrontab entries once a month and
   remove unneeded entries to assure efficient RDHPCS resource
@@ -98,15 +98,17 @@ repeating processes:
 File System Usage Practices and Policies
 ========================================
 
-HPFS (Scratch)
---------------
+High Performance File System (HPFS - Scratch)
+---------------------------------------------
 
-The High Performance File Systems (HPFS): Hera's /scratch(1,2), Jet's
+Hera's /scratch(1,2), Jet's
 /lfs(1,4), and Niagara's /collab1 are scratch file systems for your
 input and output project data for running current jobs, **NOT** for
 long term data storage.
 
-Data on scratch is **NOT** backed up
+.. warning::
+
+  Data on scratch is **NOT** backed up.
 
 1. Keep source code and critical configuration files on /home, and
    back up critical data to HPSS.
@@ -123,13 +125,13 @@ Data on scratch is **NOT** backed up
    such commands to monitor your file space space usage, especially
    from the top of your project level directory.
 
-Getting More Information About Projects - :doc:`Slurm </slurm/index>`
+For more information about projects, see :doc:`Slurm </slurm/index>`
 
 
-GPFS
-----
+General Parallel File System (GPFS)
+-----------------------------------
 
-General Parallel File Systems: Gaea’s /gpfs/f5 is a general parallel
+Gaea’s /gpfs/f5 is a general parallel
 file system which provides project directories for short term project
 data. F5 is not backed up. Users must ensure important files are
 replicated to another off-site location
@@ -155,7 +157,7 @@ HFS
 ---
 
 The /home file system (HFS) is for small amounts of critical
-labor-intensive data, like source code, that needs timely access. The
+labor-intensive data, like source code, that need timely access. The
 HFS is backed up nightly and weekly. Nightly backups are kept for a
 week, and weekly backups are kept for at least 6 months.
 
@@ -168,7 +170,7 @@ on. All files owned by you in /home are counted not just files in your
 /home/First.Last directory.
 
 Usage and quota can be checked using the ``sacccount_params`` or the
-``quota`` commands.  See :doc:`/slurm/index`.
+``quota`` commands.  See :doc:`/slurm/index` for details.
 
 If more quota is required, start a system help ticket with a request
 and justification.
@@ -179,7 +181,7 @@ and justification.
    (HFS). This includes keeping input/output files or executable files
    for a parallel run in your home directory or even using symlinks in
    your home directories that point to your files in your project
-   space in the scratch filesystem. This puts a tremendous burden on
+   space in the scratch filesystem. It puts a tremendous burden on
    the HFS and has an adverse impact on all the users on the system.
 
 
@@ -213,7 +215,7 @@ could be lost without any possibility of recovery.
 Recover Recently Deleted Files from /home
 -----------------------------------------
 
-**Different between the HPCS**
+**Differences between the HPCS**
 
 The home filesystem is backed up regularly. However, the filesystem
 also supports snapshots, which will allow you to retrieve your own
@@ -223,7 +225,7 @@ days is different for Hera and Jet clusters.
 Look at the snapshot directory (/home/$USER/.snapshot) to see what options
 are available. Each directory listed there represent a day.
 
-As an example:
+Consider an example:
 
 .. code-block:: shell
 
@@ -237,8 +239,7 @@ As an example:
 You can then access the old files in your copy of your home directory
 under the appropriate snapshot.
 
-For example, if you want to recover files in your $HOME from Janurary,
-22nd, 2024:
+So, if you want to recover files in your $HOME from January 22nd, 2024:
 
 .. code-block:: shell
 
@@ -255,8 +256,8 @@ Retention based storage is the HPSS archive policy in Fairmont, to
 better manage data growth.
 
 Six retention storage pools (1-5year and Permanent) were created. Each
-retention period is setup as a separate file family. This means all
-data for a retention period is stored on the same tapes.
+retention period is set up as a separate file family. This means all
+data for a given retention period is stored on the same tapes.
 
 All HPSS projects were then configured to write to one or more of
 these pools. Data in these pools expires based upon the retention pool
@@ -276,15 +277,16 @@ These notifications will take place on or before the first day of the
 month following the data’s expiration.
 
 For example, data that has an expiration date between October 1 and
-October 31 2016 will have its notification posted on or before
-November 1, 2016. The expired file list is located on HPSS in
+October 31 2023 will have its notification posted on or before
+November 1, 2023. The expired file list is located on HPSS in
 /Expired_Data_Lists/expired.YYYY-MM.txt. All HPSS users have read
 access to this file and can retrieve it for review. The file is easily
 searchable by HPSS username.
 
 For each file included in the expired list the file owner, file group,
-filename/path, and expire date are shown. ex: ``root system
-/1year/SYSADMIN/nesccmgmt/test_file-1G-11 Jul-6-2016``.
+filename/path, and expire date are shown, for example:
+
+``root system /1year/SYSADMIN/nesccmgmt/test_file-1G-11 Jul-6-2023``.
 
 Email notification will also be sent to all users who have data listed
 in this file. It is the user’s responsibility to regularly check the
@@ -332,7 +334,7 @@ manufacturer to troubleshoot the problem and take additional steps to
 attempt to recover the missing data.
 
 Very rarely, even with these additional efforts, we are unable to
-recover the missing files. The user will then be informed of the files
+recover missing files. The user will be told which files
 we cannot recover.
 
 In that case, the user has one further option. There are a number of
@@ -371,12 +373,12 @@ member.
 Niagara Per User Data
 ---------------------
 
-As Niagara is a hybrid system, a cross between a traditional HPC
+As Niagara is a hybrid system (a cross between a traditional HPC
 system and a data transfer/collaboration system, available to all
-RDHPCS users, the file system management needs to be handled
-differently then our more traditional HPC systems (Hera and Jet). As a
-result, the following data management policies will be implemented on
-Niagara starting Thursday, 6/18/20.
+RDHPCS users), the file system management needs to be handled
+differently then on more traditional HPC systems (Hera and Jet). As a
+result, the following data management policies are implemented on
+Niagara:
 
 * All files under the ``collab1/data_untrusted/$USER`` directory tree
   which have not been accessed in the last 5 days will be
@@ -393,7 +395,7 @@ reading or writing.
 .. note::
 
    If the file system's usage starts getting close to the total
-   capacity then we will be forced implement a more aggressive purge
+   capacity, we will be forced implement a more aggressive purge
    policy (i.e. 30 day or 15 day purge) . So please actively manage
    your data.
 
@@ -409,24 +411,24 @@ Deactivated users' HFS data may be removed and saved to the tape
 archive system in a retention pool of at least 5 years.
 
 
-Managing Packages in /contrib
-=============================
+Managing Packages in ``/contrib``
+=================================
 
-Overview of Contrib Packages
-----------------------------
+Overview of ``contrib`` Packages
+--------------------------------
 
 The system staff do not have the resources to maintain every piece of
 software requested. There are also cases where developers of the
 software are the system users, and putting a layer in between them and
 the rest of the system users is inefficient. To support these needs,
-we have developed a ``/contrib`` package process. A /contrib package
+we have developed a ``/contrib`` package process. A ``/contrib`` package
 is one that is maintained by a user on the system. The system staff
 are not responsible for the use or maintenance of these packages.
 
 .. _contrib:
 
-Responsibilities of a Contrib Package Maintainer
-------------------------------------------------
+Responsibilities of a ``contrib`` Package Maintainer
+----------------------------------------------------
 
 Maintainers are expected to:
 
@@ -437,8 +439,8 @@ Maintainers are expected to:
 * Update software for bug fixes and functionality as users request
 * Respond to user email requests for help using the software
 
-Contrib Packages Guidelines
----------------------------
+``contrib`` Packages Guidelines
+-------------------------------
 
 * The package should be a single program or toolset.  We want to
   prevent having a single directory being a repository for many
@@ -454,10 +456,10 @@ Contrib Packages Guidelines
   used.
 * We expect each package to have less than 100 files.
 
-Contrib Package Maintainer Requests
------------------------------------
+``contrib`` Package Maintainer Requests
+---------------------------------------
 
-If you wish to maintain a package in contrib, please send a request to
+If you wish to maintain a package in ``contrib``, please send a request to
 the Help System with:
 
 * List of the packages you wish to maintain.
@@ -470,10 +472,10 @@ the Help System with:
    group write permissions may be granted for the directory. In that
    case, specify the unix group that will be maintaining the package.
 
-Managing a Contrib Package
---------------------------
+Managing a ``contrib`` Package
+------------------------------
 
-After your request has been approved to use space in the /contrib
+After your request has been approved to use space in the ``/contrib``
 directory, two directories will be created for you:
 
 * ``/contrib/<package>``, and
@@ -482,18 +484,18 @@ directory, two directories will be created for you:
 This is where you will install your software for this package and
 optionally install a module to allow users to load the environmental
 settings necessary to use this package. The variable <package> is the
-name of the /contrib package you requested. The directory convention
-of /contrib is designed to match that of /apps. Thus, one piece of
-software goes into a subdirectory under the /contrib level. If you
-want to manage multiple packages, please request multiple /contrib
+name of the ``/contrib`` package you requested. The directory convention
+of ``/contrib`` is designed to match that of /apps. Thus, one piece of
+software goes into a subdirectory under the ``/contrib`` level. If you
+want to manage multiple packages, please request multiple ``/contrib``
 package. You can do this all at one time when submitting your request
 to the Help System.
 
-Maintaining "Metadata" for the contrib Package
-----------------------------------------------
+Maintaining "Metadata" for ``contrib`` Packages
+-----------------------------------------------
 
-Since contrib packages are intended to be used by other users on the
-system it will be helpful to have a /contrib/<package>/README file
+Since ``contrib`` packages are intended to be used by other users on the
+system it will be helpful to have a ``/contrib/<package>/README`` file
 that contains at least the following information:
 
 * Package Name:
@@ -503,10 +505,10 @@ that contains at least the following information:
 * Any other info that will be useful for general users to know
 
 
-Contrib Package Directory Naming Conventions
---------------------------------------------
+``contrib`` Package Directory Naming Conventions
+------------------------------------------------
 
-When installing software into your /contrib directory, first determine
+When installing software into your ``/contrib`` directory, first determine
 if this is software that should be versioned (multiple versions may
 exist at one time) or unversioned (there will only ever be one version
 installed, and upgrade will overwrite the existing software). For
@@ -658,7 +660,7 @@ Jet and Hera
      - 2.0
      -  QOS for a job that requires more urgency than *batch*. Your
         project's :ref:`FairShare <slurm-fairshare>` will be lowered
-        at 2.0x the rate as compared to *batch*.  Only one job pe
+        at 2.0x the rate as compared to *batch*.  Only one job per
         project/account can be pending/runnin at any time. When a
         project's FairShare is below 0.45, jobs submmit to *urgent*
         are automatically changed to *batch* and users notified via
@@ -713,12 +715,12 @@ Jet and Hera
        combinations of the max running jobs per project-account that
        are permitted: 1. A project can have two 2-node jobs at 24
        hours of wallclock and one 1-node job at 72 hours of wallclock.
-       2. A project can have one 1-node job at 168 hours of wallclock.
+       1. A project can have one 1-node job at 168 hours of wallclock.
        Lowest priority QOS for use with GPU nodes. If you have an
        allocation of “windfall only” (Monthly allocation = 1) you can
        only submit to this QOS. Submitting to this QOS will NOT affect
-       your future job priority FairShare Factor (f). EffectvUsage =
-       0. See How FairShare Works. This QOS is useful for low priority
+       your future job priority FairShare Factor (f). EffectvUsage = 0.
+       See How FairShare Works. This QOS is useful for low priority
        jobs that will only run when the system (partition(s)) has
        enough unused space available, while not lowering the project’s
        FairShare priority.
@@ -757,13 +759,12 @@ Jet and Hera
 Gaea
 ----
 
-Below is the strategy for the queue structure on Gaea.
-
+This section documents the queue structure on Gaea.
 The original queue policy was approved through NOAA's HPC Integrated
 Management Team. Changes and fine-tuning to the queue structure can be
 done on a weekly basis through the Configuration Management process.
 
-The following guidelines were put in place.
+The following guidelines were put in place:
 
 
 General Recommendations
