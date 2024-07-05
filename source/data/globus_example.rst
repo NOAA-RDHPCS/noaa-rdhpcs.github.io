@@ -10,7 +10,7 @@ external storage systems. To use this service, you must have an RDHPCS
 NOAA account and an RSA SecureID token. You can invoke Globus
 functions either through a web interface or from a command line
 interface (CLI).  Click the link to access `Globus Documentation
-<https://docs.globus.org/guides/>`__.
+<https://docs.globus.org/guides/>`_.
 
 The following is an example for the purpose of illustration, provided
 for people  who need to get data moving from source to destination
@@ -276,13 +276,13 @@ utilization by NOAA partners, stakeholders, and the public, is
 foundational to NOAA’s mission, and thus central to NOAA’s Data
 Strategy. The complete `GFDL Policy pertaining to externally facing
 data
-<https://intranet.gfdl.noaa.gov/admin-services/forms-and-policies/gfdl-data-digital-object-identifier-doi-policy>`__\
+<https://intranet.gfdl.noaa.gov/admin-services/forms-and-policies/gfdl-data-digital-object-identifier-doi-policy>`_
 [#]_ is available.
 
 Data hosted on the GFDL Data portal servers is accessible through
 Globus, and available on request through the `data hosting request
 form
-<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__
+<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`_
 for papers, collaborations, other projects. The requester will be
 notified of the Globus URL when the request is completed.
 

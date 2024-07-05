@@ -11,7 +11,6 @@ invoke Globus functions either through a web interface or from a
 command line interface (CLI).
 
 Click here to access `Globus Documentation <https://docs.globus.org/guides/>`_.
-Click here to review the `Globus Tutorial <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`_
 
 Overview
 ========
@@ -27,9 +26,9 @@ find source and target endpoints for your transfer, then select
 directories or files to be transferred. The transfer itself is a
 background process.
 
-To copy a file, several files, or an entire directory between two systems, navigate to `Globus <https://app.globus.org/>`_.
- Locate the source and target endpoints by their given names and
- follow these steps:
+To copy a file, several files, or an entire directory between two
+systems, navigate to `Globus <https://app.globus.org/>`_. Locate the
+source and target endpoints by their given names and follow these steps:
 
 
  #. Authenticate yourself to both endpoints.
@@ -181,7 +180,10 @@ Globus Command Line Interface (CLI)
 
 The CLI is available on Jet, Hera, and Niagara.
 
-If you would like to use Globus-cli, either on your personal machine or on a system where globus-cli is not installed, you can install it easily . Instructions to install and use the Globus CLI are available at this `link <https://docs.globus.org/cli/ Globus CLI>`_.
+If you would like to use Globus-cli, either on your personal machine
+or on a system where globus-cli is not installed, you can install it
+easily . Instructions to install and use the Globus CLI are available
+at this `link <https://docs.globus.org/cli/ Globus CLI>`_.
 
 Transferring Data to and from Your Computer
 ===========================================
