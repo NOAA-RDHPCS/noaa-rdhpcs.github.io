@@ -552,6 +552,126 @@ system (you already have the Local Port number):
 SSH Port Tunnel For Tectia Windows Systems
 ------------------------------------------
 
+See the :ref:`tectia` pages for complete information.
+
+
 WinSCP
 ------
 
+.. note::
+  You must have a port tunnel established before you can use WinSCP.
+  Configure the port forwarding for WinSCP using the method that
+  matches your system configuration.
+
+.. note::
+  The port-forwarded session must remain
+  active to maintain a connection to WinSCP. Use the word “localhost”
+  where indicated. It is not a variable, don't substitute with anything
+  else.
+
+Once port forwarding is configured, open and configure WinSCP. Please
+be sure to select SFTP as the file protocol.
+
+.. image:: /images/winSCP1.png
+  :scale: 50%
+
+When prompted for a password, enter your RSA PIN + RSA Token:
+
+.. image:: /images/winSCP2.png
+  :scale: 75%
+
+External Data Transfers (applies to NESCC, ie. Hera and Niagara only)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PLACEHOLDER FOR MISSING information
+
+Internally Initiated Transfers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+HPC systems do not have specific hosts for internally initiated
+transfers ransfers initiated from HPC Systems use the front end nodes
+for doing the transfers.
+
+The firewall rules are set up by default to block all outgoing
+traffic. However, we permit internally initiated transfers by request,
+after the request is reviewed and approved by the security team. If
+you need this capability, send an email to the Help System that
+contains your request. Use the subject line: <$SYSTEM> FEs to
+<$HOSTNAME> with the appropriate system and hostname.
+
+.. code-block:: shell
+
+  Hera:
+  Source Systems:  hfe[1-12].fairmont.rdhpcs.noaa.gov
+  Source IPs:  140.208.193.[1-12]
+  Jet:
+  Source Systems:  fe[1-8].boulder.rdhpcs.noaa.gov
+  Source IPs:  140.208.160.[1-8]
+  Niagara:
+  Source Systems:  nfe[1-12].fairmont.rdhpcs.noaa.gov
+  Source IPs:140.208.193.[65-76]
+
+Include the following information in the request:
+
+* **Justification**
+* **Source Systems**
+* **Source IPs**
+* **Destination Systems**
+* **Destination IPs**
+* **Destination Port name (s):** Service name (dns, http, nfs, bluearc-admin)
+* **Destination Port number (s) or range:**
+* **Destination Port protocol (tcp/udp):**
+* **Example command:** Please include a typical command to show how
+  you will be doing the data transfers
+
+
+----
+
+Example
+-------
+
+* **Subject:** Hera FEs to podaac-tools.jpl.nasa.gov
+* **Justification:** Requesting (permanent) wget access to pull data
+  from podaac-tools.jpl.nasa.gov via the Hera front ends to transfer
+  weather data to NOAA.
+* **Source Systems:** hfe[01-12].fairmont.rdhpcs.noaa.gov,
+  fe[1-8].boulder.rdhpcs.noaa.gov, nfe[1-4].boulder.rdhpcs.noaa.gov
+  dtn-niagara.fairmont.rdhpcs.noaa.gov
+* **Source IPs:** 140.208.192.[9-18], 140.208.160.[1-8],
+  140.208.193.[65-68]
+* **Destination Systems:** podaac-tools.jpl.nasa.gov
+* **Destination IPs:**  128.149.132.160
+* **Destination Port name (s):** HTTP/HTTPS, SSH
+* **Destination Port number (s) or range:** 80, 22,443
+* **Destination Port protocol (tcp/udp):** tcp
+* **Direction:** Outbound
+* **An example command:**
+
+.. code-block:: shell
+
+  ``wget -r  -A.nc  https://podaac-tools.jpl.nasa.gov/measures-drive/files/mur_sst/tmchin/seasonal``
+
+  ``--2019-05-13  15:34:09--https://podaac-tools.jpl.nasa.gov/measures-drive/files/mur_sst/tmchin/seasonal``
+
+
+Tuning Hosts to Improve Data Transfer Rates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The standard tuning parameters for network settings are not optimal
+for high-latency transfers, which means any transfers to and from Hera
+unless you are in West Virginia. These settings are specific to where
+you and the latency between your system and Hera. A good place to
+start is to change the settings on your local host to match:
+
+.. code-block:: shell
+
+    net.core.rmem_max=16777216
+    net.core.wmem_max=16777216
+    net.ipv4.tcp_rmem=4096 87380 16777216
+    net.ipv4.tcp_wmem=4096 65536 16777216
+
+A good reference for how to tune your host can be found `here <http://fasterdata.es.net/host-tuning/>`_.
+
+Additional tuning can be done depending on where your system is
+located, the type of network interface your host has, and many other
+options. Please work with your local network administrators to help
+tune your local hosts to maximize network performance.

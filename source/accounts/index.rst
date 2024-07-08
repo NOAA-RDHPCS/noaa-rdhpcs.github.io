@@ -60,11 +60,18 @@ Access and Identity Management (AIM)
 ------------------------------------
 
 Access to RDHPCS systems depends on your assigned project(s). Access
+<<<<<<< Updated upstream
 to projects is managed in the Access and Identity Management (`AIM
 <https://aim.rdhpcs.noaa.gov>`_) software. Users can use AIM to request
 access to a project. AIM uses the NOAA single sign-on (SSO) for
 authentication. Proceed through the prompts and sign in with your NEMS
 credentials.
+=======
+to projects is managed in the Access and Identity Management (AIM)
+software.  Users can use `AIM <https://aim.rdhpcs.noaa.gov>`_ to request access to a project.
+AIM uses the NOAA single sign-on (SSO) for authentication. Proceed
+through the prompts and sign in with your NEMS credentials.
+>>>>>>> Stashed changes
 
 For access to the MSU HPC systems, please review the :ref:`MSU-HPC
 <MSU-HPC-user-guide>` document pages.
@@ -112,9 +119,14 @@ user in AIM.  AIM automatically detects and updates CAC-related
 information to your AIM record.  To allow this, you must log into
 AIM using your CAC.
 
+<<<<<<< Updated upstream
 When you enter AIM, the message,
 **Updated CAC detected. Information
 Updated**, will appear at the top of the screen if your CAC needs to be
+=======
+When you enter `AIM`_, the message, **Updated CAC detected. Information
+Updated** will appear at the top of the screen if your CAC needs to be
+>>>>>>> Stashed changes
 updated.
 
 .. image:: /images/AIM_CAC_passed_in.png
@@ -172,6 +184,7 @@ New Device
 When you acquire a new device, follow this process to add an RSA
 software token:
 
+<<<<<<< Updated upstream
 #. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject
 line: Token for New Device - First.Last.
 #. Go to `AIM`_.  Click **Make a request for an
@@ -183,6 +196,20 @@ using your device and submit the activation code.
 #. When the software
 token is working on your new phone, delete the token from your old
 device.
+=======
+1. Email rdhpcs.aim.help@noaa.gov to open an OTRS ticket. Use the subject
+line: **Token for New Device - First.Last.**
+
+2. Go to `AIM`_ Click **Make a
+request for an RSA token**, fill out the form, submit. When that form
+is received, you'll receive an email with instructions about how to
+activate and import your software token.
+
+3. Copy and paste the URL from the email using your device and submit
+   the activation code.
+4. When the software token is working on your new phone, delete the
+   token from your old device.
+>>>>>>> Stashed changes
 
 
 .. _rsa_hardware_token_activation:
@@ -227,8 +254,13 @@ steps to fully reactivate your account:
 .. topic:: Reactivate after seven days
 
    If your account has been suspended for more than seven days and you
+<<<<<<< Updated upstream
    had a software token, you must apply for a new token. To do this, visit `AIM`_
    and select **Make a Request for an
+=======
+   had a software token, you must apply for a new token. You can do this by visiting `AIM`_
+   (Account Information Management) and selecting **Make a Request for an
+>>>>>>> Stashed changes
    RSA Token**. Complete the form and Submit.
 
    Once your account has been reactivated and your token has been
@@ -239,11 +271,19 @@ steps to fully reactivate your account:
 Deactivated Accounts
 --------------------
 
+<<<<<<< Updated upstream
 If your account remains suspended for more than 270 days, it will be
 deactivated. If your account is deactivated and you would like it
 reactivated, you will need to go to `AIM`_ and apply for the rdhpcs
 project to begin the vetting process again. When you arrive at the AIM
 website, click  the **Request new access to a project** link. When you
+=======
+If your account remains suspended for more than 270 days, the account
+is deactivated. If your account is deactivated and you would like it
+reactivated, you will need to go to `AIM`_ and apply for the rdhpcs
+project to begin the vetting process again. When you arrive at the AIM
+website, click **Request new access to a project**. When you
+>>>>>>> Stashed changes
 are fully approved for the rdhpcs project, you will be emailed further
 instructions.
 
@@ -365,7 +405,11 @@ These are instructions for current RDHPCS users on an active project
 who need to request access to an additional project resource on Jet,
 Hera, Gaea, Niagara, or any Cloud project.
 
+<<<<<<< Updated upstream
 #. Go to AIM.
+=======
+#. Go to `AIM`_.
+>>>>>>> Stashed changes
 #. Select *Request new access to a project*.
 #. Select the project from the dropdown list. Note that system access
    (Jet/Hera/Gaea/Niagara) is determined by project.
@@ -510,8 +554,13 @@ access.
 
 Once you have a NOAA.gov email address, you can request an RDHPCS
 account through the Account Information Managment system, AIM. Visit
+<<<<<<< Updated upstream
 the Account Information Management (`AIM`_) website and request
 access to the RDHPCS project.  Log into AIM using your NOAA email
+=======
+the `AIM`_ website and request access to the RDHPCS project.
+Log into AIM using your NOAA email
+>>>>>>> Stashed changes
 credentials, review your profile for accuracy, and request the RDHPCS
 project.
 
