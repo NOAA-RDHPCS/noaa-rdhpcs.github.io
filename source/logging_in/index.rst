@@ -4,9 +4,8 @@
 Logging In
 ##########
 
-Access to Gaea requires an RDHPCS account.  Please review the :ref:`Obtaining an
-Account <accounts>` page, or `see the link below
-<https://rdhpcs2.common2.docs.rdhpcs.noaa.gov/wiki/index.php/Logging_in>`_
+Access to Gaea requires an RDHPCS account.  Please review the
+:ref:`Obtaining an Account <accounts>` page for details.
 
 Obtaining an Account
 ====================
@@ -14,8 +13,7 @@ Obtaining an Account
 1. User gets NEMS/Gmail account from sponsoring lab's process.
    (Get this done before starting the Gaea account request process.)
 2. User uses NEMS/Gmail (First.Last username and password) to access the RDHPCS
-   `Account Information Management (AIM) <https://aim.rdhpcs.noaa.gov>`_ and
-   requests access to one or more projects.
+   Account Information Management system, or `AIM <https://aim.rdhpcs.noaa.gov>`_
 3. The principle investigator (PI) of project approves.
 4. HR approves.
 5. The Information System Security Officer (ISSO) approves.
@@ -199,5 +197,6 @@ tunnels, the user must configure their local SSH client to create tunnels
 to/from the bastion.
 
 See the Port Tunnel section of the :ref:`Tectia` page for details.
+
 
 
