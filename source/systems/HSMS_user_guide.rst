@@ -4,6 +4,8 @@
 HSMS HPSS User Guide
 ********************
 
+.. image:: /images/PPAN.png
+
 NESCC HPSS
 ==========
 The centralized, long-term data archive system at National
