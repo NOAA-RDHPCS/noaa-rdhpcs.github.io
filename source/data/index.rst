@@ -1,3 +1,5 @@
+
+
 .. _data-storage-and-transfers:
 
 ##########################
@@ -15,5 +17,8 @@ Below we give an overview and explain where each storage area is mounted.
     summary
     nescc_hpss
     gfdl_archive
+    data_transfer_overview
+    transferring_data
     globus_online_data_transfer
     globus_example
+
