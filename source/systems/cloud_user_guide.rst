@@ -17,9 +17,8 @@ NOAA Cloud Computing uses the `Parallel Works
 <https://parallelworks.com>`_ computing platform to allow users to
 manage their cloud computing resources across Amazon Web Services
 (AWS), Google Compute Platform (GCP), and Microsoft Azure Cloud
-Computing Services (Azure) via a customized for `NOAA RDHPCS Portal
-<https://noaa.parallel.works>`_.  The `Parallel Works User Guide
-<https://docs.parallel.works>`_ is their standard documentation. NOAA
+Computing Services (Azure) via the NOAA RDHPCS Portal, customized for NOAA.
+The Parallel Works User Guide is their standard documentation. NOAA
 users will find minor differences, for example, the login
 authentication, and project allocation, between the standard and
 customized applications.
@@ -32,7 +31,7 @@ NOAA's Parallel Works Portal
 ============================
 
 Access to the NOAA RDHPCS Cloud Computing envrironment is through the
-`NOAA RDHPCS Portal` located at https://noaa.parallel.works, and uses
+`NOAA RDHPCS Portal` located at `parallel works' and uses
 the :ref:`RSA Token <rsa_token>` authentication method.
 
 
@@ -42,17 +41,83 @@ Workflow
 The typical workflow for using the cloud resources is presented in the
 following diagram.
 
-.. figure:: /images/CloudProcessing.jpg
+.. figure:: /images/cloudprocessing.jpg
   :alt: typical NOAA compute workflow diagram
 
-  Diagram that details a typical NOAA Compute workflow.
+.. note::
+
+  To use the RDHPCS Cloud system, you must have an account on a Cloud project. To
+  obtain an account, submit a request for that account in AIM.
+  The :ref:`Accounts` section explains the steps to do so.
+
+#. :ref:`log-into-cloud`
+#. :ref:`configure-cluster`
+#. :ref:`start-cluster`
+#. :ref:`import`
+#. :ref:`computation`
+#. Export Data
+#. Shut down the cluster.
+
+.. _log-into-cloud:
+
+Log Into the Cloud
+^^^^^^^^^^^^^^^^^^
+
+To access the RDHPCS cloud gateway, log into `Parallel Works <https://noaa.parallel.works>`_
+
+.. figure:: /images/NOAAcloud.png
+   :scale: 50%
+
+You username is your NOAA username or email address.
+Your password is your RSA PIN plus the 8 digit code from your RSA token.
+When you are logged in, click **Compute**.
+
+.. figure:: /images/cgateway.png
+   :scale: 65%
+
+On the Compute tab, notice the following:
+
+* Power button: Used to start and stop clusters.
+* Node Status indicator: Displays resources currently in use.
+* Status indicator: Displays the cluster status (Active/Stopped)
+* Gear: This button opens a new tab to configure a cluster.
+*  "i" button: Opens a status window, where you can get the IP address of the a login node of the cluster.
+*  Use this IP address to log into the master node once your cluster has been started.
+
+.. _configure-cluster:
+
+Configure the Cluster
+^^^^^^^^^^^^^^^^^^^^
+
+Instructions to `create and configure a cluster. <https://parallelworks.com/docs/compute/configuring-clusters>`_
+
+.. _start-cluster:
+
+Start the Cluster
+^^^^^^^^^^^^^^^^^
+
+Instructions to `start and stop a cluster. <https://parallelworks.com/docs/compute/starting-stopping-clusters>`_
+
+.. _import:
+
+Import Data
+^^^^^^^^^^^
+
+Instructions for `data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
+
+.. _computation:
+
+Perform Computations
+^^^^^^^^^^^^^^^^^^^^
+
+Instructions for `computation <https://parallelworks.com/docs/navigating-the-platform#compute>`__
 
 
 Data Transfers
---------------
+==============
 
 The best way to get data in and out of the RDHPCS Cloud platforms is
-using :ref:`globus_online_data_transfer`.
+to use :ref:`globus_online_data_transfer`.
 
 .. warning::
 
@@ -83,9 +148,9 @@ questions or assistance.
 Training Videos
 ===============
 
-Occasionally, the NOAA RDHPCS Cloud Computing team, along with
-Parallel Works will present training sessions.  Below are some of the
-recorded sessions and other material.
+NOAA RDHPCS Cloud Computing team, along with
+Parallel Works, presents training sessions for Cloud users.
+Recorded sessions and other materials are linked below.
 
 .. note::
 
