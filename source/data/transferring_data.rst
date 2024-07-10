@@ -582,7 +582,7 @@ When prompted for a password, enter your RSA PIN + RSA Token:
 
 External Data Transfers (applies to NESCC, ie. Hera and Niagara only)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-PLACEHOLDER FOR MISSING information
+
 
 Internally Initiated Transfers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
