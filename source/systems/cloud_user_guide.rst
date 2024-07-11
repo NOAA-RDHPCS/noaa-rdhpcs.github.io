@@ -1,9 +1,9 @@
 
 .. _cloud-user-guide:
 
-**********************
+######################
 RDHPCS Cloud Computing
-**********************
+######################
 
 The RDHPCS Cloud Platform allows NOAA users to create an custom HPC
 cluster on an as-needed basis, with the type of resources that are
@@ -23,15 +23,15 @@ users will find minor differences, for example, the login
 authentication, and project allocation, between the standard and
 customized applications.
 
-We recommend the `Parallel Works User Guide`_ for comprehensive
-information about the product. Users should click the FAQ link located
-on the sidebar to learn about the NOAA RDHPCS-specific topics.
+We recommend the Parallel Works User Guide for comprehensive
+information about the product. Users can review the FAQ section
+to learn about the NOAA RDHPCS-specific topics.
 
 NOAA's Parallel Works Portal
 ============================
 
 Access to the NOAA RDHPCS Cloud Computing envrironment is through the
-`NOAA RDHPCS Portal` located at `parallel works' and uses
+NOAA RDHPCS Portal located at Parallel Works, and uses
 the :ref:`RSA Token <rsa_token>` authentication method.
 
 
@@ -63,7 +63,7 @@ following diagram.
 Log Into the Cloud
 ^^^^^^^^^^^^^^^^^^
 
-To access the RDHPCS cloud gateway, log into `Parallel Works <https://noaa.parallel.works>`_
+To access the RDHPCS cloud gateway, log into `Parallel Works`_
 
 .. figure:: /images/NOAAcloud.png
    :scale: 50%
@@ -87,7 +87,7 @@ On the Compute tab, notice the following:
 .. _configure-cluster:
 
 Configure the Cluster
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 Instructions to `create and configure a cluster. <https://parallelworks.com/docs/compute/configuring-clusters>`_
 
@@ -140,7 +140,7 @@ to use :ref:`globus_online_data_transfer`.
   <https://www.noaa.gov/information-technology/open-data-dissemination>`__.
 
 Getting Help
-------------
+============
 
 Please use the :ref:`RDHPCS Cloud Help Desk <getting_help>` for
 questions or assistance.
@@ -157,8 +157,9 @@ Recorded sessions and other materials are linked below.
   You must login using your NOAA email credentials to access the
   videos and other material.
 
+
 Beginner's Guide to NOAA's HPC Cloud
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Presented on November 2023, Parallel Works presents the basics on
 using the Parallel Works platform to create, start, monitor and
@@ -176,7 +177,7 @@ development environments (IDE) like `RStudio
           height="300"></iframe>
 
 Parallel Works
---------------
+==============
 
 **June 5, 2023**
 
@@ -464,7 +465,7 @@ Monthly Utilization Reports
 ===========================
 
 FY2024 Usage
-------------
+^^^^^^^^^^^^
 
 `Cumulative usage through end of May
 <https://docs.google.com/presentation/d/1fzqbYr1ma-ajJWRJQDcxPpgOAsojFKG_1-S_Y7f3Y3s/edit#slide=id.p>`_
@@ -474,7 +475,7 @@ Frequently Asked Questions
 ==========================
 
 General Cloud Issues
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 **How do I open a cloud help desk ticket?**
 
@@ -489,7 +490,8 @@ outside the network?**
 
 Refer the Parallel works user guide, section `From outside the
 platform
-<https://docs.parallel.works/interacting-with-clusters/logging-in-controller>`__
+<https://docs.parallel.works/interacting-with-clusters/logging-in-controller>`_
+
 
 **What are the project allocation usage limits and actions?**
 
@@ -542,7 +544,7 @@ platform
     email all resources have been removed.
 
 How do I get a project allocation or an allocation increase?
-------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RDHPCS System compute allocations are decided upon by the
 RDHPCS Allocation Committee (AC), with oversight from the
@@ -721,7 +723,7 @@ Parallel works
 --------------
 
 **Where do I find the Parallel Works User Guide?**
-`User Guide <https://docs.parallel.works/>`__
+`User Guide`_.
 
 **How do I get access to the Parallel Works Platform?**
 
@@ -752,8 +754,8 @@ platform project used for cost specific tests.
 
 - Click the link: “Make a request for an RSA token”
 
-After your request is approved, you can `login on to the
-platform: <https://noaa.parallel.works/>`_
+After your request is approved, you can login on to the
+platform.
 
 **How is a new user added to a project on the Parallel Works?**
 
@@ -1032,7 +1034,8 @@ type naming and cost. Broadly, the following cost types are
 explained below.
 
 UnknownUsageType: Network cost related virtual private
-network. Additional `reading here <https://cloud.google.com/vpc/network-pricing>`_ and `here <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`_
+network. Additional `reading here <https://cloud.google.com/vpc/network-pricing>`_ and
+here <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`_
 
 Other Node: Controller node cost.
 
@@ -1081,10 +1084,10 @@ If a user finds specific packages are not present in the
 base boot image, the user can add it by creating own custom
 image. Follow the steps to create a custom snapshot.
 
-Refer the user guide to learn on `creating a
-snapshot <https://docs.parallel.works/cloud-snapshots/>`__
+Refer the user guide to learn how to create a snapshot.
 
 After a snapshot is created, the next step is to reference
+
 it in the cluster Resource configuration.
 
 From the Parallel Works banner, click on the “Compute” tab,
@@ -2112,9 +2115,9 @@ below:
 Miscellaneous
 -------------
 
-`Parallel Works new features blog posts <https://parallelworks.com/blog/2023-august-recap>`_
+`Parallel Works` new features blog posts
 
-`Instance Types explained <https://parallelworks.com/docs/compute/instance-types>`_
+Instance Types explained
 
 **How to find cores and threads on a node?**
 
