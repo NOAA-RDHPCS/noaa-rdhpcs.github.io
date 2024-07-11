@@ -13,7 +13,7 @@ For security reasons, access to most external
 hosts or sites (including your laptop/desktop) is blocked, and access is
 opened up on an as-needed basis.  Sites that have been allowed access
 are referred to as *trusted hosts* and all other sites/hosts will be
-considered *untrusted” sites/hosts*
+considered *"untrusted" sites/hosts.*
 
 Please see the '''Firewall''' section below for more details if you
 need access to/from a machine that is currently considered as an
@@ -29,7 +29,7 @@ Data Transfer Methods
   Where Globus endpoints are available, it is the recommended method
   for high-speed transfer. Note that some sites outside the RDHPCS
   program do not support Globus.
-* Data Transfer Nodes (DTNs)are dedicated systems (typically servers)
+* Data Transfer Nodes (DTNs) are dedicated systems (typically servers)
   deployed and configured specifically for data transfer. As such,
   they provide a comparatively fast method for data transfer.  DTNs
   can only be used within RDHPCS, and transfers are limited to
@@ -39,8 +39,8 @@ Data Transfer Methods
   program to external sites. Globus, or typical data transfer
   commands, can be used for transfer to and from UDTNs.
 * Port Tunnelling. SSH tunnels can be created from a point of login to
-  any remote host. Once a tunnel has been created you can use the
-  tunnels for data transfers, even from “untrusted hosts). This
+  any remote host. Once a tunnel has been created, you can use the
+  tunnels for data transfers, even from “untrusted hosts". This
   method is available when other choices are not available or optimal.
 
 .. _globus:
@@ -50,7 +50,7 @@ Globus
 
 Globus Connect Service is available on all RDHPCS systems (Hera,
 Niagara, Jet, PPAN, Gaea, Orion and Hercules) and we encourage its use
-over a other methods whenever possible. Globus Connect Service is used
+over other methods whenever possible. Globus Connect Service is used
 to transfer data between 2 Globus endpoints. A Globus endpoint is a
 file transfer location (computer/server) accessible to Globus. To
 transfer data, use your browser to connect to the Globus app,
@@ -77,7 +77,7 @@ as it provides a fast method for transferring TO and FROM HPC Systems
 - Jet, Hera, Niagara, Gaea, and Orion.  Please see the
 Transferring Data page for complete details.
 
-Note the follow:
+Note the following:
 * DTNs cannot be accessed from a home network. For
 transfers from systems that cannot access the DTNs, refer to UDTN,
 below.
