@@ -81,8 +81,8 @@ On the Compute tab, notice the following:
 * Node Status indicator: Displays resources currently in use.
 * Status indicator: Displays the cluster status (Active/Stopped)
 * Gear: This button opens a new tab to configure a cluster.
-*  "i" button: Opens a status window, displaying the IP address of the a login node of the cluster.
-*  Use this IP address to log into the master node once your cluster has been started.
+*  "i" button: Opens a status window with the login node IP address.
+*  Use this IP address to log into the master node.
 
 .. _configure-cluster:
 
@@ -179,10 +179,6 @@ development environments (IDE) like `RStudio
 Parallel Works
 ==============
 
-**June 5, 2023**
-
-`Introduction to New Azure Storage Services <"Introduction to Azure new storage services>`_
-
 **April 10, 2024**
 
 `Job monitor and VNC settings
@@ -241,7 +237,7 @@ Especially useful for new users:
 
 **Parallel Works Foundation, February 16, 2023**
 
-`Workshop <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
+`Workshop <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_
 
 Foundational topics include:
 - Creation of a cluster configuration
@@ -489,8 +485,7 @@ Typically, your ticket is responded to within 2 hours.
 outside the network?**
 
 Refer the Parallel works user guide, section `From outside the
-platform
-<https://docs.parallel.works/interacting-with-clusters/logging-in-controller>`_
+platform <https://parallelworks.com/docs/compute/logging-in-controller>`_.
 
 
 **What are the project allocation usage limits and actions?**
@@ -633,8 +628,8 @@ storage on the AWS, Azure, and GCP cloud platforms. You can
 create as many lustre file systems as you want from the PW
 Storage tab by selecting the “add storage” button.
 
-Refer the user guide section on `adding storage link
-<https://docs.parallel.works/managing-storage/creating-storage>`__
+Refer the user guide section on `adding storage
+<https://docs.parallel.works/storage/creating-storage>`__
 
 Cost for lustre storage can be found at the definition
 page when creating storage.
@@ -733,7 +728,7 @@ Parallel works
   the “Account Management Home”.
 - Access AIM to request a project and RSA token. No CAC is necessary
   to access the Parallel Works platform.
-- From the Account Management Home, click the link: “Click here to
+- From the Account Management Home, click on “Click here to
   Request Access to a Project” and select a project the list of
   projects.
 
@@ -766,9 +761,8 @@ Google platform, and followed by the project name. An
 example, ca-budget-test implies that project budget-test
 runs from the AWS platform.
 
-Use the AIM link and click on
-the link "Request new access to a project" to add yourself
-to a project.
+Use the AIM link and click on"Request new access to a project" to add
+yourself to a project.
 
 Access to the project is contingent on PI's approval.
 
@@ -1209,7 +1203,8 @@ persistent], or additional storage for backup, start at the
 `Managing the Storage:
 <https://docs.parallel.works/managing-storage/>`_
 
-`Create a cluster configuration <https://docs.parallel.works/interacting-with-clusters/configuring-clusters>`_
+**Create a cluster configuration cluster**
+
 
 How do I enable run time alerts on my cluster?**
 
@@ -1225,7 +1220,7 @@ You can enable this functionality on a running cluster, by
 navigating to the “properties” tab of your resource name
 under the “Resource” tab.
 
-`Reference <https://docs.parallel.works/interacting-with-clusters/creating-clusters>`__
+`Reference <https://docs.parallel.works/compute/creating-clusters>`__
 
 Missing user directory in the group's contrib volume.**
 
@@ -1455,7 +1450,7 @@ failure.
 
 **How do I create Parallel Works resource configuration on my account?**
 
-Follow the instructions on this `link <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit#slide=id.g11424a5fc64_0_29>`_
+Follow `these instructions <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit#slide=id.p>`_
 
 How do I get AMD processor resources configuration?**
 
@@ -1584,8 +1579,6 @@ only available in a cluster launched with that
 configuration. Instead store your key under “account” ->
 “Authentication” tab that automatically populates into your all clusters.
 
-`Reference <https://docs.parallel.works/navigating-the-platform#account>`__
-
 **User bootstrap script**
 
 In the resource config page, user bootstrap script pointing
@@ -1601,7 +1594,7 @@ Example:
 
   /contrib/Unni.Kirandumkara/pw_support/config-cluster.sh
 
-`Reference <https://docs.parallel.works/managing-organizations/organization-bootstrap-script#testing-a-sample-bootstrap-script>`__
+`Reference <https://docs.parallel.works/managing-organizations/organization-bootstrap-script>`__
 
 Configuration page has a 16k metadata size limitation.
 Following these settings can reduce your possibility of a
@@ -2611,12 +2604,11 @@ since you can assign more processors to the build.
 **GCP Region/AZs on GPUs and models**
 
 Select a location “North America” and machine type “A2” to view
-different types of GPUs available on different regions/AZs from this
-`link
+different types of GPUs available on different `regions/AZs
 <https://cloud.google.com/compute/docs/regions-zones#available>`__
 
 To learn more about GPU models, refer to this
-`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones#gpu_regions_and_zones>`__
+`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones>`_
 
 **What are the GPU models available on AWS, Azure, and GCP**
 
