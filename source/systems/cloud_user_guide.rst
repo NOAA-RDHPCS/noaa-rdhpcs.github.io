@@ -81,7 +81,7 @@ On the Compute tab, notice the following:
 * Node Status indicator: Displays resources currently in use.
 * Status indicator: Displays the cluster status (Active/Stopped)
 * Gear: This button opens a new tab to configure a cluster.
-*  "i" button: Opens a status window, where you can get the IP address of the a login node of the cluster.
+*  "i" button: Opens a status window, displaying the IP address of the a login node of the cluster.
 *  Use this IP address to log into the master node once your cluster has been started.
 
 .. _configure-cluster:
@@ -466,7 +466,8 @@ Monthly Utilization Reports
 FY2024 Usage
 ------------
 
-`Cumulative usage through end of May <https://docs.google.com/presentation/d/1fzqbYr1ma-ajJWRJQDcxPpgOAsojFKG_1-S_Y7f3Y3s/edit#slide=id.p>`_
+`Cumulative usage through end of May
+<https://docs.google.com/presentation/d/1fzqbYr1ma-ajJWRJQDcxPpgOAsojFKG_1-S_Y7f3Y3s/edit#slide=id.p>`_
 
 
 Frequently Asked Questions
