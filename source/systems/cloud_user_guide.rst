@@ -237,7 +237,7 @@ Especially useful for new users:
 
 **Parallel Works Foundation, February 16, 2023**
 
-`Workshop <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_
+Workshop TBD
 
 Foundational topics include:
 - Creation of a cluster configuration
@@ -485,7 +485,7 @@ Typically, your ticket is responded to within 2 hours.
 outside the network?**
 
 Refer the Parallel works user guide, section `From outside the
-platform <https://parallelworks.com/docs/compute/logging-in-controller>`_.
+platform <https://parallelworks.com/docs/compute>`_.
 
 
 **What are the project allocation usage limits and actions?**
@@ -1200,8 +1200,7 @@ If your cluster requires lustre file system [ephemeral or
 persistent], or additional storage for backup, start at the
 "Storage" section and then use the "Resource" section.
 
-`Managing the Storage:
-<https://docs.parallel.works/managing-storage/>`_
+`Managing the Storage: <https://docs.parallel.works/managing-storage/>`_
 
 **Create a cluster configuration cluster**
 
@@ -1450,7 +1449,7 @@ failure.
 
 **How do I create Parallel Works resource configuration on my account?**
 
-Follow `these instructions <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit#slide=id.p>`_
+Follow `these instructions <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit?usp=sharing>`_
 
 How do I get AMD processor resources configuration?**
 
@@ -2613,7 +2612,7 @@ To learn more about GPU models, refer to this
 **What are the GPU models available on AWS, Azure, and GCP**
 
 AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g
-`here <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`__
+`here <https://docs.aws.amazon.com/dlami/latest/devguide/instance-select.html>`__
 
 Azure GPUs can be found by typing Standard_NC,
 Standard_ND, Standard_NV, and Standard_NG
