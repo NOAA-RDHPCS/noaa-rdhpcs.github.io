@@ -81,7 +81,7 @@ accessed via SSH. MSU systems (Orion, Hercules) are accessed via SSH
 or OpenOnDemand.
 
 Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web
-browser.  Login `here. <https://noaa.parallel.works/log>`_
+browser.  Login to `Parallel Works. <https://noaa.parallel.works/login>`_
 
 Cloud Computing
 ---------------

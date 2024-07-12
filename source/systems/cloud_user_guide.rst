@@ -231,15 +231,9 @@ Especially useful for new users:
 - Configurable slurm timeouts (and other slurm settings)
 - building a custom snapshot.
 
-**Platform Enhancements Training, February 16, 2023**
-
-`Presentation <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`__
-
 **Parallel Works Foundation, February 16, 2023**
 
-Workshop TBD
-
-Foundational topics include:
+foundational topics include:
 - Creation of a cluster configuration
 - multi-user setup
 - hiding a resource
@@ -396,9 +390,6 @@ demonstrations, questions and answers.
 -  The new COST dashboard
 -  Lustre configuration issues
 -  Azure cold storage options.
-
-Notes are `available.
-<https://docs.google.com/document/d/1FUDebrZ_lYv3VgUTKvxWGvpDE6VMNQaJmwVy5g_8Jx8/edit>`__
 
 `24 May 2023
 <https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
@@ -629,7 +620,7 @@ create as many lustre file systems as you want from the PW
 Storage tab by selecting the “add storage” button.
 
 Refer the user guide section on `adding storage
-<https://docs.parallel.works/storage/creating-storage>`__
+<https://docs.parallel.works/storage>`__
 
 Cost for lustre storage can be found at the definition
 page when creating storage.
@@ -1200,7 +1191,7 @@ If your cluster requires lustre file system [ephemeral or
 persistent], or additional storage for backup, start at the
 "Storage" section and then use the "Resource" section.
 
-`Managing the Storage: <https://docs.parallel.works/managing-storage/>`_
+`Managing the Storage: <https://docs.parallel.works/storage/>`_
 
 **Create a cluster configuration cluster**
 
@@ -1219,7 +1210,7 @@ You can enable this functionality on a running cluster, by
 navigating to the “properties” tab of your resource name
 under the “Resource” tab.
 
-`Reference <https://docs.parallel.works/compute/creating-clusters>`__
+`Reference <https://docs.parallel.works/compute>`__
 
 Missing user directory in the group's contrib volume.**
 
@@ -1592,8 +1583,6 @@ Example:
   ALLNODES
 
   /contrib/Unni.Kirandumkara/pw_support/config-cluster.sh
-
-`Reference <https://docs.parallel.works/managing-organizations/organization-bootstrap-script>`__
 
 Configuration page has a 16k metadata size limitation.
 Following these settings can reduce your possibility of a
@@ -1992,7 +1981,7 @@ tab, and your SSH public keys.
 Remove the SSH key from the “Access Public Key” box, and
 save your configuration.
 
-`Reference <https://docs.parallel.works/navigating-the-platform#account>`__
+`Reference <https://docs.parallel.works/navigating-the-platform>`__
 
 **Where do I enter my public SSH key in the PW platform?**
 
@@ -2244,8 +2233,8 @@ node.
 #. Copy a file:
 
    Use the Azure destination as:
-   https://noaastore.blob.core.windows.net/ <Name of the
-   secret key file>
+   *noaastore.blob.core.windows.net/ <Name of the
+   secret key file>*
 
    .. code::
 
