@@ -327,7 +327,7 @@ performance for varying file sizes, including the use of SSDs for
 better small-file performance. The defaults also attempt to makethe
 best use of the SSD targets (which are faster, but have much less
 capacity than HDDs). More details on PFL are available in the `Lustre
-documentation <https://doc.lustre.org/lustre_manual.xhtml>`_.
+documentation <https://www.lustre.org/documentation/>`_.
 
 .. Note::
 
@@ -869,7 +869,7 @@ Additional documentation on Intel MPI
 """""""""""""""""""""""""""""""""""""
 
 The `Intel documentation library
-<https://www.intel.com/content/www/us/en/developer/tools/documentation.html>`_
+<https://www.intel.com/content>`_
 has extensive documentation, the following are a list of specific
 documents that may be useful.
 
@@ -962,8 +962,7 @@ Intel Trace Analyzer
 
 Intel Trace Analyzer (formerly known as Vampir Trace) can be used for
 analyzing and troubleshooting MPI programs. Please refer to the
-`documentation
-<https://www.intel.com/content/www/us/en/docs/trace-analyzer-collector/get-started-guide/2021-4/overview.html>`_.
+`documentation <https://www.intel.com>`_.
 Even though we have modules created for "itac" for this utility, it
 may better to follow the instructions from the link above as the
 instructions for more recent versions may be different than when we

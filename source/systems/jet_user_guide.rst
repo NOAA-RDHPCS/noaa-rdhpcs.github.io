@@ -209,9 +209,6 @@ the future by scientists to solve tomorrow's weather and hurricane
 prediction challenges.
 
 
-EVERYTHING BELOW THIS LINE IS IN FLUX
-=====================================
-
 About Modules
 =============
 
@@ -325,9 +322,9 @@ Using Math Libraries
 
 The intel math kernel library (MKL) provides a wide variety of
 optimized math libraries including "BLAS, LAPACK, ScaLAPACK, sparse
-solvers, fast Fourier transforms, vector math, and more." The product
-documentation can be found `here
-<https://software.intel.com/en-us/articles/intel-math-kernel-library-documentation/>`__.
+solvers, fast Fourier transforms, vector math, and more." Click the
+link for `product documentation
+<https://www.intel.com/content/www/us/en/docs/onemkl/get-started-guide/2023-0/overview.html>`_
 
 Below are provided several examples that should help most of
 the users on our system.
@@ -365,8 +362,7 @@ line:
 .. rubric:: Linking with FFT, and the FFTW interface
 
 Intel provides highly optimized FFT routines within MKL. They are
-documented `here
-<https://software.intel.com/en-us/articles/the-intel-math-kernel-library-and-its-fast-fourier-transform-routines/>`__.
+documented in the `Intel math kernel library <https://software.intel.com/en-us/articles/the-intel-math-kernel-library-and-its-fast-fourier-transform-routines/>`__.
 While Intel has a specific interface (DFTI), we recommend that you use
 the FFTW interface. `FFTW <http://www.fftw.org/>`__ is an open-source,
 highly optimized FFT library, that supports many different platforms.
@@ -615,27 +611,21 @@ Policies and Best Practices
 
 .. rubric:: Project Data Management
 
-`Project Data Management
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Usage_and_Software_Support_Policies#File_System_Usage_Practices>`__
-, in RDHPCS CommonDocs. This includes the High Performance File System
+Project Data Management
+This includes the High Performance File System
 (HPFS, Scratch), HFS (Home File System), the HPSS HSMS (tape).
 
 .. rubric:: Login (Front End) Node Usage Policy
 
-`Login (Front_End) Node Usage Policy
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Login_(Front_End)_Node_Usage_Policy>`__
-, in RDHPCS CommonDocs
+Login (Front_End) Node Usage Policy in RDHPCS CommonDocs
 
 .. rubric:: Cron Usage Policy
 
-`Cron Usage Policy
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`__
-, in RDHPCS CommonDocs
+Cron Usage Policy in RDHPCS CommonDocs
 
 .. rubric:: Maximum Job Length Policy
 
-See the section: `Specifying a Queue (QOS)
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php?title=Running_and_Monitoring_Jobs_on_Jet_and_Theia_-_SLURM&action=edit&section=23>`__\
+See the section
 for maximum job length per partition and QOS. If you require jobs to
 run longer than this, it is expected that you use checkpoint/restart
 to save the state of your model. Then you can resubmit the job and
@@ -723,8 +713,7 @@ system that we cannot answer will be forwarded to the package
 maintainer.
 
 If you wish to contribute a package to the system, please start a
-`system help ticket:
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__.
+system help ticket: :ref:`getting_help`
 
 
 System Software
@@ -833,7 +822,7 @@ Using OpenMP and Hybrid OpenMP/MPI on Jet
 
 .. rubric:: Using OpenMP and Hybrid OpenMP/MPI on Jet
 
-`OpenMP <http://en.wikipedia.org/wiki/OpenMP OpenMP>`_ is a
+`OpenMP <http://en.wikipedia.org/wiki/OpenMP>`_ is a
 programming extension for supporting parallel computing in Fortran and
 C using shared memory. It is relative easy to parallelize code using
 OpenMP. However, parallelization is restricted to a single node. As
