@@ -620,7 +620,7 @@ create as many lustre file systems as you want from the PW
 Storage tab by selecting the “add storage” button.
 
 Refer the user guide section on `adding storage
-<https://docs.parallel.works/storage>`__
+<https://parallelworks.com/docs/storage>`__
 
 Cost for lustre storage can be found at the definition
 page when creating storage.
@@ -1191,7 +1191,7 @@ If your cluster requires lustre file system [ephemeral or
 persistent], or additional storage for backup, start at the
 "Storage" section and then use the "Resource" section.
 
-`Managing the Storage: <https://docs.parallel.works/storage/>`_
+`Managing the Storage: <https://parallelworks.com/docs/storage>`_
 
 **Create a cluster configuration cluster**
 
@@ -1210,7 +1210,7 @@ You can enable this functionality on a running cluster, by
 navigating to the “properties” tab of your resource name
 under the “Resource” tab.
 
-`Reference <https://docs.parallel.works/compute>`__
+`Reference <https://docs.parallel.works>`__
 
 Missing user directory in the group's contrib volume.**
 
@@ -1981,7 +1981,7 @@ tab, and your SSH public keys.
 Remove the SSH key from the “Access Public Key” box, and
 save your configuration.
 
-`Reference <https://docs.parallel.works/navigating-the-platform>`__
+`Reference <https://parallelworks.com/docs/navigating-the-platform>`__
 
 **Where do I enter my public SSH key in the PW platform?**
 
