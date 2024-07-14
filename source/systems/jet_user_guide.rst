@@ -362,7 +362,7 @@ line:
 .. rubric:: Linking with FFT, and the FFTW interface
 
 Intel provides highly optimized FFT routines within MKL. They are
-documented in the `Intel math kernel library <https://software.intel.com/en-us/articles/the-intel-math-kernel-library-and-its-fast-fourier-transform-routines/>`__.
+documented in the `Intel math kernel library <https://www.intel.com/content/www/us/en/docs/onemkl/developer-reference-c/2024-1/fourier-transform-functions.html>`__.
 While Intel has a specific interface (DFTI), we recommend that you use
 the FFTW interface. `FFTW <http://www.fftw.org/>`__ is an open-source,
 highly optimized FFT library, that supports many different platforms.
@@ -432,14 +432,14 @@ Options for Editing on Jet
 To use any of these editors, type the name in at the command line:
 
 +----------+--------------------------------------------------------------+
-| vi       | `<http://www.linuxlookup.com/howto/using_vi_text_editor>`_   |
+| vi       | http://www.linuxlookup.com/howto/using_vi_text_editor        |
 |          | - The old school standard editor. It is a text based         |
 |          | editor (although X window versions do exist).                |
 +----------+--------------------------------------------------------------+
-| emacs    | `<http://www.nedit.org/help/index.php>`_ - An editor most    |
-|          | like what you would find in Windows.                         |
+| emacs    | https://www.gnu.org/software/emacs/ - An extensible,         |
+|          | customizable free/libre text editor                          |
 +----------+--------------------------------------------------------------+
-| nedit    | `<http://www.nedit.org/help/index.php>`_ - An editor most    |
+| nedit    | http://www.nedit.org/ - An editor most                       |
 |          | like what you would find in Windows.                         |
 +----------+--------------------------------------------------------------+
 | nano     | It is just like nedit, easier to learn than vi, and does     |

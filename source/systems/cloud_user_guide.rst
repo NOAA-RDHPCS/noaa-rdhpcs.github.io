@@ -115,22 +115,22 @@ Parallel Works
 
 **June 5, 2023**
 
-`Introduction to New Azure Storage Services <"Introduction to Azure new storage services>`_
+`Introduction to New Azure Storage Services <https://drive.google.com/file/d/1vvcsdsT0ZSVj1vfNN4YQAp9zCSZb3i8r>`__
 
 **April 10, 2024**
 
 `Job monitor and VNC settings
-<https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`_
+<https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`__
 
 **February 28, 2024**
 
 `Rocky8: Linux Image and New Storage Features
-<https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`_
+<https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`__
 
 **February 9, 2024**
 
 `On-Demand Provisioning on On-Premise HPC systems
-<https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`_
+<https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`__
 
 **Parallel Works New Features Training, September 27, 2023**
 
@@ -171,7 +171,7 @@ Especially useful for new users:
 
 **Platform Enhancements Training, February 16, 2023**
 
-`Presentation <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg/edit#slide=id.g20c4ad86293_1_0>`__
+`Presentation <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg>`__
 
 **Parallel Works Foundation, February 16, 2023**
 
@@ -423,7 +423,7 @@ outside the network?**
 
 Refer the Parallel works user guide, section `From outside the
 platform
-<https://docs.parallel.works/interacting-with-clusters/logging-in-controller>`__
+<https://parallelworks.com/docs/compute/logging-in-controller#from-outside-the-platform>`__
 
 **What are the project allocation usage limits and actions?**
 
@@ -566,7 +566,7 @@ create as many lustre file systems as you want from the PW
 Storage tab by selecting the “add storage” button.
 
 Refer the user guide section on `adding storage link
-<https://docs.parallel.works/managing-storage/creating-storage>`__
+<https://parallelworks.com/docs/storage>`__
 
 Cost for lustre storage can be found at the definition
 page when creating storage.
@@ -1016,7 +1016,7 @@ base boot image, the user can add it by creating own custom
 image. Follow the steps to create a custom snapshot.
 
 Refer the user guide to learn on `creating a
-snapshot <https://docs.parallel.works/cloud-snapshots/>`__
+snapshot <https://parallelworks.com/docs/account-settings/cloud-snapshots>`__
 
 After a snapshot is created, the next step is to reference
 it in the cluster Resource configuration.
@@ -1138,9 +1138,9 @@ persistent], or additional storage for backup, start at the
 "Storage" section and then use the "Resource" section.
 
 `Managing the Storage:
-<https://docs.parallel.works/managing-storage/>`_
+<https://parallelworks.com/docs/storagee/>`_
 
-`Create a cluster configuration <https://docs.parallel.works/interacting-with-clusters/configuring-clusters>`_
+`Create a cluster configuration <https://parallelworks.com/docs/compute/configuring-clusters>`_
 
 How do I enable run time alerts on my cluster?**
 
@@ -1156,7 +1156,7 @@ You can enable this functionality on a running cluster, by
 navigating to the “properties” tab of your resource name
 under the “Resource” tab.
 
-`Reference <https://docs.parallel.works/interacting-with-clusters/creating-clusters>`__
+`Reference <https://parallelworks.com/docs/compute/creating-clusters>`__
 
 Missing user directory in the group's contrib volume.**
 
@@ -1386,7 +1386,7 @@ failure.
 
 **How do I create Parallel Works resource configuration on my account?**
 
-Follow the instructions on this `link <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit#slide=id.g11424a5fc64_0_29>`_
+Follow the instructions on this `link <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU>`_
 
 How do I get AMD processor resources configuration?**
 
@@ -1515,7 +1515,7 @@ only available in a cluster launched with that
 configuration. Instead store your key under “account” ->
 “Authentication” tab that automatically populates into your all clusters.
 
-`Reference <https://docs.parallel.works/navigating-the-platform#account>`__
+`Reference <https://parallelworks.com/docs/navigating-the-platform>`__
 
 **User bootstrap script**
 
@@ -1532,7 +1532,7 @@ Example:
 
   /contrib/Unni.Kirandumkara/pw_support/config-cluster.sh
 
-`Reference <https://docs.parallel.works/managing-organizations/organization-bootstrap-script#testing-a-sample-bootstrap-script>`__
+`Reference <https://parallelworks.com/docs/managing-organizations/organization-bootstrap-script>`__
 
 Configuration page has a 16k metadata size limitation.
 Following these settings can reduce your possibility of a
@@ -1931,7 +1931,7 @@ tab, and your SSH public keys.
 Remove the SSH key from the “Access Public Key” box, and
 save your configuration.
 
-`Reference <https://docs.parallel.works/navigating-the-platform#account>`__
+`Reference <https://parallelworks.com/docs/navigating-the-platform>`__
 
 **Where do I enter my public SSH key in the PW platform?**
 
@@ -2139,7 +2139,7 @@ On Azure platform:
 
 .. code::
 
-  azcopy ls https://noaastore.blob.core.windows.net/ (enter your file name here)
+  azcopy ls https://noaastore.blob.core.windows.net/(enter your file name here)
 
 On GCP platform:
 
@@ -2547,7 +2547,7 @@ different types of GPUs available on different regions/AZs from this
 <https://cloud.google.com/compute/docs/regions-zones#available>`__
 
 To learn more about GPU models, refer to this
-`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones#gpu_regions_and_zones>`__
+`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones>`__
 
 **What are the GPU models available on AWS, Azure, and GCP**
 
@@ -2556,7 +2556,7 @@ AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g
 
 Azure GPUs can be found by typing Standard_NC,
 Standard_ND, Standard_NV, and Standard_NG
-`here <https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu>`__
+`here <https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview#gpu-accelerated>`__
 
 GCP GPUs can be found by typing a2. Other GPUs are found to
 be unavailable.

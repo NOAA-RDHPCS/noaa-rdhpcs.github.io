@@ -869,11 +869,11 @@ Additional documentation on Intel MPI
 """""""""""""""""""""""""""""""""""""
 
 The `Intel documentation library
-<https://www.intel.com/content>`_
+<https://www.intel.com/content/www/us/en/developer/tools/documentation.html>`_
 has extensive documentation, the following are a list of specific
 documents that may be useful.
 
-* `Intel MPI 5: <https://www.intel.com/content/www/us/en/developer/tools/documentation.html?f:@stm_10184_en=%5BIntel%C2%AE%20MPI%20Library%5D>`_
+* `Intel MPI 5: <https://www.intel.com/content/www/us/en/docs/mpi-library/developer-guide-linux/2021-13/overview.html>`_
 * `Intel PSM documentation
   <https://www.intel.com/content/dam/support/us/en/documents/network-and-i-o/fabric-products/OFED_Host_Software_UserGuide_G91902_06.pdf>`_.
   is very helpful for troubleshooting and turning purposes. This is
@@ -962,7 +962,7 @@ Intel Trace Analyzer
 
 Intel Trace Analyzer (formerly known as Vampir Trace) can be used for
 analyzing and troubleshooting MPI programs. Please refer to the
-`documentation <https://www.intel.com>`_.
+`documentation <https://www.intel.com/content/www/us/en/developer/tools/documentation.html>`__.
 Even though we have modules created for "itac" for this utility, it
 may better to follow the instructions from the link above as the
 instructions for more recent versions may be different than when we
