@@ -52,7 +52,7 @@ RDHPCS Platforms
 
       High-performance Computing collaboration with Mississippi State
       University (MSU) `More Information
-      <https://www.noaa.gov/organization/information-technology/MSU-HPC>`__
+      <https://www.noaa.gov/organization/information-technology/orion>`__
 
 
    .. tab-item:: Cloud

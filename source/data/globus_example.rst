@@ -226,7 +226,7 @@ The CLI is available on Jet, Hera, and Niagara. If you would like to
 use Globus-cli, either on your personal machine or on a system where
 globus-cli is not installed, you can install it easily. Refer to the
 instructions to install and use the `Globus CLI
-<https://docs.globus.org/cli/GlobusCLI>`_.
+<https://docs.globus.org/cli/>`_.
 
 Transferring Data to and from Your Computer
 ===========================================
