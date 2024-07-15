@@ -72,3 +72,8 @@ linkcheck_ignore = [
     r'https://noaastore\.blob\.core\.windows\.net/?.*',
     r'https://www\.intel\.com/content/.*',
 ]
+
+# This is needed for backwards compatibility.  We have
+# several links that point to pages that require a user
+# to authenticate.  This ensures the links pass the check.
+linkcheck_allow_unauthorized = True
