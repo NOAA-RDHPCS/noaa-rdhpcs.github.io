@@ -182,17 +182,17 @@ Parallel Works
 **April 10, 2024**
 
 `Job monitor and VNC settings
-<https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`_
+<https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`__
 
 **February 28, 2024**
 
 `Rocky8: Linux Image and New Storage Features
-<https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`_
+<https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`__
 
 **February 9, 2024**
 
 `On-Demand Provisioning on On-Premise HPC systems
-<https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`_
+<https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`__
 
 **Parallel Works New Features Training, September 27, 2023**
 
@@ -476,8 +476,8 @@ Typically, your ticket is responded to within 2 hours.
 outside the network?**
 
 Refer the Parallel works user guide, section `From outside the
-platform <https://parallelworks.com/docs/compute>`_.
-
+platform
+<https://parallelworks.com/docs/compute/logging-in-controller#from-outside-the-platform>`__
 
 **What are the project allocation usage limits and actions?**
 
@@ -1069,7 +1069,8 @@ If a user finds specific packages are not present in the
 base boot image, the user can add it by creating own custom
 image. Follow the steps to create a custom snapshot.
 
-Refer the user guide to learn how to create a snapshot.
+Refer the user guide to learn how to `create a
+snapshot <https://parallelworks.com/docs/account-settings/cloud-snapshots>`__
 
 After a snapshot is created, the next step is to reference
 
@@ -1440,7 +1441,7 @@ failure.
 
 **How do I create Parallel Works resource configuration on my account?**
 
-Follow `these instructions <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit?usp=sharing>`_
+Follow `these instructions <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit?usp=sharing>`__
 
 How do I get AMD processor resources configuration?**
 
@@ -2189,7 +2190,7 @@ On Azure platform:
 
 .. code::
 
-  azcopy ls https://noaastore.blob.core.windows.net/ (enter your file name here)
+  azcopy ls https://noaastore.blob.core.windows.net/(enter your file name here)
 
 On GCP platform:
 
@@ -2605,7 +2606,7 @@ AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g
 
 Azure GPUs can be found by typing Standard_NC,
 Standard_ND, Standard_NV, and Standard_NG
-`here <https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu>`__
+`here <https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview#gpu-accelerated>`__
 
 GCP GPUs can be found by typing a2. Other GPUs are found to
 be unavailable.

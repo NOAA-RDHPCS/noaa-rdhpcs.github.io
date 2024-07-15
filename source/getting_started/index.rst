@@ -66,7 +66,7 @@ RDHPCS resources for both Web and SSH access. To obtain a CAC, work
 with your local admin services team as they need to start the
 application process.  Some labs can issue CACs on-site, otherwise you
 will have to visit a RAPIDS site. The site locator website is `ID Card
-Office Online <https://idco.dmdc.osd.mil/idco/locator>`_.  SSH logins
+Office Online <https://idco.dmdc.osd.mil/idco/>`_.  SSH logins
 with a CAC require additional software.
 
 Accessing the Systems
@@ -81,7 +81,7 @@ accessed via SSH. MSU systems (Orion, Hercules) are accessed via SSH
 or OpenOnDemand.
 
 Cloud RDHPCS platforms (AWS, Azure, GCP) are accessed via ParallelWorks in a web
-browser.  Login to `Parallel Works. <https://noaa.parallel.works/login>`_
+browser.  Login to `Parallel Works <https://noaa.parallel.works/login>`_.
 
 Cloud Computing
 ---------------
