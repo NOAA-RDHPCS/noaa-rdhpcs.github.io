@@ -116,8 +116,8 @@ percent used, are shown by the local ``archrpt`` command:
  archrpt -s
  archrpt -r <group>
 
-These allocations are enforced administratively. For details, see the
-:doc:`archrpt </systems/pan/archrpt>`, or ``archrpt -h`` .
+These allocations are enforced administratively. For details, see ``archrpt
+-h``.
 
 Finding Files
 -------------
