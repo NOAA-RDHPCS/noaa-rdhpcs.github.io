@@ -1,5 +1,6 @@
 .. _gaea-user-guide:
 
+
 ***************
 Gaea User Guide
 ***************
@@ -24,6 +25,7 @@ collaborative effort between the `Department of Energy
 Administration <https://www.noaa.gov/>`_.
 
 The Gaea System consists of two HPE-Cray EX 3000 systems.  Two
+
 high-capacity parallel filesystems provide over 150 petabytes of fast
 access storage. The center-wide filesystem is connected using FDR
 InfiniBand to the center’s compute and data-transfer resources. The

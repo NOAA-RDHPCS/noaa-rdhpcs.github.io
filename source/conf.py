@@ -63,3 +63,22 @@ html_theme_options = {
     "style_nav_header_background": "#efefef",
     "logo_only": True,
 }
+
+linkcheck_allowed_redirects = {
+    r'http://.*': r'https://.*',
+    r'https://.*?\.rdhpcs\.noaa\.gov/?.*': r'https://sso\.noaa\.gov:443/.*',
+    r'https://calendar\.google\.com/.*': r'https://workspace\.google\.com/.*',
+    r'https://.*?\.google\.com/?.*': r'https://accounts\.google\.com/.*?/signin/.*',
+    r'https://.*\.google\.com/?.*': r'https://.*?\.google\.com/?.*?/edit',
+    r'https://github\.com/?.*': r'https://github\.com/login',
+}
+
+linkcheck_ignore = [
+    r'https://noaastore\.blob\.core\.windows\.net/?.*',
+    r'https://www\.intel\.com/content/.*',
+]
+
+# This is needed for backwards compatibility.  We have
+# several links that point to pages that require a user
+# to authenticate.  This ensures the links pass the check.
+linkcheck_allow_unauthorized = True

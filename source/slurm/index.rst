@@ -4,11 +4,11 @@ Slurm
 
 Slurm is an open-source cluster management and job scheduler, originally
 developed at the Lawrence Livermore National Laboratory.  Commercial support is
-now provided by `SchedMD <https://schedmd.com>`__.  The information provided in
+now provided by `SchedMD <https://www.schedmd.com>`__.  The information provided in
 this document is a basic guide for some of the most useful commands, along with
 specific information for the RDHPCS systems.  The SchedMD site maintains `full
 documentation <https://slurm.schedmd.com/>`__ and basic `tutorials
-<https://slurm.schedmd.com/tutorials.html>`__.
+<https://www.schedmd.com/publications/>`__.
 
 Some common Slurm commands are summarized in the table below.
 
@@ -430,7 +430,7 @@ Show Pending and Running Jobs
 -----------------------------
 
 Use the ``squeue`` command to view a list of current jobs in the queue.  See
-``man squeue`` for more `information <squeue>`_.
+``man squeue`` for more `information <squeue_>`_.
 
 .. code-block:: shell
 
