@@ -1,9 +1,9 @@
 
 .. _cloud-user-guide:
 
-**********************
+######################
 RDHPCS Cloud Computing
-**********************
+######################
 
 The RDHPCS Cloud Platform allows NOAA users to create an custom HPC
 cluster on an as-needed basis, with the type of resources that are
@@ -17,22 +17,21 @@ NOAA Cloud Computing uses the `Parallel Works
 <https://parallelworks.com>`_ computing platform to allow users to
 manage their cloud computing resources across Amazon Web Services
 (AWS), Google Compute Platform (GCP), and Microsoft Azure Cloud
-Computing Services (Azure) via a customized for `NOAA RDHPCS Portal
-<https://noaa.parallel.works>`_.  The `Parallel Works User Guide
-<https://docs.parallel.works>`_ is their standard documentation. NOAA
+Computing Services (Azure) via the NOAA RDHPCS Portal, customized for NOAA.
+The Parallel Works User Guide is their standard documentation. NOAA
 users will find minor differences, for example, the login
 authentication, and project allocation, between the standard and
 customized applications.
 
-We recommend the `Parallel Works User Guide`_ for comprehensive
-information about the product. Users should click the FAQ link located
-on the sidebar to learn about the NOAA RDHPCS-specific topics.
+We recommend the Parallel Works User Guide for comprehensive
+information about the product. Users can review the FAQ section
+to learn about the NOAA RDHPCS-specific topics.
 
 NOAA's Parallel Works Portal
 ============================
 
 Access to the NOAA RDHPCS Cloud Computing envrironment is through the
-`NOAA RDHPCS Portal` located at https://noaa.parallel.works, and uses
+NOAA RDHPCS Portal located at Parallel Works, and uses
 the :ref:`RSA Token <rsa_token>` authentication method.
 
 
@@ -42,17 +41,83 @@ Workflow
 The typical workflow for using the cloud resources is presented in the
 following diagram.
 
-.. figure:: /images/CloudProcessing.jpg
+.. figure:: /images/cloudprocessing.jpg
   :alt: typical NOAA compute workflow diagram
 
-  Diagram that details a typical NOAA Compute workflow.
+.. note::
+
+  To use the RDHPCS Cloud system, you must have an account on a Cloud project. To
+  obtain an account, submit a request for that account in AIM.
+  The :ref:`Accounts` section explains the steps to do so.
+
+#. :ref:`log-into-cloud`
+#. :ref:`configure-cluster`
+#. :ref:`start-cluster`
+#. :ref:`import`
+#. :ref:`computation`
+#. Export Data
+#. Shut down the cluster.
+
+.. _log-into-cloud:
+
+Log Into the Cloud
+^^^^^^^^^^^^^^^^^^
+
+To access the RDHPCS cloud gateway, log into `Parallel Works`_
+
+.. figure:: /images/NOAAcloud.png
+   :scale: 50%
+
+You username is your NOAA username or email address.
+Your password is your RSA PIN plus the 8 digit code from your RSA token.
+When you are logged in, click **Compute**.
+
+.. figure:: /images/cgateway.png
+   :scale: 65%
+
+On the Compute tab, notice the following:
+
+* Power button: Used to start and stop clusters.
+* Node Status indicator: Displays resources currently in use.
+* Status indicator: Displays the cluster status (Active/Stopped)
+* Gear: This button opens a new tab to configure a cluster.
+*  "i" button: Opens a status window with the login node IP address.
+*  Use this IP address to log into the master node.
+
+.. _configure-cluster:
+
+Configure the Cluster
+^^^^^^^^^^^^^^^^^^^^^
+
+Instructions to `create and configure a cluster. <https://parallelworks.com/docs/compute/configuring-clusters>`_
+
+.. _start-cluster:
+
+Start the Cluster
+^^^^^^^^^^^^^^^^^
+
+Instructions to `start and stop a cluster. <https://parallelworks.com/docs/compute/starting-stopping-clusters>`_
+
+.. _import:
+
+Import Data
+^^^^^^^^^^^
+
+Instructions for `data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
+
+.. _computation:
+
+Perform Computations
+^^^^^^^^^^^^^^^^^^^^
+
+Instructions for `computation <https://parallelworks.com/docs/navigating-the-platform#compute>`__
 
 
 Data Transfers
---------------
+==============
 
 The best way to get data in and out of the RDHPCS Cloud platforms is
-using :ref:`globus_online_data_transfer`.
+to use :ref:`globus_online_data_transfer`.
 
 .. warning::
 
@@ -75,7 +140,7 @@ using :ref:`globus_online_data_transfer`.
   <https://www.noaa.gov/information-technology/open-data-dissemination>`__.
 
 Getting Help
-------------
+============
 
 Please use the :ref:`RDHPCS Cloud Help Desk <getting_help>` for
 questions or assistance.
@@ -83,17 +148,18 @@ questions or assistance.
 Training Videos
 ===============
 
-Occasionally, the NOAA RDHPCS Cloud Computing team, along with
-Parallel Works will present training sessions.  Below are some of the
-recorded sessions and other material.
+NOAA RDHPCS Cloud Computing team, along with
+Parallel Works, presents training sessions for Cloud users.
+Recorded sessions and other materials are linked below.
 
 .. note::
 
   You must login using your NOAA email credentials to access the
   videos and other material.
 
+
 Beginner's Guide to NOAA's HPC Cloud
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Presented on November 2023, Parallel Works presents the basics on
 using the Parallel Works platform to create, start, monitor and
@@ -111,11 +177,7 @@ development environments (IDE) like `RStudio
           height="300"></iframe>
 
 Parallel Works
---------------
-
-**June 5, 2023**
-
-`Introduction to New Azure Storage Services <https://drive.google.com/file/d/1vvcsdsT0ZSVj1vfNN4YQAp9zCSZb3i8r>`__
+==============
 
 **April 10, 2024**
 
@@ -169,15 +231,9 @@ Especially useful for new users:
 - Configurable slurm timeouts (and other slurm settings)
 - building a custom snapshot.
 
-**Platform Enhancements Training, February 16, 2023**
-
-`Presentation <https://docs.google.com/presentation/d/1Uevb_Z2AGkNE0pLO-jc1u43lbJ5vy8UcvUBrshW_NKg>`__
-
 **Parallel Works Foundation, February 16, 2023**
 
-`Workshop <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
-
-Foundational topics include:
+foundational topics include:
 - Creation of a cluster configuration
 - multi-user setup
 - hiding a resource
@@ -335,9 +391,6 @@ demonstrations, questions and answers.
 -  Lustre configuration issues
 -  Azure cold storage options.
 
-Notes are `available.
-<https://docs.google.com/document/d/1FUDebrZ_lYv3VgUTKvxWGvpDE6VMNQaJmwVy5g_8Jx8/edit>`__
-
 `24 May 2023
 <https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
 
@@ -399,16 +452,17 @@ Monthly Utilization Reports
 ===========================
 
 FY2024 Usage
-------------
+^^^^^^^^^^^^
 
-`Cumulative usage through end of May <https://docs.google.com/presentation/d/1fzqbYr1ma-ajJWRJQDcxPpgOAsojFKG_1-S_Y7f3Y3s/edit#slide=id.p>`_
+`Cumulative usage through end of May
+<https://docs.google.com/presentation/d/1fzqbYr1ma-ajJWRJQDcxPpgOAsojFKG_1-S_Y7f3Y3s/edit#slide=id.p>`_
 
 
 Frequently Asked Questions
 ==========================
 
 General Cloud Issues
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 **How do I open a cloud help desk ticket?**
 
@@ -476,7 +530,7 @@ platform
     email all resources have been removed.
 
 How do I get a project allocation or an allocation increase?
-------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RDHPCS System compute allocations are decided upon by the
 RDHPCS Allocation Committee (AC), with oversight from the
@@ -565,7 +619,7 @@ storage on the AWS, Azure, and GCP cloud platforms. You can
 create as many lustre file systems as you want from the PW
 Storage tab by selecting the “add storage” button.
 
-Refer the user guide section on `adding storage link
+Refer the user guide section on `adding storage
 <https://parallelworks.com/docs/storage>`__
 
 Cost for lustre storage can be found at the definition
@@ -655,7 +709,7 @@ Parallel works
 --------------
 
 **Where do I find the Parallel Works User Guide?**
-`User Guide <https://docs.parallel.works/>`__
+`User Guide`_.
 
 **How do I get access to the Parallel Works Platform?**
 
@@ -665,7 +719,7 @@ Parallel works
   the “Account Management Home”.
 - Access AIM to request a project and RSA token. No CAC is necessary
   to access the Parallel Works platform.
-- From the Account Management Home, click the link: “Click here to
+- From the Account Management Home, click on “Click here to
   Request Access to a Project” and select a project the list of
   projects.
 
@@ -686,8 +740,8 @@ platform project used for cost specific tests.
 
 - Click the link: “Make a request for an RSA token”
 
-After your request is approved, you can `login on to the
-platform: <https://noaa.parallel.works/>`_
+After your request is approved, you can login on to the
+platform.
 
 **How is a new user added to a project on the Parallel Works?**
 
@@ -698,9 +752,8 @@ Google platform, and followed by the project name. An
 example, ca-budget-test implies that project budget-test
 runs from the AWS platform.
 
-Use the AIM link and click on
-the link "Request new access to a project" to add yourself
-to a project.
+Use the AIM link and click on"Request new access to a project" to add
+yourself to a project.
 
 Access to the project is contingent on PI's approval.
 
@@ -966,7 +1019,8 @@ type naming and cost. Broadly, the following cost types are
 explained below.
 
 UnknownUsageType: Network cost related virtual private
-network. Additional `reading here <https://cloud.google.com/vpc/network-pricing>`_ and `here <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`_
+network. Additional `reading here <https://cloud.google.com/vpc/network-pricing>`_ and
+here <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`_
 
 Other Node: Controller node cost.
 
@@ -1015,10 +1069,11 @@ If a user finds specific packages are not present in the
 base boot image, the user can add it by creating own custom
 image. Follow the steps to create a custom snapshot.
 
-Refer the user guide to learn on `creating a
+Refer the user guide to learn how to `create a
 snapshot <https://parallelworks.com/docs/account-settings/cloud-snapshots>`__
 
 After a snapshot is created, the next step is to reference
+
 it in the cluster Resource configuration.
 
 From the Parallel Works banner, click on the “Compute” tab,
@@ -1137,10 +1192,10 @@ If your cluster requires lustre file system [ephemeral or
 persistent], or additional storage for backup, start at the
 "Storage" section and then use the "Resource" section.
 
-`Managing the Storage:
-<https://parallelworks.com/docs/storagee/>`_
+`Managing the Storage: <https://parallelworks.com/docs/storage>`_
 
-`Create a cluster configuration <https://parallelworks.com/docs/compute/configuring-clusters>`_
+**Create a cluster configuration cluster**
+
 
 How do I enable run time alerts on my cluster?**
 
@@ -1156,7 +1211,7 @@ You can enable this functionality on a running cluster, by
 navigating to the “properties” tab of your resource name
 under the “Resource” tab.
 
-`Reference <https://parallelworks.com/docs/compute/creating-clusters>`__
+`Reference <https://docs.parallel.works>`__
 
 Missing user directory in the group's contrib volume.**
 
@@ -1386,7 +1441,7 @@ failure.
 
 **How do I create Parallel Works resource configuration on my account?**
 
-Follow the instructions on this `link <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU>`_
+Follow `these instructions <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit?usp=sharing>`__
 
 How do I get AMD processor resources configuration?**
 
@@ -1515,8 +1570,6 @@ only available in a cluster launched with that
 configuration. Instead store your key under “account” ->
 “Authentication” tab that automatically populates into your all clusters.
 
-`Reference <https://parallelworks.com/docs/navigating-the-platform>`__
-
 **User bootstrap script**
 
 In the resource config page, user bootstrap script pointing
@@ -1531,8 +1584,6 @@ Example:
   ALLNODES
 
   /contrib/Unni.Kirandumkara/pw_support/config-cluster.sh
-
-`Reference <https://parallelworks.com/docs/managing-organizations/organization-bootstrap-script>`__
 
 Configuration page has a 16k metadata size limitation.
 Following these settings can reduce your possibility of a
@@ -2046,9 +2097,9 @@ below:
 Miscellaneous
 -------------
 
-`Parallel Works new features blog posts <https://parallelworks.com/blog/2023-august-recap>`_
+`Parallel Works` new features blog posts
 
-`Instance Types explained <https://parallelworks.com/docs/compute/instance-types>`_
+Instance Types explained
 
 **How to find cores and threads on a node?**
 
@@ -2183,8 +2234,8 @@ node.
 #. Copy a file:
 
    Use the Azure destination as:
-   https://noaastore.blob.core.windows.net/ <Name of the
-   secret key file>
+   *noaastore.blob.core.windows.net/ <Name of the
+   secret key file>*
 
    .. code::
 
@@ -2542,17 +2593,16 @@ since you can assign more processors to the build.
 **GCP Region/AZs on GPUs and models**
 
 Select a location “North America” and machine type “A2” to view
-different types of GPUs available on different regions/AZs from this
-`link
+different types of GPUs available on different `regions/AZs
 <https://cloud.google.com/compute/docs/regions-zones#available>`__
 
 To learn more about GPU models, refer to this
-`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones>`__
+`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones>`_
 
 **What are the GPU models available on AWS, Azure, and GCP**
 
 AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g
-`here <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`__
+`here <https://docs.aws.amazon.com/dlami/latest/devguide/instance-select.html>`__
 
 Azure GPUs can be found by typing Standard_NC,
 Standard_ND, Standard_NV, and Standard_NG

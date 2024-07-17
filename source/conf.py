@@ -82,6 +82,7 @@ linkcheck_allowed_redirects = {
 linkcheck_ignore = [
     r'https://noaastore\.blob\.core\.windows\.net/?.*',
     r'https://www\.intel\.com/content/.*',
+    r'https://www\.lustre\.org/documentation/',
 ]
 
 # This is needed for backwards compatibility.  We have
