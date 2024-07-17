@@ -19,7 +19,10 @@ html_favicon = "images/favicon.ico"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_rtd_theme", "sphinx_design", "sphinxcontrib.mermaid"]
+extensions = ["sphinx_rtd_theme",
+              "sphinx_design",
+              "sphinxcontrib.mermaid",
+              "sphinx_sitemap"]
 
 templates_path = ["_templates"]
 exclude_patterns = []
@@ -32,7 +35,8 @@ html_baseurl = "https://docs.rdhpcs.noaa.gov"
 
 html_static_path = ["_static"]
 
-html_extra_path = ['google64634d0922861b1a.html']
+html_extra_path = ["_search/google64634d0922861b1a.html",
+                   "_search/robots.txt"]
 
 html_css_files = [
     "css/theme_overrides.css",
