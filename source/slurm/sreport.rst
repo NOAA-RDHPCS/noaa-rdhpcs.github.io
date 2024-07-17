@@ -143,6 +143,6 @@ Display CPU usage for August 2023 for account <account> on cluster <cluster>
 References
 ==========
 
-* `Slurm Sreport Documentation <sreport>`_
+* `Slurm Sreport Documentation <sreport_>`_
 
 .. _`sreport`: https://slurm.schedmd.com/sreport.html
