@@ -5,9 +5,17 @@ Contributing to these docs
 Submitting suggestions
 ====================================
 
-Have a suggestion for improvement? Share it with us by `opening an issue
+Have a suggestion for improvement? To share it with us, `open an issue
 <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/issues/new>`_.
 
+Getting Started with GitHub
+=============================
+
+If you need a GitHub account, `follow these steps
+<https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account>`_
+
+If you're not sure how to get started, `we have an Overview
+<https://drive.google.com/file/d/1MdCbUExf3prY0OF-6CRc3EY1-UPSSwCE/view>`_
 
 Authoring content
 ==================
