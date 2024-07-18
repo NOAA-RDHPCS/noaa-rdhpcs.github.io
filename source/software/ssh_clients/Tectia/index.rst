@@ -102,8 +102,7 @@ Install the Tectia Client
 
       1. Download the Tectia client.
 
-         Follow the `Tectia client link
-         <https://drive.google.com/file/d/18Wc0W3d_ESuPBubwW8I8oESNhI6QJvfJ>`_
+         Follow the `Tectia client link <https://drive.google.com/drive/u/0/folders/1iQVE-Q8BGLkZlPnAR88TTon1gB39f_Vq>`_
          to open new tab on your browser. You may have to authenticate
          using your NOAA email and password.
 
@@ -195,8 +194,7 @@ Install the Tectia Client
 
       1. Download the Tectia client.
 
-         Follow the `Tectia client link
-         <https://drive.google.com/file/d/18Wc0W3d_ESuPBubwW8I8oESNhI6QJvfJ>`_
+         Follow the `Tectia client link`_
          to open new tab on your browser. You may have to authenticate
          using your NOAA email and password.
 
@@ -286,8 +284,7 @@ Install the Tectia Client
       The Mac installation package includes installers for both the
       Tectia software and the license.
 
-      1. Follow the `Tectia client link
-         <https://drive.google.com/file/d/18Wc0W3d_ESuPBubwW8I8oESNhI6QJvfJ>`_
+      1. Follow the `Tectia client link`_
          to open new tab on your browser. You may have to authenticate
          using your NOAA email and password. Once you have
          authenticated and the file is shown in your browser, click
