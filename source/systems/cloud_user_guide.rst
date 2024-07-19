@@ -27,98 +27,6 @@ We recommend the Parallel Works User Guide for comprehensive
 information about the product. Users can review the FAQ section
 to learn about the NOAA RDHPCS-specific topics.
 
-NOAA's Parallel Works Portal
-============================
-
-Access to the NOAA RDHPCS Cloud Computing envrironment is through the
-NOAA RDHPCS Portal located at Parallel Works, and uses
-the :ref:`RSA Token <rsa_token>` authentication method.
-
-
-Workflow
-========
-
-The typical workflow for using the cloud resources is presented in the
-following diagram.
-
-.. figure:: /images/cloudprocessing.jpg
-  :alt: typical NOAA compute workflow diagram
-
-.. note::
-
-  To use the RDHPCS Cloud system, you must have an account on a Cloud project. To
-  obtain an account, submit a request for that account in AIM.
-  The :ref:`Accounts` section explains the steps to do so.
-
-#. :ref:`log-into-cloud`
-#. :ref:`configure-cluster`
-#. :ref:`start-cluster`
-#. :ref:`import`
-#. :ref:`computation`
-#. Export Data
-#. Shut down the cluster.
-
-.. _log-into-cloud:
-
-Log Into the Cloud
-^^^^^^^^^^^^^^^^^^
-
-To access the RDHPCS cloud gateway, log into `Parallel Works`_
-
-.. figure:: /images/NOAAcloud.png
-   :scale: 50%
-
-You username is your NOAA username or email address.
-Your password is your RSA PIN plus the 8 digit code from your RSA token.
-When you are logged in, click **Compute**.
-
-.. figure:: /images/cgateway.png
-   :scale: 65%
-
-On the Compute tab, notice the following:
-
-* Power button: Used to start and stop clusters.
-* Node Status indicator: Displays resources currently in use.
-* Status indicator: Displays the cluster status (Active/Stopped)
-* Gear: This button opens a new tab to configure a cluster.
-*  "i" button: Opens a status window with the login node IP address.
-*  Use this IP address to log into the master node.
-
-.. _configure-cluster:
-
-Configure the Cluster
-^^^^^^^^^^^^^^^^^^^^^
-
-Instructions to `create and configure a cluster. <https://parallelworks.com/docs/compute/configuring-clusters>`_
-
-.. _start-cluster:
-
-Start the Cluster
-^^^^^^^^^^^^^^^^^
-
-Instructions to `start and stop a cluster. <https://parallelworks.com/docs/compute/starting-stopping-clusters>`_
-
-.. _import:
-
-Import Data
-^^^^^^^^^^^
-
-Instructions for `data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
-
-.. _computation:
-
-Perform Computations
-^^^^^^^^^^^^^^^^^^^^
-
-Instructions for `computation <https://parallelworks.com/docs/navigating-the-platform#compute>`__
-
-
-Data Transfers
-==============
-
-The best way to get data in and out of the RDHPCS Cloud platforms is
-to use :ref:`globus_online_data_transfer`.
-
 .. warning::
 
   At this time, the NOAA RDHPCS Cloud Globus endpoints are disabled
@@ -131,13 +39,93 @@ to use :ref:`globus_online_data_transfer`.
   CLI <https://cloud.google.com/sdk/gcloud>`__ for information on
   installation and use).
 
-  Users can install and use a `Globus Connect Personal
-  <https://www.globus.org/globus-connect-personal>`__ endpoint to
-  transfer larger files.  The RDHPCS reminds all users who perform
-  transfers out of the cloud of using a Globus endpoint, all egress
-  charges will be applied to the project.  This includes data stored
-  in a CSP public, free to access, repositories, like the NOAA `NODD
-  <https://www.noaa.gov/information-technology/open-data-dissemination>`__.
+NOAA's Parallel Works Portal
+============================
+
+Access to the NOAA RDHPCS Cloud Computing envrironment is through the
+NOAA RDHPCS Portal located at Parallel Works, and uses
+the :ref:`RSA Token <rsa_token>` authentication method.
+
+
+Workflow
+========
+
+.. note::
+
+  To use the RDHPCS Cloud system, you must have an account on a Cloud project. To
+  obtain an account, submit a request for that account in AIM.
+  The :ref:`Accounts` section explains the steps to do so.
+
+
+The typical workflow for using the cloud resources is presented in the
+following diagram.
+
+.. figure:: /images/cloudprocessing.jpg
+  :alt: typical NOAA compute workflow diagram
+
+.. tab-set::
+
+  .. tab-item:: Log into the Cloud
+     :sync: login
+
+      To access the RDHPCS cloud gateway, log into `Parallel Works`_
+
+      .. figure:: /images/NOAAcloud.png
+        :scale: 50%
+
+      Your username is your NOAA username or email address.
+      Your password is your RSA PIN plus the 8 digit code from your RSA token.
+      When you are logged in, click **Compute**.
+
+      .. figure:: /images/cgateway.png
+        :scale: 65%
+
+      On the Compute tab, notice the following:
+
+      * Power button: Used to start and stop clusters.
+      * Node Status indicator: Displays resources currently in use.
+      * Status indicator: Displays the cluster status (Active/Stopped)
+      * Gear: This button opens a new tab to configure a cluster.
+      *  "i" button: Opens a status window with the login node IP address.
+      *  Use this IP address to log into the master node.
+
+
+  .. tab-item:: Configure Cluster
+     :sync: configure
+
+      `Create and configure a cluster: <https://parallelworks.com/docs/compute/configuring-clusters>`_
+
+  .. tab-item:: Start Cluster
+     :sync: start
+
+      `Start and stop a cluster <https://parallelworks.com/docs/compute/starting-stopping-clusters>`_
+
+  .. tab-item:: Import Data
+     :sync: import
+
+      `Data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
+
+  .. tab-item:: Perform Computations
+     :sync: compute
+
+      `Computation <https://parallelworks.com/docs/navigating-the-platform#compute>`__
+
+  .. tab-item:: Export Data
+      :sync: export
+
+       `Data transfer`_
+
+  .. tab-item:: Shut Cluster Down
+     :sync: stop
+
+       `Start and stop a cluster`_
+
+Users can install and use a `Globus Connect Personal <https://www.globus.org/globus-connect-personal>`_
+endpoint to transfer larger files. The RDHPCS reminds all users who perform
+transfers out of the cloud of using a Globus endpoint, all egress
+charges will be applied to the project.  This includes data stored in
+a CSP public, free to access, repositories, like the NOAA `NODD
+<https://www.noaa.gov/information-technology/open-data-dissemination>`_.
 
 Getting Help
 ============
@@ -461,8 +449,8 @@ FY2024 Usage
 Frequently Asked Questions
 ==========================
 
-General Cloud Issues
-^^^^^^^^^^^^^^^^^^^^
+1. General Cloud Issues
+^^^^^^^^^^^^^^^^^^^^^^^
 
 **How do I open a cloud help desk ticket?**
 
@@ -476,8 +464,7 @@ Typically, your ticket is responded to within 2 hours.
 outside the network?**
 
 Refer the Parallel works user guide, section `From outside the
-platform
-<https://parallelworks.com/docs/compute/logging-in-controller#from-outside-the-platform>`__
+platform <https://parallelworks.com/docs/compute/logging-in-controller#from-outside-the-platform>`__
 
 **What are the project allocation usage limits and actions?**
 
@@ -529,8 +516,8 @@ platform
   - Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
     email all resources have been removed.
 
-How do I get a project allocation or an allocation increase?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2. How do I get a project allocation or an allocation increase?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RDHPCS System compute allocations are decided upon by the
 RDHPCS Allocation Committee (AC), with oversight from the
@@ -539,8 +526,8 @@ NOAA HPC Board.
 Update the the Allocation Request Form located under the
 section "Allocations" from link TBD
 
-Storage functionalities
------------------------
+3. Storage functionalities
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Cluster runtime notification**
 
@@ -705,8 +692,8 @@ for the next 100 TB, and $. 05/GB greater than 150 TB.
 
 `GCP <https://cloud.google.com/network-tiers/pricing>`_
 
-Parallel works
---------------
+4. Parallel works
+^^^^^^^^^^^^^^^^^
 
 **Where do I find the Parallel Works User Guide?**
 `User Guide`_.
@@ -1006,8 +993,8 @@ long, it could be an issue with your VPN. In that case,
 disconnect the VPN and try login. If the login succeeds, it
 implies an issue with the VPN.
 
-Clusters and snapshots
-----------------------
+5. Clusters and snapshots
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Cluster Cost types explained**
 
@@ -1437,7 +1424,8 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
-**Configuration Questions**
+6. Configuration Questions
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **How do I create Parallel Works resource configuration on my account?**
 
@@ -1688,8 +1676,8 @@ COMPLETED, ExitCode 0
 This email may go to your spam folder as it is not domain
 validated, that is one downside.
 
-Slurm
------
+7. Slurm
+^^^^^^^^
 
 **Running and monitoring Slurm**
 
@@ -1957,8 +1945,8 @@ below:
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
 
-Errors
-------
+8. Errors
+^^^^^^^^^
 
 **Error launching source instance: InvalidParameterValue: User data is
 limited to 16384 bytes**
@@ -2094,8 +2082,8 @@ below:
 
   $ sudo scontrol update nodename=philippegion-azurestream5-00002-1-[0001-0021] state=idle
 
-Miscellaneous
--------------
+9. Miscellaneous
+^^^^^^^^^^^^^^^^
 
 `Parallel Works` new features blog posts
 
