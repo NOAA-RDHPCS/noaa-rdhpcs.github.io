@@ -23,13 +23,14 @@ users will find minor differences, for example, the login
 authentication, and project allocation, between the standard and
 customized applications.
 
-We recommend the Parallel Works User Guide for comprehensive
-information about the product. Users can review the FAQ section
+We recommend the `Parallel Works User Guide <https://parallelworks.com/docs>`_
+for comprehensive information about the product. Users can review the
+`Frequently Asked Questions`_ section below
 to learn about the NOAA RDHPCS-specific topics.
 
-.. warning::
+.. note::
 
-  At this time, the NOAA RDHPCS Cloud Globus endpoints are disabled
+  At of 2024-07, the NOAA RDHPCS Cloud Globus endpoints are disabled
   until the RDHPCS can develop a method to apply all egress charges
   back to the originating project.  While the Globus endpoints are
   disabled, transfers to and from the NOAA RDHPCS Cloud should be done
@@ -43,7 +44,7 @@ NOAA's Parallel Works Portal
 ============================
 
 Access to the NOAA RDHPCS Cloud Computing envrironment is through the
-NOAA RDHPCS Portal located at Parallel Works, and uses
+`Parallel Works NOAA Portal <https://noaa.parallel.works>`_ and uses
 the :ref:`RSA Token <rsa_token>` authentication method.
 
 
@@ -68,12 +69,12 @@ following diagram.
   .. tab-item:: Log into the Cloud
      :sync: login
 
-      To access the RDHPCS cloud gateway, log into `Parallel Works`_
+      To access the RDHPCS cloud gateway, log into the `Parallel Works NOAA Portal`_
 
       .. figure:: /images/NOAAcloud.png
         :scale: 50%
 
-      Your username is your NOAA username or email address.
+      Your username is your RDHPCS NOAA username.
       Your password is your RSA PIN plus the 8 digit code from your RSA token.
       When you are logged in, click **Compute**.
 
@@ -122,22 +123,22 @@ following diagram.
 
 Users can install and use a `Globus Connect Personal <https://www.globus.org/globus-connect-personal>`_
 endpoint to transfer larger files. The RDHPCS reminds all users who perform
-transfers out of the cloud of using a Globus endpoint, all egress
+transfers out of the cloud of using a Globus endpoint that all egress
 charges will be applied to the project.  This includes data stored in
-a CSP public, free to access, repositories, like the NOAA `NODD
+a CSP public, free to access repositories, like the NOAA `NODD
 <https://www.noaa.gov/information-technology/open-data-dissemination>`_.
 
 Getting Help
 ============
 
-Please use the :ref:`RDHPCS Cloud Help Desk <getting_help>` for
+Please reference the :ref:`RDHPCS Cloud Help Desk <getting_help>` page for
 questions or assistance.
 
 Training Videos
 ===============
 
-NOAA RDHPCS Cloud Computing team, along with
-Parallel Works, presents training sessions for Cloud users.
+The NOAA RDHPCS Cloud Computing team along with
+Parallel Works presents training sessions for Cloud users.
 Recorded sessions and other materials are linked below.
 
 .. note::
