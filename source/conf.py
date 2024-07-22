@@ -31,7 +31,7 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_rtd_theme"
-html_baseurl = "https://docs.rdhpcs.noaa.gov"
+html_baseurl = "https://docs.rdhpcs.noaa.gov/"
 
 html_static_path = ["_static"]
 
@@ -85,3 +85,12 @@ linkcheck_ignore = [
 # several links that point to pages that require a user
 # to authenticate.  This ensures the links pass the check.
 linkcheck_allow_unauthorized = True
+
+# Additional sitemap settings
+# https://sphinx-sitemap.readthedocs.io/en/latest/index.html
+sitemap_url_scheme = "{link}"
+sitemap_locales = [None]
+sitemap_excludes = [
+    "search.html",
+    "genindex.html",
+]
