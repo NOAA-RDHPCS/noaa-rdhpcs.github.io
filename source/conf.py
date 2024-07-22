@@ -78,6 +78,7 @@ linkcheck_ignore = [
     r'https://noaastore\.blob\.core\.windows\.net/?.*',
     r'https://www\.intel\.com/content/.*',
     r'https://www\.lustre\.org/documentation/',
+    r'https://www\.putty\.org/*',
 ]
 
 # This is needed for backwards compatibility.  We have
