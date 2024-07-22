@@ -1,0 +1,6 @@
+# Only index the actual documentation:
+User-agent: *
+Allow: /
+
+Sitemap: https://docs.rdhpcs.noaa.gov/sitemap.xml
+
