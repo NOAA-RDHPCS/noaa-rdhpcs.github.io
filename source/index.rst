@@ -112,3 +112,4 @@ How to contribute to the Documentation
    :maxdepth: 2
 
    contributing/index
+   contributing/via_cli/index
