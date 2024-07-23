@@ -1,8 +1,8 @@
 Cluster,Display Name,Filesystems,Site,Access
 Hera,noaardhpcs#hera,/scratch1 /scratch2,NESCC,trusted hosts
 Hera,noaardhpcs#hera_untrusted,/scratch1/data_untrusted /scratch2/data_untrusted,NESCC,anywhere
-Jet,noaardhpcs#jet,/mnt/lfs1 /mnt/lfs4,GSL,trusted hosts
-Jet,noaardhpcs#jet_untrusted,/mt/lfs1/data_untrusted /mnt/lfs4/data_untrusted,GSL,anywhere
+Jet,noaardhpcs#jet,/mnt/lfs4 /mnt/lfs5,GSL,trusted hosts
+Jet,noaardhpcs#jet_untrusted,/mnt/lfs4/data_untrusted /mnt/lfs5/data_untrusted,GSL,anywhere
 Niagara,noaardhpcs#niagara,/collab1/data,NESCC,trusted hosts
 Niagara,noaardhpcs#niagara_untrusted,/collab1/data_untrusted,NESCC,anywhere
 PPAN,noaardhpcs#ppan_rdtn,/archive /home /nbhome /work /ptmp,GFDL,trusted hosts

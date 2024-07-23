@@ -17,7 +17,7 @@ Setup authoring environment
 
 #. Install Sphinx and the ReadTheDocs theme locally::
 
-        $ pip3 install sphinx sphinx_rtd_theme sphinx-panels
+        $ pip3 install sphinx sphinx_rtd_theme sphinx-panels sphinx_design sphinxcontrib.mermaid sphinx_sitemap
 
    This can be in your home area, a virtual environment, container, etc.
 

@@ -157,13 +157,13 @@ System Features:
 -  Total scratch disk capacity of 6.6 Petabytes
 
 
-+------+-------+---------+
-| Name |Type   |Size     |
-+------+-------+---------+
-| lfs1 |Lustre |3540 TB  |
-+------+-------+---------+
-| lfs4 |Lustre |4500 TB  |
-+------+-------+---------+
++------+-----------+---------+
+| Name |Type       |Size     |
++------+-----------+---------+
+| lfs4 |HPE Lustre |4500 TB  |
++------+-----------+---------+
+| lfs5 |DDN Lustre |7900 TB  |
++------+-----------+---------+
 
 For decades, NOAA weather research has relied on High Performance
 Computing to further its mission of developing leading edge weather
