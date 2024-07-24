@@ -453,7 +453,8 @@ Frequently Asked Questions
 1. General Cloud Issues
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-**How do I open a cloud help desk ticket?**
+1. How do I open a cloud help desk ticket?
+""""""""""""""""""""""""""""""""""""""""""
 
 Send an email to rdhpcs.cloud.help@noaa.gov. Your email automatically
 generates a case in the OTRS system.
@@ -461,13 +462,14 @@ generates a case in the OTRS system.
 The OTRS system does not have an option to set a priority level.
 Typically, your ticket is responded to within 2 hours.
 
-**Where do I find instructions to connect the controller node from
-outside the network?**
+2. Where do I find instructions to connect the controller node from outside the network?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Refer the Parallel works user guide, section `From outside the
 platform <https://parallelworks.com/docs/compute/logging-in-controller#from-outside-the-platform>`__
 
-**What are the project allocation usage limits and actions?**
+3. What are the project allocation usage limits and actions?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 - Used allocation at 85% of the budget allocation:
 
@@ -522,15 +524,15 @@ platform <https://parallelworks.com/docs/compute/logging-in-controller#from-outs
 
 RDHPCS System compute allocations are decided upon by the
 RDHPCS Allocation Committee (AC), with oversight from the
-NOAA HPC Board.
-
+NOAA HPC Board. 
 Update the the Allocation Request Form located under the
 section "Allocations" from link TBD
 
 3. Storage functionalities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Cluster runtime notification**
+1. Cluster runtime notification
+"""""""""""""""""""""""""""""""
 
 A cluster owner can set up to send an email notification
 based on the number of hours/days a cluster is up. You can
@@ -539,7 +541,8 @@ configuration page and apply it on a live cluster or set as
 a standard setting on a resource configuration, so that will
 take effect on clusters started using the configuration.
 
-**Mounting permanent storage on a cluster**
+2. Mounting permanent storage on a cluster
+""""""""""""""""""""""""""""""""""""""""""
 
 Your project’s permanent storage [AWS s3 bucket, Azure’s
 Block blob storage, or GCP’s bucket] can be mounted on an
@@ -549,8 +552,8 @@ Having the permanent storage mounted on a cluster allows a
 user to copy files from contrib or lustre to a permanent
 storage using familiar Linux commands.
 
-**Sharing storage between the projects, enhanced capacity,
-and configuration**
+3. Sharing storage between the projects, enhanced capacity, and configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Note that the permanent storage and persistent storage must
 be started separately before it can be attached to a
@@ -568,14 +571,15 @@ bucket, Azure’s block blob storage, and GCP’s bucket], and
 lustre file system [ephemeral and persistent storage] on
 your Cloud platform.
 
-**How do I resize the root disk?**
+4. How do I resize the root disk?
+"""""""""""""""""""""""""""""""""
 
 Open up the resource name definition, click on the \_JSON
 tab, add a parameter "root_size" with a value in the
 cluster_config section, that fits your need, save and
 restart the cluster.
 
-In the below example, the root disk size is set to 256 GiB
+In this example, the root disk size is set to 256 GiB
 
 .. code::
 
@@ -592,8 +596,8 @@ located on the top right menu bar, looks like an Earth icon.
 Learn more on the `workflow
 <https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk>`__
 
-**What are the different storage types and costs available on the PW
-platform?**
+5. What different storage types and costs are available on the PW platform?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 There are three types of storage available on a cluster,
 those are lustre, object storage [ for backup & restore,
@@ -696,10 +700,12 @@ for the next 100 TB, and $. 05/GB greater than 150 TB.
 4. Parallel works
 ^^^^^^^^^^^^^^^^^
 
-**Where do I find the Parallel Works User Guide?**
+1. Where do I find the Parallel Works User Guide?
+"""""""""""""""""""""""""""""""""""""""""""""""""
 `User Guide`_.
 
-**How do I get access to the Parallel Works Platform?**
+2. How do I get access to the Parallel Works Platform?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 - Pre-requisite for getting an account access to the Parallel Works
   platform is to have a NOAA email address.
@@ -731,7 +737,8 @@ platform project used for cost specific tests.
 After your request is approved, you can login on to the
 platform.
 
-**How is a new user added to a project on the Parallel Works?**
+3. How is a new user added to a project on the Parallel Works?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 If you would like to join an existing project, ask your PI,
 TL, or Portfolio manager the project name. The cloud project
