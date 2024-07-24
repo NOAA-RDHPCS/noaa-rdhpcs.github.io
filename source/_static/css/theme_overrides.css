@@ -15,14 +15,14 @@ body>div>nav>div>div.wy-side-nav-search>a {
 }
 
 /* Supersede the above block, and allow the Docs Home link to be clickable */
-body>div>nav>div>div.wy-side-nav-search>a>a {
+body>div>nav>div>div.wy-side-nav-search>div.version>a {
     pointer-events: auto !important;
     cursor: pointer !important;
     color: grey !important;
 }
 
 /* Don't let the color of the Docs Home link change. */
-body>div>nav>div>div.wy-side-nav-search>a>a:visited {
+body>div>nav>div>div.wy-side-nav-search>div.version>a:visited {
     color: grey !important;
 }
 
