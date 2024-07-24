@@ -457,8 +457,8 @@ How do I open a cloud help desk ticket?
 """""""""""""""""""""""""""""""""""""""
 
 Send an email to rdhpcs.cloud.help@noaa.gov. Your email automatically
-generates a case in the OTRS system. The OTRS system does not have an option to set a priority level.
-Typically, your ticket is responded to within 2 hours.
+generates a case in the OTRS system. The OTRS system does not have the
+option to set a priority level. Typically, your ticket is responded to within 2 hours.
 
 How do I connect the controller node from outside the network?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
