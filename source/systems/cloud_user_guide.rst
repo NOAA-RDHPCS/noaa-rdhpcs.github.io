@@ -450,24 +450,25 @@ FY2024 Usage
 Frequently Asked Questions
 ==========================
 
-1. General Cloud Issues
-^^^^^^^^^^^^^^^^^^^^^^^
+General Issues
+^^^^^^^^^^^^^^
 
-**How do I open a cloud help desk ticket?**
+How do I open a cloud help desk ticket?
+"""""""""""""""""""""""""""""""""""""""
 
 Send an email to rdhpcs.cloud.help@noaa.gov. Your email automatically
-generates a case in the OTRS system.
+generates a case in the OTRS system. The OTRS system does not have the
+option to set a priority level. Typically, there is a response
+within two hours.
 
-The OTRS system does not have an option to set a priority level.
-Typically, your ticket is responded to within 2 hours.
+How do I connect the controller node from outside the network?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Where do I find instructions to connect the controller node from
-outside the network?**
+See the Parallel works user guide section `From outside the platform
+<https://parallelworks.com/docs/compute/logging-in-controller#from-outside-the-platform>`__
 
-Refer the Parallel works user guide, section `From outside the
-platform <https://parallelworks.com/docs/compute/logging-in-controller#from-outside-the-platform>`__
-
-**What are the project allocation usage limits and actions?**
+What are the project allocation usage limits and actions?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 - Used allocation at 85% of the budget allocation:
 
@@ -517,8 +518,8 @@ platform <https://parallelworks.com/docs/compute/logging-in-controller#from-outs
   - Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
     email all resources have been removed.
 
-2. How do I get a project allocation or an allocation increase?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How do I get a project allocation or an allocation increase?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RDHPCS System compute allocations are decided upon by the
 RDHPCS Allocation Committee (AC), with oversight from the
@@ -527,10 +528,11 @@ NOAA HPC Board.
 Update the the Allocation Request Form located under the
 section "Allocations" from link TBD
 
-3. Storage functionalities
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Storage functionalities
+^^^^^^^^^^^^^^^^^^^^^^^
 
-**Cluster runtime notification**
+Cluster runtime notification
+""""""""""""""""""""""""""""
 
 A cluster owner can set up to send an email notification
 based on the number of hours/days a cluster is up. You can
@@ -539,7 +541,8 @@ configuration page and apply it on a live cluster or set as
 a standard setting on a resource configuration, so that will
 take effect on clusters started using the configuration.
 
-**Mounting permanent storage on a cluster**
+Mounting permanent storage on a cluster
+"""""""""""""""""""""""""""""""""""""""
 
 Your project’s permanent storage [AWS s3 bucket, Azure’s
 Block blob storage, or GCP’s bucket] can be mounted on an
@@ -549,8 +552,9 @@ Having the permanent storage mounted on a cluster allows a
 user to copy files from contrib or lustre to a permanent
 storage using familiar Linux commands.
 
-**Sharing storage between the projects, enhanced capacity,
-and configuration**
+
+Sharing storage between the projects, enhanced capacity, and configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Note that the permanent storage and persistent storage must
 be started separately before it can be attached to a
@@ -568,7 +572,8 @@ bucket, Azure’s block blob storage, and GCP’s bucket], and
 lustre file system [ephemeral and persistent storage] on
 your Cloud platform.
 
-**How do I resize the root disk?**
+How do I resize the root disk?
+""""""""""""""""""""""""""""""
 
 Open up the resource name definition, click on the \_JSON
 tab, add a parameter "root_size" with a value in the
@@ -582,7 +587,8 @@ In the below example, the root disk size is set to 256 GiB
   "cluster_config": {
     "root_size": "256",
 
-**Where do I get detailed Workflow instructions?**
+Where do I get detailed Workflow instructions?
+""""""""""""""""""""""""""""""""""""""""""""""
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the Parallel
@@ -592,8 +598,9 @@ located on the top right menu bar, looks like an Earth icon.
 Learn more on the `workflow
 <https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk>`__
 
-**What are the different storage types and costs available on the PW
-platform?**
+
+What different torage types and costs are available on the PW platform?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 There are three types of storage available on a cluster,
 those are lustre, object storage [ for backup & restore,
@@ -693,13 +700,15 @@ for the next 100 TB, and $. 05/GB greater than 150 TB.
 
 `GCP <https://cloud.google.com/network-tiers/pricing>`_
 
-4. Parallel works
-^^^^^^^^^^^^^^^^^
+Parallel works
+^^^^^^^^^^^^^^
 
-**Where do I find the Parallel Works User Guide?**
+Where do I find the Parallel Works User Guide?
+""""""""""""""""""""""""""""""""""""""""""""""
 `User Guide`_.
 
-**How do I get access to the Parallel Works Platform?**
+How do I get access to the Parallel Works Platform?
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 - Pre-requisite for getting an account access to the Parallel Works
   platform is to have a NOAA email address.
@@ -731,7 +740,8 @@ platform project used for cost specific tests.
 After your request is approved, you can login on to the
 platform.
 
-**How is a new user added to a project on the Parallel Works?**
+How is a new user added to a project on Parallel Works?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 If you would like to join an existing project, ask your PI,
 TL, or Portfolio manager the project name. The cloud project
@@ -745,9 +755,10 @@ yourself to a project.
 
 Access to the project is contingent on PI's approval.
 
-**How do I set up a new project in the Parallel Works Platform?**
+How do I set up a new project in Parallel Works?
+""""""""""""""""""""""""""""""""""""""""""""""""
 
-To set up your project setup in Parallel Works follow the
+To set up your project in Parallel Works follow the
 below steps.
 
 #. Get your project’s allocation approved by NOAA RDHPCS
@@ -790,11 +801,12 @@ with the project status.
 
 Read the cloud FAQ to learn on adding users to a project.
 
-**What is the certified browser for Parallel Works Platform?**
-
+What is the certified browser for Parallel Works Platform?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Google Chrome browser.
 
-**Cost Calculator**
+How do I use the Cost Calculator?
+"""""""""""""""""""""""""""""""""
 
 You can estimate an hourly cost of your experiment’s from
 the Parallel Works(PW) platform. After login on the
@@ -825,11 +837,13 @@ project, like contrib file system, object storage to store
 backup, and egress.
 
 
-**Cost dashboard explained**
+How does the Cost Dashboard work?
+"""""""""""""""""""""""""""""""""
 
 Refer the `user guide <https://parallelworks.com/docs/monitoring-costs>`_
 
-**How do I find a real time cost estimate of my session?**
+How do I find a real time cost estimate of my session?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Cloud vendors publish the cost once every 24 hours, that is
 not an adequate measure in an HPC environment. PW Cost
@@ -843,7 +857,8 @@ select the value “RT” [Real time]. Make sure the “User
 Filter” section has your name. The page automatically
 refreshes with the cost details.
 
-**How do I estimate core-hours?**
+How do I estimate core-hours?
+"""""""""""""""""""""""""""""
 
 An example, your project requests a dedicated number of HPC
 compute nodes or has an HPC system reservation for some
@@ -864,7 +879,8 @@ number of cores = 1 x 4 x 6 = 24 core hours.
 PW’s cost dashboard is a good tool to find unit cost, and
 extrapolate it to estimate usage for PoP.
 
-**How to access the head node from the Parallel Works [PW] web interface?**
+How do I access the head node from the Parallel Works [PW] web interface?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 You can connect to the head node from the PW portal, or
 Xterm window if you have added your public key in the
@@ -908,7 +924,8 @@ multiple of 2.8 TB.
 
 Note that LFS is an expensive storage.
 
-**How do I add a workflow to my account?**
+How do I add a workflow to my account?
+""""""""""""""""""""""""""""""""""""""
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the PW main page,
@@ -916,7 +933,8 @@ click the workflow marketplace button on the top menu bar.
 This button should be on the right side of the screen, and
 looks like an Earth icon.
 
-**How do I ssh to other nodes in my cluster?**
+How do I ssh to other nodes in my cluster?
+""""""""""""""""""""""""""""""""""""""""""
 
 It is possible to ssh to compute nodes in your cluster from
 the head node by using the node's hostname. You do not
@@ -945,12 +963,14 @@ inactivity)
       [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
       [compute-dy-c5n18xlarge-1]$
 
-**How do I request a new feature or report feedback?**
+How do I request a new feature or report feedback?
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 You may request a new feature on the PW platform or provide
 a feedback to the NOAA RDHPCS leadership using the link TBD
 
-**How to address an authentication issue on the Parallel Works [PW] login?**
+How can I address an authentication issue on the Parallel Works [PW] login?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Authentication to the PW system can be due to an expired RSA
 Token or inconsistent account status in the PW system. If
@@ -997,7 +1017,8 @@ implies an issue with the VPN.
 5. Clusters and snapshots
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Cluster Cost types explained**
+Cluster Cost types explained
+""""""""""""""""""""""""""""
 
 There are several resource types that are part of a user
 cluster.
@@ -1019,7 +1040,8 @@ is based on the storage used.
 
 Storage-Disk : Boot disk and apps volume disk cost.
 
-**How do I resize my resource cluster size?**
+How do I resize my resource cluster size?
+"""""""""""""""""""""""""""""""""""""""""
 
 The default CSP resource definition in the platform is
 fv3gfs model at 768 resolution 48-hours best performance
@@ -1050,8 +1072,9 @@ Lustre filesystem is an expensive resource. You can disable
 the filesystem or resize it. The default lustre filesystem
 size is about 14TiB.
 
-**How do I create a custom snapshot [a.k.a AMI, Snapshot, Boot disk,
-or machine] image?**
+
+How do I create a custom [AMI, Snapshot, Boot disk, or machine] image?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 If a user finds specific packages are not present in the
 base boot image, the user can add it by creating own custom
@@ -1083,7 +1106,8 @@ Now launch a new cluster using the custom snapshot from the
 “Compute” page. After the cluster is up, verify the
 existence of custom installed packages.
 
-**How to automatically find the hostname of a cluster?**
+How can I automatically find the hostname of a cluster?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 By default, the host names are always going to be different
 each time you start a cluster.
@@ -1104,7 +1128,8 @@ as well:
 :PW_SESSION_LONG:
 :PW_CSP:
 
-**How do I setup an ssh tunnel to my cluster?**
+How do I setup an ssh tunnel to my cluster?
+"""""""""""""""""""""""""""""""""""""""""""
 
 ssh tunnels are a useful way to connect to services running
 on the head node when they aren't exposed to the internet.
@@ -1136,7 +1161,8 @@ on my local machine. This lets me direct my browser to the
 URL 'localhost:8888' and see the page being served by the
 remote machine over that port.
 
-**How do I turn off Lustre filesystem from the cluster?**
+How do I turn off Lustre filesystem from the cluster?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 From the Resources tab, select a configuration and click the
 edit link.
@@ -1146,7 +1172,8 @@ system" section. Use the toggle button to "No" to turn off
 the lustre file system [LFS]. This setting lets you create a
 cluster without a lustre file system.
 
-**How do I activate conda at cluster login?**
+How do I activate conda at cluster login?
+"""""""""""""""""""""""""""""""""""""""""
 
 Running conda init bash will setup the ~/.bashrc file so it
 will activate the default environment when you login.
@@ -1174,7 +1201,8 @@ or
 
   ln -s /contrib/Nastassia.Patin/home/.bashrc ~/.bashrc
 
-**How do I create a resource configuration?**
+How do I create a resource configuration?
+"""""""""""""""""""""""""""""""""""""""""
 
 If your cluster requires lustre file system [ephemeral or
 persistent], or additional storage for backup, start at the
@@ -1182,10 +1210,8 @@ persistent], or additional storage for backup, start at the
 
 `Managing the Storage: <https://parallelworks.com/docs/storage>`_
 
-**Create a cluster configuration cluster**
-
-
-How do I enable run time alerts on my cluster?**
+How do I enable run time alerts on my cluster?
+""""""""""""""""""""""""""""""""""""""""""""""
 
 You can enable this functionality on your active or new
 cluster. This setup will help you send a reminder when your
@@ -1201,7 +1227,8 @@ under the “Resource” tab.
 
 `Reference <https://docs.parallel.works>`__
 
-Missing user directory in the group's contrib volume.**
+Missing user directory in the group's contrib volume.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 A user directory on a group's contrib volume can only be
 created by an owner of a cluster, as the cluster owner only
@@ -1258,8 +1285,8 @@ Contrib is a permanent storage for your group.
 You may shutdown the cluster if the purpose was to create
 your contrib directory.
 
-Why does the owner's home directory look different from the shared
-users’ home directory?**
+Why does the owner's home directory differ from the shared users’ directory?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Every cluster is set up where the owner of it has an
 ephemeral home directory that isn't linked from contrib, but
@@ -1274,7 +1301,8 @@ So when people start clusters in some cases they may not
 have a contrib dir so owners don't want to link home
 directory to their contrib directory.
 
-What are “Compute” and “Batch” sections in a cluster definition?**
+What are “Compute” and “Batch” sections in a cluster definition?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The sections “Compute” and “Batch” are partitions. You may
 change the partition name at the name field to fit your
@@ -1296,7 +1324,8 @@ Default Partition details.
   PartitionName=batch Nodes=mattlong-azv2-00115-2-[0001-0013]
   MaxTime=INFINITE State=UP Default=NO OverSubscribe=NO
 
-**How do I manually shutdown the compute nodes?**
+How do I manually shutdown the compute nodes?
+"""""""""""""""""""""""""""""""""""""""""""""
 
 .. code::
 
@@ -1317,7 +1346,8 @@ You can then use that list to stop the nodes:
 
   $ sudo scontrol update nodename=userid-gcp-00141-2-[0001-0002] state=power_down
 
-How to sudo in as root or a role account on a cluster?**
+How to sudo in as root or a role account on a cluster?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The owner of a cluster can sudo in as root and grant sudo
 privilege to the project members by adding their user id in
@@ -1343,7 +1373,8 @@ Assuming the cluster setup as multi-user in the resource
 definition, and in the sharing tab, view and edit button are
 selected.
 
-**How to enable a role account?**
+How do I enable a role account?
+"""""""""""""""""""""""""""""""
 
 A role account is a shared workspace for project members on
 a cluster. By su'd to a role account, project members can
@@ -1362,7 +1393,8 @@ from /etc/passwd is.
 
   $ grep -i role /etc/passwd
 
-**Bootstrap script example**
+Bootstrap script example
+""""""""""""""""""""""""
 
 By default bootstrap script changes only runs on the MASTER
 node of a cluster.
@@ -1428,11 +1460,13 @@ failure.
 6. Configuration Questions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**How do I create Parallel Works resource configuration on my account?**
+How do I create a Parallel Works resource configuration on my account?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Follow `these instructions <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit?usp=sharing>`__
 
-How do I get AMD processor resources configuration?**
+How do I get AMD processor resources configuration?
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 AMD processor based instances or VMs are relatively less
 expensive than Intel. Cloud services providers have
@@ -1449,7 +1483,8 @@ option from the list.
 You may resize the cluster size by adjusting max node count,
 and enable or disable lustre as appropriate to your model.
 
-How do I restore a default configuration?**
+How do I restore a default configuration?
+"""""""""""""""""""""""""""""""""""""""""
 
 You can restore a configuration by navigating to the
 “Resources” tab, double click on a resource name, shows up
@@ -1458,7 +1493,8 @@ the “(restore configuration)” link, then select a resource
 configuration from the drop down list, click on the
 "Restore" button, and then click “Save Resource”.
 
-What is a default instance/vm type?**
+What is a default instance/vm type?
+"""""""""""""""""""""""""""""""""""
 
 By "default instance/vm type" we refer to the instance/vm
 types in a precreated cluster configuration. This
@@ -1467,7 +1503,9 @@ and also when creating a new configuration by selecting a
 configuration from the "Restore Configuration" link at the
 resource definition page.
 
-**How do I restore customization after the default configuration restore?**
+
+How do I restore customization after the default configuration restore?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Parallel Works default configuration release updates
 depend on the changes made to the platform. You can protect
@@ -1488,15 +1526,16 @@ the "Compute" dashboard. Hide a resource configuration
 option can be found on the “Settings” box on the Resource
 definition page.
 
-**What is NOAA RDHPCS preferred container solution?**
+What is NOAA RDHPCS preferred container solution?
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
 On security issues and capabilities to run the weather model
 across the nodes, NOAA's RDHPC systems chose Singularity as
 a platform for users to test and run models within
 Containers.
 
-**Accessing bucket from a Remote Machine (such as: Niagara)
-or Cluster's controller node**
+Accessing bucket from a Remote Machine or Cluster's controller node
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Obtain your project's keys from the PW platform. The project
 key can be found by navigating from the PW banner.
@@ -1649,9 +1688,11 @@ image out of it
 
 should do the trick with that recipe file.
 
-**Working with Slurm**
+7. Slurm
+^^^^^^^^
 
-**How to send emails from a Slurm job script?**
+How to send emails from a Slurm job script?
+"""""""""""""""""""""""""""""""""""""""""""
 
 Below is an example of a job script with a couple sbatch
 options that should notify you when a job starts and ends
@@ -1677,10 +1718,8 @@ COMPLETED, ExitCode 0
 This email may go to your spam folder as it is not domain
 validated, that is one downside.
 
-7. Slurm
-^^^^^^^^
-
-**Running and monitoring Slurm**
+Running and monitoring Slurm
+""""""""""""""""""""""""""""
 
 Use sinfo command to find the status of your job.
 
@@ -1724,7 +1763,8 @@ state=resume``
   compute\* up    infinite  1     mix#  userid-gcpv2-00094-1-0001
 
 
-**How to set custom memory for Slurm jobs?**
+How to set custom memory for Slurm jobs?
+""""""""""""""""""""""""""""""""""""""""
 
 In order to get non-exclusive scheduling to work with Slurm,
 you need to reconfigure the scheduler to treat memory as a
@@ -1759,8 +1799,8 @@ The script itself looks like this:
     sudo service slurmd restart
   fi
 
-**How do I change the slurm Suspend time on an active cluster?
-[shutdown early or shutdown delay]**
+How do I change the slurm Suspend time on an active cluster?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 You can modify a cluster’s slurm suspend time from the
 Resource Definition form prior to starting a cluster.
@@ -1798,8 +1838,8 @@ after:
   $ scontrol show config \| grep -i suspendtime
   SuspendTime = 3600 sec
 
-**What logs are needed for the support to research slurm or node not
-terminated issues?**
+What logs are used  to research slurm or node not terminated issues?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The following four log files required to research the root
 cause. Please copy the following log files from the
@@ -1823,7 +1863,8 @@ change user as root when copying the files, for example.
 :/var/log/syslog: Reports global system messages.
 :/var/log/messages: Reports system operations.
 
-**How do I distribute slurm scripts on different nodes?**
+How do I distribute slurm scripts on different nodes?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 By default the slurm sbatch job lands on a single node. You
 can distribute the scripts to run on different nodes by
@@ -1876,7 +1917,8 @@ single node:
   7     compute   testjob. User.Id  R    0:10  1     userid-gcpv2-00060-1-0001
   8     compute   testjob. User.Id  R    0:08  1     userid-gcpv2-00060-1-0001
 
-**User Bootstrap fails when copy files to lustre**
+User Bootstrap fails when copy files to lustre
+""""""""""""""""""""""""""""""""""""""""""""""
 
 A recent modification on the cluster provisioning starts
 compute and lustre clusters execution in parallel to speed
@@ -1904,7 +1946,8 @@ You can use the following code snippet as a workaround.
 
   cp -rf /contrib/Andrew.Penny/psurge_dev /lustre
 
-**What is the command to get max nodes count on a cluster?**
+What is the command to get max nodes count on a cluster?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Default sinfo output (including a busy node so it shows
 outside of the idle list)
@@ -1931,7 +1974,8 @@ nodes by state as well as total:
 Note the NODES(A/I/O/T) section, which indicates nodes
 that are Active, Idle, Offline, and Total
 
-**How do I manually reset the node status?**
+How do I manually reset the node status?
+""""""""""""""""""""""""""""""""""""""""
 
 You may manually resume the nodes like this:
 
