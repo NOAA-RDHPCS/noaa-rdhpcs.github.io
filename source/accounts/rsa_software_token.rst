@@ -49,11 +49,9 @@ The app icons will look like these:
 
 .. |android icon|	image:: /images/rsa_app_android.png
 .. |apple icon|		image:: /images/rsa_app_apple.png
-.. |windows icon|       image:: /images/rsa_app_windows.png
-        :scale: 40 %
 .. |android url|	replace:: https://play.google.com/store/apps/details?id=com.rsa.securidapp&hl=en_US
 .. |mac url|		replace:: https://apps.apple.com/us/app/rsa-authenticator-securid/id318038618
-.. |windows url|	replace:: https://apps.microsoft.com/detail/9pf66qgw0s43?hl=en-US&gl=US
+
 
 
 +--------------+----------------+--------------------------------+
@@ -62,10 +60,6 @@ The app icons will look like these:
 | Android      |  |android url| | |android icon|                 |
 +--------------+----------------+--------------------------------+
 | iPhone, iPad |  |mac url|     | |android icon| or |apple icon| |
-+--------------+----------------+--------------------------------+
-| Mac          | |mac url|      |  |apple icon|                  |
-+--------------+----------------+--------------------------------+
-| Windows      | |windows url|  | |windows icon|                 |
 +--------------+----------------+--------------------------------+
 
 
@@ -87,8 +81,7 @@ Do this step if you can view the activation email on your mobile device.
 
 .. important::
 
-   The activation URL starts with `com.rsa.securid://` and ends with `CtkipService`.
-   **COPY THE ENTIRE STRING**
+   **COPY THE ENTIRE ACTIVATION URL**
 
 Step 3b: Enter the activation URL
 ---------------------------------
@@ -110,7 +103,7 @@ Step 3b: Enter the activation URL
 +-------------------+----------------------------------------+
 | Android (new)     | `https://authenticator.securid.com/`   |
 +-------------------+----------------------------------------+
-| iPhone, iPad, Mac | `com.rsa.securid://ctkip?url=https://` |
+| iPhone, iPad      | `com.rsa.securid://ctkip?url=https://` |
 +-------------------+----------------------------------------+
 
 
@@ -127,7 +120,7 @@ Step 3b: Enter the activation URL
 Refer to these screenshots:
 
 +-------------------+-------------------------+
-| Android (new)     | Apple iPhone, iPad, Mac |
+| Android (new)     | Apple iPhone, iPad      |
 +===================+=========================+
 | |android fillin|  | |apple fillin|          |
 +-------------------+-------------------------+
