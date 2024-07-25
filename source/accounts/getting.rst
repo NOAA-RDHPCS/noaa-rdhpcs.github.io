@@ -28,15 +28,18 @@ What You Do
 -----------
 
 #. Take the NOAA IT Security Awareness Training (annual requirement).
-#. Use the Account Identity Management
-   system (`AIM`_) to request access to a
-   vetting project. You access AIM using your NOAA.gov email address
-   and password.
+#. Use the Account Identity Management system (`AIM
+   <https://aim.rdhpcs.noaa.gov>`_) to request access to a vetting
+   project. You access AIM using your NOAA.gov email address and
+   password.
 #. When you are approved for a vetting project, request membership to
    other projects as directed by your management.
 #. Request an :ref:`rsa_token` for access to several NOAA systems.
 
 .. note::
 
-      System maintenance will affect access to RDHPCS systems. Click `here <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_ to view the RDHPCS Maintenance Downtime Calendar.
+      System maintenance will affect access to RDHPCS systems. Click
+      `here
+      <https://calendar.google.com/calendar/u/1/r?cid=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
+      to view the RDHPCS Maintenance Downtime Calendar.
 

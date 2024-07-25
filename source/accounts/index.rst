@@ -12,7 +12,6 @@ Accounts
    cac
    role_accounts
    account_activity
-   
 
 .. _accessing_rdhpcs_systems:
 
@@ -22,8 +21,6 @@ Accessing RDHPCS Systems
 
 
 .. _aim_access:
-
-Fibble
 
 Access and Identity Management (AIM)
 ------------------------------------
