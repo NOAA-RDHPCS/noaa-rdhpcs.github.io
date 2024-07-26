@@ -1,0 +1,45 @@
+{% extends '!footer.html' %}
+{%- set display_vcs_links = display_vcs_links if display_vcs_links is defined else True %}
+
+{% block extrafooter %}
+  <div class="noaa-footer">
+    <div id="footer-left">
+      <dev class="footer-logo-container">
+        <div class="footer-logo-wrapper">
+          <a href="https://www.noaa.gov/" class="footer-logo"><span>NOAA Home</span></a>
+        </div>
+        <div class="footer-logo-text">
+          <div class="noaa-slogan">Science. Service. Stewardship.</div>
+        </div>
+      </dev>
+    </div>
+
+    <div role="contentinfo" id="footer-menus">
+      {%- if project_home_name and project_home_url %}
+      <ul class="menu-footer-top">
+        <li><a href="{{ project_home_url }}">{{ project_home_name }}</a></li>
+      </ul>
+      {%- endif %}
+
+      <ul class="menu-footer-bottom">
+        {%- for name, url in noaa_footer_links.items() %}
+          <li><a href="{{ url }}">{{ name }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    <div id="footer-right">
+      <div id="site-footer-right-top">
+        <div id="stay-connected">
+          <a href="https://www.noaa.gov/stay-connected">Stay connected to NOAA</a>
+        </div>
+        <div id="social-icons">
+          <a class="fa fa-twitter" href="https://twitter.com/NOAA" target="_blank"><span>NOAA on Twitter</span></a>
+          <a class="fa fa-facebook" href="https://www.facebook.com/NOAA" target="_blank"><span>NOAA on Facebook</span></a>
+          <a class="fa fa-instagram" href="https://www.instagram.com/noaa" v=""><span>NOAA on Instagram</span></a>
+          <a class="fa fa-youtube-play" href="https://www.youtube.com/usnoaagov" target="_blank"><span>NOAA on YouTube</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
