@@ -5,8 +5,8 @@ GFDL Archive
 ************
 
 The GFDL archive is a long-term archive system based on HPE's Data Management
-Framework (DMF).  The GFDL archive includes XX petabytes of front-end disk
-cache, XX tape libraries, and XXX tape drives. Total available capacity is XXX
+Framework (DMF).  The GFDL archive includes 13.1 petabytes of front-end disk
+cache, 5 tape libraries, and 160+ tape drives. Total available capacity is 360
 PB. The GFDL archive is accessible from Pan and other GFDL systems.
 
 Users should keep the following things in mind when using the GFDL archive
