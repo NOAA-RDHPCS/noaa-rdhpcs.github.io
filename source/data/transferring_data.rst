@@ -127,7 +127,7 @@ desktop/laptop. However, note the following important points:
    * - Jet
      - noaardhpcs#jet_untrusted
      - udtn-jet.boulder.rdhpcs.noaa.gov
-     - /lfs[1,4]/data_untrusted/$USER
+     - /lfs[4,5]/data_untrusted/$USER
    * - Gaea
      - ncrc#dtn
      - N/A
