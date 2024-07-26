@@ -81,7 +81,7 @@ different storage areas are summarized in the list and table below.
     +==========================+=============================================+=========+========+=============+===============+=========+=========+============+=========================================+
     | User Home                | ``/home/<userid>``                          | M1, M2  | NFS    | User set    |  50 GB        | Yes     | No      | 90 days    | Read/Write                              |
     +--------------------------+---------------------------------------------+---------+--------+-------------+---------------+---------+---------+------------+-----------------------------------------+
-    | Member Work              | ``/lfs[14]/<userid>``                       | M1, M2  | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write                              |
+    | Member Work              | ``/lfs[4,5]/<userid>``                       | M1, M2  | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write                              |
     +--------------------------+---------------------------------------------+---------+--------+-------------+---------------+---------+---------+------------+-----------------------------------------+
     | User-Shared Applications | ``/contrib/<application>``                  | M1, M2  | NFS    | 0755        | N/A           | No      | No      | N/A        | Read/Write                              |
     +--------------------------+---------------------------------------------+---------+--------+-------------+---------------+---------+---------+------------+-----------------------------------------+
@@ -198,7 +198,7 @@ contact the Help Desk. To view your current quota and usage, use the command
       Dir                             Quota   RealUse  EstUse  Percentage   Last Estimated
       /home/userid                        5        1                19%   Tue Jan 17 10:01:32 2024
 
-      /lfs1/projects/projid           25000    18220    23469     93.9%   Tue Jan 17 10:01:32 2024
+      /lfs5/projects/projid           25000    18220    23469     93.9%   Tue Jan 17 10:01:32 2024
                        dir1                                 2      0.0%   Tue Jan 17 10:02:02 2024
                        dir2                              2710     10.8%   Mon Jan 18 04:30:02 2024
                        dir3                                 1      0.0%   Mon Jan 18 04:27:47 2024

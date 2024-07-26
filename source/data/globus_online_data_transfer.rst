@@ -78,10 +78,10 @@ partner clusters.
    +-----------+----------------------------+--------------------------+---------+---------------+
    | Cluster   | Display Name               | File Systems             | Site    | Access        |
    +===========+============================+==========================+=========+===============+
-   | Jet       | noaardhpcs#jet             | /mnt/lfs1, /mnt/lfs4     | NESCC   | Trusted hosts |
+   | Jet       | noaardhpcs#jet             | /mnt/lfs4, /mnt/lfs5     | NESCC   | Trusted hosts |
    +-----------+----------------------------+--------------------------+---------+---------------+
-   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs1/data_untrusted | NESCC   | anywhere      |
-   |           |                            | /mnt/lfs4/data_untrusted |         |               |
+   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs4/data_untrusted | NESCC   | anywhere      |
+   |           |                            | /mnt/lfs5/data_untrusted |         |               |
    +-----------+----------------------------+--------------------------+---------+---------------+
 
   .. tab-item:: Niagara
