@@ -7,12 +7,16 @@ Accounts
 .. toctree::
    :maxdepth: 2
 
+<<<<<<< Updated upstream
    getting
    rsa_software_token
    cac
    role_accounts
    account_activity
 
+=======
+some test stuff
+>>>>>>> Stashed changes
 .. _accessing_rdhpcs_systems:
 
 ************************
