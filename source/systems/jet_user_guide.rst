@@ -16,72 +16,54 @@ partitions, plus four bigmem nodes, totaling 57,744 coes, @
    :align: left
 
    * - Partition
-     - tJet
-     - uJet
      - sJet
      - vJet
      - xJet
      - bigmem
      - kJet
    * - Installation Year
-     - 2010
-     - 2011
      - 2012
      - 2014
      - 2015 and 2016
      - 2015
      - 2018
    * - CPU Type
-     - Intel Westmere
-     - Intel Westmere
      - Intel SandyBridge
      - Intel IvyBridge
      - Intel Haswell
      - Intel Haswell
      - Intel Skylake
    * - CPU Model Number
-     - X5650
-     - X5650
      - X5-2670
      - E5-2 650v
      - E5-2 670v3
      - E5-26 70v3
      - 6148
    * - CPU Speed (GHz)
-     - 2.66
-     - 2.66
      - 2.6
      - 2.6
      - 2.3
      - 2.3
      - 2.4
    * - Total Nodes
-     - 758
-     - 238
      - 330
      - 288
      - 812
      - 4
      - 404
    * - Cores/Node
-     - 12
-     - 12
      - 16
      - 16
      - 24
      - 24
      - 40
    * - Total Cores
-     - 9,096
-     - 2,854
      - 5,120
      - 4,608
      - 19,488
      - 96
      - 14,400
    * - Memory/Node (GB)
-     - 24
-     - 24
      - 32
      - 64
      - 64
@@ -89,15 +71,11 @@ partitions, plus four bigmem nodes, totaling 57,744 coes, @
      - 96
    * - Memory/Core (GB)
      - 2.0
-     - 2.0
-     - 2.0
      - 4.0
      - 2.66
      - 10.6
      - 2.4
    * - Available Memory/Node (GB)
-     - 21
-     - 21
      - 29
      - 61
      - 61
@@ -105,31 +83,23 @@ partitions, plus four bigmem nodes, totaling 57,744 coes, @
      - 93
    * - Interconnect
      - QDR Infiniband
-     - QDR Infiniband
-     - QDR Infiniband
      - FDR Infiniband
      - FDR Infiniband
      - FDR Infiniband
      - EDR Infiniband
-   * - Relative Perf/Core (to tJet/uJet)
-     - 1.00
-     - 1.00
+   * - Relative Perf/Core (to legacy tJet/uJet)
      - 1.44
      - 1.65
      - 1.5
      - 1.5
      - 1.68
    * - Peak FlOPS/Node (GFlOPS)
-     - 127.7
-     - 127.7
      - 332.8
      - 332.8
      - 883
      - 883
      - 2,048
    * - Total FlOPS/Node (TFlOPS)
-     - 96.8
-     - 30.4
      - 113.2
      - 93.6
      - 717.4
@@ -157,13 +127,13 @@ System Features:
 -  Total scratch disk capacity of 6.6 Petabytes
 
 
-+------+-------+---------+
-| Name |Type   |Size     |
-+------+-------+---------+
-| lfs1 |Lustre |3540 TB  |
-+------+-------+---------+
-| lfs4 |Lustre |4500 TB  |
-+------+-------+---------+
++------+-----------+---------+
+| Name |Type       |Size     |
++------+-----------+---------+
+| lfs4 |HPE Lustre |4500 TB  |
++------+-----------+---------+
+| lfs5 |DDN Lustre |7900 TB  |
++------+-----------+---------+
 
 For decades, NOAA weather research has relied on High Performance
 Computing to further its mission of developing leading edge weather

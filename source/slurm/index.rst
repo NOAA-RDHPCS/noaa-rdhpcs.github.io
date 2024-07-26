@@ -556,8 +556,8 @@ Fairshare Definitions
    project1 have equal access to the full allocation of project1.
 :RawUsage: the amount of core-seconds the project has used. RawUsage decays
     over time scaled linearly by the 1/2 life priority factor that is set for
-    the system, which is currently 5-days (ex. current usage 100%, 5 day old
-    usage 50%, 10 day old usage 25%, etc).
+    the system, which is currently 1-days (ex. current usage 100%, 1 day old
+    usage 50%, 2 day old usage 25%, etc).
 
 Projects with a windfall allocation always have a FairShare, Normshares, and
 EffectvUsage of 0 and therefore always have the lowest priority.
