@@ -53,8 +53,8 @@ Google NOAA account, then access this `webcast tutorial
 <https://drive.google.com/file/d/1MdCbUExf3prY0OF-6CRc3EY1-UPSSwCE/view>`_
 
 For those comfortable with the command line and wanting to edit or
-preview changes on your own system, please see `Contributing via the
-CLI <via_cli.html>`_ for details on how to install the Python based
+preview changes on your own system, please see :ref:`Contributing via the
+CLI <via_cli>` for details on how to install the Python based
 Sphinx tools and use the `git` commands for the fork, clone, commit,
 and push actions that comprise the Docs workflow.
 
