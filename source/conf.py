@@ -71,7 +71,7 @@ html_context = {
         "EEO": "https://www.noaa.gov/inclusion-and-civil-rights",
         "No-Fear Act": "https://www.noaa.gov/organization/inclusion-and-civil-rights/no-fear-act",
         "USA.gov": "https://www.usa.gov/",
-        "Read.gov": "https://www.ready.gov/",
+        "Ready.gov": "https://www.ready.gov/",
         "HPCS Webmaster": "mailto:[webmaster.hpcs@noaa.gov](mailto:webmaster.hpcs@noaa.gov)",
     }
 }
