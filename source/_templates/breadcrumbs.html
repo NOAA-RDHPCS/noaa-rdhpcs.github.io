@@ -1,0 +1,14 @@
+{% extends '!breadcrumbs.html' %}
+    {%- block breadcrumbs_aside %}
+      {%- if hasdoc(pagename) and display_vcs_links %}
+        <li class="wy-breadcrumbs-aside">
+          <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode or "blob" }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a></li>
+        {%- if github_issue_button %}
+          </ul> <!-- This ends the ul element from the theme's breadcrumbs.html -->
+          <ul class="wy-breadcrumbs">
+            <li class="wy-breadcrumbs-aside">
+              <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/issues/new?lables=bug&title=Problem+on+page+{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="fa fa-github"> {{ _('Open an Issue on GitHub') }}</a>
+            </li>
+        {%- endif %}
+      {%- endif %}
+    {%- endblock %}
