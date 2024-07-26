@@ -2,7 +2,6 @@
 {%- set display_vcs_links = display_vcs_links if display_vcs_links is defined else True %}
 
 {% block extrafooter %}
-
   <div class="noaa-footer">
     <div id="footer-left">
       <dev class="footer-logo-container">
@@ -16,49 +15,16 @@
     </div>
 
     <div role="contentinfo" id="footer-menus">
+      {%- if project_home_name and project_home_url %}
       <ul class="menu-footer-top">
-        <li>
-          <a href="http://rdhpcs.noaa.gov/">NOAA High Performance Computing Systems</a>
-        </li>
+        <li><a href="{{ project_home_url }}">{{ project_home_name }}</a></li>
       </ul>
+      {%- endif %}
 
       <ul class="menu-footer-bottom">
-        <li>
-          <a href="https://www.noaa.gov/protecting-your-privacy">Protecting Your Privacy</a>
-        </li>
-        <li>
-          <a href="https://www.noaa.gov/information-technology/foia">FOIA</a>
-        </li>
-        <li>
-          <a href="https://www.noaa.gov/organization/information-technology/policy-oversight/information-quality">Information Quality</a>
-        </li>
-        <li>
-          <a href="https://www.noaa.gov/accessibility">Accessibility</a>
-        </li>
-        <li>
-          <a href="https://www.noaa.gov/guidance">Guidance</a>
-        </li>
-        <li>
-          <a href="https://www.noaa.gov/budget-finance-performance">Budget &amp; Performance</a>
-        </li>
-        <li>
-          <a href="https://www.noaa.gov/disclaimer">Disclaimer</a>
-        </li>
-        <li>
-          <a href="https://www.noaa.gov/inclusion-and-civil-rights">EEO</a>
-        </li>
-        <li>
-          <a href="https://www.noaa.gov/organization/inclusion-and-civil-rights/no-fear-act">No-Fear Act</a>
-        </li>
-        <li>
-          <a href="https://www.usa.gov/">USA.gov</a>
-        </li>
-        <li>
-          <a href="https://www.ready.gov/">Ready.gov</a>
-        </li>
-        <li>
-          <a href="mailto:[webmaster.hpcs@noaa.gov](mailto:webmaster.hpcs@noaa.gov)">HPCS Webmaster</a>
-        </li>
+        {%- for name, url in noaa_footer_links.items() %}
+          <li><a href="{{ url }}">{{ name }}</a></li>
+        {%- endfor %}
       </ul>
     </div>
 

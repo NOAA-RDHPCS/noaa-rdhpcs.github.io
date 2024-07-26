@@ -1,11 +1,5 @@
 {% extends '!breadcrumbs.html' %}
     {%- block breadcrumbs_aside %}
-      {%- if project_home_name and project_home_url %}
-        <li class="wy-breadcrumbs-aside"><a href="{{ project_home_url }}">{{ project_home_name }}</a></li>
-        {%- if display_vcs_links %}
-          <li class="wy-breadcrumbs-aside" style="padding: 3px;">|</li>
-        {%- endif %}
-      {%- endif %}
       {%- if hasdoc(pagename) and display_vcs_links %}
         <li class="wy-breadcrumbs-aside">
           <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode or "blob" }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a></li>
