@@ -1,3 +1,5 @@
+.. _getting-account:
+
 Getting an RDHPCS Account
 =========================
 

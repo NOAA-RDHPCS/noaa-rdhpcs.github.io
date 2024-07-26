@@ -844,10 +844,6 @@ Follow the steps to access other HPC systems.
 
 2. Click the **Authentication** tab.
 
-.. image:: /images/user_key.jpg
-   :scale: 40%
-
-
 3. Click on the “SSH Keys” line.
 
 4. Copy the “Key” from the “User Workspace”.
@@ -863,9 +859,6 @@ Works Marketplace**
 
 1. From the login portal, click on the user Name. Select
    **“MARKETPLACE** from the drop down list box.
-
-.. image:: /images/PWmarket.png
-   :scale: 40%
 
 2. Click on the Fork sign and click the Fork button when prompted.
 
