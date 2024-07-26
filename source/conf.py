@@ -8,17 +8,15 @@
 
 import datetime as dt
 
+# Sphinx Configuration Items
 project = "NOAA RDHPCS User Documentation"
 copyright = (
-    "%s, National Oceanic and Atmospheric Administration" % dt.datetime.now().year
+    f"{dt.datetime.now().year}, National Oceanic and Atmospheric Administration"
 )
 author = "NOAA RDHPCS"
-html_logo = "images/NOAA_RDHPCS.png"
-html_favicon = "images/favicon.ico"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-
 extensions = ["sphinx_rtd_theme",
               "sphinx_design",
               "sphinxcontrib.mermaid",
@@ -29,22 +27,20 @@ exclude_patterns = []
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
+html_title = "NOAA RDHPCS"
+html_logo = "images/NOAA_RDHPCS.png"
+html_favicon = "images/favicon.ico"
+html_show_copyright = False
 html_theme = "sphinx_rtd_theme"
 html_baseurl = "https://docs.rdhpcs.noaa.gov/"
 
 html_static_path = ["_static"]
-
 html_extra_path = ["_search/google64634d0922861b1a.html",
                    "_search/robots.txt"]
 
 html_css_files = [
     "css/theme_overrides.css",
 ]
-
-#html_js_files = [
-#    "js/custom.js",
-#]
 
 html_context = {
     "display_github": True,
@@ -53,9 +49,10 @@ html_context = {
     "github_version": "main",  # Version
     "conf_py_path": "/source/",  # Path in the checkout to the docs root
     "version": "<a href='/help/'>Need Help? Click Here</a>",
-    "project_home_url": "https://www.noaa.gov/information-technology/hpcc",
-    "project_name": False,
-    "github_issue_button": True,
+    "project_home_url": "https://www.noaa.gov/information-technology/hpcc", # URL to the Project Home page
+    "project_home_name": False, # False, or string with the Project name (e.g., NOAA RDHPCS Home)
+    "github_issue_button": True, # Display the Open issue on GitHub button
+    "show_sphinx": False,
 }
 
 # see https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html

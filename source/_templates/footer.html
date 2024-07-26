@@ -2,12 +2,78 @@
 {%- set display_vcs_links = display_vcs_links if display_vcs_links is defined else True %}
 
 {% block extrafooter %}
-{%- if hasdoc(pagename) and display_vcs_links %}
-    <br /><br />
-    <div role="contentinfo">
-      <p>Find an issue on this page?
-      <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/issues/new?lables=bug&title=Problem+on+page+{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="fa fa-github"> {{ _('Open an Issue on GitHub') }}</a></p>
-    </div>
-  {%- endif %}
 
+  <div class="noaa-footer">
+    <div id="footer-left">
+      <dev class="footer-logo-container">
+        <div class="footer-logo-wrapper">
+          <a href="https://www.noaa.gov/" class="footer-logo"><span>NOAA Home</span></a>
+        </div>
+        <div class="footer-logo-text">
+          <div class="noaa-slogan">Science. Service. Stewardship.</div>
+        </div>
+      </dev>
+    </div>
+
+    <div role="contentinfo" id="footer-menus">
+      <ul class="menu-footer-top">
+        <li>
+          <a href="http://rdhpcs.noaa.gov/">NOAA High Performance Computing Systems</a>
+        </li>
+      </ul>
+
+      <ul class="menu-footer-bottom">
+        <li>
+          <a href="https://www.noaa.gov/protecting-your-privacy">Protecting Your Privacy</a>
+        </li>
+        <li>
+          <a href="https://www.noaa.gov/information-technology/foia">FOIA</a>
+        </li>
+        <li>
+          <a href="https://www.noaa.gov/organization/information-technology/policy-oversight/information-quality">Information Quality</a>
+        </li>
+        <li>
+          <a href="https://www.noaa.gov/accessibility">Accessibility</a>
+        </li>
+        <li>
+          <a href="https://www.noaa.gov/guidance">Guidance</a>
+        </li>
+        <li>
+          <a href="https://www.noaa.gov/budget-finance-performance">Budget &amp; Performance</a>
+        </li>
+        <li>
+          <a href="https://www.noaa.gov/disclaimer">Disclaimer</a>
+        </li>
+        <li>
+          <a href="https://www.noaa.gov/inclusion-and-civil-rights">EEO</a>
+        </li>
+        <li>
+          <a href="https://www.noaa.gov/organization/inclusion-and-civil-rights/no-fear-act">No-Fear Act</a>
+        </li>
+        <li>
+          <a href="https://www.usa.gov/">USA.gov</a>
+        </li>
+        <li>
+          <a href="https://www.ready.gov/">Ready.gov</a>
+        </li>
+        <li>
+          <a href="mailto:[webmaster.hpcs@noaa.gov](mailto:webmaster.hpcs@noaa.gov)">HPCS Webmaster</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="footer-right">
+      <div id="site-footer-right-top">
+        <div id="stay-connected">
+          <a href="https://www.noaa.gov/stay-connected">Stay connected to NOAA</a>
+        </div>
+        <div id="social-icons">
+          <a class="fa fa-twitter" href="https://twitter.com/NOAA" target="_blank"><span>NOAA on Twitter</span></a>
+          <a class="fa fa-facebook" href="https://www.facebook.com/NOAA" target="_blank"><span>NOAA on Facebook</span></a>
+          <a class="fa fa-instagram" href="https://www.instagram.com/noaa" v=""><span>NOAA on Instagram</span></a>
+          <a class="fa fa-youtube-play" href="https://www.youtube.com/usnoaagov" target="_blank"><span>NOAA on YouTube</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

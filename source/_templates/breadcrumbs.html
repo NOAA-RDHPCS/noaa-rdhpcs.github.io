@@ -1,7 +1,7 @@
 {% extends '!breadcrumbs.html' %}
     {%- block breadcrumbs_aside %}
-      {%- if project_name and project_home_url %}
-        <li class="wy-breadcrumbs-aside"><a href="{{ project_home_url }}">{{ project_name }}</a></li>
+      {%- if project_home_name and project_home_url %}
+        <li class="wy-breadcrumbs-aside"><a href="{{ project_home_url }}">{{ project_home_name }}</a></li>
         {%- if display_vcs_links %}
           <li class="wy-breadcrumbs-aside" style="padding: 3px;">|</li>
         {%- endif %}

@@ -1,24 +1,13 @@
+/* Set the maximum width of the document section */
 .wy-nav-content {
     max-width: 1200px;
 }
 
-/* Adds whitespace between OLCF logo and Docs Home link */
-body>div>nav>div>div.wy-side-nav-search>a>img {
-    padding-bottom: 10px;
-}
-
-/* Clicking on the OLCF logo does nothing
+/* Clicking on the NOAA RDHPCS logo does nothing
    (disable RTD theme's default <a> behavior) */
 body>div>nav>div>div.wy-side-nav-search>a {
     pointer-events: none;
     cursor: default;
-}
-
-/* Supersede the above block, and allow the Docs Home link to be clickable */
-body>div>nav>div>div.wy-side-nav-search>div.version>a {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-    color: grey !important;
 }
 
 /* Don't let the color of the Docs Home link change. */
@@ -37,5 +26,91 @@ body>div>nav>div>div.wy-side-nav-search>div.version>a:visited {
 
     .wy-table-responsive {
         overflow: auto !important;
+    }
+}
+
+/* Items to affect the extrafooter items */
+@media (min-width: 1050px) {
+    .noaa-footer, .footer-logo-container {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+}
+
+.noaa-footer {
+    text-align: center;
+}
+
+.noaa-footer * a, .noaa-footer * a:visited {
+    color: grey !important;
+}
+
+@media (min-width: 900px) {
+    .noaa-footer #footer-left .footer-logo-container .footer-logo-wrapper {
+        flex-basis: 57px;
+    }
+}
+
+@media (min-width: 900px) {
+    .noaa-footer #footer-left .footer-logo-container>div {
+        flex: 1 1 auto;
+    }
+}
+
+@media (min-width: 1227px) {
+    .noaa-footer #footer-left .footer-logo-text {
+        margin-top: 7px;
+        text-align: center;
+    }
+}
+
+.noaa-footer #footer-left {
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.noaa-footer #footer-left .footer-logo-container .footer-logo-wrapper .footer-logo {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NCA3NCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMwMDg1Y2E7fS5jbHMtMntmaWxsOiNmZmY7fS5jbHMtM3tmaWxsOiMwMDMwODc7fTwvc3R5bGU+PC9kZWZzPjxnIGlkPSJEaWdpdGFsX0xvZ28iIGRhdGEtbmFtZT0iRGlnaXRhbCBMb2dvIj48ZyBpZD0iRm9yX1ByaW50IiBkYXRhLW5hbWU9IkZvciBQcmludCI+PHBhdGggaWQ9IldhdGVyIiBjbGFzcz0iY2xzLTEiIGQ9Ik03MC4xNywyMC42MWMtNS4yNyw3LjkzLTE0LDE5LTI0LjE5LDIyLjY5bC0xLjI2LjUzYTIuODYsMi44NiwwLDAsMCwuNzcuMjNoMS4yYzIuNTgtLjEsNi4zLTEuMTksNy4wNiwxLjQzQTMwLjU1LDMwLjU1LDAsMCwwLDM5LDQ5LjQxYy00LjYxLDIuNTMtMTAuNDUsNC44MS0xNC4yNywxLjI2LDMuMDYtLjQxLDguNzEtMi4yNiwxMC43LTQuMDdDMTkuMjUsNDYuMzgsMTIuMDYsMzYuMyw3LDMwLjc5Yy0xLjgyLTIuMTEtMy42OS0zLjg4LTUuNi00LjA2YTM3LDM3LDAsMSwwLDY4Ljc0LTYuMTJaIi8+PHBhdGggaWQ9IkJpcmQiIGNsYXNzPSJjbHMtMiIgZD0iTTcsMzAuNzdjNSw1LjUxLDEyLjIyLDE1LjU4LDI4LjQyLDE1LjgxLTIsMS44LTcuNjQsMy42NS0xMC43LDQuMDdDMjguNTMsNTQuMjIsMzQuNDEsNTIsMzksNDkuMzlhMzAuNDYsMzAuNDYsMCwwLDEsMTQuNjktMy44N0M1Myw0Mi45LDQ5LjIzLDQ0LDQ2LjY1LDQ0LjA4aC0xLjJhMi42MywyLjYzLDAsMCwxLS43Ny0uMjNsMS4yNi0uNTJDNTYuMSwzOS41NCw2NC44NSwyOC41NCw3MC4xMywyMC41NWEzNS41NywzNS41NywwLDAsMC0zLjc4LTZjLTkuNTIsMS43NC0xMi42LDE1LjY4LTE4LDIyLjU5LTcuMTYsMTAuMDgtMTQsNy44NS0yMS4yNywxLjEzUzE0LjQ0LDE5LjYxLDYuNzcsMTUuNTRBMzcuMDYsMzcuMDYsMCwwLDAsMS4zOCwyNi43MkMzLjM0LDI2LjkxLDUuMjEsMjguNjgsNywzMC43N1oiLz48cGF0aCBpZD0iU2t5IiBjbGFzcz0iY2xzLTMiIGQ9Ik0yNy4xLDM4LjI2YzcuMjIsNi43MiwxNC4xMSw4LjkyLDIxLjI4LTEuMTQsNS40NS02LjkxLDguNS0yMC44NSwxOC0yMi41OWEzNywzNywwLDAsMC01OS41OCwxQzE0LjQ5LDE5LjYxLDE5Ljg4LDMxLjY1LDI3LjEsMzguMjZaIi8+PGcgaWQ9IldvcmRtYXJrIj48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNi40NSwyNGgxLjk0VjE2LjI1YTIuMDYsMi4wNiwwLDAsMC0yLjI1LTEuODdoLTRWMjRoMS45NVYxNi4yNWgxLjc4Yy4zOCwwLC41OS4yNi41OS43aDBaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzcuNywyNFYxNi4yNWEyLjA3LDIuMDcsMCwwLDEsMS45NC0xLjg3aDIuNDFBMS44NywxLjg3LDAsMCwxLDQ0LDE2LjE3VjI0SDQyLjA1VjIwLjM4SDM5LjY0VjI0Wk00Mi4wNSwxN2EuNjkuNjksMCwwLDAtLjY4LS43aC0xYS43Mi43MiwwLDAsMC0uNjYuN3YxLjU4aDIuMzlaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNDUuNDgsMjRWMTYuMjVhMi4wOCwyLjA4LDAsMCwxLDItMS44N0g0OS44YTEuODcsMS44NywwLDAsMSwxLjk0LDEuNzlWMjRINDkuOFYyMC4zOEg0Ny40M1YyNFpNNDkuOCwxN2EuNjkuNjksMCwwLDAtLjY4LS43aC0xYS43MS43MSwwLDAsMC0uNjQuN3YxLjU4SDQ5LjhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzQuMjIsMTQuMzhIMzEuODRhMS45MywxLjkzLDAsMCwwLTEuOTUsMS44NXY2QTIuMTksMi4xOSwwLDAsMCwzMS44NCwyNGgyLjM4YTIuMjQsMi4yNCwwLDAsMCwxLjk0LTEuOHYtNmExLjg5LDEuODksMCwwLDAtMS45My0xLjg1Wm0wLDcuMmEuNjMuNjMsMCwwLDEtLjYzLjYzSDMyLjQ4YS42Mi42MiwwLDAsMS0uNjQtLjYyaDBWMTYuODNhLjYzLjYzLDAsMCwxLC42My0uNjNoMS4xMWEuNjMuNjMsMCwwLDEsLjY0LjYxdjQuNzdaIi8+PC9nPjwvZz48L2c+PC9zdmc+);
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+    height: 56px;
+    width: 56px;
+    margin-right: 5px;
+}
+
+.noaa-footer #footer-right {
+    text-align: center;
+    font-style: italic;
+    min-width: 148px;
+
+}
+
+.noaa-footer #footer-right .fa {
+    margin-right: 10px;
+}
+.noaa-footer #footer-left span, .noaa-footer #footer-right span {
+    display: none;
+}
+
+/* Center section with all the links */
+#footer-menus .menu-footer-top {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#footer-menus [class*="menu-footer"]>li {
+    display: inline;
+}
+
+#footer-menus [class*="menu-footer"]>li:not(:last-child)::after {
+    content: "|";
+    margin: 0 .4444444444rem;
+}
+
+@media (min-width: 56.25em) {
+    .noaa-footer #footer-menus {
+        flex-basis: 75%;
+        margin: 0 50px;
     }
 }
