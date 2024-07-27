@@ -260,11 +260,11 @@ To retrieve a backup, simply copy it into your desired destination with the
 User Archive Directories (PAN Only)
 ===================================
 
-The :ref:`gfdl_archive` provides long-term storage for the large amounts of data
-created on the NOAA compute systems. The mass storage facility consists of tape
-and disk storage components, servers, and the Data Migration Facility (DMF)
-software. After data is uploaded, it persists on disk for some period of time.
-The length of its life on disk is determined by how full the disk caches
+The :ref:`gfdl_archive` provides long-term storage for the large amounts of
+data created on the NOAA compute systems. The mass storage facility consists of
+tape and disk storage components, servers, and the Data Migration Facility
+(DMF) software. After data is uploaded, it persists on disk for some period of
+time. The length of its life on disk is determined by how full the disk caches
 become.
 
 User archive areas on HPSS are intended for storage of data not immediately

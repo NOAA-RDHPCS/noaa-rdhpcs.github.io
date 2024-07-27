@@ -52,5 +52,6 @@
         "xtmp"
     ],
     "esbonio.sphinx.confDir": "${workspaceFolder}/source",
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "rewrap.wrappingColumn": 79,
 }
