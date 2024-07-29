@@ -91,6 +91,7 @@ linkcheck_allowed_redirects = {
     r'https://.*?\.google\.com/?.*': r'https://accounts\.google\.com/.*?/signin/.*',
     r'https://.*\.google\.com/?.*': r'https://.*?\.google\.com/?.*?/edit',
     r'https://github\.com/?.*': r'https://github\.com/login',
+    r'https://sslvpn\.rdhpcs\.noaa\.gov/': r'https://sslvpn\.rdhpcs\.noaa\.gov/.*'
 }
 
 linkcheck_ignore = [
