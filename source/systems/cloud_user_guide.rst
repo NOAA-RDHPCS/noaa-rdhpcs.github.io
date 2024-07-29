@@ -147,6 +147,7 @@ Recorded sessions and other materials are linked below.
   videos and other material.
 
 
+
 Beginner's Guide to NOAA's HPC Cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -168,37 +169,75 @@ development environments (IDE) like `RStudio
 Parallel Works
 ==============
 
-**April 10, 2024**
+**OOD Features 7 May 2024**
 
+`Beta Training for Open On Demand features
+<https://drive.google.com/file/d/1e8lCgvxLnU3Br5Em5eHOJLT91l2YS2NB/view?ts=663bcfe0>`_.
+This functionality will be available in both Cloud-based and
+On-Premise environments. The training covers the following:
+
+* Provide graphical management of file systems and data
+* Use graphical job templates, job submissions, and job management.
+* Create and edit files and scripts directly through the web interface.
+* Transfer files (<8GB in size) from local workstation to and from HPC systems.
+* Allow multiple mounts per system
+* Seamless user authentication between the Parallel Works service and
+  on-premise system
+
+.. note::
+
+  For now you have to add PW SSH KEY TO REMOTE SYSTEM
+
+* New capabilities:
+
+  - Launch interactive terminal windows.
+  - Launch a Remote Desktop (disconnect and reconnect as needed).
+  - Launch Jupyter Notebooks on both Login nodes and Compute nodes.
+  - Launch graphical programs on both Login nodes and Compute nodes
+    (i.e., MATLAB, ARM Forge/DDT, etc.).
+
+* Working on merging on-prem and cloud together
+
+* Adding many platforms and utilities:
+
+  - ARM FORGE
+  - MATLAB
+  - Intel Advisor
+  - Intel VTune
+  - ECFlow
+  - R Studio (possibly)
+
+* Per user tuning of graphics quality, based on each user's network
+  bandwidth and network latency.
+* Provide an alternative user authentication method via integrating
+  with Login.gov's OAuth OIDC service.
+
+
+**April 10, 2024**
 `Job monitor and VNC settings
 <https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`__
 
 **February 28, 2024**
-
 `Rocky8: Linux Image and New Storage Features
 <https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`__
 
 **February 9, 2024**
-
-`On-Demand Provisioning on On-Premise HPC systems
+`On-Demand Provisioning on On-Premise HPC systems from Parallel Works
 <https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`__
 
-**Parallel Works New Features Training, September 27, 2023**
+**November 1, 2023** `A Beginner's Guide to Rstudio Docker Containers
+<https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/view?ts=6543d955>`_
 
-`Workshop
+**Parallel Works New Features Training, September 27, 2023**
+`Enhancements to Parallel Works features
 <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
 
-Enhancements to Parallel Works features:
-  -  Updates to Notifications, with expanded notification types and
-     email notification options
-  -  Short term credentials, which can be used effectively for cluster
-     and storage resources
-  -  Updates to the Marketplace feature. Cluster and storage
-     configurations can now be shared with team members through the
-     Marketplace.
-  -  Lustre configurations can now be designated persistent, and saved
-     separately from the clusters. This potentially saves storage
-     costs.
+* Updates to Notifications, with expanded notification types and email notification options
+* Short term credentials, which can be used effectively for cluster and storage resources
+* Updates to the Marketplace feature. Cluster and storage
+  configurations can now be shared with team members through the Marketplace.
+* Lustre configurations can now be designated persistent, and
+  saved separately from the clusters. This potentially saves storage costs.
 
 **Parallel Works New Features Training, June 14, 2023**
 
@@ -2243,8 +2282,8 @@ connector or cloud provider's command line interface for
 file transfer.
 
 **Azure: How to copy a file from the controller node to the project's
-permanent storage?** #. Start a cluster and login into the controller
-node.
+permanent storage?- #. Start a cluster and login into the controller
+node.**
 
    An example use the project cz-c4-id’s secret file.
 
@@ -2255,7 +2294,7 @@ node.
    manager storage:storage/project_keys/azure/gfdl-non-cz-c4-id
    in the controller node terminal.
 
-   It will show an authentication message as below:
+   It will show an authentication message as below
 
    .. code::
 
