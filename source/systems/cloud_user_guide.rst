@@ -300,6 +300,10 @@ Topics include:
 Cloud Success Stories
 =====================
 
+-  `GraphCast model description and fine-tuning results with GDAS data on - ML Experiment by Sadegh Tabas, May 15, 2024 <https://drive.google.com/file/d/1QXbIL3XtjcIBQepr-APHapqYHb41I6oo/view?ts=664539dd>`_
+-  `HAFS Neural Network October 4, 2023 <https://drive.google.com/file/d/1fCEeaGKvViD16GSVR1IKSDZUAgcjNWyZ/view?ts=651ec4f7>`_
+-  `NOS Team: Storm Surge Modelling, September 27, 2022
+   <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__
 -  `NOS Team: Storm Surge Modelling, September 27, 2022
    <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__
 -  `NWS Team: Rapid Refresh Forecast System, September 21, 2022
@@ -313,8 +317,119 @@ Office Hours
 The Cloud Computing support team hosts bi-weekly sessions for
 demonstrations, questions and answers.
 
+`11 July 2024
+<https://drive.google.com/file/d/14hPcU8b8yKINY5O4hoEyiUjdDiGcsx4r/view>`_
+Questions included:
+
+* Data visualization and exporting  Matt gave a discussion and demonstration.
+* Can one use Visual Studio code?
+* Python scripts.
+
+`27 June 2024 <https://drive.google.com/file/d/1Skl-vnudsdXRUETfgz_WrTlFBfDYFpmc/view?ts=668c0a54>`_
+Overview of Linux Rocky8. Some issues for awareness:
+
+* Check The Marketplace for working configurations that can be modified
+* Instance selector
+* Lustre configurations – Azure is now up to speed
+* Persistent Lustre – Clusters work like any other
+* Users should check cloud provider documentation for instance types,
+  as well as the Parallel Works documents.
+
 `5 June 2024
 <https://drive.google.com/file/d/18AzIwzGIjrB1CTCCyOG6yQJB5gciFgs0/view?ts=6661daa2>`_
+
+`22 May 2024
+<https://drive.google.com/file/d/1uy9Zvum_Tbz-pmUo67i1dDTzQUXTZTce/view?ts=664e6185>`_
+Matt took a series of questions and demonstrated new Parallel Works
+capabilities.
+
+`1 May 2024 <https://drive.google.com/file/d/16ZD4fwRfOimDqhpXapII4-ZBbUSKlKt9/view?ts=66340ff2>`_
+* For a very specific user question, Matt offered to chat offline.
+* Matt discussed allocation issues on the various platforms.
+* Matt and Unni demonstrated settings and configuration.
+* Questions about Parallel Works defaults, checkpoints, and /contrib data.
+
+`10 April 2024 <https://drive.google.com/file/d/1FyirfPDrYQPDgzBkPCcgiFvVMjc_hJg-/view?ts=6617f0dd>`_
+* Active issue engaged with Matt
+* Data transfer question from Hera to the Cloud
+* Question concerning allocation and Globus
+* Issue with contrib directory in a new project.
+* Matt Long suggests using the Storage tab
+* Using Google file store
+* Azure transitional issue with Rocky8 and problems with Rocky clusters.
+
+
+`27 March 2024 <https://drive.google.com/file/d/1V5JoSKTc4P_NGY8TOXN6_7AgEi2B48af/view?ts=66058b75>`_
+* Welcome Joseph Barr, AI machine learning expert
+* Question regarding ingress and egress.
+* links to Data Transfer Calculator <https://calculator.aws/#/createCalculator/DataTransfer>`_
+* Question about allocation and how a specific cluster should be handled.
+* Suppressing job status popups in Parallel Works
+* Introduction to Cloud Docs, featuring the FAQ
+
+
+`13 March 2024 <https://drive.google.com/file/d/1brKDbEwchmdC-V5akkSylb-zu2-AXJbL/view?ts=65f2fe73>`_
+
+* Question concerning SSD storage on compute nodes in cluster configurations.
+* Question regarding spatial AI and storage options.
+* Jeffy Guyon raised allocation questions
+* Also asked about YOLO experience and image analysis.
+* Matt Lang mentioned upcoming Rocky8 transition
+* ARM instances should be ready shortly.
+* Unni reminded participants of an AI Training Session, 17-18 April
+  in Oak Ridge.
+
+`29 February 2024 <https://drive.google.com/file/d/1u-5a89KSfd0oq2jAw7zSiVHdTdL_SURJ/view?ts=65e1fcff>`_
+
+* No questions submitted in advance
+* Question from Tim Smith concerning Xforwarding -- use -X -Y
+* Configuring a cluster with large image disk size.
+* Question for Lin Gan concerning training for AWS
+* AWS said to contact Parallel Works. Matt is in discussions with AWS.
+
+Matt gave a demonstration:
+
+* Rocky8 -- configure your cluster to use it. Rocky8 Beta selection.
+* Existing compilers are available.
+* Raj asked about the level of testing for availability,
+  testing protocols, and nodes in use.
+* Andrew asked about instances.
+* Shared storage across clusters demonstrated.
+
+* Updated planned to support spac stacks and sharing them.
+
+
+`8 February 2024 <https://drive.google.com/file/d/1pa9fCWlU_PECtQAZ_274QkLeyOTPZCdY/view?ts=65cd21fb>`_
+* Debugging question from Adam Schneider.
+* Request may be impacted by availability, storage, configuration.
+* Logs can diagnose this issue
+* Louis Le from Parallel Works attempted diagnostics.
+* There is an issue with ARM processors at this time
+* Ratko Vasic requested a demonstration connecting a file system to a cluster.
+
+
+`18 January 2024 <https://drive.google.com/file/d/1xvJTiXvL9CXU_rep98DyJXTnYWk3M1TV/view>`_
+
+* What are best practices for deploying software on AWS for processing and
+  deleting data?
+* Matt explained how to use locals disks and a scratch directory
+* Certainly on AWS, possibly on Google and Azure. In any case, make sure
+  that an image is ARM compatible
+* When you use ARM, update the image to be ARM compatible
+* What to do when a new project request apparently got lost? </br>
+* Always a good idea to create an RDHPCS help ticket to track a request.
+* Platform feature demonstration:  Runtime alerts
+
+
+`4 January 2024 <https://drive.google.com/file/d/18G5r-gUN1yXG_hZv0b6EYejpekxcuixy/view?ts=659bfe98>`_
+
+* Issues concerning allocation.
+* Users were urged to work with Gonzalo Lasally on allocation matters.
+* Jeff Guyon discussed image analysis work, using Robo Flow and Google Collab.
+* Rajendra Panda made suggestions. He has expertise with Python,
+  containerization and other tools.
+* Unni suggested that he, and other Cloud users, consider taking part in the
+  upcoming Hackathon as an environment to work on challenges.
 
 `14 September 2023
 <https://drive.google.com/file/d/1INH-x7Cz025UtwMQDjlQX9Yn5MdQ_xE5/view?ts=6504735f>`__
@@ -436,15 +551,6 @@ steps:
 There are new features and capabilities under discussion at Parallel
 Works. If you are interested in these features, send an email ticket
 to: rdhpcs.cloud.help@noaa.gov, with the subject line PW Features.
-
-Monthly Utilization Reports
-===========================
-
-FY2024 Usage
-^^^^^^^^^^^^
-
-`Cumulative usage through end of May
-<https://docs.google.com/presentation/d/1fzqbYr1ma-ajJWRJQDcxPpgOAsojFKG_1-S_Y7f3Y3s/edit#slide=id.p>`_
 
 
 Frequently Asked Questions
