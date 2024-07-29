@@ -1,4 +1,4 @@
-.. _x2go:
+.. _x2go-remote-desktop:
 
 X2Go Remote Desktop
 ===================
