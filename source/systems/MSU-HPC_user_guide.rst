@@ -1328,7 +1328,8 @@ MSU Account Management Policies
   supervisor/sponsor when the user account is requested. The maximum
   expiration date is 12 months from the initiation date. When a user
   account approaches its expiration date, the supervisor/sponsor is
-  notified via email, and may extend the user account for up to one
+  notified via email (at 30 and 15 days prior to expiration), and may
+  extend the user account for up to one
   year, using the `MSU online account management tools
   <https://intranet.hpc.msstate.edu/services/external_accounts/noaa/>`__
 - Training updates are required each January 1. Users have until the
@@ -1681,6 +1682,11 @@ This completes the renewal request. The supervisor should consider
 notifying the user that the renewal request has been made so they will
 be vigilant for an email from MSU. MSU will email the user to provide
 additional information and confirm the request.
+
+If the user does not confirm the account renewal request within 7 days
+the supervisor/sponsor will get an email from MSU
+(from: null@hpc.msstate.edu) suggesting you contact the user to
+confirm the account.
 
 **HPC2-NOAA User Account Request Confirmation (User)**
 
