@@ -140,11 +140,14 @@ Recorded sessions and other materials are linked below.
   You must login using your NOAA email credentials to access the
   videos and other material.
 
+20 June 2024 `TensorFlow Jumpstart <https://drive.google.com/file/d/1WklYsbKrp8_4tydqkayAM6EwCVKDNG-9/view>`_.
+Presented by Ron Millikan. A `transcript of the training <https://docs.google.com/document/d/1Ys5S0YGeREmJgXy_KQ6tOygidVV7zGdmmzJDqIZTDzY/edit>`_
+is available as well.
 
 Beginner's Guide to NOAA's HPC Cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Presented on November 2023, Parallel Works presents the basics on
+Presented in November 2023, Parallel Works presents the basics on
 using the Parallel Works platform to create, start, monitor and
 interact with the compute clusters, and the use of workflows on the
 clusters.  This includes working interactively with services like
@@ -162,23 +165,68 @@ development environments (IDE) like `RStudio
 Parallel Works
 ==============
 
-**April 10, 2024**
+**7 May 2024** `Open On Demand Features
+<https://drive.google.com/file/d/1e8lCgvxLnU3Br5Em5eHOJLT91l2YS2NB/view?ts=663bcfe0>`_
+This functionality will be available in both Cloud-based and
+On-Premise environments. The training covers the following topics
 
+* Provide graphical management of file systems and data
+* Use graphical job templates, job submissions, and job management.
+* Create and edit files and scripts directly through the web interface.
+* Transfer files (<8GB in size) from local workstation to and from HPC systems.
+* Allow multiple mounts per system
+* Seamless user authentication between the Parallel Works service and
+  on-premise system
+
+.. note::
+
+  For now you have to add a PW SSH KEY TO REMOTE SYSTEM
+
+* New capabilities
+
+ - Launch interactive terminal windows.
+ - Launch a Remote Desktop (disconnect and reconnect as needed).
+ - Launch Jupyter Notebooks on both Login nodes and Compute nodes.
+ - Launch   graphical programs on both Login nodes and Compute nodes
+   (i.e., MATLAB, ARM Forge/DDT, etc.).
+
+
+* Working on merging on-prem and cloud together
+
+ - Based on resource host selection
+
+* Adding many platforms and utilities:
+
+ - ARM FORGE
+ - MATLAB
+ - Intel Advisor
+ - Intel VTune
+ - ECFlow
+ - R Studio (possibly)
+
+* Per user tuning of graphics quality, based on each user's network
+  bandwidth and network latency.
+* Provide an alternative user authentic
+* ation method via integrating
+  with Login.gov's OAuth OIDC service.
+
+
+**April 10, 2024**
 `Job monitor and VNC settings
 <https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`__
 
 **February 28, 2024**
-
 `Rocky8: Linux Image and New Storage Features
 <https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`__
 
 **February 9, 2024**
-
 `On-Demand Provisioning on On-Premise HPC systems
 <https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`__
 
-**Parallel Works New Features Training, September 27, 2023**
+**November 1, 2023** `A Beginner's Guide to Rstudio Docker
+Containers <https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/view?ts=6543d955>`_
 
+**Parallel Works New Features Training, September 27, 2023**
 `Workshop
 <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
 
@@ -195,7 +243,6 @@ Enhancements to Parallel Works features:
      costs.
 
 **Parallel Works New Features Training, June 14, 2023**
-
 `Workshop
 <https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
 
@@ -205,7 +252,6 @@ Especially useful for new users:
  - enhanced cost dashboard.
 
 **Parallel Works New Features Training, March 23, 2023**
-
 `Workshop
 <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
 
@@ -215,8 +261,7 @@ Especially useful for new users:
 - building a custom snapshot.
 
 **Parallel Works Foundation, February 16, 2023**
-
-foundational topics include:
+Foundational topics include:
 - Creation of a cluster configuration
 - multi-user setup
 - hiding a resource
@@ -228,17 +273,14 @@ foundational topics include:
 - storage options
 - Scheduler and deletion tabs from the Resource monitor link.
 
-Review the presentation `here. <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
+`Presentation is here`. <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
 
 **Workflows**
-
 `Presentation <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
-
 
 Workflow topics include:
 
-- subscribing a workflow from the PW Marketplace, example **Juypter
-  Notebook**
+- subscribing a workflow from the PW Marketplace, example **Juypter Notebook**
 - running a job from the head node and compute node
 - canceling a job,
 - deletion of a cluster
@@ -248,7 +290,6 @@ Workflow topics include:
 - bootstrap script.
 
 **Workflow Interactive Session**
-
 `Presentation <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
 
 Molecular dynamics simulation and visualization on a multi-cluster model.
