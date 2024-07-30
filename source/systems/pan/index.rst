@@ -1,3 +1,5 @@
+.. _ppan-user-guide:
+
 ###############
 PPAN User Guide
 ###############
