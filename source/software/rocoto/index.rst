@@ -122,4 +122,4 @@ Please be sure to run with this option before you submit the ticket,
 and then point us to the output files and log files.
 
 Need help? Please open Rocoto help tickets to
-mailto:rdhpcs.rocoto.help@noaa.gov rdhpcs.rocoto.help@noaa.gov.
+rdhpcs.rocoto.help@noaa.gov.
