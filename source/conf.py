@@ -42,13 +42,18 @@ html_css_files = [
     "css/theme_overrides.css",
 ]
 
+html_sidebars = {
+    '**': ['searchbox.html']
+}
+
 html_context = {
     "display_github": True,
     "github_user": "NOAA-RDHPCS",  # Username
     "github_repo": "noaa-rdhpcs.github.io",  # Repo name
     "github_version": "main",  # Version
     "conf_py_path": "/source/",  # Path in the checkout to the docs root
-    "version": "<a href='/help/'>Need Help? Click Here</a>", # Link to help page instead of a version
+    "gsce_id": "c44d566af80714ea2", # GSCE ID number.  Manage at https://programmablesearchengine.google.com
+    "version": "<a href='/help/' class='a-nochange'>Need Help? Click Here</a>", # Link to help page instead of a version
     "github_issue_button": True, # Display the Open issue on GitHub button
     # Items below affect the footer.  A custom footer file is in _templates
     # and adds items to the extrafooter block
@@ -66,7 +71,7 @@ html_context = {
         "EEO": "https://www.noaa.gov/inclusion-and-civil-rights",
         "No-Fear Act": "https://www.noaa.gov/organization/inclusion-and-civil-rights/no-fear-act",
         "USA.gov": "https://www.usa.gov/",
-        "Read.gov": "https://www.ready.gov/",
+        "Ready.gov": "https://www.ready.gov/",
         "HPCS Webmaster": "mailto:[webmaster.hpcs@noaa.gov](mailto:webmaster.hpcs@noaa.gov)",
     }
 }
