@@ -4,6 +4,13 @@
 Getting Started
 ###############
 
+Locations and Systems
+=====================
+
+The `NOAA Information Technology Locations and Systems page
+<https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems>`_
+gives technical and geographical information about NOAA's High
+Performance Computing program.
 
 Getting Access
 ==============
