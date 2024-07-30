@@ -669,9 +669,92 @@ start is to change the settings on your local host to match:
     net.ipv4.tcp_rmem=4096 87380 16777216
     net.ipv4.tcp_wmem=4096 65536 16777216
 
-A good reference for how to tune your host can be found `here <http://fasterdata.es.net/host-tuning/>`_.
+Fasterdata has a reference `how to tune your host <http://fasterdata.es.net/host-tuning/>`_.
 
 Additional tuning can be done depending on where your system is
 located, the type of network interface your host has, and many other
 options. Please work with your local network administrators to help
 tune your local hosts to maximize network performance.
+
+Troubleshooting Data Transfer Issues
+------------------------------------
+
+I am unable to do scp transfers which were working fine until recently
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you enter your incorrect token ID at any time (either with ssh or
+scp), your account may get locked. One way to reset your locked token
+is to open an new SSH session.
+
+Open a new ssh session using one of the RSA bastions.
+After you log in, it will ask you  reenter the token after waiting for
+it to change. Once you do that your account will be unlocked, and then
+your normal scp commands will work.
+
+.. note::
+
+  You have to use RSA authentication for this step
+  even if you normally use Tectia with CAC authentication.
+
+WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you see a message like the following:
+
+.. code-block:: shell
+
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+    Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+    It is also possible that a host key has just been changed.
+    The fingerprint for the RSA key sent by the remote host is
+    SHA256:lU91/IcK9rcFKIh1txPP1nfI0+JgNaj9IElGqftsc5H.
+    Please contact your system administrator.
+    Add correct host key in /Users/first.last/.ssh/known_hosts to get rid of this message.
+    Offending RSA key in /Users/first.last/.ssh/known_hosts:5
+    RSA host key for '''[localhost]:55362''' has changed and you have requested strict checking.
+    Host key verification failed.
+
+You need to remove the offending key on your **local host** (NOT Jet/Hera/Gaea)
+You can do that using the following command:
+
+.. code-block:: shell
+
+    ssh-keygen -R host         or
+    ssh-keygen -R host:port
+
+In the above case  you would do:
+
+.. code-block:: shell
+
+    ssh-keygen -R localhost:55362
+
+I am unable to do data transfers using the Tectia file tranfer client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Please keep in mind that when using the Tectia software, it is only
+the ssh client that should be used for interactive logins. For all
+other activities, such as file transfers, remote desktop clients, etc.
+you should be using your regular scp clients with your RSA token
+authenication:
+
+* Typically WinSCP for windows users
+* Typically scp for non-Windows users
+
+So please do not use the Tectia file transfer plans at all! Whether
+you are using the DTN (Data Transfer Nodes) or the port tunneling
+method please use the file transfer methods mentioned above and use
+RSA token for authentication (and not CAC authentication).
+
+.. code-block:: shell
+
+    ssh-keygen -R host         or
+    ssh-keygen -R host:port
+
+In the above example you would do:
+
+.. code-block:: shell
+
+    ssh-keygen -R localhost:55362
