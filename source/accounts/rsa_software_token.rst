@@ -1,4 +1,4 @@
-.. _rsa-software-token:
+.. _rsa-software-token-user-instructions:
 
 ####################################
 RSA Software Token User Instructions

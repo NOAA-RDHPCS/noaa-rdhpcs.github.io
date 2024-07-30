@@ -9,9 +9,6 @@ Accounts
 
    getting
    rsa_software_token
-   cac
-   role_accounts
-   account_activity
 
 .. _accessing_rdhpcs_systems:
 
@@ -683,7 +680,7 @@ either initialize your RSA software token or enable your hardware
 token.
 
 **RSA software token:** Please follow the instructions contained in
-the :ref:`RSA-software-token` User Instructions.
+the :ref:`RSA-software-token-user-instructions`.
 
 .. _RSA-hardware-token:
 
