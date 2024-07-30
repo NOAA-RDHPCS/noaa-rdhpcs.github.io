@@ -10,8 +10,8 @@ body>div>nav>div>div.wy-side-nav-search>a {
     cursor: default;
 }
 
-/* Don't let the color of the Docs Home link change. */
-body>div>nav>div>div.wy-side-nav-search>div.version>a:visited {
+/* Don't let the color of the Docs Help link change. */
+a.a-nochange, a.a-nochange:visited {
     color: grey !important;
 }
 
@@ -26,6 +26,14 @@ body>div>nav>div>div.wy-side-nav-search>div.version>a:visited {
 
     .wy-table-responsive {
         overflow: auto !important;
+    }
+
+}
+
+/* Ensure the text and hamburger menu are visible on small screens */
+@media screen and (max-width: 768px) {
+    .wy-nav-top, .wy-nav-top a {
+        color: #404040;
     }
 }
 
@@ -99,6 +107,9 @@ body>div>nav>div>div.wy-side-nav-search>div.version>a:visited {
     margin-bottom: 15px;
 }
 
+ul.menu-footer-bottom {
+    margin-bottom: 15px;
+}
 #footer-menus [class*="menu-footer"]>li {
     display: inline;
 }
