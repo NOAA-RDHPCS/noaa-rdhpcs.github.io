@@ -49,6 +49,8 @@ login instructions.
     If your certificate is not processed in a timely manner, please contact
     :ref:`support <getting_help>`
 
+.. _ssh_connection:
+
 Connecting
 ==========
 
@@ -187,6 +189,8 @@ X2Go.
     Microsoft Windows users can use any of the X11 servers available for
     Windows.  The SSH client will need to be configured to use the X11 server
     for forwarding X11.
+
+.. _ssh-port-tunnels:
 
 SSH Port Tunnels
 ================
