@@ -398,6 +398,61 @@ For example:
 
 Once the job is finished, it should produce an output file.
 
+Displaying Graphics on Compute Nodes
+====================================
+
+.. note::
+
+  Forwarding the display from the compute nodes is an extremely slow process,
+  as three hops are needed to get back to the user's local system. You should
+  only forward from the login nodes.
+
+Follow these steps to display graphics from the compute node.
+
+First terminal
+--------------
+
+Log in to the Gaea system:
+
+.. code-block:: shell
+
+  $ ssh <username>@gaea-rsa.princeton.rdhpcs.noaa.gov
+
+Then request access to a compute node, to start an interactive job:
+
+.. code-block:: shell
+
+  $ salloc -M c5 -t 00:20:00
+
+  salloc: Pending job allocation 134833309
+  salloc: job 134833309 queued and waiting for resources
+  salloc: job 134833309 has been allocated resources
+  salloc: Granted job allocation 134833309
+  salloc: Nodes c5nXXXX are ready for job
+
+Second terminal
+---------------
+
+Log in to the Gaea system and enable X11 forwarding:
+
+.. code-block:: shell
+
+  $ ssh -X <username>@gaea-rsa.princeton.rdhpcs.noaa.gov
+
+Ssh to the compute node allocated to you in the first window:
+
+.. code-block:: shell
+
+  $ ssh  c5nXXXX
+
+Test the display setup with some x11 applications such as xeyes or xclock:
+
+.. code-block:: shell
+
+  $ xeyes
+
+
+
 System Architechture
 ====================
 
@@ -1290,6 +1345,210 @@ For SHMEM codes, users must load the xt-shmem module before compiling:
 
   $ module load xt-shmem
 
+Debugging with DDT
+==================
+
+Arm DDT is a powerful, easy-to-use graphical debugger. With Arm DDT it
+is possible to debug:
+
+* Single process and multithreaded software
+* Parallel (MPI) Software
+* * OpenMP
+* * Hybrid codes mixing paradigms such as MPI + OpenMP, or MPI + CUDA
+
+Arm DDT Supports:
+* C, C++, and all derivatives of Fortran, including Fortran 90.
+* Python (CPython 2.7), limited support
+* Parallel languages/models, including MPI, UPCm and Fortran
+2008 Co-arrays.
+* GPU languages such as HMPP, OpenMP Accelerators, CUDA and
+CUDA Fortran.
+
+
+Arm DDT helps you to find and fix problems on a single thread or
+across hundreds of thousands of threads. It includes static analysis
+to highlight potential code problems, integrated memory debugging to
+identify reads and writes that are outside of array bounds, and
+integration with MPI message queues.
+
+Using DDT on C5
+---------------
+
+To set up the debugger for c5, you must load forge and start ddt on a
+login node, then initiate an interactive session and reverse connect
+from there.
+
+Launch via Login Node
+^^^^^^^^^^^^^^^^^^^^^
+
+In a C5 login node:
+
+.. code-block:: shell
+
+  module load forge/23.1.1
+  ddt
+
+Setup and Configuration
+^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Click the Remote Launch dropdown -> Configure
+2. In the Configure Remote Connections, click Add.
+3. Enter the details of your remote host:
+
+   * Connection Name: Enter a name for your remote connection (otherwise
+     the host name will be used)
+   * Host Name: your_workstation_username@gaea-c5.ncrc.gov
+   * Remote Installation Directory: comes from which ddt on gaea
+   * DDT path for Remote installation: use ` which ddt ` on gaea to find
+     appropriate path'''
+
+4. Check “Proxy through login node”
+5. Click OK, then close the Configure Remote Connections window.
+6. Click the Remote Launch dropdown and select the newly added gaea
+   configuration. A window opens to enable connection to gaea.
+
+Enter the pin or password for the gateway (like hub) and then the pin
+or password for your gaea login (i.e Pin + RSA token)
+
+Interactive Session on C5
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once the client is connected, ssh to gaea and start an interactive
+session to run your code.
+
+.. code-block:: shell
+
+  salloc --x11 --clusters=c5 --nodes=1-t1:00:00
+  module unload darshan-runtime/3.4.0
+  module load forge/23.1.1
+  ddt --connect srun -n{number of nodes} ./executable
+
+
+Note that the ddt --connect command must precede the srun command, to open a
+connection with your (now connected) client on your computer.
+Submit the job.
+
+When the job begins to run, The Reverse Connect
+Request prompt displays.
+
+1. Click **Accept**.
+2. Choose any appropriate options, and click **Run**.
+
+The debugging interface opens.
+
+Launch DDT via Remote Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can connect to Gaea systems remotely, and debug, edit, and compile
+files directly on the remote machine, using Forge remote clients. The
+remote client can overcome latencies that arise when x-fowarding the
+display. Use your workstation to connect via SSH to Gaea systems.
+
+Getting Started -- Before you set up DDT
+""""""""""""""""""""""""""""""""""""""""
+
+**Record Local Port Number**
+To configure a remote laungh, you need
+your local port number. You can obtain the local port number from your
+Tectia/CAC or your RSA login tunneling configuration, or when you log
+into a System's Front End (FE) node. See the port number in the sample
+display from Gaea:
+
+.. image:: /images/gaeaportnum.png
+
+Installation
+^^^^^^^^^^^^
+
+1. From the GFDL workstation, download the Arm forge client.
+2. Extract the tarball
+
+.. code-block:: shell
+
+   tar -xf arm-forge-21.0.3-linux-x86_64.tar
+
+1. Run a GUI installer, or textinstall.sh for a text-based install
+
+.. code-block:: shell
+
+  cd arm-forge-21.0.3-linux-x86_64
+  ./textinstall.sh
+
+
+Configuration
+^^^^^^^^^^^^^
+
+1. With typical tunnels set up, SSH into Gaea.</br>
+2. Launch DDT from your local machine or workstation.
+3. Click Remote Launch dropdown -> Configure. The Configure Remote
+   Connections dialog displays.
+
+.. image:: /images/remoto1.png
+
+3. Enter the details of your remote host:
+
+   * Connection Name: Enter a name for your remote connection
+     (otherwise the host name will be used)
+   * Host Name:  your_workstation_username@localhost:<local port number>
+   * DDT path for Remote installation: use **which ddt** on gaea to
+     find appropriate path
+   * KeepAlive Packets: Enable
+   * Proxy through login node: uncheck
+
+4. Click **Test Remote Launch** to test your configuration, or **OK to
+   connect** to save your changes.
+5. In the Welcome dialog, select your new host from the “Remote
+   Launch” combo box. At the prompt, enter your PASSCODE.
+
+Once connected, Forge will launch jobs, browse for files, and use/set
+the configuration on the remote system.
+
+Reverse Connect
+^^^^^^^^^^^^^^^
+
+The remote client program runs entirely on your workstation. The
+reverse connection feature contacts the DDT program on the cluster,
+rather than the other way around. Once connected to a remote host,
+Reverse Connect launches DDT jobs from your usual launch environment,
+with a minor modification to your existing launch command.
+
+1. Launch the Forge remote client and connect to a remote host. Once
+   connected, this client will monitor for new connections.
+2. Load the “forge” module, and run a DDT connect command:
+
+.. code-block:: shell
+
+  $ module load ddt
+  $ ddt --connect srun -n ./mpitest
+
+The remote client notifies you of the new connection. Optionally,
+configure debugging options before you launch the program.
+
+3. Click **Run** to begin the DDT session.
+
+Submit an MPI Application from DDT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. In the login node:
+
+* Compile your application with debugging enabled
+* Copy your submission script and rename it with extension .qtf
+
+2. In the DDT - Welcome dialog, click **Run and Debug a Program**
+The Run window displays.
+
+3. Specify the executable path, command-line
+arguments, and processor count. Once set, these values remain from one
+session to the next.
+
+  * Enable MPI and be sure the SLURM(generic) is selected
+  * Click Change → MPI/UPC Implementation → SLURM(generic)
+  * Check Submit to Queue
+  * Select Configure.
+  * Assign the submission template file to the .qtf file you just created
+
+4.  Click Ok to save changes
+5.  Select the number of processors and press run.
+
 Hardware
 ========
 
@@ -1737,7 +1996,7 @@ block until that job is completed by default.
 .. code-block:: shell
 
   module load gcp
-  gcp /gpfs/f5/<project>/world-shared/file /gpfs/f5/<project>/scratch/$USER/path/file
+  gcp /gpfs/f5/<project>/scratch/$USER/file /gpfs/f5/<project>/scratch/$USER/path/file
 
 Gaea <-> GFDL
 --------------
@@ -1752,6 +2011,7 @@ in scripts to run in the rdtn queue.
   module load gcp
   gcp gaea:/gpfs/f5/<project>/scratch/$USER/file gfdl:/gfdl/specific/path/file
   gcp gfdl:/gfdl/specific/path/file gaea:/gpfs/f5/<project>/scratch/$USER/path/file
+
 
 Gaea <-> Remote NOAA Site
 -------------------------
@@ -1797,7 +2057,7 @@ number identified in Step 1 or as needed):
   ssh-LXXXXX:localhost:XXXXX
   First.Last@gaea-rsa.princeton.rdhpcs.noaa.gov
 
-Once you have established the port tunnel it is a good idea to verify
+Once you have established the port tunnel, it is a good idea to verify
 that the tunnel is working. To verify, use another local window from
 your local machine, and enter the following:
 
@@ -1834,10 +2094,12 @@ connections (login via ssh, copy via scp) will work as expected.
 .. code-block:: shell
 
   $ scp -P XXXXX $USER@localhost:/path/to/file/on/HPCSystems /local/path/to/file
-  $ rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX' $USER@localhost:/path/to/files/on/HPCSystems /local/path/to/files
+  $ rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX'
+  $USER@localhost:/path/to/files/on/HPCSystems /local/path/to/files
+
 
 In either case, you will be asked for a password. Enter the password
-you from your RSA token (not your passphrase). Your response should be
+from your RSA token (not your passphrase). Your response should be
 your PIN+Token code.
 
 Gaea <-> Fairmont HPSS
@@ -2023,7 +2285,7 @@ efficiently between the various NOAA sites and their filesystems. Its
 syntax is similar to the standard UNIX copy tool, cp.
 
 GCP 2.3.30 is available on Gaea, PPAN, and GFDL Linux Workstations. It
-is obtainable via “module load gcp” or “module load gcp/2.3”, This
+is obtainable via “module load gcp” or “module load gcp/2.3”. This
 version is the latest on systems as of 2023-12-01; all other versions
 are considered obsolete and will not function properly due to system
 updates.
@@ -2141,90 +2403,60 @@ list below.
 
 Filesystems that GCP supports locally from Gaea:
 
-- eslogin
+* eslogin
 
-.. note::
+ - /lustre/f2
+ - /ncrc/home
 
-  Please verify that both the operating system and the processor
-  support Intel(R) X87, CMOV, MMX, FXSAVE, SSE, SSE2, SSE3, SSSE3,
-  SSE4_1, SSE4_2, MOVBE, POPCNT, AVX, F16C, FMA, BMI, LZCNT and AVX2
-  instructions.
+* ldtn
 
-CAC bastions refusing login attempts without asking for PIN
------------------------------------------------------------
+  - /lustre/f2
+  - /ncrc/home
 
-We have had reports of users being unable to connect to the CAC
-bastions via TECTIA client. As documented, CAC bastions are the
-servers you connect to with the ``sshg3 gaea.rdhpcs.noaa.gov``.  They
-maintain your Globus certificate and put your connection through to
-the Gaea login nodes. On Linux clients one workaround is to kill the
-ssh-broker-g3 process and try your login again.
+* rdtn
+
+  - /ncrc/home
+  - /lustre/f2
+
+Filesystems that GCP supports remotely from other sites:
+
+* /ncrc/home
+* /lustre/f2
+
+Helpful Hints
+^^^^^^^^^^^^^
+
+**Creating Directories**
+
+GCP provides an option for automatically creating new directories
+(-cd). The final segment of the path is interpreted as a directory if
+a trailing slash is included. Otherwise, it will be interpreted as a
+file. A few examples are below.
+
+Transferring into new directories:
 
 .. code-block:: shell
 
-   $ ps -ef | grep ssh-broker-g3
-   4060     15451 15184  0 14:05 pts/4    00:00:00 grep ssh-broker-g3
-   4060     29775 29765  0 Dec22 ?        00:00:42 /opt/tectia/bin/ssh-broker-g3 --run-on-demand
-   $ kill -9 29775
-   sshg3 gaea
+  gcp -cd /path/to/a/file /path/to/a/nonexistent/directory/
 
-Shell hang on login
--------------------
+The above results in a file called 'file' being created in a directory
+called 'directory':
 
-Users have often reported issues where their sessions freeze or hang
-on C3 login nodes unless Ctrl+c is pressed.  This issue can also
-result in your jobs timing out either at the start of the job or the
-end.  This hang might be due to a corrupted tcsh ``~/.history`` file.
-The current workaround is to delete the ``~/.history`` file.
+.. code-block:: shell
 
-Lustre (F2) Performance
------------------------
+  /path/to/a/nonexistent/directory/file
 
-The Gaea system intermittently has issues with the Lustre F2
-performance.  This typically appears as file operations hangs in
-interactive sessions, and as jobs taking longer than normal to
-complete, or timming out. Many jobs on Gaea are currently experiencing
-longer than normal run times.  While we do not yet have an underlying
-cause for this, we have found certain changes to the user's
-interactions and workflows that use the Lustre F2 file system help
-alleviate the problem.
 
-Files Accesses by Multiple Jobs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Transferring into a file:
 
-Users should not have multiple batch jobs access the same files.  This
-is typically done using hard- or soft-links.  Access the same file
-from multiple batch jobs increases the load on the Lustre metadata
-servers (MDS), and can lead to a MDS locking up affecting all files
-served on that MDS.
+.. code-block:: shell
 
-Another method used for sharing files is referencing files stored in
-pdata (*/lustre/f2/pdata*) directly.  Users should copy files out of
-pdata for each batch job that will use the file.
+  gcp -cd /path/to/a/file /path/to/a/nonexistent/directory
 
-Users should clean up files after the job runs successfully to ensure
-the Lustre file system has enough free space for all user's jobs.
+The above results in a file called 'directory' being created in a
+directory called 'nonexistent':
 
-Software Environments
-^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: shell
 
-Users should not store software environments, e.g., conda, spack, on
-the Lustre file system.  These environments have many small files that
-will be accessed from multiple compute nodes when used in batch jobs.
-
-These environments should be stored in user's home space.  If the
-environment is to be shared by several users or groups, the
-environment can be installed in either the /ncrc/proj space, or /usw.
-
-Development
-^^^^^^^^^^^
-
-Lustre F2 should not be used for development.  Development should be
-done in the user's home space.  This is especially true if using a
-source code management system (e.g., git).
-
-Users should remember that Lustre F2 is not backed up.  Data loss on
-Lustre F2 is rare, but Gaea has suffered two data losses on F2.  The
-user home area is backed up, with hourly and daily snapshots.
-
+  /path/to/a/nonexistent/directory
 

@@ -28,15 +28,23 @@ times, or more memory.
 Cron Usage
 ==========
 
-To schedule recurring jobs, cron is provided for users. On most
-systems, cron jobs will be started on service/login nodes; therefore
-the login node usage policy applies to cron jobs.
+To schedule recurring jobs, cron is provided for users. Cron is a job
+scheduler that allows users to run commands at specifically chosen,
+time-based intervals. On most systems, cron jobs will be started on
+service/login nodes; therefore the login node usage policy applies to
+cron jobs.
 
 However, on systems such as Gaea, cron is no longer permitted. Instead,
-**scrontab** is used.
+users will need to utilize **scrontab** in
+order to submit cron jobs.
 
 **Scrontab** is a Slurm-managed crontab that runs on a designated
 partition rather than the login nodes.
+
+The scrontab command is used to set, edit, and remove a user’s
+Slurm-managed crontab. A user can set ``VISUAL`` or
+``EDITOR``environment variables.  See ``man
+scrontab`` for more information.
 
 **Best Practices:**
 
