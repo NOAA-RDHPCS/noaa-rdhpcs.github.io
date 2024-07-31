@@ -51,6 +51,7 @@
         "wckey",
         "xtmp"
     ],
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "esbonio.sphinx.confDir": "${workspaceFolder}/source",
     "files.trimTrailingWhitespace": true
 }
