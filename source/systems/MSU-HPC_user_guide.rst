@@ -37,7 +37,7 @@ Hercules System Features:
   or 3.0 petaflops
 * Nearly 256 terabytes of Random Access Memory (RAM)
 
-Shared Between the Two HPC Systems:
+Shared Between the two HPC Systems:
 
 * Total scratch disk capacity of 9 Petabytes on the "work" file system
 * Total scratch disk capacity of 18 Petabytes on the "work2" file
@@ -66,7 +66,7 @@ MSU's Official HPC Documentation
 
 .. note::
 
-   An MSU user account is required to access documentation.
+   An MSU user account is required to access the documentation.
 
 
 General Information
@@ -293,6 +293,7 @@ Running Jobs on MSU-HPC Systems
 
 **Running and Monitoring Jobs on Orion and Hercules**
 
+All compute and memory-intensive tasks must be submitted to the batch
 system for execution on system compute resources. This section
 All compute and memory-intensive tasks must be submitted to the batch
 describes the requirements and common patterns for job submission and
@@ -515,7 +516,7 @@ example program in your current directory.
 
 The *novel* QoS is set up to handle special situations, particularly
 for large jobs requiring a large number of nodes (typically for
-limited time):
+limited time).
 
 A couple of examples are given below:
 
@@ -1898,11 +1899,11 @@ information in your justification:
 MSU FAQ
 =======
 
-**What are the differences between Orion and  Hercules?**
+**What are the differences between Orion and Hercules?**
 
 Although the ``/work`` and ``/work2`` file systems are mounted on both
 Orion and Hercules (via a shared InfiniBand interconnect), you should
-expect Orion an dHercules to behave like standalone HPC systems.
+expect Orion and Hercules to behave like standalone HPC systems.
 
 Here are some of the key differences:
 
