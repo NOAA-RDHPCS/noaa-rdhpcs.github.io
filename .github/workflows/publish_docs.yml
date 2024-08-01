@@ -6,6 +6,9 @@ on:
       - 'main'
   pull_request:
 
+env:
+  SPHINXOPTS: --fail-on-warning --keep-going
+
 jobs:
   build:
     runs-on: ubuntu-latest
