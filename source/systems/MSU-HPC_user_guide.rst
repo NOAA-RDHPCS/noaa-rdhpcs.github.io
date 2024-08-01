@@ -37,7 +37,7 @@ Hercules System Features:
   or 3.0 petaflops
 * Nearly 256 terabytes of Random Access Memory (RAM)
 
-Shared Between the Two HPC Systems:
+Shared Between the two HPC Systems:
 
 * Total scratch disk capacity of 9 Petabytes on the "work" file system
 * Total scratch disk capacity of 18 Petabytes on the "work2" file
@@ -66,7 +66,7 @@ MSU's Official HPC Documentation
 
 .. note::
 
-   An MSU user account is required to access documentation.
+   An MSU user account is required to access the documentation.
 
 
 General Information
@@ -103,7 +103,7 @@ portal.
 
 .. note::
 
-   The user is then required to access TAPS_ and change the temporary
+   The user is then required to access `TAPS`_ and change the temporary
    password **within 3 days**. The user must also complete any
    out-of-date training requirements.
 
@@ -118,7 +118,7 @@ portal.
    - You have access to the old device.
 
 
-#.  Go to TAPS_ and choose Manage DUO and select  **Password --> Add
+#.  Go to `TAPS`_ and choose Manage DUO and select  **Password --> Add
     new Device**.
 #.  Select **Send Me a Push**.
 #.  Open DUO on the old device -- you should be prompted to accept a
@@ -219,14 +219,16 @@ available for accessing the Orion system. Through the web interface
 you can manage files, submit & monitor jobs, launch graphical
 applications, and run remote desktop session.
 
-- The Orion Web Portal can be reached through TBD
-- The Hercules Web Portal is not yet available.
+- `Orion Web Portal <https://orion-ood.hpc.msstate.edu/>`_
+- `Hercules Web Portal <https://hercules-ood.hpc.msstate.edu>`_
 
 .. Note::
 
    You'll need your MSU username, password, and DUO authentication.
 
-Please refer to MSU's OOD Documentation for more information.
+Please refer to MSU's `OOD Documentation
+<https://intranet.hpc.msstate.edu/helpdesk/resource-docs/ood_guide.php>`_
+for more information.
 
 
 **Data Transfer nodes: Available via SCP and SFTP**
@@ -291,6 +293,7 @@ Running Jobs on MSU-HPC Systems
 
 **Running and Monitoring Jobs on Orion and Hercules**
 
+All compute and memory-intensive tasks must be submitted to the batch
 system for execution on system compute resources. This section
 All compute and memory-intensive tasks must be submitted to the batch
 describes the requirements and common patterns for job submission and
@@ -513,7 +516,7 @@ example program in your current directory.
 
 The *novel* QoS is set up to handle special situations, particularly
 for large jobs requiring a large number of nodes (typically for
-limited time):
+limited time).
 
 A couple of examples are given below:
 
@@ -1374,9 +1377,10 @@ Portfolio Manager and approved by the NOAA resource management.
 
 Portfolio Managers (PfMs) are responsible for the projects and Account
 Managers in their portfolio, including CPU allocations and scratch
-disk quotas. PfMs request active users to be Account Managers via a
-help ticket: MSU-HPC Help Request. Account Managers are responsible to
-add, remove, and control project members usage and behavior, provide
+disk quotas. PfMs request active users to be Account Managers via an
+MSU-HPC Help request. (Send email to rdhpcs.orion.help@noaa.gov to
+open an MSU help ticket.) Account Managers are responsible to add,
+remove, and control project members usage and behavior, provide
 guidance on resource utilization, and monitor CPU and storage usage
 for their projects. At MSU Account Managers also request new user
 accounts and request renewal of current user accounts when it
@@ -1384,10 +1388,12 @@ approaches its expiration date as the user's supervisor/sponsor.
 
 To access the MSU-HPC resources, an existing active user must be a
 member of at least one project. An Account Managers assigns an
-existing user to one or more of their projects, using MSU's Account
-Management Tool. To add new users, an Account Manager makes a new user
-request using MSU's Account Management Tool. The requestor becomes the
-new user's sponsor/supervisor.
+existing user to one or more of their projects, using MSU's `Account
+Management Tool
+<https://intranet.hpc.msstate.edu/services/external_accounts/noaa>`_.
+To add new users, an Account Manager makes a new user request using
+MSU's `Account Management Tool`_. The requestor becomes the new user's
+sponsor/supervisor.
 
 To create a new MSU-HPC project within a Portfolio, the Portfolio
 Manager must provide the following information in a help ticket:
@@ -1399,10 +1405,12 @@ Manager must provide the following information in a help ticket:
   projects to give the new project a CPU allocation
 - Request a scratch disk quota, if needed
 - Optionally, Designate another Account Manager(s)
-- Designate at least one member who is an active MSU-HPC user
+- Designate at least one member who is an active MSU-HPC user.
+
+Send email to rdhpcs.orion.help@noaa.gov to open an MSU help ticket.
 
 To close a MSU-HPC project, the Portfolio Manager must provide the
-following information in a help ticket: MSU-HPC Help Request.
+following information in a help ticket:
 
 - Project to be closed
 - Re-distribute core-hour CPU allocation across their remaining
@@ -1891,11 +1899,11 @@ information in your justification:
 MSU FAQ
 =======
 
-**What are the differences between Orion and  Hercules?**
+**What are the differences between Orion and Hercules?**
 
 Although the ``/work`` and ``/work2`` file systems are mounted on both
 Orion and Hercules (via a shared InfiniBand interconnect), you should
-expect Hercules to behave like a standalone HPC system.
+expect Orion and Hercules to behave like standalone HPC systems.
 
 Here are some of the key differences:
 
@@ -1908,10 +1916,15 @@ Here are some of the key differences:
    should be done via a help ticket and should include a justification
    as to why the older version is needed and an estimate as to how
    long it will be needed.
+-  Both systems have their own set of Login nodes, Development nodes,
+   Compute nodes, and Data Transfer nodes.
 -  With a few exceptions, Spack is being used to build and manage the
    Open-source software stack on Hercules. This includes the module
    file for each Open-source software package. The directory and
    module names are different then Orion.
+-  The Orion system has 40 cores per compute node and the Hercules
+   system has 80 cores per compute nodes. Please keep this in mind
+   when when submitting batch jobs.
 -  The "/apps" directory structure is significantly different between
    the two system. Software built on Hercules, using Spack, will be
    installed in its own ``/apps/spack/<package-hash>`` subdirectory.
@@ -1931,7 +1944,7 @@ Here are other items of interest:
 -  Hercules has its own Home File System (HFS) and its own
    ``/apps/contrib`` directory. As with Orion, only the HFS is the
    ONLY file system which is backed up.
--  Hercules has a completely separate CRON service. Workflows need to
+-  Each system has a completely separate CRON service. Workflows need to
    be managed independently on the two systems. Please use ``<system
    name>-login-1`` for editing your crontab file.
 -  The Batch system is completely separate between the two systems. A
@@ -1953,23 +1966,6 @@ Here are other items of interest:
 -  Users have to login (via ssh or putty) to Hercules and Orion
    separately.
 -  The ``screen`` command has been replaced with ``tmux``.
-
-
-**Will Orion's software stack be upgraded to match Hercules?**
-
-Although this is an ongoing discussion between NOAA and MSU, a
-decision has not yet been made. There are a lot of different variables
-which need to be considered first. The most prudent approach at this
-time, is to flush out any issues with the new software stack on
-Hercules, allow NOAA projects to port over their workflows and models
-to Hercules, let these models and workflows run for a while on
-Hercules, and then reevaluate the potential impact of running the new
-software stack on Orion. It will also depend greatly on the projected
-longevity of the Orion system. Orion runs the CentOS 7.x Operating
-System. Vendor support for this OS ends on June 30th, 2024. The OS's
-end of vendor support date may drive the need to upgrade Orion to the
-new software stack. If this were to happen then multiple user notices
-would be sent out over a period of multiple months.
 
 **Should I use the** ``/work`` **or** ``/work2`` **file system for my
 project?**
