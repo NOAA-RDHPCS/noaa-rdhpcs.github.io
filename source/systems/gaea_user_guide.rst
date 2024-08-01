@@ -615,6 +615,128 @@ Examples:
   sbatch --clusters=es --partition=eslogin_c# scriptname
   sbatch --clusters=es --partition=ldtn_c# scriptname
 
+Scheduling
+----------
+Cron is a job scheduler that allows users to run commands at
+specifically chosen, time-based intervals. **Crontab is not
+accessible on Gaea**. Instead, users will need to utilize scrontab in
+order to submit cron jobs.
+
+The scrontab command is used to set, edit, and remove a user’s
+Slurm-managed crontab.
+
+A user can set the ``VISUAL`` or ``EDITOR`` environment variables.
+
+See ``man scrontab`` for more information.
+
+**Sample Script***
+
+.. code-block:: shell
+
+  #SCRON --partition=cron_c5
+  #SCRON --time=1:00:00
+  #SCRON --job-name=scron_test
+  #SCRON --chdir=/ncrc/home1/Halle.Derry
+  #SCRON --output=/ncrc/home1/Halle.Derry/scron_test.%j.scrontab
+  0 * * * * /ncrc/home1/Halle.Derry/test.csh
+
+
+Jobs created with scrontab are assigned a single job id. When a job is
+cancelled, there will be no future runs and the job will be commented
+out in the users scrontab.
+
+To skip the next run of your cron job, use ``scontrol requeue
+<job_id>``.
+
+Scron Expressions
+^^^^^^^^^^^^^^^^^
+
+scrontab uses the same syntax for date and time as cron. The format of
+the scrontab command is:
+
+.. code-block:: shell
+
+  minute | hour | day of month | month | day of week
+
+
++--------------+--------------------------------------+
+| Field        | Allowed Values                       |
++==============+======================================+
+| minute       |                                      |
++--------------+--------------------------------------+
+| hour         | 0-23                                 |
++--------------+--------------------------------------+
+| day of month | 1-31                                 |
++--------------+--------------------------------------+
+| month        | 1-12, or use name                    |
++--------------+--------------------------------------+
+| day of week  | 0-7 (0 and 7 are Sunday) or use name |
++--------------+--------------------------------------+
+
+A field can contain an asterisk (*), meaning that it's valid for each
+of the allowed values for the given time period. Ranges are allowed
+where a range is two numbers with a hyphen between them. The second
+number must be greater than the first.
+
+scrontab allows you to use shortcuts to specify some common time
+intervals for the specified script to run. These include the
+following:
+
+* @yearly | @annually : job will run at 00:00 Jan 01 each year
+* @monthly : job will run at 00:00 on the first day of each month
+* @weekly: job will run at 00:00 Sunday of each week
+* @daily | @midnight : job will run at 00:00 each day
+* @hourly : job will run at the first minute of each hour
+
+Timezones
+^^^^^^^^^
+
+User-defined timezones are not supported.
+**Scrontab times are in UTC.**
+
+So for example:
+
+``5 20 * * * script1`` runs script1
+everyday at 20:05 UTC, or 15:05 (3:05 PM) EST.
+
+Running Multiple Jobs
+^^^^^^^^^^^^^^^^^^^^^
+
+To run multiple jobs, add another entry with your preferred #SCRON
+directives.
+
+
+**Sample Script**
+
+.. code-block:: shell
+
+  #SCRON --partition=cron_c5
+  #SCRON --ntasks=16
+  #SCRON --time=1:00:00
+  #SCRON --account=
+  #SCRON --job-name=scron_test
+  #SCRON --chdir=/ncrc/home1/Halle.Derry
+  #SCRON --output=/ncrc/home1/Halle.Derry/scron_test.%j.scrontab
+  0 * * * * /ncrc/home1/Halle.Derry/test.csh
+
+  #SCRON --partition=cron_c5
+  #SCRON --ntasks=16
+  #SCRON --time=1:00:00
+  #SCRON --account=
+  #SCRON --job-name=scron_test2
+  #SCRON --chdir=/ncrc/home1/Halle.Derry
+  #SCRON --output=/ncrc/home1/Halle.Derry/scron_test2.%j.scrontab
+  0 * * * * /ncrc/home1/Halle.Derry/test2.csh
+
+
+
+Gaea's cron follows the
+NOAA RDHPCS cron Usage Policy.  In some cases, the RDHPCS cron usage
+policy is tightly coupled to choices made on other RDHPCS systems
+(e.g. Jet) and may be irrelevant to cron on Gaea.  One example is
+that Gaea's cron will send emails to the user, regardless of whether
+the user configures the email address in the crontab.
+
 Job Monitoring
 --------------
 
