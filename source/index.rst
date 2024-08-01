@@ -105,6 +105,15 @@ SLURM
 
    slurm/index
 
+FAQ
+=======
+
+.. toctree::
+   :maxdepth: 2
+
+   FAQ/index
+
+
 How to contribute to the Documentation
 ======================================
 

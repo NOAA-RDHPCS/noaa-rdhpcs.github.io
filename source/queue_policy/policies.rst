@@ -114,6 +114,13 @@ long term data storage.
    back up critical data to HPSS.
 2. Data unused over 30 days is considered old and should be removed or
    moved to a different storage vehicle.
+
+.. note::
+
+  Use this google doc to assist you with `Hera/Jet Scratch File
+  Management <https://docs.google.com/document/d/1fDssUm61kyACE3l-8A8n6G2gHa_I9kW55DpFO1vpwBk/edit?usp=sharing>`_
+
+
 3. Tar up old small files (or delete them) to free up space on the SSD
    pool and stay under your file count quota.
 4. Large files are still optimal for HPC batch job performance.
@@ -409,6 +416,31 @@ dispositioning of HFS data.
 
 Deactivated users' HFS data may be removed and saved to the tape
 archive system in a retention pool of at least 5 years.
+
+Protecting Restricted Data
+--------------------------
+
+This describes the process to protect the RSTPROD restricted data on Hera.
+Hera uses regular Linux group based protection for restricted data.
+
+It is up to the user to make sure that files containing restricted
+data are set to have the group as **rstprod** and also to make sure
+that permissions for the world are removed.
+
+.. code-block:: shell
+
+  # chgrp -R rstprod $DIR
+  # chmod -R rwx-go $DIR
+
+Where $DIR is the directory with the files you want to protect.
+
+When these files are copied to a different location, be sure to
+use the **-p** option on the **cp** command, to
+preserve the group and the protection for those files:
+
+.. code-block:: shell
+
+  # cp -rp $DIR $TARGET_DIR
 
 
 Managing Packages in ``/contrib``
