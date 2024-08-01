@@ -105,6 +105,7 @@ linkcheck_ignore = [
     r'https://www\.lustre\.org/documentation/',
     r'https://www\.putty\.org/*',
 ]
+linkcheck_retries = 3
 
 # This is needed for backwards compatibility.  We have
 # several links that point to pages that require a user
