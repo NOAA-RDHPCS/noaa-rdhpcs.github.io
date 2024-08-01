@@ -1,6 +1,9 @@
 name: Check Hyperlinks
 on: [pull_request]
 
+env:
+  SPHINXOPTS: --quiet
+
 jobs:
   check-links:
     runs-on: ubuntu-latest
