@@ -9,3 +9,4 @@ Software
 
    python/index
    rocoto/index
+   debuggers/index
