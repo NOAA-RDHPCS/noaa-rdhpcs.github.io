@@ -9,7 +9,18 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": {
+                "owner": "sphinx-build",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^(\\S+):(\\d+):\\s+(WARNING|ERROR):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "severity": 3,
+                    "message": 4,
+                }
+            },
         },
         {
             "label": "start server",
@@ -48,7 +59,24 @@
             "label": "stop server",
             "command": "echo ${input:terminate}",
             "type": "shell"
-        }
+        },
+        {
+            "label": "Link Check",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": ["-m", "sphinx.cmd.build", "-q", "-E", "-b", "linkcheck", "source", "build/html"],
+            "problemMatcher": {
+                "owner": "sphinx-build",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^(\\S+):(\\d+):\\s+(WARNING|ERROR):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "severity": 3,
+                    "message": 4,
+                }
+            },
+        },
     ],
     "inputs": [
         {
