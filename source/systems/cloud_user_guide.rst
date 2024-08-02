@@ -465,7 +465,7 @@ How do I connect the controller node from outside the network?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 See the Parallel works user guide section `From outside the platform
-<https://parallelworks.com/docs/compute/logging-in-controller#from-outside-the-platform>`__
+<https://parallelworks.com/docs/compute/logging-in-controller#outside-the-platform>`__
 
 What are the project allocation usage limits and actions?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""

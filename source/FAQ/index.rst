@@ -829,14 +829,14 @@ A `transcript the training <https://docs.google.com/document/d/1Ys5S0YGeREmJgXy_
 
 The Support Team discussed `issues concerning the
 transition of Orion from Rocky8 to Rocky9
-<https://mail.google.com/mail/u/0/?pli=1#inbox/FMfcgzQVwxHbVFPQmVbgbXmkhCrzXlKq?projector=1
-here.>`_
+<https://drive.google.com/file/d/1HOVLh2yn0TID5NgK9ky5RUe1r-mrmNcD/view>`_
+here.
 
 10 May 2024
 -----------
 
 `Issues concerning data transfer in the Cloud
-<https://drive.google.com/file/d/13TZiHRBi4ISAALmrxXY0J3Wv8ccm4oex/viewS>`_
+<https://drive.google.com/file/d/13TZiHRBi4ISAALmrxXY0J3Wv8ccm4oex/view>`_
 A `transcript of the meeting is available
 <https://docs.google.com/document/d/1vbYrndTaAeiy7qAs2alx9proKmHwtK5x-C2YFXDbPt4/edit#heading=h.rqoqmdvh8gtp>`_
 
