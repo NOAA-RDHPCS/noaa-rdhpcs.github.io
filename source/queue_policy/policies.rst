@@ -130,7 +130,7 @@ monthly compute allocation and approximate maximum disk quota, per
 RDHPCS resource.
 
 This document lists `committee members and PfMs
-<[https://docs.google.com/presentation/d/1oZlV2yklYmCxWhCM6TF1DtRgy3BVPBDs/edit#slide=id.p2>`__
+<https://docs.google.com/presentation/d/1oZlV2yklYmCxWhCM6TF1DtRgy3BVPBDs/edit#slide=id.p2>`__
 For information on how allocations are implemented on a System, see
 :ref:`slurm-priority-and-fairshare`.
 
