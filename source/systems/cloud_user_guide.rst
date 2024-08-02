@@ -999,19 +999,18 @@ If you have not added a public key at the time of launching
 a cluster, you can login to the head node by IDE and update
 the public key in ~/.ssh/authorized_keys file.
 
-#. From the PW “Compute” dashboard, click on your name with
-   an IP address and make a note of it. You can also get the
-   head node IP address by clicking ‘i” icon of the Resource
-   monitor.
+#. From the PW “Compute” dashboard, click on your name with an IP
+   address and make a note of it. You can also get the head node IP
+   address by clicking the :guilabel:`i` icon of the Resource monitor.
 #. Click on the IDE link located on the top right side of
    the PW interface to launch a new terminal.
 #. From the menu option “Terminal”, click on the “New
    Terminal” link.
 #. From the new terminal, type
 
-    .. code-block::
+    .. code-block:: shell
 
-     $ ssh <Paste the username with IP address>
+        $ ssh <Paste the username with IP address>
 
    and press the enter key.
 
@@ -1020,9 +1019,9 @@ the public key in ~/.ssh/authorized_keys file.
 
    Example:
 
-    .. code-block::
+    .. code-block:: shell
 
-    First.Lastname@pw-user-firstlastname:/pw$ ssh First.Last@54.174.136.76
+        $ ssh First.Last@54.174.136.76
 
     Warning: Permanently added '54.174.136.76' (ECDSA) to the
     list of known hosts.
@@ -1244,7 +1243,8 @@ How can I automatically find the hostname of a cluster?
 By default, the host names are always going to be different
 each time you start a cluster.
 
-You can find CSP information using the :envvar:`PW_CSP` variable, as in the example:
+You can find CSP information using the :envvar:`PW_CSP` variable, as
+in the example:
 
 .. code-block:: shell
 
@@ -1384,7 +1384,7 @@ address to the clipboard.
 
 Click on the IDE button located top right on the ribbon.
 
-Click on the ‘Terminal' link and select a ‘New Terminal'
+Click on the 'Terminal' link and select a 'New Terminal'
 
 SSH into the controller node by pasting the login
 information from the clipboard.
@@ -1667,7 +1667,7 @@ you can then copy to any directory.
 
 **Locate your project's credentials and access instructions**
 
-From PW's home page, inside the "Storage Resources" secCtion locate
+From PW's home page, inside the "Storage Resources" section locate
 your project's bucket. Click on the key icon to find the bucket name,
 keys and sample command to access the bucket.
 
@@ -1737,7 +1737,7 @@ given for the bucket.
 
 
 2. Ensure your public SSH key is added to the `Parallel Works system
-   <https://parallelworks.com/docs/account-settings/authentication#managing-ssh-keys>`_.`
+   <https://parallelworks.com/docs/account-settings/authentication#managing-ssh-keys>`_.
 
 3. Start the cloud cluster, and when the cluster is up note the
    cluster connect string.
@@ -1766,7 +1766,7 @@ The azcopy utility becomes available on RDHPCS systems once the module
 It can be installed on your local machine/desktop by installing the
 binary at the link below as documented below:
 
-.. code-block::
+.. code-block:: shell
 
   wget -O azcopy.tgz https://aka.ms/downloadazcopy-v10-linux
   tar xzvf azcopy.tgz
@@ -2125,7 +2125,7 @@ What is NOAA RDHPCS preferred container solution?
 """""""""""""""""""""""""""""""""""""""""""""""""
 
 You can read `NOAA RDHPCS official communication on containers
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Containers>`_.`
+<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Containers>`_.
 
 On security issues and capabilities to run the weather model
 across the nodes, NOAA's RDHPC systems chose Singularity as
@@ -2465,10 +2465,10 @@ change user as root when copying the files, for example.
 How do I distribute slurm scripts on different nodes?
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
-By default the slurm sbatch job lands on a single node. You
-can distribute the scripts to run on different nodes by
-using the :option:`sbatch --exclusive` flag. The easiest solution would
-probably be to submit the job with an exclusive option, for example,
+By default the slurm sbatch job lands on a single node. You can
+distribute the scripts to run on different nodes by using the ``sbatch
+--exclusive`` flag. The easiest solution would probably be to submit
+the job with an exclusive option, for example,
 
 .. code-block:: shell
 
