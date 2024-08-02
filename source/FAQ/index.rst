@@ -481,11 +481,11 @@ environment variable please submit a help tickdet to report the problem.
 Why am I getting these errors? I am using hpc-stack for NCEPLIBS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are using "hpc-stack" please keep in mind that this is a
-software stack that is installed and maintained by the NCEPLIBS team.
-
-Here is the link for their `official supported distribution
-<https://github.com/NOAA-EMC/hpc-stack/wiki/Official-Installations>`_.
+If you are using `hpc-stack <https://github.com/NOAA-EMC/hpc-stack>`_
+please keep in mind that this is a software stack that is installed
+and maintained by the NCEPLIBS team.  Please refer to the `hpc-stack
+official supported distribution
+<https://github.com/NOAA-EMC/hpc-stack/wiki/>`_.
 
 If you have problems, particularly with modules or NCEP libraries, it
 is very likely you are using an unsupported version of their
@@ -495,8 +495,9 @@ should submit an "issue" ticket at the above link.
 I am using spack-stack and getting some errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are using spack-stack and are having issues you will have to
-submit an "issue" on their `github <https://github.com/NOAA-EMC/spack-stack>`_
+If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_
+and are having issues, you will have to submit an `issue on their
+github repository <https://github.com/JCSDA/spack-stack/issues>`_.
 
 The modules and associated software are not maintained by the system
 administrators so you will have to work the spack-stack team through
@@ -505,8 +506,10 @@ the link above.
 When is my .bashrc executed? When would it be ignored?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This `Opstree link <https://blog.opstree.com/2020/02/11/shell-initialization-files>`_
-may help.
+Please review :manpage:`bash(1)` and other information on the `bash
+shell <https://www.gnu.org/software/bash/>`_ on the `internet
+<https://opstree.com/blog/2020/02/11/shell-initialization-files/>`__.
+
 
 .. warning::
 

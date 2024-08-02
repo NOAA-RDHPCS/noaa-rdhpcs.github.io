@@ -140,11 +140,14 @@ Recorded sessions and other materials are linked below.
   You must login using your NOAA email credentials to access the
   videos and other material.
 
+20 June 2024 `TensorFlow Jumpstart <https://drive.google.com/file/d/1WklYsbKrp8_4tydqkayAM6EwCVKDNG-9/view>`_.
+Presented by Ron Millikan. A `transcript of the training <https://docs.google.com/document/d/1Ys5S0YGeREmJgXy_KQ6tOygidVV7zGdmmzJDqIZTDzY/edit>`_
+is available as well.
 
 Beginner's Guide to NOAA's HPC Cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Presented on November 2023, Parallel Works presents the basics on
+Presented in November 2023, Parallel Works presents the basics on
 using the Parallel Works platform to create, start, monitor and
 interact with the compute clusters, and the use of workflows on the
 clusters.  This includes working interactively with services like
@@ -162,23 +165,68 @@ development environments (IDE) like `RStudio
 Parallel Works
 ==============
 
-**April 10, 2024**
+**7 May 2024** `Open On Demand Features
+<https://drive.google.com/file/d/1e8lCgvxLnU3Br5Em5eHOJLT91l2YS2NB/view?ts=663bcfe0>`_
+This functionality will be available in both Cloud-based and
+On-Premise environments. The training covers the following topics
 
+* Provide graphical management of file systems and data
+* Use graphical job templates, job submissions, and job management.
+* Create and edit files and scripts directly through the web interface.
+* Transfer files (<8GB in size) from local workstation to and from HPC systems.
+* Allow multiple mounts per system
+* Seamless user authentication between the Parallel Works service and
+  on-premise system
+
+.. note::
+
+  For now you have to add a PW SSH KEY TO REMOTE SYSTEM
+
+* New capabilities
+
+ - Launch interactive terminal windows.
+ - Launch a Remote Desktop (disconnect and reconnect as needed).
+ - Launch Jupyter Notebooks on both Login nodes and Compute nodes.
+ - Launch   graphical programs on both Login nodes and Compute nodes
+   (i.e., MATLAB, ARM Forge/DDT, etc.).
+
+
+* Working on merging on-prem and cloud together
+
+ - Based on resource host selection
+
+* Adding many platforms and utilities:
+
+ - ARM FORGE
+ - MATLAB
+ - Intel Advisor
+ - Intel VTune
+ - ECFlow
+ - R Studio (possibly)
+
+* Per user tuning of graphics quality, based on each user's network
+  bandwidth and network latency.
+* Provide an alternative user authentic
+* ation method via integrating
+  with Login.gov's OAuth OIDC service.
+
+
+**April 10, 2024**
 `Job monitor and VNC settings
 <https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`__
 
 **February 28, 2024**
-
 `Rocky8: Linux Image and New Storage Features
 <https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`__
 
 **February 9, 2024**
-
 `On-Demand Provisioning on On-Premise HPC systems
 <https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`__
 
-**Parallel Works New Features Training, September 27, 2023**
+**November 1, 2023** `A Beginner's Guide to Rstudio Docker
+Containers <https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/view?ts=6543d955>`_
 
+**Parallel Works New Features Training, September 27, 2023**
 `Workshop
 <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
 
@@ -195,7 +243,6 @@ Enhancements to Parallel Works features:
      costs.
 
 **Parallel Works New Features Training, June 14, 2023**
-
 `Workshop
 <https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
 
@@ -205,7 +252,6 @@ Especially useful for new users:
  - enhanced cost dashboard.
 
 **Parallel Works New Features Training, March 23, 2023**
-
 `Workshop
 <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
 
@@ -215,8 +261,7 @@ Especially useful for new users:
 - building a custom snapshot.
 
 **Parallel Works Foundation, February 16, 2023**
-
-foundational topics include:
+Foundational topics include:
 - Creation of a cluster configuration
 - multi-user setup
 - hiding a resource
@@ -228,17 +273,15 @@ foundational topics include:
 - storage options
 - Scheduler and deletion tabs from the Resource monitor link.
 
-Review the presentation `here. <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
+`Presentation <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
 
 **Workflows**
-
 `Presentation <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
 
 
 Workflow topics include:
 
-- subscribing a workflow from the PW Marketplace, example **Juypter
-  Notebook**
+- subscribing a workflow from the PW Marketplace, example **Juypter Notebook**
 - running a job from the head node and compute node
 - canceling a job,
 - deletion of a cluster
@@ -248,7 +291,6 @@ Workflow topics include:
 - bootstrap script.
 
 **Workflow Interactive Session**
-
 `Presentation <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
 
 Molecular dynamics simulation and visualization on a multi-cluster model.
@@ -588,7 +630,7 @@ restart the cluster.
 
 In the below example, the root disk size is set to 256 GiB
 
-.. code::
+ .. code-block::
 
   "cluster_config": {
     "root_size": "256",
@@ -958,19 +1000,18 @@ If you have not added a public key at the time of launching
 a cluster, you can login to the head node by IDE and update
 the public key in ~/.ssh/authorized_keys file.
 
-#. From the PW “Compute” dashboard, click on your name with
-   an IP address and make a note of it. You can also get the
-   head node IP address by clicking "i” icon of the Resource
-   monitor.
+#. From the PW “Compute” dashboard, click on your name with an IP
+   address and make a note of it. You can also get the head node IP
+   address by clicking the :guilabel:`i` icon of the Resource monitor.
 #. Click on the IDE link located on the top right side of
    the PW interface to launch a new terminal.
 #. From the menu option “Terminal”, click on the “New
    Terminal” link.
 #. From the new terminal, type
 
-   .. code::
+    .. code-block:: shell
 
-     $ ssh <Paste the username with IP address>
+        $ ssh <Paste the username with IP address>
 
    and press the enter key.
 
@@ -979,9 +1020,9 @@ the public key in ~/.ssh/authorized_keys file.
 
    Example:
 
-   .. code::
+    .. code-block:: shell
 
-    First.Lastname@pw-user-firstlastname:/pw$ ssh First.Last@54.174.136.76
+        $ ssh First.Last@54.174.136.76
 
     Warning: Permanently added '54.174.136.76' (ECDSA) to the
     list of known hosts.
@@ -1013,7 +1054,7 @@ inactivity)
 
 #. Use ``sinfo``` or ``squeue`` to view active nodes:
 
-   .. code::
+    .. code-block::
 
       $ sinfo
       PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
@@ -1026,7 +1067,7 @@ inactivity)
 
 #. ssh to the compute node
 
-   .. code::
+    .. code-block::
 
       [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
       [compute-dy-c5n18xlarge-1]$
@@ -1040,18 +1081,19 @@ a feedback to the NOAA RDHPCS leadership using the link TBD
 How can I address an authentication issue on the Parallel Works [PW] login?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Authentication to the PW system can be due to an expired RSA
-Token or inconsistent account status in the PW system. If
-you have not accessed on-prem HPC system last 30 days, it is
-likely your RSA token is expired, in such cases contact
-rdhpcs.aim.help@noaa.gov for assistance.
-
-.. note::
-  Remember that userIDs are case sensitive, and most usernames
-  are First.Last and not first.last! Re-enter your userID in
-  this format as a first step.
+Authentication to the PW system can be due to an expired RSA Token or
+inconsistent account status in the PW system. If you have not accessed
+on-prem HPC system last 30 days, it is likely your RSA token is
+expired, in such cases open a :ref:`help request <getting_help>` for
+assistance.
 
 To verify RSA Token issue, follow the steps:
+
+Remember that userIDs are case sensitive, and most usernames
+are First.Last and not first.last)! Re-enter your userID in
+this format as a first step.
+
+To verify your RSA Token issue, follow the steps:
 
 If you enter an incorrect username or PIN and token value
 three times during a login attempt, your account will
@@ -1067,11 +1109,10 @@ follows:
 * After a successful login your token will be resynched and
   you should be able to proceed.
 
-If you are still experiencing issues with your token, send
-a help request to rdhpcs.aim.help@noaa.gov with the title
-"Please check RSA token status." To expedite
-troubleshooting, please include the full terminal output
-you received when you tried to use your token.
+If you are still experiencing issues with your token, open a
+:ref:`help request <getting_help>` with the title *Please check RSA
+token status.* To expedite troubleshooting, please include the full
+terminal output you received when you tried to use your token.
 
 * If RSA token is working and still unable to login to the PW system,
   check whether your workstation is behind a firewall that is blocking
@@ -1082,12 +1123,12 @@ you received when you tried to use your token.
 * You may also experience connection failure if you are trying to access
   from outside the United States.
 
-If you continue to experience connection issues, send
-email to rdhpcs.cloud.help@noaa.gov to open a help ticket.
+If you continue to experience connection issues, open a :ref:`help
+request <getting_help>`.
 
 
 
-5. Clusters and snapshots
+1. Clusters and snapshots
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cluster Cost types explained
@@ -1100,18 +1141,20 @@ We are working on adding more clarity on the resource cost
 type naming and cost. Broadly, the following cost types are
 explained below.
 
-UnknownUsageType: Network cost related virtual private
-network. Additional `reading here <https://cloud.google.com/vpc/network-pricing>`__ and
-here <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`_
+:UnknownUsageType: Network costs related virtual private network. See
+    the `Google CSP <https://cloud.google.com/vpc/network-pricing>`__
+    and `Amazon AWS
+    <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`__
+    documentation for more inforamtion.
 
-Other Node: Controller node cost.
+:Other Node: Controller node cost.
 
-Storage-BASIC_SSD: On the Google cloud, “contrib” volume
-billing is based on the allocated storage. Contrib volume
-allocated storage 2.5TB. On other cloud platforms, the cost
-is based on the storage used.
+:Storage-BASIC_SSD: On the Google cloud, “contrib” volume billing is
+    based on the allocated storage. Contrib volume allocated storage
+    2.5TB. On other cloud platforms, the cost is based on the storage
+    used.
 
-Storage-Disk: Boot disk and apps volume disk cost.
+:Storage-Disk: Boot disk and apps volume disk cost.
 
 How do I resize my resource cluster size?
 """""""""""""""""""""""""""""""""""""""""
@@ -1147,6 +1190,7 @@ size is about 14TiB.
 
 Keeping the bucket and cluster within the same region to lower latency and Cost
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Moving data between regions within a cloud platform will incur cost.
 For example, if the cluster and the bucket you were copying to exist in
 different regions, the cloud provider will charge for every bite that
@@ -1199,10 +1243,15 @@ How can I automatically find the hostname of a cluster?
 By default, the host names are always going to be different
 each time you start a cluster.
 
-You can find CSP information as below: $ echo $PW_CSP google
+You can find CSP information using the :envvar:`PW_CSP` variable, as
+in the example:
 
-There's a few other "PW" vars that might be useful for you
-as well:
+.. code-block:: shell
+
+    $ echo $PW_CSP
+    google
+
+There's a few other :envvar:`PW_*` vars that you may find useful:
 
 :PW_PLATFORM_HOST:
 :PW_POOL_ID:
@@ -1232,13 +1281,13 @@ verified, an ssh tunnel can be setup like so:
 
 Option 1: ssh CLI
 
-.. code::
+.. code-block:: shell
 
-  $ ssh -N -L <Local Port>:<Remote Host>:<Remote Port> <Remote User>@<Remote Host>
+  $ ssh -N -L <local_port>:<remote_host>:<remote_port> <remote_user>@<remote_host>
 
 example:
 
-.. code::
+.. code-block:: shell
 
   $ ssh -N -L 8888:userid-gclustera2highgpu1g-00012-controller:8888 userid@34.134.251.102
 
@@ -1270,7 +1319,7 @@ default, you could run this to change the activation:
 
 .. code-block:: shell
 
-  $ echo "conda activate <name of env>" >> ~/.bashrc
+  $ echo "conda activate <name_of_env>" >> ~/.bashrc
 
 Since your .bashrc shouldn't really change much, it might be
 ideal to set the file up once and then back it up to your
@@ -1335,25 +1384,25 @@ address to the clipboard.
 
 Click on the IDE button located top right on the ribbon.
 
-Click on the ‘Terminal' link and select a ‘New Terminal'
+Click on the 'Terminal' link and select a 'New Terminal'
 
 SSH into the controller node by pasting the login
 information from the clipboard.
 
-.. code::
+ .. code-block::
 
   $ ssh User.Name<IP address>
 
 List your user name and group:
 
-.. code::
+ .. code-block::
 
   $ id
   uid=12345(User.Id) gid=1234(grp)
   groups=1234(grp)
   context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 
-.. code::
+ .. code-block::
 
   $ sudo su -
   [root@awsv22-50 ~]$
@@ -1402,7 +1451,7 @@ remove batch partition to fit your model requirements.
 
 Default Partition details.
 
-.. code::
+ .. code-block:: cfg
 
   PartitionName=compute
   Nodes=userid-azv2-00115-1-[0001-0096] MaxTime=INFINITE
@@ -1414,7 +1463,7 @@ Default Partition details.
 How do I manually shutdown the compute nodes?
 """""""""""""""""""""""""""""""""""""""""""""
 
-.. code::
+ .. code-block:: shell
 
   $ sinfo
   PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
@@ -1429,7 +1478,7 @@ currently powered off.
 
 You can then use that list to stop the nodes:
 
-.. code::
+ .. code-block:: shell
 
   $ sudo scontrol update nodename=userid-gcp-00141-2-[0001-0002] state=power_down
 
@@ -1452,7 +1501,7 @@ script, the change is taken effect immediately.
 
 Example:
 
-.. code::
+ .. code-block:: shell
 
   $ echo "User.Id ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/100-User.Id
 
@@ -1476,7 +1525,7 @@ User" tab to "Yes", and from the "Sharing" tab, check the
 The command to find the name of your project's role account
 from /etc/passwd is.
 
-.. code::
+ .. code-block::
 
   $ grep -i role /etc/passwd
 
@@ -1495,7 +1544,7 @@ controller and compute nodes. Do not add any comments on the
 bootstrap script, as that would cause in code execution
 failure.
 
-.. code::
+ .. code-block:: shell
 
   ALLNODES
 
@@ -1558,12 +1607,10 @@ Follow the steps to install the aws tool on your home directory.
   $ cd aws
   $ ./install -i ~/.local/aws-cli -b ~/.local/bin
 
-You can now run: ``/home/First.Last/.local/bin/aws --version``
+You can now run: ``$HOME/.local/bin/aws --version``
 
 .. code-block:: shell
 
-  $ which aws
-  ~/.local/bin/aws
   $ aws --version
   aws-cli/2.15.57 Python/3.11.8 Linux/4.18.0-477.27.1.el8_8.x86_64 exe/x86_64.rocky.8
 
@@ -1577,13 +1624,13 @@ keys and sample command to access the bucket.
 
 .. code-block:: shell
 
-  aws s3 cp fileName.txt s3://$BUCKET_NAME/file/in/bucket.txt
+  $ aws s3 cp fileName.txt s3://$BUCKET_NAME/file/in/bucket.txt
 
 Example:
 
 .. code-block:: shell
 
-  aws s3 ls s3://noaa-sysadmin-ocio-ca-cloudmgmt
+  $ aws s3 ls s3://noaa-sysadmin-ocio-ca-cloudmgmt
 
 Azure azcopy install on an on-prem system. Files transfer to a cloud bucket
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1601,27 +1648,22 @@ To obtain the link, run this command:
 
 .. code-block:: shell
 
-  $ curl -s -D- https://aka.ms/downloadazcopy-v10-linux \| grep ^Location
+  $ curl -s -D- https://aka.ms/downloadazcopy-v10-linux | awk -F ': ' '/^Location/ {print $2}'
 
-You get a result with a link similar this
+You get a result with a link similar to
+``https://azcopyvnext.azureedge.net/releases/release-10.24.0-20240326/azcopy_linux_amd64_10.24.0.tar.gz``.
 
-`file <https://azcopyvnext.azureedge.net/releases/release-10.24.0-20240326/azcopy_linux_amd64_10.24.0.tar.gz>`_
-
-Replace the tar file name in the command below to download and untar
-the file:
-
-.. code-block:: shell
-
-  $ wget -O azcopy_linux_amd64_10.24.0.tar.gz https://aka.ms/downloadazcopy-v10-linux &&
-  $ tar -xf azcopy_linux_amd64_10.24.0.tar.gz --strip-components=1
-
-This installs azcopy tool.
+You can use that URL in the commands below to download and untar the
+AzCopy utiltiy:
 
 .. code-block:: shell
 
-  $ ls -ltr azcopy*
-  -rwxr--r-- 1 First.Last rdhpcsgrp 32123849 Mar 26 21:36 azcopy
-  -rw-r--r-- 1 First.Last rdhpcsgrp 15691259 Mar 26 21:44 azcopy_linux_amd64_10.24.0.tar.gz
+  $ azcopy_url=https://azcopyvnext.azureedge.net/releases/release-10.24.0-20240326/azcopy_linux_amd64_10.24.0.tar.gz && \
+      curl -o $(basename $azcopy_url) $azcopy_url && \
+      tar -xf $(basename $azcopy_url) --strip-components=1
+
+This will leave the ``azcopy`` tool in the current directory, which
+you can then copy to any directory.
 
 **Locate your project's credentials and access instructions**
 
@@ -1629,8 +1671,9 @@ From PW's home page, inside the "Storage Resources" section locate
 your project's bucket. Click on the key icon to find the bucket name,
 keys and sample command to access the bucket.
 
-Click here for the `Azcopy copy files command
-<https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy>`_.
+Please refer to the `AzCopy guide
+<https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy>`_ for information on how to use AzCopy.
+
 
 GCP gcloud install on an on-prem, and files transfer to a cloud bucket
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1639,28 +1682,27 @@ Download and extract the tool.
 
 .. code-block:: shell
 
-
-  curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-477.0.0-linux-x86_64.tar.gz
+  $ curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-477.0.0-linux-x86_64.tar.gz
 
 To extract the contents of the file to your file system (preferably to
 your home directory), run the following command:
 
 .. code-block:: shell
 
-  tar -xf google-cloud-cli-477.0.0-linux-x86_64.tar.gz
+  $ tar -xf google-cloud-cli-477.0.0-linux-x86_64.tar.gz
 
 Add the gcloud CLI to your path. Run the installation script from the
 root of the folder you extracted to using the following command:
 
 .. code-block:: shell
 
-  ./google-cloud-sdk/install.sh
+  $ ./google-cloud-sdk/install.sh
 
 Start a new terminal and check gcloud tool in the access path:
 
 .. code-block:: shell
 
-  [Unni.Kirandumkara@hfe06 ~]$ which gcloud
+  $ which gcloud
   ~/google-cloud-sdk/bin/gcloud
 
 From PW's home page, inside the "Storage Resources" section locate
@@ -1671,15 +1713,14 @@ How do I transfer data to/from the Cloud?
 """"""""""""""""""""""""""""""""""""""""""
 
 The recommended system for data transfers to/from NOAA RDHPCS systems
-is the `Niagara Untrusted DTN
-<https://www.google.com/url?q=http://udtn-niagara.fairmont.rdhpcs.noaa.gov&sa=D&source=editors&ust=1613591410536000&usg=AOvVaw32p_glNKlvWQGcukbOBwqR>`_
-especially if the data transfers is being done from/to the HPSS system.
+is the Niagara Untrusted DTN especially if the data transfers is being
+done from/to the HPSS system.
 
 If data is on Hera, the user will have to use 2-copy transfers, by
 first transferring to Niagara and then pulling the data from the
 Cloud, or use the utilities mentioned in the next section.
 
-AWS cli, available on Hera/Jet/Niagara, can be used on RDHPCS systems
+AWS CLI, available on Hera/Jet/Niagara, can be used on RDHPCS systems
 to push and pull data from the S3 buckets.  Please load the
 "aws-utils" module.
 
@@ -1696,7 +1737,7 @@ given for the bucket.
 
 
 2. Ensure your public SSH key is added to the `Parallel Works system
-   <https://parallelworks.com/docs/account-settings/authentication#managing-ssh-keys>`_.`
+   <https://parallelworks.com/docs/account-settings/authentication#managing-ssh-keys>`_.
 
 3. Start the cloud cluster, and when the cluster is up note the
    cluster connect string.
@@ -1731,8 +1772,8 @@ binary at the link below as documented below:
   tar xzvf azcopy.tgz
 
   # add the azcopy directory to your path or copy the “azcopy”
-  # executable to a desired location export
-  PATH=$PATH:$PWD/azcopy_linux_amd64_10.9.0
+  executable to a desired location export
+  PATH=$PATH:$PWD/azcopy_linux_amd64_10.9.0 </pre>
 
 How do I use GCP gsutil CLI to copy files?
 """"""""""""""""""""""""""""""""""""""""""
@@ -1828,11 +1869,12 @@ Project keys are needed to run this command.
 Data Transfer Between Compute Node and GCP Bucket
 """""""""""""""""""""""""""""""""""""""""""""""""
 
-In order to '''export changes''' from lustre data to  the bucket data
+In order to '''export changes''' from lustre data to the bucket data
 repository, the following options are available:
 
-* Use the command `gsutil <https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html cp>`_
-  path/to/file  gs://bucket-name/path/to/file.
+* Use the `gsutil cp
+  <https://cloud.google.com/storage/docs/gsutil/commands/cp>`_
+  command: ``gsutil cp path/to/file gs://bucket-name/path/to/file``.
 * Use gsutil --help command to learn more about the options.
 * Use the --recursive (-r) flag to move nested directories.
 
@@ -1873,7 +1915,7 @@ Example:
   $ sudo chown “username:group” <file name>
 
 
-1. Configuration Questions
+7. Configuration Questions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 How do I create a Parallel Works resource configuration on my account?
@@ -2083,7 +2125,7 @@ What is NOAA RDHPCS preferred container solution?
 """""""""""""""""""""""""""""""""""""""""""""""""
 
 You can read `NOAA RDHPCS official communication on containers
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Containers>`_.`
+<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Containers>`_.
 
 On security issues and capabilities to run the weather model
 across the nodes, NOAA's RDHPC systems chose Singularity as
@@ -2107,7 +2149,7 @@ navigate to PW/project_keys/gcp/<project key file>.
    Write json to ~/project-key.json (or another filename)
 #. Source the credential file in your environment.
 
-   .. code::
+    .. code-block::
 
       source ~/.bashrc
 
@@ -2338,7 +2380,7 @@ memory configurations would have to be adjusted.
 
 The script itself looks like this:
 
-.. code::
+ .. code-block::
 
   #!/bin/bash
 
@@ -2390,7 +2432,7 @@ before:
 
 after:
 
-.. code::
+ .. code-block::
 
   $ scontrol show config \| grep -i suspendtime
   SuspendTime = 3600 sec
@@ -2423,14 +2465,14 @@ change user as root when copying the files, for example.
 How do I distribute slurm scripts on different nodes?
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
-By default the slurm sbatch job lands on a single node. You
-can distribute the scripts to run on different nodes by
-using “sbatch - -exclusive” flag. The easiest solution would
-probably be to submit the job with an exclusive option, i.e.,
+By default the slurm sbatch job lands on a single node. You can
+distribute the scripts to run on different nodes by using the ``sbatch
+--exclusive`` flag. The easiest solution would probably be to submit
+the job with an exclusive option, for example,
 
 .. code-block:: shell
 
-  sbatch --exclusive ...
+  $ sbatch --exclusive ...
 
 Or, you can add it to your submit script:
 
@@ -2546,7 +2588,7 @@ You may manually resume the nodes like this:
 Set the nodename and reset the status to "idle" as given
 below:
 
-.. code::
+ .. code-block::
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
 
@@ -2685,14 +2727,14 @@ region or submit the request later.
 
 You may manually resume the nodes like this:
 
-.. code::
+ .. code-block::
 
   $ sinfo
 
 Set the nodename and reset the status to "idle" as given
 below:
 
-.. code::
+ .. code-block::
 
   $ sudo scontrol update nodename=philippegion-azurestream5-00002-1-[0001-0021] state=idle
 
@@ -2705,11 +2747,11 @@ Instance Types explained
 
 **How to find cores and threads on a node?**
 
-.. code::
+ .. code-block::
 
   $ cat /proc/cpuinfo \|grep -i proc \| wc -l
 
-.. code::
+ .. code-block::
 
   $ lscpu \| grep -e Socket -e Core -e Thread
   Thread(s) per core: 2 Core(s) per socket: 1
@@ -2720,7 +2762,7 @@ The other option is use ``nproc``
 There are a couple ways. You can use scontrol  and a node name to
 print a lot of info about it, including number of available cores:
 
-.. code::
+ .. code-block::
 
   $ scontrol show node userid-gclusternoaav2usc1-00049-1-0001 \| grep CPUTot
   CPUAlloc=0 CPUTot=30 CPULoad=0.43
@@ -3124,7 +3166,7 @@ Conduct a Transfer:
 
 .. code-block:: shell
 
-  $globus transfer $ep0:globusconnectpersonal-latest.tgz $ep1:/collab1/data_untrusted/User.Id/cloudXfer --label "CloudTransferTest1"
+  $ globus transfer $ep0:globusconnectpersonal-latest.tgz $ep1:/collab1/data_untrusted/User.Id/cloudXfer --label "CloudTransferTest1"
 
   Message: The transfer has been accepted and a task has been
   created and queued for execution Task ID:
@@ -3151,7 +3193,7 @@ usage.
 
 **How to list the files in an s3 bucket using a script?**
 
-.. code-block:: shell
+.. code-block:: python
 
   #!/usr/bin/python3
 
@@ -3165,7 +3207,7 @@ usage.
 
 This generates some output like this:
 
-.. code-block:: shell
+.. code-block:: python
 
   ['s3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test1.nc',
   's3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test2.nc',
@@ -3179,8 +3221,8 @@ scoped at a project level, and not to individual users.
 in Github?**
 
 Use your programming language command to call out
-environment variables. For example in Python: key_value =
-os.environ['AWS_ACCESS_KEY_ID']
+environment variables. For example in Python: ``key_value =
+os.environ['AWS_ACCESS_KEY_ID']``.
 
 It is very important not to commit a full print out of the
 shell environment.
@@ -3241,8 +3283,6 @@ This works.
 
 **On Azure, missing /apps fs system or modules not loaded case**
 
-We are working to fix this bug. If you own the Azure
-cluster, please run the command : sudo /root/run_ansible
-
-It will take about 2 mins to complete, and will mount /apps
-file system.
+We are working to fix this bug. If you own the Azure cluster, please
+run the command ``sudo /root/run_ansible``.  It will take about 2 mins
+to complete, and will mount /apps file system.
