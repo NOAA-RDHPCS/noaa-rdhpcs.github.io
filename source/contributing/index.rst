@@ -50,7 +50,7 @@ browser interface to create and submit changes via a Pull Request
 For those unfamiliar with these tools and flows, we have created a
 webcast tutorial for this!  Please make sure you are logged into your
 Google NOAA account, then access this `webcast tutorial
-<https://drive.google.com/file/d/1MdCbUExf3prY0OF-6CRc3EY1-UPSSwCE/view>`_
+<https://drive.google.com/file/d/1MdCbUExf3prY0OF-6CRc3EY1-UPSSwCE>`_
 
 For those comfortable with the command line and wanting to edit or
 preview changes on your own system, please see :ref:`Contributing via the
