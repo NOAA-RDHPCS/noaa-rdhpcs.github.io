@@ -801,8 +801,6 @@ SLURM is a Resource Manager and Scheduler. For Gaea-specific SLURM
 information, see SLURM Tips. For a general introduction to SLURM, see
 SLURM.
 
-.. note::
-  Link this to commondocs when that material is complete
 
 Modules
 =======

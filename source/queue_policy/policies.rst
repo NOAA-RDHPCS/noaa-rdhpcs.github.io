@@ -95,6 +95,126 @@ repeating processes:
 
   - No more than every 3 minutes.
 
+.. _allocation:
+
+Allocations
+===========
+
+RDHPCS System compute allocations are determined by the RDHPCS
+Allocation Committee (AC), with oversight from the NOAA HPC Board.
+Approved System allocations are typically given to portfolios as a
+percentage of the System or an average core-hours per month. Each
+portfolio is represented on the Allocation Committee and an Allocation
+Committee Chair is assigned by the HPC board typically for a 1+ year
+term. Each portfolio has a portfolio manager (PfM) who is responsible
+for managing their projects and Principal Investigators (PIs), and
+distributing their allocation amongst their projects as needed on each
+System where they have an allocation. Within a portfolio, allocations
+on a System can be traded by the PfM as desired. Portfolios may trade
+allocations with each other on a System or between Systems with
+approval from all concerned PfM’s, and with documentation and
+communication with the AC, but this is typically done only for a
+specified period of time. The PfM (in conjunction with the PI’s) is
+also responsible for managing disk quota and archive tape usage. A
+portfolio’s disk quota on a system is initially based on their
+percentage of compute allocation on that System.
+
+Click to review the `On-Prem Allocation Request Form
+<https://docs.google.com/forms/d/e/1FAIpQLScgzPjhQ_liCdWn0pZO9lMB-PbWN3DW7PNkcjGOBxlpFZuGUg/viewform?usp=sf_link>`_
+
+The Allocation Committee (AC) is appointed by
+the HPC Board to manage allocations across RDHPCS resources. The
+Committee has a rotating chair and representation from the
+Line Offices and Labs which use RDHPCS resources. The AC assigns a
+monthly compute allocation and approximate maximum disk quota, per
+RDHPCS resource.
+
+This document lists `committee members and PfMs
+<[https://docs.google.com/presentation/d/1oZlV2yklYmCxWhCM6TF1DtRgy3BVPBDs/edit#slide=id.p2>`__
+For information on how allocations are implemented on a System, see
+:ref:`slurm-priority-and-fairshare`.
+
+Request an Increase in Allocations
+----------------------------------
+
+There are three steps to obtain an increase in allocation:
+
+#. Identify your Portfolio Manager (PfM). # Request that your PfM
+complete an `On-Prem Allocation Request Form`.
+#.  The PfM completes and submits the request for approval.
+#.  The PfM opens a Help Ticket to notify RDHPCS of the request. Send email to
+rdhpcs.<system>.help@noaa.gov, using the actual system name, with
+Allocation in the Subject line.
+
+Adding a Project to an Allocation
+---------------------------------
+
+Requests for additional project allocation are submitted by the
+PfM through OTRS or AIM. If the request involves different
+portfolios, both PfMs will need to approve and accept the transfer.
+The request should contain the following:
+
+* **FROM Project:** The project where hours will be subtracted.
+* **TO Project:** The project where hours will be added.
+* **AMOUNT:** The core hours to be moved in the transfer.
+* **TIME:** Is this a temporary or permanent transfer? If temporary,
+  please include the date when you would like this transfer to be
+  reverted.
+
+.. note::
+
+  Allocation increases for a project are constrained by the amount of
+  compute resources designated to a portfolio by the AC. If additional
+  compute is needed beyond the scope of the portfolio's resources,
+  PfMs may donate or trade hours as desired. Requests for new or
+  increased allocations beyond the allotted portfolio amount on a
+  system should be emailed to the Allocation Committee Chair, as they
+  must be approved by the Allocation Committee.
+
+Cloud Computing Allocations
+---------------------------
+
+To request allocation for a new project, complete the `Cloud Computing
+Allocation form
+<https://docs.google.com/forms/d/e/1FAIpQLScbCVdipW-Bj2iD-bPzFjrzGjOdVM_jbmabbEZ3-CNrWdrdBA/viewform?usp=sf_link>`_`
+After you complete the form, create a Cloud
+help ticket to track the issue. Send email to
+rdhpcs.cloud.help@noaa.gov, copy to gonzalo.lassally@noaa.gov and
+unni.kirandumkara@noaa.gov, using Cloud Allocation Request in the
+subject line.
+
+.. note::
+
+  The Cloud Fiscal Year cycle starts collecting Cloud HPC
+  requirements in July/August for use in the next FY PoP.  If you are
+  requesting an Allocation to a brand-new project outside of the FY
+  cloud Allocation cycle, use the requirements sheet above and follow
+  those directions.
+
+To request an increase in current allocation, submit a Cloud help
+ticket. Send email to rdhpcs.cloud.help@noaa.gov, using Allocation
+Increase in the subject line.
+
+Quotas
+======
+
+Requesting Additional Storage for a Project
+-------------------------------------------
+
+When requesting additional storage quota, please be mindful of project
+space usage. Remember that the scratch spaces are not for long term
+storage. Please utilize HPSS for long term storage.
+
+Submit requests for additional quota via an OTRS help ticket
+from the PfM. The request should contain the following:
+
+* AMOUNT: The amount of quota needed.<br>
+* JUSTIFICATION:The reason why this space is needed.<br>
+* TIME FRAME: Is this a temporary or permanent implementation? If
+  temporary, please include the date when you would like this increase
+  to be reverted.
+
+
 File System Usage Practices and Policies
 ========================================
 
