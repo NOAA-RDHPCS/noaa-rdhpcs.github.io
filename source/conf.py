@@ -104,6 +104,7 @@ linkcheck_ignore = [
     r'https://www\.intel\.com/content/.*',
     r'https://www\.lustre\.org/documentation/',
     r'https://www\.putty\.org/*',
+    r'https://(orion|hercules)-ood.hpc.msstate.edu/?.*',
 ]
 linkcheck_retries = 3
 
