@@ -1468,10 +1468,10 @@ Compiling MPI codes with OpenACC directives on Hera
 
 We have limited experience of using these new technologies, so the
 best we can do with this point is point you to the `web resources
-<https://developer.nvidia.com/legacy-pgi-support>`__ The following
-link has a presentation on some advanced topics on using `multiple
-GPUs
-<https://on-demand.gputechconf.com/gtc/2016/webinar/openacc-course/Advanced-OpenACC-Course-Lecture2--Multi-GPU-20160602.pdf>`__
+<https://developer.nvidia.com/legacy-pgi-support>`__. NVIDIA has an
+`advanced OpenACC course
+<https://developer.nvidia.com/openacc-advanced-course>`__ that may be
+useful.
 
 Submitting Batch Jobs to the FGA System
 ---------------------------------------
