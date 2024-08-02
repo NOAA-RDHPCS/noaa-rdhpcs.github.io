@@ -563,8 +563,8 @@ What are the project allocation usage limits and actions?
   - Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
     email all resources have been removed.
 
-How do I rquest a project allocation or an allocation increase?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How do I request a project allocation or an allocation increase?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RDHPCS System compute allocations are determined by the RDHPCS
 Allocation Committee (AC). To make a request, complete the
