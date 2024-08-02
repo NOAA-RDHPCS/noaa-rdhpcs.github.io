@@ -84,7 +84,7 @@ issues or questions.
 
    With current CAC information on file, you should authenticate into RDHPCS
    with CAC as your primary means. If you need assistance with authenticating
-   via CAC, please see: :ref:`common-access-card`.
+   via CAC, please see: :ref:`common-access`.
 
 
 .. _rsa_token:
@@ -483,7 +483,8 @@ RSA software tokens provide two factor authentication (2FA) for NOAA
 RDHPCS systems for SSH access. When you’re assigned to your first
 project, the RSA token form will be used to assign your software
 token. Your RSA token will include instructions about how to
-initialize it. You can find more information at :ref:`rsa_token`.
+initialize it. You can find more information at
+:ref:`rsa-software-token-user-instructions`.`
 
 .. NOTE::
 
@@ -581,8 +582,7 @@ See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 On-Premises RDHPCS systems (Gaea, Hera, Jet, Niagara, PPAN) are
 accessed via SSH.
 
-
-.. _Common-access-card:
+.. _Common-access:
 
 Common Access Card (CAC) Login
 ==============================
