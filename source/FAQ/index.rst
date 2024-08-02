@@ -836,7 +836,7 @@ here.>`_
 -----------
 
 `Issues concerning data transfer in the Cloud
-<https://drive.google.com/file/d/13TZiHRBi4ISAALmrxXY0J3Wv8ccm4oex/viewS>`_
+<https://drive.google.com/file/d/13TZiHRBi4ISAALmrxXY0J3Wv8ccm4oex/view>`_
 A `transcript of the meeting is available
 <https://docs.google.com/document/d/1vbYrndTaAeiy7qAs2alx9proKmHwtK5x-C2YFXDbPt4/edit#heading=h.rqoqmdvh8gtp>`_
 
