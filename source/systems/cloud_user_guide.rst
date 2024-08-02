@@ -18,7 +18,7 @@ NOAA Cloud Computing uses the `Parallel Works
 manage their cloud computing resources across Amazon Web Services
 (AWS), Google Compute Platform (GCP), and Microsoft Azure Cloud
 Computing Services (Azure) via the NOAA RDHPCS Portal, customized for NOAA.
-The Parallel Works User Guide is their standard documentation. NOAA
+The `Parallel Works User Guide`_ is their standard documentation. NOAA
 users will find minor differences, for example, the login
 authentication, and project allocation, between the standard and
 customized applications.
@@ -27,18 +27,6 @@ We recommend the `Parallel Works User Guide <https://parallelworks.com/docs>`_
 for comprehensive information about the product. Users can review the
 `Frequently Asked Questions`_ section below
 to learn about the NOAA RDHPCS-specific topics.
-
-.. note::
-
-  At of 2024-07, the NOAA RDHPCS Cloud Globus endpoints are disabled
-  until the RDHPCS can develop a method to apply all egress charges
-  back to the originating project.  While the Globus endpoints are
-  disabled, transfers to and from the NOAA RDHPCS Cloud should be done
-  using the Cloud Service Provider's (CSP) Command-line Interface
-  (CLI) tools (see `AWS CLI <https://aws.amazon.com/cli/>`__, `Azure
-  CLI <https://learn.microsoft.com/en-us/cli/azure/>`__, and `GCloud
-  CLI <https://cloud.google.com/sdk/gcloud>`__ for information on
-  installation and use).
 
 NOAA's Parallel Works Portal
 ============================
@@ -134,6 +122,12 @@ Getting Help
 Please reference the :ref:`RDHPCS Cloud Help Desk <getting_help>` page for
 questions or assistance.
 
+Please send your feedback on product, support, and documentation to
+Unni Kirandumkara, email address: Unni.Kirandumkara@noaa.gov.
+You may also submit a question or a comment using the  `Question Intake Form
+<https://app.smartsheetgov.com/b/form/871515373b844cebba904980245e9b19>`_.
+
+
 Training Videos
 ===============
 
@@ -146,11 +140,14 @@ Recorded sessions and other materials are linked below.
   You must login using your NOAA email credentials to access the
   videos and other material.
 
+20 June 2024 `TensorFlow Jumpstart <https://drive.google.com/file/d/1WklYsbKrp8_4tydqkayAM6EwCVKDNG-9/view>`_.
+Presented by Ron Millikan. A `transcript of the training <https://docs.google.com/document/d/1Ys5S0YGeREmJgXy_KQ6tOygidVV7zGdmmzJDqIZTDzY/edit>`_
+is available as well.
 
 Beginner's Guide to NOAA's HPC Cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Presented on November 2023, Parallel Works presents the basics on
+Presented in November 2023, Parallel Works presents the basics on
 using the Parallel Works platform to create, start, monitor and
 interact with the compute clusters, and the use of workflows on the
 clusters.  This includes working interactively with services like
@@ -168,23 +165,68 @@ development environments (IDE) like `RStudio
 Parallel Works
 ==============
 
-**April 10, 2024**
+**7 May 2024** `Open On Demand Features
+<https://drive.google.com/file/d/1e8lCgvxLnU3Br5Em5eHOJLT91l2YS2NB/view?ts=663bcfe0>`_
+This functionality will be available in both Cloud-based and
+On-Premise environments. The training covers the following topics
 
+* Provide graphical management of file systems and data
+* Use graphical job templates, job submissions, and job management.
+* Create and edit files and scripts directly through the web interface.
+* Transfer files (<8GB in size) from local workstation to and from HPC systems.
+* Allow multiple mounts per system
+* Seamless user authentication between the Parallel Works service and
+  on-premise system
+
+.. note::
+
+  For now you have to add a PW SSH KEY TO REMOTE SYSTEM
+
+* New capabilities
+
+ - Launch interactive terminal windows.
+ - Launch a Remote Desktop (disconnect and reconnect as needed).
+ - Launch Jupyter Notebooks on both Login nodes and Compute nodes.
+ - Launch   graphical programs on both Login nodes and Compute nodes
+   (i.e., MATLAB, ARM Forge/DDT, etc.).
+
+
+* Working on merging on-prem and cloud together
+
+ - Based on resource host selection
+
+* Adding many platforms and utilities:
+
+ - ARM FORGE
+ - MATLAB
+ - Intel Advisor
+ - Intel VTune
+ - ECFlow
+ - R Studio (possibly)
+
+* Per user tuning of graphics quality, based on each user's network
+  bandwidth and network latency.
+* Provide an alternative user authentic
+* ation method via integrating
+  with Login.gov's OAuth OIDC service.
+
+
+**April 10, 2024**
 `Job monitor and VNC settings
 <https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`__
 
 **February 28, 2024**
-
 `Rocky8: Linux Image and New Storage Features
 <https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`__
 
 **February 9, 2024**
-
 `On-Demand Provisioning on On-Premise HPC systems
 <https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`__
 
-**Parallel Works New Features Training, September 27, 2023**
+**November 1, 2023** `A Beginner's Guide to Rstudio Docker
+Containers <https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/view?ts=6543d955>`_
 
+**Parallel Works New Features Training, September 27, 2023**
 `Workshop
 <https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
 
@@ -201,7 +243,6 @@ Enhancements to Parallel Works features:
      costs.
 
 **Parallel Works New Features Training, June 14, 2023**
-
 `Workshop
 <https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
 
@@ -211,7 +252,6 @@ Especially useful for new users:
  - enhanced cost dashboard.
 
 **Parallel Works New Features Training, March 23, 2023**
-
 `Workshop
 <https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
 
@@ -221,8 +261,7 @@ Especially useful for new users:
 - building a custom snapshot.
 
 **Parallel Works Foundation, February 16, 2023**
-
-foundational topics include:
+Foundational topics include:
 - Creation of a cluster configuration
 - multi-user setup
 - hiding a resource
@@ -234,16 +273,14 @@ foundational topics include:
 - storage options
 - Scheduler and deletion tabs from the Resource monitor link.
 
-Review the presentation `here. <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
+`Presentation <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
 
 **Workflows**
-
 `Presentation <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
 
 Workflow topics include:
 
-- subscribing a workflow from the PW Marketplace, example **Juypter
-  Notebook**
+- subscribing a workflow from the PW Marketplace, example **Juypter Notebook**
 - running a job from the head node and compute node
 - canceling a job,
 - deletion of a cluster
@@ -253,7 +290,6 @@ Workflow topics include:
 - bootstrap script.
 
 **Workflow Interactive Session**
-
 `Presentation <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
 
 Molecular dynamics simulation and visualization on a multi-cluster model.
@@ -425,7 +461,7 @@ steps:
 - Google contrib storage use best practices
 - Finding a project bucket
 - The ``gsutil`` command
-- Azure’s contrib and block storage as the same storage
+- Azure's contrib and block storage as the same storage
 - Storage issues, including centralized storage of user public ssh
   keys
 - upcoming features, storage, health check scripts and custom
@@ -461,6 +497,15 @@ generates a case in the OTRS system. The OTRS system does not have the
 option to set a priority level. Typically, there is a response
 within two hours.
 
+How do I close a Cloud project?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To close a project, email rdhpcs.aim.help@noaa.gov to create an AIM
+ticket. Make sure that all data are migrated, and custom snapshots are
+removed before you send the request to the AIM. If you do not need
+data from the referenced project, be sure to include that information
+in the ticket so that the support can drop the storage services.
+
 How do I connect the controller node from outside the network?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -480,7 +525,7 @@ What are the project allocation usage limits and actions?
     currently running clusters.
   - A warning message appears on the PW compute dashboard
     against the project.
-  - PI should work with the allocation committee on
+  - PI should work with the allocation committee on
     remediation efforts.
 
 - Used allocation at 90% of the budget allocation:
@@ -495,7 +540,7 @@ What are the project allocation usage limits and actions?
     on-premise storage.
   - A “Freeze” message appears on the PW compute dashboard against the
     project.
-  - PI should work with the allocation committee on remediation
+  - PI should work with the allocation committee on remediation
     efforts.
 
 - Used allocation at 95% of the budget allocation:
@@ -506,7 +551,7 @@ What are the project allocation usage limits and actions?
 
   - Terminate and remove all computing/cluster resources.
   - Data at buckets will remain available as will data in
-    /contrib. However, only data in the object storage will
+    /contrib. However, only data in the object storage will
     be directly available to users.
   - Notify all affected users, PI, Tech Lead, Accounting Lead
     via email that all resources have been removed.
@@ -518,15 +563,17 @@ What are the project allocation usage limits and actions?
   - Notify COR/ACORS, PI and Tech Lead, Accounting Lead via
     email all resources have been removed.
 
-How do I get a project allocation or an allocation increase?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How do I request a project allocation or an allocation increase?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-RDHPCS System compute allocations are decided upon by the
-RDHPCS Allocation Committee (AC), with oversight from the
-NOAA HPC Board.
+RDHPCS System compute allocations are determined by the RDHPCS
+Allocation Committee (AC). To make a request, complete the
+`Allocation Request Form <https://docs.google.com/forms/d/e/1FAIpQLSd7bFdaL2URgfVG542gBKMzyCvV2EQ6FUrPlD_JtbmnRpqeWA/viewform>`_
 
-Update the the Allocation Request Form located under the
-section "Allocations" from link TBD
+After you complete the form, create a
+Cloud help ticket to track the issue. Send email to
+rdhpcs.cloud.help@noaa.gov, copy to gonzalo.lassally@noaa.gov, using
+Cloud Allocation Request in the subject line.
 
 Storage functionalities
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -544,8 +591,8 @@ take effect on clusters started using the configuration.
 Mounting permanent storage on a cluster
 """""""""""""""""""""""""""""""""""""""
 
-Your project’s permanent storage [AWS s3 bucket, Azure’s
-Block blob storage, or GCP’s bucket] can be mounted on an
+Your project's permanent storage [AWS s3 bucket, Azure's
+Block blob storage, or GCP's bucket] can be mounted on an
 active cluster, or set to attach a bucket when starting a
 cluster, as a standard setting on a resource configuration.
 Having the permanent storage mounted on a cluster allows a
@@ -568,7 +615,7 @@ Note that, a persistent lustre file system must be started
 separately before it can be attached to a cluster.
 
 Users may create as many permanent object storage [AWS S3
-bucket, Azure’s block blob storage, and GCP’s bucket], and
+bucket, Azure's block blob storage, and GCP's bucket], and
 lustre file system [ephemeral and persistent storage] on
 your Cloud platform.
 
@@ -582,7 +629,7 @@ restart the cluster.
 
 In the below example, the root disk size is set to 256 GiB
 
-.. code::
+ .. code-block::
 
   "cluster_config": {
     "root_size": "256",
@@ -654,7 +701,7 @@ cost: $0.20 per GB per Month. The cost is calculated based
 on the storage usage. See: Cloud Bucket pricing
 
 Projects using AWS, and GCP platforms can create as many
-buckets as needed, and mount on a cluster. Project’s
+buckets as needed, and mount on a cluster. Project's
 default bucket is accessible from the public domain using
 the keys.
 
@@ -672,16 +719,17 @@ Azure contrib cost is explained above in the block blob
 storage section.
 
 Both AWS and Azure charge based on the usage, as a
-pay-as-you-go model like your electricity bill. GCP charges
+pay-as-you-go model like your electric bill. **GCP charges
 on allocated storage, so whether the storage is used or not,
-the project will pay for the provisioned capacity.
+the project pays for the provisioned capacity.**
 
 The default provisioned capacity of Google Cloud contrib
 file system is 2.5 TiB, costs $768.00 per month. The contrib
 volume can be removed from a project by request, email to
 rdhpcs.cloud.help@noaa.gov [ OTRS ticket on RDHPCS help.]
 
-**Reference on data egress charges:**
+Reference on data egress charges
+""""""""""""""""""""""""""""""""
 
 AWS
 
@@ -700,8 +748,24 @@ for the next 100 TB, and $. 05/GB greater than 150 TB.
 
 `GCP <https://cloud.google.com/network-tiers/pricing>`_
 
+Quota limits
+""""""""""""
+
+Current quota limit on the platforms:
+
+AWS: TBD
+
+`Azure <https://docs.google.com/spreadsheets/d/1lTf9ogByOgfuiNWUSfqDM_u8JUvEBl1E/edit?usp=sharing&ouid=106919639514646813673&rtpof=true&sd=true>`_
+
+GCP: TBD
+
+
 Parallel works
 ^^^^^^^^^^^^^^
+
+What is the Parallel Works Login URL?
+"""""""""""""""""""""""""""""""""""""
+`Parallel Works NOAA Portal`_
 
 Where do I find the Parallel Works User Guide?
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -761,7 +825,7 @@ How do I set up a new project in Parallel Works?
 To set up your project in Parallel Works follow the
 below steps.
 
-#. Get your project’s allocation approved by NOAA RDHPCS
+#. Get your project's allocation approved by NOAA RDHPCS
    allocation committee.
 
    If you are unsure of an allocation amount for your project,
@@ -805,10 +869,55 @@ What is the certified browser for Parallel Works Platform?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Google Chrome browser.
 
+How do I access on-prem HPS Systems from Parallel Works?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Parallel Works is working on seamless authentication with on-prem HPC
+systems.
+
+.. note::
+
+  The following access method does not work on Gaea.
+
+Follow the steps to access other HPC systems.
+
+1. From the login portal, click  the user Name.  Select **Account**
+   from the drop down list.
+
+2. Click the **Authentication** tab.
+
+3. Click on the “SSH Keys” line.
+
+4. Copy the “Key” from the “User Workspace”.
+
+5. Append the public SSH key in the on-prem HPC system's controller
+   node's ~/.ssh/authorized_keys file. Save and exit the file.
+
+Repeat this process on all on-prem HPC systems' controller nodes
+to establish connections from Parallel Works.
+
+**Subscribe the default template of HPC systems from the Parallel
+Works Marketplace**
+
+1. From the login portal, click on the user Name. Select
+   **“MARKETPLACE** from the drop down list box.
+
+2. Click on the Fork sign and click the Fork button when prompted.
+
+3. Exit the page.
+
+**Access allowed countries**
+
+USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
+Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
+Finland, Lebanon, Denmark, Palestinian Territory Occupied,
+Netherlands, Japan, and Estonia.
+
+
 How do I use the Cost Calculator?
 """""""""""""""""""""""""""""""""
 
-You can estimate an hourly cost of your experiment’s from
+You can estimate an hourly cost of your experiment's from
 the Parallel Works(PW) platform. After login on the
 platform, click on the “Resources” tab, and double click on
 your resource definition. There is a definition tab, where
@@ -862,7 +971,7 @@ How do I estimate core-hours?
 
 An example, your project requests a dedicated number of HPC
 compute nodes or has an HPC system reservation for some
-number of HPC compute nodes. Let’s say that the
+number of HPC compute nodes. Let's say that the
 dedicated/reserved nodes have 200 cores and the length of
 the dedication/reservation is 1 week (7 days), then the
 core-hours used would be 33,600 core-hours (200 cores \* 24
@@ -876,7 +985,7 @@ your job is taking 4 hours to complete so that means the
 number of core hours = number of nodes x number of hour x
 number of cores = 1 x 4 x 6 = 24 core hours.
 
-PW’s cost dashboard is a good tool to find unit cost, and
+PW's cost dashboard is a good tool to find unit cost, and
 extrapolate it to estimate usage for PoP.
 
 How do I access the head node from the Parallel Works [PW] web interface?
@@ -890,19 +999,18 @@ If you have not added a public key at the time of launching
 a cluster, you can login to the head node by IDE and update
 the public key in ~/.ssh/authorized_keys file.
 
-#. From the PW “Compute” dashboard, click on your name with
-   an IP address and make a note of it. You can also get the
-   head node IP address by clicking ‘i” icon of the Resource
-   monitor.
+#. From the PW “Compute” dashboard, click on your name with an IP
+   address and make a note of it. You can also get the head node IP
+   address by clicking the :guilabel:`i` icon of the Resource monitor.
 #. Click on the IDE link located on the top right side of
    the PW interface to launch a new terminal.
 #. From the menu option “Terminal”, click on the “New
    Terminal” link.
 #. From the new terminal, type
 
-   .. code::
+    .. code-block:: shell
 
-     $ ssh <Paste the username with IP address>
+        $ ssh <Paste the username with IP address>
 
    and press the enter key.
 
@@ -911,9 +1019,9 @@ the public key in ~/.ssh/authorized_keys file.
 
    Example:
 
-   .. code::
+    .. code-block:: shell
 
-    First.Lastname@pw-user-firstlastname:/pw$ ssh First.Last@54.174.136.76
+        $ ssh First.Last@54.174.136.76
 
     Warning: Permanently added '54.174.136.76' (ECDSA) to the
     list of known hosts.
@@ -945,7 +1053,7 @@ inactivity)
 
 #. Use ``sinfo``` or ``squeue`` to view active nodes:
 
-   .. code::
+    .. code-block::
 
       $ sinfo
       PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
@@ -958,7 +1066,7 @@ inactivity)
 
 #. ssh to the compute node
 
-   .. code::
+    .. code-block::
 
       [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
       [compute-dy-c5n18xlarge-1]$
@@ -972,17 +1080,20 @@ a feedback to the NOAA RDHPCS leadership using the link TBD
 How can I address an authentication issue on the Parallel Works [PW] login?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Authentication to the PW system can be due to an expired RSA
-Token or inconsistent account status in the PW system. If
-you have not accessed on-prem HPC system last 30 days, it is
-likely your RSA token is expired, in such cases contact
-rdhpcs.aim.help@noaa.gov for assistance.
+Authentication to the PW system can be due to an expired RSA Token or
+inconsistent account status in the PW system. If you have not accessed
+on-prem HPC system last 30 days, it is likely your RSA token is
+expired, in such cases open a :ref:`help request <getting_help>` for
+assistance.
+
+.. note::
+
+  Remember that userIDs are case sensitive.  Most user names are
+  **F**\ irst.\ **L**\ ast, with the first and last name capitalized,
+  and not first.last! Be sure to use the correct format.
+
 
 To verify RSA Token issue, follow the steps:
-
-Remember that userIDs are case sensitive, and most usernames
-are First.Last and not first.last)! Re-enter your userID in
-this format as a first step.
 
 If you enter an incorrect username or PIN and token value
 three times during a login attempt, your account will
@@ -998,23 +1109,26 @@ follows:
 * After a successful login your token will be resynched and
   you should be able to proceed.
 
-If you are still experiencing issues with your token, send
-a help request to rdhpcs.aim.help@noaa.gov with the title
-"Please check RSA token status." To expedite
-troubleshooting, please include the full terminal output
-you received when you tried to use your token.
+If you are still experiencing issues with your token, open a
+:ref:`help request <getting_help>` with the title *Please check RSA
+token status.* To expedite troubleshooting, please include the full
+terminal output you received when you tried to use your token.
 
-If RSA token is working and still unable to login to the PW
-system, open a ticket by emailing to
-rdhpcs.cloud.help@noaa.gov.
+* If RSA token is working and still unable to login to the PW system,
+  check whether your workstation is behind a firewall that is blocking
+  access.
 
-On the PW login site, after entering your username is not
-navigating to two-factor authentication box or taking too
-long, it could be an issue with your VPN. In that case,
-disconnect the VPN and try login. If the login succeeds, it
-implies an issue with the VPN.
+* If you are connected to a VPN, disconnect the VPN and try again.
 
-5. Clusters and snapshots
+* You may also experience connection failure if you are trying to access
+  from outside the United States.
+
+If you continue to experience connection issues, open a :ref:`help
+request <getting_help>`.
+
+
+
+1. Clusters and snapshots
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cluster Cost types explained
@@ -1027,18 +1141,20 @@ We are working on adding more clarity on the resource cost
 type naming and cost. Broadly, the following cost types are
 explained below.
 
-UnknownUsageType: Network cost related virtual private
-network. Additional `reading here <https://cloud.google.com/vpc/network-pricing>`_ and
-here <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`_
+:UnknownUsageType: Network costs related virtual private network. See
+    the `Google CSP <https://cloud.google.com/vpc/network-pricing>`__
+    and `Amazon AWS
+    <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`__
+    documentation for more inforamtion.
 
-Other Node: Controller node cost.
+:Other Node: Controller node cost.
 
-Storage-BASIC_SSD: On the Google cloud, “contrib” volume
-billing is based on the allocated storage. Contrib volume
-allocated storage 2.5TB. On other cloud platforms, the cost
-is based on the storage used.
+:Storage-BASIC_SSD: On the Google cloud, “contrib” volume billing is
+    based on the allocated storage. Contrib volume allocated storage
+    2.5TB. On other cloud platforms, the cost is based on the storage
+    used.
 
-Storage-Disk : Boot disk and apps volume disk cost.
+:Storage-Disk: Boot disk and apps volume disk cost.
 
 How do I resize my resource cluster size?
 """""""""""""""""""""""""""""""""""""""""
@@ -1071,6 +1187,21 @@ Max Node Count parameter to resize this partition.
 Lustre filesystem is an expensive resource. You can disable
 the filesystem or resize it. The default lustre filesystem
 size is about 14TiB.
+
+Keeping the bucket and cluster within the same region to lower latency and Cost
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Moving data between regions within a cloud platform will incur cost.
+For example, if the cluster and the bucket you were copying to exist in
+different regions, the cloud provider will charge for every bite that
+leaves.
+
+It is possible to provision your own buckets from the PW
+platform storage menu. This would also have the benefit of reducing
+the overall time you spend transferring data, since it has less
+distance to travel. If you have any further questions about this,
+please open a help desk ticket. We'd also be happy to work with you.
+Join one of the cloud office hours to ask questions.
 
 
 How do I create a custom [AMI, Snapshot, Boot disk, or machine] image?
@@ -1112,10 +1243,15 @@ How can I automatically find the hostname of a cluster?
 By default, the host names are always going to be different
 each time you start a cluster.
 
-You can find CSP information as below: $ echo $PW_CSP google
+You can find CSP information using the :envvar:`PW_CSP` variable, as
+in the example:
 
-There's a few other "PW" vars that might be useful for you
-as well:
+.. code-block:: shell
+
+    $ echo $PW_CSP
+    google
+
+There's a few other :envvar:`PW_*` vars that you may find useful:
 
 :PW_PLATFORM_HOST:
 :PW_POOL_ID:
@@ -1145,13 +1281,13 @@ verified, an ssh tunnel can be setup like so:
 
 Option 1: ssh CLI
 
-.. code::
+.. code-block:: shell
 
-  $ ssh -N -L <Local Port>:<Remote Host>:<Remote Port> <Remote User>@<Remote Host>
+  $ ssh -N -L <local_port>:<remote_host>:<remote_port> <remote_user>@<remote_host>
 
 example:
 
-.. code::
+.. code-block:: shell
 
   $ ssh -N -L 8888:userid-gclustera2highgpu1g-00012-controller:8888 userid@34.134.251.102
 
@@ -1181,25 +1317,25 @@ will activate the default environment when you login.
 If you want to use a different env than what is loaded by
 default, you could run this to change the activation:
 
-.. code::
+.. code-block:: shell
 
-  $ echo "conda activate <name of env>" >> ~/.bashrc
+  $ echo "conda activate <name_of_env>" >> ~/.bashrc
 
 Since your .bashrc shouldn't really change much, it might be
 ideal to set the file up once and then back it up to your
 contrib (somewhere like
-/contrib/Nastassia.Patin/home/.bashrc), then your user boot
+/contrib/First.Last/home/.bashrc), then your user boot
 script could simply do:
 
-.. code::
+.. code-block:: shell
 
-  cp /contrib/Nastassia.Patin/home/.bashrc ~/.bashrc
+  $ cp /contrib/First.Last/home/.bashrc ~/.bashrc
 
 or
 
-.. code::
+.. code-block:: shell
 
-  ln -s /contrib/Nastassia.Patin/home/.bashrc ~/.bashrc
+  $ ln -s /contrib/First.Last/home/.bashrc ~/.bashrc
 
 How do I create a resource configuration?
 """""""""""""""""""""""""""""""""""""""""
@@ -1248,25 +1384,25 @@ address to the clipboard.
 
 Click on the IDE button located top right on the ribbon.
 
-Click on the ‘Terminal’ link and select a ‘New Terminal’
+Click on the 'Terminal' link and select a 'New Terminal'
 
 SSH into the controller node by pasting the login
 information from the clipboard.
 
-.. code::
+ .. code-block::
 
   $ ssh User.Name<IP address>
 
 List your user name and group:
 
-.. code::
+ .. code-block::
 
   $ id
   uid=12345(User.Id) gid=1234(grp)
   groups=1234(grp)
   context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 
-.. code::
+ .. code-block::
 
   $ sudo su -
   [root@awsv22-50 ~]$
@@ -1279,13 +1415,13 @@ List your user name and group:
 
 Your directory with access permission is now complete.
 
-Your directory is now accessible from your group’s clusters.
+Your directory is now accessible from your group's clusters.
 Contrib is a permanent storage for your group.
 
 You may shutdown the cluster if the purpose was to create
 your contrib directory.
 
-Why does the owner's home directory differ from the shared users’ directory?
+Why does the owner's home directory differ from the shared users' directory?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Every cluster is set up where the owner of it has an
@@ -1315,7 +1451,7 @@ remove batch partition to fit your model requirements.
 
 Default Partition details.
 
-.. code::
+ .. code-block:: cfg
 
   PartitionName=compute
   Nodes=userid-azv2-00115-1-[0001-0096] MaxTime=INFINITE
@@ -1327,7 +1463,7 @@ Default Partition details.
 How do I manually shutdown the compute nodes?
 """""""""""""""""""""""""""""""""""""""""""""
 
-.. code::
+ .. code-block:: shell
 
   $ sinfo
   PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
@@ -1342,7 +1478,7 @@ currently powered off.
 
 You can then use that list to stop the nodes:
 
-.. code::
+ .. code-block:: shell
 
   $ sudo scontrol update nodename=userid-gcp-00141-2-[0001-0002] state=power_down
 
@@ -1365,7 +1501,7 @@ script, the change is taken effect immediately.
 
 Example:
 
-.. code::
+ .. code-block:: shell
 
   $ echo "User.Id ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/100-User.Id
 
@@ -1389,7 +1525,7 @@ User" tab to "Yes", and from the "Sharing" tab, check the
 The command to find the name of your project's role account
 from /etc/passwd is.
 
-.. code::
+ .. code-block::
 
   $ grep -i role /etc/passwd
 
@@ -1408,7 +1544,7 @@ controller and compute nodes. Do not add any comments on the
 bootstrap script, as that would cause in code execution
 failure.
 
-.. code::
+ .. code-block:: shell
 
   ALLNODES
 
@@ -1457,7 +1593,329 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
-6. Configuration Questions
+6. Data Transfer
+
+AWS CLI aws installation on an on-prem system. files transfer to a cloud bucket
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Follow the steps to install the aws tool on your home directory.
+
+.. code-block:: shell
+
+  $  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  $ unzip awscliv2.zip
+  $ cd aws
+  $ ./install -i ~/.local/aws-cli -b ~/.local/bin
+
+You can now run: ``$HOME/.local/bin/aws --version``
+
+.. code-block:: shell
+
+  $ aws --version
+  aws-cli/2.15.57 Python/3.11.8 Linux/4.18.0-477.27.1.el8_8.x86_64 exe/x86_64.rocky.8
+
+.. note::
+
+  Locate your project's access and secret keys and access instructions
+
+From PW's home page, inside the "Storage Resources" section, locate
+your project's bucket. Click on the key icon to find the bucket name,
+keys and sample command to access the bucket.
+
+.. code-block:: shell
+
+  $ aws s3 cp fileName.txt s3://$BUCKET_NAME/file/in/bucket.txt
+
+Example:
+
+.. code-block:: shell
+
+  $ aws s3 ls s3://noaa-sysadmin-ocio-ca-cloudmgmt
+
+Azure azcopy install on an on-prem system. Files transfer to a cloud bucket
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Over time, the AzCopy download link will point to new versions of
+AzCopy. If your script downloads AzCopy, the script might stop working
+if a newer version of AzCopy modifies features that your script
+depends upon.
+
+To avoid these issues, obtain a static (unchanging) link to the
+current version of AzCopy. That way, your script downloads the same
+exact version of AzCopy each time that it runs.
+
+To obtain the link, run this command:
+
+.. code-block:: shell
+
+  $ curl -s -D- https://aka.ms/downloadazcopy-v10-linux | awk -F ': ' '/^Location/ {print $2}'
+
+You get a result with a link similar to
+``https://azcopyvnext.azureedge.net/releases/release-10.24.0-20240326/azcopy_linux_amd64_10.24.0.tar.gz``.
+
+You can use that URL in the commands below to download and untar the
+AzCopy utiltiy:
+
+.. code-block:: shell
+
+  $ azcopy_url=https://azcopyvnext.azureedge.net/releases/release-10.24.0-20240326/azcopy_linux_amd64_10.24.0.tar.gz && \
+      curl -o $(basename $azcopy_url) $azcopy_url && \
+      tar -xf $(basename $azcopy_url) --strip-components=1
+
+This will leave the ``azcopy`` tool in the current directory, which
+you can then copy to any directory.
+
+**Locate your project's credentials and access instructions**
+
+From PW's home page, inside the "Storage Resources" section locate
+your project's bucket. Click on the key icon to find the bucket name,
+keys and sample command to access the bucket.
+
+Please refer to the `AzCopy guide
+<https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy>`_ for information on how to use AzCopy.
+
+
+GCP gcloud install on an on-prem, and files transfer to a cloud bucket
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Download and extract the tool.
+
+.. code-block:: shell
+
+  $ curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-477.0.0-linux-x86_64.tar.gz
+
+To extract the contents of the file to your file system (preferably to
+your home directory), run the following command:
+
+.. code-block:: shell
+
+  $ tar -xf google-cloud-cli-477.0.0-linux-x86_64.tar.gz
+
+Add the gcloud CLI to your path. Run the installation script from the
+root of the folder you extracted to using the following command:
+
+.. code-block:: shell
+
+  $ ./google-cloud-sdk/install.sh
+
+Start a new terminal and check gcloud tool in the access path:
+
+.. code-block:: shell
+
+  $ which gcloud
+  ~/google-cloud-sdk/bin/gcloud
+
+From PW's home page, inside the "Storage Resources" section locate
+your project's bucket. Click on the key icon to find the bucket name,
+keys and sample command to access the bucket.
+
+How do I transfer data to/from the Cloud?
+""""""""""""""""""""""""""""""""""""""""""
+
+The recommended system for data transfers to/from NOAA RDHPCS systems
+is the Niagara Untrusted DTN especially if the data transfers is being
+done from/to the HPSS system.
+
+If data is on Hera, the user will have to use 2-copy transfers, by
+first transferring to Niagara and then pulling the data from the
+Cloud, or use the utilities mentioned in the next section.
+
+AWS CLI, available on Hera/Jet/Niagara, can be used on RDHPCS systems
+to push and pull data from the S3 buckets.  Please load the
+"aws-utils" module.
+
+.. code-block:: shell
+
+    module load aws-utils
+
+How do I use scp from a Remote Machine to copy to a bucket?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+1. Create a cloud cluster configuration, and in the attached storage
+section include bucket storage, note the mounted file system name
+given for the bucket.
+
+
+2. Ensure your public SSH key is added to the `Parallel Works system
+   <https://parallelworks.com/docs/account-settings/authentication#managing-ssh-keys>`_.
+
+3. Start the cloud cluster, and when the cluster is up note the
+   cluster connect string.
+
+
+4. From the on-prem system, use the scp command to transfer files to
+   the mounted bucket on the cluster.
+
+How do I use Azure CLI?
+""""""""""""""""""""""""
+
+Azure uses the azcopy utility to push and pull data into their cloud
+object store buckets. The azcopy utility can be installed standalone
+or as part of the larger az cli. The “azcopy” command can run either
+from the user's local machine or the RDHPCS systems, such as Niagara,
+mentioned in the next section. The gsutil utility is already
+preinstalled on clusters launched through Parallel Works.
+
+The azcopy utility becomes available on RDHPCS systems once the module
+"azure-utils" has been loaded. To do that, run the command:
+
+.. code-block:: shell
+
+    module load azure-utils
+
+It can be installed on your local machine/desktop by installing the
+binary at the link below as documented below:
+
+.. code-block:: shell
+
+  wget -O azcopy.tgz https://aka.ms/downloadazcopy-v10-linux
+  tar xzvf azcopy.tgz
+
+  # add the azcopy directory to your path or copy the “azcopy”
+  executable to a desired location export
+  PATH=$PATH:$PWD/azcopy_linux_amd64_10.9.0 </pre>
+
+How do I use GCP gsutil CLI to copy files?
+""""""""""""""""""""""""""""""""""""""""""
+
+GCP command line utility is gsutil. PW OS image has the GCP utility
+“gsutil' installed.  Follow the instructions from the link to copy
+files to Google bucket.
+
+`GSUtil commands <https://cloud.google.com/storage/docs/gsutil/commands/cp>`_
+
+How do I access Azure Blob from a Remote Machine
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+The following instruction uses the long term access key available
+from the PW file explorer: **storage/project keys** section, which is
+going to be discontinued. We recommend using the short term access key
+from the home:storage bucket as suggested in the link above.
+
+Obtain the Blob bucket keys from the PW platform, as mentioned in the
+section below, getting project keys.  Then set the following
+environment variables based on the keys there:
+
+Obtain the Azure object store keys from the PW platform, as mentioned
+in the section below, getting project keys. Then set the following
+environment variables and activation command based on the keys there
+(you should be able to copy and paste these). Once you run this once
+on a host machine, it should store the credentials in your home
+directory:
+
+.. code-block:: shell
+
+  # project-specific credentials
+  export AZURE_CLIENT_ID=<project client id>
+  export AZURE_TENANT_ID=<project tenant id>
+  export AZCOPY_SPA_CLIENT_SECRET=<project secret>
+
+  # activate the project-specific keys for azcopy
+  azcopy login --service-principal --application-id $AZURE_CLIENT_ID --tenant-id $AZURE_TENANT_ID
+
+If following messages return at the login, the issue is likely from
+the key ring propagation bug.  In that case, type the following command and
+re-try azcopy login.
+
+.. code-block:: shell
+
+    Failed to perform login command:
+    failed to get keyring during saving token, key has been revoked
+    $ '''keyctl session workaroundSession'''
+
+
+The following can be completed to see available containers within the
+project blob storage account:
+
+.. code-block:: shell
+
+     azcopy ls https://noaastore.blob.core.windows.net/<project name>
+
+Azure object store works differently than AWS and GCP in that objects
+pushed or pulled into the object store container will immediately show
+up in the /contrib directory on the clusters (ie the object store is
+NFS mounted to /contrib). Buckets can only be used based on the user's
+assigned project space. Create sub-directories with the user's
+username at the top level.
+
+Data Transfers Between Compute Node and S3
+""""""""""""""""""""""""""""""""""""""""""
+
+In order to '''export changes''' from FSx data to the S3 data
+repository, the following options are available:
+
+* Use the aws `copy command as documented <https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html>`_
+
+.. code-block:: shell
+
+  aws s3 cp path/to/file  s3://bucket-name/path/to/file.
+
+* To copy an entire directory, use
+
+.. code-block:: shell
+
+  aws s3 cp --recursive
+
+Project keys are needed to run this command.
+
+* Alternatively, use the following, which behaves more like
+  conventional linux cp and rsync commands.
+
+.. code-block:: shell
+
+  s3cmd
+
+
+Data Transfer Between Compute Node and GCP Bucket
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+In order to '''export changes''' from lustre data to the bucket data
+repository, the following options are available:
+
+* Use the `gsutil cp
+  <https://cloud.google.com/storage/docs/gsutil/commands/cp>`_
+  command: ``gsutil cp path/to/file gs://bucket-name/path/to/file``.
+* Use gsutil --help command to learn more about the options.
+* Use the --recursive (-r) flag to move nested directories.
+
+
+To **download new files** from the user's bucket data repository, the
+following option are available:
+
+* Use the command
+
+.. code-block:: shell
+
+  gsutil cp gs://bucket_name/object_name <same to location>.
+
+Example:
+
+.. code-block:: shell
+
+  gsutil cp gs://my_bucket/readme.txt Desktop/readme.txt''
+
+Data Transfer between Compute Node and Azure Blob
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+The Azure blob storage is slightly different from AWS and GCP
+clusters in that the blob storage automatically mounts directly to the
+cluster's /contrib directory. This means that as soon as files are
+uploaded to the Azure blob storage using azcopy command, these files
+directly appear in the NFS mounted /contrib directory without any
+additional data transfer steps. The reverse is true as well in that
+when files are placed into a cluster's /contrib directory, these files
+will be available for immediate download using azcopy on remote hosts.
+
+When a file is copied to Azure blob, the ownership is changed to “nobody:root”.
+Change the ownership of the file using “chown” command to access the file(s).
+Example:
+
+.. code-block:: shell
+
+  $ sudo chown “username:group” <file name>
+
+
+7. Configuration Questions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 How do I create a Parallel Works resource configuration on my account?
@@ -1488,10 +1946,67 @@ How do I restore a default configuration?
 
 You can restore a configuration by navigating to the
 “Resources” tab, double click on a resource name, shows up
-it’s “Definition” page. Scroll down on the page and click on
+it's “Definition” page. Scroll down on the page and click on
 the “(restore configuration)” link, then select a resource
 configuration from the drop down list, click on the
 "Restore" button, and then click “Save Resource”.
+
+How do I transfer files from one project to another?
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+You may use Globus file transfer or the following method to transfer files.
+
+If you are a member of a source and target cloud projects then
+transferring of files is easy:
+
+1. Create a small size cluster definition with just one node in the
+   compute batch.  From the resource definition, click on the “Add a
+   Attached storage” button then add both source and destination
+   buckets by selecting “Shared Persistent Storages” option from the
+   drop down list box one at a time.  Make sure the bucket's mount
+   point names are easily distinguishable, for example /source and
+   /destination.  You do not need a lustre file system in this
+   cluster. Save the definition.
+
+2. Start a cluster using the saved definition, and when the cluster is
+   up, ssh into the controller node.
+
+3. Change ownership to root to copy all project members files:
+
+.. code-block:: shell
+
+  sudo -
+
+Use the Linux “cp” recursive command, copy files from the source
+contrib and bucket to the target bucket.
+
+.. code-block:: shell
+
+  cd /contrib
+  cp -r *.* /destination/source-project/contrib/.
+
+Once the files are copied successfully, remove all files from the contrib.
+
+.. code-block:: shell
+
+  rm -r *.*
+
+4. Copy files from the source bucket to destination
+
+.. code-block:: shell
+
+  cd /source
+  cp -r *.* /destination/source-project/bucket/.
+
+Once the files are copied successfully, remove all files from the
+source bucket.
+
+.. code-block:: shell
+
+  rm -r *.*
+
+Inform your PI, and cloud support that files are migrated to the
+destination, and no files exists in the source storages.
 
 What is a default instance/vm type?
 """""""""""""""""""""""""""""""""""
@@ -1502,6 +2017,86 @@ configuration is included when an account is first setup,
 and also when creating a new configuration by selecting a
 configuration from the "Restore Configuration" link at the
 resource definition page.
+
+AWS Lustre explained
+""""""""""""""""""""
+
+The Lustre solution on AWS uses their FSx for Lustre service on the
+backend. The default deployment type we use is 'scratch_2'. The
+'persistent' options are typically aimed at favoring data resilience
+over performance, although 'persistent_2' does let you specify a
+throughput tier. Note that the 'scratch' and 'persistent' deployment
+types in this context are AWS terminology, and are not related to PW's
+definition of 'persistent' or 'ephemeral' Lustre configurations. You
+can choose whatever deployment type you prefer and configure it as
+'persistent' or 'ephemeral' in PW.
+
+scratch_2 FSx file systems are sized in 1.2TB increments, so you'll
+want to set the capacity to '2400 GB' if you stick to the scratch_2
+deployment type. The estimated cost of the config JSON shown below is
+showing as $0.46 per hour for me. Different deployment types might
+have different size increments.
+
+You can read more about `AWS Lustre <https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-fsx-lustre.html>`_
+
+.. code-block:: shell
+
+  {
+    "storage_options": {
+      "region": "us-east-1",
+      "availability_zone": "us-east-1a",
+      "storage_capacity": 2400,
+      "fsxdeployment": "SCRATCH_2",
+      "fsxcompression": "NONE"
+    },
+    "ephemeral": false
+  }
+
+Azure and GCP Lustre explained
+""""""""""""""""""""""""""""""
+
+Azure:
+
+We're in the process of integrating Azure's own managed Lustre file
+system service to the platform, but for now it is deployed similarly
+to Googles. This also means that the cost of Lustre on Azure is
+significantly higher than it will be on AWS.
+
+On GCP and Azure, the usable capacity of the file system will mostly
+be determined by the number of OSS nodes you use, and the type of
+instances you select. We default to 'Standard_D64ds_v4' instances for
+Azure Lustre. Regardless of the node size you choose, you will want to
+stick to the 'Standard_D*ds' line of instances. the 'ds' code in
+particular indicates that the instance will have an extra scratch disk
+on it (used for the fs), and that the disk will be in their premium
+tier (likely a faster SSD)
+
+'Standard_D64ds_v4' instances should get you about 2.4TB per OSS, so a
+single node should get you the capacity you need. However, I can
+envision some use cases where it would be more beneficial to have
+smaller nodes in greater numbers, so you might want to fine tune this.
+The Azure Lustre config below is being estimated at $4.53
+
+.. code-block:: shell
+
+  {
+    "storage_options": {
+      "lustre_image": "latest",
+      "mds_boot_disk_size_gb": 40,
+      "mds_boot_disk_type": "Standard_LRS",
+      "mds_machine_type": "Standard_D8ds_v4",
+      "mds_node_count": 1,
+      "oss_boot_disk_size_gb": 40,
+      "oss_boot_disk_type": "Standard_LRS",
+      "oss_machine_type": "Standard_D64ds_v4",
+      "accelerated_networking": true,
+      "region": "eastus",
+      "cluster_id": "pw00",
+      "dns_id": null,
+      "dns_name": null,
+      "oss_node_count": 1
+    },
+    "ephemeral": false
 
 
 How do I restore customization after the default configuration restore?
@@ -1529,6 +2124,9 @@ definition page.
 What is NOAA RDHPCS preferred container solution?
 """""""""""""""""""""""""""""""""""""""""""""""""
 
+You can read `NOAA RDHPCS official communication on containers
+<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Containers>`_.
+
 On security issues and capabilities to run the weather model
 across the nodes, NOAA's RDHPC systems chose Singularity as
 a platform for users to test and run models within
@@ -1551,7 +2149,7 @@ navigate to PW/project_keys/gcp/<project key file>.
    Write json to ~/project-key.json (or another filename)
 #. Source the credential file in your environment.
 
-   .. code::
+    .. code-block::
 
       source ~/.bashrc
 
@@ -1561,22 +2159,22 @@ Once these variables are added to your host terminal
 environment, you can test gsutils is authenticated by
 running the command:
 
-.. code::
+.. code-block:: shell
 
   gsutil ls < bucket name >
 
 Example:
 
-.. code::
+.. code-block:: shell
 
   gsutil ls gs://noaa-sysadmin-ocio-cg-discretionary
   gsutil ls gs://noaa-coastal-none-cg-mdlcloud
 
   gsutil cp local-location/filename gs://bucketname/
 
- You can use the -r option to upload a folder.
+You can use the -r option to upload a folder.
 
-.. code::
+.. code-block:: shell
 
   gsutil cp -r folder-name gs://bucketname/
 
@@ -1584,13 +2182,15 @@ You can also use the -m option to upload large number of
 files which performs a parallel
 (multi-threaded/multi-processing) copy.
 
-.. code::
+.. code-block:: shell
 
   gsutil -m cp -r folder-name gs://bucketname
 
+Best practice in resource configuration
+"""""""""""""""""""""""""""""""""""""""
 
-**Maintain SSH authentication key under account, and use
-it in all clusters.**
+1. Maintain SSH authentication key under account, and use
+it in all clusters.
 
 The resource configuration has an “Access Public Key” box,
 to store your SSH public key, and the key stored there is
@@ -1598,7 +2198,7 @@ only available in a cluster launched with that
 configuration. Instead store your key under “account” ->
 “Authentication” tab that automatically populates into your all clusters.
 
-**User bootstrap script**
+2. User bootstrap script**
 
 In the resource config page, user bootstrap script pointing
 to a folder in contrib fs is a good idea. This helps to
@@ -1607,26 +2207,25 @@ members to use it.
 
 Example:
 
-.. code::
+.. code-block:: shell
 
   ALLNODES
-
   /contrib/Unni.Kirandumkara/pw_support/config-cluster.sh
 
 Configuration page has a 16k metadata size limitation.
 Following these settings can reduce your possibility of a
 cluster provisioning error.
 
-An example Singularity Container build, job array that uses bind mounts**
+**An example Singularity Container build, job array that uses bind mounts**
 
-Example that demonstrates a Singularity container build, and
+This example demonstrates a Singularity container build, and
 a job array that uses two bind mounts (input and output
 directories ) and creates an output file for each task in
 the array.
 
 Recipe file:-
 
-.. code::
+.. code-block:: shell
 
   Bootstrap: docker From: debian
 
@@ -1646,7 +2245,7 @@ Recipe file:-
 
 Job script:-
 
-.. code::
+.. code-block:: shell
 
   #!/bin/bash
   #SBATCH --job-name=out1
@@ -1667,7 +2266,7 @@ Job script:-
 
 Expected output:-
 
-.. code::
+.. code-block:: shell
 
   $ ls /contrib/Matt.Long/slurm_array
   hello.0 hello.1 hello.10 hello.2 hello.3 hello.4 hello.5
@@ -1682,7 +2281,7 @@ The "bootstrap" line basically is just saying to use the
 debian docker container as a base and build a singularity
 image out of it
 
-.. code::
+.. code-block:: shell
 
   sudo singularity build <image file name> <recipe file name>
 
@@ -1699,7 +2298,7 @@ options that should notify you when a job starts and ends
 (you will want to replace the email address with your own of
 course):
 
-.. code::
+.. code-block:: shell
 
   !/bin/bash
   SBATCH -N 1
@@ -1723,7 +2322,7 @@ Running and monitoring Slurm
 
 Use sinfo command to find the status of your job.
 
-.. code::
+.. code-block:: shell
 
   $ sinfo
   PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
@@ -1755,7 +2354,7 @@ see while using the cluster:
 You can manually start with ``sudo scontrol update nodename=<nodename>
 state=resume``
 
-.. code::
+.. code-block:: shell
 
   $ sudo scontrol update nodename=userid-gcpv2-00094-1-0001 state=resume
   $ sinfo
@@ -1781,7 +2380,7 @@ memory configurations would have to be adjusted.
 
 The script itself looks like this:
 
-.. code::
+ .. code-block::
 
   #!/bin/bash
 
@@ -1802,7 +2401,7 @@ The script itself looks like this:
 How do I change the slurm Suspend time on an active cluster?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-You can modify a cluster’s slurm suspend time from the
+You can modify a cluster's slurm suspend time from the
 Resource Definition form prior to starting a cluster.
 However if you want to modify the suspend time after a
 cluster is started, the commands must be executed by the
@@ -1813,7 +2412,7 @@ controller node by running the following commands. In the
 following example, the Suspend time is set to 3600 seconds.
 In your case, you may want to set it to 60 seconds.
 
-.. code::
+.. code-block:: shell
 
   sudo sed -i 's/SuspendTime=.*/SuspendTime=3600/g' /mnt/shared/etc/slurm/slurm.conf
 
@@ -1826,14 +2425,14 @@ This example sets the value to 3600 seconds
 
 before:
 
-.. code::
+.. code-block:: shell
 
   $ scontrol show config \| grep -i suspendtime
   SuspendTime = 60 sec
 
 after:
 
-.. code::
+ .. code-block::
 
   $ scontrol show config \| grep -i suspendtime
   SuspendTime = 3600 sec
@@ -1851,7 +2450,7 @@ resource configuration pool name in the ticket description.
 These files are owned by root. The cluster owner should
 change user as root when copying the files, for example.
 
-.. code::
+.. code-block:: shell
 
   $ sudo su - root
 
@@ -1866,21 +2465,24 @@ change user as root when copying the files, for example.
 How do I distribute slurm scripts on different nodes?
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
-By default the slurm sbatch job lands on a single node. You
-can distribute the scripts to run on different nodes by
-using “sbatch - -exclusive” flag. The easiest solution would
-probably be to submit the job with an exclusive option, i.e.,
-```sbatch --exclusive ...``
+By default the slurm sbatch job lands on a single node. You can
+distribute the scripts to run on different nodes by using the ``sbatch
+--exclusive`` flag. The easiest solution would probably be to submit
+the job with an exclusive option, for example,
+
+.. code-block:: shell
+
+  $ sbatch --exclusive ...
 
 Or, you can add it to your submit script:
 
-.. code::
+.. code-block:: shell
 
   #SBATCH --exclusive
 
 For example,
 
-.. code::
+.. code-block:: shell
 
   # !/bin/bash
   # SBATCH --exclusive
@@ -1930,13 +2532,13 @@ command to copy files to lustre will fail.
 For example, this step may fail when included as part of the
 user-bootstrap script:
 
-.. code::
+.. code-block:: shell
 
    cp -rf /contrib/User.Id/psurge_dev /lustre
 
 You can use the following code snippet as a workaround.
 
-.. code::
+.. code-block:: shell
 
   LFS="/lustre"
   until mount -t lustre | grep ${LFS}; do
@@ -1952,7 +2554,7 @@ What is the command to get max nodes count on a cluster?
 Default sinfo output (including a busy node so it shows
 outside of the idle list)
 
-.. code::
+.. code-block:: shell
 
   $ sinfo
 
@@ -1964,7 +2566,7 @@ outside of the idle list)
 You might prefer to use the summarize option, which shows
 nodes by state as well as total:
 
-.. code::
+.. code-block:: shell
 
   $ sinfo --summarize
   PARTITION AVAIL TIMELIMIT NODES(A/I/O/T) NODELIST
@@ -1979,14 +2581,14 @@ How do I manually reset the node status?
 
 You may manually resume the nodes like this:
 
-.. code::
+.. code-block:: shell
 
   % sinfo
 
 Set the nodename and reset the status to "idle" as given
 below:
 
-.. code::
+ .. code-block::
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
 
@@ -2029,7 +2631,7 @@ cluster.
 when requesting a non-default compute VM/instance**
 
 Each Cloud provider offers a variety of VMs/Instances to
-meet the user requirements. The Parallel Works platform’s
+meet the user requirements. The Parallel Works platform's
 default configurations have VM/Instances that are tested for
 the peak FV3GFS benchmark performance.
 
@@ -2044,15 +2646,24 @@ for an a on-demand quota. Depending on the VM/instance type
 and count, quota allocation may take a day or up to 2 weeks
 depending on the cloud provider.
 
+**Bad owner or permissions on /home/User.Name/.ssh/config**
+
+This is due to wide permission set to the user container [bastion
+node] .ssh folder. Use the command below to reset the permission:
+
+.. code-block:: shell
+
+  chmod 600 ~/.ssh
+
 **What is causing access denied message when trying to access a
-project’s cluster?**
+project's cluster?**
 
 This message appears if a user account was created after the
 cluster was started. The cluster owner can check whether
 that user account exists by checking in /etc/passwd file as
 below.
 
-.. code::
+.. code-block:: shell
 
   $ grep -i <user-name> /etc/passwd
 
@@ -2079,7 +2690,7 @@ should now be updated to use the name without underscores.
 
 The message appears in the Resource Monitor log file is:
 
-.. code::
+.. code-block:: shell
 
   Waiting to establish tunnel, retrying in 5 seconds
 
@@ -2116,14 +2727,14 @@ region or submit the request later.
 
 You may manually resume the nodes like this:
 
-.. code::
+ .. code-block::
 
   $ sinfo
 
 Set the nodename and reset the status to "idle" as given
 below:
 
-.. code::
+ .. code-block::
 
   $ sudo scontrol update nodename=philippegion-azurestream5-00002-1-[0001-0021] state=idle
 
@@ -2136,11 +2747,11 @@ Instance Types explained
 
 **How to find cores and threads on a node?**
 
-.. code::
+ .. code-block::
 
   $ cat /proc/cpuinfo \|grep -i proc \| wc -l
 
-.. code::
+ .. code-block::
 
   $ lscpu \| grep -e Socket -e Core -e Thread
   Thread(s) per core: 2 Core(s) per socket: 1
@@ -2151,7 +2762,7 @@ The other option is use ``nproc``
 There are a couple ways. You can use scontrol  and a node name to
 print a lot of info about it, including number of available cores:
 
-.. code::
+ .. code-block::
 
   $ scontrol show node userid-gclusternoaav2usc1-00049-1-0001 \| grep CPUTot
   CPUAlloc=0 CPUTot=30 CPULoad=0.43
@@ -2178,7 +2789,7 @@ print a lot of info about it, including number of available cores:
 You can also look at the node config directly in the slurm
 config file:
 
-.. code::
+.. code-block:: shell
 
   $ grep -i nodename /mnt/shared/etc/slurm/slurm.conf \| head -n 1
   NodeName=natalieperlin-gclusternoaav2usc1-00049-1-0001 State=CLOUD SocketsPerBoard=1 CoresPerSocket=30 ThreadsPerCore=1 Gres="" Features="shape=c2-standard-60,ad=None,arch=x86_64"
@@ -2187,7 +2798,7 @@ General rule of thumb will pretty much be that any Intel
 based instance has HT disabled, and core counts will be
 half of the vCPU count advertised for the instance.
 
-How do I remove my project’s GCP contrib volume?**
+How do I remove my project's GCP contrib volume?**
 
 Contrib volume is a permanent storage for custom software by
 project members. In Google cloud this storage is charged on
@@ -2196,7 +2807,7 @@ per month. If the project does not require this storage, PI
 may create a cloud help desk ticket to remove it. Only
 Parallel Works Cloud administrator can remove this storage.
 
-**How do I find my project’s object storage [aka bucket or block
+**How do I find my project's object storage [aka bucket or block
 storage] and access keys from Parallel Works?**
 
 From the login page, click on the IDE icon located at the
@@ -2204,9 +2815,9 @@ top right of the page, you will see file manager with
 folders.
 
 From the File Manager, navigate under the
-“storage/project_keys/<CSP>” folder to locate your project’s
+“storage/project_keys/<CSP>” folder to locate your project's
 object storage name and access key. **The file name is your
-project’s bucket name**. Open the file by double clicking to
+project's bucket name**. Open the file by double clicking to
 view the bucket access key information.
 
 To access the project's permanent object storage, copy and
@@ -2215,23 +2826,23 @@ then execute the CSP commands. For example:-
 
 On AWS platform:
 
-.. code::
+.. code-block:: shell
 
   aws s3 ls s3://(enter your file name here)/
 
 On Azure platform:
 
-.. code::
+.. code-block:: shell
 
   azcopy ls https://noaastore.blob.core.windows.net/(enter your file name here)
 
 On GCP platform:
 
-.. code::
+.. code-block:: shell
 
   gsutil ls gs://(enter your file name here)/
 
-You may use the Globus Connect or Cloud service provider’s
+You may use the Globus Connect or Cloud service provider's
 command line interface to access the object storage.
 
 **Can I transfer files with external object storage [aka bucket or
@@ -2243,21 +2854,22 @@ connector or cloud provider's command line interface for
 file transfer.
 
 **Azure: How to copy a file from the controller node to the project's
-permanent storage?** #. Start a cluster and login into the controller
-node.
+permanent storage?**
 
-   An example use the project cz-c4-id’s secret file.
+#. Start a cluster and login into the controller node.
 
-   Your project’s permanent storage file name is the same as
+   An example use the project cz-c4-id's secret file.
+
+   Your project's permanent storage file name is the same as
    the secret key file name.
 
-#. Copy and paste the secret key file located at PW’s file
+#. Copy and paste the secret key file located at PW's file
    manager storage:storage/project_keys/azure/gfdl-non-cz-c4-id
    in the controller node terminal.
 
    It will show an authentication message as below:
 
-   .. code::
+ .. code-block:: shell
 
      INFO: SPN Auth via secret succeeded.
 
@@ -2266,23 +2878,21 @@ node.
 
 #. Copy a file:
 
-   Use the Azure destination as:
-   *noaastore.blob.core.windows.net/ <Name of the
+   Use the Azure destination as: *noaastore.blob.core.windows.net/ <Name of the
    secret key file>*
 
-   .. code::
+ .. code-block:: shell
 
-     $ azcopy cp test.txt https://noaastore.blob.core.windows.net/gfdl-none-cz-c4-id/
-     INFO: Scanning...
-     INFO: Authenticating to destination using Azure AD
-     INFO: Any empty folders will not be processed, because
-     source and/or destination doesn't have full folder support
+  [FName.Lastname@devcimultiintel-41 ~]$ azcopy cp test.txt
+  INFO: Scanning...
+  INFO: Authenticating to destination using Azure AD
+  INFO: azcopy: A newer version 10.16.2 is available to download
 
      Job c7a7d958-f741-044e-58e8-8c948489e5f1 has started Log
      file is located at:
      /home/Firs.Lastname/.azcopy/c7a7d958-f741-044e-58e8-8c948489e5f1.log
 
-     0.0 %, 0 Done, 0 Failed, 1 Pending, 0 Skipped, 1 Total,
+     0.0 %, 0 Done, 0 Failed, 1 Pending, 0 Skipped, 1 Total,
 
      Job c7a7d958-f741-044e-58e8-8c948489e5f1 summary
      Elapsed Time (Minutes): 0.0334
@@ -2290,18 +2900,22 @@ node.
      Number of Folder Property Transfers: 0
      Total Number of Transfers: 1
 
-#. To list the file, use the command: ``azcopy ls
-   https://noaastore.blob.core.windows.net/gfdl-none-cz-c4-id/test.txt``
+#. To list the file, use the command:
 
-   Copying a file to Niagara’s untrusted location is done using
-   a ssh key file. The firewall settings on the GFDL are not
-   open to allow a file copy.
+.. code-block:: shell
+
+  azcopy ls
+
+
+Copying a file to Niagara's untrusted location is done using
+a ssh key file. The firewall settings on the GFDL are not
+open to allow a file copy.
 
 **How do I use GCP gsutil transfer files to a project bucket?**
 
 GCP uses the gsutil utility to transfer data into HPC
 on-prem system. The “gsutil” command can run either from the
-user’s local machine or the RDHPCS systems, such as Niagara.
+user's local machine or the RDHPCS systems, such as Niagara.
 The gsutil utility is preinstalled on clusters launched
 through Parallel Works.
 
@@ -2319,7 +2933,7 @@ the researchers' specific experiments.
 
 You can install custom software and create a modified image
 [root disk] to use in your experiments. The other option is
-to install on your project’s contrib volume and reference
+to install on your project's contrib volume and reference
 it. Contrib is a permanent storage for your project's custom
 software management. Note that you are responsible for your
 custom software stack, although we will try our best to help
@@ -2376,7 +2990,7 @@ installation of the globus-cli tools in /apps for global
 availability. Alternately, the user can install the tools
 using Anaconda/Miniconda:
 
-.. code::
+.. code-block:: shell
 
   $ conda install -c conda-forge globus-cli
 
@@ -2388,7 +3002,7 @@ installed, the user can install it and set up the service to
 create an endpoint on that master node by downloading the
 tool, untarring it, and running setup:
 
-.. code::
+.. code-block:: shell
 
   $ wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz
   $ tar xzf globusconnectpersonal-latest.tgz
@@ -2396,7 +3010,7 @@ tool, untarring it, and running setup:
 
 Creating the new Endpoint
 
-.. code::
+.. code-block:: shell
 
   $ ./globusconnectpersonal -setup
 
@@ -2423,7 +3037,7 @@ Creating the new Endpoint
 
 Show some information about the endpoint:
 
-.. code::
+.. code-block:: shell
 
   $ ep0=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
   $ globus endpoint show $ep0
@@ -2452,13 +3066,13 @@ Show some information about the endpoint:
 
 Activate the endpoint:
 
-.. code::
+.. code-block:: shell
 
   $ ./globusconnectpersonal -start &
 
 Now we can begin using the end point:
 
-.. code::
+.. code-block:: shell
 
   $ globus ls $ep0
   globusconnectpersonal-3.1.2/ miniconda3/
@@ -2470,7 +3084,7 @@ Once the tools are installed, the process of transferring
 data requires that you first authenticate with your globus
 credentials by using:
 
-.. code::
+.. code-block:: shell
 
   $ globus login
 
@@ -2537,22 +3151,22 @@ credentials by using:
 
 List the directory in that endpoint:
 
-.. code::
+.. code-block:: shell
 
   $ globus ls $ep1:/collab1/data_untrusted/User.Id
 
 Create a new directory:
 
-.. code::
+.. code-block:: shell
 
   $ globus mkdir $ep1:/collab1/data_untrusted/User.Id/cloudXfer
   The directory was created successfully.
 
 Conduct a Transfer:
 
-.. code::
+.. code-block:: shell
 
-  $globus transfer $ep0:globusconnectpersonal-latest.tgz $ep1:/collab1/data_untrusted/User.Id/cloudXfer --label "CloudTransferTest1"
+  $ globus transfer $ep0:globusconnectpersonal-latest.tgz $ep1:/collab1/data_untrusted/User.Id/cloudXfer --label "CloudTransferTest1"
 
   Message: The transfer has been accepted and a task has been
   created and queued for execution Task ID:
@@ -2573,13 +3187,13 @@ Singularity container executable name is same as
 singularity, community edition consistent with on-prem
 usage.
 
-.. code::
+.. code-block:: shell
 
   $ rpm -ql singularity-ce \| grep bin /usr/bin/singularity
 
 **How to list the files in an s3 bucket using a script?**
 
-.. code::
+.. code-block:: python
 
   #!/usr/bin/python3
 
@@ -2593,7 +3207,7 @@ usage.
 
 This generates some output like this:
 
-.. code::
+.. code-block:: python
 
   ['s3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test1.nc',
   's3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test2.nc',
@@ -2607,8 +3221,8 @@ scoped at a project level, and not to individual users.
 in Github?**
 
 Use your programming language command to call out
-environment variables. For example in Python: key_value =
-os.environ['AWS_ACCESS_KEY_ID']
+environment variables. For example in Python: ``key_value =
+os.environ['AWS_ACCESS_KEY_ID']``.
 
 It is very important not to commit a full print out of the
 shell environment.
@@ -2617,7 +3231,7 @@ shell environment.
 
 If you want to keep the repository around between cluster
 sessions, working with it from contrib would be the right
-choice. If you aren’t doing anything too complex in the repo
+choice. If you aren't doing anything too complex in the repo
 (like editing files), or if anything compiling is fairly
 small, doing everything from the controller would be fine.
 Big compiles would probably be better on a compute node
@@ -2629,8 +3243,7 @@ Select a location “North America” and machine type “A2” to view
 different types of GPUs available on different `regions/AZs
 <https://cloud.google.com/compute/docs/regions-zones#available>`__
 
-To learn more about GPU models, refer to this
-`link <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones>`_
+To learn more about `GPU models <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones>`_.
 
 **What are the GPU models available on AWS, Azure, and GCP**
 
@@ -2664,14 +3277,12 @@ If you want to use a different key name that would work, but
 you might need to configure the ssh client to look for it.
 This works.
 
-.. code::
+.. code-block:: shell
 
   ssh-keygen -t rsa -f ~/.ssh/id_rsa -N * && cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys*
 
 **On Azure, missing /apps fs system or modules not loaded case**
 
-We are working to fix this bug. If you own the Azure
-cluster, please run the command : sudo /root/run_ansible
-
-It will take about 2 mins to complete, and will mount /apps
-file system.
+We are working to fix this bug. If you own the Azure cluster, please
+run the command ``sudo /root/run_ansible``.  It will take about 2 mins
+to complete, and will mount /apps file system.
