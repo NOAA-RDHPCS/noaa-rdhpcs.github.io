@@ -829,8 +829,8 @@ A `transcript the training <https://docs.google.com/document/d/1Ys5S0YGeREmJgXy_
 
 The Support Team discussed `issues concerning the
 transition of Orion from Rocky8 to Rocky9
-<https://mail.google.com/mail/u/0/?pli=1#inbox/FMfcgzQVwxHbVFPQmVbgbXmkhCrzXlKq?projector=1
-here.>`_
+<https://drive.google.com/file/d/1HOVLh2yn0TID5NgK9ky5RUe1r-mrmNcD/view>`_
+here.
 
 10 May 2024
 -----------
