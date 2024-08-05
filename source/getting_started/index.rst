@@ -4,36 +4,24 @@
 Getting Started
 ###############
 
+Locations and Systems
+=====================
 
-Maintenance Schedule
-====================
-
-System maintenance will affect access to RDHPCS systems. Click `here
-<https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
-
-.. raw:: html
-
-   <div>
-   <iframe src="https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs%40group.calendar.google.com&ctz=America%2FNew_York"
-           style="border: 0"
-           width="800"
-           height="600"
-           frameborder="0"
-           scrolling="no"></iframe>
-   </div>
-
-to view the RDHPCS Maintenance Downtime Calendar.
+The `NOAA Information Technology Locations and Systems page
+<https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems>`_
+gives technical and geographical information about NOAA's High
+Performance Computing program.
 
 Getting Access
 ==============
 
-This figure is an overview of the timeline and process for system access.
+Here is a detailed overview of the process to `get a NOAA.gov email account
+<https://www.noaa.gov/organization/information-technology/getting-hpc-account>`_.
+Your noaa.gov email address is the first step in getting system access.
 
-.. image:: /images/access1.png
-
-Once you have  a NOAA.gov email address, you can request an RDHPCS account.
+Once you have a NOAA.gov email address, you can request an RDHPCS account.
 Visit the `Account Information Management (AIM) website
-<https://aim.rdhpcs.noaa.gov>`_ and  request access to the RDHPCS project.  Log
+<https://aim.rdhpcs.noaa.gov>`_ and request access to the RDHPCS project.  Log
 into AIM using your NOAA email credentials, review your profile for accuracy,
 and request the RDHPCS project.
 
