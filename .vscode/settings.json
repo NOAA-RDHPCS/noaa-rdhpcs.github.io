@@ -53,5 +53,6 @@
     ],
     "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "esbonio.sphinx.confDir": "${workspaceFolder}/source",
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "rewrap.wrappingColumn": 79,
 }
