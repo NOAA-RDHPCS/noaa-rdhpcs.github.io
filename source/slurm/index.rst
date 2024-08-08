@@ -1,3 +1,5 @@
+.. _slurm-scheduler:
+
 #####
 Slurm
 #####

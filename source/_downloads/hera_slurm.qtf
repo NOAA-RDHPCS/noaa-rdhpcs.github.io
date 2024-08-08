@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# NOTE: if using with srun then you should select "SLURM (MPMD)" as the MPI
+#       implementation on the System Settings page of the Options window.
+#
+# Name: SLURM
+#
+# submit: /apps/slurm/default/bin/sbatch
+# display: /apps/slurm/default/bin/squeue
+# job regexp: (\d+)
+# cancel: /apps/slurm/default/bin/scancel JOB_ID_TAG
+#
+# WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="00:30:00",mask="09:09:09"}
+# QUEUE_TAG: {type=text,label="Partition",default=hera}
+# ACCOUNT_TAG: {type=text,label="Account",default=none}
+# QOS_TAG: {type=text,label="QOS",default=debug}
+
+#SBATCH --nodes=NUM_NODES_TAG
+#SBATCH --time=WALL_CLOCK_LIMIT_TAG
+#SBATCH --job-name="ddt"
+#SBATCH --output=allinea.stdout
+#SBATCH --error=allinea.stdout
+#SBATCH --partition=QUEUE_TAG
+#SBATCH --account=ACCOUNT_TAG
+#SBATCH --qos=QOS_TAG
+
+# Initialize the environment
+. /etc/profile
+
+# Load the required modules here
+# module load gnu
+# module load intel/23.2.0
+# module load impi/23.2.0
+
+# ############################# #
+# DO NOT CHANGE BELOW THIS LINE #
+# ############################# #
+AUTO_LAUNCH_TAG
+

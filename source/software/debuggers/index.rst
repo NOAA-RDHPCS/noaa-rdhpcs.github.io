@@ -1,291 +1,216 @@
-Debuggers
-=========
+.. _linar-forge:
 
-Debugging with DDT
-------------------
+************************
+Debugging with Forge DDT
+************************
 
-`Linaro DDT
+`Linaro Forge DDT
 <https://docs.linaroforge.com/24.0.3/html/forge/ddt/index.html>`_,
 which is part of `Linaro Forge <https://www.linaroforge.com/>`_ is a
 powerful, easy to use graphical debugger.
 
-With Linaro DDT, it is possible to debug
+With Linaro Forge DDT, it is possible to debug
 
 - Single process and multithreaded software
 - Parallel (MPI) Software
 - OpenMP
 - Hybrid cores mixing paradigms such as MPI + OpenMP or MPI + CUDA
 
-Linaro DDT supports
+Linaro Forge DDT supports
 
 - C, C++, and all derivatives of Fortran, including Fortran 90
 - Python (CPython 2.7), limited support
 - Parallel languages/models including MPI, UPCm, Fortran 2008 Co-arrays
 
+The documentation on this page will help you set up DDT to debug on the RDHPCS
+system.  Please refer to the `Linaro Forge DDT documentation
+<https://docs.linaroforge.com/24.0.3/html/forge/ddt/index.html>`_ for
+information on using DDT.
 
-Using DDT on Different Systems
-------------------------------
 
-Gaea
-^^^^
+DDT remote connection
+=====================
 
-**Launch via Login Node**
+Since DDT is a graphical debugger, interactions over a wide area
+network can be extremely slow. To make running DDT on remote systems
+easier, DDT has the ability to use a locally running client to connect
+to a remote system.
 
-Load the ``forge`` module on one of the login nodes, and run the
-``ddt`` application:
+Download and install `Linaro Forge
+<https://www.linaroforge.com/download-documentation/>`__.
 
-.. code-block:: shell
+.. important::
 
-    $ module load forge
-    $ ddt
+    The version of the local client must match the version of Forge on
+    the RDHPCS system.  You may need to download and install an `older
+    Linaro Forge version
+    <https://www.linaroforge.com/download-forge-old-version>`_.
 
-**Setup and Configuration**
+.. note::
+
+    You will need to have an SSH connection open, with the :ref:`local
+    port forward <ssh-port-tunnels>` active to use this method.
+
+.. figure:: /images/forge_remote_connect.png
+    :figwidth: 30%
+    :align: right
+    :alt: Linaro Forge remote connection configuration
+
+    Enter the remote connection configuration for Linaro Forge.  You must have
+    a working local forward port established to the remote RDHPCS system.
+
+In the locally running client:
 
 1. Click the :menuselection:`Remote Launch dropdown --> Configure`
 2. In the Configure Remote Connections dialog, click :guilabel:`Add`.
 3. Enter the details of your remote host:
 
-    :Connection Name: Enter a name for you remote connection.
-    :Host Name: ``First.Last@rdhpcs-host``
-    :DDT path for Remote Installation: use ``which ddt``
-    :Proxy through login node: Check
+    Connection Name
+        Enter a name for you remote connection.
+
+    Host Name
+        Enter ``First.Last@localhost:<port>``, where ``<port>`` is
+        your :ref:`local forward port number <ssh-port-tunnels>`.
+
+    DDT path for Remote Installation
+        Run ``sh -c 'dirname $(dirname $(command -v ddt))'`` on the RDHPCS
+        system, and copy the returned path.
+
+    Proxy through login node
+        Ensure the checkbox is selected.
 
 4. Click :guilabel:`OK`, then close the Configure Remote Connections window.
 5. Click the :menuselection:`Remote Launch dropdown` and select your
    configuration.
-6. Enter your PIN+passcode for your gaea login.
+6. Enter your PIN+passcode.  On RDHPCS systems other than gaea, you
+   can use `SSH key authentication
+   <https://www.redhat.com/sysadmin/passwordless-ssh>`__.
 
-**Using an Interactive Session**
+There are other ways to start Forge DDT.  We find the remote connection gives
+the best user experience on the RDHPCS systems.  If you decide to run Forge DDT
+directly on the RDHPCS system, you will likely want to use a remote desktop
+environment, like the :ref:`x2go-remote-desktop`.  Please refer to the `Linaro
+Forge connecting to a remote system
+<https://docs.linaroforge.com/24.0.3/html/forge/forge/connecting_to_a_remote_system/index.html>`_
+documentation for more information.
 
-Once the client is connected, ssh to gaea and start an interactive session.
 
-.. code-block:: shell
+Debgging an MPI process
+=======================
 
-    $ salloc --x11 --clusters=c# --nodes=1 -t1:00:00
-    $ module unload darshan-runtime/3.4.0
-    $ module load forge
-    $ ddt --connect srun -n{number of nodes} ./executable
+.. _forge-first-time-config:
 
-Note that the ``ddt --connect`` command must precede the ``srun`` command.
+First time configuration
+------------------------
 
-To open a connection with your (now connected) client on your computer.
+.. figure:: /images/linaro_forge_systemsettings.png
+    :figwidth: 30%
+    :align: right
+    :alt: Linaro Forge's system settings window.
 
-Submit the job.
+    Linaro Forge's system settings dialog.  This is where the user will set the
+    MPI implementation.
 
-When the job begins to run, The **Reverse Connect Request** prompt displays.
+If this is the first time you will debug an application on this remote system,
+you will need to set some configuration options.  To do this, click the
+:guilabel:`Run and debug a program` option to open the run dialog window. Click
+the :guilabel:`options` button in the lower left.
 
-1. Click :guilabel:`Accept`.
+Select :menuselection:`system`.  In the *systems settings* area, use the
+*MPI/UPC implementation* drop down menu and select :menuselection:`SLURM
+(generic)`.
 
-2. Choose any appropriate options, and click :guilabel:`Run`.
+Linaro Forge has the ability to submit a Slurm job.  To allow this, first
+download correct queue template file for the given system, and place it on the
+remote RDHPCS system:
 
-Hera or Jet
-^^^^^^^^^^^
+* :download:`Gaea </_downloads/gaea_slurm.qtf>`
+* :download:`Hera </_downloads/hera_slurm.qtf>`
+* :download:`Jet </_downloads/jet_slurm.qtf>`
+
+Please review the downloaded queue template file.  You may need to modify it to
+ensure the correct modules are loaded for your application to run.
+
+.. note::
+    You can use :command:`curl` on the remote system to download the queue
+    template file.  Copy the link address for the file, and run:
+
+    .. code-block:: shell
+
+        $ curl -o slurm.qtf <past_url_link>
+
+.. figure:: /images/linaro_forge_jobsubmitsettings.png
+    :figwidth: 30%
+    :align: right
+    :alt: Linaro Forge's job submission settings window.
+
+    Linaro Forge's job submission settings dialog.  This is where the user can
+    set the queue template file and other job submission information.
+
+With the Slurm template file on the remote system, in the Linaro Forge run
+dialog window select guilabel:`job submission`. In the *job submission
+settings* area, in the *submission template file* box, enter the full path to
+the :file:`slurm.qtf` file you downloaded.  Alternatively, you can click on the
+file icon (:octicon:`file-directory-fill;1em;sd-text-warning`) and navigate to
+the Slurm template file.  The other Slurm items will be updated whith the Slurm
+template file.  Ensure the :guilabel:`quick restart` option is selected.
+
+Finally, select :guilabel:`Ok` to close the settings.
 
 .. note::
 
-    Since DDT is a GUI debugger, interactions over a wide area network
-    can be extremely slow. You may want to consider using a remote
-    desktop solution, for example :ref:`X2Go <x2go-remote-desktop>`.
-
-For debugging, you will need interactive access to the compute nodes.
-Use the `salloc <https://slurm.schedmd.com/salloc.html>`_ command:
-
-.. code-block:: shell
-
-    $ salloc --x11=first -N 2 --ntasks=4 -A <project> -t 300 -q batch
-
-At this point you are on a compute node.
-
-**Load the desired modules**
-
-.. code-block:: shell
-
-    $ module load intel impi forge
-
-**Launch the application with the debugger**
-
-.. code-block:: shell
-
-
-    $ ddt srun -n 4 ./exe_to_debug
-
-This will open GUI in which you can do your debugging.
-
-
-Launch Jobs Directly from DDT
------------------------------
-
-On a login node, load the forge module and other necessary modules,
-then launch the ``ddt`` application.
-
-.. code-block:: shell
-
-    $ module load forge [<other_modules> ...]
-    $ ddt
-
-.. note::
-
-    If using on Gaea, use the gaea configuration you had set up so your local
-    client connects to Gaea.
-
-Once the main window opens, click on :guilabel:`&Run`.
-
-
-.. figure:: /images/RUNmenu.png
-
-**Application**
-
-This lets you specify the path to your application that you want to
-run.  Click on the :guilabel:`Details`` button on the left to expand
-this section.  Once expanded, you will be able to enter:
-
-    :Application: the path to the application
-
-    :Arguments: the args to pass to the application
-
-    :stdin file: any input file needed for the application
-
-    :Working Directory: the working directory from which the job
-        should be started.
-
-
-**MPI**
-
-Check the MPI box to indicate if your application is using MPI.  By
-default, you will only see the implementation option *no MPI*.  Click
-on the :guilabel`Change` button and a new window will open.
-
-.. figure:: /images/ddtMPISettings.png
-
-From the MPI/UPC Implemenation dropdown, select *Slurm (generic)*, and
-then click :guilabel:`OK`.  You will have the option to set the number
-of processes and the number of nodes.  In the srun arguments section
-you may add additional ``srun`` arguments.
-
-**Submit to Queue**
-
-First, create a file (``slurm.qtf``) with content similar to the
-following:
-
-.. code-block:: shell
-
-    #!/bin/sh
-    #
-    # NOTE: if using with srun then you should select "SLURM (MPMD)" as the MPI
-    # implementation on the System Settings page of the Options window.
-    #
-    # WARNING: If you install a new version of Linaro Forge to the same
-    # directory as this installation, then this file will be overwritten.
-    # If you customize this script at all, please rename it.
-    #
-    # Name: SLURM
-    #
-    # submit: sbatch
-    # display: squeue
-    # job regexp: (\d+)
-    # cancel: scancel JOB_ID_TAG
-    #
-    # WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="00:30:00",mask="09:09:09"}
-    #SBATCH --nodes=NUM_NODES_TAG
-    #SBATCH --time=WALL_CLOCK_LIMIT_TAG
-
-    #SBATCH --job-name="ddt"
-    #SBATCH --output=allinea.stdout
-    #SBATCH --error=allinea.stdout
-    ## The following line is only needed on Gaea
-    #SBATCH -M <cluster-name>
-
-    AUTO_LAUNCH_TAG
-
-
-
-
-
-Now save your ``slurm.qtf`` file and enter the pathname.
-
-Check the :guilabel:`Submit to Queue` checkbox.  Click on
-:guilabel:`Configure` which will open up the following window.
-
-.. figure:: /images/jobSubmissionSettings.png
-
-In *Submission template file* box, enter the full path to the
-``slurm.qtf`` file you created above, then click :guilabel:`&Edit
-Queue Parameters` and enter values for the available paremeters.
-
-
-
-Click OK once done to close this window.
-
-Now click on the 'Parameters' button to enter the wall clock time for your job.
-
-Now you can click on the Submit button.
-
-After the job submission starts, the Forge debug window will become active.
-
-Run DDT via Remote Client
--------------------------
-
-The remote client can overcome latencies that arise when using X Forwarding.
-
-**Record Local Port Number**
-
-To configure a remote launch, you need your local port number.
-You can obtain the local port number from your Tectia/CAC or your RSA login tunneling configuration, or when you log into a System's Front End (FE) node.
-
-Installation
-
-1. From your workstation, download the Arm forge client.
-2. Extract the tarball
-
-   - tar -xf arm-forge-{version}-linux-x86_64.tar
-
-3. Run a GUI installer, or textinstall.sh for a text-based install
-
-Configuration
-
-1. With typical tunnels set up, SSH into HPC system.
-
-2. Launch DDT from local machine. Click Remote Launch dropdown -> Configure.
-
-3. Enter the details of your remote host:
-
-    :Connection Name: Enter a name for your remote connection
-
-    :Host Name: your_workstation_username@localhost:<local port number>
-
-    :DDT path for Remote installation: use ``which ddt``
-
-    :KeepAlive Packets: Enable
-
-    :Proxy through login node: uncheck
-
-4. Click OK to save your changes.
-
-5. Select your new host from the “Remote Launch” combo box.
-
-6. At the prompt, enter your PASSCODE.
-
-Forge will then launch jobs, browse for files, and use/set the configuration.
-
-Reverse Connect
-^^^^^^^^^^^^^^^
-
-The remote client program runs entirely on your workstation.
-
-Once connected to a remote host, Reverse Connect launches DDT jobs.
-
-1. Launch the Forge remote client and connect to a remote host
-
-2. Load the forge module, run a DDT ``--connect`` command:
-
-.. code-block:: shell
-
-    $ module load forge
-    $ ddt --connect srun -n ./mpitest
-
-The remote client notifies you of the new connection.
-Optionally, configure debugging options before you launch the program.
-
-3. Click Run to begin the DDT session.
-
-
+    You can learn about the Linaro Forge DDT options in the `Forge
+    configuration documentation
+    <https://docs.linaroforge.com/24.0.3/html/forge/configuration_appendix/optional_configuration.html>`_.
+
+Submit a debug job
+------------------
+
+.. figure:: /images/linaro_ddt_run.png
+    :figwidth: 30%
+    :align: right
+    :alt: Linaro Forge run dialog
+
+    The Linary Forge run dialog box.  This is where users will select the MPI
+    type (Slurm), number of processors, and the queue submission information.
+
+In the DDT client window, select :guilabel:`Run and debug a program`.  This
+will bring up the run dialog window.
+
+In the run dialog window, expand the :guilabel:`application` section and in the
+*applicatoin* text box enter the path to the executable or use the file icon
+(:octicon:`file-directory-fill;1em;sd-text-warning`) and navigate to the
+executable.  In the *working directory* text box, you should also enter the
+full path to the directory from where the debug job should be run.
+
+Select the :guilabel:`MPI` section.  Enter the total number of MPI processes,
+and the number of nodes required.  If needed, change the MPI implementation and
+add any additional :command:`srun` arguments to run your application.
+
+.. important::
+
+    Ensure the number of processes and the number of nodes required for that
+    many processes is correct for the RDHPCS system and partition.  You can set
+    the *processe per node* option with the correct number of processes per
+    node, and the link button (:octicon:`link;1em;sd-text-secondary`) to
+    automatically set the correct number of required nodes.
+
+If debugging a hybrid MPI+OpenMP applicaiton, select the :guilabel:`OpenMP` and
+enter the number of OpenMP threads.  Please note you may need to use the MPI
+implementation *Slurm (MPMD)* if debugging an MPI+OpenMP application.
+
+Select the :guilabel:`submit to queue` section.  If you haven't already
+configured DDT to lauch Slurm jobs, please refer to
+:ref:`forge-first-time-config`.  Click the :guilabel:`parameters` button to
+verify the Slurm submit settings.
+
+Verify all the settings are correct, and click the :guilabel:`submit` button.
+Forge will submit your job to the Slurm scheduler and wait for the job to
+start.  Once the job starts, Forge will attach to the running application.  At
+this point, you can use Forge to debug your application.
+
+.. seealso::
+
+    * `DDT Training Video <https://www.youtube.com/watch?v=Q8HwLg22BpY>`_ from
+      `Sharcnet HPC <https://www.youtube.com/@SHARCNET_HPC>`_
+    * `Linaro Forge DDT documentation`_
