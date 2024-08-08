@@ -97,7 +97,7 @@ following diagram.
   .. tab-item:: Perform Computations
      :sync: compute
 
-      `Computation <https://parallelworks.com/docs/navigating-the-platform#compute>`__
+      `Computation <https://parallelworks.com/docs/compute/logging-in-controller>`__
 
   .. tab-item:: Export Data
       :sync: export
