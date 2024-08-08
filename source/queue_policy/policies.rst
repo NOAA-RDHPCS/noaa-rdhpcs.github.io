@@ -145,7 +145,7 @@ There are three steps to obtain an increase in allocation:
 #. The PfM completes and submits the request for approval.
 #. The PfM opens a Help Ticket to notify RDHPCS of the request.
    Send email to rdhpcs.<system>.help@noaa.gov, using the actual system name,
-   with Allocation in the Subject line.
+   with Allocation in the subject line.
 
 
 Adding a Project to an Allocation
@@ -181,8 +181,7 @@ Allocation form
 <https://docs.google.com/forms/d/e/1FAIpQLScbCVdipW-Bj2iD-bPzFjrzGjOdVM_jbmabbEZ3-CNrWdrdBA/viewform?usp=sf_link>`_.
 After you complete the form, create a Cloud
 help ticket to track the issue. Send email to
-rdhpcs.cloud.help@noaa.gov, copy to joshua.king@noaa.gov and
-unni.kirandumkara@noaa.gov, using Cloud Allocation Request in the
+rdhpcs.cloud.help@noaa.gov, using Cloud Allocation Request in the
 subject line.
 
 .. note::

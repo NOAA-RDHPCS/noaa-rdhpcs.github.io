@@ -1793,7 +1793,7 @@ number identified in Step 1 or as needed):
 .. code-block:: shell
 
   ssh-LXXXXX:localhost:XXXXX
-  First.Last@gaea-rsa.rdhpcs.rdhpcs.noaa.gov
+  First.Last@gaea-rsa.rdhpcs.noaa.gov
 
 Once you have established the port tunnel it is a good idea to verify
 that the tunnel is working. To verify, use another local window from
@@ -2175,16 +2175,16 @@ result in your jobs timing out either at the start of the job or the
 end.  This hang might be due to a corrupted tcsh ``~/.history`` file.
 The current workaround is to delete the ``~/.history`` file.
 
-Lustre (F5) Performance
------------------------
+GPFS (F5) Performance
+---------------------
 
-The Gaea system intermittently has issues with the Lustre F5
+The Gaea system intermittently has issues with the GPFS F5
 performance.  This typically appears as file operations hangs in
 interactive sessions, and as jobs taking longer than normal to
 complete, or timming out. Many jobs on Gaea are currently experiencing
 longer than normal run times.  While we do not yet have an underlying
 cause for this, we have found certain changes to the user's
-interactions and workflows that use the Lustre F5 file system help
+interactions and workflows that use the GPFS F5 file system help
 alleviate the problem.
 
 Files Accesses by Multiple Jobs
@@ -2195,10 +2195,6 @@ is typically done using hard- or soft-links.  Access the same file
 from multiple batch jobs increases the load on the Lustre metadata
 servers (MDS), and can lead to a MDS locking up affecting all files
 served on that MDS.
-
-Another method used for sharing files is referencing files stored in
-pdata (*/lustre/F5/pdata*) directly.  Users should copy files out of
-pdata for each batch job that will use the file.
 
 Users should clean up files after the job runs successfully to ensure
 the Lustre file system has enough free space for all user's jobs.
@@ -2217,11 +2213,11 @@ environment can be installed in either the /ncrc/proj space, or /usw.
 Development
 ^^^^^^^^^^^
 
-Lustre F5 should not be used for development.  Development should be
+GPFS F5 should not be used for development.  Development should be
 done in the user's home space.  This is especially true if using a
 source code management system (e.g., git).
 
-Users should remember that Lustre F5 is not backed up. The
+Users should remember that GPFS F5 is not backed up. The
 user home area is backed up, with hourly and daily snapshots.
 
 
