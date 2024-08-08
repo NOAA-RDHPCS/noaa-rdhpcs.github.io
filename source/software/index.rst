@@ -10,3 +10,5 @@ Software
    python/index
    rocoto/index
    debuggers/index
+   x2go
+
