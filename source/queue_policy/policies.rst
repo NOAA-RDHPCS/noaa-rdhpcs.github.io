@@ -119,7 +119,7 @@ also responsible for managing disk quota and archive tape usage. A
 portfolio’s disk quota on a system is initially based on their
 percentage of compute allocation on that System.
 
-Click to review the `On-Prem Allocation Request Form
+Click to review the `On-Premises Allocation Request Form
 <https://docs.google.com/forms/d/e/1FAIpQLScgzPjhQ_liCdWn0pZO9lMB-PbWN3DW7PNkcjGOBxlpFZuGUg/viewform?usp=sf_link>`_
 
 The Allocation Committee (AC) is appointed by
@@ -141,7 +141,7 @@ There are three steps to obtain an increase in allocation:
 
 #. Identify your Portfolio Manager (PfM).
 #. Request that your PfM
-   complete an `On-Prem Allocation Request Form`_.
+   complete an `On-Premises Allocation Request Form`_.
 #. The PfM completes and submits the request for approval.
 #. The PfM opens a Help Ticket to notify RDHPCS of the request.
    Send email to rdhpcs.<system>.help@noaa.gov, using the actual system name,
