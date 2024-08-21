@@ -704,6 +704,315 @@ The ``saccount_params`` will show your current:
          Available QOSes: gpuwf,windfall
          Directory: /scratch[12]/[portfolio]/projid DiskInUse=206372 GB, Quota=255000 GB, Files=5721717, FileQUota=51000000
 
+Queue Policy
+============
+
+Overview
+--------
+
+* The queuing system should allow groups/projects to spend their
+  allocation each month.
+* The tension between keeping persistent jobs in the system and
+  running very large jobs suggests that there should be a limit on the
+  number of cores a job may use, but with a capability to make
+  exceptions for “novel” jobs that may require up to the entire
+  system.
+
+  This will promote consideration of whether a job requires a large
+  number of cores due to, for example, memory or schedule constraints,
+  or whether it is simply desired.
+* There should be queues with different priority levels usable by the
+  scheduling algorithm. At the very least, run-time variability would
+  need to be assessed before we could even think of implementing this.
+
+Specifying a Quality of Service (QOS)
+-------------------------------------
+
+To specify a quality-of-service (QOS), use --qos (-q).
+
+For example, to specify the batch QOS:
+
+.. code-block:: shell
+
+    $  #SBATCH -q batch
+
+Several different QOS's are usually available.
+
+Changing QOS's
+--------------
+
+You can change the QOS of jobs at submission and post submission.
+While you can use this feature in many different ways, one practical
+situation where this may be useful is to maintain your fairshare
+priority by starting jobs in the “windfall” QOS, then changing to the
+“batch” QOS if it is still pending. See `Slurm_` for more information
+on Fairshare
+
+.. note::
+
+   If your job does not meet the criteria of the QOS that you change
+   it to, it will remain pending indefinitely.
+
+You can immediately change the QOS of your pending job(s).
+
+The following is an example of immediately changing 2 pending jobs
+(26866 and 26867) to the “batch” QOS:
+
+.. code-block:: shell
+
+   $ scontrol update job 26866,26867 qos=batch
+
+When submitting a job to a certain QOS, you can tell Slurm to change
+it to a different QOS at a certain time if it is still pending. In the
+following example, you submit the job to the “windfall” QOS, then tell
+Slurm to change the job to the “batch” QOS if it’s still pending after
+5 minutes. NOTE: Do not use a time less than 2 min (120 seconds).
+
+.. note::
+
+   On Orion and Hercules the “at” functionality is only available on login1.
+
+
+.. code-block:: shell
+
+   $ sbatch -q windfall jobfile
+   Submitted batch job 26990
+
+.. code-block:: shell
+
+   $ echo scontrol update job 26990 qos=batch | at -M now +5min
+   warning: commands will be executed using /bin/sh
+   job 6 at Sun Dec 17 16:07:00 2023
+
+You can change the QOS of all your pending job(s) in a QOS to another
+QOS after it has been pending for a certain time. The following
+example script will change all your pending “windfall” jobs to “batch”
+if they have been pending for at least 600 seconds (10 min), whenever
+you run it.
+
+.. note::
+
+   Do not use a time less than 120 seconds (2 min).
+
+Jet and Hera
+------------
+
+.. note::
+
+  If you have an allocation of "windfall only" (Allocation = 1) you
+  can only submit to the windfall or gpuwf QOS.
+
+.. list-table::
+   :header-rows: 1
+   :align: left
+
+   * - QOS
+     - Minimum Nodes
+     - Maximum Nodes
+     - Maximum Wall Clock
+     - Billing TRES Factor
+     - Description and Limits
+   * - All QOS's
+     -
+     -
+     -
+     -
+     - Max of 400 pending/running jobs per project/account, additional
+       jobs will be rejected. Max of 20 jobs per project/account will
+       gain age priority. Exceptions are stated below.
+   * - batch
+     - 1
+     - 8,400\ [1]_
+     - 8 hours
+     - 1.0
+     -  Default QOS for non-reservation jobs with an allocation more
+        then *Windfall-Only* (``RawShare=1``).
+   * - urgent
+     - 1
+     - 8,400\ [1]_
+     - 8 hours
+     - 2.0
+     -  QOS for a job that requires more urgency than *batch*. Your
+        project's :ref:`FairShare <slurm-fairshare>` will be lowered
+        at 2.0x the rate as compared to *batch*.  Only one job per
+        project/account can be pending/runnin at any time. When a
+        project's FairShare is below 0.45, jobs submmit to *urgent*
+        are automatically changed to *batch* and users notified via
+        stderr.
+   * - debug
+     - 1
+     - 8,400\ [1]_
+     - 30 minutes
+     - 1.25
+     - Highest priority QOS, useful for debugging sessions.  Your
+       project :ref:`FairShare <slurm-fairshare>` will be lowered at
+       1.25x the rate as compared to *batch*.  Only two jobs per user
+       can be pending/running at any time.  This QOS should NOT be
+       used for fast-turnaround of general work. While the *debug* QOS
+       is available, we recommend that if you need to work through an
+       iterative process to debug a code, that you submit a longer
+       running interactive job to the default QOS so that you can
+       restart your application over and over again without having to
+       start a new batch job.
+   * - gpu
+     - 20 (1 node)
+     - 800 (40 nodes)\ [1]_
+     - 168 hours (7 days)
+     - 1.0
+     - This QOS can only be used on Hera in combination with the fge
+       partition. Max total “GrpTRESRunMins” of 720,000 core-minutes
+       (600 node-hours) of running jobs at any time, per
+       project-account. “GrpTRESRunMins” is defined as cores_allocated
+       * wallclock_requested of running jobs. A project can have up to
+       the max number of jobs pending/running as defined above, but
+       the queued jobs will NOT be considered for scheduling if the
+       project’s running jobs exceed this limit. Use this gsheet as a
+       reference: Grp TRES Run Minutes For example, the following
+       combinations of the max running jobs per project-account are
+       permitted: 1. A project can have three 1-node jobs at 168 hours
+       of wallclock and one 1-node job at 96 hours of wallclock. 2. A
+       project can have one 8-node job at 75 hours of wallclock.
+   * - gpuwf
+     - 20 (1 node)
+     - 800 (40 nodes)\ [1]_
+     - 168 hours (7 days)
+     - 1.0
+     - This QOS can only be used on Hera in combination with the fge
+       partition. Max total “GrpTRESRunMins” of 201,600 core-minutes
+       (168 node-hours) of running jobs at any time, per
+       project-account. “GrpTRESRunMins” is defined as cores_allocated
+       * wallclock_requested of running jobs. A project can have up to
+       the max number of jobs pending/running as defined above, but
+       the queued jobs will NOT be considered for scheduling if the
+       project’s running jobs exceed this limit. Use this gsheet as a
+       reference: Grp TRES Run Minutes For example the following are
+       combinations of the max running jobs per project-account that
+       are permitted: 1. A project can have two 2-node jobs at 24
+       hours of wallclock and one 1-node job at 72 hours of wallclock.
+       1. A project can have one 1-node job at 168 hours of wallclock.
+       Lowest priority QOS for use with GPU nodes. If you have an
+       allocation of “windfall only” (Monthly allocation = 1) you can
+       only submit to this QOS. Submitting to this QOS will NOT affect
+       your future job priority FairShare Factor (f). EffectvUsage = 0.
+       See How FairShare Works. This QOS is useful for low priority
+       jobs that will only run when the system (partition(s)) has
+       enough unused space available, while not lowering the project’s
+       FairShare priority.
+   * - windfall
+     - 1
+     - 8,400\ [1]_
+     - 8 hours (Partition exception: *service*)
+     - 0.0
+     - Lowest priority QOS.  If you have an allocation of
+       windfall-only (monthly allocation is 1) you can only submit to
+       this QOS.  Submitting to this QOS will NOT affect your future
+       job priority :ref:`FairShare <slurm-fairshare>` factor (f) for
+       your non-windfall jobs. Useful for low priority jobs that will
+       only run when the system/partition has enough unused space
+       available while not effecting the project's FairShare priority.
+   * - novel
+     - 501 (Orion), 251 (Hercules)
+     - Largest partition size
+     - 8 hours
+     - 1.0
+     - QOS for running novel or experimental where nearly the full
+       system is required.  If you need to use the *novel* QOS, please
+       submit a ticket to the :ref:`help system <getting_help>` and
+       tell us what you want to do.  We will normally have to arrange
+       for some time for the job to go through, and we would like to
+       plan the process with you.
+
+.. [1] Some partitions are small than the **Max Cores** QOS limit.
+   Jobs submitted only to partitions with an insufficient number of
+   cores will get stuck in pending, will not run, and will have to be
+   manually deleted by the user. The max nodes allowed per partition
+   is the min of the max cores allowed divided by the cores per node
+   of the partition (Hera and kJet: 8400/40=210 nodes) or the max
+   number of nodes in the partition (vJet: 288 nodes).
+
+
+Gaea
+----
+
+This section documents the queue structure on Gaea.
+The original queue policy was approved through NOAA's HPC Integrated
+Management Team. Changes and fine-tuning to the queue structure can be
+done on a weekly basis through the Configuration Management process.
+
+The following guidelines were put in place:
+
+
+General Recommendations
+-----------------------
+
+* Use a fair-share algorithm that can throttle scheduling priority by
+  comparing how much of a particular allocation has been used at a
+  given time with how much should have been used, assuming constant
+  proportional usage. This will promote steady usage throughout the
+  month.
+* Use two separate allocations, renewed monthly, with multiple queues
+  drawing down each of them:
+
+  * 50% of the available time for high-priority and urgent work. That
+    should minimize queue wait time. Queues are:
+
+    * Urgent, for schedule-driven work that must be completed ASAP.
+    * Novel, for jobs that have unusual resource requirements,
+      typically needing more than 25% of the system’s cores. These can
+      be run during an 8-hour period immediately after Preventative
+      Maintenance is complete, since no other jobs will be running at
+      that time.
+
+  * 50% for all other **normal-priority** allocated work. Queues would be:
+
+    * Batch, for regular allocated jobs
+    * Debugging/Interactive work
+    * Windfall, a quality of service (QOS) tag, for work that will not
+      be charged against an allocation. Windfall can be specified with
+      '-l qos=' directive, as:
+
+.. code-block:: shell
+
+    $ sbatch –-qos=windfall
+
+or in your job script:
+
+.. code-block:: shell
+
+    #SBATCH -–qos=windfall
+
+Priorities Between QOS
+-------------------------
+
+* Normally, the Urgent QOS will have the highest priority but remain
+  subject to the fair-share algorithm. This will discourage groups
+  from hoarding high-priority time for the end of the month.
+* Within a group/project, jobs in the Urgent queue are higher priority
+  than jobs in the Normal queue, with each group expected to manage
+  the intra-group mix per their allocation.
+* At any given time, the suite of jobs drawn from the Urgent queue and
+  running on the system should use about 50% of the available cores
+  (per the fair-share algorithm), but that suite is permitted to use
+  more than 50% as needed (with the implication that less than 50%
+  will be used at other times of the month).
+* Limit the largest job to 25% of the available cores except in the
+  Novel queue.
+* Limit time requested for individual job segments to 12 hours.
+* Interactive/debugging jobs have a tiered limit.
+
+
+Debug & Batch QOS
+-----------------
+
+Interactive / Debug The interactive queue may have different time
+limits based on the size of the submitted job. To see the current
+queue wallclock limits, run
+
+.. code-block:: shell
+
+  $ sacctmgr show qos format=Name,MaxWall
+
+
 .. _slurm-generating-reports:
 
 Generating Reports
