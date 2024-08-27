@@ -8,10 +8,10 @@ A role account is a user account shared with one or more users as
 members, such that all group members share the account equally via the
 use of `sudo`, typically for the unified use of a project. Role
 accounts must have a name that reflects their project association or
-function. All changes to a role account must be submitted by the role
-account Principal Investigator (PI) via OTRS ticket. Send email to
-rdhpcs.aim.help@noaa.gov with the subject line: Role account changes -
-first.last (role account name).
+function. All changes to a role account must be submitted via the
+helpdesk by sending email to rdhpcs.aim.help@noaa.gov with the subject
+line: "Role account changes - Role.Account.Name.Here".  All changes
+require PI approval.
 
 Accessing a Role Account
 ------------------------
