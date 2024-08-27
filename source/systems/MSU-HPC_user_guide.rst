@@ -1,4 +1,5 @@
 .. _MSU-HPC-user-guide:
+.. _orion-user-guide:
 
 ******************
 MSU-HPC User Guide
