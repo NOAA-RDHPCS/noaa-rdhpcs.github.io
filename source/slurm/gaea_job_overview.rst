@@ -5,6 +5,13 @@ Gaea Batch Job Overview
 This simple overview explains the elements of a basic job in Gaea. It includes
 compiling, running, combining, data transfer, and allocation.
 
+.. attention::
+
+   **As of 2024, this is dated information** referencing Gaea system
+    versions that have been retired.  Use this only as reference
+    material until this document has been revised for the C5 and C6
+    generations and the GPFS filesystems.
+
 Compiling
 ---------
 

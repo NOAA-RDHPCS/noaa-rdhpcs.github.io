@@ -1,4 +1,3 @@
-
 **New to the NOAA RDHPCS Program?**
 
 Welcome!  The information below introduces how we structure user
@@ -7,10 +6,7 @@ about getting to work. In general, NOAA RDHPCS resources are granted
 to projects in allocations on systems, and are made available to the
 users associated with each project.
 
-
-INSERT GRAPHIC HERE ABOUT THE RELATIONSHIPS BETWEEN SYSTEMS/RESOURCES
-PROJECTS/GROUPS PORTFOLIOS PIS USERS
-
+.. image:: /images/RDHPCS_AIM_relationship_graphic.png
 
 Applying for a user account
 ===========================
@@ -115,29 +111,30 @@ MSU-HPC.
 General Access Requirements
 ---------------------------
 
--  All users, regardless of citizenship, follow the same process to
+- All users, regardless of citizenship, follow the same process to
    receive MSU-HPC access.
--  NOAA's RDHPCS users will need to use MSU’s HPC Account Management
+- NOAA's RDHPCS users will need to use MSU’s HPC Account Management
    System and Process. RDHPCS Portfolio Managers have access to MSU's
    Account Management Tool.
--  The PfM must have allocations to use the MSU-HPC system.
--  MSU's Account Management system requires user authentication. PIs
-   and Portfolio Managers must maintain an active MSU account to
-   manage their projects online.
+- The Portfolio Manager (PfM) must have allocations to use the MSU-HPC
+   system.
+- MSU's Account Management system requires user
+   authentication. Principal Investigators (PIs) and Portfolio
+   Managers must maintain an active MSU account to manage their
+   projects online.
 
  .. note::
 
-   The designated PI or Portfolio Manager (PfM) must request that a
+   The designated PI or Portfolio Manager must request that a
    MSU user account be created and the user assigned to their project.
 
 
 Complete the following steps for MSU-HPC access.
 
 - Collaborate with a NOAA research lab and be associated with an
-  active NOAA research project. Each project has an assigned Principal
-  Investigator (PI) who is responsible for the project and the project
-  members. The PI or PfM requests both project assignment and account
-  creation.
+  active NOAA research project. Each project has an assigned PI who is
+  responsible for the project and the project members. The PI or PfM
+  requests the project assignment and account creation.
 - New user completes NOAA account request form.
 - New user receives an email from MSU to change password, complete
   required training, and setup the Duo dual-factor authentication.
@@ -149,11 +146,11 @@ The User now has login access to MSU-HPC.
 
 .. note::
 
-   A Portfolio Manager or PI who loses MSU account access must issue a
-   help request. Send email to rdhpcs.orion.help@noaa.gov to open an
-   OTRS ticket. A new user who has any issues with completing MSU
-   process, should send email to rdhpcs.orion.help@noaa.gov to open a
-   help ticket.
+   A PfM PI who loses MSU account access must issue a help
+   request. Send email to rdhpcs.orion.help@noaa.gov to open an OTRS
+   ticket. A new user who has any issues with completing MSU process,
+   should send email to rdhpcs.orion.help@noaa.gov to open a help
+   ticket.
 
 Account Activity Requirements: Suspension, Deactivation, Reactivation
 =====================================================================
@@ -165,7 +162,7 @@ User accounts are suspended when they has been inactive for 90 days or
 more. The user will be notified at their NOAA.gov address if their
 account has been suspended, with instructions on reactivation.
 
-Depending on the lengh of account suspension, there may be additional
+Depending on the length of account suspension, there may be additional
 steps to fully reactivate your account:
 
 .. topic:: Reactivate within seven days
@@ -185,13 +182,20 @@ Deactivated Accounts
 --------------------
 
 If your account remains suspended for more than 270 days, it will be
-deactivated and loose all project associations.  You will need to
+deactivated and lose all project associations.  You will need to
 reapply for NOAA RDHPCS access.
 
 Request a New Allocation or Project
 ===================================
 
-TODO: fill this in from Roles & Responsibilities
+Allocation requests currently flow via helpdesk requests.  Send an
+email to the appropriate :ref:`HPCS-specific help address
+<getting_help>`.
+
+
+
+Projects can be requested via the `Account Information Management`_
+website.
 
 .. _rsa-token:
 

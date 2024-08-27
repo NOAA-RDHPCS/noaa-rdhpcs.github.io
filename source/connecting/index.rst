@@ -38,12 +38,12 @@ and data transfers.
 
 Access to most RDHPCS systems require a signed x.509 certificate.  The
 first login attempt will generate a master certificate request.  You
-will experience a short (less than 5 minute delay) while the request
+will experience a short (less than 5 minute) delay while the request
 is signed. Users cannot fully log on to a system until that
 certificate is signed.
 
-The prompt will ask you to create a passphrase. Create a minimum of
-three words pass phrase as a passphrase.
+The prompt will ask you to create a passphrase. Create a passphrase
+with a minimum of three words.
 
 .. note::
 
