@@ -94,7 +94,7 @@ To submit the jobscript.sh script, you would execute:
 Loading Modules
 ^^^^^^^^^^^^^^^
 
-If you loaded modules when building your codes, they must be loaded when the
+If you loaded modules when building your code, they must be loaded when the
 job runs as well. This means that you must put the same module commands in your
 batch scripts that you ran before building your code.
 
@@ -132,7 +132,7 @@ Upon user interactive login, running batch jobs, running cron scripts, and
 running command line scripts, a linux shell is invoked. The way the shell is
 invoked determines which shell initialization scripts (~/.cshrc, ~/.tcshrc
 ~/.bashrc,~/.bash_profile, Etc.) are invoked at start up, and how the shell's
-environment will beset up. Although it can be estremely useful and beneficial
+environment will be set up. Although it can be estremely useful and beneficial
 to customize these shell scripts, we have seen a large number of issues related
 to loading modules within these shell scripts.
 
@@ -1186,9 +1186,6 @@ Running serial tasks as one parallel job
 
 If you have number of "similar" tasks to be done, the Slurm Job Array feature
 may be useful for you.
-
-The following external link is very close to what we wanted to
-`document <https://crc.ku.edu/hpc/how-to/arrays>`_.
 
 Running tasks as one parallel job
 ---------------------------------
