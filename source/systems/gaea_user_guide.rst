@@ -1347,26 +1347,6 @@ includes compiling, running, combining, data transfer, and allocation.
   Ensure that you have done your first login to Gaea and generated a
   certificate.
 
-Connecting and General Info
-----------------------------
-
-There are two ways to access Gaea. The oldest is to use PuTTY or ssh
-to gaea-rsa.rdhpcs.noaa.gov and authenticate using your RDHPCS-issued
-RSA token. Alternatively, use Tectia sshg3 to gaea.rdhpcs.noaa.gov and
-authenticate with your CAC and CAC PIN. The :ref:'login' section
-describes this in detail, with additional useful information like how
-to set up port tunnels to Gaea (needed to use X-windows applications
-like DDT.) You can also use the RDHPCS login documentation at
-:ref:`Logging_in`, but in that case you will want to know that the
-port tunnel ranges for Gaea are 20000 + your UID number for
-LocalForward and 30000 + your UID number for RemoteForward (in ssh
-config file language.)
-
-- If you want more information on using your CAC to authenticate to
-  RDHPCS systems, see **CAC_Login**.
-- If you want more information on configuring PuTTY, see
-  **Configuring_PuTTY**.
-
 Gaea uses modules software to let users change which software is
 accessible to their environment. There is no module man page. Instead
 use the command:

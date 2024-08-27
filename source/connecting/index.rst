@@ -51,6 +51,7 @@ three words pass phrase as a passphrase.
     try.  On the 4th attempt the system will prompt you to recreate
     your master certificate.
 
+.. ref: ssh_access
 
 Secure Shell (SSH) Access
 =========================

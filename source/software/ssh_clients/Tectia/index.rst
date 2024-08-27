@@ -534,6 +534,8 @@ Configure the Tectia Client
 If successful you will see the message “Authentication successful.”
 You will be forwarded to a front-end host.
 
+.. ref: port_tunnels
+
 Port Tunnelling
 ===============
 
