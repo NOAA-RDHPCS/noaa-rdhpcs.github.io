@@ -38,48 +38,61 @@ Performance Computing program.
 .. |hpcc_niagara_url|	replace:: https://www.noaa.gov/organization/information-technology/niagara
 .. |hpcc_cloud_url|	replace:: https://www.noaa.gov/information-technology/hpcc
 .. |hpcc_orion_url|	replace:: https://www.noaa.gov/organization/information-technology/orion
+.. |gaeaP|		replace:: Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
+.. |heraP|		replace:: Predicting high-impact weather events
+.. |jetP|		replace:: Hurricane Forecast Improvement Program (HFIP)
+.. |niagaraP|		replace:: Collaborative resource for data transfer
+.. |cloudP|		replace:: Platforms to create and use HPC computatational clusters on an ad-hoc basis
+.. |msuP|		replace:: Collaboration with Mississippi State University (MSU)
 
-+---------------+------------------------------------------------------------------------------+-----------------------+---------------------------+
-| RDHPCS System | High level Purpose                                                           | OCIO HPCC Information | RDHPCS Documentation      |
-+---------------+------------------------------------------------------------------------------+-----------------------+---------------------------+
-| Gaea          | Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory | |hpcc_gaea_url|       | :ref:`gaea-user-guide`    |
-+---------------+------------------------------------------------------------------------------+-----------------------+---------------------------+
-| Hera          | Predicting high-impact weather events                                        | |hpcc_hera_url|       | :ref:`hera-user-guide`    |
-+---------------+------------------------------------------------------------------------------+-----------------------+---------------------------+
-| Jet           | Hurricane Forecast Improvement Program (HFIP)                                | |hpcc_jet_url|        | :ref:`jet-user-guide`     |
-+---------------+------------------------------------------------------------------------------+-----------------------+---------------------------+
-| Niagara       | Collaborative resource for data transfer                                     | |hpcc_niagara_url|    | :ref:`niagara-user-guide` |
-+---------------+------------------------------------------------------------------------------+-----------------------+---------------------------+
-| Cloud         | Platforms to create and use HPC computatational clusters on an ad-hoc basis  | |hpcc_cloud_url|      | :ref:`cloud-user-guide`   |
-+---------------+------------------------------------------------------------------------------+-----------------------+---------------------------+
-| MSU-HPC Orion | collaboration with Mississippi State University (MSU)                        | |hpcc_orion_url|      | :ref:`MSU-HPC-user-guide` |
-+---------------+------------------------------------------------------------------------------+-----------------------+---------------------------+
+
++---------------+-------------+-------------------+-------------------------+
+| RDHPCS System |  Purpose    | OCIO HPCC Info    | RDHPCS Documentation    |
++---------------+-------------+-------------------+-------------------------+
+| Gaea          | |gaeaP|     | |hpcc_gaea_url|   |:ref:`gaea-user-guide`   |
++---------------+-------------+-------------------+-------------------------+
+| Hera          | |heraP|     | |hpcc_hera_url|   |:ref:`hera-user-guide`   |
++---------------+-------------+-------------------+-------------------------+
+| Jet           | |jetP|      | |hpcc_jet_url|    |:ref:`jet-user-guide`    |
++---------------+-------------+-------------------+-------------------------+
+| Niagara       | |niagaraP|  | |hpcc_niagara_url||:ref:`niagara-user-guide`|
++---------------+-------------+-------------------+-------------------------+
+| Cloud         | |cloudP|    | |hpcc_cloud_url|  |:ref:`cloud-user-guide`  |
++---------------+-------------+-------------------+-------------------------+
+| MSU-HPC Orion | |msuP|      | |hpcc_orion_url|  |:ref:`MSU-HPC-user-guide`|
++---------------+-------------+-------------------+-------------------------+
 
 Bastion Hostnames
 =================
 
-+-------------------+-----------------------------------+---------------------------------------+
-| **RDHPCS System** | **CAC Bastion hostnames**         | **RSA Bastion hostnames**             |
-+-------------------+-----------------------------------+---------------------------------------+
-| Gaea              | gaea.princeton.rdhpcs.noaa.gov    | gaea-rsa.princeton.rdhpcs.noaa.gov    |
-+                   +                                   +                                       +
-|                   | gaea.boulder.rdhpcs.noaa.gov      | gaea-rsa.boulder.rdhpcs.noaa.gov      |
-+-------------------+-----------------------------------+---------------------------------------+
-| Hera              | hera.boulder.rdhpcs.noaa.gov      | hera-rsa.boulder.rdhpcs.noaa.gov      |
-+                   +                                   +                                       +
-|                   | hera.princeton.rdhpcs.noaa.gov    | hera-rsa.boulder.rdhpcs.noaa.gov      |
-+-------------------+-----------------------------------+---------------------------------------+
-| Jet               | jet.boulder.rdhpcs.noaa.gov       | jet-rsa.boulder.rdhpcs.noaa.gov       |
-+                   +                                   +                                       +
-|                   | jet.princeton.rdhpcs.noaa.gov     | jet-rsa.princeton.rdhpcs.noaa.gov     |
-+-------------------+-----------------------------------+---------------------------------------+
-| Niagara           | niagara.boulder.rdhpcs.noaa.gov   | niagara-rsa.boulder.rdhpcs.noaa.gov   |
-+                   +                                   +                                       +
-|                   | niagara.princeton.rdhpcs.noaa.gov | niagara-rsa.princeton.rdhpcs.noaa.gov |
-+-------------------+-----------------------------------+---------------------------------------+
-| Cloud             | Use ParallelWorks                 | Use ParallelWorks                     |
-+-------------------+-----------------------------------+---------------------------------------+
-| MSU-HPC Orion     | See the :ref:`orion-user-guide`   | See the :ref:`orion-user-guide`       |
-+-------------------+-----------------------------------+---------------------------------------+
+
+.. |BHN|	replace:: Bastion hostnames
+.. |PRNG|	replace:: princeton.rdhpcs.noaa.gov
+.. |BRNG|	replace:: boulder.rdhpcs.noaa.gov
+.. |OUG|	replace:: :ref:`orion-user-guide`
+
++-------------------+----------------+--------------------+
+| **RDHPCS System** | **CAC |BHN|**  | **RSA |BHN|**      |
++-------------------+----------------+--------------------+
+| Gaea              | gaea.|PRNG|    | gaea-rsa.|PRNG|    |
++                   +                +                    +
+|                   | gaea.|BRNG|    | gaea-rsa.|BRNG|    |
++-------------------+----------------+--------------------+
+| Hera              | hera.|BRNG|    | hera-rsa.|BRNG|    |
++                   +                +                    +
+|                   | hera.|PRNG|    | hera-rsa.|PRNG|    |
++-------------------+----------------+--------------------+
+| Jet               | jet.|BRNG|     | jet-rsa.|BRNG|     |
++                   +                +                    +
+|                   | jet.|PRNG|     | jet-rsa.|PRNG|     |
++-------------------+----------------+--------------------+
+| Niagara           | niagara.|BRNG| | niagara-rsa.|BRNG| |
++                   +                +                    +
+|                   | niagara.|PRNG| | niagara-rsa.|PRNG| |
++-------------------+----------------+--------------------+
+| Cloud             | Unavailable    | Use ParallelWorks  |
++-------------------+----------------+--------------------+
+| MSU-HPC Orion     | Unavailable    | |OUG|              |
++-------------------+----------------+--------------------+
 
 

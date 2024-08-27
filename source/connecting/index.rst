@@ -40,10 +40,10 @@ Access to most RDHPCS systems require a signed x.509 certificate.  The
 first login attempt will generate a master certificate request.  You
 will experience a short (less than 5 minute delay) while the request
 is signed. Users cannot fully log on to a system until that
-certificate is signed. 
+certificate is signed.
 
 The prompt will ask you to create a passphrase. Create a minimum of
-three words pass phrase as a passphrase.  
+three words pass phrase as a passphrase.
 
 .. note::
 
@@ -61,8 +61,9 @@ Access to on premise RDHPCS compute resources is done using the Secure Shell
 MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
 See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 
-SSH clients are available for Windows-based systems, such as published by VanDyke software.
-For recent SecureCRT versions, the preferred authentication setting shown above
+SSH clients are available for Windows-based systems, such as published
+by VanDyke software.  For recent SecureCRT versions, the preferred
+authentication setting shown above
 
 For Windows systems, `PuTTY
 <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_,
@@ -76,29 +77,34 @@ OpenSSH.
 Bastion Hostnames
 =================
 
-+-------------------+-----------------------------------+---------------------------------------+
-| **RDHPCS System** | **CAC Bastion hostnames**         | **RSA Bastion hostnames**             |
-+-------------------+-----------------------------------+---------------------------------------+
-| Gaea              | gaea.princeton.rdhpcs.noaa.gov    | gaea-rsa.princeton.rdhpcs.noaa.gov    |
-+                   +                                   +                                       +
-|                   | gaea.boulder.rdhpcs.noaa.gov      | gaea-rsa.boulder.rdhpcs.noaa.gov      |
-+-------------------+-----------------------------------+---------------------------------------+
-| Hera              | hera.boulder.rdhpcs.noaa.gov      | hera-rsa.boulder.rdhpcs.noaa.gov      |
-+                   +                                   +                                       +
-|                   | hera.princeton.rdhpcs.noaa.gov    | hera-rsa.boulder.rdhpcs.noaa.gov      |
-+-------------------+-----------------------------------+---------------------------------------+
-| Jet               | jet.boulder.rdhpcs.noaa.gov       | jet-rsa.boulder.rdhpcs.noaa.gov       |
-+                   +                                   +                                       +
-|                   | jet.princeton.rdhpcs.noaa.gov     | jet-rsa.princeton.rdhpcs.noaa.gov     |
-+-------------------+-----------------------------------+---------------------------------------+
-| Niagara           | niagara.boulder.rdhpcs.noaa.gov   | niagara-rsa.boulder.rdhpcs.noaa.gov   |
-+                   +                                   +                                       +
-|                   | niagara.princeton.rdhpcs.noaa.gov | niagara-rsa.princeton.rdhpcs.noaa.gov |
-+-------------------+-----------------------------------+---------------------------------------+
-| Cloud             | Use ParallelWorks                 | Use ParallelWorks                     |
-+-------------------+-----------------------------------+---------------------------------------+
-| MSU-HPC Orion     | See the :ref:`orion-user-guide`   | See the :ref:`orion-user-guide`       |
-+-------------------+-----------------------------------+---------------------------------------+
+.. |BHN|	replace:: Bastion hostnames
+.. |PRNG|	replace:: princeton.rdhpcs.noaa.gov
+.. |BRNG|	replace:: boulder.rdhpcs.noaa.gov
+.. |OUG|	replace:: :ref:`orion-user-guide`
+
++-------------------+----------------+--------------------+
+| **RDHPCS System** | **CAC |BHN|**  | **RSA |BHN|**      |
++-------------------+----------------+--------------------+
+| Gaea              | gaea.|PRNG|    | gaea-rsa.|PRNG|    |
++                   +                +                    +
+|                   | gaea.|BRNG|    | gaea-rsa.|BRNG|    |
++-------------------+----------------+--------------------+
+| Hera              | hera.|BRNG|    | hera-rsa.|BRNG|    |
++                   +                +                    +
+|                   | hera.|PRNG|    | hera-rsa.|PRNG|    |
++-------------------+----------------+--------------------+
+| Jet               | jet.|BRNG|     | jet-rsa.|BRNG|     |
++                   +                +                    +
+|                   | jet.|PRNG|     | jet-rsa.|PRNG|     |
++-------------------+----------------+--------------------+
+| Niagara           | niagara.|BRNG| | niagara-rsa.|BRNG| |
++                   +                +                    +
+|                   | niagara.|PRNG| | niagara-rsa.|PRNG| |
++-------------------+----------------+--------------------+
+| Cloud             | Unavailable    | Use ParallelWorks  |
++-------------------+----------------+--------------------+
+| MSU-HPC Orion     | Unavailable    | |OUG|              |
++-------------------+----------------+--------------------+
 
 
 
@@ -130,8 +136,8 @@ configure Tectia initially for login using SSH with your CAC.
 RSA SSH Login
 =============
 
-RDHPCS users who do not have a CAC, or lack the required hardware or 
-software, are welcome to use an RSA login.  
+RDHPCS users who do not have a CAC, or lack the required hardware or
+software, are welcome to use an RSA login.
 
 .. code-block:: shell
 
@@ -160,12 +166,12 @@ mid 2024:
 
 
      Welcome to the NOAA RDHPCS.
-     
+
      Attempting to renew your proxy certificate...Proxy certificate has 720:00:00  (30.0 days) left.
-     
+
              Welcome to gaea.rdhpcs.noaa.gov
      Gateway to gaea-c5.ncrc.gov and other points beyond
-     
+
      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      !! RDHPCS Policy states that all user login sessions shall be terminated     !!
      !! after a maximum duration of seven (7) days. ALL user login sessions will  !!
@@ -174,7 +180,7 @@ mid 2024:
      !! batch jobs, cron scripts, screen sessions, remote desktop, or data        !!
      !! transfers.                                                                !!
      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     
+
      Hostname            Description
      gaea                C5 head nodes
      gaea51              C5 head node
@@ -194,9 +200,10 @@ mid 2024:
      gaea66              C6 head node
      gaea67              C6 head node
      gaea68              C6 head node
-     
+
      You will now be connected to NOAA RDHPCS: Gaea (CMRS/NCRC) C5 system.
      To select a specific host, hit ^C within 5 seconds.
+
 
 .. note::
 

@@ -8,7 +8,8 @@ to projects in allocations on systems, and are made available to the
 users associated with each project.
 
 
-INSERT GRAPHIC HERE ABOUT THE RELATIONSHIPS BETWEEN SYSTEMS/RESOURCES PROJECTS/GROUPS PORTFOLIOS PIS USERS
+INSERT GRAPHIC HERE ABOUT THE RELATIONSHIPS BETWEEN SYSTEMS/RESOURCES
+PROJECTS/GROUPS PORTFOLIOS PIS USERS
 
 
 Applying for a user account
@@ -51,14 +52,15 @@ First time users must:
    responsible for creating your account, or re-activating your account
    if you have been marked inactive.
 #. Have accurate information in `NOAA Accounts Portal`_
-#. Have enabled Multi Factor Authentication (MFA) for NOAA Single Sign On (SSO).
-#. Apply for an RDHPCS account using the `Account Information Management`_ website 
-   and request access to the "rdhpcs" project.
+#. Have enabled Multi Factor Authentication (MFA) for NOAA Single Sign
+   On (SSO).
+#. Apply for an RDHPCS account using the `Account Information
+   Management`_ website and request access to the "rdhpcs" project.
 #. Request an RSA SecurID token via the `Account Information
    Management`_ website.  Software tokens are faster to issue and are
    preferred if you have a smartphone.
 #. Request a Common Access Card (CAC)
-   
+
 NOAA will conduct a security investigation that takes 6-12 weeks.
 This will include a fingerprint check, background check, and DOC
 public trust investigation.
@@ -206,7 +208,7 @@ RSA Tokens
 +--------+----------------+--------------+
 
 RSA tokens provide multi factor authentication (MFA) for NOAA
-RDHPCS systems. 
+RDHPCS systems.
 
 For best use of resources and availability, the preferred approach is
 to install the SecurID app on a smart phone for token generation.

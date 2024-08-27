@@ -9,7 +9,6 @@ Accounts and Projects
    :maxdepth: 2
 
    accounts_and_projects
-   aim
    rsa_software_token
    role_accounts
 
