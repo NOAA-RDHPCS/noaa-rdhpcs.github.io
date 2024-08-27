@@ -83,7 +83,7 @@ proceed to request access to projects allocated to systems.
    communications about the NOAA RDHPCS program will be sent to your
    NOAA.gov email account.
 
-.. _project_request
+.. _project_request:
 
 Request access to RDHPCS projects
 =================================
