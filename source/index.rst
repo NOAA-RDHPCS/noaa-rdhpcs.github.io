@@ -15,14 +15,6 @@ Welcome to RDHPCS's Documentation
    a migration from the current RDHPCS wikis.  The information here may not be
    full, and in a sub-optimal layout.
 
-Getting Started
-===============
-
-.. toctree::
-   :maxdepth: 2
-
-   getting_started/index
-
 Maintenance Calendar
 ====================
 
@@ -31,6 +23,22 @@ Maintenance Calendar
 
    help/maintenance
 
+Accounts and Projects
+=====================
+
+.. toctree::
+   :maxdepth: 2
+
+   accounts/index
+
+Connecting
+==========
+
+.. toctree::
+   :maxdepth: 2
+
+   connecting/index
+
 Getting Help
 ============
 
@@ -38,23 +46,6 @@ Getting Help
    :maxdepth: 2
 
    help/index
-
-Accounts
-========
-
-.. toctree::
-   :maxdepth: 2
-
-   accounts/index
-
-Logging In
-==========
-
-.. toctree::
-   :maxdepth: 2
-
-   logging_in/index
-   connecting/index
 
 Systems
 =======
@@ -71,14 +62,6 @@ Data Storage and Transfers
    :maxdepth: 2
 
    data/index
-
-Modules
-=======
-
-.. toctree::
-   :maxdepth: 2
-
-   modules/index
 
 Queue Policy
 ============
