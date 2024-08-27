@@ -91,7 +91,7 @@ to use X applications:
     export DISPLAY=localhost:14.0
 
 That will enable your X applications to work.
-A complete discussion of Role Accounts can be found here: :ref:`accounts`.
+A complete discussion of Role Accounts can be found here: :ref:`role_accounts`.
 
 Jobs
 ----
