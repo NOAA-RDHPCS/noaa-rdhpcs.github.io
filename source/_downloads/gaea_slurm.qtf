@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# NOTE: if using with srun then you should select "SLURM (MPMD)" as the MPI
+#       implementation on the System Settings page of the Options window.
+#
+# Name: SLURM
+#
+# submit: sbatch
+# display: squeue
+# job regexp: (\d+)
+# cancel: scancel JOB_ID_TAG
+#
+# WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="01:00:00",mask="09:09:09"}
+# QUEUE_TAG: {type=text,label="Partition",default=batch}
+# CLUSTER_TAG {type=text,label="Cluster",default="C5"}
+# ACCOUNT_TAG {type=text,label="Account",default=none}
+# QOS_TAG {type=text,label="QOS",default="debug"}
+
+#SBATCH --nodes=NUM_NODES_TAG
+#SBATCH --time=WALL_CLOCK_LIMIT_TAG
+#SBATCH --job-name="ddt"
+#SBATCH --output=allinea.stdout
+#SBATCH --error=allinea.stdout
+#SBATCH --cluster=CLUSTER_TAG
+#SBATCH --partition=QUEUE_TAG
+#SBATCH --account=ACCOUNT_TAG
+#SBATCH --qos=QOS_TAG
+
+# Load the required modules here
+# module load cray-hdf5
+# module load cray-netcdf
+
+AUTO_LAUNCH_TAG

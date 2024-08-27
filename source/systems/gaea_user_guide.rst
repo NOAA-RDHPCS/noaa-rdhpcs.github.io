@@ -277,7 +277,7 @@ example,
 
 For more information on connecting through the Boulder or Princeton bastion,
 with a :abbr:`CAC (Common Access Card)`, or for your first connection, see
-:ref:`logging_in`.
+:ref:`connecting-to-rdhpcs`.
 
 By default, the bastion will automatically place a user on a random Gaea C5
 login node.  If you need to access a specific login node ro C6, when prompted
@@ -721,8 +721,9 @@ Slurm
 
 Gaea uses `SchedMD <https://www.schedmd.com/>`_\ 's Slurm Workload Manager for
 scheduling and managing jobs. A few items related to Slurm are below.  See our
-:ref:`rdhpcs_slurm` documentation for more information.  You may also want to
-use the `Slurm documentation <https://slurm.schedmd.com/documentation.html>`_.
+:ref:`slurm-scheduler` documentation for more information.  You may also want
+to use the `Slurm documentation
+<https://slurm.schedmd.com/documentation.html>`_.
 
 Slurm documentation is also available for each command via the :command:`man`
 utility, and on the web at `<https://slurm.schedmd.com/man_index.html>`__.

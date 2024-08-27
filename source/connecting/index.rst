@@ -1,8 +1,8 @@
+.. _connecting-to-rdhpcs:
+
 ##########
 Connecting
 ##########
-
-.. _connecting-to-rdhpcs:
 
 .. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 

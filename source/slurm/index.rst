@@ -1,4 +1,4 @@
-.. _rdhpcs_slurm:
+.. _slurm-scheduler:
 
 #####
 Slurm
