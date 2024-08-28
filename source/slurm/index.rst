@@ -8,4 +8,3 @@ Slurm
    :maxdepth: 2
 
    overview
-   gaea_job_overview
