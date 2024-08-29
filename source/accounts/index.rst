@@ -1,14 +1,15 @@
-.. _Accounts:
+.. _Accounts and Projects:
 
-########
-Accounts
-########
+#####################
+Accounts and Projects
+#####################
+
 
 .. toctree::
    :maxdepth: 2
 
-   getting
+   accounts_and_projects
    rsa_software_token
-   about_accounts
+   role_accounts
 
 

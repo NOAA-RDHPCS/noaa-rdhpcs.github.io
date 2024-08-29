@@ -22,47 +22,77 @@ system downtimes. `View the Calendar
    <p>You must be logged in to your NOAA Gmail account to see the calendar.</p>
    </div>
 
-RDHPCS Platforms
-================
-
-.. tab-set::
-
-   .. tab-item:: Gaea
-
-      Climate Modeling and Research System (CMRS) at Oak Ridge
-      National Laboratory `More Information
-      <https://www.noaa.gov/organization/information-technology/gaea>`__
-
-   .. tab-item:: Hera
-
-      Predicting high-impact weather events `More Information
-      <https://www.noaa.gov/organization/information-technology/hera>`__
-
-   .. tab-item:: Jet
-
-      Hurricane Forecast Improvement Program (HFIP) `More Information
-      <https://www.noaa.gov/organization/information-technology/jet>`__
-
-   .. tab-item:: Niagara
-
-      Collaborative resource for data transfer `More Information
-      <https://www.noaa.gov/organization/information-technology/niagara>`__
-
-   .. tab-item:: MSU-HPC
-
-      High-performance Computing collaboration with Mississippi State
-      University (MSU) `More Information
-      <https://www.noaa.gov/organization/information-technology/orion>`__
 
 
-   .. tab-item:: Cloud
+Locations and Systems of the RDHPCS
+===================================
 
-      Platform to create and use HPC computatational clusters on an
-      as-needed basis. `More Information
-      <https://www.noaa.gov/information-technology/hpcc>`__
+The `NOAA Information Technology Locations and Systems page
+<https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems>`_
+gives sone high technical and geographical information about NOAA's High
+Performance Computing program.
+
+.. |hpcc_gaea_url|	replace:: https://www.noaa.gov/organization/information-technology/gaea
+.. |hpcc_hera_url|	replace:: https://www.noaa.gov/organization/information-technology/hera
+.. |hpcc_jet_url|	replace:: https://www.noaa.gov/organization/information-technology/jet
+.. |hpcc_niagara_url|	replace:: https://www.noaa.gov/organization/information-technology/niagara
+.. |hpcc_cloud_url|	replace:: https://www.noaa.gov/information-technology/hpcc
+.. |hpcc_orion_url|	replace:: https://www.noaa.gov/organization/information-technology/orion
+.. |gaeaP|		replace:: Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
+.. |heraP|		replace:: Predicting high-impact weather events
+.. |jetP|		replace:: Hurricane Forecast Improvement Program (HFIP)
+.. |niagaraP|		replace:: Collaborative resource for data transfer
+.. |cloudP|		replace:: Platforms to create and use HPC computatational clusters on an ad-hoc basis
+.. |msuP|		replace:: Collaboration with Mississippi State University (MSU)
 
 
-.. note::
++---------------+-------------+-------------------+-------------------------+
+| RDHPCS System |  Purpose    | OCIO HPCC Info    | RDHPCS Documentation    |
++---------------+-------------+-------------------+-------------------------+
+| Gaea          | |gaeaP|     | |hpcc_gaea_url|   |:ref:`gaea-user-guide`   |
++---------------+-------------+-------------------+-------------------------+
+| Hera          | |heraP|     | |hpcc_hera_url|   |:ref:`hera-user-guide`   |
++---------------+-------------+-------------------+-------------------------+
+| Jet           | |jetP|      | |hpcc_jet_url|    |:ref:`jet-user-guide`    |
++---------------+-------------+-------------------+-------------------------+
+| Niagara       | |niagaraP|  | |hpcc_niagara_url||:ref:`niagara-user-guide`|
++---------------+-------------+-------------------+-------------------------+
+| Cloud         | |cloudP|    | |hpcc_cloud_url|  |:ref:`cloud-user-guide`  |
++---------------+-------------+-------------------+-------------------------+
+| MSU-HPC Orion | |msuP|      | |hpcc_orion_url|  |:ref:`MSU-HPC-user-guide`|
++---------------+-------------+-------------------+-------------------------+
 
-   You must be logged in to your NOAA Google account to view the
-   documents.
+Bastion Hostnames
+=================
+
+
+.. |BHN|	replace:: Bastion hostnames
+.. |PRNG|	replace:: princeton.rdhpcs.noaa.gov
+.. |BRNG|	replace:: boulder.rdhpcs.noaa.gov
+.. |OUG|	replace:: :ref:`orion-user-guide`
+
++-------------------+----------------+--------------------+
+| **RDHPCS System** | **CAC |BHN|**  | **RSA |BHN|**      |
++-------------------+----------------+--------------------+
+| Gaea              | gaea.|PRNG|    | gaea-rsa.|PRNG|    |
++                   +                +                    +
+|                   | gaea.|BRNG|    | gaea-rsa.|BRNG|    |
++-------------------+----------------+--------------------+
+| Hera              | hera.|BRNG|    | hera-rsa.|BRNG|    |
++                   +                +                    +
+|                   | hera.|PRNG|    | hera-rsa.|PRNG|    |
++-------------------+----------------+--------------------+
+| Jet               | jet.|BRNG|     | jet-rsa.|BRNG|     |
++                   +                +                    +
+|                   | jet.|PRNG|     | jet-rsa.|PRNG|     |
++-------------------+----------------+--------------------+
+| Niagara           | niagara.|BRNG| | niagara-rsa.|BRNG| |
++                   +                +                    +
+|                   | niagara.|PRNG| | niagara-rsa.|PRNG| |
++-------------------+----------------+--------------------+
+| Cloud             | Unavailable    | Use ParallelWorks  |
++-------------------+----------------+--------------------+
+| MSU-HPC Orion     | Unavailable    | |OUG|              |
++-------------------+----------------+--------------------+
+
+
