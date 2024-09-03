@@ -62,7 +62,7 @@ GFDL manages tickets for Gaea and PPAN.
     processed until the request is received from @noaa.gov.
 
 .. note::
-    **Personal Information (PII)**
+    **Personally Identifiable Information (PII)**
 
     PII is defined as information in a system or online collection that
     directly or indirectly identifies an individual. Per DOC Policy, you should
