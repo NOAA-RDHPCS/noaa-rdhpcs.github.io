@@ -30,7 +30,7 @@ RDHPCS Platforms
    .. tab-item:: Gaea
 
       Climate Modeling and Research System (CMRS) at Oak Ridge
-      National Laboratory `More Information
+      National Laboratory. `More Information
       <https://www.noaa.gov/organization/information-technology/gaea>`__
 
    .. tab-item:: Hera
@@ -62,10 +62,6 @@ RDHPCS Platforms
       <https://www.noaa.gov/information-technology/hpcc>`__
 
 
-.. note::
-
-   mpirun" is preferable for non-uniform placement or MPMD jobs.
-
 Batch Scripts
 -------------
 
@@ -89,7 +85,7 @@ To submit the jobscript.sh script, you would execute:
 
 .. code-block:: shell
 
-   $ sbatch &lt;options&gt; jobscript.sh
+   $ sbatch <options> jobscript.sh
 
 Loading Modules
 ^^^^^^^^^^^^^^^
@@ -98,28 +94,6 @@ If you loaded modules when building your code, they must be loaded when the
 job runs as well. This means that you must put the same module commands in your
 batch scripts that you ran before building your code.
 
-Modules with sh, bash, and ksh scripts
-""""""""""""""""""""""""""""""""""""""
-
-To conform to the POSIX standard for bash, sh, and ksh you **MUST** add the
-``-l`` option (that is a lowercase L) to the shebang (e.g. ``#!/bin/bash``)
-line at the top of your script for all sh, bash, or ksh batch scripts.
-
-For example:
-
-.. code-block:: shell
-
-   #!/bin/ksh -l
-
-   module load intel <version>
-   module load impi <version>
-
-   srun -n 12 ./xhpl
-
-If you omit the -l, the module commands will fail and your job will not run
-properly, and even may crash.
-
-More information for using modules can be found in :ref:`Modules <Modules>`.
 
 Module Loading Best Practices
 """"""""""""""""""""""""""""""
@@ -169,19 +143,23 @@ Job Submission Options
 sbatch options
 ^^^^^^^^^^^^^^
 
-You are allowed to specify options from teh set used for the
-SLURM batch system. For a list of options, you may look at the man page:
+You are allowed to specify options from the set used for the
+Slurm batch system. For a list of options, you may look at the man page:
 
-``$ man sbatch``
+.. code-block:: shell
+
+   $ man sbatch
 
 or the command usage statement:
 
-``$ sbatch --help``
+.. code-block:: shell
 
-Additional sbatch information can be found at the `vendor's website <https://slurm.schedmd.com/sbatch.html>`_.
+   $ sbatch --help
 
-Command-line options vs directive options
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Additional sbatch information can be found in the `sbatch documentation <https://slurm.schedmd.com/sbatch.html>`_.
+
+sbatch Directives
+^^^^^^^^^^^^^^^^^
 
 There are two way to specify sbatch options. The first is on the command line
 when issuing the sbatch command. For example,
@@ -261,10 +239,10 @@ run. **You are required to specify an account when a job is launched.**
 To find out which projects you are authorized to use, see
 :ref:`slurm-getting-information-about-your-projects`.
 
-Specifying a Partition
-^^^^^^^^^^^^^^^^^^^^^^
+Fair Job Billing
+^^^^^^^^^^^^^^^^
 
-**Fair Job Billing** SLURM adjusts the Effective Usage (EffectvUsage) and
+Slurm adjusts the Effective Usage (EffectvUsage) and
 FairShare Factor of a completed job based the
 Billing Trackable RESources (TRes).
 For each partition we have set a Billable TRes for per core performance based
@@ -292,170 +270,6 @@ Accounts/QOS you have access to (and their limits):
       $ sacctmgr show associations where user=$USER format=Cluster,Account%20,User%20,QOS%60,partition,maxjobs,maxsubmitjobs
 
 
-Jet Partitions
---------------
-
-To see current overall Jet compute status/usage by partition, and Jet scratch
-file system status/usage, see the :ref:`jet-user-guide`.
-
-
-Visit the Jet System Information page for more information on each partition:
-
-The following Jet partitions and Jet Billable TRes Factors are defined:
-
-.. list-table::
-   :header-rows: 1
-   :stub-columns: 1
-   :align: left
-
-   * - Partition
-     - QOS Allowed
-     - Billable TRes per Core Performance Factor
-     - Description
-   * - sjet
-     - batch,windfall, debug, urgent, novel
-     - 145
-     - General compute resource - Intel Sandybridge
-   * - vjet
-     - batch,windfall, debug, urgent, novel
-     - 165
-     - General compute resource - Intel IvyBridge
-   * - xjet
-     - batch,windfall, debug, urgent, novel
-     - 150
-     - General compute resource - Intel Haswell
-   * - kjet
-     - batch,windfall, debug, urgent, novel
-     - 165
-     - General compute resource - Intel Skylake
-   * - bigmem
-     - batch,windfall, debug, urgent
-     - 150
-     - Large memory jobs; 4 nodes, each with 24 cores and 256 GB of memory - Intel Haswell
-   * - novel
-     - novel
-     - 165
-     - Partition for running novel or experimental jobs where nearly the full
-       system is required. If you need to use the novel QOS, please sumbit a
-       ticket to the help system and tell us what you want to do. We will
-       normally have to arrange for some time for the job to go through, and we
-       would like to plan the process with you. Please note that if you use
-       **novel partition** you also need to specify **novel QoS.**
-   * - service
-     - batch,windfall, debug, urgent
-     - 0
-     - Serial jobs (max 1 core), with a 24 hr limit. Jobs will be run on front
-       end (login) nodes that have external network connectivity. Useful for
-       data transfers or access to external resources like databases. If you
-       have a workflow that requires pushing or pulling data to/from the
-       HSMS(HPSS), this is where they should be run. See the Login (Front End)
-       Node Usage Policy for important information about using Login nodes.
-
-To see a list of the available partitions use the command:
-
-.. code-block:: shell
-
-   $ sinfo -O partition
-   sjet
-   vjet
-   xjet
-   kJet
-
-   bigmem
-   service
-
-Selecting General compute resources on Jet: Unless you have a real-time
-reservation (see below), and to assure the all partitions are used most
-efficiently, we recommend that you specify the use of the default, **all**
-general compute resource partitions. This option gives the batch scheduler the
-flexibility to put your job on the first available resource. To do this, you
-must choose compilation options that create executables that can be used on any
-partition, which is covered in the Recommended Intel Compiler Options for
-Optimization section in the :ref:`jet-user-guide`.
-
-On Jet the processor architecture, cores per node and memory per core varies
-for each partition so your execution time may vary slightly; therefore it is
-important to understand the architectural differences, so you understand how
-your code will run and perform on various partitions.
-
-To specify all Jet General Compute Resource Partitions (the default), so your
-job will run on the first available partition, **do not specify a
-partition.**
-
-Hera Partitions
----------------
-
-For more information on each partition, see the :ref:`hera-user-guide`.
-
-To specify a partition, use the command `partition -p`. For example:
-
-.. code-block:: shell
-
-   sbatch -p batch ...
-
-The following partitions are defined:
-
-.. list-table::
-   :header-rows: 1
-   :stub-columns: 1
-   :align: left
-
-   * - Partition
-     - QOS Allowed
-     - Billable TRes per Core Performance Factor
-     - Description
-   * - fge
-     - gpu, gpuwf
-     - 158
-     - For jobs that require nodes with GPUs. See the Specifying QOS
-       table below for more details. There are 100 Haswell nodes, each
-       containing 8 P100 GPUs. Each P100 has 16GB of memory.
-   * - hera
-     - batch,windfall, debug, urgent
-     - 165
-     - General compute resource. **Default** if no partition is specified
-   * - bigmem
-     - batch,windfall, debug, urgent
-     - 165
-     - For large memory jobs; 268 nodes, each with 40 cores and 384 GB of memory
-   * - novel
-     - novel
-     - 165
-     - Partition to run novel or experimental jobs where nearly the full
-       system is required.
-       If you need to run a novel job, please submit a help ticket and tell us what
-       you want to do. We will normally have to arrange for some time for the job to
-       go through, and we would like to plan the process with you.
-       Also, please note that if you use **novel partition** you also need to
-       specify **novel QoS**.
-   * - service
-     - batch,windfall, debug, urgent
-     - 0
-     - Serial jobs (max 1 core), with a 24 hr limit. Jobs will be run on front
-       end nodes that have external network connectivity. Useful for data
-       transfers or access to external resources like databases. If your
-       workflow requires pushing or pulling data to/from the HSMS(HPSS), it
-       should be run there. See the Login (Front End) Node Usage Policy for
-       important information about using Login nodes.
-
-To see a list of available partitions use the command
-
-.. code-block:: shell
-
-   $ sinfo -O partition
-   fge
-   hera*
-   service
-   bigmem
-   novel
-
-An asterisk (*) indicates that default partition, where your job will be
-submitted to if you do not specify a partition name at job submission.
-
-**General compute jobs:** To assure the systems are used most efficiently,
-specify the use of all general compute resource partitions. This allows the
-batch scheduler to put your jobs on the first available resource.
-
 Requesting a Single Partition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -475,7 +289,7 @@ When a system has multiple general compute resource partitions (ex: Jet), we
 recommend that you request all general compute resource partitions on that
 system, unless you have well understood reason not to do so. This approach can
 significantly reduce wait time for your jobs to start (qwait) and will improve
-overall system utilization. With SLURM there is no new job priority penalty for
+overall system utilization. With Slurm there is no new job priority penalty for
 using slower cores (see Billable TRes above). Jobs will always run within a
 single partition, never spanning multiple partitions.
 
@@ -500,13 +314,13 @@ This is the correct way to set the number of procs (cores) needed to run a job.
 If you need to change the processor layout, refer to the next section for
 instructions. For the maximum core count allowed per QOS, see the table below.
 
-Specifying a processor layout for your job (uniform layout example)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Specifying a processor layout for your job
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The simple method of laying out tasks where all the cores on a node are used
-with one MPI task per core works reasonably well for most applications.  These
-are however cases where the default amount of memory available per core is
-insufficient and need more memory than is available.
+with one MPI task per core works reasonably well for most applications.
+However, there are cases where the default amount of memory available per core
+is insufficient and need more memory than is available.
 
 In those instances, it will be necessary to spread out tasks on more nodes so
 that there are fewer MPI tasks on a node than there are cores.  The other cores
@@ -561,171 +375,8 @@ node.
 with -n (--ntasks) or -N (--nodes) or both.** Failing to specify the number of
 tasks will result in a job submission error.
 
-Example for WRF
-"""""""""""""""
-
-WRF is a good example where non-uniform placement is required, as the first
-task usually requires a lot more memory than the remaining tasks.
-
-In this example, we will look at a case where WRF needs 12 MPI tasks. Assume
-that the first task needs a lot of memory, and that we would like to place the
-first task on a node by itself.
-
-If we have a machine that has 40 cores per node and we cannot fit all the 12
-MPI tasks on one node, we would like to run the job on 2 nodes and 12 MPI
-tasks, placing **(1+11)** MPI tasks on those two nodes.
-
-For this example the job file would look like this:
-
-.. code-block:: shell
-
-    #SBATCH --nodes=2
-    #SBATCH --ntasks=12
-
-    module use -a /contrib/sutils/modulefiles
-    srun -m arbitrary -w `arbitrary.pl 1,11` ./wrf.exe
 
 
-Setting the --cpus-per-task parameter
-"""""""""""""""""""""""""""""""""""""
-
-.. note::
-
-   We are still investigating this issue and will update it as we learn more.
-
-
-With the update of Slurm from 20.11.7 to 21.08.5 , the behavior of
-enforcing memory limit for the job-step by Slurm has changed from the previous
-version resulting in some users seeing **"Out of Memory"** or **OOM**
-errors. Please note that this is not a bug but a fix for an issue that was
-more lax in its previous implementation.  Jobs that took advantage of the lax
-implementation in the previous version may see the "out-of-memory" errors with
-this new implementation. <p> Please keep in mind that when you specify
-**"--cpus-per-task"** option on the sbatch command, **each job-step only
-gets its proportional share of memory!**  If you leave that option out on the
-sbatch command, or if you specify **"--mem=0"** then each of the job-steps,
-launched by srun within a job, will be able to use all the available memory
-allocated for that job.  Please note that how much memory is allcated to the
-job depends on whether the job is a "shared" job or an "exclusive" job.  On
-Hera and Jet, currently all the non-serial jobs get exclusive access to the
-node whereas on the MSU systems the default is "non-exclusive".  It is worth
-noting that as core counts increase on the newer processors "exclusive" will be
-the preferred option, so non-MSU systems also may move towards "non-exclusive"
-or "shared" mode in the future.
-
-
-There may be situations your job where you do need this option on sbatch for
-your parallel job-step but there are serial job-steps in the same job that need
-more memory than what is available based on the above, in which case it can
-over ridden on the `srun` command.
-
-Here is a concrete example:
-
-.. code-block:: shell
-
-   #!/bin/bash -l
-   #SBATCH ...
-   #SBATCH --cpus-per-task=2           # Each job-step by default only gets 2 CPUs worth of memory
-   #SBATCH
-
-   srun $wrf_exe                    # 2 CPUs worth of memory is sufficient for this task
-
-   #  The next task requires 4 times each CPU's share of memory, so we can override it thus
-   # even the post processor is a serial task
-
-   srun --cpus-per-task=4 $post        # Without that it will only 2 CPUs worth of memory
-
-
-As mentioned above, an alternative solution is specify **"--mem=0"** as one of
-the SBATCH directives in the job or as a command line option instead of
-modifying the srun line.
-
-Specifying a processor layout for your job (non-uniform or arbitrary example)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Some applications require tasks to be laid out non-uniformly. For example a
-number of applications have task0 requiring more memory than the remaining
-tasks. This requires the capability of doing non-uniform task layout.
-
-The script named ``arbitrary.pl`` is available when module
-``sutils``from ``contrib`` is loaded as follows:
-
-.. code-block:: shell
-
-   module use -a /contrib/sutils/modulefiles
-   module load sutils
-
-
-This script can be used to generate a host list that can be used for arbitrary
-layout in a couple of different ways.
-
-.. note::
-
-   The script ``arbitrary.pl`` can only be used within a batch job file!
-
-It is best illustrated with a simple example. Suppose we want to run on 3
-nodes, with 4 tasks on the first node, 2 on the second and 6 on the third node.
-So the task layout would be ( 4 + 2 + 6 ) for a total of 12 MPI tasks on 3
-nodes:
-
-.. code-block:: shell
-
-   sbatch --nodes=3 --ntasks=12 ...
-
-And inside the batch job you have:
-
-.. code-block:: shell
-
-   module use -a /contrib/sutils/modulefiles
-   module load sutils
-   srun -m arbitrary -w `arbitrary.pl 4,2,6` ./a.out
-
-This results in the desired task placement.
-
- When running on a larger number of nodes it is difficult provide a long list
- of tasks, so the following form is also supported.
-
-Suppose the desired lay out is 1 task on first node and 10 tasks on 4 nodes,
-for a total of 41 MPI tasks on 5 nodes; so the desired layout is (1 + 10 + 10 +
-10 + 10).
-
-In this case, instead of using the long form:
-
-.. code-block:: shell
-
-   arbitrary.pl 1,10,10,10,10
-
-
-we can use the multiplier as a short cut as shown below:
-
-.. code-block:: shell
-
-   arbitrary.pl 1,10x4
-
-
-An alternative approach to above is to use SLURM_HOSTFILE as shown below (bash
-example):
-
- .. code-block:: shell
-
-  module use -a /contrib/sutils/modulefiles
-  module load sutils
-  arbitrary.pl 1,12x10,3x2 &gt; arb2-$SLURM_JOB_ID
-  export SLURM_HOSTFILE=arb2-$SLURM_JOB_ID
-
-  srun -n 127 a.out
-
-
-Please note that the scripts ``arbitrary.pl`` and ``layout.pl``
-are simple perl scripts that are located at:
-
-.. code-block:: shell
-
-   /contrib/sutils/bin/arbitrary.pl
-   /contrib/sutils/bin/layout.pl
-
-
-Please feel free to copy these scripts and modify them to suit your needs.
 
 MPMD example
 """"""""""""
@@ -792,7 +443,8 @@ For example, to set a one-hour time limit:
 
    #SBATCH --time=1:00:00
 
-For the maximum wall clock allowed see the Queue(QOS) tables below.
+For the maximum wall clock allowed see the Queue (QOS) tables below.
+
 
 Specifying a Quality of Service (QOS) - Jet and Hera
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -949,9 +601,9 @@ use this feature in many different ways, one practical situation where this may
 be useful is to maintain your fairshare priority by starting jobs in the
 “windfall” QOS, then changing to the “batch” QOS if it is still pending.
 
-.. note::
+.. warning::
 
-   BE CAREFUL:If your job does not meet the criteria of the QOS that you change
+   If your job does not meet the criteria of the QOS that you change
    it to, it will remain pending indefinitely.
 
 You can immediately change the QOS of your pending job(s). The following is an
@@ -965,33 +617,41 @@ QOS.
 When submitting a job to a certain QOS, you can tell Slurm to change it to a
 different QOS at a certain time if it is still pending.  In the following
 example, you submit the job to the “windfall” QOS, then tell Slurm to change
-the job to the  “batch” QOS if it’s still pending after 5 minutes. <span
-style="font-size: 16px">** NOTE:** Do not use a time less than 2 min (120
-seconds). <span style="font-size: 16px">** NOTE:** On Orion and Hercules the
-“at” functionality is only available on login1.
+the job to the  “batch” QOS if it’s still pending after 5 minutes.
+
+.. note::
+
+   Do not use a time less than 2 min (120 seconds).
+
+.. note::
+
+   On Orion and Hercules the “at” functionality is only available on login1.
 
 
-.. code-block::shell
+.. code-block:: shell
 
 
-   jfe01.% sbatch -q windfall jobfile
+   $sbatch -q windfall jobfile
    Submitted batch job 26990
-   jfe01.%
+   $
 
 
-   jfe01.% echo scontrol update job 26990 qos=batch | at -M now +5min
+   $ echo scontrol update job 26990 qos=batch | at -M now +5min
    warning: commands will be executed using /bin/sh
    job 6 at Sun Dec 17 16:07:00 2023
-   jfe01.%
+   $
 
 
 You can change the QOS of all your pending job(s) in a QOS to another QOS after
 it has been pending for a certain time.  The following example script will
 change all your pending “windfall” jobs to “batch” if they have been pending
-for at least 600 seconds (10 min), whenever you run it. <span style="font-size:
-16px">** NOTE:** Do not use a time less than 120 seconds (2 min).
+for at least 600 seconds (10 min), whenever you run it.
 
-.. code-block::shell
+.. note::
+
+   Do not use a time less than 2 min (120 seconds).
+
+.. code-block:: shell
 
    Script: windfall2batch.sh
    —-------------
@@ -1008,20 +668,15 @@ for at least 600 seconds (10 min), whenever you run it. <span style="font-size:
       awk -v time=$time '$2 > time && ($3 == "Priority" || $3 == "Resources")      \
             {system("scontrol update job " $1 " qos=batch")}'
 
-
-You can run the script manually when necessary. If you want to do so routinely,
-you may put this in cron at the desired intervals.
-
 Specifying a job Name
 ^^^^^^^^^^^^^^^^^^^^^
 
 Giving your jobs meaningful names can help you locate them when monitoring
-their progress. Use the -J (--job-name) option. For example,
+their progress. Use the -J (--job-name) option. For example:
 
 .. code-block:: shell
 
-   #SBATCH -J
-   WRF_ARW_00Z
+   #SBATCH -J WRF_ARW_00Z
 
 The default name for a job is the name of the job script
 that is being submitted.
@@ -1032,37 +687,37 @@ Setting the names of output files
 If you do not specify the names of the output files that contain the stdout and
 stderr from your job script, a file will be written to the directory in which
 you issued the sbatch command. A file containing both the stdout and stderr
-from your job script will be called: slurm-&lt;jobid&gt;.out where
-&lt;jobid&gt; is the SLURM job id of the job.
+from your job script will be called: ``slurm-<jobid.out>``, where
+``jobid>`` is the Slurm job id of the job.
 
-Use the -o (--output) option to specify the name of the stdout file <pre>
-#SBATCH -o /full/path/of/stdout/file </pre> Use the -e (--error) option to
-specify the name of the stderr file <pre> #SBATCH -e /full/path/of/stderr/file
-</pre> If you want stdout and stderr to go to the same file, do not specify the
+Use the -o (--output) option to specify the name of the stdout file
+``#SBATCH -o /full/path/of/stdout/file``. Use the -e (--error) option to
+specify the name of the stderr file ``#SBATCH -e /full/path/of/stderr/file``.
+If you want stdout and stderr to go to the same file, do not specify the
 -e option.
 
 Passing environment variables to the job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default the environment variables set in the current shell is passed to the
+By default, the environment variables set in the current shell is passed to any
 job that is submitted. However if any variable is explicitly passed into the
 script with a value, only that value is passed to the script!
 
-If you wish to pass local environment to the script and in addition set a
-specific variable that is currently not in the current environment
-(&quot;ndays=20&quot; in the example below), you can do it in the following
-way:
+Use the command sequence below to pass local environment variables to the
+script, and in addition set a specific variable not present in the current
+environment (``ndays=20`` in the example below).
 
 .. code-block:: shell
 
    sbatch --export=ALL,ndays=20 … sbatch.job
 
-It is important to note that ``ALL`` is required if you want the
-local environment variables are to be exported to the script in addition to the
-value explicitly set. If ``ALL`` is left out, only the value of
-ndays=20 is passed in.
+.. note::
 
-If you do not want to export your local environment, please use the following
+ ``ALL`` is required if you want the local environment variables exported to
+ the script, in addition to the value explicitly set. If you omit ``ALL``, only
+ the value of ndays=20 is passed in.
+
+If you do not want to export your local environment, use the following
 syntax:
 
 .. code-block:: shell
@@ -1095,7 +750,7 @@ A full list of parameters can be found on the sbatch man page.
 Example. To send email notification to Joe and Jane when your job starts and
 when it terminates, do:
 
-.. code-block::shell
+.. code-block:: shell
 
    $ sbatch --mail-user=[mailto:Joe.User@noaa.gov Joe.User@noaa.gov],[mailto:Jane.User@noaa.gov Jane.User@noaa.gov]--mail-type=&lt;the other options go here&gt; myscript.sh
 
@@ -1155,7 +810,7 @@ would be December 21, 2110 at 06:30 GMT.
 The ``--begin`` option also accepts an arbitrary amount of time to wait. For
 example:
 
-.. code-block::shell
+.. code-block:: shell
 
    #SBATCH --begin=now+1hour
 
@@ -1239,7 +894,7 @@ indicate in the config file which rank does which task, as shown below:
 
 .. code-block:: shell
 
-   tfe07.% cat serial-tasks.config
+   $cat serial-tasks.config
    #
    # The format of this file is:
    # Rank  Command [command args]
@@ -1248,21 +903,21 @@ indicate in the config file which rank does which task, as shown below:
    1 echo  is processing 01
    2 echo  is processing 02
    3 echo  is processing 03
-   tfe07.%
+   $
 
 Submit the job using the following (or create an equivalent batch job file):
 
 .. code-block:: shell
 
-   <pre>tfe07.% sbatch -A nesccmgmt -n 4 --wrap &quot;srun -l --multi-prog serial-tasks.config&quot;
+   $ sbatch -A nesccmgmt -n 4 --wrap &quot;srun -l --multi-prog serial-tasks.config
    Submitted batch job 520894
-   tfe07.%
+   $
 
 Once the job has completed:
 
 .. code-block:: shell
 
-   tfe07.% cat slurm-520894.out
+   $ cat slurm-520894.out
    Start prolog.task v19.04.17 on node t0378 for job 520894 :: Fri May 17 17:07:08 UTC 2019
    _______________________________________________________________
    End prolog.task v19.04.17 Fri May 17 17:07:08 UTC 2019
@@ -1275,14 +930,14 @@ Once the job has completed:
    Job 520894 (not serial) finished for user Raghu.Reddy in partition theia with exit code 0:0
    _______________________________________________________________
    End Epilogue v19.04.17 Fri May 17 17:07:10 UTC 2019
-   tfe07.%
+   $
 
 
 Submitting an Interactive Job
 -----------------------------
 
 An interactive job is useful for tasks, such as debugging, that require
-interactive access with a program as it runs. With SLURM there are two ways to
+interactive access with a program as it runs. With Slurm there are two ways to
 run jobs interactively, srun or salloc. We recommend that you use salloc.
 
 For example, to request two nodes for 30 min (with X11 forwarding so that you
@@ -1363,7 +1018,7 @@ $2 etc. similar to the Unix convention of argument passing.
 Submitting jobs with job dependencies
 -------------------------------------
 
-SLURM supports the ability to submit a job with dependencies with other jobs. A
+Slurm supports the ability to submit a job with dependencies with other jobs. A
 simple example is where job Y cannot execute until job X completes. The use of
 the -d options (``--dependency=<options>`` is the way to
 specify the job dependency.
@@ -1422,43 +1077,6 @@ get an email with the following subject:
    Slurm Job_id=423748 Name=gfs-post Ended, Run time 00:00:00, CANCELLED, ExitCode 0
 
 
-
-How to Get Memory Usage Information
------------------------------------
-
-You can use the ``report-mem`` command
-in your job to get memory usage information from your batch job as mentioned in
-the section below.  But this works only if you are able to successfully run
-your job to conclusion without failing.
-
-But if you don't know how much memory your application needs, you can "over
-estimate" or use an entire node to get a successful run and include the
-"report-mem" command in the job as mentioned in the next section. To request
-all the available memory on the node for a serial job you can use the
-**--mem=0** option on the sbatch command.
-
-If your jobs are failing with memory errors, it is possible that your
-application needs more memory than what you were giving for the job. In the
-case of serial jobs (which means you may have other jobs running on the same
-code and that your job is running), by default to get a certain amount of
-memory.  If your application happens to need to more memory than the default,
-you need to specify the memory needed by your job using the "--mem=" option.
-
-In general, for parallel jobs you do not need to specify a memory limit.
-
-You can specify the memory limit on the command line with using **--mem**
-option (for example "--mem=2g" to specify 2 GB of memory) or as an #SBATCH
-directive within the job file.
-
-Note that for parallel jobs it is not necessary to specify the memory
-requirement, but if each of your tasks requires more than its share of memory
-on the node, the only way to get more memory is to spread the same number of
-tasks on more nodes.  Getting the Memory High Water mark information will help
-you determine how many nodes you would have to use to satisfy the memory
-requirements of your job.
-
-There are a couple of different ways of getting the memory usage information
-about your job.
 
 Using report-mem utility in your batch jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1674,7 +1292,7 @@ usernames are truncated in the squeue output, making it hard to grep.
 
 .. code-block:: shell
 
-   $ squeue -u &lt;user name&gt;
+   $ squeue -u <user name>
 
 
 List jobs that have completed within the last 24 hours
@@ -1686,7 +1304,7 @@ states can be found on the sacct man page.
 
 .. code-block:: shell
 
-   tfe03.% sacct --user $USER --starttime `date --date=&quot;yesterday&quot; +%F` -X --format=JobID,JobName%30,Partition,Account,AllocCPUS,State,Elapsed,QOS
+   $ sacct --user $USER --starttime `date --date=yesterday` +%F` -X --format=JobID,JobName%30,Partition,Account,AllocCPUS,State,Elapsed,QOS
          JobID                        JobName  Partition    Account  AllocCPUS      State    Elapsed        QOS
    ------------ ------------------------------ ---------- ---------- ---------- ---------- ---------- ----------
    492264                      hello-slurm.job      theia  nesccmgmt         48     FAILED   00:00:05   windfall
@@ -1751,7 +1369,7 @@ theia and 3 hours on jet.
 Query a job's estimated start time
 ----------------------------------
 
-Use the &quot;squeue --start&quot; command to get a point-in-time estimate of
+Use the ``squeue --start`` command to get a point-in-time estimate of
 when your job may start. Reservation based start time estimation incorporates
 information regarding current administrative, user, and job reservations to
 determine the earliest time the specified job could allocate the needed
@@ -1837,8 +1455,9 @@ examples based on the current hardware:
 
 **Charging for parallel jobs** (any job requesting two or more cores):
 
-**Core-hours = (actual wall clock time used by the job) * (number of nodes
-requested) * CPN**
+.. math::
+
+   Core\_Hours = WallClock\_used * Nodes * Cores\_per\_Node
 
 .. note::
 
