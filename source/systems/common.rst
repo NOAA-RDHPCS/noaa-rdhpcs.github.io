@@ -269,6 +269,23 @@ Accounts/QOS you have access to (and their limits):
 
       $ sacctmgr show associations where user=$USER format=Cluster,Account%20,User%20,QOS%60,partition,maxjobs,maxsubmitjobs
 
+.. _Quality-of-Service:
+
+Quality of Service
+""""""""""""""""""
+To specify a quality-of-service (QOS), use ``--qos (-q)``.
+For example, to specify the batch QOS:
+
+.. code-block:: shell
+
+   #SBATCH -q batch
+
+Several different QOS's are available. See :ref:`QOS-Table` for details.
+
+.. note::
+
+   If you have an allocation of "windfall only" (Allocation = 1) you can only
+   submit to the windfall or gpuwf QOS.
 
 Requesting a Single Partition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -376,8 +393,6 @@ with -n (--ntasks) or -N (--nodes) or both.** Failing to specify the number of
 tasks will result in a job submission error.
 
 
-
-
 MPMD example
 """"""""""""
 
@@ -443,25 +458,13 @@ For example, to set a one-hour time limit:
 
    #SBATCH --time=1:00:00
 
-For the maximum wall clock allowed see the Queue (QOS) tables below.
 
+For the maximum wall clock allowed see the Queue (QOS) tables.
 
-Specifying a Quality of Service (QOS) - Jet and Hera
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _QOS-Table:
 
-To specify a quality-of-service (QOS), use ``--qos (-q)``. For example, to
-specify the batch QOS:
-
-.. code-block:: shell
-
-   #SBATCH -q batch
-
-Several different QOS's are available.
-
-.. note::
-
-   If you have an allocation of "windfall only" (Allocation = 1) you can only
-   submit to the windfall or gpuwf QOS.
+Specifying a Quality of Service (QOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -574,7 +577,7 @@ Several different QOS's are available.
        projects FairShare priority.
    * - novel
      - 8401
-     - LArgest partition size
+     - Largest partition size
      - 8 hours
      - 1.0
      - QOS for running novel or experimental jobs where nearly the full system
@@ -592,6 +595,8 @@ Several different QOS's are available.
    The max nodes allowed per partition is the min of the max cores allowed
    divided by the cores per node of the partition (Hera and kJet: 8400/40=210
    nodes) or the max number of nodes in the partition (vJet: 288 nodes).
+
+See the :ref:`Quality-of-Service` section for details.
 
 Changing QOS's
 --------------
@@ -1026,7 +1031,7 @@ specify the job dependency.
 Review the sbatch manpage for a list of dependency conditions (look for
 --dependency in the sbatch options list) that can be used. Usage
 format is illustrated in the example script below that includes
-&quot;afterok&quot; as a dependency condition.
+`afterok`` as a dependency condition.
 
 Here is a simple example of how to run a chain of jobs with dependencies,
 assuming that you have a parallel helloworld.f example program in your current
@@ -1037,8 +1042,8 @@ create/edit the file **depend** with the contents:
 .. code-block:: shell
 
    #!/bin/bash
-   jid1=$(sbatch --parsable -n1 -A nesccmgmt -J sim --wrap=&quot;srun sleep 10&quot;)
-   jid2=$(sbatch --parsable -n1 -A nesccmgmt -J post --dependency=afterok:$jid1 --wrap=&quot;srun hostname&quot;)
+   jid1=$(sbatch --parsable -n1 -A nesccmgmt -J sim --wrap=srun sleep 10)
+   jid2=$(sbatch --parsable -n1 -A nesccmgmt -J post --dependency=afterok:$jid1 --wrap=srun hostname)
 
 then make it executable:
 
