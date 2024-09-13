@@ -55,4 +55,5 @@
     "esbonio.sphinx.confDir": "${workspaceFolder}/source",
     "files.trimTrailingWhitespace": true,
     "rewrap.wrappingColumn": 79,
+    "makefile.configureOnOpen": false,
 }
