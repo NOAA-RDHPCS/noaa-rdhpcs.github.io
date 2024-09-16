@@ -77,36 +77,53 @@ OpenSSH.
 
 Bastion Hostnames
 =================
+.. |CBHN|	replace:: **CAC Bastion hostnames**
+.. |RBHN|	replace:: **RSA Bastion hostnames**
+.. |GCPRNG|	replace:: gaea.princeton.rdhpcs.noaa.gov
+.. |GCBRNG|	replace:: gaea.boulder.rdhpcs.noaa.gov
+.. |GRPRNG|	replace:: gaea-rsa.princeton.rdhpcs.noaa.gov
+.. |GRBRNG|	replace:: gaea-rsa.boulder.rdhpcs.noaa.gov
 
-.. |BHN|	replace:: Bastion hostnames
-.. |PRNG|	replace:: princeton.rdhpcs.noaa.gov
-.. |BRNG|	replace:: boulder.rdhpcs.noaa.gov
+.. |HCPRNG|	replace:: hera.princeton.rdhpcs.noaa.gov
+.. |HCBRNG|	replace:: hera.boulder.rdhpcs.noaa.gov
+.. |HRPRNG|	replace:: hera-rsa.princeton.rdhpcs.noaa.gov
+.. |HRBRNG|	replace:: hera-rsa.boulder.rdhpcs.noaa.gov
+
+.. |JCPRNG|	replace:: jet.princeton.rdhpcs.noaa.gov
+.. |JCBRNG|	replace:: jet.boulder.rdhpcs.noaa.gov
+.. |JRPRNG|	replace:: jet-rsa.princeton.rdhpcs.noaa.gov
+.. |JRBRNG|	replace:: jet-rsa.boulder.rdhpcs.noaa.gov
+
+.. |NCPRNG|	replace:: niagara.princeton.rdhpcs.noaa.gov
+.. |NCBRNG|	replace:: niagara.boulder.rdhpcs.noaa.gov
+.. |NRPRNG|	replace:: niagara-rsa.princeton.rdhpcs.noaa.gov
+.. |NRBRNG|	replace:: niagara-rsa.boulder.rdhpcs.noaa.gov
+
 .. |OUG|	replace:: :ref:`orion-user-guide`
 
-+-------------------+----------------+--------------------+
-| **RDHPCS System** | **CAC |BHN|**  | **RSA |BHN|**      |
-+-------------------+----------------+--------------------+
-| Gaea              | gaea.|PRNG|    | gaea-rsa.|PRNG|    |
-+                   +                +                    +
-|                   | gaea.|BRNG|    | gaea-rsa.|BRNG|    |
-+-------------------+----------------+--------------------+
-| Hera              | hera.|BRNG|    | hera-rsa.|BRNG|    |
-+                   +                +                    +
-|                   | hera.|PRNG|    | hera-rsa.|PRNG|    |
-+-------------------+----------------+--------------------+
-| Jet               | jet.|BRNG|     | jet-rsa.|BRNG|     |
-+                   +                +                    +
-|                   | jet.|PRNG|     | jet-rsa.|PRNG|     |
-+-------------------+----------------+--------------------+
-| Niagara           | niagara.|BRNG| | niagara-rsa.|BRNG| |
-+                   +                +                    +
-|                   | niagara.|PRNG| | niagara-rsa.|PRNG| |
-+-------------------+----------------+--------------------+
-| Cloud             | Unavailable    | Use ParallelWorks  |
-+-------------------+----------------+--------------------+
-| MSU-HPC Orion     | Unavailable    | |OUG|              |
-+-------------------+----------------+--------------------+
-
++-------------------+-----------------+--------------------+
+| **RDHPCS System** | |CBHN|          | |RBHN|             |
++-------------------+-----------------+--------------------+
+| Gaea              | |GCPRNG|        | |GRPRNG|           |
++                   +                 +                    +
+|                   | |GCBRNG|        | |GRBRNG|           |
++-------------------+-----------------+--------------------+
+| Hera              | |HCBRNG|        | |HRBRNG|           |
++                   +                 +                    +
+|                   | |HCPRNG|        | |HRPRNG|           |
++-------------------+-----------------+--------------------+
+| Jet               | |JCBRNG|        | |JRBRNG|           |
++                   +                 +                    +
+|                   | |JCPRNG|        | |JRPRNG|           |
++-------------------+-----------------+--------------------+
+| Niagara           | |NCBRNG|        | |NRBRNG|           |
++                   +                 +                    +
+|                   | |NCPRNG|        | |NRPRNG|           |
++-------------------+-----------------+--------------------+
+| Cloud             | Unavailable     | Use ParallelWorks  |
++-------------------+-----------------+--------------------+
+| MSU-HPC Orion     | Unavailable     | |OUG|              |
++-------------------+-----------------+--------------------+
 
 
 .. _Common-access:
