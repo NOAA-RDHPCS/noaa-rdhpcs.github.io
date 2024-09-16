@@ -11,13 +11,6 @@ your system.
 Setup authoring environment
 ==============================
 
-#. Install Sphinx and the ReadTheDocs theme locally::
-
-        $ pip3 install sphinx sphinx_rtd_theme sphinx-panels
-
-   This can be in your home area, a virtual environment, container, etc.
-
-
 #. Fork the documentation repository on GitHub
 
     Go to https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io, and click the "Fork"
@@ -38,6 +31,16 @@ Setup authoring environment
     $ git remote add rdhpcs https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io.git
     $ git fetch rdhpcs
     $ git branch --set-upstream-to=rdhpcs/main
+
+#. Install Sphinx and the ReadTheDocs theme locally::
+
+        $ pip3 install -r requirements.txt
+
+   This can be in your home area, a virtual environment, container, etc.
+
+    Go to https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/requirements.txt
+    to see the list of Python packages inside ``requirements.txt``.
+
 
 #. Build the docs::
 
