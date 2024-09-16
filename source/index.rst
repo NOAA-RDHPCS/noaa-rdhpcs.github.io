@@ -71,6 +71,15 @@ Queue Policy
 
    queue_policy/policies
 
+Compilers
+=========
+
+.. toctree::
+   :maxdepth: 2
+
+   compilers/index
+
+
 Software
 ========
 
