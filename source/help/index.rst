@@ -19,7 +19,9 @@ noaa.gov email address for all of your correspondence.
 +------------------+------------------------------+
 | Niagara          | rdhpcs.niagara.help@noaa.gov |
 +------------------+------------------------------+
-| Orion / Hercules | rdhpcs.orion.help@noaa.gov   |
+| Orion            | rdhpcs.orion.help@noaa.gov   |
++------------------+------------------------------+
+| Hercules         | rdhpcs.hercules.help@noaa.gov|
 +------------------+------------------------------+
 | RDHPCS Cloud     | rdhpcs.cloud.help@noaa.gov   |
 +------------------+------------------------------+
