@@ -93,8 +93,7 @@ Step 3b: Enter the activation URL
 - Click the 'Registration Code or URL' field
 
 - Paste, or type in, the activation URL.  **Make sure the URL starts
-  with `https://authenticator.securid.com/securid/ctf
-  <https://thiswontwork-dontclickme>`_**
+  with https://authenticator.securid.com/securid/ctf/**
 
 
 .. |android fillin|     image:: /images/rsa_android_fillin.png
