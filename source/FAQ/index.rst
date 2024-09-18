@@ -13,46 +13,43 @@ Accounts
 How Do I Get an RDHPCS Account?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Go to AIM: '''https://aim.rdhpcs.noaa.gov/'''
-* Fill out your profile information - any organizational questions
-  should be directed to your PI (Principal Investigator - the leader
-  of your project).
-* Select "Request new access to a project"
-* Select "Click here to Request Access to a Project". On the project
-  dropdown, search for the '''rdhpcs''' project.
-* In the justification box, add "Requesting access to rdhpcs".
-* Submit the request. Once approved, you will be able to request
-  acce
-  ss to additional projects. For more information, see `Accounts`_.
+See :ref:`Applying for a user account<applying_for_user_account>`
 
-User login to the Parallel Works for on-prem HPC systems access, and getting  “Invalid username or password” error.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are an on-premise HPC system user login to the Parallel Works for on-prem HPC systems access, and getting an: “Invalid username or password” error, follow the steps before opening a case with support.
+Parallel Works login to on-prem HPC systems is getting a "Invalid username or password" error.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Make sure you are using a RSA based login on user authentication.  CAC is currently unsupported.
+If you are an on-premise HPC system user login into Parallel Works
+for on-prem HPC systems access, and getting an: "Invalid username or
+password" error, follow these steps before requesting help:
 
-Ensure you can  successfully connect an on-prem HPC system to either Niagara, Hera or Gaea. 
-Now try to login to the Parallel Works platform.
+#. Make sure you are using your RSA token to authenticate. CAC authentication is not supported.
+#. Make sure you can successfully log into the on-prem HPCS system --
+   Analysis, Gaea, Hera, Jet or Niagara.
+#. Now try to login to the Parallel Works platform.
 
-If you are getting an Invalid username error, check out single sign on [SSO] authentication status by testing authentication at: https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/
+If you continue to get an "Invalid username error", confirm your
+`RDHPCS SSO authentication status
+<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_
 
-Open a case with cloud help desk by emailing to rdhpcs.cloud.help@noaa.gov
+As needed, :ref:`request help <getting_help>`.
 
-Need help, my RSA Token is locked.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+My RSA Token is locked.
+^^^^^^^^^^^^^^^^^^^^^^^
 
-See the Accounts pages. If you continue to have trouble, send a help request to
-rdhpcs.aim.help@noaa.gov with the subject line "Please check RSA token
-status." If you can, include the full terminal output you received
-when you tried to use your token.
+Wait 15 minutes and try again. 
+
+As needed, :ref:`request help <getting_help>` for your accounts, with
+a subject line of "Please check RSA token status." If you can, include
+the full terminal output you received when you tried to use your
+token.
 
 I forgot my passphrase, how do I reset it?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Navigate to this link: :ref:PASSPHRASE**
-then refer to the section titled,
-"Resetting Your Master Certificate Passphrase."
+On the 4th attempt the system will prompt to recreate a passphrase.
+See :ref:`Connecting for the first time <connecting_to_rdhpcs>`.
+
 
 How do I use X11 appplication with shared user account (role account)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
