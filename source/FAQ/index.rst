@@ -25,6 +25,20 @@ How Do I Get an RDHPCS Account?
   acce
   ss to additional projects. For more information, see `Accounts`_.
 
+User login to the Parallel Works for on-prem HPC systems access, and getting  “Invalid username or password” error.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are an on-premise HPC system user login to the Parallel Works for on-prem HPC systems access, and getting an: “Invalid username or password” error, follow the steps before opening a case with support.
+
+Make sure you are using a RSA based login on user authentication.  CAC is currently unsupported.
+
+Ensure you can  successfully connect an on-prem HPC system to either Niagara, Hera or Gaea. 
+Now try to login to the Parallel Works platform.
+
+If you are getting an Invalid username error, check out single sign on [SSO] authentication status by testing authentication at: https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/
+
+Open a case with cloud help desk by emailing to rdhpcs.cloud.help@noaa.gov
+
 Need help, my RSA Token is locked.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
