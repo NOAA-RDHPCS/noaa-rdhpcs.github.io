@@ -35,10 +35,114 @@ the login node usage policy applies to cron jobs.
 However, on systems such as Gaea, cron is no longer permitted. Instead,
 **scrontab** is used.
 
-**Scrontab** is a Slurm-managed crontab that runs on a designated
-partition rather than the login nodes.
+scrontab
+========
 
-**Best Practices:**
+**Scrontab** is a Slurm-managed crontab that runs on a designated partition
+rather than the login nodes. The scrontab command is used to set, edit, and
+remove a user’s Slurm-managed crontab. A user can set the VISUAL or EDITOR
+environment variables. See ``man scrontab`` for more information.
+
+**Sample Script**
+
+.. code-block:: shell
+
+  #SCRON --partition=cron_c5
+  #SCRON --time=1:00:00
+  #SCRON --job-name=scron_test
+  #SCRON --chdir=/ncrc/home1/First.Last
+  #SCRON --output=/ncrc/home1/First.Last/scron_test.%j.scrontab
+  0 * * * * /ncrc/home1/First.Last/test.csh
+
+
+Jobs created with scrontab are assigned a single job id. When a job is
+cancelled, there will be no future runs, and the job will be commented out in
+the users scrontab.
+
+To skip the next run of your cron job, use ``control requeue <job_id>``.
+
+Scron Expressions
+-----------------
+
+scrontab uses the same syntax for date and time as cron. The format of the
+scrontab command is: minute | hour | day of month | month | day of week.
+
+
++------------------+--------------------------+
+| Field            | Allowed Values           |
++==================+==========================+
+| minute           | 0-59                     |
++------------------+--------------------------+
+| hour             | 0-23                     |
++------------------+--------------------------+
+| month            | 1-12, or use name        |
++------------------+--------------------------+
+| day of the week  | 0-7 (0 and 7 are Sunday) |
+|                  | or use name              |
++------------------+--------------------------+
+
+A field can contain an asterisk (*), meaning that it's valid for each of the
+allowed values for the given time period. Ranges are allowed, where a range is
+two numbers with a hyphen between them. The second number must be greater than
+the first.
+
+scrontab allows you to use shortcuts to specify some common time intervals for
+the specified script to run. These include the following:
+
+* @yearly | @annually: job will run at 00:00 Jan 01 each year
+* @monthly: job will run at 00:00 on the first day of each month
+* @weekly: job will run at 00:00 Sunday of each week
+* @daily | @midnight: job will run at 00:00 each day
+* @hourly: job will run at the first minute of each hour
+
+Timezones
+^^^^^^^^^
+
+User-defined timezones are not supported.
+Scrontab times are in **UTC**.
+
+So for example, ``5 20 * * * script1`` runs script1 everyday at 20:05 UTC, or
+15:05 (3:05 PM) EST.
+
+Running Multiple Jobs
+^^^^^^^^^^^^^^^^^^^^^^
+
+To run multiple jobs, add another entry with your preferred #SCRON directives.
+
+Sample Script
+""""""""""""""
+
+ .. code-block:: shell
+
+    #SCRON --partition=cron_c5
+    #SCRON --ntasks=16
+    #SCRON --time=1:00:00
+    #SCRON --account=
+    #SCRON --job-name=scron_test
+    #SCRON --chdir=/ncrc/home1/First.Last
+    #SCRON --output=/ncrc/home1/First.Last/scron_test.%j.scrontab
+    0 * * * * /ncrc/home1/First.Last/test.csh
+
+    #SCRON --partition=cron_c5
+    #SCRON --ntasks=16
+    #SCRON --time=1:00:00
+    #SCRON --account=
+    #SCRON --job-name=scron_test2
+    #SCRON --chdir=/ncrc/home1/First.Last
+    #SCRON --output=/ncrc/home1/First.Last/scron_test2.%j.scrontab
+    0 * * * * /ncrc/home1/First.Last/test2.csh
+
+
+Gaea's cron follows the `NOAA RDHPCS cron Usage Policy
+<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`_.
+In some cases, the RDHPCS cron usage policy is tightly coupled to choices made
+on other RDHPCS systems (e.g. Jet) and may be irrelevant to cron on Gaea. For
+example, Gaea's cron will send emails to the user, regardless of whether
+the user configures the email address in the crontab.
+
+
+Best Practices
+--------------
 
 - Please **DO** review your crontab/scrontab entries once a month and
   remove unneeded entries to assure efficient RDHPCS resource

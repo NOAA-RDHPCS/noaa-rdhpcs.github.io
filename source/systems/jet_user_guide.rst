@@ -163,6 +163,90 @@ Development High Performance Computing (RDHPC) requirements for GSL
 and other NOAA offices, including the Hurricane Forecast Improvement
 Project (HFIP) since 2009.
 
+Jet Partitions
+==============
+
+The following Jet partitions and Jet Billable TRes Factors are defined:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
+
+   * - Partition
+     - QOS Allowed
+     - Billable TRes per Core Performance Factor
+     - Description
+   * - sjet
+     - batch,windfall, debug, urgent, novel
+     - 145
+     - General compute resource - Intel Sandybridge
+   * - vjet
+     - batch,windfall, debug, urgent, novel
+     - 165
+     - General compute resource - Intel IvyBridge
+   * - xjet
+     - batch,windfall, debug, urgent, novel
+     - 150
+     - General compute resource - Intel Haswell
+   * - kjet
+     - batch,windfall, debug, urgent, novel
+     - 165
+     - General compute resource - Intel Skylake
+   * - bigmem
+     - batch,windfall, debug, urgent
+     - 150
+     - Large memory jobs; 4 nodes, each with 24 cores and 256 GB of memory - Intel Haswell
+   * - novel
+     - novel
+     - 165
+     - Partition for running novel or experimental jobs where nearly the full
+       system is required. If you need to use the novel QOS, please sumbit a
+       ticket to the help system and tell us what you want to do. We will
+       normally have to arrange for some time for the job to go through, and we
+       would like to plan the process with you. Please note that if you use
+       **novel partition** you also need to specify **novel QoS.**
+   * - service
+     - batch,windfall, debug, urgent
+     - 0
+     - Serial jobs (max 1 core), with a 24 hr limit. Jobs will be run on front
+       end (login) nodes that have external network connectivity. Useful for
+       data transfers or access to external resources like databases. If you
+       have a workflow that requires pushing or pulling data to/from the
+       HSMS(HPSS), this is where they should be run. See the Login (Front End)
+       Node Usage Policy for important information about using Login nodes.
+
+To see a list of the available partitions use the command:
+
+.. code-block:: shell
+
+   $ sinfo -O partition
+   sjet
+   vjet
+   xjet
+   kJet
+   bigmem
+   service
+
+Selecting General compute resources on Jet: Unless you have a real-time
+reservation (see below), and to assure the all partitions are used most
+efficiently, we recommend that you specify the use of the default, **all**
+general compute resource partitions. This option gives the batch scheduler the
+flexibility to put your job on the first available resource. To do this, you
+must choose compilation options that create executables that can be used on any
+partition, which is covered in the Recommended Intel Compiler Options for
+Optimization section in the :ref:`jet-user-guide`.
+
+On Jet the processor architecture, cores per node and memory per core varies
+for each partition so your execution time may vary slightly; therefore it is
+important to understand the architectural differences, so you understand how
+your code will run and perform on various partitions.
+
+To specify all Jet General Compute Resource Partitions (the default), so your
+job will run on the first available partition, **do not specify a
+partition.**
+
+
 GPU Clusters
 ------------
 

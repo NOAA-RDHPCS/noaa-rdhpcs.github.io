@@ -1798,19 +1798,19 @@ remain compliant with their security controls and security plan.
  **Role Account Policies**
 
  -  A role account is a user account shared by one or more users.
- -  Role accounts follow the naming convention
+ -  Role accounts follow the naming convention:
     ``role-baseprojectname``.
  -  There can be only one role account per MSU-HPC project, and a role
     account can be only assigned to a single project.
+ -  Role account members **must be a member of the base project**.
  -  Role accounts are managed by the same Account Managers as the base
-    project.
- -  A role account is managed like a project (ex. membership is
+    project. A role account is managed like a project (ex. membership is
     managed by the Account Managers on the NOAA-HPC Project Management
-    by Project" page). Any MSU-HPC user can be a member of the role
-    account, but it is recommended that they also be a member of the
-    base project.
- -  Role accounts are only created with approval of one of the base
-    projects Account Managers (Portfolio Mgr or PI).
+    by Project" page).
+ -  The PI/Account Managers must use the *Project Management* web form
+    to add and remove users from their Role account.
+ -  Role accounts are created with approval of one of the base
+    projects' Account Managers (Portfolio Mgr or PI).
  -  No passwords or Duo will be assigned to Role accounts.
  -  Role accounts may be used for setting up unattended data transfers
     via SSH key pairs
@@ -1820,22 +1820,16 @@ remain compliant with their security controls and security plan.
     role-PROJECTNAME`` command.
  -  The sudo command can be run on Login, Development, and DTN nodes.
 
- **To Request and/or perform Management on a Role Account**
+ **To Request a New Role Account**
 
  -  The PI or PfM should submit a request by emailing the Help Desk at
-    rdhpcs.orion.help@noaa.gov.
+    rdhpcs.orion.help@noaa.gov or rdhpcs.hercules.help@noaa.gov.
  -  The request should include:
 
    -  Name:
    -  PI:
    -  Project:
    -  Users:
-
- -  The Role account will be created and the PI will be assigned as
-    the Account Manager. As with projects, the PI may request that
-    additional Account Managers be assigned as well.
- -  The PI/Account Managers must use the *Project Management* web form
-    to add and remove users from their Role account.
 
 
 Help, Policies, Best Practices, Issues
