@@ -1,209 +1,280 @@
-.. _connecting:
-
 ##########
 Connecting
 ##########
 
-This simple overview explains the elements of a basic job in Gaea. It includes
-compiling, running, combining, data transfer, and allocation.
+.. _connecting-to-rdhpcs:
 
-Compiling
----------
+.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 
-Gaea offers PrgEnv-intel, Prg-Env-pgi, and several other modules that
-make it as easy as possible to get your programs running . PrgEnv-pgi
-is loaded by default. You compile by calling either cc or ftn,
-according to the language your code is written in. See Compilers for
-more detail, especially for compiling multithreaded applications.
+Connecting for the first time
+=============================
 
-You may either compile live in your login shell on a Gaea login node, or in a
-job in the eslogin queue in the es partition of Gaea's batch system. To tell a
-job script to run on the login nodes, specify the following in your script:
+All connections to the NOAA RDHPCS enclave are done via Secure Shell
+(SSH) in a terminal session to a Bastion, or via a web browser to
+`ParallelWorks <https://noaa.parallel.works>`__.  See our :ref:`ParallelWorks guide <cloud-user-guide>`.
 
-.. code-block:: shell
+.. note::
 
-   #SBATCH --clusters=es
-   #SBATCH --partition=eslogin
-   #SBATCH --ntasks=1 `
+   For access to the MSU HPC systems Orion and Hercules, please review
+   the :ref:`MSU-HPC <MSU-HPC-user-guide>` user guide.
 
-or, from the sbatch command line:
+Authentication is via a :ref:`CAC/PIV card<common-access>` or
+:ref:`RSA SecurID token<rsa_instructions>`.
 
-.. code-block:: shell
+Internal to the enclave, `X509 certificates
+<https://en.wikipedia.org/wiki/X.509>`__ are used to authenticate
+between resources.  At first login, and at yearly intervals, a master
+certificate valid for one year is created (SSH Bastion login required)
+with a user-defined pass-phrase.  At each successive log in, a
+thirty-day proxy certificate is created and used for resource access
+and data transfers.
 
-   sbatch --clusters=es --partition=eslogin --ntasks=1 /path/to/compile_script`
+.. attention::
 
-Running
--------
+   You must have access to an RDHPCS resource (system) in order to log
+   into it!  Visit the `Account Information Management`_ website to
+   view your RDHPCS profile and system access.
 
-Once your executable is compiled and in place with your data on F2,
-you are ready to submit your compute job. Please submit your compute
-job to either c3 or c4.
 
-.. code-block:: shell
+Access to most RDHPCS systems require a signed x.509 certificate.  The
+first login attempt will generate a master certificate request.  You
+will experience a short (less than 5 minute) delay while the request
+is signed. Users cannot fully log on to a system until that
+certificate is signed.
 
-   #SBATCH --clusters=c3
-   #SBATCH --nodes=4
-   #SBATCH --ntasks-per-node=32 # Gaea charges for node use.  Nodes are 32 cores on c3 and 36 core on c4.
+The prompt will ask you to create a passphrase. Create a passphrase
+with a minimum of three words.
 
-This example will get charged for 4 nodes.
+.. note::
 
-or, from the sbatch command line:
+    Do not worry if you forget your passphrase -- just continue to
+    try.  On the 4th attempt the system will prompt you to recreate
+    your master certificate.
 
-.. code-block:: shell
+.. ref: ssh_access
 
-   sbatch --clusters=c3 --nodes=4 --ntasks-per-node=32 /path/to/run_script
+Secure Shell (SSH) Access
+=========================
 
-Your compute job script will run on one of the compute nodes allocated to your
-job. To run your executable on them use the ``srun``. Your executable and data
-must reside on F2 as only lustre filesystems are mounted on the compute nodes.
-Also, your job's PWD should be in F2 when you run ``srun``. A simple
-example is shown below:
+Access to on premise RDHPCS compute resources is done using the Secure Shell
+(SSH) protocol to one of the system's bastions, or via ParallelWorks.
 
-.. code-block:: shell
+MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
+See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 
-   cd /lustre/f2/scratch/$USER/
-   srun --nodes=128 --ntasks-per-node=32 /lustre/f2/scratch/$USER/path/to/executable`
+SSH clients are available for Windows-based systems, such as published
+by VanDyke software.  For recent SecureCRT versions, the preferred
+authentication setting shown above
 
-Staging/Combining
------------------
+For Windows systems, `PuTTY
+<https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_,
+`SecureCRT <https://www.vandyke.com/products/securecrt/>`_, or
+`MobaXterm <https://mobaxterm.mobatek.net/>`_ can also be used to
+provide SSH capability.  Recent updates to Windows 10 and Windows 11
+have added built-in support for SSH.  If it is not installed on your
+version of Windows, please refer to Microsoft’s documentation on
+OpenSSH.
 
-Staging data to and from model run directories is a common task on Gaea. So is
-combining model output when your model uses multiple output writers for
-scalability of your MPI communications. The Local Data Transfer Nodes (LDTNs)
-are the resource provided for these tasks. Please keep these tasks off of the
-c3/c4 compute clusters and eslogin nodes. There is a NOAA-developed tool called
-gcp which is available for data transfers on Gaea. To tell a job script to run
-on the LDTN nodes, specify the following in your script:
+Bastion Hostnames
+=================
+.. |CBHN|	replace:: **CAC Bastion hostnames**
+.. |RBHN|	replace:: **RSA Bastion hostnames**
+.. |GCPRNG|	replace:: gaea.princeton.rdhpcs.noaa.gov
+.. |GCBRNG|	replace:: gaea.boulder.rdhpcs.noaa.gov
+.. |GRPRNG|	replace:: gaea-rsa.princeton.rdhpcs.noaa.gov
+.. |GRBRNG|	replace:: gaea-rsa.boulder.rdhpcs.noaa.gov
 
-.. code-block:: shell
+.. |HCPRNG|	replace:: hera.princeton.rdhpcs.noaa.gov
+.. |HCBRNG|	replace:: hera.boulder.rdhpcs.noaa.gov
+.. |HRPRNG|	replace:: hera-rsa.princeton.rdhpcs.noaa.gov
+.. |HRBRNG|	replace:: hera-rsa.boulder.rdhpcs.noaa.gov
 
-   #SBATCH --clusters=es
-   #SBATCH --partition=ldtn
-   #SBATCH --nodes=1
-   #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 16
+.. |JCPRNG|	replace:: jet.princeton.rdhpcs.noaa.gov
+.. |JCBRNG|	replace:: jet.boulder.rdhpcs.noaa.gov
+.. |JRPRNG|	replace:: jet-rsa.princeton.rdhpcs.noaa.gov
+.. |JRBRNG|	replace:: jet-rsa.boulder.rdhpcs.noaa.gov
 
-or, from the sbatch command line:
+.. |NCPRNG|	replace:: niagara.princeton.rdhpcs.noaa.gov
+.. |NCBRNG|	replace:: niagara.boulder.rdhpcs.noaa.gov
+.. |NRPRNG|	replace:: niagara-rsa.princeton.rdhpcs.noaa.gov
+.. |NRBRNG|	replace:: niagara-rsa.boulder.rdhpcs.noaa.gov
 
-.. code-block:: shell
+.. |OUG|	replace:: :ref:`orion-user-guide`
 
-   sbatch --clusters=es --partition=ldtn --nodes=1 --ntasks-per-node=1 /path/to/staging_script
++-------------------+-----------------+--------------------+
+| **RDHPCS System** | |CBHN|          | |RBHN|             |
++-------------------+-----------------+--------------------+
+| Gaea              | |GCPRNG|        | |GRPRNG|           |
++                   +                 +                    +
+|                   | |GCBRNG|        | |GRBRNG|           |
++-------------------+-----------------+--------------------+
+| Hera              | |HCBRNG|        | |HRBRNG|           |
++                   +                 +                    +
+|                   | |HCPRNG|        | |HRPRNG|           |
++-------------------+-----------------+--------------------+
+| Jet               | |JCBRNG|        | |JRBRNG|           |
++                   +                 +                    +
+|                   | |JCPRNG|        | |JRPRNG|           |
++-------------------+-----------------+--------------------+
+| Niagara           | |NCBRNG|        | |NRBRNG|           |
++                   +                 +                    +
+|                   | |NCPRNG|        | |NRPRNG|           |
++-------------------+-----------------+--------------------+
+| Cloud             | Unavailable     | Use ParallelWorks  |
++-------------------+-----------------+--------------------+
+| MSU-HPC Orion     | Unavailable     | |OUG|              |
++-------------------+-----------------+--------------------+
 
-Transferring Data to/from Gaea
-------------------------------
 
-Data transfers between Gaea and the world outside of Gaea should be
-performed on the Remote Data Transfer Nodes (RDTNs). There is a
-NOAA-developed tool called gcp, which is available for data transfers
-on Gaea. HPSS users are only able to access HPSS from jobs on the
-RDTNs. To tell a job script to run on the login nodes, specify the
-following in your script:
+.. _Common-access:
+.. _cac_instructions:
 
-.. code-block:: shell
+Common Access Card (CAC) SSH Login
+==================================
 
-   #SBATCH --clusters=es
-   #SBATCH --partition=rdtn
-   #SBATCH --nodes=1
-   #SBATCH --ntasks-per-node=1 #set ntasks-per-node to the number of cores your job will need, up to 8
+RDHPCS users with a CAC who are logging in from a Windows, Mac, or
+Linux system are recommended to use a CAC login. This requires a CAC
+reader and software from Tectia. If you recently were issued a new CAC
+or renewed CAC, please log into the `Account Information Management`_
+website to update the CAC information.
 
-or, from the sbatch command line:
-
-.. code-block:: shell
-
-   sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
-
-Allocation
-----------
-
-Gaea users have default projects. If you are only a member of a single
-project, or if your experiments always run under your default project,
-you don't need to do anything special to run. Users who are members of
-more than one project need to enter their preferred project via the
---account option to sbatch to correctly charge to each experiment's
-project.
-
-You can use AIM to request access to new projects. Once access is
-granted in AIM it can take up to two days to be reflected in Gaea's
-Slurm scheduler. If you still don't have the granted access after two
-days, please put in a help desk ticket so admins can investigate your
-issue. To determine your Slurm account memberships, run the command:
-``sacctmgr list associations user=First.Last``
-
-To submit jobs to the scheduler under a specific account do the following from
-the sbatch command line:
-
-.. code-block:: shell
-
-   sbatch --account=gfdl_z
-
-or add the following to your job script's #SBATCH headers:
-
-.. code-block:: shell
-
-   #SBATCH --account=gfdl_z
-
-Running a Simple Job
---------------------
-
-Here's an example of a basic script to run on Gaea. It is a skeleton
-script for c1:c2 to help users who don't have access to, or prefer not
-to use, a workflow manager. This script copies everything in the
-experiment subdirectory from ltfs to fs, runs the experiment, and then
-copies the changed and new files from fs to ltfs.
-
-Running the Script
-------------------
-
-This script assumes that the data and executable are staged to
-``/lustre/ltfs/scratch/$USER/$experiment_subdir``. The scripts and
-data are located at ``/usw/user_scripts/``.  Use ``gcp`` to get the
-skeleton script from ``/usw/user_scripts/c1_c2_skeleton`` to your
-local home directory:
+Reference the :ref:`Tectia` pages for complete information on how to
+configure Tectia initially for login using SSH with your CAC.
 
 .. code-block:: shell
 
-   gcp /usw/user_scripts/c1_c2_skeleton ~$USER/
+    sshg3 CAC-BASTION-HOSTNAME
 
-Use ``gcp`` to get other files from ``/usw/user_scripts/`` to your f1 directory
+#. Reference the table above for the appropriate CAC Bastion to use.
+#. When prompted, enter your CAC PIN.
 
-.. code-block:: shell
 
-   gcp -r /usw/user_scripts/ /lustre/f1/$USER/c1_c2_skeleton
+.. _rsa_instructions:
 
-Open the skeleton script. (The comments in the script will help you
-understand what each item does.)
+RSA SSH Login
+=============
 
-.. code-block:: shell
-
-   vim ~$USER/c1_c2_skeleton
-
-Users MUST modify the paths in the '#PBS -d' line and the walltime in
-the '#PBS -l walltime' line. (i.e /lustre/f1/First.Last/ for -d, and
-walltime can be set to 20 min for this tutorial) WARNING do not use
-environment variables like $USER in setting the directory as it will
-not be available at run time for the script now go to your home
-directory and submit your job msub c1_c2_skeleton
-
-Once the job is submitted
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Once the job is submitted, you can use these commands to check on your job:
-To view the status of your job
+RDHPCS users who do not have a CAC, or lack the required hardware or
+software, are welcome to use an RSA login.
 
 .. code-block:: shell
 
-   showq -u $USER
+    ssh RSA-BASTION-HOSTNAME
 
-The ``-c`` flag will show jobs that have completed with exit codes
-``showq -u $USER -c``.
 
-To to check a detailed status of your job replace "jobid" with your
-job's id. For example: checkjob gaea.123456789. Additionally you add
-an option, -v, to get more information. checkjob jobid
+#. Reference the table above for the appropriate RSA Bastion to use.
+#. When prompted, enter your PASSCODE which consists of your
+   PIN+RSA_CODE.  The RSA_CODE is the 6-8 digit code from the RSA fob or
+   RSA app.
 
-Once the job is Finished
-^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once your job is finished you will have a output file in your directory
-/lustre/f1/$USER You should have a log file (ex. c1_c2_skeleton_gaea.8279963)
-You should have a folder with the output files (ex.
-6307731.c2-sys0.ncrc.gov/c1_c2_skeleton_gaea.8279963/)
+Selecting a Node
+================
+
+RDHPCS systems accessed via SSH allow users to select a specific head
+node at login.  After successful authentication at the bastion host, a
+list of available nodes will be displayed with a 5 second delay to
+choose a specific destination.  To select a specific host, press
+Control+C (^C) and enter the desired node.
+
+Here is an example of what the display looks like for the Gaea system
+mid 2024:
+
+.. code-block:: shell
+
+
+     Welcome to the NOAA RDHPCS.
+
+     Attempting to renew your proxy certificate...Proxy certificate has 720:00:00  (30.0 days) left.
+
+             Welcome to gaea.rdhpcs.noaa.gov
+     Gateway to gaea-c5.ncrc.gov and other points beyond
+
+     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     !! RDHPCS Policy states that all user login sessions shall be terminated     !!
+     !! after a maximum duration of seven (7) days. ALL user login sessions will  !!
+     !! be dropped from the Princeton Bastions at 4AM ET / 2AM MT each Monday     !!
+     !! morning, regardless of the duration. Please note: This will NOT impact    !!
+     !! batch jobs, cron scripts, screen sessions, remote desktop, or data        !!
+     !! transfers.                                                                !!
+     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+     Hostname            Description
+     gaea                C5 head nodes
+     gaea51              C5 head node
+     gaea52              C5 head node
+     gaea53              C5 head node
+     gaea54              C5 head node
+     gaea55              C5 head node
+     gaea56              C5 head node
+     gaea57              C5 head node
+     gaea58              C5 head node
+     gaea60              T6 Test access only
+     gaea61              C6 head node
+     gaea62              C6 head node
+     gaea63              C6 head node
+     gaea64              C6 head node
+     gaea65              C6 head node
+     gaea66              C6 head node
+     gaea67              C6 head node
+     gaea68              C6 head node
+
+     You will now be connected to NOAA RDHPCS: Gaea (CMRS/NCRC) C5 system.
+     To select a specific host, hit ^C within 5 seconds.
+
+
+.. note::
+
+    After the 5 second wait, the bastion node will use a load balancer to select
+    a node.
+
+
+X11 Graphics
+============
+
+Users can use SSH X11 forwarding to open GUI-based applications (e.g., xterm,
+ARM Forge).  This is typically done using an SSH option.  For the TECTIA client
+``sshg3`` or OpenSSH-based clients, use the ``-X`` option:
+
+.. code-block:: shell
+
+    gsissh -X host.url
+
+or
+
+.. code-block:: shell
+
+    ssh -X host.url
+
+Other clients, like PuTTY, will have an option when configuring the host.
+
+The base SSH X11 forwarding is typically slow.  RDHPCS systems use X2Go for
+improved X11 performance.  Some users have found it difficult to use X2Go.
+Please submit a :ref:`support issue <getting_help>` if you have issues using
+X2Go.
+
+.. note::
+
+    Microsoft Windows users can use any of the X11 servers available for
+    Windows.  The SSH client will need to be configured to use the X11 server
+    for forwarding X11.
+
+.. _ssh-port-tunnels:
+
+SSH Port Tunnels
+================
+
+To allow users to easily transfer small files to and from the RDHPCS
+systems, the bastion configures SSH port-forwarding tunnels.  To use these
+tunnels, the user must configure their local SSH client to create tunnels
+to/from the bastion.
+
+See the Port Tunnel section of the :ref:`Tectia` page for details.
+
+
+
+Web based ParallelWorks Access
+==============================
+
+See the :ref:`cloud-user-guide` for details on using ParallelWorks in
+a web browser to access on-premise and cloud HPCS.

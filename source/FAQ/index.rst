@@ -91,7 +91,7 @@ to use X applications:
     export DISPLAY=localhost:14.0
 
 That will enable your X applications to work.
-A complete discussion of Role Accounts can be found here: :ref:`accounts`.
+A complete discussion of Role Accounts can be found here: :ref:`role_accounts`.
 
 Jobs
 ----
@@ -820,6 +820,16 @@ RDHPCS Office Hours
 
 Office Hours are held at regularly. The Support team offers shared
 solutions to acute and common problems.
+
+6 September 2024
+----------------
+
+Several new team members asked questions concerning node selection and Slurm
+settings, dropped connections, and documentation updates.
+The session was `recorded <https://drive.google.com/file/d/1CHS2pF48JaJ9tO7wB7-Gvi1DzUrUsrKm/view>`_,
+and a `transcript of the session
+<https://docs.google.com/document/d/1MSoJdn_obGVy1XwqN6HWHhYpRj8dJ-z7uLA_h5YmHOE/edit#heading=h.2ooesykrwnve>`_
+is available for review.
 
 20 June 2024
 ------------

@@ -33,7 +33,7 @@ NOAA's Parallel Works Portal
 
 Access to the NOAA RDHPCS Cloud Computing envrironment is through the
 `Parallel Works NOAA Portal <https://noaa.parallel.works>`_ and uses
-the :ref:`RSA Token <rsa_token>` authentication method.
+the :ref:`RSA Token <rsa_instructions>` authentication method.
 
 
 Workflow
@@ -41,9 +41,9 @@ Workflow
 
 .. note::
 
-  To use the RDHPCS Cloud system, you must have an account on a Cloud project. To
-  obtain an account, submit a request for that account in AIM.
-  The :ref:`Accounts` section explains the steps to do so.
+  To use the RDHPCS Cloud system, you must have an account on a `Cloud
+  project <project_request>`_
+
 
 
 The typical workflow for using the cloud resources is presented in the
@@ -348,6 +348,10 @@ Office Hours
 
 The Cloud Computing support team hosts bi-weekly sessions for
 demonstrations, questions and answers.
+
+`5 September 2024 <https://drive.google.com/file/d/12dXyfxvntixzWlsEjl7OgYnVJskoui2L/view?ts=66df59f9>`_
+
+`25 July 2024 <https://drive.google.com/file/d/10n4YZcLUu07EoTWocQO2GFSI5m354G7-/view>`_
 
 `5 June 2024
 <https://drive.google.com/file/d/18AzIwzGIjrB1CTCCyOG6yQJB5gciFgs0/view?ts=6661daa2>`_

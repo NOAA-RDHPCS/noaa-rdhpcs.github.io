@@ -35,8 +35,8 @@ The RDHPCS does not support these X2Go features:
 Requirements
 ------------
 
-To use X2Go on an RDHPCS system, you must have an :ref:`active SSH Connection
-<logging_in>` with properly configured :ref:`SSH tunnels <ssh-port-tunnels>`.
+To use X2Go on an RDHPCS system, you must have an `active SSH Connection
+<ssh_access>`_ with properly configured `SSH tunnels <port-tunnels>`_.
 
 `Acquire
 <https://wiki.x2go.org/doku.php/download:start#the_client-side_of_x2go>`__ and
@@ -92,8 +92,8 @@ Launch X2Go Session
 
     X2Go session window with an RDHPCS host configured.
 
-Open an :ref:`SSH connection <ssh_connection>` that will establish the
-:ref:`SSH local forward <ssh-port-tunnels>` to the RDHPCS host.  Once the SSH
+Open an `SSH connection <ssh_access>`_ that will establish the
+`SSH local forward <port-tunnels>`_ to the RDHPCS host.  Once the SSH
 connection is established, open the X2Go client and double click the session in
 the list in the right side bar. When the authentication dialog box appears,
 ensure your user name is correct and enter your :ref:`RSA passcode
