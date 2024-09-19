@@ -16,14 +16,15 @@ How Do I Get an RDHPCS Account?
 See :ref:`Applying for a user account<applying_for_user_account>`
 
 
-Parallel Works login to on-prem HPC systems is getting a "Invalid username or password" error.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PW login is getting a "Invalid username or password" error.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are an on-premise HPC system user login into Parallel Works
+If you are an on-premise HPC system user logging into Parallel Works
 for on-prem HPC systems access, and getting an: "Invalid username or
 password" error, follow these steps before requesting help:
 
-#. Make sure you are using your RSA token to authenticate. CAC authentication is not supported.
+#. Make sure you are using your RSA token to authenticate. CAC
+   authentication is not supported.
 #. Make sure you can successfully log into the on-prem HPCS system --
    Analysis, Gaea, Hera, Jet or Niagara.
 #. Now try to login to the Parallel Works platform.
@@ -37,7 +38,7 @@ As needed, :ref:`request help <getting_help>`.
 My RSA Token is locked.
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Wait 15 minutes and try again. 
+Wait 15 minutes and try again.
 
 As needed, :ref:`request help <getting_help>` for your accounts, with
 a subject line of "Please check RSA token status." If you can, include
@@ -48,7 +49,7 @@ I forgot my passphrase, how do I reset it?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On the 4th attempt the system will prompt to recreate a passphrase.
-See :ref:`Connecting for the first time <connecting_to_rdhpcs>`.
+See :ref:`Connecting for the first time <connecting-to-rdhpcs>`.
 
 
 How do I use X11 appplication with shared user account (role account)?
