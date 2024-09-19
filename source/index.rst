@@ -89,6 +89,14 @@ Software
    software/index
    software/ssh_clients/Tectia/index
 
+Compilers
+=========
+
+.. toctree::
+   :maxdepth: 2
+
+   compilers/index
+
 SLURM
 =====
 

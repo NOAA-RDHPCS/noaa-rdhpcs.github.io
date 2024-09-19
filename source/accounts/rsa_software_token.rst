@@ -92,19 +92,8 @@ Step 3b: Enter the activation URL
 
 - Click the 'Registration Code or URL' field
 
-- Paste, or type in, the activation URL.  **Make sure the URL is
-  correct for your mobile device:**
-
-
-+-------------------+----------------------------------------+
-| Type              | Link starts with ...                   |
-+===================+========================================+
-| Android (old)     | `http://127.0.0.1/securid/`            |
-+-------------------+----------------------------------------+
-| Android (new)     | `https://authenticator.securid.com/`   |
-+-------------------+----------------------------------------+
-| iPhone, iPad      | `com.rsa.securid://ctkip?url=https://` |
-+-------------------+----------------------------------------+
+- Paste, or type in, the activation URL.  **Make sure the URL starts
+  with https://authenticator.securid.com/securid/ctf/**
 
 
 .. |android fillin|     image:: /images/rsa_android_fillin.png
@@ -117,35 +106,21 @@ Step 3b: Enter the activation URL
         :scale: 30 %
 
 
-Refer to these screenshots:
+Refer to this screenshot:
 
-+-------------------+-------------------------+
-| Android (new)     | Apple iPhone, iPad      |
-+===================+=========================+
-| |android fillin|  | |apple fillin|          |
-+-------------------+-------------------------+
+ |android fillin|
 
 .. attention::
 
    **Leave the email and organization fields blank!!**
 
-Step 3c: Enter the Activation Code
-----------------------------------
+Step 3c: Click the Submit button
+--------------------------------
 
 You have filled in the URL field **and the email and organization
 fields are blank.**
 
 - The **Submit** button should now be active.  Click it.
-
-- A popup for the Activation Code will appear
-
-  |popup activation|
-
-- Copy-and-paste the activation code from the email, or type the
-  activation code in.
-
-- Click on the `Submit` button.
-
 
 Step 4: Set the RSA PIN
 -----------------------

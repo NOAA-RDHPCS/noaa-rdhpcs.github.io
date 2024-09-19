@@ -8,6 +8,8 @@ users associated with each project.
 
 .. image:: /images/RDHPCS_AIM_relationship_graphic.png
 
+.. _applying_for_user_account:
+
 Applying for a user account
 ===========================
 

@@ -134,6 +134,78 @@ non-comment, non-whitespace line. Options after that will be ignored by Slurm
    indicate locations as specified in :ref:`summary-of-storage-areas`, and are
    not available on any RDHPCS system.
 
+Loading Modules in a batch script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you loaded modules when building your code, they must be loaded when the
+job runs as well. This means that you must put the same module commands in your
+batch scripts that you ran before building your code.
+
+Loading modules in a batch script requires one additional line to make the
+module commands available in the script:
+
+.. code-block:: bash
+   :linenos:
+
+    #!/bin/bash
+    #SBATCH ( put directives here )
+
+    source $MODULESHOME/init/bash
+    module load THING1 THING2
+
++------+--------------------------------------------------------------------+
+| Line | Description                                                        |
++======+====================================================================+
+|    1 | Shell interpreter line                                             |
++------+--------------------------------------------------------------------+
+|    2 | A placeholder for needed SBATCH directives                         |
++------+--------------------------------------------------------------------+
+|    4 | The command that will make the module commands available           |
++------+--------------------------------------------------------------------+
+|    5 | An example line for `module load`                                  |
++------+--------------------------------------------------------------------+
+
+
+Module Loading Best Practices
+""""""""""""""""""""""""""""""
+
+.. note::
+
+   Do Not Load Modules at Shell Initialization.
+
+Upon user interactive login, running batch jobs, running cron scripts, and
+running command line scripts, a shell is invoked.
+
+Loading modules in shell initialization scripts can lead to unintended
+consequences, as the shell's environment may be different than the one
+expected. The wrong libraries can be loaded, the wrong tools can be used, the
+wrong version of tools can be used, and even tools provided with the operating
+system may no longer work properly or provide strange error messages. For these
+reasons, we **highly** recommend that you do not add module loads to your
+shell's initialization scripts.
+
+Instead, we recommend that you remove module loads from shell initialization
+scripts and do one or more of the following:
+
+#. Add the module loads directly to your batch script or cron scripts
+#. Create a separate script responsible for loading the desired modules and
+   environment. This script can then be invoked/sourced any time you want to
+   set up this specific environment. A command "alias" can also be added to
+   your shell's initialization scripts. You can then run the alias command to
+   invoke the desired shell environment.
+#. Create a script as described above and have all members of your project
+   invoke/source the exact same script. This will ensure that the exact same
+   modules are used by all users. You can even add "module purge" to the
+   beginning of the script to ensure that only the desired modules are being
+   loaded.
+
+
+If you need help implementing these methods, open an RDHPCS help ticket. See
+:ref:`Getting_Help` for details.
+
+
+
+
 Interactive Jobs
 ----------------
 
