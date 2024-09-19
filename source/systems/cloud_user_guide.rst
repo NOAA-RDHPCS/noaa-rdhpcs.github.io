@@ -349,6 +349,10 @@ Office Hours
 The Cloud Computing support team hosts bi-weekly sessions for
 demonstrations, questions and answers.
 
+`5 September 2024 <https://drive.google.com/file/d/12dXyfxvntixzWlsEjl7OgYnVJskoui2L/view?ts=66df59f9>`_
+
+`25 July 2024 <https://drive.google.com/file/d/10n4YZcLUu07EoTWocQO2GFSI5m354G7-/view>`_
+
 `5 June 2024
 <https://drive.google.com/file/d/18AzIwzGIjrB1CTCCyOG6yQJB5gciFgs0/view?ts=6661daa2>`_
 
