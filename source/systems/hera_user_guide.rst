@@ -146,6 +146,77 @@ System Configuration
    - The nodes with GPUs are the same as what was on Theia; But the
      network has been upgraded to EDR.
 
+Hera Partitions
+===============
+
+To specify a partition, use the command `partition -p`. For example:
+
+.. code-block:: shell
+
+   sbatch -p batch ...
+
+The following partitions are defined for Hera:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
+
+   * - Partition
+     - QOS Allowed
+     - Billable TRes per Core Performance Factor
+     - Description
+   * - fge
+     - gpu, gpuwf
+     - 158
+     - For jobs that require nodes with GPUs. See the Specifying QOS
+       table below for more details. There are 100 Haswell nodes, each
+       containing 8 P100 GPUs. Each P100 has 16GB of memory.
+   * - hera
+     - batch,windfall, debug, urgent
+     - 165
+     - General compute resource. **Default** if no partition is specified
+   * - bigmem
+     - batch,windfall, debug, urgent
+     - 165
+     - For large memory jobs; 268 nodes, each with 40 cores and 384 GB of memory
+   * - novel
+     - novel
+     - 165
+     - Partition to run novel or experimental jobs where nearly the full
+       system is required.
+       If you need to run a novel job, please submit a help ticket and tell us what
+       you want to do. We will normally have to arrange for some time for the job to
+       go through, and we would like to plan the process with you.
+       Also, please note that if you use **novel partition** you also need to
+       specify **novel QoS**.
+   * - service
+     - batch,windfall, debug, urgent
+     - 0
+     - Serial jobs (max 1 core), with a 24 hr limit. Jobs will be run on front
+       end nodes that have external network connectivity. Useful for data
+       transfers or access to external resources like databases. If your
+       workflow requires pushing or pulling data to/from the HSMS(HPSS), it
+       should be run there. See the Login (Front End) Node Usage Policy for
+       important information about using Login nodes.
+
+To see a list of available partitions use the command
+
+.. code-block:: shell
+
+   $ sinfo -O partition
+   fge
+   hera*
+   service
+   bigmem
+   novel
+
+An asterisk (*) indicates that default partition, where your job will be
+submitted to if you do not specify a partition name at job submission.
+
+**General compute jobs:** To assure the systems are used most efficiently,
+specify the use of all general compute resource partitions. This allows the
+batch scheduler to put your jobs on the first available resource.
 
 Lustre File System Usage
 ========================
