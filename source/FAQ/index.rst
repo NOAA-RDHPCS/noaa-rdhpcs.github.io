@@ -13,32 +13,44 @@ Accounts
 How Do I Get an RDHPCS Account?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Go to AIM: '''https://aim.rdhpcs.noaa.gov/'''
-* Fill out your profile information - any organizational questions
-  should be directed to your PI (Principal Investigator - the leader
-  of your project).
-* Select "Request new access to a project"
-* Select "Click here to Request Access to a Project". On the project
-  dropdown, search for the '''rdhpcs''' project.
-* In the justification box, add "Requesting access to rdhpcs".
-* Submit the request. Once approved, you will be able to request
-  acce
-  ss to additional projects. For more information, see `Accounts`_.
+See :ref:`Applying for a user account<applying_for_user_account>`
 
-Need help, my RSA Token is locked.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See the Accounts pages. If you continue to have trouble, send a help request to
-rdhpcs.aim.help@noaa.gov with the subject line "Please check RSA token
-status." If you can, include the full terminal output you received
-when you tried to use your token.
+PW login is getting a "Invalid username or password" error.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are an on-premise HPC system user logging into Parallel Works
+for on-prem HPC systems access, and getting an: "Invalid username or
+password" error, follow these steps before requesting help:
+
+#. Make sure you are using your RSA token to authenticate. CAC
+   authentication is not supported.
+#. Make sure you can successfully log into the on-prem HPCS system --
+   Analysis, Gaea, Hera, Jet or Niagara.
+#. Now try to login to the Parallel Works platform.
+
+If you continue to get an "Invalid username error", confirm your
+`RDHPCS SSO authentication status
+<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_
+
+As needed, :ref:`request help <getting_help>`.
+
+My RSA Token is locked.
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Wait 15 minutes and try again.
+
+As needed, :ref:`request help <getting_help>` for your accounts, with
+a subject line of "Please check RSA token status." If you can, include
+the full terminal output you received when you tried to use your
+token.
 
 I forgot my passphrase, how do I reset it?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Navigate to this link: :ref:PASSPHRASE**
-then refer to the section titled,
-"Resetting Your Master Certificate Passphrase."
+On the 4th attempt the system will prompt to recreate a passphrase.
+See :ref:`Connecting for the first time <connecting-to-rdhpcs>`.
+
 
 How do I use X11 appplication with shared user account (role account)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
