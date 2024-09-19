@@ -108,7 +108,7 @@ Step 3b: Enter the activation URL
 
 Refer to this screenshot:
 
- |android fillin| 
+ |android fillin|
 
 .. attention::
 
