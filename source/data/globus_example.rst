@@ -233,8 +233,8 @@ Transferring Data to and from Your Computer
 
 To transfer data from your laptop/workstation to a NOAA RDHPCS system, you can
 
-* use *scp* to a NOAA RDHPCS DTN (using pre-configured `SSH port
-  tunnels <port_tunnels>`_).
+* use *scp* to a NOAA RDHPCS DTN (using pre-configured SSH port
+  tunnels.
 * use *scp* to a NOAA RDHPCS UDTN
 * use `Globus Connect Personal
   <https://www.globus.org/globus-connect-personal>`_ to transfer data
