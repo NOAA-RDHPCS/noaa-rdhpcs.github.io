@@ -349,6 +349,15 @@ Office Hours
 The Cloud Computing support team hosts bi-weekly sessions for
 demonstrations, questions and answers.
 
+`19 September 2024 <https://drive.google.com/file/d/1xGIHx6CchAS_P5HcxpLt-OxKp7v3vfQx/view?ts=66ed7b64>`_
+
+ User questions included:
+
+  - persistence of user-created disks
+  - Docker issue preventing disk from launching
+  - workflow creation and an workflow creation button
+  - storage questions.
+
 `5 September 2024 <https://drive.google.com/file/d/12dXyfxvntixzWlsEjl7OgYnVJskoui2L/view?ts=66df59f9>`_
 
 `25 July 2024 <https://drive.google.com/file/d/10n4YZcLUu07EoTWocQO2GFSI5m354G7-/view>`_
