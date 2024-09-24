@@ -13,7 +13,7 @@
 
 {%- block scripts %}
     {{ super() }}
-    {%- if gsce_id %}
+    {%- if not READTHEDOCS and gsce_id %}
       <script async src="https://cse.google.com/cse.js?cx={{ gsce_id }}"></script>
     {%- else %}
       <script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
@@ -46,7 +46,7 @@
       <p>{{ _('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.') }}</p>
     {% endif %}
   {% endif %}
-  {%- if gsce_id %}
+  {%- if not READTHEDOCS and gsce_id %}
     <div class="gcse-searchresults-only">
   {%- else %}
     <div id="search-results">
