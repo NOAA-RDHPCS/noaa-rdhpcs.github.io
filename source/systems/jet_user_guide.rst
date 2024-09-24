@@ -516,15 +516,13 @@ Starting a Parallel Application
 
 We currently support two MPI stacks on Jet, `Mvapich2
 <https://mvapich.cse.ohio-state.edu/overview/>`__ and `OpenMPI
-<http://www.open-mpi.org/>`__. We consider Mvapich2 our primary MPI
-stack. OpenMPI is provided for software development and regression
-testing. In our experience, Mvapich2 provides better performance
-without requiring tuning. We do not have the depth of staff to fully
-support multiple stacks, but we will try our best. If you feel you
-need to use OpenMPI as your production stack, please send us a note
-through `Help Requests
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Help_Requests>`__
-and explain why so we can better understand your requirements.
+<http://www.open-mpi.org/>`__. We consider Mvapich2 our primary MPI stack.
+OpenMPI is provided for software development and regression testing. In our
+experience, Mvapich2 provides better performance without requiring tuning. We
+do not have the depth of staff to fully support multiple stacks, but we will
+try our best. If you feel you need to use OpenMPI as your production stack,
+please send us a note through :ref:`help Requests <getting_help>` and explain
+why so we can better understand your requirements.
 
 .. rubric:: Load MPI Stacks Via Modules
 
@@ -883,12 +881,10 @@ OpenMP. However, parallelization is restricted to a single node. As
 any programming model, there can be tricks to make to write efficient
 code.
 
-We support OpenMP on Jet, however, it is infrequently used and we have
-not figured out all the issues. If you want to use OpenMP, please
-submit a `help request
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wikis/rdhpcs-common-docs/doku.php?id=submitting_help_request>`_
-and let us know so we can keep track of the users interested in using
-it.
+We support OpenMP on Jet, however, it is infrequently used and we have not
+figured out all the issues. If you want to use OpenMP, please submit a
+:ref:`help request <getting_help>` and let us know so we can keep track of the
+users interested in using it.
 
 .. rubric:: Compiling codes with OpenMP
 

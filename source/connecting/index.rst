@@ -51,7 +51,7 @@ with a minimum of three words.
     try.  On the 4th attempt the system will prompt you to recreate
     your master certificate.
 
-.. ref: ssh_access
+.. _ssh_access:
 
 Secure Shell (SSH) Access
 =========================
