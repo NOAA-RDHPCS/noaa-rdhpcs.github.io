@@ -48,12 +48,12 @@ Supported RDHPCS Container Solutions
 ------------------------------------
 
 Although the leading Container solution across the entire Container community
-is `Docker <https://www.docker.com/>`_, Docker is not a viable solution for High
-Performance Computing (HPC) systems. There are security issues surrounding
+is `Docker <https://www.docker.com/>`_, Docker is not a viable solution for
+High Performance Computing (HPC) systems. There are security issues surrounding
 Docker which make it infeasible for HPC systems. Considering the possible
 security issue and capabilities to run the weather model across the nodes,
-NOAA's RDHPC systems chose `Singularity`_ as a platform for users to test and run
-models within Containers.
+NOAA's RDHPC systems chose `Singularity`_ as a platform for users to test and
+run models within Containers.
 
 .. _containers-limitation-exception-liability:
 
