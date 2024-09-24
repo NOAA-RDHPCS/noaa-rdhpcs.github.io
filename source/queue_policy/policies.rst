@@ -133,14 +133,6 @@ Sample Script
     0 * * * * /ncrc/home1/First.Last/test2.csh
 
 
-Gaea's cron follows the `NOAA RDHPCS cron Usage Policy
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Cron_Usage_Policy>`_.
-In some cases, the RDHPCS cron usage policy is tightly coupled to choices made
-on other RDHPCS systems (e.g. Jet) and may be irrelevant to cron on Gaea. For
-example, Gaea's cron will send emails to the user, regardless of whether
-the user configures the email address in the crontab.
-
-
 Best Practices
 --------------
 

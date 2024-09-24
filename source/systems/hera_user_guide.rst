@@ -1093,8 +1093,7 @@ has `detailed documentation
 
    Since DDT is GUI debugger, interactions over a wide area network
    can be extremely slow. You may want to consider using a Remote
-   Desktop which in our environment is X2GO as `documented
-   <https://heradocs.rdhpcs.noaa.gov/wiki/index.php/Setting_up_and_using_x2go.>`__
+   Desktop which in our environment is :ref:`X2GO <x2go-remote-desktop>`.
 
 Invoking DDT on Hera with Intel IMPI
 ------------------------------------
