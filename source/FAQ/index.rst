@@ -698,8 +698,8 @@ only quota that is enforced.
 To find information of usage by user, refer to the Slurm pages.
 
 
-Apr25, 2024: Rocoto updateto version rocoto/1.3.7 on Hera/Jet/Niagara
----------------------------------------------------------------------
+Apr 25, 2024: Rocoto update to version rocoto/1.3.7 on Hera/Jet/Niagara
+-----------------------------------------------------------------------
 
 There were some performance
 issues and some minor bugs in rocoto/1.3.6
@@ -832,6 +832,17 @@ RDHPCS Office Hours
 
 Office Hours are held at regularly. The Support team offers shared
 solutions to acute and common problems.
+
+20 September 2024
+-----------------
+
+The team members answered questions on help tickets for specific issues.
+It was announced that Cloud Centos is going away in the short term, and
+that other changes will be announced in the near future.
+
+Links to the `recording <https://drive.google.com/file/d/1f_OyLF6XX7lXBmmNHb3Cl7JTcOQJrgSk/view>`_
+and to the `session transcript <https://docs.google.com/document/d/1C9xXLHr0GTlgs7WFPMdhzUrHlqWk51b3ScB6NAci56A/edit#heading=h.fquwvusplhq2>`_
+are available for review.
 
 6 September 2024
 ----------------
