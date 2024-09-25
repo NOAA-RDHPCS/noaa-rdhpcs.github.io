@@ -68,7 +68,7 @@ partner clusters.
     +===========+============================+==========================+=========+===============+
     | Hera      | noaardhpcs#hera            | /scratch1, /scratch2     | NESCC   | Trusted hosts |
     +-----------+----------------------------+--------------------------+---------+---------------+
-    | Hera      | noaardhpcs#hera_untrusted  | /scratch1/data_untrusted | NESCC   | anywhere      |
+    | Hera      | noaardhpcs#hera_untrusted  | /scratch1/data_untrusted | NESCC   | Anywhere      |
     |           |                            | /scratch2/data_untrusted |         |               |
     +-----------+----------------------------+--------------------------+---------+---------------+
 
@@ -80,7 +80,7 @@ partner clusters.
    +===========+============================+==========================+=========+===============+
    | Jet       | noaardhpcs#jet             | /mnt/lfs4, /mnt/lfs5     | NESCC   | Trusted hosts |
    +-----------+----------------------------+--------------------------+---------+---------------+
-   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs4/data_untrusted | NESCC   | anywhere      |
+   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs4/data_untrusted | NESCC   | Anywhere      |
    |           |                            | /mnt/lfs5/data_untrusted |         |               |
    +-----------+----------------------------+--------------------------+---------+---------------+
 
@@ -92,7 +92,7 @@ partner clusters.
    +===========+==============================+==========================+=========+===============+
    | Niagara   | noaardhpcs#niagara           | /collab1/data            | NESCC   | Trusted hosts |
    +-----------+------------------------------+--------------------------+---------+---------------+
-   | Niagara   | noaardhpcs#niagara_untrusted | /mnt/lfs1/data_untrusted | NESCC   | anywhere      |
+   | Niagara   | noaardhpcs#niagara_untrusted | /mnt/lfs1/data_untrusted | NESCC   | Anywhere      |
    +-----------+------------------------------+--------------------------+---------+---------------+
 
 
@@ -102,7 +102,7 @@ partner clusters.
    +-----------+-------------------+--------------------+---------+---------------+
    | Cluster   | Display Name      | File Systems       | Site    | Access        |
    +===========+===================+====================+=========+===============+
-   | PPAN      | ncrc#dtn          | /lustre/f2/scratch | NCRC    | Trusted hosts |
+   | PPAN      | noaardhpcs#gaea   | /gpfs/f[56]        | NCRC    | Anywhere      |
    +-----------+-------------------+--------------------+---------+---------------+
 
 
@@ -214,4 +214,23 @@ Please see `Globus Connect Personal
 <https://www.globus.org/globus-connect-personal>`_ for information
 about setting up your laptop/workstation as a Globus Personal
 Endpoint.
+
+.. warning::
+
+    Please note the following warnings when using the Globus Online transfers.
+
+    * Globus transfers do not preserve file permissions. Arriving files will
+      have (rw-r-r-) permissions, meaning arriving files will have user read
+      and write permissions and group and world read permissions. Note that the
+      arriving files will not have any execute permissions, so you will need to
+      use chmod to reset execute permissions before running a
+      Globus-transferred executable.
+    * Globus will overwrite files at the destination with identically named
+      source files. This is done without warning.
+    * Globus has restriction of 8 active transfers across all the users. Each
+      user has a limit of 3 active transfers, so it is required to transfer a
+      lot of data on each transfer than less data across many transfers.
+    * If a folder is constituted with mixed files including thousands of small
+      files (less than 1MB each one), it would be better to tar the smallfiles.
+      Otherwise, if the files are larger, Globus will handle them.
 

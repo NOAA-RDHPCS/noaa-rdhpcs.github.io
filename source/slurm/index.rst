@@ -1,3 +1,5 @@
+.. _rdhpcs_slurm:
+
 #####
 Slurm
 #####

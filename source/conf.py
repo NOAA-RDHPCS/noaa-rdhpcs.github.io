@@ -25,6 +25,9 @@ extensions = ["sphinx_rtd_theme",
 templates_path = ["_templates"]
 exclude_patterns = []
 
+# To use helpmanual.io:
+manpages_url = 'https://code.tools/man/{section}/{page}/'
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 html_title = "NOAA RDHPCS"

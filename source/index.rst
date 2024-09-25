@@ -114,6 +114,15 @@ FAQ
    FAQ/index
 
 
+References
+==========
+
+.. toctree::
+   :maxdepth: 2
+
+   glossary
+
+
 How to contribute to the Documentation
 ======================================
 

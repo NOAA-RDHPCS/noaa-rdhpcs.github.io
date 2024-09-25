@@ -136,12 +136,12 @@ partner clusters:
      - GFDL
      - Anywhere
    * - Gaea
-     - ncrc#dtn
+     - noaardhpcs#gaea
      - /gpfs/f5
 
        /gpfs/f6
      - NCRC
-     - Trusted hosts
+     - Anywhere
    * - Orion
      - msuhpc2#Orion-dtn
      - /work
