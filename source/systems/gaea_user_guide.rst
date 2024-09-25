@@ -833,7 +833,13 @@ error will be displayed to the terminal.
 Common Slurm Options
 --------------------
 
-The table below summarizes options for submitted jobs. Unless otherwise noted, they can be used for either batch scripts or interactive batch jobs. For scripts, they can be added on the ``sbatch`` command line or as a ``#BSUB`` directive in the batch script. (If they're specified in both places, the command line takes precedence.) This is only a subset of all available options. Check the `Slurm Man Pages <https://slurm.schedmd.com/man_index.html>`__ for a more complete list.
+The table below summarizes options for submitted jobs. Unless otherwise noted,
+they can be used for either batch scripts or interactive batch jobs. For
+scripts, they can be added on the ``sbatch`` command line or as a ``#SBATCH``
+directive in the batch script. (If they're specified in both places, the
+command line takes precedence.) This is only a subset of all available options.
+Check the `Slurm Man Pages <https://slurm.schedmd.com/man_index.html>`_ for a
+more complete list.
 
 .. table::
     :widths: 15 28 57
@@ -948,8 +954,8 @@ your job (e.g. for naming output log files):
 +--------------------------+--------------------------------------------------+
 | ``$SLURM_ACCOUNT``       | The account name supplied by the user.           |
 +--------------------------+--------------------------------------------------+
-| ``$SLURM_JOBID``         | The job’s full identifier. A common use for      |
-|                          | ``$SLURM_JOBID`` is to append the job’s ID       |
+| ``$SLURM_JOBID``         | The job's full identifier. A common use for      |
+|                          | ``$SLURM_JOBID`` is to append the job's ID       |
 |                          | to the standard output and error files.          |
 +--------------------------+--------------------------------------------------+
 | ``$SLURM_JOB_NUM_NODES`` | The number of nodes requested.                   |
@@ -1039,7 +1045,7 @@ encourages the submission of smaller jobs.
 Job priority
 ------------
 
-Slurm on Gaea uses the `priority/multifactor plugin
+Slurm on Gaea uses the `Slurm priority/multifactor plugin
 <https://slurm.schedmd.com/priority_multifactor.html>`_ to calculate a job's
 priority.  The factors used are:
 
@@ -1105,6 +1111,9 @@ Fair-share
     usage, and fair-share factors for all projects (allocations).
 
 Partitions
+----------
+
+.. warning:: Still working on partitions documentation
 
 C6 "batch" max nodes 512 "novel" all jobs over 512 nodes.  Only enabled after
 maintenance.  Please contact the HD if you need to run large jobs, so we can
@@ -1153,11 +1162,11 @@ jobid.
     +-----------------------------------+------------------------------------------------+
 
 
-Monitoring and Modifying Batch Jobs
+Monitoring and modifying batch jobs
 -----------------------------------
 
-``scontrol hold`` and ``scontrol release``: Holding and Releasing Jobs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Holding and releasing jobs
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes you may need to place a hold on a job to keep it from starting. For
 example, you may have submitted it assuming some needed data was in place but
@@ -1174,8 +1183,8 @@ release`` command. For example:
 +----------------------------+------------------------------------------------+
 
 
-``scontrol update``: Changing Job Parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changing job parameters
+^^^^^^^^^^^^^^^^^^^^^^^
 
 There may also be occasions where you want to modify a job that's waiting in
 the queue. For example, perhaps you requested 2,000 nodes but later realized
@@ -1193,8 +1202,8 @@ this is a different data set and only needs 1,000 nodes. You can use the
 +-------------------+-----------------------------------------------+
 
 
-``scancel``: Cancel or Signal a Job
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Cancel or signal a job
+^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to the ``--signal`` option for the ``sbatch``/``salloc`` commands
 described :ref:`above <common-slurm-options>`, the ``scancel`` command can be
@@ -1207,8 +1216,8 @@ want to send ``SIGUSR1`` to a job, you would use ``scancel -s 10 12345`` or
 ``scancel -s USR1 12345``.
 
 
-``squeue``: View the Queue
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+View the queue
+^^^^^^^^^^^^^^
 
 The ``squeue`` command is used to show the batch queue. You can filter the
 level of detail through several command-line options. For example:
@@ -1220,8 +1229,8 @@ level of detail through several command-line options. For example:
 +--------------------------+------------------------------------------------+
 
 
-``sacct``: Get Job Accounting Information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Get job accounting information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``sacct`` command gives detailed information about jobs currently in the
 queue and recently-completed jobs. You can also use it to see the various steps
@@ -1245,18 +1254,18 @@ within a batch jobs.
 |                                          | particular output format         |
 +------------------------------------------+----------------------------------+
 
-``scontrol show job``: Get Detailed Job Information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Get detailed job information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to holding, releasing, and updating the job, the ``scontrol``
 command can show detailed job information via the ``show job`` subcommand. For
 example, ``scontrol show job 12345``.
 
 
-.. _frontier-srun:
+.. _slurm-srun:
 
 Srun
-----------------------
+----
 
 The default job launcher for Gaea is `srun
 <https://slurm.schedmd.com/srun.html>`__ . The :command:`srun` command is used
@@ -1332,7 +1341,7 @@ typically desired in the terminal window in this usage mode.
 
 
 
-
+.. important:: Everthing below here will be rewritten/modified.
 
 
 
