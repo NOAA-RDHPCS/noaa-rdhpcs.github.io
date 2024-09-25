@@ -13,6 +13,7 @@
 /.github/ @underwoo
 
 # Owners of utilities and script files
+/.readthedocs.yaml @underwoo
 /utils/ @josh-eisinger
 /requirements.txt @underwoo @josh-eisinger
 /Makefile @underwoo @josh-eisinger

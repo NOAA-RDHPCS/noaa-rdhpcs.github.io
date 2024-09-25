@@ -7,6 +7,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 import datetime as dt
+import os
+import packaging.version
+import sphinx_rtd_theme
 
 # Sphinx Configuration Items
 project = "NOAA RDHPCS User Documentation"
@@ -22,7 +25,12 @@ extensions = ["sphinx_rtd_theme",
               "sphinxcontrib.mermaid",
               "sphinx_sitemap"]
 
+# Additional templates for all locations
 templates_path = ["_templates"]
+# Additional templates when hosting on GitHub.io
+if os.environ.get("GITHUB_ACTIONS", "false") == "true":
+    templates_path += ["_templates_github"]
+
 exclude_patterns = []
 
 # -- Options for HTML output -------------------------------------------------
@@ -32,18 +40,22 @@ html_logo = "images/NOAA_RDHPCS.png"
 html_favicon = "images/favicon.ico"
 html_show_copyright = False
 html_theme = "sphinx_rtd_theme"
-html_baseurl = "https://docs.rdhpcs.noaa.gov/"
+# Define the canonical URL if you are using a custom domain on Read the Docs
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL",
+                              "https://docs.rdhpcs.noaa.gov/")
 
 html_static_path = ["_static"]
-html_extra_path = ["_search/google64634d0922861b1a.html"]
+html_extra_path = []
+html_sidebars = {}
+
+# When hosted on GitHub, use Google search.
+if os.environ.get("GITHUB_ACTIONS", "false") == "true":
+    html_extra_path = ["_search/google64634d0922861b1a.html"]
+    html_sidebars['**'] = ['searchbox.html']
 
 html_css_files = [
     "css/theme_overrides.css",
 ]
-
-html_sidebars = {
-    '**': ['searchbox.html']
-}
 
 html_context = {
     "display_github": True,
@@ -74,6 +86,9 @@ html_context = {
         "HPCS Webmaster": "mailto:[webmaster.hpcs@noaa.gov](mailto:webmaster.hpcs@noaa.gov)",
     }
 }
+# Tell Jinja2 templates the build is running on Read the Docs
+if os.environ.get("READTHEDOCS", "") == "True":
+    html_context["READTHEDOCS"] = True
 
 # see https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html
 html_theme_options = {
@@ -85,8 +100,11 @@ html_theme_options = {
     "logo_only": True,
     "display_version": True,
     "vcs_pageview_mode": "blob",
-
 }
+
+if (packaging.version.Version(sphinx_rtd_theme.__version__) >=
+    packaging.version.Version("2.1.0")):
+    html_theme_options["flyout_display"] = "hidden"
 
 linkcheck_allowed_redirects = {
     r'http://.*': r'https://.*',
