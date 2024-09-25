@@ -117,7 +117,8 @@ linkcheck_allowed_redirects = {
     r'https://.*\.google\.com/?.*': r'https://.*?\.google\.com/?.*?/edit',
     r'https://github\.com/?.*': r'https://github\.com/login',
     r'https://sslvpn\.rdhpcs\.noaa\.gov/': r'https://sslvpn\.rdhpcs\.noaa\.gov/.*',
-    r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*'
+    r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*',
+    r'https://support\.hpe\.com/connect/s/product\?kmpmoid=1013083813': r'https://support\.hpe\.com/connect/s/product\?language=?.*&kmpmoid=1013083813',
 }
 
 linkcheck_ignore = [
@@ -126,7 +127,6 @@ linkcheck_ignore = [
     r'https://www\.lustre\.org/documentation/',
     r'https://www\.putty\.org/.*',
     r'https://(orion|hercules)-ood.hpc.msstate.edu/?.*',
-    r'https://cpe\.ext\.hpe\.com/.*',
 ]
 linkcheck_retries = 3
 

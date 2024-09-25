@@ -259,9 +259,13 @@ SUSE Linux Enterprise Server (:abbr:`SLES (SUSE Linux Enterprise Server)`).
 | C6      | 3.0.2-2 | 15.5    |
 +---------+---------+---------+
 
-.. _HPE Cray Programming Environment: <https://cpe.ext.hpe.com/docs/latest/index.html>
+.. _HPE Cray EX Documentation: https://support.hpe.com/connect/s/product?kmpmoid=1013083813
+.. _HPE Cray Programming Environment: https://cpe.ext.hpe.com/docs/latest/index.html
 
 .. seealso::
+
+    `HPE Cray EX Documentation`_
+        Documentation specific for the HPE Cray EX 3000 compute system.
 
     `HPE Cray Programming Environment`_
         Documentation that covers the HPE Cray Programming Environment.
@@ -433,7 +437,7 @@ Move data to and from Gaea
 ==========================
 
 The suggested way to move data to and from Gaea is to use `Globus Online
-<app.globus.org>`_.  Please review the additional information in
+<https://app.globus.org>`_.  Please review the additional information in
 :ref:`globus_online_data_transfer` and :ref:`globus_example`.
 
 Please review :ref:`transferring-data` for information on other transfer
