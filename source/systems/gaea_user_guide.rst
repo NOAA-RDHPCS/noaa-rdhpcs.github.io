@@ -259,13 +259,9 @@ SUSE Linux Enterprise Server (:abbr:`SLES (SUSE Linux Enterprise Server)`).
 | C6      | 3.0.2-2 | 15.5    |
 +---------+---------+---------+
 
-.. _HPE Cray EX Documentation: <https://support.hpe.com/connect/s/product?language=en_US&kmpmoid=1013083813>
 .. _HPE Cray Programming Environment: <https://cpe.ext.hpe.com/docs/latest/index.html>
 
 .. seealso::
-
-    `HPE Cray EX Documentation`_
-        Documentation specific for the HPE Cray EX 3000 compute system.
 
     `HPE Cray Programming Environment`_
         Documentation that covers the HPE Cray Programming Environment.
@@ -1377,10 +1373,10 @@ large-scale parallel applications. In addition to traditional debugging
 features (setting breakpoints, stepping through code, examining variables), DDT
 also supports attaching to already-running processes and memory debugging.
 In-depth details of DDT can be found in the official `DDT User Guide
-<https://www.linaroforge.com/documentation/>`_, and instructions for how to use
-it on RDHPCS systems can be found on the :doc:`Debugging Software
-</software/debuggers/index>` page. DDT is the RDHPCS's recommended debugging
-software for large parallel applications.
+<https://docs.linaroforge.com/latest/html/forge/forge/introduction_to_forge/ddt.html>`_,
+and instructions for how to use it on RDHPCS systems can be found on the
+:doc:`Debugging Software </software/debuggers/index>` page. DDT is the RDHPCS's
+recommended debugging software for large parallel applications.
 
 One of the most useful features of DDT is its remote debugging feature. This
 allows you to connect to a debugging session on RDHPCS systems from a client
@@ -1508,12 +1504,6 @@ usages, details on memory high water mark, and more.
 More detailed information on the HPE Performance Analysis Tools can be found in
 the `HPE Performance Analysis Tools User Guide
 <https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&docId=a00123563en_us>`__.
-
-.. note::
-
-    When using ``perftools-lite-gpu``, there is a known issue causing
-    ``ld.lld`` not to be found. OLCF has a `workaround for this issue
-    <https://docs.olcf.ornl.gov/systems/crusher_quick_start_guide.html#olcfdev-513-error-with-perftools-lite-gpu>`__.
 
 
 ***************
