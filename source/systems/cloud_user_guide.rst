@@ -2177,8 +2177,8 @@ definition page.
 What is NOAA RDHPCS preferred container solution?
 """""""""""""""""""""""""""""""""""""""""""""""""
 
-You can read `NOAA RDHPCS official communication on containers
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Containers>`_.
+You can read :ref:`NOAA RDHPCS documentation on containers
+<rdhpcs-containers>`.
 
 On security issues and capabilities to run the weather model
 across the nodes, NOAA's RDHPC systems chose Singularity as
