@@ -8,6 +8,8 @@
 
 import datetime as dt
 import os
+import packaging.version
+import sphinx_rtd_theme
 
 # Sphinx Configuration Items
 project = "NOAA RDHPCS User Documentation"
@@ -98,8 +100,11 @@ html_theme_options = {
     "logo_only": True,
     "display_version": True,
     "vcs_pageview_mode": "blob",
-
 }
+
+if (packaging.version.Version(sphinx_rtd_theme.__version__) >=
+    packaging.version.Version("2.1.0")):
+    html_theme_options["flyout_display"] = "hidden"
 
 linkcheck_allowed_redirects = {
     r'http://.*': r'https://.*',
