@@ -29,12 +29,18 @@ the link labeled "Make a request for an RSA token".
    <https://accounts.noaa.gov>`_ and contact your local I/T support
    people if you cannot login.
 
+Step 2: Submit a helpdesk ticket for a software RSA token
+---------------------------------------------------------
+
+Send an email from your NOAA.gov account to `rdhpcs.aim.help@noaa.gov
+<mailto:rdhpcs.aim.help@noaa.gov>`_ requesting a software RSA token
+
 Wait for an email from the RDHPCS Accounts Team that provides the
 activation code and URL.
 
 .. attention:: The activation code and URL is only good for seven (7) days!
 
-Step 2: Install the application
+Step 3: Install the application
 -------------------------------
 
 .. hint::
@@ -63,7 +69,7 @@ The app icons will look like these:
 +--------------+----------------+--------------------------------+
 
 
-Step 3: Configure the application
+Step 4: Configure the application
 ---------------------------------
 
 If at all possible, read or forward the "RDHPCS Software Token
@@ -71,7 +77,7 @@ Activation" email to your mobile device so the activation information
 can be copy and pasted.  It is permitted to forward that email to a
 personal address for the purposes of RSA activation.
 
-Step 3a: Copy the activation URL
+Step 4a: Copy the activation URL
 --------------------------------
 
 Do this step if you can view the activation email on your mobile device.
@@ -83,7 +89,7 @@ Do this step if you can view the activation email on your mobile device.
 
    **COPY THE ENTIRE ACTIVATION URL**
 
-Step 3b: Enter the activation URL
+Step 4b: Enter the activation URL
 ---------------------------------
 
 - On your mobile device, open the RSA application.
@@ -114,7 +120,7 @@ Refer to this screenshot:
 
    **Leave the email and organization fields blank!!**
 
-Step 3c: Click the Submit button
+Step 4c: Click the Submit button
 --------------------------------
 
 You have filled in the URL field **and the email and organization
@@ -122,7 +128,7 @@ fields are blank.**
 
 - The **Submit** button should now be active.  Click it.
 
-Step 4: Set the RSA PIN
+Step 5: Set the RSA PIN
 -----------------------
 
 - Access the `RDHPCS SSLVPN <https://sslvpn.rdhpcs.noaa.gov/>`_
@@ -146,7 +152,7 @@ Step 4: Set the RSA PIN
 - Once complete, you may close that browser window.
 
 
-Step 5: Success!
+Step 6: Success!
 ----------------
 
 You have now activated your NOAA RDHPCS RSA token.  Proceed with

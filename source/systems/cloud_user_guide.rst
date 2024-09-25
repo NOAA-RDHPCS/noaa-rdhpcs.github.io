@@ -31,7 +31,7 @@ to learn about the NOAA RDHPCS-specific topics.
 NOAA's Parallel Works Portal
 ============================
 
-Access to the NOAA RDHPCS Cloud Computing envrironment is through the
+Access to the NOAA RDHPCS Cloud Computing environment is through the
 `Parallel Works NOAA Portal <https://noaa.parallel.works>`_ and uses
 the :ref:`RSA Token <rsa_instructions>` authentication method.
 
@@ -41,10 +41,8 @@ Workflow
 
 .. note::
 
-  To use the RDHPCS Cloud system, you must have an account on a `Cloud
-  project <project_request>`_
-
-
+  To use the RDHPCS Cloud system, you must have an account on a Cloud
+  project. To :ref:`project_request`, follow the linked instructions.
 
 The typical workflow for using the cloud resources is presented in the
 following diagram.
@@ -164,6 +162,13 @@ development environments (IDE) like `RStudio
 
 Parallel Works
 ==============
+
+**16 September 2024**
+`Accessing On-Premise Systems using the Parallel Works
+Platform <https://drive.google.com/file/d/1-Gn9kK2sOUXbvBqt7orVvw8dYpCvu5gj/view?ts=66e9a849>`_
+
+The Parallel Works team demonstrated the operation the Parallel Works platform
+on RDHPCS on-premise systems.
 
 **7 May 2024** `Open On Demand Features
 <https://drive.google.com/file/d/1e8lCgvxLnU3Br5Em5eHOJLT91l2YS2NB/view?ts=663bcfe0>`_
@@ -348,6 +353,15 @@ Office Hours
 
 The Cloud Computing support team hosts bi-weekly sessions for
 demonstrations, questions and answers.
+
+`19 September 2024 <https://drive.google.com/file/d/1xGIHx6CchAS_P5HcxpLt-OxKp7v3vfQx/view?ts=66ed7b64>`_
+
+ User questions included:
+
+  - persistence of user-created disks
+  - Docker issue preventing disk from launching
+  - workflow creation and an workflow creation button
+  - storage questions.
 
 `5 September 2024 <https://drive.google.com/file/d/12dXyfxvntixzWlsEjl7OgYnVJskoui2L/view?ts=66df59f9>`_
 
