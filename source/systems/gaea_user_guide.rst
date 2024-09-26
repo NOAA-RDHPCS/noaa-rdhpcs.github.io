@@ -1126,12 +1126,61 @@ Fair-share
 Partitions
 ----------
 
-.. warning:: Still working on partitions documentation
++---------+------------+-----+-------+----------+----------+------------------+
+|         | Name       | Nodes       | Time                | Description      |
++         +            +-----+-------+----------+----------+                  +
+| Cluster | Name       | Min | Max   | Default  | Maximum  |                  |
++=========+============+=====+=======+==========+==========+==================+
+| C5 and  | batch      | 1   | 512   | 12:00:00 | 16:00:00 | Default for jobs |
+| C6      |            |     |       |          |          | under the max    |
+|         |            |     |       |          |          | node count.      |
++         +------------+-----+-------+----------+----------+------------------+
+|         | novel      | 513 | *max* | 12:00:00 | 16:00:00 | Default for jobs |
+|         |            |     |       |          |          | above the        |
+|         |            |     |       |          |          | minimum node     |
+|         |            |     |       |          |          | count.  This     |
+|         |            |     |       |          |          | partition is     |
+|         |            |     |       |          |          | only enabled     |
+|         |            |     |       |          |          | after a system   |
+|         |            |     |       |          |          | maintenance.     |
+|         |            |     |       |          |          | Please alert the |
+|         |            |     |       |          |          | HD if you need   |
+|         |            |     |       |          |          | to runa job in   |
+|         |            |     |       |          |          | this partition.  |
++---------+------------+-----+-------+----------+----------+------------------+
+| ES      | eslogin_c5 | 1   | *max* | 12:00:00 | 16:00:00 | These jobs will  |
+|         |            |     |       |          |          | run on the C5    |
+|         |            |     |       |          |          | login nodes.     |
++         +------------+-----+-------+----------+----------+------------------+
+|         | eslogin_c6 | 1   | *max* | 12:00:00 | 16:00:00 | These jobs will  |
+|         |            |     |       |          |          | run on the C5    |
+|         |            |     |       |          |          | login nodes.     |
++         +------------+-----+-------+----------+----------+------------------+
+|         | dtn_f5_f6  | 513 | *max* | 12:00:00 | 16:00:00 | These jobs will  |
+|         |            |     |       |          |          | run on the DTN   |
+|         |            |     |       |          |          | nodes.  The DTN  |
+|         |            |     |       |          |          | nodes have both  |
+|         |            |     |       |          |          | F5 and F6        |
+|         |            |     |       |          |          | mounted.         |
++         +------------+-----+-------+----------+----------+------------------+
+|         | cron_c5    | 1   | *max* | 12:00:00 | 16:00:00 | Required         |
+|         |            |     |       |          |          | partition for    |
+|         |            |     |       |          |          | jobs run under   |
+|         |            |     |       |          |          | scron on the C5  |
+|         |            |     |       |          |          | login nodes.     |
++         +------------+-----+-------+----------+----------+------------------+
+|         | cron_c6    | 1   | *max* | 12:00:00 | 16:00:00 | Required         |
+|         |            |     |       |          |          | partition for    |
+|         |            |     |       |          |          | jobs run under   |
+|         |            |     |       |          |          | scron on the C6  |
+|         |            |     |       |          |          | login nodes.     |
++---------+------------+-----+-------+----------+----------+------------------+
 
-C6 "batch" max nodes 512 "novel" all jobs over 512 nodes.  Only enabled after
-maintenance.  Please contact the HD if you need to run large jobs, so we can
-ensure the partition is enabled.
+.. note::
 
+    The partition information above, and additional information can be listed
+    using the :command:`scontrol --cluster <cluster> show parition` where
+    :command:`<cluster>` is the name of one of the available clusters.
 
 Job Dependencies
 ----------------
