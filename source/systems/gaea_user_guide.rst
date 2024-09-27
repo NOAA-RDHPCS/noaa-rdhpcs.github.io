@@ -27,7 +27,7 @@ collaborative effort between the `Department of Energy
 Administration <https://www.noaa.gov/>`_.
 
 The Gaea System consists of two HPE-Cray EX 3000 systems, referred to as C5 and
-C6.  Two high-capacity parallel filesystems provide over 150 petabytes of fast
+C6.  Two high-capacity parallel file systems provide over 150 petabytes of fast
 access storage. The center-wide filesystem is connected using FDR InfiniBand to
 the center's compute and data-transfer resources. The aggregate Gaea system
 contains a peak calculating capability greater than 20 petaflops (quadrillion
@@ -99,16 +99,12 @@ points at Atlanta and Chicago.
 
 Gaea is the largest of the four NOAA RDHPCS, and is used to study the
 earth's notoriously complex climate from a variety of angles by
-enabling scientists to:
+enabling scientists:
 
-* understand the relationship between
-
-  * climate change and extreme weather such as hurricanes
-  * the atmosphere's chemical makeup and climate
-
-* help unlock the climate role played by the oceans that cover nearly
+* to understand the relationship between climate change and extreme weather,
+  and the atmosphere's chemical makeup and climate
+* to investigate the climate role played by the oceans that cover nearly
   three-quarters of the globe.
-
 
 .. _gaea-node-types:
 
@@ -124,13 +120,13 @@ terms of hardware, but differ in their intended use.
 | Node    |                                                                |
 | Type    | Description                                                    |
 +=========+================================================================+
-| Login   | This is where you are placed when connecting to Gaea. This is  |
-|         | the place to write, edit, and compile your code, manage data   |
+| Login   | You are placed on a login node when you connect to Gaea. This  |
+|         | is where you write, edit, and compile your code, manage data   |
 |         | submit jobs, etc. You should not launch parallel or threaded   |
 |         | jobs from a login node. Login nodes are shared resources.      |
 +---------+----------------------------------------------------------------+
-| Compute | Most of the nodes on Gaea are compute nodes. These are where   |
-|         | your parallel and threaded jobs execute via the                |
+| Compute | Most of the nodes on Gaea are compute nodes. Your parallel and |
+|         | threaded jobs execute on the compute nodes, via the            |
 |         | :command:`srun` command.                                       |
 +---------+----------------------------------------------------------------+
 | DTN     | The DTNs have F5 and F6 file systems mounted.                  |
@@ -154,22 +150,22 @@ Gaea consists of two clusters, C5 and C6.
 
     The C5 compute nodes consist of [2x] 64 core AMD EPYC Zen 2 CPUs, with two
     hardware threads per physical core and 256 GiB of physical memory (2 GiB
-    per core). C5 supports up to the AVX-2 :abbr:`ISA (Insturction Set
-    Architechture)`.
+    per core). C5 supports up to the AVX-2 :abbr:`ISA (Instruction Set
+    Architecture)`.
 
     .. figure:: /images/C5-ComputeNodeDiagram.png
 
-      Each C5 compute nodes has a total of 128 cores, in eight NUMA domains
+      Each C5 compute node has a total of 128 cores, in eight NUMA domains
       per node.  Each group of four cores share an 16 MB L3 cache.  Each CPU
       has eight lanes to the shared 256 GiB of node memory.
 
   .. tab-item:: C6
     :sync: C6
 
-    The C6 compute nodes consiste of [2x] 96 core AMD EPYC Zen 4 CPUs, with two
+    The C6 compute nodes consist of [2x] 96 core AMD EPYC Zen 4 CPUs, with two
     hardware threads per physical core and 384 GiB of physical memory (2 GiB
-    per core). C6 support up to the AVX-512 :abbr:`ISA (Insturction Set
-    Architechture)`.
+    per core). C6 support up to the AVX-512 :abbr:`ISA (Instruction Set
+    Architecture)`.
 
     .. figure:: /images/C6-ComputeNodeDiagram.png
 
@@ -184,7 +180,7 @@ Login nodes
 ===========
 
 The Gaea login nodes have a similar architecture to the compute nodes.  Each
-compute cluster, C5 and C6, have a dedicated set of login nodes.
+compute cluster has a dedicated set of login nodes.
 
 +----------------------+----------------------------+--------------------+
 | Host Names           | Node Configuration         | Associated Compute |
@@ -204,8 +200,8 @@ compute cluster, C5 and C6, have a dedicated set of login nodes.
 Data transfer nodes
 ===================
 
-The data transfer nodes (DTN) is where extensive I/O operations, large local,
-and all off-gaea transfers should be done.  The :abbr:`DTN (Data Transfer
+All extensive I/O operations, large local transfers and all off-gaea transfers
+should be done on a data transfer node (DTN).  The :abbr:`DTN (Data Transfer
 Nodes)`\ s are accessible on the :dfn:`es` cluster, under the :dfn:`dtn_f5_f6`
 partition.
 
@@ -239,7 +235,7 @@ The C5 and C6 nodes are connected with the HPE Slingshot.
 File systems
 ============
 
-Each Gaea compute cluster, C5 and C6, have their own file system.  C5 has
+Gaea compute clusters C5 and C6 have their own file system.  C5 has
 access to F5 mounted at :file:`/gpfs/f5`.  C6 has access to :file:`/gpfs/f6`.
 The :abbr:`DTN (Data Transfer Nodes)`\ s can access both :file:`/gpfs/f5` and
 :file:`/gpfs/f6`.
@@ -286,10 +282,11 @@ with a :abbr:`CAC (Common Access Card)`, or for your first connection, see
 :ref:`connecting-to-rdhpcs`.
 
 By default, the bastion will automatically place a user on a random Gaea C5
-login node.  If you need to access a specific login node ro C6, when prompted
+login node.  If you need to access a specific login node on C6, when prompted
 enter :kbd:`Ctrl-C` and type the name of a login node or ``gaea6`` for a random
 C6 login node:
 
+.. cSpell:ignore CMRS
 .. code-block:: shell
 
     $ ssh <First.Last>@gaea-rsa.rdhpcs.noaa.gov
@@ -339,8 +336,8 @@ C6 login node:
 Data and storage
 ****************
 
-NFS filesystems
-===============
+NFS file systems
+================
 
 Users and projects are given space on the :abbr:`NFS (Network File System)`.
 These locations are ideal for storing user and project applications,
@@ -373,10 +370,10 @@ executables, and small data files.
       - Yes
 
 
-GPFS filesystems
-================
+GPFS file systems
+=================
 
-Each compute cluster, C5 and C6, have their own file system called F5 and F6
+Each compute cluster, C5 and C6, has its own file system called F5 and F6
 respectively, mounted at :file:`/gpfs/f5` and :file:`/gpfs/f6`.
 
 .. list-table::
@@ -436,7 +433,7 @@ respectively, mounted at :file:`/gpfs/f5` and :file:`/gpfs/f6`.
 Move data to and from Gaea
 ==========================
 
-The suggested way to move data to and from Gaea is to use `Globus Online
+The suggested way to move data to and from Gaea is `Globus Online
 <https://app.globus.org>`_.  Please review the additional information in
 :ref:`globus_online_data_transfer` and :ref:`globus_example`.
 
@@ -450,11 +447,11 @@ Programming environment
 ***********************
 
 Gaea users are provided with many pre-installed software packages and
-scientific libraries. To facilitate this, environment management tools are used
-to handle necessary changes to the shell.
+scientific libraries.  Environment management tools are used to handle
+necessary changes to the shell.
 
-Please refer to the `HPE Cray Programming Environment`_ documentation for more
-specifics than what is included in this guide.
+Please refer to the `HPE Cray Programming Environment`_ documentation for
+specifics.
 
 .. _gaea-environment-modules:
 
@@ -473,7 +470,7 @@ General Usage
 -------------
 
 The interface to Lmod is provided by the :command:`module` command:
-
+.. cSpell:ignore modulename unuse MODULESPATH
 +--------------------------------+--------------------------------------------+
 | Command                        | Description                                |
 +================================+============================================+
@@ -487,7 +484,7 @@ The interface to Lmod is provided by the :command:`module` command:
 |                                | ``<modulename>``                           |
 +--------------------------------+--------------------------------------------+
 | ``module show <modulename>``   | Shows the environment changes made by the  |
-|                                | ``<modulename>`` modulefile                |
+|                                | ``<modulename>`` module file               |
 +--------------------------------+--------------------------------------------+
 | ``module spider <string>``     | Searches all possible modules according to |
 |                                | <string>                                   |
@@ -495,10 +492,10 @@ The interface to Lmod is provided by the :command:`module` command:
 | ``module load <modulename>     | Loads the given ``<modulename>``\ (s) into |
 | [...]``                        | the current environment                    |
 +--------------------------------+--------------------------------------------+
-| ``module use <path>``          | Adds ``<path>`` to the modulefile search   |
+| ``module use <path>``          | Adds ``<path>`` to the module file search  |
 |                                | cache and ``MODULESPATH``                  |
 +--------------------------------+--------------------------------------------+
-| ``module unuse <path>``        | Removes ``<path>`` from the modulefile     |
+| ``module unuse <path>``        | Removes ``<path>`` from the module file    |
 |                                | search cache and ``MODULESPATH``           |
 +--------------------------------+--------------------------------------------+
 | ``module purge``               | Unloads all modules                        |
@@ -542,25 +539,8 @@ Compilers
 Cray, AMD, NVIDIA, and GCC compilers are provided through modules on Gaea.
 There is also a system/OS versions of GCC available in :file:`/usr/bin`. The
 table below lists details about each of the module-provided compilers. Please
-see the following :ref:`gaea-compiling` section for more detailed inforation on
-how to compile using these modules.
-
-Cray programming environment and compiler wrappers
---------------------------------------------------
-
-Cray provides ``PrgEnv-<compiler>`` modules (for example, ``PrgEnv-cray``) that
-load compatible components of a specific compiler toolchain. The components
-include the specified compiler as well as MPI, LibSci, and other libraries.
-Loading the ``PrgEnv-<compiler>`` modules also defines a set of compiler
-wrappers for that compiler toolchain that automatically add include paths and
-link in libraries for Cray software. Compiler wrappers are provided for C
-(:command:`cc`), C++ (:command:`CC`), and Fortran (:command:`ftn`).
-
-.. note::
-
-    Use the ``-craype-verbose`` flag to display the full include and link
-    information used by the Cray compiler wrappers. This must be called on a
-    file to see the full output (for example, ``CC -craype-verbose test.cpp``).
+see the :ref:`gaea-compiling` section for more detailed information on
+how using these modules to compile.
 
 MPI
 ====
@@ -580,7 +560,7 @@ Compilers
 =========
 
 Cray, AMD, NVIDIA, and GCC compilers are provided through modules on Gaea.
-There is also a system/OS versions of GCC available in :file:`/usr/bin`. The
+There is also a system/OS version of GCC available in :file:`/usr/bin`. The
 table below lists details about each of the module-provided compilers.
 
 .. important::
@@ -589,9 +569,10 @@ table below lists details about each of the module-provided compilers.
     :command:`CC`, and :command:`ftn`) whenever possible. See the next section
     for more details.
 
+.. cSpell:ignore aocc nvhpc oneapi craycc craycxx crayftn flang gfortran
+.. cSpell:ignore icpx icc icpc ifort nvfortran craype
 .. The following are substitutions to keep the table below the line length
    limit
-
 .. |pe_aocc| replace:: ``PrgEnv-aocc``
 .. |pe_cray| replace:: ``PrgEnv-cray``
 .. |pe_gnu| replace:: ``PrgEnv-gnu``
@@ -678,9 +659,9 @@ libraries that are compatible with Intel host compilers.
 
 .. note::
 
-    Use the ``-craype-verbose`` flag to display the full include and link
+    Use the ``-craype-verbose`` compiler flag to display the full include and link
     information used by the Cray compiler wrappers. This must be called on a
-    file to see the full output (for example, ``CC -craype-verbose test.cpp``).
+    file, for example ``CC -craype-verbose test.cpp``.
 
 .. _gaea-running:
 
@@ -689,19 +670,19 @@ Running jobs
 ************
 
 Computational work on Gaea is performed by *jobs*. Jobs typically consist of
-several componenets:
+several components:
 
 -  A batch submission script
 -  A binary executable
 -  A set of input files for the executable
 -  A set of output files created by the executable
 
-In general, the process for running a job is to:
+In general, the process for running a job is:
 
-#. Prepare executables and input files.
-#. Write a batch script.
-#. Submit the batch script to the batch scheduler.
-#. Optionally monitor the job before and during execution.
+#. prepare executables and input files
+#. write a batch script
+#. submit the batch script to the batch scheduler
+#. optionally monitor the job before and during execution
 
 The following sections describe in detail how to create, submit, and manage
 jobs for execution on Frontier. Frontier uses SchedMD's Slurm Workload Manager
@@ -732,24 +713,29 @@ compute nodes.
 Slurm
 =====
 
-Gaea uses `SchedMD <https://www.schedmd.com/>`_\ 's Slurm Workload Manager for
-scheduling and managing jobs. A few items related to Slurm are below.  See our
-:ref:`slurm-scheduler` documentation for more information.  You may also want
-to use the `Slurm documentation
-<https://slurm.schedmd.com/documentation.html>`_.
+Gaea uses `SchedMD <https://www.schedmd.com/>`_\ 's Slurm Workload Manager to
+schedule and manage jobs. A few items related to Slurm are below.  See
+:ref:`our <slurm-scheduler>` or the official `Slurm documentation
+<https://slurm.schedmd.com/documentation.html>`_ for more information.
 
 Slurm documentation is also available for each command via the :command:`man`
 utility, and on the web at `<https://slurm.schedmd.com/man_index.html>`__.
 
+.. seealso::
+
+    `Slurm documentation`_
+        The official SchedMD Slurm documentation.
 
 Batch Scripts
 -------------
 
 The most common way to interact with the batch system is via batch scripts. A
 batch script is simply a shell script with added directives to request various
-resoruces from or provide certain information to the scheduling system.  Aside
+resources from or provide certain information to the scheduling system.  Aside
 from these directives, the batch script is simply the series of commands needed
 to set up and run your job.
+
+.. cSpell:ignore myjob.sl
 
 To submit a batch script, use the command ``sbatch myjob.sl``, where
 ``myjob.sl`` is the bach script.
@@ -821,25 +807,25 @@ while their job waits in the queue and eventually runs. Occasionally, it is
 necessary to run interactively, especially when developing, testing, modifying
 or debugging a code.
 
-Since all compute resources are managed and scheduled by Slurm, it is not
-possible to simply log into the system and immediately begin running parallel
-codes interactively. Rather, you must request the appropriate resources from
-Slurm and, if necessary, wait for them to become available. This is done
-through an "interactive batch" job. Interactive batch jobs are submitted with
-the :command:`salloc` command. Resources are requested via the same options
-that are passed via ``#SBATCH`` in a regular batch script (but without the
+Since all compute resources are managed and scheduled by Slurm, you can't
+simply log into the system and immediately begin running parallel codes
+interactively. Rather, you must request the appropriate resources from Slurm
+and, if necessary, wait for them to become available. This is done through an
+"interactive batch" job. Interactive batch jobs are submitted with the
+:command:`salloc` command.  You request resources using the same options that
+are passed via ``#SBATCH`` in a regular batch script (but without the
 ``#SBATCH`` prefix). For example, to request an interactive batch job with the
 same resources that the batch script above requests, you would use ``salloc -A
 ABC123 -J RunSim123 -t 1:00:00 -p batch -N 1024``. Note there is no option for
-an output file...you are running interactively, so standard output and standard
-error will be displayed to the terminal.
+an output file if you are running interactively, so standard output and
+standard error will be displayed to the terminal.
 
 .. warning::
 
-    Indicating your shell in your :command:`salloc` command is NOT recommended
-    (for example, ``salloc ... /bin/bash``). Doing so causes your compute job
-    to start on a login node by default rather than automatically moving you to
-    a compute node.
+    Indicating your shell in your :command:`salloc` command, for example
+    ``salloc ... /bin/bash``, is NOT recommended. This will cause your
+    compute job to start on a login node, rather than automatically moving you
+    to a compute node.
 
 .. _common-slurm-options:
 
@@ -848,12 +834,13 @@ Common Slurm Options
 
 The table below summarizes options for submitted jobs. Unless otherwise noted,
 they can be used for either batch scripts or interactive batch jobs. For
-scripts, they can be added on the ``sbatch`` command line or as a ``#SBATCH``
-directive in the batch script. (If they're specified in both places, the
-command line takes precedence.) This is only a subset of all available options.
-Check the `Slurm Man Pages <https://slurm.schedmd.com/man_index.html>`_ for a
-more complete list.
+scripts, they can be added on the :command:`sbatch` command line or as a
+``#SBATCH`` directive in the batch script. (If they're specified in both
+places, the command line takes precedence.) This is only a subset of all
+available options. Check the `Slurm Man Pages
+<https://slurm.schedmd.com/man_index.html>`_ for a more complete list.
 
+.. cSpell:ignore jobout joberr SIGUSR NODELIST usagefactor maxwall
 .. table::
     :widths: 15 28 57
 
@@ -868,7 +855,7 @@ more complete list.
     | ``-t``                 | ``#SBATCH -t 4:00:00``           | Request a walltime of 4 hours.            |
     |                        |                                  | Walltime requests can be specified as     |
     |                        |                                  | minutes, hours:minutes,                   |
-    |                        |                                  | hours:minuts:seconds, days-hours,         |
+    |                        |                                  | hours:minutes:seconds, days-hours,        |
     |                        |                                  | days-hours:minutes, or                    |
     |                        |                                  | days-hours:minutes:seconds                |
     +------------------------+----------------------------------+-------------------------------------------+
@@ -883,11 +870,6 @@ more complete list.
     |                        |                                  | this job cannot start until job 12345     |
     |                        |                                  | exits with an exit code of 0. See the Job |
     |                        |                                  | Dependency section for more information.  |
-    +------------------------+----------------------------------+-------------------------------------------+
-    | ``-C``                 | ``#SBATCH -C nvme``              | Request the burst buffer/NVMe on each     |
-    |                        |                                  | node be made available for your job. See  |
-    |                        |                                  | the Burst Buffers section for more        |
-    |                        |                                  | information on using them.                |
     +------------------------+----------------------------------+-------------------------------------------+
     | ``-J``                 | ``#SBATCH -J MyJob123``          | Specify the job name (this will show up   |
     |                        |                                  | in queue listings)                        |
@@ -947,12 +929,12 @@ Slurm Environment Variables
 Slurm reads a number of environment variables, many of which can provide the
 same information as the job options noted above. We recommend using the job
 options rather than environment variables to specify job options, as it allows
-you to have everything self-contained within the job submission script (rather
-than having to remember what options you set for a given job).
+you to have everything self-contained within the job submission script, instead
+than having to remember what options you set for a given job.
 
 Slurm also provides a number of environment variables within your running job.
 The following table summarizes those that may be particularly useful within
-your job (e.g. for naming output log files):
+your job:
 
 +--------------------------+--------------------------------------------------+
 | Variable                 | Description                                      |
@@ -1028,7 +1010,7 @@ how the job ended. Some codes you might see include:
 | AssocMaxJobsLimit | The job is being held because the user/project has hit  |
 |                   | the limit on running jobs                               |
 +-------------------+---------------------------------------------------------+
-| ReqNodeNotAvail   | The requested a particular node, but it's currently     |
+| ReqNodeNotAvail   | The job requested a particular node, but it's currently |
 |                   | unavailable (it's in use, reserved, down, draining,     |
 |                   | etc.)                                                   |
 +-------------------+---------------------------------------------------------+
@@ -1063,11 +1045,11 @@ Slurm on Gaea uses the `Slurm priority/multifactor plugin
 priority.  The factors used are:
 
 Age
-    the length of time ajob has been waiting in the queue, elgible to be
+    the length of time a job has been waiting in the queue, eligible to be
     scheduled
 
 Fair-share
-    the difference between the portion of the computing resource that has been
+    the difference between the portion of the computing resources that has been
     promised (allocation) and the amount of resources that has been consumed.
     Gaea uses the `classic fairshare algorithm
     <https://slurm.schedmd.com/classic_fair_share.html>`_
@@ -1078,9 +1060,7 @@ Fair-share
 
 .. note::
 
-    Only the compute clusters' QOSes will affect a job's priority value.  ES
-    cluster QOSes (the login nodes and the DTNs) QOSes specific to the login
-    nodes and DTNs do not affect the job's prioities.
+    Only the QOSes on the compute clusters will affect a job's priority value.
 
 
 +----------+----------+--------+----------+-----------------------------------+
@@ -1093,7 +1073,7 @@ Fair-share
 | debug    | 1.00     | 1.00   | 1 hour   | The highest priority QOS.  Useful |
 |          |          |        |          | for short, non-production work.   |
 +----------+----------+--------+----------+-----------------------------------+
-| urgent   | 0.95     | 1.00   | 16 hours | QOS to allow groups to prioitize  |
+| urgent   | 0.95     | 1.00   | 16 hours | QOS to allow groups to prioritize |
 |          |          |        |          | their project's jobs              |
 +----------+----------+--------+----------+-----------------------------------+
 | windfall | 0.00     | 0.00   | 16 hours | Lowest priority as only age and   |
@@ -1109,8 +1089,8 @@ Fair-share
     Interactive jobs, that is jobs started with the :command:`salloc` command,
     will have the QOS *interactive* automatically added unless the ``--qos``
     option is used.  The *interactive* QOS has the same priority factor as the
-    *debug* QOS.  However, users can only have a single *interative* job at any
-    time.
+    *debug* QOS.  However, users can only have a single *Interactive* job at
+    any time.
 
 .. note::
 
@@ -1145,7 +1125,7 @@ Partitions
 |         |            |     |       |          |          | maintenance.     |
 |         |            |     |       |          |          | Please alert the |
 |         |            |     |       |          |          | HD if you need   |
-|         |            |     |       |          |          | to runa job in   |
+|         |            |     |       |          |          | to run a job in  |
 |         |            |     |       |          |          | this partition.  |
 +---------+------------+-----+-------+----------+----------+------------------+
 | ES      | eslogin_c5 | 1   | *max* | 12:00:00 | 16:00:00 | These jobs will  |
@@ -1153,7 +1133,7 @@ Partitions
 |         |            |     |       |          |          | login nodes.     |
 +         +------------+-----+-------+----------+----------+------------------+
 |         | eslogin_c6 | 1   | *max* | 12:00:00 | 16:00:00 | These jobs will  |
-|         |            |     |       |          |          | run on the C5    |
+|         |            |     |       |          |          | run on the C6    |
 |         |            |     |       |          |          | login nodes.     |
 +         +------------+-----+-------+----------+----------+------------------+
 |         | dtn_f5_f6  | 513 | *max* | 12:00:00 | 16:00:00 | These jobs will  |
@@ -1179,13 +1159,13 @@ Partitions
 .. note::
 
     The partition information above, and additional information can be listed
-    using the :command:`scontrol --cluster <cluster> show parition` where
+    using the :command:`scontrol --cluster <cluster> show partition` where
     :command:`<cluster>` is the name of one of the available clusters.
 
 Job Dependencies
 ----------------
 
-Oftentimes, a job will need data from some other job in the queue, but it's
+Frequently, a job will need data from some other job in the queue, but it's
 nonetheless convenient to submit the second job before the first finishes.
 Slurm allows you to submit a job with constraints that will keep it from
 running until these dependencies are met. These are specified with the ``-d``
@@ -1232,7 +1212,7 @@ Holding and releasing jobs
 
 Sometimes you may need to place a hold on a job to keep it from starting. For
 example, you may have submitted it assuming some needed data was in place but
-later realized that data is not yet available. This can be done with the
+later realized that data is not yet available. You can do this with the
 ``scontrol hold`` command. Later, when the data is ready, you can release the
 job (i.e. tell the system that it's now OK to run the job) with the ``scontrol
 release`` command. For example:
@@ -1353,6 +1333,7 @@ typically desired in the terminal window in this usage mode.
 
 :command:`srun` accepts the following common options:
 
+.. cSpell:ignore ncpus
 .. table::
     :widths: 30 70
 
@@ -1389,9 +1370,6 @@ typically desired in the terminal window in this usage mode.
     |                                                | The default values are                     |
     |                                                | ``block:cyclic:cyclic``, see ``man srun``  |
     |                                                | for more information.                      |
-    |                                                | Currently, the distribution setting for    |
-    |                                                | cores (the third "<value>" entry) has no   |
-    |                                                | effect on Frontier                         |
     +------------------------------------------------+--------------------------------------------+
     |  ``--ntasks-per-node=<ntasks>``                | If used without ``-n``: requests that a    |
     |                                                | specific number of tasks be invoked on     |
@@ -1404,15 +1382,14 @@ typically desired in the terminal window in this usage mode.
 Software
 ********
 
-Gaea has several software and libraries available.  These are typically
-available using the :ref:`Lmod module system <gaea-environment-modules>` to
-make the software available.  Use the `module avail` and `module spider`
-commands to see the available software.  Only modules in the :file:`/opt` and
-:file:`/sw` areas are supported at the RDHPCS level.  Projects and users can
-install software and software stacks in their user or project spaces, that is
-in :file:`/ncrc/home[12]/$USER/`, :file:`/usw`, and :file:`/ncrc/proj`
-locations, is maintained and supported by the users and projects that have made
-them available.
+Gaea has several software and libraries available.  These are accessible using
+the :ref:`Lmod module system <gaea-environment-modules>`.  Use the `module
+avail` and `module spider` commands to see the list of software.  Only modules
+in the :file:`/opt` and :file:`/sw` areas are supported at the RDHPCS level.
+Projects and users can install software and software stacks in their user or
+project spaces, that is in :file:`/ncrc/home[12]/$USER/`, :file:`/usw`, and
+:file:`/ncrc/proj` locations. Those projects and users then maintain and
+support the software and software stacks.
 
 *********
 Debugging
@@ -1434,7 +1411,7 @@ recommended debugging software for large parallel applications.
 One of the most useful features of DDT is its remote debugging feature. This
 allows you to connect to a debugging session on RDHPCS systems from a client
 running on your workstation. The local client provides much faster interaction
-than you would have if using the graphical client on RDHPCS systems. For
+than you would have if you use the graphical client on RDHPCS systems. For
 guidance in setting up the remote client see the :doc:`Debugging Software
 </software/debuggers/index>` page.
 
@@ -1504,12 +1481,16 @@ Profiling
 HPE Performance Analysis Tools
 ==============================
 
-The HPE Performance Analysis Tools (PAT), formerly CrayPAT, are a suite of
-utilities that enable users to capture and analyze performance data generated
-during program execution. These tools provide an integrated infrastructure for
-measurement, analysis, and visualization of computation, communication, I/O,
-and memory utilization to help users optimize programs for faster execution and
-more efficient computing resource usage.
+.. _HPC Performance Analysis Tools: https://support.hpe.com/hpesc/public/docDisplay?docId=a00114942en_us&page=About_the_Performance_Analysis_Tools_User_Guide.html
+
+.. cSpell:ignore Perftools
+
+The `HPE Performance Analysis Tools` are a suite of utilities that enable users
+to capture and analyze performance data generated during program execution.
+These tools provide an integrated infrastructure for measurement, analysis, and
+visualization of computation, communication, I/O, and memory utilization to
+help users optimize programs for faster execution and more efficient computing
+resource usage.
 
 There are three programming interfaces available: (1) ``Perftools-lite``, (2)
 ``Perftools``, and (3) ``Perftools-preload``.
@@ -1522,6 +1503,8 @@ displays.
 The first example generates an instrumented executable using a ``PrgEnv-amd``
 build:
 
+.. cSpell:ignore ggdb jobstep
+
 .. code-block:: bash
 
     module load PrgEnv-amd
@@ -1529,7 +1512,7 @@ build:
 
     export CXXFLAGS='-ggdb -O3 -std=c++17 –Wall'
     export LD='CC'
-    export LDFLAGS="${CXXFLAGS} -L${ROCM_PATH}/lib"
+    export LDFLAGS="${CXXFLAGS}
 
     make clean
     make
@@ -1568,9 +1551,9 @@ GPFS (F5) Performance
 
 The Gaea system intermittently has issues with the GPFS F5 performance.  This
 typically appears as file operations hangs in interactive sessions, and as jobs
-taking longer than normal to complete, or timming out. Many jobs on Gaea are
-currently experiencing longer than normal run times.  While we do not yet have
-an underlying cause for this, we have found certain changes to the user's
+taking longer than normal to complete, or time out, as any jobs on Gaea
+currently experience longer than normal run times.  While we do not yet have an
+underlying cause for this, we have found certain changes to the user's
 interactions and workflows that use the GPFS F5 file system help alleviate the
 problem.
 
@@ -1578,9 +1561,9 @@ Files accesses by multiple jobs
 -------------------------------
 
 Users should not have multiple batch jobs access the same files.  This is
-typically done using hard- or soft-links.  Access the same file from multiple
-batch jobs increases the load on the metadata servers (MDS), and can lead to a
-MDS locking up affecting all files served on that MDS.
+typically done using hard- or soft-links.  Accessing the same file from
+multiple batch jobs increases the load on the metadata servers (MDS), and can
+lead to a MDS locking up that affecting all files served on that MDS.
 
 Users should clean up files after the job runs successfully to ensure the file
 system has enough free space for all user's jobs.
@@ -1588,9 +1571,9 @@ system has enough free space for all user's jobs.
 Software Environments
 ---------------------
 
-Users should not store software environments, e.g., conda, spack, on the GPFS
-file system.  These environments have many small files that will be accessed
-from multiple compute nodes when used in batch jobs.
+Users should not store software environments, for example Conda, Python, and
+Spack, on the GPFS file system.  These environments have many small files that
+will be accessed from multiple compute nodes when used in batch jobs.
 
 These environments should be stored in user's or project's home space,
 :file:`/ncrc/home[12]/$USER` and :file:`/ncrc/proj/<project>` respectively.  If
@@ -1612,8 +1595,8 @@ backed up, with hourly and daily snapshots.
 Known issues
 ************
 
-These are a list of known issues we are currently investigating on the Gaea
-system.  Please contact the `RDHPCS support team <getting_help>` for new
+The following is a list of issues we are currently investigating on the Gaea
+system.  Please contact the :ref:`RDHPCS support team <getting_help>` for new
 updates.
 
 Open issues
@@ -1634,4 +1617,4 @@ We are investigating an issue with transfers from Gaea to the GFDL archive
 system.  This affects large transfers (files larger than 2TB), and the overall
 transfer performance.  At this time, we believe transfers initiated using the
 :ref:`Globus transfer app <globus>` are not affected.  We suggest users
-transfering large files to use Globus until a resolution is discovered.
+transferring large files to use Globus until a resolution is discovered.

@@ -3,6 +3,9 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+# VSCode code spell check settings
+# cSpell:enableCompoundWords
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -60,6 +63,7 @@ html_css_files = [
     "css/theme_overrides.css",
 ]
 
+# cSpell:ignore gsce nochange
 html_context = {
     "display_github": True,
     "github_user": "NOAA-RDHPCS",  # Username
