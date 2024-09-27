@@ -140,7 +140,7 @@ and DUO authentication:
 
 .. code-block:: shell
 
-   $ ssh <MSU username>@hercules#login.hpc.msstate.edu
+   $ ssh <MSU username>@hercules-login.hpc.msstate.edu
 
 .. note::
 
@@ -165,7 +165,7 @@ Orion Example:
 
 .. code-block:: shell
 
-   ssh jdoe@orion#login.hpc.msstate.edu
+   ssh jdoe@orion-login.hpc.msstate.edu
 
    ********** N O T I C E **********
 
@@ -247,12 +247,12 @@ host names for the DTNs are for orion:
 
 and for hercules:
 
-   * ``hercules#dtn#1.hpc.msstate.edu``
-   * ``hercules#dtn#2.hpc.msstate.edu``
-   * ``hercules#dtn#3.hpc.msstate.edu``
-   * ``hercules#dtn#4.hpc.msstate.edu``
-   * ``hercules#dtn.hpc.msstate.edu``
-   * the DNS round-robin for ``hercules#dtn#{1..4}``.
+   * ``hercules-dtn-1.hpc.msstate.edu``
+   * ``hercules-dtn-2.hpc.msstate.edu``
+   * ``hercules-dtn-3.hpc.msstate.edu``
+   * ``hercules-dtn-4.hpc.msstate.edu``
+   * ``hercules-dtn.hpc.msstate.edu``
+   * the DNS round-robin for ``hercules-dtn-{1..4}``.
 
 **Globus EndPoints: Available via the Globus File Manager**
 
