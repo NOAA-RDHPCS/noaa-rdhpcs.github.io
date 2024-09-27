@@ -2,15 +2,13 @@
 
 <hr>
 
-This respository contains technical documentation for the [National
-Oceanic and Atmospheric Administration](https://noaa.gov) (NOAA) [High
-Performance Computing and
-Communications](https://www.noaa.gov/information-technology/hpcc)
-(HPCC) Research and Development High-Performance Computer System
-(RDHPCS).
+This repository contains technical documentation for the [National Oceanic and
+Atmospheric Administration](https://noaa.gov) (NOAA) [High Performance
+Computing and Communications](https://www.noaa.gov/information-technology/hpcc)
+(HPCC) Research and Development High-Performance Computer System (RDHPCS).
 
-Visit https://noaa-rdhpcs.github.io for the
-rendered version of this documentation.
+Visit https://docs.rdhpcs.noaa.gov for the rendered version of this
+documentation.
 
 #### Have a suggestion for improvement?
 
