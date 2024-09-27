@@ -470,7 +470,7 @@ General Usage
 
 The interface to Lmod is provided by the :command:`module` command:
 
-.. cSpell:ignore modulename unuse MODULESPATH
+  .. cSpell:ignore modulename unuse MODULESPATH
 +--------------------------------+--------------------------------------------+
 | Command                        | Description                                |
 +================================+============================================+
@@ -715,8 +715,9 @@ Slurm
 
 Gaea uses `SchedMD <https://www.schedmd.com/>`_\ 's Slurm Workload Manager to
 schedule and manage jobs. A few items related to Slurm are below.  See
-:ref:`our local Slurm overview<slurm-scheduler>` or the official `Slurm documentation
-<https://slurm.schedmd.com/documentation.html>`_ for more information.
+:ref:`our local Slurm overview<slurm-scheduler>` or the official `Slurm
+documentation <https://slurm.schedmd.com/documentation.html>`_ for more
+information.
 
 Slurm documentation is also available for each command via the :command:`man`
 utility, and on the web at `<https://slurm.schedmd.com/man_index.html>`__.
