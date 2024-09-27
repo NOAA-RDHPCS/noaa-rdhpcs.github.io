@@ -471,6 +471,7 @@ General Usage
 The interface to Lmod is provided by the :command:`module` command:
 
   .. cSpell:ignore modulename unuse MODULESPATH
+
 +--------------------------------+--------------------------------------------+
 | Command                        | Description                                |
 +================================+============================================+
