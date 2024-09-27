@@ -110,8 +110,8 @@ enabling scientists:
 Node types
 ==========
 
-Gaea has three node types: :term:`login <login node>` or front-end,
-:term:`compute <compute node>`, :term:`data transfer <data transfer node>`
+Gaea has three node types: :term:`login <login node>` (front-end, head-node)
+:term:`compute <compute node>`, and :term:`data transfer <data transfer node>`
 nodes (:abbr:`DTN (data transfer node)`).  The three node types are similar in
 terms of hardware, but differ in their intended use.
 
@@ -120,8 +120,8 @@ terms of hardware, but differ in their intended use.
 | Type    | Description                                                    |
 +=========+================================================================+
 | Login   | You are placed on a login node when you connect to Gaea. This  |
-|         | is where you write, edit, and compile your code, manage data   |
-|         | submit jobs, etc. You should not launch parallel or threaded   |
+| / Front | is where you write, edit, and compile your code, manage data   |
+| / Head  | submit jobs, etc. You should not launch parallel or threaded   |
 |         | jobs from a login node. Login nodes are shared resources.      |
 +---------+----------------------------------------------------------------+
 | Compute | Most of the nodes on Gaea are compute nodes. Your parallel and |
@@ -469,6 +469,7 @@ General Usage
 -------------
 
 The interface to Lmod is provided by the :command:`module` command:
+
 .. cSpell:ignore modulename unuse MODULESPATH
 +--------------------------------+--------------------------------------------+
 | Command                        | Description                                |
@@ -714,7 +715,7 @@ Slurm
 
 Gaea uses `SchedMD <https://www.schedmd.com/>`_\ 's Slurm Workload Manager to
 schedule and manage jobs. A few items related to Slurm are below.  See
-:ref:`our <slurm-scheduler>` or the official `Slurm documentation
+:ref:`our local Slurm overview<slurm-scheduler>` or the official `Slurm documentation
 <https://slurm.schedmd.com/documentation.html>`_ for more information.
 
 Slurm documentation is also available for each command via the :command:`man`
