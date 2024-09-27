@@ -60,29 +60,51 @@ partner clusters.
 
 .. tab-set::
 
-  .. tab-item:: Hera
-    :sync: hera
+  .. tab-item:: Analysis / PPAN
+    :sync: analysis
 
     +-----------+----------------------------+--------------------------+---------+---------------+
     | Cluster   | Display Name               | File Systems             | Site    | Access        |
     +===========+============================+==========================+=========+===============+
-    | Hera      | noaardhpcs#hera            | /scratch1, /scratch2     | NESCC   | Trusted hosts |
+    | PPAN      | noaardhpcs#ppan            | /archive, /home,         | GFDL    | Trusted hosts |
+    |           |                            | /nbhome, /work, /xtmp    |         |               |
     +-----------+----------------------------+--------------------------+---------+---------------+
-    | Hera      | noaardhpcs#hera_untrusted  | /scratch1/data_untrusted | NESCC   | Anywhere      |
-    |           |                            | /scratch2/data_untrusted |         |               |
+    | PPAN      | noaardhpcs#ppan_untrusted  | /collab1/data_untrusted  | GFDL    | Anywhere      |
     +-----------+----------------------------+--------------------------+---------+---------------+
+
+  .. tab-item:: Gaea
+   :sync: gaea
+
+   +-----------+-------------------+--------------------+---------+---------------+
+   | Cluster   | Display Name      | File Systems       | Site    | Access        |
+   +===========+===================+====================+=========+===============+
+   | Gaea      | noaardhpcs#gaea   | /gpfs/f[56],       | NCRC    | Anywhere      |
+   |           |                   | $HOME              |         |               |
+   +-----------+-------------------+--------------------+---------+---------------+
+
+  .. tab-item:: Hera
+    :sync: hera
+
+    +-----------+----------------------------+---------------------------+---------+---------------+
+    | Cluster   | Display Name               | File Systems              | Site    | Access        |
+    +===========+============================+===========================+=========+===============+
+    | Hera      | noaardhpcs#hera            | /scratch1, /scratch2      | NESCC   | Trusted hosts |
+    +-----------+----------------------------+---------------------------+---------+---------------+
+    | Hera      | noaardhpcs#hera_untrusted  | /scratch1/data_untrusted, | NESCC   | Anywhere      |
+    |           |                            | /scratch2/data_untrusted  |         |               |
+    +-----------+----------------------------+---------------------------+---------+---------------+
 
   .. tab-item:: Jet
    :sync: jet
 
-   +-----------+----------------------------+--------------------------+---------+---------------+
-   | Cluster   | Display Name               | File Systems             | Site    | Access        |
-   +===========+============================+==========================+=========+===============+
-   | Jet       | noaardhpcs#jet             | /mnt/lfs4, /mnt/lfs5     | NESCC   | Trusted hosts |
-   +-----------+----------------------------+--------------------------+---------+---------------+
-   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs4/data_untrusted | NESCC   | Anywhere      |
-   |           |                            | /mnt/lfs5/data_untrusted |         |               |
-   +-----------+----------------------------+--------------------------+---------+---------------+
+   +-----------+----------------------------+---------------------------+---------+---------------+
+   | Cluster   | Display Name               | File Systems              | Site    | Access        |
+   +===========+============================+===========================+=========+===============+
+   | Jet       | noaardhpcs#jet             | /mnt/lfs4, /mnt/lfs5      | NESCC   | Trusted hosts |
+   +-----------+----------------------------+---------------------------+---------+---------------+
+   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs4/data_untrusted, | NESCC   | Anywhere      |
+   |           |                            | /mnt/lfs5/data_untrusted  |         |               |
+   +-----------+----------------------------+---------------------------+---------+---------------+
 
   .. tab-item:: Niagara
    :sync: niagara
@@ -96,14 +118,6 @@ partner clusters.
    +-----------+------------------------------+--------------------------+---------+---------------+
 
 
-  .. tab-item:: Gaea
-   :sync: gaea
-
-   +-----------+-------------------+--------------------+---------+---------------+
-   | Cluster   | Display Name      | File Systems       | Site    | Access        |
-   +===========+===================+====================+=========+===============+
-   | PPAN      | noaardhpcs#gaea   | /gpfs/f[56]        | NCRC    | Anywhere      |
-   +-----------+-------------------+--------------------+---------+---------------+
 
 
   .. tab-item:: Orion
@@ -112,7 +126,7 @@ partner clusters.
    +-----------+---------------------+--------------------+-------------------+---------------+
    | Cluster   | Display Name        | File Systems       | Site              | Access        |
    +===========+=====================+====================+===================+===============+
-   | orion     | msuhpc2#Orion-dtn   | /work, /work2      | Orion DTN at MSU  | Anywhere      |
+   | orion     | msuhpc2#orion-dtn   | /work, /work2      | Orion DTN at MSU  | Anywhere      |
    +-----------+---------------------+--------------------+-------------------+---------------+
 
 
@@ -122,7 +136,7 @@ partner clusters.
    +-----------+---------------------+--------------------+----------------------+---------------+
    | Cluster   | Display Name        | File Systems       | Site                 | Access        |
    +===========+=====================+====================+======================+===============+
-   | Hercules  | msuhpc2#Hercules    | /work, /work2      | Hercules DTN at MSU  | Anywhere      |
+   | Hercules  | msuhpc2#hercules    | /work, /work2      | Hercules DTN at MSU  | Anywhere      |
    +-----------+---------------------+--------------------+----------------------+---------------+
 
 NOAA RDHPCS Globus Endpoint Types
