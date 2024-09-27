@@ -33,9 +33,8 @@ the center's compute and data-transfer resources. The aggregate Gaea system
 contains a peak calculating capability greater than 20 petaflops (quadrillion
 floating point operations per second).
 
-NOAA research partners access data remotely through speedy
-interconnections. Two 10-gigabit (billion bit) lambdas, or optical
-waves, pass data to NOAA's national research network through peering
+NOAA research partners access data remotely through fast
+interconnections to NOAA's national research network through peering
 points at Atlanta and Chicago.
 
 .. grid:: 4
