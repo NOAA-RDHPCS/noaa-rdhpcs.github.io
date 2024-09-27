@@ -11,5 +11,6 @@ Software
    python/index
    rocoto/index
    debuggers/index
+   compilers/index
    containers/index
    x2go
