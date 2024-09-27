@@ -20,6 +20,12 @@
 /make.bat @underwoo @josh-eisinger
 
 # Owners of specific documentation pages
+/source/accounts @DV-NOAA
+/source/data/nescc_hpss.rst @DV-NOAA
 /source/systems/gaea/ @hderry @josh-eisinger @underwoo
+/source/systems/hera_user_guide.rst @DV-NOAA
+/source/systems/jet_user_guide.rst @DV-NOAA
+/source/systems/niagara_user_guide.rst @DV-NOAA
+/source/systems/msu-hpc_user_guide.rst @DV-NOAA
 /source/systems/pan/ @chanwilson @underwoo
 /source/systems/gaea_user_guild.rst @hderry @josh-eisinger @underwoo
