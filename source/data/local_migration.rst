@@ -1,8 +1,8 @@
 .. _migrating_local:
 
-************************************
-Migrating Data Between Local Systems
-************************************
+*****************************************
+Migrating Data Between Local File Systems
+*****************************************
 
 .. note::
 
@@ -13,181 +13,219 @@ Migrating Data Between Local Systems
 General Guidelines
 ==================
 
-    1. **Remove unneeded data!**
-    The most efficient way to move a directory is to minimize the data you
-    move. Delete temporary data you have been meaning to get around to purging.
-    Tar and zip small files that you probably won’t need for a while. Archive
-    old files and subdirectories to the HSMS and delete them from scratch file
-    systems.
-
-    2. With limited insight into the data structure of individual
-    directories, it is hard to predict exactly how long a transfer might take.
-    **Be sure to plan far ahead and leave yourself plenty of time to complete a
-    migration!** Note that transferring many small files is often worse than a
-    few large files because performance is more strongly related to the time it
-    takes to access a file, not transfer it.
-
-    3. Perform transfers from a
-    compute node in a batch job as explained below. **Do not use the
-    front-ends.** The I/O on front-end nodes is slower than on a compute nodes
-    because they are shared with other users. (Yes, there is a run-time
-    limitation for a compute job, but that can be addressed by splitting the
-    transfer into smaller chunks and the approaches below).
-
-    4. Use a
-    synchronization tool (NOT just “cp” or “mv”) and **don’t rely on a one-time
-    transfer completing perfectly.** This is important because you will most
-    likely have to run the process more than once, and tools such as rsync will
-    skip already copied files. Then go back and delete the source data once you
-    have confirmed the copy is complete.
-
-    5. Disable all batch and cron jobs
-    that may be modifying the directories to be transferred. Any
-    create/modify/delete changes can result in errors for any data transfer
-    tool. For transfer of a large directory it may be OK to perform an initial
-    copy **live**, but definitely quiesce access before performing a final
-    sync.
-
-    6. Make sure that the user performing the copy has permissions to
-    read all data in the directory to be transferred. If a directory has files
-    which are restricted, you will need to split it up into multiple transfers
-    as multiple users, or change ownership on the source data first
-
+#. **Size the dataset and prune unneeded data.**
+   Use tools such as ``du``, ``tree`` on the directories to understand the
+   data volumes.  Ensure there are no duplicate data sets, temporary
+   working files, or other unneeded content.  **The most efficient way
+   to move data is to reduce the data to move.** Use ``tar`` or ``zip``
+   archiving tools to collapse directories into a single file.  As
+   appropriate, archive directories to the site-specific HSMS and
+   delete from scratch file systems.
+#. **Start early and leave plenty of time for migration.**
+   Be aware that everyone on the filesystems will be moving data.
+   Even with data sizes in hand, with limited insight into the data
+   structure of individual directories, it is hard to predict exactly
+   how long a transfer might take.  **Be sure to plan far ahead and
+   leave yourself plenty of time to complete a migration!** Note that
+   transferring many small files is often worse than a few large files
+   because performance is more strongly related to the time it takes
+   to access a file, not transfer it.
+#. **Make sure that the user performing the copy has permissions to
+   read all data in the directory to be transferred.** If a directory
+   has files or sub-directories which are restricted, you will need to
+   split it up into multiple transfers as multiple users, or change
+   ownership on the source data first.
+#. **Disable all batch and cron jobs that may be modifying the
+   directories to be transferred!** Any create/modify/delete changes
+   can result in errors for any data transfer tool. For transfer of a
+   large directory it may be OK to perform an initial copy
+   **interactively**, but definitely quiesce access before performing
+   a final sync.
+#. **Use a synchronization tool (NOT just** ``cp`` or ``mv`` **) and
+   don’t rely on a one-time transfer completing perfectly.** This is
+   important because you will most likely have to run the process more
+   than once, and tools such as rsync will skip already copied
+   files. Then go back and delete the source data once you have
+   confirmed the copy is complete.
+#. **For small data volumes, use an interactive session** on an HPCS head
+   node.  In the unlikely event the volume of data to move is less
+   than a terabyte (TB) / 1,000 gigabytes (GB) it is appropriate to
+   use a head node to do an 'ad-hoc' data transfer using a tool such
+   as rsync.
+#. **For larger data volumes, submit a batch job** to a 'dtn' or similar
+   queue
 
 Suggested Tools
 ===============
 
-.. note::
+du
+--
 
-    To move a large number of files, please submit a batch job
-    to do the transfers ``as explained in a later section in this page``
+An original part of Unix, the ``du`` disk usage tool will be found on
+every HPCS.  It can provide a simple overview of the usage of a file
+or directory.  Output can be easily sorted by piping the output
+through ``sort``.  One example command is:
+
+.. code-block:: shell
+
+   du -sk DIRECTORY/* | sort -n
+
+- ``-s`` will summarize sub directory usage
+- ``-k`` will output in 1024-byte (1 kiB) blocks
+- ``| sort -n`` pipes the output through the sort, sorted numerically
+
+tree
+----
+
+A highly useful but optional part of Linux systems that `should` be
+installed on all NOAA RDHPCS, the ``tree`` tool provides
+tree-structured output about a directory with the option to summarize
+and calculate usage.  One example command is:
+
+.. code-block:: shell
+
+        tree --du -h -d -L 2 --sort=size DIRECTORY
+
+- ``--du`` will calculate disk usage on directories
+- ``-h`` will display human-readable (K,M,G,T) volumes
+- ``-d`` will summarize directories
+- ``-L 2`` will only show two levels of directories
+- ``--sort=size`` will sort output by size
+
+.. code-block:: shell
+
+    % tree --du -h -d --sort=size -L 2 .
+    [8.8K]  .
+    ├── [6.3K]  source
+    │   ├── [2.6K]  images
+    │   ├── [ 416]  data
+    │   ├── [ 416]  systems
+    │   ├── [ 288]  software
+    │   ├── [ 224]  slurm
+    │   ├── [ 192]  _templates
+    │   ├── [ 192]  accounts
+    │   ├── [ 160]  _downloads
+    │   ├── [ 160]  files
+    │   ├── [ 128]  _search
+    │   ├── [ 128]  _static
+    │   ├── [ 128]  contributing
+    │   ├── [ 128]  help
+    │   ├── [ 128]  logging_in
+    │   ├── [  96]  FAQ
+    │   ├── [  96]  compilers
+    │   ├── [  96]  connecting
+    │   └── [  96]  queue_policy
+    ├── [1.7K]  build
+    │   ├── [ 992]  html
+    │   └── [ 608]  doctrees
+    └── [  96]  utils
+
+      15K used in 24 directories
 
 rsync
 -----
 
-For basic migration, we recommend that you use rsync to transfer your
-directories . Assuming your directory to move is named
-``/mnt/lfs3/SYSADMIN/jetmgmt/jsmith/dir1``, a good way to transfer the data is:
+For basic migration, it is recommended to use the ``rsync`` tool to
+transfer the files and directories. One example command is:
 
 .. code-block:: shell
 
-    rsync -axv /mnt/lfs3/SYSADMIN/jetmgmt/jsmith/dir1
-    /mnt/lfs4/SYSADMIN/jetmgmt/jsmith/    # Can use --delete if you want SRC and DEST to look the same
-
-The -a option means archive, and will make sure
-all ownership and dates are preserved in the transfer.
-
-The -v option means verbose, and each file transfer will be displayed. This
-allows you to see what is happening. If you have lots of small files, this
-could slow down the transfer processes.
-
-The –delete option means to remove files from the destination that are not in
-the source directory. If after a completed rsync a file was then removed from
-the source, then the next rsync with the –delete option would then remove the
-file from the destination/ It may be preferable to clean up the source only
-after confirming that all the files have been transferred.
-
-The "-delete" option is useful when you want to keep the two directories
-looking exactly the same.  Which means, if the file **did not** exist in
-source, you want it removed on destination if did exist.
+    rsync --archive --verbose --one-file-system /full/path/to/source/directory/ /full/path/to/destination/directory
 
 .. warning::
 
-    Do not use the –delete option if you do not want data in the destination
-    directory to be removed.
-
-The -x option means to not cross filesystem boundaries. This is important when
-links are used in your directories to point to other data that exist in on
-other filesystems.
-
-.. note::
-
     It is very important that you have a trailing slash after the
-    source directory ``(/mnt/lfs3/SYSADMIN/jetmgmt/flast'''/''')``. If you do not,
+    source directory: ``/full/path/to/source/directory/`` **/**. If you do not,
     a second invocation of the same command will attempt to retransfer all of
     the data into a subdirectory, for example:
 
-    ``/mnt/lfs4/SYSADMIN/jetmgmt/flast/flast``.
+    ``/full/path/to/source/directory/directory``.
+
+- ``--archive`` (``-a``) will ensure all ownership and dates are
+  preserved in the transfer.
+- ``--verbose`` (``-v``) will display details of every file being
+  transfered. If you have lots of small files, this will slow down the
+  transfer processes.
+- ``--one-file-system`` (``-x``) restricts the transfer to the source
+  filesystem. This is important when symlinks are used to point to
+  data that exists on other filesystems.
+
+To keep the two directories exactly the same, use ``--delete`` -- if
+the file **did not** exist in source, you want it removed on
+destination if does exist:
+
+- ``--delete`` means to remove files from the destination that are not
+  in the source directory. If after a completed rsync a file was then
+  removed from the source, then the next rsync with the –delete option
+  would then remove the file from the destination/ It may be
+  preferable to clean up the source only after confirming that all the
+  files have been transferred.
+
+.. warning::
+
+    Do not use the ``–-delete`` option if you do not want data in the destination
+    directory to be removed.
 
 xsync
 -----
 
-An additional data synchronization tool, **xsync** is also available. It
-is also a wrapper around rsync (and "find" and "xargs")
-that performs multi-threaded transfers.
+On Jet and perhaps Hera, an additional data synchronization tool,
+``xsync`` is available. It is an unsupported wrapper around ``rsync``,
+``find``, and ``xargs`` that performs multi-threaded transfers.
 
-Usage of xsync is almost identical to rsync as described above.
+Usage of ``xsync`` is almost identical to ``rsync`` as described above.
 
 .. note::
 
-    The "include" and "exclude" rsync options are **not fully supported**. To view
-    additional parameters to tune threading and depth for better performance, run
-    ``xsync –-help``. In most cases they should not be needed.
+    ``xsync`` does not support the ``--include`` and ``--exclude``
+    rsync options.  To view additional parameters to tune threading
+    and depth for better performance, run ``xsync –-help``. In mostg
+    cases they should not be needed.
 
-Here is a sample job file that does a final check and also transfers any
-remaining files that may have been created after intial transfer has been
-completed:
 
-.. code-block::
+A sample batch script to transfer data
+======================================
 
-    #!/bin/bash -l
-    #SBATCH -A myacct
-    #SBATCH --time=8:00:00
-    #SBATCH -N 1          # This can use only 1 node
-    #SBATCH -o %x.o%j
-    #SBATCH -J xfer-chk
-    #SBATCH -p xjet
-
-    set -x
-    date
-
-    SRC=/mnt/lfs3/SYSADMIN/nesccmgmt/$USER/regress           # Note - no "/" at the end
-    DEST=/mnt/lfs4/SYSADMIN/nesccmgmt/$USER/                 # Note - ends with a "/"
-
-    xsync -axv $SRC $DEST
-
-    date
-
-Creating a batch job to transfer your data
-==========================================
-
-The following is a sample batch job that can be submitted to perform the data
-transfer work on a compute node.
+Here is a sample batch script that can be used as a template, then
+submitted to the batch system to perform the data movement:
 
 .. code-block:: shell
 
-    #!/bin/bash --login
+    #!/bin/bash
 
-    #SBATCH --job-name=storm
-    #SBATCH --partition=xjet
+    #SBATCH --job-name=data-transfer
+    #SBATCH --partition=PARTITION_GOES_HERE
     #SBATCH --time=08:00:00
     #SBATCH --nodes=1
+    #SBATCH --output=$HOME/data-transfer-job-%j
 
     set -x
 
-    SRC=/mnt/lfs3/BMC/storm/$USER/dir
-    DEST=/mnt/lfs4/BMC/storm/$USER/         # NOTE: The dest is one level higher, and a trailing "/"!!!
+    SRC=/path/to/source/directory/                 # Note trailing slash
+    DEST=/path/to/destination/directory
 
-    OUT=/home/jsmith/storm_jsmith_rsync.log
-    echo “$(date) : Starting sync from $SRC to $DEST”&gt;&gt; $OUT
+    echo "$(date) : Starting sync from $SRC to $DEST"
 
-    rsync -ax $SRC $DEST&gt;&gt; $OUT 2&gt;&amp;1                  # --delete should not be needed
+    rsync -ax $SRC $DEST
 
-    echo “$(date) : Ending sync from $SRC to $DEST”&gt;&gt; $OUT
+    echo "$(date) : Ending sync from $SRC to $DEST"
 
 
-In this example, the project name should be changed to your own project.
-The script asks for 1 node. The reason for this is that we want a dedicated
-node for the data transfer to maximize performance.
+Before using this template, replace the ``PARTITION_GOES_HERE`` with
+the appropriate partition for the HPCS being used.  Refer to the
+system-specific pages for that information.
 
-After creating your batch job, submit it to the batch system. If it does not
-finish in 8 hours, resubmit it. Once it finishes, add “-v” to the rsync line
-and submit it one more time. Examine the output file carefully to make sure
-there are no errors.
+After updating the template and saving it locally as a batch job,
+submit it to the batch system. Watch for the exit status -- if it does
+not finish in 8 hours, resubmit it. Once it finishes successfully, add
+``-v`` to the rsync line and submit it one more time. Examine the
+output file carefully to make sure there are no errors.
 
-If after several tries, the transfer still hasn’t completed, email
-rdhpcs.hera.help@noaa.gov,  and let us know. Include the paths of the output
-files of your transfer jobs so we can see what is happening.
+If after several tries, the transfer still hasn’t completed, and the
+errors are not obvious upon reading the batch job output, refer to the
+:ref:`getting help <getting_help>` pages and ask for assistance.  Be
+sure and include the file paths of the output files of your transfer
+jobs for best assistance.
 
 Known Issues
 ============
@@ -195,42 +233,29 @@ Known Issues
 My job runs to completion but the files are not transferred
 -----------------------------------------------------------
 
-If your job completes and the files appear to not to have transferred, check
-the job output files and the log files.  It is likely that your initialization
-files are printing messages (typically with ``echo`` command in the
-initialization files) that are causing the jobs to fail.
+Look at the job output for obvious errors.  It will be in your home
+directory in a file starting with ``data-transfer-job-``.  If your job
+completes and the files appear to not to have transferred, read that
+file for clues.
+
+If you are not a regular user of the batch system, it is likely that
+your initialization files are printing messages (typically with
+``echo`` command in the initialization files) that are causing the
+jobs to fail.
 
 If this happens you could rename your initialization files (.cshrc, .tcshrc,
-.bashrc, .login, .profile, .bash_profile, etc) temporarily and try again
-
+.bashrc, .login, .profile, .bash_profile, etc) temporarily and try again.
 A better solution is to address the problems caused by these initialization
 files.
 
 Were all my files transferred?
 ------------------------------
 
-After your job has completed successfully, check if there are any errors. You
-can ignore WARNings, and other messages, but  any message with the
-string "FATAL" suggests an incomplete transfer.  It can happen because you
-ran out of time, or there may be other problems.  If your job exited because it
-ran out of time you should be able to resubmit the job but be sure to add the
+Look at the job output.  It will be in your home directory in a file
+starting with ``data-transfer-job-``.  When the job completes read
+that file for clues and any errors.  You can ignore WARNings, and
+other messages, but any message with the string "FATAL" suggests an
+incomplete transfer.  It can happen because you ran out of time, or
+there may be other problems.  If your job exited because it ran out of
+time you should be able to resubmit the job but be sure to add the
 **--resume** option.
-
-You can also use "xsync" as mentioned above to make sure everything has been
-completed as mentioned in the section above.
-
-You can check how much data you had in your old file system and in the new file
-system using the commands:
-
-.. code-block:: shell
-
-  lfs quota -u $USER /mnt/lfs3        to see how much was in /lfs3
-  lfs quota -u $USER /mnt/lfs4        to see how much has been transferred to the new /lfs4
-
-This will give you approximately how much data has been transferred.
-
-
-
-
-
-
