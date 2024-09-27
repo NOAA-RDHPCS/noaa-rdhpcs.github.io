@@ -92,12 +92,11 @@ Launch X2Go Session
 
     X2Go session window with an RDHPCS host configured.
 
-Open an `SSH connection <ssh_access>`_ that will establish the
-`SSH local forward <port-tunnels>`_ to the RDHPCS host.  Once the SSH
-connection is established, open the X2Go client and double click the session in
-the list in the right side bar. When the authentication dialog box appears,
-ensure your user name is correct and enter your :ref:`RSA passcode
-<rsa_instructions>`.
+Open an :ref:`SSH connection <ssh_access>` that will establish the :ref:`SSH
+local forward <ssh-port-tunnels>` to the RDHPCS host.  Once the SSH connection
+is established, open the X2Go client and double click the session in the list
+in the right side bar. When the authentication dialog box appears, ensure your
+user name is correct and enter your :ref:`RSA passcode <rsa_instructions>`.
 
 .. image:: /images/x2go_password.png
     :scale: 30%

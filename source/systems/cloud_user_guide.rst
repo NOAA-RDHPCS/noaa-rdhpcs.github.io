@@ -664,8 +664,8 @@ Learn more on the `workflow
 <https://docs.google.com/document/d/1o2jY2IDuqVbkN3RIDXSMaic5ofi9glJSzlAPsEArhqk>`__
 
 
-What different torage types and costs are available on the PW platform?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+What different storage types and costs are available on the PW platform?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 There are three types of storage available on a cluster,
 those are lustre, object storage [ for backup & restore,
@@ -930,6 +930,41 @@ USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
 Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
 Finland, Lebanon, Denmark, Palestinian Territory Occupied,
 Netherlands, Japan, and Estonia.
+
+Warning messages from the on-prem system about exceeding quota
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Question:** I am getting warning messages from the on-prem system about
+exceeding my quota in my home filesystem when I try to run a workflow. What
+should I do?
+
+You may run into file quota issues when you try
+to run a workflow on an on-prem system.
+
+For example, if you try to run VSCode workflow on Hera, it will try to install
+a bunch of software in the ``$HOME/pw`` directory where you have a very limited
+quota. To address this issue follow the steps below:
+
+1. Check whether the following directory exists on the on-prem system where you
+are getting the quota error from:
+
+  ``$HOME/pw``
+
+If it does, move it to your project space and create a symlink as shown
+below:
+
+.. code-block:: shell
+
+  mv $HOME/pw /a/directory/in/your/project/space/pw
+  ln -s /a/directory/in/your/project/space/pw $HOME/pw
+
+2. If ``$HOME/pw`` doesn't exist, create a directory in your project space and
+create the pw symlink in your home directory as follows:
+
+.. code-block:: shell
+
+  mkdir -p /a/directory/in/your/project/space/pw
+  ln -s /a/directory/in/your/project/space/pw $HOME/pw
 
 
 How do I use the Cost Calculator?
@@ -2142,8 +2177,8 @@ definition page.
 What is NOAA RDHPCS preferred container solution?
 """""""""""""""""""""""""""""""""""""""""""""""""
 
-You can read `NOAA RDHPCS official communication on containers
-<https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/Containers>`_.
+You can read :ref:`NOAA RDHPCS documentation on containers
+<rdhpcs-containers>`.
 
 On security issues and capabilities to run the weather model
 across the nodes, NOAA's RDHPC systems chose Singularity as

@@ -7,13 +7,6 @@
 Welcome to RDHPCS's Documentation
 #################################
 
-.. note::
-   **Documentation Migration in Process**
-
-   We are in the process of migrating from the current `RDHPCS wikis
-   <https://wiki.rdhpcs.noaa.gov>`__ The documentation contained on this site is
-   a migration from the current RDHPCS wikis.  The information here may not be
-   full, and in a sub-optimal layout.
 
 Maintenance Calendar
 ====================
@@ -89,13 +82,6 @@ Software
    software/index
    software/ssh_clients/Tectia/index
 
-Compilers
-=========
-
-.. toctree::
-   :maxdepth: 2
-
-   compilers/index
 
 SLURM
 =====
