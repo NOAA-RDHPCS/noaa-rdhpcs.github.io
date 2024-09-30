@@ -1,4 +1,4 @@
-.. _linar-forge:
+.. _linaro-forge:
 
 ************************
 Debugging with Forge DDT

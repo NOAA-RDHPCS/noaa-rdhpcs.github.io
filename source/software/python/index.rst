@@ -18,8 +18,8 @@ isolating package installations into self-contained directory trees.
 
 Although Python has a native virtual environment feature (``venv``), one
 popular virtual environment manager is `Conda
-<https://conda.io/projects/conda/en/latest/index.html>`__, a package and
-virtual environment manager from the `Anaconda <https://www.anaconda.com/>`__
+<https://docs.conda.io/projects/conda/en/latest/index.html>`_, a package and
+virtual environment manager from the `Anaconda <https://www.anaconda.com/>`_
 distribution. Conda allows users to easily install different versions of binary
 software packages and any required libraries appropriate for their computing
 platform.  The versatility of conda allows a user to essentially build their
@@ -126,6 +126,7 @@ To see a full list of the packages installed in the base environment, use
 ``conda list``.
 A small preview is provided below:
 
+.. cSpell:ignore ipyw jlab libgcc astropy absl argh
 .. tab-set::
 
     .. tab-item:: Gaea
@@ -248,14 +249,15 @@ A small preview is provided below:
             .
             .
 
-
 .. warning::
+
    It is not recommended to try to install new packages into the base
-   environment.  Instead, you can either clone the base environment for yourself
-   and install packages into the clone, or create a brand new (empty) environment
-   and install packages into it.  An example for cloning the base environment is
-   provided in :ref:`python-best-pract` below, while creating new environments
-   is covered directly below in :ref:`python-custom-envs`.
+   environment.  Instead, you can either clone the base environment for
+   yourself and install packages into the clone, or create a brand new (empty)
+   environment and install packages into it.  An example for cloning the base
+   environment is provided in :ref:`python-best-practices` below, while
+   creating new environments is covered directly below in
+   :ref:`python-custom-envs`.
 
 .. _python-custom-envs:
 
@@ -622,7 +624,7 @@ multiple tasks):
    $ srun --pty python3
 
 
-.. _python-best-pract:
+.. _python-best-practices:
 
 Best Practices
 ==============
@@ -638,8 +640,8 @@ Best Practices
 
     .. code-block:: bash
 
-       $ conda create -p <project_home>/<project_id>/<user_id>/envs/baseclone --clone base
-       $ conda activate <project_home>/<project_id>/<user_id>/envs/baseclone
+       $ conda create -p <project_home>/<project_id>/<user_id>/envs/baseClone --clone base
+       $ conda activate <project_home>/<project_id>/<user_id>/envs/baseClone
 
 * **Cloning the "base environment" using venv**:
 

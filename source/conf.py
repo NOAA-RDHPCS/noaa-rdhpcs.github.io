@@ -3,6 +3,9 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+# VSCode code spell check settings
+# cSpell:enableCompoundWords
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -33,6 +36,9 @@ if os.environ.get("GITHUB_ACTIONS", "false") == "true":
 
 exclude_patterns = []
 
+# To use helpmanual.io:
+manpages_url = 'https://code.tools/man/{section}/{page}/'
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 html_title = "NOAA RDHPCS"
@@ -57,6 +63,7 @@ html_css_files = [
     "css/theme_overrides.css",
 ]
 
+# cSpell:ignore gsce nochange
 html_context = {
     "display_github": True,
     "github_user": "NOAA-RDHPCS",  # Username
@@ -113,15 +120,19 @@ linkcheck_allowed_redirects = {
     r'https://.*?\.google\.com/?.*': r'https://accounts\.google\.com/.*?/signin/.*',
     r'https://.*\.google\.com/?.*': r'https://.*?\.google\.com/?.*?/edit',
     r'https://github\.com/?.*': r'https://github\.com/login',
-    r'https://sslvpn\.rdhpcs\.noaa\.gov/': r'https://sslvpn\.rdhpcs\.noaa\.gov/.*'
+    r'https://sslvpn\.rdhpcs\.noaa\.gov/': r'https://sslvpn\.rdhpcs\.noaa\.gov/.*',
+    r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*',
+    r'https://support\.hpe\.com/connect/s/product\?kmpmoid=1013083813': r'https://support\.hpe\.com/connect/s/product\?language=?.*&kmpmoid=1013083813',
+    r'https://conda\.io/.*': r'https://docs\.conda\.io/.*',
 }
 
 linkcheck_ignore = [
     r'https://noaastore\.blob\.core\.windows\.net/?.*',
     r'https://www\.intel\.com/content/.*',
     r'https://www\.lustre\.org/documentation/',
-    r'https://www\.putty\.org/*',
+    r'https://www\.putty\.org/.*',
     r'https://(orion|hercules)-ood.hpc.msstate.edu/?.*',
+    r'https://cpe\.ext\.hpe\.com/docs/latest/.*'
 ]
 linkcheck_retries = 3
 

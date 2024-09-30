@@ -119,25 +119,23 @@ desktop/laptop. However, note the following important points:
    * - Niagara
      - noaardhpcs#niagara_untrusted
      - udtn-niagara.fairmont.rdhpcs.noaa.gov
-     - /collab1/data_untrusted/$USER
+     - :file:`/collab1/data_untrusted/$USER`
    * - Hera
      - noaardhpcs#hera_untrusted
      - udtn-hera.fairmont.rdhpcs.noaa.gov
-     - /scratch[1,2]/data_untrusted/$USER
+     - :file:`/scratch[12]/data_untrusted/$USER`
    * - Jet
      - noaardhpcs#jet_untrusted
      - udtn-jet.boulder.rdhpcs.noaa.gov
-     - /lfs[4,5]/data_untrusted/$USER
+     - :file:`/lfs[45]/data_untrusted/$USER`
    * - Gaea
-     - ncrc#dtn
+     - noaardhpcs#gaea
      - N/A
-     - /lustre/f2/scratch/$USER,
-       /ncrc/home1/$USER,
-       /ncrc/home2/$USER
+     - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
    * - PPAN
      - noaardhpcs#ppan_untrusted
      - N/A
-     - /collab1/data_untrusted/$USER
+     - :file:`/collab1/data_untrusted/$USER`
 
 Because of the limited space available on the uDTNs, you will be using
 two-step transfers:
