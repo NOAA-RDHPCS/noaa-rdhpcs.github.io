@@ -132,6 +132,7 @@ linkcheck_ignore = [
     r'https://www\.lustre\.org/documentation/',
     r'https://www\.putty\.org/.*',
     r'https://(orion|hercules)-ood.hpc.msstate.edu/?.*',
+    r'https://cpe\.ext\.hpe\.com/docs/latest/.*'
 ]
 linkcheck_retries = 3
 
