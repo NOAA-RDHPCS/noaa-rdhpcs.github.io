@@ -123,6 +123,7 @@ linkcheck_allowed_redirects = {
     r'https://sslvpn\.rdhpcs\.noaa\.gov/': r'https://sslvpn\.rdhpcs\.noaa\.gov/.*',
     r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*',
     r'https://support\.hpe\.com/connect/s/product\?kmpmoid=1013083813': r'https://support\.hpe\.com/connect/s/product\?language=?.*&kmpmoid=1013083813',
+    r'https://conda\.io/.*': r'https://docs\.conda\.io/.*',
 }
 
 linkcheck_ignore = [
