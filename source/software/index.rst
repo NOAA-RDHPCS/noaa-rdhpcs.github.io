@@ -9,7 +9,7 @@ Software
 
    modules/index
    python/index
-   rocoto/index
+   workflows/index
    debuggers/index
    compilers/index
    containers/index

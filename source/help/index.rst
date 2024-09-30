@@ -10,6 +10,8 @@ help ticket. Send your help request to the email address below that
 corresponds with the system or function you need help with.  Use your
 noaa.gov email address for all of your correspondence.
 
+.. _rdhpcs-system-help:
+
 +------------------+------------------------------+
 | System           | Email Address                |
 +==================+==============================+
@@ -31,6 +33,8 @@ noaa.gov email address for all of your correspondence.
 +------------------+------------------------------+
 | AIM / Accounts   | rdhpcs.aim.help@noaa.gov     |
 +------------------+------------------------------+
+
+.. _rdhpcs-workflow-help:
 
 +------------------------------------+-----------------------------+
 | Workflow                           | Email Address               |

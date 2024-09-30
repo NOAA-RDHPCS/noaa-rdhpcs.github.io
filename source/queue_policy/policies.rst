@@ -25,171 +25,61 @@ Login nodes should be used for tasks similar to the following:
 Use compute nodes for processes that require more cores, longer run
 times, or more memory.
 
-Cron Usage
-==========
+.. _cron_usage_policy:
 
-To schedule recurring jobs, cron is provided for users. On most
-systems, cron jobs will be started on service/login nodes; therefore
+Cron and scrontab usage
+=======================
+
+To schedule recurring jobs, :ref:`cron <cron_scron>` is provided for users. On
+most systems, cron jobs will be started on service or login nodes; therefore
 the login node usage policy applies to cron jobs.
 
-However, on systems such as Gaea, cron is no longer permitted. Instead,
-**scrontab** is used.
+However, on systems such as Gaea and PPAN, cron is no longer permitted.
+Instead, you must use :ref:`scrontab <rdhpcs_scrontab>`.
 
-scrontab
-========
+Any process launched from cron or scrontab must be one of the following:
 
-**Scrontab** is a Slurm-managed crontab that runs on a designated partition
-rather than the login nodes. The scrontab command is used to set, edit, and
-remove a user’s Slurm-managed crontab. A user can set the VISUAL or EDITOR
-environment variables. See ``man scrontab`` for more information.
+- A call to a workflow manager for controlling recurring tasks
+- other scripts that submits or manages jobs in the batch system
+- short running (less than 2 minute) data manipulation task
 
-**Sample Script**
+To ensure cron and scrontab jobs do not overload the service or login nodes,
+please consider the following:
 
-.. code-block:: shell
-
-  #SCRON --partition=cron_c5
-  #SCRON --time=1:00:00
-  #SCRON --job-name=scron_test
-  #SCRON --chdir=/ncrc/home1/First.Last
-  #SCRON --output=/ncrc/home1/First.Last/scron_test.%j.scrontab
-  0 * * * * /ncrc/home1/First.Last/test.csh
-
-
-Jobs created with scrontab are assigned a single job id. When a job is
-cancelled, there will be no future runs, and the job will be commented out in
-the users scrontab.
-
-To skip the next run of your cron job, use ``control requeue <job_id>``.
-
-Scron Expressions
+Cron/Scrontab Dos
 -----------------
 
-scrontab uses the same syntax for date and time as cron. The format of the
-scrontab command is: minute | hour | day of month | month | day of week.
-
-
-+------------------+--------------------------+
-| Field            | Allowed Values           |
-+==================+==========================+
-| minute           | 0-59                     |
-+------------------+--------------------------+
-| hour             | 0-23                     |
-+------------------+--------------------------+
-| month            | 1-12, or use name        |
-+------------------+--------------------------+
-| day of the week  | 0-7 (0 and 7 are Sunday) |
-|                  | or use name              |
-+------------------+--------------------------+
-
-A field can contain an asterisk (*), meaning that it's valid for each of the
-allowed values for the given time period. Ranges are allowed, where a range is
-two numbers with a hyphen between them. The second number must be greater than
-the first.
-
-scrontab allows you to use shortcuts to specify some common time intervals for
-the specified script to run. These include the following:
-
-* @yearly | @annually: job will run at 00:00 Jan 01 each year
-* @monthly: job will run at 00:00 on the first day of each month
-* @weekly: job will run at 00:00 Sunday of each week
-* @daily | @midnight: job will run at 00:00 each day
-* @hourly: job will run at the first minute of each hour
-
-Timezones
-^^^^^^^^^
-
-User-defined timezones are not supported.
-Scrontab times are in **UTC**.
-
-So for example, ``5 20 * * * script1`` runs script1 everyday at 20:05 UTC, or
-15:05 (3:05 PM) EST.
-
-Running Multiple Jobs
-^^^^^^^^^^^^^^^^^^^^^^
-
-To run multiple jobs, add another entry with your preferred #SCRON directives.
-
-Sample Script
-""""""""""""""
-
- .. code-block:: shell
-
-    #SCRON --partition=cron_c5
-    #SCRON --ntasks=16
-    #SCRON --time=1:00:00
-    #SCRON --account=
-    #SCRON --job-name=scron_test
-    #SCRON --chdir=/ncrc/home1/First.Last
-    #SCRON --output=/ncrc/home1/First.Last/scron_test.%j.scrontab
-    0 * * * * /ncrc/home1/First.Last/test.csh
-
-    #SCRON --partition=cron_c5
-    #SCRON --ntasks=16
-    #SCRON --time=1:00:00
-    #SCRON --account=
-    #SCRON --job-name=scron_test2
-    #SCRON --chdir=/ncrc/home1/First.Last
-    #SCRON --output=/ncrc/home1/First.Last/scron_test2.%j.scrontab
-    0 * * * * /ncrc/home1/First.Last/test2.csh
-
-
-Best Practices
---------------
-
-- Please **DO** review your crontab/scrontab entries once a month and
+- Review your crontab/scrontab entries once a month and
   remove unneeded entries to assure efficient RDHPCS resource
   utilization! It is easy to forget to remove your crontab entries at
-  the conclusion of your experiment!
-- **DO NOT** redirect the output of your cron jobs to /dev/null. This
+  the conclusion of your experiment.
+- Remove all "busy waits" (tight loops without sleeps) from
+  workflow management scripts.
+- Add a line ``MAILTO=First.Last@noaa.gov`` to the top of your crontab or add
+  scrontab directive ``--mail-user=<email>`` to your scrontab, so you get
+  emails for cron job output (errors).
+- Launch additional Slurm jobs using :command:`sbatch` to the appropriate
+  cluster/partition for compute or long-running data manipulation tasks.
+
+Cron/Scrontab Don'ts
+--------------------
+
+- Do not redirect the output of your cron jobs to /dev/null. This
   will make it impossible for you to be notified of problems with your
   cron job.
-- **DO NOT** rely on cron jobs running on specific hosts. Your crontab
-  will be visible from all frontends, and jobs may be launched from
+- Do not rely on cron jobs running on specific hosts. Your crontab
+  will be visible from all front ends, and jobs may be launched from
   any available frontend. (See Chron for more details).
-- **DO NOT** run "scp", "rsync", and "tar" processes which last more
-  than 2 minutes directly on the cron servers. They are most likely
-  suited for the "service" or one of the "serial" parallel
-  environments:
-- **DO** Remove all "busy waits" (tight loops without sleeps) from
-  workflow management scripts.
-- **DO** add a line like: "MAILTO=First.Last@noaa.gov" to the top of
-  your crontab or add scron directive “--mail-user=<email>” to your
-  scrontab, so you get emails for cron job output (errors).
+- Do not run :command:`scp`, :command:`rsync`, and :command:`tar` processes
+  which last more than 2 minutes directly on the cron servers. They are most
+  likely suited for the *service* or one of the serial parallel environments:
+- Do not have a run frequency shorter than every 10 minutes outside an approved
+  real-time reservation, or nor shorter than three (3) minutes when in an
+  approved real-time reservation.
+- Do not run compute tasks or large data management tasks from cron, as they
+  will have a negative impact on all users and may cause system instability
+  problems. Such processes may be killed without warning.
 
-For Rocoto, it is always advisable to use the "default" version rather
-than a specific version as shown below:
-
-.. code-block:: shell
-
-   $ /apps/rocoto/default/bin/rocotorun -w /path/to/myxml/wrf.xml -d /path/to/mydb/wrf.db
-
-Any process launched from cron **MUST** be one of the following:
-
-- call to "workflowmgr" for controlling recurring tasks, or
-- other scripts that submits or manages jobs in the batch system, or
-- short running (less than 1 minute) data manipulation task.
-- **DO NOT** run compute tasks or large data management tasks from
-  cron, as they will have a negative impact on all users and may cause
-  system instability problems. Such processes may be killed without
-  warning.
-
-Cron Job Frequency
-------------------
-
-**DO NOT** create crontabs that execute every minute. There is no
-reason to do so and it creates an unnecessary load on the system. This
-rule also applies to all instances of the Workflow Manager.
-
-Please use the following rules as to how often (at most) to call a
-repeating processes:
-
-- Does not run in an approved real-time reservation:
-
-  - No more than every 10 minutes.
-
-- Runs in an approved real-time reservation:
-
-  - No more than every 3 minutes.
 
 .. _allocation:
 
