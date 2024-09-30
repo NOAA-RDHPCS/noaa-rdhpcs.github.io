@@ -1,11 +1,10 @@
+.. _connecting-to-rdhpcs:
+
 ##########
 Connecting
 ##########
 
-
 .. _Account Information Management:	https://aim.rdhpcs.noaa.gov
-
-.. _connecting-to-rdhpcs:
 
 Connecting for the first time
 =============================
