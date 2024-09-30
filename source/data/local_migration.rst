@@ -169,8 +169,9 @@ destination if does exist:
 xsync
 -----
 
-On Jet and perhaps Hera, an additional data synchronization tool,
-``xsync`` is available. It is an unsupported wrapper around ``rsync``,
+On Jet and Hera, an additional data synchronization tool,
+``xsync`` is available in ``/apps/local/bin``. It is an unsupported
+wrapper around ``rsync``,
 ``find``, and ``xargs`` that performs multi-threaded transfers.
 
 Usage of ``xsync`` is almost identical to ``rsync`` as described above.
