@@ -171,7 +171,7 @@ For example, user First.Last may access his home directory as either:
 .. code-block:: shell
 
    /home/First.Last
-   /home/fl
+   /home/fal
 
 The short "userdir" name is a convenient shorthand for the longer username
 (First.Last).
@@ -491,9 +491,11 @@ To access most analysis software, you must use the "module" command, described
 below. Only matlab, idl, and mathematica are accessible without loading a
 module.
 
-Most GFDL software on PP/AN (and workstations) is managed by
-Spack, which facilitates easier, automated, and more frequent software updates.
-(GFDL Spack-managed software environment wiki)
+Most GFDL software on PP/AN (and workstations) is managed by Spack, which
+facilitates easier, automated, and more frequent software updates. The `GFDL
+Spack-managed software environment wiki
+<https://wiki.gfdl.noaa.gov/index.php/Spack-managed_software_environment>`_
+provides more information.
 
 To request installation of a new analysis software package, please submit a
 help desk ticket.
