@@ -99,6 +99,11 @@ Bastion Hostnames
 .. |NRPRNG|	replace:: niagara-rsa.princeton.rdhpcs.noaa.gov
 .. |NRBRNG|	replace:: niagara-rsa.boulder.rdhpcs.noaa.gov
 
+.. |PPPRNG|	replace:: bastion-analysis.princeton.rdhpcs.noaa.gov
+.. |PPBRNG|	replace:: bastion-analysis.boulder.rdhpcs.noaa.gov
+.. |PAPRNG|	replace:: analysis-rsa.princeton.rdhpcs.noaa.gov
+.. |PBPRNG|	replace:: analysis-rsa.boulder.rdhpcs.noaa.gov
+
 .. |OUG|	replace:: :ref:`orion-user-guide`
 
 +-------------------+-----------------+--------------------+
@@ -119,6 +124,10 @@ Bastion Hostnames
 | Niagara           | |NCBRNG|        | |NRBRNG|           |
 +                   +                 +                    +
 |                   | |NCPRNG|        | |NRPRNG|           |
++-------------------+-----------------+--------------------+
+| PPAN              | |PPPRNG|        | |PAPRNG|           |
++                   +                 +                    +
+|                   | |PPBRNG|        | |PBPRNG|           |
 +-------------------+-----------------+--------------------+
 | Cloud             | Unavailable     | Use ParallelWorks  |
 +-------------------+-----------------+--------------------+
