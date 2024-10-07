@@ -21,4 +21,5 @@ Below we give an overview and explain where each storage area is mounted.
     transferring_data
     globus_online_data_transfer
     globus_example
+    local_migration
 
