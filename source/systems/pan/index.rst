@@ -42,7 +42,7 @@ This diagram represents the PPAN Data Network.
 Login to Analysis
 =================
 
-`Log into analysis using ssh <secure-shell-ssh-access>`, authenticate with either a
+:ref:`Log into analysis using ssh <secure-shell-ssh-access>`, authenticate with either a
 CAC or an RSA fob. 
 
 ssh setup for GFDL Workstations
