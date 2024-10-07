@@ -27,7 +27,7 @@ The GFDL Post-processing and Analysis Cluster is called Pan. For interactive
 use, it contains approximately 20 analysis hosts with names like an001, an101,
 and an200.
 The analysis hosts feature a high-performance (CXFS) interface to the big-data
-filesystems ``/archive`` and ``/work``. A variety of data analysis software 
+filesystems ``/archive`` and ``/work``. A variety of data analysis software
 packages is available via the environment modules system.
 
 For batch use, Pan contains about 100 post-processing hosts with names like
@@ -43,14 +43,15 @@ Login to Analysis
 =================
 
 :ref:`Log into analysis using ssh <ssh_access>`, authenticate with either a
-CAC or an RSA fob. 
+CAC or an RSA fob.
 
 ssh setup for GFDL Workstations
 -------------------------------
 
-From the GFDL workstations, to setup ``ssh`` to allow additional analysis logins
-without further authentication, existing users should run the commands below to
-update the configuration files.  New users should not need to run these commands.
+From the GFDL workstations, to setup ``ssh`` to allow additional analysis
+logins without further authentication, existing users should run the 
+commands below to update the configuration files.  New users should not need
+to run these commands.
 
 .. code-block:: shell
 
