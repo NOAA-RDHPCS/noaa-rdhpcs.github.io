@@ -9,12 +9,12 @@ PPAN User Guide
 
 
 Post Processing and Analysis (PPAN) is a small cluster comprised of
-over 130 Dell servers located in GFDL in Princeton, NJ. These systems
-have over one petabyte of disk storage and access to nearly 200
+over 130 Dell servers located at GFDL in Princeton, NJ. These systems
+have multiple petabytes of disk storage and access to nearly 200
 petabytes of archive storage. Combined with various generations of
-Intel processors, from Sandy Bridge to Coffee Lake, each has
-specifications that range from 48-512GB of memory and is designed to
-provide a system that can meet any user's demand.
+Intel processors, from Sandy Bridge to Ice Lake, each has
+specifications that range from 48-512GB of memory and are designed to
+provide a system that can meet most user demands.
 
 PPAN supports GFDL’s science community by providing a place to further analyze
 and interpret models generated on other HPC systems. This gives users a local
@@ -27,8 +27,8 @@ The GFDL Post-processing and Analysis Cluster is called Pan. For interactive
 use, it contains approximately 20 analysis hosts with names like an001, an101,
 and an200.
 The analysis hosts feature a high-performance (CXFS) interface to the big-data
-filesystems /archive and /work. A variety of data analysis software packages is
-available via the environment modules system.
+filesystems ``/archive`` and ``/work``. A variety of data analysis software 
+packages is available via the environment modules system.
 
 For batch use, Pan contains about 100 post-processing hosts with names like
 pp006 and pp317. The Slurm batch scheduler permits models running on Gaea to
@@ -42,17 +42,15 @@ This diagram represents the PPAN Data Network.
 Login to Analysis
 =================
 
-ssh Setup
----------
+`Log into analysis using ssh <secure-shell-ssh-access>`, authenticate with either a
+CAC or an RSA fob. 
 
-You can authenticate to ssh using a CAC or an RSA fob.
-Using either method, after your first login, you can open additional
-windows without further authentication.
+ssh setup for GFDL Workstations
+-------------------------------
 
-New users are created with configuration files for both methods, in ~/.ssh (for
-RSA) and ~/.ssh2 (for CAC).
-
-Existing users should run the commands below to create the configuration files:
+From the GFDL workstations, to setup ``ssh`` to allow additional analysis logins
+without further authentication, existing users should run the commands below to
+update the configuration files.  New users should not need to run these commands.
 
 .. code-block:: shell
 
@@ -153,7 +151,7 @@ any of the analysis nodes (workstations don't work):
 
 .. code-block:: shell
 
-  >ssh ${pp_nodename}.princeton.rdhpcs.noaa.gov
+  >ssh ${pp_nodename}
 
 where ${pp_nodename} is one of the pp nodes (i.e. pp212, pp301). The same
 method will work from analysis (not from the workstations) to log into an
@@ -327,17 +325,14 @@ can be accessed via gcp.
 Batch Software
 ==============
 
-The NOAA/RDHPCS systems in Princeton, Boulder, and Fairmont, and the DOE gaea
-system, now use the Slurm batch system.
+The NOAA/RDHPCS systems in Princeton, Boulder, and Fairmont, and the DOE Gaea
+system, use the Slurm batch system.
 
 Slurm is an open-source batch system developed by DOE since 2003. It is now in
 wide use at DOE and other supercomputer sites. Slurm now includes backfill
 scheduling and accounting. Commercial support is available from SchedMD LLC.
 Slurm replaces the Moab batch system used since 2010. Tables below show
 corresponding Slurm and Moab commands and options.
-
-Since the conversion to Slurm, users of the FMS Runtime Environment (FRE) must
-use fre/bronx-15 or later on gaea and PP/AN.
 
 Access
 ------
