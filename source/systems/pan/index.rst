@@ -392,77 +392,6 @@ Using these scripts, it's easy to show long jobnames. For example:
 
 shows all running jobs, with 40 characters of each jobname.
 
-Job Scripts
------------
-
-Users who do not use FRE must convert their job scripts from Moab to Slurm.
-This is mostly a translation of #PBS to #SBATCH lines. To convert an existing
-Moab job script to Slurm:
-
-Make sure the top line invokes the shell that runs the script:
-
-.. code-block:: shell
-
- #!/bin/csh -f
-
-Change #PBS to #SBATCH in all script header lines.
-
-See if your -o stdout_path is a directory. If it is, change it to:
-
-.. code-block:: shell
-
- -o stdout_path/%x.o%j
-
-This will create the file <jobname>.o<jobid> in this directory.
-
-For each #PBS line, look up the option in the table below. If the setting is
-the Slurm default, or does not exist in Slurm, remove it. Otherwise, convert it
-to the corresponding #SBATCH long or short option. Corresponding long and short
-options are equivalent.
-
-.. code-block:: shell
-
-   #PBS                    #SBATCH (long)                  #SBATCH (short)
-   ----                    --------------                  ---------------
-   -N jobname              --job-name=jobname              -J jobname
-
-   -l size=1                 default
-   -l nodes=1:ppn=1        --ntasks=1                      -n 1
-   -l nodes=1:ppn=2        --ntasks=2                      -n 2
-   -l walltime=10:00:00    --time=10:00:00                 -t 10:00:00
-
-   -d dir                  --chdir=dir                     -D dir
-
-   -o dir                  --output=dir/%x.o%j             -o dir/%x.o%j
-   -o file                 --output=file                   -o file
-   -j oe                     default
-
-   -r y                      default
-   -r n                    --no-requeue
-
-   -q analysis             --partition=analysis            -p analysis
-   -q bigmem               --constraint=bigmem             -C bigmem
-   -q bigvftmp             --constraint=bigvftmp           -C bigvftmp
-
-   -v VAR=value            --export=VAR=value
-   -A gfdl_x               --account=gfdl_x                -A gfdl_x
-
-   -m abe                  --mail-type=all
-   -m a                    --mail-type=fail
-   -M my.name@noaa.gov     --mail-user=my.name@noaa.gov
-
-   -S /bin/csh               none
-
-Order of precedence is:
-
-lowest:  #SBATCH lines in jobscript
-middle:  SBATCH_* environment variables
-highest: sbatch command line options
-
-$TMPDIR can be used without change. It is created and removed at job start and
-end. On Slurm, TMPDIR is /vftmp/My.Name/job12345. If you use $TMP, change it to
-$TMPDIR.
-
 Gotchas
 -------
 
@@ -497,8 +426,9 @@ Spack-managed software environment wiki
 <https://wiki.gfdl.noaa.gov/index.php/Spack-managed_software_environment>`_
 provides more information.
 
-To request installation of a new analysis software package, please submit a
-help desk ticket.
+To request installation of a new analysis software package, open a help desk
+ticket. Send email to oar.gfdl.help@noaa.gov, with Software Installation in the
+subject line.
 
 Using Modules
 -------------
