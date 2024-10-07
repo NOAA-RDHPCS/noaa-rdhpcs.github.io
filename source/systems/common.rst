@@ -114,4 +114,3 @@ Bastion Hostnames
 | MSU-HPC Orion     | Unavailable     | |OUG|              |
 +-------------------+-----------------+--------------------+
 
-
