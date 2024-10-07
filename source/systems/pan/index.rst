@@ -49,7 +49,7 @@ ssh setup for GFDL Workstations
 -------------------------------
 
 From the GFDL workstations, to setup ``ssh`` to allow additional analysis
-logins without further authentication, existing users should run the 
+logins without further authentication, existing users should run the
 commands below to update the configuration files.  New users should not need
 to run these commands.
 
