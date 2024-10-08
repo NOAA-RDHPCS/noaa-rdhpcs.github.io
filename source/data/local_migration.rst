@@ -163,8 +163,8 @@ destination if does exist:
 
 .. warning::
 
-    Do not use the ``–-delete`` option if you do not want data in the destination
-    directory to be removed.
+    Do not use the ``–-delete`` option if you do not want data in the
+    destination directory to be removed.
 
 xsync
 -----
