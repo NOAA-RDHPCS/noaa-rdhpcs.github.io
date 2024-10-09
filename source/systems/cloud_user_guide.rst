@@ -675,7 +675,7 @@ software library].
 **Lustre file system**
 
 Parallel file system, available as ephemeral, and persistent
-storage on the AWS, Azure, and GCP cloud platforms. You can
+storage on the AWS and Azure cloud platforms. You can
 create as many lustre file systems as you want from the PW
 Storage tab by selecting the “add storage” button.
 
@@ -2105,8 +2105,8 @@ You can read more about `AWS Lustre <https://docs.aws.amazon.com/fsx/latest/Lust
     "ephemeral": false
   }
 
-Azure and GCP Lustre explained
-""""""""""""""""""""""""""""""
+Azure Lustre explained
+""""""""""""""""""""""
 
 Azure:
 
@@ -2115,7 +2115,7 @@ system service to the platform, but for now it is deployed similarly
 to Googles. This also means that the cost of Lustre on Azure is
 significantly higher than it will be on AWS.
 
-On GCP and Azure, the usable capacity of the file system will mostly
+On Azure, the usable capacity of the file system will mostly
 be determined by the number of OSS nodes you use, and the type of
 instances you select. We default to 'Standard_D64ds_v4' instances for
 Azure Lustre. Regardless of the node size you choose, you will want to
@@ -3394,15 +3394,15 @@ using the old image. This can be done under the Controller Settings by choosing
 
 .. image:: /images/Centos7.5.png
 
-**Using Lustre on GCP, or legacy Lustre on Azure-Like compute
+**Using legacy Lustre on Azure-Like compute
 clusters**
 
-legacy Lustre configurations require setting a Lustre server image that matches
+Legacy Lustre configurations require setting a Lustre server image that matches
 the Lustre client version included in *CentOS 7* and *Rocky 8* based images.
 Therefore, it is recommended that your Lustre cluster runs the same base OS as
 your compute cluster.
 
-This section **only applies to Lustre on GCP and the legacy Lustre
+This section **only applies to the legacy Lustre
 implementation on Azure.** AWS FSx for Lustre and Azure Managed Lustre
 configurations do not need to be modified.
 
