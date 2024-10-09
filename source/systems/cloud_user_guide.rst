@@ -675,7 +675,7 @@ software library].
 **Lustre file system**
 
 Parallel file system, available as ephemeral, and persistent
-storage on the AWS, Azure, and GCP cloud platforms. You can
+storage on the AWS and Azure cloud platforms. You can
 create as many lustre file systems as you want from the PW
 Storage tab by selecting the “add storage” button.
 
@@ -2117,8 +2117,8 @@ You can read more about `AWS Lustre <https://docs.aws.amazon.com/fsx/latest/Lust
     "ephemeral": false
   }
 
-Azure and GCP Lustre explained
-""""""""""""""""""""""""""""""
+Azure Lustre explained
+""""""""""""""""""""""
 
 Azure:
 
@@ -2127,7 +2127,7 @@ system service to the platform, but for now it is deployed similarly
 to Googles. This also means that the cost of Lustre on Azure is
 significantly higher than it will be on AWS.
 
-On GCP and Azure, the usable capacity of the file system will mostly
+On Azure, the usable capacity of the file system will mostly
 be determined by the number of OSS nodes you use, and the type of
 instances you select. We default to 'Standard_D64ds_v4' instances for
 Azure Lustre. Regardless of the node size you choose, you will want to
@@ -2810,7 +2810,8 @@ below:
 
 Instance Types explained
 
-**How to find cores and threads on a node?**
+How to find cores and threads on a node?
+""""""""""""""""""""""""""""""""""""""""
 
  .. code-block::
 
@@ -2872,7 +2873,8 @@ per month. If the project does not require this storage, PI
 may create a cloud help desk ticket to remove it. Only
 Parallel Works Cloud administrator can remove this storage.
 
-**How do I find my project's object storage [aka bucket or block
+**How do I find the project object storage,
+[aka bucket or block
 storage] and access keys from Parallel Works?**
 
 From the login page, click on the IDE icon located at the
@@ -2921,14 +2923,14 @@ file transfer.
 **Azure: How to copy a file from the controller node to the project's
 permanent storage?**
 
-#. Start a cluster and login into the controller node.
+1. Start a cluster and login into the controller node.
 
    An example use the project cz-c4-id's secret file.
 
    Your project's permanent storage file name is the same as
    the secret key file name.
 
-#. Copy and paste the secret key file located at PW's file
+2. Copy and paste the secret key file located at PW's file
    manager storage:storage/project_keys/azure/gfdl-non-cz-c4-id
    in the controller node terminal.
 
@@ -2941,7 +2943,7 @@ permanent storage?**
    Indicating Service Principal Name (SPN) by using a secret
    succeeded.
 
-#. Copy a file:
+3. Copy a file:
 
    Use the Azure destination as: *noaastore.blob.core.windows.net/ <Name of the
    secret key file>*
@@ -2965,7 +2967,7 @@ permanent storage?**
      Number of Folder Property Transfers: 0
      Total Number of Transfers: 1
 
-#. To list the file, use the command:
+4. To list the file, use the command:
 
 .. code-block:: shell
 
@@ -3351,3 +3353,93 @@ This works.
 We are working to fix this bug. If you own the Azure cluster, please
 run the command ``sudo /root/run_ansible``.  It will take about 2 mins
 to complete, and will mount /apps file system.
+
+**How can I revert clusters to CentOS 7?**
+
+To load the default CentOS 7 config from the marketplace:
+
+1. Go to the cluster's configuration page:
+
+.. image:: /images/Centos7.1.png
+
+2. Push the Load From Market button
+
+.. image:: /images/Centos7.2.png
+  :scale: 60 %
+
+3.  Select AWS Default Intel FV3 Configuration v.1.0.0 from the dropdown menu,
+    and click the Restore button. Don't forget to save your changes!
+
+**Manually Manually configure a cluster to use CentOS 7**
+
+If you have already made extensive modifications to your cluster's definition,
+you may prefer to revert the required settings by hand without loading a config
+from the marketplace. There are two primary settings that need to be configured
+to revert back to CentOS 7: The OS image, and the ``/apps`` disk snapshot. Keep
+in mind that the OS image will need to be set on the controller and every
+partition you have configured on the cluster.
+
+**Configuring the CentOS 7 OS Image**
+
+The final CentOS 7 PW image is called ``pw-hpc-c7-x86-64-v31-slurm`` on every
+cloud provider. To configure the controller (login node) to use this image,
+
+find the ``Image*`` dropdown under the Controller settings and select the
+image. If you have trouble finding it in the list, you can type or copy+paste
+the image name into the search bar to locate it. The examples below were taken
+from an Azure definition, but the same steps can be done on AWS and GCP as
+well.
+
+.. image:: /images/Centos7.3.png
+
+Follow the same procedure on each of your compute partitions to select the
+CentOS 7 image under ``the Elastic Image*`` dropdown:
+
+.. image:: /images/Centos7.4.png
+
+**Configuring the /apps disk for CentOS 7**
+
+The software and modules under ``/apps`` were built specifically for their
+target operating systems, so the CentOS 7 disk also needs to be selected when
+using the old image. This can be done under the Controller Settings by choosing
+``/apps`` in the ``Image Disk Name settings``, as shown here:
+
+.. image:: /images/Centos7.5.png
+
+**Using legacy Lustre on Azure-Like compute
+clusters**
+
+Legacy Lustre configurations require setting a Lustre server image that matches
+the Lustre client version included in *CentOS 7* and *Rocky 8* based images.
+Therefore, it is recommended that your Lustre cluster runs the same base OS as
+your compute cluster.
+
+This section **only applies to the legacy Lustre
+implementation on Azure.** AWS FSx for Lustre and Azure Managed Lustre
+configurations do not need to be modified.
+
+
+**Migrating Lustre Filesystems to Rocky 8**
+
+If you intend to keep your compute clusters on the ``latest`` image now running
+*Rocky 8*, we recommend that you also replace any existing *CentOS 7* based
+**persistent** Lustre resources to use Rocky 8 as well. Our suggested method to
+do this involves duplicating your existing storage configuration and copying
+your data to the new Lustre, either by copying directly from the old storage,
+or by syncing it with a bucket. Once you have verified that all of your data
+has been migrated, the old filesystem can be shutdown.
+
+If your data is backed
+up to a bucket already, you can also re-provision your existing Lustre
+configuration and re-sync the data.
+
+.. note::
+
+  Regarding Azure controller instances,
+  there is a known issue causing Rocky 8 clusters provisioned with certain
+  instances to fail. As a workaround, we have made the default Rocky 8 cluster
+  use a Standard_DS3_v2 as the controller, as this machine type is known to work.
+  This node type is marginally more expensive than the default controller
+  originally used on CentOS 7 based clusters. A future update will resolve this
+  issue.
+
