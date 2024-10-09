@@ -887,6 +887,18 @@ What is the certified browser for Parallel Works Platform?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Google Chrome browser.
 
+How do I handle a Login error - Invalid username or password.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This error can happen when a user token is out of sync with the single sign on
+system. Try logging in to an on-prem HPC system like Niagara or Hera, then try
+the Parallel Works system. If the login fails, log into the `<account URL
+<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_ to check whether
+“single sign on” is working. If your login still fails, open a cloud help desk
+case. Send email to rdhpcs.cloud.help@noaa.gov, with Login Error in the
+Subject. In this case, include the information that you have attempted the
+“single sign on” login test.
+
 How do I access on-prem HPS Systems from Parallel Works?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
