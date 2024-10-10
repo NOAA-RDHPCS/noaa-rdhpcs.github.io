@@ -25,7 +25,6 @@ author = "NOAA RDHPCS"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 extensions = ["sphinx_rtd_theme",
               "sphinx_design",
-              "sphinxcontrib.mermaid",
               "sphinx_sitemap"]
 
 # Additional templates for all locations
