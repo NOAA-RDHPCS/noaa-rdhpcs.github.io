@@ -91,16 +91,16 @@ training required before you can login, and for the yearly password
 resets and training to keep your account active.
 
 .. _TAPS: https://taps.hpc.msstate.edu
+.. _here: https://docs.rdhpcs.noaa.gov/help/index.html#getting-help
 
 **Password Resets**
 
-A password reset can only be done by phone during normal business days
-(M-F) from 08:00-12:00 and 13:00-17:00 Central Time. If you forget
-your password, please call: *(662) 325-9146*. If you do not get an
-answer keep calling every 30 minutes. If busy, call again every 15
-minutes. The MSU HPC2 admin will verify your ID, unlock your account,
-and issue a temporary password that is only valid to access the TAPS_
-portal.
+If you need to reset your password, please navigate to the TAPS_ portal
+and select "Forgot your password?". Enter your username, and then select
+"Request Password Reset". If your account is locked or disabled, or the
+"Password Reset" feature isn't working, please send a ticket to the MSU
+help desk with the subject "Password Reset Request". The MSU e-mail
+address can be found here_.
 
 .. note::
 
