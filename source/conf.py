@@ -25,7 +25,6 @@ author = "NOAA RDHPCS"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 extensions = ["sphinx_rtd_theme",
               "sphinx_design",
-              "sphinxcontrib.mermaid",
               "sphinx_sitemap"]
 
 # Additional templates for all locations
@@ -105,7 +104,8 @@ html_theme_options = {
     "style_external_links": True,
     "style_nav_header_background": "#efefef",
     "logo_only": True,
-    "display_version": True,
+    "version_selector": True,
+    "language_selector": True,
     "vcs_pageview_mode": "blob",
 }
 
