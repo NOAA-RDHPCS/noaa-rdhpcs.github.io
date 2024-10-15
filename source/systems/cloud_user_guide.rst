@@ -47,7 +47,7 @@ Workflow
 The typical workflow for using the cloud resources is presented in the
 following diagram.
 
-.. figure:: /images/cloudprocessing.jpg
+.. figure:: /images/cloud_processing.jpg
   :alt: typical NOAA compute workflow diagram
 
 .. tab-set::
@@ -107,398 +107,47 @@ following diagram.
 
        `Start and stop a cluster`_
 
-Users can install and use a `Globus Connect Personal <https://www.globus.org/globus-connect-personal>`_
-endpoint to transfer larger files. The RDHPCS reminds all users who perform
-transfers out of the cloud of using a Globus endpoint that all egress
-charges will be applied to the project.  This includes data stored in
-a CSP public, free to access repositories, like the NOAA `NODD
-<https://www.noaa.gov/information-technology/open-data-dissemination>`_.
+.. _NOAA NODD: https://www.noaa.gov/information-technology/open-data-dissemination
+
+Users can install and use a `Globus Connect Personal
+<https://www.globus.org/globus-connect-personal>`_ endpoint to transfer larger
+files. The RDHPCS reminds all users who perform transfers out of the cloud of
+using a Globus endpoint that all egress charges will be applied to the project.
+This includes data stored in a CSP public, free to access repositories, like
+the `NOAA Open Data Dissemination (NODD) <NOAA NODD_>`_ program.
+
 
 Getting Help
 ============
 
 Please reference the :ref:`RDHPCS Cloud Help Desk <getting_help>` page for
-questions or assistance.
+questions or assistance.  In addition, you can use the `quarterly cloud users
+question intake
+<https://app.smartsheetgov.com/b/form/871515373b844cebba904980245e9b19>`_ form
+to send your feedback to the team.
 
-Please send your feedback on product, support, and documentation to
-Unni Kirandumkara, email address: Unni.Kirandumkara@noaa.gov.
-You may also submit a question or a comment using the  `Question Intake Form
-<https://app.smartsheetgov.com/b/form/871515373b844cebba904980245e9b19>`_.
 
+Usage Reports
+=============
 
-Training Videos
-===============
+The Parallel Works `cost dashboard <https://noaa.parallel.works/cost>`_ will
+show your project's current costs, and a breakdown of how those costs were
+used.
 
-The NOAA RDHPCS Cloud Computing team along with
-Parallel Works presents training sessions for Cloud users.
-Recorded sessions and other materials are linked below.
+The cloud team also produces a `monthly usage report
+<https://sites.google.com/noaa.gov/rdhpc-docs-internal/reports/cloud-usage>`_
+that has an overview of costs for all cloud projects.  Those reports are useful
+for portfolio managers (PfM) and principal investigators (PI) to monitor
+multiple projects in a single spreadsheet.
 
-.. note::
 
-  You must login using your NOAA email credentials to access the
-  videos and other material.
+Cloud Presentations
+===================
 
-20 June 2024 `TensorFlow Jumpstart <https://drive.google.com/file/d/1WklYsbKrp8_4tydqkayAM6EwCVKDNG-9/view>`_.
-Presented by Ron Millikan. A `transcript of the training <https://docs.google.com/document/d/1Ys5S0YGeREmJgXy_KQ6tOygidVV7zGdmmzJDqIZTDzY/edit>`_
-is available as well.
-
-Beginner's Guide to NOAA's HPC Cloud
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Presented in November 2023, Parallel Works presents the basics on
-using the Parallel Works platform to create, start, monitor and
-interact with the compute clusters, and the use of workflows on the
-clusters.  This includes working interactively with services like
-`Jupyter notebooks <https://jupyter.org>`_, and using integrated
-development environments (IDE) like `RStudio
-<https://posit.co/products/open-source/rstudio/>`_.
-
-.. raw:: html
-
-  <iframe src="https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/preview"
-          frameborder="0"
-          width="500"
-          height="300"></iframe>
-
-Parallel Works
-==============
-
-**16 September 2024**
-`Accessing On-Premise Systems using the Parallel Works
-Platform <https://drive.google.com/file/d/1-Gn9kK2sOUXbvBqt7orVvw8dYpCvu5gj/view?ts=66e9a849>`_
-
-The Parallel Works team demonstrated the operation the Parallel Works platform
-on RDHPCS on-premise systems.
-
-**7 May 2024** `Open On Demand Features
-<https://drive.google.com/file/d/1e8lCgvxLnU3Br5Em5eHOJLT91l2YS2NB/view?ts=663bcfe0>`_
-This functionality will be available in both Cloud-based and
-On-Premise environments. The training covers the following topics
-
-* Provide graphical management of file systems and data
-* Use graphical job templates, job submissions, and job management.
-* Create and edit files and scripts directly through the web interface.
-* Transfer files (<8GB in size) from local workstation to and from HPC systems.
-* Allow multiple mounts per system
-* Seamless user authentication between the Parallel Works service and
-  on-premise system
-
-.. note::
-
-  For now you have to add a PW SSH KEY TO REMOTE SYSTEM
-
-* New capabilities
-
- - Launch interactive terminal windows.
- - Launch a Remote Desktop (disconnect and reconnect as needed).
- - Launch Jupyter Notebooks on both Login nodes and Compute nodes.
- - Launch   graphical programs on both Login nodes and Compute nodes
-   (i.e., MATLAB, ARM Forge/DDT, etc.).
-
-
-* Working on merging on-prem and cloud together
-
- - Based on resource host selection
-
-* Adding many platforms and utilities:
-
- - ARM FORGE
- - MATLAB
- - Intel Advisor
- - Intel VTune
- - ECFlow
- - R Studio (possibly)
-
-* Per user tuning of graphics quality, based on each user's network
-  bandwidth and network latency.
-* Provide an alternative user authentic
-* ation method via integrating
-  with Login.gov's OAuth OIDC service.
-
-
-**April 10, 2024**
-`Job monitor and VNC settings
-<https://drive.google.com/file/d/1NAZcvlE8YNmvKVM8VUPjA35q3G3wE3x6/view?ts=6617f095>`__
-
-**February 28, 2024**
-`Rocky8: Linux Image and New Storage Features
-<https://drive.google.com/file/d/1IR65GJ7L6iTQc2dOCF4Uy_h70PCfolYS/view?ts=65e1fd65>`__
-
-**February 9, 2024**
-`On-Demand Provisioning on On-Premise HPC systems
-<https://drive.google.com/file/d/1MfEIlbuV0MD057K8y97VKDrKiNnOyBuj/view?ts=65cf6a19>`__
-
-**November 1, 2023** `A Beginner's Guide to Rstudio Docker
-Containers <https://drive.google.com/file/d/1bAMHl7CQIO6dRobORa5ZxLCtbGa4P1mi/view?ts=6543d955>`_
-
-**Parallel Works New Features Training, September 27, 2023**
-`Workshop
-<https://drive.google.com/file/d/1C8Ouyhg4zw1knkbrHZcAdp9vlptPTvf6/view?ts=6515d57a>`__
-
-Enhancements to Parallel Works features:
-  -  Updates to Notifications, with expanded notification types and
-     email notification options
-  -  Short term credentials, which can be used effectively for cluster
-     and storage resources
-  -  Updates to the Marketplace feature. Cluster and storage
-     configurations can now be shared with team members through the
-     Marketplace.
-  -  Lustre configurations can now be designated persistent, and saved
-     separately from the clusters. This potentially saves storage
-     costs.
-
-**Parallel Works New Features Training, June 14, 2023**
-`Workshop
-<https://drive.google.com/file/d/1hu1Q-VindCStFtMixCk2Vfie9JK9NJy-/view?ts=648b2fef>`__
-
-Especially useful for new users:
- - Parallel Works platform
- - new feature on storage
- - enhanced cost dashboard.
-
-**Parallel Works New Features Training, March 23, 2023**
-`Workshop
-<https://drive.google.com/file/d/1QeC3WDS2aG3EdxyeTNS84vPECo26dxtP/view?ts=641c5fe3>`__
-
-- Show estimated costs to run a given cluster configuration
-- SSH keys configurable from inside platform, at user level
-- Configurable slurm timeouts (and other slurm settings)
-- building a custom snapshot.
-
-**Parallel Works Foundation, February 16, 2023**
-Foundational topics include:
-- Creation of a cluster configuration
-- multi-user setup
-- hiding a resource
-- duplicating a resource
-- monitor to view cluster status
-- cost dashboard
-- connect to a controller node
-- running an interactive job
-- storage options
-- Scheduler and deletion tabs from the Resource monitor link.
-
-`Presentation <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`__
-
-**Workflows**
-`Presentation <https://drive.google.com/file/d/1dcnPAsXUqt9SWvRo7CEhgXHFdmNCm3qV/view?ts=63f3bd26>`_
-
-Workflow topics include:
-
-- subscribing a workflow from the PW Marketplace, example **Juypter Notebook**
-- running a job from the head node and compute node
-- canceling a job,
-- deletion of a cluster
-- creation and use of a custom image in a workflow
-- **RStudio**
-- sharing a cluster with project members, and
-- bootstrap script.
-
-**Workflow Interactive Session**
-`Presentation <https://drive.google.com/file/d/1rTNz8MNeQwxq_8Xvm-SQa2-0hYDdggfn/view?ts=63f3e2bf>`__
-
-Molecular dynamics simulation and visualization on a multi-cluster model.
-
-**Training Q & A**
-
-`Questions and comments
-<https://docs.google.com/document/d/1eXZvqbsg8gpTrqjyA_dDqOs1wMaygVQZq1Rl2yXGbUo/edit#heading=h.6fg85uulj4z9>`__
-
-**Parallel Works Training**
-
-- `Parallel Works Version 2, March 23, 2022
-  <https://drive.google.com/file/d/1-bkcc8k3_2nEKL-xhSAyLNe_K0iXM_r8>`__
-
-- `Parallel Works Version 2, January 20, 2022
-  <https://drive.google.com/file/d/1Ag12PtVMLu4kHmLZfR04geVOf8g1RwbO>`__
-
-- `Parallel Works Platform Training II, July 15, 2021
-  <https://drive.google.com/file/d/1i_1cNkRdpsbMeegpC-ZsiMPhkdAmbpjA>`__
-
-Topics include:
-
--  Connecting to a transient cluster head node from a remote host
--  Configuration settings to re-size the nodes count
--  Lustre file system; Use of different processors
--  Monitoring workers
--  Slurm jobs
--  workflow Jupyter Notebook
--  Singularity container example
--  Budget allocation
-
-**Use Case Sessions**
-
-`JupyterHub Installation on a Conda, and R Troubleshooting, April 7,
-2023
-<https://drive.google.com/file/d/1gA1bv69JMCWQuk8iYApgugmt1W04ctkg/view?ts=6436b22b>`__
-
-`Globus Training: Setup and Data Transfer March 17, 2023
-<https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`__
-
-`Useful tutorials from Globus
-<https://docs.globus.org/how-to/instructional-videos/>`__
-
-Cloud Success Stories
-=====================
-
--  `NOS Team: Storm Surge Modelling, September 27, 2022
-   <https://drive.google.com/file/d/12WWIjj-ULJkkAtxbMnerq8LAdWSvR7gd/view?usp=sharing>`__
--  `NWS Team: Rapid Refresh Forecast System, September 21, 2022
-   <https://drive.google.com/file/d/1ESypA2IRLKAzAvrxjmVAi1mhnIS7OwtK/view?usp=sharing>`__
--  `EPIC Cloud Success Story, September 15, 2022
-   <https://drive.google.com/file/d/1muXZQ6uTDFEnGNUG5ZJ_R59D9HwBWDP9/view>`__
-
-Office Hours
-============
-
-The Cloud Computing support team hosts bi-weekly sessions for
-demonstrations, questions and answers.
-
-`19 September 2024 <https://drive.google.com/file/d/1xGIHx6CchAS_P5HcxpLt-OxKp7v3vfQx/view?ts=66ed7b64>`_
-
- User questions included:
-
-  - persistence of user-created disks
-  - Docker issue preventing disk from launching
-  - workflow creation and an workflow creation button
-  - storage questions.
-
-`5 September 2024 <https://drive.google.com/file/d/12dXyfxvntixzWlsEjl7OgYnVJskoui2L/view?ts=66df59f9>`_
-
-`25 July 2024 <https://drive.google.com/file/d/10n4YZcLUu07EoTWocQO2GFSI5m354G7-/view>`_
-
-`5 June 2024
-<https://drive.google.com/file/d/18AzIwzGIjrB1CTCCyOG6yQJB5gciFgs0/view?ts=6661daa2>`_
-
-`14 September 2023
-<https://drive.google.com/file/d/1INH-x7Cz025UtwMQDjlQX9Yn5MdQ_xE5/view?ts=6504735f>`__
-
-`30 August 2023
-<https://drive.google.com/file/d/1qbZHqXSfH2V5J_SL2Nt7Huq86v4nqjBK/view?ts=64f0bb3e>`__
-
-- Balancing the relative cost of computation and storage
-- Allocation questionnaire for the coming year
-- Issues with GPUs, storage costs and reservations
-- A user requested that estimation costs and GPU
-  information should be added to documentation/Wiki
-- Using a Jupityr notebook, and whether it can be set up on Contrib
-- A request more allocation on AWS
-- Transitioning from Linux to Cloud
-
-`16 August 2023
-<https://drive.google.com/file/d/1Sybufzev_MEl7o0k41B5wKaCM1Nne6qG/view?ts=64de6f71>`__
-
-- Azure file transfers
-- Access issues
-- File path from Parallel Works
-- Questions on Jupyter
-- Confidential data
-- ssh key versus api key
-- R Studio.
-- cluster persistence
-
-`2 August 2023
-<https://drive.google.com/file/d/1yRvdLWIsQo9K7sSCs01Gm9fRduizekcZ/view?ts=64cd5bb3>`__
-
-- new GFDL team getting started
-- verview of new features in Parallel Works, particularly temporary
-  credentials for buckets.
-
-`5 July 2023
-<https://drive.google.com/file/d/1e7lkH3esEToYEBvL53P0DJm8Sm0L4G33/view?ts=64a6ee9f>`__
-
-- GPU selection and constraints, especially on Azure
-- Can a user configure the Cloud account to send email when
-  a job completes or fails?
-- Users have had clusters that completed work but did not
-  shut down.
-- new Properties tab in Parallel Works
-- Super Computing Conference in Denver, 12-17 November.
-
-`21 June 2023
-<https://drive.google.com/file/d/1PPj6ZM6cZTPE6FVGt9luDDiouAo9RRty/view?ts=64944e9f>`__
-
-- Challenges in getting on-demand Nvidia GPU processors.
-- On-demand reservations
-- Cost of jobs submitted under the
-  reservation system.
-- Cost Estimation feature available with the AWS system.
-
-
-`7 June 2023
-<https://drive.google.com/file/d/1N7PwnfYu5aD0Fo8Z8GYwCF9brw0m9J72/view?ts=6481d78c>`__
-
--  Account problems
--  Studio workflows
--  The new COST dashboard
--  Lustre configuration issues
--  Azure cold storage options.
-
-`24 May 2023
-<https://drive.google.com/file/d/1r9AFrctc-OuhQpWlxzjeFmXEbs-kxGob/view?ts=646f6dcf>`__
-
-- Disk space allowance on /contrib, /home, and the Cloud environment.
-- The difference between MDS and OST boot disk size, and access to each.
-- Cluster activation and de-activation, and timing and configuration
-  changes.
-- Methods currently in use to move data to and from the Cloud.
-- Syncing global-workflow fixed files for \`develop\` to AWS s3, and
-  related AWS s3 issues
-- Optimized IC staging for regression testing  Mitigating FS latency
-- Azure operation questions.
-
-
-`10 May 2023
-<https://drive.google.com/file/d/1zL8TQ68qa3Nh0s3JB11VnvrJtwqEhvaH/view?ts=646d0527>`__
-
-- The Podman application
-- Reported queueing problems in Parallel Works
-- Could the frequent version increments in Parallel Work have an
-  impact on clusters or other operations in progress?
-- Features in future update: Partition settings in Google Cloud
-  configuration
-
-`26 April 2023
-<https://drive.google.com/file/d/1ZtZuZoJ28-M8qEvwZERvOENaUrNcCdmU/view?ts=64528126>`__
-
-This video references the creation of a cloud/custom snapshot in these
-steps:
-
-- Resource definition
-- Activate conda at boot
-- Update ``.bashrc`` using bootstrap script
-- Copy files from laptop to contrib using scp, rsync, and Globus
-- Cluster health check
-- Copy file between contrib and bucket using gsutil
-
-
-
-`12 April 2023
-<https://drive.google.com/file/d/1WEhr5aJ37FLTqIoCbFbxt1vXi4I0yZtd/view?ts=64381afa>`__
-
-- Google contrib storage use best practices
-- Finding a project bucket
-- The ``gsutil`` command
-- Azure's contrib and block storage as the same storage
-- Storage issues, including centralized storage of user public ssh
-  keys
-- upcoming features, storage, health check scripts and custom
-  snapshots
-
-**Features in Development**
-
-There are new features and capabilities under discussion at Parallel
-Works. If you are interested in these features, send an email ticket
-to: rdhpcs.cloud.help@noaa.gov, with the subject line PW Features.
-
-Monthly Utilization Reports
-===========================
-
-FY2024 Usage
-^^^^^^^^^^^^
-
-`Cumulative usage through end of May
-<https://docs.google.com/presentation/d/1fzqbYr1ma-ajJWRJQDcxPpgOAsojFKG_1-S_Y7f3Y3s/edit#slide=id.p>`_
+Occasionally the RDHPCS cloud team and other cloud users give presentations
+that we record.  These presentations are available for RDHPCS user consumption
+on an `RDHPCS internal site
+<https://sites.google.com/noaa.gov/rdhpc-docs-internal/home>`_.
 
 
 Frequently Asked Questions
