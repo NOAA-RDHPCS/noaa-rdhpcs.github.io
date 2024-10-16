@@ -18,9 +18,20 @@ as well as its other environmental research areas.
 There are currently two major systems at NESCC:
 
 - Hera* A 760 Tflop Cray Compute Cluster high performance computing
-  system
+  system.
 - HPSS* A 50 Petabyte IBM/Oracle hierarchical storage management
   system.
+
+In 2025, two systems are scheduled for addition to NESCC:
+
+- Ursa, based on AMD 9654 with DDN Lustre, should be in place early in 2025.
+- Rhea, based on AMD Turin with DDN Lustre & VAST File Systems, is expected in
+  the second half of the calendar year.
+
+These `slides
+<https://docs.google.com/presentation/d/1uFii6V18uaYMcA7WNKF3eAtn26LU4pcxp8uEqEdDPz0/edit#slide=id.g30820fabc4a_16_0>`_
+present the schedule and configuration of Ursa and Rhea.
+
 
 .. _hera-system-overview:
 
