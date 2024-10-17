@@ -144,7 +144,7 @@ local port number:
 
 .. code-block:: shell
 
-    $ ssh -L 12345:localhost:12345 J.Doe@<bastion>.rdhpcs.noaa.gov
+    $ ssh -L 12345:127.0.0.1:12345 J.Doe@<bastion>.rdhpcs.noaa.gov
 
 Once logged in, start the JupyterLab session using a port number in the range
 8800-8900 range:
@@ -171,8 +171,15 @@ Once logged in, start the JupyterLab session using a port number in the range
 
     Take note of the URL provided to you by Jupyter for a later step.  It will
     resemble
-    ``http://localhost:<port#>/lab?token=################################################``.
+    ``http://127.0.0.1:<port#>/lab?token=################################################``.
     You will need the full token number.
+
+.. warning::
+
+    Be aware that the port number assigned by Jupyter may be different
+    than the one specified. This can occur when the chosen port is already
+    in use. In this case, Jupyter will assign the next available port.
+    If the port number changes, make note of it for the next command.
 
 window 2
 """"""""
@@ -182,7 +189,7 @@ JupyterLab session between your localhost and the RDHPCS system:
 
 .. code-block:: shell
 
-    $ ssh -N -f -p 12345 -L <port#>:localhost:<port#> J.Doe@localhost
+    $ ssh -p 12345 -L <port#>:127.0.0.1:<port#> J.Doe@127.0.0.1
 
 .. note::
 
@@ -202,7 +209,7 @@ local port number:
 
 .. code-block:: shell
 
-    $ ssh -L 12345:localhost:12345 J.Doe@<bastion>.rdhpcs.noaa.gov
+    $ ssh -L 12345:127.0.0.1:12345 J.Doe@<bastion>.rdhpcs.noaa.gov
 
 Start an interactive batch session.  On the compute node, use ``hostname`` to
 get the name of the compute node.  This will be needed later:
@@ -239,8 +246,15 @@ Start the JupyterLab session using a port number in the range 8800-8900 range:
 
     Take note of the URL provided to you by Jupyter for a later step.  It will
     resemble
-    ``http://localhost:<port#>/lab?token=################################################``.
+    ``http://127.0.0.1:<port#>/lab?token=################################################``.
     You will need the full token number.
+
+.. warning::
+
+    Be aware that the port number assigned by Jupyter may be different
+    than the one specified. This can occur when the chosen port is already
+    in use. In this case, Jupyter will assign the next available port.
+    If the port number changes, make note of it for the next two commands.
 
 window 2
 """"""""
@@ -250,14 +264,14 @@ JupyterLab session between your localhost and the RDHPCS system:
 
 .. code-block:: shell
 
-    $ ssh -p 12345 -L <port#>:localhost:<port#> J.Doe@localhost
+    $ ssh -p 12345 -L <port#>:127.0.0.1:<port#> J.Doe@127.0.0.1
 
 Once the connection is established, using the compute node host name establish
 a connection to the compute node with tunnels to the JupyterLab session port:
 
 .. code-block:: shell
 
-    $ ssh -f -N -L <port#>:localhost:<port#> <cn_hostname>
+    $ ssh -L <port#>:127.0.0.1:<port#> <cn_hostname>
 
 .. note::
 
