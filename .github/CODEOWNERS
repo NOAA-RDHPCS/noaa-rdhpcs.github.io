@@ -20,7 +20,7 @@
 /make.bat @underwoo @josh-eisinger @chanwilson
 
 # Owners of specific documentation pages
-/source/accounts @DV-NOAA
+/source/accounts @DV-NOAA @chanwilson
 /source/data/nescc_hpss.rst @DV-NOAA @RaghuReddy-NOAA
 /source/help @DV-NOAA @hderry
 /source/systems/MSU-HPC_user_guide.rst @DV-NOAA @eschnepp-hpc
