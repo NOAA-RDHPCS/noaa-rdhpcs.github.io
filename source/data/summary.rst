@@ -66,7 +66,7 @@ different storage areas are summarized in the list and table below.
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Area                     | Path                                           | Type   | Permissions | Quota         | Backups | Purged  | Retention  | On Compute Nodes |
     +==========================+================================================+========+=============+===============+=========+=========+============+==================+
-    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 50 GB         | Yes     | No      | 90 days    | Read/Write       |
+    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 5 GB          | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Member Work              | ``/scratch[12]/<portfolio>/<projid>/<userid>`` | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
@@ -79,9 +79,9 @@ different storage areas are summarized in the list and table below.
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Area                     | Path                                        | Type   | Permissions |  Quota        | Backups | Purged  | Retention  | On Compute Nodes |
     +==========================+=============================================+========+=============+===============+=========+=========+============+==================+
-    | User Home                | ``/home/<userid>``                          | NFS    | User set    |  50 GB        | Yes     | No      | 90 days    | Read/Write       |
+    | User Home                | ``/home/<userid>``                          | NFS    | User set    | 5 GB          | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
-    | Member Work              | ``/lfs[4,5]/<userid>``                      | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
+    | Member Work              | ``/lfs[5]/<userid>``                        | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | User-Shared Applications | ``/contrib/<application>``                  | NFS    | 0755        | N/A           | No      | No      | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
@@ -92,7 +92,7 @@ different storage areas are summarized in the list and table below.
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Area                     | Path                                        | Type   | Permissions |  Quota        | Backups | Purged  | Retention  | On Compute Nodes |
     +==========================+=============================================+========+=============+===============+=========+=========+============+==================+
-    | User Home                | ``/home/<userid>``                          | NFS    | User set    |  50 GB        | Yes     | No      | 90 days    | Read/Write       |
+    | User Home                | ``/home/<userid>``                          | NFS    | User set    | 5 GB          | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Member Work              | ``/collab1/data/<userid>``                  | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
@@ -155,7 +155,7 @@ User Home Quotas
 
 Quotas are enforced on user home directories. To request an increased quota,
 contact the Help Desk. To view your current quota and usage, use the command
-``quota`` on gaea, hera and niagara, ``squota`` on jet, and ``homeuse`` on pan:
+``quota`` on Gaea, Hera, Jet, and Niagara; and ``homeuse`` on Pan:
 
 
 .. tab-set::
@@ -179,8 +179,6 @@ contact the Help Desk. To view your current quota and usage, use the command
       $ quota -Qs
       Disk quotas for user userid (uid 12345):
            Filesystem   space   quota   limit   grace   files   quota   limit   grace
-      10.181.1.2:/testhome
-                        1224M      0K  56320M           32575       0       0
       10.181.1.1:/home
                         4147M      0K   5120M            2112       0       0
 
@@ -189,20 +187,11 @@ contact the Help Desk. To view your current quota and usage, use the command
 
     .. code::
 
-      $ squota
-      Super quota report for user userid,  Tue Jan 17 10:02:20 2024
-        - usage and quota listed in GB
-        - RealUse is the current group disk usage as reported by the system
-        - EstUse is the amount measured by du, may not be accurate if group ownership is incorrect
-
-      Dir                             Quota   RealUse  EstUse  Percentage   Last Estimated
-      /home/userid                        5        1                19%   Tue Jan 17 10:01:32 2024
-
-      /lfs5/projects/projid           25000    18220    23469     93.9%   Tue Jan 17 10:01:32 2024
-                       dir1                                 2      0.0%   Tue Jan 17 10:02:02 2024
-                       dir2                              2710     10.8%   Mon Jan 18 04:30:02 2024
-                       dir3                                 1      0.0%   Mon Jan 18 04:27:47 2024
-                       ...
+      $ quota -Qs
+      Disk quotas for user userid (uid 12345):
+           Filesystem   space   quota   limit   grace   files   quota   limit   grace
+      10.181.1.1:/home
+                        4147M      0K   5120M            2112       0       0
 
   .. tab-item:: Niagara
     :sync: niagara
