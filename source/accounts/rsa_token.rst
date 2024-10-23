@@ -16,7 +16,7 @@ RSA Tokens
 | |fob|        | |android icon| | |apple icon| |
 +--------------+----------------+--------------+
 
-RSA tokens provide multi factor authentication (MFA) for NOAA RDHPCS
+RSA tokens provide multi-factor authentication (MFA) for NOAA RDHPCS
 systems. With the widespread adaption of smart phones, it is preferred
 that users install the RSA SecurID app on their device.  Hardware
 fobs are available on request, but expect a several week lead time.
