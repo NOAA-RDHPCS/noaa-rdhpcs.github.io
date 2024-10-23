@@ -199,59 +199,15 @@ email to the appropriate :ref:`HPCS-specific help address
 Projects can be requested via the `Account Information Management`_
 website.
 
-.. _rsa-token:
-
-RSA Tokens
-==========
-
-.. |android icon|	image:: /images/rsa_app_android.png
-.. |apple icon|		image:: /images/rsa_app_apple.png
-.. |fob|		image:: /images/rsa_securid_fob.gif
-
-
-
-+--------+----------------+--------------+
-| |fob|  | |android icon| | |apple icon| |
-+--------+----------------+--------------+
-
-RSA tokens provide multi factor authentication (MFA) for NOAA
-RDHPCS systems.
-
-For best use of resources and availability, the preferred approach is
-to install the SecurID app on a smart phone for token generation.
-Hardware tokens are available on request.
-
-
-
-After you have been added to your first project, you will need to
-either initialize your RSA software token or enable your hardware
-token.
-
-.. warning::
-
-   When you first recieve your NOAA RDHPCS SecurID fob, it will be
-   deactivated and unusable. Follow these instructions to activate it.
-
-#. Access the `RDHPCS SSLVPN <https://sslvpn.rdhpcs.noaa.gov/>`_
-#. Enter your username; the "First.Last" portion of your NOAA email address.
-#. For the password, enter the 6-digit code shown on the fob.
-#. Follow the prompts to set a PIN. Use 4 to 8 alphanumeric characters.
-#. Confirm the PIN by re-entering it.
-
-.. note::
-
-   Do remember your PIN.  When you are asked to enter your RSA
-   passcode, you will enter your PIN followed by the 8 digit number
-   displayed in the RSA app on your mobile device.
 
 Common Access Card (CAC)
 ========================
 
-The Common Access Card (CAC), is the preferred means of access to
-RDHPCS resources for both Web and SSH access. To obtain a CAC, work
-with your local admin services team as they need to start the
-application process.  Some labs can issue CACs on-site, otherwise you
-will have to visit a RAPIDS site. The site locator website is `ID Card
-Office Online <https://idco.dmdc.osd.mil/idco/>`_.
-SSH logins with a CAC require additional software.
+The Common Access Card (CAC), is another means of access to RDHPCS
+resources for both Web and SSH access. To obtain a CAC, work with your
+local admin services team as they need to start the application
+process.  Some labs can issue CACs on-site, otherwise you will have to
+visit a RAPIDS site. The site locator website is `ID Card Office
+Online <https://idco.dmdc.osd.mil/idco/>`_.  SSH logins with a CAC
+require additional software.
 
