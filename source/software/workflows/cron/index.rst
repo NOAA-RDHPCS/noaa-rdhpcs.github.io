@@ -95,6 +95,29 @@ The `crontab guru <https://crontab.guru/>`_ is a helpful research for cron.
 
 .. _rdhpcs_scrontab:
 
+Viewing currently running crontab processes
+===========================================
+
+Note: This utility is only available on Hera/Niagara/Jet.
+
+To get a view of your currently executing crontab processes please use the
+command crond_procs.
+
+A sample output is given below:
+
+.. code-block:: shell
+
+    fe7.% crond_procs
+    fe7 - 1131220 First.Last /bin/sh -c /bin/echo "Cron is working"; sleep 120
+    fe7 - 1131270 First.Last sleep 120
+    fe7 - 1131271 First.Last /usr/sbin/sendmail -FCronDaemon -i -odi -oem -oi -t -f First.Last
+    fe7 - 1132133 First.Last /usr/sbin/postdrop -r
+    fe7.%
+
+If you are trying to avoid overlapping runs of your cron, you can use the
+above output to check if the cronjob of interest is already running and
+skip further processing if it is.
+
 Slurm Crontab
 =============
 
@@ -231,4 +254,3 @@ A known workaround to avoid this is to set
 in the scrontab file to handle that specific environment variable, or to use
 ``unset ${!SLURM_@};`` to unset all Slurm-related environment variables in the
 file.
-
