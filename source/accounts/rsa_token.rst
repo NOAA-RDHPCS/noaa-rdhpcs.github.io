@@ -202,7 +202,8 @@ inactive.  Follow these steps to activate your RSA token:
 #. Access the `RDHPCS SSLVPN <https://sslvpn.rdhpcs.noaa.gov/>`_
 #. Enter your username; the "First.Last" portion of your NOAA email
    address.
-#. For the password, enter the 6-digit code shown on the fob.
+#. For the password, enter the 6-digit code shown on the fob, or the
+   8-digit code shown on the app.
 #. Follow the prompts to set a PIN. Use 4 to 8 alphanumeric characters.
 #. Confirm the PIN by re-entering it.
 #. Once complete, you may close that browser window.
