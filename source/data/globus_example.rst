@@ -158,7 +158,8 @@ partner clusters:
      - Anywhere
 
 
-**RDHPCS Object Stores in the Cloud**
+RDHPCS Object Stores in the Cloud
+---------------------------------
 
 +-------------------------------------------+---------------------------------+
 | Endpoint/Collection                       | Description                     |
@@ -169,6 +170,20 @@ partner clusters:
 +-------------------------------------------+---------------------------------+
 | noaardhpcs#cloud_gcp_rdhpcs_projects      | Google Cloud RDHPCS endpoint    |
 +-------------------------------------------+---------------------------------+
+
+External S3 Bucket Connectors
+-----------------------------
+
++---------------------------------------+-------------------------------------+
+| Endpoint/Collection                   | Description                         |
++=======================================+=====================================+
+| noaardhpcs#cloud_aws_s3_public        | Public AWS S3 connector             |
++---------------------------------------+-------------------------------------+
+| noaardhpcs#cloud_aws_s3_authenticated | Non-public managed AWS S3 connector |
++---------------------------------------+-------------------------------------+
+| noaardhpcs#cloud_aws_s3_authenticated2| Non-public managed AWS S3 connector |
++---------------------------------------+-------------------------------------+
+
 
 NOAA RDHPCS Globus Endpoint Types
 =================================
@@ -212,12 +227,53 @@ of resources is identical to any other endpoints serving DTNs. The
 RDHPCS Globus plan offers connectors to access data to and from a
 public site available via AWS resources.
 
-#. navigate to globus.org.
-#. Select “existing organizational login” NOAA RDHPCS. The File
+Publicly accessible buckets, no keys required
+---------------------------------------------
+
+#. Navigate to globus.org.
+#. Select the “existing organizational login” NOAA RDHPCS. The File
    Manager page displays.
 #. Select Collection, and search for NOAARDHPCS# collections.
 #. Once you can see the file lists, you can use the “File Manager” to
    move the files between the desired endpoints.
+
+Non-public, secret keys required
+--------------------------------
+There are non-public sites, curated by the owners. To access the sites,
+owners must provide you with two things:
+
+- AWS IAM Access Key ID
+- AWS IAM Secret Key
+
+To gain access, you must use a specific endpoint name available through the
+RDHPCS subscription.
+
+1. In the File Manager search for and select
+   noaardhpcs#cloud_aws_s3_authenticated1 or
+   noaardhpcs#cloud_aws_s3_authenticated2
+
+.. note::
+
+  There are endpoints provided to facilitate transfers from one cloud bucket to another if necessary.
+
+2. Click on the three vertical dots to the right of the Collection field
+3. Select the Credentials tab
+
+If the STATUS column shows *invalid*, click the wrench icon.
+Enter the **Access Key ID** and **Secret key**, and hit **Continue**.
+You now have access to the contents of the S3 bucket.
+
+.. warning::
+
+  Because the access/secret key combination is specific to only one collection,
+  you can only be connected to at most one bucket at a time.
+
+**Change buckets**
+
+If you need to access a different bucket with this mechanism, you must delete
+your working AWS Access Credentials first, then create new credentails linked
+to the new bucket. When you select the Credentials tab, you will see the STATUS
+as active. To remove these credentials, click the trash can icon.
 
 Globus Command Line Interface (CLI)
 ===================================
