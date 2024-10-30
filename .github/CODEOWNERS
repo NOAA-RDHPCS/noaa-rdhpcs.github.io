@@ -14,10 +14,13 @@
 
 # Owners of utilities and script files
 /.readthedocs.yaml @underwoo @chanwilson
-/utils/ @josh-eisinger
+/utils/ @josh-eisinger @hderry
 /requirements.txt @underwoo @josh-eisinger @chanwilson
 /Makefile @underwoo @josh-eisinger @chanwilson
 /make.bat @underwoo @josh-eisinger @chanwilson
+
+# Top-level code ownership for source files without specific assignments below
+/source/ @elisabethpatterson @underwoo @chanwilson
 
 # Owners of specific documentation pages
 /source/accounts @DV-NOAA @chanwilson
