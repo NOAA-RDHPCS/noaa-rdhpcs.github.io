@@ -9,15 +9,18 @@
 
 # Per GitHub documentation, this is to protect the CODEOWNERS file from
 # unwanted changes.
-/.github/CODEOWNERS @elisabethpatterson @underwoo
 /.github/ @underwoo @chanwilson
+/.github/CODEOWNERS @elisabethpatterson @underwoo
 
 # Owners of utilities and script files
 /.readthedocs.yaml @underwoo @chanwilson
-/utils/ @josh-eisinger
+/utils/ @josh-eisinger @hderry
 /requirements.txt @underwoo @josh-eisinger @chanwilson
 /Makefile @underwoo @josh-eisinger @chanwilson
 /make.bat @underwoo @josh-eisinger @chanwilson
+
+# Top-level code ownership for source files without specific assignments below
+/source/ @elisabethpatterson @underwoo @chanwilson
 
 # Owners of specific documentation pages
 /source/accounts @DV-NOAA @chanwilson
