@@ -227,8 +227,64 @@ of resources is identical to any other endpoints serving DTNs. The
 RDHPCS Globus plan offers connectors to access data to and from a
 public site available via AWS resources.
 
+Accessing Cloud Endpoints in our environment
+============================================
+
+The RDHPCS Globus plan offers connectors so you can access data to from a
+public site that makes it available via AWS resources. To use this service you
+must login to Globus with your NOAA RDHPCS credentials.
+
+
 Publicly accessible buckets, no keys required
 ---------------------------------------------
+
+As an example, let us consider the case where user needs to get files from the
+NOAA RRFS expermient from the `AWS Cloud
+<https://noaa-rrfs-pds.s3.amazonaws.com/index.html#rrfs_a/rrfs_a.20230725/00/control/>`_.
+
+
+Go to `<https://registry.opendata.aws/>`_.
+
+In the "Search datasets" field enter the data set of interest, in this case: noaa-rrfs (the first part of the URL of interest)
+Click on the results listed in the right pane of the window: This will lead to: `<https://registry.opendata.aws/noaa-rrfs/>`_.
+
+.. note::
+
+  Alternatively, you can simply "guess" the URL based on the above pattern.
+
+From that web page, copy the last part of the ARN (in this example noaa-rrfs-pds): arn:aws:s3:::noaa-rrfs-pds
+Now you have the info you need.
+
+
+    1. Login to <https://www.globus.org/> with your NOAA identity.
+    2. In the File Manager window
+
+  - Enter into the "Collection" field: noaardhpcs#cloud_aws_s3_public
+  - Enter into the "Path" field: /noaa-rrfs-pds/rrfs_a/rrfs_a.20230725/00/control/
+
+Once you are able to see the listing of files you can use the "File Manager" to
+move the files between the desired endpoints.
+
+That should do it!
+
+.. note::
+
+  Module globus-cli needs to be loaded before any globus commands are used.
+
+For Globus CLI use, the endpoint UUID is given by:
+
+.. code-block:: shell
+
+  $ globus endpoint search noaardhpcs#cloud_aws_s3_public
+
+You may save the UUID in an environment variable you create, e.g.:
+RDHPCS_AWS_PUBLIC. From here on, normal Globus CLI methods will work.
+
+For example, to get a directory listing, type
+
+.. code-block:: shell
+
+  $ globus ls -l $RDHPCS_AWS_PUBIC\:/noaa-rrfs-pds/
 
 #. Navigate to globus.org.
 #. Select the “existing organizational login” NOAA RDHPCS. The File
@@ -254,14 +310,14 @@ RDHPCS subscription.
 
 .. note::
 
-  There are endpoints provided to facilitate transfers from one cloud bucket to another if necessary.
+  There are endpoints provided to facilitate transfers from one cloud bucket to another in case it is needed.
 
 2. Click on the three vertical dots to the right of the Collection field
-3. Select the Credentials tab
+3. Select the *Credentials* tab.
 
 If the STATUS column shows *invalid*, click the wrench icon.
-Enter the **Access Key ID** and **Secret key**, and hit **Continue**.
-You now have access to the contents of the S3 bucket.
+Enter the **Access Key ID** and **Secret key**, and hit **Continue**,
+and you have access to the contents of the S3 bucket.
 
 .. warning::
 
@@ -271,9 +327,11 @@ You now have access to the contents of the S3 bucket.
 **Change buckets**
 
 If you need to access a different bucket with this mechanism, you must delete
-your working AWS Access Credentials first, then create new credentails linked
-to the new bucket. When you select the Credentials tab, you will see the STATUS
-as active. To remove these credentials, click the trash can icon.
+your working AWS Access Credentials first, so you create a different one linked
+to the new bucket. As above, when you select the Credentials tab, you will see
+the STATUS as active. To remove these credentials, so you can create a new
+association with the new access key/secret, click on the trash can
+icon.
 
 Globus Command Line Interface (CLI)
 ===================================

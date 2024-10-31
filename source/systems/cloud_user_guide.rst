@@ -116,6 +116,254 @@ using a Globus endpoint that all egress charges will be applied to the project.
 This includes data stored in a CSP public, free to access repositories, like
 the `NOAA Open Data Dissemination (NODD) <NOAA NODD_>`_ program.
 
+PW RW START
+
+Using Parallel Works
+====================
+
+Before you Begin
+----------------
+
+NOAA Cloud Computing uses the Parallel Works ACTIVATE platform. ACTIVATE allows
+users to manage their cloud computing resources across Amazon Web Services
+(AWS), Google Compute Platform (GCP), and Microsoft Azure Cloud Computing
+Services (Azure).  Users access ACTIVATE via the customized NOAA RDHPCS Portal.
+
+.. note::
+
+  The `Parallel Works User guide <https://parallelworks.com/docs>`_ provides comprehensive
+  information for using the ACTIVATE control plane.
+
+The certified browser for Parallel Works is Google Chrome. To use the ACTIVATE
+platform, you must have a NOAA user account and password, and a valid RSA
+token. Click the links for instructions for :ref:`applying_for_user_account`
+and obtaining :ref:`rsa-token`.
+
+You must also be assigned to a Cloud project account.  To join a Cloud project,
+first request the project name from your PI, TL, or Portfolio Manager. Then use
+the AIM tool to `request access to that project
+<https://docs.rdhpcs.noaa.gov/accounts/accounts_and_projects.html#request-access-to-rdhpcs-projects>`_.
+
+NOAA’s Parallel Works Portal
+----------------------------
+
+The process for using cloud resources typically follows these
+steps:
+
+#. Log in to the Parallel Works portal.
+#. Create or start a cluster with the configuration that best suits your work.
+#. Transfer your data to the cloud from an on-premises location or from an
+   object storage, such as Amazon Web Services (AWS) S3 buckets, Google Cloud
+   Storage (GCS) buckets, or Microsoft Azure Blob containers.
+#. Complete your computations in the cluster.
+#. Transfer your data back to an on-premises location or to object storage.
+#. Shut down the cluster.
+
+Users access the ACTIVATE platform through the `Parallel Works NOAA Portal`_,
+using the RSA Token authentication method.  On the landing page, enter your
+NOAA user name, and your Password and SecurID OTP.
+
+
+`Foundational Parallel Works Training
+<https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_
+provides an introduction to features and function.
+An archive of `Parallel Works training sessions
+<https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1G8V0Mua9Dy7oUJ_wI36NAd3kMuMcHyGM/edit>`_ is also available.
+
+Storage Types and Storage Costs
+-------------------------------
+
+Three types of storage are available on a cluster.
+
+- Lustre: object storage for backup and restore and output files
+- Bucket/blob storage: a container for objects.
+- Contrib file system: a project’s custom software library.
+
+.. note::
+
+  An "object" is a file and any metadata that describes that file.
+
+Lustre file system
+^^^^^^^^^^^^^^^^^^
+
+Lustre is a parallel file system, available as ephemeral and persistent storage
+on the AWS, Azure, and GCP cloud platforms. A lustre file system can be
+attached and mounted on a cluster, and is accessible only from an active
+cluster. To create a lustre file system, access the Storage tab, and click Add
+Storage. You can create any number of lustre file systems. See `this article
+<https://docs.parallel.works/managing-storage/creating-storage>`_ for
+information on creating a storage link.
+
+Bucket/Block blob storage
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Bucket storage and Block blob storage are ontainers for objects.
+An object is a file and any metadata that describes that file.
+These can include use cases, such as
+data lakes, websites, mobile applications, backup and restore, archive,
+enterprise applications, IoT devices, or big data analytics. On AWS and GCP,
+the storage is called S3 bucket, and bucket respectively, whereas in Azure, the
+storage used is Block blob storage, which functions as a bucket and an NFS
+storage. Pricing information is available at this `link <https://aws.amazon.com/s3/pricing/>`_ .
+Projects using AWS, and GCP platforms can create as many buckets as needed, and
+mount them on a cluster. The project’s default bucket is accessible from the
+public domain using the keys.
+
+Contrib file system
+^^^^^^^^^^^^^^^^^^^
+
+The Contrib file system concept is similar to on-premise contrib. It is used to
+store files for team collaboration. You can use this storage to install custom
+libraries or user scripts.
+
+AWS Contrib storage charge is $0.30 per GB per Month. The cost is calculated
+based on the storage usage. Both AWS and Azure charge based on the usage, with
+a pay-as-you-go model like your electricity bill.
+
+GCP charges on allocated storage, so whether the storage is used or not, the
+project pays for the provisioned capacity. The default provisioned capacity of
+Google Cloud contrib file system is 2.5 TiB, costs $768.00 per month. The
+contrib volume can be removed from a project by request. Send email to
+rdhpcs.cloud.help@noaa.gov, with Remove Contrib Volume in the subject.
+
+
+Cloud Project Management: Create a Cloud Project
+------------------------------------------------
+
+.. note::
+
+  Cloud projects are specific to a Cloud platform, indicated by the
+  prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
+
+Cloud projects are defined thorugh the AIM system. Before you can create a
+project in AIM, it must have assigned allocation. Allocations are approved by
+the NOAA RDHPCS allocation committee.
+
+To verify the allocation amount for your project, create a cloud help desk
+ticket to schedule a meeting. Send email to rdhpcs.cloud.help@noaa.gov, with
+Allocation for <Project> in the subject line. A SME can help you translate your
+business case into an allocation estimate.
+
+to create the project, the PI or Portfolio Manager sends email to
+rdhpcs.aim.help@noaa.gov,
+including the following information:
+
+- Project short name,  in the format: <cloud platform abbreviation>-<project
+  name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
+  cg-epic for Google cloud Epic.
+- Brief description of your project.
+- Portfolio name.
+- Principal Investigator [PI] name.
+- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat the name.)
+- Allocation amount [optional].
+
+Using this information, the AIM system administrator can create a project on
+the Parallel Works platform. This can take up to two days. Upon the project
+creation, the AIM administrator will email back with the project status.
+
+Using Parallel Works with on-premise HPC Systems
+================================================
+
+Parallel Works offers seamless authentication with on-premise HPC systems. The
+access method through Parallel Works is the same as for any other HPC
+
+systems.
+You may use the default template of an HPS system from the Parallel Works
+Marketplace.
+
+- From the login portal, click on the user Name.
+- Select **MARKETPLACE** from the drop down list box.
+- Click on the Fork sign and click the Fork button when prompted. Exit the
+  page.
+
+Access the head node from the Parallel Works [PW]
+web interface You can connect to the head node from the PW portal, or Xterm
+window, if you have added your public key in the resource definition prior to
+launching a cluster. If you have not yet added a public key, you can login to
+the head node by IDE and update the public key in ~/.ssh/authorized_keys file.
+From the PW Compute dashboard, click on your name with an IP address and make a
+note of it. Otherwise, click the  i icon of the Resource monitor to get the
+head node IP address. Click the IDE link (located on the top right side of the
+PW interface) to launch a new terminal. From the Terminal menu, click New
+Terminal. A new terminal window opens. From the new terminal, type $ ssh <Paste
+the username with IP address> and press Enter. This will let you login to the
+head node from the PW interface.
+
+
+Example: $ ssh First.Last@54.174.136.76 Warning: Permanently added
+‘54.174.136.76’ (ECDSA) to the list of known hosts. How to add a workflow to an
+account? If you’re running a workflow for the first time, you will need to add
+it to your account first. Refer the PW documentation link:
+https://parallelworks.com/docs/workflows
+
+How to ssh to nodes within a cluster? You can use a node’s hostname to ssh to
+compute nodes in your cluster from the head node. You do not need to have a
+job running on the node, but it must be in a powered on state.  Note that most
+resource configurations suspend compute nodes after a period of inactivity. Use
+sinfo` or squeue to view active nodes: $ sinfo PARTITION AVAIL TIMELIMIT NODES
+STATE NODELIST compute*  up    infinite      4 idle~
+compute-dy-c5n18xlarge-[2-5] compute*  up    infinite      1 mix
+compute-dy-c5n18xlarge-1
+
+$ squeue
+JOBID PARTITION NAME USER     ST   TIME  NODES NODELIST(REASON)
+2     compute   bash Matt.Lon  R   0:33  1     compute-dy-c5n18xlarge-1
+
+ssh to the compute node
+[awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
+[compute-dy-c5n18xlarge-1]$
+
+
+On-premise HPC system exceeding Quota Warning There have been instances when a
+user trying to run a workflow received a warning about exceeding quota in the
+homefile system. For example, if you try to run VSCode workflow on Hera, it
+will try to install a bunch of software in the $HOME/pw directory where quota
+is limited. If you receive the warning, try the following: 1. Check whether the
+following directory exists on the on-prem system where you are getting the
+quota error from: $HOME/pw If it does, move it to your project space and create
+a symlink as shown below: mv $HOME/pw /a/directory/in/your/project/space/pw ln
+-s /a/directory/in/your/project/space/pw $HOME/pw
+
+
+1. If $HOME/pw doesn’t exist, create a directory in your project space and
+   create the pw symlink in your home directory as follows:
+
+.. code-block:: shell
+
+  mkdir -p /a/directory/in/your/project/space/pw
+  ln -s /a/directory/in/your/project/space/pw $HOME/pw
+
+Authentication Issues Authentication to the PW system can fail for a number of
+reasons. Remember that userIDs are case sensitive. Most are First.Last, with
+the first letter capitalized. Use the correct format, or your login will fail.
+Occasionally, a login fails due to an expired RSA Token or inconsistent account
+status in the PW system. If you have not accessed an  on-premise HPC system in
+the last 30 days, it is likely your RSA token has expired. In such cases open a
+help request for assistance. To verify RSA Token issue, follow these steps: If
+you enter an incorrect username or PIN and token value three times during a
+login attempt, your account will automatically lock for fifteen minutes. This
+is a fairly common occurrence. Wait for 15 minutes and resync as follows: Use
+ssh to login to one of the hosts such as one of Hera/Niagara/Jet, using your
+RSA Token. After the host authenticates once, it will ask you wait for the
+token to change. Enter your PIN + RSA token again after the token has changed.
+After a successful login your token will be resynched and you should be able to
+proceed. If you are still experiencing issues with your token, open a help
+request with the title Please check RSA token status. To expedite
+troubleshooting, please include the full terminal output you received when you
+tried to use your token. If the RSA token is working and you are still unable
+to login to the PW system, check whether your workstation is behind a firewall
+that is blocking access. If you are connected to a VPN, disconnect the VPN and
+try again. You may also experience connection failure if you are trying to
+access from outside the United States. If you continue to experience connection
+issues, open a help request. NOTE: Occasionally, a valid user login attempt
+will receive an “Invalid name or password” error This can happen when a user
+token is out of sync with the SSO system. Try logging in to an on-prem HPC
+system like Niagara or Hera. If the login fails, log into the <account URL to
+check whether “single sign on” is working. If your login still fails, open a
+cloud help desk case. Send email to rdhpcs.cloud.help@noaa.gov, with Login
+Error in the Subject. In the casenclude the information that you have attempted
+the “single sign on” login test.
+
 
 Getting Help
 ============
@@ -889,6 +1137,7 @@ partitions based on your workflow.
 
 From the resource definition page, navigate to the compute
 partition.
+
 
 Max Node Amount parameter is the maximum number of nodes in
 a partition. You can change that value to a non-zero number
