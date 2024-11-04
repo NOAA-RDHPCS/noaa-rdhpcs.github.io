@@ -144,8 +144,8 @@ first request the project name from your PI, TL, or Portfolio Manager. Then use
 the AIM tool to `request access to that project
 <https://docs.rdhpcs.noaa.gov/accounts/accounts_and_projects.html#request-access-to-rdhpcs-projects>`_.
 
-Using Parallel Works
---------------------
+Using ACTIVATE
+--------------
 
 See the :ref:`Workflow` diagram for an overview of the process.
 
