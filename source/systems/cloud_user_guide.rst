@@ -35,6 +35,7 @@ Access to the NOAA RDHPCS Cloud Computing environment is through the
 `Parallel Works NOAA Portal <https://noaa.parallel.works>`_ and uses
 the :ref:`RSA Token <rsa_instructions>` authentication method.
 
+.. _workflow:
 
 Workflow
 ========
@@ -143,20 +144,10 @@ first request the project name from your PI, TL, or Portfolio Manager. Then use
 the AIM tool to `request access to that project
 <https://docs.rdhpcs.noaa.gov/accounts/accounts_and_projects.html#request-access-to-rdhpcs-projects>`_.
 
-NOAA’s Parallel Works Portal
-----------------------------
+Using Parallel Works
+--------------------
 
-The process for using cloud resources typically follows these
-steps:
-
-#. Log in to the Parallel Works portal.
-#. Create or start a cluster with the configuration that best suits your work.
-#. Transfer your data to the cloud from an on-premises location or from an
-   object storage, such as Amazon Web Services (AWS) S3 buckets, Google Cloud
-   Storage (GCS) buckets, or Microsoft Azure Blob containers.
-#. Complete your computations in the cluster.
-#. Transfer your data back to an on-premises location or to object storage.
-#. Shut down the cluster.
+See the :ref:`Workflow` diagram for an overview of the process.
 
 Users access the ACTIVATE platform through the `Parallel Works NOAA Portal`_,
 using the RSA Token authentication method.  On the landing page, enter your
@@ -344,8 +335,8 @@ directory where quota is limited.
 If you receive the warning, try the following:
 
 1. Check whether the following directory exists on the on-prem
-system where you are getting the quota error from: $HOME/pw
-2. If it does, move it to your project space and create a symlink as shown below:
+system where you are getting the quota error from: $HOME/pw 2. If it does, move
+it to your project space and create a symlink as shown below:
 
 .. code-block:: shell
 
@@ -381,12 +372,12 @@ reasons.
 
 To resync your token:
 
-1. Use ssh to login to one of the hosts such as one of Hera/Niagara/Jet, using your
-RSA Token. After the host authenticates once, it will ask you wait for the
-token to change.
-2. Enter your PIN + RSA token again after the token has changed.
-After a successful login your token will be resynched and you should be able to
-proceed.
+1. Use ssh to login to one of the hosts such as one of Hera/Niagara/Jet, using
+   your RSA Token. After the host authenticates once, it will ask you wait for
+   the token to change.
+2. Enter your PIN + RSA token again after the token has changed. After a
+   successful login your token will be resynched and you should be able
+   to proceed.
 
 .. note::
 
@@ -450,10 +441,10 @@ Frequently Asked Questions
 ==========================
 
 General Issues
-^^^^^^^^^^^^^^
+--------------
 
 How do I open a cloud help desk ticket?
-"""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Send an email to rdhpcs.cloud.help@noaa.gov. Your email automatically
 generates a case in the OTRS system. The OTRS system does not have the
