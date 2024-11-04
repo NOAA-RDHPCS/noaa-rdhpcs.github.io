@@ -236,19 +236,17 @@ Go to `<https://registry.opendata.aws/>`_.
 In the "Search datasets" field enter the data set of interest, in this case: noaa-rrfs (the first part of the URL of interest)
 Click on the results listed in the right pane of the window: This will lead to: `<https://registry.opendata.aws/noaa-rrfs/>`_.
 
-.. note::
-
-  Alternatively, you can simply "guess" the URL based on the above pattern.
-
-From that web page, copy the last part of the ARN (in this example noaa-rrfs-pds): arn:aws:s3:::noaa-rrfs-pds
-Now you have the info you need.
+From that web page, copy the last part of the ARN (in this example
+noaa-rrfs-pds): arn:aws:s3:::noaa-rrfs-pds Now you have the info you need.
 
 
-    1. Login to <https://www.globus.org/> with your NOAA identity.
+    1. Login to <https://www.globus.org/> with your
+       NOAA identity.
     2. In the File Manager window
 
   - Enter into the "Collection" field: noaardhpcs#cloud_aws_s3_public
-  - Enter into the "Path" field: /noaa-rrfs-pds/rrfs_a/rrfs_a.20230725/00/control/
+  - Enter into the "Path" field:
+    /noaa-rrfs-pds/rrfs_a/rrfs_a.20230725/00/control/
 
 Once you are able to see the listing of files you can use the "File Manager" to
 move the files between the desired endpoints.
