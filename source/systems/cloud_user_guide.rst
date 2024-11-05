@@ -151,7 +151,7 @@ See the :ref:`Workflow` diagram for an overview of the process.
 
 Users access the ACTIVATE platform through the `Parallel Works NOAA Portal`_,
 using the RSA Token authentication method.  On the landing page, enter your
-NOAA user name, and your Password and SecurID OTP.
+NOAA user name, and your PIN and SecurID OTP.
 
 
 `Foundational Parallel Works Training
@@ -181,7 +181,7 @@ on the AWS, Azure, and GCP cloud platforms. A lustre file system can be
 attached and mounted on a cluster, and is accessible only from an active
 cluster. To create a lustre file system, access the Storage tab, and click Add
 Storage. You can create any number of lustre file systems. See `this article
-<https://docs.parallel.works/managing-storage/creating-storage>`_ for
+<https://parallelworks.com/docs/storage/creating-storage>`_ for
 information on creating a storage link.
 
 Bucket/Block blob storage
