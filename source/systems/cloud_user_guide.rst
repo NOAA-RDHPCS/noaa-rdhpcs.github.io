@@ -187,7 +187,7 @@ information on creating a storage link.
 Bucket/Block blob storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Bucket storage and Block blob storage are ontainers for objects.
+Bucket storage and Block blob storage are containers for objects.
 An object is a file and any metadata that describes that file.
 Metadata can include use cases, such as
 data lakes, websites, mobile applications, backup and restore, archive,
