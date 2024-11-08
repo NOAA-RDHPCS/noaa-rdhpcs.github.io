@@ -187,17 +187,17 @@ information on creating a storage link.
 Bucket/Block blob storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Bucket storage and Block blob storage are containers for objects.
-An object is a file and any metadata that describes that file.
-Metadata can include use cases, such as
-data lakes, websites, mobile applications, backup and restore, archive,
-enterprise applications, IoT devices, or big data analytics. On AWS and GCP,
-the storage is called S3 bucket, and bucket respectively, whereas in Azure, the
-storage used is Block blob storage, which functions as a bucket and an NFS
-storage. Pricing information is available at this `link <https://aws.amazon.com/s3/pricing/>`_ .
-Projects using AWS, and GCP platforms can create as many buckets as needed, and
-mount them on a cluster. The project’s default bucket is accessible from the
-public domain using the keys.
+Bucket storage and Block blob storage are containers for objects. An object is
+a file and any metadata that describes that file. Metadata can include use
+cases, such as data lakes, websites, mobile applications, backup and restore,
+archive, enterprise applications, IoT devices, or big data analytics. On AWS
+and GCP, the storage is called S3 bucket, and bucket respectively, whereas in
+Azure, the storage used is Blob storage, which functions as a bucket storage,
+which functions as a bucket and an NFS storage. Pricing information is
+available at this `link <https://aws.amazon.com/s3/pricing/>`_ . Projects using
+AWS, and GCP platforms can create as many buckets as needed, and mount them on
+a cluster. The project’s default bucket is accessible from the public domain
+using the keys.
 
 Contrib file system
 ^^^^^^^^^^^^^^^^^^^
@@ -206,9 +206,17 @@ The Contrib file system concept is similar to on-premise contrib. It is used to
 store files for team collaboration. You can use this storage to install custom
 libraries or user scripts.
 
+The contrib filesystem is built on the cloud provider's native NFS service,
+which is EFS in AWS, Azure Files in Azure, and GFS in GCP. The pricing on the
+AWS EFS is based on the amount of storage used, whereas Azure and GCP pricing
+is based on the provisioned capacity. This makes the AWS contrib cost
+lower than Azure and GCP, comparatively. To find the pricing from the
+Parallel Works Home, click on the NFS link and enter a storage size. The
+provisioned storage can be resized to a higher size anytime.
+
 AWS Contrib storage charge is $0.30 per GB per Month. The cost is calculated
-based on the storage usage. Both AWS and Azure charge based on the usage, with
-a pay-as-you-go model like your electricity bill.
+based on the storage usage. Both AWS and Azure charge based on usage, with a
+pay-as-you-go model like your electricity bill.
 
 GCP charges on allocated storage, so whether the storage is used or not, the
 project pays for the provisioned capacity. The default provisioned capacity of
@@ -229,14 +237,12 @@ Cloud projects are defined thorugh the AIM system. Before you can create a
 project in AIM, it must have assigned allocation. Allocations are approved by
 the NOAA RDHPCS allocation committee.
 
-To verify the allocation amount for your project, create a cloud help desk
-ticket to schedule a meeting. Send email to rdhpcs.cloud.help@noaa.gov, with
-Allocation for <Project> in the subject line. A SME can help you translate your
-business case into an allocation estimate.
+If your project is large in size and requires assistance in capacity planning,
+planning and porting, open a help desk ticket. Send email to
+rdhpcs.cloud.help@noaa.gov, with Allocation for <Project> in the subject line.
 
-to create the project, the PI or Portfolio Manager sends email to
-rdhpcs.aim.help@noaa.gov,
-including the following information:
+A PI or Portfolio Manager can request a new project by creating a cloud
+help desk ticket including the following information:
 
 - Project short name,  in the format: <cloud platform abbreviation>-<project
   name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
@@ -246,7 +252,7 @@ including the following information:
 - Principal Investigator [PI] name.
 - Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
   the name.)
-- Allocation amount [optional].
+- Allocation amount.
 
 Using this information, the AIM system administrator can create a project on
 the Parallel Works platform. This can take up to two days. Upon the project
