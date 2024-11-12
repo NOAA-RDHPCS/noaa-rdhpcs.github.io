@@ -61,18 +61,6 @@ their given names and follow these steps:
 #. Pick a directory in each panel for your source and destination.
 #. Click START to initiate the transfer.
 
-For Example:
-
-#. Navigate to globus.org.
-#. Select “existing organizational login” NOAA RDHPCS. The File
-   Manager page displays.
-#. Select Collection, and choose the file system
-   “noaardhpcs#ppan_untrusted”. If necessary, authenticate with
-   username and RSA password.
-#. In the File Manager, select Path:
-   /collab1/data_untrusted/anonymous/from Orion
-#. Repeat for the other endpoint: msuhpc2#Orion-dtn
-#. Select files and directories, and click Start.
 
 Globus Connect Service is available on the following RDHPCS and
 partner clusters:
@@ -107,14 +95,14 @@ partner clusters:
      - Anywhere
    * - Jet
      - noaardhpcs#jet
-     - /mnt/lfs4
+     - /mnt/lfs5
 
        /mnt/lfs5
      - GSL
      - Trusted hosts
    * - Jet
      - noaardhpcs#jet_untrusted
-     - /mnt/lfs4/data_untrusted
+     - /mnt/lfs5/data_untrusted
      - GSL
      - Anywhere
    * - PPAN
