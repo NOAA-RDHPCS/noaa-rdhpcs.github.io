@@ -3385,3 +3385,12 @@ configuration and re-sync the data.
   originally used on CentOS 7 based clusters. A future update will resolve this
   issue.
 
+**How to create a PW cluster from JSON files? **
+
+You can certainly save a cluster definition anywhere you want as a JSON file. To do that, go to the configuration page, click the JSON tab, and copy+paste everything where you want it to be. That same JSON can then be copied to the same box under a new cluster definition to configure it the same way. Note that any attached storages are included in the JSON, so anyone copying the definition will also need to be able to see those storage resources.
+
+The JSON data includes everything besides the "general settings", so anyone using it will still need to set the "resource account" and project before starting the cluster. 
+
+**How to publish your own cluster in the Marketplace? **
+
+You are also able to publish your own cluster definitions to the marketplace and share them with anyone else in your group, or even the entire NOAA platform. Anyone that wants to use it would need to find it in the marketplace first. Publishing to the marketplace is also a good way to version control the cluster definitions anyway, so it might be good for backing up the configuration data somewhere. You can publish resources to the marketplace from here: https://noaa.parallel.works/market/publish
