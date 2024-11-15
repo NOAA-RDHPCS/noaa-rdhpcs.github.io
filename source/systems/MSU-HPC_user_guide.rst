@@ -67,7 +67,7 @@ MSU's Official HPC Documentation
 
 .. note::
 
-   An MSU user account is required to access the documentation.
+   An MSU user account is required to access this documentation.
 
 
 General Information
@@ -296,7 +296,6 @@ Running Jobs on MSU-HPC Systems
 
 All compute and memory-intensive tasks must be submitted to the batch
 system for execution on system compute resources. This section
-All compute and memory-intensive tasks must be submitted to the batch
 describes the requirements and common patterns for job submission and
 monitoring.
 
