@@ -146,7 +146,8 @@ partner clusters:
      - Anywhere
 
 
-**RDHPCS Object Stores in the Cloud**
+RDHPCS Object Stores in the Cloud
+---------------------------------
 
 +-------------------------------------------+---------------------------------+
 | Endpoint/Collection                       | Description                     |
@@ -157,6 +158,20 @@ partner clusters:
 +-------------------------------------------+---------------------------------+
 | noaardhpcs#cloud_gcp_rdhpcs_projects      | Google Cloud RDHPCS endpoint    |
 +-------------------------------------------+---------------------------------+
+
+External S3 Bucket Connectors
+-----------------------------
+
++---------------------------------------+-------------------------------------+
+| Endpoint/Collection                   | Description                         |
++=======================================+=====================================+
+| noaardhpcs#cloud_aws_s3_public        | Public AWS S3 connector             |
++---------------------------------------+-------------------------------------+
+| noaardhpcs#cloud_aws_s3_authenticated | Non-public managed AWS S3 connector |
++---------------------------------------+-------------------------------------+
+| noaardhpcs#cloud_aws_s3_authenticated2| Non-public managed AWS S3 connector |
++---------------------------------------+-------------------------------------+
+
 
 NOAA RDHPCS Globus Endpoint Types
 =================================
@@ -200,12 +215,109 @@ of resources is identical to any other endpoints serving DTNs. The
 RDHPCS Globus plan offers connectors to access data to and from a
 public site available via AWS resources.
 
-#. navigate to globus.org.
-#. Select “existing organizational login” NOAA RDHPCS. The File
+Accessing Cloud Endpoints in our environment
+============================================
+
+The RDHPCS Globus plan offers connectors so you can access data to from a
+public site that makes it available via AWS resources. To use this service you
+must login to Globus with your NOAA RDHPCS credentials.
+
+
+Publicly accessible buckets, no keys required
+---------------------------------------------
+
+As an example, let us consider the case where user needs to get files from the
+NOAA RRFS expermient from the `AWS Cloud
+<https://noaa-rrfs-pds.s3.amazonaws.com/index.html#rrfs_a/rrfs_a.20230725/00/control/>`_.
+
+
+Go to `<https://registry.opendata.aws/>`_.
+
+In the "Search datasets" field enter the data set of interest, in this case: noaa-rrfs (the first part of the URL of interest)
+Click on the results listed in the right pane of the window: This will lead to: `<https://registry.opendata.aws/noaa-rrfs/>`_.
+
+From that web page, copy the last part of the ARN (in this example
+noaa-rrfs-pds): arn:aws:s3:::noaa-rrfs-pds Now you have the info you need.
+
+
+    1. Login to <https://www.globus.org/> with your
+       NOAA identity.
+    2. In the File Manager window
+
+  - Enter into the "Collection" field: noaardhpcs#cloud_aws_s3_public
+  - Enter into the "Path" field:
+    /noaa-rrfs-pds/rrfs_a/rrfs_a.20230725/00/control/
+
+Once you are able to see the listing of files you can use the "File Manager" to
+move the files between the desired endpoints.
+
+That should do it!
+
+.. note::
+
+  Module globus-cli needs to be loaded before any globus commands are used.
+
+For Globus CLI use, the endpoint UUID is given by:
+
+.. code-block:: shell
+
+  $ globus endpoint search noaardhpcs#cloud_aws_s3_public
+
+You may save the UUID in an environment variable you create, e.g.:
+RDHPCS_AWS_PUBLIC. From here on, normal Globus CLI methods will work.
+
+For example, to get a directory listing, type
+
+.. code-block:: shell
+
+  $ globus ls -l $RDHPCS_AWS_PUBIC\:/noaa-rrfs-pds/
+
+#. Navigate to globus.org.
+#. Select the “existing organizational login” NOAA RDHPCS. The File
    Manager page displays.
 #. Select Collection, and search for NOAARDHPCS# collections.
 #. Once you can see the file lists, you can use the “File Manager” to
    move the files between the desired endpoints.
+
+Non-public, secret keys required
+--------------------------------
+There are non-public sites, curated by the owners. To access the sites,
+owners must provide you with two things:
+
+- AWS IAM Access Key ID
+- AWS IAM Secret Key
+
+To gain access, you must use a specific endpoint name available through the
+RDHPCS subscription.
+
+1. In the File Manager search for and select
+   noaardhpcs#cloud_aws_s3_authenticated1 or
+   noaardhpcs#cloud_aws_s3_authenticated2
+
+.. note::
+
+  There are endpoints provided to facilitate transfers from one cloud bucket to another in case it is needed.
+
+2. Click on the three vertical dots to the right of the Collection field
+3. Select the *Credentials* tab.
+
+If the STATUS column shows *invalid*, click the wrench icon.
+Enter the **Access Key ID** and **Secret key**, and hit **Continue**,
+and you have access to the contents of the S3 bucket.
+
+.. warning::
+
+  Because the access/secret key combination is specific to only one collection,
+  you can only be connected to at most one bucket at a time.
+
+**Change buckets**
+
+If you need to access a different bucket with this mechanism, you must delete
+your working AWS Access Credentials first, so you create a different one linked
+to the new bucket. As above, when you select the Credentials tab, you will see
+the STATUS as active. To remove these credentials, so you can create a new
+association with the new access key/secret, click on the trash can
+icon.
 
 Globus Command Line Interface (CLI)
 ===================================
