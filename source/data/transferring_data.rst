@@ -384,12 +384,19 @@ Hera.
 
 **Local Client Window #1**
 
-Enter the following command. Remember to replace XXXXX with the local port
-number identified in Step 1 or as needed:
+Enter the appropriate command for your environment. Remember to replace XXXXX
+with the local port number identified in Step 1 or as needed.
+
+For Windows Power Shell, enter:
 
 .. code-block:: shell
 
      ssh -m hmac-sha2-512-etm@openssh.com -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+
+For Mac or Linus, enter:
+
+.. code-block:: shell
+
      ssh -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
