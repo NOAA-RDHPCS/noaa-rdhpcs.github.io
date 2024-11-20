@@ -299,8 +299,10 @@ system for execution on system compute resources. This section
 describes the requirements and common patterns for job submission and
 monitoring.
 
-**To improve your job turnaround** and efficiently use the system
-resources, please read and follow instructions carefully.
+.. note::
+
+   **To improve your job turnaround** and efficiently use the system
+   resources, please read and follow instructions carefully.
 
 Submitting a Job
 ----------------
@@ -353,7 +355,7 @@ the ``--time=<time>`` option:
 
 These directives can be used instead of specifying options on the
 command line. If an option is specified both as a directive and on the
-command line, the command line option takes precedence.
+command line, the command line option takes precedence. .
 
 It is also possible to specify some of the options by setting an
 environment variable. Please see the sbatch man page for details. If
