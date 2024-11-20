@@ -391,20 +391,20 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
-For Mac or Linus, enter:
+For Mac or Linux, enter:
 
 .. code-block:: shell
 
-     ssh -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -LXXXX:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X -LXXXXX:localhost:XXXXX $USER@hera-rsa.boulder.rdhpcs.noaa.gov
+    ssh -X -LXXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
 Note that objects emphasized in this figure should be unique to your
 configuration:
@@ -439,14 +439,26 @@ expected.
 
 
 Remember that this is the second terminal session opened on your local
-machine
+machine.
+
+Windows Users:
+Once a tunnel has been set up as in Step 1, you
+can use a client such as WinSCP to do the tranfers using that tunnel.
+Please keep in mind that tunnel will exist only as long as the session opened
+in Step 1 is kept alive.
+
+Use the following settings for your WinSCP sesssion:
+
+Hostname: localhost
+Port: your-assigned-port-used-in-Step1-above
+File protocol: SFTP
 
 To transfer a file **to** HPC Systems
 
 .. code-block:: shell
 
-    scp -P XXXXX /local/path/to/file $USER@localhost:/path/to/file/on/HPCSystems
-    rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX' /local/path/to/files $USER@localhost:/path/to/files/on/HPCSystems
+    scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
+    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
 
 .. note::
 
@@ -456,8 +468,8 @@ To transfer a file **from** HPC Systems:
 
 .. code-block:: shell
 
-    scp -P XXXXX $USER@localhost:/path/to/file/on/HPCSystems /local/path/to/file
-    rsync <put rsync options here> -e 'ssh -l $USER -p XXXXX' $USER@localhost:/path/to/files/on/HPCSystems /local/path/to/files
+    scp -P XXXXX First.LastR@localhost:/path/to/file/on/HPCSystems /local/path/to/file
+    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
 
 
 In either case, you will be asked for a password. Enter the password
