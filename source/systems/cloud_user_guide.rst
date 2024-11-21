@@ -3413,10 +3413,9 @@ getting started tips:
             80633.pts-0.mgmt-mlong-gcp-00009        (Detached)
     1 Socket in /run/screen/S-mlong.
 
-* To reattach, use ``screen -r``
-  * It is possible to have multiple screen sessions at the same time. 
-    If you have multiple, you will need to provide its pid or name when you 
-    reattach to it.
+* To reattach, use ``screen -r``.  It is possible to have multiple screen 
+  sessions at the same time. If you have multiple, you will need to provide 
+  its pid or name when you reattach to it:
 
 .. code-block:: shell
 
