@@ -468,7 +468,7 @@ To transfer a file **from** HPC Systems:
 
 .. code-block:: shell
 
-    scp -P XXXXX First.LastR@localhost:/path/to/file/on/HPCSystems /local/path/to/file
+    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
     rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
 
 
