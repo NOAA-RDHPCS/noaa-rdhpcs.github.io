@@ -3433,7 +3433,7 @@ getting started tips:
 * To terminate a session, simply log out of it while you are attached. You 
   will get a message like '[screen is terminating]' when it exits.
 
-** How to create a PW cluster from JSON files? **
+**How to create a PW cluster from JSON files?**
 
 You can certainly save a cluster definition anywhere you want as a JSON file. 
 To do that, go to the configuration page, click the JSON tab, and copy+paste 
@@ -3445,7 +3445,7 @@ The JSON data includes everything besides the "general settings", so anyone
 using it will still need to set the "resource account" and project before 
 starting the cluster.
 
-** How to publish your own cluster in the Marketplace? **
+**How to publish your own cluster in the Marketplace?**
 
 You are also able to publish your own cluster definitions to the marketplace 
 and share them with anyone else in your group, or even the entire NOAA platform. 
