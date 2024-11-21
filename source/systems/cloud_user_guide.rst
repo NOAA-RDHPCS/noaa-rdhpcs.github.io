@@ -3400,6 +3400,7 @@ multiple panes or tabs.
 In either case, both of these tools take a little getting used to with the
 various keyboard shortcuts to break away from the session. Here are a few
 getting started tips:
+
 * You can start a single screen session simply by running 'screen'
 * To detach from a session, use ``ctrl + a``, and then ``d``. You should see a
   message like '[detached from 80633.pts-0.mgmt-mlong-gcp-00009]' when you detach.
@@ -3413,9 +3414,9 @@ getting started tips:
     1 Socket in /run/screen/S-mlong.
 
 * To reattach, use ``screen -r``
-  * It is possible to have multiple screen sessions at the same time. If 
-    you have multiple, you will need to provide its pid or name when you 
-    reattach to it.
+  * It is possible to have multiple screen sessions at the same time. 
+    * If you have multiple, you will need to provide its pid or name when you 
+reattach to it.
 
 .. code-block:: shell
 
