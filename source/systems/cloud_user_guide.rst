@@ -3432,7 +3432,7 @@ getting started tips:
     $ screen -r screen1 # reattach to 'screen1' session
 
 * To terminate a session, simply log out of it while you are attached. You 
-  will get a message like '[screen is terminating]' when it exits.
+  will get a message like ``[screen is terminating]`` when it exits.
 
 **How to create a PW cluster from JSON files?**
 
