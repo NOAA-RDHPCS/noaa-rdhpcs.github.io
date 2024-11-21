@@ -3403,7 +3403,7 @@ getting started tips:
 
 * You can start a single screen session simply by running 'screen'
 * To detach from a session, use ``ctrl + a``, and then ``d``. You should see a
-  message like '[detached from 80633.pts-0.mgmt-mlong-gcp-00009]' when you detach.
+  message like ``[detached from 80633.pts-0.mgmt-mlong-gcp-00009]`` when you detach.
 * You can list your screen sessions by running 'screen -ls' Ex:
 
 .. code-block:: shell
@@ -3415,8 +3415,8 @@ getting started tips:
 
 * To reattach, use ``screen -r``
   * It is possible to have multiple screen sessions at the same time. 
-    * If you have multiple, you will need to provide its pid or name when you 
-reattach to it.
+    If you have multiple, you will need to provide its pid or name when you 
+    reattach to it.
 
 .. code-block:: shell
 
