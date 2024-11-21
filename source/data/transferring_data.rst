@@ -47,10 +47,10 @@ Details and examples are available in the
 Trusted Data Transfer Nodes (DTN)
 =================================
 
-By default, trusted DTNs are only accessible from some (but not
-necessarly all) hosts within noaa.gov (and Orion). If you need access
+By default, trusted Data Transfer Nodes are only accessible from some
+hosts within noaa.gov (and Orion). If you need access
 to/from a host that is not accessible, we will need to modify system
-firewalls.
+firewalls. See :ref:`firewall-modifications` for directions.
 
 DTNs support ssh-based authentication transfer methods, which
 currently include scp, rsync, and bbcp (Jet and Hera only). Default
@@ -132,6 +132,14 @@ desktop/laptop. However, note the following important points:
      - noaardhpcs#gaea
      - N/A
      - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
+   * - Orion
+     - msuhpc2#orion-dtn
+     - N/A
+     - :file:`/work, /work2`
+   * - Hercules
+     - nmsuhpc2#hercules
+     - N/A
+     - :file:`/work, /work2`
    * - PPAN
      - noaardhpcs#ppan_untrusted
      - N/A
@@ -188,6 +196,8 @@ credentials.
 
     [First.Last@an001 ~]$ globus transfer my-personal-external-endpoint-id:myDataFileName_here.txt \
     6ba73d87-08f2-463e-bf8f-83cc3e7a871f:First.Last/myDataFileName_there.txt
+
+.. _firewall-modifications:
 
 Firewall Modification Requests for DTNs
 =======================================
@@ -391,13 +401,13 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
 For Mac or Linux, enter:
 
 .. code-block:: shell
 
-     ssh -LXXXX:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -LXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
@@ -439,26 +449,35 @@ expected.
 
 
 Remember that this is the second terminal session opened on your local
-machine.
-
-Windows Users:
-Once a tunnel has been set up as in Step 1, you
+machine. Once a tunnel has been set up as in Step 1, you
 can use a client such as WinSCP to do the tranfers using that tunnel.
 Please keep in mind that tunnel will exist only as long as the session opened
 in Step 1 is kept alive.
 
-Use the following settings for your WinSCP sesssion:
-
-Hostname: localhost
-Port: your-assigned-port-used-in-Step1-above
-File protocol: SFTP
-
-To transfer a file **to** HPC Systems
 
 .. code-block:: shell
 
-    scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
-    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
+  Hostname: localhost
+  Port: your-assigned-port-used-in-Step1-above
+  File protocol: SFTP
+
+
+
+
+To transfer a file **to** HPC Systems
+
+
+For Windows Power Shell, enter:
+
+.. code-block:: shell
+
+  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
+
+For Mac or Linux, enter:
+
+.. code-block:: shell
+
+  rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
 
 .. note::
 
@@ -466,9 +485,16 @@ To transfer a file **to** HPC Systems
 
 To transfer a file **from** HPC Systems:
 
+For Windows Power Shell, enter:
+
 .. code-block:: shell
 
     scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
+
+For Mac or Linux, enter:
+
+.. code-block:: shell
+
     rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
 
 
