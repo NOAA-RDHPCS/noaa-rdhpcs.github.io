@@ -137,7 +137,7 @@ desktop/laptop. However, note the following important points:
      - N/A
      - :file:`/work, /work2`
    * - Hercules
-     - nmsuhpc2#hercules
+     - msuhpc2#hercules
      - N/A
      - :file:`/work, /work2`
    * - PPAN
