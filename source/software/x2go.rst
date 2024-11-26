@@ -72,8 +72,7 @@ Set the following conferation items, then click :guilabel:`OK`.
 :Path:   /
 :Host: *127.0.0.1* or *localhost*
 :Login: Use your RDHPCS *First.Last* username.  This is case sensitive.
-:SSH port: <ssh_port>  This must match your unique :ref:`SSH local forward port
-    number <ssh-port-tunnels>`
+:SSH port: This must match your unique SSH local forward port number
 :Session type: MATE
 
 .. hint::
@@ -92,8 +91,8 @@ Launch X2Go Session
 
     X2Go session window with an RDHPCS host configured.
 
-Open an :ref:`SSH connection <ssh_access>` that will establish the :ref:`SSH
-local forward <ssh-port-tunnels>` to the RDHPCS host.  Once the SSH connection
+Open an SSH connection that will establish the SSH
+local forward tunnel to the RDHPCS host.  Once the SSH connection
 is established, open the X2Go client and double click the session in the list
 in the right side bar. When the authentication dialog box appears, ensure your
 user name is correct and enter your :ref:`RSA passcode <rsa_instructions>`.
