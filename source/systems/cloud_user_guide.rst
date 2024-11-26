@@ -3385,3 +3385,73 @@ configuration and re-sync the data.
   originally used on CentOS 7 based clusters. A future update will resolve this
   issue.
 
+**What are the best practices for completing file transfers between lustre
+and object storage bucket  that can take hours to days?**
+
+Use ``screen`` or ``tmux`` whenever doing a big copy or software build that is
+expected to take several hours. These tools allow you to create a login shell
+that isn't bound to your specific terminal or ssh session. That way you can
+detach and reattach to the shell as needed.
+
+``screen`` is probably the easiest of the two to work with, especially if you
+only need a single window. tmux gets more interesting when you want to run
+multiple panes or tabs.
+
+In either case, both of these tools take a little getting used to with the
+various keyboard shortcuts to break away from the session. Here are a few
+getting started tips:
+
+* You can start a single screen session simply by running 'screen'
+* To detach from a session, use ``ctrl + a``, and then ``d``. You should see a
+  message like ``[detached from 80633.pts-0.mgmt-mlong-gcp-00009]``
+  when you detach.
+* You can list your screen sessions by running 'screen -ls' Ex:
+
+.. code-block:: shell
+
+    $ screen -ls
+    There is a screen on:
+            80633.pts-0.mgmt-mlong-gcp-00009        (Detached)
+    1 Socket in /run/screen/S-mlong.
+
+* To reattach, use ``screen -r``.  It is possible to have multiple screen
+  sessions at the same time. If you have multiple, you will need to provide
+  its pid or name when you reattach to it:
+
+.. code-block:: shell
+
+    $ screen -S screen1 # create a session named 'screen1'
+    [detached from 81383.screen1]
+    $ screen -S screen2 # create a session named 'screen 2'
+    [detached from 81452.screen2]
+    $ screen -ls
+    There are screens on:
+            81452.screen2   (Detached)
+            81383.screen1   (Detached)
+    2 Sockets in /run/screen/S-mlong.
+    $ screen -r screen1 # reattach to 'screen1' session
+
+* To terminate a session, simply log out of it while you are attached. You
+  will get a message like ``[screen is terminating]`` when it exits.
+
+**How to create a PW cluster from JSON files?**
+
+You can certainly save a cluster definition anywhere you want as a JSON file.
+To do that, go to the configuration page, click the JSON tab, and copy+paste
+everything where you want it to be. That same JSON can then be copied to the
+same box under a new cluster definition to configure it the same way. Note
+that any attached storages are included in the JSON, so anyone copying the
+definition will also need to be able to see those storage resources.
+The JSON data includes everything besides the "general settings", so anyone
+using it will still need to set the "resource account" and project before
+starting the cluster.
+
+**How to publish your own cluster in the Marketplace?**
+
+You are also able to publish your own cluster definitions to the marketplace
+and share them with anyone else in your group, or even the entire NOAA
+platform. Anyone that wants to use it would need to find it in the
+marketplace first. Publishing to the marketplace is also a good way to
+version control the cluster definitions anyway, so it might be good
+for backing up the configuration data somewhere. You can publish resources
+to the marketplace from `here <https://noaa.parallel.works/market/publish>`__
