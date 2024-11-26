@@ -25,7 +25,9 @@ author = "NOAA RDHPCS"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 extensions = ["sphinx_rtd_theme",
               "sphinx_design",
-              "sphinx_sitemap"]
+              "sphinx_sitemap",
+              "sphinx.ext.autodoc",
+              ]
 
 # Additional templates for all locations
 templates_path = ["_templates"]
@@ -60,6 +62,10 @@ if os.environ.get("GITHUB_ACTIONS", "false") == "true":
 
 html_css_files = [
     "css/theme_overrides.css",
+]
+
+html_js_files = [
+    "js/currentMaintenance.js",
 ]
 
 # cSpell:ignore gsce nochange
@@ -132,7 +138,8 @@ linkcheck_ignore = [
     r'https://www\.lustre\.org/documentation/',
     r'https://www\.putty\.org/.*',
     r'https://(orion|hercules)-ood.hpc.msstate.edu/?.*',
-    r'https://cpe\.ext\.hpe\.com/docs/latest/.*'
+    r'https://cpe\.ext\.hpe\.com/docs/latest/.*',
+    r'https://noaa-rrfs-pds\.s3\.amazonaws\.com/.*'
 ]
 linkcheck_retries = 3
 
