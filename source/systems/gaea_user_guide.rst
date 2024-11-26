@@ -1065,26 +1065,50 @@ Fair-share
     Only the QOSes on the compute clusters will affect a job's priority value.
 
 
-+----------+----------+--------+----------+-----------------------------------+
-| QOS      | Priority | Usage  | Max      | Description                       |
-|          | Factor   | Factor | Walltime |                                   |
-+==========+==========+========+==========+===================================+
-| normal   | 0.85     | 1.00   | 16 hours | The default QOS for compute       |
-|          |          |        |          | cluster jobs                      |
-+----------+----------+--------+----------+-----------------------------------+
-| debug    | 1.00     | 1.00   | 1 hour   | The highest priority QOS.  Useful |
-|          |          |        |          | for short, non-production work.   |
-+----------+----------+--------+----------+-----------------------------------+
-| urgent   | 0.95     | 1.00   | 16 hours | QOS to allow groups to prioritize |
-|          |          |        |          | their project's jobs              |
-+----------+----------+--------+----------+-----------------------------------+
-| windfall | 0.00     | 0.00   | 16 hours | Lowest priority as only age and   |
-|          |          |        |          | fair-share are used in priority   |
-|          |          |        |          | calculation.  The windfall QOS    |
-|          |          |        |          | will also keep jobs from          |
-|          |          |        |          | affecting the project's overall   |
-|          |          |        |          | fair-share                        |
-+----------+----------+--------+----------+-----------------------------------+
++----------+----------+--------+----------+----------+------------------------+
+| QOS      | Priority | Usage  | Max      | Clusters | Description            |
+|          | Factor   | Factor | Walltime |          |                        |
++==========+==========+========+==========+==========+========================+
+| normal   | 0.85     | 1.00   | 16 hours | C5, C6,  | The default QOS for    |
+|          |          |        |          | ES       | compute cluster jobs.  |
++----------+----------+--------+----------+----------+------------------------+
+| debug    | 1.00     | 1.00   | 1 hour   | C5, C6   | The highest priority   |
+|          |          |        |          |          | QOS. Useful for short, |
+|          |          |        |          |          | non-production work.   |
++----------+----------+--------+----------+----------+------------------------+
+| urgent   | 0.95     | 1.00   | 16 hours | C5, C6   | QOS to allow groups to |
+|          |          |        |          |          | prioritize their       |
+|          |          |        |          |          | project's jobs.        |
++----------+----------+--------+----------+----------+------------------------+
+| windfall | 0.00     | 0.00   | 16 hours | C5, C6,  | Lowest priority as     |
+|          |          |        |          | ES       | only age and           |
+|          |          |        |          |          | fair-share are used in |
+|          |          |        |          |          | priority calculation.  |
+|          |          |        |          |          | The windfall QOS will  |
+|          |          |        |          |          | also keep jobs from    |
+|          |          |        |          |          | affecting the          |
+|          |          |        |          |          | project's overall      |
+|          |          |        |          |          | fair-share.            |
++----------+----------+--------+----------+----------+------------------------+
+| dtn      | 0.00     | 1.00   | 16 hours | ES       | Default QOS for all    |
+|          |          |        |          |          | jobs executed on gaea  |
+|          |          |        |          |          | DTN's (data transfer   |
+|          |          |        |          |          | nodes).                |
++----------+----------+--------+----------+----------+------------------------+
+| ppan     | 0.00     | 1.00   | 16 hours | ES       | QOS to indicate job is |
+|          |          |        |          |          | performing a transfer  |
+|          |          |        |          |          | to/from GFDL/PPAN.     |
+|          |          |        |          |          | Jobs will be paused    |
+|          |          |        |          |          | when PPAN is in a      |
+|          |          |        |          |          | maintenance period.    |
++----------+----------+--------+----------+----------+------------------------+
+| hpss     | 0.00     | 1.00   | 16 hours | ES       | QOS to indicate job is |
+|          |          |        |          |          | performing a transfer  |
+|          |          |        |          |          | to/from NESCC HPSS.    |
+|          |          |        |          |          | Jobs will be paused    |
+|          |          |        |          |          | when HPSS is in a      |
+|          |          |        |          |          | maintenance period.    |
++----------+----------+--------+----------+----------+------------------------+
 
 .. note::
 

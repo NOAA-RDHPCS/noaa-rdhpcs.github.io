@@ -25,7 +25,9 @@ author = "NOAA RDHPCS"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 extensions = ["sphinx_rtd_theme",
               "sphinx_design",
-              "sphinx_sitemap"]
+              "sphinx_sitemap",
+              "sphinx.ext.autodoc",
+              ]
 
 # Additional templates for all locations
 templates_path = ["_templates"]
@@ -60,6 +62,10 @@ if os.environ.get("GITHUB_ACTIONS", "false") == "true":
 
 html_css_files = [
     "css/theme_overrides.css",
+]
+
+html_js_files = [
+    "js/currentMaintenance.js",
 ]
 
 # cSpell:ignore gsce nochange
@@ -120,7 +126,6 @@ linkcheck_allowed_redirects = {
     r'https://.*?\.google\.com/?.*': r'https://accounts\.google\.com/.*?/signin/.*',
     r'https://.*\.google\.com/?.*': r'https://.*?\.google\.com/?.*?/edit',
     r'https://github\.com/?.*': r'https://github\.com/login',
-    r'https://sslvpn\.rdhpcs\.noaa\.gov/': r'https://sslvpn\.rdhpcs\.noaa\.gov/.*',
     r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*',
     r'https://support\.hpe\.com/connect/s/product\?kmpmoid=1013083813': r'https://support\.hpe\.com/connect/s/product\?language=?.*&kmpmoid=1013083813',
     r'https://conda\.io/.*': r'https://docs\.conda\.io/.*',
@@ -132,7 +137,9 @@ linkcheck_ignore = [
     r'https://www\.lustre\.org/documentation/',
     r'https://www\.putty\.org/.*',
     r'https://(orion|hercules)-ood.hpc.msstate.edu/?.*',
-    r'https://cpe\.ext\.hpe\.com/docs/latest/.*'
+    r'https://cpe\.ext\.hpe\.com/docs/latest/.*',
+    r'https://noaa-rrfs-pds\.s3\.amazonaws\.com/.*',
+    r'https://sslvpn\.rdhpcs\.noaa\.gov/'
 ]
 linkcheck_retries = 3
 
