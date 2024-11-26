@@ -4,11 +4,20 @@
 Getting Help
 ############
 
-Each system in RDHPCS has a specific email address to use for
-requesting help. To get help for an RDHPCS issue, send email to open a
-help ticket. Send your help request to the email address below that
-corresponds with the system or function you need help with.  Use your
-noaa.gov email address for all of your correspondence.
+There are two ways to request help from the RDHPCS team:
+
+* Use the `RDHPCS ticket portal <https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_.
+* Send an e-mail to one of the specific RDHPCS e-mail addresses.
+
+When sending an e-mail, be sure to do the following:
+
+* Select the correct e-mail address, corresponding to the HPC system you're
+  using.
+* Use your noaa.gov e-mail address.
+* Give your e-mail a helpful subject line, as this will become the title
+  of your ticket.
+* Include as much information as possible, so the help desk team can best
+  assist you.
 
 .. _rdhpcs-system-help:
 
@@ -61,10 +70,10 @@ GFDL manages tickets for Gaea and PPAN.
     **Email Communication Policy**
 
     Per the RDHPCS User Requirements and NOAA Security Policy, all NOAA related
-    email communication must be completed utilizing your @noaa.gov email
+    e-mail communication must be completed utilizing your @noaa.gov e-mail
     address. Please only submit and reply to help tickets from your @noaa.gov
-    email address. With the exception of those Orion users who do not have a
-    NOAA email address, help requests from other email addresses will not be
+    e-mail address. With the exception of those Orion users who do not have a
+    NOAA e-mail address, help requests from other e-mail addresses will not be
     processed until the request is received from @noaa.gov.
 
 .. note::
@@ -115,7 +124,7 @@ Provide Detailed Description of the Problem
 Include what you did, what didn't work, and why you believe there is a problem.
 Specifically, tell us what commands you ran, and what error messages you
 received. If this information is short, you can cut and paste it into the
-email. If not, please give us paths to files containing this information so
+e-mail. If not, please give us paths to files containing this information so
 that we can look at it.
 
 .. tab-set::
@@ -180,7 +189,7 @@ Follow up With Additional Information or Questions
 Often problems don't happen just once and may not occur in a repeatable
 fashion. If you have additional information that is potentially useful for your
 issue, please submit the new information to your **existing help ticket
-number**. You can do this by simply replying to the last email sent to you by
+number**. You can do this by simply replying to the last e-mail sent to you by
 the help system (the ticket ID should be in the subject line), or replying to
 the ticket in the `customer portal
 <https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_.  For Gaea and PPAN
@@ -356,11 +365,11 @@ Help Tickets can be managed in two ways:
     .. tab-item:: Email
 
         This method is recommended when you have only a few open tickets.
-        Reply to the email thread that is started by the OTRS system after you
-        submit a help request.  The subject of that email thread starts with
+        Reply to the e-mail thread that is started by the OTRS system after you
+        submit a help request.  The subject of that e-mail thread starts with
         the assigned ticket number (e.g., [RDHPCS#2018041954000023]), followed
-        by the subject in your original email request. DO NOT reply to your
-        original email request you sent or it will start a new ticket and add
+        by the subject in your original e-mail request. DO NOT reply to your
+        original e-mail request you sent or it will start a new ticket and add
         confusion to the process.
 
     .. tab-item:: User Portal
@@ -379,12 +388,13 @@ Help Ticket System User Portal
 Login
 -----
 
+`Link to the portal <https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_
+
 The ticket system allows an alternative access point to view RDHPCS help
 tickets. It is recommended to use the portal if you have multiple open help
 tickets and/or need to search through old help tickets. Log on to the RDHPCS
-portal using NOAA SSO
-credentials.  Gaea and PPAN tickets can be accessed using the GFDL portal
-using the GFDL Active Directory (AD) password.
+portal using NOAA SSO credentials.  Gaea and PPAN tickets can be accessed
+using the GFDL portal using the GFDL Active Directory (AD) password.
 
 .. note::
 
