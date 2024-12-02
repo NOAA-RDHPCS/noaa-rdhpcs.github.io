@@ -430,7 +430,7 @@ respectively, mounted at :file:`/gpfs/f5` and :file:`/gpfs/f6`.
       - C6 only
 
 File Compression
-~~~~~~~~~~~~~~~~
+----------------
 
 GPFS file systems can be enabled for compression.  Currently, the F5 file
 system has this feature turned on, while it is disabled on F6.
@@ -453,7 +453,8 @@ The following is the current policy for compression on F5:
 
 **Additional notes regarding GFPS compression:**
 
-* Users can decompress their files by running ``mmchattr --compression no -I yes <file>``.
+* Users can decompress their files by running
+  ``mmchattr --compression no -I yes <file>``.
 * Files are written to disk uncompressed, and then compression is done upon
   the execution of our compression cronjob or via an explicit ``mmchattr``
   command.
