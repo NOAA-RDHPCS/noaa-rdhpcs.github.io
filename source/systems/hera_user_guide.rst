@@ -1,7 +1,7 @@
 .. _hera-user-guide:
 
 ***************
-Hera User Guide
+hera user guide
 ***************
 
 .. image:: /images/Hera.jpg
