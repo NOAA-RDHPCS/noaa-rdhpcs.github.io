@@ -6,7 +6,7 @@ hera user guide
 
 .. image:: /images/Hera.jpg
 
-About NESCC
+about NESCC
 ===========
 
 The NOAA Environmental Security Computing Center (NESCC), located in
