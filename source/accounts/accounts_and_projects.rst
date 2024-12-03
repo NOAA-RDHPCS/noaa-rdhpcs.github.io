@@ -160,9 +160,11 @@ Account Activity Requirements: Suspension, Deactivation, Reactivation
 **Your NOAA RDHPCS account must be kept active by accessing the RDHPCS
 at least once every 90 days.**
 
-User accounts are suspended when they has been inactive for 90 days or
-more. The user will be notified at their NOAA.gov address if their
-account has been suspended, with instructions on reactivation.
+User accounts are suspended when they have been inactive for 90 days or more.
+The user will be notified at their NOAA.gov address if their account has been
+suspended, with instructions on reactivation. To reactivate your account, send
+an email to: rdhpcs.aim.help@noaa.gov with the subject line: Reactivate
+First.Last. This creates an OTRS ticket to reactivate the account.
 
 Depending on the length of account suspension, there may be additional
 steps to fully reactivate your account:
