@@ -307,34 +307,30 @@ Pages for a more complete list.
    analysis cluster (gfdl).  On gaea, the ``--clusters`` option must be
    specified, and should be specified for many of the Slurm commands.
 
-Specifying Partitions and QoSes
--------------------------------
+Specifying Partitions and QOS
+-----------------------------
 
-RDHPCS systems generally have a default partition and QoS. If you do not
-specify these parameters, your job will be submitted to the defaut partition
-and QoS.
+RDHPCS systems generally have a default partition and QOS. If you do not
+specify these parameters, your job will be submitted to the default partition
+and QOS.
 
-If you wish choose a different partition or QoS you will need to specify them
-as per the table above. Different partitions and QoSes are available, depending
+If you wish choose a different partition or QOS you will need to specify them
+as per the table above. Different partitions and QOS are available, depending
 the resources you need. For example, jobs that require external network
 connectivity or HPSS access will generally need to be submited to the
 **service** partition.
 
-QoS is used to specify a **priority** for the job.
+QOS is used to specify a **priority** for the job.
 
 There are limits, such as number of nodes and tasks,
-and wall time limits for the various partitions and QoSes.
-To see what those limits are, run the command:
-
-.. code-block::
-
-   sbatch-limits
+and wall time limits for each partitions and QOS.
+To see what those limits are, run the command ``sbatch-limits``.
 
 The output of this command also shows which combinations of
-partition/QoSes are permitted, as not all partitions/QoS combinations are
+partition/QOS are permitted, as not all partitions/QOS combinations are
 allowed.
 
-Run the command `sbatch-limits -h` to see the other available options.
+Run the command ``sbatch-limits -h`` to see the other available options.
 
 
 Slurm Environment Variables
