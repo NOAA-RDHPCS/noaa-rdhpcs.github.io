@@ -36,10 +36,8 @@ Requirements
 ------------
 
 To use X2Go on an RDHPCS system, you must have an active SSH Connection with
-properly configured SSH tunnels. (Use this link for instructions to `configure
-SSH tunnels.
-<https://docs.rdhpcs.noaa.gov/data/transferring_data.html#ssh-port-tunnel-from-linux-like-systems>`_)
-
+properly configured SSH tunnels. For configuration instructions, see
+:ref:`ssh-tunnel`.
 
 `Acquire
 <https://wiki.x2go.org/doku.php/download:start#the_client-side_of_x2go>`__ and
