@@ -36,10 +36,10 @@ Regardless of RSA type, your first step is to fill out a form.
 Requesting a new or replacement RSA token
 =========================================
 
-New users: submit the RSA token request form
----------------------------------------------
+New users: Submit the RSA token request form and OTRS Ticket
+------------------------------------------------------------
 
-Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site and follow
+1. Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site and follow
 the link labeled "Make a request for an RSA token".  Make sure you are
 logged into Google with your NOAA.GOV credentials, and fill out the
 form.
@@ -51,6 +51,11 @@ form.
    Authentication).  Please try logging into the `NOAA Staff Directory
    <https://accounts.noaa.gov>`_ and contact your local I/T support
    people if you cannot login.
+
+2. Open an OTRS ticket. Send email to `rdhpcs.aim.help@noaa.gov
+<mailto:rdhpcs.aim.help@noaa.gov>`_, with the subject of
+'First.Last: Token for new device' (replace
+First.Last with your First Last NOAA username).
 
 
 Current users: Replacement token for a new smart phone
