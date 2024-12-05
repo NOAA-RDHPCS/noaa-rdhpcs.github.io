@@ -31,9 +31,7 @@ Once you have a NOAA.gov email address, you can:
 system, **AIM**.
 
 2. Visit the `Account Information Management`_ website and request
-access to the RDHPCS project.
-
-3. Log into AIM using your NOAA email
+access to the RDHPCS project. To do that, log into AIM using your NOAA email
 credentials, review your profile for accuracy, and request the RDHPCS project.
 
 .. image:: /images/AIM2.png
