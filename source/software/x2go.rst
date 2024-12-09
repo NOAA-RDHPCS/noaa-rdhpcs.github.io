@@ -35,8 +35,9 @@ The RDHPCS does not support these X2Go features:
 Requirements
 ------------
 
-To use X2Go on an RDHPCS system, you must have an active SSH Connection
-with properly configured SSH tunnels.
+To use X2Go on an RDHPCS system, you must have an active SSH Connection with
+properly configured SSH tunnels. For configuration instructions, see
+:ref:`ssh-tunnel`.
 
 `Acquire
 <https://wiki.x2go.org/doku.php/download:start#the_client-side_of_x2go>`__ and

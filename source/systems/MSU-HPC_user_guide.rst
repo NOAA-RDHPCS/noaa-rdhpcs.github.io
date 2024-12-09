@@ -299,8 +299,10 @@ system for execution on system compute resources. This section
 describes the requirements and common patterns for job submission and
 monitoring.
 
-**To improve your job turnaround** and efficiently use the system
-resources, please read and follow instructions carefully.
+.. note::
+
+   **To improve your job turnaround** and efficiently use the system
+   resources, please read and follow instructions carefully.
 
 Submitting a Job
 ----------------

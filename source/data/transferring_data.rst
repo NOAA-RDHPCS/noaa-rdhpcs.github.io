@@ -327,6 +327,8 @@ generate it with (at least on Linux) with the command:
 Jet users can use their public key in their /home/$USER/.ssh directory.
 If you have difficulties, contact the support staff for help.
 
+.. _established-tunnel:
+
 Using a Pre-Established SSH Port Tunnel
 =======================================
 
@@ -336,6 +338,8 @@ host (typically Hera, Jet or other remote hosts). The port tunnel
 method will work from any system on the network (that is, your local
 machine does not necessarily have to be in the noaa.gov domain). We
 recommend using this in cases where DTN is not available.
+
+.. _ssh-tunnel:
 
 SSH Port Tunnel from Linux-like systems
 ---------------------------------------
