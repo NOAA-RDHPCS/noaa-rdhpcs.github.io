@@ -366,6 +366,70 @@ will help you determine how many nodes you would have to use to satisfy the
 memory requirements of your job. There are a couple of different ways of
 getting the memory usage information about your job.
 
+Specify  a processor layout for your job (uniform layout example)
+-----------------------------------------------------------------
+
+The simple method of laying out tasks where all the cores on a node are used
+with one MPI task per core works reasonably well for most applications. These
+are however cases where the default amount of memory available per core is
+insufficient and need more memory than is available.
+
+In those instances, it is necessary to spread out tasks on more nodes so
+that there are fewer MPI tasks on a node than there are cores. The other cores
+may be left idle, or could be used for speeding up the code by using threads.
+
+For example on a machine with 12 cores per node, the default layout
+would use all the 12 cores per node. If each task needs twice
+that amount of memory, you would place 6 MPI tasks on each
+node.
+
+In the example below, even though there are 12 cores available
+on the node, only 6 MPI tasks are placed on a node. Each task then gets double
+the amount of memory
+
+.. code-block:: shell
+
+   #SBATCH --nodes=4
+   #SBATCH --ntasks-per-node=6
+
+The ``--cpus-per-task`` option can be used to specify layout for a threaded job
+(e.g. OpenMP). For example, a hybrid MPI/OpenMP job where each MPI process uses
+2 threads:
+
+.. code-block:: shell
+
+   #SBATCH --nodes=4
+   #SBATCH --ntasks-per-node=3
+   #SBATCH --cpus-per-task=2
+
+
+   export OMP_NUM_THREADS=2          # Note that this is needed too!
+   srun ./myexe
+
+Other examples:
+
+.. code-block:: shell
+
+   #SBATCH --nodes=12
+   #SBATCH --ntasks-per-node=1
+
+This example will start the job on 12 nodes, with one
+task/thread per node.
+
+.. note::
+
+   ``N--nodes=20`` is not the same as ``--nodes=20 --ntasks-per-node=12``. By
+   default, one task per node is used. It is best to always explicitly list the
+   ``--ntasks-per-node`` (or --ntasks) expression that you need.
+
+.. note::
+
+   You **must** specify a number of tasks, either with
+   ``-n`` (--ntasks) or ``-N`` (--nodes) or both. If you do not specify
+   the number of tasks, you will get a job submission error.
+
+
+
 Using report-mem utility in batch jobs
 --------------------------------------
 
