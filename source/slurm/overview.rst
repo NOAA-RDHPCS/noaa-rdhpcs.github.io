@@ -332,33 +332,31 @@ allowed.
 
 Run the command ``sbatch-limits -h`` to see the other available options.
 
-.. _memory-usage:
-
 Determine and specify a memory limit for your jobs
 ==================================================
 
-You can use the "report-mem" command in your job to get memory usage
-information from your batch job. But this
-works only if you are able to successfully run your job to conclusion without
-failing.
+You can use the ``report-mem`` command in your job to get memory usage
+information from your batch job. This will only work if your job runs
+successfully to conclusion.
 
-But if you don't know how much memory your application needs, you can "over
-estimate" or use an entire node to get a successful run and include the
-"report-mem" command in the job. To request all the available memory on the
+If you don't know how much memory your application needs, you can "over
+estimate", or use an entire node to get a successful run and include the
+``report-mem`` command in the job. To request all the available memory on the
 node for a serial job you can use the ``--mem=0`` option on the ``sbatch``
 command.
 
-If your jobs are failing with memory errors, it is possible that your
+If your jobs fail with memory errors, it is possible that your
 application needs more memory than what you were giving for the job.
 
 In the case of serial jobs (which means you may have other jobs running on the
 same code and that your job is running), by default you get a certain amount of
 memory. If your application needs more memory than the default, you need to
-specify the memory needed by your job using the ``--mem=`` option. In general,
-for parallel jobs you do not need to specify a memory limit. You can specify
-the memory limit on the command line with using --mem option (for example
-``--mem=2g`` to specify 2 GB of memory) or as an #SBATCH directive within the
-job file.
+specify the memory needed by your job using the ``--mem=`` option. (For
+example, ``--mem=2g`` specifies 2 GB of memory)
+
+In general, for parallel jobs you do not need to specify a memory limit. You
+can specify the memory limit on the command line with using ``--mem`` option,
+or as an #SBATCH directive within the job file.
 
 For parallel jobs it is not necessary to specify the
 memory requirement, but if each of your tasks requires more than its share of
@@ -453,7 +451,7 @@ the appropriate amount of memory by doing something like the following:
 
     sbatch --ntasks=1 --mem=8000M ... jobfile
 
-While the prefixes M and G both work, the number specified must be an integer.
+While the suffixes M and G both work, the number specified must be an integer.
 If you would prefer that the single-core job allocates the entire node, use one
 of the following options:
 
