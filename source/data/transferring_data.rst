@@ -134,11 +134,11 @@ desktop/laptop. However, note the following important points:
      - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
    * - Orion
      - msuhpc2#orion-dtn
-     - N/A
+     - orion-dtn.hpc.msstate.edu
      - :file:`/work, /work2`
    * - Hercules
      - msuhpc2#hercules
-     - N/A
+     - hercules-dtn.HPC.MsState.Edu
      - :file:`/work, /work2`
    * - PPAN
      - noaardhpcs#ppan_untrusted
