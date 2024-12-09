@@ -6,8 +6,7 @@ X2Go Remote Desktop
 
 `X2Go <https://wiki.x2go.org/doku.php>`_ is an open source, `remote desktop
 <https://en.wikipedia.org/wiki/Remote_desktop>`__ solution designed to work
-well over low and high bandwidth connections.
-
+well over low and high bandwidth connections
 X2Go is supported on all RDHPCS systems to allow:
 
 * A single graphical `MATE <https://mate-desktop.org/>`__ remote desktop running on one
@@ -36,7 +35,8 @@ Requirements
 ------------
 
 To use X2Go on an RDHPCS system, you must have an active SSH Connection
-with properly configured SSH tunnels.
+with properly configured SSH tunnels. For configuration instructions, see
+:ref:`ssh-tunnel`.
 
 `Acquire
 <https://wiki.x2go.org/doku.php/download:start#the_client-side_of_x2go>`__ and
@@ -72,7 +72,8 @@ Set the following conferation items, then click :guilabel:`OK`.
 :Path:   /
 :Host: *127.0.0.1* or *localhost*
 :Login: Use your RDHPCS *First.Last* username.  This is case sensitive.
-:SSH port: This must match your unique SSH local forward port number
+:SSH port: <ssh_port>  This must match your unique :ref:`SSH local forward port
+    number <ssh-port-tunnels>`
 :Session type: MATE
 
 .. hint::
@@ -91,8 +92,8 @@ Launch X2Go Session
 
     X2Go session window with an RDHPCS host configured.
 
-Open an SSH connection that will establish the SSH
-local forward tunnel to the RDHPCS host.  Once the SSH connection
+Open an :ref:`SSH connection <ssh_access>` that will establish the :ref:`SSH
+local forward <ssh-port-tunnels>` to the RDHPCS host.  Once the SSH connection
 is established, open the X2Go client and double click the session in the list
 in the right side bar. When the authentication dialog box appears, ensure your
 user name is correct and enter your :ref:`RSA passcode <rsa_instructions>`.

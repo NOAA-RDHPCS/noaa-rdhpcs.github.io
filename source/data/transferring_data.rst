@@ -337,6 +337,8 @@ method will work from any system on the network (that is, your local
 machine does not necessarily have to be in the noaa.gov domain). We
 recommend using this in cases where DTN is not available.
 
+.. _ssh-tunnel:
+
 SSH Port Tunnel from Linux-like systems
 ---------------------------------------
 This method requires two sessions on your local machine: one to
