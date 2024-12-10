@@ -418,7 +418,7 @@ task/thread per node.
 
 .. note::
 
-   ``N--nodes=20`` is not the same as ``--nodes=20 --ntasks-per-node=12``. By
+   ``--nodes=20`` is not the same as ``--nodes=20 --ntasks-per-node=12``. By
    default, one task per node is used. It is best to always explicitly list the
    ``--ntasks-per-node`` (or --ntasks) expression that you need.
 
