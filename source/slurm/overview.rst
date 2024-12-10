@@ -336,7 +336,7 @@ Determine and specify a memory limit for your jobs
 ==================================================
 
 You can use the ``report-mem`` command in your job to get memory usage
-information from your batch job. This will only work if your job runs
+information from your batch job. Please note, this only works if your job runs
 successfully to conclusion.
 
 If you don't know how much memory your application needs, you can "over
@@ -366,19 +366,19 @@ will help you determine how many nodes you would have to use to satisfy the
 memory requirements of your job. There are a couple of different ways of
 getting the memory usage information about your job.
 
-Specify  a processor layout for your job (uniform layout example)
+Specify a processor layout for your job (uniform layout example)
 -----------------------------------------------------------------
 
 The simple method of laying out tasks where all the cores on a node are used
 with one MPI task per core works reasonably well for most applications. These
 are however cases where the default amount of memory available per core is
-insufficient and need more memory than is available.
+insufficient and more memory is needed than is available.
 
-In those instances, it is necessary to spread out tasks on more nodes so
+In those instances, it is necessary to spread tasks out on more nodes, so
 that there are fewer MPI tasks on a node than there are cores. The other cores
-may be left idle, or could be used for speeding up the code by using threads.
+may be left idle, or could be used to speed up the code by using threads.
 
-For example on a machine with 12 cores per node, the default layout
+For example, on a machine with 12 cores per node, the default layout
 would use all the 12 cores per node. If each task needs twice
 that amount of memory, you would place 6 MPI tasks on each
 node.
@@ -427,7 +427,6 @@ task/thread per node.
    You **must** specify a number of tasks, either with
    ``-n`` (--ntasks) or ``-N`` (--nodes) or both. If you do not specify
    the number of tasks, you will get a job submission error.
-
 
 
 Using report-mem utility in batch jobs
