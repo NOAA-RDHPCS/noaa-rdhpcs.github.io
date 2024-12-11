@@ -332,6 +332,230 @@ allowed.
 
 Run the command ``sbatch-limits -h`` to see the other available options.
 
+Determine and specify a memory limit for your jobs
+==================================================
+
+You can use the ``report-mem`` command in your job to get memory usage
+information from your batch job. Please note, this only works if your job runs
+successfully to conclusion.
+
+If you don't know how much memory your application needs, you can "over
+estimate", or use an entire node to get a successful run and include the
+``report-mem`` command in the job. To request all the available memory on the
+node for a serial job you can use the ``--mem=0`` option on the ``sbatch``
+command.
+
+If your jobs fail with memory errors, it is possible that your
+application needs more memory than what you were giving for the job.
+
+In the case of serial jobs (which means you may have other jobs running on the
+same code and that your job is running), by default you get a certain amount of
+memory. If your application needs more memory than the default, you need to
+specify the memory needed by your job using the ``--mem=`` option. (For
+example, ``--mem=2g`` specifies 2 GB of memory)
+
+In general, for parallel jobs you do not need to specify a memory limit. You
+can specify the memory limit on the command line with using ``--mem`` option,
+or as an #SBATCH directive within the job file.
+
+For parallel jobs it is not necessary to specify the
+memory requirement, but if each of your tasks requires more than its share of
+memory on the node, the only way to get more memory is to spread the same
+number of tasks on more nodes. The Memory High Water mark information
+will help you determine how many nodes you would have to use to satisfy the
+memory requirements of your job. There are a couple of different ways of
+getting the memory usage information about your job.
+
+Specify a processor layout for your job (uniform layout example)
+-----------------------------------------------------------------
+
+The simple method of laying out tasks where all the cores on a node are used
+with one MPI task per core works reasonably well for most applications. These
+are however cases where the default amount of memory available per core is
+insufficient and more memory is needed than is available.
+
+In those instances, it is necessary to spread tasks out on more nodes, so
+that there are fewer MPI tasks on a node than there are cores. The other cores
+may be left idle, or could be used to speed up the code by using threads.
+
+For example, on a machine with 12 cores per node, the default layout
+would use all the 12 cores per node. If each task needs twice
+that amount of memory, you would place 6 MPI tasks on each
+node.
+
+In the example below, even though there are 12 cores available
+on the node, only 6 MPI tasks are placed on a node. Each task then gets double
+the amount of memory
+
+.. code-block:: shell
+
+   #SBATCH --nodes=4
+   #SBATCH --ntasks-per-node=6
+
+The ``--cpus-per-task`` option can be used to specify layout for a threaded job
+(e.g. OpenMP). For example, a hybrid MPI/OpenMP job where each MPI process uses
+2 threads:
+
+.. code-block:: shell
+
+   #SBATCH --nodes=4
+   #SBATCH --ntasks-per-node=3
+   #SBATCH --cpus-per-task=2
+
+
+   export OMP_NUM_THREADS=2          # Note that this is needed too!
+   srun ./myexe
+
+Other examples:
+
+.. code-block:: shell
+
+   #SBATCH --nodes=12
+   #SBATCH --ntasks-per-node=1
+
+This example will start the job on 12 nodes, with one
+task/thread per node.
+
+.. note::
+
+   ``--nodes=20`` is not the same as ``--nodes=20 --ntasks-per-node=12``. By
+   default, one task per node is used. It is best to always explicitly list the
+   ``--ntasks-per-node`` (or --ntasks) expression that you need.
+
+.. note::
+
+   You **must** specify a number of tasks, either with
+   ``-n`` (--ntasks) or ``-N`` (--nodes) or both. If you do not specify
+   the number of tasks, you will get a job submission error.
+
+
+Using report-mem utility in batch jobs
+--------------------------------------
+
+To get the maximum amount of memory (also called "Memory High Water mark") used
+up to a specific point in your job, you can add the following command to your
+job file:
+
+   ``report-mem``
+
+Typically, the best place to put this command is the end of your job
+file or altered exit points if your jobs are written such that they may exit
+before the end.
+
+There may be instances where this is not feasible because you
+don't have direct access to the job file. For example, you might be using other
+scripts to generate job files on the fly, where users have the option to
+specify launch option in a "config" file. In those instances, you can get a
+memory report for your parallel jobs using ``--epilog`` option of the srun
+command as shown below:
+
+.. code-block:: shell
+
+   srun --epilog=/apps/local/bin/report-mem   wrf.exe
+
+Using report-mem utility on a job that is currently running
+-----------------------------------------------------------
+
+If your job is currently running on the system and you would like to find the
+Memory High Water Mark up to that point, use
+the ``report-mem`` command from a
+login node on that job, as in the example below:
+
+.. code-block:: shell
+
+    hfe03.% report-mem -j 4665051
+    Peak memory usage summary:
+    min = 11139788 KB
+    ave = 11181442 KB
+    max = 11261556 KB
+    All nodes sorted by peak memory as percentage of limit: (in KB)
+    % of user user user total total
+    Node limit max limit current current phys
+    h16c50 12.0 11261556 94208000 11259356 14455952 97609020
+    h25c22 11.9 11208488 94208000 11207184 14486172 97609020
+    h25c17 11.9 11178112 94208000 11177692 14508136 97609024
+    h25c40 11.8 11152296 94208000 11151424 14451696 97609024
+    h25c48 11.8 11148416 94208000 11147668 14445588 97609024
+    h25c20 11.8 11139788 94208000 11139672 14465660 97609024
+    hfe03.%
+
+Determining the amount of memory used by a process
+--------------------------------------------------
+
+The techniques above give you the amount of memory used on each node,
+rather than the amount of memory used by each task.
+
+To find the amount of memory used by each task, use this method:
+
+    Submit the job, but use a full node (using ``sbatch -N 1 ...`` for example)
+
+If your execute line is:
+
+   ``./myexe``
+
+replace it with
+
+   ``/usr/bin/time ./myexe``
+
+If you search for the string "elapsed", you will find a line resembling the
+following:
+
+.. code-block:: shell
+
+   1.34user 15.57system 0:22.76elapsed 74%CPU (0avgtext+0avgdata 7822876 maxresident)k
+
+
+which shows that this process used approximately 7.8 GB of memory.
+
+When you are ready to run the job in production you can request one task and
+the appropriate amount of memory by doing something like the following:
+
+.. code-block:: shell
+
+    sbatch --ntasks=1 --mem=8000M ... jobfile
+
+While the suffixes M and G both work, the number specified must be an integer.
+If you would prefer that the single-core job allocates the entire node, use one
+of the following options:
+
+    ``#SBATCH --exclusive``
+
+or
+
+    ``#SBATCH --nodes=1``
+
+The same technique is used for parallel jobs. The main difference will be that
+you need to replace the launch line as follows.
+
+If your mpi launch command is:
+
+   ``srun ./wrf``
+
+you should change that to:
+
+   ``srun -l /usr/bin/time ./wrf``
+
+The report wil list the amount of memory used by each task. You can
+calculate the memory used on each node by determining how many tasks were
+placed on each node.
+
+Shown below is a sample report using the grep command to filter and show only
+output of interest, sorted by rank order:
+
+.. code-block:: shell
+
+   hfe03.% grep maxresident osu-osu_mbw_mr-0002-04.o4885268 | sort
+   0: 15.98user 3.06system 0:19.67elapsed 96%CPU (0avgtext+0avgdata 23928maxresident)k
+   1: 16.23user 2.68system 0:19.67elapsed 96%CPU (0avgtext+0avgdata 23984maxresident)k
+   2: 16.42user 2.62system 0:19.67elapsed 96%CPU (0avgtext+0avgdata 23984maxresident)k
+   3: 16.35user 2.55system 0:19.67elapsed 96%CPU (0avgtext+0avgdata 23868maxresident)k
+   4: 15.99user 3.13system 0:19.64elapsed 97%CPU (0avgtext+0avgdata 21976maxresident)k
+   5: 16.24user 2.67system 0:19.64elapsed 96%CPU (0avgtext+0avgdata 23996maxresident)k
+   6: 16.45user 2.67system 0:19.64elapsed 97%CPU (0avgtext+0avgdata 21952maxresident)k
+   7: 16.40user 2.57system 0:19.64elapsed 96%CPU (0avgtext+0avgdata 24020maxresident)k
+   hfe03.%
+
+In this example, each task used approximately 23900 KB (or 23 MB) of memory.
 
 Slurm Environment Variables
 ---------------------------
