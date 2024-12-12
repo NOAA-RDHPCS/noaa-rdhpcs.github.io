@@ -6,7 +6,7 @@ X2Go Remote Desktop
 
 `X2Go <https://wiki.x2go.org/doku.php>`_ is an open source, `remote desktop
 <https://en.wikipedia.org/wiki/Remote_desktop>`__ solution designed to work
-well over low and high bandwidth connections
+well over low and high bandwidth connections.
 X2Go is supported on all RDHPCS systems to allow:
 
 * A single graphical `MATE <https://mate-desktop.org/>`__ remote desktop running on one
