@@ -429,6 +429,45 @@ respectively, mounted at :file:`/gpfs/f5` and :file:`/gpfs/f6`.
       - No
       - C6 only
 
+File Compression
+----------------
+
+GPFS file systems can be enabled for compression.  Currently, the F5 file
+system has this feature turned on, while it is disabled on F6.
+
+The following is the current policy for compression on F5:
+
+.. code-block:: shell
+
+   /* Macros */
+   define(excluded_files,(PATH_NAME LIKE '%/.SpaceMan%' OR
+   PATH_NAME LIKE '%/fs_audit_log/%' OR
+   PATH_NAME LIKE '%/.snapshots/%' OR
+   PATH_NAME LIKE '%/.msgq/%'))
+
+   /* I.E. Files must be idle for 12 hours before being a candidate for compression */
+   define(access_buffer_time_passed, ((CURRENT_TIMESTAMP - MODIFICATION_TIME) > (INTERVAL '168' HOURS) AND (CURRENT_TIMESTAMP - ACCESS_TIME) > (INTERVAL '168' HOURS)))
+
+   /* Ensure compression on qualified files */
+   RULE 'compress-large-files-on-hdd' MIGRATE COMPRESS('lz4') FROM POOL 'capacity' WHERE not(excluded_files) AND (KB_ALLOCATED >= 4096) AND access_buffer_time_passed
+
+**Additional notes regarding GFPS compression:**
+
+* Users can decompress their files by running
+  ``mmchattr --compression no -I yes <file>``.
+* Files are written to disk uncompressed, and then compression is done upon
+  the execution of our compression cronjob or via an explicit ``mmchattr``
+  command.
+* Compressed files are **not** decompressed when they are read.
+* When a compressed file is modified, the entire file is *not* decompressed.
+  Only the relevant portion will be decompressed, and then re-compressed
+  later upon execution of our cron job or an ``mmchattr`` command.
+* There is no direct command to determine the compression ratio applied.
+  Users will need to use commands that return the full size of files (``ls``)
+  and divide that by something that shows the on disk space usage of a file
+  (``du``)
+
+
 Move data to and from Gaea
 ==========================
 

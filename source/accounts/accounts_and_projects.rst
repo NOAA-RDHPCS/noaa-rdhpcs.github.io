@@ -25,20 +25,25 @@ through them.
 
 .. image:: /images/access1.png
 
-Once you have a NOAA.gov email address, you can request an RDHPCS
-account through the Account Information Managment system, AIM. Visit
-the `Account Information Management`_ website and request
-access to the RDHPCS project.  Log into AIM using your NOAA email
-credentials, review your profile for accuracy, and request the RDHPCS
-project.
+Once you have a NOAA.gov email address, you can:
+
+1. Request an RDHPCS account through the Account Information Managment
+system, **AIM**.
+
+2. Visit the `Account Information Management`_ website and request
+access to the RDHPCS project. To do that, log into AIM using your NOAA email
+credentials, review your profile for accuracy, and request the RDHPCS project.
 
 .. image:: /images/AIM2.png
 
-Once this request is approved, you will receive an email containing
-instructions about your next steps. These include requesting access to
-further projects and completing the RSA token request form.  Confer
-with your supervisor and colleagues to identify the  project(s) to
-request.
+Once you've been approved for the RDHPCS project, you will receive an email
+containing instructions about your next steps. These include:
+
+#. Requesting access to further projects
+#. Completing the RSA token request form.
+
+   Confer with your supervisor and colleagues to identify the project(s) to
+   request.
 
 
 .. _Account Information Management:	https://aim.rdhpcs.noaa.gov
@@ -53,7 +58,7 @@ First time users must:
 #. Have enabled Multi Factor Authentication (MFA) for NOAA Single Sign
    On (SSO).
 #. Apply for an RDHPCS account using the `Account Information
-   Management`_ website and request access to the "rdhpcs" project.
+   Management`_ website and request access to the **rdhpcs** project.
 #. Request an RSA SecurID token via the `Account Information
    Management`_ website.  Software tokens are faster to issue and are
    preferred if you have a smartphone.
@@ -160,9 +165,11 @@ Account Activity Requirements: Suspension, Deactivation, Reactivation
 **Your NOAA RDHPCS account must be kept active by accessing the RDHPCS
 at least once every 90 days.**
 
-User accounts are suspended when they has been inactive for 90 days or
-more. The user will be notified at their NOAA.gov address if their
-account has been suspended, with instructions on reactivation.
+User accounts are suspended when they have been inactive for 90 days or more.
+The user will be notified at their NOAA.gov address if their account has been
+suspended, with instructions on reactivation. To reactivate your account, send
+an email to: rdhpcs.aim.help@noaa.gov with the subject line: Reactivate
+First.Last. This creates an OTRS ticket to reactivate the account.
 
 Depending on the length of account suspension, there may be additional
 steps to fully reactivate your account:
@@ -203,7 +210,7 @@ website.
 Common Access Card (CAC)
 ========================
 
-The Common Access Card (CAC), is another means of access to RDHPCS
+The Common Access Card (CAC) is another means of access to RDHPCS
 resources for both Web and SSH access. To obtain a CAC, work with your
 local admin services team as they need to start the application
 process.  Some labs can issue CACs on-site, otherwise you will have to

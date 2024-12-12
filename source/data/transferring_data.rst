@@ -327,6 +327,8 @@ generate it with (at least on Linux) with the command:
 Jet users can use their public key in their /home/$USER/.ssh directory.
 If you have difficulties, contact the support staff for help.
 
+.. _established-tunnel:
+
 Using a Pre-Established SSH Port Tunnel
 =======================================
 

@@ -106,7 +106,7 @@ portfolio’s disk quota on a system is initially based on their
 percentage of compute allocation on that System.
 
 Click to review the `On-Premises Allocation Request Form
-<https://docs.google.com/forms/d/e/1FAIpQLScgzPjhQ_liCdWn0pZO9lMB-PbWN3DW7PNkcjGOBxlpFZuGUg/viewform?usp=sf_link>`_
+<https://docs.google.com/forms/d/e/1FAIpQLSdP6aZJ8HslQ4blPE3upF5tduudkbaChjDwLYDCA0LjPciWCQ/viewform?usp=sf_link>`_
 
 The Allocation Committee (AC) is appointed by
 the HPC Board to manage allocations across RDHPCS resources. The
@@ -127,7 +127,8 @@ There are three steps to obtain an increase in allocation:
 
 #. Identify your Portfolio Manager (PfM).
 #. Request that your PfM
-   complete an `On-Premises Allocation Request Form`_.
+   complete an `On-Premises Allocation Request Form
+   <https://docs.google.com/forms/d/e/1FAIpQLSdP6aZJ8HslQ4blPE3upF5tduudkbaChjDwLYDCA0LjPciWCQ/viewform?usp=sf_link>`_.
 #. The PfM completes and submits the request for approval.
 #. The PfM opens a Help Ticket to notify RDHPCS of the request.
    Send email to rdhpcs.<system>.help@noaa.gov, using the actual system name,
