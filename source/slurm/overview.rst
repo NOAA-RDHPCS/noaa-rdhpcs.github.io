@@ -425,7 +425,7 @@ task/thread per node.
 .. note::
 
    You **must** specify a number of tasks, either with
-   ``-n`` (--ntasks) or ``-N`` (--nodes) or both. If you do not specify
+   ``-n`` (- -ntasks) or ``-N`` (--nodes) or both. If you do not specify
    the number of tasks, you will get a job submission error.
 
 
@@ -506,6 +506,11 @@ following:
 
 
 which shows that this process used approximately 7.8 GB of memory.
+
+.. note::
+
+   The calculation in this case is:
+   (7,822,876 * 1k = 7,822,876,000 bytes ~ 7.8GB)
 
 When you are ready to run the job in production you can request one task and
 the appropriate amount of memory by doing something like the following:

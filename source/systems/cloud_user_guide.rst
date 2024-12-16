@@ -359,6 +359,70 @@ it to your project space and create a symlink as shown below:
   mkdir -p /a/directory/in/your/project/space/pw
   ln -s /a/directory/in/your/project/space/pw $HOME/pw
 
+Running a Jupyter workflow on a Slurm compute node
+--------------------------------------------------
+
+The Parallel Works ACTIVATE platform provides standard scripts, called
+workflows, to complete tasks on the platform. A Jupyter workflow is available
+in the ACTIVATE Marketplace. (See the Parallel Works documentation for
+directions to `add workflows
+<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
+
+To use the Jupyter workflow on a Slurm compute node, first set a default
+working directory for the session. Set the **Directory To Start Jupyter Lab
+GUI** value to the path for your session default.
+
+.. image:: /images/jupy1.png
+
+Note the directory listing in Jupyter, as compared to an ssh session:
+
+.. image:: /images/jupy2.png
+
+You will also need to configure your AWS cluster with a partition, using GPU
+nodes. Worker nodes in Slurm are divided into partitions based on
+instance type, and are provisioned on demand when a job is submitted to the
+queue. The default AWS configuration from the marketplace includes two
+partitions as a base, "compute" and "batch", as shown below:
+
+.. image:: /images/jupy3.png
+
+You can either reconfigure one of these partitions with an alternate instance
+type that has a GPU, or add a new partition to configure from scratch. If you
+know you won't use these starter partitions on your cluster, edit the
+'compute' partition as needed, then remove the extra 'batch' partition.
+
+Consider the followin when you modify the partition:
+
+* Partition name, if you choose something other than 'compute'.
+* Instance Type, selecting a GPU node appropriate for your needs. If you're
+  uncertain, check the `AWS documentation
+  <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`_ for a summary
+  of the different GPU instance families available.
+* Zone. Select the zone you want to provision the cluster to. This parameter is
+  two-pronged and configures both the region (us-east1) and availability zone
+  (b). It’s prudent to stay in the us-east-1 region, as you are likely to incur
+  egress charges if you are passing data between your contrib storage (located
+  in us-east-1), and a cluster located in a different region. The zone is less
+  important, unless you have other storages attached to the cluster and you
+  need to minimize your latency. Note that AWS tends to have different instance
+  availability in different regions and zones, so this might take some trial
+  and error. Also consider that on-demand GPU availability is heavily
+  constrained. It's possible that your workflow will fail to start if there's
+  not enough capacity to meet your request. If that happens, either
+  configure your cluster in a different zone, or just try again
+  later.
+
+Once you have your cluster started with the partition configured, you can edit
+the workflow form to direct the job to the compute partition instead of the
+controller node. This will submit a job to the Slurm scheduler and trigger a
+node start.
+
+.. image:: /images/jupy4.png
+
+See `Configuring clusters <https://parallelworks.com/docs/compute/configuring-clusters-v2#partition-settings>`_
+for complete information on configuring clusters and partitions.
+
+
 Authentication Issues
 ---------------------
 
