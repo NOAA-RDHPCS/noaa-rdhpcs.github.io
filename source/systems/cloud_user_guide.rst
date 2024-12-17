@@ -391,7 +391,7 @@ type that has a GPU, or add a new partition to configure from scratch. If you
 know you won't use these starter partitions on your cluster, edit the
 'compute' partition as needed, then remove the extra 'batch' partition.
 
-Consider the followin when you modify the partition:
+Consider the following when you modify the partition:
 
 * Partition name, if you choose something other than 'compute'.
 * Instance Type, selecting a GPU node appropriate for your needs. If you're
@@ -399,7 +399,7 @@ Consider the followin when you modify the partition:
   <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`_ for a summary
   of the different GPU instance families available.
 * Zone. Select the zone you want to provision the cluster to. This parameter is
-  two-pronged and configures both the region (us-east1) and availability zone
+  two-pronged and configures both the region (us-east-1) and availability zone
   (b). It’s prudent to stay in the us-east-1 region, as you are likely to incur
   egress charges if you are passing data between your contrib storage (located
   in us-east-1), and a cluster located in a different region. The zone is less
