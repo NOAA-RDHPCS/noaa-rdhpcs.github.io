@@ -425,7 +425,7 @@ task/thread per node.
 .. note::
 
    You **must** specify a number of tasks, either with
-   -n (--ntasks) or -N (--nodes) or both. If you do not specify
+   ``-n`` (``--ntasks``) or ``-N`` (``--nodes``) or both. If you do not specify
    the number of tasks, you will get a job submission error.
 
 
