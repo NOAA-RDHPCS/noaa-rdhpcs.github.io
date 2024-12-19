@@ -20,7 +20,7 @@ issue](https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/issues/new)!
 Just send us a [Pull
 Request](https://help.github.com/articles/using-pull-requests/)! See
 [Contributing to these
-Docs](https://github.com/olcf/olcf-user-docs/blob/master/contributing/index.rst)
+Docs](https://docs.rdhpcs.noaa.gov/contributing/index.html)
 for a step-by-step breakdown.
 
 <hr>
