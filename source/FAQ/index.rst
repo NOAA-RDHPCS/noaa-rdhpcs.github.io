@@ -286,7 +286,7 @@ How do I change my default login shell?
 
 To change your default shell:
 
-* Log into AIM https://aim.rdhpcs.noaa.gov/
+* Log into `AIM  <https://aim.rdhpcs.noaa.gov/>`_.
 * Click "view your information in AIM".
 * Navigate down to the "Projects and Account Information" section.
 * Click the dropdown menu (middle panel) next to "Shell selection".
