@@ -251,6 +251,10 @@ Endpoint.
 Data Sharing with External Collaborators
 ========================================
 
+.. Note::
+
+  For a more complete discussion, see :ref:`transferring-data`.
+
 RDHPCS users can share data with external collaborators who do not have
 accounts on the RDHPCS system. You can share data files with external
 collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
@@ -260,7 +264,7 @@ process is described in this section.
 
   * This data sharing feature is only available only on *untrusted* Globus endpoints (UDTNs).
   * Sharing happens at directory level and not at the level of individual files.
-  * You can only share directories under the root of the ``/*/data_untrusted/$USER`` directory. All uDTNs have that directory.
+  * You can only share directories under the root of the ``/*/data_untrusted/$USER`` directory. All UDTNs have that directory.
   * Do not share based only on an email address. The person with whom you share should have a GlobusID.
   * Before any sharing can be done, the user that is sharing the data
     must login to the system (Niagara, Hera, Jet, ...) at least once,
