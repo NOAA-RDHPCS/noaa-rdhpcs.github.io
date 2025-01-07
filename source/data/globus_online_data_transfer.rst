@@ -51,6 +51,7 @@ Example
  #. Repeat for the other endpoint: msuhpc2#Orion-dtn
  #. Select files and directories, and click Start.
 
+.. _globus_collection_summary:
 
 RDHPCS Globus Collection Summary
 ================================
@@ -116,7 +117,6 @@ partner clusters.
    +-----------+------------------------------+--------------------------+---------+---------------+
    | Niagara   | noaardhpcs#niagara_untrusted | /mnt/lfs1/data_untrusted | NESCC   | Anywhere      |
    +-----------+------------------------------+--------------------------+---------+---------------+
-
 
 
 
@@ -247,4 +247,41 @@ Endpoint.
     * If a folder is constituted with mixed files including thousands of small
       files (less than 1MB each one), it would be better to tar the smallfiles.
       Otherwise, if the files are larger, Globus will handle them.
+
+Data Sharing with External Collaborators
+========================================
+
+.. Note::
+
+  For a more complete discussion, see :ref:`transferring-data`.
+
+RDHPCS users can share data with external collaborators who do not have
+accounts on the RDHPCS system. You can share data files with external
+collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
+process is described in this section.
+
+.. Note::
+
+  * This data sharing feature is only available only on *untrusted* Globus endpoints (UDTNs).
+  * Sharing happens at directory level and not at the level of individual files.
+  * You can only share directories under the root of the ``/*/data_untrusted/$USER`` directory. All UDTNs have that directory.
+  * Do not share based only on an email address. The person with whom you share should have a GlobusID.
+  * Before any sharing can be done, the user that is sharing the data
+    must login to the system (Niagara, Hera, Jet, ...) at least once,
+    to make sure that the account is properly set up the with the necessary
+    home and project directories.
+
+Refer to the :ref:`Globus Collection Summary <globus_collection_summary>` to
+find the names of relevant Globus
+Collections, and the exposed directory names.
+
+How to Share Data
+-----------------
+
+The Globus web site provides complete instructions for sharing
+your data. Click here for `file sharing instructions. <https://docs.globus.org/how-to/share-files/>`_
+
+When you log into the Globus web site and click **Collections**, you can see
+what collections are shared with you, and also those that you share with
+others.
 
