@@ -600,10 +600,10 @@ rdhpcs.cloud.help@noaa.gov, copy to gonzalo.lassally@noaa.gov, using
 Cloud Allocation Request in the subject line.
 
 Storage functionalities
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 Cluster runtime notification
-""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A cluster owner can set up to send an email notification
 based on the number of hours/days a cluster is up. You can
@@ -613,7 +613,7 @@ a standard setting on a resource configuration, so that will
 take effect on clusters started using the configuration.
 
 Mounting permanent storage on a cluster
-"""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Your project's permanent storage [AWS s3 bucket, Azure's
 Block blob storage, or GCP's bucket] can be mounted on an
@@ -625,7 +625,7 @@ storage using familiar Linux commands.
 
 
 Sharing storage between the projects, enhanced capacity, and configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Note that the permanent storage and persistent storage must
 be started separately before it can be attached to a
@@ -644,7 +644,7 @@ lustre file system [ephemeral and persistent storage] on
 your Cloud platform.
 
 How do I resize the root disk?
-""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Open up the resource name definition, click on the \_JSON
 tab, add a parameter "root_size" with a value in the
@@ -659,7 +659,7 @@ In the below example, the root disk size is set to 256 GiB
     "root_size": "256",
 
 Where do I get detailed Workflow instructions?
-""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the Parallel
@@ -671,7 +671,7 @@ Learn more on the `workflow
 
 
 What different storage types and costs are available on the PW platform?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are three types of storage available on a cluster,
 those are lustre, object storage [ for backup & restore,
@@ -773,7 +773,7 @@ for the next 100 TB, and $. 05/GB greater than 150 TB.
 `GCP <https://cloud.google.com/network-tiers/pricing>`_
 
 Quota limits
-""""""""""""
+^^^^^^^^^^^^
 
 Current quota limit on the platforms:
 
@@ -785,18 +785,18 @@ GCP: TBD
 
 
 Parallel works
-^^^^^^^^^^^^^^
+--------------
 
 What is the Parallel Works Login URL?
-"""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 `Parallel Works NOAA Portal`_
 
 Where do I find the Parallel Works User Guide?
-""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 `User Guide`_.
 
 How do I get access to the Parallel Works Platform?
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Pre-requisite for getting an account access to the Parallel Works
   platform is to have a NOAA email address.
@@ -829,7 +829,7 @@ After your request is approved, you can login on to the
 platform.
 
 How is a new user added to a project on Parallel Works?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you would like to join an existing project, ask your PI,
 TL, or Portfolio manager the project name. The cloud project
@@ -844,7 +844,7 @@ yourself to a project.
 Access to the project is contingent on PI's approval.
 
 How do I set up a new project in Parallel Works?
-""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To set up your project in Parallel Works follow the
 below steps.
@@ -890,11 +890,11 @@ with the project status.
 Read the cloud FAQ to learn on adding users to a project.
 
 What is the certified browser for Parallel Works Platform?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Google Chrome browser.
 
-How do I handle a Login error - Invalid username or password.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+How do I handle a Login error - Invalid username or password?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This error can happen when a user token is out of sync with the single sign on
 system. Try logging in to an on-prem HPC system like Niagara or Hera, then try
@@ -906,7 +906,7 @@ Subject. In this case, include the information that you have attempted the
 “single sign on” login test.
 
 How do I access on-prem HPS Systems from Parallel Works?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Parallel Works is working on seamless authentication with on-prem HPC
 systems.
@@ -950,7 +950,7 @@ Finland, Lebanon, Denmark, Palestinian Territory Occupied,
 Netherlands, Japan, and Estonia.
 
 Warning messages from the on-prem system about exceeding quota
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Question:** I am getting warning messages from the on-prem system about
 exceeding my quota in my home filesystem when I try to run a workflow. What
@@ -986,7 +986,7 @@ create the pw symlink in your home directory as follows:
 
 
 How do I use the Cost Calculator?
-"""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can estimate an hourly cost of your experiment's from
 the Parallel Works(PW) platform. After login on the
@@ -1018,12 +1018,12 @@ backup, and egress.
 
 
 How does the Cost Dashboard work?
-"""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Refer the `user guide <https://parallelworks.com/docs/monitoring-costs>`_
+Refer to the `user guide <https://parallelworks.com/docs/monitoring-costs>`_
 
 How do I find a real time cost estimate of my session?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cloud vendors publish the cost once every 24 hours, that is
 not an adequate measure in an HPC environment. PW Cost
@@ -1038,7 +1038,7 @@ Filter” section has your name. The page automatically
 refreshes with the cost details.
 
 How do I estimate core-hours?
-"""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An example, your project requests a dedicated number of HPC
 compute nodes or has an HPC system reservation for some
@@ -1060,7 +1060,7 @@ PW's cost dashboard is a good tool to find unit cost, and
 extrapolate it to estimate usage for PoP.
 
 How do I access the head node from the Parallel Works [PW] web interface?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can connect to the head node from the PW portal, or
 Xterm window if you have added your public key in the
@@ -1104,7 +1104,7 @@ multiple of 2.8 TB.
 Note that LFS is an expensive storage.
 
 How do I add a workflow to my account?
-""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the PW main page,
@@ -1113,7 +1113,7 @@ This button should be on the right side of the screen, and
 looks like an Earth icon.
 
 How do I ssh to other nodes in my cluster?
-""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is possible to ssh to compute nodes in your cluster from
 the head node by using the node's hostname. You do not
@@ -1143,13 +1143,13 @@ inactivity)
       [compute-dy-c5n18xlarge-1]$
 
 How do I request a new feature or report feedback?
-""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You may request a new feature on the PW platform or provide
 a feedback to the NOAA RDHPCS leadership using the link TBD
 
 How can I address an authentication issue on the Parallel Works [PW] login?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Authentication to the PW system can be due to an expired RSA Token or
 inconsistent account status in the PW system. If you have not accessed
@@ -1197,13 +1197,37 @@ terminal output you received when you tried to use your token.
 If you continue to experience connection issues, open a :ref:`help
 request <getting_help>`.
 
+How can I use the Mamba tool to run Jupyter?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.  For the baseline setup, install Mamba with miniforge. Place the miniforge
+    installation in your home directory (/home/First.Last/miniforge3).
+
+2. Once mamba is installed, create a new environment and install the jupyterlab
+   package into it:
+
+  ``$ mamba create -n mambaenv jupyterlab``
+
+3. Set up the workflow form as shown in the image below. The main details are:
+
+ * Toggle 'Install Jupyter-Notebook If Not There?' to No
+ * Update the 'Command To Load Jupyter Notebook To The PATH' line to provide
+   the path to the conda init script, and activate your environment
 
 
-1. Clusters and snapshots
-^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: /images/mambo1.png
+
+4.  From here, execute the workflow and get to the Jupyterlab interface:
+
+.. image:: /images/mambo2.png
+
+
+
+Clusters and snapshots
+----------------------
 
 Cluster Cost types explained
-""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are several resource types that are part of a user
 cluster.
@@ -1260,7 +1284,7 @@ the filesystem or resize it. The default lustre filesystem
 size is about 14TiB.
 
 Keeping the bucket and cluster within the same region to lower latency and Cost
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Moving data between regions within a cloud platform will incur cost.
 For example, if the cluster and the bucket you were copying to exist in
@@ -1276,7 +1300,7 @@ Join one of the cloud office hours to ask questions.
 
 
 How do I create a custom [AMI, Snapshot, Boot disk, or machine] image?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If a user finds specific packages are not present in the
 base boot image, the user can add it by creating own custom
@@ -1309,7 +1333,7 @@ Now launch a new cluster using the custom snapshot from the
 existence of custom installed packages.
 
 How can I automatically find the hostname of a cluster?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default, the host names are always going to be different
 each time you start a cluster.
@@ -1322,7 +1346,7 @@ in the example:
     $ echo $PW_CSP
     google
 
-There's a few other :envvar:`PW_*` vars that you may find useful:
+There are a few other :envvar:`PW_*` vars that you may find useful:
 
 :PW_PLATFORM_HOST:
 :PW_POOL_ID:
@@ -1336,7 +1360,7 @@ There's a few other :envvar:`PW_*` vars that you may find useful:
 :PW_CSP:
 
 How do I setup an ssh tunnel to my cluster?
-"""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ssh tunnels are a useful way to connect to services running
 on the head node when they aren't exposed to the internet.
@@ -1369,7 +1393,7 @@ URL 'localhost:8888' and see the page being served by the
 remote machine over that port.
 
 How do I turn off Lustre filesystem from the cluster?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 From the Resources tab, select a configuration and click the
 edit link.
@@ -1380,7 +1404,7 @@ the lustre file system [LFS]. This setting lets you create a
 cluster without a lustre file system.
 
 How do I activate conda at cluster login?
-"""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Running conda init bash will setup the ~/.bashrc file so it
 will activate the default environment when you login.
@@ -1409,7 +1433,7 @@ or
   $ ln -s /contrib/First.Last/home/.bashrc ~/.bashrc
 
 How do I create a resource configuration?
-"""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If your cluster requires lustre file system [ephemeral or
 persistent], or additional storage for backup, start at the
@@ -1418,7 +1442,7 @@ persistent], or additional storage for backup, start at the
 `Managing the Storage: <https://parallelworks.com/docs/storage>`_
 
 How do I enable run time alerts on my cluster?
-""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can enable this functionality on your active or new
 cluster. This setup will help you send a reminder when your
@@ -1434,8 +1458,8 @@ under the “Resource” tab.
 
 `Reference <https://docs.parallel.works>`__
 
-Missing user directory in the group's contrib volume.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+Missing user directory in the group's contrib volume
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A user directory on a group's contrib volume can only be
 created by an owner of a cluster, as the cluster owner only
@@ -1493,7 +1517,7 @@ You may shutdown the cluster if the purpose was to create
 your contrib directory.
 
 Why does the owner's home directory differ from the shared users' directory?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Every cluster is set up where the owner of it has an
 ephemeral home directory that isn't linked from contrib, but
@@ -1509,7 +1533,7 @@ have a contrib dir so owners don't want to link home
 directory to their contrib directory.
 
 What are “Compute” and “Batch” sections in a cluster definition?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The sections “Compute” and “Batch” are partitions. You may
 change the partition name at the name field to fit your
@@ -1532,7 +1556,7 @@ Default Partition details.
   MaxTime=INFINITE State=UP Default=NO OverSubscribe=NO
 
 How do I manually shutdown the compute nodes?
-"""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
  .. code-block:: shell
 
@@ -1554,7 +1578,7 @@ You can then use that list to stop the nodes:
   $ sudo scontrol update nodename=userid-gcp-00141-2-[0001-0002] state=power_down
 
 How to sudo in as root or a role account on a cluster?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The owner of a cluster can sudo in as root and grant sudo
 privilege to the project members by adding their user id in
@@ -1581,7 +1605,7 @@ definition, and in the sharing tab, view and edit button are
 selected.
 
 How do I enable a role account?
-"""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A role account is a shared workspace for project members on
 a cluster. By su'd to a role account, project members can
@@ -1664,10 +1688,48 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
-6. Data Transfer
+How can I configure a CentOS Cluster to use Rocky8 (latest)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you have already made extensive modifications to your cluster’s definition,
+you may prefer to revert the required settings by hand without loading a config
+from the marketplace. There are two primary settings that need to be updated,
+the OS image Rocky8(latest), and the ``/apps`` disk snapshot. Keep in mind that
+the OS image will need to be set on the controller and every partition you have
+configured on the cluster.
+
+From the CentOS cluster configuration, find the ``Image*`` dropdown under the
+Controller settings and select the image.
+
+.. image:: /images/Rocky81.png
+
+Follow the same procedure on each compute partition to select the
+Rocky8 (latest) image under the ``Elastic Image*`` dropdown:
+
+.. image:: /images/Rocky82.png
+
+The software and modules under ``/apps`` were built specifically for their
+target operating systems, so the Rocky 8 disk also needs to be selected.
+
+.. image:: /images/Rocky83.png
+
+Click **Save Changes**.
+
+We recommend that you also replace any existing CentOS 7 based persistent
+Lustre resources to use Rocky 8 as well. The suggested method to do this is to
+duplicate your existing storage configuration, and copy your data to the new
+Lustre, either by copying directly from the old storage, or by syncing it with
+a bucket. Once you have verified that all of your data has been migrated, you
+can shut down the old file system. If your data is backed up to a bucket
+already, you can also re-provision your existing Lustre configuration and
+re-sync the data.
+
+
+Data Transfer
+-------------
 
 AWS CLI aws installation on an on-prem system. files transfer to a cloud bucket
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow the steps to install the aws tool on your home directory.
 
@@ -1704,7 +1766,7 @@ Example:
   $ aws s3 ls s3://noaa-sysadmin-ocio-ca-cloudmgmt
 
 Azure azcopy install on an on-prem system. Files transfer to a cloud bucket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Over time, the AzCopy download link will point to new versions of
 AzCopy. If your script downloads AzCopy, the script might stop working
@@ -1747,7 +1809,7 @@ Please refer to the `AzCopy guide
 
 
 GCP gcloud install on an on-prem, and files transfer to a cloud bucket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Download and extract the tool.
 
@@ -1781,7 +1843,7 @@ your project's bucket. Click on the key icon to find the bucket name,
 keys and sample command to access the bucket.
 
 How do I transfer data to/from the Cloud?
-""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The recommended system for data transfers to/from NOAA RDHPCS systems
 is the Niagara Untrusted DTN especially if the data transfers is being
@@ -1800,7 +1862,7 @@ to push and pull data from the S3 buckets.  Please load the
     module load aws-utils
 
 How do I use scp from a Remote Machine to copy to a bucket?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Create a cloud cluster configuration, and in the attached storage
 section include bucket storage, note the mounted file system name
@@ -1818,7 +1880,7 @@ given for the bucket.
    the mounted bucket on the cluster.
 
 How do I use Azure CLI?
-""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Azure uses the azcopy utility to push and pull data into their cloud
 object store buckets. The azcopy utility can be installed standalone
@@ -1855,8 +1917,8 @@ files to Google bucket.
 
 `GSUtil commands <https://cloud.google.com/storage/docs/gsutil/commands/cp>`_
 
-How do I access Azure Blob from a Remote Machine
-""""""""""""""""""""""""""""""""""""""""""""""""
+How do I access Azure Blob from a Remote Machine?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following instruction uses the long term access key available
 from the PW file explorer: **storage/project keys** section, which is
@@ -1910,7 +1972,7 @@ assigned project space. Create sub-directories with the user's
 username at the top level.
 
 Data Transfers Between Compute Node and S3
-""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to '''export changes''' from FSx data to the S3 data
 repository, the following options are available:
@@ -1938,7 +2000,7 @@ Project keys are needed to run this command.
 
 
 Data Transfer Between Compute Node and GCP Bucket
-"""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to '''export changes''' from lustre data to the bucket data
 repository, the following options are available:
@@ -1966,7 +2028,7 @@ Example:
   gsutil cp gs://my_bucket/readme.txt Desktop/readme.txt''
 
 Data Transfer between Compute Node and Azure Blob
-"""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Azure blob storage is slightly different from AWS and GCP
 clusters in that the blob storage automatically mounts directly to the
@@ -1986,16 +2048,16 @@ Example:
   $ sudo chown “username:group” <file name>
 
 
-7. Configuration Questions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration Questions
+-----------------------
 
 How do I create a Parallel Works resource configuration on my account?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow `these instructions <https://docs.google.com/presentation/d/1gITqB-uaJTF8GupYg3bxX_h5JvpNZYEBK3IV5bUHekU/edit?usp=sharing>`__
 
 How do I get AMD processor resources configuration?
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AMD processor based instances or VMs are relatively less
 expensive than Intel. Cloud services providers have
@@ -2013,7 +2075,7 @@ You may resize the cluster size by adjusting max node count,
 and enable or disable lustre as appropriate to your model.
 
 How do I restore a default configuration?
-"""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can restore a configuration by navigating to the
 “Resources” tab, double click on a resource name, shows up
@@ -2023,7 +2085,7 @@ configuration from the drop down list, click on the
 "Restore" button, and then click “Save Resource”.
 
 How do I transfer files from one project to another?
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You may use Globus file transfer or the following method to transfer files.
 
@@ -2080,7 +2142,7 @@ Inform your PI, and cloud support that files are migrated to the
 destination, and no files exists in the source storages.
 
 What is a default instance/vm type?
-"""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By "default instance/vm type" we refer to the instance/vm
 types in a precreated cluster configuration. This
@@ -2090,7 +2152,7 @@ configuration from the "Restore Configuration" link at the
 resource definition page.
 
 AWS Lustre explained
-""""""""""""""""""""
+--------------------
 
 The Lustre solution on AWS uses their FSx for Lustre service on the
 backend. The default deployment type we use is 'scratch_2'. The
@@ -2124,7 +2186,7 @@ You can read more about `AWS Lustre <https://docs.aws.amazon.com/fsx/latest/Lust
   }
 
 Azure Lustre explained
-""""""""""""""""""""""
+----------------------
 
 Azure:
 
@@ -2171,7 +2233,7 @@ The Azure Lustre config below is being estimated at $4.53
 
 
 How do I restore customization after the default configuration restore?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Parallel Works default configuration release updates
 depend on the changes made to the platform. You can protect
@@ -2193,7 +2255,7 @@ option can be found on the “Settings” box on the Resource
 definition page.
 
 What is NOAA RDHPCS preferred container solution?
-"""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can read :ref:`NOAA RDHPCS documentation on containers
 <rdhpcs-containers>`.
@@ -2204,7 +2266,7 @@ a platform for users to test and run models within
 Containers.
 
 Accessing bucket from a Remote Machine or Cluster's controller node
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Obtain your project's keys from the PW platform. The project
 key can be found by navigating from the PW banner.
@@ -2258,7 +2320,7 @@ files which performs a parallel
   gsutil -m cp -r folder-name gs://bucketname
 
 Best practice in resource configuration
-"""""""""""""""""""""""""""""""""""""""
+---------------------------------------
 
 1. Maintain SSH authentication key under account, and use
 it in all clusters.
@@ -2358,11 +2420,11 @@ image out of it
 
 should do the trick with that recipe file.
 
-7. Slurm
-^^^^^^^^
+Slurm
+-----
 
 How to send emails from a Slurm job script?
-"""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Below is an example of a job script with a couple sbatch
 options that should notify you when a job starts and ends
@@ -2389,7 +2451,7 @@ This email may go to your spam folder as it is not domain
 validated, that is one downside.
 
 Running and monitoring Slurm
-""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use sinfo command to find the status of your job.
 
@@ -2433,8 +2495,8 @@ state=resume``
   compute\* up    infinite  1     mix#  userid-gcpv2-00094-1-0001
 
 
-How to set custom memory for Slurm jobs?
-""""""""""""""""""""""""""""""""""""""""
+How to set custom memory for Slurm jobs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to get non-exclusive scheduling to work with Slurm,
 you need to reconfigure the scheduler to treat memory as a
@@ -2470,7 +2532,7 @@ The script itself looks like this:
   fi
 
 How do I change the slurm Suspend time on an active cluster?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can modify a cluster's slurm suspend time from the
 Resource Definition form prior to starting a cluster.
@@ -2509,7 +2571,7 @@ after:
   SuspendTime = 3600 sec
 
 What logs are used  to research slurm or node not terminated issues?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following four log files required to research the root
 cause. Please copy the following log files from the
@@ -2534,7 +2596,7 @@ change user as root when copying the files, for example.
 :/var/log/messages: Reports system operations.
 
 How do I distribute slurm scripts on different nodes?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default the slurm sbatch job lands on a single node. You can
 distribute the scripts to run on different nodes by using the ``sbatch
@@ -2591,7 +2653,7 @@ single node:
   8     compute   testjob. User.Id  R    0:08  1     userid-gcpv2-00060-1-0001
 
 User Bootstrap fails when copy files to lustre
-""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A recent modification on the cluster provisioning starts
 compute and lustre clusters execution in parallel to speed
@@ -2620,7 +2682,7 @@ You can use the following code snippet as a workaround.
   cp -rf /contrib/Andrew.Penny/psurge_dev /lustre
 
 What is the command to get max nodes count on a cluster?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Default sinfo output (including a busy node so it shows
 outside of the idle list)
@@ -2648,7 +2710,7 @@ Note the NODES(A/I/O/T) section, which indicates nodes
 that are Active, Idle, Offline, and Total
 
 How do I manually reset the node status?
-""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You may manually resume the nodes like this:
 
@@ -2663,8 +2725,8 @@ below:
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
 
-8. Errors
-^^^^^^^^^
+Errors
+------
 
 **Error launching source instance: InvalidParameterValue: User data is
 limited to 16384 bytes**
@@ -2809,7 +2871,7 @@ below:
 
   $ sudo scontrol update nodename=philippegion-azurestream5-00002-1-[0001-0021] state=idle
 
-9. Miscellaneous
+1. Miscellaneous
 ^^^^^^^^^^^^^^^^
 
 `Parallel Works` new features blog posts
