@@ -1688,15 +1688,15 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
-How can I configure a CentOS Cluster to use Rocky8 (latest)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How can I configure a CentOS Cluster to use Rocky 8 (latest)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have already made extensive modifications to your cluster’s definition,
 you may prefer to revert the required settings by hand without loading a config
 from the marketplace. There are two primary settings that need to be updated,
-the OS image Rocky8(latest), and the ``/apps`` disk snapshot. Keep in mind that
-the OS image will need to be set on the controller and every partition you have
-configured on the cluster.
+the OS image Rocky 8 (latest), and the ``/apps`` disk snapshot. Keep in mind
+that the OS image will need to be set on the controller and every partition you
+have configured on the cluster.
 
 From the CentOS cluster configuration, find the ``Image*`` dropdown under the
 Controller settings and select the image.
@@ -1704,7 +1704,7 @@ Controller settings and select the image.
 .. image:: /images/Rocky81.png
 
 Follow the same procedure on each compute partition to select the
-Rocky8 (latest) image under the ``Elastic Image*`` dropdown:
+Rocky 8 (latest) image under the ``Elastic Image*`` dropdown:
 
 .. image:: /images/Rocky82.png
 
