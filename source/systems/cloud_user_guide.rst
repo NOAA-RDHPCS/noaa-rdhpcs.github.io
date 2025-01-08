@@ -1711,7 +1711,7 @@ Rocky 8 (latest) image under the ``Elastic Image*`` dropdown:
 The software and modules under ``/apps`` were built specifically for their
 target operating systems, so the Rocky 8 disk also needs to be selected.
 
-.. image:: /images/Rocky83.png
+.. image:: /images/rocky83.png
 
 Click **Save Changes**.
 
