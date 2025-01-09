@@ -74,9 +74,9 @@ points at Atlanta and Chicago.
     C6
     ^^^
 
-    *  HPE-EX Cray X3000
+    * HPE-EX Cray X3000
 
-    * 1,520 compute nodes (2 x AMD EPYC 9654 2.4GHz base 96-cores per socket)
+    * 2,048 compute nodes (2 x AMD EPYC 9654 2.4GHz base 96-cores per socket)
 
     * HPE Slingshot Interconnect
 
