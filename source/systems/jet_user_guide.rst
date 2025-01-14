@@ -121,18 +121,18 @@ partitions, plus four bigmem nodes, totaling 57,744 coes, @
 
 System Features:
 
--  Total of 55,984 cores of 64-bit Intel CPU’s,
--  Capability of 1,795 trillion floating point operations
-   per second – or 1.79 petaflops,
--  Total scratch disk capacity of 6.6 Petabytes
+-  Total of 44,000 cores of 64-bit Intel CPU’s,
+-  Capability of 1,728 trillion floating point operations
+   per second – or 1.73 petaflops.
+-  Total scratch disk capacity of 15.8 Petabytes.
 
 
 +------+-----------+---------+
 | Name |Type       |Size     |
 +------+-----------+---------+
-| lfs4 |HPE Lustre |4500 TB  |
-+------+-----------+---------+
 | lfs5 |DDN Lustre |7900 TB  |
++------+-----------+---------+
+| lfs6 |DDN Lustre |7900 TB  |
 +------+-----------+---------+
 
 For decades, NOAA weather research has relied on High Performance
