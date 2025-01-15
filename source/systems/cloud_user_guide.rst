@@ -474,32 +474,33 @@ request.
   the case include the information that you have attempted the “single sign on”
   login test.
 
-**Failed to authenticate agent on remote host, when trying to 
+**Failed to authenticate agent on remote host, when trying to
 login on-prem HPC system.**
 
 If this error appears at the end of  these messages as below:-
 
 Initiating connection to proxy cert server…
-Proxy certificate server connection initialized 
+Proxy certificate server connection initialized
 ..
 Copied CLI to remote host.
 
 Then it could be related to an issue in user's environment.
 
-Ensure there is a minimum 100 MB free space in the home directory 
-for the PW agent file to install.  If there’s enough space, then 
+Ensure there is a minimum 100 MB free space in the home directory
+for the PW agent file to install.  If there’s enough space, then
 check the next steps.
 
-1) Remove the https_proxy setting from your .bashrc file. This will stop using 
+1) Remove the https_proxy setting from your .bashrc file. This will stop using
 the proxy for all https traffic.
 2) In your .bashrc, where you're setting up the proxy settings, add:
            export NO_PROXY=noaa.parallel.works
      and this should bypass the proxy for anything on our platform.
 
-Either of these options should allow the agent to connect back to the platform 
+Either of these options should allow the agent to connect back to the platform
 to create the connection.
 
-If both scenarios are not applicable, then open a help desk case for assistance.
+If both scenarios are not applicable, then open a help desk case for 
+assistance.
 
 Getting Help
 ============
