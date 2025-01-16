@@ -80,9 +80,9 @@ points at Atlanta and Chicago.
 
     * HPE Slingshot Interconnect
 
-    * 384GB DDR4 per node; 584TB total
+    * 384GB DDR4 per node; 786TB total
 
-    * 11.21 PF peak (base)
+    * 15.1 PF peak (base)
 
   .. grid-item-card::
     :class-header: sd-bg-muted sd-text-light
