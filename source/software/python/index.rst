@@ -59,7 +59,7 @@ systems:
    :hidden:
 
    conda_basics
-   miniconda
+   miniforge
    jupyter
 
 * :doc:`Conda Basics Guide </software/python/conda_basics>`:
@@ -224,153 +224,82 @@ computing experience!
 Custom Environments
 -------------------
 
-You can also create your own custom environments after loading the Python
-module. This option is recommended for users that require a different version
-of Python than the default version available, or for users that want a personal
-environment to manage specialized packages. This is possible via ``conda`` or
-using Python's native ``venv`` feature instead.
+After loading the :ref:`Python <python-python-modules>` or :ref:`Conda
+<python-conda-modules>` module, you can create custom environments tailored to
+your specific requirements. This is particularly beneficial if you need a
+specific version of Python or packages. This can be accomplished using either
+``conda`` or Python's built-in `venv`_ functionality.
 
 .. note::
 
-   A more complete list of ``conda`` commands is provided in the :ref:`conda-quick`
-   section of the :doc:`Conda Basics Guide </software/python/conda_basics>`. More
-   information on using the ``venv`` command can be found in
-   `Python's Official Documentation <https://docs.python.org/3/tutorial/venv.html>`__.
+    The :doc:`Conda Basics Guide </software/python/conda_basics>` provides a
+    list of `conda` commands. `Python's Official Documentation
+    <https://docs.python.org/3/>`_ provides detailed instructions on using
+    `venv`_.
 
 To create and activate an environment:
 
 .. tab-set::
 
-    .. tab-item:: Gaea
-        :sync: gaea
+    .. tab-item:: Conda
+        :sync: conda
 
         .. code-block:: bash
 
-            #1. Load the module
-            $ module load python
-
-            #2a. Create "my_env" with Python version X.Y at the desired path
-            $ conda create -p /path/to/my_env python=X.Y
-
-            #2b. Create "my_env" with Python version X.Y with a specific name (defaults to $HOME directory)
+            #1. Create the "my_env" envrionment with Python verion X.Y
             $ conda create --name my_env python=X.Y
 
-            #3. Activate "my_env"
+            #2. Activate "my_env"
             $ conda activate /path/to/my_env
 
-    .. tab-item:: Hera
-        :sync: hera
+            #3. Install addtional packages in the "my_env" environment
+            $ conda install <package_name> [<package_name> ...]
+
+    .. tab-item:: Python Venv
+        :sync: venv
 
         .. code-block:: bash
 
-            #1. Load the module
-            $ module load python
+            #1. Create the virtual environment in the desired path
+            $ python -m venv /path/to/my_env
 
-            #2a. Create "my_env" with Python version X.Y at the desired path
-            $ conda create -p /path/to/my_env python=X.Y
+            #2. Activate the virtual environment
+            $ source /path/to/my_env/bin/activate
 
-            #2b. Create "my_env" with Python version X.Y with a specific name (defaults to $HOME directory)
-            $ conda create --name my_env python=X.Y
+            #3. Install additional packages
+            $ pip install <package_name> [<package_name> ...]
 
-            #3. Activate "my_env"
-            $ conda activate /path/to/my_env
+Following these procedures enables efficient management of package dependencies
+and Python versions tailored to project needs.
 
-    .. tab-item:: Jet
-        :sync: jet
+To ensure optimal performance and collaboration on your project, we highly
+recommend creating new environments in the "Project Home" directory (refer to
+the :ref:`file system summary <data-filesystem-summary>`). This approach not
+only prevents potential purges but also enhances teamwork within your project
+and interacts seamlessly with the compute nodes. For added convenience, please
+use environment names that reflect the hostname; this practice is crucial, as
+virtual environments designed on one system may not operate correctly on
+others.
 
-        .. code-block:: bash
-
-            #1. Load the module
-            $ module load cray-python
-
-            #2. Create "my_env" at the desired path (uses same Python version as module)
-            $ python3 -m venv /path/to/my_env
-
-            #3. Activate "my_env"
-            $ conda /path/to/my_env/bin/activate
-
-    .. tab-item:: Niagara
-        :sync: niagara
-
-        .. code-block:: bash
-
-            #1. Load the module
-            $ module load cray-python
-
-            #2. Create "my_env" at the desired path (uses same Python version as module)
-            $ python3 -m venv /path/to/my_env
-
-            #3. Activate "my_env"
-            $ conda /path/to/my_env/bin/activate
-
-    .. tab-item:: PPAN
-        :sync: ppan
-
-        .. code-block:: bash
-
-            #1. Load the module
-            $ module load cray-python
-
-            #2. Create "my_env" at the desired path (uses same Python version as module)
-            $ python3 -m venv /path/to/my_env
-
-            #3. Activate "my_env"
-            $ conda /path/to/my_env/bin/activate
-
-.. note::
-
-   It is highly recommended to create new environments in the "Project Home"
-   directory (see :ref:`file system summary <data-filesystem-summary>`). This
-   space avoids purges, allows for potential collaboration within your project,
-   and works better with the compute nodes. It is also recommended, for
-   convenience, that you use environment names that indicate the hostname, as
-   virtual environments created on one system will not necessarily work on
-   others.
-
-It is always recommended to deactivate an environment before activating a new
-one. Deactivating an environment can be achieved through:
+Moreover, always remember to deactivate your current environment before
+switching to a new one. You can easily deactivate an environment by using the
+following command:
 
 .. tab-set::
 
-    .. tab-item:: Gaea
-        :sync: gaea
+    .. tab-item:: Conda
+        :sync: conda
 
         .. code-block:: bash
 
-            # Deactivate the current environment
             $ conda deactivate
 
-    .. tab-item:: Hera
-        :sync: hera
+    .. tab-item:: Python Venv
+        :sync: venv
 
         .. code-block:: bash
 
-            # Deactivate the current environment
-            $ conda deactivate
-
-    .. tab-item:: Jet
-        :sync: jet
-
-        .. code-block:: bash
-
-            # Deactivate the current environment
-            $ conda deactivate
-
-    .. tab-item:: Niagara
-        :sync: niagara
-
-        .. code-block:: bash
-
-            # Deactivate the current environment
-            $ conda deactivate
-
-    .. tab-item:: PPAN
-        :sync: ppan
-
-        .. code-block:: bash
-
-            # Deactivate the current environment
-            $ conda deactivate
+            $ deactivate
 
 How to Run
 ==========
