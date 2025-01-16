@@ -6,46 +6,53 @@ Python on RDHPCS Systems
 Overview
 ========
 
-In high-performance computing, `Python <https://www.python.org/>`__ is heavily
-used to analyze scientific data on the system. Some users require specific
-versions of Python or niche scientific packages to analyze their data, which
-may further depend on numerous other Python packages. Because of all the
-dependencies that some Python packages require, and all the types of data that
-exist, it can be quite troublesome to get different Python installations to
-"play nicely" with each-other, especially on an HPC system where the system
-environment is complicated. Virtual environments help alleviate these issues by
-isolating package installations into self-contained directory trees.
+In high-performance computing (HPC), `Python <https://www.python.org/>`_ is an
+essential tool for analyzing scientific data. Many users need specific versions
+of Python or specialized scientific packages for their analyses, which often
+come with a range of dependencies. Managing different Python installations can
+be problematic, particularly in the complex environment of HPC systems. Virtual
+environments are a crucial solution, effectively isolating package
+installations into distinct directories.
 
-Although Python has a native virtual environment feature (``venv``), one
-popular virtual environment manager is `Conda
-<https://docs.conda.io/projects/conda/en/latest/index.html>`_, a package and
-virtual environment manager from the `Anaconda <https://www.anaconda.com/>`_
-distribution. Conda allows users to easily install different versions of binary
-software packages and any required libraries appropriate for their computing
-platform.  The versatility of conda allows a user to essentially build their
-own isolated Python environment, without having to worry about clashing
-dependencies and other system installations of Python. Conda is available on
-all RDHPCS systems, and loading the default Python module loads an Anaconda
-Python distribution.  Loading this distribution automatically puts you in a
-"base" conda environment, which already includes packages that one can use for
-simulation, analysis, and machine learning.
+While Python includes a native virtual environment feature called `venv
+<https://docs.python.org/3/library/venv.html>`_, `Conda
+<https://docs.conda.io/projects/conda/en/latest/index.html>`_ stands out as a
+powerful package and environment. Conda empowers users to effortlessly install
+various binary software packages and the necessary libraries, enabling the
+creation of isolated Python environments without the hassle of conflicting
+dependencies or complications from other Python installations.  Conda is fully
+supported on all RDHPCS systems.
 
-For users interested in using Python with Jupyter, see our
-:ref:`jupyter_on_rdhpcs_systems` page instead.
+.. caution::
+
+    The RDHPCS does not have a license with the `Anaconda Python
+    <https://www.anaconda.com/>`_ distribution. As the NOAA RDHPCS systems do
+    not fit within the 200-employee limit as defined in `Anaconda License
+    Agreement <https://www.anaconda.com/eula>`_, use of the non-free Anaconda
+    Channels on RDHPCS systems is prohibited.
+
+    For more information, please refer to the `Anaconda License Agreement`_
+    and Anaconda's blog posting `Update on Anaconda's Terms of Service for
+    Academia and Research
+    <https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research>`_.
+
+If you want to leverage Python with Jupyter, we direct you to our
+:ref:`jupyter_on_rdhpcs_systems` page for comprehensive guidance.
 
 .. note::
 
-    The RDHPCS is working on a unified Python/Conda configuration and policies
-    across all NOAA-managed RDHPCS systems (hera, jet, niagara, ppan).  This
-    documentation will be updated as the the configuration and policies are
-    established.
+    The RDHPCS is diligently working to implement a unified Python/Conda
+    configuration and policies across all NOAA-managed RDHPCS systems (Hera,
+    Jet, Niagara, Pan). Rest assured, this documentation will be updated as
+    these configurations and policies are implemented.
 
 .. _python-guides:
 
 Python Guides
 =============
 
-Below is a list of guides created for using Python on RDHPCS systems.
+Explore our guides designed to empower you in using Python and Conda on RDHPCS
+systems:
 
 .. toctree::
    :maxdepth: 1
@@ -55,25 +62,33 @@ Below is a list of guides created for using Python on RDHPCS systems.
    miniconda
    jupyter
 
-* :doc:`Conda Basics Guide </software/python/conda_basics>`: Goes over the
-  basic workflow and commands of Conda
-* :doc:`Installing Miniconda Guide </software/python/miniconda>`: Teaches you
-  how to install Miniconda
-* :ref:`jupyter_on_rdhpcs_systems`: Instructions to install and access
-  JupyterLab on the RDHPCS systems
+* :doc:`Conda Basics Guide </software/python/conda_basics>`:
+    Master the essential workflow and commands of Conda to enhance your
+    productivity.
+* :doc:`Installing Miniforge Guide </software/python/miniforge>`:
+    Get step-by-step instructions for installing Miniconda on RDHPCS systems.
+* :ref:`jupyter_on_rdhpcs_systems`:
+    Access detailed directions for installing and utilizing JupyterLab on
+    RDHPCS systems.
 
 .. note::
 
-   For newer users to conda, it is highly recommended to view our :doc:`Conda
-   Basics Guide </software/python/conda_basics>`, where a :ref:`conda-quick`
-   list is provided.
+   If you're new to Conda, don't miss our :doc:`Conda Basics Guide
+   </software/python/conda_basics>`. It’s the perfect starting point, providing
+   you with a handy :ref:`quick-reference <conda-quick>` list of commands to
+   accelerate your learning.
 
 .. _python-mods:
 
 Module Usage
 ============
 
-To start using Python, all you need to do is load the module:
+.. _python-python-modules:
+
+Python
+------
+
+To start using Python add the module file path to modules, and load the module.
 
 .. tab-set::
 
@@ -82,6 +97,7 @@ To start using Python, all you need to do is load the module:
 
         .. code-block:: bash
 
+            $ module use /usw/conda/modulefiles
             $ module load python
 
     .. tab-item:: Hera
@@ -112,142 +128,86 @@ To start using Python, all you need to do is load the module:
 
             $ module load python
 
+Run the ``module avail python`` command to see the available versions of
+Python.
+
+.. _python-conda-modules:
+
+Conda
+-----
+
+Some RDHPCS systems have Conda installed for all users.  To start using Conda
+on these systems, add the module file path to modules, and load the module.
+
+.. tab-set::
+
+    .. tab-item:: Gaea
+        :sync: gaea
+
+        .. code-block:: bash
+
+            $ module use /usw/conda/modulefiles
+            $ module load miniforge
+
+    .. tab-item:: PPAN
+        :sync: ppan
+
+        .. code-block:: bash
+
+            $ module load miniforge
+
+
+
+Conda Environments
+==================
+
+Some RDHPCS systems offer Conda for all users. The maintainers have created
+several environments besides the `base` one. If those don't work for you,
+create your own :ref:`custom environment <python-custom-envs>`.
 
 Base Environment
 ----------------
 
-Loading the Python module on all systems will put you in a "base"
-pre-configured environment. This option is recommended for users who do not
-need custom environments, and only require packages that are already installed
-in the base environment. This option is also recommended for users that just
-need a Python interpreter or standard packages like NumPy and Scipy.
+At the heart of every Conda installation is the `base` environment, which comes
+equipped with the Conda package manager and a selection of additional packages.
 
-To see a full list of the packages installed in the base environment, use
-``conda list``.
-A small preview is provided below:
+Every Conda installation has what is called the `base` environment.  This
+environment contains the `conda package manager
+<https://docs.conda.io/projects/conda/en/stable/>`_ and potentially a few
+additional packages.
+
+
+Loading the :ref:`conda module <python-conda-modules>` give you the `base`
+environment. This option is ideal for users who don't require custom
+environments and only need the packages already available. It's also the
+perfect choice for anyone who simply needs a Python interpreter or standard
+packages like NumPy and SciPy.
+
+To explore the full range of packages included in the base environment, just
+use the command ``conda list``.  Check it out today and make the most of your
+computing experience!
 
 .. cSpell:ignore ipyw jlab libgcc astropy absl argh
-.. tab-set::
 
-    .. tab-item:: Gaea
-        :sync: gaea
+.. code-block:: bash
 
-        .. code-block:: bash
+    $ conda list
 
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py38_0
-            _libgcc_mutex             0.1                        main
-            alabaster                 0.7.12                     py_0
-            anaconda                  2020.07                  py38_0
-            anaconda-client           1.7.2                    py38_0
-            anaconda-project          0.8.4                      py_0
-            asn1crypto                1.3.0                    py38_0
-            astroid                   2.4.2                    py38_0
-            astropy                   4.0.1.post1      py38h7b6447c_1
-            .
-            .
-            .
-
-    .. tab-item:: Hera
-        :sync: hera
-
-        .. code-block:: bash
-
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py37_0
-            _libgcc_mutex             0.1                        main
-            absl-py                   0.11.0                   pypi_0    pypi
-            alabaster                 0.7.12                   py37_0
-            anaconda                  2020.02                  py37_0
-            anaconda-client           1.7.2                    py37_0
-            anaconda-navigator        1.9.12                   py37_0
-            anaconda-project          0.8.4                      py_0
-            argh                      0.26.2                   py37_0
-            .
-            .
-            .
-
-    .. tab-item:: Jet
-        :sync: jet
-
-        .. code-block:: bash
-
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py37_0
-            _libgcc_mutex             0.1                        main
-            absl-py                   0.11.0                   pypi_0    pypi
-            alabaster                 0.7.12                   py37_0
-            anaconda                  2020.02                  py37_0
-            anaconda-client           1.7.2                    py37_0
-            anaconda-navigator        1.9.12                   py37_0
-            anaconda-project          0.8.4                      py_0
-            argh                      0.26.2                   py37_0
-            .
-            .
-            .
-
-    .. tab-item:: niagara
-        :sync: niagara
-
-        .. code-block:: bash
-
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py37_0
-            _libgcc_mutex             0.1                        main
-            absl-py                   0.11.0                   pypi_0    pypi
-            alabaster                 0.7.12                   py37_0
-            anaconda                  2020.02                  py37_0
-            anaconda-client           1.7.2                    py37_0
-            anaconda-navigator        1.9.12                   py37_0
-            anaconda-project          0.8.4                      py_0
-            argh                      0.26.2                   py37_0
-            .
-            .
-            .
-
-    .. tab-item:: PPAN
-        :sync: ppan
-
-        .. code-block:: bash
-
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py37_0
-            _libgcc_mutex             0.1                        main
-            absl-py                   0.11.0                   pypi_0    pypi
-            alabaster                 0.7.12                   py37_0
-            anaconda                  2020.02                  py37_0
-            anaconda-client           1.7.2                    py37_0
-            anaconda-navigator        1.9.12                   py37_0
-            anaconda-project          0.8.4                      py_0
-            argh                      0.26.2                   py37_0
-            .
-            .
-            .
+    # packages in environment at ...:
+    #
+    # Name                    Version                   Build  Channel
+    _ipyw_jlab_nb_ext_conf    0.1.0                    py38_0
+    _libgcc_mutex             0.1                        main
+    alabaster                 0.7.12                     py_0
+    anaconda                  2020.07                  py38_0
+    anaconda-client           1.7.2                    py38_0
+    anaconda-project          0.8.4                      py_0
+    asn1crypto                1.3.0                    py38_0
+    astroid                   2.4.2                    py38_0
+    astropy                   4.0.1.post1      py38h7b6447c_1
+    .
+    .
+    .
 
 .. warning::
 
