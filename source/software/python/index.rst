@@ -40,7 +40,7 @@ supported on all RDHPCS systems.
 .. note::
 
     The only conda channel approved for use on the NOAA RDHPCS systems is
-    `conda-forge <https://conda-forge.org>`_.  The cond-forge installer,
+    `conda-forge <https://conda-forge.org>`_.  The conda-forge installer,
     `Miniforge <https://conda-forge.org/download/>`_, includes the `conda`_
     package manager and will use the `conda-forge`_ channel.
 
