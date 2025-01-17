@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "streetsidesoftware.code-spell-checker",
+        "stkb.rewrap",
+        "swyddfa.esbonio",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "lextudio.restructuredtext",
+        "trond-snekvik.simple-rst",
+    ]
+}
