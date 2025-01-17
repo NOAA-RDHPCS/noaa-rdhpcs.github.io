@@ -8,18 +8,18 @@ Overview
 
 In high-performance computing (HPC), `Python <https://www.python.org/>`_ is an
 essential tool for analyzing scientific data. Many users need specific versions
-of Python or specialized scientific packages for their analyses, which often
-come with a range of dependencies. Managing different Python installations can
-be problematic, particularly in the complex environment of HPC systems. Virtual
-environments are a crucial solution, effectively isolating package
-installations into distinct directories.
+of Python or specialized scientific packages for their analyses, and these
+often come with a range of dependencies. Managing different Python
+installations can be problematic, particularly in the complex environment of
+HPC systems. Virtual environments are a crucial solution, effectively isolating
+package installations into distinct directories.
 
 While Python includes a native virtual environment feature called `venv
 <https://docs.python.org/3/library/venv.html>`_, `Conda
 <https://docs.conda.io/projects/conda/en/latest/index.html>`_ stands out as a
-powerful package and environment. Conda empowers users to effortlessly install
-various binary software packages and the necessary libraries, enabling the
-creation of isolated Python environments without the hassle of conflicting
+powerful package and environment manager. Conda empowers users to effortlessly
+install various binary software packages and the necessary libraries, enabling
+the creation of isolated Python environments without the hassle of conflicting
 dependencies or complications from other Python installations.  Conda is fully
 supported on all RDHPCS systems.
 
@@ -27,14 +27,22 @@ supported on all RDHPCS systems.
 
     The RDHPCS does not have a license with the `Anaconda Python
     <https://www.anaconda.com/>`_ distribution. As the NOAA RDHPCS systems do
-    not fit within the 200-employee limit as defined in `Anaconda License
-    Agreement <https://www.anaconda.com/eula>`_, use of the non-free Anaconda
-    Channels on RDHPCS systems is prohibited.
+    not fit within the 200-employee limit as defined in `Anaconda Terms of
+    Service <https://legal.anaconda.com/policies>`_, use of the Anaconda, which
+    includes `Miniconda <https://docs.anaconda.com/miniconda/>`_, on RDHPCS
+    systems is prohibited.
 
-    For more information, please refer to the `Anaconda License Agreement`_
+    For more information, please refer to the `Anaconda Terms of Service`_
     and Anaconda's blog posting `Update on Anaconda's Terms of Service for
     Academia and Research
     <https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research>`_.
+
+.. note::
+
+    The only conda channel approved for use on the NOAA RDHPCS systems is
+    `conda-forge <https://conda-forge.org>`_.  The cond-forge installer,
+    `Miniforge <https://conda-forge.org/download/>`_, includes the `conda`_
+    package manager and will use the `conda-forge`_ channel.
 
 If you want to leverage Python with Jupyter, we direct you to our
 :ref:`jupyter_on_rdhpcs_systems` page for comprehensive guidance.
@@ -74,7 +82,7 @@ systems:
 .. note::
 
    If you're new to Conda, don't miss our :doc:`Conda Basics Guide
-   </software/python/conda_basics>`. It’s the perfect starting point, providing
+   </software/python/conda_basics>`. It's the perfect starting point, providing
    you with a handy :ref:`quick-reference <conda-quick>` list of commands to
    accelerate your learning.
 
@@ -88,7 +96,7 @@ Module Usage
 Python
 ------
 
-To start using Python add the module file path to modules, and load the module.
+To start using Python, load the ``python`` module.
 
 .. tab-set::
 
@@ -171,23 +179,14 @@ Base Environment
 At the heart of every Conda installation is the `base` environment, which comes
 equipped with the Conda package manager and a selection of additional packages.
 
-Every Conda installation has what is called the `base` environment.  This
-environment contains the `conda package manager
-<https://docs.conda.io/projects/conda/en/stable/>`_ and potentially a few
-additional packages.
-
-
-Loading the :ref:`conda module <python-conda-modules>` give you the `base`
+Loading the :ref:`conda module <python-conda-modules>` will activate the `base`
 environment. This option is ideal for users who don't require custom
-environments and only need the packages already available. It's also the
-perfect choice for anyone who simply needs a Python interpreter or standard
-packages like NumPy and SciPy.
+environments or who simply need a Python interpreter.
 
 To explore the full range of packages included in the base environment, just
-use the command ``conda list``.  Check it out today and make the most of your
-computing experience!
+use the command ``conda list``.
 
-.. cSpell:ignore ipyw jlab libgcc astropy absl argh
+.. cSpell:disable
 
 .. code-block:: bash
 
@@ -208,6 +207,8 @@ computing experience!
     .
     .
     .
+
+.. cSpell: enable
 
 .. warning::
 
@@ -246,13 +247,13 @@ To create and activate an environment:
 
         .. code-block:: bash
 
-            #1. Create the "my_env" envrionment with Python verion X.Y
+            #1. Create the "my_env" environment with Python version X.Y
             $ conda create --name my_env python=X.Y
 
             #2. Activate "my_env"
             $ conda activate /path/to/my_env
 
-            #3. Install addtional packages in the "my_env" environment
+            #3. Install additional packages in the "my_env" environment
             $ conda install <package_name> [<package_name> ...]
 
     .. tab-item:: Python Venv
@@ -305,6 +306,7 @@ How to Run
 ==========
 
 .. warning::
+
    Remember, at larger scales both your performance and your fellow users'
    performance will suffer if you do not run on the compute nodes. It is always
    highly recommended to run on the compute nodes (through the use of a batch job
