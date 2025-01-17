@@ -490,17 +490,17 @@ If a user receives the error
 it may be related to an issue in user's environment.
 
 First, ensure there is a minimum 100 MB free space in the home directory
-for the PW agent file to install.  If there’s enough space, perform the
+for the PW agent file to install.  If there’s enough space, perform one of the
 following checks:
 
-1. Remove the https_proxy setting from the .bashrc file. This will stop using
-the proxy for all https traffic.
+  1. Remove the https_proxy setting from the .bashrc file. This will stop using
+     the proxy for all https traffic.
 
-1. When you make proxy settings in the .bashrc file, add
+  2. When you make proxy settings in the .bashrc file, add
 
   ``export NO_PROXY=noaa.parallel.works``
 
-This should bypass the proxy for anything on the platform.
+  This should bypass the proxy for anything on the platform.
 
 Either of these changes should allow the agent to connect back to the platform
 to create the connection.
