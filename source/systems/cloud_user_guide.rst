@@ -471,8 +471,41 @@ request.
   or Hera. If the login fails, log into the <account URL to check whether “single
   sign on” is working. If your login still fails, open a cloud help desk case.
   Send email to rdhpcs.cloud.help@noaa.gov, with Login Error in the Subject. In
-  the casenclude the information that you have attempted the “single sign on”
+  the case, include the information that you have attempted the “single sign on”
   login test.
+
+Failed to authenticate agent on remote host for on-prem HPC system login
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If a user receives the error
+
+.. code-block:: shell
+
+  Initiating connection to proxy cert server…
+  Proxy certificate server connection initialized
+  ..
+  Copied CLI to remote host
+
+
+it may be related to an issue in user's environment.
+
+First, ensure there is a minimum 100 MB free space in the home directory
+for the PW agent file to install.  If there’s enough space, perform one of the
+following checks:
+
+  1. Remove the https_proxy setting from the .bashrc file. This will stop using
+     the proxy for all https traffic.
+
+  2. When you make proxy settings in the .bashrc file, add
+
+  ``export NO_PROXY=noaa.parallel.works``
+
+  This should bypass the proxy for anything on the platform.
+
+Either of these changes should allow the agent to connect back to the platform
+to create the connection.
+If neither scenario applies, please open a help desk case for
+assistance.
 
 Getting Help
 ============
