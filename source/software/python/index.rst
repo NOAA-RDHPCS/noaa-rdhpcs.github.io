@@ -6,74 +6,97 @@ Python on RDHPCS Systems
 Overview
 ========
 
-In high-performance computing, `Python <https://www.python.org/>`__ is heavily
-used to analyze scientific data on the system. Some users require specific
-versions of Python or niche scientific packages to analyze their data, which
-may further depend on numerous other Python packages. Because of all the
-dependencies that some Python packages require, and all the types of data that
-exist, it can be quite troublesome to get different Python installations to
-"play nicely" with each-other, especially on an HPC system where the system
-environment is complicated. Virtual environments help alleviate these issues by
-isolating package installations into self-contained directory trees.
+In high-performance computing (HPC), `Python <https://www.python.org/>`_ is an
+essential tool for analyzing scientific data. Many users need specific versions
+of Python or specialized scientific packages for their analyses, and these
+often come with a range of dependencies. Managing different Python
+installations can be problematic, particularly in the complex environment of
+HPC systems. Virtual environments are a crucial solution, effectively isolating
+package installations into distinct directories.
 
-Although Python has a native virtual environment feature (``venv``), one
-popular virtual environment manager is `Conda
-<https://docs.conda.io/projects/conda/en/latest/index.html>`_, a package and
-virtual environment manager from the `Anaconda <https://www.anaconda.com/>`_
-distribution. Conda allows users to easily install different versions of binary
-software packages and any required libraries appropriate for their computing
-platform.  The versatility of conda allows a user to essentially build their
-own isolated Python environment, without having to worry about clashing
-dependencies and other system installations of Python. Conda is available on
-all RDHPCS systems, and loading the default Python module loads an Anaconda
-Python distribution.  Loading this distribution automatically puts you in a
-"base" conda environment, which already includes packages that one can use for
-simulation, analysis, and machine learning.
+While Python includes a native virtual environment feature called `venv
+<https://docs.python.org/3/library/venv.html>`_, `Conda
+<https://docs.conda.io/projects/conda/en/latest/index.html>`_ stands out as a
+powerful package and environment manager. Conda empowers users to effortlessly
+install various binary software packages and the necessary libraries, enabling
+the creation of isolated Python environments without the hassle of conflicting
+dependencies or complications from other Python installations.  Conda is fully
+supported on all RDHPCS systems.
 
-For users interested in using Python with Jupyter, see our
-:ref:`jupyter_on_rdhpcs_systems` page instead.
+.. caution::
+
+    The RDHPCS does not have a license with the `Anaconda Python
+    <https://www.anaconda.com/>`_ distribution. As the NOAA RDHPCS systems do
+    not fit within the 200-employee limit as defined in `Anaconda Terms of
+    Service <https://legal.anaconda.com/policies>`_, use of the Anaconda, which
+    includes `Miniconda <https://docs.anaconda.com/miniconda/>`_, on RDHPCS
+    systems is prohibited.
+
+    For more information, please refer to the `Anaconda Terms of Service`_
+    and Anaconda's blog posting `Update on Anaconda's Terms of Service for
+    Academia and Research
+    <https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research>`_.
 
 .. note::
 
-    The RDHPCS is working on a unified Python/Conda configuration and policies
-    across all NOAA-managed RDHPCS systems (hera, jet, niagara, ppan).  This
-    documentation will be updated as the the configuration and policies are
-    established.
+    The only conda channel approved for use on the NOAA RDHPCS systems is
+    `conda-forge <https://conda-forge.org>`_.  The conda-forge installer,
+    `Miniforge <https://conda-forge.org/download/>`_, includes the `conda`_
+    package manager and will use the `conda-forge`_ channel.
+
+If you want to leverage Python with Jupyter, we direct you to our
+:ref:`jupyter_on_rdhpcs_systems` page for comprehensive guidance.
+
+.. note::
+
+    The RDHPCS is diligently working to implement a unified Python/Conda
+    configuration and policies across all NOAA-managed RDHPCS systems (Hera,
+    Jet, Niagara, Pan). Rest assured, this documentation will be updated as
+    these configurations and policies are implemented.
 
 .. _python-guides:
 
 Python Guides
 =============
 
-Below is a list of guides created for using Python on RDHPCS systems.
+Explore our guides designed to empower you in using Python and Conda on RDHPCS
+systems:
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    conda_basics
-   miniconda
+   miniforge
    jupyter
 
-* :doc:`Conda Basics Guide </software/python/conda_basics>`: Goes over the
-  basic workflow and commands of Conda
-* :doc:`Installing Miniconda Guide </software/python/miniconda>`: Teaches you
-  how to install Miniconda
-* :ref:`jupyter_on_rdhpcs_systems`: Instructions to install and access
-  JupyterLab on the RDHPCS systems
+* :doc:`Conda Basics Guide </software/python/conda_basics>`:
+    Master the essential workflow and commands of Conda to enhance your
+    productivity.
+* :doc:`Installing Miniforge Guide </software/python/miniforge>`:
+    Get step-by-step instructions for installing Miniconda on RDHPCS systems.
+* :ref:`jupyter_on_rdhpcs_systems`:
+    Access detailed directions for installing and utilizing JupyterLab on
+    RDHPCS systems.
 
 .. note::
 
-   For newer users to conda, it is highly recommended to view our :doc:`Conda
-   Basics Guide </software/python/conda_basics>`, where a :ref:`conda-quick`
-   list is provided.
+   If you're new to Conda, don't miss our :doc:`Conda Basics Guide
+   </software/python/conda_basics>`. It's the perfect starting point, providing
+   you with a handy :ref:`quick-reference <conda-quick>` list of commands to
+   accelerate your learning.
 
 .. _python-mods:
 
 Module Usage
 ============
 
-To start using Python, all you need to do is load the module:
+.. _python-python-modules:
+
+Python
+------
+
+To start using Python, load the ``python`` module.
 
 .. tab-set::
 
@@ -82,6 +105,7 @@ To start using Python, all you need to do is load the module:
 
         .. code-block:: bash
 
+            $ module use /usw/conda/modulefiles
             $ module load python
 
     .. tab-item:: Hera
@@ -112,142 +136,79 @@ To start using Python, all you need to do is load the module:
 
             $ module load python
 
+Run the ``module avail python`` command to see the available versions of
+Python.
+
+.. _python-conda-modules:
+
+Conda
+-----
+
+Some RDHPCS systems have Conda installed for all users.  To start using Conda
+on these systems, add the module file path to modules, and load the module.
+
+.. tab-set::
+
+    .. tab-item:: Gaea
+        :sync: gaea
+
+        .. code-block:: bash
+
+            $ module use /usw/conda/modulefiles
+            $ module load miniforge
+
+    .. tab-item:: PPAN
+        :sync: ppan
+
+        .. code-block:: bash
+
+            $ module load miniforge
+
+
+
+Conda Environments
+==================
+
+Some RDHPCS systems offer Conda for all users. The maintainers have created
+several environments besides the `base` one. If those don't work for you,
+create your own :ref:`custom environment <python-custom-envs>`.
 
 Base Environment
 ----------------
 
-Loading the Python module on all systems will put you in a "base"
-pre-configured environment. This option is recommended for users who do not
-need custom environments, and only require packages that are already installed
-in the base environment. This option is also recommended for users that just
-need a Python interpreter or standard packages like NumPy and Scipy.
+At the heart of every Conda installation is the `base` environment, which comes
+equipped with the Conda package manager and a selection of additional packages.
 
-To see a full list of the packages installed in the base environment, use
-``conda list``.
-A small preview is provided below:
+Loading the :ref:`conda module <python-conda-modules>` will activate the `base`
+environment. This option is ideal for users who don't require custom
+environments or who simply need a Python interpreter.
 
-.. cSpell:ignore ipyw jlab libgcc astropy absl argh
-.. tab-set::
+To explore the full range of packages included in the base environment, just
+use the command ``conda list``.
 
-    .. tab-item:: Gaea
-        :sync: gaea
+.. cSpell:disable
 
-        .. code-block:: bash
+.. code-block:: bash
 
-            $ module load python
-            $ conda list
+    $ conda list
 
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py38_0
-            _libgcc_mutex             0.1                        main
-            alabaster                 0.7.12                     py_0
-            anaconda                  2020.07                  py38_0
-            anaconda-client           1.7.2                    py38_0
-            anaconda-project          0.8.4                      py_0
-            asn1crypto                1.3.0                    py38_0
-            astroid                   2.4.2                    py38_0
-            astropy                   4.0.1.post1      py38h7b6447c_1
-            .
-            .
-            .
+    # packages in environment at ...:
+    #
+    # Name                    Version                   Build  Channel
+    _ipyw_jlab_nb_ext_conf    0.1.0                    py38_0
+    _libgcc_mutex             0.1                        main
+    alabaster                 0.7.12                     py_0
+    anaconda                  2020.07                  py38_0
+    anaconda-client           1.7.2                    py38_0
+    anaconda-project          0.8.4                      py_0
+    asn1crypto                1.3.0                    py38_0
+    astroid                   2.4.2                    py38_0
+    astropy                   4.0.1.post1      py38h7b6447c_1
+    .
+    .
+    .
 
-    .. tab-item:: Hera
-        :sync: hera
-
-        .. code-block:: bash
-
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py37_0
-            _libgcc_mutex             0.1                        main
-            absl-py                   0.11.0                   pypi_0    pypi
-            alabaster                 0.7.12                   py37_0
-            anaconda                  2020.02                  py37_0
-            anaconda-client           1.7.2                    py37_0
-            anaconda-navigator        1.9.12                   py37_0
-            anaconda-project          0.8.4                      py_0
-            argh                      0.26.2                   py37_0
-            .
-            .
-            .
-
-    .. tab-item:: Jet
-        :sync: jet
-
-        .. code-block:: bash
-
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py37_0
-            _libgcc_mutex             0.1                        main
-            absl-py                   0.11.0                   pypi_0    pypi
-            alabaster                 0.7.12                   py37_0
-            anaconda                  2020.02                  py37_0
-            anaconda-client           1.7.2                    py37_0
-            anaconda-navigator        1.9.12                   py37_0
-            anaconda-project          0.8.4                      py_0
-            argh                      0.26.2                   py37_0
-            .
-            .
-            .
-
-    .. tab-item:: niagara
-        :sync: niagara
-
-        .. code-block:: bash
-
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py37_0
-            _libgcc_mutex             0.1                        main
-            absl-py                   0.11.0                   pypi_0    pypi
-            alabaster                 0.7.12                   py37_0
-            anaconda                  2020.02                  py37_0
-            anaconda-client           1.7.2                    py37_0
-            anaconda-navigator        1.9.12                   py37_0
-            anaconda-project          0.8.4                      py_0
-            argh                      0.26.2                   py37_0
-            .
-            .
-            .
-
-    .. tab-item:: PPAN
-        :sync: ppan
-
-        .. code-block:: bash
-
-            $ module load python
-            $ conda list
-
-            # packages in environment at ...:
-            #
-            # Name                    Version                   Build  Channel
-            _ipyw_jlab_nb_ext_conf    0.1.0                    py37_0
-            _libgcc_mutex             0.1                        main
-            absl-py                   0.11.0                   pypi_0    pypi
-            alabaster                 0.7.12                   py37_0
-            anaconda                  2020.02                  py37_0
-            anaconda-client           1.7.2                    py37_0
-            anaconda-navigator        1.9.12                   py37_0
-            anaconda-project          0.8.4                      py_0
-            argh                      0.26.2                   py37_0
-            .
-            .
-            .
+.. cSpell: enable
 
 .. warning::
 
@@ -264,158 +225,88 @@ A small preview is provided below:
 Custom Environments
 -------------------
 
-You can also create your own custom environments after loading the Python
-module. This option is recommended for users that require a different version
-of Python than the default version available, or for users that want a personal
-environment to manage specialized packages. This is possible via ``conda`` or
-using Python's native ``venv`` feature instead.
+After loading the :ref:`Python <python-python-modules>` or :ref:`Conda
+<python-conda-modules>` module, you can create custom environments tailored to
+your specific requirements. This is particularly beneficial if you need a
+specific version of Python or packages. This can be accomplished using either
+``conda`` or Python's built-in `venv`_ functionality.
 
 .. note::
 
-   A more complete list of ``conda`` commands is provided in the :ref:`conda-quick`
-   section of the :doc:`Conda Basics Guide </software/python/conda_basics>`. More
-   information on using the ``venv`` command can be found in
-   `Python's Official Documentation <https://docs.python.org/3/tutorial/venv.html>`__.
+    The :doc:`Conda Basics Guide </software/python/conda_basics>` provides a
+    list of `conda` commands. `Python's Official Documentation
+    <https://docs.python.org/3/>`_ provides detailed instructions on using
+    `venv`_.
 
 To create and activate an environment:
 
 .. tab-set::
 
-    .. tab-item:: Gaea
-        :sync: gaea
+    .. tab-item:: Conda
+        :sync: conda
 
         .. code-block:: bash
 
-            #1. Load the module
-            $ module load python
-
-            #2a. Create "my_env" with Python version X.Y at the desired path
-            $ conda create -p /path/to/my_env python=X.Y
-
-            #2b. Create "my_env" with Python version X.Y with a specific name (defaults to $HOME directory)
+            #1. Create the "my_env" environment with Python version X.Y
             $ conda create --name my_env python=X.Y
 
-            #3. Activate "my_env"
+            #2. Activate "my_env"
             $ conda activate /path/to/my_env
 
-    .. tab-item:: Hera
-        :sync: hera
+            #3. Install additional packages in the "my_env" environment
+            $ conda install <package_name> [<package_name> ...]
+
+    .. tab-item:: Python Venv
+        :sync: venv
 
         .. code-block:: bash
 
-            #1. Load the module
-            $ module load python
+            #1. Create the virtual environment in the desired path
+            $ python -m venv /path/to/my_env
 
-            #2a. Create "my_env" with Python version X.Y at the desired path
-            $ conda create -p /path/to/my_env python=X.Y
+            #2. Activate the virtual environment
+            $ source /path/to/my_env/bin/activate
 
-            #2b. Create "my_env" with Python version X.Y with a specific name (defaults to $HOME directory)
-            $ conda create --name my_env python=X.Y
+            #3. Install additional packages
+            $ pip install <package_name> [<package_name> ...]
 
-            #3. Activate "my_env"
-            $ conda activate /path/to/my_env
+Following these procedures enables efficient management of package dependencies
+and Python versions tailored to project needs.
 
-    .. tab-item:: Jet
-        :sync: jet
+To ensure optimal performance and collaboration on your project, we highly
+recommend creating new environments in the "Project Home" directory (refer to
+the :ref:`file system summary <data-filesystem-summary>`). This approach not
+only prevents potential purges but also enhances teamwork within your project
+and interacts seamlessly with the compute nodes. For added convenience, please
+use environment names that reflect the hostname; this practice is crucial, as
+virtual environments designed on one system may not operate correctly on
+others.
 
-        .. code-block:: bash
-
-            #1. Load the module
-            $ module load cray-python
-
-            #2. Create "my_env" at the desired path (uses same Python version as module)
-            $ python3 -m venv /path/to/my_env
-
-            #3. Activate "my_env"
-            $ conda /path/to/my_env/bin/activate
-
-    .. tab-item:: Niagara
-        :sync: niagara
-
-        .. code-block:: bash
-
-            #1. Load the module
-            $ module load cray-python
-
-            #2. Create "my_env" at the desired path (uses same Python version as module)
-            $ python3 -m venv /path/to/my_env
-
-            #3. Activate "my_env"
-            $ conda /path/to/my_env/bin/activate
-
-    .. tab-item:: PPAN
-        :sync: ppan
-
-        .. code-block:: bash
-
-            #1. Load the module
-            $ module load cray-python
-
-            #2. Create "my_env" at the desired path (uses same Python version as module)
-            $ python3 -m venv /path/to/my_env
-
-            #3. Activate "my_env"
-            $ conda /path/to/my_env/bin/activate
-
-.. note::
-
-   It is highly recommended to create new environments in the "Project Home"
-   directory (see :ref:`file system summary <data-filesystem-summary>`). This
-   space avoids purges, allows for potential collaboration within your project,
-   and works better with the compute nodes. It is also recommended, for
-   convenience, that you use environment names that indicate the hostname, as
-   virtual environments created on one system will not necessarily work on
-   others.
-
-It is always recommended to deactivate an environment before activating a new
-one. Deactivating an environment can be achieved through:
+Moreover, always remember to deactivate your current environment before
+switching to a new one. You can easily deactivate an environment by using the
+following command:
 
 .. tab-set::
 
-    .. tab-item:: Gaea
-        :sync: gaea
+    .. tab-item:: Conda
+        :sync: conda
 
         .. code-block:: bash
 
-            # Deactivate the current environment
             $ conda deactivate
 
-    .. tab-item:: Hera
-        :sync: hera
+    .. tab-item:: Python Venv
+        :sync: venv
 
         .. code-block:: bash
 
-            # Deactivate the current environment
-            $ conda deactivate
-
-    .. tab-item:: Jet
-        :sync: jet
-
-        .. code-block:: bash
-
-            # Deactivate the current environment
-            $ conda deactivate
-
-    .. tab-item:: Niagara
-        :sync: niagara
-
-        .. code-block:: bash
-
-            # Deactivate the current environment
-            $ conda deactivate
-
-    .. tab-item:: PPAN
-        :sync: ppan
-
-        .. code-block:: bash
-
-            # Deactivate the current environment
-            $ conda deactivate
+            $ deactivate
 
 How to Run
 ==========
 
 .. warning::
+
    Remember, at larger scales both your performance and your fellow users'
    performance will suffer if you do not run on the compute nodes. It is always
    highly recommended to run on the compute nodes (through the use of a batch job

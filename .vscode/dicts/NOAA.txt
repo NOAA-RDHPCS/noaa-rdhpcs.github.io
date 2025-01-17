@@ -1,0 +1,20 @@
+# These are terms specific to NOAA, and it's partners
+
+EPYC
+HPCC
+NCRC
+NOAA
+NODD
+RDHPCS
+
+# System names
+Gaea
+gaea
+Hera
+hera
+PPAN
+ppan
+Rhea
+rhea
+Ursa
+ursa
