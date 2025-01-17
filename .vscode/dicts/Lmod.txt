@@ -1,0 +1,4 @@
+# Words used for Lmod and environment modules
+
+modulefiles
+MODULEPATH
