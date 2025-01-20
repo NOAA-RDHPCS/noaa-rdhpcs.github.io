@@ -442,9 +442,6 @@ To resolve this problem:
 
 #. Try using scp to transfer a file.
 
-Python
-------
-
 Can you please install the xyz python package(s)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -506,6 +503,13 @@ should submit an "issue" ticket at the above link.
 
 I am using spack-stack and getting some errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+First, documentation for spack-stack can be found here: 
+`spack-stack documentation <https://spack-stack.readthedocs.io/en/latest>`_
+
+The second issue most users run into is the "location" of spack-stack
+on various supported platforms.  That can be found here:
+`Preconfigured sites <https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html>`_
 
 If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_
 and are having issues, you will have to submit an `issue on their
