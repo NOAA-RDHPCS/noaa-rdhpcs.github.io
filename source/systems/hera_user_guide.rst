@@ -1314,7 +1314,7 @@ the kernel running on these FGA nodes is different from the TCA.
 Just as an example about how this may impact users, depending on the
 application it may be necessary to compile your application on a FGA
 compute node by getting access to an interactive compute node in the
-"fge" queue.
+"fge" partition.
 
 Getting an allocation for FGA resources
 ---------------------------------------
@@ -1351,12 +1351,12 @@ able to submit jobs to the system, but they will only run when the
 resources are not being used by projects that do have an FGA
 allocation. This is helpful for users who are in interested in
 exploring the GPU resources for their applications. To use the system
-in this mode please submit the jobs to the fgewf partition and
-windfall QoS by including the following:
+in this mode please submit the jobs to the fge partition and
+gpuwf QOS by including the following:
 
 .. code-block:: shell
 
-      sbatch -p fgewf -q windfall ...
+      sbatch -p fge -q gpuwf ...
 
 User Environment
 ----------------
@@ -1382,8 +1382,9 @@ images for these two systems.
 
    We recommend that compilation be done for FGA applications only on
    a compute node after obtaining a shell on one of the FGA compute
-   nodes by submitting an interactive batch job to the *fge* or the
-   *fgews* QoS.
+   nodes by submitting an interactive batch job to the *fge* partition 
+   with either the *gpu* QOS (if you have a GPU allocation) or *gpuwf* QOS
+   (if you don't have an allocation but would like to experiment with GPUs).
 
 Compiling and Running Codes Using CUDA
 --------------------------------------
@@ -1419,7 +1420,7 @@ If you're using Intel MPI (with or without cuda; see the note above if
 you're using cuda), compilation may be done on the front-ends or on
 the compute nodes in an interactive-batch job. We would still
 recommend compiling on an FGA compute node by submitting an
-interactive batch job to the "fge" queue.
+interactive batch job to the "fge" partition.
 
 Please load the following modules before compilation and also load
 these modules in the batch job before execution:
@@ -1476,16 +1477,15 @@ nodes.
 
    We recommend that compilation be done for FGA applications only on
    a compute node after obtaining a shell on one of the FGA compute
-   nodes by submitting an interactive batch job to the *fge* or the
-   *fgedebug* queue.
+   nodes by submitting an interactive batch job to the *fge* partition
+   and either the *gpu* or *gpuwf* QOS depending on whether or not you
+   have a GPU specific allocation.
 
-Since the wait times for the fge queue are fairly short it should be
-fine to use just the regular "fge" queue. You need to load the
-following modules:
+You need to load the following modules:
 
 .. code-block:: shell
 
-   $ module load intel cuda mvapich2-gdr    # Please consider using the latest versions of these
+   $ module load intel/<version> cuda mvapich2-gdr    # Please consider using the latest versions of these
    $ mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
    $ mpicc -o myc.exe    myccode.c
 
@@ -1494,7 +1494,7 @@ set the following environment variables in your job file:
 
 .. code-block:: shell
 
-   $ module load intel cuda mvapich2-gdr
+   $ module load intel/<version> cuda mvapich2-gdr
    $ env LD_PRELOAD=$MPIROOT/lib64/libmpi.so
    $ mpirun -np $PBS_NP ./myexe
 
@@ -1509,13 +1509,13 @@ Compiling and Building Codes Using OpenMPI
 
 The OpenMPI implimentation of MPI is available for experimentation and
 testing on the FGA nodes. The current installed version is the one
-that came with the PGI compiler, so PGI examples are shown below.
+that came with the NVHPC/PGI compiler, so PGI examples are shown below.
 
 Load the following modules:
 
 .. code-block:: shell
 
-   $ module load pgi cuda openmpi     # Please consider loading the latest versions of these
+   $ module load nvhpc cuda openmpi     # Please consider loading the latest versions of these
    $ mpif90 -o myfort.exe myfortcode.f90 -L$CUDALIBDIR -lcuda -lcudart
    $ mpicc  -o myc.exe myccode.c
 
@@ -1524,7 +1524,7 @@ set the following environment variables in your job file:
 
 .. code-block:: shell
 
-   $ module load pgi cuda openmpi # Please consider loading the latest versions of these
+   $ module load nvhpc cuda openmpi # Please consider loading the latest versions of these
    $ mpirun -np $PBS_NP -hostfile $PBS_NODEFILE ./myexe
 
 The following link has additional information on using OpenMPI,
@@ -1541,8 +1541,8 @@ has OpenACC directives:
 
 .. code:: shell
 
-   $ module load pgi cuda        # Please consider loading the latest versions of these
-   $ pgf90 -acc -ta=nvidia,cc60,nofma -Minfo=accel -Msafeptr myprog.f90
+   $ module load nvhpc cuda        # Please consider loading the latest versions of these
+   $ nvfortran -acc -ta=nvidia,cc60,nofma -Minfo=accel -Msafeptr myprog.f90
 
 Compiling MPI codes with OpenACC directives on Hera
 ---------------------------------------------------
@@ -1558,8 +1558,8 @@ Submitting Batch Jobs to the FGA System
 ---------------------------------------
 
 Users who have FGE specific allocation can submit jobs to the *fge*
-partition. Other users can submit jobs to the *fgewf* partition and
-will run with windfall priority.
+partition and *gpu* QOS. Other users can submit jobs to the *fge* partition and
+*gpuwf* QOS  and the jobs will run with windfall priority.
 
 One thing to keep in mind is that unlike the TCA, the FGA nodes have a
 maximum of 20 cores per node (Hera TCA has 24 cores per node).
