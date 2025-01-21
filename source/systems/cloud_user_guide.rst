@@ -859,8 +859,8 @@ availability zones:**
 * us-east-1d
 * us-east-1a
 
-**G4ad [AMD Radeon Pro V520] for graphics processing] available in the following
-availability zones:**
+**G4ad [AMD Radeon Pro V520] for graphics processing] available in the
+following availability zones:**
 
 * us-east-1c
 * us-east-1a
@@ -882,8 +882,8 @@ the following availability zones:**
 * us-east-2c
 * us-east-2a.
 
-**G6 [Nvidia L4 Tensor Cores] for graphics and machine learning available in the
-following availability zones:**
+**G6 [Nvidia L4 Tensor Cores] for graphics and machine learning available in
+the following availability zones:**
 
 * us-east-1a
 * us-east-1c
