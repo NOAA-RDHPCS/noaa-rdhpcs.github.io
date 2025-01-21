@@ -816,6 +816,89 @@ AWS: TBD
 
 GCP: TBD
 
+AWS GPU types and Availability Zones Guidance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use P series for deep learning and AI tasks.
+
+**P5 [Nvidia H100]: available in the following availability zones**
+
+* us-east-1f
+* us-east-2c
+* us-east-2a
+* us-east-2b
+
+**P4 [Nvidia A100]: available in the following availability zones:**
+
+* us-east-1c
+* us-east-1b
+* us-east-1a
+* us-east-2a
+* us-east-2b
+
+**P3 [Nvidia Tesla V100] : available in the following availability zones:**
+
+* us-east-1d
+* us-east-1b
+* us-east-1e
+* us-east-1c
+* us-east-1a
+* us-east-1f
+* us-east-2c
+* us-east-2b
+* us-east-2a
+
+**G3 [Nvidia Tesla M60] (graphics processing) available in the following
+availability zones:**
+
+
+* us-east-1e
+* us-east-1c
+* us-east-1b
+* us-east-1f
+* us-east-1d
+* us-east-1a
+
+**G4ad [AMD Radeon Pro V520] for graphics processing] available in the following
+availability zones:**
+
+* us-east-1c
+* us-east-1a
+* us-east-1b
+* us-east-1d
+* us-east-2a
+* us-east-2b
+* us-east-2c
+
+**G5 [Nvidia A10G Tensor Core] for graphics and machine learning, available in
+the following availability zones:**
+
+* us-east-1d
+* us-east-1b
+* us-east-1c
+* us-east-1a
+* us-east-1f
+* us-east-2b
+* us-east-2c
+* us-east-2a.
+
+**G6 [Nvidia L4 Tensor Cores] for graphics and machine learning available in the
+following availability zones:**
+
+* us-east-1a
+* us-east-1c
+* us-east-1b
+* us-east-1d
+* us-east-2c
+* us-east-2a
+* us-east-2b
+
+.. note::
+
+  We currently have a quota for 2,400 vCPUs. On-demand availability depends on
+  availability at a given time in the market, and is outside our control.
+  Users may want to try different availability zones to acquire GPUs.
+
 
 Parallel works
 --------------
