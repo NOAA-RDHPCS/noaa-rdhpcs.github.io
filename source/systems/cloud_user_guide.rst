@@ -466,9 +466,9 @@ request.
 .. note::
 
   Occasionally, a valid user login attempt will receive an
-  “Invalid name or password” error This can happen when a user token is out of
+  **Invalid name or password** error. This can happen when a user token is out of
   sync with the SSO system. Try logging in to an on-prem HPC system like Niagara
-  or Hera. If the login fails, log into the <account URL to check whether “single
+  or Hera. If the login fails, log into the account URL to check whether “single
   sign on” is working. If your login still fails, open a cloud help desk case.
   Send email to rdhpcs.cloud.help@noaa.gov, with Login Error in the Subject. In
   the case, include the information that you have attempted the “single sign on”
