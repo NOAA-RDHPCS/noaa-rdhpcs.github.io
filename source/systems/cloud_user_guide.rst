@@ -859,7 +859,7 @@ availability zones:**
 * us-east-1d
 * us-east-1a
 
-**G4ad [AMD Radeon Pro V520] for graphics processing] available in the
+**G4ad [AMD Radeon Pro V520] for graphics processing available in the
 following availability zones:**
 
 * us-east-1c
