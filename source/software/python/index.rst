@@ -540,8 +540,8 @@ Deactivate your environments before running batch jobs
 
 To avoid ``$PATH`` issues, it is highly recommended to submit batch jobs or
 enter interactive jobs without an already activated environment. Therefore,
-deactivating your environment before submitting jobs is recommended. Alternatively,
-you can submit your jobs from a fresh login shell.
+deactivating your environment before submitting jobs is recommended.
+Alternatively, you can submit your jobs from a fresh login shell.
 
 Unbuffered input
 ----------------
