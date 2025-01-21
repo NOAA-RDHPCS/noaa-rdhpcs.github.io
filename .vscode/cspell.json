@@ -1,0 +1,56 @@
+{
+    "version": "0.2",
+    "dictionaryDefinitions": [
+        {
+            "name": "Lmod",
+            "path": "dicts/Lmod.txt",
+            "description": "Lmod specific terms",
+            "addWords": false
+        },
+        {
+            "name": "NOAA",
+            "path": "dicts/NOAA.txt",
+            "description": "NOAA specific terms",
+            "addWords": false
+        },
+        {
+            "name": "PythonConda",
+            "path": "dicts/PythonConda.txt",
+            "description": "Python and Conda specific terms, but not Python keywords",
+            "addWords": false
+        },
+        {
+            "name": "reStructuredText",
+            "path": "dicts/reStructuredText.txt",
+            "description": "reStructuredText terms",
+            "addWords": false
+        },
+        {
+            "name": "SchedMD",
+            "path": "dicts/SchedMD.txt",
+            "description": "SLURM and SchedMD specific terms",
+            "addWords": false
+        },
+        {
+            "name": "projWords",
+            "path": "dicts/projWords.txt",
+            "description": "Project specific terms",
+            "addWords": true
+        }
+    ],
+    "dictionaries": [
+        "Lmod",
+        "NOAA",
+        "PythonConda",
+        "SchedMD",
+        "projWords"
+    ],
+    "languageSettings": [
+        {
+            "languageId": "reStructuredText",
+            "dictionaries": [
+                "reStructuredText"
+            ]
+        }
+    ]
+}

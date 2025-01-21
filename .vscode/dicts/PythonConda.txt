@@ -1,0 +1,12 @@
+# Words used for Python and Conda.  These are not Python keywords.
+
+condarc
+Jupyter
+JupyterLab
+miniconda
+miniforge
+numpy
+pycairo
+pyferret
+scipy
+venv
