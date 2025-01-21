@@ -363,17 +363,11 @@ GFDL Institutional Data Portal
 ==============================
 
 Data hosted on the GFDL Data portal servers is accessible through Globus, and
-available on request through the data hosting request form for papers,
+available on request through the `data hosting request form
+<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__ for papers,
 collaborations, and other projects. The requester will be notified of the
 Globus URL when the request is completed. GFDL Data Transfer features can be
-reviewed in this table <GFDL Data transfer feature Matrix - Google Sheets>.
-
-Data hosted on the GFDL Data portal servers is accessible through Globus, and
-available on request through the `data hosting request form
-<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__
-for papers, collaborations, other projects. The requester will be notified of
-the Globus URL when the request is completed. GFDL Data Transfer features can
-be reviewed in `this table.
+reviewed in `this table.
 <https://docs.google.com/spreadsheets/d/1fVC60ztNzYxFui1zyF_S_AMfoc3O15oa1-oOKhGrqQI/edit?gid=0#gid=0>`_
 
 .. note::
