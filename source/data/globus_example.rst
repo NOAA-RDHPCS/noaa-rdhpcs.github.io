@@ -146,7 +146,7 @@ partner clusters:
      - Anywhere
    * - GFDL Data Portal
      - noaagfdl#data portal
-     -
+     - /data
      - GFDL
      - Anywhere
 
