@@ -504,7 +504,7 @@ should submit an "issue" ticket at the above link.
 I am using spack-stack and getting some errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-First, documentation for spack-stack can be found here: 
+First, documentation for spack-stack can be found here:
 `spack-stack documentation <https://spack-stack.readthedocs.io/en/latest>`_
 
 The second issue most users run into is the "location" of spack-stack
