@@ -12,7 +12,7 @@ support Globus may still use other methods described in this document.
 Many users are accustomed to using scp/sftp via service (same as
 login) nodes. However, we would like to point out that Data Transfer
 Nodes (DTN's) provides a much faster method for transferring data to
-and from HPC systems (Jet/Ursa/Hera/Niagara/Gaea/WCOSS/Orion), so 
+and from HPC systems (Jet/Ursa/Hera/Niagara/Gaea/WCOSS/Orion), so
 we highly recommend DTNs over service nodes.
 
 Much data on RDHPCS servers are protected by confidentiality
