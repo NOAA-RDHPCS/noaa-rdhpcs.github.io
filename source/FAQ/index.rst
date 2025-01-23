@@ -695,7 +695,7 @@ will result in a 3-5 day outage for those file systems.**
 **Currently these two new filesystems are only mounted
 and accessible from Hera and the new Ursa DTNs.**
 
-Using these new Ursa DTNs you can do data transfers to the 
+Using these new Ursa DTNs you can do data transfers to the
 ``/scratch3`` and ``/scratch4`` filesystems either using
 the Linux tools such as ``scp`` and ``rsync`` or by
 using Globus Online.
