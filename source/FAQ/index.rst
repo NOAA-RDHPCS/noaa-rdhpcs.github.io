@@ -296,7 +296,7 @@ To change your default shell:
 Once your help ticket is processed, the change should be complete
 within 24 hours.
 
-How can I recover ly deleted files from /home?
+How can I recover recently deleted files from /home?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The home filesystem is backed up
@@ -617,7 +617,7 @@ created will be dodgy, and not show any content with idt, for example.
 
 Also, we have seen some of the programs that use NCL are using the
 newer features of the Fortran standard, so in addition to loading the
-"pyncl" module you may consider loading a more  version of the
+"pyncl" module you may consider loading a more recent version of the
 GNU module.
 
 So if you are working with NCL please use the following module load command:
@@ -694,14 +694,14 @@ Using these new DTNs you can do data transfers to the /scratch3
 and /scratch4 filesystems either using Linux tools such
 as scp and rsync or by using Globus Online.
 
-The trusted DTN, dtn-ursa.fairmont.rdhpcs.noaa.gov has
+The trusted DTN, dtn-ursa.fairmont.rdhpcs.noaa.gov, has
 access to /scratch3 and /scratch4 filesystems.
 
 The untrusted DTN, udtn-ursa.fairmont.rdhpcs.noaa.gov,
 has access to /scratch3/data_untrusted and
 /scratch4/data_untrusted directories.
 
-The hostnames for doing data transfer with Linux commands
+The hostnames for data transfers using Linux commands
 such as scp, rsync are the following:
 
 dtn-ursa.fairmont.rdhpcs.noaa.gov
