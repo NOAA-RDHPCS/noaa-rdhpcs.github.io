@@ -12,8 +12,8 @@ support Globus may still use other methods described in this document.
 Many users are accustomed to using scp/sftp via service (same as
 login) nodes. However, we would like to point out that Data Transfer
 Nodes (DTN's) provides a much faster method for transferring data to
-and from HPC systems (Jet/Hera/Niagara/Gaea/WCOSS/Orion), so we highly
-recommend DTNs over service nodes.
+and from HPC systems (Jet/Ursa/Hera/Niagara/Gaea/WCOSS/Orion), so
+we highly recommend DTNs over service nodes.
 
 Much data on RDHPCS servers are protected by confidentiality
 agreements, may be sensitive, or are otherwise proprietary. Our
@@ -64,6 +64,8 @@ authentication uses your RSA token.
 +===========+======================================+
 | Niagara   | dtn-niagara.fairmont.rdhpcs.noaa.gov |
 +-----------+--------------------------------------+
+| Ursa      | dtn-ursa.fairmont.rdhpcs.noaa.gov    |
++-----------+--------------------------------------+
 | Hera      | dtn-hera.fairmont.rdhpcs.noaa.gov    |
 +-----------+--------------------------------------+
 | Jet       | dtn-jet.boulder.rdhpcs.noaa.gov      |
@@ -83,7 +85,7 @@ transfers from most external sites including your local
 desktop/laptop. However, note the following important points:
 
 * Before you can use the UDTNs for data transfers on any of the
-  clusters (Niagara, Hera, Jet, PPAN, etc.), **you must login
+  clusters (Niagara, Ursa, Hera, Jet, PPAN, etc.), **you must login
   at least once to set up the necessary directories.**
 * File space on the UDTNs is very limited. So it is important to move
   to your project space as soon as possible and clean up
@@ -120,6 +122,10 @@ desktop/laptop. However, note the following important points:
      - noaardhpcs#niagara_untrusted
      - udtn-niagara.fairmont.rdhpcs.noaa.gov
      - :file:`/collab1/data_untrusted/$USER`
+   * - Ursa
+     - noaardhpcs#ursa_untrusted
+     - udtn-ursa.fairmont.rdhpcs.noaa.gov
+     - :file:`/scratch[34]/data_untrusted/$USER`
    * - Hera
      - noaardhpcs#hera_untrusted
      - udtn-hera.fairmont.rdhpcs.noaa.gov
@@ -352,6 +358,7 @@ Host names for the CAC bastion Server in Boulder, CO:
 .. code:: shell
 
    bastion-jet.boulder.rdhpcs.noaa.gov
+   bastion-ursa.boulder.rdhpcs.noaa.gov (WIP)
    bastion-hera.boulder.rdhpcs.noaa.gov
    bastion-niagara.boulder.rdhpcs.noaa.gov
    bastion-gaea.boulder.rdhpcs.noaa.gov
@@ -361,6 +368,7 @@ Host names for the CAC Bastion Server in Princeton, NJ:
 .. code:: shell
 
    bastion-jet.princeton.rdhpcs.noaa.gov
+   bastion-ursa.princeton.rdhpcs.noaa.gov (WIP)
    bastion-hera.princeton.rdhpcs.noaa.gov
    bastion-niagara.princeton.rdhpcs.noaa.gov
    bastion-gaea.princeton.rdhpcs.noaa.gov
