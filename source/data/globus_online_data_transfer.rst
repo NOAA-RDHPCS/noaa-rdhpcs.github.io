@@ -83,6 +83,18 @@ partner clusters.
    |           |                   | $HOME              |         |               |
    +-----------+-------------------+--------------------+---------+---------------+
 
+  .. tab-item:: Ursa
+    :sync: ursa
+
+    +-----------+----------------------------+---------------------------+---------+---------------+
+    | Cluster   | Display Name               | File Systems              | Site    | Access        |
+    +===========+============================+===========================+=========+===============+
+    | Ursa      | noaardhpcs#ursa            | /scratch3, /scratch4      | NESCC   | Trusted hosts |
+    +-----------+----------------------------+---------------------------+---------+---------------+
+    | Ursa      | noaardhpcs#ursa_untrusted  | /scratch3/data_untrusted, | NESCC   | Anywhere      |
+    |           |                            | /scratch4/data_untrusted  |         |               |
+    +-----------+----------------------------+---------------------------+---------+---------------+
+
   .. tab-item:: Hera
     :sync: hera
 
@@ -193,7 +205,7 @@ public site available via AWS resources.
 Globus Command Line Interface (CLI)
 ===================================
 
-The CLI is available on Jet, Hera, and Niagara.
+The CLI is available on Jet, Ursa (WIP), Hera, and Niagara.
 
 If you would like to use Globus-cli, either on your personal machine
 or on a system where globus-cli is not installed, you can install it
@@ -267,7 +279,7 @@ process is described in this section.
   * You can only share directories under the root of the ``/*/data_untrusted/$USER`` directory. All UDTNs have that directory.
   * Do not share based only on an email address. The person with whom you share should have a GlobusID.
   * Before any sharing can be done, the user that is sharing the data
-    must login to the system (Niagara, Hera, Jet, ...) at least once,
+    must login to the system (Niagara, Ursa (WIP), Hera, Jet, ...) at least once,
     to make sure that the account is properly set up the with the necessary
     home and project directories.
 
