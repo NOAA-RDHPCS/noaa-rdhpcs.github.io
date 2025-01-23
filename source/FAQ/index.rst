@@ -678,7 +678,7 @@ forwarding is working by running the command **xclock**.
 
 Recent User-Facing Changes
 ==========================
-Jan 22, 2025: DTNs for Ursa are now available 
+Jan 22, 2025: DTNs for Ursa are now available
 ---------------------------------------------
 
 DTNs for Ursa are now available for your use.
@@ -687,7 +687,7 @@ Please note that even though Ursa is not yet available, the new
 filesystems /scratch3 and /scratch4, the filesystems for Ursa,
 and the DTNs for Ursa are already available.
 
-Currently these two new filesystems are also mounted 
+Currently these two new filesystems are also mounted
 and accessible from Hera.
 
 Using these new DTNs you can do data transfers to the /scratch3
