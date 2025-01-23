@@ -678,6 +678,41 @@ forwarding is working by running the command **xclock**.
 
 Recent User-Facing Changes
 ==========================
+Jan 22, 2025: DTNs for Ursa are now available
+---------------------------------------------
+
+DTNs for Ursa are now available for your use.
+
+Please note that even though Ursa is not yet available, the new
+filesystems /scratch3 and /scratch4, the filesystems for Ursa,
+and the DTNs for Ursa are already available.
+
+Currently these two new filesystems are also mounted
+and accessible from Hera.
+
+Using these new DTNs you can do data transfers to the /scratch3
+and /scratch4 filesystems either using Linux tools such
+as scp and rsync or by using Globus Online.
+
+The trusted DTN, dtn-ursa.fairmont.rdhpcs.noaa.gov, has
+access to /scratch3 and /scratch4 filesystems.
+
+The untrusted DTN, udtn-ursa.fairmont.rdhpcs.noaa.gov,
+has access to /scratch3/data_untrusted and
+/scratch4/data_untrusted directories.
+
+The hostnames for data transfers using Linux commands
+such as scp, rsync are the following:
+
+dtn-ursa.fairmont.rdhpcs.noaa.gov
+udtn-ursa.fairmont.rdhpcs.noaa.gov
+
+The Globus endpoint names are the following:
+
+noaardhpcs#ursa
+noaardhpcs#ursa_untrusted
+
+Please see the Data Transfer section for more details.
 
 Apr 29, 2024: The new LFS5 filesystem on Jet
 --------------------------------------------
