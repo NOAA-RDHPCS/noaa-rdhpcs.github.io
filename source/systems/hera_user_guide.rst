@@ -1382,7 +1382,7 @@ images for these two systems.
 
    We recommend that compilation be done for FGA applications only on
    a compute node after obtaining a shell on one of the FGA compute
-   nodes by submitting an interactive batch job to the *fge* partition 
+   nodes by submitting an interactive batch job to the *fge* partition
    with either the *gpu* QOS (if you have a GPU allocation) or *gpuwf* QOS
    (if you don't have an allocation but would like to experiment with GPUs).
 
