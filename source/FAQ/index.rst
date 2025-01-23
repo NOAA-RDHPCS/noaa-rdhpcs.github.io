@@ -714,12 +714,14 @@ The hostnames for data transfers using Linux commands
 such as scp, rsync are as follows:
 
   ``dtn-ursa.fairmont.rdhpcs.noaa.gov``
+
   ``udtn-ursa.fairmont.rdhpcs.noaa.gov``
 
 The Globus endpoint names are the following:
 
-  ``noaardhpcs#ursa
-  noaardhpcs#ursa_untrusted``
+  ``noaardhpcs#ursa``
+
+  ``noaardhpcs#ursa_untrusted``
 
 Please see the :ref:`data-transfer-overview` for more details.
 
