@@ -684,9 +684,13 @@ Jan 22, 2025: DTNs and the new filesystems for Ursa are now available
 The DTNs and the new filesystems for Ursa are
 now available for your use.
 
-**Please note that even though Ursa is not yet available, the new
-filesystems /scratch3 and /scratch4, the filesystems
+**Please note that even though Ursa is not yet available,
+the new filesystems /scratch3 and /scratch4, the filesystems
 for Ursa, and the DTNs for Ursa, are now available.**
+
+**Also please note that /scratch3 and /scratch4
+will be upgraded at some point in February which
+will result in a 3-5 day outage for those file systems.**
 
 **Currently these two new filesystems are only mounted
 and accessible from Hera and the new Ursa DTNs.**
