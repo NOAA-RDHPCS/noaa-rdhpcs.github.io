@@ -60,13 +60,26 @@ different storage areas are summarized in the list and table below.
     | User-Shared Applications | ``/usw/<application>``                    | NFS  | 0755        | N/A           | No      | No      | N/A        | Read/Write       |
     +--------------------------+-------------------------------------------+------+-------------+---------------+---------+---------+------------+------------------+
 
+  .. tab-item:: Ursa
+    :sync: ursa
+
+    +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
+    | Area                     | Path                                           | Type   | Permissions | Quota         | Backups | Purged  | Retention  | On Compute Nodes |
+    +==========================+================================================+========+=============+===============+=========+=========+============+==================+
+    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 10 GB         | Yes     | No      | 90 days    | Read/Write       |
+    +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
+    | Member Work              | ``/scratch[34]/<portfolio>/<projid>/<userid>`` | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
+    +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
+    | User-Shared Applications | ``/contrib/<application>``                     | NFS    | 0755        | Project Based | No      | No      | N/A        | Read/Write       |
+    +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
+
   .. tab-item:: Hera
     :sync: hera
 
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Area                     | Path                                           | Type   | Permissions | Quota         | Backups | Purged  | Retention  | On Compute Nodes |
     +==========================+================================================+========+=============+===============+=========+=========+============+==================+
-    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 5 GB          | Yes     | No      | 90 days    | Read/Write       |
+    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 10 GB         | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Member Work              | ``/scratch[12]/<portfolio>/<projid>/<userid>`` | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
@@ -79,7 +92,7 @@ different storage areas are summarized in the list and table below.
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Area                     | Path                                        | Type   | Permissions |  Quota        | Backups | Purged  | Retention  | On Compute Nodes |
     +==========================+=============================================+========+=============+===============+=========+=========+============+==================+
-    | User Home                | ``/home/<userid>``                          | NFS    | User set    | 5 GB          | Yes     | No      | 90 days    | Read/Write       |
+    | User Home                | ``/home/<userid>``                          | NFS    | User set    | 10 GB         | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Member Work              | ``/lfs[5]/<userid>``                        | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
@@ -144,7 +157,7 @@ User Home Directories (NFS)
 The environment variable ``$HOME`` will always point to your current home
 directory. It is recommended, where possible, that you use this variable to
 reference your home directory. In cases in which using ``$HOME`` is not
-feasible, it is recommended that you use ``/home/$USER`` (for hera, jet,
+feasible, it is recommended that you use ``/home/$USER`` (for ursa, hera, jet,
 niagara, and pan) and ``ncrc/home/$USER`` for gaea.
 
 Users should note that since this is an NFS-mounted filesystem, its performance
@@ -155,7 +168,7 @@ User Home Quotas
 
 Quotas are enforced on user home directories. To request an increased quota,
 contact the Help Desk. To view your current quota and usage, use the command
-``quota`` on Gaea, Hera, Jet, and Niagara; and ``homeuse`` on Pan:
+``quota`` on Gaea, Ursa, Hera, Jet, and Niagara; and ``homeuse`` on Pan:
 
 
 .. tab-set::
@@ -170,6 +183,17 @@ contact the Help Desk. To view your current quota and usage, use the command
            Filesystem   space   quota   limit   grace   files   quota   limit   grace
       ncrc-svm1.ncrc.gov:/ncrc/home2
                         9228M  51200M  51200M            101k   4295m   4295m
+
+  .. tab-item:: Ursa
+    :sync: ursa
+
+    .. code::
+
+      $ quota -Qs
+      Disk quotas for user userid (uid 12345):
+           Filesystem   space   quota   limit   grace   files   quota   limit   grace
+      10.181.1.1:/home
+                        4147M      0K   5120M            2112       0       0
 
   .. tab-item:: Hera
     :sync: hera

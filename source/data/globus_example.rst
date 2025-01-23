@@ -76,6 +76,13 @@ partner clusters:
      - File System(s)
      - RDHPCS Site
      - Host Access
+   * - Ursa
+     - noaardhpcs#ursa
+     - /scratch3
+
+       /scratch4
+     - NESCC
+     - Trusted hosts
    * - Hera
      - noaardhpcs#hera
      - /scratch1
@@ -326,7 +333,7 @@ icon.
 Globus Command Line Interface (CLI)
 ===================================
 
-The CLI is available on Jet, Hera, and Niagara. If you would like to
+The CLI is available on Jet, Ursa (WIP), Hera, and Niagara. If you would like to
 use Globus-cli, either on your personal machine or on a system where
 globus-cli is not installed, you can install it easily. Refer to the
 instructions to install and use the `Globus CLI
