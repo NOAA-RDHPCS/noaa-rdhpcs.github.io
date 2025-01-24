@@ -699,29 +699,30 @@ DTNs and the new file systems for Ursa are now available for your use.
 **Currently these two new filesystems are only mounted
 and accessible from Hera and the new Ursa DTNs.**
 
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
+
+   * -
+     - Host Name
+     - File System
+     - Globus Endpoints
+   * - Trusted
+     - dtn-ursa.fairmont.rdhpcs.noaa.gov
+     - /scratch[34]
+     - noaardhpcs#ursa
+   * - Untrusted
+     - udtn-ursa.fairmont.rdhpcs.noaa.gov
+     - /scratch[34]/data_untrusted
+     - noaardhpcs#ursa_untrusted
+
+
+
 Using these new DTNs you can do data transfers to the ``/scratch3``
 and ``/scratch4`` filesystems either using Linux tools such
 as scp and rsync, or by using Globus Online.
 
-The trusted DTN, ``dtn-ursa.fairmont.rdhpcs.noaa.gov``, has
-access to ``/scratch3`` and ``/scratch4`` filesystems.
-
-The untrusted DTN, ``udtn-ursa.fairmont.rdhpcs.noaa.gov``,
-has access to ``/scratch3/data_untrusted`` and
-``/scratch4/data_untrusted`` directories.
-
-The hostnames for data transfers using Linux commands
-such as scp, rsync are as follows:
-
-  ``dtn-ursa.fairmont.rdhpcs.noaa.gov``
-
-  ``udtn-ursa.fairmont.rdhpcs.noaa.gov``
-
-The Globus endpoint names are the following:
-
-  ``noaardhpcs#ursa``
-
-  ``noaardhpcs#ursa_untrusted``
 
 Please see the :ref:`data-transfer-overview` for more details.
 
