@@ -899,8 +899,42 @@ the following availability zones:**
   availability at a given time in the market, and is outside our control.
   Users may want to try different availability zones to acquire GPUs.
 
+Why does the remote desktop show multiple xterm terminals, and/or xclocks?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Parallel works
+This issue can be caused by an error in the ``$HOME/.vnc/xstartup`` file.
+To correct it, edit the file, keeping the following lines:
+
+.. code-block:: shell
+
+  /bin/sh
+  unset SESSION_MANAGER
+  unset DBUS_SESSION_BUS_ADDRESS
+  /etc/X11/xinit/xinitrc``
+
+If user doesn't want xclock or the terminal to start automatically, run the
+following to reset:
+
+
+  ``‘touch ~/.Xclients’``
+
+A PW session that shows "Running" isn't accessible and there's no log error
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This typically occurs when the system runs out of resources, usually due
+to an out of memory situation. The display rolls back to requested since the
+instance is no longer reachable, and it's waiting for status updates from the
+instance. Sometimes the out-of-memory killer will kick in and clean up some
+processes to allow the system to continue functioning, but this event isn't
+guaranteed to clean up quickly, or to leave the system in a functional state
+after cleanup when it does run.
+
+To work around this, if your workflow allows it,
+increase the size of the instance, or add a compute
+partition and send the work off to worker nodes, .
+
+
+Parallel Works
 --------------
 
 What is the Parallel Works Login URL?
