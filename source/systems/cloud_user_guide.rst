@@ -2301,6 +2301,31 @@ You can read more about `AWS Lustre <https://docs.aws.amazon.com/fsx/latest/Lust
     "ephemeral": false
   }
 
+Copy files from a public AWS bucket without authentication keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use the ``aws`` CLI on a Cloud cluster by
+adding an option to the command that skips authentication. This method should
+work for public buckets. It has also worked to copy a file to a personal cluster.
+
+Edit the command as follows:
+
+.. code-block:: shell
+
+  aws --no-sign-request s3 ...
+  # list files
+  [First.Last@abcd8-173 ~]$ aws --no-sign-request s3 ls s3://noaa-nws-global-pds
+  PRE data/
+  PRE fix/
+
+  2024-11-22 16:36:31      37683 index.html
+
+
+  # copy a file
+  $ aws --no-sign-request s3 cp s3://noaa-nws-global-pds/index.html ./index.html
+  download: s3://noaa-nws-global-pds/index.html to ./index.html
+
+
 Azure Lustre explained
 ----------------------
 
