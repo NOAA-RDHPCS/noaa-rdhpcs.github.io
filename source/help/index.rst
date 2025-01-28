@@ -30,6 +30,8 @@ When sending an e-mail, be sure to do the following:
 +------------------+------------------------------+
 | Niagara          | rdhpcs.niagara.help@noaa.gov |
 +------------------+------------------------------+
+| Ursa             | rdhpcs.ursa.help@noaa.gov    |
++------------------+------------------------------+
 | Orion            | rdhpcs.orion.help@noaa.gov   |
 +------------------+------------------------------+
 | Hercules         | rdhpcs.hercules.help@noaa.gov|
