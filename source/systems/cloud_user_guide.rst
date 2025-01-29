@@ -910,19 +910,19 @@ To correct it, edit the file, keeping the following lines:
   /bin/sh
   unset SESSION_MANAGER
   unset DBUS_SESSION_BUS_ADDRESS
-  /etc/X11/xinit/xinitrc``
+  /etc/X11/xinit/xinitrc
 
 If user doesn't want xclock or the terminal to start automatically, run the
 following to reset:
 
 
-  ``‘touch ~/.Xclients’``
+  ``touch ~/.Xclients``
 
 A PW session that shows "Running" isn't accessible and there's no log error
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This typically occurs when the system runs out of resources, usually due
-to an out of memory situation. The display rolls back to requested since the
+to an out-of-memory situation. The display rolls back to requested since the
 instance is no longer reachable, and it's waiting for status updates from the
 instance. Sometimes the out-of-memory killer will kick in and clean up some
 processes to allow the system to continue functioning, but this event isn't
