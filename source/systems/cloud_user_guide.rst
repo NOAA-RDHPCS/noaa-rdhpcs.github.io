@@ -931,7 +931,7 @@ after cleanup when it does run.
 
 To work around this, if your workflow allows it,
 increase the size of the instance, or add a compute
-partition and send the work off to worker nodes, .
+partition and send the work off to worker nodes.
 
 
 Parallel Works
