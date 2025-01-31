@@ -277,7 +277,7 @@ process is described in this section.
   * This data sharing feature is only available only on *untrusted*
     Globus endpoints (UDTNs).
   * You **must** share the collection with your collaborators.
-    **THERE IS CURRENTLY NO PUBLIC SHARING AVAILABLE.**   You can share to an 
+    **THERE IS CURRENTLY NO PUBLIC SHARING AVAILABLE.**   You can share to an
     email address or a GlobusID.
   * Sharing happens for directories only.
   * You can only share directories under the root of the ``/*/data_untrusted/$USER`` directory. All UDTNs have that directory.
