@@ -20,10 +20,10 @@ Users should keep the following things in mind when using the HPSS system:
    tar file before storing data into HPSS, or use HTAR.
 -  All data stored in HPSS is single copy. Deleted data cannot be recovered.
 -  HPSS is not accessible from compute nodes. Access is available via
-   Hera/Niagara/Jet front-end nodes (FEs), Gaea Data Transfer Nodes (DTN’s),
+   Hera/Niagara/Jet front-end nodes (FEs), Gaea Data Transfer Nodes (DTNs),
    and WCOSS2 transfer nodes.
 -  Batch jobs that require access to HPSS should be submitted to the respective
-   systems service or transfer queues.
+   systems service or transfer queues.  Look for queue names that contain "dtn".
 
 For questions regarding the HPSS system, email rdhpcs.hpss.help@noaa.gov.
 
@@ -480,8 +480,12 @@ with the recovery service.
 Getting Started
 ===============
 
-HPSS is only accessible from WCOSS, Theia, Jet and Gaea Remote Data Transfer
-Nodes (RDTN). Modules have been created on each system to provide the proper
+HPSS is only accessible from WCOSS, Theia, Jet and Gaea Data Transfer
+Nodes (DTNs). Batch jobs should be used to access HPSS and need be
+submitted to the respective systems service or transfer queues.  Look
+for queue names that contain "dtn".
+
+Modules have been created on each system to provide the proper
 user environment and tools to access HPSS from these systems. These modules are
 not loaded by default and will need to be loaded before you can use any of the
 HPSS commands. To add the HPSS tools to your environment, use the following
@@ -499,7 +503,7 @@ module command:
 
       .. code::
 
-         module use /sw/rdtn/modulefiles
+         module use /usw/hpss/modulefiles
          module load hsi
 
 .. _using-htar:
