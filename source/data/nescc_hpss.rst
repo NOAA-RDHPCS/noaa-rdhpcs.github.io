@@ -22,8 +22,9 @@ Users should keep the following things in mind when using the HPSS system:
 -  HPSS is not accessible from compute nodes. Access is available via
    Hera/Niagara/Jet front-end nodes (FEs), Gaea Data Transfer Nodes (DTNs),
    and WCOSS2 transfer nodes.
--  Batch jobs that require access to HPSS should be submitted to the respective
-   systems service or transfer queues.  Look for queue names that contain "dtn".
+- Batch jobs that require access to HPSS should be submitted to the
+   respective systems service or transfer queues.  Look for queue
+   names that contain "dtn".
 
 For questions regarding the HPSS system, email rdhpcs.hpss.help@noaa.gov.
 
