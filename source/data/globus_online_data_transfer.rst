@@ -274,10 +274,13 @@ process is described in this section.
 
 .. Note::
 
-  * This data sharing feature is only available only on *untrusted* Globus endpoints (UDTNs).
-  * Sharing happens at directory level and not at the level of individual files.
+  * This data sharing feature is only available only on *untrusted*
+    Globus endpoints (UDTNs).
+  * You **must** share the collection with your collaborators.
+    **THERE IS CURRENTLY NO PUBLIC SHARING AVAILABLE.**   You can share to an 
+    email address or a GlobusID.
+  * Sharing happens for directories only.
   * You can only share directories under the root of the ``/*/data_untrusted/$USER`` directory. All UDTNs have that directory.
-  * Do not share based only on an email address. The person with whom you share should have a GlobusID.
   * Before any sharing can be done, the user that is sharing the data
     must login to the system (Niagara, Ursa (WIP), Hera, Jet, ...) at least once,
     to make sure that the account is properly set up the with the necessary
