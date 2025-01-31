@@ -158,7 +158,7 @@ You can also do the following in your script before using the module command
 
 
 Command Summary
----------------
+===============
 
 +---------------------------------+-------------------------------------------+
 | Command                         | Description                               |
