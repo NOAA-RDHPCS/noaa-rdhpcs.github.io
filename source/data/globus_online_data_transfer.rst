@@ -260,8 +260,8 @@ Endpoint.
       files (less than 1MB each one), it would be better to tar the smallfiles.
       Otherwise, if the files are larger, Globus will handle them.
 
-Data Sharing with External Collaborators
-========================================
+Sharing Data Externally
+=======================
 
 .. Note::
 
@@ -271,6 +271,15 @@ RDHPCS users can share data with external collaborators who do not have
 accounts on the RDHPCS system. You can share data files with external
 collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
 process is described in this section.
+
+For data that is short-lived, and not broadly shared with external users use
+RDHPCS end-points. For data that is expected to be available for three 3 months
+or more, use the :ref:`institutional-data-portal` end-point.
+
+.. note::
+
+  Refer to the `GFDL FAIR use and GFDL Data DOI policy
+  <https://www.gfdl.noaa.gov/fair-use-policy/>`_ for external data sharing.
 
 .. Note::
 

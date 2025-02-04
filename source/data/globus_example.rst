@@ -262,8 +262,6 @@ noaa-rrfs-pds): arn:aws:s3:::noaa-rrfs-pds Now you have the info you need.
 Once you are able to see the listing of files you can use the "File Manager" to
 move the files between the desired endpoints.
 
-That should do it!
-
 .. note::
 
   Module globus-cli needs to be loaded before any globus commands are used.
@@ -365,6 +363,8 @@ The mechanism for transferring data between your laptop/workstation
 (Untrusted Endpoint) and a NOAA RDHPCS UDTN is exactly the same. See
 `Globus Connect Personal`_ for information about setting up your
 laptop/workstation as a Globus Personal Endpoint.
+
+.. _institutional-data-portal:
 
 GFDL Institutional Data Portal
 ==============================

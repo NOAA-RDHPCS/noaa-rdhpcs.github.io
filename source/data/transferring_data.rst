@@ -376,6 +376,23 @@ Host names for the CAC Bastion Server in Princeton, NJ:
 Before You Begin
 ^^^^^^^^^^^^^^^^
 
+You can only have a single session in a given environment. You will know that
+you already have an
+existing session when you see messages like
+
+  .. code-block:: shell
+
+    -------------------
+    bind [127.0.0.1]:57037: Address already in use
+    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
+    Could not request local forwarding.
+    -------------------
+
+Before you establish a tunnel, do one of the following:
+
+  * Close any existing sessions
+  * Open a new session using a bastion where you have no existing sessions.
+
 In the steps below, replace First.Last with your own HPC username, and
 XXXXX with the unique Local Port Number assigned to you when you log
 in to your specified HPC system (Hera/Jet). Use the word "localhost"
@@ -390,6 +407,8 @@ As long as this ssh window remains open, you will be able to use this
 forwarded port for data transfers. After the first session has been
 opened with the port forwarding, any further connections (login via
 ssh, copy via scp) will work as expected.
+
+
 
 **1. Find your local port number**
 
@@ -513,6 +532,8 @@ For Mac or Linux, enter:
 In either case, you will be asked for a password. Enter the password
 from your RSA token (not your passphrase). Your response should be
 your PIN+Token code.
+
+
 
 SSH Port Tunnel For PuTTy Windows Systems
 -----------------------------------------
