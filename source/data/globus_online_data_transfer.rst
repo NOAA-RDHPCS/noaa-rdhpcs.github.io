@@ -220,7 +220,7 @@ To transfer data from your laptop/workstation to a NOAA RDHPCS system, you can
 * Use Globus Connect Personal to transfer data between a NOAA RDHPCS
   UDTN and your local laptop/workstation.
 * Use ``scp`` to a NOAA RDHPCS UDTN, using configured ssh port tunnels.
-* use ``scp`` to a NOAA RDHPCS UDTN where permitted (Jet, Hera)
+* Use ``scp`` to a NOAA RDHPCS UDTN where permitted (Jet, Hera)
 
 .. note::
 
@@ -231,7 +231,7 @@ Benefits of using Globus Connect Personal with UDTNs:
 * Data can be transferred directly between your computer and an
   Untrusted Endpoint.
 * Much faster transfer rates compared to ``scp`` and ``sftp``.
-* Data transfers automatically suspends and resumes as your computer
+* Data transfers automatically suspend and resume as your computer
   goes to sleep, wakes up, or reboots.
 * The mechanism for transferring data between your laptop/workstation
   (Untrusted Endpoint) and a NOAA RDHPCS UDTN is exactly the same.
@@ -284,7 +284,7 @@ process is described in this section.
     must login to the system (Niagara, Ursa (WIP), Hera, Jet, ...) at least once,
     to make sure that the account is properly set up the with the necessary
     home and project directories.
-  * It may be necessary to make your ``/*/data_untrusted/$USER``
+  * It may be necessary to create (``mkdir``) your ``/*/data_untrusted/$USER``
     directory, depending on the system.
 
 Refer to the :ref:`Globus Collection Summary <globus_collection_summary>` to
