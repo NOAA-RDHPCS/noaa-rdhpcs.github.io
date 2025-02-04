@@ -376,8 +376,8 @@ Host names for the CAC Bastion Server in Princeton, NJ:
 Before You Begin
 ^^^^^^^^^^^^^^^^
 
-You can only have a single session in a given environment. You will know that
-you already have an
+Only the first session to a bastion can establish an ssh tunnel.
+You will know that you already have an
 existing session when you see messages like
 
   .. code-block:: shell
@@ -388,7 +388,7 @@ existing session when you see messages like
     Could not request local forwarding.
     -------------------
 
-Before you establish a tunnel, do one of the following:
+To establish a new tunnel, do one of the following:
 
   * Close any existing sessions
   * Open a new session using a bastion where you have no existing sessions.
