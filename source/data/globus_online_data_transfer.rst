@@ -217,20 +217,20 @@ Transferring Data to and from Your Computer
 
 To transfer data from your laptop/workstation to a NOAA RDHPCS system, you can
 
-* use scp to a NOAA RDHPCS DTN (using pre-configured ssh port tunnels)
-* use scp to a NOAA RDHPCS UDTN
-* use Globus Connect Personal to transfer data between a NOAA RDHPCS
+* Use Globus Connect Personal to transfer data between a NOAA RDHPCS
   UDTN and your local laptop/workstation.
+* Use ``scp`` to a NOAA RDHPCS UDTN, using configured ssh port tunnels.
+* use ``scp`` to a NOAA RDHPCS UDTN where permitted (Jet, Hera)
 
 .. note::
 
   NOAA RDHPCS considers your laptop/workstation a Globus Untrusted Endpoint.
 
-Some benefits of using Globus Connect Personal with UDTNs:
+Benefits of using Globus Connect Personal with UDTNs:
 
 * Data can be transferred directly between your computer and an
   Untrusted Endpoint.
-* Faster transfer rates as compared to scp and sftp.
+* Much faster transfer rates compared to ``scp`` and ``sftp``.
 * Data transfers automatically suspends and resumes as your computer
   goes to sleep, wakes up, or reboots.
 * The mechanism for transferring data between your laptop/workstation
@@ -279,12 +279,13 @@ process is described in this section.
   * You **must** share the collection with your collaborators.
     **THERE IS CURRENTLY NO PUBLIC SHARING AVAILABLE.**   You can share to an
     email address or a GlobusID.
-  * Sharing happens for directories only.
-  * You can only share directories under the root of the ``/*/data_untrusted/$USER`` directory. All UDTNs have that directory.
+  * You can only share directories under your ``/*/data_untrusted/$USER`` directory.
   * Before any sharing can be done, the user that is sharing the data
     must login to the system (Niagara, Ursa (WIP), Hera, Jet, ...) at least once,
     to make sure that the account is properly set up the with the necessary
     home and project directories.
+  * It may be necessary to make your ``/*/data_untrusted/$USER``
+    directory, depending on the system.
 
 Refer to the :ref:`Globus Collection Summary <globus_collection_summary>` to
 find the names of relevant Globus
