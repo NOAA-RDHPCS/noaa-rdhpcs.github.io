@@ -376,9 +376,9 @@ Host names for the CAC Bastion Server in Princeton, NJ:
 Before You Begin
 ^^^^^^^^^^^^^^^^
 
-Only the first session to a bastion can establish an ssh tunnel.
-You will know that you already have an
-existing session when you see messages like
+You can only establish an ssh tunnel from your initial bastion session. If you
+try to establish a tunnel and see the messages like this:
+
 
   .. code-block:: shell
 
@@ -388,9 +388,12 @@ existing session when you see messages like
     Could not request local forwarding.
     -------------------
 
+You will know that you already have an open session, and cannot
+open a tunnel on this bastion.
+
 To establish a new tunnel, do one of the following:
 
-  * Close any existing sessions
+  * Close any existing sessions on this bastion, **or**,
   * Open a new session using a bastion where you have no existing sessions.
 
 In the steps below, replace First.Last with your own HPC username, and
@@ -414,8 +417,8 @@ ssh, copy via scp) will work as expected.
 
 To find your unique local port number, log onto your specified HPC
 system (Hera/Jet). Make a note of this number - once you've recorded
-it, close all sessions. Note that this number will be different on Jet and
-Hera.
+it, close all sessions. Note that this number, which is a fixed
+value for you, will be different on Jet and Hera.
 
 .. image:: /images/linux_xfer1.png
    :scale: 75%
@@ -432,20 +435,22 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -L1234e:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+
 
 For Mac or Linux, enter:
 
 .. code-block:: shell
 
      ssh -LXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X -LXXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+    ssh -X -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
 Note that objects emphasized in this figure should be unique to your
 configuration:
