@@ -466,9 +466,9 @@ request.
 .. note::
 
   Occasionally, a valid user login attempt will receive an
-  “Invalid name or password” error This can happen when a user token is out of
+  **Invalid name or password** error. This can happen when a user token is out of
   sync with the SSO system. Try logging in to an on-prem HPC system like Niagara
-  or Hera. If the login fails, log into the <account URL to check whether “single
+  or Hera. If the login fails, log into the account URL to check whether “single
   sign on” is working. If your login still fails, open a cloud help desk case.
   Send email to rdhpcs.cloud.help@noaa.gov, with Login Error in the Subject. In
   the case, include the information that you have attempted the “single sign on”
@@ -816,8 +816,125 @@ AWS: TBD
 
 GCP: TBD
 
+AWS GPU types and Availability Zones Guidance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Parallel works
+Use P series for deep learning and AI tasks.
+
+**P5 [Nvidia H100]: available in the following availability zones**
+
+* us-east-1f
+* us-east-2c
+* us-east-2a
+* us-east-2b
+
+**P4 [Nvidia A100]: available in the following availability zones:**
+
+* us-east-1c
+* us-east-1b
+* us-east-1a
+* us-east-2a
+* us-east-2b
+
+**P3 [Nvidia Tesla V100] : available in the following availability zones:**
+
+* us-east-1d
+* us-east-1b
+* us-east-1e
+* us-east-1c
+* us-east-1a
+* us-east-1f
+* us-east-2c
+* us-east-2b
+* us-east-2a
+
+**G3 [Nvidia Tesla M60] (graphics processing) available in the following
+availability zones:**
+
+
+* us-east-1e
+* us-east-1c
+* us-east-1b
+* us-east-1f
+* us-east-1d
+* us-east-1a
+
+**G4ad [AMD Radeon Pro V520] for graphics processing available in the
+following availability zones:**
+
+* us-east-1c
+* us-east-1a
+* us-east-1b
+* us-east-1d
+* us-east-2a
+* us-east-2b
+* us-east-2c
+
+**G5 [Nvidia A10G Tensor Core] for graphics and machine learning, available in
+the following availability zones:**
+
+* us-east-1d
+* us-east-1b
+* us-east-1c
+* us-east-1a
+* us-east-1f
+* us-east-2b
+* us-east-2c
+* us-east-2a.
+
+**G6 [Nvidia L4 Tensor Cores] for graphics and machine learning available in
+the following availability zones:**
+
+* us-east-1a
+* us-east-1c
+* us-east-1b
+* us-east-1d
+* us-east-2c
+* us-east-2a
+* us-east-2b
+
+.. note::
+
+  We currently have a quota for 2,400 vCPUs. On-demand availability depends on
+  availability at a given time in the market, and is outside our control.
+  Users may want to try different availability zones to acquire GPUs.
+
+Why does the remote desktop show multiple xterm terminals, and/or xclocks?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This issue can be caused by an error in the ``$HOME/.vnc/xstartup`` file.
+To correct it, edit the file, keeping the following lines:
+
+.. code-block:: shell
+
+  /bin/sh
+  unset SESSION_MANAGER
+  unset DBUS_SESSION_BUS_ADDRESS
+  /etc/X11/xinit/xinitrc
+
+If user doesn't want xclock or the terminal to start automatically, run the
+following to reset:
+
+
+  ``touch ~/.Xclients``
+
+A PW session that shows "Running" isn't accessible and there's no log error
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This typically occurs when the system runs out of resources, usually due
+to an out-of-memory situation. The display rolls back to requested since the
+instance is no longer reachable, and it's waiting for status updates from the
+instance. Sometimes the out-of-memory killer will kick in and clean up some
+processes to allow the system to continue functioning, but this event isn't
+guaranteed to clean up quickly, or to leave the system in a functional state
+after cleanup when it does run.
+
+To work around this, if your workflow allows it,
+increase the size of the instance, or add a compute
+partition and send the work off to worker nodes.
+
+
+Parallel Works
 --------------
 
 What is the Parallel Works Login URL?
@@ -2217,6 +2334,31 @@ You can read more about `AWS Lustre <https://docs.aws.amazon.com/fsx/latest/Lust
     },
     "ephemeral": false
   }
+
+Copy files from a public AWS bucket without authentication keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use the ``aws`` CLI on a Cloud cluster by
+adding an option to the command that skips authentication. This method should
+work for public buckets. It has also worked to copy a file to a personal cluster.
+
+Edit the command as follows:
+
+.. code-block:: shell
+
+  aws --no-sign-request s3 ...
+  # list files
+  [First.Last@abcd8-173 ~]$ aws --no-sign-request s3 ls s3://noaa-nws-global-pds
+  PRE data/
+  PRE fix/
+
+  2024-11-22 16:36:31      37683 index.html
+
+
+  # copy a file
+  $ aws --no-sign-request s3 cp s3://noaa-nws-global-pds/index.html ./index.html
+  download: s3://noaa-nws-global-pds/index.html to ./index.html
+
 
 Azure Lustre explained
 ----------------------

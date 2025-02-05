@@ -442,9 +442,6 @@ To resolve this problem:
 
 #. Try using scp to transfer a file.
 
-Python
-------
-
 Can you please install the xyz python package(s)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -506,6 +503,13 @@ should submit an "issue" ticket at the above link.
 
 I am using spack-stack and getting some errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+First, documentation for spack-stack can be found here:
+`spack-stack documentation <https://spack-stack.readthedocs.io/en/latest>`_
+
+The second issue most users run into is the "location" of spack-stack
+on various supported platforms.  That can be found here:
+`Preconfigured sites <https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html>`_
 
 If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_
 and are having issues, you will have to submit an `issue on their
@@ -674,6 +678,53 @@ forwarding is working by running the command **xclock**.
 
 Recent User-Facing Changes
 ==========================
+
+Jan 22, 2025: DTNs for Ursa are now available
+---------------------------------------------
+
+DTNs and the new file systems for Ursa are now available for your use.
+
+.. note::
+
+  Even though Ursa is not yet available, the new
+  filesystems ``/scratch3`` and ``/scratch4``, the filesystems for Ursa,
+  and the DTNs for Ursa are available now.
+
+.. note::
+
+  The ``/scratch3`` and ``/scratch4`` filesystems will be upgraded
+  in February. There will be a 3-5 day
+  outage for those file systems at that time.
+
+**Currently these two new filesystems are only mounted
+and accessible from Hera and the new Ursa DTNs.**
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
+
+   * -
+     - Host Name
+     - File System
+     - Globus Endpoints
+   * - Trusted
+     - dtn-ursa.fairmont.rdhpcs.noaa.gov
+     - /scratch[34]
+     - noaardhpcs#ursa
+   * - Untrusted
+     - udtn-ursa.fairmont.rdhpcs.noaa.gov
+     - /scratch[34]/data_untrusted
+     - noaardhpcs#ursa_untrusted
+
+
+
+Using these new DTNs you can do data transfers to the ``/scratch3``
+and ``/scratch4`` filesystems either using Linux tools such
+as scp and rsync, or by using Globus Online.
+
+
+Please see the :ref:`data-transfer-overview` for more details.
 
 Apr 29, 2024: The new LFS5 filesystem on Jet
 --------------------------------------------
