@@ -172,7 +172,7 @@ Python and Conda Environments
 
 The Python ecosystem is vast, with a multitude of packages and dependencies.
 The environments the system admins have made available have only a few standard
-packages available (e.g., `matplotlib <https://matplotlib.org/>_`, `netcdf4
+packages available (e.g., `matplotlib <https://matplotlib.org/>`_, `netcdf4
 <https://unidata.github.io/netcdf4-python/>`_, `numpy <https://numpy.org/>`_,
 `scipy <https://scipy.org/>`_, and `xarray
 <https://docs.xarray.dev/en/stable/>`_.)  If the packages you need are not in the
@@ -180,9 +180,9 @@ available environments, you can create your own custom environment.
 
 .. hint::
 
-    Only install the minimum number of packages you need in your environment.
     The best practice is to have multiple, purposely created environments than
-    one large environment with many packages.
+    one large environment with many packages.  Only install the minimum number
+    of packages you need in your environment.
 
 .. _python-conda-environments:
 
@@ -334,8 +334,8 @@ scenarios.
 .. caution::
 
     Running large-scale Python scripts on head nodes (i.e., login nodes)
-    negatively impacts performance for all users. Therefore, we recommend
-    utilizing the compute nodes.
+    negatively impacts performance for all users. Therefore, we recommend that
+    you use the compute nodes.
 
 .. important::
 
@@ -381,9 +381,9 @@ submit your job will appear as follows:
 
 .. code-block:: bash
 
-   $ sbatch --export=NONE submit.sl
+   $ sbatch --export=NONE submit.sh
 
-By following this approach, you'll need to load your modules and activate your
+If you follow this approach, you'll need to load your modules and activate your
 environment directly within the batch script, ensuring everything runs
 seamlessly. Below is an example of an effective batch script:
 
@@ -442,25 +442,14 @@ It is not recommended to install new packages into the base environment.
 Instead, you should clone the base environment and install packages into the
 clone. To clone an environment, use the ``--clone <env_to_clone>`` flag when
 creating a new conda environment. Below is an example of cloning the base
-environment into a specific directory called ``envs/`` in your "Project Home":
+environment into a specific directory called ``envs/baseClone`` in your
+"Project Home":
 
-.. tab-set::
+.. code-block:: bash
 
-    .. tab-item:: Conda
-        :sync: conda
+    $ conda create -p <project_home>/<project_id>/<user_id>/envs/baseClone --clone base
+    $ conda activate <project_home>/<project_id>/<user_id>/envs/baseClone
 
-        .. code-block:: bash
-
-            $ conda create -p <project_home>/<project_id>/<user_id>/envs/baseClone --clone base
-            $ conda activate <project_home>/<project_id>/<user_id>/envs/baseClone
-
-    .. tab-item:: Python Venv
-        :sync: venv
-
-        .. code-block:: bash
-
-            $ python3 -m venv /path/to/new_env --system-site-packages
-            $ source /path/to/new_env/bin/activate
 
 Environment locations (storage)
 -------------------------------
@@ -468,9 +457,6 @@ Environment locations (storage)
 It is highly recommended to create new environments in the :ref:`Project Home
 <data-filesystem-summary>`. This space avoids purges, facilitates collaboration
 within your project, and ensures better compatibility with the compute nodes.
-
-Adding known conda environment locations
-----------------------------------------
 
 Adding known conda environment locations
 ----------------------------------------
@@ -502,8 +488,8 @@ directory, instead of specifying the full path with the ``-p
 can use ``conda activate my_env`` instead of ``conda activate
 <project_home>/<project_id>/<user_id>/envs/my_env``.
 
-Keep you Python and Conda caches trimmed
-----------------------------------------
+Keep your Python and Conda caches trimmed
+-----------------------------------------
 
 To avoid quota issues, it is highly recommended to occasionally clean your
 Python and Conda caches.
