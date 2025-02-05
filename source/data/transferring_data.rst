@@ -374,7 +374,25 @@ Host names for the CAC Bastion Server in Princeton, NJ:
    bastion-gaea.princeton.rdhpcs.noaa.gov
 
 Before You Begin
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+
+Only the first session to a bastion can establish an ssh tunnel.
+You will know that you already have an
+existing session when you see messages like
+
+  .. code-block:: shell
+
+    -------------------
+    bind [127.0.0.1]:57037: Address already in use
+    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
+    Could not request local forwarding.
+    -------------------
+
+To establish a new tunnel, do one of the following:
+
+
+  * Close any existing sessions
+  * Open a new session using a bastion where you have no existing sessions.
 
 In the steps below, replace First.Last with your own HPC username, and
 XXXXX with the unique Local Port Number assigned to you when you log

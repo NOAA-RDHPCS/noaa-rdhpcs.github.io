@@ -272,6 +272,29 @@ accounts on the RDHPCS system. You can share data files with external
 collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
 process is described in this section.
 
+**For data that is expected to be permanent** (e.g., >3 months), use the GFDL
+institutional data portal end-point (noaagfdl#data portal). This is for
+outbound sharing of data only. The data group will provide a Globus url to
+the data hosted upon completion of the data hosting.
+
+Data hosted on the GFDL Data portal servers is accessible through Globus, and
+available on request through the `data hosting request form
+<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__
+for papers, collaborations, and other projects. The requester will be notified
+of the Globus URL when the request is completed. GFDL Data Transfer features
+can be reviewed in `this table.
+<https://docs.google.com/spreadsheets/d/1fVC60ztNzYxFui1zyF_S_AMfoc3O15oa1-oOKhGrqQI/edit?gid=0#gid=0>`_
+
+For assistance, contact the GFDL team at oar.gfdl.dpteam@noaa.gov.
+
+**For data that is short-lived, and not broadly shared with external users**,
+use RDHPCS end-points.
+
+.. note::
+
+  Refer to the `GFDL FAIR use and GFDL Data DOI policy
+  <https://www.gfdl.noaa.gov/fair-use-policy/>`_ for external data sharing.
+
 .. Note::
 
   * This data sharing feature is only available only on *untrusted*
