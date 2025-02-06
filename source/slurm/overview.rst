@@ -206,11 +206,11 @@ If you need help implementing these methods, open an RDHPCS help ticket. See
 Interactive Jobs
 ----------------
 
-Most users will find batch jobs an easy way to use the system, as they allow
-you to "hand off" a job to the scheduler, allowing them to focus on other tasks
-while their job waits in the queue and eventually runs. Occasionally, it is
-necessary to run interactively, especially when developing, testing, modifying
-or debugging a code.
+Most users will find batch jobs an easy way to use the system, as they can
+"hand off" a job to the scheduler, allowing them to focus on other tasks while
+their job waits in the queue and eventually runs. Occasionally, it is necessary
+to run interactively, especially when developing, testing, modifying or
+debugging a code.
 
 Since all compute resources are managed and scheduled by Slurm, it is not
 possible to simply log into the system and immediately begin running parallel
@@ -231,6 +231,95 @@ error will be displayed to the terminal.
    an interactive job, for example a graphical debugger.  To allow the
    interactive job to allow displaying the graphical interface, you must supply
    the ``--x11`` option to ``salloc``.
+
+Submitting an Interactive Job
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An interactive job is useful for tasks, such as debugging, that require
+interactive access with a program as it runs. With SLURM there are two ways to
+run jobs interactively, ``srun`` or ``salloc``. We recommend that you use
+``salloc``.
+
+For example, to request two nodes for 30 min (with X11 forwarding so that you
+can use X-windows based tools) you can do the following:
+
+.. code-block:: shell
+
+   salloc --x11=first -q debug -t 0:30:00 --nodes=2 -A marine-cpu
+
+When you run the ``salloc`` command, you won't get a prompt back until the
+batch system scheduler can run the job. At that point, the scheduler
+will drop you into a login session on the head node allocated to your
+interactive job. You will have a prompt and may run commands,
+such as your codes or debuggers, as desired. In the example above, an ``srun``
+command is executed. ``salloc`` is similar to sbatch in that it creates an
+allocation for you to run in. However, only interactive jobs can be run inside
+the ``salloc`` allocation.
+
+If you need to display X windows back to your desktop screen from within an
+interactive job, you must use ``ssh -X`` when you log in.
+
+If you are using x2go and need to use X windows-based tools,
+then also do an
+
+.. code-block:: shell
+
+   ssh -X localhost
+
+before you issue the ``salloc`` command.
+
+
+Submitting a job to run a command on a compute node
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Users sometimes need to run simple commands, and there is a tendency to run
+them on the login node in an interactive shell. For compute intensive jobs,
+this puts a heavy load on the login nodes and affects all interactive
+users. The command ``wgrib`` is one such example.
+
+A better approach is to request an interactive access to a compute node,, or
+simply submit a job to a compute node without the need for a script.
+
+Instead of running the command on a login node interactively as shown below:
+
+   ``wgrib2 grib_file -bin out.bin``
+
+one can simply do:
+
+.. code-block:: shell
+
+   sbatch -A <acct> -n 1 -t 30 -q debug --wrap "wgrib2 grib_file -bin out.bin"
+
+.. note::
+
+   If this command needs more memory than the default, you may
+   need to add something like ``--mem=4g`` (or whatever memory is appropriate).
+
+If you need to run a command that interacts with the user or generates
+graphical output, you can use ``srun`` run a command on the compute node. For
+example, to run a python script on a compute node that generate an image you
+can use the following method:
+
+.. code-block:: shell
+
+   srun --pty --x11 -A nesccmgmt -N 1 -t 30 python myplot.py
+
+See the previous section regarding commands for X11
+forwarding.
+
+Submitting a job with arguments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to submit a script that accepts arguments you need to add the
+arguments after the job file name on the sbatch command. It is similar to the
+Unix method of passing arguments to a script as shown in the example below:
+
+.. code-block:: shell
+
+   sbatch batch.job arg1 arg2
+
+The command above passes ``arg1`` as $1 and ``arg2`` as $2, similar to the Unix
+convention of argument passing.
 
 Common ``sbatch`` Options
 -------------------------
