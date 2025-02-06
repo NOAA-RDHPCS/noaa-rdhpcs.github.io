@@ -273,7 +273,7 @@ collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
 process is described in this section.
 
 **For data that is expected to be permanent** (e.g., >3 months), use the GFDL
-institutional data portal end-point (noaagfdl#data portal). This is for
+institutional data portal end-point (noaagfdl#data_portal). This is for
 outbound sharing of data only. The data group will provide a Globus url to
 the data hosted upon completion of the data hosting.
 
