@@ -133,7 +133,7 @@ desktop/laptop. However, note the following important points:
    * - Jet
      - noaardhpcs#jet_untrusted
      - udtn-jet.boulder.rdhpcs.noaa.gov
-     - :file:`/lfs[45]/data_untrusted/$USER`
+     - :file:`/lfs[56]/data_untrusted/$USER`
    * - Gaea
      - noaardhpcs#gaea
      - N/A
@@ -180,7 +180,7 @@ Transfer a file on Hera to a destination on Jet
 .. code-block::
 
   [First.Last@hfe04 ~]$ scp /scratch1/SYSADMIN/nesccmgmt/
-  First.Last/data_file First.Last@dtn-jet.boulder.rdhpcs.noaa.gov:/mnt/lfs5/SYSADMIN/jetmgmt/First.Last/
+  First.Last/data_file First.Last@dtn-jet.boulder.rdhpcs.noaa.gov:/mnt/lfs6/SYSADMIN/jetmgmt/First.Last/
   Warning: Permanently added the RSA host key for IP address '140.208.168.55' to the list of known hosts.
   First.Last@dtn-jet.boulder.rdhpcs.noaa.gov's password:
   data_file                                                                  100%   30     0.3KB/s   00:00

@@ -262,6 +262,10 @@ noaa-rrfs-pds): arn:aws:s3:::noaa-rrfs-pds Now you have the info you need.
 Once you are able to see the listing of files you can use the "File Manager" to
 move the files between the desired endpoints.
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 .. note::
 
   Module globus-cli needs to be loaded before any globus commands are used.
@@ -364,7 +368,12 @@ The mechanism for transferring data between your laptop/workstation
 `Globus Connect Personal`_ for information about setting up your
 laptop/workstation as a Globus Personal Endpoint.
 
+<<<<<<< Updated upstream
 .. _institutional-data-portal:
+=======
+
+.. _institutional_data_portal:
+>>>>>>> Stashed changes
 
 GFDL Institutional Data Portal
 ==============================
