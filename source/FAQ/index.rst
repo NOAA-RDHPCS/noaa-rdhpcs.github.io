@@ -466,7 +466,7 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -L1234e:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
 
 
 For Mac or Linux, enter:

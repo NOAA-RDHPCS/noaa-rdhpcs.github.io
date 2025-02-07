@@ -110,13 +110,14 @@ partner clusters.
   .. tab-item:: Jet
    :sync: jet
 
-   +-----------+----------------------------+-----------------------------+---------+---------------+
-   | Cluster   | Display Name               | File Systems                | Site    | Access        |
-   +===========+============================+=============================+=========+===============+
-   | Jet       | noaardhpcs#jet             | /mnt/lfs[56]                | NESCC   | Trusted hosts |
-   +-----------+----------------------------+-----------------------------+---------+---------------+
-   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs[56]/data_untrusted | NESCC   | Anywhere      |
-   +-----------+----------------------------+-----------------------------+---------+---------------+
+   +-----------+----------------------------+---------------------------+---------+---------------+
+   | Cluster   | Display Name               | File Systems              | Site    | Access        |
+   +===========+============================+===========================+=========+===============+
+   | Jet       | noaardhpcs#jet             | /mnt/lfs4, /mnt/lfs5      | NESCC   | Trusted hosts |
+   +-----------+----------------------------+---------------------------+---------+---------------+
+   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs4/data_untrusted, | NESCC   | Anywhere      |
+   |           |                            | /mnt/lfs5/data_untrusted  |         |               |
+   +-----------+----------------------------+---------------------------+---------+---------------+
 
   .. tab-item:: Niagara
    :sync: niagara
@@ -126,7 +127,7 @@ partner clusters.
    +===========+==============================+==========================+=========+===============+
    | Niagara   | noaardhpcs#niagara           | /collab1/data            | NESCC   | Trusted hosts |
    +-----------+------------------------------+--------------------------+---------+---------------+
-   | Niagara   | noaardhpcs#niagara_untrusted | /collab1/$USER           | NESCC   | Anywhere      |
+   | Niagara   | noaardhpcs#niagara_untrusted | /mnt/lfs1/data_untrusted | NESCC   | Anywhere      |
    +-----------+------------------------------+--------------------------+---------+---------------+
 
 
@@ -273,11 +274,7 @@ process is described in this section.
 
 For data that is short-lived, and not broadly shared with external users use
 RDHPCS end-points. For data that is expected to be available for three 3 months
-<<<<<<< Updated upstream
-or more, use the :ref:`institutional-data-portal` end-point.
-=======
 or more, use the :ref:`institutional_data_portal` end-point.
->>>>>>> Stashed changes
 
 .. note::
 
