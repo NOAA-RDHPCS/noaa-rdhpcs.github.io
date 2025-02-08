@@ -245,14 +245,14 @@ can use X-windows based tools) you can do the following:
 
 .. code-block:: shell
 
-   salloc --x11=first -q debug -t 0:30:00 --nodes=2 -A marine-cpu
+   salloc --x11=first -q debug -t 0:30:00 --nodes=2 -A xxxxx-cpu
 
 When you run the ``salloc`` command, you won't get a prompt back until the
 batch system scheduler can run the job. At that point, the scheduler
 will drop you into a login session on the head node allocated to your
 interactive job. You will have a prompt and may run commands,
-such as your codes or debuggers, as desired. In the example above, an ``srun``
-command is executed. ``salloc`` is similar to sbatch in that it creates an
+such as your code or debuggers, as desired. In the example above, an ``srun``
+command is executed. ``salloc`` is similar to ``sbatch`` in that it creates an
 allocation for you to run in. However, only interactive jobs can be run inside
 the ``salloc`` allocation.
 
@@ -269,20 +269,21 @@ then also do an
 before you issue the ``salloc`` command.
 
 
-Submitting a job to run a command on a compute node
+Submitting a Job to Run a Command on a Compute Node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Users sometimes need to run simple commands, and there is a tendency to run
-them on the login node in an interactive shell. For compute intensive jobs,
-this puts a heavy load on the login nodes and affects all interactive
-users. The command ``wgrib`` is one such example.
+Please note, compute-intensive jobs can put a heavy load on the login nodes,
+and will affect all interactive users as a result." The command ``wgrib`` is
+one such example.
 
-A better approach is to request an interactive access to a compute node,, or
+A better approach is to request an interactive access to a compute node, or
 simply submit a job to a compute node without the need for a script.
 
 Instead of running the command on a login node interactively as shown below:
 
-   ``wgrib2 grib_file -bin out.bin``
+.. code-block:: shell
+
+   wgrib2 grib_file -bin out.bin
 
 one can simply do:
 
@@ -295,10 +296,10 @@ one can simply do:
    If this command needs more memory than the default, you may
    need to add something like ``--mem=4g`` (or whatever memory is appropriate).
 
-If you need to run a command that interacts with the user or generates
-graphical output, you can use ``srun`` run a command on the compute node. For
-example, to run a python script on a compute node that generate an image you
-can use the following method:
+To run a command that interacts with the user or generates
+graphical output, you can use ``srun`` to run a command on the compute node.
+For example, to run a python script on a compute node that generate an image
+you can use the following method:
 
 .. code-block:: shell
 
@@ -307,12 +308,13 @@ can use the following method:
 See the previous section regarding commands for X11
 forwarding.
 
-Submitting a job with arguments
+Submitting a Job with Arguments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to submit a script that accepts arguments you need to add the
-arguments after the job file name on the sbatch command. It is similar to the
-Unix method of passing arguments to a script as shown in the example below:
+arguments after the job file name on the ``sbatch`` command.
+This is similar to the Unix method of passing arguments to a script,
+as shown in the example below:
 
 .. code-block:: shell
 
