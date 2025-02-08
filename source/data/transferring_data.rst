@@ -396,7 +396,7 @@ To establish a new tunnel, do one of the following:
 
 In the steps below, replace First.Last with your own HPC username, and
 XXXXX with the unique Local Port Number assigned to you when you log
-in to your specified HPC system (Hera/Jet). Use the word "localhost"
+in to your specified HPC system (Hera/Jet/etc.). Use the word "localhost"
 where indicated. It is not a variable, don't substitute anything else.
 Before you perform the first step, close all current sessions on the
 HPC where system you are trying to connect. Once the first session has
@@ -412,7 +412,7 @@ ssh, copy via scp) will work as expected.
 **1. Find your local port number**
 
 To find your unique local port number, log onto your specified HPC
-system (Hera/Jet). Make a note of this number - once you've recorded
+system (Hera/Jet/etc.). Make a note of this number - once you've recorded
 it, close all sessions. Note that this number will be different on Jet and
 Hera.
 
