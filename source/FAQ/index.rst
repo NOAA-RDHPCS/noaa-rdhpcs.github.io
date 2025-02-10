@@ -402,6 +402,294 @@ How do I find out what my project quota is?
 
 Refer to the allocation pages.
 
+How do I set up an ssh port tunnel?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can only establish an ssh tunnel from your initial bastion session. If you
+try to establish a tunnel and see the messages like this:
+
+
+  .. code-block:: shell
+
+    -------------------
+    bind [127.0.0.1]:57037: Address already in use
+    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
+    Could not request local forwarding.
+    -------------------
+
+You will know that you already have an open session, and cannot
+open a tunnel on this bastion.
+
+To establish a new tunnel, do one of the following:
+
+  * Close any existing sessions on this bastion, **or**,
+  * Open a new session using a bastion where you have no existing sessions.
+
+In the steps below, replace First.Last with your own HPC username, and
+XXXXX with the unique Local Port Number assigned to you when you log
+in to your specified HPC system (Hera/Jet/etc). Use the word "localhost"
+where indicated. It is not a variable, don't substitute anything else.
+Before you perform the first step, close all current sessions on the
+HPC system where you are trying to connect. Once the first session has
+been opened with port forwarding, any further connections (login via
+ssh, copy via scp) will work as expected. You are running these
+commands on your local machine, not within the HPC system terminal.
+
+As long as this ssh window remains open, you will be able to use this
+forwarded port for data transfers.
+
+
+**1. Find your local port number**
+
+To find your unique local port number, log onto your specified HPC
+system (Hera/Jet). Make a note of this number - once you've recorded
+it, close all sessions. Note that this number, which is a fixed
+value for you, will be different on each HPC system.
+
+.. image:: /images/linux_xfer1.png
+   :scale: 75%
+
+.. note::
+    Open two terminal windows for this process
+
+**Local Client Window #1**
+
+Enter the appropriate command for your environment. Remember to replace XXXXX
+with the local port number identified in Step 1 or as needed.
+
+For Windows Power Shell, enter:
+
+.. code-block:: shell
+
+     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:12345 First.Last@bastion_hostname
+
+
+For Mac or Linux, enter:
+
+.. code-block:: shell
+
+     ssh -L12345:localhost:12345 First.Last@bastion_hostname
+
+If you will be running X11 applications with x2go or normal terminals,
+remember to add the -X parameter as follows:
+
+.. code-block:: shell
+
+    ssh -X -L12345:localhost:12345 First.Last@bastion_hostname
+
+
+To verify that the tunnel is working, open another local window in your local
+machine, and issue the command:
+
+.. code-block:: shell
+
+   ssh -p <port> First.Last@localhost
+
+
+Note that <port> is your local port number used above, First.Last is
+your user ID on the RDHPCS systems and localhost is typed as-is.
+
+.. note::
+
+  For a complete list of available bastions by site, check the
+  :ref:`bastion_hostnames` table.
+
+
+
+You should be prompted for your password; enter your PIN + RSA token
+and you should be able to login. Once you are able to log in, you can
+log out of that session as that was only for testing the tunnel.
+
+**2. Use SCP to Complete the Transfer**
+
+**Local Client Window #2**
+
+Once the session is open, you can use this forwarded port
+for data transfers, as long as this ssh window is kept open.
+
+Remember that this is the second terminal session opened on your local
+machine. Once a tunnel has been set up as in Step 1, you
+can use a client such as WinSCP to do the tranfers using that tunnel.
+Please keep in mind that tunnel will exist only as long as the session opened
+in Step 1 is kept alive.
+
+
+.. code-block:: shell
+
+  Hostname: localhost
+  Port: your-assigned-port-used-in-Step1-above
+  File protocol: SFTP
+
+
+To transfer a file **to** HPC Systems
+
+
+For Windows Power Shell, enter:
+
+.. code-block:: shell
+
+  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
+
+For Mac or Linux, enter:
+
+.. code-block:: shell
+
+  rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
+
+.. note::
+
+   Your username is case sensitive when used in the scp command. Username should be in the form of First.Last.
+
+To transfer a file **from** HPC Systems:
+
+For Windows Power Shell, enter:
+
+.. code-block:: shell
+
+    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
+
+For Mac or Linux, enter:
+
+.. code-block:: shell
+
+    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
+
+
+In either case, you will be asked for a password. Enter the password
+from your RSA token (not your passphrase). Your response should be
+your PIN+Token code.
+
+
+SSH Port Tunnel For PuTTy Windows Systems
+-----------------------------------------
+
+PuTTY is an SSH client, used to configure and initiate connection.
+Navigate to a separate tab to install `PuTTY
+<http://www.putty.org/>`_. If you cannot install software on your
+machine, contact your local systems administrator.
+
+**Configuration**
+
+Enter host information to configure an SSH Terminal Session:
+
+.. image:: /images/putty1.png
+   :scale: 75%
+
+1. Enter Username
+In the left pane under Connection, select "Data" and enter your NOAA
+user name as it appears in your NOAA email address. (Ex: First.Last
+if your NOAA email is First.Last@noaa.gov). User name is case
+sensitive - First.Last. If you do not create a username, you will have
+to enter your user name each time your open a session.
+
+.. image:: /images/putty2.png
+   :scale: 75%
+
+Complete the configuration:
+
+* Select "Session" from the top of the left pane.
+* Select "Save" (between Load and Delete).
+
+**Open a First System Session**
+
+Open the session to make sure it's working, and to record your Local
+Port number to complete the Port Tunneling setup.
+
+* Select the configured session from the "Saved Sessions" list. Select
+  Load, then Open.
+* Enter your unique RSA Passcode.
+
+The RSA passcode is your RSA token PIN followed by 8 digits displayed
+on your RSA token. The digits must be on display when you press enter,
+or access will be denied. When you open a new SSH session, wait for
+the RSA token code to refresh before you enter it.
+
+* Find and record your Local Host number.
+*  Click **Exit**, or close the Putty window to end the session.
+
+**Port Tunnel Setup**
+
+To enable data transfers, you will need to set up a Port Tunnel.
+
+* Open Putty.
+* Select the session from the Saved Sessions list, then Load.
+* In the left pane under Connection>SSH select Tunnels.
+* Check Local ports accept connections from other hosts.
+* In the Source Port field, enter your Local Port number
+* In the Destination Port field, enter "localhost:<local port
+  number>", where your local port number matches what was entered in
+  the Source port.
+* Select Local and Auto Radio Buttons.
+* Click the Add Button.
+
+.. image:: /images/putty3.png
+
+To save the configuration change:
+
+* In the left pane, select Session.
+* Select Save.
+
+Select **Open** to Login and verify that the updated session works correctly.
+
+Create a new Port Tunnel for each SSH system you intend to use. Each
+one will have a unique Local Port number.
+
+To add extra saved sessions (ex: for another Bastion) for the same
+system (you already have the Local Port number):
+
+* Load your current saved session
+* Enter the new host name for the other Bastion
+* Give the new session a new name (ex: Jet - Princeton)
+* Select Save. The new session will appear in the list of saved sessions.
+* Select Open to Login and verify the new session works correctly.
+
+
+SSH Port Tunnel For Tectia Windows Systems
+------------------------------------------
+
+See the :ref:`tectia` pages for complete information.
+
+
+How to transfer small files to/from an RDHPCS system?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Port Tunnelling approach is useful for transferring small amount
+data to/from RDHPCS systems from your local machine.
+
+Transferring data using scp/WinSCP is a 2 step process:
+
+1. Establish a Tunnel by following the steps documented here:
+2. Transfer file using WinSCP
+
+See the Data Transfer pages for complete information.
+
+I can no longer transfer files via the port tunnel, please help!
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From a given machine, your first login has to establish the port
+tunnel. If you do not, the port used will be blocked and you cannot
+establish the port tunnel with subsequent ssh commands. If you cannot
+use scp to transfer files, look for an error message similar to this
+the following when you are trying to establish your tunnel:
+
+.. code-block:: shell
+
+  ssh: connect to host localhost port 2083: Connection refused
+
+
+The number above will match the port you are trying to use.
+
+To resolve this problem:
+
+#. Exit all ssh sessions from your host
+#. Restart ssh to Jet. This session must have the port tunnel options included
+
+.. code-block:: shell
+
+  -L $PORT:localhost:$PORT
+
+#. Try using scp to transfer a file.
+
 How to transfer small files to/from an RDHPCS system?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
