@@ -102,9 +102,7 @@ partner clusters:
      - Anywhere
    * - Jet
      - noaardhpcs#jet
-     - /mnt/lfs5
-
-       /mnt/lfs5
+     - /mnt/lfs[56]
      - GSL
      - Trusted hosts
    * - Jet

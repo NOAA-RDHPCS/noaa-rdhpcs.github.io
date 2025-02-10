@@ -75,6 +75,8 @@ have added built-in support for SSH.  If it is not installed on your
 version of Windows, please refer to Microsoft’s documentation on
 OpenSSH.
 
+.. _bastion_hostnames:
+
 Bastion Hostnames
 =================
 .. |CBHN|	replace:: **CAC Bastion hostnames**
