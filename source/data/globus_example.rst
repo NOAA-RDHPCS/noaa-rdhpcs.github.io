@@ -364,6 +364,8 @@ The mechanism for transferring data between your laptop/workstation
 `Globus Connect Personal`_ for information about setting up your
 laptop/workstation as a Globus Personal Endpoint.
 
+.. _institutional_data_portal:
+
 GFDL Institutional Data Portal
 ==============================
 
