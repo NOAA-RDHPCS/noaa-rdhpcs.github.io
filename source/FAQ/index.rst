@@ -461,21 +461,21 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:12345 First.Last@bastion_hostname
+     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:XXXXX First.Last@bastion_hostname
 
 
 For Mac or Linux, enter:
 
 .. code-block:: shell
 
-     ssh -L12345:localhost:12345 First.Last@bastion_hostname
+     ssh -L XXXX:localhost:XXXXX First.Last@bastion_hostname
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X -L12345:localhost:12345 First.Last@bastion_hostname
+    ssh -X --L XXXX:localhost:XXXXX First.Last@bastion_hostname
 
 
 To verify that the tunnel is working, open another local window in your local
@@ -483,10 +483,9 @@ machine, and issue the command:
 
 .. code-block:: shell
 
-   ssh -p <port> First.Last@localhost
+   ssh -p <XXXX> First.Last@localhost
 
-
-Note that <port> is your local port number used above, First.Last is
+Note that <XXXX> is your local port number used above, First.Last is
 your user ID on the RDHPCS systems and localhost is typed as-is.
 
 .. note::
@@ -686,7 +685,7 @@ To resolve this problem:
 
 .. code-block:: shell
 
-  -L $PORT:localhost:$PORT
+ ssh -L $XXXX:localhost:$XXXX
 
 #. Try using scp to transfer a file.
 
