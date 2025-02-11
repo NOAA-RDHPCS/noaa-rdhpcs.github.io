@@ -12,7 +12,7 @@ About NESCC
 The NOAA Environmental Security Computing Center (NESCC), located in
 Fairmont, West Virginia, is the location of NOAA's newest High
 Performance Computing Data Center. This site provides computing
-resources to support NOAA's research in Weather and Climate modeling
+resources to support NOAA's research in long-range weather modeling
 as well as its other environmental research areas.
 
 There are currently two major systems at NESCC:
