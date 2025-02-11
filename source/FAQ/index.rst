@@ -475,7 +475,7 @@ remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X --L XXXX:localhost:XXXXX First.Last@bastion_hostname
+    ssh -X -L XXXX:localhost:XXXXX First.Last@bastion_hostname
 
 
 To verify that the tunnel is working, open another local window in your local
@@ -483,9 +483,9 @@ machine, and issue the command:
 
 .. code-block:: shell
 
-   ssh -p <XXXX> First.Last@localhost
+   ssh -p XXXX First.Last@localhost
 
-Note that <XXXX> is your local port number used above, First.Last is
+Note that XXXX is your local port number used above, First.Last is
 your user ID on the RDHPCS systems and localhost is typed as-is.
 
 .. note::
@@ -685,7 +685,7 @@ To resolve this problem:
 
 .. code-block:: shell
 
- ssh -L $XXXX:localhost:$XXXX
+ ssh -L XXXX:localhost:XXXX
 
 #. Try using scp to transfer a file.
 
