@@ -97,13 +97,13 @@ points at Atlanta and Chicago.
     * IBM Elastic Storage Server 3500 running GPFS 5.1
 
 Gaea is the largest of the four NOAA RDHPCS, and is used to study the
-earth's notoriously complex climate from a variety of angles by
+earth's notoriously complex weather systems from a variety of angles by
 enabling scientists:
 
-* to understand the relationship between climate change and extreme weather,
-  and the atmosphere's chemical makeup and climate
-* to investigate the climate role played by the oceans that cover nearly
-  three-quarters of the globe.
+* to understand the relationship between earth modeling and extreme weather,
+  and the atmosphere's chemical makeup and weather trends.
+* to investigate the role played by the oceans that cover nearly
+  three-quarters of the globe in long term weather patterns.
 
 .. _gaea-node-types:
 
