@@ -1,12 +1,16 @@
 # Words used for Python and Conda.  These are not Python keywords.
 
+CONDA_PKGS_DIRS
 condarc
 Jupyter
 JupyterLab
+matplotlib
 miniconda
 miniforge
 numpy
+pkgs_dirs
 pycairo
 pyferret
 scipy
 venv
+xarray

@@ -83,6 +83,18 @@ partner clusters.
    |           |                   | $HOME              |         |               |
    +-----------+-------------------+--------------------+---------+---------------+
 
+  .. tab-item:: Ursa
+    :sync: ursa
+
+    +-----------+----------------------------+---------------------------+---------+---------------+
+    | Cluster   | Display Name               | File Systems              | Site    | Access        |
+    +===========+============================+===========================+=========+===============+
+    | Ursa      | noaardhpcs#ursa            | /scratch3, /scratch4      | NESCC   | Trusted hosts |
+    +-----------+----------------------------+---------------------------+---------+---------------+
+    | Ursa      | noaardhpcs#ursa_untrusted  | /scratch3/data_untrusted, | NESCC   | Anywhere      |
+    |           |                            | /scratch4/data_untrusted  |         |               |
+    +-----------+----------------------------+---------------------------+---------+---------------+
+
   .. tab-item:: Hera
     :sync: hera
 
@@ -98,14 +110,13 @@ partner clusters.
   .. tab-item:: Jet
    :sync: jet
 
-   +-----------+----------------------------+---------------------------+---------+---------------+
-   | Cluster   | Display Name               | File Systems              | Site    | Access        |
-   +===========+============================+===========================+=========+===============+
-   | Jet       | noaardhpcs#jet             | /mnt/lfs4, /mnt/lfs5      | NESCC   | Trusted hosts |
-   +-----------+----------------------------+---------------------------+---------+---------------+
-   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs4/data_untrusted, | NESCC   | Anywhere      |
-   |           |                            | /mnt/lfs5/data_untrusted  |         |               |
-   +-----------+----------------------------+---------------------------+---------+---------------+
+   +-----------+----------------------------+----------------------------+---------+---------------+
+   | Cluster   | Display Name               | File Systems               | Site    | Access        |
+   +===========+============================+============================+=========+===============+
+   | Jet       | noaardhpcs#jet             | /mnt/lfs[56]               | NESCC   | Trusted hosts |
+   +-----------+----------------------------+----------------------------+---------+---------------+
+   | Jet       | noaardhpcs#jet_untrusted   | /mnt/lfs[56]data_untrusted | NESCC   | Anywhere      |
+   +-----------+----------------------------+----------------------------+---------+---------------+
 
   .. tab-item:: Niagara
    :sync: niagara
@@ -193,7 +204,7 @@ public site available via AWS resources.
 Globus Command Line Interface (CLI)
 ===================================
 
-The CLI is available on Jet, Hera, and Niagara.
+The CLI is available on Jet, Ursa (WIP), Hera, and Niagara.
 
 If you would like to use Globus-cli, either on your personal machine
 or on a system where globus-cli is not installed, you can install it
@@ -205,21 +216,21 @@ Transferring Data to and from Your Computer
 
 To transfer data from your laptop/workstation to a NOAA RDHPCS system, you can
 
-* use scp to a NOAA RDHPCS DTN (using pre-configured ssh port tunnels)
-* use scp to a NOAA RDHPCS UDTN
-* use Globus Connect Personal to transfer data between a NOAA RDHPCS
+* Use Globus Connect Personal to transfer data between a NOAA RDHPCS
   UDTN and your local laptop/workstation.
+* Use ``scp`` to a NOAA RDHPCS UDTN, using configured ssh port tunnels.
+* Use ``scp`` to a NOAA RDHPCS UDTN where permitted (Jet, Hera)
 
 .. note::
 
   NOAA RDHPCS considers your laptop/workstation a Globus Untrusted Endpoint.
 
-Some benefits of using Globus Connect Personal with UDTNs:
+Benefits of using Globus Connect Personal with UDTNs:
 
 * Data can be transferred directly between your computer and an
   Untrusted Endpoint.
-* Faster transfer rates as compared to scp and sftp.
-* Data transfers automatically suspends and resumes as your computer
+* Much faster transfer rates compared to ``scp`` and ``sftp``.
+* Data transfers automatically suspend and resume as your computer
   goes to sleep, wakes up, or reboots.
 * The mechanism for transferring data between your laptop/workstation
   (Untrusted Endpoint) and a NOAA RDHPCS UDTN is exactly the same.
@@ -260,16 +271,47 @@ accounts on the RDHPCS system. You can share data files with external
 collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
 process is described in this section.
 
+For data that is short-lived, and not broadly shared with external users use
+RDHPCS end-points. For data that is expected to be available for three 3 months
+or more, use the :ref:`institutional_data_portal` end-point.
+=======
+**For data that is expected to be permanent** (e.g., >3 months), use the GFDL
+institutional data portal end-point (noaagfdl#data_portal). This is for
+outbound sharing of data only. The data group will provide a Globus url to
+the data hosted upon completion of the data hosting.
+
+Data hosted on the GFDL Data portal servers is accessible through Globus, and
+available on request through the `data hosting request form
+<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__
+for papers, collaborations, and other projects. The requester will be notified
+of the Globus URL when the request is completed. GFDL Data Transfer features
+can be reviewed in `this table.
+<https://docs.google.com/spreadsheets/d/1fVC60ztNzYxFui1zyF_S_AMfoc3O15oa1-oOKhGrqQI/edit?gid=0#gid=0>`_
+
+For assistance, contact the GFDL team at oar.gfdl.dpteam@noaa.gov.
+
+**For data that is short-lived, and not broadly shared with external users**,
+use RDHPCS end-points.
+
+.. note::
+
+  Refer to the `GFDL FAIR use and GFDL Data DOI policy
+  <https://www.gfdl.noaa.gov/fair-use-policy/>`_ for external data sharing.
+
 .. Note::
 
-  * This data sharing feature is only available only on *untrusted* Globus endpoints (UDTNs).
-  * Sharing happens at directory level and not at the level of individual files.
-  * You can only share directories under the root of the ``/*/data_untrusted/$USER`` directory. All UDTNs have that directory.
-  * Do not share based only on an email address. The person with whom you share should have a GlobusID.
+  * This data sharing feature is only available only on *untrusted*
+    Globus endpoints (UDTNs).
+  * You **must** share the collection with your collaborators.
+    **THERE IS CURRENTLY NO PUBLIC SHARING AVAILABLE.**   You can share to an
+    email address or a GlobusID.
+  * You can only share directories under your ``/*/data_untrusted/$USER`` directory.
   * Before any sharing can be done, the user that is sharing the data
-    must login to the system (Niagara, Hera, Jet, ...) at least once,
+    must login to the system (Niagara, Ursa (WIP), Hera, Jet, ...) at least once,
     to make sure that the account is properly set up the with the necessary
     home and project directories.
+  * It may be necessary to create (``mkdir``) your ``/*/data_untrusted/$USER``
+    directory, depending on the system.
 
 Refer to the :ref:`Globus Collection Summary <globus_collection_summary>` to
 find the names of relevant Globus

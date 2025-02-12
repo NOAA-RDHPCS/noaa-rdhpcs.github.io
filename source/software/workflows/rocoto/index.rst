@@ -19,10 +19,10 @@ job scheduling itself, it merely submits jobs to the HPC system as task
 dependencies allow it. Local policies and users' allocations of HPC resources
 are enforced by the local resource management system (e.g. PBS, Torque, MOAB,
 SGE, LSF, etc.) so Rocoto has no control over when jobs start to run. Rocoto is
-designed to run weather and climate workflows; it is not a general purpose
-workflow management engine. Rocoto runs one instance of the workflow for a set
-of user-defined cycles. A cycle usually corresponds to a model analysis or
-initialization time.
+designed to run long range weather pattern workflows; it is not a general
+purpose workflow management engine. Rocoto runs one instance of the workflow
+for a set of user-defined cycles. A cycle usually corresponds to a model
+analysis or initialization time.
 
 Rocoto on RDHPCS Systems
 ========================

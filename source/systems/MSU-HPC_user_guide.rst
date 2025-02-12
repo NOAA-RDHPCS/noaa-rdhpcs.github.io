@@ -16,7 +16,7 @@ NOAA has provided Mississippi State University (MSU) with Grants to
 install and manage High Performance Computing (HPC) Systems to further
 NOAA’s scientific research and collaboration. Through this close
 partnership NOAA hopes to advance its research goals in the areas of
-Severe Weather and Climate research. The exchange of technical
+Severe Weather Pattern research. The exchange of technical
 information between NOAA and MSU should be of great value and be
 beneficial to both HPC programs.
 

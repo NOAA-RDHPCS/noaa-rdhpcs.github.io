@@ -12,7 +12,7 @@ Niagara User Guide
 System Overview
 ===============
 
-As NOAA's R&D severe weather and climate projects expand  to
+As NOAA's R&D severe long range weather projects expand  to
 geographically dispersed private and public HPC clouds, it is
 imperative that the the NOAA RDHPCS program provide a service for data
 dissemination and analysis outside of the traditional HPC environment.

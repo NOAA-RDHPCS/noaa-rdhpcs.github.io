@@ -76,6 +76,13 @@ partner clusters:
      - File System(s)
      - RDHPCS Site
      - Host Access
+   * - Ursa
+     - noaardhpcs#ursa
+     - /scratch3
+
+       /scratch4
+     - NESCC
+     - Trusted hosts
    * - Hera
      - noaardhpcs#hera
      - /scratch1
@@ -95,9 +102,7 @@ partner clusters:
      - Anywhere
    * - Jet
      - noaardhpcs#jet
-     - /mnt/lfs5
-
-       /mnt/lfs5
+     - /mnt/lfs[56]
      - GSL
      - Trusted hosts
    * - Jet
@@ -144,7 +149,11 @@ partner clusters:
        /work2
      - MSU HPC\ :superscript:`2`
      - Anywhere
-
+   * - GFDL Data Portal
+     - noaagfdl#data portal
+     - /data
+     - GFDL
+     - Anywhere
 
 RDHPCS Object Stores in the Cloud
 ---------------------------------
@@ -322,7 +331,7 @@ icon.
 Globus Command Line Interface (CLI)
 ===================================
 
-The CLI is available on Jet, Hera, and Niagara. If you would like to
+The CLI is available on Jet, Ursa (WIP), Hera, and Niagara. If you would like to
 use Globus-cli, either on your personal machine or on a system where
 globus-cli is not installed, you can install it easily. Refer to the
 instructions to install and use the `Globus CLI
@@ -355,35 +364,19 @@ The mechanism for transferring data between your laptop/workstation
 `Globus Connect Personal`_ for information about setting up your
 laptop/workstation as a Globus Personal Endpoint.
 
-GFDL Data Services
-==================
+.. _institutional_data_portal:
 
-* GFDL Data Services strive to make GFDL research data publicly
-  available to the broader community, using FAIR (Findable,
-  Accessible, Interoperable, Reusable) principles to help further
-  science and the economy forward.
-* GFDL Data Services provides a unified repository of datasets that
-  support climate research of interest to lab researchers. The
-  repository is known as the Unified Data Archive.
-* GFDL Data Services helps build a community that leverages data
-  management best practices to build analytics, workflows, etc.
+GFDL Institutional Data Portal
+==============================
 
-GFDL Data Digital Object Identifier (DOI) Policy
-================================================
+Data hosted on the GFDL Data portal servers is accessible through Globus, and
+available on request through the `data hosting request form
+<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__ for papers,
+collaborations, and other projects. The requester will be notified of the
+Globus URL when the request is completed. GFDL Data Transfer features can be
+reviewed in `this table.
+<https://docs.google.com/spreadsheets/d/1fVC60ztNzYxFui1zyF_S_AMfoc3O15oa1-oOKhGrqQI/edit?gid=0#gid=0>`_
 
-Sharing NOAA data as openly and widely as possible, maximizing its
-utilization by NOAA partners, stakeholders, and the public, is
-foundational to NOAA’s mission, and thus central to NOAA’s Data
-Strategy. The complete `GFDL Policy pertaining to externally facing
-data
-<https://intranet.gfdl.noaa.gov/admin-services/forms-and-policies/gfdl-data-digital-object-identifier-doi-policy>`__\
-[#]_ is available.
+.. note::
 
-Data hosted on the GFDL Data portal servers is accessible through
-Globus, and available on request through the `data hosting request
-form
-<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__
-for papers, collaborations, other projects. The requester will be
-notified of the Globus URL when the request is completed.
-
-.. [#] A GFDL Active Directory (AD) account is required.
+  Information shared through the GFDL portal is shared permanently.
