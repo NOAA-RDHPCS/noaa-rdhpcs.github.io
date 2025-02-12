@@ -1193,28 +1193,28 @@ Partitions
 |         |            |     |       |          |          | to run a job in  |
 |         |            |     |       |          |          | this partition.  |
 +---------+------------+-----+-------+----------+----------+------------------+
-| ES      | eslogin_c5 | 1   | *max* | 12:00:00 | 16:00:00 | These jobs will  |
+| ES      | eslogin_c5 | 1   | 1     | 12:00:00 | 16:00:00 | These jobs will  |
 |         |            |     |       |          |          | run on the C5    |
 |         |            |     |       |          |          | login nodes.     |
 +         +------------+-----+-------+----------+----------+------------------+
-|         | eslogin_c6 | 1   | *max* | 12:00:00 | 16:00:00 | These jobs will  |
+|         | eslogin_c6 | 1   | 1     | 12:00:00 | 16:00:00 | These jobs will  |
 |         |            |     |       |          |          | run on the C6    |
 |         |            |     |       |          |          | login nodes.     |
 +         +------------+-----+-------+----------+----------+------------------+
-|         | dtn_f5_f6  | 513 | *max* | 12:00:00 | 16:00:00 | These jobs will  |
+|         | dtn_f5_f6  | 1   | 1     | 12:00:00 | 16:00:00 | These jobs will  |
 |         |            |     |       |          |          | run on the DTN   |
 |         |            |     |       |          |          | nodes.  The DTN  |
 |         |            |     |       |          |          | nodes have both  |
 |         |            |     |       |          |          | F5 and F6        |
 |         |            |     |       |          |          | mounted.         |
 +         +------------+-----+-------+----------+----------+------------------+
-|         | cron_c5    | 1   | *max* | 12:00:00 | 16:00:00 | Required         |
+|         | cron_c5    | 1   | 1     | 12:00:00 | 16:00:00 | Required         |
 |         |            |     |       |          |          | partition for    |
 |         |            |     |       |          |          | jobs run under   |
 |         |            |     |       |          |          | scron on the C5  |
 |         |            |     |       |          |          | login nodes.     |
 +         +------------+-----+-------+----------+----------+------------------+
-|         | cron_c6    | 1   | *max* | 12:00:00 | 16:00:00 | Required         |
+|         | cron_c6    | 1   | 1     | 12:00:00 | 16:00:00 | Required         |
 |         |            |     |       |          |          | partition for    |
 |         |            |     |       |          |          | jobs run under   |
 |         |            |     |       |          |          | scron on the C6  |
