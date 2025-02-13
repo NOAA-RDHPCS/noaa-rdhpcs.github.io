@@ -271,10 +271,12 @@ accounts on the RDHPCS system. You can share data files with external
 collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
 process is described in this section.
 
-For data that is short-lived, and not broadly shared with external users use
-RDHPCS end-points. For data that is expected to be available for three 3 months
-or more, use the :ref:`institutional_data_portal` end-point.
-=======
+**For data that is short-lived**, and not broadly shared with external users use
+RDHPCS end-points. 
+
+**For data that is expected to be available for three 3 months
+or more**, use the :ref:`institutional_data_portal` end-point.
+
 **For data that is expected to be permanent** (e.g., >3 months), use the GFDL
 institutional data portal end-point (noaagfdl#data_portal). This is for
 outbound sharing of data only. The data group will provide a Globus url to
@@ -289,9 +291,6 @@ can be reviewed in `this table.
 <https://docs.google.com/spreadsheets/d/1fVC60ztNzYxFui1zyF_S_AMfoc3O15oa1-oOKhGrqQI/edit?gid=0#gid=0>`_
 
 For assistance, contact the GFDL team at oar.gfdl.dpteam@noaa.gov.
-
-**For data that is short-lived, and not broadly shared with external users**,
-use RDHPCS end-points.
 
 .. note::
 
