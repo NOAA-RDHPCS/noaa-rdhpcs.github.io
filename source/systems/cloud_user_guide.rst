@@ -233,7 +233,7 @@ Cloud Project Management: Create a Cloud Project
   Cloud projects are specific to a Cloud platform. The platform is indicated by the
   prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
 
-Cloud projects are defined thorugh the AIM system. Before you can create a
+Cloud projects are defined through the AIM system. Before you can create a
 project in AIM, it must have assigned allocation. Allocations are approved by
 the NOAA RDHPCS allocation committee.
 
@@ -299,6 +299,42 @@ Example:
 
   Warning: Permanently added ‘54.174.136.76’ (ECDSA) to the list of known hosts.
 
+Running a Jupyterlab Workflow on an On-Prem Controller Node
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Parallel Works ACTIVATE platform includes a Jupyterlab workflow that can
+run on on-premise controller nodes. This workflow is available in the ACTIVATE
+Marketplace. (See :ref:`workflow-instructions` for an overview.)
+
+Jupyterlab is a great tool. To use it, you will need access to your project
+files, and to your virtual environment. Follow these steps to get started:
+
+1. Start a session on the on-prem cluster you want to use.
+2. Install the Jupyterlab workflow into your workspace. (You can find the
+   Jupyterlab workflow in the Marketplace.) Once that is installed, you will
+   see your Jupyterlab workflow icon when you return to the Parallel Works
+   Home page. Click this icon.
+3. In this dialog select your on-prem cluster session. Click **Execute**.
+4. You should now see the Jupyterlab interface. Click on the **Terminal**.
+
+You should see a terminal interface on the on-prem cluster session. In this
+session, you can enter a command that will make any virtual environment you
+have on this cluster available within Jupyterlab. This command is:
+
+  ``ipython kernel install --user --name=YOUR_ENV_NAME``
+
+where YOUR_ENV_NAME = My_venv.
+
+When  you returning to the Launcher tab in Jupyterlab, you should now see
+options in both the **Notebook** section and the **Console** section that
+contain the name of the virtual environment you just added (My_venv, in this
+example).
+
+1. Click the **Notebook** icon that contains your environment name.
+2. Select **File** from the top command bar, then select
+   **Open from Path...**
+3. Enter the path to the project you want to work with.
+
 ssh to Nodes Within a Cluster
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -334,7 +370,7 @@ On-premise HPC system exceeding Quota Warning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Occasionally, a user user trying to run a workflow received a warning about
-exceeding quota in the homefile system. For example, if you try to run VSCode
+exceeding quota in the home file system. For example, if you try to run VSCode
 workflow on Hera, it will try to install a bunch of software in the `$HOME/pw`
 directory where quota is limited.
 
@@ -446,7 +482,7 @@ To resync your token:
    your RSA Token. After the host authenticates once, it will ask you wait for
    the token to change.
 2. Enter your PIN + RSA token again after the token has changed. After a
-   successful login your token will be resynched and you should be able
+   successful login your token will be re-synched and you should be able
    to proceed.
 
 .. note::
@@ -691,12 +727,14 @@ In the below example, the root disk size is set to 256 GiB
   "cluster_config": {
     "root_size": "256",
 
+.. _workflow-instructions:
+
 Where do I get detailed Workflow instructions?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the Parallel
-Works main page, click the workflow marketplace button
+Works main page, click the workflow Marketplace button
 located on the top right menu bar, looks like an Earth icon.
 
 Learn more on the `workflow
@@ -1258,7 +1296,7 @@ How do I add a workflow to my account?
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the PW main page,
-click the workflow marketplace button on the top menu bar.
+click the workflow Marketplace button on the top menu bar.
 This button should be on the right side of the screen, and
 looks like an Earth icon.
 
@@ -1390,7 +1428,7 @@ explained below.
     the `Google CSP <https://cloud.google.com/vpc/network-pricing>`__
     and `Amazon AWS
     <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`__
-    documentation for more inforamtion.
+    documentation for more information.
 
 :Other Node: Controller node cost.
 
@@ -1702,7 +1740,7 @@ Default Partition details.
   Nodes=userid-azv2-00115-1-[0001-0096] MaxTime=INFINITE
   State=UP Default=YES OverSubscribe=NO
 
-  PartitionName=batch Nodes=mattlong-azv2-00115-2-[0001-0013]
+  PartitionName=batch Nodes=firstlast-azv2-00115-2-[0001-0013]
   MaxTime=INFINITE State=UP Default=NO OverSubscribe=NO
 
 How do I manually shutdown the compute nodes?
@@ -1832,7 +1870,7 @@ failure.
     sudo scontrol reconfigure
   fi
 
-  sudo sacctmgr add cluster cluseter -i
+  sudo sacctmgr add cluster cluster -i
   sudo systemctl restart slurmdbd
   sudo scontrol reconfig
 
@@ -1843,7 +1881,7 @@ How can I configure a CentOS Cluster to use Rocky 8 (latest)
 
 If you have already made extensive modifications to your cluster’s definition,
 you may prefer to revert the required settings by hand without loading a config
-from the marketplace. There are two primary settings that need to be updated,
+from the Marketplace. There are two primary settings that need to be updated,
 the OS image Rocky 8 (latest), and the ``/apps`` disk snapshot. Keep in mind
 that the OS image will need to be set on the controller and every partition you
 have configured on the cluster.
@@ -1937,7 +1975,7 @@ You get a result with a link similar to
 ``https://azcopyvnext.azureedge.net/releases/release-10.24.0-20240326/azcopy_linux_amd64_10.24.0.tar.gz``.
 
 You can use that URL in the commands below to download and untar the
-AzCopy utiltiy:
+AzCopy utility:
 
 .. code-block:: shell
 
@@ -2295,7 +2333,7 @@ What is a default instance/vm type?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By "default instance/vm type" we refer to the instance/vm
-types in a precreated cluster configuration. This
+types in a pre-created cluster configuration. This
 configuration is included when an account is first setup,
 and also when creating a new configuration by selecting a
 configuration from the "Restore Configuration" link at the
@@ -2518,7 +2556,7 @@ Example:
 .. code-block:: shell
 
   ALLNODES
-  /contrib/Unni.Kirandumkara/pw_support/config-cluster.sh
+  /contrib/First.Last/pw_support/config-cluster.sh
 
 Configuration page has a 16k metadata size limitation.
 Following these settings can reduce your possibility of a
@@ -3044,7 +3082,7 @@ below:
 
  .. code-block::
 
-  $ sudo scontrol update nodename=philippegion-azurestream5-00002-1-[0001-0021] state=idle
+  $ sudo scontrol update nodename-firstlast-azurestream5-00002-1-[0001-0021] state=idle
 
 1. Miscellaneous
 ^^^^^^^^^^^^^^^^
@@ -3083,7 +3121,7 @@ print a lot of info about it, including number of available cores:
      AvailableFeatures=shape=c2-standard-60,ad=None,arch=x86_64
      ActiveFeatures=shape=c2-standard-60,ad=None,arch=x86_64
      Gres=(null)
-     NodeAddr=natalieperlin-gclusternoaav2usc1-00049-1-0001 NodeHostName=natalieperlin-gclusternoaav2usc1-00049-1-0001 Port=0 Version=20.02.7
+     NodeAddr=firstlast-gclusternoaav2usc1-00049-1-0001 NodeHostName=firstlast-gclusternoaav2usc1-00049-1-0001 Port=0 Version=20.02.7
      OS=Linux 3.10.0-1160.88.1.el7.x86_64 #1 SMP Tue Mar 7 15:41:52 UTC 2023
      RealMemory=1 AllocMem=0 FreeMem=237905 Sockets=1 Boards=1
      State=IDLE+CLOUD ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A
@@ -3101,7 +3139,7 @@ config file:
 .. code-block:: shell
 
   $ grep -i nodename /mnt/shared/etc/slurm/slurm.conf \| head -n 1
-  NodeName=natalieperlin-gclusternoaav2usc1-00049-1-0001 State=CLOUD SocketsPerBoard=1 CoresPerSocket=30 ThreadsPerCore=1 Gres="" Features="shape=c2-standard-60,ad=None,arch=x86_64"
+  NodeName=firstlast-gclusternoaav2usc1-00049-1-0001 State=CLOUD SocketsPerBoard=1 CoresPerSocket=30 ThreadsPerCore=1 Gres="" Features="shape=c2-standard-60,ad=None,arch=x86_64"
 
 General rule of thumb will pretty much be that any Intel
 based instance has HT disabled, and core counts will be
@@ -3511,7 +3549,7 @@ usage.
 
   fs = fsspec.filesystem('s3')
 
-  urls = ['s3://' + f for f in fs.glob("s3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/\*.nc")]
+  urls = ['s3://' + f for f in fs.glob("s3://noaa-sysadmin-ocio-ca-cloudmgmt/firstlast/\*.nc")]
 
   print(urls)
 
@@ -3519,9 +3557,9 @@ This generates some output like this:
 
 .. code-block:: python
 
-  ['s3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test1.nc',
-  's3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test2.nc',
-  's3://noaa-sysadmin-ocio-ca-cloudmgmt/mlong/test3.nc']
+  ['s3://noaa-sysadmin-ocio-ca-cloudmgmt/firstlast/test1.nc',
+  's3://noaa-sysadmin-ocio-ca-cloudmgmt/firstlast/test2.nc',
+  's3://noaa-sysadmin-ocio-ca-cloudmgmt/firstlast/test3.nc']
 
 S3 credentials should be set automatically in your
 environment on the cluster, but these credentials are
@@ -3704,7 +3742,7 @@ getting started tips:
 
 * You can start a single screen session simply by running 'screen'
 * To detach from a session, use ``ctrl + a``, and then ``d``. You should see a
-  message like ``[detached from 80633.pts-0.mgmt-mlong-gcp-00009]``
+  message like ``[detached from 80633.pts-0.mgmt-firstlast-gcp-00009]``
   when you detach.
 * You can list your screen sessions by running 'screen -ls' Ex:
 
@@ -3712,8 +3750,8 @@ getting started tips:
 
     $ screen -ls
     There is a screen on:
-            80633.pts-0.mgmt-mlong-gcp-00009        (Detached)
-    1 Socket in /run/screen/S-mlong.
+            80633.pts-0.mgmt-firstlast-gcp-00009        (Detached)
+    1 Socket in /run/screen/S-firstlast.
 
 * To reattach, use ``screen -r``.  It is possible to have multiple screen
   sessions at the same time. If you have multiple, you will need to provide
@@ -3729,7 +3767,7 @@ getting started tips:
     There are screens on:
             81452.screen2   (Detached)
             81383.screen1   (Detached)
-    2 Sockets in /run/screen/S-mlong.
+    2 Sockets in /run/screen/S-firstlast.
     $ screen -r screen1 # reattach to 'screen1' session
 
 * To terminate a session, simply log out of it while you are attached. You
