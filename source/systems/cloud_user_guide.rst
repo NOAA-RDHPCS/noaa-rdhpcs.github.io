@@ -325,7 +325,7 @@ have on this cluster available within Jupyterlab. This command is:
 
 where YOUR_ENV_NAME = My_venv.
 
-When  you returning to the Launcher tab in Jupyterlab, you should now see
+When you return to the Launcher tab in Jupyterlab, you should now see
 options in both the **Notebook** section and the **Console** section that
 contain the name of the virtual environment you just added (My_venv, in this
 example).
