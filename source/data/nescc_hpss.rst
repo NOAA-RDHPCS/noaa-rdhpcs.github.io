@@ -852,14 +852,27 @@ batch job:
 
 .. code::
 
-   #!/bin/bash -l
+   #!/bin/bash
    #SBATCH --ntasks=1
    #SBATCH --time=0:30:00
-   #SBATCH --account=<project>
-   #SBATCH --partition=service
+   #SBATCH --account=<ENTER A VALID PROJECT HERE>
+   # Use the proper partition name.
+   #    Jet, Hera, Niagara use the 'service' partition
+   #    Gaea before 2025-03-07 is 'dtn_f5_f6'; after 2025-03-07, use 'dtn_f6' or 'dtn_f5' as appropriate
+   #SBATCH --partition=<USE THE CORRECT PARTITION, SEE ABOVE>
+   #SBATCH --qos windfall
    #SBATCH --job-name=hpss-test
 
-   module load hpss
+   # Initialize the module environment, load the appropriate module for a given HPCS
+
+   source $MODULESHOME/init/bash
+   domainname=$(perl -T -e "use Net::Domain(hostdomain); print hostdomain")
+   if [[ $domainname =~ boulder|fairmont ]]; then
+        module load hpss
+   elif [[ $domainname =~ ncrc ]]; then
+        module use /usw/hpss/modulefiles
+        module load hsi
+   fi
 
    set -x
 
