@@ -27,6 +27,7 @@ csh
 cshrc
 CSXF
 CXXFLAGS
+Darshan
 DBUS
 devcimultiintel
 devel
@@ -37,6 +38,7 @@ dmwho
 drwxr
 DTN
 eastus
+ecflow
 eslogin
 Fairmont
 firstlast
@@ -139,6 +141,7 @@ TFLOPS
 TIMELIMIT
 tsflags
 UDTN
+Uecflow
 untar
 untarring
 urllib
