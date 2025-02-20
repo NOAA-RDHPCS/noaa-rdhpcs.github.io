@@ -7,18 +7,18 @@ Ursa User Guide
 .. image:: /images/Hera.jpg
 
 The Ursa and Rhea systems are based at the NOAA Environmental Security
-Computing Center (NESCC). Located in Fairmont, West Virginia, NESCC is the
-houses NOAA's newest High Performance Computing Data Center. This site
-provides computing resources to support NOAA's research in weather and
-atmospheric trend modeling, as well as its other environmental research areas.
+Computing Center (NESCC). Located in Fairmont, West Virginia, NESCC houses
+NOAA's newest High Performance Computing Data Center. This site provides
+computing resources to support NOAA's research in weather and atmospheric trend
+modeling, as well as its other environmental research areas.
 
 There are four major systems at NESCC:
 
 - Ursa, based on AMD 9654 with DDN Lustre
 - Rhea, based on AMD Turin with DDN Lustre & VAST File Systems.
-- Hera* A 760 Tflop Cray Compute Cluster high performance computing
+- Hera, a 760 Tflop Cray Compute Cluster high performance computing
   system.
-- HPSS* A 50 Petabyte IBM/Oracle hierarchical storage management
+- HPSS, a 50 Petabyte IBM/Oracle hierarchical storage management
   system.
 
 
