@@ -382,10 +382,8 @@ it to your project space and create a symlink as shown below:
 
 .. code-block:: shell
 
-  mv $HOME/pw
-  /a/directory/in/your/project/space/pw ln -s
-  /a/directory/in/your/project/space/pw $HOME/pw
-
+  mv $HOME/pw /a/directory/in/your/project/space/pw
+  ln -s /a/directory/in/your/project/space/pw $HOME/pw
 
 3. If $HOME/pw doesn’t exist, create a directory in your project space and
    create the pw symlink in your home directory as follows:
