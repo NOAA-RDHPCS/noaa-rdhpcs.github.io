@@ -108,7 +108,7 @@ Install the Tectia Client
 
          * Once you have authenticated and the folder is shown in your
            browser, select
-           ``tectia-client-6.4.13.36-windows-upgrd-eval.zip``
+           ``tectia-client-<version>*-windows*.zip``
          * Select one of the .msi packages for 32-bit (x86) or 64-bit (x86-64)
            machines.
 
@@ -152,16 +152,13 @@ Install the Tectia Client
 
       8. Reboot your computer.
 
-      9. Request a Tectia license. The Tectia software you just
-         installed only has a 45-day evaluation license and works for
-         all RDHPCS logons. To request an extended license, please
-         email **ONE** help request to the help desk of the system you
-         use the most. Please use the subject "Tectia license
-         request".
+      9. The license file is included in the zip file that
+         you would have downloaded in step 1.
+         It is usually named ''stc??.dat''.
 
-      10. Install the Tectia license. Complete this step before your
-          45-day **stc64.data** Tectia license file from the help
-          system, move the file to the following location:
+      10. Install the Tectia license. 
+          Please copy the license file mentioned above to
+          the proper location as mentioned below.
 
           * 64-bit Windows versions:
 
@@ -205,7 +202,7 @@ Install the Tectia Client
 
          .. code:: shell
 
-            $ tar xf tectia-client-6.4.13.36-linux-x86_64-upgrd-eval.tar
+            $ tar xf tectia-client-*-linux-x86_64*.tar
 
          .. note::
 
@@ -257,24 +254,17 @@ Install the Tectia Client
                setenv MANPATH "$MANPATH:/opt/tectia/man"
             endif
 
-      6. Request a Tectia license.
-
-         The Tectia software you just installed has a 45 day
-         evaluation license, and works for all RDHPCS logons. To
-         request an extended license, email ONE help request to the
-         help desk of the system you use the most. Please use the
-         subject **Tectia license request**.
+      6. The license file is included in the tar file that
+         you would have downloaded in step 1.
+         It is usually named ''stc??.dat''.
 
       7. Install the Tectia license.
 
-         Complete this step before your 45 day evaluation license
-         expires. Once you have received your Tectia "stc64.dat"
-         license file via the help system, create the proper directory
-         for it and move the file to the directory.
+         Copy the license file mentioned in the step
+         above to the proper place as mentioned below.
 
          .. code:: shell
 
-            $ cd <download directory>
             $ mkdir /etc/ssh2/licenses/
             $ mv stc64.dat /etc/ssh2/licenses/
 
