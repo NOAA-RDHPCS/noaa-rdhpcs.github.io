@@ -118,6 +118,9 @@ Install the Tectia Client
          here to learn more, customize, etc. Please review this
          documentation before requesting help beyond the scope of this
          basic setup procedure.
+         Please note that the zip file also includes the license
+         file named ``stc??.dat`` that will need to copied to
+         the appropriate place as mentioned in a later step.
 
       3. Locate the Windows Installer file:
 
@@ -152,13 +155,10 @@ Install the Tectia Client
 
       8. Reboot your computer.
 
-      9. The license file is included in the zip file that
-         you would have downloaded in step 1.
-         It is usually named ''stc??.dat''.
-
-      10. Install the Tectia license. 
-          Please copy the license file mentioned above to
-          the proper location as mentioned below.
+      9. Find and install the Tectia license that is
+         available in the tar file as mentioned in step 2 above.
+         Copy the license file ``stc??.dat' to the appropriate
+         location as mentioned below:
 
           * 64-bit Windows versions:
 
@@ -211,6 +211,10 @@ Install the Tectia Client
             here to learn more, customize, etc. Please review this
             documentation before requesting help beyond the scope of
             this basic setup procedure.
+            Please note that tar file also include the license
+            file named ``stc??.dat`` that should be copied
+            to the appropriate place as mentioned in a
+            later step.
 
       3. Change into the client directory.
 
@@ -254,19 +258,15 @@ Install the Tectia Client
                setenv MANPATH "$MANPATH:/opt/tectia/man"
             endif
 
-      6. The license file is included in the tar file that
-         you would have downloaded in step 1.
-         It is usually named ''stc??.dat''.
-
-      7. Install the Tectia license.
-
-         Copy the license file mentioned in the step
-         above to the proper place as mentioned below.
+      6. Find and install the Tectia license that is
+         available in tar file as mentioned in step 2 above.
+         Copy the license file ``stc??.dat' to the appropriate
+         location as mentioned below:
 
          .. code:: shell
 
             $ mkdir /etc/ssh2/licenses/
-            $ mv stc64.dat /etc/ssh2/licenses/
+            $ cp stc64.dat /etc/ssh2/licenses/
 
    .. tab-item:: MacOS
       :sync: macos
