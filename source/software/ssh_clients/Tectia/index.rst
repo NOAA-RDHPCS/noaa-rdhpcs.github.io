@@ -434,7 +434,7 @@ Configure the Tectia Client
          .. figure:: /images/rheltectia6.png
 
          * Set a profile name, for example “jet”.
-         * Set the full hostname, for exmaple
+         * Set the full hostname, for example
            *bastion-jet.boulder.rdhpcs.noaa.gov*.
          * Apply the changes and then click OK.
 
@@ -442,7 +442,7 @@ Configure the Tectia Client
 
          Once Tectia has been configured and the binary directory has
          been added to your path. You can ssh into to Jet using your
-         CAC. The Tetica ssh command is ``sshg3``.
+         CAC. The Tectia ssh command is ``sshg3``.
 
          1. In a terminal window type ``sshg3 jet`` where *jet* is the name of
             the connection profile created under step 5 of the
@@ -503,7 +503,7 @@ Configure the Tectia Client
          .. figure:: /images/rheltectia6.png
 
          * Set a profile name, for example “jet”.
-         * Set the full hostname, for exmaple
+         * Set the full hostname, for example
            “bastion-jet.boulder.rdhpcs.noaa.gov”.
          * Apply the changes and then click OK.
 
@@ -625,7 +625,7 @@ should use ssh):
 
 * Host: localhost (This is literal string, that is, enter the word
   "localhost")
-* Port: Your-assigned-local-port-on-thiea-jet (This is the number
+* Port: Your-assigned-local-port-on-thea-jet (This is the number
   listed as Local Port when you login)
 * User: Your user name
 
