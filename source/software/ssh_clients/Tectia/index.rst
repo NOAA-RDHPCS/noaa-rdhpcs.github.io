@@ -168,13 +168,13 @@ Install the Tectia Client
 
             .. code:: shell
 
-               C:\Program Files (x86)\SSH Communications Security\SSH Tectia\SSH Tectia AUX\licenses&quot;
+               C:\Program Files (x86)\SSH Communications Security\SSH Tectia\SSH Tectia AUX\licenses
 
           * 32-bit Windows versions
 
             .. code:: shell
 
-               C:\Program Files\SSH Communications Security\SSH Tectia\SSH Tectia AUX\licenses&quot;
+               C:\Program Files\SSH Communications Security\SSH Tectia\SSH Tectia AUX\licenses
 
 
    .. tab-item:: RHEL
