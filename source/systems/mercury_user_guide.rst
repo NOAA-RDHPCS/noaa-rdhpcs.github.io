@@ -27,7 +27,7 @@ The Mercury system includes:
 - Back-end storage
 - Interactive Nodes
 - Software
-- Account Management.
+- Account Management
 
 Users can connect to the Data Transfer Nodes (DTN) from any remote
 system to push or pull data. Beyond the Back-end storage and DTNs, the
@@ -35,8 +35,9 @@ cluster allows for data analysis, visualization, verification,
 validation and data analytics. These are provided through a combination of
 hardware and software, which mirrors the user environment and a subset
 of the tools available on the legacy RDHPCS systems and
-legacy Analysis systems (PPAN). It can also include software which is
-unique to this system and not traditionally found on traditional HPC
+legacy Analysis systems :ref:`(PPAN). <ppan-user-guide>`
+but can also include software which is
+unique to this system and not found on traditional HPC
 systems.
 
 Mercury System Features:
@@ -53,7 +54,7 @@ Data Transfer
 ================
 
 In order to use Mercury for file transfers, you must create user
-account directories. These directories are automatically created with
+account directories. These directories are automatically created upon
 your first login to a Mercury front end. The Mercury front ends may be
 accessed using either CAC or RSA credentials. This table contains
 :ref:`bastion hostnames <bastion_hostnames>` for CAC and RSA access.
@@ -61,17 +62,17 @@ accessed using either CAC or RSA credentials. This table contains
 The following directories will automatically be created with your
 first login:
 
-- /home/First.Last (your home directory)
-- /collab2/data/First.Last (for your trusted data)
-- /collab2/data_untrusted/First.Last(for your untrusted data)
+- ``/home/First.Last`` (your home directory)
+- ``/collab2/data/First.Last`` (for your trusted data)
+- ``/collab2/data_untrusted/First.Last`` (for your untrusted data)
 
 .. note::
 
    When using the DTNs for data transfers:
 
-   - /home tree is not accessible from the DTNs
-   - /collab2/data/ tree is only accessible from the "Trusted DTN".
-   - /collab2/data_untrusted tree is only accessible from the
+   - ``/home tree`` is not accessible from the DTNs
+   - ``/collab2/data/`` tree is only accessible from the "Trusted DTN".
+   - ``/collab2/data_untrusted`` tree is only accessible from the
      "Untrusted DTN"
 
 
@@ -83,15 +84,15 @@ system and a data transfer/collaboration system, available to all
 RDHPCS users. Mercury file system management has special requirements. The
 following are data management policies:
 
-- All files under the "/collab2/data_untrusted/$USER" directory tree
+- All files under the ``/collab2/data_untrusted/$USER`` directory tree
   which have not been accessed in the last 5 days will be
   automatically purged.
-- All files under the "/collab2/data/$USER" directory tree which have
+- All files under the ``/collab2/data/$USER`` directory tree which have
   not been accessed in the last 60 days will be automatically purged.
-- All files under the "/collab2/data/$PROJECT" directory are treated
+- All files under the ``/collab2/data/$PROJECT`` directory are treated
   the same as HPFS (scratch) data and are not deleted.
 - A default 10GB Lustre quota on each user's home directory
-  "/collab2/home/$USER" .
+  ``/collab2/home/$USER``.
 
 Access time is defined as the last time the file was opened for
 reading or writing.
