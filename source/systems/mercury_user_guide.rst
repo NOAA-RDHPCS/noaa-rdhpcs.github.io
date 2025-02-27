@@ -156,7 +156,7 @@ systems is:
 -  4 OSSs (active/active, embedded in DDN SFA14kx storage
    controllers)
 -  24 OSTs (all are HDDs)
--  1.9 PiB of usable disk space (*df -hP /collab1*)
+-  1.9 PB of usable disk space (*df -hP /collab1*)
 
 File Operations
 ---------------
