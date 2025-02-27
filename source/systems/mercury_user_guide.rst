@@ -101,7 +101,7 @@ reading or writing.
 
    If the file system's usage approaches the total
    capacity, we will be forced implement a more aggressive purge
-   policy (i.e., 30 day or 15 day purge) . So please actively manage
+   policy (i.e., 30 day or 15 day purge). So please actively manage
    your data.
 
 Lustre File System Usage
@@ -138,7 +138,7 @@ correct set of OSTs and corresponding OSSs.
 An MDT stores the metadata, filenames, directories, permissions and
 file layout, handling network requests to them.
 
-An OSS manages a small set of OSTs by controlling I/O access and
+An OSS manages a small set of OSTs by controlling I/O access.
 
 An OST is a block storage device, often several disks in a RAID
 configuration.
@@ -146,7 +146,7 @@ configuration.
 Configuration
 -------------
 
-All nodes access the lustre file-systems mounted at /collab2.
+All nodes access the Lustre file-systems mounted at /collab2.
 
 The number of servers and targets on *each* of the two Mercury file
 systems is:
@@ -165,7 +165,7 @@ File Operations
    the associated storage locations from the MDS and the associated
    MDT associated with the file, bypassing the MDS.
 -  I/O operations then occur directly with the OSSs and OSTs
--  For read operations, ile data flows from the OSTs to the compute
+-  For read operations, file data flows from the OSTs to the compute
    node.
 
 With Lustre, there are three basic ways which an application accesses
@@ -173,17 +173,18 @@ data:
 
 -  Single stream
 -  Single stream through a master
--  Parallel.
+-  Parallel
 
-**File Striping**
+File Striping
+^^^^^^^^^^^^^
 
 A file is split into segments and consecutive segments are stored on
 different physical storage devices (OSTs).
 
--  Aligned stripes is where each segment fits fully onto a single OST.
+-  With Aligned stripes, each segment fits fully onto a single OST.
    Processes accessing the file do so at corresponding stripe
    boundaries.
--  Unaligned stripes means some file segments are split across OSTs.
+-  With Unaligned stripes, some file segments are split across OSTs.
 
 **Userspace Commands**
 
