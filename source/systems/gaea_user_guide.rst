@@ -217,7 +217,8 @@ of DTNs have $HOME mounted.
 You can include :command:`--constraint=f5` or :command:`--constraint=f6` when
 connecting or submitting jobs to a DTN, to ensure that you are routed to a
 node which has that file system mounted. Otherwise, you should be
-automatically routed based on
+automatically routed based on whether your process originated on a C5 or C6
+node.
 
 +----------------------+----------------------------+--------------------+
 | Host Names           | Node Configuration         | File Systems       |
