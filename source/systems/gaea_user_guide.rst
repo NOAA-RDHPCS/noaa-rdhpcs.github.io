@@ -210,7 +210,7 @@ should be done on a data transfer node (DTN).  The :abbr:`DTN (Data Transfer
 Nodes)`\ s are accessible on the :dfn:`es` cluster, under the :dfn:`dtn_f5_f6`
 partition.
 
-There are two sets of DTNs for gaea -one set with the :dfn:`f5` file system
+There are two sets of DTNs for gaea - one set with the :dfn:`f5` file system
 mounted, and another set with the :dfn:`f6` file system mounted.  Both sets
 of DTNs have $HOME mounted.
 
