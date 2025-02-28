@@ -67,6 +67,7 @@ GVNIC
 highgpu
 homerpt
 homeuse
+hostnames
 HPCS
 HPFS
 HPSS
@@ -159,6 +160,7 @@ untar
 untarring
 upgrd
 urllib
+Userspace
 valgrind
 vftmp
 vimdiff
