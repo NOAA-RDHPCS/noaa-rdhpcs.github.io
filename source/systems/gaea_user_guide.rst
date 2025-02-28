@@ -1508,7 +1508,7 @@ guidance in setting up the remote client see the :doc:`Debugging Software
 GDB
 ====
 
-`GDB <https://www.gnu.org/software/gdb/>`__, the GNU Project Debugger (GDB), is
+`GDB <https://www.sourceware.org/gdb/>`__, the GNU Project Debugger (GDB), is
 a command-line debugger useful for traditional debugging and investigating code
 crashes. GDB lets you debug programs written in Ada, C, C++, Objective-C,
 Pascal (and many other languages).
