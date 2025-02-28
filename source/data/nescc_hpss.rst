@@ -858,7 +858,7 @@ batch job:
    #SBATCH --account=<ENTER A VALID PROJECT HERE>
    # Use the proper partition name.
    #    Jet, Hera, Niagara use the 'service' partition
-   #    Gaea before 2025-03-07 is 'dtn_f5_f6'; after 2025-03-07, use 'dtn_f6' or 'dtn_f5' as appropriate
+   #    Gaea is 'dtn_f5_f6'
    #SBATCH --partition=<USE THE CORRECT PARTITION, SEE ABOVE>
    #SBATCH --qos windfall
    #SBATCH --job-name=hpss-test
