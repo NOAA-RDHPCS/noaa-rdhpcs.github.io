@@ -12,6 +12,7 @@ Systems
    hera_user_guide
    ursa_user_guide
    niagara_user_guide
+   mercury_user_guide
    MSU-HPC_user_guide
    pan/index
 
