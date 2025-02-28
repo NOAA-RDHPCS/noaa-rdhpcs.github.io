@@ -950,13 +950,17 @@ available options. Check the `Slurm Man Pages
     |                        | --mail-user=user@somewhere.com`` | notifications.                            |
     +------------------------+----------------------------------+-------------------------------------------+
     | ``--reservation``      | ``#SBATCH                        | Instructs Slurm to run a job on nodes     |
-    |                        | --reservation=MyReservation.1``  | that are part of the specified re         |
+    |                        | --reservation=MyReservation.1``  | that are part of the specified            |
     |                        |                                  | reservation                               |
     +------------------------+----------------------------------+-------------------------------------------+
     | ``-S``                 | ``#SBATCH -S 8``                 | Instructs Slurm to reserve a specific     |
     |                        |                                  | number of cores per node (default is 8).  |
     |                        |                                  | Reserved cores cannot be used by the      |
     |                        |                                  | application.                              |
+    +------------------------+----------------------------------+-------------------------------------------+
+    | ``--constraint``       | ``#SBATCH --constraint=f6``      | Instructs Slurm to run a job on nodes     |
+    |                        |                                  | that are associated with the specified    |
+    |                        |                                  | constraint/feature                        |
     +------------------------+----------------------------------+-------------------------------------------+
     | ``--signal``           | ``#SBATCH --signal=USR1@300``    || Send the given signal to a job the       |
     |                        |                                  | specified time (in seconds) seconds       |
