@@ -128,11 +128,17 @@ terms of hardware, but differ in their intended use.
 |         | threaded jobs execute on the compute nodes, via the            |
 |         | :command:`srun` command.                                       |
 +---------+----------------------------------------------------------------+
-| DTN     | The DTNs have F5 and F6 file systems mounted.                  |
-|         | This is where extensive I/O operations,                        |
+| DTN     | There are two sets of DTNs. One has the F5 file system         |
+|         | mounted, and the other set has F6 mounted. Both have $HOME     |
+|         | mounted. These are where extensive I/O operations,             |
 |         | large local, and all off-gaea transfers should be done.  These |
 |         | nodes are accessible via the :dfn:`es` cluster and the         |
-|         | :dfn:`dtn_f5_f6` partition.                                    |
+|         | :dfn:`dtn_f5_f6` partition. You can include                    |
+|         | :command:`--constraint=f5` or :command:`--constraint=f6` when  |
+|         | connecting or submitting jobs, to ensure that you are routed   |
+|         | to a DTN which has that file system mounted. (Otherwise, this  |
+|         | should be selected automatically, based whether your process   |
+|         | originated on a C5 or C6 node).                                |
 +---------+----------------------------------------------------------------+
 
 .. _gaea-compute-nodes:
@@ -148,7 +154,7 @@ Gaea consists of two clusters, C5 and C6.
     :sync: C5
 
     The C5 compute nodes consist of [2x] 64 core AMD EPYC Zen 2 CPUs, with two
-    hardware threads per physical core and 256 GiB of physical memory (2 GiB
+    hardware threads per physical core and 256 GB of physical memory (2 GB
     per core). C5 supports up to the AVX-2 :abbr:`ISA (Instruction Set
     Architecture)`.
 
@@ -156,13 +162,13 @@ Gaea consists of two clusters, C5 and C6.
 
       Each C5 compute node has a total of 128 cores, in eight NUMA domains
       per node.  Each group of four cores share an 16 MB L3 cache.  Each CPU
-      has eight lanes to the shared 256 GiB of node memory.
+      has eight lanes to the shared 256 GB of node memory.
 
   .. tab-item:: C6
     :sync: C6
 
     The C6 compute nodes consist of [2x] 96 core AMD EPYC Zen 4 CPUs, with two
-    hardware threads per physical core and 384 GiB of physical memory (2 GiB
+    hardware threads per physical core and 384 GB of physical memory (2 GB
     per core). C6 support up to the AVX-512 :abbr:`ISA (Instruction Set
     Architecture)`.
 
@@ -170,7 +176,7 @@ Gaea consists of two clusters, C5 and C6.
 
       Each C6 compute node has a total of 192 cores, in eight NUMA domains per
       node.  Each group of six cores share a 48 MB L3 cache.  Each CPU has 12
-      lanes to the shared 384 GiB of physical memory (2 GiB per core).
+      lanes to the shared 384 GB of physical memory (2 GB per core).
 
 
 .. _gaea-login-nodes:
@@ -187,11 +193,11 @@ compute cluster has a dedicated set of login nodes.
 +======================+============================+====================+
 | :regexp:`gaea5[1-8]` | 2x AMD EPYC 7662 64-core   | C5                 |
 |                      | (128 cores per node) with  |                    |
-|                      | 512 GiB of memory per node |                    |
+|                      | 512 GB of memory per node  |                    |
 +----------------------+----------------------------+--------------------+
 | :regexp:`gaea6[1-8]` | 2x AMD EPYC 9654 96-core   | C6                 |
 |                      | (192 cores per node) with  |                    |
-|                      | 512 GiB of memory per node |                    |
+|                      | 512 GB of memory per node  |                    |
 +----------------------+----------------------------+--------------------+
 
 .. _gaea-dtn-nodes:
@@ -204,15 +210,25 @@ should be done on a data transfer node (DTN).  The :abbr:`DTN (Data Transfer
 Nodes)`\ s are accessible on the :dfn:`es` cluster, under the :dfn:`dtn_f5_f6`
 partition.
 
-The DTNs are the only systems that have both the :dfn:`f5` and :dfn:`f6`
-mounted.
+There are two sets of DTNs for gaea - one set with the :dfn:`f5` file system
+mounted, and another set with the :dfn:`f6` file system mounted.  Both sets
+of DTNs have $HOME mounted.
+
+You can include :command:`--constraint=f5` or :command:`--constraint=f6` when
+connecting or submitting jobs to a DTN, to ensure that you are routed to a
+node which has that file system mounted. Otherwise, you should be
+automatically routed based on whether your process originated on a C5 or C6
+node.
 
 +----------------------+----------------------------+--------------------+
 | Host Names           | Node Configuration         | File Systems       |
 |                      |                            | Mounted            |
 +======================+============================+====================+
-| :regexp:`dtn[50-79]` | AMD EPYC 7302 16-core with || /gpfs/f5          |
-|                      | 256 GiB of memory per node || /gpfs/f6          |
+| :regexp:`dtn[50-79]` | AMD EPYC 7302 16-core with | /gpfs/f5, $HOME    |
+|                      | 256 GB of memory per node  |                    |
++----------------------+----------------------------+--------------------+
+| :regexp:`dtn[01-09]` | AMD EPYC 7713 64-core with | /gpfs/f6, $HOME    |
+|                      | 512 GB of memory per node  |                    |
 +----------------------+----------------------------+--------------------+
 
 System interconnect
@@ -236,8 +252,8 @@ File systems
 
 Gaea compute clusters C5 and C6 have their own file system.  C5 has
 access to F5 mounted at :file:`/gpfs/f5`.  C6 has access to :file:`/gpfs/f6`.
-The :abbr:`DTN (Data Transfer Nodes)`\ s can access both :file:`/gpfs/f5` and
-:file:`/gpfs/f6`.
+There are separate sets of :abbr:`DTN (Data Transfer Nodes)`\ s which can
+access each file system.
 
 Operating system
 ================
@@ -934,13 +950,17 @@ available options. Check the `Slurm Man Pages
     |                        | --mail-user=user@somewhere.com`` | notifications.                            |
     +------------------------+----------------------------------+-------------------------------------------+
     | ``--reservation``      | ``#SBATCH                        | Instructs Slurm to run a job on nodes     |
-    |                        | --reservation=MyReservation.1``  | that are part of the specified re         |
+    |                        | --reservation=MyReservation.1``  | that are part of the specified            |
     |                        |                                  | reservation                               |
     +------------------------+----------------------------------+-------------------------------------------+
     | ``-S``                 | ``#SBATCH -S 8``                 | Instructs Slurm to reserve a specific     |
     |                        |                                  | number of cores per node (default is 8).  |
     |                        |                                  | Reserved cores cannot be used by the      |
     |                        |                                  | application.                              |
+    +------------------------+----------------------------------+-------------------------------------------+
+    | ``--constraint``       | ``#SBATCH --constraint=f6``      | Instructs Slurm to run a job on nodes     |
+    |                        |                                  | that are associated with the specified    |
+    |                        |                                  | constraint/feature                        |
     +------------------------+----------------------------------+-------------------------------------------+
     | ``--signal``           | ``#SBATCH --signal=USR1@300``    || Send the given signal to a job the       |
     |                        |                                  | specified time (in seconds) seconds       |
@@ -1203,10 +1223,15 @@ Partitions
 +         +------------+-----+-------+----------+----------+------------------+
 |         | dtn_f5_f6  | 1   | 1     | 12:00:00 | 16:00:00 | These jobs will  |
 |         |            |     |       |          |          | run on the DTN   |
-|         |            |     |       |          |          | nodes.  The DTN  |
-|         |            |     |       |          |          | nodes have both  |
-|         |            |     |       |          |          | F5 and F6        |
-|         |            |     |       |          |          | mounted.         |
+|         |            |     |       |          |          | nodes. There are |
+|         |            |     |       |          |          | separate subsets |
+|         |            |     |       |          |          | of nodes with    |
+|         |            |     |       |          |          | either F5 or F6  |
+|         |            |     |       |          |          | mounted, which   |
+|         |            |     |       |          |          | can be selected  |
+|         |            |     |       |          |          | by using the     |
+|         |            |     |       |          |          | ``--constraint`` |
+|         |            |     |       |          |          | option.          |
 +         +------------+-----+-------+----------+----------+------------------+
 |         | cron_c5    | 1   | 1     | 12:00:00 | 16:00:00 | Required         |
 |         |            |     |       |          |          | partition for    |
@@ -1483,7 +1508,7 @@ guidance in setting up the remote client see the :doc:`Debugging Software
 GDB
 ====
 
-`GDB <https://www.gnu.org/software/gdb/>`__, the GNU Project Debugger (GDB), is
+`GDB <https://www.sourceware.org/gdb/>`__, the GNU Project Debugger (GDB), is
 a command-line debugger useful for traditional debugging and investigating code
 crashes. GDB lets you debug programs written in Ada, C, C++, Objective-C,
 Pascal (and many other languages).
