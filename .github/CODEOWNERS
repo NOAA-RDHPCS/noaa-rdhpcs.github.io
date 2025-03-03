@@ -9,28 +9,28 @@
 
 # Per GitHub documentation, this is to protect the CODEOWNERS file from
 # unwanted changes.
-/.github/ @josh-eisinger @chanwilson
-/.github/CODEOWNERS @elisabethpatterson @josh-eisinger
+/.github/ @chanwilson
+/.github/CODEOWNERS @elisabethpatterson
 
 # Owners of utilities and script files
-/.readthedocs.yaml @josh-eisinger @chanwilson
-/utils/ @josh-eisinger @hderry
-/requirements.txt @josh-eisinger @chanwilson
-/Makefile @josh-eisinger @chanwilson
-/make.bat @josh-eisinger @chanwilson
+/.readthedocs.yaml @chanwilson
+/utils/ @hderry
+/requirements.txt @chanwilson
+/Makefile @chanwilson
+/make.bat @chanwilson
 
 # Top-level code ownership for source files without specific assignments below
-/source/ @elisabethpatterson @josh-eisinger @chanwilson
+/source/ @elisabethpatterson @chanwilson
 
 # Owners of specific documentation pages
-/source/accounts @elisabethpatterson @josh-eisinger @chanwilson
-/source/data/nescc_hpss.rst @elisabethpatterson @josh-eisinger @RaghuReddy-NOAA
-/source/help @elisabethpatterson @josh-eisinger @hderry
-/source/systems/MSU-HPC_user_guide.rst @elisabethpatterson @josh-eisinger @eschnepp-hpc
+/source/accounts @elisabethpatterson @chanwilson
+/source/data/nescc_hpss.rst @elisabethpatterson @RaghuReddy-NOAA
+/source/help @elisabethpatterson @hderry
+/source/systems/MSU-HPC_user_guide.rst @elisabethpatterson @eschnepp-hpc
 /source/systems/cloud_user_guide.rst @unni-noaa @RaghuReddy-NOAA
-/source/systems/gaea_user_guide.rst @hderry @josh-eisinger @chanwilson
-/source/systems/hera_user_guide.rst @elisabethpatterson @josh-eisinger @RaghuReddy-NOAA
-/source/systems/jet_user_guide.rst @elisabethpatterson @josh-eisinger @RaghuReddy-NOAA
-/source/systems/niagara_user_guide.rst @elisabethpatterson @josh-eisinger @RaghuReddy-NOAA
-/source/systems/pan/ @chanwilson @josh-eisinger
+/source/systems/gaea_user_guide.rst @hderry @chanwilson
+/source/systems/hera_user_guide.rst @elisabethpatterson @RaghuReddy-NOAA
+/source/systems/jet_user_guide.rst @elisabethpatterson @RaghuReddy-NOAA
+/source/systems/niagara_user_guide.rst @elisabethpatterson @RaghuReddy-NOAA
+/source/systems/pan/ @chanwilson
 
