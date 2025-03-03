@@ -27,14 +27,14 @@ through them.
 
 Once you have a NOAA.gov email address, you can:
 
-1. Request an RDHPCS account through the Account Information Managment
+1. Request an RDHPCS account through the Account Information Management
 system, **AIM**.
 
 2. Visit the `Account Information Management`_ website and request
 access to the RDHPCS project. To do that, log into AIM using your NOAA email
 credentials, review your profile for accuracy, and request the RDHPCS project.
 
-.. image:: /images/AIM2.png
+.. image:: /images/AIM1.png
 
 Once you've been approved for the RDHPCS project, you will receive an email
 containing instructions about your next steps. These include:
@@ -197,7 +197,7 @@ reapply for NOAA RDHPCS access.
 Request a New Allocation or Project
 ===================================
 
-Allocation requests currently flow via helpdesk requests.  Send an
+Allocation requests currently flow via Helpdesk requests.  Send an
 email to the appropriate :ref:`HPCS-specific help address
 <getting_help>`.
 
