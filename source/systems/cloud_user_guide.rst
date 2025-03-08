@@ -1,6 +1,5 @@
 
 .. _cloud-user-guide:
-.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 
 ######################
 RDHPCS Cloud Computing
@@ -10,6 +9,7 @@ The RDHPCS Cloud Platform allows NOAA users to create an custom HPC
 cluster on an as-needed basis, with the type of resources that are
 appropriate for the task at hand.
 
+.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 
 Parallel Works User Guide
 =========================
