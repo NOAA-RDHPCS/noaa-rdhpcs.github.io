@@ -156,3 +156,12 @@ sitemap_excludes = [
     "search.html",
     "genindex.html",
 ]
+
+rst_prolog = """
+.. attention::
+
+    Parts of the U.S. government are closed. This site will not be updated;
+    however, NOAA websites and social media channels necessary to protect lives
+    and property will be maintained.  To learn more, visit `commerce.gov
+    <https://www.commerce.gov/news/blog/2023/10/us-department-commerce-plan-orderly-shutdown-due-lapse-congressional>`_.
+"""
