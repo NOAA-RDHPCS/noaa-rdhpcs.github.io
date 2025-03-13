@@ -44,6 +44,7 @@ eastus
 ecflow
 eslogin
 Fairmont
+fillin
 firstlast
 Firstname
 fsspec
@@ -64,6 +65,7 @@ gsutil
 gsutils
 guilabel
 GVNIC
+helpdesk
 highgpu
 homerpt
 homeuse
@@ -99,6 +101,7 @@ mvapich
 nbhome
 nedit
 NESCC
+newrsa
 noaardhpcs
 noaastore
 NODELIST
@@ -131,9 +134,12 @@ reconfig
 resynched
 rheltectia
 rocoto
+RSACTF
+RSAKIP
 rstprod
 runscript
 Secur
+securid
 setopt
 shpcrpt
 simg
@@ -143,6 +149,7 @@ slurmdbd
 Spack
 squashfs
 sshg
+SSLVPN
 suspendtime
 tcsh
 Tectia
