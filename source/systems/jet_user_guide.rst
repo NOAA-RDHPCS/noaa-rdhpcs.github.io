@@ -7,7 +7,7 @@ Jet User Guide
 .. image:: /images/JET.jpeg
 
 Currently Jet consists of six compute
-partitions, plus four bigmem nodes, totaling 57,744 coes, @
+partitions, plus four bigmem nodes, totaling 57,744 cores, @
 1.884 PF.
 
 .. list-table::
@@ -116,7 +116,7 @@ partitions, plus four bigmem nodes, totaling 57,744 coes, @
       SPECrate 2017 Floating Point) benchmark. It is normalized by the
       slowest core in production.
    -  Available Memory/Node is the total memory available
-      toapplication. The difference between this value and the total
+      to application. The difference between this value and the total
       available memory is due to OS overhead and other system buffers.
 
 System Features:
@@ -201,7 +201,7 @@ The following Jet partitions and Jet Billable TRes Factors are defined:
      - novel
      - 165
      - Partition for running novel or experimental jobs where nearly the full
-       system is required. If you need to use the novel QOS, please sumbit a
+       system is required. If you need to use the novel QOS, please submit a
        ticket to the help system and tell us what you want to do. We will
        normally have to arrange for some time for the job to go through, and we
        would like to plan the process with you. Please note that if you use
@@ -266,18 +266,18 @@ prediction challenges.
 About Modules
 =============
 
-Modules is a tool that is used to manage the use of softwarewhen
-multiple versions are installed. For packages that arenot provided
+Modules is a tool that is used to manage the use of software when
+multiple versions are installed. For packages that are not provided
 with the OS (compilers, debuggers, MPI stacks,etc), we install so that
-new versions to not overwrite oldversions. By default, no modules are
-loaded. Therefore you must loadany modules that you wish to use. To
-see what modules areavailable, run:
+new versions to not overwrite old versions. By default, no modules are
+loaded. Therefore you must load any modules that you wish to use. To
+see what modules are available, run:
 
 .. code-block:: shell
 
    # module avail
 
-At a minimum you will want to load a compiler and an MPIstack:
+At a minimum you will want to load a compiler and an MPI stack:
 
 .. code-block:: shell
 
