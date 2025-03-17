@@ -51,7 +51,7 @@ Data Transfer
 =============
 
 Data transfer instructions can be found on the
-`Transferring Data page <https://docs.rdhpcs.noaa.gov/data/transferring_data.html#transferring-data.>`_.
+`Transferring Data page <https://docs.rdhpcs.noaa.gov/data/transferring_data.html#transferring-data>`_.
 
 In order to use Mercury for file transfers, user account directories must be in
 place. These directories are automatically created with your first login to a
