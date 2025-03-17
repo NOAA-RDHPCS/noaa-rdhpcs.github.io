@@ -13,11 +13,11 @@ Mercury User Guide
 System Overview
 ===============
 
- Mercury is primarily a data transfer/collaboration system that is available to
- all RDHPCS. It is intended to be a collaborative system where data can be
- securely copied to and from any location, by any authorized user, to
- disseminate Research and Development (R&D) data to NOAA’s collaborators around
- the globe.
+Mercury is primarily a data transfer/collaboration system that is available to
+all RDHPCS. It is intended to be a collaborative system where data can be
+securely copied to and from any location, by any authorized user, to
+disseminate Research and Development (R&D) data to NOAA’s collaborators around
+the globe.
 
 The Mercury system includes:
 
@@ -42,10 +42,8 @@ Interactive Logins
 ==================
 
 The Mercury front ends may be accessed using either CAC or
-RSA credentials. Host names for CAC access can be found on the
-`CAC login page <https://docs.rdhpcs.noaa.gov/connecting/index.html#common-access-card-cac-ssh-login>`_.
-Host names for RSA access can be found on the
-`RSA login page <https://docs.rdhpcs.noaa.gov/connecting/index.html#rsa-ssh-login>`_.
+RSA credentials. Host names for CAC and RSA access can be found in the
+:ref:`bastion_hostnames` table.
 
 Data Transfer
 =============
