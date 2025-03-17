@@ -13,11 +13,11 @@ Mercury User Guide
 System Overview
 ===============
 
- Mercury is a hybrid system, a cross between a traditional HPC system and a
- data transfer/collaboration system, available to all RDHPCS users. It is
- intended to be a collaborative system where data can be securely copied to
- and from any location, by any authorized user, to disseminate Research and
- Development (R&D) data to NOAA’s collaborators around the globe.
+ Mercury is primarily a data transfer/collaboration system that is available to
+ all RDHPCS. It is intended to be a collaborative system where data can be
+ securely copied to and from any location, by any authorized user, to
+ disseminate Research and Development (R&D) data to NOAA’s collaborators around
+ the globe.
 
 The Mercury system includes:
 
@@ -30,7 +30,7 @@ Mercury System Features:
 
 - Dual-socket AMD EPYC Genoa 9654, 2.40Ghz, 96 Cores
 - 4 Login Nodes
-- Trusted Data Transfer Nodes (TDTNs) available from trusted (pre-approved)
+- Trusted Data Transfer Nodes (DTNs) available from trusted (pre-approved)
   NOAA and non-NOAA sites
 - Untrusted Data Transfer Nodes (UDTNs) available from anywhere on the internet
 
@@ -64,8 +64,8 @@ with your first login:
 
 When you use the DTNs for data transfers:
 
-  - ``/home tree`` is not accessible from the DTNs.
-  - ``/collab2/data/ tree`` is accessible from the DTNs and uDTNs.
+  - ``/home`` tree is not accessible from the DTNs.
+  - ``/collab2/data/`` tree is accessible from the DTNs and uDTNs.
   - ``/collab2/data_untrusted`` tree is only accessible from the uDTNs.
 
 Per User Data Management on Mercury
