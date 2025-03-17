@@ -21,29 +21,31 @@ When sending an e-mail, be sure to do the following:
 
 .. _rdhpcs-system-help:
 
-+------------------+------------------------------+
-| System           | Email Address                |
-+==================+==============================+
-| Jet              | rdhpcs.jet.help@noaa.gov     |
-+------------------+------------------------------+
-| Hera             | rdhpcs.hera.help@noaa.gov    |
-+------------------+------------------------------+
-| Niagara          | rdhpcs.niagara.help@noaa.gov |
-+------------------+------------------------------+
-| Ursa             | rdhpcs.ursa.help@noaa.gov    |
-+------------------+------------------------------+
-| Orion            | rdhpcs.orion.help@noaa.gov   |
-+------------------+------------------------------+
-| Hercules         | rdhpcs.hercules.help@noaa.gov|
-+------------------+------------------------------+
-| RDHPCS Cloud     | rdhpcs.cloud.help@noaa.gov   |
-+------------------+------------------------------+
-| HPSS             | rdhpcs.hpss.help@noaa.gov    |
-+------------------+------------------------------+
-| Gaea / PPAN      | oar.gfdl.help@noaa.gov       |
-+------------------+------------------------------+
-| AIM / Accounts   | rdhpcs.aim.help@noaa.gov     |
-+------------------+------------------------------+
++----------------+------------------------------+
+| System         | Email Address                |
++================+==============================+
+| Jet            | rdhpcs.jet.help@noaa.gov     |
++----------------+------------------------------+
+| Hera           | rdhpcs.hera.help@noaa.gov    |
++----------------+------------------------------+
+| Niagara        | rdhpcs.niagara.help@noaa.gov |
++----------------+------------------------------+
+| Ursa           | rdhpcs.ursa.help@noaa.gov    |
++----------------+------------------------------+
+| Orion          | rdhpcs.orion.help@noaa.gov   |
++----------------+------------------------------+
+| Hercules       | rdhpcs.hercules.help@noaa.gov|
++----------------+------------------------------+
+| RDHPCS Cloud   | rdhpcs.cloud.help@noaa.gov   |
++----------------+------------------------------+
+| HPSS           | rdhpcs.hpss.help@noaa.gov    |
++----------------+------------------------------+
+| Gaea / PPAN    | oar.gfdl.help@noaa.gov       |
++----------------+------------------------------+
+| AIM / Accounts | rdhpcs.aim.help@noaa.gov     |
++----------------+------------------------------+
+| Mercury        | rdhpcs.mercury.help@noaa.gov |
++----------------+------------------------------+
 
 .. _rdhpcs-workflow-help:
 
@@ -62,6 +64,7 @@ these the RDHPCS systems:
 - Jet
 - Hera
 - Niagara
+- Mercury
 - Orion / Hercules
 - Cloud (AWS, GCP, Azure)
 - HPSS
@@ -414,7 +417,7 @@ Reply to a Ticket
 -----------------
 
 In order to reply to a ticket, locate the **Reply** button found at the
-end of the most recient ticket thread.
+end of the most recent ticket thread.
 
 Ticket replies can be expanded and collapsed using the "Show All Articles"
 button, as shown below circled in red.  Select "Submit" to send the ticket to

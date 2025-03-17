@@ -19,7 +19,7 @@ Much data on RDHPCS servers are protected by confidentiality
 agreements, may be sensitive, or are otherwise proprietary. Our
 obligation includes the enforcement of all policies that make curating
 such data even possible. This involves maintaining tight security that
-adheres to NOAA OCIO guidelines. We also recognise the need for
+adheres to NOAA OCIO guidelines. We also recognize the need for
 sharing data with collaborators who may not be vetted by us to ensure
 that NOAA/DOC standards are met. The so-called untrusted DTN was
 created so that less secure channels may be open for the smooth
@@ -59,21 +59,23 @@ authentication uses your RSA token.
 .. note::
     If you're using WinSCP on Windows, choose SFTP as the protocol rather than SCP.
 
-+-----------+--------------------------------------+
-| Site      | Fully Qualified Host Name            |
-+===========+======================================+
-| Niagara   | dtn-niagara.fairmont.rdhpcs.noaa.gov |
-+-----------+--------------------------------------+
-| Ursa      | dtn-ursa.fairmont.rdhpcs.noaa.gov    |
-+-----------+--------------------------------------+
-| Hera      | dtn-hera.fairmont.rdhpcs.noaa.gov    |
-+-----------+--------------------------------------+
-| Jet       | dtn-jet.boulder.rdhpcs.noaa.gov      |
-+-----------+--------------------------------------+
-| Orion     | orion-dtn.hpc.msstate.edu            |
-+-----------+--------------------------------------+
-| Hercules  | hercules-dtn.hpc.msstate.edu         |
-+-----------+--------------------------------------+
++----------+--------------------------------------+
+| Site     | Fully Qualified Host Name            |
++==========+======================================+
+| Niagara  | dtn-niagara.fairmont.rdhpcs.noaa.gov |
++----------+--------------------------------------+
+| Mercury  | dtn-mercury.fairmont.rdhpcs.noaa.gov |
++----------+--------------------------------------+
+| Ursa     | dtn-ursa.fairmont.rdhpcs.noaa.gov    |
++----------+--------------------------------------+
+| Hera     | dtn-hera.fairmont.rdhpcs.noaa.gov    |
++----------+--------------------------------------+
+| Jet      | dtn-jet.boulder.rdhpcs.noaa.gov      |
++----------+--------------------------------------+
+| Orion    | orion-dtn.hpc.msstate.edu            |
++----------+--------------------------------------+
+| Hercules | hercules-dtn.hpc.msstate.edu         |
++----------+--------------------------------------+
 
 
 Untrusted Data Transfer Nodes (UDTN)
@@ -122,6 +124,10 @@ desktop/laptop. However, note the following important points:
      - noaardhpcs#niagara_untrusted
      - udtn-niagara.fairmont.rdhpcs.noaa.gov
      - :file:`/collab1/data_untrusted/$USER`
+   * - Mercury
+     - noaardhpcs#mercury_untrusted
+     - udtn-mercury.fairmont.rdhpcs.noaa.gov
+     - :file:`/collab2/data_untrusted/$USER for Mercury`
    * - Ursa
      - noaardhpcs#ursa_untrusted
      - udtn-ursa.fairmont.rdhpcs.noaa.gov
@@ -480,7 +486,7 @@ expected.
 
 Remember that this is the second terminal session opened on your local
 machine. Once a tunnel has been set up as in Step 1, you
-can use a client such as WinSCP to do the tranfers using that tunnel.
+can use a client such as WinSCP to do the transfers using that tunnel.
 Please keep in mind that tunnel will exist only as long as the session opened
 in Step 1 is kept alive.
 
@@ -661,7 +667,7 @@ Internally Initiated Transfers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 HPC systems do not have specific hosts for internally initiated
-transfers ransfers initiated from HPC Systems use the front end nodes
+transfers. Transfers initiated from HPC Systems use the front end nodes
 for doing the transfers.
 
 The firewall rules are set up by default to block all outgoing

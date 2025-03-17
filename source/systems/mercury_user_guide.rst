@@ -13,192 +13,108 @@ Mercury User Guide
 System Overview
 ===============
 
-As NOAA's R&D severe long range weather projects expand to
-geographically dispersed private and public HPC clouds, it is
-imperative that the the NOAA RDHPCS program provide a service for data
-dissemination and analysis outside of the traditional HPC environment.
-Mercury is intended to be a collaborative location where
-data can be securely copied to and from any location, by any
-authorized user. It can also be used to disseminate R&D data to NOAA's
-collaborators around the globe.
+ Mercury is a hybrid system, a cross between a traditional HPC system and a
+ data transfer/collaboration system, available to all RDHPCS users. It is
+ intended to be a collaborative system where data can be securely copied to
+ and from any location, by any authorized user, to disseminate Research and
+ Development (R&D) data to NOAA’s collaborators around the globe.
 
 The Mercury system includes:
 
-- Back-end storage
-- Interactive Nodes
-- Software
-- Account Management
-
-Users can connect to the Data Transfer Nodes (DTN) from any remote
-system to push or pull data. Beyond the Back-end storage and DTNs, the
-cluster allows for data analysis, visualization, verification,
-validation and data analytics. These are provided through a combination of
-hardware and software, which mirrors the user environment and a subset
-of the tools available on the legacy RDHPCS systems and
-legacy Analysis systems :ref:`(PPAN). <ppan-user-guide>`
-but can also include software which is
-unique to this system and not found on traditional HPC
-systems.
+- Interactive Login Nodes / Front Ends
+- File System
+- Data Transfer Nodes
+- Back-end storage (HPSS)
 
 Mercury System Features:
 
-- 20 cores/socket, 2.5 GHz, 2 sockets/nodes
-- 12 Login Nodes
-- 2 DTNs available from trusted (pre-approved) NOAA and non-NOAA sites
-- 2 Untrusted Data Transfer Nodes (UDTNs) available from anywhere on
-  the internet.
-- 2 Web servers
-
-
-Data Transfer
-================
-
-In order to use Mercury for file transfers, you must create user
-account directories. These directories are automatically created upon
-your first login to a Mercury front end. The Mercury front ends may be
-accessed using either CAC or RSA credentials. This table contains
-:ref:`bastion hostnames <bastion_hostnames>` for CAC and RSA access.
-
-The following directories will automatically be created with your
-first login:
-
-- ``/home/First.Last`` (your home directory)
-- ``/collab2/data/First.Last`` (for your trusted data)
-- ``/collab2/data_untrusted/First.Last`` (for your untrusted data)
+- Dual-socket AMD EPYC Genoa 9654, 2.40Ghz, 96 Cores
+- 4 Login Nodes
+- Trusted Data Transfer Nodes (TDTNs) available from trusted (pre-approved)
+  NOAA and non-NOAA sites
+- Untrusted Data Transfer Nodes (UDTNs) available from anywhere on the internet
 
 .. note::
 
-   When using the DTNs for data transfers:
+   No compute nodes are available on Mercury.
 
-   - ``/home tree`` is not accessible from the DTNs
-   - ``/collab2/data/`` tree is only accessible from the "Trusted DTN".
-   - ``/collab2/data_untrusted`` tree is only accessible from the
-     "Untrusted DTN"
+Interactive Logins
+==================
 
+The Mercury front ends may be accessed using either CAC or
+RSA credentials. Host names for CAC access can be found on the
+`CAC login page <https://docs.rdhpcs.noaa.gov/connecting/index.html#common-access-card-cac-ssh-login>`_.
+Host names for RSA access can be found on the
+`RSA login page <https://docs.rdhpcs.noaa.gov/connecting/index.html#rsa-ssh-login>`_.
+
+Data Transfer
+=============
+
+Data transfer instructions can be found on the
+`Transferring Data page <https://docs.rdhpcs.noaa.gov/data/transferring_data.html#transferring-data.>`_.
+
+In order to use Mercury for file transfers, user account directories must be in
+place. These directories are automatically created with your first login to a
+Mercury front end.  The following directories will automatically be created
+with your first login:
+
+  - ``/home/First.Last`` (your home directory)
+  - ``/collab2/data/First.Last`` (for your trusted data)
+  - ``/collab2/data_untrusted/First.Last`` (for your untrusted data)
+
+When you use the DTNs for data transfers:
+
+  - ``/home tree`` is not accessible from the DTNs.
+  - ``/collab2/data/ tree`` is accessible from the DTNs and uDTNs.
+  - ``/collab2/data_untrusted`` tree is only accessible from the uDTNs.
 
 Per User Data Management on Mercury
------------------------------------
+===================================
 
-Mercury is a hybrid system, a cross between a traditional HPC
-system and a data transfer/collaboration system, available to all
-RDHPCS users. Mercury file system management has special requirements. The
-following are data management policies:
+Below are the data management policies for Mercury:
 
-- All files under the ``/collab2/data_untrusted/$USER`` directory tree
-  which have not been accessed in the last 5 days will be
-  automatically purged.
-- All files under the ``/collab2/data/$USER`` directory tree which have
-  not been accessed in the last 60 days will be automatically purged.
-- All files under the ``/collab2/data/$PROJECT`` directory are treated
-  the same as HPFS (scratch) data and are not deleted.
-- A default 10GB Lustre quota on each user's home directory
-  ``/collab2/home/$USER``.
+- All files under the ``/collab2/data_untrusted/$USER`` directory tree which
+  have not been accessed in the last 5 days will be automatically purged.
+- All files under the ``/collab2/data/$USER`` directory tree which have not
+  been accessed in the last 60 days will be automatically purged.
+- All files under the ``/collab2/data/$PROJECT`` directory are treated the same
+  as HPFS (scratch) data and are not deleted.
 
-Access time is defined as the last time the file was opened for
-reading or writing.
+A default 10GB quota on each user’s home directory ``/home/$USER``.
 
-.. warning::
+.. note::
 
-   If the file system's usage approaches the total
-   capacity, we will be forced implement a more aggressive purge
-   policy (i.e., 30 day or 15 day purge). So please actively manage
-   your data.
+   Access time is defined as the last time the file was opened for reading or
+   writing. If the file system’s usage starts getting close to the total
+   capacity then we will be forced to implement a more aggressive purge policy
+   (i.e., 30 day or 15 day purge). Please actively manage your data.
 
-Lustre File System Usage
-========================
 
-Lustre is a parallel, distributed file system often used to support
-the requirements for high-performance I/O in large scale clusters by
-supporting a parallel I/O framework that scales to thousands of nodes
-and petabytes of storage. Lustre features include high-availability
-and POSIX compliance.
+Software Stack
+==============
 
-On the RDHPCS Mercury system there is one Lustre file system, /collab2,
-available for use.
+Mercury has a minimal software stack for compiling and running
+programs, as this system is primarily intended for data transfers and data
+sharing. Please open a help ticket for additional information on the software
+stack.
 
-The serial transfer rate of a single stream is generally greater than
-1 GB/s but can easily increase to 6.5 GB/s from a single client, and
-more than 10 GB/s if performed in a properly configured parallel
-operation.
+CRON Services
+=============
 
-Components
-----------
+CRON services are available on Mercury. See `the CRON page
+<https://docs.rdhpcs.noaa.gov/software/workflows/cron/index.html#cron>`_
+for additional information on how to use CRON.
 
-Lustre functionality is divided among four primary components:
+HPSS Access
+===========
 
--  MDS - Metadata Server
--  MDT - Metadata Target
--  OSS - Object Storage Server
--  OST - Object Storage Target
+HPSS is accessible. See the
+`NESCC HPSS page <https://docs.rdhpcs.noaa.gov/data/nescc_hpss.html>`_
+for additional information.
 
-An MDS is a server that assigns and tracks all of the storage locations
-associated with each file, in order to direct file I/O requests to the
-correct set of OSTs and corresponding OSSs.
+Getting Help
+============
 
-An MDT stores the metadata, filenames, directories, permissions and
-file layout, handling network requests to them.
-
-An OSS manages a small set of OSTs by controlling I/O access.
-
-An OST is a block storage device, often several disks in a RAID
-configuration.
-
-Configuration
--------------
-
-All nodes access the Lustre file-systems mounted at /collab2.
-
-The number of servers and targets on *each* of the two Mercury file
-systems is:
-
--  2 MDSs (active/active)
--  2 MDTs
--  4 OSSs (active/active, embedded in DDN SFA14kx storage
-   controllers)
--  24 OSTs (all are HDDs)
--  1.9 PB of usable disk space (*df -hP /collab1*)
-
-File Operations
----------------
-
--  When a compute node needs to create or access a file, it requests
-   the associated storage locations from the MDS and the associated
-   MDT associated with the file, bypassing the MDS.
--  I/O operations then occur directly with the OSSs and OSTs
--  For read operations, file data flows from the OSTs to the compute
-   node.
-
-With Lustre, there are three basic ways which an application accesses
-data:
-
--  Single stream
--  Single stream through a master
--  Parallel
-
-File Striping
-^^^^^^^^^^^^^
-
-A file is split into segments and consecutive segments are stored on
-different physical storage devices (OSTs).
-
--  With Aligned stripes, each segment fits fully onto a single OST.
-   Processes accessing the file do so at corresponding stripe
-   boundaries.
--  With Unaligned stripes, some file segments are split across OSTs.
-
-**Userspace Commands**
-
-Lustre provides a utility to query and set access to the file system.
-
-For a complete list of available options:
-
-.. code-block:: shell
-
-   lfs help
-
-To get more information on a specific option:
-
-.. code-block:: shell
-
-   lfs help <option>
+Please see the `Help page <https://docs.rdhpcs.noaa.gov/help/index.html>`_
+for more information on how to get help for Mercury.
 
