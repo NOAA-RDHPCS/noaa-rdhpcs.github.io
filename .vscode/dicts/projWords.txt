@@ -34,6 +34,7 @@ computecanada
 Coolkey
 cowsay
 cpio
+creds
 csh
 cshrc
 CSXF
