@@ -106,6 +106,16 @@ Bastion Hostnames
 .. |PAPRNG|	replace:: analysis-rsa.princeton.rdhpcs.noaa.gov
 .. |PBPRNG|	replace:: analysis-rsa.boulder.rdhpcs.noaa.gov
 
+.. |MCPRNG|	replace:: mercury.princeton.rdhpcs.noaa.gov
+.. |MCBRNG|	replace:: mercury.boulder.rdhpcs.noaa.gov
+.. |MRPRNG|	replace:: mercury-rsa.princeton.rdhpcs.noaa.gov
+.. |MRBRNG|	replace:: mercury-rsa.boulder.rdhpcs.noaa.gov
+
+.. |UCPRNG|	replace:: ursa.princeton.rdhpcs.noaa.gov
+.. |UCBRNG|	replace:: ursa.boulder.rdhpcs.noaa.gov
+.. |URPRNG|	replace:: ursa-rsa.princeton.rdhpcs.noaa.gov
+.. |URBRNG|	replace:: ursa-rsa.boulder.rdhpcs.noaa.gov
+
 .. |OUG|	replace:: :ref:`orion-user-guide`
 
 +-------------------+-----------------+----------------------------------+
@@ -135,7 +145,14 @@ Bastion Hostnames
 +-------------------+-----------------+----------------------------------+
 | MSU-HPC Orion     | Unavailable     | |OUG|                            |
 +-------------------+-----------------+----------------------------------+
-
+| Mercury           | |MCBRNG|        | |MRBRNG|                         |
++                   +                 +                                  +
+|                   | |MCPRNG|        | |MRPRNG|                         |
++-------------------+-----------------+----------------------------------+
+| Ursa              | |UCBRNG|        | |URBRNG|                         |
++                   +                 +                                  +
+|                   | |UCPRNG|        | |URPRNG|                         |
++-------------------+-----------------+----------------------------------+
 
 .. _Common-access:
 .. _cac_instructions:
