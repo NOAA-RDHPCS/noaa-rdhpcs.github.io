@@ -64,7 +64,8 @@ When you use the DTNs for data transfers:
 
   - ``/home`` tree is not accessible from the DTNs.
   - ``/collab2/data/`` tree is accessible from the DTNs and uDTNs.
-  - ``/collab2/data_untrusted`` tree is only accessible from the uDTNs.
+  - ``/collab2/data_untrusted`` tree is only accessible from the uDTNs,
+    but will be visible on the uDTNs as ``/collab2/$USER``.
 
 Per User Data Management on Mercury
 ===================================
@@ -72,7 +73,7 @@ Per User Data Management on Mercury
 Below are the data management policies for Mercury:
 
 - All files under the ``/collab2/data_untrusted/$USER`` directory tree which
-  have not been accessed in the last 5 days will be automatically purged.
+  have not been accessed in the last 14 days will be automatically purged.
 - All files under the ``/collab2/data/$USER`` directory tree which have not
   been accessed in the last 60 days will be automatically purged.
 - All files under the ``/collab2/data/$PROJECT`` directory are treated the same
