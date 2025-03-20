@@ -64,7 +64,8 @@ When you use the DTNs for data transfers:
 
   - ``/home`` tree is not accessible from the DTNs.
   - ``/collab2/data/`` tree is accessible from the DTNs and uDTNs.
-  - ``/collab2/data_untrusted`` tree is only accessible from the uDTNs, but will be visible on the uDTNs as ``/collab2/$USER``.
+  - ``/collab2/data_untrusted`` tree is only accessible from the uDTNs,
+    but will be visible on the uDTNs as ``/collab2/$USER``.
 
 Per User Data Management on Mercury
 ===================================
