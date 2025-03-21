@@ -810,7 +810,7 @@ When is my .bashrc executed? When would it be ignored?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Please review :manpage:`bash(1)` and other information on the `bash
-shell <https://gnu.org/software/bash/>`_ on the `internet
+shell <https://www.gnu.org/software/bash/>`_ on the `internet
 <https://opstree.com/blog/2020/02/11/shell-initialization-files/>`__.
 
 

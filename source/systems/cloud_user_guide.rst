@@ -2068,11 +2068,11 @@ binary at the link below as documented below:
 How do I use GCP gsutil CLI to copy files?
 """"""""""""""""""""""""""""""""""""""""""
 
-GCP command line utility is gsutil. PW OS image has the GCP utility
-“gsutil' installed.  Follow the instructions from the link to copy
-files to Google bucket.
+The GCP command line utility is ``gsutil``. PW OS image has the GCP
+utility ``gsutil`` installed.  Follow the instructions at this link to
+copy files to Google bucket:
 
-`GSUtil commands <https://cloud.google.com/storage/docs/gsutil/commands/cp>`_
+`GSUtil commands <https://cloud.google.com/storage/docs/gsutil#builtinhelp>`_
 
 How do I access Azure Blob from a Remote Machine?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2163,7 +2163,7 @@ In order to '''export changes''' from lustre data to the bucket data
 repository, the following options are available:
 
 * Use the `gsutil cp
-  <https://cloud.google.com/storage/docs/gsutil/commands/cp>`_
+  <https://cloud.google.com/storage/docs/gsutil#builtinhelp>`_
   command: ``gsutil cp path/to/file gs://bucket-name/path/to/file``.
 * Use gsutil --help command to learn more about the options.
 * Use the --recursive (-r) flag to move nested directories.

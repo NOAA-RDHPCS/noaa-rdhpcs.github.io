@@ -84,7 +84,7 @@ In the locally running client:
    configuration.
 6. Enter your PIN+passcode.  On RDHPCS systems other than gaea, you
    can use `SSH key authentication
-   <https://www.redhat.com/sysadmin/passwordless-ssh>`__.
+   <https://www.redhat.com/en/blog/passwordless-ssh>`__.
 
 There are other ways to start Forge DDT.  We find the remote connection gives
 the best user experience on the RDHPCS systems.  If you decide to run Forge DDT

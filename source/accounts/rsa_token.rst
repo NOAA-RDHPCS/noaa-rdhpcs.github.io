@@ -70,7 +70,8 @@ First.Last with your First Last NOAA username).
 Current users: Replacement token for a new smart phone
 ------------------------------------------------------
 
-1. Log into the `RSA User self-service console <https://rsauser.boulder.rdhpcs.noaa.gov>`_.
+1. Log into the `RSA User self-service console
+   <https://rsauser.boulder.rdhpcs.noaa.gov/console-selfservice/SelfService.do>`_.
 
 .. image:: /images/newrsa1.png
 
@@ -97,10 +98,11 @@ you will receive a second email containing token information.
 Activate your Software Token
 ----------------------------
 
-1. Log into the `RSA User self-service console <https://rsauser.boulder.rdhpcs.noaa.gov>`_.
-The Account display will identify your software token as either CTF or CT-KIP
-format. Follow these instructions to activate a :ref:`software-token-CTF`
-or :ref:`software-token-CT-KIP`.
+1. Log into the `RSA User self-service console
+<https://rsauser.boulder.rdhpcs.noaa.gov/console-selfservice/SelfService.do>`_.
+The Account display will identify your software token as either CTF or
+CT-KIP format. Follow these instructions to activate a
+:ref:`software-token-CTF` or :ref:`software-token-CT-KIP`.
 
 
 .. _software-token-ctf:
