@@ -1351,11 +1351,11 @@ resources are not being used by projects that do have an FGA
 allocation. This is helpful for users who are in interested in
 exploring the GPU resources for their applications. To use the system
 in this mode please submit the jobs to the fge partition and
-windfall QoS by including the following:
+gpuwf QoS by including the following:
 
 .. code-block:: shell
 
-      sbatch -p fge -q windfall ...
+      sbatch -p fge -q gpuwf ...
 
 User Environment
 ----------------
