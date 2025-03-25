@@ -154,8 +154,7 @@ System Configuration
      represent actual performance.
    - Juno is the Test and Development System. Users must be granted
      specific access to the system for use.
-   - The nodes with GPUs are the same as what was on Theia; But the
-     network has been upgraded to EDR.
+
 
 Hera Partitions
 ===============
@@ -322,7 +321,7 @@ correct set of OSTs and corresponding OSSs.
 An MDT stores the metadata, filenames, directories, permissions and
 file layout.
 
-An OSS manages a small set of OSTs by controlling I/O accessand
+An OSS manages a small set of OSTs by controlling I/O access and
 handling network requests to them.
 
 An OST is a block storage device, often several disks in a RAID
@@ -333,7 +332,7 @@ Hera Lustre Configuration
 
 All nodes (login and compute) access the lustre file-systems mounted
 at ``/scratch1`` and ``/scratch2``. Each user has access to one or
-more directories based on theproject which they are a member of, such
+more directories based on the project which they are a member of, such
 as:
 
 .. code-block:: shell
@@ -378,7 +377,7 @@ With Lustre, an application accesses data in the following ways:
 File Striping
 -------------
 
-A file is split into segments and consecutive segments arestored on
+A file is split into segments and consecutive segments are stored on
 different physical storage devices (OSTs).
 
 Aligned vs Unaligned Stripes
@@ -406,7 +405,7 @@ latency and allows the HDDs to run more efficiently for streaming
 reads and writes. The default configuration will automatically stripe
 and place files in a generally optimal fashion to improve I/O
 performance for varying file sizes, including the use of SSDs for
-better small-file performance. The defaults also attempt to makethe
+better small-file performance. The defaults also attempt to make the
 best use of the SSD targets (which are faster, but have much less
 capacity than HDDs). More details on PFL are available in the `Lustre
 documentation <https://www.lustre.org/documentation/>`_.
@@ -427,7 +426,7 @@ Here are the steps you should follow if you have any directories that
 had explicitly set non-default striping:
 
 #. Remove all ``lfs setstripe`` commands from your scripts.
-#. Run the following command which changes the stiping back to default
+#. Run the following command which changes the striping back to default
    for each of the directories on which you may have set striping:
 
    .. code-block:: shell
@@ -813,7 +812,7 @@ with the following commands:
 
 R has many contributed packages that can be added to standard R. `CRAN
 <https://cran.r-project.org/web/packages/>`_, the global repository of
-open-source packages that extend the capabiltiies of R, has a complete
+open-source packages that extend the capabilities of R, has a complete
 list of R packages as well as the packages for download.
 
 Due to access restrictions from Hera to the CRAN repository, you
@@ -883,7 +882,7 @@ MVAPICH2. We recommend one of the following two combinations:
 
 At least one of the MPI modules must be loaded before compiling and
 running MPI applications. These modules must be loaded before
-compiliing applications as well in your batch jobs before executing a
+compiling applications as well in your batch jobs before executing a
 parallel job.
 
 Working with Intel Compilers and IntelMPI
@@ -1096,7 +1095,7 @@ syntax depends on your login shell):
 Application Debuggers
 ---------------------
 
-A GUI based debugger named DDT by Linary is available on Hera. Linaro
+A GUI based debugger named DDT by Linaro is available on Hera. Linaro
 has `detailed documentation
 <https://docs.linaroforge.com/23.1.2/html/forge/index.html>`_.
 
@@ -1235,7 +1234,7 @@ users to:
 
 The toolkit includes the Paraprof visualizer (a Java app)
 permitting use on most desk and laptop systems (Linux,
-MacOS, Windows) to view instumentation data. The 3D
+MacOS, Windows) to view instrumentation data. The 3D
 display can be very useful. Paraprof supports the creation
 of user defined metrics based on the metrics directly
 collected (ex: FLOPS/CYCLE).
@@ -1351,12 +1350,12 @@ able to submit jobs to the system, but they will only run when the
 resources are not being used by projects that do have an FGA
 allocation. This is helpful for users who are in interested in
 exploring the GPU resources for their applications. To use the system
-in this mode please submit the jobs to the fgewf partition and
-windfall QoS by including the following:
+in this mode please submit the jobs to the fge partition and
+gpuwf QoS by including the following:
 
 .. code-block:: shell
 
-      sbatch -p fgewf -q windfall ...
+      sbatch -p fge -q gpuwf ...
 
 User Environment
 ----------------
@@ -1507,7 +1506,7 @@ set the following environment variables in your job file:
 Compiling and Building Codes Using OpenMPI
 ------------------------------------------
 
-The OpenMPI implimentation of MPI is available for experimentation and
+The OpenMPI implementation of MPI is available for experimentation and
 testing on the FGA nodes. The current installed version is the one
 that came with the PGI compiler, so PGI examples are shown below.
 
@@ -1803,7 +1802,7 @@ above:
    Server 0 not found
 
   Then, run your application as you normally would. At the end of your
-  session, terminate the deamon by running the command:
+  session, terminate the daemon by running the command:
 
   .. code-block:: shell
 
@@ -2008,7 +2007,7 @@ is running on its own socket.
 
 Using this as a template, it is easy to place ranks and threads in
 many different ways. This example only uses the lrank=0,1 case
-branches but the user is encouraged to exeriment with other placement
+branches but the user is encouraged to experiment with other placement
 strategies.
 
 Some helpful web resources
