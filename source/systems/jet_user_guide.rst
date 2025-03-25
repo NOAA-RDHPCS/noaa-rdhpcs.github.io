@@ -490,7 +490,7 @@ To use any of these editors, type the name in at the command line:
 |          | - The old school standard editor. It is a text based         |
 |          | editor (although X window versions do exist).                |
 +----------+--------------------------------------------------------------+
-| emacs    | https://gnu.org/software/emacs/ - An extensible,             |
+| emacs    | https://www.gnu.org/software/emacs/ - An extensible,         |
 |          | customizable free/libre text editor                          |
 +----------+--------------------------------------------------------------+
 | nedit    | http://www.nedit.org/ - An editor most                       |

@@ -26,11 +26,13 @@ supported on all RDHPCS systems.
 .. caution::
 
     The RDHPCS does not have a license with the `Anaconda Python
-    <https://www.anaconda.com/>`_ distribution. As the NOAA RDHPCS systems do
-    not fit within the 200-employee limit as defined in `Anaconda Terms of
-    Service <https://legal.anaconda.com/policies>`_, use of the Anaconda, which
-    includes `Miniconda <https://docs.anaconda.com/miniconda/>`_, on RDHPCS
-    systems is prohibited.
+    <https://www.anaconda.com/>`_ distribution. As the NOAA RDHPCS
+    systems do not fit within the 200-employee limit as defined in
+    `Anaconda Terms of Service
+    <https://legal.anaconda.com/policies>`_, use of the Anaconda,
+    which includes `Miniconda
+    <https://www.anaconda.com/docs/getting-started/miniconda/main>`_,
+    on RDHPCS systems is prohibited.
 
     For more information, please refer to the `Anaconda Terms of Service`_
     and Anaconda's blog posting `Update on Anaconda's Terms of Service for
@@ -546,5 +548,5 @@ Additional Resources
 * `pip User Guide <https://pip.pypa.io/en/stable/user_guide/>`__
 * `venv Documentation <https://docs.python.org/3/tutorial/venv.html>`__
 * `Conda User Guide <https://conda.io/projects/conda/en/latest/user-guide/index.html>`__
-* `Anaconda Package List <https://docs.anaconda.com/anaconda/pkg-docs/>`__
+* `Anaconda Package List <https://www.anaconda.com/docs/getting-started/anaconda/release-notes>`__
 * `Using Pip In A Conda Environment <https://www.anaconda.com/blog/using-pip-in-a-conda-environment>`__
