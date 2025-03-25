@@ -127,7 +127,19 @@ partner clusters.
    +===========+==============================+==========================+=========+===============+
    | Niagara   | noaardhpcs#niagara           | /collab1/data            | NESCC   | Trusted hosts |
    +-----------+------------------------------+--------------------------+---------+---------------+
-   | Niagara   | noaardhpcs#niagara_untrusted | /mnt/lfs1/data_untrusted | NESCC   | Anywhere      |
+   | Niagara   | noaardhpcs#niagara_untrusted | /collab1/data_untrusted  | NESCC   | Anywhere      |
+   +-----------+------------------------------+--------------------------+---------+---------------+
+
+
+  .. tab-item:: Mercury
+   :sync: mercury
+
+   +-----------+------------------------------+--------------------------+---------+---------------+
+   | Cluster   | Display Name                 | File Systems             | Site    | Access        |
+   +===========+==============================+==========================+=========+===============+
+   | Mercury   | noaardhpcs#mercury           | /collab2/data            | NESCC   | Trusted hosts |
+   +-----------+------------------------------+--------------------------+---------+---------------+
+   | Mercury   | noaardhpcs#mercury_untrusted | /collab2/data_untrusted  | NESCC   | Anywhere      |
    +-----------+------------------------------+--------------------------+---------+---------------+
 
 

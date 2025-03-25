@@ -198,12 +198,13 @@ NumPy:
 Installing with conda commands
 ------------------------------
 
-The traditional, and more basic, approach to installing/uninstalling packages
-into a conda environment is to use the commands ``conda install`` and ``conda
-remove``. Installing packages with this method checks the `Anaconda
-Distribution Repository
-<https://docs.anaconda.com/anaconda/pkg-docs/>`__ for pre-built binary
-packages to install. Let's do this to install NumPy:
+The traditional, and more basic, approach to installing/uninstalling
+packages into a conda environment is to use the commands ``conda
+install`` and ``conda remove``. Installing packages with this method
+checks the `Anaconda Distribution Repository
+<https://www.anaconda.com/docs/getting-started/anaconda/release-notes>`__
+for pre-built binary packages to install. Let's do this to install
+NumPy:
 
 .. code-block:: bash
 
@@ -470,6 +471,6 @@ Additional Resources
 ====================
 
 * `Conda User Guide <https://conda.io/projects/conda/en/latest/user-guide/index.html>`__
-* `Anaconda Package List <https://docs.anaconda.com/anaconda/pkg-docs/>`__
+* `Anaconda Package List <https://www.anaconda.com/docs/main>`__
 * `Pip User Guide <https://pip.pypa.io/en/stable/user_guide/>`__
 * `Using Pip In A Conda Environment <https://www.anaconda.com/blog/using-pip-in-a-conda-environment>`__
