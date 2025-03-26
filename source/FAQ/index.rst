@@ -13,7 +13,7 @@ Accounts
 How Do I Get an RDHPCS Account?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`Applying for a user account<applying_for_user_account>`
+See :ref:`Applying for a user account <applying_for_user_account>`
 
 
 PW login is getting a "Invalid username or password" error.
@@ -52,7 +52,7 @@ On the 4th attempt the system will prompt to recreate a passphrase.
 See :ref:`Connecting for the first time <connecting-to-rdhpcs>`.
 
 
-How do I use X11 appplication with shared user account (role account)?
+How do I use X11 application with shared user account (role account)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A shared user account (role account) is one that is typically used by
@@ -278,8 +278,8 @@ So when a job has a completion code of 143, the job was terminated
 with signal 15 (which is the TERM signal), which suggests that the job
 was killed by the user or system administrator.
 
-User
-----
+User Issues
+-----------
 
 How do I change my default login shell?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -402,8 +402,244 @@ How do I find out what my project quota is?
 
 Refer to the allocation pages.
 
+Can you please install the xyz python package(s)?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There are way too many combinations in which users use python so, it
+is not practical to have a "common" python installation that is
+applicable for all users.  Python works best when users install the
+packages they need in their own project space.
+
+We have now opened up access to the anaconda repositories so it is no
+longer necessary to use the RDHPCS mirror for installing the Python
+packages you need. You should now be able to install Python packages
+the same way you would on your local desktop/laptop.
+
+Please search for "anaconda" in the search field for
+specific instructions (if any) on how to maintain your own python
+installations in our environment.
+
+Why are my jobs failing intermittently?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We are getting reports of jobs failing intermittently with a job
+timeout error.
+
+At least in some instances this has been traced to an environment
+variable setting that is no longer valid. We were able to duplicate
+this problem very easily with a simple MPI Hello World program.
+
+The setting in question is the following environment variable:
+
+.. code-block:: shell
+
+   export I_MPI_FABRICS=shm:ofa
+
+This setting should no longer be set.
+When this variable is set we were able to confirm that even a simple
+MPI Hello World code can fail intermittently even when run on the same
+set of nodes.  While it is true that it happens only some nodes and
+rebooting them clears the nodes, not setting the above environment
+variable does not cause this problem.  We do plan to reboot the nodes
+that reboot the problem, but users can take action to avoid running
+into this problem by simply unsetting the above environment variable.
+
+If you are still seeing this error even though you have not set this
+environment variable please submit a help ticket to report the problem.
+
+Why am I getting these errors? I am using hpc-stack for NCEPLIBS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are using `hpc-stack <https://github.com/NOAA-EMC/hpc-stack>`_
+please keep in mind that this is a software stack that is installed
+and maintained by the NCEPLIBS team.  Please refer to the `hpc-stack
+official supported distribution
+<https://github.com/NOAA-EMC/hpc-stack/wiki/>`_.
+
+If you have problems, particularly with modules or NCEP libraries, it
+is very likely you are using an unsupported version of their
+libraries. If you are using the official version and still having problems, you
+should submit an "issue" ticket at the above link.
+
+I am using spack-stack and getting some errors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+First, documentation for spack-stack can be found here:
+`spack-stack documentation <https://spack-stack.readthedocs.io/en/latest>`_
+
+The second issue most users run into is the "location" of spack-stack
+on various supported platforms.  That can be found here:
+`Preconfigured sites <https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html>`_
+
+If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_
+and are having issues, you will have to submit an `issue on their
+github repository <https://github.com/JCSDA/spack-stack/issues>`_.
+
+The modules and associated software are not maintained by the system
+administrators so you will have to work the spack-stack team through
+the link above.
+
+When is my .bashrc executed? When would it be ignored?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Please review :manpage:`bash(1)` and other information on the `bash
+shell <https://gnu.org/software/bash/>`_ on the `internet
+<https://opstree.com/blog/2020/02/11/shell-initialization-files/>`__.
+
+
+I got the message "REMOTE HOST IDENTIFICATION HAS CHANGED!". What should I do?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You may sometimes get an error message such as the one shown below
+when attempting to access a remote machine when using ssh/scp/wget or
+any such command that accesses a remote machine:
+
+.. code-block:: shell
+
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+    Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+    It is also possible that a host key has just been changed.
+    The fingerprint for the RSA key sent by the remote host is
+    SHA256:lU91/IcK9rcFKIh1txPP1nfI0+JgNaj9IElGqftsc5H.
+    Please contact your system administrator.
+    Add correct host key in /Users/first.last/.ssh/known_hosts to get rid of this message.
+    '''<big>Offending RSA key in /Users/first.last/.ssh/known_hosts:5</big>'''
+    RSA host key for [localhost]:55362 has changed and you have requested strict checking.
+    Host key verification failed.
+
+
+Most of the time when you get that message, it is likely that the host
+key on the remote machine has indeed changed, and it is not an attack.
+
+Under rare circumstances it is possible that someone is trying to do
+what is called a "man-in-the-middle" attack.  If you are accessing one
+of the RDHPCS machines and you can be reasonably certain you can ignore
+that message, implement the solution given below.
+
+If the remote machine is a non-RDHPCS system you will have to
+independently verify if the key has actually changed.  If it is a well
+known site such as github etc, they generally post an announcement on
+their site that the keys have changed.  And if you know that the key
+has changed it is fine to go ahead and implement the solution given
+below.
+
+After verifying that it is not an attack, the solution is to remove the
+offending key (shown in the error message) from the
+**~/.ssh/known_hosts** file on the machine where you see the above
+error.  In the highlighted message above, **5** is the line
+number in the **/.ssh/known_hosts** file.
+
+In the example shown above, since line 5 is the problem key, you can
+use your favorite editor and delete that line.  Alternatively on a
+Linux like systems you use the following command:
+
+.. code-block:: shell
+
+   sed -i.bak -e '5d' ~/.ssh/known_hosts
+
+
+Where can I find "Operational Data" from WCOSS2 on Hera?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some operational data from WCOSS2 is available on Hera/HPSS.
+
+However RDHPCS doesn't keep track of the locations of the operational
+data stored on Hera/HPSS. Please reach out the NCO SPA team that is
+responsible for making that data available by contacting them at
+'''nco.spa@noaa.gov'''.
+
+
+My jobs using NCL are no longer working
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+NCL has decided to switch to Python and have indicated the PyNCL will
+be replacing NCL.
+
+So if you are used to using:
+
+.. code-block:: shell
+
+   module load ncl
+
+please load
+
+.. code-block:: shell
+
+   module load pyncl
+
+That will make NCL version 6.6.2 commands and libraries and headers
+available. If you use other ncl modules, we found that the gmeta files
+created will be dodgy, and not show any content with idt, for example.
+
+Also, we have seen some of the programs that use NCL are using the
+newer features of the Fortran standard, so in addition to loading the
+"pyncl" module you may consider loading a more recent version of the
+GNU module.
+
+So if you are working with NCL please use the following module load command:
+
+.. code-block:: shell
+
+   module load gnu/9.2.0 pyncl
+
+Compile WRF on Hera/Jet with Rocky OS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For the earlier versions of WRF model, the user may need following
+to compile the model on Rocky8 OS. After loading the required
+modules, user needs to add the following to the CPATH in order to
+compile the WRF model.
+
+.. code-block:: shell
+
+ setenv CPATH /usr/include/tirpc:$CPATH
+
+
+After running the configure command, user needs to add "-ltirpc" to
+configure.wrf file.
+
+.. code-block:: shell
+
+ LIB_EXTERNAL    = \
+                      -L$(WRF_SRC_ROOT_DIR)/external/io_netcdf -lwrfio_nf -L/apps/netcdf/4.9.2/gnu-9.2.0/lib -lnetcdff -lnetcdf  -ltirpc
+
+How do I enable x11 forwarding using PowerShell on a Windows system?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Xming** is a popular X Server for Windows, if you don't have a
+program such as Xming installed on your local machine you have to
+install that first. It is a good idea to have Xming running on your
+machine, so please start that program if you have not done so already.
+
+Assuming Xming is already installed on your system:
+
+1. Start Powershell and paste the following command :
+
+.. code-block:: shell
+
+   $env:DISPLAY= 'localhost:0.0'
+
+(you need to type this command each time before using x11 forwarding.)
+
+2. Now connect to SSH server using -X argument :
+
+.. code-block:: shell
+
+   ssh username@hostname -XY
+
+X11 forwarding is now enabled on Powershell.
+
+If the remote system is a Linux system you can quickly check if X
+forwarding is working by running the command **xclock**.
+
+Port Tunnels
+------------
+
 How do I set up an ssh port tunnel?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 
 You can only establish an ssh tunnel from your initial bastion session. If you
 try to establish a tunnel and see the messages like this:
@@ -493,8 +729,6 @@ your user ID on the RDHPCS systems and localhost is typed as-is.
   For a complete list of available bastions by site, check the
   :ref:`bastion_hostnames` table.
 
-
-
 You should be prompted for your password; enter your PIN + RSA token
 and you should be able to login. Once you are able to log in, you can
 log out of that session as that was only for testing the tunnel.
@@ -508,7 +742,7 @@ for data transfers, as long as this ssh window is kept open.
 
 Remember that this is the second terminal session opened on your local
 machine. Once a tunnel has been set up as in Step 1, you
-can use a client such as WinSCP to do the tranfers using that tunnel.
+can use a client such as WinSCP to do the transfers using that tunnel.
 Please keep in mind that tunnel will exist only as long as the session opened
 in Step 1 is kept alive.
 
@@ -772,7 +1006,7 @@ that reboot the problem, but users can take action to avoid running
 into this problem by simply unsetting the above environment variable.
 
 If you are still seeing this error even though you have not set this
-environment variable please submit a help tickdet to report the problem.
+environment variable please submit a help ticket to report the problem.
 
 Why am I getting these errors? I am using hpc-stack for NCEPLIBS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -810,7 +1044,7 @@ When is my .bashrc executed? When would it be ignored?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Please review :manpage:`bash(1)` and other information on the `bash
-shell <https://www.gnu.org/software/bash/>`_ on the `internet
+shell <https://gnu.org/software/bash/>`_ on the `internet
 <https://opstree.com/blog/2020/02/11/shell-initialization-files/>`__.
 
 
@@ -1018,7 +1252,7 @@ Apr 29, 2024: The new LFS5 filesystem on Jet
 
 The new LFS5 filesystem is now available on Jet and will be replacing
 LFS1.  Users are urged to migrate from LFS1 to LFS5 as soon as
-possible.  Please see data-transfer-overview TBD LINK **manageing data
+possible.  Please see data-transfer-overview TBD LINK **managing data
 to local file systems** for information on some of the utilities to
 facilitate the move from LFS1 to LFS5
 
@@ -1226,7 +1460,7 @@ present issues when the C6 system comes on line.
 
 The transition to Rocky8 remains a matter of concern. Raj suggested
 that Centos7 might be maintained in Google Cloud in a single
-environment, on an emergency basis. Unni is testing Rocky8 in the
+environment, on an emergency basis. Support team is testing Rocky8 in the
 Globus and Azure space in the Cloud; he expects to report at the next
 Office Hours meeting. Several users raised specific Rocky8 issues in
 this call.
