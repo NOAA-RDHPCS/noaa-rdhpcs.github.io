@@ -1,19 +1,17 @@
 .. _FAQ:
 
-####
-FAQ
-####
-
+##########################
 Frequently Asked Questions
-==========================
+##########################
+
 
 Accounts
---------
+========
 
 How Do I Get an RDHPCS Account?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`Applying for a user account <applying_for_user_account>`
+See :ref:`Applying for a user account <applying_for_user_account>`.
 
 
 PW login is getting a "Invalid username or password" error.
@@ -31,12 +29,12 @@ password" error, follow these steps before requesting help:
 
 If you continue to get an "Invalid username error", confirm your
 `RDHPCS SSO authentication status
-<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_
+<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_.
 
 As needed, :ref:`request help <getting_help>`.
 
-My RSA Token is locked.
-^^^^^^^^^^^^^^^^^^^^^^^
+My RSA Token is locked
+^^^^^^^^^^^^^^^^^^^^^^
 
 Wait 15 minutes and try again.
 
@@ -106,7 +104,7 @@ That will enable your X applications to work.
 A complete discussion of Role Accounts can be found here: :ref:`role_accounts`.
 
 Jobs
-----
+====
 
 My job hasn't started and I have been waiting a long time. What is wrong?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -279,7 +277,7 @@ with signal 15 (which is the TERM signal), which suggests that the job
 was killed by the user or system administrator.
 
 User Issues
------------
+===========
 
 How do I change my default login shell?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -636,10 +634,10 @@ If the remote system is a Linux system you can quickly check if X
 forwarding is working by running the command **xclock**.
 
 Port Tunnels
-------------
+============
 
 How do I set up an ssh port tunnel?
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can only establish an ssh tunnel from your initial bastion session. If you
 try to establish a tunnel and see the messages like this:
@@ -794,7 +792,7 @@ your PIN+Token code.
 
 
 SSH Port Tunnel For PuTTy Windows Systems
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 PuTTY is an SSH client, used to configure and initiate connection.
 Navigate to a separate tab to install `PuTTY
@@ -878,7 +876,7 @@ system (you already have the Local Port number):
 
 
 SSH Port Tunnel For Tectia Windows Systems
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See the :ref:`tectia` pages for complete information.
 
@@ -923,285 +921,11 @@ To resolve this problem:
 
 #. Try using scp to transfer a file.
 
-How to transfer small files to/from an RDHPCS system?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Port Tunnelling approach is useful for transferring small amount
-data to/from RDHPCS systems from your local machine.
-
-Transferring data using scp/WinSCP is a 2 step process:
-
-1. Establish a Tunnel by following the steps documented here:
-2. Transfer file using WinSCP
-
-See the Data Transfer pages for complete information.
-
-I can no longer transfer files via the port tunnel, please help!
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-From a given machine, your first login has to establish the port
-tunnel. If you do not, the port used will be blocked and you cannot
-establish the port tunnel with subsequent ssh commands. If you cannot
-use scp to transfer files, look for an error message similar to this
-the following when you are trying to establish your tunnel:
-
-.. code-block:: shell
-
-  ssh: connect to host localhost port 2083: Connection refused
-
-
-The number above will match the port you are trying to use.
-
-To resolve this problem:
-
-#. Exit all ssh sessions from your host
-#. Restart ssh to Jet. This session must have the port tunnel options included
-
-.. code-block:: shell
-
-  -L $PORT:localhost:$PORT
-
-#. Try using scp to transfer a file.
-
-Can you please install the xyz python package(s)?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-There are way too many combinations in which users use python so, it
-is not practical to have a "common" python installation that is
-applicable for all users.  Python works best when users install the
-packages they need in their own project space.
-
-We have now opened up access to the anaconda repositories so it is no
-longer necessary to use the RDHPCS mirror for installing the Python
-packages you need. You should now be able to install Python packages
-the same way you would on your local desktop/laptop.
-
-Please search for "anaconda" in the search field for
-specific instructions (if any) on how to maintain your own python
-installations in our environment.
-
-Why are my jobs failing intermittently?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-We are getting reports of jobs failing intermittently with a job
-timeout error.
-
-At least in some instances this has been traced to an environment
-variable setting that is no longer valid. We were able to duplicate
-this problem very easily with a simple MPI Hello World program.
-
-The setting in question is the following environment variable:
-
-.. code-block:: shell
-
-   export I_MPI_FABRICS=shm:ofa
-
-This setting should no longer be set.
-When this variable is set we were able to confirm that even a simple
-MPI Hello World code can fail intermittently even when run on the same
-set of nodes.  While it is true that it happens only some nodes and
-rebooting them clears the nodes, not setting the above environment
-variable does not cause this problem.  We do plan to reboot the nodes
-that reboot the problem, but users can take action to avoid running
-into this problem by simply unsetting the above environment variable.
-
-If you are still seeing this error even though you have not set this
-environment variable please submit a help ticket to report the problem.
-
-Why am I getting these errors? I am using hpc-stack for NCEPLIBS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you are using `hpc-stack <https://github.com/NOAA-EMC/hpc-stack>`_
-please keep in mind that this is a software stack that is installed
-and maintained by the NCEPLIBS team.  Please refer to the `hpc-stack
-official supported distribution
-<https://github.com/NOAA-EMC/hpc-stack/wiki/>`_.
-
-If you have problems, particularly with modules or NCEP libraries, it
-is very likely you are using an unsupported version of their
-libraries. If you are using the official version and still having problems, you
-should submit an "issue" ticket at the above link.
-
-I am using spack-stack and getting some errors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-First, documentation for spack-stack can be found here:
-`spack-stack documentation <https://spack-stack.readthedocs.io/en/latest>`_
-
-The second issue most users run into is the "location" of spack-stack
-on various supported platforms.  That can be found here:
-`Preconfigured sites <https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html>`_
-
-If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_
-and are having issues, you will have to submit an `issue on their
-github repository <https://github.com/JCSDA/spack-stack/issues>`_.
-
-The modules and associated software are not maintained by the system
-administrators so you will have to work the spack-stack team through
-the link above.
-
-When is my .bashrc executed? When would it be ignored?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Please review :manpage:`bash(1)` and other information on the `bash
-shell <https://gnu.org/software/bash/>`_ on the `internet
-<https://opstree.com/blog/2020/02/11/shell-initialization-files/>`__.
-
-
-.. warning::
-
-  REMOTE HOST IDENTIFICATION HAS CHANGED!
-
-You may sometimes get an error message such as the one shown below
-when attempting to access a remote machine when using ssh/scp/wget or
-any such command that accesses a remote machine:
-
-.. code-block:: shell
-
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-    Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-    It is also possible that a host key has just been changed.
-    The fingerprint for the RSA key sent by the remote host is
-    SHA256:lU91/IcK9rcFKIh1txPP1nfI0+JgNaj9IElGqftsc5H.
-    Please contact your system administrator.
-    Add correct host key in /Users/first.last/.ssh/known_hosts to get rid of this message.
-    '''<big>Offending RSA key in /Users/first.last/.ssh/known_hosts:5</big>'''
-    RSA host key for [localhost]:55362 has changed and you have requested strict checking.
-    Host key verification failed.
-
-
-Most of the time when you get that message it is likely that the host
-key on the remote machine has indeed changed and not an attack.
-
-Under rare circumstances it is possible that someone is trying to do
-what is called a "man-in-the-middle" attack.  If you are accessing one
-of the RDHPCS machines you can be reasonably certain you can ignore
-that message implement the solution given below.
-
-If the remote machine is a non-RDHPCS system you will have to
-independently verify if the key has actually changed.  If it is a well
-known site such as github etc, they generally post an announcement on
-their site that the keys have changed.  And if you know that the key
-has changed it is fine to go ahead and implement the solution given
-below.
-
-After verifying that it is not an attach the solution is to remove the
-offending key shown in the error message above from the
-**~/.ssh/known_hosts** file on the machine where you seeing the above
-error.  In the highlighted message above, **5** is the line
-number in the **/.ssh/known_hosts** file.
-
-In the example shown above, since line 5 is the problem key, you can
-use your favorite editor and delete that line.  Alternatively on a
-Linux like systems you use the following command:
-
-.. code-block:: shell
-
-   sed -i.bak -e '5d' ~/.ssh/known_hosts
-
-
-Where can I find "Operational Data" from WCOSS2 on Hera?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Some operational data from WCOSS2 is available on Hera/HPSS.
-
-However RDHPCS doesn't keep track of the locations of the operational
-data stored on Hera/HPSS. Please reach out the NCO SPA team that is
-responsible for making that data available by contacting them at
-'''nco.spa@noaa.gov'''.
-
-
-My jobs using NCL are no longer working
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-NCL has decided to switch to Python and have indicated the PyNCL will
-be replacing NCL.
-
-So if you are used to using:
-
-.. code-block:: shell
-
-   module load ncl
-
-please load
-
-.. code-block:: shell
-
-   module load pyncl
-
-That will make NCL version 6.6.2 commands and libraries and headers
-available. If you use other ncl modules, we found that the gmeta files
-created will be dodgy, and not show any content with idt, for example.
-
-Also, we have seen some of the programs that use NCL are using the
-newer features of the Fortran standard, so in addition to loading the
-"pyncl" module you may consider loading a more recent version of the
-GNU module.
-
-So if you are working with NCL please use the following module load command:
-
-.. code-block:: shell
-
-   module load gnu/9.2.0 pyncl
-
-Compile WRF on Hera/Jet with Rocky OS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For the earlier versions of WRF model, the user may need following
-to compile the model on Rocky8 OS. After loading the required
-modules, user needs to add the following to the CPATH in order to
-compile the WRF model.
-
-.. code-block:: shell
-
- setenv CPATH /usr/include/tirpc:$CPATH
-
-
-After running the configure command, user needs to add "-ltirpc" to
-configure.wrf file.
-
-.. code-block:: shell
-
- LIB_EXTERNAL    = \
-                      -L$(WRF_SRC_ROOT_DIR)/external/io_netcdf -lwrfio_nf -L/apps/netcdf/4.9.2/gnu-9.2.0/lib -lnetcdff -lnetcdf  -ltirpc
-
-How do I enable x11 forwarding using PowerShell on a Windows system?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Xming** is a popular X Server for Windows, if you don't have a
-program such as Xming installed on your local machine you have to
-install that first. It is a good idea to have Xming running on your
-machine, so please start that program if you have not done so already.
-
-Assuming Xming is already installed on your system:
-
-1. Start Powershell and paste the following command :
-
-.. code-block:: shell
-
-   $env:DISPLAY= 'localhost:0.0'
-
-(you need to type this command each time before using x11 forwarding.)
-
-2. Now connect to SSH server using -X argument :
-
-.. code-block:: shell
-
-   ssh username@hostname -XY
-
-X11 forwarding is now enabled on Powershell.
-
-If the remote system is a Linux system you can quickly check if X
-forwarding is working by running the command **xclock**.
-
 Recent User-Facing Changes
 ==========================
 
 Jan 22, 2025: DTNs for Ursa are now available
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 DTNs and the new file systems for Ursa are now available for your use.
 
@@ -1248,7 +972,7 @@ as scp and rsync, or by using Globus Online.
 Please see the :ref:`data-transfer-overview` for more details.
 
 Apr 29, 2024: The new LFS5 filesystem on Jet
---------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The new LFS5 filesystem is now available on Jet and will be replacing
 LFS1.  Users are urged to migrate from LFS1 to LFS5 as soon as
@@ -1271,7 +995,7 @@ To find information of usage by user, refer to the Slurm pages.
 
 
 Apr 25, 2024: Rocoto update to version rocoto/1.3.7 on Hera/Jet/Niagara
------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There were some performance
 issues and some minor bugs in rocoto/1.3.6
@@ -1284,7 +1008,7 @@ Please see the Rocoto pages under Software.
 
 
 Apr 9, 2024: The aging uJet and tJet clusters are being turned off
-------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The uJet and tJet clusters are being turned off as they are based on very old
 hardware, and it is becoming difficult to support them on the newer OS.
@@ -1293,7 +1017,7 @@ This means the '''ujet''' and '''tjet''' partitions are no longer
 available, so please use one of the other available partitions.
 
 Apr 2, 2024: Migration to Rocky8 in phases (Complete)
------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
@@ -1310,7 +1034,7 @@ To report Rocky8 issues, submit a helpdesk ticket with subject
 "Rocky8:<description>".
 
 Mar 19, 2024: Migration to Rocky8 in phases
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We continue to make progress on the gradual Migration from CentOS7 to Rocky8.
 
@@ -1352,7 +1076,7 @@ To report Rocky8 issues, submit a helpdesk ticket with subject
 "Rocky8:<description>".
 
 Feb 20, 2024: Migration to Rocky8 in phases
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Both Hera and Jet have begun the migration to Rocky8 in phases.
 Please see the weekly announcements for the schedule.
@@ -1380,7 +1104,7 @@ To report Rocky8 issues, submit a helpdesk ticket with subject
 "Rocky8:<description>".
 
 Jan 17, 2024: Rocoto updated to version 1.3.6
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Rocoto Workflow Manage has been updated to the latest version,
 version 1.3.6. This version has some very important fixes, so it is
@@ -1406,7 +1130,7 @@ Office Hours are held at regularly. The Support team offers shared
 solutions to acute and common problems.
 
 20 September 2024
------------------
+^^^^^^^^^^^^^^^^^
 
 The team members answered questions on help tickets for specific issues.
 It was announced that Cloud Centos is going away in the short term, and
@@ -1417,7 +1141,7 @@ and to the `session transcript <https://docs.google.com/document/d/1C9xXLHr0GTlg
 are available for review.
 
 6 September 2024
-----------------
+^^^^^^^^^^^^^^^^
 
 Several new team members asked questions concerning node selection and Slurm
 settings, dropped connections, and documentation updates.
@@ -1427,13 +1151,13 @@ and a `transcript of the session
 is available for review.
 
 20 June 2024
-------------
+^^^^^^^^^^^^
 
 Ron Millikan presented `Tensorflow Jumpstart Training <https://drive.google.com/file/d/1WklYsbKrp8_4tydqkayAM6EwCVKDNG-9/view>`_.
 A `transcript the training <https://docs.google.com/document/d/1Ys5S0YGeREmJgXy_KQ6tOygidVV7zGdmmzJDqIZTDzY/edit>`_ of the training is available as well.
 
 4 June 2024
------------
+^^^^^^^^^^^
 
 The Support Team discussed `issues concerning the
 transition of Orion from Rocky8 to Rocky9
@@ -1441,7 +1165,7 @@ transition of Orion from Rocky8 to Rocky9
 here.
 
 10 May 2024
------------
+^^^^^^^^^^^
 
 `Issues concerning data transfer in the Cloud
 <https://drive.google.com/file/d/13TZiHRBi4ISAALmrxXY0J3Wv8ccm4oex/view>`_
@@ -1449,6 +1173,7 @@ A `transcript of the meeting is available
 <https://docs.google.com/document/d/1vbYrndTaAeiy7qAs2alx9proKmHwtK5x-C2YFXDbPt4/edit#heading=h.rqoqmdvh8gtp>`_
 
 26 April 2024
+^^^^^^^^^^^^^
 
 The Support Team fielded issues with Hercules and Rocoto. The team
 discussed Gaea, and that cron is not allowed to run there. This may
@@ -1456,7 +1181,7 @@ present issues when the C6 system comes on line.
 
 
 29 March 2024
--------------
+^^^^^^^^^^^^^
 
 The transition to Rocky8 remains a matter of concern. Raj suggested
 that Centos7 might be maintained in Google Cloud in a single
@@ -1469,7 +1194,7 @@ A `recording of the meeting is available
 <https://drive.google.com/file/d/18Uigf1mtdKNXt9GAdB4y8zwbTeG_9lRL/view>`_
 
 15 March 2024
--------------
+^^^^^^^^^^^^^
 
 The upgrade from Centos7 to Rocky8 Operating Systems remains a key
 issue. System users and the Support Team `discussed plans, benchmarks
@@ -1480,7 +1205,7 @@ Note that there is `transition documentation for system users
 <https://docs.google.com/document/d/1oLqDkslD-99-zpkKD4MtKMmqdm2D4oAo1l7gHHfvKBM/edit#heading=h.cheodqg1384>`_
 
 1 March 2024
-------------
+^^^^^^^^^^^^
 
 Currently the most critical issue in the RDHPCS environment is the
 planned upgrade from Centos7 to Rocky8 Operating Systems.
@@ -1492,7 +1217,7 @@ You can review the `meeting notes
 <https://docs.google.com/document/d/17l8MHlKo_Dx6IXdHODFY3iEdkpH6A_XNtqf_WiwMEzs/edit?usp=sharing>`_
 
 New User Office Hour 28 Feb 2024
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This was a pilot session for new RDHPCS system users. It was offered
 as an open session for asking technical questions! In addition, the
@@ -1503,7 +1228,7 @@ The team shared `notes from the meeting
 <https://docs.google.com/document/d/1Y0ggCrYGcY4yrMeV8SSX4nh2POIbzVFhzGyMmKtozYY/edit>`_
 
 4 Jan 2024
-----------
+^^^^^^^^^^
 
 `Cumulative notes
 <https://docs.google.com/document/d/18RbFULSZ9wppSnXrXAN0_327tKJJjbIy1st2d8Bc67w/edit#heading=h.om52ynf0dwon>`_
@@ -1527,12 +1252,12 @@ Topics for discussion:
 * What information should be provided as background to new users?
 
 15 December 2023
-----------------
+^^^^^^^^^^^^^^^^
 
 `Office hour notes <https://docs.google.com/document/d/1C303IDoCM4wpkHkKl4QFbJlNvBesz66d2nEhBpQ_Ddo/edit>`_
 
 30 Nov 2023
------------
+^^^^^^^^^^^
 
 The premier session for RDHPCS Office Hours was held on 30 November 2023.
 `Office hour notes <https://docs.google.com/document/d/1mXpRHhp909ybqyjhU0LXRNCkuWhwS41v-aLK7EWn588/edit>`_`
