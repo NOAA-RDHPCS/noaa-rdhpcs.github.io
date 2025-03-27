@@ -156,85 +156,10 @@ the output to the Help Desk so that we can diagnose the problem.
   # squeue --job $JOB_ID
   # scontrol show job $JOB_ID
 
-
-All my multi-node MPI jobs are timing out, even simple jobs! What is wrong?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you find that all of your multi-node jobs are getting stuck
-and running into **wall time limit exceeded** error, it
-is possible that you have a problem with your keys, or some cases,
-because of incorrect permissions settings on the
-**/.ssh** directory.
-
-A simple way to check if this is indeed the problem is to try the
-following:
-
-While logged into the one of the front end nodes, try to ssh to
-another front end node. Normally you should be able to do this without
-being prompted for a password. If you are prompted for a password,
-refer to the next question.
-
-My multi-node jobs fail on mpirun/mpiexec.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you are able to run some parallel jobs across nodes but not
-others, especially if the failure is right after the **mpirun** (or
-**;mpiexec**) command, the most likely cause of that
-failure is the stack size setting. You need to set the stack size to
-be the appropriate value for your application. If you're not sure it
-could set it to &quot;unlimited&quot;. There are some rare instances
-we have seen problems when set to &quot;unlimited&quot;, but so far
-most of the time it has been fine. If you're not able to determine a
-good number to set to you could try the unlimited setting.
-
-How you set the stack size depends on what your login shell is,
-**independent of the shell that is used for lunch and the job**.
-
-If your login shell is csh/tcsh
-""""""""""""""""""""""""""""""""
-
-Add the following line to your **/.cshrc** file:
-
-.. code-block:: shell
-
-  limit stacksize unlimited
-
-If your login shell is bash:
-""""""""""""""""""""""""""""
-
-Add the following line to your **/.bashrc** file:
-
-.. code-block:: shell
-
-  ulimit -S -s unlimited
-
-.. note::
-
-  Capital-S for soft limit
-
-Please also make sure to you have a **.bash_profile** file
-that has the following (in addition to whatever you have for your own
-environment):
-
-.. code-block:: shell
-
-    # Get the aliases and functions
-    if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-    fi
-
-.. note::
-
-  Trying to set the stack size within the job file does not work!'''
-  This is because setting it within the job only changes the setting
-  on the head node for the job, but the remaining nodes only get the
-  **default** setting, or whatever is set in the initialization
-  files.
-
 What is the meaning of the exit code?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When checking job status with the showq -c or checkjob command, it is
+When you check a job status with the showq -c or checkjob command, it is
 good to know the meaning of the completion code, or the CCODE column
 for showq. Here is a list of exit code Moab reported from Torque:
 
@@ -275,6 +200,83 @@ Which lists the signals in order. And you will see that 15 is TERM
 So when a job has a completion code of 143, the job was terminated
 with signal 15 (which is the TERM signal), which suggests that the job
 was killed by the user or system administrator.
+
+
+All my multi-node MPI jobs are timing out, even simple jobs! What is wrong?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you find that all of your multi-node jobs are getting stuck
+and running into **wall time limit exceeded** error, it
+is possible that you have a problem with your keys, or some cases,
+because of incorrect permissions settings on the
+**/.ssh** directory.
+
+A simple way to check if this is indeed the problem is to try the
+following:
+
+While logged into the one of the front end nodes, try to ssh to
+another front end node. Normally you should be able to do this without
+being prompted for a password. If you are prompted for a password,
+refer to the next question.
+
+My multi-node jobs fail on mpirun/mpiexec.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are able to run some parallel jobs across nodes but not
+others, especially if the failure is right after the **mpirun** (or
+**;mpiexec**) command, the most likely cause of that
+failure is the stack size setting. You need to set the stack size to
+be the appropriate value for your application. If you're not sure it
+could set it to &quot;unlimited&quot;. There are some rare instances
+we have seen problems when set to &quot;unlimited&quot;, but so far
+most of the time it has been fine. If you're not able to determine a
+good number to set to you could try the unlimited setting.
+
+How you set the stack size depends on what your login shell is,
+**independent of the shell that is used for lunch and the job**.
+
+If your login shell is **csh/tcsh**:
+
+
+Add the following line to your **/.cshrc** file:
+
+.. code-block:: shell
+
+  limit stacksize unlimited
+
+If your login shell is **bash**:
+
+
+Add the following line to your **/.bashrc** file:
+
+.. code-block:: shell
+
+  ulimit -S -s unlimited
+
+.. note::
+
+  Capital-S for soft limit
+
+Please also make sure that you have a **.bash_profile** file
+that has contains the following (in addition to whatever you have for your own
+environment):
+
+.. code-block:: shell
+
+    # Get the aliases and functions
+    if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+    fi
+
+.. note::
+
+  Trying to set the stack size within the job file does not work!'''
+  This is because setting it within the job only changes the setting
+  on the head node for the job, but the remaining nodes only get the
+  **default** setting, or whatever is set in the initialization
+  files.
+
+
 
 User Issues
 ===========
