@@ -26,8 +26,10 @@ bucketname
 byacc
 cactest
 CBHN
+CCODE
 CFLAGS
 cgateway
+checkjob
 chicklet
 clib
 cloudmgmt
@@ -39,14 +41,12 @@ computecanada
 Coolkey
 coredumpsize
 cowsay
+CPATH
 cpio
-<<<<<<< Updated upstream
-creds
-=======
 cpuid
 CRAN
 craype
->>>>>>> Stashed changes
+creds
 csh
 cshrc
 CSXF
@@ -106,6 +106,8 @@ getstripe
 gitflow
 Globus
 globusconnectpersonal
+glopara
+gmeta
 gpfs
 gptl
 GPUDIRECT
@@ -159,6 +161,7 @@ JCPRNG
 jetmgmt
 JRBRNG
 JRPRNG
+Jumpstart
 jupy
 kbytes
 keyctl
@@ -182,8 +185,11 @@ lmgfdl
 lmkl
 lmod
 lnetcdf
+lnetcdff
 lolcow
 lrank
+ltirpc
+lwrfio
 LXXXX
 LXXXXX
 machinefile
@@ -234,6 +240,8 @@ NCAR
 NCARG
 NCBRNG
 nccmp
+NCEP
+NCEPLIBS
 NCPRNG
 ncview
 nedit
@@ -290,6 +298,8 @@ pkcs
 podaac
 PPBRNG
 PPPRNG
+prarms
+Preconfigured
 procname
 psurge
 ptmp
@@ -299,6 +309,7 @@ pycurl
 pygobject
 pygtk
 pygtksourceview
+pyncl
 pyyaml
 quotause
 Radeon
@@ -313,6 +324,7 @@ resynched
 rheltectia
 rmem
 rocoto
+rocotorun
 RSACTF
 RSAKIP
 rstprod
@@ -326,7 +338,9 @@ securid
 setopt
 setstripe
 settarg
+SHAREDUNAME
 showallarticles
+showq
 shpcrpt
 silene
 simg
@@ -343,6 +357,7 @@ SPHINXOPTS
 squashfs
 sshg
 SSLVPN
+stacksize
 suspendtime
 szip
 tcpip
@@ -357,6 +372,8 @@ Tflop
 TFLOPS
 TIMELIMIT
 timesout
+tirpc
+tjet
 totalview
 TPOOL
 TRSM
@@ -366,6 +383,7 @@ UCPRNG
 UDTN
 udunits
 Uecflow
+ujet
 untar
 untarring
 upgrd
@@ -391,7 +409,9 @@ xhpl
 xinitrc
 xjet
 xlarge
+Xming
 xstartup
+xsudo
 XTHI
 xtmp
 xxdiff

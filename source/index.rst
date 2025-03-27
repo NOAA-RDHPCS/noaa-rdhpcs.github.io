@@ -83,7 +83,7 @@ SLURM
    slurm/index
 
 FAQ
-=======
+===
 
 .. toctree::
    :maxdepth: 2

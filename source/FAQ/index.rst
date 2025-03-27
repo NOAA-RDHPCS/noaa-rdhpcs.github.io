@@ -1,19 +1,17 @@
 .. _FAQ:
 
-####
-FAQ
-####
-
+##########################
 Frequently Asked Questions
-==========================
+##########################
+
 
 Accounts
---------
+========
 
 How Do I Get an RDHPCS Account?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`Applying for a user account<applying_for_user_account>`
+See :ref:`Applying for a user account <applying_for_user_account>`.
 
 
 PW login is getting a "Invalid username or password" error.
@@ -31,12 +29,12 @@ password" error, follow these steps before requesting help:
 
 If you continue to get an "Invalid username error", confirm your
 `RDHPCS SSO authentication status
-<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_
+<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_.
 
 As needed, :ref:`request help <getting_help>`.
 
-My RSA Token is locked.
-^^^^^^^^^^^^^^^^^^^^^^^
+My RSA Token is locked
+^^^^^^^^^^^^^^^^^^^^^^
 
 Wait 15 minutes and try again.
 
@@ -52,7 +50,7 @@ On the 4th attempt the system will prompt to recreate a passphrase.
 See :ref:`Connecting for the first time <connecting-to-rdhpcs>`.
 
 
-How do I use X11 appplication with shared user account (role account)?
+How do I use X11 application with shared user account (role account)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A shared user account (role account) is one that is typically used by
@@ -106,7 +104,7 @@ That will enable your X applications to work.
 A complete discussion of Role Accounts can be found here: :ref:`role_accounts`.
 
 Jobs
-----
+====
 
 My job hasn't started and I have been waiting a long time. What is wrong?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,85 +156,10 @@ the output to the Help Desk so that we can diagnose the problem.
   # squeue --job $JOB_ID
   # scontrol show job $JOB_ID
 
-
-All my multi-node MPI jobs are timing out, even simple jobs! What is wrong?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you find that all of your multi-node jobs are getting stuck
-and running into **wall time limit exceeded** error, it
-is possible that you have a problem with your keys, or some cases,
-because of incorrect permissions settings on the
-**/.ssh** directory.
-
-A simple way to check if this is indeed the problem is to try the
-following:
-
-While logged into the one of the front end nodes, try to ssh to
-another front end node. Normally you should be able to do this without
-being prompted for a password. If you are prompted for a password,
-refer to the next question.
-
-My multi-node jobs fail on mpirun/mpiexec.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you are able to run some parallel jobs across nodes but not
-others, especially if the failure is right after the **mpirun** (or
-**;mpiexec**) command, the most likely cause of that
-failure is the stack size setting. You need to set the stack size to
-be the appropriate value for your application. If you're not sure it
-could set it to &quot;unlimited&quot;. There are some rare instances
-we have seen problems when set to &quot;unlimited&quot;, but so far
-most of the time it has been fine. If you're not able to determine a
-good number to set to you could try the unlimited setting.
-
-How you set the stack size depends on what your login shell is,
-**independent of the shell that is used for lunch and the job**.
-
-If your login shell is csh/tcsh
-""""""""""""""""""""""""""""""""
-
-Add the following line to your **/.cshrc** file:
-
-.. code-block:: shell
-
-  limit stacksize unlimited
-
-If your login shell is bash:
-""""""""""""""""""""""""""""
-
-Add the following line to your **/.bashrc** file:
-
-.. code-block:: shell
-
-  ulimit -S -s unlimited
-
-.. note::
-
-  Capital-S for soft limit
-
-Please also make sure to you have a **.bash_profile** file
-that has the following (in addition to whatever you have for your own
-environment):
-
-.. code-block:: shell
-
-    # Get the aliases and functions
-    if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-    fi
-
-.. note::
-
-  Trying to set the stack size within the job file does not work!'''
-  This is because setting it within the job only changes the setting
-  on the head node for the job, but the remaining nodes only get the
-  **default** setting, or whatever is set in the initialization
-  files.
-
 What is the meaning of the exit code?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When checking job status with the showq -c or checkjob command, it is
+When you check a job status with the showq -c or checkjob command, it is
 good to know the meaning of the completion code, or the CCODE column
 for showq. Here is a list of exit code Moab reported from Torque:
 
@@ -278,8 +201,85 @@ So when a job has a completion code of 143, the job was terminated
 with signal 15 (which is the TERM signal), which suggests that the job
 was killed by the user or system administrator.
 
-User
-----
+
+All my multi-node MPI jobs are timing out, even simple jobs! What is wrong?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you find that all of your multi-node jobs are getting stuck
+and running into **wall time limit exceeded** error, it
+is possible that you have a problem with your keys, or some cases,
+because of incorrect permissions settings on the
+**/.ssh** directory.
+
+A simple way to check if this is indeed the problem is to try the
+following:
+
+While logged into the one of the front end nodes, try to ssh to
+another front end node. Normally you should be able to do this without
+being prompted for a password. If you are prompted for a password,
+refer to the next question.
+
+My multi-node jobs fail on mpirun/mpiexec.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are able to run some parallel jobs across nodes but not
+others, especially if the failure is right after the **mpirun** (or
+**;mpiexec**) command, the most likely cause of that
+failure is the stack size setting. You need to set the stack size to
+be the appropriate value for your application. If you're not sure it
+could set it to &quot;unlimited&quot;. There are some rare instances
+we have seen problems when set to &quot;unlimited&quot;, but so far
+most of the time it has been fine. If you're not able to determine a
+good number to set to you could try the unlimited setting.
+
+How you set the stack size depends on what your login shell is,
+**independent of the shell that is used for lunch and the job**.
+
+If your login shell is **csh/tcsh**:
+
+
+Add the following line to your **/.cshrc** file:
+
+.. code-block:: shell
+
+  limit stacksize unlimited
+
+If your login shell is **bash**:
+
+
+Add the following line to your **/.bashrc** file:
+
+.. code-block:: shell
+
+  ulimit -S -s unlimited
+
+.. note::
+
+  Capital-S for soft limit
+
+Please also make sure that you have a **.bash_profile** file
+that has contains the following (in addition to whatever you have for your own
+environment):
+
+.. code-block:: shell
+
+    # Get the aliases and functions
+    if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+    fi
+
+.. note::
+
+  Trying to set the stack size within the job file does not work!'''
+  This is because setting it within the job only changes the setting
+  on the head node for the job, but the remaining nodes only get the
+  **default** setting, or whatever is set in the initialization
+  files.
+
+
+
+User Issues
+===========
 
 How do I change my default login shell?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -402,333 +402,6 @@ How do I find out what my project quota is?
 
 Refer to the allocation pages.
 
-How do I set up an ssh port tunnel?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can only establish an ssh tunnel from your initial bastion session. If you
-try to establish a tunnel and see the messages like this:
-
-
-  .. code-block:: shell
-
-    -------------------
-    bind [127.0.0.1]:57037: Address already in use
-    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
-    Could not request local forwarding.
-    -------------------
-
-You will know that you already have an open session, and cannot
-open a tunnel on this bastion.
-
-To establish a new tunnel, do one of the following:
-
-  * Close any existing sessions on this bastion, **or**,
-  * Open a new session using a bastion where you have no existing sessions.
-
-In the steps below, replace First.Last with your own HPC username, and
-XXXXX with the unique Local Port Number assigned to you when you log
-in to your specified HPC system (Hera/Jet/etc). Use the word "localhost"
-where indicated. It is not a variable, don't substitute anything else.
-Before you perform the first step, close all current sessions on the
-HPC system where you are trying to connect. Once the first session has
-been opened with port forwarding, any further connections (login via
-ssh, copy via scp) will work as expected. You are running these
-commands on your local machine, not within the HPC system terminal.
-
-As long as this ssh window remains open, you will be able to use this
-forwarded port for data transfers.
-
-
-**1. Find your local port number**
-
-To find your unique local port number, log onto your specified HPC
-system (Hera/Jet). Make a note of this number - once you've recorded
-it, close all sessions. Note that this number, which is a fixed
-value for you, will be different on each HPC system.
-
-.. image:: /images/linux_xfer1.png
-   :scale: 75%
-
-.. note::
-    Open two terminal windows for this process
-
-**Local Client Window #1**
-
-Enter the appropriate command for your environment. Remember to replace XXXXX
-with the local port number identified in Step 1 or as needed.
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:XXXXX First.Last@bastion_hostname
-
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-     ssh -L XXXX:localhost:XXXXX First.Last@bastion_hostname
-
-If you will be running X11 applications with x2go or normal terminals,
-remember to add the -X parameter as follows:
-
-.. code-block:: shell
-
-    ssh -X -L XXXX:localhost:XXXXX First.Last@bastion_hostname
-
-
-To verify that the tunnel is working, open another local window in your local
-machine, and issue the command:
-
-.. code-block:: shell
-
-   ssh -p XXXX First.Last@localhost
-
-Note that XXXX is your local port number used above, First.Last is
-your user ID on the RDHPCS systems and localhost is typed as-is.
-
-.. note::
-
-  For a complete list of available bastions by site, check the
-  :ref:`bastion_hostnames` table.
-
-
-
-You should be prompted for your password; enter your PIN + RSA token
-and you should be able to login. Once you are able to log in, you can
-log out of that session as that was only for testing the tunnel.
-
-**2. Use SCP to Complete the Transfer**
-
-**Local Client Window #2**
-
-Once the session is open, you can use this forwarded port
-for data transfers, as long as this ssh window is kept open.
-
-Remember that this is the second terminal session opened on your local
-machine. Once a tunnel has been set up as in Step 1, you
-can use a client such as WinSCP to do the tranfers using that tunnel.
-Please keep in mind that tunnel will exist only as long as the session opened
-in Step 1 is kept alive.
-
-
-.. code-block:: shell
-
-  Hostname: localhost
-  Port: your-assigned-port-used-in-Step1-above
-  File protocol: SFTP
-
-
-To transfer a file **to** HPC Systems
-
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-  rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
-
-.. note::
-
-   Your username is case sensitive when used in the scp command. Username should be in the form of First.Last.
-
-To transfer a file **from** HPC Systems:
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
-
-
-In either case, you will be asked for a password. Enter the password
-from your RSA token (not your passphrase). Your response should be
-your PIN+Token code.
-
-
-SSH Port Tunnel For PuTTy Windows Systems
------------------------------------------
-
-PuTTY is an SSH client, used to configure and initiate connection.
-Navigate to a separate tab to install `PuTTY
-<http://www.putty.org/>`_. If you cannot install software on your
-machine, contact your local systems administrator.
-
-**Configuration**
-
-Enter host information to configure an SSH Terminal Session:
-
-.. image:: /images/putty1.png
-   :scale: 75%
-
-1. Enter Username
-In the left pane under Connection, select "Data" and enter your NOAA
-user name as it appears in your NOAA email address. (Ex: First.Last
-if your NOAA email is First.Last@noaa.gov). User name is case
-sensitive - First.Last. If you do not create a username, you will have
-to enter your user name each time your open a session.
-
-.. image:: /images/putty2.png
-   :scale: 75%
-
-Complete the configuration:
-
-* Select "Session" from the top of the left pane.
-* Select "Save" (between Load and Delete).
-
-**Open a First System Session**
-
-Open the session to make sure it's working, and to record your Local
-Port number to complete the Port Tunneling setup.
-
-* Select the configured session from the "Saved Sessions" list. Select
-  Load, then Open.
-* Enter your unique RSA Passcode.
-
-The RSA passcode is your RSA token PIN followed by 8 digits displayed
-on your RSA token. The digits must be on display when you press enter,
-or access will be denied. When you open a new SSH session, wait for
-the RSA token code to refresh before you enter it.
-
-* Find and record your Local Host number.
-*  Click **Exit**, or close the Putty window to end the session.
-
-**Port Tunnel Setup**
-
-To enable data transfers, you will need to set up a Port Tunnel.
-
-* Open Putty.
-* Select the session from the Saved Sessions list, then Load.
-* In the left pane under Connection>SSH select Tunnels.
-* Check Local ports accept connections from other hosts.
-* In the Source Port field, enter your Local Port number
-* In the Destination Port field, enter "localhost:<local port
-  number>", where your local port number matches what was entered in
-  the Source port.
-* Select Local and Auto Radio Buttons.
-* Click the Add Button.
-
-.. image:: /images/putty3.png
-
-To save the configuration change:
-
-* In the left pane, select Session.
-* Select Save.
-
-Select **Open** to Login and verify that the updated session works correctly.
-
-Create a new Port Tunnel for each SSH system you intend to use. Each
-one will have a unique Local Port number.
-
-To add extra saved sessions (ex: for another Bastion) for the same
-system (you already have the Local Port number):
-
-* Load your current saved session
-* Enter the new host name for the other Bastion
-* Give the new session a new name (ex: Jet - Princeton)
-* Select Save. The new session will appear in the list of saved sessions.
-* Select Open to Login and verify the new session works correctly.
-
-
-SSH Port Tunnel For Tectia Windows Systems
-------------------------------------------
-
-See the :ref:`tectia` pages for complete information.
-
-
-How to transfer small files to/from an RDHPCS system?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Port Tunnelling approach is useful for transferring small amount
-data to/from RDHPCS systems from your local machine.
-
-Transferring data using scp/WinSCP is a 2 step process:
-
-1. Establish a Tunnel by following the steps documented here:
-2. Transfer file using WinSCP
-
-See the Data Transfer pages for complete information.
-
-I can no longer transfer files via the port tunnel, please help!
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-From a given machine, your first login has to establish the port
-tunnel. If you do not, the port used will be blocked and you cannot
-establish the port tunnel with subsequent ssh commands. If you cannot
-use scp to transfer files, look for an error message similar to this
-the following when you are trying to establish your tunnel:
-
-.. code-block:: shell
-
-  ssh: connect to host localhost port 2083: Connection refused
-
-
-The number above will match the port you are trying to use.
-
-To resolve this problem:
-
-#. Exit all ssh sessions from your host
-#. Restart ssh to Jet. This session must have the port tunnel options included
-
-.. code-block:: shell
-
- ssh -L XXXX:localhost:XXXX
-
-#. Try using scp to transfer a file.
-
-How to transfer small files to/from an RDHPCS system?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Port Tunnelling approach is useful for transferring small amount
-data to/from RDHPCS systems from your local machine.
-
-Transferring data using scp/WinSCP is a 2 step process:
-
-1. Establish a Tunnel by following the steps documented here:
-2. Transfer file using WinSCP
-
-See the Data Transfer pages for complete information.
-
-I can no longer transfer files via the port tunnel, please help!
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-From a given machine, your first login has to establish the port
-tunnel. If you do not, the port used will be blocked and you cannot
-establish the port tunnel with subsequent ssh commands. If you cannot
-use scp to transfer files, look for an error message similar to this
-the following when you are trying to establish your tunnel:
-
-.. code-block:: shell
-
-  ssh: connect to host localhost port 2083: Connection refused
-
-
-The number above will match the port you are trying to use.
-
-To resolve this problem:
-
-#. Exit all ssh sessions from your host
-#. Restart ssh to Jet. This session must have the port tunnel options included
-
-.. code-block:: shell
-
-  -L $PORT:localhost:$PORT
-
-#. Try using scp to transfer a file.
-
 Can you please install the xyz python package(s)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -772,7 +445,7 @@ that reboot the problem, but users can take action to avoid running
 into this problem by simply unsetting the above environment variable.
 
 If you are still seeing this error even though you have not set this
-environment variable please submit a help tickdet to report the problem.
+environment variable please submit a help ticket to report the problem.
 
 Why am I getting these errors? I am using hpc-stack for NCEPLIBS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -810,13 +483,12 @@ When is my .bashrc executed? When would it be ignored?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Please review :manpage:`bash(1)` and other information on the `bash
-shell <https://www.gnu.org/software/bash/>`_ on the `internet
+shell <https://gnu.org/software/bash/>`_ on the `internet
 <https://opstree.com/blog/2020/02/11/shell-initialization-files/>`__.
 
 
-.. warning::
-
-  REMOTE HOST IDENTIFICATION HAS CHANGED!
+I got the message "REMOTE HOST IDENTIFICATION HAS CHANGED!". What should I do?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You may sometimes get an error message such as the one shown below
 when attempting to access a remote machine when using ssh/scp/wget or
@@ -839,13 +511,13 @@ any such command that accesses a remote machine:
     Host key verification failed.
 
 
-Most of the time when you get that message it is likely that the host
-key on the remote machine has indeed changed and not an attack.
+Most of the time when you get that message, it is likely that the host
+key on the remote machine has indeed changed, and it is not an attack.
 
 Under rare circumstances it is possible that someone is trying to do
 what is called a "man-in-the-middle" attack.  If you are accessing one
-of the RDHPCS machines you can be reasonably certain you can ignore
-that message implement the solution given below.
+of the RDHPCS machines and you can be reasonably certain you can ignore
+that message, implement the solution given below.
 
 If the remote machine is a non-RDHPCS system you will have to
 independently verify if the key has actually changed.  If it is a well
@@ -854,9 +526,9 @@ their site that the keys have changed.  And if you know that the key
 has changed it is fine to go ahead and implement the solution given
 below.
 
-After verifying that it is not an attach the solution is to remove the
-offending key shown in the error message above from the
-**~/.ssh/known_hosts** file on the machine where you seeing the above
+After verifying that it is not an attack, the solution is to remove the
+offending key (shown in the error message) from the
+**~/.ssh/known_hosts** file on the machine where you see the above
 error.  In the highlighted message above, **5** is the line
 number in the **/.ssh/known_hosts** file.
 
@@ -963,11 +635,299 @@ X11 forwarding is now enabled on Powershell.
 If the remote system is a Linux system you can quickly check if X
 forwarding is working by running the command **xclock**.
 
+Port Tunnels
+============
+
+How do I set up an ssh port tunnel?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can only establish an ssh tunnel from your initial bastion session. If you
+try to establish a tunnel and see the messages like this:
+
+
+  .. code-block:: shell
+
+    -------------------
+    bind [127.0.0.1]:57037: Address already in use
+    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
+    Could not request local forwarding.
+    -------------------
+
+You will know that you already have an open session, and cannot
+open a tunnel on this bastion.
+
+To establish a new tunnel, do one of the following:
+
+  * Close any existing sessions on this bastion, **or**,
+  * Open a new session using a bastion where you have no existing sessions.
+
+In the steps below, replace First.Last with your own HPC username, and
+XXXXX with the unique Local Port Number assigned to you when you log
+in to your specified HPC system (Hera/Jet/etc). Use the word "localhost"
+where indicated. It is not a variable, don't substitute anything else.
+Before you perform the first step, close all current sessions on the
+HPC system where you are trying to connect. Once the first session has
+been opened with port forwarding, any further connections (login via
+ssh, copy via scp) will work as expected. You are running these
+commands on your local machine, not within the HPC system terminal.
+
+As long as this ssh window remains open, you will be able to use this
+forwarded port for data transfers.
+
+
+**1. Find your local port number**
+
+To find your unique local port number, log onto your specified HPC
+system (Hera/Jet). Make a note of this number - once you've recorded
+it, close all sessions. Note that this number, which is a fixed
+value for you, will be different on each HPC system.
+
+.. image:: /images/linux_xfer1.png
+   :scale: 75%
+
+.. note::
+    Open two terminal windows for this process
+
+**Local Client Window #1**
+
+Enter the appropriate command for your environment. Remember to replace XXXXX
+with the local port number identified in Step 1 or as needed.
+
+For Windows Power Shell, enter:
+
+.. code-block:: shell
+
+     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:XXXXX First.Last@bastion_hostname
+
+
+For Mac or Linux, enter:
+
+.. code-block:: shell
+
+     ssh -L XXXX:localhost:XXXXX First.Last@bastion_hostname
+
+If you will be running X11 applications with x2go or normal terminals,
+remember to add the -X parameter as follows:
+
+.. code-block:: shell
+
+    ssh -X -L XXXX:localhost:XXXXX First.Last@bastion_hostname
+
+
+To verify that the tunnel is working, open another local window in your local
+machine, and issue the command:
+
+.. code-block:: shell
+
+   ssh -p XXXX First.Last@localhost
+
+Note that XXXX is your local port number used above, First.Last is
+your user ID on the RDHPCS systems and localhost is typed as-is.
+
+.. note::
+
+  For a complete list of available bastions by site, check the
+  :ref:`bastion_hostnames` table.
+
+You should be prompted for your password; enter your PIN + RSA token
+and you should be able to login. Once you are able to log in, you can
+log out of that session as that was only for testing the tunnel.
+
+**2. Use SCP to Complete the Transfer**
+
+**Local Client Window #2**
+
+Once the session is open, you can use this forwarded port
+for data transfers, as long as this ssh window is kept open.
+
+Remember that this is the second terminal session opened on your local
+machine. Once a tunnel has been set up as in Step 1, you
+can use a client such as WinSCP to do the transfers using that tunnel.
+Please keep in mind that tunnel will exist only as long as the session opened
+in Step 1 is kept alive.
+
+
+.. code-block:: shell
+
+  Hostname: localhost
+  Port: your-assigned-port-used-in-Step1-above
+  File protocol: SFTP
+
+
+To transfer a file **to** HPC Systems
+
+
+For Windows Power Shell, enter:
+
+.. code-block:: shell
+
+  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
+
+For Mac or Linux, enter:
+
+.. code-block:: shell
+
+  rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
+
+.. note::
+
+   Your username is case sensitive when used in the scp command. Username should be in the form of First.Last.
+
+To transfer a file **from** HPC Systems:
+
+For Windows Power Shell, enter:
+
+.. code-block:: shell
+
+    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
+
+For Mac or Linux, enter:
+
+.. code-block:: shell
+
+    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
+
+
+In either case, you will be asked for a password. Enter the password
+from your RSA token (not your passphrase). Your response should be
+your PIN+Token code.
+
+
+SSH Port Tunnel For PuTTy Windows Systems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+PuTTY is an SSH client, used to configure and initiate connection.
+Navigate to a separate tab to install `PuTTY
+<http://www.putty.org/>`_. If you cannot install software on your
+machine, contact your local systems administrator.
+
+**Configuration**
+
+Enter host information to configure an SSH Terminal Session:
+
+.. image:: /images/putty1.png
+   :scale: 75%
+
+1. Enter Username
+In the left pane under Connection, select "Data" and enter your NOAA
+user name as it appears in your NOAA email address. (Ex: First.Last
+if your NOAA email is First.Last@noaa.gov). User name is case
+sensitive - First.Last. If you do not create a username, you will have
+to enter your user name each time your open a session.
+
+.. image:: /images/putty2.png
+   :scale: 75%
+
+Complete the configuration:
+
+* Select "Session" from the top of the left pane.
+* Select "Save" (between Load and Delete).
+
+**Open a First System Session**
+
+Open the session to make sure it's working, and to record your Local
+Port number to complete the Port Tunneling setup.
+
+* Select the configured session from the "Saved Sessions" list. Select
+  Load, then Open.
+* Enter your unique RSA Passcode.
+
+The RSA passcode is your RSA token PIN followed by 8 digits displayed
+on your RSA token. The digits must be on display when you press enter,
+or access will be denied. When you open a new SSH session, wait for
+the RSA token code to refresh before you enter it.
+
+* Find and record your Local Host number.
+*  Click **Exit**, or close the Putty window to end the session.
+
+**Port Tunnel Setup**
+
+To enable data transfers, you will need to set up a Port Tunnel.
+
+* Open Putty.
+* Select the session from the Saved Sessions list, then Load.
+* In the left pane under Connection>SSH select Tunnels.
+* Check Local ports accept connections from other hosts.
+* In the Source Port field, enter your Local Port number
+* In the Destination Port field, enter "localhost:<local port
+  number>", where your local port number matches what was entered in
+  the Source port.
+* Select Local and Auto Radio Buttons.
+* Click the Add Button.
+
+.. image:: /images/putty3.png
+
+To save the configuration change:
+
+* In the left pane, select Session.
+* Select Save.
+
+Select **Open** to Login and verify that the updated session works correctly.
+
+Create a new Port Tunnel for each SSH system you intend to use. Each
+one will have a unique Local Port number.
+
+To add extra saved sessions (ex: for another Bastion) for the same
+system (you already have the Local Port number):
+
+* Load your current saved session
+* Enter the new host name for the other Bastion
+* Give the new session a new name (ex: Jet - Princeton)
+* Select Save. The new session will appear in the list of saved sessions.
+* Select Open to Login and verify the new session works correctly.
+
+
+SSH Port Tunnel For Tectia Windows Systems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See the :ref:`tectia` pages for complete information.
+
+
+How to transfer small files to/from an RDHPCS system?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Port Tunnelling approach is useful for transferring small amount
+data to/from RDHPCS systems from your local machine.
+
+Transferring data using scp/WinSCP is a 2 step process:
+
+1. Establish a Tunnel by following the steps documented here:
+2. Transfer file using WinSCP
+
+See the Data Transfer pages for complete information.
+
+I can no longer transfer files via the port tunnel, please help!
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From a given machine, your first login has to establish the port
+tunnel. If you do not, the port used will be blocked and you cannot
+establish the port tunnel with subsequent ssh commands. If you cannot
+use scp to transfer files, look for an error message similar to this
+the following when you are trying to establish your tunnel:
+
+.. code-block:: shell
+
+  ssh: connect to host localhost port 2083: Connection refused
+
+
+The number above will match the port you are trying to use.
+
+To resolve this problem:
+
+#. Exit all ssh sessions from your host
+#. Restart ssh to Jet. This session must have the port tunnel options included
+
+.. code-block:: shell
+
+ ssh -L XXXX:localhost:XXXX
+
+#. Try using scp to transfer a file.
+
 Recent User-Facing Changes
 ==========================
 
 Jan 22, 2025: DTNs for Ursa are now available
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 DTNs and the new file systems for Ursa are now available for your use.
 
@@ -1014,11 +974,11 @@ as scp and rsync, or by using Globus Online.
 Please see the :ref:`data-transfer-overview` for more details.
 
 Apr 29, 2024: The new LFS5 filesystem on Jet
---------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The new LFS5 filesystem is now available on Jet and will be replacing
 LFS1.  Users are urged to migrate from LFS1 to LFS5 as soon as
-possible.  Please see data-transfer-overview TBD LINK **manageing data
+possible.  Please see data-transfer-overview TBD LINK **managing data
 to local file systems** for information on some of the utilities to
 facilitate the move from LFS1 to LFS5
 
@@ -1037,7 +997,7 @@ To find information of usage by user, refer to the Slurm pages.
 
 
 Apr 25, 2024: Rocoto update to version rocoto/1.3.7 on Hera/Jet/Niagara
------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There were some performance
 issues and some minor bugs in rocoto/1.3.6
@@ -1050,7 +1010,7 @@ Please see the Rocoto pages under Software.
 
 
 Apr 9, 2024: The aging uJet and tJet clusters are being turned off
-------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The uJet and tJet clusters are being turned off as they are based on very old
 hardware, and it is becoming difficult to support them on the newer OS.
@@ -1059,7 +1019,7 @@ This means the '''ujet''' and '''tjet''' partitions are no longer
 available, so please use one of the other available partitions.
 
 Apr 2, 2024: Migration to Rocky8 in phases (Complete)
------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
@@ -1076,7 +1036,7 @@ To report Rocky8 issues, submit a helpdesk ticket with subject
 "Rocky8:<description>".
 
 Mar 19, 2024: Migration to Rocky8 in phases
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We continue to make progress on the gradual Migration from CentOS7 to Rocky8.
 
@@ -1118,7 +1078,7 @@ To report Rocky8 issues, submit a helpdesk ticket with subject
 "Rocky8:<description>".
 
 Feb 20, 2024: Migration to Rocky8 in phases
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Both Hera and Jet have begun the migration to Rocky8 in phases.
 Please see the weekly announcements for the schedule.
@@ -1146,7 +1106,7 @@ To report Rocky8 issues, submit a helpdesk ticket with subject
 "Rocky8:<description>".
 
 Jan 17, 2024: Rocoto updated to version 1.3.6
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Rocoto Workflow Manage has been updated to the latest version,
 version 1.3.6. This version has some very important fixes, so it is
@@ -1172,7 +1132,7 @@ Office Hours are held at regularly. The Support team offers shared
 solutions to acute and common problems.
 
 20 September 2024
------------------
+^^^^^^^^^^^^^^^^^
 
 The team members answered questions on help tickets for specific issues.
 It was announced that Cloud Centos is going away in the short term, and
@@ -1183,7 +1143,7 @@ and to the `session transcript <https://docs.google.com/document/d/1C9xXLHr0GTlg
 are available for review.
 
 6 September 2024
-----------------
+^^^^^^^^^^^^^^^^
 
 Several new team members asked questions concerning node selection and Slurm
 settings, dropped connections, and documentation updates.
@@ -1193,13 +1153,13 @@ and a `transcript of the session
 is available for review.
 
 20 June 2024
-------------
+^^^^^^^^^^^^
 
 Ron Millikan presented `Tensorflow Jumpstart Training <https://drive.google.com/file/d/1WklYsbKrp8_4tydqkayAM6EwCVKDNG-9/view>`_.
 A `transcript the training <https://docs.google.com/document/d/1Ys5S0YGeREmJgXy_KQ6tOygidVV7zGdmmzJDqIZTDzY/edit>`_ of the training is available as well.
 
 4 June 2024
------------
+^^^^^^^^^^^
 
 The Support Team discussed `issues concerning the
 transition of Orion from Rocky8 to Rocky9
@@ -1207,7 +1167,7 @@ transition of Orion from Rocky8 to Rocky9
 here.
 
 10 May 2024
------------
+^^^^^^^^^^^
 
 `Issues concerning data transfer in the Cloud
 <https://drive.google.com/file/d/13TZiHRBi4ISAALmrxXY0J3Wv8ccm4oex/view>`_
@@ -1215,6 +1175,7 @@ A `transcript of the meeting is available
 <https://docs.google.com/document/d/1vbYrndTaAeiy7qAs2alx9proKmHwtK5x-C2YFXDbPt4/edit#heading=h.rqoqmdvh8gtp>`_
 
 26 April 2024
+^^^^^^^^^^^^^
 
 The Support Team fielded issues with Hercules and Rocoto. The team
 discussed Gaea, and that cron is not allowed to run there. This may
@@ -1222,11 +1183,11 @@ present issues when the C6 system comes on line.
 
 
 29 March 2024
--------------
+^^^^^^^^^^^^^
 
 The transition to Rocky8 remains a matter of concern. Raj suggested
 that Centos7 might be maintained in Google Cloud in a single
-environment, on an emergency basis. Unni is testing Rocky8 in the
+environment, on an emergency basis. Support team is testing Rocky8 in the
 Globus and Azure space in the Cloud; he expects to report at the next
 Office Hours meeting. Several users raised specific Rocky8 issues in
 this call.
@@ -1235,7 +1196,7 @@ A `recording of the meeting is available
 <https://drive.google.com/file/d/18Uigf1mtdKNXt9GAdB4y8zwbTeG_9lRL/view>`_
 
 15 March 2024
--------------
+^^^^^^^^^^^^^
 
 The upgrade from Centos7 to Rocky8 Operating Systems remains a key
 issue. System users and the Support Team `discussed plans, benchmarks
@@ -1246,7 +1207,7 @@ Note that there is `transition documentation for system users
 <https://docs.google.com/document/d/1oLqDkslD-99-zpkKD4MtKMmqdm2D4oAo1l7gHHfvKBM/edit#heading=h.cheodqg1384>`_
 
 1 March 2024
-------------
+^^^^^^^^^^^^
 
 Currently the most critical issue in the RDHPCS environment is the
 planned upgrade from Centos7 to Rocky8 Operating Systems.
@@ -1258,7 +1219,7 @@ You can review the `meeting notes
 <https://docs.google.com/document/d/17l8MHlKo_Dx6IXdHODFY3iEdkpH6A_XNtqf_WiwMEzs/edit?usp=sharing>`_
 
 New User Office Hour 28 Feb 2024
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This was a pilot session for new RDHPCS system users. It was offered
 as an open session for asking technical questions! In addition, the
@@ -1269,7 +1230,7 @@ The team shared `notes from the meeting
 <https://docs.google.com/document/d/1Y0ggCrYGcY4yrMeV8SSX4nh2POIbzVFhzGyMmKtozYY/edit>`_
 
 4 Jan 2024
-----------
+^^^^^^^^^^
 
 `Cumulative notes
 <https://docs.google.com/document/d/18RbFULSZ9wppSnXrXAN0_327tKJJjbIy1st2d8Bc67w/edit#heading=h.om52ynf0dwon>`_
@@ -1293,12 +1254,12 @@ Topics for discussion:
 * What information should be provided as background to new users?
 
 15 December 2023
-----------------
+^^^^^^^^^^^^^^^^
 
 `Office hour notes <https://docs.google.com/document/d/1C303IDoCM4wpkHkKl4QFbJlNvBesz66d2nEhBpQ_Ddo/edit>`_
 
 30 Nov 2023
------------
+^^^^^^^^^^^
 
 The premier session for RDHPCS Office Hours was held on 30 November 2023.
 `Office hour notes <https://docs.google.com/document/d/1mXpRHhp909ybqyjhU0LXRNCkuWhwS41v-aLK7EWn588/edit>`_`
