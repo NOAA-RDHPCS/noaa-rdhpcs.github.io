@@ -22,8 +22,10 @@ There are currently two major systems at NESCC:
 - HPSS* A 50 Petabyte IBM/Oracle hierarchical storage management
   system.
 
-In mid-year 2025 the Ursa system based on AMD 9654 with 2 DDN Lustre file systems and a VAST file system is expected to be available.
-In the first half of 2026 the Rhea system, based on AMD Turin is expected to be available.
+In mid-year 2025 the Ursa system based on AMD 9654 with 2 DDN Lustre
+file systems and a VAST file system is expected to be available.
+In the first half of 2026 the Rhea system, based on AMD Turin is 
+expected to be available.
 
 These `slides
 <https://docs.google.com/presentation/d/1uFii6V18uaYMcA7WNKF3eAtn26LU4pcxp8uEqEdDPz0/edit#slide=id.g30820fabc4a_16_0>`_
