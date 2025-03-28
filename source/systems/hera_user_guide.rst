@@ -24,7 +24,7 @@ There are currently two major systems at NESCC:
 
 In mid-year 2025 the Ursa system based on AMD 9654 with 2 DDN Lustre
 file systems and a VAST file system is expected to be available.
-In the first half of 2026 the Rhea system, based on AMD Turin is 
+In the first half of 2026 the Rhea system, based on AMD Turin is
 expected to be available.
 
 These `slides
