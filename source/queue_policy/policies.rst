@@ -209,17 +209,14 @@ File System Usage Practices and Policies
 High Performance File System (HPFS - Scratch)
 ---------------------------------------------
 
-Hera's /scratch(1,2), Jet's
-/lfs(1,4), and Niagara's /collab1 are scratch file systems for your
-input and output project data for running current jobs, **NOT** for
-long term data storage.
+HPFS-scratch file systems are for input and output project data for running current jobs, **NOT** long term data storage.  Long term data storage is provided by the NESCC-HPSS and GFDL-DMF data archives. HPFS-scratch file systems are designed for high performance not high reliability; they are **NOT** backed up, therefore there is a small risk that data could be lost without any possibility of recovery. HPFS-scratch on current systems include:
 
 .. warning::
 
-  Data on scratch is **NOT** backed up.
+  Data on HPFS-scratch is **NOT** backed up.
 
 1. Keep source code and critical configuration files on /home, and
-   back up critical data to HPSS.
+   back up critical data to the NESCC-HPSS and GFDL-DMF data archives.
 2. Data unused over 30 days is considered old and should be removed or
    moved to a different storage vehicle.
 
@@ -299,6 +296,9 @@ and justification.
    space in the scratch filesystem. It puts a tremendous burden on
    the HFS and has an adverse impact on all the users on the system.
 
+Long Term Data Archive Storage
+-----------------------------------------
+Long term data storage is provided by the NESCC-HPSS and GFDL-DMF data archives (add the links…to  NESCC-HPSS and GFDL-Archive.)
 
 Filesystem Backup and Data Retention
 ====================================
