@@ -467,7 +467,7 @@ The following is the current policy for compression on F5:
    /* Ensure compression on qualified files */
    RULE 'compress-large-files-on-hdd' MIGRATE COMPRESS('lz4') FROM POOL 'capacity' WHERE not(excluded_files) AND (KB_ALLOCATED >= 4096) AND access_buffer_time_passed
 
-**Additional notes regarding GFPS compression:**
+**Additional notes regarding GPFS compression:**
 
 * Users can decompress their files by running
   ``mmchattr --compression no -I yes <file>``.
