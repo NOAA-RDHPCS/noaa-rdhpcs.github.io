@@ -180,6 +180,8 @@ lblas
 lcuda
 lcudart
 LDFLAGS
+LDTN
+LDTNs
 libcoolkeypk
 libmpi
 libsci
@@ -194,6 +196,7 @@ lnetcdf
 lnetcdff
 lolcow
 lrank
+ltfs
 ltirpc
 lwrfio
 LXXXX
@@ -233,6 +236,7 @@ MRPRNG
 Msafeptr
 msgq
 msstate
+msub
 MSUHPC
 multifactor
 mvapich
@@ -329,6 +333,8 @@ RDARCH
 RDHPC
 RDMA
 RDONLY
+rdtn
+RDTNs
 realmemory
 reconfig
 resynched

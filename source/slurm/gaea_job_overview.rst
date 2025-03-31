@@ -114,7 +114,7 @@ or, from the sbatch command line:
 
 .. code-block:: shell
 
-   sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
+   sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/transfer_script
 
 Allocation
 ----------
@@ -131,6 +131,7 @@ granted in AIM it can take up to two days to be reflected in Gaea's
 Slurm scheduler. If you still don't have the granted access after two
 days, please put in a help desk ticket so admins can investigate your
 issue. To determine your Slurm account memberships, run the command:
+
 ``sacctmgr list associations user=First.Last``
 
 To submit jobs to the scheduler under a specific account do the following from
