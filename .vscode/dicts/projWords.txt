@@ -104,7 +104,6 @@ genv
 genvall
 genvlist
 getstripe
-GFPS
 gitflow
 Globus
 globusconnectpersonal
@@ -181,7 +180,6 @@ libcoolkeypk
 libmpi
 libsci
 Linaro
-linenos
 LINTRST
 llapack
 lmgfdl
