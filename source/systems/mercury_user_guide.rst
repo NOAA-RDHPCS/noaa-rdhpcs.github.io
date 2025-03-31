@@ -76,8 +76,6 @@ Below are the data management policies for Mercury:
   have not been accessed in the last 14 days will be automatically purged.
 - All files under the ``/collab2/data/$USER`` directory tree which have not
   been accessed in the last 60 days will be automatically purged.
-- All files under the ``/collab2/data/$PROJECT`` directory are treated the same
-  as HPFS (scratch) data and are not deleted.
 
 A default 10GB quota on each user’s home directory ``/home/$USER``.
 

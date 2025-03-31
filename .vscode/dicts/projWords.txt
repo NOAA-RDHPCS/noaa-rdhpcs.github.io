@@ -1,7 +1,4 @@
 # These are words that are specific to this project
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
 ACORS
 ALLINEA
 ALLNODES
