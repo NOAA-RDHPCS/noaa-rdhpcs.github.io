@@ -467,7 +467,7 @@ The following is the current policy for compression on F5:
    /* Ensure compression on qualified files */
    RULE 'compress-large-files-on-hdd' MIGRATE COMPRESS('lz4') FROM POOL 'capacity' WHERE not(excluded_files) AND (KB_ALLOCATED >= 4096) AND access_buffer_time_passed
 
-**Additional notes regarding GFPS compression:**
+**Additional notes regarding GPFS compression:**
 
 * Users can decompress their files by running
   ``mmchattr --compression no -I yes <file>``.
@@ -634,8 +634,7 @@ table below lists details about each of the module-provided compilers.
 .. |pe_gnu| replace:: ``PrgEnv-gnu``
 .. |pe_intel| replace:: ``PrgEnv-intel``
 .. |pe_nvhpc| replace:: ``PrgEnv-nvhpc``
-.. |intel_cl| replace:: ``intel-classic``
-.. |intel_oa| replace:: ``intel-oneapi``
+
 
 +--------+-------------+----------------+----------+----------+---------------+
 | Vendor | Programming | Compiler       | Language | Compiler | Compiler      |
@@ -666,18 +665,6 @@ table below lists details about each of the module-provided compilers.
 |        |             |                | C++      | ``CC``   | ``icpx``      |
 |        |             |                +----------+----------+---------------+
 |        |             |                | Fortran  | ``ftn``  | ``ifort``     |
-|        |             +----------------+----------+----------+---------------+
-|        |             | |intel_cl|     | C        | ``cc``   | ``icc``       |
-|        |             |                +----------+----------+---------------+
-|        |             |                | C++      | ``CC``   | ``icpc``      |
-|        |             |                +----------+----------+---------------+
-|        |             |                | Fortran  | ``ftn``  | ``ifort``     |
-|        |             +----------------+----------+----------+---------------+
-|        |             | |intel_oa|     | C        | ``cc``   | ``icx``       |
-|        |             |                +----------+----------+---------------+
-|        |             |                | C++      | ``CC``   | ``icpx``      |
-|        |             |                +----------+----------+---------------+
-|        |             |                | Fortran  | ``ftn``  | ``ifx``       |
 +--------+-------------+----------------+----------+----------+---------------+
 | NVIDIA | |pe_nvhpc|  | ``nvhpc``      | C        | ``cc``   | ``nvc``       |
 |        |             |                +----------+----------+---------------+

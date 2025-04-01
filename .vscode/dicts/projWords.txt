@@ -44,6 +44,7 @@ cowsay
 CPATH
 cpio
 cpuid
+cpus
 CRAN
 craype
 creds
@@ -207,6 +208,7 @@ memberwork
 mgmt
 Minfo
 MKLROOT
+mmchattr
 Moba
 modulefamilies
 modulefil
@@ -224,8 +226,10 @@ MPMD
 MRBRNG
 MRPRNG
 Msafeptr
+msgq
 msstate
 MSUHPC
+multifactor
 mvapich
 myccode
 mycexe
@@ -240,6 +244,7 @@ NCAR
 NCARG
 NCBRNG
 nccmp
+NCCS
 NCEP
 NCEPLIBS
 NCPRNG
@@ -276,6 +281,7 @@ opari
 openmp
 openmpi
 opensc
+ORNL
 ortar
 OTRS
 otrsnewticket
@@ -346,6 +352,7 @@ silene
 simg
 sjet
 Skylake
+SLES
 slurmctld
 slurmd
 slurmdbd
