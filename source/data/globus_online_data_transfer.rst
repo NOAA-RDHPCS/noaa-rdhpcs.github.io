@@ -105,7 +105,7 @@ partner clusters.
        noaardhpcs#jet_untrusted
      - /mnt/lfs[5/6]
        /mnt/lfs[5/6]data_untrusted
-     - Boulder
+     - GSL
      - Trusted hosts
        Anywhere
    * - Niagara
@@ -310,4 +310,3 @@ your data. Click here for `file sharing instructions. <https://docs.globus.org/h
 When you log into the Globus web site and click **Collections**, you can see
 what collections are shared with you, and also those that you share with
 others.
-
