@@ -95,8 +95,8 @@ partner clusters.
    * - Hera
      - noaardhpcs#hera
        noaardhpcs#hera_untrusted
-     - /archive, /home, /nbhome, /work, /xtmp
-       /collab1/data_untrusted
+     - /scratch1, /scratch2
+       /scratch1/data_untrusted, /scratch2/data_untrusted
      - NESCC
      - Trusted Hosts
        Anywhere
