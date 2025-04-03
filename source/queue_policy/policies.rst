@@ -209,23 +209,28 @@ File System Usage Practices and Policies
 High Performance File System (HPFS - Scratch)
 ---------------------------------------------
 
-Hera's /scratch(1,2), Jet's
-/lfs(1,4), and Niagara's /collab1 are scratch file systems for your
-input and output project data for running current jobs, **NOT** for
-long term data storage.
+HPFS-scratch file systems are for input and output project data to run current jobs, NOT long term data storage.
+Long term data storage is provided by the NESCC-HPSS and GFDL-DMF data archives.
+HPFS-scratch file systems are designed for high performance not high reliability;
+they are NOT backed up, therefore there is a small risk that data could be lost without any possibility of recovery.
+HPFS-scratch on current systems include:
+* Ursa/Hera’s /scratch(1,2,3,4)
+* Jet’s /lfs(5,6)
+* Mercury’s /collab2
+
 
 .. warning::
 
-  Data on scratch is **NOT** backed up.
+  Data on HPFS-scratch is **NOT** backed up.
 
 1. Keep source code and critical configuration files on /home, and
-   back up critical data to HPSS.
+   back up critical data to the NESCC-HPSS and GFDL-DMF data archives.
 2. Data unused over 30 days is considered old and should be removed or
    moved to a different storage vehicle.
 
 .. note::
 
-  Use this google doc to assist you with `Hera/Jet Scratch File
+  Use this google doc to assist you with `Ursa/Hera/Jet Scratch File
   Management <https://docs.google.com/document/d/1fDssUm61kyACE3l-8A8n6G2gHa_I9kW55DpFO1vpwBk/edit?usp=sharing>`_
 
 
@@ -280,7 +285,7 @@ HFS data can be retrieved from our snapshots - please see
 :ref:`home_snapshot` for more information.
 
 Each RDHPCS user is given a home directory (/home/First.Last) and a
-**50GB** quota on each system (Hera, Jet, etc.) they have an account
+**50GB** quota on each system (Ursa, Hera, Jet, etc.) they have an account
 on. All files owned by you in /home are counted not just files in your
 /home/First.Last directory.
 
@@ -296,8 +301,13 @@ and justification.
    (HFS). This includes keeping input/output files or executable files
    for a parallel run in your home directory or even using symlinks in
    your home directories that point to your files in your project
-   space in the scratch filesystem. It puts a tremendous burden on
+   space in the HPFS-scratch filesystem. It puts a tremendous burden on
    the HFS and has an adverse impact on all the users on the system.
+
+Long Term Data Archive Storage
+--------------------------------
+Long term data storage is provided by the `NESCC-HPSS <https://docs.rdhpcs.noaa.gov/data/nescc_hpss.html>`_
+and `GFDL-DMF <https://docs.rdhpcs.noaa.gov/data/gfdl_archive.html>`_ data archives.
 
 
 Filesystem Backup and Data Retention
@@ -309,21 +319,12 @@ Filesystem Backup and Data Retention
   * Is backed up nightly.  Look at the snapshot directory
     (/home/.snapshot) to see what options are available
 
-* /scratch
+* HPFS-scratch
 
-  * For data to drive models and model results
-  * Scratch file systems are not backed up
-  * Scratch file systems are not purged, it is up to the individual
-    projects to determine the purge policy
-  * Only copy new data to the HSMS, it is a scarce resource and is not
-    infinite.
+  * HPFS-scratch file systems are not backed up
+  * HPFS-scratch file systems are not purged (except as noted), it is up to the individual users to clean up old data.
+      - Stmp on /scratch1-4 is purged weekly on Monday for data older than 30 days.
 
-All of the file systems with the exception of /home and the HSMS are
-considered scratch file systems. We want users to be aware of the
-risks with those file systems. The scratch file systems are not backed
-up in any way. While we do our best to ensure the reliability of those
-file systems, they are not perfect and there is a small risk that data
-could be lost without any possibility of recovery.
 
 .. _home_snapshot:
 
