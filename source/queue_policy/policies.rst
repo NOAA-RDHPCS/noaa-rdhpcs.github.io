@@ -213,8 +213,9 @@ HPFS-scratch file systems are for input and output project
 data to run current jobs, NOT long term data storage.
 Long term data storage is provided by the NESCC-HPSS
 and GFDL-DMF data archives.
-HPFS-scratch file systems are designed for high performance not high reliability;
-they are NOT backed up, therefore there is a small risk that data could
+HPFS-scratch file systems are designed for high performance not high 
+reliability. 
+They are NOT backed up, therefore there is a small risk that data could
 be lost without any possibility of recovery.
 HPFS-scratch on current systems include:
 * Ursa/Hera’s /scratch(1,2,3,4)
@@ -325,11 +326,10 @@ Filesystem Backup and Data Retention
 * HPFS-scratch
 
   * HPFS-scratch file systems are not backed up
-  * HPFS-scratch file systems are not purged (except as noted),
-   it is up to the individual users to clean up old data.
+  * HPFS-scratch file systems are not purged (except as noted), 
+it is up to the individual users to clean up old data.
 
-
-      - Stmp on /scratch1-4 is purged weekly on Monday for data older than 30 days.
+- Stmp on /scratch1-4 is purged weekly on Monday for data older than 30 days.
 
 
 .. _home_snapshot:
