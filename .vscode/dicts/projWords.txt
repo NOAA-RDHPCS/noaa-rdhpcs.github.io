@@ -253,6 +253,7 @@ nedit
 NESCC
 nesccmgmt
 newrsa
+noaagfdl
 noaardhpcs
 noaastore
 NOATIME
@@ -398,6 +399,7 @@ URBRNG
 urllib
 URPRNG
 Userspace
+UTDN
 valgrind
 Vampir
 VARNAME

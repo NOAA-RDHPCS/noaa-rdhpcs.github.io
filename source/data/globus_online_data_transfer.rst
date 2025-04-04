@@ -86,10 +86,10 @@ partner clusters.
      - Trusted hosts
        Anywhere
    * - Gaea
-     - noaardhpcs#gaea
-       noaardhpcs#gaea_f6
-     - /gpfs/f5, $HOME
-       /gpfs/f6, $HOME
+     - | noaardhpcs#gaea
+       | noaardhpcs#gaea_f6
+     - | /gpfs/f5, $HOME
+       | /gpfs/f6, $HOME
      - NCRC
      - Anywhere
    * - Hera
@@ -102,25 +102,24 @@ partner clusters.
        Anywhere
    * - Jet
      - noaardhpcs#jet
-       noaardhpcs#jet_untrusted
-     - /mnt/lfs[5/6]
-       /mnt/lfs[5/6]data_untrusted
+     - | /mnt/lfs[5/6]
+       | /mnt/lfs[5/6]data_untrusted
      - GSL
      - Trusted hosts
        Anywhere
    * - Niagara
      - noaardhpcs#niagara
        noaardhpcs#niagara_untrusted
-     - /collab1/data
-       /collab1/data_untrusted
+     - | /collab1/data
+       | /collab1/data_untrusted
      - NESCC
      - Trusted hosts
        Anywhere
    * - Mercury
      - noaardhpcs#mercury
        noaardhpcs#mercury_untrusted
-     - /collab2/data
-       /collab2/data_untrusted
+     - | /collab2/data
+       | /collab2/data_untrusted
      - NESCC
      - Trusted hosts
        Anywhere
@@ -241,7 +240,7 @@ Endpoint.
       user has a limit of 3 active transfers, so it is required to transfer a
       lot of data on each transfer than less data across many transfers.
     * If a folder is constituted with mixed files including thousands of small
-      files (less than 1MB each one), it would be better to tar the smallfiles.
+      files (less than 1MB each one), it would be better to tar the small files.
       Otherwise, if the files are larger, Globus will handle them.
 
 Data Sharing with External Collaborators
