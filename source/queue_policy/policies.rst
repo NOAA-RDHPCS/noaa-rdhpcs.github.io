@@ -327,6 +327,8 @@ Filesystem Backup and Data Retention
   * HPFS-scratch file systems are not backed up
   * HPFS-scratch file systems are not purged (except as noted),
    it is up to the individual users to clean up old data.
+
+
       - Stmp on /scratch1-4 is purged weekly on Monday for data older than 30 days.
 
 
