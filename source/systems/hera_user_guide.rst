@@ -74,7 +74,7 @@ System Configuration
      - 2.46
    * - Reg Compute Nodes
      - 1,328
-     - 100
+     - 68
      - 14
      - 2
    * - Cores/Node
