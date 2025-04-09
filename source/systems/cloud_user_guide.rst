@@ -3780,3 +3780,9 @@ marketplace first. Publishing to the marketplace is also a good way to
 version control the cluster definitions anyway, so it might be good
 for backing up the configuration data somewhere. You can publish resources
 to the marketplace from `here <https://noaa.parallel.works/market/publish>`__
+
+How to automate start and shutdown a group of clusters [CI/CD] in Parallel Works?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Refer Parallel Works Repo scripts startV3Clusters.py and stopV3Clusters.py located 
+at https://github.com/parallelworks/pw-cluster-automation
