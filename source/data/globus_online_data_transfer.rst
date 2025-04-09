@@ -103,7 +103,7 @@ partner clusters.
    * - Jet
      - | noaardhpcs#jet
        | noaardhpcs#jet_untrusted
-     - | /mnt/lfs[5/6]
+     - | /mnt/lfs[5,6]
        | /mnt/lfs[5,6]/data_untrusted
      - GSL
      - Trusted hosts
