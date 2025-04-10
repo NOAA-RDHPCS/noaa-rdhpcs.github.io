@@ -5,7 +5,7 @@
 RDHPCS Cloud Computing
 ######################
 
-The RDHPCS Cloud Platform allows NOAA users to create an custom HPC
+The RDHPCS Cloud Platform allows NOAA users to create a custom HPC
 cluster on an as-needed basis, with the type of resources that are
 appropriate for the task at hand.
 
@@ -27,7 +27,7 @@ customized applications.
 We recommend the `Parallel Works User Guide <https://parallelworks.com/docs>`_
 for comprehensive information about the product. Users can review the
 `Knowledge Base from Asked Questions`_ section below
-to learn about the NOAA RDHPCS-specific topics.
+to learn about NOAA RDHPCS-specific topics.
 
 NOAA's Parallel Works Portal
 ============================
@@ -46,7 +46,7 @@ Workflow
   To use the RDHPCS Cloud system, you must have an account on a
   project allocated to a cloud resource.  Cloud projects start with
   ``ca-`` (AWS), ``cg-`` (GCP), or ``-cz`` (Azure).
-  :ref:`project_request`
+  See :ref:`project_request` for details.
 
 The typical workflow for using the cloud resources is presented in the
 following diagram.
@@ -234,21 +234,21 @@ What is the Parallel Works Login URL?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://noaa.parallel.works
 
-Where do I find the Parallel Works User Guide?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-`User Guide`_.
+Where do I find complete Parallel Works user materials?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+See the `User Guide`_.
 
 How do I get access to the Parallel Works Platform?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All RDHPCS users have access to Parallel Works. See :ref:`Requesting
-access to RDHPCS projects<project_request>`
+access to RDHPCS projects<project_request>`.
 
 How is a new user added to a project on Parallel Works?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By requesting acess to an RDHPCS project. See :ref:`Requesting access
-to RDHPCS projects<project_request>`.  Cloud project names starts with
+By :ref:`Requesting access
+to RDHPCS projects<project_request>`.  Cloud project names start with
 ``ca``, ``cz``, or ``cg`` implying AWS, Azure, or Google Compute
 platforms, followed by the project name. So for example,
 ca-budget-test indicates that project budget-test is allocated to the
@@ -285,12 +285,12 @@ Collect the following information:
 - Allocation amount.
 
 Once approvals have been gathered, the project can be requested in
-`Account Information Management`_
+`Account Information Management`_ (AIM).
 
 2. Access the `Account Information Management`_ website and fill in the form
 
    View all projects, then click the ``Create a Project`` button.
-   Fill in the fields with the information from the alloctaion committee:
+   Fill in the fields with the information from the allocation committee:
 
    a. Project short name. Please provide in this format: ``<cloud platform abbreviation>-<project name>``
       Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
@@ -419,7 +419,7 @@ space and create the pw symlink in your home directory as follows:
 How do I use the Cost Calculator?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can estimate an hourly cost of your experiment's from
+You can estimate the hourly cost of your experiments from
 the Parallel Works(PW) platform. After login on the
 platform, click on the “Resources” tab, and double click on
 your resource definition. There is a definition tab, where
@@ -451,7 +451,7 @@ backup, and egress.
 How does the Cost Dashboard work?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Refer to the `user guide <https://parallelworks.com/docs/monitoring-costs>`_
+Refer to the `user guide <https://parallelworks.com/docs/monitoring-costs>`_.
 
 How do I find a real time cost estimate of my session?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -471,7 +471,7 @@ refreshes with the cost details.
 How do I estimate core-hours?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An example, your project requests a dedicated number of HPC
+As an example, your project requests a dedicated number of HPC
 compute nodes or has an HPC system reservation for some
 number of HPC compute nodes. Let's say that the
 dedicated/reserved nodes have 200 cores and the length of
@@ -519,20 +519,21 @@ the public key in ~/.ssh/authorized_keys file.
    This will let you login to the head node from the PW
    interface.
 
-   Example:
+.. Example:
 
     .. code-block:: shell
 
         $ ssh First.Last@54.174.136.76
+        Warning: Permanently added '54.174.136.76' (ECDSA) to the list of known hosts.
 
-    Warning: Permanently added '54.174.136.76' (ECDSA) to the
-    list of known hosts.
 
 You can use the toggle button to restore lustre file system
 setting. You can also resize the LFS at a chunk size
 multiple of 2.8 TB.
 
-Note that LFS is an expensive storage.
+.. note::
+
+  Be aware that LFS is an expensive storage.
 
 How do I add a workflow to my account?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1880,6 +1881,15 @@ a bucket. Once you have verified that all of your data has been migrated, you
 can shut down the old file system. If your data is backed up to a bucket
 already, you can also re-provision your existing Lustre configuration and
 re-sync the data.
+
+Automate startup/shutdown for a group of clusters [CI/CD] in Parallel Works
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use the Parallel Works REST API to start a group of clusters, wait for
+their master node IP addresses, and then run ssh commands using the fetched IP
+addresses of the started master nodes. For details, click the Parallel
+Works `repository <https://github.com/parallelworks/pw-cluster-automation>`_
+link, then scroll down for Cluster Automation information.
 
 
 Data Transfer
