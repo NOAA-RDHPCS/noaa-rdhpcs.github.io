@@ -266,16 +266,11 @@ prediction challenges.
 About Modules
 =============
 
-Modules is a tool that is used to manage the use of software when
-multiple versions are installed. For packages that are not provided
-with the OS (compilers, debuggers, MPI stacks,etc), we install so that
-new versions to not overwrite old versions. By default, no modules are
-loaded. Therefore you must load any modules that you wish to use. To
-see what modules are available, run:
-
-.. code-block:: shell
-
-   # module avail
+The Modules tool is used to manage the use of software when
+multiple versions are installed. Packages that are not provided
+with the OS (compilers, debuggers, MPI stacks,etc), are installed so that
+new versions do not overwrite old versions. By default, no modules are
+loaded. Therefore, you must load any modules that you wish to use.
 
 At a minimum you will want to load a compiler and an MPI stack:
 
@@ -286,90 +281,28 @@ At a minimum you will want to load a compiler and an MPI stack:
 
 .. note::
 
-   Since you have to do this explicitly (for now), you also have to
-   do it in your job scripts. Or, you can put it in your `.profile`
-   and make it permanent.
+   You can choose to include the module load command in your job scripts.
+   Otherwise, you can put it in your `.profile`
+   to make it permanent.
 
 .. rubric:: Modules on Jet
 
-The way to find the latest modules on Jet is to run module avail:
+Run the ``module avail`` command:
 
 .. code-block:: shell
 
    $ module aval
 
 to see the list of available modules for the compiler and the MPI
-modules currently loaded.
+modules currently loaded on Jet.
 
-.. code-block:: shell
-
-   --------------------------------- /apps/lmod/lmod/modulefiles/Core ---------------------------------
-   lmod/7.7.18    settarg/7.7.18
-
-   ------------------------------------ /apps/modules/modulefiles -------------------------------------
-   advisor/2019         g2clib/1.4.0     intel/19.0.4.243   rocoto/1.3.1
-   antlr/2.7.7          gempak/7.4.2     intelpython/3.6.8  szip/2.1
-   antlr/4.2     (D)    grads/2.0.2      matlab/R2017b      udunits/2.1.24
-   cairo/1.14.2         hpss/hpss        nag-fortran/6.2    vtune/2019
-   cnvgrib/1.4.0        idl/8.7          nccmp/1.8.2        wgrib/1.8.1.0b
-   contrib   imagemagick/7.0.8-53        ncview/2.1.3       xxdiff/3.2.Z1
-   ferret/6.93          inspector/2019   performance-reports/19.1.1
-   forge/19.1intel/18.0.5.274     (D)    pgi/19.4
-
-  Where:
-   D:  Default Module
-
-   Use "module spider" to find all possible modules.
-   Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
-
-In the above, each module name represents a different package. In
+Each module name represents a different package. In
 cases where there are multiple versions of a package, one will be set
-as a default. For example, for the intel compiler there are multiple
-choices:
-
-.. code-block:: shell
-
-   intel/11.1.080    intel/12-12.1.4(default)    intel/12-12.1.5
-
-So if you run:
-
-.. code-block:: shell
-
-   # module load intel
-
-The default version will be loaded, in this case 12-12.1.4 If you want
-to load a specific version, you can. We highly recommend you use the
+as a default. We highly recommend that you use the
 system defaults unless something is not working or you need a
-different feature. To load a specific version, specify the version
-number.
+different feature.
 
-.. code-block:: shell
-
-   # module load intel/11.1.080    # module list   Currently Loaded Modulefiles:    1) intel/11.1.080
-
-to a different version of the same module, you can either do
-If you already have a particular module loaded and you want to switch
-
- .. code-block:: shell
-
-   # module unload intel   # module load intel/11.1.080
-
-or
-
- .. code-block:: shell
-
-   # module switch intel intel/11.1.080
-
-.. warning::
-
-   When unloading modules, only unload those that you have loaded.
-   The others are done automatically from master modules.
-
-.. note::
-
-   Modules is a work in progress, and we will be improving their uses
-   and making which modules you load more clear.
-
+See :ref:`Modules <modules>` for more information.
 
 Using Math Libraries
 ====================

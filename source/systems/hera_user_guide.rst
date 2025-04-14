@@ -864,7 +864,7 @@ module system that makes it easy to place modules in a hierarchical
 arrangement. So you may not see all the available modules when you
 type the ``module avail`` command.
 
-See :ref:`Modules <modules>`
+See :ref:`Modules <modules>` for more information.
 
 
 Using MPI
