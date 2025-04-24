@@ -509,7 +509,7 @@ Niagara:
   have not been accessed in the last 60 days will be automatically
   purged.
 * All files under the ``/collab1/data/$PROJECT`` directory are treated
-  the same as HPFS (scracth) data and are not deleted.
+  the same as HPFS (scratch) data and are not deleted.
 
 The definition of access time is the last time the file was opened for
 reading or writing.
@@ -582,7 +582,7 @@ Maintainers are expected to:
 * Follow the naming conventions and guidelines outlined in this
   document
 * Apply security updates as quickly as possible after they become
-  availble
+  available
 * Update software for bug fixes and functionality as users request
 * Respond to user email requests for help using the software
 
@@ -659,7 +659,7 @@ When installing software into your ``/contrib`` directory, first determine
 if this is software that should be versioned (multiple versions may
 exist at one time) or unversioned (there will only ever be one version
 installed, and upgrade will overwrite the existing software). For
-verisoned software, please install it into a subdirectory of your
+versioned software, please install it into a subdirectory of your
 package that is named after the version number. For supporting
 multiple versions of software the install path should be:
 
@@ -767,6 +767,8 @@ you run it.
 
    Do not use a time less than 120 seconds (2 min).
 
+.. _QOS-table:
+
 Jet and Hera
 ------------
 
@@ -808,8 +810,8 @@ Jet and Hera
      -  QOS for a job that requires more urgency than *batch*. Your
         project's :ref:`FairShare <slurm-fairshare>` will be lowered
         at 2.0x the rate as compared to *batch*.  Only one job per
-        project/account can be pending/runnin at any time. When a
-        project's FairShare is below 0.45, jobs submmit to *urgent*
+        project/account can be pending/running at any time. When a
+        project's FairShare is below 0.45, jobs submit to *urgent*
         are automatically changed to *batch* and users notified via
         stderr.
    * - debug

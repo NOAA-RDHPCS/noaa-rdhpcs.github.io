@@ -3,9 +3,12 @@ ACORS
 ALLINEA
 ALLNODES
 antlr
+aoml
 Apptainer
 archrpt
 aval
+avgdata
+avgtext
 awscli
 awscliv
 awsnoaa
@@ -26,10 +29,12 @@ bucketname
 byacc
 cactest
 CBHN
+ccasm
 CCODE
 CFLAGS
 cgateway
 checkjob
+chgrp
 chicklet
 clib
 cloudmgmt
@@ -63,6 +68,8 @@ devcimultiintel
 devel
 DFTI
 Diskspace
+dispositioned
+dispositioning
 dmget
 dmlocate
 dmls
@@ -115,6 +122,7 @@ GPUDIRECT
 gpuwf
 GRBRNG
 Gres
+grib
 groupinstall
 groupname
 GRPRNG
@@ -126,6 +134,7 @@ guilabel
 gvimdiff
 GVNIC
 habanero
+hafs
 Haswell
 HCBRNG
 HCPRNG
@@ -160,6 +169,9 @@ itac
 JCBRNG
 JCPRNG
 jetmgmt
+joberr
+jobfile
+jobout
 JRBRNG
 JRPRNG
 Jumpstart
@@ -180,6 +192,7 @@ libcoolkeypk
 libmpi
 libsci
 Linaro
+linenos
 LINTRST
 llapack
 lmgfdl
@@ -200,6 +213,7 @@ Makefiles
 mambaenv
 MANPATH
 Mathematica
+maxresident
 MCBRNG
 MCPRNG
 mdlcloud
@@ -212,6 +226,7 @@ mmchattr
 Moba
 modulefamilies
 modulefil
+MODULESHOME
 mpicc
 mpicpp
 mpiexec
@@ -237,8 +252,10 @@ myexe
 myfort
 myfortcode
 myfxex
+myjob
 myprog
 Myrinet
+myrun
 nbhome
 NCAR
 NCARG
@@ -265,6 +282,7 @@ nodocs
 nofma
 nompi
 NOPASSWD
+Normshares
 noslurm
 nranks
 NRBRNG
@@ -284,6 +302,7 @@ openmpi
 opensc
 ORNL
 ortar
+osse
 OTRS
 otrsnewticket
 otrsopentickettab
@@ -300,6 +319,7 @@ pcluster
 perftools
 peta
 petaflops
+phod
 physcpubind
 pkcs
 podaac
@@ -308,6 +328,8 @@ PPPRNG
 prarms
 Preconfigured
 procname
+projid
+PROJWORK
 psurge
 ptmp
 pubkeys
@@ -338,6 +360,7 @@ rstprod
 rtfim
 rtnim
 runscript
+sacccount
 Sandybridge
 Scalapack
 Secur
@@ -366,6 +389,7 @@ squashfs
 sshg
 SSLVPN
 stacksize
+Stmp
 suspendtime
 szip
 tcpip
@@ -403,10 +427,12 @@ UTDN
 valgrind
 Vampir
 VARNAME
+verif
 vftmp
 vimdiff
 vjet
 vtune
+wallclock
 WCOSS
 wgrib
 wmem

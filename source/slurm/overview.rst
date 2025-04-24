@@ -406,10 +406,10 @@ specify these parameters, your job will be submitted to the default partition
 and QOS.
 
 If you wish choose a different partition or QOS you will need to specify them
-as per the table above. Different partitions and QOS are available, depending
-the resources you need. For example, jobs that require external network
-connectivity or HPSS access will generally need to be submited to the
-**service** partition.
+as per :ref:`the QOS table <QOS-table>`. Different partitions and QOS are
+available, depending the resources you need. For example, jobs that require
+external network connectivity or HPSS access will generally need to be
+submitted to the **service** partition.
 
 QOS is used to specify a **priority** for the job.
 
