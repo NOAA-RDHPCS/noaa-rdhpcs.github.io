@@ -3,37 +3,11 @@
 ***************
 Ursa User Guide
 ***************
-
-.. image:: /images/Hera.jpg
-
-The Ursa and Rhea systems are based at the NOAA Environmental Security
-Computing Center (NESCC). Located in Fairmont, West Virginia, NESCC houses
-NOAA's newest High Performance Computing Data Center. This site provides
-computing resources to support NOAA's research in weather and atmospheric trend
-modeling, as well as its other environmental research areas.
-
-There are four major systems at NESCC:
-
-- Ursa, based on AMD 9654 with DDN Lustre
-- Rhea, based on AMD Turin with DDN Lustre & VAST File Systems.
-- Hera, a 760 Tflop Cray Compute Cluster high performance computing
-  system.
-- HPSS, a 50 Petabyte IBM/Oracle hierarchical storage management
-  system.
-
-
 .. _ursa-system-overview:
 
 Ursa System Overview
 ====================
-
-- Capacity of 3,270 trillion floating point operations per second – or
-  3.27 petaFLOPS
-- The Fine Grain Graphical Processing Units have a total capacity of
-  2,000 trillion floating point operations per second, or 2.0
-  petaFLOPS
-- 45 million hours per month with 63,840 cores and a total scratch
-  disk capacity of 18.5 Petabytes.
+Ursa is located at the `NOAA Environmental Security Computing Center (NESCC) <https://docs.rdhpcs.noaa.gov/systems/common.html#locations-and-systems-of-the-rdhpcs>`_, located in Fairmont, West Virginia. 
 
 System Configuration
 --------------------
@@ -44,112 +18,110 @@ System Configuration
    :align: left
 
    * -
-     - Ursa
-     - Rhea
+     - Compute System
+     - GPU System
    * - CPU Type
      - AMD Genoa 9654: 96 cores/12 channels to memory
-     - AMD Turin 9655: 96 cores/12 channels to memory
+     - AMD Genoa 9654: 96 cores/12 channels to memory
    * - CPU Speed (GHz)
-     - TBD
-     - TBD
-   * - Reg Compute Nodes
-     - 634
-     - 1380
+     - 2.4 GHz
+     - 2.4 GHz
+   * - Compute Nodes
+     - 576
+     - 58
    * - Cores/Node
      - 192
      - 192
    * - Total Cores
-     - 121,728
-     - 264,960
+     - 110,592
+     - 11,136
    * - Memory/Core (GB)
-     - 96
-     - 256
-   * - Peak Performance
-     - 4.77 petaFlops
-     - 22 petaFlops
-   * - Service Code Memory (GB)
-     - 187
-     - N/A
-   * - CPU FLOPS (TFLOPS)
-     - 2,672
-     - 83.1
-   * - Disk Space
-     - >40 Petabytes
-     - >100 Petabytes
-   * - Maximum Performance
-     - >330 gigabytes/second
-     - >600 gigabytes/second
-   * - GPU FLOPS/GPU
-     - N/A
-     - 4.7
+     - 2
+     - 2
+   * - OS
+     - Rocky 9
+     - Rocky 9
+   * - CPU Peak Performance
+     - 4.25 PFlops
+     - 0.43 PFlops
    * - Interconnect
-     - HDR-100 IB
-     - FDR-10 (40 Gbps)
+     - NDR-200 IB
+     - NDR-200 IB
+   * - Total Disk Capacity
+     - >100 PB, (shared with Hera)
+     - >100 PB, (shared with Hera)
+   * - Total Ave Disk Performance
+     - >1000 GB/s
+     - >1000 GB/s
+   * - GPU Type
+     - N/A
+     - NVIDIA H100-NVL
+   * - GPU's/node
+     - N/A
+     - 2
+   * - Memory/GPU (GB)
+     - N/A
+     - 94
    * - Total GPU FLOPS (TFLOPS)
      - N/A
-     - 3,760
+     - 3.48 PFlops
 
-The OS for both systems will be Rocky 9.
+Usra Partitions
+--------------------
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
 
-Ursa/Rhea Front Ends and Service Partition
-------------------------------------------
+   * - Partition
+     - QOS Allowed
+     - Billing TRES Factor
+     - Description
+   * - u1
+     - batch,windfall, debug, urgent
+     - 100
+     - General compute resource. **Default** if no partition is specified.
+   * - u1-h100
+     - gpu, gpuwf
+     - 100
+     - For jobs that require nodes with GPUs. See the `QOS table <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#queue-policy>`_ for more details.
+   * - u1-service
+     - batch, windfall
+     - 100
+     - Serial jobs (max 4 cores), with a 24 hr limit. Jobs will be run on service nodes that have external network connectivity. Useful for data transfers or access to external resources like databases. 
+       If your workflow requires pushing or pulling data to/from the HSMS(HPSS), it should be run there.
 
-Each system comes with 16 outward facing nodes.
+Ursa Front Ends and Service Partition
+---------------------------------------
+Ursa has 15 outward facing nodes.
 
-4 nodes will be (front-end) login nodes:
+* 4 nodes will be (front-end) login/cron nodes interactive use:
+    * ufe01-ufe04, total of 768 cores for interactive use. 
+      See the `Login (Front End) Node Usage Policy <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#login-node-usage>`_ for important information about using Login nodes.
+* 10 nodes will comprise the service partition:
+    * 3,840 cores total.
+    * Available via Slurm.
+    * Target for compilation and data transfer jobs.
+    * Target for scrontab jobs (Scrontab is the preferred method for recurring jobs).
+* 1 node is available for ecflow
+    * uecflow01
 
-* 768 cores total, for interactive use.
-* ufe01-ufe04.
-* Will handle cron as well.
-
-12 nodes will comprise the service partition:
-
-* 2,304 cores total.
-* Available via Slurm.
-* Target for all data transfer jobs.
-* Target for scrontab jobs (Scrontab is the preferred method for
-  recurring jobs).
-
-One spare node, Uecflow01,  will be available for ecflow.  A similar
-configuration will be used for the 16 outward facing nodes for Rhea.
-
-Ursa Software stack
--------------------
-
+Ursa Software Stack
+-------------------------
 * Ursa uses Slurm as the batch system.
 * Spack is used to install software in /apps.
 * Modules are used similarly to the MSU systems.
 * An Intel stack is in place, and AMD and NVHPC stacks will be added.
 * Ursa uses the most current versions of the compilers/libraries.
 
-Rhea File Systems
------------------
-
-Rhea and Ursa will share file systems.  A new file system will be installed,
-targeted at handling small files and small block I/O. It will be accessible to
-Ursa and Rhea.
+Ursa File Systems
+------------------------
+Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4, that will replace Hera’s /scratch1 and /scratch2.
 
 /scratch3 and /scratch4
-^^^^^^^^^^^^^^^^^^^^^^^
-
-* DDN Lustre.
-* Upgraded with Rhea to ~60PB each.
-* Initially mounted on Ursa, followed by Rhea.
-
-/scratch5
-^^^^^^^^^
-
-* VAST (all flash file system).
-* Delivered in support of Rhea at ~22PB.
-* Targeted toward small files, small block I/O and ML/AI.
-
-
-This file system will make use of `Darshan
-<https://www.mcs.anl.gov/research/projects/darshan/>`_ a scalable HPC I/O
-characterization tool. Darshan is designed to capture an accurate picture of
-application I/O behavior, including properties such as patterns of access
-within files, with minimum overhead.
-
+------------------------
+* DDN Lustre, each file system: >50 PB, > 500 GB/s
+* Mounted on Ursa and Hera
 
 Getting Help
 ------------
