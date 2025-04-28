@@ -35,7 +35,7 @@ Performance Computing program.
 .. |hpcc_gaea_url|	   replace:: https://www.noaa.gov/organization/information-technology/gaea
 .. |hpcc_hera_url|	   replace:: https://www.noaa.gov/organization/information-technology/hera
 .. |hpcc_jet_url|	      replace:: https://www.noaa.gov/organization/information-technology/jet
-.. |hpcc_mercury_url|	replace:: https://www.noaa.gov/organization/information-technology/mercury
+.. |hpcc_mercury_url|	replace:: https://www.noaa.gov/organization/information-technology/niagara
 .. |hpcc_cloud_url|	   replace:: https://www.noaa.gov/information-technology/hpcc
 .. |hpcc_orion_url|	   replace:: https://www.noaa.gov/organization/information-technology/orion
 .. |gaeaP|		         replace:: Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
