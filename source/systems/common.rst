@@ -57,7 +57,7 @@ Performance Computing program.
 +------------------+-------------+--------------------+------------------------------+
 | Jet              | |jetP|      | |hpcc_jet_url|     | :ref:`jet-user-guide`        |
 +------------------+-------------+--------------------+------------------------------+
-| Mercury          | |niagaraP|  | |hpcc_mercury_url| | :ref:`mercury-user-guide`    |
+| Mercury          | |mercuryP|  | |hpcc_mercury_url| | :ref:`mercury-user-guide`    |
 +------------------+-------------+--------------------+------------------------------+
 | Cloud            | |cloudP|    | |hpcc_cloud_url|   | :ref:`cloud-user-guide`      |
 +------------------+-------------+--------------------+------------------------------+
