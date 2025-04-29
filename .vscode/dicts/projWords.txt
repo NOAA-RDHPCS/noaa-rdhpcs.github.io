@@ -219,6 +219,7 @@ MCPRNG
 mdlcloud
 Mellanox
 memberwork
+merc
 mgmt
 Minfo
 MKLROOT
