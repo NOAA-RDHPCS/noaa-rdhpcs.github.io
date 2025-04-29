@@ -55,9 +55,9 @@ Performance Computing program.
 +------------------+----------+-------------------+---------------------------+
 | Ursa             | |heraP|  | |hpcc_hera_url|   | :ref:`ursa-user-guide`    |
 +------------------+----------+-------------------+---------------------------+
-| Jet              | |jetP|   | |hpcc_jet_url|  - | :ref:`jet-user-guide`     |
+| Jet              | |jetP|   | |hpcc_jet_url|    | :ref:`jet-user-guide`     |
 +------------------+----------+-------------------+---------------------------+
-| Mercury          | |mercP|  | |hpcc_mercury_url | :ref:`mercury-user-guide` |
+| Mercury          | |mercP|  | |hpcc_mercury_url|| :ref:`mercury-user-guide` |
 +------------------+----------+-------------------+---------------------------+
 | Cloud            | |cloudP| | |hpcc_cloud_url|  | :ref:`cloud-user-guide`   |
 +------------------+----------+-------------------+---------------------------+
