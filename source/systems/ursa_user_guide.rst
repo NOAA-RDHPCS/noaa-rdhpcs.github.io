@@ -116,8 +116,8 @@ Ursa Software Stack
 
 Ursa File Systems
 ------------------------
-Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4, that will replace 
-Hera’s /scratch1 and /scratch2.
+Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4,
+that will replace Hera’s /scratch1 and /scratch2.
 
 /scratch3 and /scratch4
 ------------------------
