@@ -41,7 +41,7 @@ Performance Computing program.
 .. |gaeaP|		         replace:: Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
 .. |heraP|		         replace:: Predicting high-impact weather events
 .. |jetP|		         replace:: Hurricane Forecast Improvement Program (HFIP)
-.. |mercP|	         replace:: Collaborative resource for data transfer
+.. |mercP|	            replace:: Collaborative resource for data transfer
 .. |cloudP|		         replace:: Platforms to create and use HPC computatational clusters on an ad-hoc basis
 .. |msuP|		         replace:: Collaboration with Mississippi State University (MSU)
 
