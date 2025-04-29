@@ -6,34 +6,6 @@ Hera User Guide
 
 .. image:: /images/Hera.jpg
 
-About NESCC
-===========
-
-The NOAA Environmental Security Computing Center (NESCC), located in
-Fairmont, West Virginia, is the location of NOAA's newest High
-Performance Computing Data Center. This site provides computing
-resources to support NOAA's research in long-range weather modeling
-as well as its other environmental research areas.
-
-There are currently two major systems at NESCC:
-
-- Hera* A 760 Tflop Cray Compute Cluster high performance computing
-  system.
-- HPSS* A 50 Petabyte IBM/Oracle hierarchical storage management
-  system.
-
-In mid-year 2025 the Ursa system based on AMD 9654 with 2 DDN Lustre
-file systems and a VAST file system is expected to be available.
-In the first half of 2026 the Rhea system, based on AMD Turin is
-expected to be available.
-
-These `slides
-<https://docs.google.com/presentation/d/1uFii6V18uaYMcA7WNKF3eAtn26LU4pcxp8uEqEdDPz0/edit#slide=id.g30820fabc4a_16_0>`_
-present the schedule and configuration of Ursa and Rhea.
-
-
-.. _hera-system-overview:
-
 System Overview
 ===============
 
@@ -58,90 +30,39 @@ System Configuration
    :align: left
 
    * -
-     - Hera TCA
-     - Hera FGA
-     - Juno TCA
-     - Juno FGA
+     - Hera
    * - CPU Type
      - Intel SkyLake
-     - Intel Haswell
-     - Intel SkyLake
-     - Intel Haswell
    * - CPU Speed (GHz)
      - 2.40
-     - 2.46
-     - 2.40
-     - 2.46
    * - Reg Compute Nodes
      - 1,328
-     - 68
-     - 14
-     - 2
    * - Cores/Node
      - 40
-     - 20
-     - 40
-     - 20
    * - Total Cores
      - 53,120
-     - 2,000
-     - 560
-     - 40
    * - Memory/Core (GB)
      - 96
-     - 256
-     - 90
-     - 256
    * - Peak FLOPS/Node
      - 12
-     - N/A
-     - 12
-     - N/A
    * - Service Code Memory (GB)
      - 187
-     - N/A
-     - 187
-     - N/A
    * - Total BigMem Nodes
      - 268
-     - N/A
-     - 268
-     - N/A
    * - BigMem Node Memory (GB)
      - 384
-     - N/A
-     - 384
-     - N/A
    * - CPU FLOPS (TFLOPS)
      - 2,672
-     - 83.1
-     - 28
-     - 1.6
    * - GPUs/Node
      - N/A
-     - 8 x P100
-     - N/A
-     - 8 x P100
    * - Total GPUs
      - N/A
-     - 800
-     - N/A
-     - 16
    * - GPU FLOPS/GPU
      - N/A
-     - 4.7
-     - N/A
-     - 4.7
    * - Interconnect
      - HDR-100 IB
-     - FDR-10 (40 Gbps)
-     - HDR-100
-     - FDR-10 (40 Gbps)
    * - Total GPU FLOPS (TFLOPS)
      - N/A
-     - 3,760
-     - N/A
-     - 75
 
 .. note::
 
