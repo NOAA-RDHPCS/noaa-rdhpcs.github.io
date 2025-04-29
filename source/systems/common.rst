@@ -61,7 +61,7 @@ Performance Computing program.
 +------------------+----------+-------------------+---------------------------+
 | Cloud            | |cloudP| | |hpcc_cloud_url|  | :ref:`cloud-user-guide`   |
 +------------------+----------+-------------------+---------------------------+
-| MSU-HPC Orion    | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide' |
+| MSU-HPC Orion    | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide` |
 +------------------+----------+-------------------+---------------------------+
 | MSU-HPC Hercules | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide` |
 +------------------+----------+-------------------+---------------------------+
