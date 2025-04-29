@@ -810,9 +810,9 @@ Jet, Hera and Ursa QOS
        14400 (Ursa)
      - 30 mins
      - 1.25
-     - **Highest priority QOS** , useful for debugging sessions. 
-        Your project `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ will be lowered at 1.25x the rate as compared to batch. 
-        Only two jobs per user can be pending/running at any time. This QOS should NOT be used for fast-turnaround of general work. While the debug QOS is available, we recommend that if you need to work through an 
+     - **Highest priority QOS** , useful for debugging sessions.
+        Your project `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ will be lowered at 1.25x the rate as compared to batch.
+        Only two jobs per user can be pending/running at any time. This QOS should NOT be used for fast-turnaround of general work. While the debug QOS is available, we recommend that if you need to work through an
         iterative process to debug a code, that you submit a longer running interactive job to the default QOS so that you can restart your application over and over again without having to start a new batch job.
    * - windfall
      - 8400 (Jet/Hera)
@@ -836,7 +836,7 @@ Jet, Hera and Ursa QOS
        Max of 336 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
        will NOT be considered for scheduling if the project’s running jobs exceed this limit.
        Lowest priority QOS for use with GPU nodes. If you have an allocation of “windfall only” (Monthly allocation = 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority
-       FairShare Factor (f). EffectvUsage = 0. See how `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ works. This QOS is useful for low priority jobs that will only run when the 
+       FairShare Factor (f). EffectvUsage = 0. See how `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ works. This QOS is useful for low priority jobs that will only run when the
        system (partition(s)) has enough unused space available, while not lowering the project’s FairShare priority.
 
 
