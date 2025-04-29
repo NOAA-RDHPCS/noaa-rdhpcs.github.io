@@ -767,23 +767,23 @@ you run it.
 
    Do not use a time less than 120 seconds (2 min).
 
-.. _QOS-table:
-
-Jet and Hera
-------------
-
 .. note::
 
   If you have an allocation of "windfall only" (Allocation = 1) you
   can only submit to the windfall or gpuwf QOS.
 
+.. _QOS-table:
+
+Jet, Hera and Ursa QOS
+----------------------
+
 .. list-table::
    :header-rows: 1
+   :stub-columns: 1
    :align: left
 
    * - QOS
-     - Minimum Nodes
-     - Maximum Nodes
+     - Maximum Cores
      - Maximum Wall Clock
      - Billing TRES Factor
      - Description and Limits
@@ -791,119 +791,54 @@ Jet and Hera
      -
      -
      -
-     -
-     - Max of 400 pending/running jobs per project/account, additional
-       jobs will be rejected. Max of 20 jobs per project/account will
-       gain age priority. Exceptions are stated below.
+     - Max of 400 pending/running jobs per project/account, additional jobs will be rejected. Max of 20 jobs per project/account will gain age priority. Exceptions are stated below.
    * - batch
-     - 1
-     - 8,400\ [1]_
+     - 8400 (Jet/Hera)
+       14400 (Ursa)
      - 8 hours
-     - 1.0
-     -  Default QOS for non-reservation jobs with an allocation more
-        then *Windfall-Only* (``RawShare=1``).
+     - 1
+     - **Default** QOS for non-reservation jobs with an allocation more then Windfall-Only (RawShare=1).
    * - urgent
-     - 1
-     - 8,400\ [1]_
+     - 8400 (Jet/Hera)
+       14400 (Ursa)
      - 8 hours
-     - 2.0
-     -  QOS for a job that requires more urgency than *batch*. Your
-        project's :ref:`FairShare <slurm-fairshare>` will be lowered
-        at 2.0x the rate as compared to *batch*.  Only one job per
-        project/account can be pending/running at any time. When a
-        project's FairShare is below 0.45, jobs submit to *urgent*
-        are automatically changed to *batch* and users notified via
-        stderr.
+     - 2
+     - QOS for a job that requires more urgency than batch. Your project’s `FairShare <https://slurm.schedmd.com/fair_tree.html>`_ will be lowered at 2.0x the rate as compared to batch. Only one job per project/account can be pending/running at any time. When a
+       project’s FairShare is below 0.45, jobs submit to urgent are automatically changed to batch and users notified via stderr.
    * - debug
-     - 1
-     - 8,400\ [1]_
-     - 30 minutes
+     - 8400 (Jet/Hera)
+       14400 (Ursa)
+     - 30 mins
      - 1.25
-     - Highest priority QOS, useful for debugging sessions.  Your
-       project :ref:`FairShare <slurm-fairshare>` will be lowered at
-       1.25x the rate as compared to *batch*.  Only two jobs per user
-       can be pending/running at any time.  This QOS should NOT be
-       used for fast-turnaround of general work. While the *debug* QOS
-       is available, we recommend that if you need to work through an
-       iterative process to debug a code, that you submit a longer
-       running interactive job to the default QOS so that you can
-       restart your application over and over again without having to
-       start a new batch job.
-   * - gpu
-     - 20 (1 node)
-     - 800 (40 nodes)\ [1]_
-     - 168 hours (7 days)
-     - 1.0
-     - This QOS can only be used on Hera in combination with the fge
-       partition. Max total “GrpTRESRunMins” of 720,000 core-minutes
-       (600 node-hours) of running jobs at any time, per
-       project-account. “GrpTRESRunMins” is defined as cores_allocated
-       * wallclock_requested of running jobs. A project can have up to
-       the max number of jobs pending/running as defined above, but
-       the queued jobs will NOT be considered for scheduling if the
-       project’s running jobs exceed this limit. Use this gsheet as a
-       reference: Grp TRES Run Minutes For example, the following
-       combinations of the max running jobs per project-account are
-       permitted: 1. A project can have three 1-node jobs at 168 hours
-       of wallclock and one 1-node job at 96 hours of wallclock. 2. A
-       project can have one 8-node job at 75 hours of wallclock.
-   * - gpuwf
-     - 20 (1 node)
-     - 800 (40 nodes)\ [1]_
-     - 168 hours (7 days)
-     - 1.0
-     - This QOS can only be used on Hera in combination with the fge
-       partition. Max total “GrpTRESRunMins” of 201,600 core-minutes
-       (168 node-hours) of running jobs at any time, per
-       project-account. “GrpTRESRunMins” is defined as cores_allocated
-       * wallclock_requested of running jobs. A project can have up to
-       the max number of jobs pending/running as defined above, but
-       the queued jobs will NOT be considered for scheduling if the
-       project’s running jobs exceed this limit. Use this gsheet as a
-       reference: Grp TRES Run Minutes For example the following are
-       combinations of the max running jobs per project-account that
-       are permitted: 1. A project can have two 2-node jobs at 24
-       hours of wallclock and one 1-node job at 72 hours of wallclock.
-       1. A project can have one 1-node job at 168 hours of wallclock.
-       Lowest priority QOS for use with GPU nodes. If you have an
-       allocation of “windfall only” (Monthly allocation = 1) you can
-       only submit to this QOS. Submitting to this QOS will NOT affect
-       your future job priority FairShare Factor (f). EffectvUsage = 0.
-       See How FairShare Works. This QOS is useful for low priority
-       jobs that will only run when the system (partition(s)) has
-       enough unused space available, while not lowering the project’s
-       FairShare priority.
+     - Highest priority QOS, useful for debugging sessions. Your project `FairShare <https://slurm.schedmd.com/fair_tree.html>`_ will be lowered at 1.25x the rate as compared to batch. Only two jobs per user can be pending/running at any time. This QOS should NOT be
+       used for fast-turnaround of general work. While the debug QOS is available, we recommend that if you need to work through an iterative process to debug a code, that you submit a longer running interactive job to
+       the default QOS so that you can restart your application over and over again without having to start a new batch job.
    * - windfall
+     - 8400 (Jet/Hera)
+       14400 (Ursa)
+     - 8 hours (except service partitions)
+     - 0
+     - Lowest priority QOS. If you have an allocation of windfall-only (monthly allocation is 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority FairShare factor (f) for
+       your non-windfall jobs. Useful for low priority jobs that will only run when the system/partition has enough unused space available while not affecting the project’s FairShare priority.
+   * - gpu
+     - 20 gpu's (Ursa only)
+     - 168 hours (7 days)
      - 1
-     - 8,400\ [1]_
-     - 8 hours (Partition exception: *service*)
-     - 0.0
-     - Lowest priority QOS.  If you have an allocation of
-       windfall-only (monthly allocation is 1) you can only submit to
-       this QOS.  Submitting to this QOS will NOT affect your future
-       job priority :ref:`FairShare <slurm-fairshare>` factor (f) for
-       your non-windfall jobs. Useful for low priority jobs that will
-       only run when the system/partition has enough unused space
-       available while not effecting the project's FairShare priority.
-   * - novel
-     - 501 (Orion), 251 (Hercules)
-     - Largest partition size
-     - 8 hours
-     - 1.0
-     - QOS for running novel or experimental where nearly the full
-       system is required.  If you need to use the *novel* QOS, please
-       submit a ticket to the :ref:`help system <getting_help>` and
-       tell us what you want to do.  We will normally have to arrange
-       for some time for the job to go through, and we would like to
-       plan the process with you.
+     - This QOS can only be used on Ursa in combination with the u1-h100 partition. Only Ursa projects with a GPU allocation (projects that begin with “gpu-“) of 2 or larger may use this partition.
+       Max of 1,200 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
+       will NOT be considered for scheduling if the project’s running jobs exceed this limit.
+   * - gpuwf
+     - 20 gpu's (Ursa only)
+     - 168 hours (7 days)
+     - 0
+     - This QOS can only be used on Ursa in combination with the u1-h100 partition. Open to all projects with an allocation on Ursa.
+       Max of 336 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
+       will NOT be considered for scheduling if the project’s running jobs exceed this limit.
+       Lowest priority QOS for use with GPU nodes. If you have an allocation of “windfall only” (Monthly allocation = 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority
+       FairShare Factor (f). EffectvUsage = 0. See How FairShare Works. This QOS is useful for low priority jobs that will only run when the system (partition(s)) has enough unused space available, while not lowering the
+       project’s FairShare priority.
 
-.. [1] Some partitions are small than the **Max Cores** QOS limit.
-   Jobs submitted only to partitions with an insufficient number of
-   cores will get stuck in pending, will not run, and will have to be
-   manually deleted by the user. The max nodes allowed per partition
-   is the min of the max cores allowed divided by the cores per node
-   of the partition (Hera and kJet: 8400/40=210 nodes) or the max
-   number of nodes in the partition (vJet: 288 nodes).
+
 
 Gaea
 ----
