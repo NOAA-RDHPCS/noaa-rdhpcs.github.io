@@ -35,7 +35,7 @@ Performance Computing program.
 .. |hpcc_gaea_url|	   replace:: https://www.noaa.gov/organization/information-technology/gaea
 .. |hpcc_hera_url|	   replace:: https://www.noaa.gov/organization/information-technology/hera
 .. |hpcc_jet_url|	      replace:: https://www.noaa.gov/organization/information-technology/jet
-.. |hpcc_mercury_url|	replace:: https://www.noaa.gov/organization/information-technology/niagara
+.. |mercury_url|	replace:: https://www.noaa.gov/organization/information-technology/niagara
 .. |hpcc_cloud_url|	   replace:: https://www.noaa.gov/information-technology/hpcc
 .. |hpcc_orion_url|	   replace:: https://www.noaa.gov/organization/information-technology/orion
 .. |gaeaP|		         replace:: Climate Modeling and Research System (CMRS) at Oak Ridge National Laboratory
@@ -57,11 +57,11 @@ Performance Computing program.
 +------------------+----------+-------------------+---------------------------+
 | Jet              | |jetP|   | |hpcc_jet_url|    | :ref:`jet-user-guide`     |
 +------------------+----------+-------------------+---------------------------+
-| Mercury          | |mercP|  | |hpcc_mercury_url|| :ref:`mercury-user-guide` |
+| Mercury          | |mercP|  | |mercury_url|     | :ref:`mercury-user-guide` |
 +------------------+----------+-------------------+---------------------------+
 | Cloud            | |cloudP| | |hpcc_cloud_url|  | :ref:`cloud-user-guide`   |
 +------------------+----------+-------------------+---------------------------+
-| MSU-HPC Orion    | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide  |
+| MSU-HPC Orion    | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide' |
 +------------------+----------+-------------------+---------------------------+
 | MSU-HPC Hercules | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide` |
 +------------------+----------+-------------------+---------------------------+
