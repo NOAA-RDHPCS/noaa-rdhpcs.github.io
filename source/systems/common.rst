@@ -46,25 +46,25 @@ Performance Computing program.
 .. |msuP|		         replace:: Collaboration with Mississippi State University (MSU)
 
 
-+-----------------+----------+-------------------+---------------------------+
-| RDHPCS System   |  Purpose | OCIO HPCC Info    | RDHPCS Documentation      |
-+-----------------+----------+-------------------+---------------------------+
-| Gaea            | |gaeaP|  | |hpcc_gaea_url|   | :ref:`gaea-user-guide`    |
-+-----------------+----------+-------------------+---------------------------+
-| Hera            | |heraP|  | |hpcc_hera_url|   | :ref:`hera-user-guide`    |
-+-----------------+----------+-------------------+---------------------------+
-| Ursa            | |heraP|  | |hpcc_hera_url|   | :ref:`ursa-user-guide`    |
-+-----------------+----------+-------------------+---------------------------+
-| Jet             | |jetP|   | |hpcc_jet_url|  - | :ref:`jet-user-guide`     |
-+-----------------+----------+-------------------+---------------------------+
-| Mercury         | |mercP|  | |hpcc_mercury_url | :ref:`mercury-user-guide` |
-+-----------------+----------+-- ----------------+---------------------------+
-| Cloud           | |cloudP| | |hpcc_cloud_url|  | :ref:`cloud-user-guide`   |
-+-----------------+----------+-------------------+---------------------------+
-| MSU-HPC Orion   | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide  |
-+-----------------+----------+-------------------+---------------------------+
-| MSU-HPC Hercules| |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide` |
-+-----------------+----------+-------------------+---------------------------+
++------------------+----------+-------------------+---------------------------+
+| RDHPCS System    |  Purpose | OCIO HPCC Info    | RDHPCS Documentation      |
++------------------+----------+-------------------+---------------------------+
+| Gaea             | |gaeaP|  | |hpcc_gaea_url|   | :ref:`gaea-user-guide`    |
++------------------+----------+-------------------+---------------------------+
+| Hera             | |heraP|  | |hpcc_hera_url|   | :ref:`hera-user-guide`    |
++------------------+----------+-------------------+---------------------------+
+| Ursa             | |heraP|  | |hpcc_hera_url|   | :ref:`ursa-user-guide`    |
++------------------+----------+-------------------+---------------------------+
+| Jet              | |jetP|   | |hpcc_jet_url|  - | :ref:`jet-user-guide`     |
++------------------+----------+-------------------+---------------------------+
+| Mercury          | |mercP|  | |hpcc_mercury_url | :ref:`mercury-user-guide` |
++------------------+----------+-------------------+---------------------------+
+| Cloud            | |cloudP| | |hpcc_cloud_url|  | :ref:`cloud-user-guide`   |
++------------------+----------+-------------------+---------------------------+
+| MSU-HPC Orion    | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide  |
++------------------+----------+-------------------+---------------------------+
+| MSU-HPC Hercules | |msuP|   | |hpcc_orion_url|  | :ref:`MSU-HPC-user-guide` |
++------------------+----------+-------------------+---------------------------+
 
 
 Bastion Hostnames
