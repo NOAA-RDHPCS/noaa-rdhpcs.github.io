@@ -7,7 +7,7 @@ Ursa User Guide
 
 Ursa System Overview
 ====================
-Ursa is located at the `NOAA Environmental Security Computing Center (NESCC) <https://docs.rdhpcs.noaa.gov/systems/common.html#locations-and-systems-of-the-rdhpcs>`_, located in Fairmont, West Virginia. 
+Ursa is located at the `NOAA Environmental Security Computing Center (NESCC) <https://docs.rdhpcs.noaa.gov/systems/common.html#locations-and-systems-of-the-rdhpcs>`_, located in Fairmont, West Virginia.
 
 System Configuration
 --------------------
@@ -88,7 +88,7 @@ Usra Partitions
    * - u1-service
      - batch, windfall
      - 100
-     - Serial jobs (max 4 cores), with a 24 hr limit. Jobs will be run on service nodes that have external network connectivity. Useful for data transfers or access to external resources like databases. 
+     - Serial jobs (max 4 cores), with a 24 hr limit. Jobs will be run on service nodes that have external network connectivity. Useful for data transfers or access to external resources like databases.
        If your workflow requires pushing or pulling data to/from the HSMS(HPSS), it should be run there.
 
 Ursa Front Ends and Service Partition
@@ -96,13 +96,13 @@ Ursa Front Ends and Service Partition
 Ursa has 15 outward facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
-    * ufe01-ufe04, total of 768 cores for interactive use. 
+    * ufe01-ufe04, total of 768 cores for interactive use.
       See the `Login (Front End) Node Usage Policy <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#login-node-usage>`_ for important information about using Login nodes.
 * 10 nodes will comprise the service partition:
     * 3,840 cores total.
     * Available via Slurm.
     * Target for compilation and data transfer jobs.
-    * Target for scrontab jobs (Scrontab is the preferred method for recurring jobs).
+    * Target for scrontab jobs (Scrontab is preferred for recurring jobs).
 * 1 node is available for ecflow
     * uecflow01
 
@@ -116,7 +116,8 @@ Ursa Software Stack
 
 Ursa File Systems
 ------------------------
-Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4, that will replace Hera’s /scratch1 and /scratch2.
+Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4, that will replace 
+Hera’s /scratch1 and /scratch2.
 
 /scratch3 and /scratch4
 ------------------------
