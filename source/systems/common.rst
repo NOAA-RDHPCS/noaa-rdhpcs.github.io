@@ -70,5 +70,5 @@ Performance Computing program.
 Bastion Hostnames
 =================
 
-Please see the `Bastion Hostnames section <https://docs.rdhpcs.noaa.gov/connecting/index.html#bastion-hostnames>`_.
+Please see the :ref:`bastion_hostnames` section.
 
