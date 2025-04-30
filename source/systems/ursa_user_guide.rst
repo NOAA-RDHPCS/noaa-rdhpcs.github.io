@@ -97,11 +97,10 @@ Ursa Node Sharing
 --------------------------
 With the Ursa u1 partition:
 
-* If you request 1-192 cores you will be given and charged for the number of cores 
-  you request.
-* If you request 193 or greater cores you will be given and charged for 
-  whole nodes (multiples of 192 cores).
-   * (ex. Request - 193, charged for 384 cores).
+* If you request 1-192 cores you will be given and charged for the number of
+  cores you request.
+* If you request 193 or greater cores you will be given and charged for whole
+  nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
 
 
 Ursa Front Ends and Service Partition
