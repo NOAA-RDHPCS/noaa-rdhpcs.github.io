@@ -10,7 +10,7 @@ Ursa System Overview
 Ursa is located at the `NOAA Environmental Security Computing Center (NESCC) <https://docs.rdhpcs.noaa.gov/systems/common.html#locations-and-systems-of-the-rdhpcs>`_, located in Fairmont, West Virginia.
 
 Ursa System Configuration
---------------------
+-------------------------
 
 .. list-table::
    :header-rows: 1
@@ -66,9 +66,9 @@ Ursa System Configuration
      - N/A
      - 3.48 PFlops
 
-Usra Partitions
+Ursa Partitions
 --------------------
-See the `QOS partition table <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#jet-hera-and-ursa-qos>`_ for more information.
+See the :ref:`QOS partition table <QOS-table>` for more information.
 
 .. list-table::
    :header-rows: 1
@@ -97,14 +97,16 @@ Ursa Node Sharing
 --------------------------
 With the Ursa u1 partition:
 
-* If you request 1-192 cores you will be given and charged for the number of cores you request.
-* If you request 193 or greater cores you will be given and charged for whole nodes (multiples of 192 cores).
+* If you request 1-192 cores you will be given and charged for the number of cores 
+  you request.
+* If you request 193 or greater cores you will be given and charged for 
+  whole nodes (multiples of 192 cores).
    * (ex. Request - 193, charged for 384 cores).
 
 
 Ursa Front Ends and Service Partition
 ---------------------------------------
-Ursa has 15 outward facing nodes.
+Ursa has 15 outward-facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
     * ufe01-ufe04, total of 768 cores for interactive use.
