@@ -17,8 +17,8 @@ System Overview
 <https://www.noaa.gov/organization/information-technology/gaea>`_ is
 a `NOAA Research and Development High-Performance Computing System
 (RDHPCS) <https://www.noaa.gov/information-technology/hpcc>`_ operated
-by the `National Climate-Computing Research Center (NCRC)
-<https://www.ncrc.gov/>`_.  The NCRC is located within the `National
+by the National Climate-Computing Research Center (NCRC).
+The NCRC is located within the `National
 Center for Computational Sciences (NCCS)
 <https://www.ornl.gov/division/nccs>`_ at the `Oak Ridge National
 Laboratory (ORNL) <https://www.ornl.gov/>`_.   The NCRC is a
