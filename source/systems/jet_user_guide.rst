@@ -166,7 +166,11 @@ Project (HFIP) since 2009.
 Jet Partitions
 ==============
 
-The following Jet partitions and Jet Billable TRes Factors are defined:
+The following Jet partitions and Jet Billable TRes Factors are defined below.
+
+.. Note::
+
+   If no partition is specified, SLURM will assign s-kjet,a random partition.
 
 .. list-table::
    :header-rows: 1
