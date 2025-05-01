@@ -168,7 +168,9 @@ Jet Partitions
 
 The following Jet partitions and Jet Billable TRes Factors are defined below.
 
-**NOTE:** If no partition is specified, SLURM will assign a random partition for you, s-kjet. 
+.. Note::
+
+   If no partition is specified, SLURM will assign s-kjet,a random partition.
 
 .. list-table::
    :header-rows: 1
