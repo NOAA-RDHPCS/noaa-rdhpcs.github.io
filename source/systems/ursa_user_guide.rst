@@ -68,7 +68,6 @@ Ursa System Configuration
 
 Ursa Partitions
 --------------------
-See the :ref:`QOS partition table <QOS-table>` for more information.
 
 .. list-table::
    :header-rows: 1
@@ -92,6 +91,8 @@ See the :ref:`QOS partition table <QOS-table>` for more information.
      - 100
      - Serial jobs (max 4 cores), with a 24 hr limit. Jobs will be run on service nodes that have external network connectivity. Useful for data transfers or access to external resources like databases.
        If your workflow requires pushing or pulling data to/from the HSMS(HPSS), it should be run there.
+
+See the :ref:`QOS partition <QOS-table>` for more information.
 
 Ursa Node Sharing
 --------------------------
