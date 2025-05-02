@@ -44,7 +44,7 @@ Example
  #. Select “existing organizational login" NOAA RDHPCS. The File
     Manager page displays.
  #. Select Collection, and choose the file system
-    “noaardhpcs#niagara_untrusted”. If necessary, authenticate with
+    “noaardhpcs#mercury_untrusted”. If necessary, authenticate with
     username and RSA password.
  #. In the File Manager, select Path:
     /collab1/data_untrusted/anonymous/from Orion
@@ -108,9 +108,9 @@ partner clusters.
      - GSL
      - Trusted hosts
        Anywhere
-   * - Niagara
-     - noaardhpcs#niagara
-       noaardhpcs#niagara_untrusted
+   * - Mercury
+     - noaardhpcs#mercury
+       noaardhpcs#mercury_untrusted
      - | /collab1/data
        | /collab1/data_untrusted
      - NESCC
@@ -189,7 +189,7 @@ public site available via AWS resources.
 Globus Command Line Interface (CLI)
 ===================================
 
-The CLI is available on Jet, Ursa (WIP), Hera, and Niagara.
+The CLI is available on Jet, Ursa (WIP), Hera, and Mercury.
 
 If you would like to use Globus-cli, either on your personal machine
 or on a system where globus-cli is not installed, you can install it
@@ -291,7 +291,7 @@ For assistance, contact the GFDL team at oar.gfdl.dpteam@noaa.gov.
     email address or a GlobusID.
   * You can only share directories under your ``/*/data_untrusted/$USER`` directory.
   * Before any sharing can be done, the user that is sharing the data
-    must login to the system (Niagara, Ursa (WIP), Hera, Jet, ...) at least once,
+    must login to the system (Mercury, Ursa (WIP), Hera, Jet, ...) at least once,
     to make sure that the account is properly set up the with the necessary
     home and project directories.
   * It may be necessary to create (``mkdir``) your ``/*/data_untrusted/$USER``
