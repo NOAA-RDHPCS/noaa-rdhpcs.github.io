@@ -119,48 +119,64 @@ desktop/laptop. However, note the following important points:
    * - Host
      - Globus Collection
      - Hostname for scp, sftp, etc.
-     - Accessible top level directories
+     - Directory on Host
+     - Direcotry as seen on the uDTN
    * - Niagara
      - noaardhpcs#niagara_untrusted
      - udtn-niagara.fairmont.rdhpcs.noaa.gov
      - :file:`/collab1/data_untrusted/$USER`
+     -
    * - Mercury
      - noaardhpcs#mercury_untrusted
      - udtn-mercury.fairmont.rdhpcs.noaa.gov
-     - :file:`/collab2/data_untrusted/$USER for Mercury`
+     - :file:`/collab2/data_untrusted/$USER`
+     - :file:`/collab2/$USER`
    * - Ursa
      - noaardhpcs#ursa_untrusted
      - udtn-ursa.fairmont.rdhpcs.noaa.gov
      - :file:`/scratch[34]/data_untrusted/$USER`
+     - :file:`/scratch[34]/$USER`
    * - Hera
      - noaardhpcs#hera_untrusted
      - udtn-hera.fairmont.rdhpcs.noaa.gov
      - :file:`/scratch[12]/data_untrusted/$USER`
+     -
    * - Jet
      - noaardhpcs#jet_untrusted
      - udtn-jet.boulder.rdhpcs.noaa.gov
-     - :file:`/lfs[45]/data_untrusted/$USER`
+     - :file:`/lfs[56]/data_untrusted/$USER`
+     -
    * - Gaea
      - noaardhpcs#gaea
      - N/A
      - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
+     -
    * - Orion
      - msuhpc2#orion-dtn
      - orion-dtn.hpc.msstate.edu
      - :file:`/work, /work2`
+     -
    * - Hercules
      - msuhpc2#hercules
      - hercules-dtn.HPC.MsState.Edu
      - :file:`/work, /work2`
+     -
    * - PPAN
      - noaardhpcs#ppan_untrusted
      - N/A
      - :file:`/collab1/data_untrusted/$USER`
+     -
 
-Because of the limited space available on the uDTNs, you will be using
-two-step transfers:
-#. Transfer to the uDTN to the data_untrusted tree above.
-#. Transfer to the allocated project space.
+Please note that your project directories are not directly
+accessible from some of the uDTNs, so it generally requires a
+two-step transfer to move data to/from project
+directories.  The steps below show how to transfer
+a file from a remote location to your project space on
+the RDHPCS systems and you do the steps in reverse order to
+move the file in the opposite direction:
+
+#. First transfer to the data_untrusted tree above using the uDTN
+#. Then move/copy to the allocated project space.
 
 The Globus Flows may be useful here in setting up automated 2-step
 transfers.
