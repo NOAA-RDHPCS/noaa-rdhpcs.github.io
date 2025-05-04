@@ -119,6 +119,49 @@ Ursa has 15 outward-facing nodes.
 * 1 node is available for ecflow
     * uecflow01
 
+Using GPU Resources on Ursa
+===========================
+Ursa has 2 H100 GPUs each with 94GB of memory in the ``u1-h100``
+partition as indicated in the table above.  This partition
+is only accessible from the ``gpu`` and ``gpuwf`` QOSes.
+
+In order to have priority access to the GPU resources you will need to
+have a GPU specific allocation. All allocations will be done by the
+allocations committee.
+
+All projects with an allocation on Ursa have
+windfall access to the GPU resources, and conversely all users with
+GPU allocations will have windfall access to the non-GPU resources.
+
+Using GPU Resources With a GPU allocation
+-----------------------------------------
+
+If you have a GPU allocation on Ursa you can access the GPUs by
+submitting to the ``u1-h100`` partition and ``gpu`` QOS as shown in
+the example below where 2 H100 GPUs on 1 node are being requested:
+
+.. code-block:: shell
+
+   sbatch -A mygpu_project -p u1-h100 -q gpu -N 1 –gres=gpu:h100:2 my_ml.job
+
+Using GPU Resources Without a GPU allocation
+--------------------------------------------
+
+Users that do not have GPU specific allocations on Ursa can access
+the GPU resources at windfall priority. Which means users will be able
+to submit jobs to the system, but they will only run when the
+resources are not being used by projects that do have a GPU
+allocation. This is helpful for users who are in interested in
+exploring the GPU resources for their applications. To use the system
+in this mode please submit the jobs to the u1-h100 partition and gpuwf
+QOS as shown in the example below where 2 H100 GPUs on 1 node are
+being requested:
+
+.. code-block:: shell
+
+   sbatch -A mycpu_project -p u1-h100 -q gpuwf -N 1 –gres=gpu:h100:2 my_ml.job
+
+
 Ursa Software Stack
 -------------------------
 * Ursa uses Slurm as the batch system.
