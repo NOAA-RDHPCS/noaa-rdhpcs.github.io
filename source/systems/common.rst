@@ -6,7 +6,7 @@ Welcome to RDHPCS CommonDocs -- Information and procedures that
 pertain across all RDHPCS systems.
 
 The RDHPCS Maintenance Downtime Calendar has events for NESCC (Hera,
-HPSS, Niagara), Jet, Boulder and Princeton Bastions, and other RDHPCS
+HPSS, Mercury), Jet, Boulder and Princeton Bastions, and other RDHPCS
 system downtimes. `View the Calendar
 <https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`__
 
@@ -42,7 +42,7 @@ Performance Computing program.
 .. |heraP|		         replace:: Predicting high-impact weather events
 .. |jetP|		         replace:: Hurricane Forecast Improvement Program (HFIP)
 .. |mercP|	            replace:: Collaborative resource for data transfer
-.. |cloudP|		         replace:: Platforms to create and use HPC computatational clusters on an ad-hoc basis
+.. |cloudP|		         replace:: Platforms to create and use HPC computational clusters on an ad-hoc basis
 .. |msuP|		         replace:: Collaboration with Mississippi State University (MSU)
 
 
