@@ -120,7 +120,7 @@ desktop/laptop. However, note the following important points:
      - Globus Collection
      - Hostname for scp, sftp, etc.
      - Directory on Host
-     - Direcotry as seen on the uDTN
+     - Directory as seen on the uDTN
    * - Niagara
      - noaardhpcs#niagara_untrusted
      - udtn-niagara.fairmont.rdhpcs.noaa.gov
@@ -168,11 +168,11 @@ desktop/laptop. However, note the following important points:
      -
 
 Please note that your project directories are not directly
-accessible from some of the uDTNs, so it generally requires a
-two-step transfer to move data to/from project
+accessible from some of the uDTNs, so a two-step transfer
+is generally required to move data to/from project
 directories.  The steps below show how to transfer
 a file from a remote location to your project space on
-the RDHPCS systems and you do the steps in reverse order to
+the RDHPCS systems, and you do the steps in reverse order to
 move the file in the opposite direction:
 
 #. First transfer to the data_untrusted tree above using the uDTN
