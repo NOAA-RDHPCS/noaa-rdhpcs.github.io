@@ -62,8 +62,6 @@ authentication uses your RSA token.
 +----------+--------------------------------------+
 | Site     | Fully Qualified Host Name            |
 +==========+======================================+
-| Niagara  | dtn-niagara.fairmont.rdhpcs.noaa.gov |
-+----------+--------------------------------------+
 | Mercury  | dtn-mercury.fairmont.rdhpcs.noaa.gov |
 +----------+--------------------------------------+
 | Ursa     | dtn-ursa.fairmont.rdhpcs.noaa.gov    |
@@ -87,7 +85,7 @@ transfers from most external sites including your local
 desktop/laptop. However, note the following important points:
 
 * Before you can use the UDTNs for data transfers on any of the
-  clusters (Niagara, Ursa, Hera, Jet, PPAN, etc.), **you must login
+  clusters (Mercury, Ursa, Hera, Jet, PPAN, etc.), **you must login
   at least once to set up the necessary directories.**
 * File space on the UDTNs is very limited. So it is important to move
   to your project space as soon as possible and clean up
@@ -121,11 +119,6 @@ desktop/laptop. However, note the following important points:
      - Hostname for scp, sftp, etc.
      - Directory on Host
      - Directory as seen on the uDTN
-   * - Niagara
-     - noaardhpcs#niagara_untrusted
-     - udtn-niagara.fairmont.rdhpcs.noaa.gov
-     - :file:`/collab1/data_untrusted/$USER`
-     -
    * - Mercury
      - noaardhpcs#mercury_untrusted
      - udtn-mercury.fairmont.rdhpcs.noaa.gov
