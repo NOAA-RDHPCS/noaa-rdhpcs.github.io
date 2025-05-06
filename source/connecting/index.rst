@@ -96,11 +96,6 @@ Bastion Hostnames
 .. |JRPRNG|	replace:: jet-rsa.princeton.rdhpcs.noaa.gov
 .. |JRBRNG|	replace:: jet-rsa.boulder.rdhpcs.noaa.gov
 
-.. |NCPRNG|	replace:: niagara.princeton.rdhpcs.noaa.gov
-.. |NCBRNG|	replace:: niagara.boulder.rdhpcs.noaa.gov
-.. |NRPRNG|	replace:: niagara-rsa.princeton.rdhpcs.noaa.gov
-.. |NRBRNG|	replace:: niagara-rsa.boulder.rdhpcs.noaa.gov
-
 .. |PPPRNG|	replace:: bastion-analysis.princeton.rdhpcs.noaa.gov
 .. |PPBRNG|	replace:: bastion-analysis.boulder.rdhpcs.noaa.gov
 .. |PAPRNG|	replace:: analysis-rsa.princeton.rdhpcs.noaa.gov
@@ -132,10 +127,6 @@ Bastion Hostnames
 | Jet               | |JCBRNG|        | |JRBRNG|                         |
 +                   +                 +                                  +
 |                   | |JCPRNG|        | |JRPRNG|                         |
-+-------------------+-----------------+----------------------------------+
-| Niagara           | |NCBRNG|        | |NRBRNG|                         |
-+                   +                 +                                  +
-|                   | |NCPRNG|        | |NRPRNG|                         |
 +-------------------+-----------------+----------------------------------+
 | PPAN              | |PPPRNG|        | |PAPRNG|                         |
 +                   +                 +                                  +
