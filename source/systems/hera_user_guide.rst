@@ -1936,7 +1936,7 @@ Some helpful web resources
 - https://www.openacc.org/
 - https://www.openacc.org/resources
 - https://developer.nvidia.com/legacy-pgi-support
-- https://stackoverflow.com/questions/tagged/openacc
+
 
 Getting Help
 ------------
