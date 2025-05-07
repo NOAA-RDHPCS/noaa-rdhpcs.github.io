@@ -12,7 +12,7 @@ support Globus may still use other methods described in this document.
 Many users are accustomed to using scp/sftp via service (same as
 login) nodes. However, we would like to point out that Data Transfer
 Nodes (DTN's) provides a much faster method for transferring data to
-and from HPC systems (Jet/Ursa/Hera/Niagara/Gaea/WCOSS/Orion), so
+and from HPC systems (Jet/Ursa/Hera/Mercury/Gaea/WCOSS/Orion), so
 we highly recommend DTNs over service nodes.
 
 Much data on RDHPCS servers are protected by confidentiality
@@ -33,10 +33,11 @@ available, not your /home filesystem. When you are asked for a
 password, provide your RSA Token’s PIN + current 6 or 8 digit number
 from your token (a.k.a Passcode).
 
-For Niagara, each user must complete their initial login in order to
-set up their user account directories before you can transfer data.
-For more information regarding this process and the Niagara directory
-structure, see the :ref:`niagara-user-guide`.
+All RDHPCS systems require an initial login before you can
+access your directories from the DTNs/uDTNs.  This is
+because the directory structure gets set up only on
+the first login to login nodes on the host.
+
 
 Globus Connect
 ==============
@@ -62,8 +63,6 @@ authentication uses your RSA token.
 +----------+--------------------------------------+
 | Site     | Fully Qualified Host Name            |
 +==========+======================================+
-| Niagara  | dtn-niagara.fairmont.rdhpcs.noaa.gov |
-+----------+--------------------------------------+
 | Mercury  | dtn-mercury.fairmont.rdhpcs.noaa.gov |
 +----------+--------------------------------------+
 | Ursa     | dtn-ursa.fairmont.rdhpcs.noaa.gov    |
@@ -89,7 +88,7 @@ transfers from most external sites including your local
 desktop/laptop. However, note the following important points:
 
 * Before you can use the UDTNs for data transfers on any of the
-  clusters (Niagara, Ursa, Hera, Jet, PPAN, etc.), **you must login
+  clusters (Mercury, Ursa, Hera, Jet, PPAN, etc.), **you must login
   at least once to set up the necessary directories.**
 * File space on the UDTNs is very limited. So it is important to move
   to your project space as soon as possible and clean up
@@ -121,48 +120,59 @@ desktop/laptop. However, note the following important points:
    * - Host
      - Globus Collection
      - Hostname for scp, sftp, etc.
-     - Accessible top level directories
-   * - Niagara
-     - noaardhpcs#niagara_untrusted
-     - udtn-niagara.fairmont.rdhpcs.noaa.gov
-     - :file:`/collab1/data_untrusted/$USER`
+     - Directory on Host
+     - Directory as seen on the uDTN
    * - Mercury
      - noaardhpcs#mercury_untrusted
      - udtn-mercury.fairmont.rdhpcs.noaa.gov
-     - :file:`/collab2/data_untrusted/$USER for Mercury`
+     - :file:`/collab2/data_untrusted/$USER`
+     - :file:`/collab2/$USER`
    * - Ursa
      - noaardhpcs#ursa_untrusted
      - udtn-ursa.fairmont.rdhpcs.noaa.gov
      - :file:`/scratch[34]/data_untrusted/$USER`
+     - :file:`/scratch[34]/$USER`
    * - Hera
      - noaardhpcs#hera_untrusted
      - udtn-hera.fairmont.rdhpcs.noaa.gov
      - :file:`/scratch[12]/data_untrusted/$USER`
+     -
    * - Jet
      - noaardhpcs#jet_untrusted
      - udtn-jet.boulder.rdhpcs.noaa.gov
-     - :file:`/lfs[45]/data_untrusted/$USER`
+     - :file:`/lfs[56]/data_untrusted/$USER`
+     -
    * - Gaea
      - noaardhpcs#gaea
      - N/A
      - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
+     -
    * - Orion
      - msuhpc2#orion-dtn
      - orion-dtn.hpc.msstate.edu
      - :file:`/work, /work2`
+     -
    * - Hercules
      - msuhpc2#hercules
      - hercules-dtn.HPC.MsState.Edu
      - :file:`/work, /work2`
+     -
    * - PPAN
      - noaardhpcs#ppan_untrusted
      - N/A
      - :file:`/collab1/data_untrusted/$USER`
+     -
 
-Because of the limited space available on the uDTNs, you will be using
-two-step transfers:
-#. Transfer to the uDTN to the data_untrusted tree above.
-#. Transfer to the allocated project space.
+Please note that your project directories are not directly
+accessible from some of the uDTNs, so a two-step transfer
+is generally required to move data to/from project
+directories.  The steps below show how to transfer
+a file from a remote location to your project space on
+the RDHPCS systems, and you do the steps in reverse order to
+move the file in the opposite direction:
+
+#. First transfer to the data_untrusted tree above using the uDTN
+#. Then move/copy to the allocated project space.
 
 The Globus Flows may be useful here in setting up automated 2-step
 transfers.
@@ -282,7 +292,7 @@ hosts and other trusted hosts. The actual data flow can be in either
 direction, but the connection must be initiated from the remote host.
 
 .. Note::
-    Unattended data transfers are only allowed on the Trusted DTNs. They are not allowed on Niagara's Untrusted DTNs (UDTNs).
+    Unattended data transfers are only allowed on the Trusted DTNs.
 
 This capability is intended mainly for projects that can demonstrate a
 need where unattended data transfer is required. If you need this
@@ -368,7 +378,7 @@ Host names for the CAC bastion Server in Boulder, CO:
    bastion-jet.boulder.rdhpcs.noaa.gov
    bastion-ursa.boulder.rdhpcs.noaa.gov (WIP)
    bastion-hera.boulder.rdhpcs.noaa.gov
-   bastion-niagara.boulder.rdhpcs.noaa.gov
+   mercury-cac.boulder.rdhpcs.noaa.gov
    bastion-gaea.boulder.rdhpcs.noaa.gov
 
 Host names for the CAC Bastion Server in Princeton, NJ:
@@ -378,7 +388,7 @@ Host names for the CAC Bastion Server in Princeton, NJ:
    bastion-jet.princeton.rdhpcs.noaa.gov
    bastion-ursa.princeton.rdhpcs.noaa.gov (WIP)
    bastion-hera.princeton.rdhpcs.noaa.gov
-   bastion-niagara.princeton.rdhpcs.noaa.gov
+   mercury-cac.princeton.rdhpcs.noaa.gov
    bastion-gaea.princeton.rdhpcs.noaa.gov
 
 Before You Begin
