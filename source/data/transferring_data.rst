@@ -12,7 +12,7 @@ support Globus may still use other methods described in this document.
 Many users are accustomed to using scp/sftp via service (same as
 login) nodes. However, we would like to point out that Data Transfer
 Nodes (DTN's) provides a much faster method for transferring data to
-and from HPC systems (Jet/Ursa/Hera/Niagara/Gaea/WCOSS/Orion), so
+and from HPC systems (Jet/Ursa/Hera/Mercury/Gaea/WCOSS/Orion), so
 we highly recommend DTNs over service nodes.
 
 Much data on RDHPCS servers are protected by confidentiality
@@ -33,10 +33,11 @@ available, not your /home filesystem. When you are asked for a
 password, provide your RSA Token’s PIN + current 6 or 8 digit number
 from your token (a.k.a Passcode).
 
-For Niagara, each user must complete their initial login in order to
-set up their user account directories before you can transfer data.
-For more information regarding this process and the Niagara directory
-structure, see the :ref:`niagara-user-guide`.
+All RDHPCS systems require an initial login before you can
+access your directories from the DTNs/uDTNs.  This is
+because the directory structure gets set up only on
+the first login to login nodes on the host.
+
 
 Globus Connect
 ==============
@@ -289,7 +290,7 @@ hosts and other trusted hosts. The actual data flow can be in either
 direction, but the connection must be initiated from the remote host.
 
 .. Note::
-    Unattended data transfers are only allowed on the Trusted DTNs. They are not allowed on Niagara's Untrusted DTNs (UDTNs).
+    Unattended data transfers are only allowed on the Trusted DTNs.
 
 This capability is intended mainly for projects that can demonstrate a
 need where unattended data transfer is required. If you need this
@@ -375,7 +376,7 @@ Host names for the CAC bastion Server in Boulder, CO:
    bastion-jet.boulder.rdhpcs.noaa.gov
    bastion-ursa.boulder.rdhpcs.noaa.gov (WIP)
    bastion-hera.boulder.rdhpcs.noaa.gov
-   bastion-niagara.boulder.rdhpcs.noaa.gov
+   mercury-cac.boulder.rdhpcs.noaa.gov
    bastion-gaea.boulder.rdhpcs.noaa.gov
 
 Host names for the CAC Bastion Server in Princeton, NJ:
@@ -385,7 +386,7 @@ Host names for the CAC Bastion Server in Princeton, NJ:
    bastion-jet.princeton.rdhpcs.noaa.gov
    bastion-ursa.princeton.rdhpcs.noaa.gov (WIP)
    bastion-hera.princeton.rdhpcs.noaa.gov
-   bastion-niagara.princeton.rdhpcs.noaa.gov
+   mercury-cac.princeton.rdhpcs.noaa.gov
    bastion-gaea.princeton.rdhpcs.noaa.gov
 
 Before You Begin
