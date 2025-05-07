@@ -72,12 +72,30 @@ Per User Data Management on Mercury
 
 Below are the data management policies for Mercury:
 
-- All files under the ``/collab2/data_untrusted/$USER`` directory tree which
-  have not been accessed in the last 14 days will be automatically purged.
-- All files under the ``/collab2/data/$USER`` directory tree which have not
-  been accessed in the last 60 days will be automatically purged.
+* Directory ``/collab2/data/$USER``:
 
-A default 10GB quota on each user’s home directory ``/home/$USER``.
+  * There is a 60 TB per-user quota limit on this directory. New data cannot be
+    written to this directory once the quota limit  has been reached.
+  * **Any file which has not been accessed in the last 60 days will be
+    automatically purged from this directory tree.**
+
+* Directory ``/collab2/data_untrusted/$USER``:
+
+  * There is a 20 TB per-user quota limit on this directory. New data cannot
+    be written to this directory once the quota limit has been reached.
+  * **Any file which has not been accessed in the last 14 days will be
+    automatically purged from this directory tree.**
+
+* Directory ``/home/$USER``:
+
+  * There is a 10 GB per-user quota limit on this directory. New data cannot be
+    written to this directory once the quota limit has been reached.
+  * This directory is not purged and is backed up on a daily basis.
+
+.. note::
+
+  The ``/collab2`` file system should be considered a scratch file system.
+  It is meant for transient data only and is not backed up.
 
 .. note::
 
