@@ -9,7 +9,7 @@ Security Computing Center (NESCC) is based on IBM's High Performance Storage
 System (HPSS). The NESCC HPSS environment includes 22 petabytes of front-end
 disk cache, five Oracle SL8500 enterprise tape libraries, three Spectra Logic
 TFinity tape libraries, and 148 tape drives. Total available capacity is 430
-PB. HPSS is accessible from WCOSS2, Hera, Niagara, Jet, and Gaea.
+PB. HPSS is accessible from WCOSS2, Hera, Mercury, Jet, and Gaea.
 
 Users should keep the following things in mind when using the HPSS system:
 
@@ -20,7 +20,7 @@ Users should keep the following things in mind when using the HPSS system:
    tar file before storing data into HPSS, or use HTAR.
 -  All data stored in HPSS is single copy. Deleted data cannot be recovered.
 -  HPSS **is not accessible from compute nodes.** Access is available via
-   Hera/Niagara/Jet front-end nodes (FEs), Gaea Data Transfer Nodes (DTNs),
+   Hera/Mercury/Jet front-end nodes (FEs), Gaea Data Transfer Nodes (DTNs),
    and WCOSS2 transfer nodes.
 -  Batch jobs that require access to HPSS must be submitted to the
    correct systems service or transfer queues.  Look for queue or partition
@@ -57,7 +57,7 @@ All requests must have the following information:
 -  User Name
 -  Requested project(s) - See :ref:`NESCC HPSS Data Structure
    <nescc_hpss_data_structure>` for available HPSS projects
--  System HPSS access is needed from (Hera/Jet/Niagara/Gaea/WCOSS)
+-  System HPSS access is needed from (Hera/Jet/Mercury/Gaea/WCOSS)
 
 .. _adding_new_projects_to_hpss:
 
@@ -219,7 +219,7 @@ NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
          * gmtb
          * gomtrans
          * gsd-hpcs
-         * gsienkf
+         * guienne
          * gt-md
          * mef
          * hmtr
@@ -494,7 +494,7 @@ module command:
 
 .. tab-set::
 
-   .. tab-item:: Hera, Jet, Niagara, and WCOSS
+   .. tab-item:: Hera, Jet, Mercury, and WCOSS
 
       .. code::
 
@@ -649,7 +649,7 @@ When using the interactive command form, enter the HSI operations.
 
 .. rubric:: Single line execution
 
-Enclose the HSI opertaions in quotes, separated with the semicolon (;)
+Enclose the HSI operations in quotes, separated with the semicolon (;)
 character.
 
 .. code::
@@ -805,7 +805,7 @@ to display the usage information.
      -R  : [standard option]recursively list hash entries for files in the specified path(s)
      -v  : verbose listing mode
 
-.. rubric:: Operatoin expfind Help
+.. rubric:: Operation expfind Help
 
 .. code::
 
@@ -857,7 +857,7 @@ batch job:
    #SBATCH --time=0:30:00
    #SBATCH --account=<ENTER A VALID PROJECT HERE>
    # Use the proper partition name.
-   #    Jet, Hera, Niagara use the 'service' partition
+   #    Jet, Hera, Mercury use the 'service' partition
    #    Gaea is 'dtn_f5_f6', with optional --constraint=f5 or --constraint=f6
    #      to route to a node which has that file system mounted
    #SBATCH --partition=<USE THE CORRECT PARTITION, SEE ABOVE>

@@ -99,8 +99,8 @@ different storage areas are summarized in the list and table below.
     | User-Shared Applications | ``/contrib/<application>``                  | NFS    | 0755        | N/A           | No      | No      | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
 
-  .. tab-item:: Niagara
-    :sync: niagara
+  .. tab-item:: Mercury
+    :sync: mercury
 
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Area                     | Path                                        | Type   | Permissions |  Quota        | Backups | Purged  | Retention  | On Compute Nodes |
@@ -158,7 +158,7 @@ The environment variable ``$HOME`` will always point to your current home
 directory. It is recommended, where possible, that you use this variable to
 reference your home directory. In cases in which using ``$HOME`` is not
 feasible, it is recommended that you use ``/home/$USER`` (for ursa, hera, jet,
-niagara, and pan) and ``ncrc/home/$USER`` for gaea.
+mercury, and pan) and ``ncrc/home/$USER`` for gaea.
 
 Users should note that since this is an NFS-mounted filesystem, its performance
 will not be as high as other file systems.
@@ -217,15 +217,15 @@ contact the Help Desk. To view your current quota and usage, use the command
       10.181.1.1:/home
                         4147M      0K   5120M            2112       0       0
 
-  .. tab-item:: Niagara
-    :sync: niagara
+  .. tab-item:: Mercury
+    :sync: mercury
 
     .. code::
 
       $ quota -Qs
       Disk quotas for user userid (uid 12345):
            Filesystem   space   quota   limit   grace   files   quota   limit   grace
-      10.181.1.2:/home_niagara
+      10.181.1.2:/home_mercury
                          544K      0K   5120M              23       0       0
 
   .. tab-item:: Pan
