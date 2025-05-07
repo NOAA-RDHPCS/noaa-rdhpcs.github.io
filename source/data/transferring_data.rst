@@ -78,6 +78,8 @@ authentication uses your RSA token.
 +----------+--------------------------------------+
 
 
+See the :ref:`globus_collection_summary` for complete information.
+
 Untrusted Data Transfer Nodes (UDTN)
 ====================================
 
