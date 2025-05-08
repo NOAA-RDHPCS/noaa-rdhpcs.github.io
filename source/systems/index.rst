@@ -4,7 +4,6 @@ NOAA RDHPCS HPC Systems
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
    gaea_user_guide
    cloud_user_guide
