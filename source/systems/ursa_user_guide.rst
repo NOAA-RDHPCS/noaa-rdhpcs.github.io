@@ -85,7 +85,7 @@ Ursa Partitions
    * - u1-h100
      - gpu, gpuwf
      - 100
-     - For jobs that require nodes with GPUs. See the `QOS table <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#queue-policy>`_ for more details.
+     - For jobs that require nodes with GPUs. 
    * - u1-service
      - batch, windfall
      - 100
