@@ -104,19 +104,12 @@ Ursa Node Sharing
 --------------------------
 With the Ursa u1 partition:
 
-* Only single node jobs are considered for running on
-  a shared node. Any job that requests the equivalent of
-  more than 1 node,
-  either because of memory or the number of cores, will
-  not be run on a shared node.
-* If you request 1-192 cores you will be given and charged for the number of
-  cores you request, and you will given that many cores’ share of the
-  node memory on a shared node.
+* If you request 1-192 cores for your job
+  you will be allocated and charged for the greater of
+  the number of cores requested or the amount of memory
+  requested divided by 2.
 * If you request 193 or greater cores you will be given and charged for whole
   nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
-* If you request 1-192 cores and also specify the amount of memory needed,
-  you will be allocated proportional number of cores
-  and will be charged for the greater of two numbers.
 
 Ursa Front Ends and Service Partition
 ---------------------------------------
