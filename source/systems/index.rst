@@ -1,5 +1,5 @@
 #######################
-NOAA RDHPCS HPC Systems
+NOAA RDHPCS Systems
 #######################
 
 .. toctree::
