@@ -85,7 +85,7 @@ Ursa Partitions
    * - u1-h100
      - gpu, gpuwf
      - 100
-     - For jobs that require nodes with GPUs. 
+     - For jobs that require nodes with GPUs.
    * - u1-service
      - batch, windfall
      - 100
