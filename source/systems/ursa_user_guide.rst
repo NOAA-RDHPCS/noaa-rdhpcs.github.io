@@ -7,7 +7,7 @@ Ursa User Guide
 
 Ursa System Overview
 ====================
-Ursa is located at the `NOAA Environmental Security Computing Center (NESCC) <https://docs.rdhpcs.noaa.gov/systems/common.html#locations-and-systems-of-the-rdhpcs>`_, located in Fairmont, West Virginia.
+Ursa is located at the `NOAA Environmental Security Computing Center (NESCC), in Fairmont, West Virginia.
 
 Ursa System Configuration
 -------------------------
@@ -188,12 +188,11 @@ Ursa will mount 2 new scratch file systems, ``/scratch3`` and ``/scratch4``,
 but will NOT mount the old Hera scratch file systems, ``/scratch1`` and
 ``/scratch2``.  At Ursa’s initial release (GA), Hera will continue to only
 mount ``/scratch1`` and ``/scratch2``, therefore, data transfers between
-``/scratch1-2`` and ``/scratch3-4`` will need to be via the DTN’s using
+``/scratch[12]`` and ``/scratch[34]`` will need to be via the DTN’s using
 utilities
 such as rsync/scp or Globus.
 
-See the `Globus Collection Summary <https://docs.rdhpcs.noaa.gov/data/globus_online_data_transfer.html#rdhpcs-globus-collection-summary>`_
-for more information.
+See the :ref:`globus_collection_summary` for more information.
 
 At the next NESCC maintenance period (6/10/25, subject to change), Hera will
 also mount ``/scratch3`` and ``/scratch4`` to allow easier data migration and
