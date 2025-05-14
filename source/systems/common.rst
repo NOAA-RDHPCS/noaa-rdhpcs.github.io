@@ -29,7 +29,7 @@ Locations and Systems of the RDHPCS
 
 The `NOAA Information Technology Locations and Systems page
 <https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems>`_
-gives sone high technical and geographical information about NOAA's High
+gives some high technical and geographical information about NOAA's High
 Performance Computing program.
 
 .. |hpcc_gaea_url|	   replace:: https://www.noaa.gov/organization/information-technology/gaea
