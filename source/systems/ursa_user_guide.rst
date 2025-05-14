@@ -184,8 +184,26 @@ Ursa Software Stack
 
 Ursa File Systems
 -----------------
-Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4,
-that will replace Hera’s /scratch1 and /scratch2.
+Ursa will mount 2 new scratch file systems, ``/scratch3`` and ``/scratch4``,
+but will NOT mount the old Hera scratch file systems, ``/scratch1`` and
+``/scratch2``.  At Ursa’s initial release (GA), Hera will continue to only
+mount ``/scratch1`` and ``/scratch2``, therefore, data transfers between
+``/scratch1-2`` and ``/scratch3-4`` will need to be via the DTN’s using
+utilities
+such as rsync/scp or Globus.
+
+See the `Globus Collection Summary <https://docs.rdhpcs.noaa.gov/data/globus_online_data_transfer.html#rdhpcs-globus-collection-summary>`_
+for more information.
+
+At the next NESCC maintenance period (6/10/25, subject to change), Hera will
+also mount ``/scratch3`` and ``/scratch4`` to allow easier data migration and
+the running of Hera jobs on the new file systems, as well as the old file
+systems.
+
+.. note::
+
+  ``/scratch1-2`` will be out of support and decommissioned following the migration
+   period. Plan your migration to ``/scratch3-4`` to be completed accordingly.
 
 /scratch3 and /scratch4
 ------------------------

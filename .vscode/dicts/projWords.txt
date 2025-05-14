@@ -250,10 +250,12 @@ multifactor
 mvapich
 myccode
 mycexe
+mycpu
 myexe
 myfort
 myfortcode
 myfxex
+mygpu
 myjob
 myprog
 Myrinet
