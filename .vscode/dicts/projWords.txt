@@ -42,6 +42,7 @@ CMRS
 cnvgrib
 codegen
 collab
+computatational
 computecanada
 Coolkey
 coredumpsize
@@ -221,6 +222,7 @@ MCPRNG
 mdlcloud
 Mellanox
 memberwork
+merc
 mgmt
 Minfo
 MKLROOT
