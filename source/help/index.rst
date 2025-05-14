@@ -28,7 +28,7 @@ When sending an e-mail, be sure to do the following:
 +----------------+------------------------------+
 | Hera           | rdhpcs.hera.help@noaa.gov    |
 +----------------+------------------------------+
-| Niagara        | rdhpcs.niagara.help@noaa.gov |
+| Mercury        | rdhpcs.mercury.help@noaa.gov |
 +----------------+------------------------------+
 | Ursa           | rdhpcs.ursa.help@noaa.gov    |
 +----------------+------------------------------+
@@ -43,8 +43,6 @@ When sending an e-mail, be sure to do the following:
 | Gaea / PPAN    | oar.gfdl.help@noaa.gov       |
 +----------------+------------------------------+
 | AIM / Accounts | rdhpcs.aim.help@noaa.gov     |
-+----------------+------------------------------+
-| Mercury        | rdhpcs.mercury.help@noaa.gov |
 +----------------+------------------------------+
 
 .. _rdhpcs-workflow-help:
@@ -63,7 +61,6 @@ these the RDHPCS systems:
 - Account Management
 - Jet
 - Hera
-- Niagara
 - Mercury
 - Orion / Hercules
 - Cloud (AWS, GCP, Azure)
