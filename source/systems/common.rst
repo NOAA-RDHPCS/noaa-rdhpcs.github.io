@@ -23,7 +23,7 @@ system downtimes. `View the Calendar
    </div>
 
 
-
+.. _locations-of-rdhpcs:
 Locations and Systems of the RDHPCS
 ===================================
 
