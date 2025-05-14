@@ -111,14 +111,6 @@ partner clusters.
    * - Mercury
      - noaardhpcs#mercury
        noaardhpcs#mercury_untrusted
-     - | /collab1/data
-       | /collab1/data_untrusted
-     - NESCC
-     - Trusted hosts
-       Anywhere
-   * - Mercury
-     - noaardhpcs#mercury
-       noaardhpcs#mercury_untrusted
      - | /collab2/data
        | /collab2/data_untrusted
      - NESCC
