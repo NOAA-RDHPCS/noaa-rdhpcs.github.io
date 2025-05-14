@@ -53,7 +53,7 @@ If you want to leverage Python with Jupyter, we direct you to our
 
     The RDHPCS is diligently working to implement a unified Python/Conda
     configuration and policies across all NOAA-managed RDHPCS systems (Hera,
-    Jet, Niagara, Pan). Rest assured, this documentation will be updated as
+    Jet, Mercury, Pan). Rest assured, this documentation will be updated as
     these configurations and policies are implemented.
 
 .. _python-guides:
@@ -124,8 +124,8 @@ To start using Python, load the ``python`` module.
 
             $ module load python
 
-    .. tab-item:: niagara
-        :sync: niagara
+    .. tab-item:: mercury
+        :sync: mercury
 
         .. code-block:: bash
 

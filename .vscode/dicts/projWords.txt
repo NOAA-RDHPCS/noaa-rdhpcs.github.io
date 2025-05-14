@@ -42,6 +42,7 @@ CMRS
 cnvgrib
 codegen
 collab
+computatational
 computecanada
 Coolkey
 coredumpsize
@@ -116,6 +117,8 @@ Globus
 globusconnectpersonal
 glopara
 gmeta
+Godlove
+godlovedc
 gpfs
 gptl
 GPUDIRECT
@@ -247,6 +250,7 @@ msstate
 MSUHPC
 multifactor
 mvapich
+myaccount
 myccode
 mycexe
 myexe
@@ -254,6 +258,7 @@ myfort
 myfortcode
 myfxex
 myjob
+mypartition
 myprog
 Myrinet
 myrun
@@ -373,6 +378,7 @@ SHAREDUNAME
 showallarticles
 showq
 shpcrpt
+shub
 silene
 simg
 sjet
