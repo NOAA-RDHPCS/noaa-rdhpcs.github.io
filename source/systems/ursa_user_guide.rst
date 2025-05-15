@@ -80,7 +80,7 @@ Ursa Partitions
      - QOS Allowed
      - Billing TRES Factor
      - Description
-   * - u1
+   * - u1-compute
      - batch,windfall, debug, urgent
      - 100
      - General compute resource. **Default** if no partition is specified.
@@ -181,7 +181,13 @@ Ursa Software Stack
 * Ursa uses Slurm as the batch system.
 * Spack is used to install software in /apps.
 * Modules are used similarly to the MSU systems.
-* An Intel stack is in place, and AMD and NVHPC stacks will be added.
+* An Intel stack is in place, and NVHPC stacks will be added.
+  AMD compiler AOCC is also available.
+* The following MPI implementations are available: HPC-X
+  from Nvidia and Intel-oneapi-MPI from Intel.
+  We have seen much better performance using the
+  HPC-X MPI and would recommend as the first choice
+  for this system.
 * Ursa uses the most current versions of the compilers/libraries.
 
 Ursa File Systems
