@@ -814,6 +814,13 @@ Jet, Hera and Ursa QOS
         Your project `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ will be lowered at 1.25x the rate as compared to batch.
         Only two jobs per user can be pending/running at any time. This QOS should NOT be used for fast-turnaround of general work. While the debug QOS is available, we recommend that if you need to work through an
         iterative process to debug a code, that you submit a longer running interactive job to the default QOS so that you can restart your application over and over again without having to start a new batch job.
+   * - long
+     - 4200 (Hera)
+       7296 (Ursa) ||
+       N/A (Jet)
+     - 16 hours
+     - 1
+     - **For normal priority jobs that require between 8-16 hours**
    * - windfall
      - 8400 (Jet/Hera)
        14400 (Ursa)
