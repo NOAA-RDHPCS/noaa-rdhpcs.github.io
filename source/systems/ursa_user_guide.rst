@@ -7,7 +7,9 @@ Ursa User Guide
 
 Ursa System Overview
 ====================
-Ursa is located at the `NOAA Environmental Security Computing Center (NESCC) <https://docs.rdhpcs.noaa.gov/systems/common.html#locations-and-systems-of-the-rdhpcs>`_, located in Fairmont, West Virginia.
+Ursa is located at the :ref:`NOAA Environmental Security Computing
+Center (NESCC) <locations-of-rdhpcs>`, located in Fairmont, West
+Virginia.
 
 Ursa System Configuration
 -------------------------
@@ -78,7 +80,7 @@ Ursa Partitions
      - QOS Allowed
      - Billing TRES Factor
      - Description
-   * - u1
+   * - u1-compute
      - batch,windfall, debug, urgent
      - 100
      - General compute resource. **Default** if no partition is specified.
@@ -179,18 +181,34 @@ Ursa Software Stack
 * Ursa uses Slurm as the batch system.
 * Spack is used to install software in /apps.
 * Modules are used similarly to the MSU systems.
-* An Intel stack is in place, and AMD and NVHPC stacks will be added.
+* An Intel stack is in place, and NVHPC stacks will be added.
+  AMD compiler AOCC is also available.
+* The following MPI implementations are available: HPC-X
+  from Nvidia and Intel-oneapi-MPI from Intel.
+  We have seen much better performance using the
+  HPC-X MPI and would recommend as the first choice
+  for this system.
 * Ursa uses the most current versions of the compilers/libraries.
 
 Ursa File Systems
 -----------------
-Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4,
-that will replace Hera’s /scratch1 and /scratch2.
+* Ursa will only mount the two new HPFS files systems,
+  ``/scratch3`` and ``/scratch4``.
+* At Ursa’s initial release (GA), Hera will continue to only
+  mount ``/scratch[12]``, therefore data transfers between
+  ``/scratch[12]`` and ``/scratch[34]`` will need to be via the
+  DTN’s using utilities such as rsync/scp or Globus.
+* At the next NESCC DT (6/10/25, subject to change),
+  Hera will also mount ``/scratch[34]`` to allow easier data
+  migration and the running of Hera jobs on the new file
+  systems as well as the old file systems.
+* Scratch file systems are **NOT** backed up!
 
-/scratch3 and /scratch4
-------------------------
-* DDN Lustre, each file system: >50 PB, > 500 GB/s
-* Mounted on Ursa and Hera
+.. note::
+
+  ``/scratch[12]`` will be out of support and decommissioned
+  after the migration period, so plan your migration to
+  /scratch[34] to be completed accordingly.
 
 Cron and Scrontab Services
 --------------------------

@@ -8,7 +8,7 @@ Containers
 
     We now allow all users and projects to run `Singularity
     <https://sylabs.io/singularity/>`_ Containers on Hera,
-    Hera-FGE, Jet, and Niagara.
+    Hera-FGE, Jet, and Mercury.
 
     Although this allows users to run Singularity Containers, we currently do not
     support the following items:
@@ -28,7 +28,7 @@ environment to another. Containers are also popular solutions to run the
 applications in the cloud environment. The main feature is the portability.
 Container images become Containers at run-time.
 
-.. _containers-backgroud:
+.. _containers-background:
 
 Background
 ----------
@@ -190,7 +190,7 @@ Using a container to compile a model
 To build a model within a container, the container must have the compiler and
 all required libraries and library headers.  An easy way to accomplish this, is
 to launch an interactive shell in the container, and build the model as is
-typilcally done on any system.
+typically done on any system.
 
 .. code-block:: shell
 
@@ -214,7 +214,7 @@ files are all in the working directory of the run.
     #SBATCH --partition=mypartition
     #SBATCH --qos batch
     #SBATCH --account=myaccount
-    #SBATCH --error=singluarity_wrf.out
+    #SBATCH --error=singularity_wrf.out
 
 
     srun singularity exec hydro.simg ./wrf.exe
@@ -231,4 +231,4 @@ The R&D HPCS system administrators and help staff have very little knowledge on
 using containers on HPC systems.  Open a :ref:`help request <getting_help>` to
 what help can be offered.  However, you will likely find your fellow scientists
 and the greater container communities have better knowledge for your specific
-Singularityimage/application.
+Singularity image/application.

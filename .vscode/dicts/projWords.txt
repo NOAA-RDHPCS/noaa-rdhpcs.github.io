@@ -313,6 +313,7 @@ msub
 MSUHPC
 multifactor
 mvapich
+myaccount
 myccode
 mycexe
 myexe
@@ -321,6 +322,7 @@ myfortcode
 myfxex
 myid
 myjob
+mypartition
 myprog
 Myrinet
 myrun
@@ -471,6 +473,7 @@ SHAREDUNAME
 showallarticles
 showq
 shpcrpt
+shub
 silene
 simg
 sjet
