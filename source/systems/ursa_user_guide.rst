@@ -192,13 +192,23 @@ Ursa Software Stack
 
 Ursa File Systems
 -----------------
-Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4,
-that will replace Hera’s /scratch1 and /scratch2.
+* Ursa will only mount the two new HPFS files systems,
+  ``/scratch3`` and ``/scratch4``.
+* At Ursa’s initial release (GA), Hera will continue to only
+  mount ``/scratch[12]``, therefore data transfers between
+  ``/scratch[12]`` and ``/scratch[34]`` will need to be via the
+  DTN’s using utilities such as rsync/scp or Globus.
+* At the next NESCC DT (6/10/25, subject to change),
+  Hera will also mount ``/scratch[34]`` to allow easier data
+  migration and the running of Hera jobs on the new file
+  systems as well as the old file systems.
+* Scratch file systems are **NOT** backed up!
 
-/scratch3 and /scratch4
-------------------------
-* DDN Lustre, each file system: >50 PB, > 500 GB/s
-* Mounted on Ursa and Hera
+.. note::
+
+  ``/scratch[12]`` will be out of support and decommissioned
+  after the migration period, so plan your migration to
+  /scratch[34] to be completed accordingly.
 
 Cron and Scrontab Services
 --------------------------
