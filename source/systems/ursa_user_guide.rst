@@ -202,13 +202,11 @@ Ursa File Systems
   Hera will also mount ``/scratch[34]`` to allow easier data
   migration and the running of Hera jobs on the new file
   systems as well as the old file systems.
+* **Data migration deadline**: The
+  ``/scratch[12]`` file systems will be decommissioned
+  in August, so plan to complete your migration to the
+  ``/scratch[34]`` file systems by **7/31/25**.
 * Scratch file systems are **NOT** backed up!
-
-.. note::
-
-  ``/scratch[12]`` will be out of support and decommissioned
-  after the migration period, so plan your migration to
-  /scratch[34] to be completed accordingly.
 
 Cron and Scrontab Services
 --------------------------
