@@ -104,7 +104,7 @@ See the :ref:`Quality of Service (QOS) table <QOS-table>` for more information.
 
 Ursa Node Sharing
 --------------------------
-With the Ursa u1 partition:
+With the Ursa ``u1-compute`` partition:
 
 * If you request 1-192 cores for your job
   you will be allocated and charged for the greater of
@@ -118,7 +118,7 @@ Ursa Front Ends and Service Partition
 Ursa has 15 outward-facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
-    * ufe01-ufe04, total of 768 cores for interactive use.
+    * ``ufe01-ufe04``, total of 768 cores for interactive use.
       See the `Login (Front End) Node Usage Policy <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#login-node-usage>`_ for important information about using Login nodes.
 * 10 nodes will comprise the service partition:
     * 3,840 cores total.
@@ -126,7 +126,7 @@ Ursa has 15 outward-facing nodes.
     * Target for compilation and data transfer jobs.
     * Target for scrontab jobs (Scrontab is preferred for recurring jobs).
 * 1 node is available for ecflow
-    * uecflow01
+    * ``uecflow01``
 
 Using GPU Resources on Ursa
 ===========================
@@ -204,11 +204,10 @@ Ursa File Systems
   systems as well as the old file systems.
 * Scratch file systems are **NOT** backed up!
 
-.. note::
-
-  ``/scratch[12]`` will be out of support and decommissioned
-  after the migration period, so plan your migration to
-  /scratch[34] to be completed accordingly.
+.. caution::
+   **Data migration deadline:**: The ``/scratch[12]`` file systems
+   will be decommissioned in August. Plan to complete your migration to
+   the ``/scratch[34]`` file systems no later than **7/31/25**.
 
 Cron and Scrontab Services
 --------------------------
