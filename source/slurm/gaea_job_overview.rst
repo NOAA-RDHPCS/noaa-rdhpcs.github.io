@@ -114,7 +114,7 @@ or, from the sbatch command line:
 
 .. code-block:: shell
 
-   sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/trasfer_script
+   sbatch --clusters=es --partition=rdtn --nodes=1 --ntasks-per-node=1 /path/to/transfer_script
 
 Allocation
 ----------
