@@ -205,8 +205,8 @@ Ursa File Systems
 * Scratch file systems are **NOT** backed up!
 
 .. caution::
-   **Data migration deadline:**: The `/scratch[12]`` file systems 
-   will be decommissioned in August. Plan to complete your migration to 
+   **Data migration deadline:**: The `/scratch[12]`` file systems
+   will be decommissioned in August. Plan to complete your migration to
    the ``/scratch[34]`` file systems no later than **7/31/25**.
 
 Cron and Scrontab Services
