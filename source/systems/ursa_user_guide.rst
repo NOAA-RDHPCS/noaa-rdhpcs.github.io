@@ -13,7 +13,7 @@ Virginia.
 
 Introduction to Ursa Presentation
 ---------------------------------
-See the `Introduction to Ursa <https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_ presentation for a quick start guide. 
+The `Introduction to Ursa <https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_ presentation is a quick start guide.
 
 
 Ursa System Configuration
