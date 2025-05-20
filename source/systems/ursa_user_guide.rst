@@ -178,17 +178,27 @@ being requested:
 
 Ursa Software Stack
 -------------------
-* Ursa uses Slurm as the batch system.
-* Spack is used to install software in /apps.
-* Modules are used similarly to the MSU systems.
-* An Intel stack is in place, and NVHPC stacks will be added.
-  AMD compiler AOCC is also available.
-* The following MPI implementations are available: HPC-X
-  from Nvidia and Intel-oneapi-MPI from Intel.
-  We have seen much better performance using the
-  HPC-X MPI and would recommend as the first choice
-  for this system.
-* Ursa uses the most current versions of the compilers/libraries.
+
+* Ursa OS is Rocky 9.4, similar to MSU systems (Rocky 9.1)
+  whereas Hera/Jet are Rocky 8.
+* Module layout is more akin to what you see on MSU
+  systems; installed using spack.
+
+  * Please run the ``module spider`` command to see all
+    the available modules!
+
+* Compilers: Intel’s intel-oneapi-mpi, Nvidia’s nvhpc, and
+  AMD’s AOCC compilers are available.
+* MPIs: Intel MPI from Intel, HPC-X MPI from Nvidia, and openMPI
+  implementations are available.
+
+  * We have seen much better performance and stability with
+    HPC-X in our testing of communication intensive benchmarks
+    as it is optimized to take advantage of the NDR-200 IB
+    network more effectively.
+
+* An Intel stack is in place. Other stacks will be
+  considered if requested.
 
 Ursa File Systems
 -----------------
