@@ -11,8 +11,13 @@ Ursa is located at the :ref:`NOAA Environmental Security Computing
 Center (NESCC) <locations-of-rdhpcs>`, located in Fairmont, West
 Virginia.
 
+Introduction to Ursa Presentation
+---------------------------------
+The `Introduction to Ursa <https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_ presentation is a quick start guide.
+
+
 Ursa System Configuration
--------------------------
+=========================
 
 .. list-table::
    :header-rows: 1
@@ -217,6 +222,6 @@ whenever possible.  For information on how to use ``scrontab``
 please see :ref:`scrontab <rdhpcs_scrontab>`.
 
 Getting Help
-------------
+=============
 
 For any Ursa or Rhea issue, open a :ref:`help request <getting_help>`.
