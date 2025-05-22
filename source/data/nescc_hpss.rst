@@ -435,6 +435,7 @@ of hundreds of gigabytes each make the most efficient use of the system.
 
 .. rubric:: Considerations for very large files
 
+**Files larger than 3 TB WILL FAIL TO STORE IN HPSS.**
 Transferring files that are 1 TB or larger increases the risk of poor system
 performance as well as the risk (although small) of losing a file that contains
 a large amount of data. We recommend storing files that are 1 TB or smaller.
