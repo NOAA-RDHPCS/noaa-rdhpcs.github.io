@@ -108,14 +108,18 @@ Ursa Partitions
 See the :ref:`Quality of Service (QOS) table <QOS-table>` for more information.
 
 Ursa Node Sharing
---------------------------
+-----------------
+
+Jobs requesting less than 192 cores or the equivalent amount
+of memory will share the node with other jobs.
+
 With the Ursa ``u1-compute`` partition:
 
-* If you request 1-192 cores for your job
+* If you request 1-191 cores for your job
   you will be allocated and charged for the greater of
   the number of cores requested or the amount of memory
-  requested divided by 2.
-* If you request 193 or greater cores you will be given and charged for whole
+  requested in GB divided by 2.
+* If you request 192 or greater cores you will be given and charged for whole
   nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
 
 Ursa Front Ends and Service Partition
@@ -192,7 +196,7 @@ Ursa Software Stack
   * Please run the ``module spider`` command to see all
     the available modules!
 
-* Compilers: Intel’s intel-oneapi-mpi, Nvidia’s nvhpc, and
+* Compilers: Intel’s oneapi, Nvidia’s nvhpc, and
   AMD’s AOCC compilers are available.
 * MPIs: Intel MPI from Intel, HPC-X MPI from Nvidia, and openMPI
   implementations are available.
