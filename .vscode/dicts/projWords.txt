@@ -94,6 +94,7 @@ fgews
 fillin
 firstlast
 Firstname
+FOIA
 fortl
 fsspec
 fsxcompression
@@ -108,6 +109,7 @@ GDRCOPY
 GEMLIB
 gempak
 gencode
+genindex
 genv
 genvall
 genvlist
@@ -117,8 +119,6 @@ Globus
 globusconnectpersonal
 glopara
 gmeta
-Godlove
-godlovedc
 gpfs
 gptl
 GPUDIRECT
@@ -159,7 +159,7 @@ hpssmodule
 HRBRNG
 HRPRNG
 HSI
-HTAR
+HTARn
 ICHUNK
 icpc
 ifort
@@ -253,10 +253,12 @@ mvapich
 myaccount
 myccode
 mycexe
+mycpu
 myexe
 myfort
 myfortcode
 myfxex
+mygpu
 myjob
 mypartition
 myprog
