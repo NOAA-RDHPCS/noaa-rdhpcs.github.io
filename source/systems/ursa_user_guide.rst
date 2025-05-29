@@ -7,8 +7,8 @@ Ursa User Guide
 
 Ursa System Overview
 ====================
-Ursa is located at the :ref:NOAA Environmental Security Computing
-Center (NESCC) in Fairmont, West
+Ursa is located at the :ref:`NOAA Environmental Security Computing
+Center (NESCC) <locations-of-rdhpcs>`, located in Fairmont, West
 Virginia.
 
 Getting Started with Ursa
