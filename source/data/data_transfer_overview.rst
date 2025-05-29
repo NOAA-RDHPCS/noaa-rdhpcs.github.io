@@ -48,20 +48,18 @@ Data Transfer Methods
 Globus
 ------
 
-Globus Connect Service is available on all RDHPCS systems (Hera,
-Niagara, Jet, PPAN, Gaea, Orion and Hercules) and we encourage its use
-over other methods whenever possible. Globus Connect Service is used
-to transfer data between 2 Globus endpoints. A Globus endpoint is a
-file transfer location (computer/server) accessible to Globus. To
-transfer data, use your browser to connect to the Globus app,
-authenticate to both endpoints, navigate to the desired directory for
-each endpoint, select the file(s)/directory(s) to be transferred, and
-initiate the transfer.  The movement of data will then be managed and
-supervised in the background. You may close the browser or leave the
-browser open. The current status of your request is displayed if you
-need it. When the transfer is complete, you will be notified by email.
-Please see the '''[[Globus Online Data Transfer]]''' page for complete
-details.
+Globus Connect Service is available on all RDHPCS systems (Hera,Mercury,Jet,
+PPAN, Gaea, Orion and Hercules) and we encourage its use over other methods
+whenever possible. Globus Connect Service is used to transfer data between 2
+Globus endpoints. A Globus endpoint is a file transfer location
+(computer/server) accessible to Globus. To transfer data, use your browser to
+connect to the Globus app, authenticate to both endpoints, navigate to the
+desired directory for each endpoint, select the file(s)/directory(s) to be
+transferred, and initiate the transfer.  The movement of data will then be
+managed and supervised in the background. You may close the browser or leave
+the browser open. The current status of your request is displayed if you need
+it. When the transfer is complete, you will be notified by email. Please see
+the '''[[Globus Online Data Transfer]]''' page for complete details.
 
 Some use cases that involve sites outside the RDHPCS program may not
 support Globus. In these cases, you can use the other methods
@@ -74,7 +72,7 @@ Data Transfer Nodes (DTNs)
 
 We highly recommend using this method to transfer data when available,
 as it provides a fast method for transferring TO and FROM HPC Systems
-- Jet, Hera, Niagara, Gaea, and Orion.  Please see the
+- Jet, Hera, Mercury, Gaea, and Orion.  Please see the
 Transferring Data page for complete details.
 
 Note the following:

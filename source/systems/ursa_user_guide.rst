@@ -19,7 +19,7 @@ You can also review a `recorded version of the presentation
 <https://drive.google.com/file/d/15-C4Zs_oMxUQ2_QqPm-9CkxPkeK46q56/view>`_.
 
 Ursa System Configuration
--------------------------
+=========================
 
 .. list-table::
    :header-rows: 1
@@ -87,8 +87,8 @@ Ursa Partitions
      - QOS Allowed
      - Billing TRES Factor
      - Description
-   * - u1
-     - batch,windfall, debug, urgent
+   * - u1-compute
+     - batch,windfall, debug, urgent, long
      - 100
      - General compute resource. **Default** if no partition is specified.
    * - u1-h100
@@ -110,14 +110,18 @@ Ursa Partitions
 See the :ref:`Quality of Service (QOS) table <QOS-table>` for more information.
 
 Ursa Node Sharing
---------------------------
-With the Ursa u1 partition:
+-----------------
 
-* If you request 1-192 cores for your job
+Jobs requesting less than 192 cores or the equivalent amount
+of memory will share the node with other jobs.
+
+With the Ursa ``u1-compute`` partition:
+
+* If you request 1-191 cores for your job
   you will be allocated and charged for the greater of
   the number of cores requested or the amount of memory
-  requested divided by 2.
-* If you request 193 or greater cores you will be given and charged for whole
+  requested in GB divided by 2.
+* If you request 192 or greater cores you will be given and charged for whole
   nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
 
 Ursa Front Ends and Service Partition
@@ -125,7 +129,7 @@ Ursa Front Ends and Service Partition
 Ursa has 15 outward-facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
-    * ufe01-ufe04, total of 768 cores for interactive use.
+    * ``ufe01-ufe04``, total of 768 cores for interactive use.
       See the `Login (Front End) Node Usage Policy <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#login-node-usage>`_ for important information about using Login nodes.
 * 10 nodes will comprise the service partition:
     * 3,840 cores total.
@@ -133,7 +137,7 @@ Ursa has 15 outward-facing nodes.
     * Target for compilation and data transfer jobs.
     * Target for scrontab jobs (Scrontab is preferred for recurring jobs).
 * 1 node is available for ecflow
-    * uecflow01
+    * ``uecflow01``
 
 Using GPU Resources on Ursa
 ===========================
@@ -185,21 +189,46 @@ being requested:
 
 Ursa Software Stack
 -------------------
-* Ursa uses Slurm as the batch system.
-* Spack is used to install software in /apps.
-* Modules are used similarly to the MSU systems.
-* An Intel stack is in place, and AMD and NVHPC stacks will be added.
-* Ursa uses the most current versions of the compilers/libraries.
+
+* Ursa OS is Rocky 9.4, similar to MSU systems (Rocky 9.1)
+  whereas Hera/Jet are Rocky 8.
+* Module layout is more akin to what you see on MSU
+  systems; installed using spack.
+
+  * Please run the ``module spider`` command to see all
+    the available modules!
+
+* Compilers: Intel’s oneapi, Nvidia’s nvhpc, and
+  AMD’s AOCC compilers are available.
+* MPIs: Intel MPI from Intel, HPC-X MPI from Nvidia, and openMPI
+  implementations are available.
+
+  * We have seen much better performance and stability with
+    HPC-X in our testing of communication intensive benchmarks
+    as it is optimized to take advantage of the NDR-200 IB
+    network more effectively.
+
+* An Intel stack is in place. Other stacks will be
+  considered if requested.
 
 Ursa File Systems
 -----------------
-Ursa and Hera will share 2 new file systems, /scratch3 and /scratch4,
-that will replace Hera’s /scratch1 and /scratch2.
+* Ursa will only mount the two new HPFS files systems,
+  ``/scratch3`` and ``/scratch4``.
+* At Ursa’s initial release (GA), Hera will continue to only
+  mount ``/scratch[12]``, therefore data transfers between
+  ``/scratch[12]`` and ``/scratch[34]`` will need to be via the
+  DTN’s using utilities such as rsync/scp or Globus.
+* At the next NESCC DT (6/10/25, subject to change),
+  Hera will also mount ``/scratch[34]`` to allow easier data
+  migration and the running of Hera jobs on the new file
+  systems as well as the old file systems.
+* Scratch file systems are **NOT** backed up!
 
-/scratch3 and /scratch4
-------------------------
-* DDN Lustre, each file system: >50 PB, > 500 GB/s
-* Mounted on Ursa and Hera
+.. caution::
+   **Data migration deadline:**: The ``/scratch[12]`` file systems
+   will be decommissioned in August. Plan to complete your migration to
+   the ``/scratch[34]`` file systems no later than **7/31/25**.
 
 Cron and Scrontab Services
 --------------------------
@@ -209,6 +238,6 @@ whenever possible.  For information on how to use ``scrontab``
 please see :ref:`scrontab <rdhpcs_scrontab>`.
 
 Getting Help
-------------
+=============
 
 For any Ursa or Rhea issue, open a :ref:`help request <getting_help>`.

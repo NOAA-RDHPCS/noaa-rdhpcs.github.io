@@ -103,11 +103,11 @@ The following partitions are defined for Hera:
        table below for more details. There are 100 Haswell nodes, each
        containing 8 P100 GPUs. Each P100 has 16GB of memory.
    * - hera
-     - batch,windfall, debug, urgent
+     - batch,windfall, debug, urgent, long
      - 165
      - General compute resource. **Default** if no partition is specified
    * - bigmem
-     - batch,windfall, debug, urgent
+     - batch,windfall, debug, urgent, long
      - 165
      - For large memory jobs; 268 nodes, each with 40 cores and 384 GB of memory
    * - novel
