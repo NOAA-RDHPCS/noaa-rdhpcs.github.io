@@ -86,7 +86,7 @@ Ursa Partitions
      - Billing TRES Factor
      - Description
    * - u1-compute
-     - batch,windfall, debug, urgent
+     - batch,windfall, debug, urgent, long
      - 100
      - General compute resource. **Default** if no partition is specified.
    * - u1-h100
