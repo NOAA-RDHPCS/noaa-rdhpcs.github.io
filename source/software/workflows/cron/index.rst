@@ -3,7 +3,7 @@
 .. note::
 
     Cron is available on :ref:`Hera <hera-user-guide>`, :ref:`Jet
-    <jet-user-guide>`, and :ref:`Niagara <niagara-user-guide>`.  Users on the
+    <jet-user-guide>`, and :ref:`Mercury <mercury-user-guide>`.  Users on the
     other RDHPCS systems, for example :ref:`Gaea <gaea-user-guide>` and
     :ref:`PPAN <ppan-user-guide>` must use :ref:`rdhpcs_scrontab`.
 
@@ -18,8 +18,8 @@ schedule scripts to be run based on a recurrence rule.  Slurm also has a
 cron-like feature :command:`scrontab` that is enabled on all RDHPCS systems.
 
 At this time, :command:`cron` is only available on :ref:`Hera
-<hera-user-guide>`, :ref:`Jet <jet-user-guide>`, and :ref:`Niagara
-<niagara-user-guide>`.
+<hera-user-guide>`, :ref:`Jet <jet-user-guide>`, and :ref:`Mercury
+<mercury-user-guide>`.
 
 Users can use `Slurm crontab <https://slurm.schedmd.com/scrontab.html>`_
 (:command:`scrontab`) on all RDHPCS systems.  Users on :ref:`Gaea
@@ -98,7 +98,7 @@ The `crontab guru <https://crontab.guru/>`_ is a helpful research for cron.
 Viewing currently running crontab processes
 ===========================================
 
-Note: This utility is only available on Hera/Niagara/Jet.
+Note: This utility is only available on Hera/Mercury/Jet.
 
 To get a view of your currently executing crontab processes please use the
 command crond_procs.

@@ -118,6 +118,7 @@ fillin
 Finity
 firstlast
 Firstname
+FOIA
 fortl
 fsspec
 fsxcompression
@@ -136,6 +137,7 @@ GEFSRR
 GEMLIB
 gempak
 gencode
+genindex
 genv
 genvall
 genvlist
@@ -316,10 +318,12 @@ mvapich
 myaccount
 myccode
 mycexe
+mycpu
 myexe
 myfort
 myfortcode
 myfxex
+mygpu
 myid
 myjob
 mypartition
