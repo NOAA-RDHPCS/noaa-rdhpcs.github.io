@@ -7,6 +7,10 @@ Ursa User Guide
 .. image:: /images/ursa.png
    :scale: 45%
 
+
+.. image:: /images/ursa.png
+   :scale: 45%
+
 .. _ursa-system-overview:
 
 Ursa System Overview
