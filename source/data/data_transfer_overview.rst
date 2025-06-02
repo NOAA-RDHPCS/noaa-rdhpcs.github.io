@@ -29,9 +29,9 @@ Data Transfer Methods
   Where Globus endpoints are available, it is the recommended method
   for high-speed transfer. Note that some sites outside the RDHPCS
   program do not support Globus.
-* Data Transfer Nodes (DTNs) are dedicated systems (typically servers)
-  deployed and configured specifically for data transfer. As such,
-  they provide a comparatively fast method for data transfer.  DTNs
+* Data Transfer Nodes (DTNs) are dedicated systems
+  deployed and configured specifically for data transfers, providing
+  fast methods for data transfer.  DTNs
   can only be used within RDHPCS, and transfers are limited to
   High-Performance File Systems (HPFS).
 * Untrusted Data Transfer Nodes (UDTNs). Nodes available from anywhere
@@ -76,16 +76,12 @@ as it provides a fast method for transferring TO and FROM HPC Systems
 Transferring Data page for complete details.
 
 Note the following:
-* DTNs cannot be accessed from a home network. For
-transfers from systems that cannot access the DTNs, refer to UDTN,
-below.
-* DTNs can only access the High-Performance Filesystems
-(HPFS-scratch file systems), not the /home filesystems.
-* DTNs can only be used for inbound connections.
-The connection cannot be started
-on the DTNs, but data can flow in either direction. Typically, users
-should be able to log in to the remote system and initiate a transfer
-from the remote machine.
+
+* DTNs can only be used **between NOAA RDHPCS systems.** For transfers
+  involving systems outside the NOAA RDHPCS, see the UDTN section below.
+* DTNs can typically only access the High-Performance Filesystems
+  (HPFS-scratch file systems), not the **/home** filesystems.  This is a
+  HPC site-specific configuration.
 * Unattended data transfers can only be done using the DTNs.
 
 If you are unable to use the DTNs, please review the other available options.
@@ -105,6 +101,12 @@ directories on the host system:
 
 For occasional transfers to/from untrusted hosts, you can use two stage
 copying to copy data from an remote host to an RDHPCS host.
+
+* Untrusted DTNs can only be used for inbound connections.
+  The connection cannot be started
+  on the DTNs, but data can flow in either direction. Typically, users
+  should be able to log in to the remote system and initiate a transfer
+  from the remote machine.
 
 .. note::
 
