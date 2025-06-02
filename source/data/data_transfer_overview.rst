@@ -78,7 +78,7 @@ Transferring Data page for complete details.
 Note the following:
 
 * DTNs can only be used **between NOAA RDHPCS systems.** For transfers
-  involving systems outside the NOAA RDHPCS, see the UDTN section below. 
+  involving systems outside the NOAA RDHPCS, see the UDTN section below.
 * DTNs can typically only access the High-Performance Filesystems
   (HPFS-scratch file systems), not the **/home** filesystems.  This is a
   HPC site-specific configuration.
