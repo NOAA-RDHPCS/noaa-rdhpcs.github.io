@@ -52,7 +52,7 @@ file.
         </div>
         <button class="btn btn-neutral"
                 type="submit"
-                onclick="return ssh_config_gen()">Genearte SSH Config</button>
+                onclick="return ssh_config_gen()">Generate SSH Config</button>
     </form>
 
     <div class="tooltip_templates">
