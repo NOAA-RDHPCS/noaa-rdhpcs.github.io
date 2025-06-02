@@ -76,16 +76,17 @@ as it provides a fast method for transferring TO and FROM HPC Systems
 Transferring Data page for complete details.
 
 Note the following:
-* DTNs cannot be accessed from a home network. For
-transfers from systems that cannot access the DTNs, refer to UDTN,
-below.
+
+* DTNs cannot be accessed from a home network. For transfers
+  from systems that cannot access the DTNs, refer to UDTN,
+  below.
 * DTNs can only access the High-Performance Filesystems
-(HPFS-scratch file systems), not the /home filesystems.
+  (HPFS-scratch file systems), not the **/home** filesystems.
 * DTNs can only be used for inbound connections.
-The connection cannot be started
-on the DTNs, but data can flow in either direction. Typically, users
-should be able to log in to the remote system and initiate a transfer
-from the remote machine.
+  The connection cannot be started
+  on the DTNs, but data can flow in either direction. Typically, users
+  should be able to log in to the remote system and initiate a transfer
+  from the remote machine.
 * Unattended data transfers can only be done using the DTNs.
 
 If you are unable to use the DTNs, please review the other available options.
