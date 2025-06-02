@@ -62,10 +62,13 @@ if os.environ.get("GITHUB_ACTIONS", "false") == "true":
 
 html_css_files = [
     "css/theme_overrides.css",
+    "css/tooltipster.bundle.min.css",
+    "css/tooltipster.custom.css",
 ]
 
 html_js_files = [
-    "js/currentMaintenance.js",
+    "js/tooltipster.bundle.min.js",
+    "js/tooltipster.custom.js",
 ]
 
 # cSpell:ignore gsce nochange
@@ -113,6 +116,7 @@ html_theme_options = {
     "version_selector": True,
     "language_selector": True,
     "vcs_pageview_mode": "blob",
+    "includehidden": False,
 }
 
 if (packaging.version.Version(sphinx_rtd_theme.__version__) >=
