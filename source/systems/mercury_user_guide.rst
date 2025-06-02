@@ -5,8 +5,10 @@ Mercury User Guide
 ##################
 
 
-.. image:: /images/niagara.jpg
-   :scale: 25%
+.. image:: /images/Mercury.png
+   :scale: 15%
+   :align: center
+
 
 .. _mercury-system-overview:
 
