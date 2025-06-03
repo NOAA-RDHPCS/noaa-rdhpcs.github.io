@@ -4,7 +4,7 @@
 Ursa User Guide
 ***************
 
-.. image:: /images/ursa.png
+.. image:: /images/Ursa.png
    :scale: 45%
 
 
