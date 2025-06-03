@@ -7,7 +7,6 @@ Ursa User Guide
 .. image:: /images/Ursa.png
    :scale: 45%
 
-
 .. _ursa-system-overview:
 
 Ursa System Overview
@@ -16,12 +15,14 @@ Ursa is located at the :ref:`NOAA Environmental Security Computing
 Center (NESCC) <locations-of-rdhpcs>`, located in Fairmont, West
 Virginia.
 
-Introduction to Ursa Presentation
----------------------------------
-Review the `Introduction to Ursa
-<https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_
-presentation to get started with Ursa.
-
+Getting Started with Ursa
+-------------------------
+Log into your NOAA Google account, and you can view a
+`slide presentation introducing Ursa
+<https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_.
+Log into your NOAA Google account, and you can also review
+a `recorded version of the presentation
+<https://drive.google.com/file/d/15-C4Zs_oMxUQ2_QqPm-9CkxPkeK46q56/view>`_.
 
 Ursa System Configuration
 =========================
@@ -93,7 +94,7 @@ Ursa Partitions
      - Billing TRES Factor
      - Description
    * - u1-compute
-     - batch,windfall, debug, urgent
+     - batch,windfall, debug, urgent, long
      - 100
      - General compute resource. **Default** if no partition is specified.
    * - u1-h100

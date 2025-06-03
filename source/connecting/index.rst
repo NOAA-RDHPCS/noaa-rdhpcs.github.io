@@ -4,6 +4,11 @@
 Connecting
 ##########
 
+.. toctree::
+   :hidden:
+
+   openssh_config
+
 .. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 
 Connecting for the first time
@@ -288,7 +293,9 @@ systems, the bastion configures SSH port-forwarding tunnels.  To use these
 tunnels, the user must configure their local SSH client to create tunnels
 to/from the bastion.
 
-See the Port Tunnel section of the :ref:`Tectia` page for details.
+See the Port Tunnel section of the :ref:`Tectia` page for details.  You can use
+:ref:`this form <openssh-config>` to create a sample SSH configuration for
+OpenSSH-based clients.
 
 
 
