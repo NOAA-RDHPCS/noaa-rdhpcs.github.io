@@ -105,7 +105,7 @@ also responsible for managing disk quota and archive tape usage. A
 portfolio’s disk quota on a system is initially based on their
 percentage of compute allocation on that System.
 
-Click to review the `On-Premises Allocation Request Form
+Click to review the `On-Premises Allocation Request Form.
 <https://docs.google.com/forms/d/e/1FAIpQLSdP6aZJ8HslQ4blPE3upF5tduudkbaChjDwLYDCA0LjPciWCQ/viewform?usp=sf_link>`_
 
 The Allocation Committee (AC) is appointed by
@@ -115,8 +115,8 @@ Line Offices and Labs which use RDHPCS resources. The AC assigns a
 monthly compute allocation and approximate maximum disk quota, per
 RDHPCS resource.
 
-This document lists `committee members and PfMs
-<https://docs.google.com/presentation/d/1oZlV2yklYmCxWhCM6TF1DtRgy3BVPBDs/edit#slide=id.p2>`__ as of 30 May 2025.
+This document lists `committee members and PfMs.
+<https://docs.google.com/presentation/d/1oZlV2yklYmCxWhCM6TF1DtRgy3BVPBDs/edit#slide=id.p2>`__
 For information on how allocations are implemented on a System, see
 :ref:`slurm-priority-and-fairshare`.
 

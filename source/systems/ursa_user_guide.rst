@@ -8,9 +8,6 @@ Ursa User Guide
    :scale: 45%
 
 
-.. image:: /images/ursa.png
-   :scale: 45%
-
 .. _ursa-system-overview:
 
 Ursa System Overview
@@ -21,7 +18,9 @@ Virginia.
 
 Introduction to Ursa Presentation
 ---------------------------------
-The `Introduction to Ursa <https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_ presentation is a quick start guide.
+Review the `Introduction to Ursa
+<https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_
+presentation to get started with Ursa.
 
 
 Ursa System Configuration
