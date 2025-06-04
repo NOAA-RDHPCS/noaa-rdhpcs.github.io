@@ -3,8 +3,7 @@ NOAA RDHPCS Systems
 #######################
 
 .. toctree::
-   :maxdepth: 2
-   :hidden:
+   :maxdepth: 1
 
    common
    gaea_user_guide
@@ -15,4 +14,3 @@ NOAA RDHPCS Systems
    mercury_user_guide
    MSU-HPC_user_guide
    pan/index
-

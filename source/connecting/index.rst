@@ -4,11 +4,6 @@
 Connecting
 ##########
 
-.. toctree::
-   :hidden:
-
-   openssh_config
-
 .. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 
 Connecting for the first time
@@ -122,19 +117,19 @@ Bastion Hostnames
 | **RDHPCS System** | |CBHN|          | |RBHN|                           |
 +-------------------+-----------------+----------------------------------+
 | Gaea              | |GCPRNG|        | |GRPRNG|                         |
-+                   +                 +                                  +
+|                   |                 |                                  |
 |                   | |GCBRNG|        | |GRBRNG|                         |
 +-------------------+-----------------+----------------------------------+
 | Hera              | |HCBRNG|        | |HRBRNG|                         |
-+                   +                 +                                  +
+|                   |                 |                                  |
 |                   | |HCPRNG|        | |HRPRNG|                         |
 +-------------------+-----------------+----------------------------------+
 | Jet               | |JCBRNG|        | |JRBRNG|                         |
-+                   +                 +                                  +
+|                   |                 |                                  |
 |                   | |JCPRNG|        | |JRPRNG|                         |
 +-------------------+-----------------+----------------------------------+
 | PPAN              | |PPPRNG|        | |PAPRNG|                         |
-+                   +                 +                                  +
+|                   |                 |                                  |
 |                   | |PPBRNG|        | |PBPRNG|                         |
 +-------------------+-----------------+----------------------------------+
 | Cloud             | Unavailable     | https://noaa.parallel.works/sso  |
@@ -142,11 +137,11 @@ Bastion Hostnames
 | MSU-HPC Orion     | Unavailable     | |OUG|                            |
 +-------------------+-----------------+----------------------------------+
 | Mercury           | |MCBRNG|        | |MRBRNG|                         |
-+                   +                 +                                  +
+|                   |                 |                                  |
 |                   | |MCPRNG|        | |MRPRNG|                         |
 +-------------------+-----------------+----------------------------------+
 | Ursa              | |UCBRNG|        | |URBRNG|                         |
-+                   +                 +                                  +
+|                   |                 |                                  |
 |                   | |UCPRNG|        | |URPRNG|                         |
 +-------------------+-----------------+----------------------------------+
 
@@ -165,9 +160,9 @@ website to update the CAC information.
 Reference the :ref:`Tectia` pages for complete information on how to
 configure Tectia initially for login using SSH with your CAC.
 
-.. code-block:: shell
+.. code-block:: console
 
-    sshg3 CAC-BASTION-HOSTNAME
+    $ sshg3 CAC-BASTION-HOSTNAME
 
 #. Reference the table above for the appropriate CAC Bastion to use.
 #. When prompted, enter your CAC PIN.
@@ -181,9 +176,9 @@ RSA SSH Login
 RDHPCS users who do not have a CAC, or lack the required hardware or
 software, are welcome to use an RSA login.
 
-.. code-block:: shell
+.. code-block:: console
 
-    ssh RSA-BASTION-HOSTNAME
+    $ ssh RSA-BASTION-HOSTNAME
 
 
 #. Reference the table above for the appropriate RSA Bastion to use.
@@ -257,18 +252,18 @@ X11 Graphics
 ============
 
 Users can use SSH X11 forwarding to open GUI-based applications (e.g., xterm,
-ARM Forge).  This is typically done using an SSH option.  For the TECTIA client
-``sshg3`` or OpenSSH-based clients, use the ``-X`` option:
+ARM Forge).  This is typically done using an SSH option.  For the :ref:`Tectia`
+client :command:`sshg3` or OpenSSH-based clients, use the ``-X`` option:
 
-.. code-block:: shell
+.. code-block:: console
 
-    gsissh -X host.url
+    $ sshg3 -X host.url
 
 or
 
-.. code-block:: shell
+.. code-block:: console
 
-    ssh -X host.url
+    $ ssh -X host.url
 
 Other clients, like PuTTY, will have an option when configuring the host.
 
