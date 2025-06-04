@@ -63,7 +63,7 @@ file.
     </div>
     <div class="tooltip_templates">
         <span id="uid_tooltip_content">
-            The user ID can be found by logging into an RDHPCS system and 
+            The user ID can be found by logging into an RDHPCS system and
             running the command <code>id -u</code>.
         </span>
     </div>
