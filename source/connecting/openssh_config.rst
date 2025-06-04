@@ -21,8 +21,8 @@ file.
 
 .. note::
 
-    The user ID can be found by logging into an RDHPCS system and run
-    the :command:`id` command.
+    The user ID can be found by logging into an RDHPCS system and running
+    the command :command:`id -u`.
 
 .. raw:: html
 
@@ -63,8 +63,8 @@ file.
     </div>
     <div class="tooltip_templates">
         <span id="uid_tooltip_content">
-            The user ID can be found by logging into an RDHPCS system and run
-            the <code>id</code> command
+            The user ID can be found by logging into an RDHPCS system and 
+            running the command <code>id -u</code>.
         </span>
     </div>
 
