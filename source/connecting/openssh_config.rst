@@ -1,3 +1,5 @@
+:orphan:
+
 .. _openssh-config:
 
 OpenSSH Sample Configuration

@@ -116,7 +116,7 @@ html_theme_options = {
     "version_selector": True,
     "language_selector": True,
     "vcs_pageview_mode": "blob",
-    "includehidden": False,
+    "includehidden": True,
 }
 
 if (packaging.version.Version(sphinx_rtd_theme.__version__) >=
