@@ -21,9 +21,8 @@ file.
 
 .. note::
 
-    You can get the User ID number either from your `AIM Profile
-    <https://aim.rdhpcs.noaa.gov/cgi-bin/person.pl>`__ or running the command
-    :command:`id` from any RDHPCS host.
+    The user ID can be found by logging into an RDHPCS system and running
+    the command :command:`id -u`.
 
 .. raw:: html
 
@@ -64,11 +63,8 @@ file.
     </div>
     <div class="tooltip_templates">
         <span id="uid_tooltip_content">
-            The user ID can be found under Admin Info in your <a
-            href="https://aim.rdhpcs.noaa.gov/cgi-bin/person.pl"
-            target="_blank" rel="noopener noreferrer">AIM Profile</a>, or by
-            running <strong class="command">id</strong> on any RDHPCS compute
-            system.
+            The user ID can be found by logging into an RDHPCS system and
+            running the command <code>id -u</code>.
         </span>
     </div>
 
