@@ -70,7 +70,7 @@ New users: Submit the RSA token request form
 Existing users: Replacement token
 ---------------------------------
 
-  1. Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site. 
+  1. Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site.
      At the top of the page, click the **Requests** tab.
 
   2. Click **Request an RSA Token**, complete the form and submit it.
