@@ -21,7 +21,7 @@ systems. With the widespread adaption of smart phones, it is preferred
 that users install the RSA SecurID app on their device.  Hardware
 fobs are available on request, but expect a several week lead time.
 
-As part of obtaining a NOAA RDHPCS Account, you will request an RSA
+To obtain a NOAA RDHPCS Account, you will request an RSA
 token, and follow the below steps to activate or configure it.
 
 .. attention::
@@ -40,6 +40,10 @@ subject of 'First.Last: Enable token' (replace First.Last with your
 First Last NOAA username).  Once enabled, proceed with the activation
 steps below.
 
+.. NOTE::
+
+   Make sure you are logged into Google with your NOAA.GOV credentials.
+
 .. _rsa-software-token-user-instructions:
 
 Requesting a new or replacement RSA token
@@ -48,10 +52,11 @@ Requesting a new or replacement RSA token
 New users: Submit the RSA token request form
 --------------------------------------------
 
-1. Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site and follow
-the link labeled **Make a request for an RSA token**.  Make sure you are
-logged into Google with your NOAA.GOV credentials, and fill out the
-form.
+ 1. Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site. At the top
+    of the page, click the **Requests** tab.
+ 2. Click **Request an RSA Token**, complete the form and submit it. You will
+    be issued a token when you have been fully approved for a functional
+    project.
 
 .. note::
 
@@ -61,31 +66,23 @@ form.
    <https://accounts.noaa.gov>`_ and contact your local I/T support
    people if you cannot login.
 
-2. Open an OTRS ticket. Send email to `rdhpcs.aim.help@noaa.gov
-<mailto:rdhpcs.aim.help@noaa.gov>`_, with the subject of
-'First.Last: Token for new device' (replace
-First.Last with your First Last NOAA username).
 
+Existing users: Replacement token
+---------------------------------
 
-Current users: Replacement token for a new smart phone
-------------------------------------------------------
+  1. Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site.
+     At the top of the page, click the **Requests** tab.
 
-1. Log into the `RSA User self-service console
-   <https://rsauser.boulder.rdhpcs.noaa.gov/console-selfservice/SelfService.do>`_.
+  2. Click **Request an RSA Token**, complete the form and submit it.
 
-.. image:: /images/newrsa1.png
-
-Click **request replacement**. The Request Replacement window displays.
-
-.. image:: /images/newrsa2.png
-
-2. Complete the replacement request.
+  3. Open a helpdesk ticket by sending an email from your NOAA.GOV account
+     to `rdhpcs.aim.help@noaa.gov <mailto:rdhpcs.aim.help@noaa.gov>`_,
+     with the subject of ‘First.Last: Token for new device’.
+     (Replace First.Last with your First Last NOAA username.)
 
 .. note::
 
    You can set the RSA pin to the same number you currently use.
-
-Click **Submit Request**. A confirmation window displays.
 
 You will receive email confirming your request. When the request is approved,
 you will receive a second email containing token information.
@@ -94,6 +91,7 @@ you will receive a second email containing token information.
 
    Follow the instructions on this page, rather than those in the email, to
    activate the token.
+
 
 Activate your Software Token
 ----------------------------
@@ -114,9 +112,9 @@ screen.
 
 .. image:: /images/RSACTF1.png
 
-You will need to enter the information
-from your approval email into the RSA app. Then, you will go back into Web Tier
-to set your PIN.
+You will need to enter the information from your approval email into the
+RSA app. Then you will go back to the RSA User self-service console to
+set your PIN.
 
 After the distribution of CTF mode, the SW token is in RSA APP. Log on to the
 `RSA User self-service console` with your NOAA ID and the OTP code from
@@ -129,7 +127,7 @@ The PIN Required screen displays.
 .. image:: /images/RSACTF3.png
 
 Set and confirm your PIN.
-This completes the process. If you have any problems, send email to
+This completes the process. If you have any problems, send an email to
 rdhpcs.aim.help@NOAA.gov to open a Helpdesk ticket.
 
 
@@ -153,8 +151,3 @@ code from the display.
 
 This completes the process. If you have any problems, send email to
 rdhpcs.aim.help@NOAA.gov to open a Helpdesk ticket.
-
-
-
-Scan the QR code
-If your token
