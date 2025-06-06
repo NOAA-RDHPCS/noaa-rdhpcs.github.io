@@ -76,8 +76,8 @@ Existing users: Replacement token
   2. Click **Request an RSA Token**, complete the form and submit it.
 
   3. Open a helpdesk ticket by sending an email from your NOAA.GOV account
-     to `rdhpcs.aim.help@noaa.gov <mailto:rdhpcs.aim.help@noaa.gov>`_, 
-     with the subject of ‘First.Last: Token for new device’. 
+     to `rdhpcs.aim.help@noaa.gov <mailto:rdhpcs.aim.help@noaa.gov>`_,
+     with the subject of ‘First.Last: Token for new device’.
      (Replace First.Last with your First Last NOAA username.)
 
 .. note::
@@ -112,8 +112,8 @@ screen.
 
 .. image:: /images/RSACTF1.png
 
-You will need to enter the information from your approval email into the 
-RSA app. Then you will go back to the RSA User self-service console to 
+You will need to enter the information from your approval email into the
+RSA app. Then you will go back to the RSA User self-service console to
 set your PIN.
 
 After the distribution of CTF mode, the SW token is in RSA APP. Log on to the
