@@ -70,15 +70,15 @@ New users: Submit the RSA token request form
 Existing users: Replacement token
 ---------------------------------
 
-  1. Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site. At the top of the page, click the **Requests** tab.
+  1. Access the RDHPCS `AIM <https://aim.rdhpcs.noaa.gov>`_ site. 
+     At the top of the page, click the **Requests** tab.
 
   2. Click **Request an RSA Token**, complete the form and submit it.
 
-  3. Open an OTRS ticket. Send email to `rdhpcs.aim.help@noaa.gov
-     <mailto:rdhpcs.aim.help@noaa.gov>`_, with the subject of ‘First.Last:
-     Token for new device’. (Replace First.Last with your First Last NOAA
-     username.)
-
+  3. Open a helpdesk ticket by sending an email from your NOAA.GOV account
+     to `rdhpcs.aim.help@noaa.gov <mailto:rdhpcs.aim.help@noaa.gov>`_, 
+     with the subject of ‘First.Last: Token for new device’. 
+     (Replace First.Last with your First Last NOAA username.)
 
 .. note::
 
@@ -112,9 +112,9 @@ screen.
 
 .. image:: /images/RSACTF1.png
 
-You will need to enter the information
-from your approval email into the RSA app. Then, you will go back into Web Tier
-to set your PIN.
+You will need to enter the information from your approval email into the 
+RSA app. Then you will go back to the RSA User self-service console to 
+set your PIN.
 
 After the distribution of CTF mode, the SW token is in RSA APP. Log on to the
 `RSA User self-service console` with your NOAA ID and the OTP code from
@@ -127,7 +127,7 @@ The PIN Required screen displays.
 .. image:: /images/RSACTF3.png
 
 Set and confirm your PIN.
-This completes the process. If you have any problems, send email to
+This completes the process. If you have any problems, send an email to
 rdhpcs.aim.help@NOAA.gov to open a Helpdesk ticket.
 
 
@@ -151,8 +151,3 @@ code from the display.
 
 This completes the process. If you have any problems, send email to
 rdhpcs.aim.help@NOAA.gov to open a Helpdesk ticket.
-
-
-
-Scan the QR code
-If your token
