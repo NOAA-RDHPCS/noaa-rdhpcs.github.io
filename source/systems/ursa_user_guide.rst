@@ -170,7 +170,7 @@ the example below where 2 H100 GPUs on 1 node are being requested:
 
 .. code-block:: shell
 
-   sbatch -A mygpu_project -p u1-h100 -q gpu -N 1 –gres=gpu:h100:2 my_ml.job
+   sbatch -A mygpu_project -p u1-h100 -q gpu -N 1 –-gres=gpu:h100:2 my_ml.job
 
 Using GPU Resources Without a GPU allocation
 --------------------------------------------
@@ -190,7 +190,7 @@ being requested:
 
 .. code-block:: shell
 
-   sbatch -A mycpu_project -p u1-h100 -q gpuwf -N 1 –gres=gpu:h100:2 my_ml.job
+   sbatch -A mycpu_project -p u1-h100 -q gpuwf -N 1 –-gres=gpu:h100:2 my_ml.job
 
 
 Ursa Software Stack
