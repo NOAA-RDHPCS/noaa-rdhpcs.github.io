@@ -3,13 +3,6 @@
     max-width: 1200px;
 }
 
-/* Clicking on the NOAA RDHPCS logo does nothing
-   (disable RTD theme's default <a> behavior) */
-body>div>nav>div>div.wy-side-nav-search>a {
-    pointer-events: none;
-    cursor: default;
-}
-
 /* Don't let the color of the Docs Help link change. */
 a.a-nochange, a.a-nochange:visited {
     color: grey !important;
