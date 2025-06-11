@@ -11,7 +11,7 @@ Action Required
 
 .. attention::
 
-   Migrate your data on Hera from ``/scratch[12]`` to ``/scratch[34]`` file systems!
+   Migrate your data on Hera from ``/scratch[12]`` to ``/scratch[34]`` file systems no later than July 31, 2025!
 
 The ``/scratch1`` and ``/scratch2`` file systems are out of warranty and need to be
 turned off by July 31, 2025.  These file systems will be set to “read-only”
