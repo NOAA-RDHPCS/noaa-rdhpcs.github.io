@@ -6,6 +6,20 @@ Hera User Guide
 
 .. image:: /images/Hera.jpg
 
+Action Required
+===============
+
+.. attention::
+
+   Migrate your data on Hera from ``/scratch[12]`` to ``/scratch[34]`` file systems no later than July 31, 2025!
+
+The ``/scratch1`` and ``/scratch2`` file systems are out of warranty and need to be
+turned off by July 31, 2025.  These file systems will be set to “read-only”
+mode on Jul 15, 2025. Please migrate your files as soon as possible.  Here is
+the link to a `brief presentation
+<https://docs.google.com/presentation/d/1bXH6hKE-vgn7k-CSp2aFWWlH4s5jhL5oKJ58QepFTxI/edit?slide=id.g30820fabc4a_16_0#slide=id.g30820fabc4a_16_0>`_
+that should help you with your migration.
+
 System Overview
 ===============
 
@@ -63,6 +77,8 @@ System Configuration
      - HDR-100 IB
    * - Total GPU FLOPS (TFLOPS)
      - N/A
+
+
 
 .. note::
 
