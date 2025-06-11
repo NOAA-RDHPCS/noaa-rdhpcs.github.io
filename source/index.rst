@@ -46,7 +46,7 @@ Systems
 .. toctree::
    :maxdepth: 2
 
-   systems/index
+   Systems <systems/index>
 
 Data Storage and Transfers
 ==========================
