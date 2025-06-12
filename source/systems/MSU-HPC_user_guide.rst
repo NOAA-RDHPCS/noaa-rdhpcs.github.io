@@ -766,8 +766,8 @@ There are several different QOS'es depending on your needs.
      -  QOS for a job that requires more urgency than *batch*. Your
         project :ref:`FairShare <slurm-fairshare>` will be lowered at
         2.0x the rate as compared to *batch*.  Only one job pe
-        project/account can be pending/runnin at any time. When a
-        project's FairShare is below 0.45, jobs submmit to *urgent*
+        project/account can be pending/running at any time. When a
+        project's FairShare is below 0.45, jobs submit to *urgent*
         are automatically changed to *batch* and users notified via
         stderr.
    * - debug
@@ -1065,7 +1065,7 @@ priority.
 **Load contrib and noaatools Module**
 
 The module tools work on all MSU-HPC systems. On the MSU-HPC side,
-load the noaatools modu:: shell
+load the noaatools module shell
 
    $ module avail
    $ module load contrib noaatools
@@ -1443,7 +1443,7 @@ Before you begin, collect the following details:
 
 -  First Name
 -  Last Name
--  Desired Login Name - Typcially first initial, last name
+-  Desired Login Name - Typically first initial, last name
    (John Doe = jdoe)
 -  Email address. Preferably the user's @noaa.gov address. Otherwise
    use a business email address that best aligns with the user's work
@@ -1478,7 +1478,7 @@ Before you begin, collect the following details:
 Once the initial account request has been submitted, MSU will send the
 prospective user email similar to the following, to request the
 additional information needed for the background check and account
-finalizatize:
+finalization:
 
 .. code-block:: shell
 
