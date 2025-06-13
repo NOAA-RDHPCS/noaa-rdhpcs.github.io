@@ -195,10 +195,9 @@ submitted to the batch system to perform the data movement:
     #!/bin/bash
 
     #SBATCH --job-name=data-transfer
-    #SBATCH --partition=PARTITION_GOES_HERE
     #SBATCH --time=08:00:00
     #SBATCH --nodes=1
-    #SBATCH --output=$HOME/data-transfer-job-%j
+    #SBATCH --output=%x.o%j
 
     set -x
 
