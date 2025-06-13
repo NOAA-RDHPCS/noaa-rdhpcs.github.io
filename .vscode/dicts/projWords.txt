@@ -18,6 +18,7 @@ awsnoaa
 awsv
 azcopy
 azurestream
+baseprojectname
 bbcp
 bigdir
 bigmem
@@ -40,6 +41,7 @@ ccwrf
 CFLAGS
 cfsstrat
 cgateway
+chdir
 checkjob
 chgrp
 chicklet
@@ -54,6 +56,7 @@ CMRS
 cnvgrib
 codegen
 collab
+Collaboratory
 computecanada
 Coolkey
 coredumpsize
@@ -224,10 +227,12 @@ itac
 JCBRNG
 JCPRNG
 jcsda
+jdoe
 jetmgmt
 joberr
 jobfile
 jobout
+jobscript
 JRBRNG
 JRPRNG
 Jumpstart
@@ -283,8 +288,8 @@ mcwi
 mdlcloud
 Mellanox
 memberwork
-meso
 merc
+meso
 mgmt
 Minfo
 MKLROOT
@@ -330,7 +335,9 @@ mypartition
 myprog
 Myrinet
 myrun
+myscript
 NAGAPE
+namelist
 naqfc
 nbhome
 NCAR
@@ -344,6 +351,7 @@ NCEPLIBS
 NCEPPROD
 NCPRNG
 ncview
+ndays
 neaqs
 nedit
 nems
@@ -355,6 +363,8 @@ ngrr
 noaagfdl
 noaardhpcs
 noaastore
+noaatest
+noaatools
 NOATIME
 NODEFILE
 NODELIST
@@ -410,6 +420,7 @@ petaflops
 phod
 physcpubind
 pkcs
+PNETCDF
 podaac
 PPBRNG
 ppef
@@ -418,6 +429,7 @@ prarms
 Preconfigured
 procname
 profosse
+PROJECTNAME
 projid
 PROJWORK
 psurge
@@ -466,6 +478,8 @@ sacccount
 sair
 Sandybridge
 Scalapack
+SCHEDNODES
+Schnepp
 seaglider
 Secur
 securid
@@ -545,12 +559,14 @@ verif
 vftmp
 vimdiff
 vjet
+VSIZE
 vtune
 wallclock
 wamgip
 wamipe
 WCOSS
 wdas
+webform
 wgrib
 wmem
 wrfsatda
@@ -569,3 +585,4 @@ XTHI
 xtmp
 xxdiff
 xzvf
+zrtrr

@@ -64,7 +64,7 @@ See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 
 SSH clients are available for Windows-based systems, such as published
 by VanDyke software.  For recent SecureCRT versions, the preferred
-authentication setting shown above
+authentication setting is shown above.
 
 For Windows systems, `PuTTY
 <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_,
@@ -72,8 +72,8 @@ For Windows systems, `PuTTY
 `MobaXterm <https://mobaxterm.mobatek.net/>`_ can also be used to
 provide SSH capability.  Recent updates to Windows 10 and Windows 11
 have added built-in support for SSH.  If it is not installed on your
-version of Windows, please refer to Microsoft’s documentation on
-OpenSSH.
+version of Windows, please refer to Microsoft’s `documentation on
+OpenSSH <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui&pivots=windows-server-2025>`_.
 
 .. _bastion_hostnames:
 
@@ -132,10 +132,6 @@ Bastion Hostnames
 |                   |                 |                                  |
 |                   | |PPBRNG|        | |PBPRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| Cloud             | Unavailable     | https://noaa.parallel.works/sso  |
-+-------------------+-----------------+----------------------------------+
-| MSU-HPC Orion     | Unavailable     | |OUG|                            |
-+-------------------+-----------------+----------------------------------+
 | Mercury           | |MCBRNG|        | |MRBRNG|                         |
 |                   |                 |                                  |
 |                   | |MCPRNG|        | |MRPRNG|                         |
@@ -144,6 +140,17 @@ Bastion Hostnames
 |                   |                 |                                  |
 |                   | |UCPRNG|        | |URPRNG|                         |
 +-------------------+-----------------+----------------------------------+
+
+In addition to the Bastions, RDHPCS users have access to computational capacity
+on the Orion and Hercules systems, hosted by Mississippi State University. See
+the :ref:`MSU-HPC <MSU-HPC-user-guide>` user guide.
+for detailed information.
+
+Computational capacity is also available on the RDHPCS Cloud Platform, which
+allows NOAA users to create custom HPC clusters on an as-needed basis, through
+the Parallel Works platform. The :ref:`Cloud User Guide <cloud-user-guide>`
+provides more information.
+
 
 .. _Common-access:
 .. _cac_instructions:
