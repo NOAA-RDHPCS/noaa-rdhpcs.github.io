@@ -145,7 +145,7 @@ terms of hardware, but differ in their intended use.
 Compute nodes
 =============
 
-Gaea consists of two clusters, C5 and C6.
+Gaea consists of two compute clusters, C5 and C6.
 
 .. tab-set::
 
@@ -257,17 +257,22 @@ access each file system.
 Operating system
 ================
 
-The C5 and C6 clusters run the Cray OS operating system.  Cray OS is based on
-SUSE Linux Enterprise Server (:abbr:`SLES (SUSE Linux Enterprise Server)`).
+The C5 and C6 clusters run the Cray Operating System (COS).  :abbr:`COS (Cray
+Operating System)` is based on SUSE Linux Enterprise Server (:abbr:`SLES (SUSE
+Linux Enterprise Server)`).
 
-+---------+---------+---------+
-| Cluster | Cray OS | SLES    |
-|         | Version | Version |
-+=========+=========+=========+
-| C5      | 2.5     | 15.4    |
-+---------+---------+---------+
-| C6      | 3.0.2-2 | 15.5    |
-+---------+---------+---------+
++---------+----------+---------+
+| Cluster | Cray OS  | SLES    |
+|         | Version  | Version |
++=========+==========+=========+
+| C5      | 3.1.0-28 | 15.5    |
++---------+----------+---------+
+| C6      | 3.1.0-28 | 15.5    |
++---------+----------+---------+
+
+The version of COS and SLES installed on Gaea are updated yearly in fall.  The
+version of COS can be found running ``cat /opt/cray/etc/release/cos-base`` and
+version of SLES can be obtained running ``lsb-release -a``.
 
 .. _HPE Cray EX Documentation: https://support.hpe.com/connect/s/product?kmpmoid=1013083813
 .. _HPE Cray Programming Environment: https://cpe.ext.hpe.com/docs/latest/index.html
@@ -768,6 +773,39 @@ utility, and on the web at `<https://slurm.schedmd.com/man_index.html>`__.
 
     `Slurm documentation`_
         The official SchedMD Slurm documentation.
+
+
+Slurm clusters
+--------------
+
+Slurm on Gaea is configured as a federation.  This places the different Gaea
+compute, login and DTNs into different clusters.  The default behavior of the
+Slurm commands is to show information about the cluster the command is run
+on.  The user must specify the cluster via the ``--clusters`` (or ``-M``)
+command-line option to show information about the other clusters.
+
+For example, to show the jobs in the queue on the C6 cluster, you would run
+``squeue --clusters=c6`` or ``squeue -M c6``.
+
+Users can set the ``SLURM_CLUSTER`` environment variable to the cluster they
+want the a different default set of clusters.  For example, if the user wants
+information for the ES and C5 clusters, they would set ``export
+SLURM_CLUSTERS=c5,es``.
+
+The current Slurm clusters are:
+
++------------------+---------------------+
+| Cluster          | Nodes               |
++==================+=====================+
+| c5               | C5 compute nodes    |
++------------------+---------------------+
+| c6               | C6 compute nodes    |
++------------------+---------------------+
+| es               | All login and DTN   |
+|                  | nodes               |
++------------------+---------------------+
+
+
 
 Batch Scripts
 -------------
