@@ -6,6 +6,29 @@ Hera User Guide
 
 .. image:: /images/Hera.jpg
 
+Action Required
+===============
+
+.. attention::
+
+   Migrate your data on Hera from ``/scratch[1,2]`` to ``/scratch[3,4]`` file systems, no later than **July 31, 2025!**
+
+``/scratch[3,4]`` is now mounted on Hera, in addition to ``/scratch[1,2]``.
+``/scratch[1,2]`` will be decommissioned in August, so you must migrate your
+active data from ``/scratch[1,2]`` to ``/scratch[3,4]``. Important dates for
+your data migration:
+
+* ``/scratch[1,2]`` will be set to read only on **7/15/25**, plan to complete
+  migrating your data to ``/scratch[3,4]`` by **7/31/25**.
+
+* ``/scratch[1,2]`` is planned to be
+  decommissioned (unmounted) at the **~8/5/25** NESCC maintenance downtime.
+
+
+Here is the link to a `brief presentation
+<https://docs.google.com/presentation/d/1bXH6hKE-vgn7k-CSp2aFWWlH4s5jhL5oKJ58QepFTxI/edit?slide=id.g30820fabc4a_16_0#slide=id.g30820fabc4a_16_0>`_
+that should help you with your migration.
+
 System Overview
 ===============
 
@@ -63,6 +86,8 @@ System Configuration
      - HDR-100 IB
    * - Total GPU FLOPS (TFLOPS)
      - N/A
+
+
 
 .. note::
 
