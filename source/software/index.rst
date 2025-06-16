@@ -8,7 +8,7 @@ Software
    :maxdepth: 2
 
    modules/index
-   python/index
+   Python <python/index>
    workflows/index
    debuggers/index
    compilers/index
