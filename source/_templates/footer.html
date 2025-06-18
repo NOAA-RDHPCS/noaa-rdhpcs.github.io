@@ -30,6 +30,27 @@
 
     <div id="footer-right">
       <div id="site-footer-right-top">
+        {%- if google_calendar_id and google_calendar_name %}
+        <div id="maintenance-calendar">
+          <a href="https://calendar.google.com/calendar/embed?src={{ google_calendar_id }}"
+             onclick="window.open(this.href,
+                '{{ google_calendar_name }}',
+                'width=800,height=600,scrollbars=no,toolbar=no,location=no,status=no,menubar=no'); return false;">
+            {{ google_calendar_name }}
+          </a>
+        </div>
+        <div id="rdhpcs-icons">
+          <a class="fa fa-calendar"
+             href="https://calendar.google.com/calendar/embed?src={{ google_calendar_id }}"
+             onclick="window.open(this.href,
+                '{{ google_calendar_name }}',
+                'width=800,height=600,scrollbars=no,toolbar=no,location=no,status=no,menubar=no'); return false;">
+            <span>{{ google_calendar_name }}</span>
+          </a>
+        </div>
+        {%- endif %}
+      </div>
+      <div id="site-footer-right-bottom">
         <div id="stay-connected">
           <a href="https://www.noaa.gov/stay-connected">Stay connected to NOAA</a>
         </div>
