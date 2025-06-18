@@ -9,29 +9,51 @@ Welcome to RDHPCS's Documentation
 
 .. _maintenance-calendar:
 
-Maintenance Calendar
-====================
+RDHPCS Events
+=============
 
-The RDHPCS Maintenance Downtime Calendar has events for NESCC (Hera, HPSS,
-Niagara), Jet, Gaea, PPAN, and the Boulder and Princeton Bastions, and other
-RDHPCS system downtimes.
+The RDHPCS-sponsored events, which include system maintenance and downtimes are
+available in the `RDHPCS Calendar
+<https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com>`__
+We suggest users add this to their own Google calendar to keep up to date with
+important events.
+
+.. button-link:: https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com
+   :color: primary
+
+   :fa:`calendar-o;2em` RDHPCS Events Calendar (1)
 
 .. raw:: html
 
-   <div>
-   <iframe src="https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs%40group.calendar.google.com&ctz=America%2FNew_York"
-           style="border: 0"
-           width="800"
-           height="600"
-           frameborder="0"
-           scrolling="no"></iframe>
-   </div>
+   <p>
+      <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+         href="https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com"
+         onclick="window.open(
+             this.href,
+             'RDHPCS Events Calendar',
+             'width=800,height=600,scrollbars=no,toolbar=no,location=no,status=no,menubar=no');
+             return false;">
+         <span>
+            <span class="fa fa-calendar-o 2em"></span>
+            RDHPCS Events Calendar (2)
+         </span>
+      </a>
+   </p>
 
-
-Users can subscribe to the `calendar.
-<https://calendar.google.com/calendar/u/1/r?id=bm9hYS5nb3ZfZjFnZ3U0M3RtOWxmZWVnNDV0NTlhMDYzY3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ>`_
-
-.. note:: You must be logged in to your NOAA Gmail account to see the calendar.
+   <p>
+      <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference"
+         href="https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com"
+         onclick="window.open(
+             this.href,
+             'RDHPCS Events Calendar',
+             'width=800,height=600,scrollbars=no,toolbar=no,location=no,status=no,menubar=no');
+             return false;">
+         <span>
+            <span class="fa fa-calendar-o 2em"></span>
+            RDHPCS Events Calendar (3)
+         </span>
+      </a>
+   </p>
 
 Accounts and Projects
 =====================

@@ -99,7 +99,9 @@ html_context = {
         "USA.gov": "https://www.usa.gov/",
         "Ready.gov": "https://www.ready.gov/",
         "HPCS Webmaster": "mailto:[webmaster.hpcs@noaa.gov](mailto:webmaster.hpcs@noaa.gov)",
-    }
+    },
+    "google_calendar_name": "RDHPCS Events", # Name of the RDHPCS calendar
+    "google_calendar_id": "noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com", # Google Calendar ID for the RDHPCS calendar
 }
 # Tell Jinja2 templates the build is running on Read the Docs
 if os.environ.get("READTHEDOCS", "") == "True":
