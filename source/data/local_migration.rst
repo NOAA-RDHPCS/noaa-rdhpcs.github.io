@@ -58,70 +58,6 @@ General Guidelines
 Suggested Tools
 ===============
 
-du
---
-
-An original part of Unix, the ``du`` disk usage tool will be found on
-every HPCS.  It can provide a simple overview of the usage of a file
-or directory.  Output can be easily sorted by piping the output
-through ``sort``.  One example command is:
-
-.. code-block:: shell
-
-   du -sk DIRECTORY/* | sort -n
-
-- ``-s`` will summarize sub directory usage
-- ``-k`` will output in 1024-byte (1 kiB) blocks
-- ``| sort -n`` pipes the output through the sort, sorted numerically
-
-tree
-----
-
-A highly useful but optional part of Linux systems that `should` be
-installed on all NOAA RDHPCS, the ``tree`` tool provides
-tree-structured output about a directory with the option to summarize
-and calculate usage.  One example command is:
-
-.. code-block:: shell
-
-        tree --du -h -d -L 2 --sort=size DIRECTORY
-
-- ``--du`` will calculate disk usage on directories
-- ``-h`` will display human-readable (K,M,G,T) volumes
-- ``-d`` will summarize directories
-- ``-L 2`` will only show two levels of directories
-- ``--sort=size`` will sort output by size
-
-.. code-block:: shell
-
-    % tree --du -h -d --sort=size -L 2 .
-    [8.8K]  .
-    ├── [6.3K]  source
-    │   ├── [2.6K]  images
-    │   ├── [ 416]  data
-    │   ├── [ 416]  systems
-    │   ├── [ 288]  software
-    │   ├── [ 224]  slurm
-    │   ├── [ 192]  _templates
-    │   ├── [ 192]  accounts
-    │   ├── [ 160]  _downloads
-    │   ├── [ 160]  files
-    │   ├── [ 128]  _search
-    │   ├── [ 128]  _static
-    │   ├── [ 128]  contributing
-    │   ├── [ 128]  help
-    │   ├── [ 128]  logging_in
-    │   ├── [  96]  FAQ
-    │   ├── [  96]  compilers
-    │   ├── [  96]  connecting
-    │   └── [  96]  queue_policy
-    ├── [1.7K]  build
-    │   ├── [ 992]  html
-    │   └── [ 608]  doctrees
-    └── [  96]  utils
-
-      15K used in 24 directories
-
 rsync
 -----
 
@@ -165,23 +101,6 @@ destination if does exist:
 
     Do not use the ``–-delete`` option if you do not want data in the
     destination directory to be removed.
-
-xsync
------
-
-On Jet and Hera, an additional data synchronization tool,
-``xsync`` is available in ``/apps/local/bin``. It is an unsupported
-wrapper around ``rsync``,
-``find``, and ``xargs`` that performs multi-threaded transfers.
-
-Usage of ``xsync`` is almost identical to ``rsync`` as described above.
-
-.. note::
-
-    ``xsync`` does not support the ``--include`` and ``--exclude``
-    rsync options.  To view additional parameters to tune threading
-    and depth for better performance, run ``xsync –-help``. In mostg
-    cases they should not be needed.
 
 
 A sample batch script to transfer data
