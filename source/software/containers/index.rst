@@ -8,7 +8,7 @@ Containers
 
     We now allow all users and projects to run `Singularity
     <https://sylabs.io/singularity/>`_ Containers on Hera,
-    Hera-FGE, Jet, and Mercury.
+    Jet, and Mercury.
 
     Although this allows users to run Singularity Containers, we currently do not
     support the following items:
