@@ -12,7 +12,7 @@
 import datetime as dt
 import os
 import packaging.version
-import sphinx_rtd_theme
+import sphinx_rtd_theme    # type: ignore
 
 # Sphinx Configuration Items
 project = "NOAA RDHPCS User Documentation"
@@ -72,7 +72,7 @@ html_js_files = [
 ]
 
 # cSpell:ignore gsce nochange
-html_context = {
+html_context = {   # type: ignore
     "display_github": True,
     "github_user": "NOAA-RDHPCS",  # Username
     "github_repo": "noaa-rdhpcs.github.io",  # Repo name
@@ -106,7 +106,7 @@ if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
 
 # see https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html
-html_theme_options = {
+html_theme_options = {    # type: ignore
     "collapse_navigation": False,
     "sticky_navigation": True,
     "navigation_depth": 4,

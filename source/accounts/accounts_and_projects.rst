@@ -194,6 +194,8 @@ If your account remains suspended for more than 270 days, it will be
 deactivated and lose all project associations.  You will need to
 reapply for NOAA RDHPCS access.
 
+.. _request_a_new_allocation_or_project:
+
 Request a New Allocation or Project
 ===================================
 
@@ -201,10 +203,32 @@ Allocation requests currently flow via Helpdesk requests.  Send an
 email to the appropriate :ref:`HPCS-specific help address
 <getting_help>`.
 
+RDHPCS project, both cloud and on-premise, are defined through the `Account
+Information Management`_ :abbr:`AIM (Account Information Management)` system.
+Before you can request a project in AIM, it must have an assigned allocation
+with approval from the NOAA RDHPCS allocation committee.  Start the process by
+opening a help desk ticket. Send an email to rdhpcs.cloud.help@noaa.gov, with
+"Allocation for <Project>" in the subject line.  Assistance with capacity
+planning, planning and porting can be available.
 
+Collect the following information:
 
-Projects can be requested via the `Account Information Management`_
-website.
+- Project name.
+- Project short name.  This should be a string with no spaces.  For cloud
+  projects, include the three characters the correspond to the :abbr:`CSP
+  (Cloud Service Provider)`, i.e. *ca-* for :abbr:`AWS (Amazon Web Services)`,
+  *cg-* for :abbr:`GCP (Google Compute Platform)`, and *ca-* for Microsoft
+  Azure.
+- Brief description of your project.
+- Portfolio name.
+- Principal Investigator [PI] name.
+- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
+  the name.)
+- Allocation amount.
+
+Enter that information in `AIM <Account Information Management_>`_.  Select
+:menuselection:`People & Projects --> Projects`, then click the
+:guilabel:`Create a Project`.
 
 
 Common Access Card (CAC)
