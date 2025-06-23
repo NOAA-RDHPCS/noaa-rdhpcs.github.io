@@ -834,14 +834,14 @@ Jet, Hera and Ursa QOS
      - 168 hours (7 days)
      - 1
      - This QOS can only be used on Ursa in combination with the u1-h100 partition. Only Ursa projects with a GPU allocation (projects that begin with “gpu-“) of 2 or larger may use this QOS.
-       Max of 1,200 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
+       Max of 1,344 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
        will NOT be considered for scheduling if the project’s running jobs exceed this limit.
    * - gpuwf
-     - 20 gpu's (Ursa only)
-     - 168 hours (7 days)
+     - 10 gpu's (Ursa only)
+     - 48 hours (2 days)
      - 0
      - This QOS can only be used on Ursa in combination with the u1-h100 partition. Open to all projects with an allocation on Ursa.
-       Max of 336 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
+       Max of 192 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
        will NOT be considered for scheduling if the project’s running jobs exceed this limit.
        Lowest priority QOS for use with GPU nodes. If you have an allocation of “windfall only” (Monthly allocation = 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority
        FairShare Factor (f). EffectvUsage = 0. See how `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ works. This QOS is useful for low priority jobs that will only run when the
