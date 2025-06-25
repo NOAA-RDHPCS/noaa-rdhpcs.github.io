@@ -495,7 +495,7 @@ If a user receives the error
 it may be related to an issue in user's environment.
 
 First, ensure there is a minimum 100 MB free space in the home directory
-for the PW agent file to install.  If there’s enough space, perform one of the
+for the PW agent file to install.  If there's enough space, perform one of the
 following checks:
 
   1. Remove the https_proxy setting from the .bashrc file. This will stop using
@@ -518,24 +518,49 @@ Parallel Works FAQ
 We have collected some frequently asked questions (FAQ) about the Parallel
 Works platform.
 
+* :ref:`faq-pw-1`
+* :ref:`faq-pw-2`
+* :ref:`faq-pw-3`
+* :ref:`faq-pw-4`
+* :ref:`faq-pw-5`
+* :ref:`faq-pw-6`
+* :ref:`faq-pw-7`
+* :ref:`faq-pw-8`
+* :ref:`faq-pw-9`
+* :ref:`faq-pw-10`
+* :ref:`faq-pw-11`
+* :ref:`faq-pw-12`
+* :ref:`faq-pw-13`
+* :ref:`faq-pw-14`
+* :ref:`faq-pw-15`
+* :ref:`faq-pw-16`
+* :ref:`faq-pw-17`
+* :ref:`faq-pw-18`
+* :ref:`faq-pw-19`
+
+
 .. dropdown:: What is the Parallel Works Login URL?
   :animate: fade-in-slide-down
+  :name: faq-pw-1
 
   The NOAA Parallel Works portal is available at https://noaa.parallel.works.
 
 .. dropdown:: Where do I find complete Parallel Works user materials?
   :animate: fade-in-slide-down
+  :name: faq-pw-2
 
   Please refer to the `Parallel Works User Guide`_.
 
 .. dropdown:: How do I get access to the Parallel Works Platform?
   :animate: fade-in-slide-down
+  :name: faq-pw-3
 
   All RDHPCS users have access to Parallel Works. See :ref:`Requesting access
   to RDHPCS projects <project_request>`.
 
 .. dropdown:: How is a new user added to a project on Parallel Works?
   :animate: fade-in-slide-down
+  :name: faq-pw-4
 
   By :ref:`Requesting access to RDHPCS projects<project_request>`.  Cloud
   project names start with ``ca``, ``cz``, or ``cg`` implying AWS, Azure, or
@@ -545,6 +570,7 @@ Works platform.
 
 .. dropdown:: How do I set up or request a new project in Parallel Works?
   :animate: fade-in-slide-down
+  :name: faq-pw-5
 
   Adding a new cloud project is no different than requesting a new project on
   one of the on-premise systems.  Please refer to the
@@ -558,12 +584,14 @@ Works platform.
 
 .. dropdown:: What is the certified browser for Parallel Works Platform?
   :animate: fade-in-slide-down
+  :name: faq-pw-6
 
   All browsers should work.  However, Google Chrome and Chromium-based browsers
   will have the greatest support.
 
 .. dropdown:: How do I handle a Login error - Invalid username or password?
   :animate: fade-in-slide-down
+  :name: faq-pw-7
 
   .. note::
 
@@ -591,6 +619,7 @@ Works platform.
 
 .. dropdown:: How do I access on-prem HPS Systems from Parallel Works?
   :animate: fade-in-slide-down
+  :name: faq-pw-8
 
   Parallel Works is working on seamless authentication with on-prem HPC
   systems.
@@ -628,6 +657,7 @@ Works platform.
 
 .. dropdown:: From what countries can I access the NOAA PW platform?
   :animate: fade-in-slide-down
+  :name: faq-pw-9
 
   USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
   Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
@@ -636,6 +666,7 @@ Works platform.
 
 .. dropdown:: Why am I getting a warning messages from the on-premise system about exceeding quota
   :animate: fade-in-slide-down
+  :name: faq-pw-10
 
   Parallel Works will copy programs and data files into your
   ``$HOME/pw`` directory. This can cause your quota (storage allocation)
@@ -671,6 +702,7 @@ Works platform.
 
 .. dropdown:: How do I use the Cost Calculator?
   :animate: fade-in-slide-down
+  :name: faq-pw-11
 
   You can estimate the hourly cost of your experiments from
   the Parallel Works(PW) platform. After login on the
@@ -702,6 +734,7 @@ Works platform.
 
 .. dropdown:: How does the Cost Dashboard work?
   :animate: fade-in-slide-down
+  :name: faq-pw-12
 
   Refer to the `PW Monitoring Costs
   <https://parallelworks.com/docs/monitoring-costs>`_ section of the `Parallel
@@ -709,6 +742,7 @@ Works platform.
 
 .. dropdown:: How do I find a real time cost estimate of my session?
   :animate: fade-in-slide-down
+  :name: faq-pw-13
 
   Cloud vendors publish the cost once every 24 hours, that is
   not an adequate measure in an HPC environment. PW Cost
@@ -724,6 +758,7 @@ Works platform.
 
 .. dropdown:: How do I estimate core-hours?
   :animate: fade-in-slide-down
+  :name: faq-pw-14
 
   As an example, your project requests a dedicated number of HPC
   compute nodes or has an HPC system reservation for some
@@ -746,6 +781,7 @@ Works platform.
 
 .. dropdown:: How do I access the head node from the Parallel Works [PW] web interface?
   :animate: fade-in-slide-down
+  :name: faq-pw-15
 
   You can connect to the head node from the PW portal, or
   Xterm window if you have added your public key in the
@@ -791,6 +827,7 @@ Works platform.
 
 .. dropdown:: How do I add a workflow to my account?
   :animate: fade-in-slide-down
+  :name: faq-pw-16
 
   If you're running a workflow for the first time, you will
   need to add it to your account first. From the PW main page,
@@ -800,6 +837,7 @@ Works platform.
 
 .. dropdown:: How do I ssh to other nodes in my cluster?
   :animate: fade-in-slide-down
+  :name: faq-pw-17
 
   It is possible to ssh to compute nodes in your cluster from
   the head node by using the node's hostname. You do not
@@ -830,6 +868,7 @@ Works platform.
 
 .. dropdown:: Can I set up longer term credentials to access buckets?
   :animate: fade-in-slide-down
+  :name: faq-pw-18
 
   NOAA RDHPCS recommends the use of Globus for file transfer wherever applicable.
   Globus file transfers are secure and auditable.
@@ -898,6 +937,7 @@ Works platform.
 
 .. dropdown:: How can I use the Mamba tool to run Jupyter?
   :animate: fade-in-slide-down
+  :name: faq-pw-19
 
   #. Reference :ref:`jupyter_on_rdhpcs_systems` to use or install Mamba with
      miniforge. Place the miniforge installation in a project directory
