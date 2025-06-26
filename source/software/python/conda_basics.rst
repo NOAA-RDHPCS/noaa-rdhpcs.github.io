@@ -202,7 +202,7 @@ The traditional, and more basic, approach to installing/uninstalling
 packages into a conda environment is to use the commands ``conda
 install`` and ``conda remove``. Installing packages with this method
 checks the `Anaconda Distribution Repository
-<https://www.anaconda.com/docs/getting-started/anaconda/release-notes>`__
+<https://www.anaconda.com/docs/main>`__
 for pre-built binary packages to install. Let's do this to install
 NumPy:
 
