@@ -3,6 +3,7 @@ ACORS
 ALLINEA
 ALLNODES
 antlr
+AOCC
 aomip
 aoml
 Apptainer
@@ -94,6 +95,7 @@ dmget
 dmlocate
 dmls
 dmwho
+doctrees
 drwxr
 DTN
 eastus
@@ -394,6 +396,7 @@ ocio
 odvars
 ohdc
 OMPI
+oneapi
 opari
 openmp
 openmpi
@@ -519,6 +522,7 @@ szip
 tcmi
 tcpip
 tcsh
+tcshrc
 TDTNs
 Tectia
 tectiawin
@@ -583,6 +587,7 @@ xlarge
 Xming
 xstartup
 xsudo
+xsync
 XTHI
 xtmp
 xxdiff
