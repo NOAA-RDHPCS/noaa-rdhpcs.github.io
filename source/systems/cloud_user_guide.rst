@@ -1904,20 +1904,23 @@ change:
 #. Scroll all the way down, and click **Advanced Settings**.
 #. In the Advanced settings form, scroll down to the
    link **User workspace mount points**.
-#.  Map the Home, Bucket or Contrib as illustrated below:
+
+Map the Home, Bucket or Contrib as illustrated below:
 
 
 .. image:: /images/542-1.png
    :scale: 75%
 
 
-#. From the top menu, click **Save Changes**.
-#. Launch the cluster.
-#. Once the cluster is up, open the Editor menu, and locate your cluster name
+4. From the top menu, click **Save Changes**.
+5. Launch the cluster.
+6. Once the cluster is up, open the Editor menu, and locate your cluster name
    in the Explorer, as illustrated below:
 
 .. image:: /images/542-1.png
    :scale: 75%
+
+7. Use the Explorer File menu to upload or download files.
 
 Data Transfer
 -------------
