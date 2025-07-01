@@ -1003,7 +1003,7 @@ Please search within this page as the range of information is wide.
 General Issues
 --------------
 
-How do I open a cloud help desk ticket?
+How do I open a Cloud help desk ticket?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Send an email to rdhpcs.cloud.help@noaa.gov. to automatically
@@ -1390,7 +1390,6 @@ after cleanup when it does run.
 To work around this, if your workflow allows it,
 increase the size of the instance, or add a compute
 partition and send the work off to worker nodes.
-
 
 
 
@@ -1905,6 +1904,37 @@ addresses of the started master nodes. For details, click the Parallel
 Works `repository <https://github.com/parallelworks/pw-cluster-automation>`_
 link, then scroll down for Cluster Automation information.
 
+How to transfer files from a workstation to a Cloud cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using the Parallel Works' menu Editor, you can used the Explorer function to
+transfer files between workstation and cluster. Currently this requires an
+additional mapping of the targeted file system in the cluster configuration.
+The target file system is where you would like to have the files copied, and it
+can be a bucket, NFS or contrib filesystem. To set up the advanced setting
+change:
+
+#. Select a cluster configuration, then select the **Edit** option.
+#. Scroll all the way down, and click **Advanced Settings**.
+#. In the Advanced settings form, scroll down to the
+   link **User workspace mount points**.
+
+Map the Home, Bucket or Contrib as illustrated below:
+
+
+.. image:: /images/542-1.png
+   :scale: 75%
+
+
+4. From the top menu, click **Save Changes**.
+5. Launch the cluster.
+6. Once the cluster is up, open the Editor menu, and locate your cluster name
+   in the Explorer, as illustrated below:
+
+.. image:: /images/542-1.png
+   :scale: 75%
+
+7. Use the Explorer File menu to upload or download files.
 
 Data Transfer
 -------------
@@ -3077,11 +3107,28 @@ below:
 
   $ sudo scontrol update nodename-firstlast-azurestream5-00002-1-[0001-0021] state=idle
 
-1. Miscellaneous
-^^^^^^^^^^^^^^^^
+**Why does my du command hang?**
+
+When you query a very large file system, ``du`` is trying to read through a lot
+of file attributes and metadata in a single run. This can cause ``du`` to hang.
+First, try breaking your query into smaller chunks,
+then run a ``du`` based on that result.
+
+You might also specify a ``mindepth``
+in the find command. With that set, it won't try to run ``du`` against the top
+level directory.
+
+.. code-block:: console
+
+  $ sudo find /var -maxdepth 1 -mindepth 1 -type d -exec du -sh {} \;
+
+
+
+Miscellaneous
+-------------
 
 How to find cores and threads on a node?
-""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
  .. code-block:: shell
 
@@ -3134,7 +3181,8 @@ General rule of thumb will pretty much be that any Intel
 based instance has HT disabled, and core counts will be
 half of the vCPU count advertised for the instance.
 
-How do I remove my project's GCP contrib volume?**
+How do I remove my project's GCP contrib volume?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Contrib volume is a permanent storage for custom software by
 project members. In Google cloud this storage is charged on
@@ -3143,9 +3191,8 @@ per month. If the project does not require this storage, PI
 may create a cloud help desk ticket to remove it. Only
 Parallel Works Cloud administrator can remove this storage.
 
-How do I find the project object storage, [aka bucket or block
-storage] and access keys from Parallel Works?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Finding the project object storage, [bucket/block storage] and access keys?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 From the login page, click on the IDE icon located at the
 top right of the page, you will see file manager with
@@ -3182,18 +3229,16 @@ On GCP platform:
 You may use the Globus Connect or Cloud service provider's
 command line interface to access the object storage.
 
-Can I transfer files with external object storage [aka bucket or block
-storage] from Parallel Works's cluster?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Transfer files with external object storage from Parallel Works's cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have the access credentials of external AWS/Azure/GCP
 object storage, you can transfer files. Use the Globus
 connector or cloud provider's command line interface for
 file transfer.
 
-Azure: How to copy a file from the controller node to the project's
-permanent storage?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Copy a file from the controller node to project permanent storage?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Start a cluster and login into the controller node.
 
@@ -3251,7 +3296,7 @@ a ssh key file. The firewall settings on the GFDL are not
 open to allow a file copy.
 
 How do I use GCP gsutil transfer files to a project bucket?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is not the GFDL GCP tool.
 
@@ -3261,9 +3306,8 @@ user's local machine or the RDHPCS systems, such as Niagara.
 The gsutil utility is preinstalled on clusters launched
 through Parallel Works.
 
-How do I get nvhpc NVidia HPC compiler, and netcdf, and hdf5 packages
-in my environment?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Getting nvhpc NVidia HPC compiler, netcdf, hdf5 packages in my environment?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Parallel Works Platform is installed with Intel processors
 and compilers for the FV3GFS performance benchmark test. It
@@ -3287,9 +3331,8 @@ you.
 Various netcdf and hdf5 packages are available from the yum
 repos. yum search netcdf and yum search hdf
 
-Which AWS Availability Zones [AZ] AMD and Intel processors are
-concentrated?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Concentrated AWS Availability Zones [AZ] AMD and Intel processors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AMD
 
@@ -3301,8 +3344,9 @@ Intel
 :c6i.24xlarge: us-east-1f
 :c6i.32xlarge: us-east-2b us-east-1f us-east-2a
 
-What does GCP resource GVNIC and Tier_1 flags represent?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+What do GCP resource GVNIC and Tier_1 flags represent?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Tier1 is the 100gbps network. GVNIC is a high performance
 interconnect that bypasses their virtual interconnect for
 better network performance.
@@ -3321,13 +3365,15 @@ N2D, C2 or C2D VM.
 `Additional reference <https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration>`__
 
 Why are all instance types are labeled as AMD64?
-""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 AMD64 is the name of the architecture, not the cpu platform.
 Intel and AMD chips are both "amd64". Additional reference:
 https://en.m.wikipedia.org/wiki/X86-64
 
 Data access via globus CLI tools in the cloud
-"""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 This capability is similar to what has been recently made
 available on NOAA HPC systems. Implementation is simply the
 installation of the globus-cli tools in /apps for global
@@ -3518,7 +3564,8 @@ Conduct a Transfer:
   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 
 Container singularity replaced by singularity-ce, and syntax remains the same
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 When it comes to the software package on the PW platform, it
 follows on-prem guidance to provide a consistent user
 experience between the environments.
@@ -3536,7 +3583,7 @@ usage.
   $ rpm -ql singularity-ce \| grep bin /usr/bin/singularity
 
 How to list the files in an s3 bucket using a script?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -3562,8 +3609,8 @@ S3 credentials should be set automatically in your
 environment on the cluster, but these credentials are
 scoped at a project level, and not to individual users.
 
-What is the best practice in hiding credentials, when code is pushed in Github?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+What is the best practice to hide credentials, when code is pushed in Github?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Use your programming language command to call out
 environment variables. For example in Python: ``key_value =
 os.environ['AWS_ACCESS_KEY_ID']``.
@@ -3572,7 +3619,7 @@ It is very important not to commit a full print out of the
 shell environment.
 
 Where should I clone the GitHub repository?
-"""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to keep the repository around between cluster
 sessions, working with it from contrib would be the right
@@ -3583,7 +3630,7 @@ Big compiles would probably be better on a compute node
 since you can assign more processors to the build.
 
 GCP Region/AZs on GPUs and models
-"""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Select a location “North America” and machine type “A2” to view
 different types of GPUs available on different `regions/AZs
 <https://cloud.google.com/compute/docs/regions-zones#available>`__
@@ -3591,7 +3638,7 @@ different types of GPUs available on different `regions/AZs
 To learn more about `GPU models <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones>`_.
 
 What are the GPU models available on AWS, Azure, and GCP
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AWS GPUs can be found by typing P3,P4,G3,G4,G5,or G5g
 `here <https://docs.aws.amazon.com/dlami/latest/devguide/instance-select.html>`__
@@ -3605,14 +3652,14 @@ be unavailable.
 
 
 What are the Cloud regions supported by Parallel Works?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :AWS: us-east1 and us-east2. Preferred region is us-east-1
 :Azure: EastUS and SouthCentralUS. Preferred region is EastUS.
 :GCP: regions are us-central1, and us-east-1. Preferred region is us-central1
 
 How to tunnel back from a compute node to the controller/head node?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A case where the users have added their keys to the account
 and can login to the head node and run jobs. However, when
@@ -3629,15 +3676,15 @@ This works.
 
   ssh-keygen -t rsa -f ~/.ssh/id_rsa -N * && cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys*
 
-On Azure, missing /apps fs system or modules not loaded case
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+On Azure, missing /apps fs system or modules not loaded
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We are working to fix this bug. If you own the Azure cluster, please
 run the command ``sudo /root/run_ansible``.  It will take about 2 mins
 to complete, and will mount /apps file system.
 
 How can I revert clusters to CentOS 7?
-""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To load the default CentOS 7 config from the marketplace:
 
@@ -3654,7 +3701,7 @@ To load the default CentOS 7 config from the marketplace:
     and click the Restore button. Don't forget to save your changes!
 
 Manually Manually configure a cluster to use CentOS 7
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have already made extensive modifications to your cluster's definition,
 you may prefer to revert the required settings by hand without loading a config
@@ -3664,7 +3711,7 @@ in mind that the OS image will need to be set on the controller and every
 partition you have configured on the cluster.
 
 Configuring the CentOS 7 OS Image
-"""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The final CentOS 7 PW image is called ``pw-hpc-c7-x86-64-v31-slurm`` on every
 cloud provider. To configure the controller (login node) to use this image,
@@ -3683,7 +3730,7 @@ CentOS 7 image under ``the Elastic Image*`` dropdown:
 .. image:: /images/Centos7.4.png
 
 Configuring the /apps disk for CentOS 7
-"""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The software and modules under ``/apps`` were built specifically for their
 target operating systems, so the CentOS 7 disk also needs to be selected when
@@ -3693,7 +3740,7 @@ using the old image. This can be done under the Controller Settings by choosing
 .. image:: /images/Centos7.5.png
 
 Using legacy Lustre on Azure-Like compute clusters
-""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Legacy Lustre configurations require setting a Lustre server image that matches
 the Lustre client version included in *CentOS 7* and *Rocky 8* based images.
@@ -3706,10 +3753,10 @@ not need to be modified.
 
 
 Migrating Lustre Filesystems to Rocky 8
-"""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you intend to keep your compute clusters on the ``latest`` image now running
-*Rocky 8*, we recommend that you also replace any existing *CentOS 7* based
+(*Rocky 8*), we recommend that you also replace any existing *CentOS 7* based
 **persistent** Lustre resources to use Rocky 8 as well. Our suggested method to
 do this involves duplicating your existing storage configuration and copying
 your data to the new Lustre, either by copying directly from the old storage,
@@ -3730,9 +3777,8 @@ configuration and re-sync the data.
   originally used on CentOS 7 based clusters. A future update will resolve this
   issue.
 
-Best practices for long running file transfers between lustre and
-object storage bucket?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Best practices for file transfers between lustre and object storage bucket?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use ``screen`` or ``tmux`` whenever doing a big copy or software build
 that is expected to take several hours or days. These tools allow you
@@ -3782,7 +3828,7 @@ getting started tips:
   will get a message like ``[screen is terminating]`` when it exits.
 
 How to create a PW cluster from JSON files?
-"""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can certainly save a cluster definition anywhere you want as a JSON file.
 To do that, go to the configuration page, click the JSON tab, and copy+paste
@@ -3795,7 +3841,7 @@ using it will still need to set the "resource account" and project before
 starting the cluster.
 
 How to publish your own cluster in the Marketplace?
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You are also able to publish your own cluster definitions to the marketplace
 and share them with anyone else in your group, or even the entire NOAA
