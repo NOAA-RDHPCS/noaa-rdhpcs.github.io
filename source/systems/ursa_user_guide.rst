@@ -201,6 +201,51 @@ being requested:
    sbatch -A mycpu_project -p u1-h100 -q gpuwf -N 1 –-gres=gpu:h100:2 my_ml.job
 
 
+Using the Exploratory GPU Resources
+===================================
+
+In addition to the NVIDIA H100 GPU system (Partition: ``u1-h100``),
+two new
+small GPU exploratory systems with the newer GPU types are available
+for exploration and experimentation.  These systems are connected
+to the Ursa IB network and have access to the Ursa file systems.
+All projects with access to Ursa have equal access to the
+new Exploratory Systems via the ``gpuwf`` QOS.
+
+To access these nodes you would need to login to Ursa and
+submit an interactive batch job requesting these GPU
+resources.  Once you have an interactive shell you
+can compile and run your applications on those nodes.
+Vendor provided software is available by loading the
+appropriate modules.
+Please run the ``module spider`` command to see the list
+of modules available.
+
+Description of the two exploratory systems:
+
+* Partition:  ``u1-gh``. Eight Grace Hopper nodes with the
+  NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
+  These nodes have a single NDR200 connection to Ursa
+  IB fabric.
+
+* Partition:  ``u1-mi300x``. Three dual-Intel CPU sockets
+  with 8 AMD Mi300x APUs nodes with AMD ROCm software.
+  These nodes have a single NDR200 connection to the
+  Ursa IB fabric.
+
+You can use the following commands to get interactive access
+to one of these nodes:
+
+.. code-block:: shell
+
+  salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 –-gres=gpu:gh:2
+  salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 –-gres=gpu:mi300x:2
+
+
+In the examples above we are requesting 1 node and 2 GPUs
+for 8 hours, the first example is for the Grace Hopper
+GPUs and the second example is for the AMD MI300x GPUs.
+
 Ursa Software Stack
 -------------------
 
