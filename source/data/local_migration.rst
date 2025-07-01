@@ -124,7 +124,7 @@ and calculate usage.  One example command is:
 
 .. attention::
 
-   Do *not* use the ``du`` or ``tree`` command on the "starfish filesystems" listed below:
+   Do *not* use the ``du`` or ``tree`` command on the lustre file systems listed below:
 
 
 +--------------+----------------+---------------------------------------------+
