@@ -205,20 +205,17 @@ Using the Exploratory GPU Resources
 ===================================
 
 In addition to the NVIDIA H100 GPU system (Partition: ``u1-h100``),
-two new
-small GPU exploratory systems with the newer GPU types are available
-for exploration and experimentation.  These systems are connected
+two new small GPU exploratory systems with the newer GPU types
+are available for experimentation.  These systems are connected
 to the Ursa IB network and have access to the Ursa file systems.
 All projects with access to Ursa have equal access to the
 new Exploratory Systems via the ``gpuwf`` QOS.
 
-To access these nodes you would need to login to Ursa and
-submit an interactive batch job requesting these GPU
-resources.  Once you have an interactive shell you
-can compile and run your applications on those nodes.
-Vendor provided software is available by loading the
-appropriate modules.
-Please run the ``module spider`` command to see the list
+To access these nodes, login to Ursa and submit an interactive
+batch job requesting these GPU resources. Once you have an interactive
+shell, you can compile and run your applications on those nodes.
+Vendor provided software is available by loading the appropriate
+modules. Please run the ``module spider`` command to see the list
 of modules available.
 
 Description of the two exploratory systems:
@@ -233,8 +230,7 @@ Description of the two exploratory systems:
   These nodes have a single NDR200 connection to the
   Ursa IB fabric.
 
-You can use the following commands to get interactive access
-to one of these nodes:
+Run one of the following commands to get interactive access to these nodes:
 
 .. code-block:: shell
 
@@ -242,9 +238,9 @@ to one of these nodes:
   salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 –-gres=gpu:mi300x:2
 
 
-In the examples above we are requesting 1 node and 2 GPUs
-for 8 hours, the first example is for the Grace Hopper
-GPUs and the second example is for the AMD MI300x GPUs.
+In the examples above, we are requesting 1 node and 2 GPUs
+for 8 hours. The first command requests the NVIDIA Grace Hopper
+GPUs, and the second command requests the AMD MI300x GPUs.
 
 Ursa Software Stack
 ===================
@@ -290,14 +286,12 @@ Usage/Quota information for ``/scratch[3,4]`` file systems
 
 The new file systems ``/scratch[3,4]`` on
 Ursa and Hera have a performance improving feature called
-“Hot Pools”.  With Hot Pools, by default the first 1 GB
-of each file is written to the fast SSD (hot) tier.
-After some time, usually 10 to 15 minutes, the file is
-mirrored to the slower HDD (cold) tier and will be double
-counted as usage toward your quota.
-As long as the file is actively used, it will stay on
-both tiers (hot and cold). Unused files are removed
-from the hot tier and reside only on the cold tier.
+“Hot Pools”.  With Hot Pools, the first 1 GB of each file is written
+to the fast SSD (hot) tier, by default. After some time, usually
+10 to 15 minutes, the file is mirrored to the slower HDD (cold) tier
+and will be double counted as usage toward your quota. As long as the
+file is actively used, it will stay on both tiers (hot and cold). Unused
+files are removed from the hot tier and reside only on the cold tier.
 
 **As a result the reported usage for the first 1 GB of
 active files may be doubled.**
