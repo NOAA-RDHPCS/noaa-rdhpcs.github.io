@@ -247,7 +247,7 @@ for 8 hours, the first example is for the Grace Hopper
 GPUs and the second example is for the AMD MI300x GPUs.
 
 Ursa Software Stack
--------------------
+===================
 
 * Ursa OS is Rocky 9.4, similar to MSU systems (Rocky 9.1)
   whereas Hera/Jet are Rocky 8.
@@ -271,26 +271,41 @@ Ursa Software Stack
   considered if requested.
 
 Ursa File Systems
------------------
+=================
+
 * Ursa will only mount the two new HPFS files systems,
   ``/scratch3`` and ``/scratch4``.
-* At Ursa’s initial release (GA), Hera will continue to only
-  mount ``/scratch[12]``, therefore data transfers between
-  ``/scratch[12]`` and ``/scratch[34]`` will need to be via the
-  DTN’s using utilities such as rsync/scp or Globus.
-* At the next NESCC DT (6/10/25, subject to change),
-  Hera will also mount ``/scratch[34]`` to allow easier data
+* Hera is now mounting ``/scratch[3,4]`` to allow easier data
   migration and the running of Hera jobs on the new file
   systems as well as the old file systems.
 * Scratch file systems are **NOT** backed up!
 
 .. caution::
-   **Data migration deadline:**: The ``/scratch[12]`` file systems
+   **Data migration deadline:**: The ``/scratch[1,2]`` file systems
    will be decommissioned in August. Plan to complete your migration to
-   the ``/scratch[34]`` file systems no later than **7/31/25**.
+   the ``/scratch[3,4]`` file systems no later than **7/31/25**.
+
+Usage/Quota information for ``/scratch[3,4]`` file systems
+----------------------------------------------------------
+
+The new file systems ``/scratch[3,4]`` on
+Ursa and Hera have a performance improving feature called
+“Hot Pools”.  With Hot Pools, by default the first 1 GB
+of each file is written to the fast SSD (hot) tier.
+After some time, usually 10 to 15 minutes, the file is
+mirrored to the slower HDD (cold) tier and will be double
+counted as usage toward your quota.
+As long as the file is actively used, it will stay on
+both tiers (hot and cold). Unused files are removed
+from the hot tier and reside only on the cold tier.
+
+**As a result the reported usage for the first 1 GB of
+active files may be doubled.**
+
 
 Cron and Scrontab Services
---------------------------
+==========================
+
 On Ursa both ``cron`` and ``scrontab`` services are available.
 We strongly recommend using ``scrontab`` instead of ``cron``
 whenever possible.  For information on how to use ``scrontab``
