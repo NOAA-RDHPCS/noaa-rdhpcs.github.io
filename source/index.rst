@@ -18,11 +18,6 @@ available in the `RDHPCS Calendar
 We suggest users add this to their own Google calendar to keep up to date with
 important events.
 
-.. button-link:: https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com
-   :color: primary
-
-   :fa:`calendar-o;2em` RDHPCS Events Calendar (1)
-
 .. raw:: html
 
    <p>
@@ -40,20 +35,6 @@ important events.
       </a>
    </p>
 
-   <p>
-      <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference"
-         href="https://calendar.google.com/calendar/embed?src=noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com"
-         onclick="window.open(
-             this.href,
-             'RDHPCS Events Calendar',
-             'width=800,height=600,scrollbars=no,toolbar=no,location=no,status=no,menubar=no');
-             return false;">
-         <span>
-            <span class="fa fa-calendar-o 2em"></span>
-            RDHPCS Events Calendar (3)
-         </span>
-      </a>
-   </p>
 
 Accounts and Projects
 =====================
