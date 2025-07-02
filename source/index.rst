@@ -30,7 +30,7 @@ important events.
              return false;">
          <span>
             <span class="fa fa-calendar-o 2em"></span>
-            RDHPCS Events Calendar (2)
+            RDHPCS Events Calendar
          </span>
       </a>
    </p>
