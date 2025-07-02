@@ -220,7 +220,7 @@ of modules available.
 
 Description of the two exploratory systems:
 
-* Partition:  ``u1-gh``. Eight Grace Hopper nodes with the
+* Partition:  ``u1-gh``. Eight Grace Hopper nodes with one
   NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
   These nodes have a single NDR200 connection to Ursa
   IB fabric.
@@ -234,7 +234,7 @@ Run one of the following commands to get interactive access to these nodes:
 
 .. code-block:: shell
 
-  salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 –-gres=gpu:gh:2
+  salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 –-gres=gpu:gh200:1
   salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 –-gres=gpu:mi300x:2
 
 
