@@ -108,6 +108,8 @@ that have allocations on systems.
 #. Once your project request is approved, a welcome email will be sent
    to you.
 
+.. _requesting-access-to-msu-hpc-systems:
+
 Requesting access to MSU-HPC systems
 ====================================
 
