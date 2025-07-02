@@ -1,4 +1,5 @@
 # These are words that are specific to this project
+AOCC
 ACORS
 ALLINEA
 ALLNODES
@@ -394,6 +395,7 @@ ocio
 odvars
 ohdc
 OMPI
+OneAPI
 opari
 openmp
 openmpi
@@ -513,6 +515,7 @@ SSLVPN
 stacksize
 Stmp
 strmtrck
+superchip
 suspendtime
 swpc
 szip
