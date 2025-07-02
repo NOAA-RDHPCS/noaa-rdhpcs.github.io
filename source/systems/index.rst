@@ -105,5 +105,5 @@ important events.
    jet_user_guide
    mercury_user_guide
    MSU-HPC_user_guide
-   ppan/index
+   ppan_user_guide
    ursa_user_guide
