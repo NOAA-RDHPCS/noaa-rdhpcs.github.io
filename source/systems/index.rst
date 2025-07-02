@@ -55,7 +55,7 @@ projects <project_request>` process.
 
 The RDHPCS has a collaboration with `Mississippi State University
 <https://www.msstate.edu/>`__ (MSU) through the `MSU High-Performance Computing
-Collaboratory <https://www.hpc.msstate.edu/>`__ (HPC\ :sub:`2`).
+Collaboratory <https://www.hpc.msstate.edu/>`__ (HPC\ :sup:`2`).
 
 .. list-table:: RDHPCS Systems
    :widths: 30 50
@@ -68,7 +68,7 @@ Collaboratory <https://www.hpc.msstate.edu/>`__ (HPC\ :sub:`2`).
 
 NOAA HPC portfolio managers (PfM) and project principal investigators (PI)
 should follow the  :ref:`requesting-access-to-msu-hpc-systems` to request
-project user accounts on the MSU HPC\ :sub:`2` systems.
+project user accounts on the MSU HPC\ :sup:`2` systems.
 
 .. rubric:: Maintenance and Events Calendar
 
