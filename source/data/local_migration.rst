@@ -132,12 +132,12 @@ Local Data Migration note and table
 +--------------+----------------+
 | Cluster      | File System    |
 +==============+================+
-| Jet          | /lfs5          | 
+| Jet          | /lfs5          |
 |              |                |
 |              | /lfs6          |
 +--------------+----------------+
 | Hera, Ursa   | /scratch1      |
-|              |                | 
+|              |                |
 |              | /scratch2      |
 +              |                |
 |              | /scratch3      |
