@@ -129,21 +129,21 @@ Local Data Migration note and table
    Do *not* use the ``du`` or ``tree`` command on the lustre filesystems listed below:
 
 
-+--------------+----------------+---------------------------------------------+
-| Cluster      | File System    | Path to Report                              |
-+==============+================+=============================================+
-| Jet          |  LFS5          |  /lfs5/SYSADMIN/project-info/disk-usage     |
-|              |                |                                             |
-|              |  LFS6          |  /lfs6/SYSADMIN/project-info/disk-usage     |
-+--------------+----------------+---------------------------------------------+
-| Hera, Ursa   |  scratch1      |  /scratch1/SYSADMIN/project-info/disk-usage |
-|              |                |                                             |
-|              |  scratch2      |  /scratch2/SYSADMIN/project-info/disk-usage |
-+              |                |                                             |
-|              |  scratch3      |  /scratch3/SYSADMIN/project-info/disk-usage |
-|              |                |                                             |
-|              |  scratch4      |  /scratch4/SYSADMIN/project-info/disk-usage |
-+--------------+----------------+---------------------------------------------+
++--------------+----------------+
+| Cluster      | File System    |
++==============+================+
+| Jet          | /lfs5          | 
+|              |                |
+|              | /lfs6          |
++--------------+----------------+
+| Hera, Ursa   | /scratch1      |
+|              |                | 
+|              | /scratch2      |
++              |                |
+|              | /scratch3      |
+|              |                |
+|              | /scratch4      |
++--------------+----------------+
 
 
 rsync
