@@ -240,9 +240,9 @@ Run one of the following commands to get interactive access to these nodes:
   salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 –-gres=gpu:gh200:1
   salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 –-gres=gpu:mi300x:2
 
-In the examples above, the first example requests 1 node
-with 1 GH200 GPU and the second example requests 1 node with
-2 MI300X GPUs.
+In the examples above, the first example requests one node
+with one GH200 GPU and the second example requests one node with
+two MI300X GPUs.
 
 Ursa Software Stack
 ===================
