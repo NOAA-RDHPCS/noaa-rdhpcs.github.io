@@ -224,15 +224,14 @@ Description of the two exploratory systems:
   NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
   These nodes have a single NDR200 connection to Ursa
   IB fabric.  More detailed information about
-  the NVIDIA GH200 can be found
-  `here <https://resources.nvidia.com/en-us-data-center-overview-mc/en-us-data-center-overview/grace-hopper-superchip-datasheet-partner>`_.
+  the `NVIDIA GH200 <https://resources.nvidia.com/en-us-data-center-overview-mc/en-us-data-center-overview/grace-hopper-superchip-datasheet-partner>`_
+  is available from NVIDIA.
 
 * Partition:  ``u1-mi300x``. Three dual-Intel CPU sockets
   with 8 AMD Mi300x APUs nodes with AMD ROCm software.
   These nodes have a single NDR200 connection to the
-  Ursa IB fabric. More detailed information about the
-  AMD MI300X can be found 
-  `here <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>`_.
+  Ursa IB fabric. Click `AMD MI300X <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>`_
+  for more detailed information.
 
 Run one of the following commands to get interactive access to these nodes:
 
