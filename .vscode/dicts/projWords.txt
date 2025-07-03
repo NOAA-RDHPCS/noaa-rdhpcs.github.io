@@ -94,6 +94,7 @@ dmget
 dmlocate
 dmls
 dmwho
+doctrees
 drwxr
 DTN
 eastus
@@ -519,6 +520,7 @@ szip
 tcmi
 tcpip
 tcsh
+tcshrc
 TDTNs
 Tectia
 tectiawin
@@ -583,6 +585,7 @@ xlarge
 Xming
 xstartup
 xsudo
+xsync
 XTHI
 xtmp
 xxdiff
