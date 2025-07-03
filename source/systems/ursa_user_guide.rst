@@ -240,10 +240,9 @@ Run one of the following commands to get interactive access to these nodes:
   salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 –-gres=gpu:gh200:1
   salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 –-gres=gpu:mi300x:2
 
-
-In the examples above, we are requesting 1 node and 2 GPUs
-for 8 hours. The first command requests the NVIDIA Grace Hopper
-GPUs, and the second command requests the AMD MI300x GPUs.
+In the examples above, the first example requests 1 node
+with 1 GH200 GPU and the second example requests 1 node with
+2 MI300X GPUs.
 
 Ursa Software Stack
 ===================
