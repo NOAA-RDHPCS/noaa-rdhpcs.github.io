@@ -122,6 +122,30 @@ and calculate usage.  One example command is:
 
       15K used in 24 directories
 
+Local Data Migration note and table
+
+.. attention::
+
+   Do *not* use the ``du`` or ``tree`` command on the lustre filesystems listed below:
+
+
++--------------+----------------+---------------------------------------------+
+| Cluster      | File System    | Path to Report                              |
++==============+================+=============================================+
+| Jet          |  LFS5          |  /lfs5/SYSADMIN/project-info/disk-usage     |
+|              |                |                                             |
+|              |  LFS6          |  /lfs6/SYSADMIN/project-info/disk-usage     |
++--------------+----------------+---------------------------------------------+
+| Hera, Ursa   |  scratch1      |  /scratch1/SYSADMIN/project-info/disk-usage |
+|              |                |                                             |
+|              |  scratch2      |  /scratch2/SYSADMIN/project-info/disk-usage |
++              |                |                                             |
+|              |  scratch3      |  /scratch3/SYSADMIN/project-info/disk-usage |
+|              |                |                                             |
+|              |  scratch4      |  /scratch4/SYSADMIN/project-info/disk-usage |
++--------------+----------------+---------------------------------------------+
+
+
 rsync
 -----
 
@@ -144,7 +168,7 @@ transfer the files and directories. One example command is:
 - ``--archive`` (``-a``) will ensure all ownership and dates are
   preserved in the transfer.
 - ``--verbose`` (``-v``) will display details of every file being
-  transfered. If you have lots of small files, this will slow down the
+  transferred. If you have lots of small files, this will slow down the
   transfer processes.
 - ``--one-file-system`` (``-x``) restricts the transfer to the source
   filesystem. This is important when symlinks are used to point to
@@ -180,7 +204,7 @@ Usage of ``xsync`` is almost identical to ``rsync`` as described above.
 
     ``xsync`` does not support the ``--include`` and ``--exclude``
     rsync options.  To view additional parameters to tune threading
-    and depth for better performance, run ``xsync –-help``. In mostg
+    and depth for better performance, run ``xsync –-help``. In most
     cases they should not be needed.
 
 
