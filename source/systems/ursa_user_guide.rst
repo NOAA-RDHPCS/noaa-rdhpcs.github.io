@@ -100,7 +100,15 @@ Ursa Partitions
    * - u1-h100
      - gpu, gpuwf
      - 100
-     - For jobs that require nodes with GPUs.
+     - For jobs that require nodes with the Nvidia H-100 GPUs.
+   * - u1-gh
+     - gpu, gpuwf
+     - 100
+     - For jobs that require nodes with the Nvidia Grace-Hopper processors.
+   * - u1-mi300x
+     - gpu, gpuwf
+     - 100
+     - For jobs that require nodes with the AMD MI300X GPUs.
    * - u1-service
      - batch, windfall
      - 100
@@ -193,8 +201,49 @@ being requested:
    sbatch -A mycpu_project -p u1-h100 -q gpuwf -N 1 –-gres=gpu:h100:2 my_ml.job
 
 
+Using the Exploratory GPU Resources
+===================================
+
+In addition to the NVIDIA H100 GPU system (Partition: ``u1-h100``),
+two new small GPU exploratory systems with the newer GPU types
+are available for experimentation.  These systems are connected
+to the Ursa IB network and have access to the Ursa file systems.
+All projects with access to Ursa have equal access to the
+new Exploratory Systems via the ``gpuwf`` QOS.
+
+To access these nodes, login to Ursa and submit an interactive
+batch job requesting these GPU resources. Once you have an interactive
+shell, you can compile and run your applications on those nodes.
+Vendor provided software is available by loading the appropriate
+modules. Please run the ``module spider`` command to see the list
+of modules available.
+
+Description of the two exploratory systems:
+
+* Partition:  ``u1-gh``. Eight Grace Hopper nodes with the
+  NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
+  These nodes have a single NDR200 connection to Ursa
+  IB fabric.
+
+* Partition:  ``u1-mi300x``. Three dual-Intel CPU sockets
+  with 8 AMD Mi300x APUs nodes with AMD ROCm software.
+  These nodes have a single NDR200 connection to the
+  Ursa IB fabric.
+
+Run one of the following commands to get interactive access to these nodes:
+
+.. code-block:: shell
+
+  salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 –-gres=gpu:gh:2
+  salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 –-gres=gpu:mi300x:2
+
+
+In the examples above, we are requesting 1 node and 2 GPUs
+for 8 hours. The first command requests the NVIDIA Grace Hopper
+GPUs, and the second command requests the AMD MI300x GPUs.
+
 Ursa Software Stack
--------------------
+===================
 
 * Ursa OS is Rocky 9.4, similar to MSU systems (Rocky 9.1)
   whereas Hera/Jet are Rocky 8.
@@ -218,26 +267,39 @@ Ursa Software Stack
   considered if requested.
 
 Ursa File Systems
------------------
+=================
+
 * Ursa will only mount the two new HPFS files systems,
   ``/scratch3`` and ``/scratch4``.
-* At Ursa’s initial release (GA), Hera will continue to only
-  mount ``/scratch[12]``, therefore data transfers between
-  ``/scratch[12]`` and ``/scratch[34]`` will need to be via the
-  DTN’s using utilities such as rsync/scp or Globus.
-* At the next NESCC DT (6/10/25, subject to change),
-  Hera will also mount ``/scratch[34]`` to allow easier data
+* Hera is now mounting ``/scratch[3,4]`` to allow easier data
   migration and the running of Hera jobs on the new file
   systems as well as the old file systems.
 * Scratch file systems are **NOT** backed up!
 
 .. caution::
-   **Data migration deadline:**: The ``/scratch[12]`` file systems
+   **Data migration deadline:**: The ``/scratch[1,2]`` file systems
    will be decommissioned in August. Plan to complete your migration to
-   the ``/scratch[34]`` file systems no later than **7/31/25**.
+   the ``/scratch[3,4]`` file systems no later than **7/31/25**.
+
+Usage/Quota information for ``/scratch[3,4]`` file systems
+----------------------------------------------------------
+
+The new file systems ``/scratch[3,4]`` on
+Ursa and Hera have a performance improving feature called
+“Hot Pools”.  With Hot Pools, the first 1 GB of each file is written
+to the fast SSD (hot) tier, by default. After some time, usually
+10 to 15 minutes, the file is mirrored to the slower HDD (cold) tier
+and will be double counted as usage toward your quota. As long as the
+file is actively used, it will stay on both tiers (hot and cold). Unused
+files are removed from the hot tier and reside only on the cold tier.
+
+**As a result the reported usage for the first 1 GB of
+active files may be doubled.**
+
 
 Cron and Scrontab Services
---------------------------
+==========================
+
 On Ursa both ``cron`` and ``scrontab`` services are available.
 We strongly recommend using ``scrontab`` instead of ``cron``
 whenever possible.  For information on how to use ``scrontab``

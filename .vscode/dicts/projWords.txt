@@ -156,6 +156,8 @@ glrcm
 gmeta
 gmtb
 gnmip
+Godlove
+godlovedc
 gomtrans
 gpfs
 gpshwrf
