@@ -219,27 +219,29 @@ of modules available.
 
 Description of the two exploratory systems:
 
-* Partition:  ``u1-gh``. Eight Grace Hopper nodes with the
+* Partition:  ``u1-gh``. Eight Grace Hopper nodes with one
   NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
   These nodes have a single NDR200 connection to Ursa
-  IB fabric.
+  IB fabric.  More detailed information about
+  the `NVIDIA GH200 <https://resources.nvidia.com/en-us-data-center-overview-mc/en-us-data-center-overview/grace-hopper-superchip-datasheet-partner>`_
+  is available from NVIDIA.
 
 * Partition:  ``u1-mi300x``. Three dual-Intel CPU sockets
   with 8 AMD Mi300x APUs nodes with AMD ROCm software.
   These nodes have a single NDR200 connection to the
-  Ursa IB fabric.
+  Ursa IB fabric. Click `AMD MI300X <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>`_
+  for more detailed information.
 
 Run one of the following commands to get interactive access to these nodes:
 
 .. code-block:: shell
 
-  salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 –-gres=gpu:gh:2
+  salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 –-gres=gpu:gh200:1
   salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 –-gres=gpu:mi300x:2
 
-
-In the examples above, we are requesting 1 node and 2 GPUs
-for 8 hours. The first command requests the NVIDIA Grace Hopper
-GPUs, and the second command requests the AMD MI300x GPUs.
+In the examples above, the first example requests one node
+with one GH200 GPU and the second example requests one node with
+two MI300X GPUs.
 
 Ursa Software Stack
 ===================
