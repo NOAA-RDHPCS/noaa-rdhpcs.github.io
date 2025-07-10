@@ -3,3 +3,7 @@
 menuselection
 seealso
 toctree
+
+# HTML attributes, etc.
+onclick
+scrollbars
