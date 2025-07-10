@@ -42,7 +42,7 @@ General Guidelines
    **interactively**, but definitely quiesce access before performing
    a final sync.
 #. **Use a synchronization tool (NOT just** ``cp`` or ``mv`` **) and
-   don’t rely on a one-time transfer completing perfectly.** This is
+   don't rely on a one-time transfer completing perfectly.** This is
    important because you will most likely have to run the process more
    than once, and tools such as rsync will skip already copied
    files. Then go back and delete the source data once you have
@@ -97,27 +97,27 @@ and calculate usage.  One example command is:
     % tree --du -h -d --sort=size -L 2 .
     [8.8K]  .
     ├── [6.3K]  source
-    │   ├── [2.6K]  images
-    │   ├── [ 416]  data
-    │   ├── [ 416]  systems
-    │   ├── [ 288]  software
-    │   ├── [ 224]  slurm
-    │   ├── [ 192]  _templates
-    │   ├── [ 192]  accounts
-    │   ├── [ 160]  _downloads
-    │   ├── [ 160]  files
-    │   ├── [ 128]  _search
-    │   ├── [ 128]  _static
-    │   ├── [ 128]  contributing
-    │   ├── [ 128]  help
-    │   ├── [ 128]  logging_in
-    │   ├── [  96]  FAQ
-    │   ├── [  96]  compilers
-    │   ├── [  96]  connecting
-    │   └── [  96]  queue_policy
+    │   ├── [2.6K]  images
+    │   ├── [ 416]  data
+    │   ├── [ 416]  systems
+    │   ├── [ 288]  software
+    │   ├── [ 224]  slurm
+    │   ├── [ 192]  _templates
+    │   ├── [ 192]  accounts
+    │   ├── [ 160]  _downloads
+    │   ├── [ 160]  files
+    │   ├── [ 128]  _search
+    │   ├── [ 128]  _static
+    │   ├── [ 128]  contributing
+    │   ├── [ 128]  help
+    │   ├── [ 128]  logging_in
+    │   ├── [  96]  FAQ
+    │   ├── [  96]  compilers
+    │   ├── [  96]  connecting
+    │   └── [  96]  queue_policy
     ├── [1.7K]  build
-    │   ├── [ 992]  html
-    │   └── [ 608]  doctrees
+    │   ├── [ 992]  html
+    │   └── [ 608]  doctrees
     └── [  96]  utils
 
       15K used in 24 directories
@@ -178,16 +178,15 @@ To keep the two directories exactly the same, use ``--delete`` -- if
 the file **did not** exist in source, you want it removed on
 destination if does exist:
 
-- ``--delete`` means to remove files from the destination that are not
-  in the source directory. If after a completed rsync a file was then
-  removed from the source, then the next rsync with the –delete option
-  would then remove the file from the destination/ It may be
-  preferable to clean up the source only after confirming that all the
-  files have been transferred.
+- ``--delete`` means to remove files from the destination that are not in the
+  source directory. If after a completed rsync a file was then removed from the
+  source, then the next rsync with the ``--delete`` option would then remove
+  the file from the destination/ It may be preferable to clean up the source
+  only after confirming that all the files have been transferred.
 
 .. warning::
 
-    Do not use the ``–-delete`` option if you do not want data in the
+    Do not use the ``--delete`` option if you do not want data in the
     destination directory to be removed.
 
 xsync
@@ -204,7 +203,7 @@ Usage of ``xsync`` is almost identical to ``rsync`` as described above.
 
     ``xsync`` does not support the ``--include`` and ``--exclude``
     rsync options.  To view additional parameters to tune threading
-    and depth for better performance, run ``xsync –-help``. In most
+    and depth for better performance, run ``xsync --help``. In most
     cases they should not be needed.
 
 
@@ -246,7 +245,7 @@ not finish in 8 hours, resubmit it. Once it finishes successfully, add
 ``-v`` to the rsync line and submit it one more time. Examine the
 output file carefully to make sure there are no errors.
 
-If after several tries, the transfer still hasn’t completed, and the
+If after several tries, the transfer still hasn't completed, and the
 errors are not obvious upon reading the batch job output, refer to the
 :ref:`getting help <getting_help>` pages and ask for assistance.  Be
 sure and include the file paths of the output files of your transfer

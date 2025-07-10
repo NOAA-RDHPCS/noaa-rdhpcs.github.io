@@ -77,7 +77,7 @@ Existing users: Replacement token
 
   3. Open a helpdesk ticket by sending an email from your NOAA.GOV account
      to `rdhpcs.aim.help@noaa.gov <mailto:rdhpcs.aim.help@noaa.gov>`_,
-     with the subject of ‘First.Last: Token for new device’.
+     with the subject of *First.Last: Token for new device*.
      (Replace First.Last with your First Last NOAA username.)
 
 .. note::

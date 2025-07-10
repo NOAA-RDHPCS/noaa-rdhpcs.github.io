@@ -6,6 +6,7 @@ NCRC
 NOAA
 NODD
 RDHPCS
+RRFS
 
 # System names
 Gaea

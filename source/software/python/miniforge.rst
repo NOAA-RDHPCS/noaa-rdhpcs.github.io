@@ -38,7 +38,7 @@ updated with something like this:
 .. code-block:: bash
 
    # >>> conda initialize >>>
-   # !! Contents within this block are managed by 'conda init’ !! .
+   # !! Contents within this block are managed by 'conda init' !! .
    .
    .
    .

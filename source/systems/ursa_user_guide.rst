@@ -254,8 +254,8 @@ Ursa Software Stack
   * Please run the ``module spider`` command to see all
     the available modules!
 
-* Compilers: Intel’s oneapi, Nvidia’s nvhpc, and
-  AMD’s AOCC compilers are available.
+* Compilers: Intel's oneapi, Nvidia's nvhpc, and
+  AMD's AOCC compilers are available.
 * MPIs: Intel MPI from Intel, HPC-X MPI from Nvidia, and openMPI
   implementations are available.
 

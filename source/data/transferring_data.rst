@@ -30,7 +30,7 @@ exceptions are noted.
 
 Only the High-Performance Filesystems (the scratch filesystems) are
 available, not your /home filesystem. When you are asked for a
-password, provide your RSA Token’s PIN + current 6 or 8 digit number
+password, provide your RSA Token's PIN + current 6 or 8 digit number
 from your token (a.k.a Passcode).
 
 All RDHPCS systems require an initial login before you can
@@ -195,7 +195,7 @@ Transfer and Syntax Examples
 Transfer a file on Hera to a destination on Jet
 -----------------------------------------------
 
-.. code-block::
+.. code-block:: console
 
   [First.Last@hfe04 ~]$ scp /scratch1/SYSADMIN/nesccmgmt/
   First.Last/data_file First.Last@dtn-jet.boulder.rdhpcs.noaa.gov:/mnt/lfs5/SYSADMIN/jetmgmt/First.Last/
@@ -216,7 +216,7 @@ GFDL untrusted endpoint.
 To issue the command, replace First.Last in the example with your own
 credentials.
 
-.. code-block:: shell
+.. code-block:: console
 
     [First.Last@an001 ~]$ globus transfer my-personal-external-endpoint-id:myDataFileName_here.txt \
     6ba73d87-08f2-463e-bf8f-83cc3e7a871f:First.Last/myDataFileName_there.txt
@@ -692,13 +692,13 @@ contains your request. Use the subject line: <$SYSTEM> FEs to
 .. code-block:: shell
 
   Hera:
-  Source Systems:  hfe[1-12].fairmont.rdhpcs.noaa.gov
-  Source IPs:  140.208.193.[1-12]
+  Source Systems:  hfe[1-12].fairmont.rdhpcs.noaa.gov
+  Source IPs:  140.208.193.[1-12]
   Jet:
-  Source Systems:  fe[1-8].boulder.rdhpcs.noaa.gov
-  Source IPs:  140.208.160.[1-8]
+  Source Systems:  fe[1-8].boulder.rdhpcs.noaa.gov
+  Source IPs:  140.208.160.[1-8]
   Niagara:
-  Source Systems:  nfe[1-12].fairmont.rdhpcs.noaa.gov
+  Source Systems:  nfe[1-12].fairmont.rdhpcs.noaa.gov
   Source IPs:140.208.193.[65-76]
 
 Include the following information in the request:

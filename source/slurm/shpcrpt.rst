@@ -63,7 +63,7 @@ month.  Useful to get an overview of all projects on the system.
 Project Usage
 -------------
 
-To see a specific group’s hpc report, specify the project using the `-p`
+To see a specific group's hpc report, specify the project using the `-p`
 option:
 
 .. code-block:: shell

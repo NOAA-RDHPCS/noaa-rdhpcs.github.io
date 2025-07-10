@@ -170,7 +170,7 @@ Three types of storage are available on a cluster.
 
 - Lustre: object storage for backup and restore and output files
 - Bucket/blob storage: a container for objects.
-- Contrib file system: a project’s custom software library.
+- Contrib file system: a project's custom software library.
 
 .. note::
 
@@ -199,7 +199,7 @@ Azure, the storage used is Blob storage, which functions as a bucket storage,
 which functions as a bucket and an NFS storage. Pricing information is
 available at this `link <https://aws.amazon.com/s3/pricing/>`_ . Projects using
 AWS, and GCP platforms can create as many buckets as needed, and mount them on
-a cluster. The project’s default bucket is accessible from the public domain
+a cluster. The project's default bucket is accessible from the public domain
 using the keys.
 
 Contrib file system
@@ -280,7 +280,7 @@ Collect the following information:
 - Brief description of your project.
 - Portfolio name.
 - Principal Investigator [PI] name.
-- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
+- Technical lead name [TL]. (If the project's PI and TL are the same, repeat
   the name.)
 - Allocation amount.
 
@@ -589,7 +589,7 @@ To generate a short term token for a bucket:
 **Use PW token service**
 
 The PW token lasts up to 24 hours before resetting.  Under this setting, you
-can run a cloud provider’s CLI or PW CLI commands. The following example will
+can run a cloud provider's CLI or PW CLI commands. The following example will
 generate a token, insert the commands into a file named aws-creds and source
 that file.:-
 
@@ -700,11 +700,11 @@ This will let you login to the head node from the PW interface.
 
 Example:
 
-.. code-block:: shell
+.. code-block:: console
 
-  $ ssh First.Last@54.174.136.76
+    $ ssh First.Last@54.174.136.76
 
-  Warning: Permanently added ‘54.174.136.76’ (ECDSA) to the list of known hosts.
+    Warning: Permanently added '54.174.136.76' (ECDSA) to the list of known hosts.
 
 Running a Jupyterlab Workflow on an On-Prem Controller Node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -745,7 +745,7 @@ example).
 ssh to Nodes Within a Cluster
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can use a node’s hostname to ssh to compute nodes in your cluster from the
+You can use a node's hostname to ssh to compute nodes in your cluster from the
 head node. You do not need to have a job running on the node, but the node must
 be in a powered-on state.
 
@@ -792,7 +792,7 @@ it to your project space and create a symlink as shown below:
   mv $HOME/pw /a/directory/in/your/project/space/pw
   ln -s /a/directory/in/your/project/space/pw $HOME/pw
 
-3. If $HOME/pw doesn’t exist, create a directory in your project space and
+3. If $HOME/pw doesn't exist, create a directory in your project space and
    create the pw symlink in your home directory as follows:
 
 .. code-block:: shell
@@ -841,7 +841,7 @@ Consider the following when you modify the partition:
   of the different GPU instance families available.
 * Zone. Select the zone you want to provision the cluster to. This parameter is
   two-pronged and configures both the region (us-east-1) and availability zone
-  (b). It’s prudent to stay in the us-east-1 region, as you are likely to incur
+  (b). It's prudent to stay in the us-east-1 region, as you are likely to incur
   egress charges if you are passing data between your contrib storage (located
   in us-east-1), and a cluster located in a different region. The zone is less
   important, unless you have other storages attached to the cluster and you
@@ -931,7 +931,7 @@ If a user receives the error
 it may be related to an issue in user's environment.
 
 First, ensure there is a minimum 100 MB free space in the home directory
-for the PW agent file to install.  If there’s enough space, perform one of the
+for the PW agent file to install.  If there's enough space, perform one of the
 following checks:
 
   1. Remove the https_proxy setting from the .bashrc file. This will stop using
@@ -1848,7 +1848,7 @@ failure.
 How can I configure a CentOS Cluster to use Rocky 8 (latest)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have already made extensive modifications to your cluster’s definition,
+If you have already made extensive modifications to your cluster's definition,
 you may prefer to revert the required settings by hand without loading a config
 from the Marketplace. There are two primary settings that need to be updated,
 the OS image Rocky 8 (latest), and the ``/apps`` disk snapshot. Keep in mind
