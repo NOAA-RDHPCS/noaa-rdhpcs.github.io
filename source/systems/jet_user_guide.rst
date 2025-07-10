@@ -121,7 +121,7 @@ partitions, plus four bigmem nodes, totaling 57,744 cores, @
 
 System Features:
 
--  Total of 44,000 cores of 64-bit Intel CPU’s,
+-  Total of 44,000 cores of 64-bit Intel CPU's,
 -  Capability of 1,728 trillion floating point operations
    per second – or 1.73 petaflops.
 -  Total scratch disk capacity of 15.8 Petabytes.

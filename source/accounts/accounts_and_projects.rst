@@ -122,7 +122,7 @@ General Access Requirements
 
 - All users, regardless of citizenship, follow the same process to
    receive MSU-HPC access.
-- NOAA's RDHPCS users will need to use MSU’s HPC Account Management
+- NOAA's RDHPCS users will need to use MSU's HPC Account Management
    System and Process. RDHPCS Portfolio Managers have access to MSU's
    Account Management Tool.
 - The Portfolio Manager (PfM) must have allocations to use the MSU-HPC

@@ -27,14 +27,13 @@ Administration <https://www.noaa.gov/>`_.
 
 The Gaea System consists of two HPE-Cray EX 3000 systems, referred to as C5 and
 C6.  Two high-capacity parallel file systems provide over 150 petabytes of fast
-access storage. The center-wide filesystem is connected using FDR InfiniBand to
-the center's compute and data-transfer resources. The aggregate Gaea system
-contains a peak calculating capability greater than 20 petaflops (quadrillion
-floating point operations per second).
+access storage. These system-specific filesystems are connected using FDR
+InfiniBand to the compute and data-transfer resources. The aggregate Gaea
+system contains a peak calculating capability greater than 20 petaflops
+(quadrillion floating point operations per second).
 
-NOAA research partners access data remotely through fast
-interconnections to NOAA's national research network through peering
-points at Atlanta and Chicago.
+NOAA research partners access data remotely through fast interconnections to
+NOAA's national research network through peering points at Atlanta and Chicago.
 
 .. grid:: 4
 
@@ -95,9 +94,9 @@ points at Atlanta and Chicago.
 
     * IBM Elastic Storage Server 3500 running GPFS 5.1
 
-Gaea is the largest of the four NOAA RDHPCS, and is used to study the
-earth's notoriously complex weather systems from a variety of angles by
-enabling scientists:
+Gaea is the largest of the NOAA RDHPCS, and is used to study the earth's
+notoriously complex weather systems from a variety of angles by enabling
+scientists:
 
 * to understand the relationship between earth modeling and extreme weather,
   and the atmosphere's chemical makeup and weather trends.
@@ -270,12 +269,13 @@ Linux Enterprise Server)`).
 | C6      | 3.1.0-28 | 15.5    |
 +---------+----------+---------+
 
-The version of COS and SLES installed on Gaea are updated yearly in fall.  The
-version of COS can be found running ``cat /opt/cray/etc/release/cos-base`` and
-version of SLES can be obtained running ``lsb-release -a``.
+The version of COS and SLES installed on Gaea are updated yearly in the fall.
+The version of COS can be found running ``cat /opt/cray/etc/release/cos-base``
+and version of SLES can be obtained running ``lsb-release -a``.
 
 .. _HPE Cray EX Documentation: https://support.hpe.com/connect/s/product?kmpmoid=1013083813
 .. _HPE Cray Programming Environment: https://cpe.ext.hpe.com/docs/latest/index.html
+.. _HPE Cray Programming Environment User Guide: https://cpe.ext.hpe.com/docs/25.03/getting_started/CPE-General-User-Guide-CSM.html
 
 .. seealso::
 
@@ -284,6 +284,12 @@ version of SLES can be obtained running ``lsb-release -a``.
 
     `HPE Cray Programming Environment`_
         Documentation that covers the HPE Cray Programming Environment.
+
+    `HPE Cray Programming Environment User Guide`_
+        The HPE Cray Programming Environment User Guide provides information
+        on how to use the programming environment, including compilers,
+        libraries, and tools.
+
 
 **********
 Connecting
@@ -347,7 +353,7 @@ C6 login node:
     gaea67              C6 head node
     gaea68              C6 head node
 
-    You will now be connected to NOAA RDHPCS: Gaea (CMRS/NCRC) C5 system.
+    You will now be connected to NOAA RDHPCS: Gaea (NCRC) C5 system.
     To select a specific host, hit ^C within 5 seconds.
     ^CEnter a hostname, or a unique portion of a hostname []:
 
@@ -471,9 +477,9 @@ The following is the current policy for compression on F5:
    /* Ensure compression on qualified files */
    RULE 'compress-large-files-on-hdd' MIGRATE COMPRESS('lz4') FROM POOL 'capacity' WHERE not(excluded_files) AND (KB_ALLOCATED >= 4096) AND access_buffer_time_passed
 
-**Additional notes regarding GPFS compression:**
+.. rubric:: Additional notes regarding GPFS compression
 
-* Users can decompress their files by running
+* Users can use the :program:`mmchattr` command to decompress their files:
   ``mmchattr --compression no -I yes <file>``.
 * Files are written to disk uncompressed, and then compression is done upon
   the execution of our compression cronjob or via an explicit ``mmchattr``
@@ -508,8 +514,8 @@ Gaea users are provided with many pre-installed software packages and
 scientific libraries.  Environment management tools are used to handle
 necessary changes to the shell.
 
-Please refer to the `HPE Cray Programming Environment`_ documentation for
-specifics.
+Please refer to the `HPE Cray Programming Environment`_ and the `HPE Cray
+Programming Environment User Guide`_ documentation for more detail.
 
 .. _gaea-environment-modules:
 
@@ -518,7 +524,7 @@ Environment Modules
 
 Environment modules are provided through `Lmod
 <https://lmod.readthedocs.io/en/latest/>`_, a Lua-based module system for
-dynamically altering shell environments. By managing changes to the shell’s
+dynamically altering shell environments. By managing changes to the shell's
 environment variables (such as ``PATH``, ``LD_LIBRARY_PATH``, and
 ``PKG_CONFIG_PATH``), Lmod allows you to alter the software available in your
 shell environment without the risk of creating package and version combinations
@@ -565,6 +571,8 @@ The interface to Lmod is provided by the :command:`module` command:
 | ``module update``              | Reloads all currently loaded modules       |
 +--------------------------------+--------------------------------------------+
 
+.. _gaea-searching-for-modules:
+
 Searching for Modules
 ---------------------
 
@@ -592,7 +600,6 @@ sub-command can be used as summarized in the following table.
 |                                         | containing ``<string>``           |
 +-----------------------------------------+-----------------------------------+
 
-
 Compilers
 =========
 
@@ -605,7 +612,8 @@ how using these modules to compile.
 MPI
 ====
 
-The MPI implementation available on Gaea is Cray's MPICH.
+The MPI implementation available on Gaea is `Cray MPICH
+<https://cpe.ext.hpe.com/docs/25.03/mpt/mpich/index.html>`_.
 
 
 .. _gaea-compiling:
@@ -631,6 +639,7 @@ table below lists details about each of the module-provided compilers.
 
 .. cSpell:ignore aocc nvhpc oneapi craycc craycxx crayftn flang gfortran
 .. cSpell:ignore icpx icc icpc ifort nvfortran craype
+
 .. The following are substitutions to keep the table below the line length
    limit
 .. |pe_aocc| replace:: ``PrgEnv-aocc``
@@ -709,6 +718,243 @@ libraries that are compatible with Intel host compilers.
     Use the ``-craype-verbose`` compiler flag to display the full include and link
     information used by the Cray compiler wrappers. This must be called on a
     file, for example ``CC -craype-verbose test.cpp``.
+
+.. _gaea-dynamic-linking:
+
+Dynamic linking
+===============
+
+All executables built on gaea are dynamically linked, and is the only linking
+method currently supported.  This means that the executable will not contain
+the libraries it depends on, but instead will use the libraries that are
+available on the system at runtime.  Dynamic linking allows for smaller
+executable sizes and the ability to share libraries between multiple
+executables, which can save disk space and memory.  However, it also means that
+the executable may not run if the required libraries are not available at
+runtime. Dynamic linking is done using the Executable and Linking Format (ELF)
+standard. The ELF format is a common standard for executable files on Unix-like
+systems, including Linux, and is used to define the structure of executable
+files, shared libraries, and object files.
+
+.. cspell: words RPATH
+
+To help ensure that the correct libraries are available at runtime, the dynamic
+loader (:program:`ld.so`, see :manpage:`ld.so(8)`) will use location
+information stored in the executable (if available, known as ``RPATH``), then
+search the directories listed in the environment variable ``LD_LIBRARY_PATH``,
+and finally the directories listed in :file:`/etc/ld.so.conf`.  The first
+instance of a specific library found in the hierarchy of locations will be
+used.
+
+To embed the location of a library within the executable's ``RPATH``, you can
+use the ``-Wl,-rpath,<path>`` option when compiling, where ``<path>`` is the
+path to the directory that contains the library.  For example, to add the
+directory ``/path/to/some/lib`` to the executable's ``RPATH``, you would run:
+
+.. cspell: words -lsomelib myprogram
+
+.. code-block:: console
+
+    $ cc -Wl,-rpath,/path/to/some/lib -L/path/to/some/lib -lsomelib myprogram.c -o myprogram
+
+If you need to specify multiple paths to ``RPATH`` you can either specify
+multiple ``-Wl,-rpath,<path>`` options, or separate the paths with a colon
+(``:``). For example:
+
+.. code-block:: console
+
+      $ cc -Wl,-rpath,/path/to/lib1:/path/to/lib2 -L/path/to/lib1 -L/path/to/lib2 -lsomelib1  -lsomelib2 myprogram.c -o myprogram
+
+This will embed both directories in the executable's ``RPATH``.
+
+On systems that use the Cray Programming Environment, the dynamic loader is
+configured to always search the directory :file:`/opt/cray/pe/lib64`.  This
+directory contains the default Cray libraries.  Because this directory is
+included in the search path, switching the module environment does not
+completely change the run-time environment.  As an example, we'll look at using
+a non-default MPI library.  First, we will build and run using the default
+``cray-mpich`` module.  The ``mpi_test.c`` code has the following:
+
+.. code-block:: c
+
+    #include <mpi.h>
+    #include <stdio.h>
+
+    int
+    main(int argc, char** argv)
+    {
+        char mpi_version_string[MPI_MAX_LIBRARY_VERSION_STRING];
+        int mpi_ver_len;
+
+        MPI_Init(NULL, NULL);
+
+        MPI_Get_library_version(mpi_version_string, &mpi_ver_len);
+
+        printf("MPICH Build Version: %s\n", MPICH_VERSION);
+        printf("MPICH Run Version: %s\n", mpi_version_string);
+
+        MPI_Finalize();
+        return 0;
+    }
+
+We will compile and run this code using the default ``cray-mpich`` module:
+
+.. code-block:: console
+
+    $ cc -o mpi_test mpi_test.c
+    $ srun -n 1 ./mpi_test
+    MPICH Build Version: 3.4a2
+    MPICH Run Version: MPI VERSION    : CRAY MPICH version 8.1.32.110 (ANL base 3.4a2)
+
+We see that the build version,  ``MPICH_VERSION``, matches the library version,
+as returned from ``MPI_Get_library_version``.
+
+In this second example, we will use a different version of the ``cray-mpich``
+module.
+
+.. code-block:: console
+
+    $ module swap cray-mpich/9.0.0
+
+    The following have been reloaded with a version change:
+      1) cray-mpich/8.1.32 => cray-mpich/9.0.0
+
+    $ cc -o mpi_test mpi_test.c
+    $ srun -n 1 ./mpi_test
+    MPICH Build Version: 4.1.2
+    MPICH Run Version: MPI VERSION    : CRAY MPICH version 8.1.31.9 (ANL base 3.4a2)
+
+As we can see, the library used to build and run the executable are different.
+We used version 4.1.2 when building, but due to finding the MPI library in
+:file:`/opt/cray/pe/lib64`, we used the default 3.4a2 version when running.
+
+As mentioned above, you can set the ``LD_LIBRARY_PATH`` environment variable to
+adjust which libraries are loaded at run time.  The directories listed in
+``LD_LIBRARY_PATH`` take precedence over the libraries included in
+:file:`/etc/ld.so.config`, which includes :file:`/opt/cray/pe/lib64`.  This is
+useful if you have already built an executable, but did not supply the linker
+flags to modify the RPATH.  HPE suggests prepending to ``LD_LIBRARY_PATH`` the
+variable ``CRAY_LD_LIBRARY_PATH``.   In the following example, we will prepend
+``CRAY_LD_LIBRARY_PATH`` to the ``LD_LIBRARY_PATH`` environment variable.
+
+.. code-block:: console
+
+    $ module swap cray-mpich/9.0.0
+
+    The following have been reloaded with a version change:
+      1) cray-mpich/8.1.32 => cray-mpich/9.0.0
+
+    $ cc -o mpi_test mpi_test.c
+    $ export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+    $ srun -n 1 ./mpi_test
+    MPICH Build Version: 4.1.2
+    MPICH Run Version: MPI VERSION    : CRAY MPICH version 9.0.0.113 (ANL base 4.1.2)
+
+We see that prepending to ``LD_LIBRARY_PATH`` allows the loader to find the
+same MPI library (4.1.2) at run time.
+
+While prepending to ``LD_LIBRARY_PATH`` allows using the same library at run
+time, you can still get an unexpected library, based on what is added to the
+``LD_LIBRARY_PATH``.  In the next example, we'll go back to our first example,
+but switch the MPICH module and then set ``LD_LIBRARY_PATH``.
+
+.. code-block:: console
+
+    $ cc -o mpi_test mpi_test.c
+    $ srun -n 1 ./mpi_test
+    MPICH Build Version: 3.4a2
+    MPICH Run Version: MPI VERSION    : CRAY MPICH version 8.1.32.110 (ANL base 3.4a2)
+    $ module swap cray-mpich/9.0.0
+
+    The following have been reloaded with a version change:
+      1) cray-mpich/8.1.32 => cray-mpich/9.0.0
+
+    $ srun -n 1 ./mpi_test
+    MPICH Build Version: 3.4a2
+    MPICH Run Version: MPI VERSION    : CRAY MPICH version 9.0.0.113 (ANL base 4.1.2)
+
+Here we see that the loader found the 4.1.2 MPICH library due to setting the
+``LD_LIBRARY_PATH`` variable, showing that setting LD_LIBRARY_PATH can lead to
+using an unintended library.
+
+Adjusting the executable's RPATH allows for adding an explicit,
+higher-precedent search path.  The method requires using ``-Wl,-rpath,<path>``
+when linking the executable.  This example shows how to use
+``-Wl,-rpath,$MPICH_DIR/lib`` when compiling.
+
+.. code-block:: console
+
+    $ module swap cray-mpich/9.0.0
+
+    The following have been reloaded with a version change:
+      1) cray-mpich/8.1.32 => cray-mpich/9.0.0
+
+    $ cc -Wl,-rpath,$MPICH_DIR/lib -o mpi_test mpi_test.c
+    $ srun -n 1 ./mpi_test
+    MPICH Build Version: 4.1.2
+    MPICH Run Version: MPI VERSION    : CRAY MPICH version 9.0.0.113 (ANL base 4.1.2)
+
+Here we see the version used when building the executable (4.1.2), matches the
+version used when running.  The loader finds the correct library using the
+compiled-in RPATH because, as was mentioned above, library path information
+stored in the executable via RPATH takes precedence when attempting to satisfy
+references.
+
+Adding library paths to the executable's RPATH takes precedence over the
+libraries listed in :file:`/etc/ld.so.config` and ``LD_LIBRARY_PATH``.  In the
+next example, we'll build the executable with one MPICH version, switch the
+MPICH module to a different version from the default and the version used to
+build the executable before setting ``LD_LIBRARY_PATH``.
+
+.. code-block:: console
+
+    $ module swap cray-mpich/9.0.0
+
+    The following have been reloaded with a version change:
+      1) cray-mpich/8.1.32 => cray-mpich/9.0.0
+
+    $ cc -Wl,-rpath,$MPICH_DIR/lib -o mpi_test mpi_test.c
+    $ srun -n 1 ./mpi_test
+    MPICH Build Version: 4.1.2
+    MPICH Run Version: MPI VERSION    : CRAY MPICH version 9.0.0.113 (ANL base 4.1.2)
+    $ module swap cray-mpich/8.1.28
+
+    The following have been reloaded with a version change:
+      1) cray-mpich/9.0.0 => cray-mpich/8.1.28
+
+    $ export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+    $ srun -n 1 ./mpi_test
+    MPICH Build Version: 4.1.2
+    MPICH Run Version: MPI VERSION    : CRAY MPICH version 9.0.0.113 (ANL base 4.1.2)
+
+As we can see, adding the library path to RPATH allows the executable to
+find the desired MPICH library, even though we set LD_LIBRARY_PATH.  Explicitly
+setting the RPATH is the preferred method to use if you need to use a specific
+library version.
+
+.. cspell: words readelf
+
+.. note::
+
+    You can inspect which libraries an executable will use at run time by using
+    the :command:`ldd` command.  For example, we could have run ``ldd
+    mpi_test`` above to list all the libraries.  You can also use the
+    :command:`readelf` to inspect the executable's RPATH.  For example,
+    ``readelf -d mpi_test | grep -i rpath``.
+
+.. seealso::
+
+    `Executable and Linking Format (ELF) - Dynamic Linking <https://intezer.com/blog/executable-linkable-format-101-part-4-dynamic-linking/>`__
+        A good overview of the ELF format and how dynamic linking works.
+
+    `HPE Cray PE User Guide - Swapping other programming environment components <https://cpe.ext.hpe.com/docs/25.03/getting_started/CPE-General-User-Guide-CSM.html#swapping-other-programming-environment-components>`__
+        This is HPE's supported documentation on how to manage which libraries
+        are used at run time.  In the documentation, HPE discusses an
+        additional environment variable ``PE_LD_LIBRARY_PATH``.  This variable
+        is new in the HPE Cray Programming Environment version 25.03.  The
+        older library version do not use this variable to adjust the
+        ``LD_LIBRARY_PATH`` environment variable.
+
 
 .. _gaea-running:
 

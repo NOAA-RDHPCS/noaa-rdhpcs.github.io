@@ -379,7 +379,7 @@ User Notification
 
 Users will be notified of expired data via posted lists and email. These
 notifications will take place on or before the first day of the month following
-the data’s expiration. For example, data that has an expiration date between
+the data's expiration. For example, data that has an expiration date between
 October 1 and October 31 2016 will have its notification posted on or before
 November 1, 2016. The expired file list is located on HPSS in
 ``/Expired_Data_Lists/expired.YYYY-MM.txt``. All HPSS users have read access to
@@ -392,7 +392,7 @@ group, filename/path, and expire date are shown. For example:
    root system /1year/SYSADMIN/nesccmgmt/test_file-1G-11 Jul-6-2016.
 
 Email notification will also be sent to all users who have data listed in this
-file. It is the user’s responsibility to regularly check the posted list for
+file. It is the user's responsibility to regularly check the posted list for
 expired files they own. Once deleted these files cannot be recovered.
 
 .. _expired_data_deletions:
@@ -405,18 +405,18 @@ The following table maps out when future deletions will take place.
 ================ ================= ===========
 Expire Date      Notification Date Delete Date
 ================ ================= ===========
-Dec 1 – Dec 31   January 1         February 1
-Jan 1 – Jan 31   February 1        March 1
-Feb 1 – Feb 28   March 1           April 1
-Mar 1 – Mar 31   April 1           May 1
-Apr 1 – Apr 30   May 1             June 1
-May 1 – May 31   June 1            July 1
-Jun 1 – June 30  July 1            August 1
-Jul 1 – Jul 31   August 1          September 1
-Aug 1 – Aug 30   September 1       October 1
-Sept 1 – Sept 30 October 1         November 1
-Oct 1 – Oct 31   November 1        December 1
-Nov 1 – Nov 30   December 1        January 1
+Dec 1 - Dec 31   January 1         February 1
+Jan 1 - Jan 31   February 1        March 1
+Feb 1 - Feb 28   March 1           April 1
+Mar 1 - Mar 31   April 1           May 1
+Apr 1 - Apr 30   May 1             June 1
+May 1 - May 31   June 1            July 1
+Jun 1 - June 30  July 1            August 1
+Jul 1 - Jul 31   August 1          September 1
+Aug 1 - Aug 30   September 1       October 1
+Sept 1 - Sept 30 October 1         November 1
+Oct 1 - Oct 31   November 1        December 1
+Nov 1 - Nov 30   December 1        January 1
 ================ ================= ===========
 
 .. _file_size_guidelines:
