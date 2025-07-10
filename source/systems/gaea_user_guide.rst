@@ -901,8 +901,8 @@ stored in the executable via RPATH takes precedence when attempting to satisfy
 references.
 
 Adding library paths to the executable's RPATH takes precedence over the
-libraries listed in :file:`/etc/ld.so.config` and ``LD_LIBRARY_PATH``.  In the
-next example, we'll build the executable with one MPICH version, switch the
+directories listed in ``LD_LIBRARY_PATH`` and :file:`/etc/ld.so.config`.  In
+the next example, we'll build the executable with one MPICH version, switch the
 MPICH module to a different version from the default and the version used to
 build the executable before setting ``LD_LIBRARY_PATH``.
 
@@ -938,7 +938,7 @@ library version.
 
     You can inspect which libraries an executable will use at run time by using
     the :command:`ldd` command.  For example, we could have run ``ldd
-    mpi_test`` above to list all the libraries.  You can also use the
+    mpi_test`` above to list all the libraries.  You can also use
     :command:`readelf` to inspect the executable's RPATH.  For example,
     ``readelf -d mpi_test | grep -i rpath``.
 
