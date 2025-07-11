@@ -21,3 +21,9 @@ jobs:
         run: pip install -r requirements.txt
       - name: Check for Broken Links
         run: make linkcheck
+      - name: Upload linkcheck Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: |
+            'build/linkcheck/output.txt'
+            'build/linkcheck/output.json'
