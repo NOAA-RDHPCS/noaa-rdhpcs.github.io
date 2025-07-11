@@ -31,19 +31,19 @@ The current systems are listed below, with links to their user guides.
    * - `Cloud <https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems/cloud-hpc>`__
      - Platforms to create and use HPC computational clusters on an ad-hoc basis
      - :ref:`cloud-user-guide`
-   * - `Gaea <https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems/gaea>`__
+   * - `Gaea <https://www.noaa.gov/organization/information-technology/gaea>`__
      - Short- and long-term prediction modeling and research system at Oak Ridge National Laboratory
      - :ref:`gaea-user-guide`
-   * - `Hera <https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems/hera>`__
+   * - `Hera <https://www.noaa.gov/organization/information-technology/hera>`__
      - Predicting high-impact weather events
      - :ref:`hera-user-guide`
-   * - `Jet <https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems/jet>`__
+   * - `Jet <https://www.noaa.gov/organization/information-technology/jet>`__
      - Hurricane Forecast Improvement Program (HFIP)
      - :ref:`jet-user-guide`
    * - Mercury
      - Collaborative resource for data transfer
      - :ref:`mercury-user-guide`
-   * - `PPAN <https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems/ppan>`__
+   * - `PPAN <https://www.noaa.gov/organization/information-technology/ppan>`__
      - Long-term prediction research, archive, post-processing, and analysis.
      - :ref:`ppan-user-guide`
    * - Ursa

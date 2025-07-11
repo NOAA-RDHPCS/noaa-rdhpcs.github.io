@@ -145,7 +145,9 @@ linkcheck_ignore = [
     r'https://(orion|hercules)-ood.hpc.msstate.edu/?.*',
     r'https://cpe\.ext\.hpe\.com/docs/latest/.*',
     r'https://noaa-rrfs-pds\.s3\.amazonaws\.com/.*',
-    r'https://sslvpn\.rdhpcs\.noaa\.gov/'
+    r'https://sslvpn\.rdhpcs\.noaa\.gov/',
+    r'https://docutils\.sourceforge\.net/rst\.html',
+    r'https://www\.amd\.com/en/products/accelerators/instinct/mi300/mi300x\.html'
 ]
 linkcheck_retries = 3
 

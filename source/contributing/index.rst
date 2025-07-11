@@ -144,8 +144,8 @@ Workflow for contributions to the documentation repository
 Resources
 ===================
 
-| `Sphinx Quickstart <http://www.sphinx-doc.org/en/master/usage/quickstart.html>`_
-| `restructuredText Primer <http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
-| `restructuredText Reference <http://docutils.sourceforge.net/rst.html>`_
+| `Sphinx Quickstart <https://www.sphinx-doc.org/en/master/usage/quickstart.html>`_
+| `restructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
+| `restructuredText Reference <https://docutils.sourceforge.net/rst.html>`_
 | `NOAA-RDHPCS Docs flexible style guide <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/CODE_STYLE.md>`_
 

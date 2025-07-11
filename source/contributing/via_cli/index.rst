@@ -59,7 +59,7 @@ Setup authoring environment
         $ python3 -m http.server 8080
         ## you may add the option --bind 127.0.0.1 to bind only on the localhost address
 
-   Open a broswer and type ``localhost:8080`` into the address bar to view the web pages.
+   Open a browser and type ``localhost:8080`` into the address bar to view the web pages.
 
 Edit the docs
 -------------------------
@@ -104,8 +104,7 @@ local environment to make multiple changes.
 Resources
 ---------------
 
-| `Sphinx Quickstart <http://www.sphinx-doc.org/en/master/usage/quickstart.html>`_
-| `restructuredText Primer <http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
-| `restructuredText Reference <http://docutils.sourceforge.net/rst.html>`_
+| `Sphinx Quickstart <https://www.sphinx-doc.org/en/master/usage/quickstart.html>`_
+| `restructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
+| `restructuredText Reference <https://docutils.sourceforge.net/rst.html>`_
 | `NOAA-RDHPCS Docs flexible style guide <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/CODE_STYLE.md>`_
-
