@@ -22,8 +22,9 @@ jobs:
       - name: Check for Broken Links
         run: make linkcheck
       - name: Upload linkcheck Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: linkcheck-output
           path: |
             'build/linkcheck/output.txt'
             'build/linkcheck/output.json'
