@@ -20,7 +20,11 @@ jobs:
       - name: Install Python Requirements
         run: pip install -r requirements.txt
       - name: Check for Broken Links
-        run: make linkcheck
+        run: |
+          env
+          make linkcheck
+          ls build
+          ls build/linkcheck
       - name: Upload linkcheck Artifact
         uses: actions/upload-artifact@v4
         if: always()
