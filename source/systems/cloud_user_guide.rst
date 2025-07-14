@@ -119,9 +119,53 @@ Parallel Works
 Using ACTIVATE
 --------------
 
-Users access the ACTIVATE platform through the Parallel Works NOAA Portal
+Users access the ACTIVATE platform through the Parallel Works NOAA Portal,
 using the RSA Token authentication method.  On the landing page, enter your
 NOAA user name, and your PIN and SecurID OTP.
+
+How do I access on-prem HPS Systems from Parallel Works?
+--------------------------------------------------------
+
+Parallel Works is working on seamless authentication with on-prem HPC
+systems.
+
+.. note::
+
+  The following access method does not work on Gaea.
+
+Follow these steps to access other HPC systems.
+
+1. From the login portal, click  the user Name.  Select **Account**
+   from the drop down list.
+
+2. Click the **Authentication** tab.
+
+3. Click on the “SSH Keys” line.
+
+4. Copy the “Key” from the “User Workspace”.
+
+5. Append the public SSH key in the on-prem HPC system's controller
+   node's ~/.ssh/authorized_keys file. Save and exit the file.
+
+Repeat this process on all on-prem HPC systems' controller nodes
+to establish connections from Parallel Works.
+
+**Subscribe the default template of HPC systems from the Parallel
+Works Marketplace**
+
+1. From the login portal, click on the user Name. Select
+   **“MARKETPLACE** from the drop down list box.
+
+2. Click on the Fork sign and click the Fork button when prompted.
+
+3. Exit the page.
+
+**Access allowed countries**
+
+USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
+Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
+Finland, Lebanon, Denmark, Palestinian Territory Occupied,
+Netherlands, Japan, and Estonia.
 
 Cloud Projects
 ==============
@@ -135,26 +179,44 @@ Cloud Projects
 
 Cloud projects are specific to a Cloud platform. The platform is indicated by
 the prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
+All RDHPCS users have access to Parallel Works. See :ref:`Requesting
+access to RDHPCS projects<project_request>`.
 
 Create/request a new project
 ----------------------------
 
-Gather requirements and approvals.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
+
+  Before you can request a project in AIM, it must have an assigned allocation
+  with approval from the NOAA RDHPCS allocation committee.  This begins with a
+  Help ticket. Send Start  email to rdhpcs.cloud.help@noaa.gov, with the
+  subject Allocation for <Project>.  Assistance with capacity planning,
+  planning and porting can be available.
+
+1. Gather requirements and approvals.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RDHPCS (cloud and on-prem) projects are defined through the
 .. _Account Information Management:	https://aim.rdhpcs.noaa.govsystem. Before you can
 request a project in AIM, it must have an assigned allocation with approval
 from the NOAA RDHPCS allocation committee.
-Collect the following information: Project short
-name, in the format: <cloud platform abbreviation>-<project name> For example
-ca-epic stands for AWS Epic, cz-epic for Azure epic, and cg-epic for Google
-cloud Epic. Brief description of your project. Portfolio name. Principal
-Investigator [PI] name. Technical lead name [TL]. (If the project’s PI and TL
-are the same, repeat the name.) Allocation amount.
+Collect the following information:
 
-Open a help desk ticket
-^^^^^^^^^^^^^^^^^^^^^^^
+- Project short name,  in the format: <cloud platform abbreviation>-<project
+  name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
+  cg-epic for Google cloud Epic.
+- Brief description of your project.
+- Portfolio name.
+- Principal Investigator [PI] name.
+- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
+  the name.)
+- Allocation amount.
+
+Once approvals have been gathered, you can request the project
+in Account Information Management (AIM).
+
+2. Open a help desk ticket.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Send an email to rdhpcs.cloud.help@noaa.gov, with **Allocation for <Project>**
 in the subject line.  When you have the necessary approvals, you can request a
@@ -171,17 +233,33 @@ request Portfolio name.
 [TL]. In some case, a project’s PI and TL may be the same person. If that is
 the case, repeat the name.
 
+3. Access the Account Information Management website and fill in the form
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add a User to a Project
-^^^^^^^^^^^^^^^^^^^^^^^^
+View all projects, then click the ``Create a Project`` button.
+Fill in the fields with the information from the allocation committee:
 
-The user can request access to RDHPCS projects. Cloud project names start with
-ca, cz, or cg implying AWS, Azure, or Google Compute platforms, followed by the
-project name. So for example, ca-budget-test indicates that project budget-test
-is allocated to the AWS platform.
+   a. Project short name. Please provide in this format: ``<cloud platform abbreviation>-<project name>``
+      Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
+      and ``cg-epic`` is for Google cloud Epic.
+   b. Brief description of your project.  **Provide helpdesk ticket of
+      allocation request**
+   c. Portfolio name.
+   d. Principal Investigator [PI] name.
+   e. Technical lead name [TL]. In some case, a project's PI
+      and TL may be the same person. If that is the case, repeat
+      the name.
 
-All RDHPCS users have access to Parallel Works. See :ref:`Requesting
-access to RDHPCS projects<project_request>`.
+4. Add a User to a Project.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The user can :ref:`Request access
+to RDHPCS projects<project_request>`.
+including Cloud project, through the AIM system.
+(Remember tht Cloud project names start with ca, cz, or cg to indicate AWS,
+Azure, or Google Compute platforms, followed by the project name.)
+
+
 
 Storage Types and Storage Costs
 ===============================
@@ -247,70 +325,13 @@ Google Cloud contrib file system is 2.5 TiB, costs $768.00 per month. The
 contrib volume can be removed from a project by request. Send email to
 rdhpcs.cloud.help@noaa.gov, with Remove Contrib Volume in the subject.
 
-How is a new user added to a project on Parallel Works?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-By :ref:`Requesting access
-to RDHPCS projects<project_request>`.  Cloud project names start with
-``ca``, ``cz``, or ``cg`` implying AWS, Azure, or Google Compute
-platforms, followed by the project name. So for example,
-ca-budget-test indicates that project budget-test is allocated to the
-AWS platform.
-
-How do I set up or request a new project in Parallel Works?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. note::
-
-  Cloud projects are specific to a Cloud platform. The platform is indicated by the
-  prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
-
-1. Gather requirements and approvals
-
-RDHPCS (cloud and on-prem) projects are defined through the Account
-Information Management system. Before you can request a project in
-AIM, it must have an assigned allocation with approval from the NOAA
-RDHPCS allocation committee.  Start the process by opening a help desk
-ticket. Send an email to rdhpcs.cloud.help@noaa.gov, with "Allocation
-for <Project>" in the subject line.  Assistance with capacity planning,
-planning and porting can be available.
-
-Collect the following information:
-
-- Project short name,  in the format: <cloud platform abbreviation>-<project
-  name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
-  cg-epic for Google cloud Epic.
-- Brief description of your project.
-- Portfolio name.
-- Principal Investigator [PI] name.
-- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
-  the name.)
-- Allocation amount.
-
-Once approvals have been gathered, the project can be requested in
- Account Information Management(AIM).
-
-2. Access the Account Information Management website and fill in the form
-
-   View all projects, then click the ``Create a Project`` button.
-   Fill in the fields with the information from the allocation committee:
-
-   a. Project short name. Please provide in this format: ``<cloud platform abbreviation>-<project name>``
-      Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
-      and ``cg-epic`` is for Google cloud Epic.
-   b. Brief description of your project.  **Provide helpdesk ticket of
-      allocation request**
-   c. Portfolio name.
-   d. Principal Investigator [PI] name.
-   e. Technical lead name [TL]. In some case, a project's PI
-      and TL may be the same person. If that is the case, repeat
-      the name.
 
 Costing
 =======
 
 Cost Calculator
 ---------------
+
 You can estimate the hourly cost of your experiments from the Parallel
 Works(PW) platform. Click the **Resources** tab, double click your resource
 definition, then click the **Definition** tab. When you update the required
@@ -332,8 +353,10 @@ $2,000.00.
 See the `Costing Dashboard <https://parallelworks.com/docs/monitoring-costs>`_
 in the Parallel Works user guide for complete information.
 
-How do I find a real time
-cost estimate of my session? The PW Cost dashboard offers an almost real time
+Costing Dashboard
+-----------------
+
+The PW Cost dashboard offers an almost real time
 estimate of your session. Real time estimate is refreshed every 5 minutes on
 the Cost dashboard. Click on the Cost link from your PW landing page. Under the
 “Time Filter”, choose the second drop down box and select the value “RT” [Real
@@ -352,12 +375,19 @@ number of hour x number of cores = 1 x 4 x 6 = 24 core hours. PW’s cost
 dashboard is a good tool to find unit cost, and extrapolate it to estimate
 usage for PoP.
 
+Real time estimate is refreshed every 5 minutes on the Cost
+dashboard. Click on the Cost link from your PW landing page.
+Under the “Time Filter”, choose the second drop down box and
+select the value “RT” [Real time]. Make sure the “User
+Filter” section has your name. The page automatically
+refreshes with the cost details.
+
 
 Errors
 ======
 
-How do I handle a Login error - Invalid username or password?
--------------------------------------------------------------
+Login error - Invalid username or password?
+-------------------------------------------
 
 .. note::
 
@@ -382,8 +412,6 @@ information that you have attempted the “single sign on” login test.
 
 If you continue to experience connection issues, open a :ref:`help
 request <getting_help>`.
-
-
 
 
 How do I access on-prem HPS Systems from Parallel Works?
@@ -465,57 +493,9 @@ space and create the pw symlink in your home directory as follows:
   ln -s /a/directory/in/your/project/space/pw $HOME/pw
 
 
-How do I use the Cost Calculator?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can estimate the hourly cost of your experiments from
-the Parallel Works(PW) platform. After login on the
-platform, click on the “Resources” tab, and double click on
-your resource definition. There is a definition tab, where
-when you update the required compute and lustre file system
-size configuration, the form dynamically shows an hourly
-estimate.
-
-You can derive an estimated cost of a single experiment by
-multiplying the run time with the hourly cost.
-
-For example, if the hourly estimate is $10, and your
-experiment would run for 2 hours then the estimated cost
-for your experiment would be $10 multiplied by 2, equals
-to $20.
-
-You can derive project allocation cost by multiplying the
-run time cost with the number of runs required to complete
-the project.
-
-For example, if your project would require a model run 100
-times, then multiply that number by a single run cost, the
-cost would be 100x$20 = $2,000.00.
-
-Note that there are costs associated with maintaining your
-project, like contrib file system, object storage to store
-backup, and egress.
 
 
-How does the Cost Dashboard work?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Refer to the `user guide <https://parallelworks.com/docs/monitoring-costs>`_.
-
-How do I find a real time cost estimate of my session?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Cloud vendors publish the cost once every 24 hours, that is
-not an adequate measure in an HPC environment. PW Cost
-dashboard offers an almost real time estimate of your
-session.
-
-Real time estimate is refreshed every 5 minutes on the Cost
-dashboard. Click on the Cost link from your PW landing page.
-Under the “Time Filter”, choose the second drop down box and
-select the value “RT” [Real time]. Make sure the “User
-Filter” section has your name. The page automatically
-refreshes with the cost details.
 
 How do I estimate core-hours?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
