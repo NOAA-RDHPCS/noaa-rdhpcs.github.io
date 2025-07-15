@@ -6,50 +6,22 @@ RDHPCS Cloud Computing
 ######################
 
 The RDHPCS Cloud Platform allows NOAA users to create a custom HPC
-cluster on an as-needed basis, with the type of resources that are
-appropriate for the task at hand.
-
-.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
-
-Parallel Works User Guide
-=========================
-
-NOAA Cloud Computing uses the `Parallel Works
-<https://parallelworks.com>`_ computing platform to allow users to
-manage their cloud computing resources across Amazon Web Services
+cluster on an as-needed basis. NOAA Cloud Computing uses the `Parallel Works
+<https://parallelworks.com>`_ computing platform to
+manage cloud computing resources across Amazon Web Services
 (AWS), Google Compute Platform (GCP), and Microsoft Azure Cloud
 Computing Services (Azure) via the NOAA RDHPCS Portal, customized for NOAA.
-The `Parallel Works User Guide`_ is their standard documentation. NOAA
-users will find minor differences, for example, the login
-authentication, and project allocation, between the standard and
-customized applications.
-
-We recommend the `Parallel Works User Guide <https://parallelworks.com/docs>`_
-for comprehensive information about the product. Users can review the
-`Knowledge Base from Asked Questions`_ section below
-to learn about NOAA RDHPCS-specific topics.
-
-NOAA's Parallel Works Portal
-============================
-
-Access to the NOAA RDHPCS Cloud Computing environment is through the
-`Parallel Works NOAA Portal <https://noaa.parallel.works>`_ and uses
-the :ref:`RSA Token <rsa_instructions>` authentication method.
-
-.. _workflow:
-
-Workflow
-========
 
 .. note::
+  The Parallel Works platform can also be used to manage resources in on-premise
+  systems. Operation is identical for Cloud and on-premise environments.
 
-  To use the RDHPCS Cloud system, you must have an account on a
-  project allocated to a cloud resource.  Cloud projects start with
-  ``ca-`` (AWS), ``cg-`` (GCP), or ``-cz`` (Azure).
-  See :ref:`project_request` for details.
+.. _cloud-processing:
 
-The typical workflow for using the cloud resources is presented in the
-following diagram.
+Cloud Processing
+================
+
+This diagram illustrates the typical process for using Cloud resources.
 
 .. figure:: /images/cloud_processing.jpg
   :alt: typical NOAA compute workflow diagram
@@ -59,7 +31,8 @@ following diagram.
   .. tab-item:: Log into the Cloud
      :sync: login
 
-      To access the RDHPCS cloud gateway, log into the `Parallel Works NOAA Portal`_
+      To access the RDHPCS cloud gateway, log into the `Parallel Works NOAA Portal <https://noaa.parallel.works/sso>`_
+
 
       .. figure:: /images/NOAAcloud.png
         :scale: 50%
@@ -69,7 +42,7 @@ following diagram.
       When you are logged in, click **Compute**.
 
       .. figure:: /images/cgateway.png
-        :scale: 65%
+        :scale: 50%
 
       On the Compute tab, notice the following:
 
@@ -84,7 +57,7 @@ following diagram.
   .. tab-item:: Configure Cluster
      :sync: configure
 
-      `Create and configure a cluster: <https://parallelworks.com/docs/compute/configuring-clusters>`_
+      `Create and configure a cluster: <https://parallelworks.com/docs/getting-started#provision-a-cluster>`_
 
   .. tab-item:: Start Cluster
      :sync: start
@@ -115,56 +88,103 @@ following diagram.
 
 Users can install and use a `Globus Connect Personal
 <https://www.globus.org/globus-connect-personal>`_ endpoint to transfer larger
-files. The RDHPCS reminds all users who perform transfers out of the cloud of
-using a Globus endpoint that all egress charges will be applied to the project.
-This includes data stored in a CSP public, free to access repositories, like
-the `NOAA Open Data Dissemination (NODD) <NOAA NODD_>`_ program.
+files.
+
+.. attention::
+
+  The RDHPCS reminds all users who perform transfers out of the Cloud
+  using a Globus endpoint that all egress charges will be applied to the project.
+  This includes data stored in a CSP public, free to access repositories, like
+  the `NOAA Open Data Dissemination (NODD) <NOAA NODD_>`_ program.
 
 
-Using Parallel Works
-====================
+Parallel Works
+==============
 
-Before you begin
-----------------
-
-NOAA Cloud Computing uses the Parallel Works ACTIVATE platform. ACTIVATE allows
-users to manage their cloud computing resources across Amazon Web Services
-(AWS), Google Compute Platform (GCP), and Microsoft Azure Cloud Computing
-Services (Azure).  Users access ACTIVATE via the customized NOAA RDHPCS Portal.
-
-.. note::
-
-  The `Parallel Works User guide <https://parallelworks.com/docs>`_ provides comprehensive
-  information for using the ACTIVATE control plane.
-
-The certified browser for Parallel Works is Google Chrome. To use the ACTIVATE
-platform, you must have a NOAA user account and password, and a valid RSA
-token. Click the links for instructions for :ref:`applying_for_user_account`
-and obtaining :ref:`rsa-token`.
-
-You must also be assigned to a Cloud project account.  To join a Cloud project,
-first request the project name from your PI, TL, or Portfolio Manager. Then use
-the AIM tool to `request access to that project
-<https://docs.rdhpcs.noaa.gov/accounts/accounts_and_projects.html#request-access-to-rdhpcs-projects>`_.
+* Access is managed via the NOAA RDHPCS Portal, customized for NOAA.
+* The `Parallel Works User Guide <https://parallelworks.com/docs>`_ is their standard documentation.
+* NOAA users will find minor differences, for example, the login
+  authentication, and project allocation between the standard and customized
+  applications.
+* The User Guide includes a `Getting Started <https://parallelworks.com/docs/getting-started>`_ section.
+* An `overview <https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_
+  of features and functions is available.
+* In addition, there is an archive of Parallel Works `Training Sessions
+  <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1G8V0Mua9Dy7oUJ_wI36NAd3kMuMcHyGM/edit>`_.
+* To use the ACTIVATE platform, you must have a NOAA user account and password,
+  and a valid :ref:`RSA Token <rsa_instructions>`.
+* You must also have an account on a project allocated to a cloud resource.
+  See :ref:`project_request` for details.
 
 Using ACTIVATE
 --------------
 
-See the :ref:`Workflow` diagram for an overview of the process.
-
-Users access the ACTIVATE platform through the `Parallel Works NOAA Portal`_,
+Users access the ACTIVATE platform through the Parallel Works NOAA Portal
 using the RSA Token authentication method.  On the landing page, enter your
 NOAA user name, and your PIN and SecurID OTP.
 
+Cloud Projects
+==============
 
-`Foundational Parallel Works Training
-<https://drive.google.com/file/d/1Has2qJG6QZsaT3KTKp2VYBKBH4_6hrTO/view?ts=63f3b396>`_
-provides an introduction to features and function.
-An archive of `Parallel Works training sessions
-<https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1G8V0Mua9Dy7oUJ_wI36NAd3kMuMcHyGM/edit>`_ is also available.
+.. note::
+
+  Cloud projects start with
+  ``ca-`` (AWS), ``cg-`` (GCP), or ``-cz`` (Azure).
+  To use the RDHPCS Cloud system, you must have an account on a
+  project allocated to a cloud resource.  See :ref:`project_request` for details.
+
+Cloud projects are specific to a Cloud platform. The platform is indicated by
+the prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
+
+Create/request a new project
+----------------------------
+
+Gather requirements and approvals.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+RDHPCS (cloud and on-prem) projects are defined through the
+.. _Account Information Management:	https://aim.rdhpcs.noaa.govsystem. Before you can
+request a project in AIM, it must have an assigned allocation with approval
+from the NOAA RDHPCS allocation committee.
+Collect the following information: Project short
+name, in the format: <cloud platform abbreviation>-<project name> For example
+ca-epic stands for AWS Epic, cz-epic for Azure epic, and cg-epic for Google
+cloud Epic. Brief description of your project. Portfolio name. Principal
+Investigator [PI] name. Technical lead name [TL]. (If the project’s PI and TL
+are the same, repeat the name.) Allocation amount.
+
+Open a help desk ticket
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Send an email to rdhpcs.cloud.help@noaa.gov, with **Allocation for <Project>**
+in the subject line.  When you have the necessary approvals, you can request a
+project through Account Information Management (AIM). Access the
+Account Information Management website and fill in the form View all projects,
+then click **Create a Project**. Fill in the fields with the information
+from the allocation committee:
+* Project short name. Please provide in this
+format: <cloud platform abbreviation>-<project name> Example: ca-epic is for
+AWS Epic, cz-epic is for Azure Epic, and cg-epic is for Google cloud Epic.
+* Brief description of your project. Provide helpdesk ticket of allocation
+request Portfolio name.
+* Principal Investigator [PI] name. Technical lead name
+[TL]. In some case, a project’s PI and TL may be the same person. If that is
+the case, repeat the name.
+
+
+Add a User to a Project
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The user can request access to RDHPCS projects. Cloud project names start with
+ca, cz, or cg implying AWS, Azure, or Google Compute platforms, followed by the
+project name. So for example, ca-budget-test indicates that project budget-test
+is allocated to the AWS platform.
+
+All RDHPCS users have access to Parallel Works. See :ref:`Requesting
+access to RDHPCS projects<project_request>`.
 
 Storage Types and Storage Costs
--------------------------------
+===============================
 
 Three types of storage are available on a cluster.
 
@@ -177,7 +197,7 @@ Three types of storage are available on a cluster.
   An "object" is a file and any metadata that describes that file.
 
 Lustre file system
-^^^^^^^^^^^^^^^^^^
+------------------
 
 Lustre is a parallel file system, available as ephemeral and persistent storage
 on the AWS, Azure, and GCP cloud platforms. A lustre file system can be
@@ -188,7 +208,7 @@ Storage. You can create any number of lustre file systems. See `this article
 information on creating a storage link.
 
 Bucket/Block blob storage
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 Bucket storage and Block blob storage are containers for objects. An object is
 a file and any metadata that describes that file. Metadata can include use
@@ -203,7 +223,7 @@ a cluster. The project’s default bucket is accessible from the public domain
 using the keys.
 
 Contrib file system
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 The Contrib file system concept is similar to on-premise contrib. It is used to
 store files for team collaboration. You can use this storage to install custom
@@ -227,23 +247,6 @@ Google Cloud contrib file system is 2.5 TiB, costs $768.00 per month. The
 contrib volume can be removed from a project by request. Send email to
 rdhpcs.cloud.help@noaa.gov, with Remove Contrib Volume in the subject.
 
-Parallel Works FAQ
-------------------
-
-What is the Parallel Works Login URL?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-https://noaa.parallel.works
-
-Where do I find complete Parallel Works user materials?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-See the `User Guide`_.
-
-How do I get access to the Parallel Works Platform?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-All RDHPCS users have access to Parallel Works. See :ref:`Requesting
-access to RDHPCS projects<project_request>`.
-
 How is a new user added to a project on Parallel Works?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -264,8 +267,8 @@ How do I set up or request a new project in Parallel Works?
 
 1. Gather requirements and approvals
 
-RDHPCS (cloud and on-prem) projects are defined through the `Account
-Information Management`_ system. Before you can request a project in
+RDHPCS (cloud and on-prem) projects are defined through the Account
+Information Management system. Before you can request a project in
 AIM, it must have an assigned allocation with approval from the NOAA
 RDHPCS allocation committee.  Start the process by opening a help desk
 ticket. Send an email to rdhpcs.cloud.help@noaa.gov, with "Allocation
@@ -285,9 +288,9 @@ Collect the following information:
 - Allocation amount.
 
 Once approvals have been gathered, the project can be requested in
-`Account Information Management`_ (AIM).
+ Account Information Management(AIM).
 
-2. Access the `Account Information Management`_ website and fill in the form
+2. Access the Account Information Management website and fill in the form
 
    View all projects, then click the ``Create a Project`` button.
    Fill in the fields with the information from the allocation committee:
@@ -303,12 +306,58 @@ Once approvals have been gathered, the project can be requested in
       and TL may be the same person. If that is the case, repeat
       the name.
 
-What is the certified browser for Parallel Works Platform?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Google Chrome and Chromium based browsers such as Brave.
+Costing
+=======
+
+Cost Calculator
+---------------
+You can estimate the hourly cost of your experiments from the Parallel
+Works(PW) platform. Click the **Resources** tab, double click your resource
+definition, then click the **Definition** tab. When you update the required
+compute and lustre file system size configuration, the form dynamically shows
+an hourly estimate. Multiply this hourly cost by the run time, to estimate the
+cost of a single experiment.
+
+To derive the project allocation cost, multiply
+the run time cost with the number of runs required to complete the
+project. For example, if your project would require a model run 100 times, then
+multiply that number by a single run cost, the cost would be 100x$20 =
+$2,000.00.
+
+.. note::
+
+  There are costs associated with maintaining your project,
+  like contrib file system, object storage to store backup, and egress.
+
+See the `Costing Dashboard <https://parallelworks.com/docs/monitoring-costs>`_
+in the Parallel Works user guide for complete information.
+
+How do I find a real time
+cost estimate of my session? The PW Cost dashboard offers an almost real time
+estimate of your session. Real time estimate is refreshed every 5 minutes on
+the Cost dashboard. Click on the Cost link from your PW landing page. Under the
+“Time Filter”, choose the second drop down box and select the value “RT” [Real
+time]. Make sure the “User Filter” section has your name. The page
+automatically refreshes with the cost details. How do I estimate core-hours? As
+an example, your project requests a dedicated number of HPC compute nodes or
+has an HPC system reservation for some number of HPC compute nodes. Let’s say
+that the dedicated/reserved nodes have 200 cores and the length of the
+dedication/reservation is 1 week (7 days), then the core-hours used would be
+33,600 core-hours (200 cores * 24 hrs/day * 7 days). GCP’s GPU to vCPUs
+conversation can be found here In GCP, two vCPUs makes one physical core. So,
+a2-highgpu-1 has 12 vCPUs that means 6 physical core.
+If your job is taking 4
+hours to complete so that means the number of core hours = number of nodes x
+number of hour x number of cores = 1 x 4 x 6 = 24 core hours. PW’s cost
+dashboard is a good tool to find unit cost, and extrapolate it to estimate
+usage for PoP.
+
+
+Errors
+======
 
 How do I handle a Login error - Invalid username or password?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------------------------------
 
 .. note::
 
@@ -1922,8 +1971,39 @@ Map the Home, Bucket or Contrib as illustrated below:
 
 7. Use the Explorer File menu to upload or download files.
 
+Can I Prevent Runaway Cloud Expenses?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Consider the following Best Practices to prevent runaway cost increases.
+
+* **Set up alert -  Runtime Alert**. Enable runtime alerts in your Cluster
+  Configuration to receive hourly notifications on your active cluster.
+* **Set up alert - Session Cost Limit**. Enable session cost limit to receive
+  notifications when a session reaches a preset dollar threshold.
+* **Monitor Active Clusters**. In the *Monitor - Instances* panel, identify
+  active clusters and click on the link to view compute nodes and their status.
+* **Analyze Cost Anomalies**. Use the Cost dashboard to detect cost anomalies
+  based on the usage. There is a filter available to view near real-time
+  project costs.
+* **Review Daily Usage Reports**.  Project PIs and Tech Leads receive a daily
+  *NOAA Cloud Usage Report for* email. Review the prior day's usage and
+  discuss any inconsistent increases in usage with team members.
+* **Manage Compute Clusters boot disk cost**.
+  The Compute Clusters form offers two options for stopping a cluster:
+
+   * Stop: Use this option to preserve custom software installed in the session
+     on the boot disk. Be aware that boot disk storage costs will be incurred
+     when the cluster is shut down with this option.
+   * Destroy: Select this option if no changes have been made to the boot disk.
+     In most cases, select this option to shutdown the cluster.
+
+* **Stay on the latest version**. Always use the latest version of the Compute
+  Clusters configuration, and load configuration from the marketplace.
+
+
 Data Transfer
 -------------
+
 
 AWS CLI aws installation on an on-prem system. files transfer to a cloud bucket
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
