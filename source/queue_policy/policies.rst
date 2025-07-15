@@ -824,7 +824,7 @@ Jet, Hera and Ursa QOS
    * - windfall
      - 8400 (Jet/Hera)
        14400 (Ursa)
-     - 8 hours (except ``*service`` partitions)
+     - 8 hours (except "service" partitions)
      - 0
      - **Lowest priority QOS**. If you have an allocation of windfall-only (monthly allocation is 1) you can only submit to this QOS. Submitting to this QOS will **NOT** affect your future job priority FairShare factor (f) for
        your non-windfall jobs. Useful for low priority jobs that will only run when the system/partition has enough unused space available while not affecting the project’s FairShare priority.
