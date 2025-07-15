@@ -824,21 +824,21 @@ Jet, Hera and Ursa QOS
    * - windfall
      - 8400 (Jet/Hera)
        14400 (Ursa)
-     - 8 hours (except service partitions)
+     - 8 hours (except ``*service`` partitions)
      - 0
      - **Lowest priority QOS**. If you have an allocation of windfall-only (monthly allocation is 1) you can only submit to this QOS. Submitting to this QOS will **NOT** affect your future job priority FairShare factor (f) for
        your non-windfall jobs. Useful for low priority jobs that will only run when the system/partition has enough unused space available while not affecting the project’s FairShare priority.
    * - gpu
-     - 20 gpu's (Ursa only)
+     - 20 gpu's (Ursa ``u1-h100`` partition only)
      - 168 hours (7 days)
      - 1
-     - This QOS can only be used on Ursa in combination with the u1-h100, u1-gh, and u1-mi300x partitions.
-       Only Ursa projects with a GPU allocation (projects that begin with “gpu-“) of 2 or larger may use this QOS.
+     - This QOS can only be used on Ursa in combination with the ``u1-h100`` partition.
+       Only Ursa projects with a GPU allocation (projects that begin with``gpu-``) of 2 or larger may use this QOS.
        Max of 1,344 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
        will NOT be considered for scheduling if the project’s running jobs exceed this limit.
    * - gpuwf
-     - 10 gpu’s (Ursa ``u1-h100``)
-       8 gpu’s (Ursa ``u1-gh`` and ``u1-mi300x``)
+     - 10 gpu’s (Ursa ``u1-h100`` partition)
+       8 gpu’s (Ursa ``u1-gh`` and ``u1-mi300x`` partitions)
      - 48 hours (2 days)
      - 0
      - This QOS can only be used on Ursa in combination with the ``u1-h100``, ``u1-gh``, and ``u1-mi300x`` partitions.
