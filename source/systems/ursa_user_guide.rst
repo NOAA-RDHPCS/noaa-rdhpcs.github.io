@@ -101,11 +101,11 @@ Ursa Partitions
      - 100
      - For jobs that require nodes with the Nvidia H-100 GPUs.
    * - u1-gh
-     - gpu, gpuwf
+     - gpuwf
      - 100
      - For jobs that require nodes with the Nvidia Grace-Hopper processors.
    * - u1-mi300x
-     - gpu, gpuwf
+     - gpuwf
      - 100
      - For jobs that require nodes with the AMD MI300X GPUs.
    * - u1-service

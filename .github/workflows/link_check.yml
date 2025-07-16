@@ -1,3 +1,5 @@
+# cspell: words linkcheck
+
 name: Check Hyperlinks
 on: [pull_request]
 
@@ -20,4 +22,15 @@ jobs:
       - name: Install Python Requirements
         run: pip install -r requirements.txt
       - name: Check for Broken Links
-        run: make linkcheck
+        run: |
+          if [ x${RUNNER_DEBUG:+is_set} == x"is_set" ]
+          then
+            unset SPHINXOPTS
+          fi
+          make linkcheck
+      - name: Upload linkcheck Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linkcheck-output
+          path: 'build/linkcheck/output.*'
