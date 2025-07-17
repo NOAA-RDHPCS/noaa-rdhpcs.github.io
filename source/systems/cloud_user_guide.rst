@@ -142,8 +142,10 @@ Create/request a new project
 Gather requirements and approvals.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
+
 RDHPCS (cloud and on-prem) projects are defined through the
-.. _Account Information Management:	https://aim.rdhpcs.noaa.govsystem. Before you can
+`Account Information Management`_ (AIM) system. Before you can
 request a project in AIM, it must have an assigned allocation with approval
 from the NOAA RDHPCS allocation committee.
 Collect the following information: Project short
