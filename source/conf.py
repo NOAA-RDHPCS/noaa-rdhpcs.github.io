@@ -135,6 +135,7 @@ linkcheck_allowed_redirects = {
     r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*',
     r'https://support\.hpe\.com/connect/s/product\?kmpmoid=1013083813': r'https://support\.hpe\.com/connect/s/product\?language=?.*&kmpmoid=1013083813',
     r'https://conda\.io/.*': r'https://docs\.conda\.io/.*',
+    r'https://noaa-gfdl\.readthedocs\.io/projects/.*': r'https://noaa-gfdl\.readthedocs\.io/projects/.*?/.*?/latest'
 }
 
 linkcheck_ignore = [
@@ -147,8 +148,10 @@ linkcheck_ignore = [
     r'https://noaa-rrfs-pds\.s3\.amazonaws\.com/.*',
     r'https://sslvpn\.rdhpcs\.noaa\.gov/',
     r'https://docutils\.sourceforge\.net/rst\.html',
-    r'https://www\.amd\.com/en/products/accelerators/instinct/mi300/mi300x\.html'
+    r'https://www\.amd\.com/en/products/accelerators/instinct/mi300/mi300x\.html',
+    r'https://www\.gnu\.org/software/.*?/'
 ]
+
 linkcheck_retries = 3
 
 # This is needed for backwards compatibility.  We have
