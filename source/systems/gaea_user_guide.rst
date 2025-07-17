@@ -771,8 +771,7 @@ configured to always search the directory :file:`/opt/cray/pe/lib64`.  This
 directory contains the default Cray libraries.  Because this directory is
 included in the search path, switching the module environment does not
 completely change the run-time environment.  As an example, we'll look at using
-a non-default MPI library.  First, we will build and run using the default
-``cray-mpich`` module.  The ``mpi_test.c`` code has the following:
+a non-default MPI library.  The ``mpi_test.c`` code has the following:
 
 .. code-block:: c
 
@@ -808,7 +807,7 @@ We compile and run this code using the default ``cray-mpich`` module:
 We see the build version,  ``MPICH_VERSION``, matches the library version,
 as returned from ``MPI_Get_library_version``.
 
-In this second example, we will use a different version of the ``cray-mpich``
+In this second example, we use a different version of the ``cray-mpich``
 module.
 
 .. code-block:: console
