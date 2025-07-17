@@ -72,7 +72,7 @@ For Windows systems, `PuTTY
 `MobaXterm <https://mobaxterm.mobatek.net/>`_ can also be used to
 provide SSH capability.  Recent updates to Windows 10 and Windows 11
 have added built-in support for SSH.  If it is not installed on your
-version of Windows, please refer to Microsoft’s `documentation on
+version of Windows, please refer to Microsoft's `documentation on
 OpenSSH <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui&pivots=windows-server-2025>`_.
 
 .. _bastion_hostnames:

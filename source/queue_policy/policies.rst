@@ -9,7 +9,7 @@ System Usage
 Login Node Usage
 ----------------
 
-The login (front end) nodes are a part of the service nodes–providing
+The login (front end) nodes are a part of the service nodes-providing
 access to the rest of the cluster. Login nodes are not intended for
 computation, instead they should be used for code and batch job
 management tasks. Running heavy processes directly on the login nodes
@@ -98,11 +98,11 @@ distributing their allocation amongst their projects as needed on each
 System where they have an allocation. Within a portfolio, allocations
 on a System can be traded by the PfM as desired. Portfolios may trade
 allocations with each other on a System or between Systems with
-approval from all concerned PfM’s, and with documentation and
+approval from all concerned PfM's, and with documentation and
 communication with the AC, but this is typically done only for a
-specified period of time. The PfM (in conjunction with the PI’s) is
+specified period of time. The PfM (in conjunction with the PI's) is
 also responsible for managing disk quota and archive tape usage. A
-portfolio’s disk quota on a system is initially based on their
+portfolio's disk quota on a system is initially based on their
 percentage of compute allocation on that System.
 
 Click to review the `On-Premises Allocation Request Form.
@@ -219,9 +219,9 @@ reliability.
 They are NOT backed up, therefore there is a small risk that data could
 be lost without any possibility of recovery.
 HPFS-scratch on current systems include:
-* Ursa/Hera’s /scratch(1,2,3,4)
-* Jet’s /lfs(5,6)
-* Mercury’s /collab2
+* Ursa/Hera's /scratch(1,2,3,4)
+* Jet's /lfs(5,6)
+* Mercury's /collab2
 
 
 .. warning::
@@ -256,7 +256,7 @@ For more information about projects, see :doc:`Slurm </slurm/index>`
 General Parallel File System (GPFS)
 -----------------------------------
 
-Gaea’s /gpfs/f5 is a general parallel
+Gaea's /gpfs/f5 is a general parallel
 file system which provides project directories for short term project
 data. F5 is not backed up. Users must ensure important files are
 replicated to another off-site location
@@ -271,7 +271,7 @@ Jet, Niagara, etc.) they have access to.
 Your "$SCRATCH/data_untrusted/$USER" directory is provided so that you
 can move data on and off of the system from any external site, and is
 for transient data only. Data should be removed from this directory as
-soon as it’s transferred to its final destination.
+soon as it's transferred to its final destination.
 
 Your inaction to remove old data from this directory could negatively
 impact other users on the system, therefore; failure to comply with
@@ -397,7 +397,7 @@ Expired Data Deletion Process
 
 Users will be notified of expired data via posted lists and email.
 These notifications will take place on or before the first day of the
-month following the data’s expiration.
+month following the data's expiration.
 
 For example, data that has an expiration date between October 1 and
 October 31 2023 will have its notification posted on or before
@@ -412,7 +412,7 @@ filename/path, and expire date are shown, for example:
 ``root system /1year/SYSADMIN/nesccmgmt/test_file-1G-11 Jul-6-2023``.
 
 Email notification will also be sent to all users who have data listed
-in this file. It is the user’s responsibility to regularly check the
+in this file. It is the user's responsibility to regularly check the
 posted list for expired files they own. Once deleted these files
 cannot be recovered.
 
@@ -423,27 +423,27 @@ The following table maps out when future deletions will take place.
 +------------------+-------------------+-------------+
 | Expire Date      | Notification Date | Delete Date |
 +==================+===================+=============+
-| Dec 1 – Dec 31   | January 1         | February 1  |
+| Dec 1 - Dec 31   | January 1         | February 1  |
 +------------------+-------------------+-------------+
-| Feb 1 – Feb 28   | March 1           | April 1     |
+| Feb 1 - Feb 28   | March 1           | April 1     |
 +------------------+-------------------+-------------+
-| Mar 1 – Mar 31   | April 1           | May 1       |
+| Mar 1 - Mar 31   | April 1           | May 1       |
 +------------------+-------------------+-------------+
-| Apr 1 – Apr 30   | May 1             | June 1      |
+| Apr 1 - Apr 30   | May 1             | June 1      |
 +------------------+-------------------+-------------+
-| May 1 – May 31   | June 1            | July 1      |
+| May 1 - May 31   | June 1            | July 1      |
 +------------------+-------------------+-------------+
-| Jun 1 – June 30  | July 1            | August 1    |
+| Jun 1 - June 30  | July 1            | August 1    |
 +------------------+-------------------+-------------+
-| Jul 1 – Jul 31   | August 1          | September 1 |
+| Jul 1 - Jul 31   | August 1          | September 1 |
 +------------------+-------------------+-------------+
-| Aug 1 – Aug 30   | September 1       | October 1   |
+| Aug 1 - Aug 30   | September 1       | October 1   |
 +------------------+-------------------+-------------+
-| Sept 1 – Sept 30 | October 1         | November 1  |
+| Sept 1 - Sept 30 | October 1         | November 1  |
 +------------------+-------------------+-------------+
-| Oct 1 – Oct 31   | November 1        | December 1  |
+| Oct 1 - Oct 31   | November 1        | December 1  |
 +------------------+-------------------+-------------+
-| Nov 1 – Nov 30   | December 1        | January 1   |
+| Nov 1 - Nov 30   | December 1        | January 1   |
 +------------------+-------------------+-------------+
 
 
@@ -473,7 +473,7 @@ with the recovery service.
 Data Disposition
 ================
 
-RDHPCS users’ data is the responsibility of the user, the PI, and the
+RDHPCS users' data is the responsibility of the user, the PI, and the
 Portfolio Manager. The PI or Portfolio Manager, as appropriate, can
 initiate a help request to manage data. As a policy matter, RDHPCS
 System Management does not initiate the deletion of data belonging to
@@ -482,7 +482,7 @@ active users or active projects, except as detailed below.
 HPFS (Scratch) Data
 -------------------
 
-Inactive users’ and closed projects’ data shall be dispositioned by
+Inactive users' and closed projects' data shall be dispositioned by
 the PI or Portfolio Manager to maintain efficient usage of RDHPCS
 resources. If the PI or Portfolio Manager cannot personally implement
 the disposition of the data, the PI or PM can issue a help ticket, and
@@ -739,7 +739,7 @@ The following is an example of immediately changing 2 pending jobs
 When submitting a job to a certain QOS, you can tell Slurm to change
 it to a different QOS at a certain time if it is still pending. In the
 following example, you submit the job to the “windfall” QOS, then tell
-Slurm to change the job to the “batch” QOS if it’s still pending after
+Slurm to change the job to the “batch” QOS if it's still pending after
 5 minutes. NOTE: Do not use a time less than 2 min (120 seconds).
 
 .. note::
@@ -792,62 +792,93 @@ Jet, Hera and Ursa QOS
      -
      -
      -
-     - Max of 400 pending/running jobs per project/account, additional jobs will be rejected. Max of 20 jobs per project/account will gain age priority. Exceptions are stated below.
+     - Max of 400 pending/running jobs per project/account, additional jobs
+       will be rejected. Max of 20 jobs per project/account will gain age
+       priority. Exceptions are stated below.
    * - batch
      - 8400 (Jet/Hera)
        14400 (Ursa)
      - 8 hours
      - 1
-     - For non-gpu projects only. **Default QOS** for projects with an allocation more then Windfall-Only (RawShare=1).
+     - For non-gpu projects only. **Default QOS** for projects with an
+       allocation more then Windfall-Only (RawShare=1).
    * - urgent
      - 8400 (Jet/Hera)
        14400 (Ursa)
      - 8 hours
      - 2
-     - For non-gpu projects only. QOS for a job that requires more urgency than batch. Your project’s `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ will be lowered at **2.0x** the rate as compared to batch. Only one job per project/account can be pending/running at any time. When a
-       project’s FairShare is below 0.45, jobs submitted to urgent are automatically changed to batch and users notified via stderr.
+     - For non-gpu projects only. QOS for a job that requires more urgency than
+       batch. Your project's `FairShare
+       <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_
+       will be lowered at **2.0x** the rate as compared to batch. Only one job
+       per project/account can be pending/running at any time. When a project's
+       FairShare is below 0.45, jobs submitted to urgent are automatically
+       changed to batch and users notified via stderr.
    * - debug
      - 8400 (Jet/Hera)
        14400 (Ursa)
      - 30 mins
      - 1.25
-     - For non-gpu projects only. Highest priority QOS, useful for debugging sessions.
-        Your project `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ will be lowered at **1.25x** the rate as compared to batch.
-        Only two jobs per user can be pending/running at any time. This QOS should NOT be used for fast-turnaround of general work. While the debug QOS is available, we recommend that if you need to work through an
-        iterative process to debug a code, that you submit a longer running interactive job to the default QOS so that you can restart your application over and over again without having to start a new batch job.
+     - For non-gpu projects only. Highest priority QOS, useful for debugging
+       sessions. Your project's `FairShare
+       <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_
+       will be lowered at **1.25x** the rate as compared to batch. Only two
+       jobs per user can be pending/running at any time. This QOS should NOT be
+       used for fast-turnaround of general work. While the debug QOS is
+       available, we recommend that if you need to work through an iterative
+       process to debug a code, that you submit a longer running interactive
+       job to the default QOS so that you can restart your application over and
+       over again without having to start a new batch job.
    * - long
      - 4200 (Jet/Hera)
        7296 (Ursa)
      - 16 hours
      - 1
-     - For non-gpu projects only. For normal priority jobs that require between 8-16 hours
+     - For non-gpu projects only. For normal priority jobs that require between
+       8-16 hours
    * - windfall
      - 8400 (Jet/Hera)
        14400 (Ursa)
      - 8 hours (except "service" partitions)
      - 0
-     - **Lowest priority QOS**. If you have an allocation of windfall-only (monthly allocation is 1) you can only submit to this QOS. Submitting to this QOS will **NOT** affect your future job priority FairShare factor (f) for
-       your non-windfall jobs. Useful for low priority jobs that will only run when the system/partition has enough unused space available while not affecting the project’s FairShare priority.
+     - **Lowest priority QOS**. If you have an allocation of windfall-only
+       (monthly allocation is 1) you can only submit to this QOS. Submitting to
+       this QOS will **NOT** affect your future job priority FairShare factor
+       (f) for your non-windfall jobs. Useful for low priority jobs that will
+       only run when the system/partition has enough unused space available
+       while not affecting the project's FairShare priority.
    * - gpu
      - 20 gpu's (Ursa ``u1-h100`` partition only)
      - 168 hours (7 days)
      - 1
-     - This QOS can only be used on Ursa in combination with the ``u1-h100`` partition.
-       Only Ursa projects with a GPU allocation (projects that begin with ``gpu-``) of 2 or larger may use this QOS.
-       Max of 1,344 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
-       will NOT be considered for scheduling if the project’s running jobs exceed this limit.
+     - This QOS can only be used on Ursa in combination with the ``u1-h100``
+       partition. Only Ursa projects with a GPU allocation (projects that begin
+       with ``gpu-``) of 2 or larger may use this QOS. Max of 1,344 gpu-hours
+       (gpu_allocated * wallclock_requested) of running jobs at any time, per
+       project-account. A project can have up to the max number of jobs
+       pending/running as defined above, but the queued jobs will NOT be
+       considered for scheduling if the project's running jobs exceed this
+       limit.
    * - gpuwf
-     - 10 gpu’s (Ursa ``u1-h100`` partition)
-       8 gpu’s (Ursa ``u1-gh`` and ``u1-mi300x`` partitions)
+     - 10 gpu's (Ursa ``u1-h100`` partition)
+       8 gpu's (Ursa ``u1-gh`` and ``u1-mi300x`` partitions)
      - 48 hours (2 days)
      - 0
-     - This QOS can only be used on Ursa in combination with the ``u1-h100``, ``u1-gh``, and ``u1-mi300x`` partitions.
-       Open to all projects with an allocation on Ursa.
-       Max of 192 gpu-hours (gpu_allocated * wallclock_requested) of running jobs at any time, per project-account. A project can have up to the max number of jobs pending/running as defined above, but the queued jobs
-       will NOT be considered for scheduling if the project’s running jobs exceed this limit.
-       Lowest priority QOS for use with GPU nodes. If you have an allocation of “windfall only” (Monthly allocation = 1) you can only submit to this QOS. Submitting to this QOS will NOT affect your future job priority
-       FairShare Factor (f). EffectvUsage = 0. See how `FairShare <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_ works. This QOS is useful for low priority jobs that will only run when the
-       system (partition(s)) has enough unused space available, while not lowering the project’s FairShare priority.
+     - This QOS can only be used on Ursa in combination with the ``u1-h100``,
+       ``u1-gh``, and ``u1-mi300x`` partitions. Open to all projects with an
+       allocation on Ursa. Max of 192 gpu-hours (gpu_allocated *
+       wallclock_requested) of running jobs at any time, per project-account. A
+       project can have up to the max number of jobs pending/running as defined
+       above, but the queued jobs will NOT be considered for scheduling if the
+       project's running jobs exceed this limit. Lowest priority QOS for use
+       with GPU nodes. If you have an allocation of “windfall only” (Monthly
+       allocation = 1) you can only submit to this QOS. Submitting to this QOS
+       will NOT affect your future job priority FairShare Factor (f).
+       EffectvUsage = 0. See how `FairShare
+       <https://docs.rdhpcs.noaa.gov/slurm/overview.html#priority-and-fairshare>`_
+       works. This QOS is useful for low priority jobs that will only run when
+       the system (partition(s)) has enough unused space available, while not
+       lowering the project's FairShare priority.
 
 
 
@@ -878,7 +909,7 @@ General Recommendations
 
     * Urgent, for schedule-driven work that must be completed ASAP.
     * Novel, for jobs that have unusual resource requirements,
-      typically needing more than 25% of the system’s cores. These can
+      typically needing more than 25% of the system's cores. These can
       be run during an 8-hour period immediately after Preventative
       Maintenance is complete, since no other jobs will be running at
       that time.
@@ -893,7 +924,7 @@ General Recommendations
 
 .. code-block:: shell
 
-    $ sbatch –-qos=windfall
+    $ sbatch --qos=windfall
 
 or in your job script:
 

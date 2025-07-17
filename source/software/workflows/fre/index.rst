@@ -30,7 +30,7 @@ for post-processing.  For documentation, and use of FRE, please refer to the
         FRE NCtools is a suite of tools to manipulate `NetCDF
         <https://www.unidata.ucar.edu/software/netcdf/>`_ file for use in an
         FMS model.
-    `New FRE CLI <https://noaa-gfdl.github.io/fre-cli/>`_
+    `New FRE CLI <https://noaa-gfdl.readthedocs.io/projects/fre-cli/>`_
         Documentation on a new `FRE CLI
-        <https://noaa-gfdl.github.io/fre-cli/>`_ for the FRE workflow system.
+        <https://noaa-gfdl.readthedocs.io/projects/fre-cli/>`_ for the FRE workflow system.
         This is still in development.
