@@ -185,7 +185,7 @@ External S3 Bucket Connectors
 NOAA RDHPCS Globus Endpoint Types
 =================================
 
-NOAA RDHPCS Globus Endpoints are either ‘'trusted'' or ‘'untrusted''.
+NOAA RDHPCS Globus Endpoints are either *trusted* or *untrusted*.
 
 * All RDHPCS systems provide DTN's
 * DTNs have full access to the back-end file systems.

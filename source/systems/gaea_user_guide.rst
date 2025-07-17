@@ -724,21 +724,20 @@ libraries that are compatible with Intel host compilers.
 Dynamic linking
 ===============
 
-All executables built on gaea are dynamically linked, and is the only linking
-method currently supported.  This means that the executable will not contain
-the libraries it depends on, but instead will use the libraries that are
-available on the system at runtime.  Dynamic linking allows for smaller
-executable sizes and the ability to share libraries between multiple
-executables, which can save disk space and memory.  However, it also means that
-the executable may not run if the required libraries are not available at
-runtime. Dynamic linking is done using the Executable and Linking Format (ELF)
-standard. The ELF format is a common standard for executable files on Unix-like
-systems, including Linux, and is used to define the structure of executable
-files, shared libraries, and object files.
+All executables built on Gaea are dynamically linked, which is currently the
+only supported linking method. This means that the executable will not contain
+the libraries it depends on, but will instead use the libraries available on
+the system at runtime. Dynamic linking allows for smaller executable sizes and
+enables sharing libraries between multiple executables, saving disk space and
+memory. However, it also means that the executable may not run if the required
+libraries are not available at runtime. Dynamic linking is performed using the
+Executable and Linking Format (ELF) standard. The ELF format is a common
+standard for executable files on Unix-like systems, including Linux, and is
+used to define the structure of executable files,
 
 .. cspell: words RPATH
 
-To help ensure that the correct libraries are available at runtime, the dynamic
+To help ensure the correct libraries are available at runtime, the dynamic
 loader (:program:`ld.so`, see :manpage:`ld.so(8)`) will use location
 information stored in the executable (if available, known as ``RPATH``), then
 search the directories listed in the environment variable ``LD_LIBRARY_PATH``,
@@ -797,7 +796,7 @@ a non-default MPI library.  First, we will build and run using the default
         return 0;
     }
 
-We will compile and run this code using the default ``cray-mpich`` module:
+We compile and run this code using the default ``cray-mpich`` module:
 
 .. code-block:: console
 
@@ -806,7 +805,7 @@ We will compile and run this code using the default ``cray-mpich`` module:
     MPICH Build Version: 3.4a2
     MPICH Run Version: MPI VERSION    : CRAY MPICH version 8.1.32.110 (ANL base 3.4a2)
 
-We see that the build version,  ``MPICH_VERSION``, matches the library version,
+We see the build version,  ``MPICH_VERSION``, matches the library version,
 as returned from ``MPI_Get_library_version``.
 
 In this second example, we will use a different version of the ``cray-mpich``
@@ -834,7 +833,7 @@ adjust which libraries are loaded at run time.  The directories listed in
 :file:`/etc/ld.so.config`, which includes :file:`/opt/cray/pe/lib64`.  This is
 useful if you have already built an executable, but did not supply the linker
 flags to modify the RPATH.  HPE suggests prepending to ``LD_LIBRARY_PATH`` the
-variable ``CRAY_LD_LIBRARY_PATH``.   In the following example, we will prepend
+variable ``CRAY_LD_LIBRARY_PATH``.   In the following example, we prepend
 ``CRAY_LD_LIBRARY_PATH`` to the ``LD_LIBRARY_PATH`` environment variable.
 
 .. code-block:: console
@@ -850,7 +849,7 @@ variable ``CRAY_LD_LIBRARY_PATH``.   In the following example, we will prepend
     MPICH Build Version: 4.1.2
     MPICH Run Version: MPI VERSION    : CRAY MPICH version 9.0.0.113 (ANL base 4.1.2)
 
-We see that prepending to ``LD_LIBRARY_PATH`` allows the loader to find the
+We see prepending to ``LD_LIBRARY_PATH`` allows the loader to find the
 same MPI library (4.1.2) at run time.
 
 While prepending to ``LD_LIBRARY_PATH`` allows using the same library at run
@@ -873,7 +872,7 @@ but switch the MPICH module and then set ``LD_LIBRARY_PATH``.
     MPICH Build Version: 3.4a2
     MPICH Run Version: MPI VERSION    : CRAY MPICH version 9.0.0.113 (ANL base 4.1.2)
 
-Here we see that the loader found the 4.1.2 MPICH library due to setting the
+Here we see the loader found the 4.1.2 MPICH library due to setting the
 ``LD_LIBRARY_PATH`` variable, showing that setting LD_LIBRARY_PATH can lead to
 using an unintended library.
 
@@ -902,7 +901,7 @@ references.
 
 Adding library paths to the executable's RPATH takes precedence over the
 directories listed in ``LD_LIBRARY_PATH`` and :file:`/etc/ld.so.config`.  In
-the next example, we'll build the executable with one MPICH version, switch the
+the next example, we build the executable with one MPICH version, switch the
 MPICH module to a different version from the default and the version used to
 build the executable before setting ``LD_LIBRARY_PATH``.
 
