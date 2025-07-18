@@ -140,10 +140,13 @@ The following partitions are defined for Hera:
        Also, please note that if you use **novel partition** you also need to
        specify **novel QoS**.
    * - service
-     - batch,windfall, debug, urgent
-     - 0
-     - Serial jobs (max 1 core), with a 24 hr limit. Jobs will be run on front
-       end nodes that have external network connectivity. Useful for data
+     - batch,windfall
+     - 165
+     - For jobs that require external network connectivity (including
+       access to the HPSS archival system). Default of 1 core with
+       a maximum of 4 cores and a maximum time limit of 24 hrs.
+       Jobs will be run on front
+       end nodes as those have external network connectivity. Useful for data
        transfers or access to external resources like databases. If your
        workflow requires pushing or pulling data to/from the HSMS(HPSS), it
        should be run there. See the Login (Front End) Node Usage Policy for
