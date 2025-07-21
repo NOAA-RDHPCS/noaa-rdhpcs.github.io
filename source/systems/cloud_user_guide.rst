@@ -150,7 +150,7 @@ Follow these steps to access other HPC systems.
 Repeat this process on all on-prem HPC systems' controller nodes
 to establish connections from Parallel Works.
 
-**Subscribe the default template of HPC systems from the Parallel
+**Subscribe to the default template of HPC systems from the Parallel
 Works Marketplace**
 
 1. From the login portal, click on the user Name. Select
@@ -160,7 +160,7 @@ Works Marketplace**
 
 3. Exit the page.
 
-**Access allowed countries**
+**Access is allowed from the following countries**
 
 USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
 Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
@@ -242,7 +242,7 @@ Fill in the fields with the information from the allocation committee:
    a. Project short name. Please provide in this format: ``<cloud platform abbreviation>-<project name>``
       Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
       and ``cg-epic`` is for Google cloud Epic.
-   b. Brief description of your project.  **Provide helpdesk ticket of
+   b. Brief description of your project.  **Provide the helpdesk ticket for the
       allocation request**
    c. Portfolio name.
    d. Principal Investigator [PI] name.
