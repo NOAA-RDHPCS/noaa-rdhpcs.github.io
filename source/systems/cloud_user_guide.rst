@@ -2004,6 +2004,21 @@ Consider the following Best Practices to prevent runaway cost increases.
 Data Transfer
 -------------
 
+Can I Prevent Runaway Cloud Expenses?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Consider the following Best Practices to prevent runaway cost increases:
+
+* **Set up alert -  Runtime Alert**. Enable runtime alerts in your Cluster
+  Configuration to receive hourly notifications on your active cluster.
+* **Set up alert - Session Cost Limit**. Enable session cost limit to receive
+  notifications when a session reaches a preset dollar threshold.
+* **Monitor Active Clusters**. In the *Monitor - Instances* panel, identify
+  active clusters and click on the link to view compute nodes and their status.
+* **Analyze Cost Anomalies**. Use the Cost dashboard to detect cost anomalies
+  based on the usage. There is a filter available to view near real-time
+  project costs.
+* **Review Daily Usage Reports**.
 
 AWS CLI aws installation on an on-prem system. files transfer to a cloud bucket
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
