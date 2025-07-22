@@ -123,65 +123,230 @@ Users access the ACTIVATE platform through the Parallel Works NOAA Portal
 using the RSA Token authentication method.  On the landing page, enter your
 NOAA user name, and your PIN and SecurID OTP.
 
+Add a workflow to my account
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you're running a workflow for the first time, you will
+need to add it to your account first. From the PW main page,
+click the workflow Marketplace button on the top menu bar.
+This button should be on the right side of the screen, and
+looks like an Earth icon.
+
+Using Parallel Works to access on-prem HPS Systems
+--------------------------------------------------
+
+All RDHPCS users have access to the Parallel Works platform.
+See :ref:`Requesting
+access to RDHPCS projects<project_request>` for information
+on specific projects.
+
+Parallel Works supports authentication with on-prem HPC
+systems. The ACTIVATE platform works identically on
+Cloud and on-premise systems.
+
+**Subscribe to the default template of HPC systems from the Parallel
+Works Marketplace**
+
+1. From the login portal, click on the user Name. Select
+   **MARKETPLACE** from the drop down list box.
+
+2. Click on the Fork sign and click the Fork button when prompted.
+
+3. Exit the page.
+
+**Access is allowed from the following countries**
+
+USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
+Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
+Finland, Lebanon, Denmark, Palestinian Territory Occupied,
+Netherlands, Japan, and Estonia.
+
+Running a Jupyter workflow on a Slurm compute node
+--------------------------------------------------
+
+The Parallel Works ACTIVATE platform provides standard scripts, called
+workflows, to complete tasks on the platform. A Jupyter workflow is available
+in the ACTIVATE Marketplace. (See the Parallel Works documentation for
+directions to `add workflows
+<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
+
+To use the Jupyter workflow on a Slurm compute node, first set a default
+working directory for the session. Set the **Directory To Start Jupyter Lab
+GUI** value to the path for your session default.
+
+.. image:: /images/jupy1.png
+
+Note the directory listing in Jupyter, as compared to an ssh session:
+
+.. image:: /images/jupy2.png
+
+You will also need to configure your AWS cluster with a partition, using GPU
+nodes. Worker nodes in Slurm are divided into partitions based on
+instance type, and are provisioned on demand when a job is submitted to the
+queue. The default AWS configuration from the marketplace includes two
+partitions as a base, "compute" and "batch", as shown below:
+
+.. image:: /images/jupy3.png
+
+You can either reconfigure one of these partitions with an alternate instance
+type that has a GPU, or add a new partition to configure from scratch. If you
+know you won't use these starter partitions on your cluster, edit the
+'compute' partition as needed, then remove the extra 'batch' partition.
+
+Consider the following when you modify the partition:
+
+* Partition name, if you choose something other than 'compute'.
+* Instance Type, selecting a GPU node appropriate for your needs. If you're
+  uncertain, check the `AWS documentation
+  <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`_ for a summary
+  of the different GPU instance families available.
+* Zone. Select the zone you want to provision the cluster to. This parameter is
+  two-pronged and configures both the region (us-east-1) and availability zone
+  (b). It’s prudent to stay in the us-east-1 region, as you are likely to incur
+  egress charges if you are passing data between your contrib storage (located
+  in us-east-1), and a cluster located in a different region. The zone is less
+  important, unless you have other storages attached to the cluster and you
+  need to minimize your latency. Note that AWS tends to have different instance
+  availability in different regions and zones, so this might take some trial
+  and error. Also consider that on-demand GPU availability is heavily
+  constrained. It's possible that your workflow will fail to start if there's
+  not enough capacity to meet your request. If that happens, either
+  configure your cluster in a different zone, or just try again
+  later.
+
+Once you have your cluster started with the partition configured, you can edit
+the workflow form to direct the job to the compute partition instead of the
+controller node. This will submit a job to the Slurm scheduler and trigger a
+node start.
+
+.. image:: /images/jupy4.png
+
+See `Configuring clusters <https://parallelworks.com/docs/compute/configuring-clusters-v2#partition-settings>`_
+for complete information on configuring clusters and partitions.
+
+
+Moving across nodes in a cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to ssh to compute nodes in your cluster from
+the head node by using the node's hostname. You do not
+necessarily need to have a job running on the node, but it
+does need to be in a powered on state (most resource
+configurations suspend compute nodes after a period of
+inactivity)
+
+#. Use ``sinfo``` or ``squeue`` to view active nodes:
+
+    .. code-block::
+
+      $ sinfo
+      PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
+      compute*  up    infinite      4 idle~ compute-dy-c5n18xlarge-[2-5]
+      compute*  up    infinite      1 mix   compute-dy-c5n18xlarge-1
+
+      $ squeue
+      JOBID PARTITION NAME USER     ST   TIME  NODES NODELIST(REASON)
+      2     compute   bash Matt.Lon  R   0:33  1     compute-dy-c5n18xlarge-1
+
+#. ssh to the compute node
+
+    .. code-block::
+
+      [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
+      [compute-dy-c5n18xlarge-1]$
+
+.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
+.. _NOAA Accounts Portal:		https://accounts.noaa.gov
+
 Cloud Projects
 ==============
 
+Visit the `Account Information Management`_ website to request
+access to an RDHPCS project.
+
 .. note::
 
+  Cloud projects are specific to a Cloud platform.
   Cloud projects start with
   ``ca-`` (AWS), ``cg-`` (GCP), or ``-cz`` (Azure).
   To use the RDHPCS Cloud system, you must have an account on a
   project allocated to a cloud resource.  See :ref:`project_request` for details.
 
-Cloud projects are specific to a Cloud platform. The platform is indicated by
-the prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
 
 Create/request a new project
 ----------------------------
 
-Gather requirements and approvals.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
+
+  Before you can request a project in AIM, the project must have an assigned allocation
+  with approval from the NOAA RDHPCS allocation committee.  The process begins with a
+  Help ticket. Send an email to rdhpcs.cloud.help@noaa.gov, with the
+  subject Allocation for <Project>.  Assistance with capacity planning,
+  planning and porting is available from the Help team.
+
+
+1. Gather requirements and approvals.
 
 RDHPCS (cloud and on-prem) projects are defined through the
-.. _Account Information Management:	https://aim.rdhpcs.noaa.govsystem. Before you can
-request a project in AIM, it must have an assigned allocation with approval
-from the NOAA RDHPCS allocation committee.
-Collect the following information: Project short
-name, in the format: <cloud platform abbreviation>-<project name> For example
-ca-epic stands for AWS Epic, cz-epic for Azure epic, and cg-epic for Google
-cloud Epic. Brief description of your project. Portfolio name. Principal
-Investigator [PI] name. Technical lead name [TL]. (If the project’s PI and TL
-are the same, repeat the name.) Allocation amount.
+`Account Information Management`_ (AIM) system.
 
-Open a help desk ticket
-^^^^^^^^^^^^^^^^^^^^^^^
+Collect the following information:
+
+- Project short name,  in the format: <cloud platform abbreviation>-<project
+  name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
+  cg-epic for Google cloud Epic.
+- Brief description of your project.
+- Portfolio name.
+- Principal Investigator [PI] name.
+- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
+  the name.)
+- Allocation amount.
+
+Once you have the necessary approvals, you can request the project
+in  **AIM**.
+
+
+2. Open a help desk ticket.
 
 Send an email to rdhpcs.cloud.help@noaa.gov, with **Allocation for <Project>**
-in the subject line.  When you have the necessary approvals, you can request a
-project through Account Information Management (AIM). Access the
-Account Information Management website and fill in the form View all projects,
-then click **Create a Project**. Fill in the fields with the information
-from the allocation committee:
-* Project short name. Please provide in this
-format: <cloud platform abbreviation>-<project name> Example: ca-epic is for
-AWS Epic, cz-epic is for Azure Epic, and cg-epic is for Google cloud Epic.
-* Brief description of your project. Provide helpdesk ticket of allocation
-request Portfolio name.
-* Principal Investigator [PI] name. Technical lead name
-[TL]. In some case, a project’s PI and TL may be the same person. If that is
-the case, repeat the name.
+in the subject line.
+
+3. Access the Account Information Management website and complete the form
+
+View all projects, then click the ``Create a Project`` button.
+Fill in the fields with the information from the allocation committee:
+
+   a. Project short name, in the format: ``<cloud platform abbreviation>-<project name>``
+      Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
+      and ``cg-epic`` is for Google cloud Epic.
+   b. Brief description of your project.  **Provide the helpdesk ticket for
+      the allocation request**
+   c. Portfolio name.
+   d. Principal Investigator [PI] name.
+   e. Technical lead name [TL]. In some case, a project's PI
+      and TL may be the same person. If that is the case, repeat
+      the name.
+
+4. Add a User to a Project.
 
 
-Add a User to a Project
-^^^^^^^^^^^^^^^^^^^^^^^^
+The user can :ref:`Request access
+to RDHPCS projects<project_request>`.
+including Cloud project, through the AIM system.
 
-The user can request access to RDHPCS projects. Cloud project names start with
-ca, cz, or cg implying AWS, Azure, or Google Compute platforms, followed by the
-project name. So for example, ca-budget-test indicates that project budget-test
-is allocated to the AWS platform.
+.. note::
 
-All RDHPCS users have access to Parallel Works. See :ref:`Requesting
-access to RDHPCS projects<project_request>`.
+  Remember that Cloud project names start with ca, cz, or cg to indicate AWS,
+  Azure, or Google Compute platforms.
+
+Closing a Cloud project
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To close a project, email rdhpcs.aim.help@noaa.gov to create an AIM
+ticket. Make sure that all data are migrated, and custom snapshots are
+removed before you send the request to the AIM. If you do not need
+data from the referenced project, be sure to include that information
+in the ticket so that the support can drop the storage services.
 
 Storage Types and Storage Costs
 ===============================
@@ -247,64 +412,71 @@ Google Cloud contrib file system is 2.5 TiB, costs $768.00 per month. The
 contrib volume can be removed from a project by request. Send email to
 rdhpcs.cloud.help@noaa.gov, with Remove Contrib Volume in the subject.
 
-How is a new user added to a project on Parallel Works?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using long-term credentials to access buckets
+---------------------------------------------
 
-By :ref:`Requesting access
-to RDHPCS projects<project_request>`.  Cloud project names start with
-``ca``, ``cz``, or ``cg`` implying AWS, Azure, or Google Compute
-platforms, followed by the project name. So for example,
-ca-budget-test indicates that project budget-test is allocated to the
-AWS platform.
+NOAA RDHPCS recommends that you use Globus for file transfer wherever
+applicable. Globus file transfers are secure and auditable.
 
-How do I set up or request a new project in Parallel Works?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In Parallel Works, for security reasons the credentials on a bucket last for 12
+hours before resetting.
+
+To generate a short term token for a bucket:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Use PW token service**
+
+The PW token lasts up to 24 hours before resetting.  Under this setting, you
+can run a cloud provider’s CLI or PW CLI commands. The following example will
+generate a token, insert the commands into a file named aws-creds and source
+that file.:-
+
+.. code-block:: shell
+
+  $ pw buckets get-token
+  s3://noaa-sysadmin-ocio-ca-cloudmgmt > aws-creds; source aws-creds; aws s3 ls $BUCKET_URI
+
+After sourcing it in the environment, you can run aws s3 commands.
+
+You can use either syntax below:
+
+.. code-block:: shell
+
+  $ aws s3://S3_BUCKET_NAME
+
+Or
+
+.. code-block:: shell
+
+  # List all buckets in a namespace
+  $ pw buckets ls pw://[namespace]
+
+To generate a PW API key for longer term credentials:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Use the PW API key**
+
+See these instructions to `create an PW API key
+<https://parallelworks.com/docs/account-settings/authentication#managing-api-keys>`_.
+
+Users can customize the expiration date for their created API keys
+for 7, 30, 60, 90 or no expiration days.
+
+By default, the PW CLI is pre-installed on user workspaces, cloud clusters, and
+existing clusters. When you connect to an on-prem HPC system through Parallel
+Works, the PW CLI commands are available from the controller node.
 
 .. note::
 
-  Cloud projects are specific to a Cloud platform. The platform is indicated by the
-  prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
+  The PW API key is only relevant to PW based operations.
 
-1. Gather requirements and approvals
 
-RDHPCS (cloud and on-prem) projects are defined through the Account
-Information Management system. Before you can request a project in
-AIM, it must have an assigned allocation with approval from the NOAA
-RDHPCS allocation committee.  Start the process by opening a help desk
-ticket. Send an email to rdhpcs.cloud.help@noaa.gov, with "Allocation
-for <Project>" in the subject line.  Assistance with capacity planning,
-planning and porting can be available.
+Follow `these instructions <https://parallelworks.com/docs/cli#api-key>`_
+to apply the PW API key in your environment.
 
-Collect the following information:
+Click `here <https://parallelworks.com/docs/cli/pw/buckets>`_ for
+PW CLI commands for file transfers.
 
-- Project short name,  in the format: <cloud platform abbreviation>-<project
-  name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
-  cg-epic for Google cloud Epic.
-- Brief description of your project.
-- Portfolio name.
-- Principal Investigator [PI] name.
-- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
-  the name.)
-- Allocation amount.
-
-Once approvals have been gathered, the project can be requested in
- Account Information Management(AIM).
-
-2. Access the Account Information Management website and fill in the form
-
-   View all projects, then click the ``Create a Project`` button.
-   Fill in the fields with the information from the allocation committee:
-
-   a. Project short name. Please provide in this format: ``<cloud platform abbreviation>-<project name>``
-      Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
-      and ``cg-epic`` is for Google cloud Epic.
-   b. Brief description of your project.  **Provide helpdesk ticket of
-      allocation request**
-   c. Portfolio name.
-   d. Principal Investigator [PI] name.
-   e. Technical lead name [TL]. In some case, a project's PI
-      and TL may be the same person. If that is the case, repeat
-      the name.
 
 Costing
 =======
@@ -332,26 +504,606 @@ $2,000.00.
 See the `Costing Dashboard <https://parallelworks.com/docs/monitoring-costs>`_
 in the Parallel Works user guide for complete information.
 
-How do I find a real time
-cost estimate of my session? The PW Cost dashboard offers an almost real time
-estimate of your session. Real time estimate is refreshed every 5 minutes on
-the Cost dashboard. Click on the Cost link from your PW landing page. Under the
-“Time Filter”, choose the second drop down box and select the value “RT” [Real
-time]. Make sure the “User Filter” section has your name. The page
-automatically refreshes with the cost details. How do I estimate core-hours? As
-an example, your project requests a dedicated number of HPC compute nodes or
-has an HPC system reservation for some number of HPC compute nodes. Let’s say
-that the dedicated/reserved nodes have 200 cores and the length of the
-dedication/reservation is 1 week (7 days), then the core-hours used would be
-33,600 core-hours (200 cores * 24 hrs/day * 7 days). GCP’s GPU to vCPUs
-conversation can be found here In GCP, two vCPUs makes one physical core. So,
-a2-highgpu-1 has 12 vCPUs that means 6 physical core.
-If your job is taking 4
-hours to complete so that means the number of core hours = number of nodes x
-number of hour x number of cores = 1 x 4 x 6 = 24 core hours. PW’s cost
-dashboard is a good tool to find unit cost, and extrapolate it to estimate
-usage for PoP.
+Real-Time Estimates
+^^^^^^^^^^^^^^^^^^^
 
+The PW Cost dashboard offers an almost real time
+estimate of your session.
+
+Click the **Cost** link on the PW landing page. Under the “Time Filter”, choose
+the second drop down box and select the value “RT” [Real time]. Make sure the
+“User Filter” section includes your name. The page automatically refreshes with
+the cost details.
+
+
+Estimating Core Hours:  Example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Your project requests a dedicated number of HPC compute nodes or has an HPC
+system reservation for some number of HPC compute nodes. Let’s say that the
+dedicated/reserved nodes have 200 cores and the length of the
+dedication/reservation is 1 week (7 days). The core-hours used would be 33,600
+core-hours (200 cores * 24 hrs/day * 7 days). GCP’s GPU to vCPUs conversation
+can be found here In GCP, two vCPUs makes one physical core. So, a2-highgpu-1
+has 12 vCPUs that means 6 physical core. If your job takes four hours to
+complete, the number of core hours = number of nodes x number of hour x number
+of cores = 1 x 4 x 6 = 24 core hours.
+
+.. note::
+  PW’s cost dashboard is a good tool to find unit cost, and extrapolate it to estimate
+  usage for PoP.
+
+Preventing Runaway Cloud Expenses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Consider the following Best Practices to prevent runaway cost increases.
+
+* **Set up alert -  Runtime Alert**. Enable runtime alerts in your Cluster
+  Configuration to receive hourly notifications on your active cluster.
+* **Set up alert - Session Cost Limit**. Enable session cost limit to receive
+  notifications when a session reaches a preset dollar threshold.
+* **Monitor Active Clusters**. In the *Monitor - Instances* panel, identify
+  active clusters and click on the link to view compute nodes and their status.
+* **Analyze Cost Anomalies**. Use the Cost dashboard to detect cost anomalies
+  based on the usage. There is a filter available to view near real-time
+  project costs.
+* **Review Daily Usage Reports**.  Project PIs and Tech Leads receive a daily
+  *NOAA Cloud Usage Report for* email. Review the prior day's usage and
+  discuss any inconsistent increases in usage with team members.
+* **Manage Compute Clusters boot disk cost**.
+  The Compute Clusters form offers two options for stopping a cluster:
+
+   * Stop: Use this option to preserve custom software installed in the session
+     on the boot disk. Be aware that boot disk storage costs will be incurred
+     when the cluster is shut down with this option.
+   * Destroy: Select this option if no changes have been made to the boot disk.
+     In most cases, select this option to shutdown the cluster.
+
+* **Stay on the latest version**. Always use the latest version of the Compute
+  Clusters configuration, and load configuration from the marketplace.
+
+
+Clusters and Snapshots
+======================
+
+Cluster Cost types explained
+----------------------------
+
+There are several resource types that are part of a user
+cluster.
+
+We are working on adding more clarity on the resource cost
+type naming and cost. Broadly, the following cost types are
+explained below.
+
+:UnknownUsageType: Network costs related virtual private network. See
+    the `Google CSP <https://cloud.google.com/vpc/network-pricing>`__
+    and `Amazon AWS
+    <https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/>`__
+    documentation for more information.
+
+:Other Node: Controller node cost.
+
+:Storage-BASIC_SSD: On the Google cloud, “contrib” volume billing is
+    based on the allocated storage. Contrib volume allocated storage
+    2.5TB. On other cloud platforms, the cost is based on the storage
+    used.
+
+:Storage-Disk: Boot disk and apps volume disk cost.
+
+How do I resize my resource cluster size?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The default CSP resource definition in the platform is
+fv3gfs model at 768 resolution 48-hours best performance
+optimized benchmark configuration.
+
+From the PW platform top ribbon, click on the “Resources”
+link.
+
+Click on the edit button of a PW v2 cluster [aka elastic
+clusters, CSP slurm] resource definition.
+
+By default, there are two partitions, “Compute” and “batch”
+as you can see on the page. You can change the number of
+partitions based on your workflow.
+
+From the resource definition page, navigate to the compute
+partition.
+
+Max Node Amount parameter is the maximum number of nodes in
+a partition. You can change that value to a non-zero number
+to resize the compute partition size.
+
+You may remove the batch partition by clicking on the
+“Remove Partition” button. You can also edit the value for
+Max Node Count parameter to resize this partition.
+
+Lustre filesystem is an expensive resource. You can disable
+the filesystem or resize it. The default lustre filesystem
+size is about 14TiB.
+
+Keeping the bucket and cluster within the same region to lower latency and Cost
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Moving data between regions within a cloud platform will incur cost.
+For example, if the cluster and the bucket you were copying to exist in
+different regions, the cloud provider will charge for every bite that
+leaves.
+
+It is possible to provision your own buckets from the PW
+platform storage menu. This would also have the benefit of reducing
+the overall time you spend transferring data, since it has less
+distance to travel. If you have any further questions about this,
+please open a help desk ticket. We'd also be happy to work with you.
+Join one of the cloud office hours to ask questions.
+
+
+How do I create a custom [AMI, Snapshot, Boot disk, or machine] image?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If a user finds specific packages are not present in the
+base boot image, the user can add it by creating own custom
+image. Follow the steps to create a custom snapshot.
+
+Refer the user guide to learn how to `create a
+snapshot <https://parallelworks.com/docs/account-settings/cloud-snapshots>`__
+
+After a snapshot is created, the next step is to reference
+
+it in the cluster Resource configuration.
+
+From the Parallel Works banner, click on the “Compute” tab,
+and double click on the resource link to edit it.
+
+From the Resource Definition page, look for the “Controller
+Image” name. Select your newly created custom snapshot name
+from the drop down list box.
+
+Scroll down the page to the partition section. Change the
+value of "Elastic Image" to your custom image. If you have
+more than one partitions, then change "Elastic Image" value
+to your custom image name.
+
+Click on the “Save Resource” button located on the top right
+of the page.
+
+Now launch a new cluster using the custom snapshot from the
+“Compute” page. After the cluster is up, verify the
+existence of custom installed packages.
+
+How can I automatically find the hostname of a cluster?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, the host names are always going to be different
+each time you start a cluster.
+
+You can find CSP information using the :envvar:`PW_CSP` variable, as
+in the example:
+
+.. code-block:: shell
+
+    $ echo $PW_CSP
+    google
+
+There are a few other :envvar:`PW_*` vars that you may find useful:
+
+:PW_PLATFORM_HOST:
+:PW_POOL_ID:
+:PW_POOL_NAME:
+:PWD:
+:PW_SESSION_ID:
+:PW_SESSION:
+:PW_USER:
+:PW_GROUP:
+:PW_SESSION_LONG:
+:PW_CSP:
+
+How do I setup an ssh tunnel to my cluster?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ssh tunnels are a useful way to connect to services running
+on the head node when they aren't exposed to the internet.
+The Jupyterlab and R workflows available on the PW platform
+utilize ssh tunnels to allow you to connect to their
+respective web services from your local machine's web
+browser.
+
+Before setting up an ssh tunnel, it is probably a good idea
+to verify standard ssh connectivity to your cluster (see how
+do I connect to my cluster). Once connectivity has been
+verified, an ssh tunnel can be setup like so:
+
+Option 1: ssh CLI
+
+.. code-block:: shell
+
+  $ ssh -N -L <local_port>:<remote_host>:<remote_port> <remote_user>@<remote_host>
+
+example:
+
+.. code-block:: shell
+
+  $ ssh -N -L 8888:userid-gclustera2highgpu1g-00012-controller:8888 userid@34.134.251.102
+
+In this example, I am tunneling port 8888 from the host
+'userid-gclustera2highgpu1g-00012-controller' to port 8888
+on my local machine. This lets me direct my browser to the
+URL 'localhost:8888' and see the page being served by the
+remote machine over that port.
+
+How do I turn off Lustre filesystem from the cluster?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From the Resources tab, select a configuration and click the
+edit link.
+
+Scroll down the configuration page to the "Lustre file
+system" section. Use the toggle button to "No" to turn off
+the lustre file system [LFS]. This setting lets you create a
+cluster without a lustre file system.
+
+How do I activate conda at cluster login?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Running conda init bash will setup the ~/.bashrc file so it
+will activate the default environment when you login.
+
+If you want to use a different env than what is loaded by
+default, you could run this to change the activation:
+
+.. code-block:: shell
+
+  $ echo "conda activate <name_of_env>" >> ~/.bashrc
+
+Since your .bashrc shouldn't really change much, it might be
+ideal to set the file up once and then back it up to your
+contrib (somewhere like
+/contrib/First.Last/home/.bashrc), then your user boot
+script could simply do:
+
+.. code-block:: shell
+
+  $ cp /contrib/First.Last/home/.bashrc ~/.bashrc
+
+or
+
+.. code-block:: shell
+
+  $ ln -s /contrib/First.Last/home/.bashrc ~/.bashrc
+
+How do I create a resource configuration?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If your cluster requires lustre file system [ephemeral or
+persistent], or additional storage for backup, start at the
+"Storage" section and then use the "Resource" section.
+
+`Managing the Storage: <https://parallelworks.com/docs/storage>`_
+
+How do I enable run time alerts on my cluster?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can enable this functionality on your active or new
+cluster. This setup will help you send a reminder when your
+cluster is up a predefined number of hours.
+
+You can turn on this functionality when creating a new
+resource name. When you click on the “add resource” button
+under the “Resource”, you find the run time alert option.
+
+You can enable this functionality on a running cluster, by
+navigating to the “properties” tab of your resource name
+under the “Resource” tab.
+
+`Reference <https://docs.parallel.works>`__
+
+Missing user directory in the group's contrib volume
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A user directory on a group's contrib volume can only be
+created by an owner of a cluster, as the cluster owner only
+has "su" access privilege. Follow the steps to create a
+directory on contrib.
+
+#. Start a cluster. Only the owner has the sudo su
+   privilege to create a directory on contrib volume.
+#. Start a cluster, login to the controller node, and
+   create your directory on the contrib volume.
+
+Start a cluster by clicking on the start/stop button
+
+When your cluster is up, it shows your name with an IP
+address. Click on this link that copies username and IP
+address to the clipboard.
+
+Click on the IDE button located top right on the ribbon.
+
+Click on the 'Terminal' link and select a 'New Terminal'
+
+SSH into the controller node by pasting the login
+information from the clipboard.
+
+ .. code-block::
+
+  $ ssh User.Name<IP address>
+
+List your user name and group:
+
+ .. code-block::
+
+  $ id
+  uid=12345(User.Id) gid=1234(grp)
+  groups=1234(grp)
+  context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+
+ .. code-block::
+
+  $ sudo su -
+  [root@awsv22-50 ~]$
+  [root@awsv22-50 ~]$ cd /contrib
+  [root@awsv22-50 contrib]$
+  [root@awsv22-50 contrib]$ mkdir User.Id
+  [root@awsv22-50 contrib]$ chown User.Id:grp User.Id
+  [root@awsv22-50 contrib]$ ls -l
+  drwxr-xr-x. 2 User.Id grp 6 May 12 13:06 User.Id
+
+Your directory with access permission is now complete.
+
+Your directory is now accessible from your group's clusters.
+Contrib is a permanent storage for your group.
+
+You may shutdown the cluster if the purpose was to create
+your contrib directory.
+
+Why does the owner's home directory differ from the shared users' directory?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Every cluster is set up where the owner of it has an
+ephemeral home directory that isn't linked from contrib, but
+on multi-user clusters, all additional users that are added
+do get home linked from contrib.
+
+The projects using Google cloud can request to drop their
+contrib volume to save cost. Google charges on provisioned
+nfs capacity, whereas others charge on the used storage.
+
+So when people start clusters in some cases they may not
+have a contrib dir so owners don't want to link home
+directory to their contrib directory.
+
+What are “Compute” and “Batch” sections in a cluster definition?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The sections “Compute” and “Batch” are partitions. You may
+change the partition name at the name field to fit your
+naming convention. The cluster can have many partitions with
+different images and instance types, and can be manipulated
+at the “Code” tab.
+
+You may resize the partitions by updating "max_node_num", or
+remove batch partition to fit your model requirements.
+
+Default Partition details.
+
+ .. code-block:: cfg
+
+  PartitionName=compute
+  Nodes=userid-azv2-00115-1-[0001-0096] MaxTime=INFINITE
+  State=UP Default=YES OverSubscribe=NO
+
+  PartitionName=batch Nodes=firstlast-azv2-00115-2-[0001-0013]
+  MaxTime=INFINITE State=UP Default=NO OverSubscribe=NO
+
+How do I manually shutdown the compute nodes?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ .. code-block:: shell
+
+  $ sinfo
+  PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
+  compute\* up    infinite  144   idle~ userid-gcp-00141-1-[0001-0144]
+  batch     up    infinite  8     idle~ userid-gcp-00141-2-[0003-0010]
+  batch     up    infinite  2     idle  userid-gcp-00141-2-[0001-0002]
+
+In this case, there are two nodes that are on and idle
+(userid-gcp-00141-2-[0001-0002]) You can ignore the
+nodes with a ~ next to their state. That means they are
+currently powered off.
+
+You can then use that list to stop the nodes:
+
+ .. code-block:: shell
+
+  $ sudo scontrol update nodename=userid-gcp-00141-2-[0001-0002] state=power_down
+
+How to sudo in as root or a role account on a cluster?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The owner of a cluster can sudo in as root and grant sudo
+privilege to the project members by adding their user id in
+the sudoers file.
+
+Only the named cluster owner can become root. If the cluster
+owner is currently su'd as another user, they will need to
+switch back to their regular account before becoming root.
+
+Sudoers file is: ls -l /etc/sudoers
+
+Other project members' user id can be found at /etc/passwd
+file. You may update this file manually or by bootstrap
+script, the change is taken effect immediately.
+
+Example:
+
+ .. code-block:: shell
+
+  $ echo "User.Id ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/100-User.Id
+
+Assuming the cluster setup as multi-user in the resource
+definition, and in the sharing tab, view and edit button are
+selected.
+
+How do I enable a role account?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A role account is a shared workspace for project members on
+a cluster. By su'd to a role account, project members can
+manage and monitor their jobs.
+
+There are two settings that must be enabled prior on a
+resource definition in order to create a role account in a
+cluster. On the resource definition page, select the "Multi
+User" tab to "Yes", and from the "Sharing" tab, check the
+"View and Edit" button.
+
+The command to find the name of your project's role account
+from /etc/passwd is.
+
+ .. code-block::
+
+  $ grep -i role /etc/passwd
+
+Bootstrap script example
+""""""""""""""""""""""""
+
+By default bootstrap script changes only runs on the MASTER
+node of a cluster.
+
+To run on all nodes (master and compute) have your user
+script first line be ALLNODES.
+
+The following example script installs a few packages, and
+reset the dwell time from 5 minutes to an hour on the
+controller and compute nodes. Do not add any comments on the
+bootstrap script, as that would cause in code execution
+failure.
+
+ .. code-block:: shell
+
+  ALLNODES
+
+  set +x set -e
+
+  echo "Starting User Bootstrap at $(date)"
+
+  sudo rm -fr /var/cache/yum/\*
+  sudo yum clean all
+
+  sudo yum groups mark install "Development Tools" -y
+  sudo yum groupinstall -y "Development Tools"
+
+  sudo yum --setopt=tsflags='nodocs' \
+           --setopt=override_install_langs=en_US.utf8 \
+           --skip-broken \
+           install -y awscli bison-devel byacc bzip2-devel \
+                      ca-certificates csh curl doxygen emacs expat-devel file \
+                      flex git gitflow git-lfs glibc-utils gnupg gtk2-devel ksh \
+                      less libcurl-devel libX11-devel libxml2-devel lynx \
+                      lz4-devel kernel-devel make man-db nano ncurses-devel \
+                      nedit openssh-clients openssh-server openssl-devel pango \
+                      pkgconfig python python3 python-devel python3-devel \
+                      python2-asn1crypto pycairo-devel pygobject2 \
+                      pygobject2-codegen python-boto3 python-botocore \
+                      pygtksourceview-devel pygtk2-devel pygtksourceview-devel \
+                      python2-netcdf4 python2-numpy python36-numpy \
+                      python2-pyyaml pyOpenSSL python36-pyOpenSSL PyYAML \
+                      python-requests python36-requests python-s3transfer \
+                      python2-s3transfer scipy python36-scipy python-urllib3 \
+                      python36-urllib3 redhat-lsb-core python3-pycurl screen \
+                      snappy-devel squashfs-tools swig tcl tcsh texinfo \
+                      texline-latex\* tk unzip vim wget
+  echo "USER=${USER}"
+  echo "group=$(id -gn)"
+  echo "groups=$(id -Gn)"
+
+  sudo sed -i 's/SuspendTime=300/SuspendTime=3600/g' /mnt/shared/etc/slurm/slurm.conf
+  if [ $HOSTNAME == mgmt\* ]; then
+    sudo scontrol reconfigure
+  fi
+
+  sudo sacctmgr add cluster cluster -i
+  sudo systemctl restart slurmdbd
+  sudo scontrol reconfig
+
+  echo "Finished User Bootstrap at $(date)"
+
+How can I configure a CentOS Cluster to use Rocky 8 (latest)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you have already made extensive modifications to your cluster’s definition,
+you may prefer to revert the required settings by hand without loading a config
+from the Marketplace. There are two primary settings that need to be updated,
+the OS image Rocky 8 (latest), and the ``/apps`` disk snapshot. Keep in mind
+that the OS image will need to be set on the controller and every partition you
+have configured on the cluster.
+
+From the CentOS cluster configuration, find the ``Image*`` dropdown under the
+Controller settings and select the image.
+
+.. image:: /images/Rocky81.png
+
+Follow the same procedure on each compute partition to select the
+Rocky 8 (latest) image under the ``Elastic Image*`` dropdown:
+
+.. image:: /images/Rocky82.png
+
+The software and modules under ``/apps`` were built specifically for their
+target operating systems, so the Rocky 8 disk also needs to be selected.
+
+.. image:: /images/rocky83.png
+
+Click **Save Changes**.
+
+We recommend that you also replace any existing CentOS 7 based persistent
+Lustre resources to use Rocky 8 as well. The suggested method to do this is to
+duplicate your existing storage configuration, and copy your data to the new
+Lustre, either by copying directly from the old storage, or by syncing it with
+a bucket. Once you have verified that all of your data has been migrated, you
+can shut down the old file system. If your data is backed up to a bucket
+already, you can also re-provision your existing Lustre configuration and
+re-sync the data.
+
+Automate startup/shutdown for a group of clusters [CI/CD] in Parallel Works
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use the Parallel Works REST API to start a group of clusters, wait for
+their master node IP addresses, and then run ssh commands using the fetched IP
+addresses of the started master nodes. For details, click the Parallel
+Works `repository <https://github.com/parallelworks/pw-cluster-automation>`_
+link, then scroll down for Cluster Automation information.
+
+How to transfer files from a workstation to a Cloud cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using the Parallel Works' menu Editor, you can used the Explorer function to
+transfer files between workstation and cluster. Currently this requires an
+additional mapping of the targeted file system in the cluster configuration.
+The target file system is where you would like to have the files copied, and it
+can be a bucket, NFS or contrib filesystem. To set up the advanced setting
+change:
+
+#. Select a cluster configuration, then select the **Edit** option.
+#. Scroll all the way down, and click **Advanced Settings**.
+#. In the Advanced settings form, scroll down to the
+   link **User workspace mount points**.
+
+Map the Home, Bucket or Contrib as illustrated below:
+
+
+.. image:: /images/542-1.png
+   :scale: 75%
+
+
+4. From the top menu, click **Save Changes**.
+5. Launch the cluster.
+6. Once the cluster is up, open the Editor menu, and locate your cluster name
+   in the Explorer, as illustrated below:
+
+.. image:: /images/542-1.png
+   :scale: 75%
+
+7. Use the Explorer File menu to upload or download files.
 
 Errors
 ======
@@ -382,53 +1134,6 @@ information that you have attempted the “single sign on” login test.
 
 If you continue to experience connection issues, open a :ref:`help
 request <getting_help>`.
-
-
-
-
-How do I access on-prem HPS Systems from Parallel Works?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Parallel Works is working on seamless authentication with on-prem HPC
-systems.
-
-.. note::
-
-  The following access method does not work on Gaea.
-
-Follow the steps to access other HPC systems.
-
-1. From the login portal, click  the user Name.  Select **Account**
-   from the drop down list.
-
-2. Click the **Authentication** tab.
-
-3. Click on the “SSH Keys” line.
-
-4. Copy the “Key” from the “User Workspace”.
-
-5. Append the public SSH key in the on-prem HPC system's controller
-   node's ~/.ssh/authorized_keys file. Save and exit the file.
-
-Repeat this process on all on-prem HPC systems' controller nodes
-to establish connections from Parallel Works.
-
-**Subscribe the default template of HPC systems from the Parallel
-Works Marketplace**
-
-1. From the login portal, click on the user Name. Select
-   **“MARKETPLACE** from the drop down list box.
-
-2. Click on the Fork sign and click the Fork button when prompted.
-
-3. Exit the page.
-
-**Access allowed countries**
-
-USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
-Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
-Finland, Lebanon, Denmark, Palestinian Territory Occupied,
-Netherlands, Japan, and Estonia.
 
 Warning messages from the on-prem system about exceeding quota
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -465,229 +1170,6 @@ space and create the pw symlink in your home directory as follows:
   ln -s /a/directory/in/your/project/space/pw $HOME/pw
 
 
-How do I use the Cost Calculator?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can estimate the hourly cost of your experiments from
-the Parallel Works(PW) platform. After login on the
-platform, click on the “Resources” tab, and double click on
-your resource definition. There is a definition tab, where
-when you update the required compute and lustre file system
-size configuration, the form dynamically shows an hourly
-estimate.
-
-You can derive an estimated cost of a single experiment by
-multiplying the run time with the hourly cost.
-
-For example, if the hourly estimate is $10, and your
-experiment would run for 2 hours then the estimated cost
-for your experiment would be $10 multiplied by 2, equals
-to $20.
-
-You can derive project allocation cost by multiplying the
-run time cost with the number of runs required to complete
-the project.
-
-For example, if your project would require a model run 100
-times, then multiply that number by a single run cost, the
-cost would be 100x$20 = $2,000.00.
-
-Note that there are costs associated with maintaining your
-project, like contrib file system, object storage to store
-backup, and egress.
-
-
-How does the Cost Dashboard work?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Refer to the `user guide <https://parallelworks.com/docs/monitoring-costs>`_.
-
-How do I find a real time cost estimate of my session?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Cloud vendors publish the cost once every 24 hours, that is
-not an adequate measure in an HPC environment. PW Cost
-dashboard offers an almost real time estimate of your
-session.
-
-Real time estimate is refreshed every 5 minutes on the Cost
-dashboard. Click on the Cost link from your PW landing page.
-Under the “Time Filter”, choose the second drop down box and
-select the value “RT” [Real time]. Make sure the “User
-Filter” section has your name. The page automatically
-refreshes with the cost details.
-
-How do I estimate core-hours?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-As an example, your project requests a dedicated number of HPC
-compute nodes or has an HPC system reservation for some
-number of HPC compute nodes. Let's say that the
-dedicated/reserved nodes have 200 cores and the length of
-the dedication/reservation is 1 week (7 days), then the
-core-hours used would be 33,600 core-hours (200 cores \* 24
-hrs/day \* 7 days).
-
-GCP's GPU to vCPUs conversation can be found `here <https://cloud.google.com/compute/docs/gpus>`__
-In GCP, two vCPUs makes one physical core.
-
-So, a2-highgpu-1 has 12 vCPUs that means 6 physical core. If
-your job is taking 4 hours to complete so that means the
-number of core hours = number of nodes x number of hour x
-number of cores = 1 x 4 x 6 = 24 core hours.
-
-PW's cost dashboard is a good tool to find unit cost, and
-extrapolate it to estimate usage for PoP.
-
-How do I access the head node from the Parallel Works [PW] web interface?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can connect to the head node from the PW portal, or
-Xterm window if you have added your public key in the
-resource definition prior to launching a cluster.
-
-If you have not added a public key at the time of launching
-a cluster, you can login to the head node by IDE and update
-the public key in ~/.ssh/authorized_keys file.
-
-#. From the PW “Compute” dashboard, click on your name with an IP
-   address and make a note of it. You can also get the head node IP
-   address by clicking the :guilabel:`i` icon of the Resource monitor.
-#. Click on the IDE link located on the top right side of
-   the PW interface to launch a new terminal.
-#. From the menu option “Terminal”, click on the “New
-   Terminal” link.
-#. From the new terminal, type
-
-    .. code-block:: shell
-
-        $ ssh <Paste the username with IP address>
-
-   and press the enter key.
-
-   This will let you login to the head node from the PW
-   interface.
-
-.. Example:
-
-    .. code-block:: shell
-
-        $ ssh First.Last@54.174.136.76
-        Warning: Permanently added '54.174.136.76' (ECDSA) to the list of known hosts.
-
-
-You can use the toggle button to restore lustre file system
-setting. You can also resize the LFS at a chunk size
-multiple of 2.8 TB.
-
-.. note::
-
-  Be aware that LFS is an expensive storage.
-
-How do I add a workflow to my account?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you're running a workflow for the first time, you will
-need to add it to your account first. From the PW main page,
-click the workflow Marketplace button on the top menu bar.
-This button should be on the right side of the screen, and
-looks like an Earth icon.
-
-How do I ssh to other nodes in my cluster?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-It is possible to ssh to compute nodes in your cluster from
-the head node by using the node's hostname. You do not
-necessarily need to have a job running on the node, but it
-does need to be in a powered on state (most resource
-configurations suspend compute nodes after a period of
-inactivity)
-
-#. Use ``sinfo``` or ``squeue`` to view active nodes:
-
-    .. code-block::
-
-      $ sinfo
-      PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
-      compute*  up    infinite      4 idle~ compute-dy-c5n18xlarge-[2-5]
-      compute*  up    infinite      1 mix   compute-dy-c5n18xlarge-1
-
-      $ squeue
-      JOBID PARTITION NAME USER     ST   TIME  NODES NODELIST(REASON)
-      2     compute   bash Matt.Lon  R   0:33  1     compute-dy-c5n18xlarge-1
-
-#. ssh to the compute node
-
-    .. code-block::
-
-      [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
-      [compute-dy-c5n18xlarge-1]$
-
-Can I set up longer term credentials to access buckets?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-NOAA RDHPCS recommends the use of Globus for file transfer wherever applicable.
-Globus file transfers are secure and auditable.
-
-In Parallel Works, for security reasons the credentials on a bucket last for 12
-hours before resetting.
-
-To generate a short term token for a bucket:
-""""""""""""""""""""""""""""""""""""""""""""
-
-**Use PW token service**
-
-The PW token lasts up to 24 hours before resetting.  Under this setting, you
-can run a cloud provider’s CLI or PW CLI commands. The following example will
-generate a token, insert the commands into a file named aws-creds and source
-that file.:-
-
-.. code-block:: shell
-
-  $ pw buckets get-token
-  s3://noaa-sysadmin-ocio-ca-cloudmgmt > aws-creds; source aws-creds; aws s3 ls $BUCKET_URI
-
-After sourcing it in the environment, you can run aws s3 commands.
-
-You can use either syntax below:
-
-.. code-block:: shell
-
-  $ aws s3://S3_BUCKET_NAME
-
-Or
-
-.. code-block:: shell
-
-  # List all buckets in a namespace
-  $ pw buckets ls pw://[namespace]
-
-To generate a PW API key for longer term credentials:
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
-**Use the PW API key**
-
-See these instructions to `create an PW API key
-<https://parallelworks.com/docs/account-settings/authentication#managing-api-keys>`_.
-
-Users can customize the expiration date for their created API keys
-for 7, 30, 60, 90 or no expiration days.
-
-By default, the PW CLI is pre-installed on user workspaces, cloud clusters, and
-existing clusters. When you connect to an on-prem HPC system through Parallel
-Works, the PW CLI commands are available from the controller node.
-
-.. note::
-
-  The PW API key is only relevant to PW based operations.
-
-
-Follow `these instructions <https://parallelworks.com/docs/cli#api-key>`_
-to apply the PW API key in your environment.
-
-Click `here <https://parallelworks.com/docs/cli/pw/buckets>`_ for
-PW CLI commands for file transfers.
-
-
 How can I use the Mamba tool to run Jupyter?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -712,48 +1194,6 @@ How can I use the Mamba tool to run Jupyter?
 4. From here, execute the workflow and get to the Jupyterlab interface:
 .. image:: /images/mambo2.png
 
-
-
-Using Parallel Works with on-premise HPC Systems
-------------------------------------------------
-
-Parallel Works offers seamless authentication with on-premise HPC systems. The
-access method through Parallel Works is the same as for any other HPC
-systems.
-
-You may use the default template of an HPS system from the Parallel Works
-Marketplace.
-
-- From the login portal, click on the user Name.
-- Select **MARKETPLACE** from the drop down list box.
-- Click on the Fork sign and click the Fork button when prompted. Exit the
-  page.
-
-Access the head node from the Parallel Works [PW]
-web interface. You can connect to the head node from the PW portal, or Xterm
-window, if you have added your public key in the resource definition prior to
-launching a cluster. If you have not yet added a public key, you can login to
-the head node by IDE and update the public key in ~/.ssh/authorized_keys file.
-
-1. From the PW Compute dashboard, click on your name with an IP address and
-   make a note of it. Otherwise, click the  i icon of the Resource monitor to
-   get the head node IP address.
-2. Click the IDE link (located on the top right side of the PW interface) to
-   launch a new terminal.
-3. From the Terminal menu, click New Terminal. A new terminal window opens.
-4. From the new terminal, type `$ ssh <username with IP address>` and press
-   Enter.
-
-This will let you login to the head node from the PW interface.
-
-
-Example:
-
-.. code-block:: shell
-
-  $ ssh First.Last@54.174.136.76
-
-  Warning: Permanently added ‘54.174.136.76’ (ECDSA) to the list of known hosts.
 
 Running a Jupyterlab Workflow on an On-Prem Controller Node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -791,36 +1231,6 @@ example).
    **Open from Path...**
 3. Enter the path to the project you want to work with.
 
-ssh to Nodes Within a Cluster
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can use a node’s hostname to ssh to compute nodes in your cluster from the
-head node. You do not need to have a job running on the node, but the node must
-be in a powered-on state.
-
-.. note::
-
-  Most resource configurations suspend compute nodes after a period of inactivity.
-
-1.  Use sinfo` or squeue to view active nodes:
-
-.. code-block:: shell
-
-  `$ sinfo
-   PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
-   compute*  up    infinite   4 idle~ compute-dy-c5n18xlarge-[2-5]
-   compute*  up    infinite   1 mix   compute-dy-c5n18xlarge-1``
-
-  $ squeue
-  JOBID PARTITION NAME USER     ST   TIME  NODES NODELIST(REASON)
-  2     compute   bash Last.Fir  R   0:33  1     compute-dy-c5n18xlarge-1
-
-2. ssh to the compute node
-
-.. code-block:: shell
-
-  [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
-  [compute-dy-c5n18xlarge-1]$
 
 On-premise HPC system exceeding Quota Warning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -848,70 +1258,6 @@ it to your project space and create a symlink as shown below:
 
   mkdir -p /a/directory/in/your/project/space/pw
   ln -s /a/directory/in/your/project/space/pw $HOME/pw
-
-Running a Jupyter workflow on a Slurm compute node
---------------------------------------------------
-
-The Parallel Works ACTIVATE platform provides standard scripts, called
-workflows, to complete tasks on the platform. A Jupyter workflow is available
-in the ACTIVATE Marketplace. (See the Parallel Works documentation for
-directions to `add workflows
-<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
-
-To use the Jupyter workflow on a Slurm compute node, first set a default
-working directory for the session. Set the **Directory To Start Jupyter Lab
-GUI** value to the path for your session default.
-
-.. image:: /images/jupy1.png
-
-Note the directory listing in Jupyter, as compared to an ssh session:
-
-.. image:: /images/jupy2.png
-
-You will also need to configure your AWS cluster with a partition, using GPU
-nodes. Worker nodes in Slurm are divided into partitions based on
-instance type, and are provisioned on demand when a job is submitted to the
-queue. The default AWS configuration from the marketplace includes two
-partitions as a base, "compute" and "batch", as shown below:
-
-.. image:: /images/jupy3.png
-
-You can either reconfigure one of these partitions with an alternate instance
-type that has a GPU, or add a new partition to configure from scratch. If you
-know you won't use these starter partitions on your cluster, edit the
-'compute' partition as needed, then remove the extra 'batch' partition.
-
-Consider the following when you modify the partition:
-
-* Partition name, if you choose something other than 'compute'.
-* Instance Type, selecting a GPU node appropriate for your needs. If you're
-  uncertain, check the `AWS documentation
-  <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`_ for a summary
-  of the different GPU instance families available.
-* Zone. Select the zone you want to provision the cluster to. This parameter is
-  two-pronged and configures both the region (us-east-1) and availability zone
-  (b). It’s prudent to stay in the us-east-1 region, as you are likely to incur
-  egress charges if you are passing data between your contrib storage (located
-  in us-east-1), and a cluster located in a different region. The zone is less
-  important, unless you have other storages attached to the cluster and you
-  need to minimize your latency. Note that AWS tends to have different instance
-  availability in different regions and zones, so this might take some trial
-  and error. Also consider that on-demand GPU availability is heavily
-  constrained. It's possible that your workflow will fail to start if there's
-  not enough capacity to meet your request. If that happens, either
-  configure your cluster in a different zone, or just try again
-  later.
-
-Once you have your cluster started with the partition configured, you can edit
-the workflow form to direct the job to the compute partition instead of the
-controller node. This will submit a job to the Slurm scheduler and trigger a
-node start.
-
-.. image:: /images/jupy4.png
-
-See `Configuring clusters <https://parallelworks.com/docs/compute/configuring-clusters-v2#partition-settings>`_
-for complete information on configuring clusters and partitions.
-
 
 Authentication Issues
 ---------------------
@@ -1014,13 +1360,6 @@ The Parallel Works `cost dashboard <https://noaa.parallel.works/cost>`_ will
 show your project's current costs, and a breakdown of how those costs were
 used.
 
-The cloud team also produces a `monthly usage report
-<https://sites.google.com/noaa.gov/rdhpc-docs-internal/reports/cloud-usage>`_
-that has an overview of costs for all cloud projects.  Those reports are useful
-for portfolio managers (PfM) and principal investigators (PI) to monitor
-multiple projects in a single spreadsheet.
-
-
 Cloud Presentations
 ===================
 
@@ -1045,14 +1384,7 @@ Send an email to rdhpcs.cloud.help@noaa.gov. to automatically
 open a ticket in the RDHPCS helpdesk system.  The typical response time is
 within two hours during normal business hours.
 
-How do I close a Cloud project?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To close a project, email rdhpcs.aim.help@noaa.gov to create an AIM
-ticket. Make sure that all data are migrated, and custom snapshots are
-removed before you send the request to the AIM. If you do not need
-data from the referenced project, be sure to include that information
-in the ticket so that the support can drop the storage services.
 
 How do I connect the controller node from outside the network?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2004,8 +2336,7 @@ Consider the following Best Practices to prevent runaway cost increases.
 Data Transfer
 -------------
 
-
-AWS CLI aws installation on an on-prem system. files transfer to a cloud bucket
+AWS CLI aws installation on an on-prem system. Files transfer to a cloud bucket
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow the steps to install the aws tool on your home directory.
@@ -2123,14 +2454,14 @@ How do I transfer data to/from the Cloud?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The recommended system for data transfers to/from NOAA RDHPCS systems
-is the Niagara Untrusted DTN especially if the data transfers is being
+is the Mercury Untrusted DTN especially if the data transfers is being
 done from/to the HPSS system.
 
 If data is on Hera, the user will have to use 2-copy transfers, by
-first transferring to Niagara and then pulling the data from the
+first transferring to Mercury and then pulling the data from the
 Cloud, or use the utilities mentioned in the next section.
 
-AWS CLI, available on Hera/Jet/Niagara, can be used on RDHPCS systems
+AWS CLI, available on Hera/Jet/Mercury, can be used on RDHPCS systems
 to push and pull data from the S3 buckets.  Please load the
 "aws-utils" module.
 
@@ -2323,7 +2654,6 @@ Example:
 .. code-block:: shell
 
   $ sudo chown “username:group” <file name>
-
 
 Configuration Questions
 -----------------------
@@ -3189,7 +3519,6 @@ level directory.
   $ sudo find /var -maxdepth 1 -mindepth 1 -type d -exec du -sh {} \;
 
 
-
 Miscellaneous
 -------------
 
@@ -3303,8 +3632,8 @@ object storage, you can transfer files. Use the Globus
 connector or cloud provider's command line interface for
 file transfer.
 
-Copy a file from the controller node to project permanent storage?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Copy a file from the controller node to project permanent storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Start a cluster and login into the controller node.
 
