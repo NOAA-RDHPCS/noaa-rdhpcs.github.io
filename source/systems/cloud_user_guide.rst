@@ -1976,19 +1976,22 @@ Can I Prevent Runaway Cloud Expenses?
 
 Consider the following Best Practices to prevent runaway cost increases.
 
-* **Set up alert -  Runtime Alert**. Enable runtime alerts in your Cluster
-  Configuration to receive hourly notifications on your active cluster.
-* **Set up alert - Session Cost Limit**. Enable session cost limit to receive
-  notifications when a session reaches a preset dollar threshold.
-* **Monitor Active Clusters**. In the *Monitor - Instances* panel, identify
+:Set up alerts:  Create the following alerts in the PW interface.
+
+    - Runtime Alert: Enable runtime alerts in your Cluster Configuration to
+      receive hourly notifications on your active cluster.
+    - Session Cost Limit: Enable session cost limit to receive notifications
+      when a session reaches a preset dollar threshold.
+
+:Monitor Active Clusters: In the :menuselection:`Monitor --> Instances` panel, identify
   active clusters and click on the link to view compute nodes and their status.
-* **Analyze Cost Anomalies**. Use the Cost dashboard to detect cost anomalies
+:Analyze Cost Anomalies: Use the Cost dashboard to detect cost anomalies
   based on the usage. There is a filter available to view near real-time
   project costs.
-* **Review Daily Usage Reports**.  Project PIs and Tech Leads receive a daily
+:Review Daily Usage Reports:  Project PIs and Tech Leads receive a daily
   *NOAA Cloud Usage Report for* email. Review the prior day's usage and
   discuss any inconsistent increases in usage with team members.
-* **Manage Compute Clusters boot disk cost**.
+:Ensure the cluster is stopped:
   The Compute Clusters form offers two options for stopping a cluster:
 
    * Stop: Use this option to preserve custom software installed in the session
@@ -1997,28 +2000,12 @@ Consider the following Best Practices to prevent runaway cost increases.
    * Destroy: Select this option if no changes have been made to the boot disk.
      In most cases, select this option to shutdown the cluster.
 
-* **Stay on the latest version**. Always use the latest version of the Compute
+:Use the latest version: Always use the latest version of the Compute
   Clusters configuration, and load configuration from the marketplace.
 
 
 Data Transfer
 -------------
-
-Can I Prevent Runaway Cloud Expenses?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Consider the following Best Practices to prevent runaway cost increases:
-
-* **Set up alert -  Runtime Alert**. Enable runtime alerts in your Cluster
-  Configuration to receive hourly notifications on your active cluster.
-* **Set up alert - Session Cost Limit**. Enable session cost limit to receive
-  notifications when a session reaches a preset dollar threshold.
-* **Monitor Active Clusters**. In the *Monitor - Instances* panel, identify
-  active clusters and click on the link to view compute nodes and their status.
-* **Analyze Cost Anomalies**. Use the Cost dashboard to detect cost anomalies
-  based on the usage. There is a filter available to view near real-time
-  project costs.
-* **Review Daily Usage Reports**.
 
 AWS CLI aws installation on an on-prem system. files transfer to a cloud bucket
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
