@@ -406,11 +406,18 @@ AWS Contrib storage charge is $0.30 per GB per Month. The cost is calculated
 based on the storage usage. Both AWS and Azure charge based on usage, with a
 pay-as-you-go model like your electricity bill.
 
-GCP charges on allocated storage, so whether the storage is used or not, the
-project pays for the provisioned capacity. The default provisioned capacity of
-Google Cloud contrib file system is 2.5 TiB, costs $768.00 per month. The
-contrib volume can be removed from a project by request. Send email to
-rdhpcs.cloud.help@noaa.gov, with Remove Contrib Volume in the subject.
+GCP charges for provisioned storage capacity, meaning that whether the
+storage is used or not, the project is billed for the allocated amount.
+The default provisioned capacity for the Google Cloud contrib file system is
+2.5 TiB, which costs approximately $768.00 per month.
+
+For older projects, a contrib volume may be present by default. This contrib
+volume can be removed by submitting a request to rdhpcs.cloud.help@noaa.gov
+with the subject line "Remove Contrib Volume."
+
+Users now have the flexibility to create their own NFS volumes with
+custom input/output (IO) settings in all Cloud platforms. These volumes can be
+shared with project members and attached to a cluster.
 
 Using long-term credentials to access buckets
 ---------------------------------------------
@@ -598,30 +605,31 @@ The default CSP resource definition in the platform is
 fv3gfs model at 768 resolution 48-hours best performance
 optimized benchmark configuration.
 
-From the PW platform top ribbon, click on the “Resources”
-link.
+1. From the PW platform top ribbon, click the **Resources** link.
 
-Click on the edit button of a PW v2 cluster [aka elastic
+2. Click the edit button of a PW v2 cluster [aka elastic
 clusters, CSP slurm] resource definition.
 
-By default, there are two partitions, “Compute” and “batch”
-as you can see on the page. You can change the number of
-partitions based on your workflow.
+  By default, there are two partitions, “Compute” and “batch”
+  as you can see on the page. You can change the number of
+  partitions based on your workflow.
 
-From the resource definition page, navigate to the compute
-partition.
+3. From the resource definition page, navigate to the compute partition.
 
-Max Node Amount parameter is the maximum number of nodes in
-a partition. You can change that value to a non-zero number
-to resize the compute partition size.
+  Max Node Amount parameter is the maximum number of nodes in
+  a partition. You can change that value to a non-zero number
+  to resize the compute partition size.
 
-You may remove the batch partition by clicking on the
-“Remove Partition” button. You can also edit the value for
-Max Node Count parameter to resize this partition.
+4. To remove the batch partition, clicking the
+   **Remove Partition** button. You can also edit the value for
+   Max Node Count parameter to resize this partition.
 
-Lustre filesystem is an expensive resource. You can disable
-the filesystem or resize it. The default lustre filesystem
-size is about 14TiB.
+
+.. note::
+
+  A Lustre filesystem is an expensive resource. You can disable
+  the filesystem or resize it. The default lustre filesystem
+  size is about 14TiB.
 
 Keeping the bucket and cluster within the same region to lower latency and Cost
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -642,40 +650,35 @@ Join one of the cloud office hours to ask questions.
 How do I create a custom [AMI, Snapshot, Boot disk, or machine] image?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If a user finds specific packages are not present in the
-base boot image, the user can add it by creating own custom
+If you find that a specific package is not present in the
+base boot image, you can add it, by creating own custom
 image. Follow the steps to create a custom snapshot.
 
-Refer the user guide to learn how to `create a
+See the Parallel Works user guide to learn how to `create a
 snapshot <https://parallelworks.com/docs/account-settings/cloud-snapshots>`__
 
-After a snapshot is created, the next step is to reference
+After a snapshot is created, reference it in the cluster Resource
+configuration.
 
-it in the cluster Resource configuration.
+1. From the Parallel Works banner, click on the **Compute** tab,and double
+   click the resource link to edit it.
 
-From the Parallel Works banner, click on the “Compute” tab,
-and double click on the resource link to edit it.
+2. From the Resource Definition page, look for the **Controller Image** name.
+   Select your newly created custom snapshot name from the drop down list box.
 
-From the Resource Definition page, look for the “Controller
-Image” name. Select your newly created custom snapshot name
-from the drop down list box.
+3. Scroll to the partition section. Change the value of "Elastic Image" to your
+   custom image. If you have more than one partition, change "Elastic Image"
+   value to your custom image name.
 
-Scroll down the page to the partition section. Change the
-value of "Elastic Image" to your custom image. If you have
-more than one partitions, then change "Elastic Image" value
-to your custom image name.
+4. Click **Save Resource**.
 
-Click on the “Save Resource” button located on the top right
-of the page.
+5. Now launch a new cluster using the custom snapshot from the Compute page.
+   After the cluster is up, verify the existence of custom installed packages.
 
-Now launch a new cluster using the custom snapshot from the
-“Compute” page. After the cluster is up, verify the
-existence of custom installed packages.
+Find the hostname of a cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-How can I automatically find the hostname of a cluster?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-By default, the host names are always going to be different
+By default, the host names will be different
 each time you start a cluster.
 
 You can find CSP information using the :envvar:`PW_CSP` variable, as
@@ -699,8 +702,8 @@ There are a few other :envvar:`PW_*` vars that you may find useful:
 :PW_SESSION_LONG:
 :PW_CSP:
 
-How do I setup an ssh tunnel to my cluster?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setup an ssh tunnel to my cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ssh tunnels are a useful way to connect to services running
 on the head node when they aren't exposed to the internet.
@@ -732,8 +735,8 @@ on my local machine. This lets me direct my browser to the
 URL 'localhost:8888' and see the page being served by the
 remote machine over that port.
 
-How do I turn off Lustre filesystem from the cluster?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Turn off the Lustre filesystem from the cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 From the Resources tab, select a configuration and click the
 edit link.
@@ -772,8 +775,8 @@ or
 
   $ ln -s /contrib/First.Last/home/.bashrc ~/.bashrc
 
-How do I create a resource configuration?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create a resource configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If your cluster requires lustre file system [ephemeral or
 persistent], or additional storage for backup, start at the
@@ -781,8 +784,8 @@ persistent], or additional storage for backup, start at the
 
 `Managing the Storage: <https://parallelworks.com/docs/storage>`_
 
-How do I enable run time alerts on my cluster?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Enable run time alerts on my cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can enable this functionality on your active or new
 cluster. This setup will help you send a reminder when your
