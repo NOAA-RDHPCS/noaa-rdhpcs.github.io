@@ -33,14 +33,15 @@ approval.
 Accessing a role account
 ------------------------
 
-You can access any role account if you are a member of the account.
+You can access any role account if you are a member of the account by running
+the command ``sudo su - <ROLE_ACCOUNT>``.
 Use ``sudo -l`` to list the access you have.
 
 You will authenticate with your RSA token to gain access. For example:
 
  .. code-block:: shell
 
-   jsmith# sudo /bin/su -l role.user
+   jsmith# sudo su - role.user
    Access is via First.Last username only. Enter RSA PASSCODE:
    bash-4.1$ whoami
    role.user
@@ -119,6 +120,3 @@ At the beginning of the section:
    Without the ``MAILTO`` directive, any errors/logs from the cron or
    scron commands end up getting lost and one may never know there was
    a problem/failure!
-
-
-
