@@ -8,7 +8,7 @@ Overview
 ========
 
 To improve the appearance and functionality of our user documentation,
-as of Summer 2024 we’ve transferred the MediaWiki-based documentation
+as of Summer 2024 we've transferred the MediaWiki-based documentation
 spread across multiple instances to this single site
 `docs.rdhpcs.noaa.gov <https://docs.rdhpcs.noaa.gov>`_ The files are
 kept in the `NOAA-RDHPCS Github repository

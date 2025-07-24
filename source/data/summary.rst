@@ -15,11 +15,11 @@ area. Each project has a Project Home area, Work areas, and Archive areas. The
 different storage areas are summarized in the list and table below.
 
 - **User Home:** Long-term data for routine access that is unrelated to a
-  project. It is mounted on compute nodes as read/write.  We strongly recommend
-  that users launch and run jobs from one of the Work file systems due to its
-  larger storage capacity and superior performance.
+  project.  It is mounted on compute nodes as read/write.  We strongly
+  recommend that users launch and run jobs from one of the Work file systems
+  due to its larger storage capacity and superior performance.
 - **Project Home:** Long-term project data for routine access that's shared
-  with other project members. It is mounted on compute as read/write.  We
+  with other project members.  It is mounted on compute as read/write.  We
   strongly recommend that users launch and run jobs from one of the Work file
   systems due to its larger storage capacity and superior performance.
 - **Member Work:** Short-term user data for fast, batch-job access that is not
@@ -337,7 +337,7 @@ The path, quota, and permissions for Project Home directories are summarized in
 the :ref:`Filesystem Summary Table <data-filesystem-summary>`.
 
 Quotas are enforced on Project Home directories. To check a Project Home
-directory’s usage on gaea, run ``df -h /ncrc/proj/[projid]`` (where
+directory's usage on gaea, run ``df -h /ncrc/proj/[projid]`` (where
 ``[projid]`` is the project ID). Note, however, that permission settings on
 some subdirectories may prevent you from accessing them, and in that case you
 will not be able to obtain the correct usage. If this is the case, contact
@@ -390,7 +390,7 @@ Permissions
 -----------
 
 UNIX Permissions on each project-centric work storage area differ according to
-the area’s intended collaborative use. Under this setup, the process of sharing
+the area's intended collaborative use. Under this setup, the process of sharing
 data with other researchers amounts to simply ensuring that the data resides in
 the proper work directory.
 
@@ -401,9 +401,9 @@ the proper work directory.
 For example, if you have data that must be restricted only to yourself, keep
 them in your Member Work directory for that project (and leave the default
 permissions unchanged). If you have data that you intend to share with
-researchers within your project, keep them in the project’s Project Work
+researchers within your project, keep them in the project's Project Work
 directory. If you have data that you intend to share with researchers outside
-of a project, keep them in the project’s World Work directory.
+of a project, keep them in the project's World Work directory.
 
 Backups
 -------
@@ -423,7 +423,7 @@ Permissions
 -----------
 
 UNIX Permissions on each project-centric archive storage area differ according
-to the area’s intended collaborative use. Under this setup, the process of
+to the area's intended collaborative use. Under this setup, the process of
 sharing data with other researchers amounts to simply ensuring that the data
 resides in the proper archive directory.
 
@@ -434,9 +434,9 @@ resides in the proper archive directory.
 For example, if you have data that must be restricted only to yourself, keep
 them in your Member Archive directory for that project (and leave the default
 permissions unchanged). If you have data that you intend to share with
-researchers within your project, keep them in the project’s Project Archive
+researchers within your project, keep them in the project's Project Archive
 directory. If you have data that you intend to share with researchers outside
-of a project, keep them in the project’s World Archive directory.
+of a project, keep them in the project's World Archive directory.
 
 Project Archive Access
 ----------------------

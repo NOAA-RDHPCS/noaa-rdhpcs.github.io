@@ -202,7 +202,7 @@ Consider the following when you modify the partition:
   of the different GPU instance families available.
 * Zone. Select the zone you want to provision the cluster to. This parameter is
   two-pronged and configures both the region (us-east-1) and availability zone
-  (b). It’s prudent to stay in the us-east-1 region, as you are likely to incur
+  (b). It's prudent to stay in the us-east-1 region, as you are likely to incur
   egress charges if you are passing data between your contrib storage (located
   in us-east-1), and a cluster located in a different region. The zone is less
   important, unless you have other storages attached to the cluster and you
@@ -287,52 +287,50 @@ Create/request a new project
 
 1. Gather requirements and approvals.
 
-RDHPCS (cloud and on-prem) projects are defined through the
-`Account Information Management`_ (AIM) system.
+    RDHPCS (cloud and on-prem) projects are defined through the
+    `Account Information Management`_ (AIM) system.
 
-Collect the following information:
+    Collect the following information:
 
-- Project short name,  in the format: <cloud platform abbreviation>-<project
-  name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
-  cg-epic for Google cloud Epic.
-- Brief description of your project.
-- Portfolio name.
-- Principal Investigator [PI] name.
-- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
-  the name.)
-- Allocation amount.
+    - Project short name, in the format: ``<cloud platform
+      abbreviation>-<projectname>``.  For example ca-epic stands for AWS Epic,
+      cz-epic for Azure epic, and cg-epic for Google cloud Epic.
+    - Brief description of your project.
+    - Portfolio name.
+    - Principal Investigator [PI] name.
+    - Technical lead name [TL]. (If the project's PI and TL are the same,
+      repeat the name.)
+    - Allocation amount.
 
-Once you have the necessary approvals, you can request the project
-in  **AIM**.
+    Once you have the necessary approvals, you can request the project
+    in `AIM <Account Information Management_>`_.
 
 
 2. Open a help desk ticket.
 
-Send an email to rdhpcs.cloud.help@noaa.gov, with **Allocation for <Project>**
-in the subject line.
+    Send an email to rdhpcs.cloud.help@noaa.gov, with **Allocation for
+    <Project>** in the subject line.
 
 3. Access the Account Information Management website and complete the form
 
-View all projects, then click the ``Create a Project`` button.
-Fill in the fields with the information from the allocation committee:
+    View all projects, then click the ``Create a Project`` button.
+    Fill in the fields with the information from the allocation committee:
 
-   a. Project short name, in the format: ``<cloud platform abbreviation>-<project name>``
-      Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
-      and ``cg-epic`` is for Google cloud Epic.
-   b. Brief description of your project.  **Provide the helpdesk ticket for
-      the allocation request**
-   c. Portfolio name.
-   d. Principal Investigator [PI] name.
-   e. Technical lead name [TL]. In some case, a project's PI
-      and TL may be the same person. If that is the case, repeat
-      the name.
+    a. Project short name, in the format: ``<cloud platform abbreviation>-<project name>``
+       Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
+       and ``cg-epic`` is for Google cloud Epic.
+    b. Brief description of your project.  **Provide the helpdesk ticket for
+       the allocation request**
+    c. Portfolio name.
+    d. Principal Investigator [PI] name.
+    e. Technical lead name [TL]. In some case, a project's PI
+       and TL may be the same person. If that is the case, repeat
+       the name.
 
 4. Add a User to a Project.
 
-
-The user can :ref:`Request access
-to RDHPCS projects<project_request>`.
-including Cloud project, through the AIM system.
+    The user can :ref:`Request access to RDHPCS projects <project_request>`.
+    including Cloud projects, through the AIM system.
 
 .. note::
 
@@ -355,7 +353,7 @@ Three types of storage are available on a cluster.
 
 - Lustre: object storage for backup and restore and output files
 - Bucket/blob storage: a container for objects.
-- Contrib file system: a project’s custom software library.
+- Contrib file system: a project's custom software library.
 
 .. note::
 
@@ -384,7 +382,7 @@ Azure, the storage used is Blob storage, which functions as a bucket storage,
 which functions as a bucket and an NFS storage. Pricing information is
 available at this `link <https://aws.amazon.com/s3/pricing/>`_ . Projects using
 AWS, and GCP platforms can create as many buckets as needed, and mount them on
-a cluster. The project’s default bucket is accessible from the public domain
+a cluster. The project's default bucket is accessible from the public domain
 using the keys.
 
 Contrib file system
@@ -434,11 +432,11 @@ To generate a short term token for a bucket:
 **Use PW token service**
 
 The PW token lasts up to 24 hours before resetting.  Under this setting, you
-can run a cloud provider’s CLI or PW CLI commands. The following example will
+can run a cloud provider's CLI or PW CLI commands. The following example will
 generate a token, insert the commands into a file named aws-creds and source
 that file.:-
 
-.. code-block:: shell
+.. code-block:: console
 
   $ pw buckets get-token
   s3://noaa-sysadmin-ocio-ca-cloudmgmt > aws-creds; source aws-creds; aws s3 ls $BUCKET_URI
@@ -447,13 +445,13 @@ After sourcing it in the environment, you can run aws s3 commands.
 
 You can use either syntax below:
 
-.. code-block:: shell
+.. code-block:: console
 
   $ aws s3://S3_BUCKET_NAME
 
 Or
 
-.. code-block:: shell
+.. code-block:: console
 
   # List all buckets in a namespace
   $ pw buckets ls pw://[namespace]
@@ -527,17 +525,18 @@ Estimating Core Hours:  Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Your project requests a dedicated number of HPC compute nodes or has an HPC
-system reservation for some number of HPC compute nodes. Let’s say that the
+system reservation for some number of HPC compute nodes. Let's say that the
 dedicated/reserved nodes have 200 cores and the length of the
 dedication/reservation is 1 week (7 days). The core-hours used would be 33,600
-core-hours (200 cores * 24 hrs/day * 7 days). GCP’s GPU to vCPUs conversation
+core-hours (200 cores * 24 hrs/day * 7 days). GCP's GPU to vCPUs conversation
 can be found here In GCP, two vCPUs makes one physical core. So, a2-highgpu-1
 has 12 vCPUs that means 6 physical core. If your job takes four hours to
 complete, the number of core hours = number of nodes x number of hour x number
 of cores = 1 x 4 x 6 = 24 core hours.
 
 .. note::
-  PW’s cost dashboard is a good tool to find unit cost, and extrapolate it to estimate
+
+  PW's cost dashboard is a good tool to find unit cost, and extrapolate it to estimate
   usage for PoP.
 
 Preventing Runaway Cloud Expenses
@@ -1034,7 +1033,7 @@ failure.
 How can I configure a CentOS Cluster to use Rocky 8 (latest)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have already made extensive modifications to your cluster’s definition,
+If you have already made extensive modifications to your cluster's definition,
 you may prefer to revert the required settings by hand without loading a config
 from the Marketplace. There are two primary settings that need to be updated,
 the OS image Rocky 8 (latest), and the ``/apps`` disk snapshot. Keep in mind
@@ -1254,7 +1253,7 @@ it to your project space and create a symlink as shown below:
   mv $HOME/pw /a/directory/in/your/project/space/pw
   ln -s /a/directory/in/your/project/space/pw $HOME/pw
 
-3. If $HOME/pw doesn’t exist, create a directory in your project space and
+3. If $HOME/pw doesn't exist, create a directory in your project space and
    create the pw symlink in your home directory as follows:
 
 .. code-block:: shell
@@ -1329,7 +1328,7 @@ If a user receives the error
 it may be related to an issue in user's environment.
 
 First, ensure there is a minimum 100 MB free space in the home directory
-for the PW agent file to install.  If there’s enough space, perform one of the
+for the PW agent file to install.  If there's enough space, perform one of the
 following checks:
 
   1. Remove the https_proxy setting from the .bashrc file. This will stop using
@@ -2232,7 +2231,7 @@ failure.
 How can I configure a CentOS Cluster to use Rocky 8 (latest)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have already made extensive modifications to your cluster’s definition,
+If you have already made extensive modifications to your cluster's definition,
 you may prefer to revert the required settings by hand without loading a config
 from the Marketplace. There are two primary settings that need to be updated,
 the OS image Rocky 8 (latest), and the ``/apps`` disk snapshot. Keep in mind

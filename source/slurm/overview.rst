@@ -867,7 +867,7 @@ Slurm does not keep completed jobs in ``squeue``.
 
    $ sacct -S 2019-03-01 -E now -a
 
-If you don’t specify ``-S`` and ``-E`` options ``sacct`` gives you data from
+If you don't specify ``-S`` and ``-E`` options ``sacct`` gives you data from
 the current day.
 
 Use the ``sacct`` command option to list jobs that have run within the last 24
@@ -910,14 +910,14 @@ dominates the system.
 Understanding Slurm Fairshare
 -----------------------------
 
-SLURM utilizes a “FairShare” prioritization system. It uses the project’s
+SLURM utilizes a “FairShare” prioritization system. It uses the project's
 allocation (RawShares) set by the Portfolio Manager and the RDHPCS Allocation
 Committee. Slurm normalizes the allocation into a percentage of system priority
 (Normshares). See definitions below.
 
 Slurm uses various job request parameters (submit time, partition, QOS, job
 size, requested wall clock time, etc.) and a calculated project's FairShare
-Factor (f) to continually assign/adjust the requested jobs’ priority until the
+Factor (f) to continually assign/adjust the requested jobs' priority until the
 job runs.
 
 FairShare is calculated from current allocation information (NormShares) and
@@ -957,7 +957,7 @@ Fairshare Definitions
 
 :EffectvUsage:: the project's ProjUsage (RawUsage) divided by the total
     RawUsage for the system.
-:NormShares: the project’s RawShares (allocated core-hours) divided by the
+:NormShares: the project's RawShares (allocated core-hours) divided by the
    total number of RawShares allocated to all projects on the system, or the
    fraction of the system the project has been allocated, which represents the
    projects system level priority without regard to QOS and recent usage
