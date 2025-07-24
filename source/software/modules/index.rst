@@ -139,7 +139,7 @@ Once that works then change the first line of the shell script to be:
 This will cause the startup scripts to be sourced before the first
 executable statement in the script.
 
-Why doesn’t the module command work in shell scripts?
+Why doesn't the module command work in shell scripts?
 -----------------------------------------------------
 
 First it is recommended that the script be a bash script and not a

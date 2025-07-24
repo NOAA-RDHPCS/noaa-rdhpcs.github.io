@@ -388,7 +388,7 @@ Configure the Tectia Client
       The example below shows a profile for the CAC Gaea bastion in
       Princeton. The port used (22) is correct, as is the User Name
       selection. This can be set here, or just select the radio button
-      next to “Use the Default Connection’s username”.
+      next to “Use the Default Connection's username”.
 
       .. figure:: /images/tectiawin5.png
 

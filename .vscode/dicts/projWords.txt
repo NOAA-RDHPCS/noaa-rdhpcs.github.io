@@ -58,6 +58,7 @@ cnvgrib
 codegen
 collab
 Collaboratory
+comgsi
 computecanada
 Coolkey
 coredumpsize
