@@ -12,7 +12,7 @@
 import datetime as dt
 import os
 import packaging.version
-import sphinx_rtd_theme
+import sphinx_rtd_theme  # type: ignore[]
 
 # Sphinx Configuration Items
 project = "NOAA RDHPCS User Documentation"
@@ -72,7 +72,7 @@ html_js_files = [
 ]
 
 # cSpell:ignore gsce nochange
-html_context = {
+html_context = {    # type: ignore
     "display_github": True,
     "github_user": "NOAA-RDHPCS",  # Username
     "github_repo": "noaa-rdhpcs.github.io",  # Repo name
@@ -108,7 +108,7 @@ if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
 
 # see https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html
-html_theme_options = {
+html_theme_options = {    # type: ignore
     "collapse_navigation": False,
     "sticky_navigation": True,
     "navigation_depth": 4,
@@ -135,6 +135,7 @@ linkcheck_allowed_redirects = {
     r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*',
     r'https://support\.hpe\.com/connect/s/product\?kmpmoid=1013083813': r'https://support\.hpe\.com/connect/s/product\?language=?.*&kmpmoid=1013083813',
     r'https://conda\.io/.*': r'https://docs\.conda\.io/.*',
+    r'https://noaa-gfdl\.readthedocs\.io/projects/.*': r'https://noaa-gfdl\.readthedocs\.io/projects/.*?/.*?/latest'
 }
 
 linkcheck_ignore = [
@@ -147,8 +148,10 @@ linkcheck_ignore = [
     r'https://noaa-rrfs-pds\.s3\.amazonaws\.com/.*',
     r'https://sslvpn\.rdhpcs\.noaa\.gov/',
     r'https://docutils\.sourceforge\.net/rst\.html',
-    r'https://www\.amd\.com/en/products/accelerators/instinct/mi300/mi300x\.html'
+    r'https://www\.amd\.com/en/products/accelerators/instinct/mi300/mi300x\.html',
+    r'https://www\.gnu\.org/software/.*?/'
 ]
+
 linkcheck_retries = 3
 
 # This is needed for backwards compatibility.  We have

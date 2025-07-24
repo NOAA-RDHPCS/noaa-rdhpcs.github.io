@@ -16,7 +16,7 @@ Intel processors, from Sandy Bridge to Ice Lake, each has
 specifications that range from 48-512GB of memory and are designed to
 provide a system that can meet most user demands.
 
-PPAN supports GFDL’s science community by providing a place to further analyze
+PPAN supports GFDL's science community by providing a place to further analyze
 and interpret models generated on other HPC systems. This gives users a local
 system to experiment and evaluate with various degrees of control and
 validation of complex processes and tasks. PPAN is also a host to various

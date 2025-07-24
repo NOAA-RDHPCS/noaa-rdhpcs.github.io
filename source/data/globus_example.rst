@@ -185,12 +185,12 @@ External S3 Bucket Connectors
 NOAA RDHPCS Globus Endpoint Types
 =================================
 
-NOAA RDHPCS Globus Endpoints are either ‘’trusted’’ or ‘’untrusted’’.
+NOAA RDHPCS Globus Endpoints are either *trusted* or *untrusted*.
 
-* All RDHPCS systems provide DTN’s
+* All RDHPCS systems provide DTN's
 * DTNs have full access to the back-end file systems.
 * DTNs only accept connections from pre-authorized sites. If your site
-  can’t access the DTNs and you need that capability, submit a help
+  can't access the DTNs and you need that capability, submit a help
   desk ticket. If the security team approves, your site will be
   pre-authorized.
 
@@ -199,14 +199,14 @@ NOAA RDHPCS Globus Endpoints are either ‘’trusted’’ or ‘’untrusted�
     It is preferable to use trusted endpoints for data transfer
     whenever possible.
 
-NOAA RDHPCS UDTN’s (Globus Untrusted Endpoint)
+NOAA RDHPCS UDTN's (Globus Untrusted Endpoint)
 ==============================================
 
 UDTNs can accept connections and transfer data to and from any
 location. UDTNs have access to a specific directory of the back-end
 file system, where files can be staged solely for the purpose of
 transferring data. Since your project space is not accessible from the
-UTDN, transferring data to and from RDHPCS systems using the UDTN’s is
+UTDN, transferring data to and from RDHPCS systems using the UDTN's is
 a two-step process.
 
 #. Copy the data out of your project space to the staging area and
@@ -236,7 +236,7 @@ Publicly accessible buckets, no keys required
 ---------------------------------------------
 
 As an example, let us consider the case where user needs to get files from the
-NOAA RRFS expermient from the `AWS Cloud
+NOAA RRFS experiment from the `AWS Cloud
 <https://noaa-rrfs-pds.s3.amazonaws.com/index.html#rrfs_a/rrfs_a.20230725/00/control/>`_.
 
 
