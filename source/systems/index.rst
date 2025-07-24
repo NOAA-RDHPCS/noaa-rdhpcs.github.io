@@ -40,13 +40,13 @@ The current systems are listed below, with links to their user guides.
    * - `Jet <https://www.noaa.gov/organization/information-technology/jet>`__
      - Hurricane Forecast Improvement Program (HFIP)
      - :ref:`jet-user-guide`
-   * - Mercury
+   * - `Mercury <https://www.noaa.gov/organization/information-technology/mercury>`_
      - Collaborative resource for data transfer
      - :ref:`mercury-user-guide`
    * - `PPAN <https://www.noaa.gov/organization/information-technology/ppan>`__
      - Long-term prediction research, archive, post-processing, and analysis.
      - :ref:`ppan-user-guide`
-   * - Ursa
+   * - `Ursa <https://www.noaa.gov/organization/information-technology/hpcc-locations-and-systems/ursa>`_
      - Predicting high-impact weather events
      - :ref:`ursa-user-guide`
 
