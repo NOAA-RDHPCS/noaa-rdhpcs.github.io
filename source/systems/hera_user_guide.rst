@@ -95,7 +95,7 @@ System Configuration
      theoretical peak of 32 double precision floating point operations
      per cycle with a base clock rate for floating point operations of
      1.6 GHz.
-   - Total FLOPS is a measure of peak, and doesn’t necessarily
+   - Total FLOPS is a measure of peak, and doesn't necessarily
      represent actual performance.
    - Juno is the Test and Development System. Users must be granted
      specific access to the system for use.
@@ -485,7 +485,7 @@ Read Only Access
 ^^^^^^^^^^^^^^^^
 
 If a file is only going to be read, open it as *O_RDONLY*. If you
-don’t care about the access time, open it as *O_RDONLY* or
+don't care about the access time, open it as *O_RDONLY* or
 *O_NOATIME*. If you need access time information and you are doing
 parallel IO, let the master open it as *O_RDONLY* and all other ranks
 as *O_RDONLY* or *O_NOATIME*.
