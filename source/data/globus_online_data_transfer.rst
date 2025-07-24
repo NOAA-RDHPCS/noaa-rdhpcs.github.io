@@ -182,6 +182,22 @@ Globus Command Line Interface (CLI)
 ===================================
 
 The CLI is available on Jet, Ursa (WIP), Hera, and Mercury.
+Please load the "globus-cli" module by running the command:
+
+.. code-block:: shell
+
+    $ module load globus-cli
+
+The above module also defines the UUIDs of some of the
+commonly used Globus endpoints by RDHPCS users.
+Please run  the command:
+
+.. code-block:: shell
+
+    $ module show globus-cli
+
+to see the environment variables that are defined when
+you load the above module.
 
 If you would like to use Globus-cli, either on your personal machine
 or on a system where globus-cli is not installed, you can install it
