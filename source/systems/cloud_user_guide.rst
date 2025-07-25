@@ -119,9 +119,141 @@ Parallel Works
 Using ACTIVATE
 --------------
 
-Users access the ACTIVATE platform through the Parallel Works NOAA Portal
+Users access the ACTIVATE platform through the Parallel Works NOAA Portal,
 using the RSA Token authentication method.  On the landing page, enter your
 NOAA user name, and your PIN and SecurID OTP.
+
+Add a workflow to my account
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you're running a workflow for the first time, you will
+need to add it to your account first. From the PW main page,
+click the workflow Marketplace button on the top menu bar.
+This button should be on the right side of the screen, and
+looks like an Earth icon.
+
+
+Using Parallel Works to access on-prem HPS Systems
+--------------------------------------------------
+
+Parallel Works supports authentication with on-prem HPC
+systems. The ACTIVATE platform works identically on
+Cloud and on-premise systems.
+
+
+**Subscribe to the default template of HPC systems from the Parallel
+Works Marketplace**
+
+1. From the login portal, click on the user Name. Select
+   **MARKETPLACE** from the drop down list box.
+
+2. Click on the Fork sign and click the Fork button when prompted.
+
+3. Exit the page.
+
+**Access is allowed from the following countries**
+
+USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
+Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
+Finland, Lebanon, Denmark, Palestinian Territory Occupied,
+Netherlands, Japan, and Estonia.
+
+.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
+
+
+Running a Jupyter workflow on a Slurm compute node
+--------------------------------------------------
+
+The Parallel Works ACTIVATE platform provides standard scripts, called
+workflows, to complete tasks on the platform. A Jupyter workflow is available
+in the ACTIVATE Marketplace. (See the Parallel Works documentation for
+directions to `add workflows
+<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
+
+To use the Jupyter workflow on a Slurm compute node, first set a default
+working directory for the session. Set the **Directory To Start Jupyter Lab
+GUI** value to the path for your session default.
+
+.. image:: /images/jupy1.png
+
+Note the directory listing in Jupyter, as compared to an ssh session:
+
+.. image:: /images/jupy2.png
+
+You will also need to configure your AWS cluster with a partition, using GPU
+nodes. Worker nodes in Slurm are divided into partitions based on
+instance type, and are provisioned on demand when a job is submitted to the
+queue. The default AWS configuration from the marketplace includes two
+partitions as a base, "compute" and "batch", as shown below:
+
+.. image:: /images/jupy3.png
+
+You can either reconfigure one of these partitions with an alternate instance
+type that has a GPU, or add a new partition to configure from scratch. If you
+know you won't use these starter partitions on your cluster, edit the
+'compute' partition as needed, then remove the extra 'batch' partition.
+
+Consider the following when you modify the partition:
+
+* Partition name, if you choose something other than 'compute'.
+* Instance Type, selecting a GPU node appropriate for your needs. If you're
+  uncertain, check the `AWS documentation
+  <https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html>`_ for a summary
+  of the different GPU instance families available.
+* Zone. Select the zone you want to provision the cluster to. This parameter is
+  two-pronged and configures both the region (us-east-1) and availability zone
+  (b). It’s prudent to stay in the us-east-1 region, as you are likely to incur
+  egress charges if you are passing data between your contrib storage (located
+  in us-east-1), and a cluster located in a different region. The zone is less
+  important, unless you have other storages attached to the cluster and you
+  need to minimize your latency. Note that AWS tends to have different instance
+  availability in different regions and zones, so this might take some trial
+  and error. Also consider that on-demand GPU availability is heavily
+  constrained. It's possible that your workflow will fail to start if there's
+  not enough capacity to meet your request. If that happens, either
+  configure your cluster in a different zone, or just try again
+  later.
+
+Once you have your cluster started with the partition configured, you can edit
+the workflow form to direct the job to the compute partition instead of the
+controller node. This will submit a job to the Slurm scheduler and trigger a
+node start.
+
+.. image:: /images/jupy4.png
+
+See `Configuring clusters <https://parallelworks.com/docs/compute/configuring-clusters-v2#partition-settings>`_
+for complete information on configuring clusters and partitions.
+
+Moving across nodes in a cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to ssh to compute nodes in your cluster from
+the head node by using the node's hostname. You do not
+necessarily need to have a job running on the node, but it
+does need to be in a powered on state (most resource
+configurations suspend compute nodes after a period of
+inactivity)
+
+#. Use ``sinfo``` or ``squeue`` to view active nodes:
+
+    .. code-block::
+
+      $ sinfo
+      PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
+      compute*  up    infinite      4 idle~ compute-dy-c5n18xlarge-[2-5]
+      compute*  up    infinite      1 mix   compute-dy-c5n18xlarge-1
+
+      $ squeue
+      JOBID PARTITION NAME USER     ST   TIME  NODES NODELIST(REASON)
+      2     compute   bash Matt.Lon  R   0:33  1     compute-dy-c5n18xlarge-1
+
+#. ssh to the compute node
+
+    .. code-block::
+
+      [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
+      [compute-dy-c5n18xlarge-1]$
+
 
 Cloud Projects
 ==============
@@ -290,7 +422,7 @@ Collect the following information:
 Once approvals have been gathered, the project can be requested in
  Account Information Management(AIM).
 
-2. Access the Account Information Management website and fill in the form
+1. Access the Account Information Management website and fill in the form
 
    View all projects, then click the ``Create a Project`` button.
    Fill in the fields with the information from the allocation committee:
@@ -382,8 +514,6 @@ information that you have attempted the “single sign on” login test.
 
 If you continue to experience connection issues, open a :ref:`help
 request <getting_help>`.
-
-
 
 
 How do I access on-prem HPS Systems from Parallel Works?
