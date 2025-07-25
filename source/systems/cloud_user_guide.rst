@@ -128,10 +128,12 @@ Add a workflow to my account
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the PW main page,
-click the workflow Marketplace button on the top menu bar.
-This button should be on the right side of the screen, and
-looks like an Earth icon.
+click the workflow Marketplace button in the sidebar menu:
 
+.. image:: /images/mplace.png
+
+From the Marketplace home page you can review available
+workflows.
 
 Using Parallel Works to access on-prem HPS Systems
 --------------------------------------------------
@@ -151,18 +153,21 @@ Works Marketplace**
 
 3. Exit the page.
 
-**Access is allowed from the following countries**
+.. attention::
 
-USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
-Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
-Finland, Lebanon, Denmark, Palestinian Territory Occupied,
-Netherlands, Japan, and Estonia.
+  **Access is allowed from the following countries**
+
+  USA, India, Mexico, China, Canada, Taiwan, Ethiopia, France, Chile,
+  Greece, United Kingdom, Korea, Spain, Brazil, Malaysia, Colombia,
+  Finland, Lebanon, Denmark, Palestinian Territory Occupied,
+  Netherlands, Japan, and Estonia.
+
 
 .. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 
 
-Running a Jupyter workflow on a Slurm compute node
---------------------------------------------------
+Running a Jupyter workflow on a Slurm compute node (AWS cluster)
+----------------------------------------------------------------
 
 The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform. A Jupyter workflow is available
@@ -224,8 +229,8 @@ node start.
 See `Configuring clusters <https://parallelworks.com/docs/compute/configuring-clusters-v2#partition-settings>`_
 for complete information on configuring clusters and partitions.
 
-Moving across nodes in a cluster
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Accessing nodes in a cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is possible to ssh to compute nodes in your cluster from
 the head node by using the node's hostname. You do not
@@ -275,7 +280,7 @@ Gather requirements and approvals.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RDHPCS (cloud and on-prem) projects are defined through the
-.. _Account Information Management:	https://aim.rdhpcs.noaa.govsystem. Before you can
+.. _Account Information Management:	https://aim.rdhpcs.noaa.gov. Before you can
 request a project in AIM, it must have an assigned allocation with approval
 from the NOAA RDHPCS allocation committee.
 Collect the following information: Project short

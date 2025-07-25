@@ -1,9 +1,9 @@
 # These are words that are specific to this project
-AOCC
 ACORS
 ALLINEA
 ALLNODES
 antlr
+AOCC
 aomip
 aoml
 Apptainer
@@ -314,6 +314,7 @@ mpiicpc
 mpiifort
 MPIROOT
 mpirun
+mplace
 MPMD
 MRBRNG
 MRPRNG
