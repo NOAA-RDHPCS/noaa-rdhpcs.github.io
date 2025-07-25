@@ -135,7 +135,7 @@ click the workflow Marketplace button in the sidebar menu:
 From the Marketplace home page you can review available
 workflows.
 
-Using Parallel Works to access on-prem HPS Systems
+Using Parallel Works to access on-prem HPC Systems
 --------------------------------------------------
 
 Parallel Works supports authentication with on-prem HPC
@@ -166,8 +166,8 @@ Works Marketplace**
 .. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 
 
-Running a Jupyter workflow on a Slurm compute node (AWS cluster)
-----------------------------------------------------------------
+Running a Jupyter workflow on a Slurm compute node
+--------------------------------------------------
 
 The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform. A Jupyter workflow is available
@@ -239,7 +239,7 @@ does need to be in a powered on state (most resource
 configurations suspend compute nodes after a period of
 inactivity)
 
-#. Use ``sinfo``` or ``squeue`` to view active nodes:
+#. Use ``sinfo`` or ``squeue`` to view active nodes:
 
     .. code-block::
 
@@ -270,8 +270,7 @@ Cloud Projects
   To use the RDHPCS Cloud system, you must have an account on a
   project allocated to a cloud resource.  See :ref:`project_request` for details.
 
-Cloud projects are specific to a Cloud platform. The platform is indicated by
-the prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
+.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
 
 Create/request a new project
 ----------------------------
@@ -280,45 +279,56 @@ Gather requirements and approvals.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RDHPCS (cloud and on-prem) projects are defined through the
-.. _Account Information Management:	https://aim.rdhpcs.noaa.gov. Before you can
-request a project in AIM, it must have an assigned allocation with approval
-from the NOAA RDHPCS allocation committee.
-Collect the following information: Project short
-name, in the format: <cloud platform abbreviation>-<project name> For example
-ca-epic stands for AWS Epic, cz-epic for Azure epic, and cg-epic for Google
-cloud Epic. Brief description of your project. Portfolio name. Principal
-Investigator [PI] name. Technical lead name [TL]. (If the project’s PI and TL
-are the same, repeat the name.) Allocation amount.
+`Account Information Management`_ (AIM) system.
+
+Collect the following information:
+
+- Project short name,  in the format: <cloud platform abbreviation>-<project
+  name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
+  cg-epic for Google cloud Epic.
+- Brief description of your project.
+- Portfolio name.
+- Principal Investigator [PI] name.
+- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
+  the name.)
+- Allocation amount.
+
+Once you have the necessary approvals, you can request the project
+in **AIM**.
+
 
 Open a help desk ticket
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Send an email to rdhpcs.cloud.help@noaa.gov, with **Allocation for <Project>**
-in the subject line.  When you have the necessary approvals, you can request a
-project through Account Information Management (AIM). Access the
-Account Information Management website and fill in the form View all projects,
-then click **Create a Project**. Fill in the fields with the information
-from the allocation committee:
-* Project short name. Please provide in this
-format: <cloud platform abbreviation>-<project name> Example: ca-epic is for
-AWS Epic, cz-epic is for Azure Epic, and cg-epic is for Google cloud Epic.
-* Brief description of your project. Provide helpdesk ticket of allocation
-request Portfolio name.
-* Principal Investigator [PI] name. Technical lead name
-[TL]. In some case, a project’s PI and TL may be the same person. If that is
-the case, repeat the name.
+in the subject line.
+
+Access the Account Information Management website and complete the form
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+View all projects, then click the ``Create a Project`` button.
+Fill in the fields with the information from the allocation committee:
+
+   a. Project short name, in the format: ``<cloud platform abbreviation>-<project name>``
+      Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
+      and ``cg-epic`` is for Google cloud Epic.
+   b. Brief description of your project.  **Provide the helpdesk ticket for
+      allocation request**
+   c. Portfolio name.
+   d. Principal Investigator [PI] name.
+   e. Technical lead name [TL]. In some case, a project's PI
+      and TL may be the same person. If that is the case, repeat
+      the name.
 
 
 Add a User to a Project
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The user can request access to RDHPCS projects. Cloud project names start with
-ca, cz, or cg implying AWS, Azure, or Google Compute platforms, followed by the
-project name. So for example, ca-budget-test indicates that project budget-test
-is allocated to the AWS platform.
+The user can :ref:`Request access
+to RDHPCS projects<project_request>`.
+including Cloud project, through the AIM system.
+All RDHPCS users have access to Parallel Works.
 
-All RDHPCS users have access to Parallel Works. See :ref:`Requesting
-access to RDHPCS projects<project_request>`.
 
 Storage Types and Storage Costs
 ===============================
@@ -384,64 +394,8 @@ Google Cloud contrib file system is 2.5 TiB, costs $768.00 per month. The
 contrib volume can be removed from a project by request. Send email to
 rdhpcs.cloud.help@noaa.gov, with Remove Contrib Volume in the subject.
 
-How is a new user added to a project on Parallel Works?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By :ref:`Requesting access
-to RDHPCS projects<project_request>`.  Cloud project names start with
-``ca``, ``cz``, or ``cg`` implying AWS, Azure, or Google Compute
-platforms, followed by the project name. So for example,
-ca-budget-test indicates that project budget-test is allocated to the
-AWS platform.
 
-How do I set up or request a new project in Parallel Works?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. note::
-
-  Cloud projects are specific to a Cloud platform. The platform is indicated by the
-  prefix in the project name (ca- for AWS, cz- for Azure, cg- for GCP).
-
-1. Gather requirements and approvals
-
-RDHPCS (cloud and on-prem) projects are defined through the Account
-Information Management system. Before you can request a project in
-AIM, it must have an assigned allocation with approval from the NOAA
-RDHPCS allocation committee.  Start the process by opening a help desk
-ticket. Send an email to rdhpcs.cloud.help@noaa.gov, with "Allocation
-for <Project>" in the subject line.  Assistance with capacity planning,
-planning and porting can be available.
-
-Collect the following information:
-
-- Project short name,  in the format: <cloud platform abbreviation>-<project
-  name> For example ca-epic stands for AWS Epic, cz-epic for Azure epic, and
-  cg-epic for Google cloud Epic.
-- Brief description of your project.
-- Portfolio name.
-- Principal Investigator [PI] name.
-- Technical lead name [TL]. (If the project’s PI and TL are the same, repeat
-  the name.)
-- Allocation amount.
-
-Once approvals have been gathered, the project can be requested in
- Account Information Management(AIM).
-
-1. Access the Account Information Management website and fill in the form
-
-   View all projects, then click the ``Create a Project`` button.
-   Fill in the fields with the information from the allocation committee:
-
-   a. Project short name. Please provide in this format: ``<cloud platform abbreviation>-<project name>``
-      Example: ``ca-epic`` is for AWS Epic, ``cz-epic`` is for Azure Epic,
-      and ``cg-epic`` is for Google cloud Epic.
-   b. Brief description of your project.  **Provide helpdesk ticket of
-      allocation request**
-   c. Portfolio name.
-   d. Principal Investigator [PI] name.
-   e. Technical lead name [TL]. In some case, a project's PI
-      and TL may be the same person. If that is the case, repeat
-      the name.
 
 Costing
 =======
