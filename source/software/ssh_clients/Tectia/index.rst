@@ -58,7 +58,6 @@ table. Then follow the instructions for your operating system.
 * The Tectia Client installation requires about 140 megabytes of disk
   space and your system must have a CAC reader.
 
-
 .. _Install Tectia:
 
 Install the Tectia Client
