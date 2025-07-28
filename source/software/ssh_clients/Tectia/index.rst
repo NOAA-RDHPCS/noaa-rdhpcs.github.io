@@ -22,27 +22,11 @@ user's CAC is not supported.
 Tectia Initial Setup procedure
 ==============================
 
-Host names for the CAC Bastion Server in Boulder, CO:
+Locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
+table.
 
-.. code:: shell
-
-   bastion-jet.boulder.rdhpcs.noaa.gov
-   bastion-hera.boulder.rdhpcs.noaa.gov
-   bastion-niagara.boulder.rdhpcs.noaa.gov
-   bastion-gaea.boulder.rdhpcs.noaa.gov
-
-Host names for the CAC Bastion Server in Princeton, NJ:
-
-.. code:: shell
-
-   bastion-jet.princeton.rdhpcs.noaa.gov
-   bastion-hera.princeton.rdhpcs.noaa.gov
-   bastion-niagara.princeton.rdhpcs.noaa.gov
-   bastion-gaea.princeton.rdhpcs.noaa.gov
-
-
-The following OS-specific sections (Windows, Linux, MAC) describe how
-to do the following:
+The OS-specific tabs (Windows, Linux, MAC)  in the :ref:`Install Tectia`
+section describe how to do the following:
 
 * Download the Tectia software
 * Install the Tectia software on your local laptop or workstation
@@ -86,6 +70,8 @@ These are the steps to install and configure Tectia for a Windows system:
 * The Tectia Client installation requires about 140 megabytes of disk
   space and your system must have a CAC reader.
 
+
+.. _Install Tectia:
 
 Install the Tectia Client
 -------------------------
