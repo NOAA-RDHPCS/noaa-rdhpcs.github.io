@@ -22,9 +22,13 @@ user's CAC is not supported.
 Tectia Initial Setup procedure
 ==============================
 
+
 SSH Tectia Client provides secure terminal client functionality for remote
 users and system administrators for accessing remote hosts running SSH Tectia
 Server or other Secure Shell server.
+
+Locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
+table.
 
 The OS-specific tabs (Windows, Linux, MAC)  in the :ref:`Install Tectia`
 section describe how to do the following:
