@@ -22,6 +22,11 @@ user's CAC is not supported.
 Tectia Initial Setup procedure
 ==============================
 
+
+SSH Tectia Client provides secure terminal client functionality for remote
+users and system administrators for accessing remote hosts running SSH Tectia
+Server or other Secure Shell server.
+
 Locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
 table.
 
@@ -35,21 +40,8 @@ section describe how to do the following:
 * Use the client software to connect to R&D HPC Systems
 * Set up port tunneling
 
-Install and Configuring Tectia
-==============================
-
-SSH Tectia Client provides secure terminal client functionality for
-remote users and system administrators for accessing remote hosts
-running SSH Tectia Server or other Secure Shell server.
-
-These are the steps to install and configure Tectia for a Windows system:
-
-* Download and install the Tectia software on your local laptop or
-  workstation
-* Install the license file on your local laptop or workstation.
-* Configure the Tectia software
-* Use the client software to connect to RDHPCS Systems
-* Set tunneling options
+Locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
+table. Then follow the instructions for your operating system.
 
 .. note::
 
@@ -58,7 +50,7 @@ These are the steps to install and configure Tectia for a Windows system:
 
 **Requirements**
 
-* Your CAC information must be in `AIM <https://aim.rdhpcs.noaa.gov>`_
+* You must have current CAC information in `AIM <https://aim.rdhpcs.noaa.gov>`_
   for the Tectia CAC logon to work. To confirm that your CAC
   information is correct authenticate using your CAC in `AIM`. If your
   CAC information has been refreshed, wait 15 minutes before
