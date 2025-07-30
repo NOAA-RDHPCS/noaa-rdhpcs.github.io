@@ -22,27 +22,16 @@ user's CAC is not supported.
 Tectia Initial Setup procedure
 ==============================
 
-Host names for the CAC Bastion Server in Boulder, CO:
 
-.. code:: shell
+SSH Tectia Client provides secure terminal client functionality for remote
+users and system administrators for accessing remote hosts running SSH Tectia
+Server or other Secure Shell server.
 
-   bastion-jet.boulder.rdhpcs.noaa.gov
-   bastion-hera.boulder.rdhpcs.noaa.gov
-   bastion-niagara.boulder.rdhpcs.noaa.gov
-   bastion-gaea.boulder.rdhpcs.noaa.gov
+Locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
+table.
 
-Host names for the CAC Bastion Server in Princeton, NJ:
-
-.. code:: shell
-
-   bastion-jet.princeton.rdhpcs.noaa.gov
-   bastion-hera.princeton.rdhpcs.noaa.gov
-   bastion-niagara.princeton.rdhpcs.noaa.gov
-   bastion-gaea.princeton.rdhpcs.noaa.gov
-
-
-The following OS-specific sections (Windows, Linux, MAC) describe how
-to do the following:
+The OS-specific tabs (Windows, Linux, MAC)  in the :ref:`Install Tectia`
+section describe how to do the following:
 
 * Download the Tectia software
 * Install the Tectia software on your local laptop or workstation
@@ -51,21 +40,8 @@ to do the following:
 * Use the client software to connect to R&D HPC Systems
 * Set up port tunneling
 
-Install and Configuring Tectia
-==============================
-
-SSH Tectia Client provides secure terminal client functionality for
-remote users and system administrators for accessing remote hosts
-running SSH Tectia Server or other Secure Shell server.
-
-These are the steps to install and configure Tectia for a Windows system:
-
-* Download and install the Tectia software on your local laptop or
-  workstation
-* Install the license file on your local laptop or workstation.
-* Configure the Tectia software
-* Use the client software to connect to RDHPCS Systems
-* Set tunneling options
+Locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
+table. Then follow the instructions for your operating system.
 
 .. note::
 
@@ -74,7 +50,7 @@ These are the steps to install and configure Tectia for a Windows system:
 
 **Requirements**
 
-* Your CAC information must be in `AIM <https://aim.rdhpcs.noaa.gov>`_
+* You must have current CAC information in `AIM <https://aim.rdhpcs.noaa.gov>`_
   for the Tectia CAC logon to work. To confirm that your CAC
   information is correct authenticate using your CAC in `AIM`. If your
   CAC information has been refreshed, wait 15 minutes before
@@ -86,6 +62,8 @@ These are the steps to install and configure Tectia for a Windows system:
 * The Tectia Client installation requires about 140 megabytes of disk
   space and your system must have a CAC reader.
 
+
+.. _Install Tectia:
 
 Install the Tectia Client
 -------------------------
@@ -388,7 +366,7 @@ Configure the Tectia Client
       The example below shows a profile for the CAC Gaea bastion in
       Princeton. The port used (22) is correct, as is the User Name
       selection. This can be set here, or just select the radio button
-      next to “Use the Default Connection’s username”.
+      next to “Use the Default Connection's username”.
 
       .. figure:: /images/tectiawin5.png
 

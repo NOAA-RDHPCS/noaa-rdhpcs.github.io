@@ -139,7 +139,7 @@ NOAA RDHPCS Globus Endpoints are either ''trusted'' or ''untrusted''.
 * All RDHPCS systems provide DTN's
 * DTNs have full access to the back-end file systems.
 * DTNs only accept connections from pre-authorized sites. If your site
-  can’t access the DTNs and you need that capability, submit a help
+  can't access the DTNs and you need that capability, submit a help
   desk ticket. If the security team approves, your site will be
   pre-authorized.
 

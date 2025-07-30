@@ -18,7 +18,7 @@ System Overview
 Mercury is primarily a data transfer/collaboration system that is available to
 all RDHPCS. It is intended to be a collaborative system where data can be
 securely copied to and from any location, by any authorized user, to
-disseminate Research and Development (R&D) data to NOAA’s collaborators around
+disseminate Research and Development (R&D) data to NOAA's collaborators around
 the globe.
 
 The Mercury system includes:
@@ -102,7 +102,7 @@ Below are the data management policies for Mercury:
 .. note::
 
    Access time is defined as the last time the file was opened for reading or
-   writing. If the file system’s usage starts getting close to the total
+   writing. If the file system's usage starts getting close to the total
    capacity then we will be forced to implement a more aggressive purge policy
    (i.e., 30 day or 15 day purge). Please actively manage your data.
 
