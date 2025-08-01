@@ -114,6 +114,7 @@ etlcm
 expfind
 expls
 Fairmont
+fastsse
 FFLAGS
 FFTW
 fgedebug
@@ -126,6 +127,7 @@ firstlast
 Firstname
 FOIA
 fortl
+fpic
 fsspec
 fsxcompression
 fsxdeployment
@@ -229,6 +231,7 @@ iset
 isidora
 Istack
 itac
+ivybridge
 JCBRNG
 JCPRNG
 jcsda
@@ -287,7 +290,12 @@ MANPATH
 marineda
 Mathematica
 maxresident
+Mbounds
 MCBRNG
+Mchkfpstk
+Mchkptr
+Mchkstk
+mcmodel
 MCPRNG
 mcwi
 mdlcloud
@@ -312,11 +320,17 @@ mpif
 mpiicc
 mpiicp
 mpiicpc
+mpiicx
 mpiifort
+mpiifx
+mpinvc
+mpinvcc
+mpinvf
 MPIROOT
 mpirun
 mplace
 MPMD
+mpxlf
 MRBRNG
 MRPRNG
 Msafeptr
@@ -393,6 +407,7 @@ nulludunits
 NUMA
 numactl
 nvcc
+nvfortran
 nvhpc
 ocio
 odvars
@@ -449,6 +464,8 @@ pygtk
 pygtksourceview
 pyncl
 pyyaml
+qopenmp
+qopt
 qosap
 quotause
 Radeon
