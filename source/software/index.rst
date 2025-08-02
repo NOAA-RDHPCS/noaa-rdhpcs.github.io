@@ -13,4 +13,5 @@ Software
    debuggers/index
    compilers/index
    containers/index
+   VSCode/index
    x2go
