@@ -106,6 +106,9 @@ When prompted for host, enter:
 
   ``First.Last@localhost:12345``
 
+.. note::
+
+  Remember to replace First.Last with your user name, and to specify your actual Local Port Number.
 
 .. note::
 
