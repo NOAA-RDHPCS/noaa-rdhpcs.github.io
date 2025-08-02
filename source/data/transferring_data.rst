@@ -369,27 +369,9 @@ SSH Port Tunnel from Linux-like systems
 ---------------------------------------
 This method requires two sessions on your local machine: one to
 establish the SSH port tunnel, and the other to actually perform the
-copy.
-
-Host names for the CAC bastion Server in Boulder, CO:
-
-.. code:: shell
-
-   bastion-jet.boulder.rdhpcs.noaa.gov
-   bastion-ursa.boulder.rdhpcs.noaa.gov (WIP)
-   bastion-hera.boulder.rdhpcs.noaa.gov
-   mercury-cac.boulder.rdhpcs.noaa.gov
-   bastion-gaea.boulder.rdhpcs.noaa.gov
-
-Host names for the CAC Bastion Server in Princeton, NJ:
-
-.. code:: shell
-
-   bastion-jet.princeton.rdhpcs.noaa.gov
-   bastion-ursa.princeton.rdhpcs.noaa.gov (WIP)
-   bastion-hera.princeton.rdhpcs.noaa.gov
-   mercury-cac.princeton.rdhpcs.noaa.gov
-   bastion-gaea.princeton.rdhpcs.noaa.gov
+copy. To establish the port tunnel, you will need to
+locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
+table.
 
 Before You Begin
 ^^^^^^^^^^^^^^^^^
