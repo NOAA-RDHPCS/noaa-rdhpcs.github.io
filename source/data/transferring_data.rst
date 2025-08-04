@@ -54,7 +54,7 @@ to/from a host that is not accessible, we will need to modify system
 firewalls. See :ref:`firewall-modifications` for directions.
 
 DTNs support ssh-based authentication transfer methods, which
-currently include scp, rsync, and bbcp (Jet and Hera only). Default
+currently include scp, rsync, and sftp. Default
 authentication uses your RSA token.
 
 .. note::
@@ -66,8 +66,6 @@ authentication uses your RSA token.
 | Mercury  | dtn-mercury.fairmont.rdhpcs.noaa.gov |
 +----------+--------------------------------------+
 | Ursa     | dtn-ursa.fairmont.rdhpcs.noaa.gov    |
-+----------+--------------------------------------+
-| Hera     | dtn-hera.fairmont.rdhpcs.noaa.gov    |
 +----------+--------------------------------------+
 | Jet      | dtn-jet.boulder.rdhpcs.noaa.gov      |
 +----------+--------------------------------------+
@@ -132,11 +130,6 @@ desktop/laptop. However, note the following important points:
      - udtn-ursa.fairmont.rdhpcs.noaa.gov
      - :file:`/scratch[34]/data_untrusted/$USER`
      - :file:`/scratch[34]/$USER`
-   * - Hera
-     - noaardhpcs#hera_untrusted
-     - udtn-hera.fairmont.rdhpcs.noaa.gov
-     - :file:`/scratch[12]/data_untrusted/$USER`
-     -
    * - Jet
      - noaardhpcs#jet_untrusted
      - udtn-jet.boulder.rdhpcs.noaa.gov
