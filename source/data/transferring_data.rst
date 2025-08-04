@@ -370,7 +370,7 @@ SSH Port Tunnel from Linux-like systems
 This method requires two sessions on your local machine: one to
 establish the SSH port tunnel, and the other to actually perform the
 copy. To establish the port tunnel, you will need to
-get the appropriate bastion hostname (CAC or RSA) for the host 
+get the appropriate bastion hostname (CAC or RSA) for the host
 you need from the :ref:`bastion_hostnames` table.
 
 Before You Begin
