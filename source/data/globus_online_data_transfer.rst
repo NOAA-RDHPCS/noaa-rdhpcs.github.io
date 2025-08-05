@@ -92,14 +92,6 @@ partner clusters.
        | /gpfs/f6, $HOME
      - NCRC
      - Anywhere
-   * - Hera
-     - noaardhpcs#hera
-       noaardhpcs#hera_untrusted
-     - /scratch1, /scratch2
-       /scratch1/data_untrusted, /scratch2/data_untrusted
-     - NESCC
-     - Trusted Hosts
-       Anywhere
    * - Jet
      - | noaardhpcs#jet
        | noaardhpcs#jet_untrusted
