@@ -354,7 +354,7 @@ between your point of login (typically your desktop) to the remote
 host (typically Hera, Jet or other remote hosts). The port tunnel
 method will work from any system on the network (that is, your local
 machine does not necessarily have to be in the noaa.gov domain). We
-recommend using this in cases where DTN is not available.
+recommend using this in cases where DTN is not accessible.
 
 .. _ssh-tunnel:
 
@@ -362,27 +362,9 @@ SSH Port Tunnel from Linux-like systems
 ---------------------------------------
 This method requires two sessions on your local machine: one to
 establish the SSH port tunnel, and the other to actually perform the
-copy.
-
-Host names for the CAC bastion Server in Boulder, CO:
-
-.. code:: shell
-
-   bastion-jet.boulder.rdhpcs.noaa.gov
-   bastion-ursa.boulder.rdhpcs.noaa.gov (WIP)
-   bastion-hera.boulder.rdhpcs.noaa.gov
-   mercury-cac.boulder.rdhpcs.noaa.gov
-   bastion-gaea.boulder.rdhpcs.noaa.gov
-
-Host names for the CAC Bastion Server in Princeton, NJ:
-
-.. code:: shell
-
-   bastion-jet.princeton.rdhpcs.noaa.gov
-   bastion-ursa.princeton.rdhpcs.noaa.gov (WIP)
-   bastion-hera.princeton.rdhpcs.noaa.gov
-   mercury-cac.princeton.rdhpcs.noaa.gov
-   bastion-gaea.princeton.rdhpcs.noaa.gov
+copy. To establish the port tunnel, you will need to
+get the appropriate bastion hostname (CAC or RSA) for the host
+you need from the :ref:`bastion_hostnames` table.
 
 Before You Begin
 ^^^^^^^^^^^^^^^^^
