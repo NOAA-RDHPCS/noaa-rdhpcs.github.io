@@ -91,7 +91,7 @@ To do so, create a new environment using the ``conda create`` command:
 
 .. code-block:: bash
 
-   $ conda create -p /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013 python=3.10.13
+   $ conda create -p /scratch[34]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013 python=3.10.13
 
 The ``-p`` flag specifies the desired path and name of your new virtual
 environment. The directory structure is case sensitive, so be sure to insert
@@ -119,7 +119,7 @@ to:
    #
    # To activate this environment, use
    #
-   #     $ conda activate /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013
+   #     $ conda activate /scratch[34]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013
    #
    # To deactivate an active environment, use
    #
@@ -129,7 +129,7 @@ Let's activate the new environment:
 
 .. code-block:: bash
 
-   $ conda activate /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013
+   $ conda activate /scratch[34]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013
 
 The path to the environment should now be displayed in "( )" at the beginning
 of your terminal lines, which indicate that you are currently using that
@@ -148,7 +148,7 @@ environment:
    pygraf                   /contrib/miniconda3/4.12.0/envs/pygraf
    regional_workflow         /contrib/miniconda3/4.12.0/envs/regional_workflow
    test_uwtools             /contrib/miniconda3/4.12.0/envs/test_uwtools
-                         *  /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013
+                         *  /scratch[34]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013
 
 Installing packages
 ===================
@@ -266,8 +266,8 @@ provided below:
 
 .. code-block:: bash
 
-   $ conda create -p /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/baseclone --clone base
-   $ conda activate /scratch[12]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/baseclone
+   $ conda create -p /scratch[34]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/baseclone --clone base
+   $ conda activate /scratch[34]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/baseclone
 
 Adding known environment locations
 ----------------------------------

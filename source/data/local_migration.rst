@@ -129,21 +129,15 @@ Local Data Migration note and table
    Do *not* use the ``du`` or ``tree`` command on the lustre filesystems listed below:
 
 
-+--------------+----------------+
-| Cluster      | File System    |
-+==============+================+
-| Jet          | /lfs5          |
-|              |                |
-|              | /lfs6          |
-+--------------+----------------+
-| Hera, Ursa   | /scratch1      |
-|              |                |
-|              | /scratch2      |
-+              |                |
-|              | /scratch3      |
-|              |                |
-|              | /scratch4      |
-+--------------+----------------+
++-------------+-------------+
+| Cluster     | File System |
++=============+=============+
+|| Jet        || /lfs5      |
+||            || /lfs6      |
++-------------+-------------+
+|| Hera, Ursa || /scratch3  |
+||            || /scratch4  |
++-------------+-------------+
 
 
 rsync

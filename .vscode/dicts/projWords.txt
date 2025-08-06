@@ -7,6 +7,7 @@ AOCC
 aomip
 aoml
 Apptainer
+Archprt
 archrpt
 arop
 arso
@@ -19,17 +20,20 @@ awsnoaa
 awsv
 azcopy
 azurestream
+baseclone
 baseprojectname
 bbcp
 bigdir
 bigmem
 bigvftmp
+bindkey
 blacs
 BLAS
 BLDR
 bluearc
 boto
 botocore
+brotlipy
 bucketname
 byacc
 cactest
@@ -39,6 +43,8 @@ CBHN
 ccasm
 CCODE
 ccwrf
+certifi
+cffi
 CFLAGS
 cfsstrat
 cgateway
@@ -93,6 +99,8 @@ dispositioned
 dispositioning
 dlaps
 dmget
+dmgets
+dmgt
 dmlocate
 dmls
 dmwho
@@ -239,6 +247,7 @@ jdoe
 jetmgmt
 joberr
 jobfile
+jobnames
 jobout
 jobscript
 JRBRNG
@@ -246,6 +255,7 @@ JRPRNG
 Jumpstart
 jupy
 kbytes
+keybinds
 keyctl
 keyex
 keygen
@@ -260,6 +270,7 @@ LDFLAGS
 LDTN
 LDTNs
 libcoolkeypk
+libgcc
 libmpi
 libsci
 Linaro
@@ -272,6 +283,7 @@ lmkl
 lmod
 lnetcdf
 lnetcdff
+logfile
 lolcow
 lpdm
 lrank
@@ -419,6 +431,7 @@ openmp
 openmpi
 opensc
 oplapb
+optins
 ORNL
 ortar
 osse
@@ -460,8 +473,10 @@ pubkeys
 publickey
 pycurl
 pygobject
+pygraf
 pygtk
 pygtksourceview
+pyhd
 pyncl
 pyyaml
 qopenmp
@@ -498,6 +513,7 @@ rucdev
 ruclidar
 rucsref
 runscript
+rxvt
 sacccount
 sair
 Sandybridge
@@ -576,8 +592,10 @@ upgrd
 URBRNG
 urllib
 URPRNG
+userdir
 Userspace
 UTDN
+uwtools
 valgrind
 Vampir
 VARNAME

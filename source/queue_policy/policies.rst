@@ -219,7 +219,7 @@ reliability.
 They are NOT backed up, therefore there is a small risk that data could
 be lost without any possibility of recovery.
 HPFS-scratch on current systems include:
-* Ursa/Hera's /scratch(1,2,3,4)
+* Ursa/Hera's /scratch(3,4)
 * Jet's /lfs(5,6)
 * Mercury's /collab2
 
@@ -265,8 +265,8 @@ replicated to another off-site location
 ---------------
 
 Every RDHPCS user is provided a user directory in the /data-untrusted
-directory on each HPFS (scratch) file system on RDHPCS systems (Hera,
-Jet, Niagara, etc.) they have access to.
+directory on each HPFS (scratch) file system on RDHPCS systems (Ursa,
+Jet, Mercury, etc.) they have access to.
 
 Your "$SCRATCH/data_untrusted/$USER" directory is provided so that you
 can move data on and off of the system from any external site, and is
@@ -330,7 +330,7 @@ Filesystem Backup and Data Retention
   * HPFS-scratch file systems are not purged (except as noted),
     it is up to the individual users to clean up old data.
 
-- Stmp on /scratch1-4 is purged weekly on Monday for data older than 30 days.
+- Stmp on /scratch3-4 is purged weekly on Monday for data older than 30 days.
 
 
 .. _home_snapshot:

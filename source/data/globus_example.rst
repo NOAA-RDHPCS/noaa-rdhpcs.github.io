@@ -23,7 +23,7 @@ What you need to have on hand
 * The name and source of the destination endpoints, e.g.,
   *noaardhpcs#ppan_untrusted*, *noaardhpcs#hera*.
 * The file systems exposed to the endpoints (e.g.,
-  ``/collab1/data_untrusted``, ``/scratch1/``).
+  ``/collab1/data_untrusted``, ``/scratch4/``).
 
 What you need to do
 -------------------
@@ -65,7 +65,10 @@ their given names and follow these steps:
 Globus Connect Service is available on the following RDHPCS and
 partner clusters:
 
-**RDHPCS clusters with GCS**
+.. _RDHPCS_GCS_clusters:
+
+RDHPCS clusters with GCS
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -83,20 +86,13 @@ partner clusters:
        /scratch4
      - NESCC
      - Trusted hosts
-   * - Hera
-     - noaardhpcs#hera
-     - /scratch1
-
-       /scratch2
-     - NESCC
-     - Trusted hosts
-   * - Niagara
-     - noaardhpcs#niagara
+   * - Mercury
+     - noaardhpcs#mercury
      - /collab1/data
      - NESCC
      - Trusted hosts
-   * - Niagara
-     - noaardhpcs#niagara_untrusted
+   * - Mercury
+     - noaardhpcs#mercury_untrusted
      - /collab1/data_untrusted
      - NESCC
      - Anywhere
