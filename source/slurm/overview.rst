@@ -1117,7 +1117,7 @@ The ``saccount_params`` will show your current:
          FairShare=1.000 (91/91)
          Partition Access: ALL
          Available QOSes: gpuwf,windfall
-         Directory: /scratch[12]/[portfolio]/projid DiskInUse=206372 GB, Quota=255000 GB, Files=5721717, FileQUota=51000000
+         Directory: /scratch[34]/[portfolio]/projid DiskInUse=206372 GB, Quota=255000 GB, Files=5721717, FileQUota=51000000
 
 .. _slurm-generating-reports:
 

@@ -2528,7 +2528,7 @@ AWS Lustre explained
 The Lustre solution on AWS uses their FSx for Lustre service on the
 backend. The default deployment type we use is 'scratch_2'. The
 'persistent' options are typically aimed at favoring data resilience
-over performance, although 'persistent_2' does let you specify a
+over performance, although 'persistent_3' does let you specify a
 throughput tier. Note that the 'scratch' and 'persistent' deployment
 types in this context are AWS terminology, and are not related to PW's
 definition of 'persistent' or 'ephemeral' Lustre configurations. You
@@ -2536,7 +2536,7 @@ can choose whatever deployment type you prefer and configure it as
 'persistent' or 'ephemeral' in PW.
 
 scratch_2 FSx file systems are sized in 1.2TB increments, so you'll
-want to set the capacity to '2400 GB' if you stick to the scratch_2
+want to set the capacity to '2400 GB' if you stick to the scratch_3
 deployment type. The estimated cost of the config JSON shown below is
 showing as $0.46 per hour for me. Different deployment types might
 have different size increments.

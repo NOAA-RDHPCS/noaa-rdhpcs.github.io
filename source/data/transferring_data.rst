@@ -190,7 +190,7 @@ Transfer a file on Hera to a destination on Jet
 
 .. code-block:: console
 
-  [First.Last@hfe04 ~]$ scp /scratch1/SYSADMIN/nesccmgmt/
+  [First.Last@hfe04 ~]$ scp /scratch3/SYSADMIN/nesccmgmt/
   First.Last/data_file First.Last@dtn-jet.boulder.rdhpcs.noaa.gov:/mnt/lfs5/SYSADMIN/jetmgmt/First.Last/
   Warning: Permanently added the RSA host key for IP address '140.208.168.55' to the list of known hosts.
   First.Last@dtn-jet.boulder.rdhpcs.noaa.gov's password:

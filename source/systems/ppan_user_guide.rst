@@ -385,7 +385,7 @@ directory. If this directory does not exist on the execution host, Slurm does
 
 #. Slurm redirects standard output and standard error to the logfile pointed to
    in the header only after a line is finished executing. If you need a
-   heartbeat to monitor script progress, consider using another meachanism.
+   heartbeat to monitor script progress, consider using another mechanism.
 
 #. If slurm scripts do not end with a POSIX-standard new line character, the
    last line of the script will not execute. Please note that this is not an
@@ -560,7 +560,7 @@ Command:
    User         First.Last      Group  Total Files        Used      Limit / Used
                                                                     Bytes     %
    ----         ----------      -----  -----------       ------     ------------
-   x1e          Joeseph.User        o      212,756        3.32T     4.00T/  83.1
+   x1e          Joseph.User        o      212,756        3.32T     4.00T/  83.1
    z3j          Joe.Scientist       o      192,901       44.62T    45.00T/  99.2
    ......
 
@@ -618,7 +618,7 @@ Command:
    User         First.Last      Group  Total Files        Used      Limit / Used
                                                                     Bytes     %
    ----         ----------      -----  -----------       ------     ------------
-   x1e          Joeseph.User        o      212,756        3.32T     4.00T/  83.1
+   x1e          Joseph.User        o      212,756        3.32T     4.00T/  83.1
    z3j          Joe.Scientist       o      192,901       44.62T    45.00T/  99.2
    ...
 
@@ -652,7 +652,7 @@ Command:
    User         First.Last      Group  Total Files        Used      Limit / Used
                                                                     Bytes     %
    ----         ----------      -----  -----------       ------     ------------
-   x1e          Joeseph.User        o      212,756        3.32T     4.00T/  83.1
+   x1e          Joseph.User        o      212,756        3.32T     4.00T/  83.1
    z3j          Joe.Scientist       o      192,901       44.62T    45.00T/  99.2
    ...
 
@@ -877,7 +877,7 @@ Example:
    User         First.Last      Group  Total Files        Used      Limit / Used
                                                                     Bytes     %
    ----         ----------      -----  -----------       ------     ------------
-   x1e          Joeseph.User        o      212,756        3.32T     4.00T/  83.1
+   x1e          Joseph.User        o      212,756        3.32T     4.00T/  83.1
    z3j          Joe.Scientist       o      192,901       44.62T    45.00T/  99.2
    ...
 
