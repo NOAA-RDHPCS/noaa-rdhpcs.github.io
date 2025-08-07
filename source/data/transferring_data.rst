@@ -162,9 +162,6 @@ desktop/laptop. However, note the following important points:
   seen on the uDTN. The final column in the table above shows the data path on
   a DTN/uDTN, if it differs from the native path on the system.
 
-
-The final column in the table above shows the data path on a DTN/uDTN if it differs from the native path on the system.
-
 Please note that your project directories are not directly
 accessible from some of the uDTNs, so a two-step transfer
 is generally required to move data to/from project
