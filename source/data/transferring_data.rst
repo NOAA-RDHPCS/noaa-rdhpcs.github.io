@@ -156,6 +156,12 @@ desktop/laptop. However, note the following important points:
      - :file:`/collab1/data_untrusted/$USER`
      -
 
+.. attention::
+
+  On Mercury and Ursa, the Directory on the host differs from the Directory as
+  seen on the uDTN. The final column in the table above shows the data path on
+  a DTN/uDTN, that may differ from the native path on the system.
+
 Please note that your project directories are not directly
 accessible from some of the uDTNs, so a two-step transfer
 is generally required to move data to/from project
