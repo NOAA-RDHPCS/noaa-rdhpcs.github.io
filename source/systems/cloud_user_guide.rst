@@ -389,10 +389,12 @@ AWS Contrib storage charge is $0.30 per GB per Month. The cost is calculated
 based on the storage usage. Both AWS and Azure charge based on usage, with a
 pay-as-you-go model like your electricity bill.
 
-GCP charges for provisioned storage capacity, meaning that whether the
-storage is used or not, the project is billed for the allocated amount.
-The default provisioned capacity for the Google Cloud contrib file system is
-2.5 TiB, which costs approximately $768.00 per month.
+GCP charges on contrib volume [NFS] allocated storage. The default size is
+2.5TiB, costing about $768.00 per month. Users can now create an unlimited NFS
+contrib volume with custom IO settings, share it with their project
+members, and attach to a cluster. Older projects come with a contrib volume,
+which can be removed by request. Send email to rdhpcs.cloud.help@noaa.gov, with
+the subject Remove Contrib Volume.
 
 For older projects, a contrib volume may be present by default. This contrib
 volume can be removed by submitting a request to rdhpcs.cloud.help@noaa.gov
