@@ -152,28 +152,6 @@ Parallel Works supports authentication with on-prem HPC
 systems. The ACTIVATE platform works identically on
 Cloud and on-premise systems.
 
-
-Follow the steps to access HPC on-premise systems.
-
-1. From the login portal, click  the user Name.  Select **Account**
-   from the drop down list.
-
-2. Click the **Authentication** tab.
-
-3. Click on the “SSH Keys” line.
-
-4. Copy the “Key” from the “User Workspace”.
-
-5. Append the public SSH key in the on-prem HPC system's controller
-   node's ~/.ssh/authorized_keys file. Save and exit the file.
-
-Repeat this process on all on-prem HPC systems' controller nodes
-to establish connections from Parallel Works.
-
-.. note::
-
-  This access method does not work on Gaea.
-
 **Subscribe to the default template of HPC systems from the Parallel
 Works Marketplace**
 
