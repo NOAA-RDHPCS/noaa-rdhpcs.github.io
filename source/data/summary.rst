@@ -94,7 +94,7 @@ different storage areas are summarized in the list and table below.
     +==========================+=============================================+========+=============+===============+=========+=========+============+==================+
     | User Home                | ``/home/<userid>``                          | NFS    | User set    | 10 GB         | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
-    | Member Work              | ``/lfs[5]/<userid>``                        | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
+    | Member Work              | ``/lfs[5,6]/<userid>``                      | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | User-Shared Applications | ``/contrib/<application>``                  | NFS    | 0755        | N/A           | No      | No      | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
@@ -107,11 +107,11 @@ different storage areas are summarized in the list and table below.
     +==========================+=============================================+========+=============+===============+=========+=========+============+==================+
     | User Home                | ``/home/<userid>``                          | NFS    | User set    | 5 GB          | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
-    | Member Work              | ``/collab1/data/<userid>``                  | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
+    | Member Work              | ``/collab2/data/<userid>``                  | Lustre | Project set | 60 TB         | No      | 60 days | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
-    | Member Work              | ``/collab1/data_untrusted/<userid>``        | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
+    | Member Work              | ``/collab2/data_untrusted/<userid>``        | Lustre | Project set | 20 TB         | No      | 14 days | N/A        | Read/Write       |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
-    | User-Shared Applications | ``/contrib/<application>``                  | NFS    | 0755        | N/A           | No      | No      | N/A        | Read/Write       |
+    | User-Shared Applications | ``/contrib/<application>``                  | N/A    | N/A         | N/A           | N/A     | N/A     | N/A        | N/A              |
     +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
 
   .. tab-item:: Pan
