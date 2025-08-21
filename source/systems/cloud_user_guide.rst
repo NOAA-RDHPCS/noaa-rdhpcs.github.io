@@ -121,8 +121,9 @@ Parallel Works
   <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1G8V0Mua9Dy7oUJ_wI36NAd3kMuMcHyGM/edit>`_.
 * To use the ACTIVATE platform, you must have a NOAA user account and password,
   and a valid :ref:`RSA Token <rsa_instructions>`.
-* You must also have an account on a project allocated to a cloud resource.
-  See :ref:`project_request` for details.
+* You can use Parallel Works to access Cloud clusters (assuming you have a
+  project allocation on the Cloud platform) or on-prem systems. See
+  :ref:`project_request` if you need access to a Cloud project.
 
 Using ACTIVATE
 --------------
