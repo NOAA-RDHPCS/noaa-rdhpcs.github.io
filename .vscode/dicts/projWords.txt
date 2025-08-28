@@ -228,6 +228,7 @@ hurr
 hwrf
 hwrfv
 hybda
+ICAM
 ICHUNK
 icpc
 ifort
@@ -630,4 +631,6 @@ XTHI
 xtmp
 xxdiff
 xzvf
+yubi
+yubikey
 zrtrr

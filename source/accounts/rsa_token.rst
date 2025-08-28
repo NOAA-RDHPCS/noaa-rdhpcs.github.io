@@ -151,3 +151,63 @@ code from the display.
 
 This completes the process. If you have any problems, send email to
 rdhpcs.aim.help@NOAA.gov to open a Helpdesk ticket.
+
+.. _yubikey-user-instructions:
+
+Configuring YubiKey for the NOAA RDHPCS
+=======================================
+
+YubiKey is a multi-platform hardware authentication device that prevents the
+compromise of accounts used to access computers, networks and web applications,
+by requiring the physical possession of a key for successful login. It
+generates a unique code which, with username and password, authenticates a
+user’s identity.
+
+.. image:: /images/yubi.png
+   :align: center
+
+
+As of 10/1/2025, YubiKeys will be required for ICAM access for all Line, Staff
+and Program offices. The MFA mandate includes applications. So, any application
+that requires First.Last authentication, will also require CAC, PIV, or
+Yubikey. This includes resources like the Helpdesk and Service Desk.
+
+YubiKey Setup
+-------------
+
+The YubiKey device is issued by your security office. When you receive it, you
+must register and configure the Yubikey for your account. You’ll then use the
+YubiKey as Multi-Factor identification to RDHPCS sites, as well as any
+application that requires authentication.
+
+To register your NOAA-issued YubiKey:
+
+1. Navigate to https://accounts.noaa.gov.
+
+.. image:: /images/yubi3.png
+   :align: center
+
+2. Log in, using your CAC or username and password. Select **Next** at the
+   Government warning banner.
+
+.. image:: /images/yubi4.png
+
+3. Select Security Key and click **Log In**. The Windows Security screen
+   displays.
+
+.. image:: /images/yubi7.png
+
+4. Select Security Key, and click **Next**.
+   At the Security prompt, click **OK**.
+
+5. Insert your YubiKey into a USB port with the golden circle facing up. If
+   prompted, enter your YubiKey PIN. At the prompt, click **OK**.
+
+6. Tap the blinking icon on your YubiKey when prompted. Select **OK**.
+
+7. Enter **yubikey** as the security key name, and click **SAVE**. On the next
+   screen click ACCEPT.  When you return to the Accounts dashboard, your
+   YubiKey has been configured.
+
+
+
