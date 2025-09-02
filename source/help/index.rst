@@ -357,6 +357,63 @@ following information to assist you:
     * If the command does not include the source and destination directories
       please include that information too.
 
+Recording a Terminal Session
+============================
+
+One way to make it easy for the Help Desk team to diagnose an issue is
+to use ``script``, a Linux utility for recording the terminal.
+
+By providing a quick recording of a user issue, the RDHPCS help desk
+will be able to more quickly diagnose problems and assist users.
+
+Please see the following GIF to see an example of ``script`` in action:
+
+.. image:: /images/script.gif
+
+Using script to Record a Terminal Session
+-----------------------------------------
+
+Start a recording session with the following command:
+
+.. code-block:: shell
+
+    script --timing=helpdesk_timelog helpdesk_recording
+
+Once the recording has started, please replicate the issue by
+running the same commands that caused the issue.
+
+Once the error has been recorded, stop the recording
+with the following command:
+
+.. code-block:: shell
+
+    exit
+
+Now, there should be two new files in the current
+directory: ``helpdesk_recording`` and ``helpdesk_timelog``.
+
+To verify the recording and see what the Help Desk team can see, run
+the following command to playback the recording:
+
+.. code-block:: shell
+
+    scriptreplay --timing=helpdesk_timelog helpdesk_recording
+
+Submitting a Recording to the Help Desk
+---------------------------------------
+
+Once the recording has been reviewed, it is ready to be shared with
+the RDHPCS help team.
+
+The easiest way to share is to create a new directory in your home directory
+named ``for-help-desk``. Please move both the ``helpdesk_recording`` file, as
+well as the ``helpdesk_timelog`` file, into the new "Help Desk" directory.
+Then, let the Help Desk team know by adding this line to the ticket:
+
+.. code-block:: console
+
+    I have recorded an example of the issue -- you can find it in the "for-help-desk" directory in my home directory.
+
 Managing Help Tickets
 =====================
 
