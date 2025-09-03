@@ -177,7 +177,7 @@ the example below where 2 H100 GPUs on 1 node are being requested:
 
 .. code-block:: shell
 
-   sbatch -A mygpu_project -p u1-h100 -q gpu -N 1 –-gres=gpu:h100:2 my_ml.job
+   sbatch -A mygpu_project -p u1-h100 -q gpu -N 1 --gres=gpu:h100:2 my_ml.job
 
 Using GPU Resources Without a GPU allocation
 --------------------------------------------
@@ -197,7 +197,7 @@ being requested:
 
 .. code-block:: shell
 
-   sbatch -A mycpu_project -p u1-h100 -q gpuwf -N 1 –-gres=gpu:h100:2 my_ml.job
+   sbatch -A mycpu_project -p u1-h100 -q gpuwf -N 1 --gres=gpu:h100:2 my_ml.job
 
 
 Using the Exploratory GPU Resources
@@ -237,7 +237,7 @@ Run one of the following commands to get interactive access to these nodes:
 .. code-block:: shell
 
   salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 --gres=gpu:gh200:1
-  salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 –-gres=gpu:mi300x:2
+  salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 --gres=gpu:mi300x:2
 
 In the examples above, the first example requests one node
 with one GH200 GPU and the second example requests one node with
