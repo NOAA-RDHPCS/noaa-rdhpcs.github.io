@@ -27,6 +27,12 @@ it for use with your NOAA accounts at https://accounts.noaa.gov,
 **and** follow the additional steps below to configure and register
 your NOAA issued Yubikey for RDHPCS use.
 
+.. note::
+
+   If you have lost your NOAA issued Yubikey and have a replacement
+   Yubikey, you will need to delete the lost Yubikey at the
+   `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_
+
 Follow these steps to configure **Slot 2** with a **Yubico OTP** credential:
 
 1. You must have registered your NOAA issued Yubikey at https://accounts.noaa.gov.
