@@ -122,7 +122,7 @@ Parallel Works
 * To use the ACTIVATE platform, you must have a NOAA user account and password,
   and a valid :ref:`RSA Token <rsa_instructions>`.
 * You can use Parallel Works to access Cloud clusters (assuming you have a
-  project allocation on the Cloud) or on-prem systems. See
+  project allocation on the Cloud platform) or on-prem systems. See
   :ref:`project_request` if you need access to a Cloud project.
 
 Using ACTIVATE
@@ -219,6 +219,148 @@ multiple of 2.8 TB.
 .. note::
 
   Be aware that LFS is an expensive storage.
+
+Migrating Legacy OS Snapshots to v3 Clusters
+--------------------------------------------
+
+Overview
+^^^^^^^^
+
+*OS snapshots*, also known as *bootable* snapshots, provide a convenient way to
+make modifications to the base OS image used on PW cloud clusters without
+applying the changes to a new cluster every time you start it.
+
+Parallel Works' next generation cloud cluster revamps the way OS snapshots are
+created. This article unpacks the differences between the legacy and next-gen
+systems, and also provides steps to migrate your existing custom snapshots to
+the new clusters.
+
+If you need further assistance migrating legacy snapshots to the new cluster
+provider, send email to rdhpcs.cloud.help@noaa.gov, with the subject line
+Migrating Legacy Snapshots.
+
+.. _os-snapshots-on-next-gen-clusters:
+
+Creating OS snapshots on next-gen clusters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On the previous system, OS snapshots were pre-scripted, and provisioned by
+filling out a web form. This could be clunky, as errors in the script or
+temporary network hiccups could cause the build to fail, requiring
+you to repeat the process until you got a usable image to finish building.
+
+On the new clusters, the login node's root disk can be snapshotted at any time.
+This allows you to make changes on a running cluster, and snapshot it when you
+are ready to create a bootable disk.
+
+ After you make changes to your login node, click the **Create Snapshot** on
+ the root disk from your cluster's session page:
+
+.. image:: /images/legacy-snap1.png
+
+At the prompt, give the snapshot a name. The snapshot name must be between 3
+and 51 characters, begin with a letter, and use only lowercase letters,
+numbers, and hyphens:
+
+.. image:: /images/legacy-snap2.png
+
+When you click **Create**, you will automatically be redirected to the
+snapshots page, where you can monitor its provisioning status.
+
+.. image:: /images/legacy-snap3.png
+
+It might take a
+few minutes for the snapshot to finish provisioning.
+To expand the provisioning status log, click the button in the Status column.
+
+OS snapshots can be identified on the snapshots page by the **Bootable**
+column. You can use the **Group by** dropdown at the top of the page to group
+all of your OS snapshots together:
+
+.. image:: /images/legacy-snap4.png
+
+Once your OS snapshot is provisioned, you can select it as a usable
+image in your cluster configuration:
+
+.. image:: /images/legacy-snap5.png
+
+For more information about creating OS snapshots, see the
+`Parallel Works User Guide <https://parallelworks.com/docs/compute/creating-os-snapshots>_`.
+
+Migrating disk snapshots on next-gen clusters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Legacy OS snapshots do not appear as available options when you select your
+image on the next-generation cluster provider. But you can use these
+images by using the JSON editor on the cluster configuration page.
+
+The first step is to find your legacy OS snapshot's full resource ID. This
+resource ID is the path to the image in the CSP to allow the system to find it.
+The easiest way to do this is to review an existing legacy cluster definition
+that has been configured to use a legacy OS snapshot. From the configuration
+page, go to the JSON tab and look for the 'controller_image' line. If your OS
+snapshot is only being used on a Slurm partition, find the partition and look
+for the 'elastic_image' line:
+
+
+.. code-block:: console
+
+  {
+  "provider_version": "",
+  "multi_user": false,
+  "cluster_config": {
+    "architecture": "",
+    "availability_zone": "us-east-1b",
+    "controller_efa": false,
+    "controller_image": "ami-083d3b6df4007304e",
+    "export_fs_type": "xfs",
+    "image_disk_count": 1,
+    "image_disk_name": "snap-0a127a48212c4e816",
+    "image_disk_size_gb": 350,
+    "management_shape": "c5n.2xlarge",
+    "partition_config": [
+      {
+        "architecture": "",
+        "availability_zone": "us-east-1b",
+        "default": "YES",
+        "efa": true,
+        "elastic_image": "ami-083d3b6df4007304e",
+        "enable_spot": false,
+        "instance_type": "c5n.18xlarge",
+        "max_node_num": 102,
+        "name": "compute",
+        "capacity_reservation": false
+      },
+    ...
+
+
+Once you have your image ID, go to the configuration page of your new cluster
+and open the JSON editor. If the JSON button is not visible on the top action
+bar, it can be found under the extended menu:
+
+.. image:: /images/legacy-snap6.png
+
+The legacy snapshot can be configured on the **'controllerImage'** line, as
+well as any relevant **'elasticImage'** lines in your Slurm partitions. When
+you are finished configuring the cluster, click **Save Json**:
+
+.. image:: /images/legacy-snap7.png
+
+You can confirm the image selections from the definition page:
+
+.. image:: /images/legacy-snap8.png
+
+
+Finally, start your cluster to boot it into your legacy snapshot. Once the
+cluster becomes active,  you can follow the Creating OS snapshots on next-gen
+clusters steps to create a new OS snapshot that is selectable from the image
+dropdown. When you have confirmed that your new image is functional, you may
+delete the legacy snapshot. Navigate  to the *Cloud Snapshots* page under
+your account, and click the trash can icon:
+
+.. image:: /images/legacy-snap9.png
+
+
 
 Running a Jupyter workflow on a Slurm compute node
 --------------------------------------------------
