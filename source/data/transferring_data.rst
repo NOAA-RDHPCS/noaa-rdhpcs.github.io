@@ -45,6 +45,8 @@ Globus Connect
 Details and examples are available in the
 :ref:`globus_online_data_transfer` section.
 
+.. _transferring-data-trusted-dtn:
+
 Trusted Data Transfer Nodes (DTN)
 =================================
 
@@ -290,8 +292,17 @@ automatically, we support unattended data transfers from @noaa.gov
 hosts and other trusted hosts. The actual data flow can be in either
 direction, but the connection must be initiated from the remote host.
 
-.. Note::
-    Unattended data transfers are only allowed on the Trusted DTNs.
+.. note::
+
+    Unattended data transfers are only allowed on the :ref:`Trusted DTNs
+    <transferring-data-trusted-dtn>`.
+
+.. important::
+
+    Unattended data transfers to Gaea can only be completed using `Globus
+    <https://app.globus.org/>`_, or another method that can
+    authenticate using an X509 certificate, e.g., :command:`gsiscp` or
+    :command:`globus-url-copy`.
 
 This capability is intended mainly for projects that can demonstrate a
 need where unattended data transfer is required. If you need this
@@ -305,15 +316,16 @@ capability, answer the following questions and follow the steps below:
 * What is the name of the NOAA-RDHPCS machine that you're trying to
   access? We will refer to this as **RDHPCS-HOST**.
 
-1. Copy the ~/.ssh/id_rsa.pub from Remote Host above and place it
-on the RDHPCS-HOST in the directory: **~/scp-pubkeys/**.
-2. On the RDHPCS-HOST, rename this file so that is is clear where it came
-from. For example, if **Remote Host** was "tide", you can rename the file
-as follows:
+1. Copy the ~/.ssh/id_rsa.pub from the remote host above and place it on the
+   RDHPCS-HOST in the directory: :file:`~/scp-pubkeys/`.
 
-.. code-block:: shell
+2. On the RDHPCS-HOST, rename this file so that is is clear where it came from.
+   For example, if **Remote Host** was "tide", you can rename the file as
+   follows:
 
-    mv ~/scp-pubkeys/id_rsa.pub ~/scp-pubkeys/id_rsa.pub-tide
+   .. code-block:: console
+
+       $ mv ~/scp-pubkeys/id_rsa.pub ~/scp-pubkeys/id_rsa.pub-tide
 
 3. Once this is done, send a help request with subject line **Request
    for unattended data transfer capability"** Include the following
@@ -325,13 +337,15 @@ as follows:
 
 .. note::
 
-    **Do not put keys in your home .ssh directory. Put them in
-    $HOME/scp-pubkeys directory on RDHPCS-HOST.**
+    Do not put keys in your home .ssh directory. Put them in
+    :file:`$HOME/scp-pubkeys` directory on RDHPCS-HOST.
 
-**NOTE TO WCOSS USERS ONLY:** in your ~/.ssh directory. It is located
-in this file on WCOSS2: **/u/sshKeys/$USER/id_rsa.pub**. You don't
-have to provide the IP addresses when you fill out the information
-requested.
+.. admonition:: WCOSS2 Users Only
+   :class: important
+
+   The public key directory on WCOSS2 is :file:`/u/sshKeys/$USER`. You don't
+   have to provide the IP addresses when you fill out the information
+   requested.
 
 If you do not have an RSA key on the remote system (that is, if you do
 not have an id_rsa.pub file in your $HOME/.ssh directory) you can
