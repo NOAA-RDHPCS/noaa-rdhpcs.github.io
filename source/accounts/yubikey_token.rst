@@ -22,10 +22,14 @@ physical possession of a key for successful login.
 Yubikey Registration
 --------------------
 
-The NOAA Yubikey is issued by your security office.  You must register
-it for use with your NOAA accounts at https://accounts.noaa.gov,
-**and** follow the additional steps below to configure and register
-your NOAA issued Yubikey for RDHPCS use.
+The NOAA Yubikey is issued by your security office.  
+
+**If you do not have a NOAA issued YubiKey, contact your local I/T
+staff, your primary email admin, or your security office.**
+
+You must register your NOAA issued YubiKey for use with your NOAA
+accounts at https://accounts.noaa.gov, **and** follow the additional
+steps below to configure and register your Yubikey for RDHPCS use.
 
 .. note::
 
@@ -38,7 +42,8 @@ your NOAA issued Yubikey for RDHPCS use.
 *Short Press* **you have been using .**
 
 Follow these steps to configure **Long Press Slot 2** with a **Yubico
-OTP** credential:
+OTP** credential.  You can safely restart these instructions and
+re-register the *Yubico OTP* credential **in Long Press Slot 2**:
 
 1. You must have registered your NOAA issued Yubikey at https://accounts.noaa.gov.
 
