@@ -33,7 +33,12 @@ your NOAA issued Yubikey for RDHPCS use.
    Yubikey, you will need to delete the lost Yubikey at the
    `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_
 
-Follow these steps to configure **Slot 2** with a **Yubico OTP** credential:
+**These steps create a** *new* **token on your Yubikey in** *Slot 2*,
+**the** *Long Press* **slot.  It is separate and different from the**
+*Short Press* **you have been using .**
+
+Follow these steps to configure **Long Press Slot 2** with a **Yubico
+OTP** credential:
 
 1. You must have registered your NOAA issued Yubikey at https://accounts.noaa.gov.
 
