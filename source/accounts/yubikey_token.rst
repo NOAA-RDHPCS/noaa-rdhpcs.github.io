@@ -10,7 +10,7 @@ certificates), and helps prevent the compromise of accounts used to
 access computers, networks and web applications by requiring the
 physical possession of a key for successful login.
 
-.. image:: /images/yubi-usbc.png
+.. image:: /images/yubi-usbac.png
    :align: center
 
 .. important::
