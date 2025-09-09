@@ -22,7 +22,7 @@ physical possession of a key for successful login.
 Yubikey Registration
 --------------------
 
-The NOAA Yubikey is issued by your security office.  
+The NOAA Yubikey is issued by your security office.
 
 **If you do not have a NOAA issued YubiKey, contact your local I/T
 staff, your primary email admin, or your security office.**
@@ -45,9 +45,26 @@ Follow these steps to configure **Long Press Slot 2** with a **Yubico
 OTP** credential.  You can safely restart these instructions and
 re-register the *Yubico OTP* credential **in Long Press Slot 2**:
 
-1. You must have registered your NOAA issued Yubikey at https://accounts.noaa.gov.
+1. You must have registered your NOAA issued Yubikey at
+   https://accounts.noaa.gov.  Navigate to your `NOAA Accounts profile
+   page
+   <https://accounts.noaa.gov/enduser/?realm=noaa-online#/profile>`_
+   and look at **MFA Enrollment** for a green checkmark and **Yubikey
+   registered**
+
+.. image:: /images/noaa-accounts-profile.png
+        :scale: 70%
+
+.. important::
+
+   DO NOT PROCEED until you have registered your NOAA issued YubiKey
+   at https://accounts.noaa.gov
 
 2. Download and install the `YubiKey Manager <https://www.yubico.com/support/download/yubikey-manager/>`_
+
+.. note::
+
+   **You may need to use a personal computer for these steps.**
 
 3. Insert your NOAA issued Yubikey into an available USB slot
 
