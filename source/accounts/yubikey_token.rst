@@ -1,5 +1,13 @@
 .. _yubikey-user-instructions:
 
+.. important::
+
+   **THESE ARE PRELIMINARY INSTRUCTIONS THAT CANNOT BE FOLLOWED COMPLETELY YET**
+
+.. important::
+
+   **THESE ARE PRELIMINARY INSTRUCTIONS THAT CANNOT BE FOLLOWED COMPLETELY YET**
+
 Configuring Yubikey for the NOAA RDHPCS
 =======================================
 
