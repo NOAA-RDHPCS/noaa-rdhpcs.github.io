@@ -27,6 +27,13 @@ The NOAA Yubikey is issued by your security office.
 **If you do not have a NOAA issued YubiKey, contact your local I/T
 staff, your primary email admin, or your security office.**
 
+If you do not know *any* of those details, start by contacting your
+mail admin.  Log into the `NOAA Staff Directory
+<https://nsd.rdc.noaa.gov/member/details>`_.  Click your name on
+the right hand side, then click **View my Info**.  Click the link
+**Primary Mail Admin** to send an email to your mail admin to start your
+Yubikey request.
+
 You must register your NOAA issued YubiKey for use with your NOAA
 accounts at https://accounts.noaa.gov, **and** follow the additional
 steps below to configure and register your Yubikey for RDHPCS use.
@@ -39,7 +46,12 @@ steps below to configure and register your Yubikey for RDHPCS use.
 
 **These steps create a** *new* **token on your Yubikey in** *Slot 2*,
 **the** *Long Press* **slot.  It is separate and different from the**
-*Short Press* **you have been using .**
+*Short Press* **you have been using.**
+
+.. note::
+
+   A *Long Press* means touch **and hold for three (3) seconds** 
+
 
 Follow these steps to configure **Long Press Slot 2** with a **Yubico
 OTP** credential.  You can safely restart these instructions and
@@ -64,12 +76,16 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
 
 .. note::
 
-   **You may need to use a personal computer for these steps.**
+   If you are working on a Government Provided System (Government
+   Furnished Equipment (GFE)) you will need to request a software
+   installation from your local I/T office.  You may find it simpler
+   and easier to use a personal computer for the following steps.
 
 3. Insert your NOAA issued Yubikey into an available USB slot
 
 4. Open the **YubiKey Manager** from the **Start Menu** (Windows) or
-   **Applications** folder (Mac).
+   **Applications** folder (Mac).  Linux users start it from the
+   command-line or wherever it gets installed.
 
    .. image:: /images/yk-mgr-main.png
               :scale: 40%
