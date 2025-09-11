@@ -8,8 +8,11 @@
 
    **THESE ARE PRELIMINARY INSTRUCTIONS THAT CANNOT BE FOLLOWED COMPLETELY YET**
 
+YubiKey
+=======
+
 Configuring Yubikey for the NOAA RDHPCS
-=======================================
+---------------------------------------
 
 A Yubikey is an “electronic physical keyring” that is plugged into an
 available USB slot on your computer. Like a keyring, a Yubikey holds
