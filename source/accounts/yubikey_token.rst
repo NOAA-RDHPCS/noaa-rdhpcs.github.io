@@ -8,8 +8,11 @@
 
    **THESE ARE PRELIMINARY INSTRUCTIONS THAT CANNOT BE FOLLOWED COMPLETELY YET**
 
+YubiKey
+=======
+
 Configuring Yubikey for the NOAA RDHPCS
-=======================================
+---------------------------------------
 
 A Yubikey is an “electronic physical keyring” that is plugged into an
 available USB slot on your computer. Like a keyring, a Yubikey holds
@@ -89,11 +92,16 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
    installation from your local I/T office.  You may find it simpler
    and easier to use a personal computer for the following steps.
 
+.. note::
+
+   If you are a GFDL Linux user, the Yubikey Manager package is
+   installed on the GFDL workstations and does not need to be
+   installed. Proceed with Step 3, below.
+
 3. Insert your NOAA issued Yubikey into an available USB slot
 
 4. Open the **YubiKey Manager** from the **Start Menu** (Windows) or
-   **Applications** folder (Mac).  Linux users start it from the
-   command-line or wherever it gets installed.
+   **Applications** folder (Mac).  *Linux users, skip ahead to step 4-Linux.*
 
    .. image:: /images/yk-mgr-main.png
               :scale: 40%
@@ -137,11 +145,48 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
   .. note::
      **Slot 2** may show as being configured.  It is safe to overwrite.
 
+Skip ahead to step 10.
+
+.. note::
+
+   These set of instructions are for Linux users only
+
+4-Linux: Open a terminal window.
+
+5-Linux: Type (or copy and paste) the following **ykman** command
+
+.. code-block:: console
+
+   ykman otp yubiotp 2 --serial-public-id --generate-private-id --generate-key
+
+**Example:**
+
+.. code-block:: console
+
+        ykman otp yubiotp 1 --serial-public-id --generate-private-id --generate-key
+        Using YubiKey serial as public ID: vvcccbn*****
+        Using a randomly generated private ID: a36ad3d*****
+        Using a randomly generated secret key: 4de7b4a69faa75e779a8b0869b0*****
+        Program a YubiOTP credential in slot 2? [y/N]: y
+
+- Record the **Public ID** and **Secret Key** in your favorite plain
+  text editor. You will not be able to retrieve this information again
+  after completion. We will use this information to complete the
+  YubiKey enrollment process.
+
+- Type **y** and press **<ENTER>** to confirm the changes on the
+  YubiKey. The changes will be written to the YubiKey.
+
+  .. note::
+     **Slot 2** may show as being configured.  It is safe to overwrite.
+
+Continue onwards to the next step, step 10.
+
 10. In a web browser, navigate to the `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_
 
 .. image:: /images/yk-aim.png
 
-- Enter the **Secret Key** from Step 9
+- Enter the **Secret Key** from Step 9 or 5-Linux.
 
 - Enter a 6 to 8 digit PIN.  You may choose to re-use the PIN you use
   for your RSA token to make it easier to remember.
