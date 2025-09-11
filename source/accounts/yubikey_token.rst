@@ -94,9 +94,9 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
 
 .. note::
 
-   If you are a GFDL Linux user, the yubikey-manager package is
+   If you are a GFDL Linux user, the Yubikey Manager package is
    installed on the GFDL workstations and does not need to be
-   installed.
+   installed. Proceed with Step 3, below.
 
 3. Insert your NOAA issued Yubikey into an available USB slot
 
