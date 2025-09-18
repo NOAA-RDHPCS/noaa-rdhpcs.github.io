@@ -131,7 +131,7 @@ Using ACTIVATE
 
 Users access the ACTIVATE platform through the Parallel Works NOAA Portal,
 using CAC or MFA authentication method.  On the landing page, enter your
-NOAA user name, and your PIN and SecurID OTP.
+NOAA user name and password, and authenticate using the YubiKey.
 
 Add a workflow to my account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
