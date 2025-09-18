@@ -51,6 +51,7 @@ cfsstrat
 cgateway
 chdir
 checkjob
+checkmark
 chgrp
 chicklet
 ciaqex
@@ -594,6 +595,7 @@ upgrd
 URBRNG
 urllib
 URPRNG
+usbac
 userdir
 Userspace
 UTDN
@@ -607,6 +609,7 @@ vimdiff
 vjet
 VSIZE
 vtune
+vvcccbn
 wallclock
 wamgip
 wamipe
@@ -632,6 +635,9 @@ XTHI
 xtmp
 xxdiff
 xzvf
+ykman
 yubi
+Yubico
 yubikey
+yubiotp
 zrtrr
