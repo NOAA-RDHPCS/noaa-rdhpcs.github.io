@@ -133,6 +133,9 @@ Users access the ACTIVATE platform through the Parallel Works NOAA Portal,
 using CAC or MFA authentication method.  On the landing page, enter your
 NOAA user name and password, and authenticate using the YubiKey.
 
+For YubiKey support, open a help desk ticket. Send email to oar.gfdl.help@noaa.gov
+with **YubiKey** in the subject line.
+
 Add a workflow to my account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
