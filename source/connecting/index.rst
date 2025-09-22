@@ -91,8 +91,8 @@ Bastion Hostnames
 .. |HRPRNG|	replace:: hera-rsa.princeton.rdhpcs.noaa.gov
 .. |HRBRNG|	replace:: hera-rsa.boulder.rdhpcs.noaa.gov
 
-.. |JCPRNG|	replace:: jet.princeton.rdhpcs.noaa.gov
-.. |JCBRNG|	replace:: jet.boulder.rdhpcs.noaa.gov
+.. |JCPRNG|	replace:: bastion-jet.princeton.rdhpcs.noaa.gov
+.. |JCBRNG|	replace:: bastion-jet.boulder.rdhpcs.noaa.gov
 .. |JRPRNG|	replace:: jet-rsa.princeton.rdhpcs.noaa.gov
 .. |JRBRNG|	replace:: jet-rsa.boulder.rdhpcs.noaa.gov
 
