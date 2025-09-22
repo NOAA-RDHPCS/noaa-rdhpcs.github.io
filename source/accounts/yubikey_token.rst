@@ -11,6 +11,8 @@
 YubiKey
 =======
 
+.. _configure_yubikey:
+
 Configuring Yubikey for the NOAA RDHPCS
 ---------------------------------------
 
