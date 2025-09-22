@@ -149,7 +149,9 @@ linkcheck_ignore = [
     r'https://sslvpn\.rdhpcs\.noaa\.gov/',
     r'https://docutils\.sourceforge\.net/rst\.html',
     r'https://www\.amd\.com/en/products/accelerators/instinct/mi300/mi300x\.html',
-    r'https://www\.gnu\.org/software/.*?/'
+    r'https://www\.gnu\.org/software/.*?/',
+    r'https://accounts\.noaa\.gov/',
+    r'https://nsd.rdc.noaa.gov/'
 ]
 
 linkcheck_retries = 3
