@@ -525,6 +525,7 @@ Sandybridge
 Scalapack
 SCHEDNODES
 Schnepp
+scriptreplay
 seaglider
 Secur
 securid
@@ -577,6 +578,7 @@ TFLOPS
 Theia
 thiea
 TIMELIMIT
+timelog
 timesout
 tirpc
 tjet

@@ -68,13 +68,22 @@ Systems
 
    Systems <systems/index>
 
-Data Storage and Transfers
-==========================
+Data Storage
+============
 
 .. toctree::
    :maxdepth: 2
 
-   data/index
+   data storage/index
+
+Data Transfers
+==============
+
+.. toctree::
+   :maxdepth: 2
+
+   data transfers/index
+
 
 Queue Policy
 ============
