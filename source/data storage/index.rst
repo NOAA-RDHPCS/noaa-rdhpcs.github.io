@@ -11,7 +11,7 @@ Below we give an overview and explain where each storage area is mounted.
 
 .. _summary-of-storage-areas:
 
-
+========================
 Summary of Storage Areas
 ========================
 
@@ -461,7 +461,7 @@ the GFDL workstations, and using Globus.
 
 .. _nescc_hpss:
 
-
+==========
 NESCC HPSS
 ==========
 
@@ -493,12 +493,12 @@ For questions regarding the HPSS system, email rdhpcs.hpss.help@noaa.gov.
 
 
 Gaining Access to use HPSS
-==========================
+--------------------------
 
 .. _new_hpss_user_requests:
 
 New HPSS User Requests
-======================
+-----------------------
 
 Access to an HPSS project must be requested.  A HPSS user must be a current
 user of a NOAA HPC compute resource (RDHPC or WCOSS) to have access to HPSS.
@@ -837,7 +837,7 @@ Expired Data Deletion Process
 .. _user_notification:
 
 User Notification
-~~~~~~~~~~~~~~~~~
+-----------------
 
 Users will be notified of expired data via posted lists and email. These
 notifications will take place on or before the first day of the month following
@@ -860,7 +860,7 @@ expired files they own. Once deleted these files cannot be recovered.
 .. _expired_data_deletions:
 
 Expired Data - Deletions
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 The following table maps out when future deletions will take place.
 
@@ -996,7 +996,7 @@ through the archive file.
 .. _htar_cookbook:
 
 HTAR Cookbook
-~~~~~~~~~~~~~
+-------------
 
 .. _creating_an_htar_archive_file_example:
 
@@ -1082,7 +1082,7 @@ For example:
 .. _hsi_basic_usage:
 
 HSI Basic Usage
-~~~~~~~~~~~~~~~
+---------------
 
 HSI can accept input several different way.
 
@@ -1165,7 +1165,7 @@ directory foo on the local system.
 .. _hsi_cookbook:
 
 HSI Cookbook
-~~~~~~~~~~~~
+------------
 
 .. rubric:: Moving Files/Directories in HPSS
 
@@ -1384,7 +1384,7 @@ For additional questions, please email: rdhpcs.hpss.help@noaa.gov.
 
 .. _gfdl_archive:
 
-
+============
 GFDL Archive
 ============
 
@@ -1413,7 +1413,7 @@ For questions regarding the HPSS system, email oar.gfdl.help@noaa.gov.
 
 
 Gaining Access to use the GFDL Archive
-======================================
+--------------------------------------
 
 All users with a GFDL account will have a personal archive directory.
 

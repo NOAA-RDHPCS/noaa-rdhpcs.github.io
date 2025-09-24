@@ -1,8 +1,17 @@
 .. _Data_Transfers:
 
+
+
 ##############
 Data Transfers
 ##############
+
+.. _data-transfer-overview:
+
+========
+Overview
+========
+
 
 RDHPCS provides several methods to transfer data to and from RDHPCS
 systems. Each method has  advantages and
@@ -173,7 +182,7 @@ Firewall Exception Terms
 
 .. _transferring-data:
 
-
+=================
 Transferring Data
 =================
 
@@ -883,8 +892,6 @@ Include the following information in the request:
   you will be doing the data transfers
 
 
-----
-
 Example
 -------
 
@@ -936,6 +943,7 @@ options. Please work with your local network administrators to help
 tune your local hosts to maximize network performance.
 
 
+===========================
 Globus Online Data Transfer
 ===========================
 
@@ -949,7 +957,7 @@ Click here to access `Globus Documentation <https://docs.globus.org/guides/>`_.
 Click here to review the `Globus Tutorial <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`_
 
 Overview
---------
+========
 
 An endpoint is a file transfer location (computer/server) accessible
 to Globus. A collection is a server with a related access method to
@@ -989,7 +997,7 @@ Example
 .. _globus_collection_summary:
 
 RDHPCS Globus Collection Summary
---------------------------------
+================================
 
 Globus Connect Service is available on the following RDHPCS and
 partner clusters.
@@ -1055,7 +1063,7 @@ partner clusters.
      - Anywhere
 
 NOAA RDHPCS Globus Endpoint Types
-----------------------------------
+=================================
 
 .. Note::
 
