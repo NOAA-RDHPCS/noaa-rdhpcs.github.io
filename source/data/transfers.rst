@@ -321,12 +321,12 @@ desktop/laptop. However, note the following important points:
    * - Gaea C5/F5
      - noaardhpcs#gaea
      - N/A
-     - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
+     - :file:`/gpfs/f5`, :file:`/ncrc/home[12]/$USER`
      -
    * - Gaea C6/F6
      - noaardhpcs#gaea_f6
      - N/A
-     - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
+     - :file:`/gpfs/f6`, :file:`/ncrc/home[12]/$USER`
      -
    * - Orion
      - msuhpc2#orion-dtn
