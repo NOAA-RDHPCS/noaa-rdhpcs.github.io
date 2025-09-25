@@ -254,6 +254,7 @@ jobout
 jobscript
 JRBRNG
 JRPRNG
+jsmith
 Jumpstart
 jupy
 kbytes
@@ -633,5 +634,6 @@ xtmp
 xxdiff
 xzvf
 yubi
+Yubico
 yubikey
 zrtrr
