@@ -1,7 +1,5 @@
 .. _Data_Transfers:
 
-
-
 ##############
 Data Transfers
 ##############
@@ -53,23 +51,24 @@ Data Transfer Methods
   method is available when other choices are not available or optimal.
 
 
-.. _globus_online_data_transfer:
+.. _globus:
 
 Globus
 ------
 
-Globus Connect Service is available on all RDHPCS systems (Hera,Mercury,Jet,
-PPAN, Gaea, Orion and Hercules) and we encourage its use over other methods
-whenever possible. Globus Connect Service is used to transfer data between 2
+Globus Connect Service is available on all RDHPCS systems (Hera, Mercury, Jet,
+PPAN, Gaea, Orion, and Hercules) and we encourage its use over other methods
+whenever possible. Globus Connect Service is used to transfer data between
 Globus endpoints. A Globus endpoint is a file transfer location
 (computer/server) accessible to Globus. To transfer data, use your browser to
-connect to the Globus app, authenticate to both endpoints, navigate to the
-desired directory for each endpoint, select the file(s)/directory(s) to be
-transferred, and initiate the transfer.  The movement of data will then be
-managed and supervised in the background. You may close the browser or leave
-the browser open. The current status of your request is displayed if you need
-it. When the transfer is complete, you will be notified by email. Please see
-the '''[[Globus Online Data Transfer]]''' page for complete details.
+connect to the `Globus App`_, authenticate to each endpoint, then
+navigate to the desired directory, select the
+file(s)/directory(s) to be transferred, and initiate the transfer.  The
+movement of data will be managed and supervised in the background. You may
+close the browser or leave the browser open. The current status of your request
+is displayed if you need it. When the transfer is complete, you will be
+notified by email. Please see :ref:`globus_online_data_transfer`
+for complete details.
 
 Some use cases that involve sites outside the RDHPCS program may not
 support Globus. In these cases, you can use the other methods
@@ -319,8 +318,13 @@ desktop/laptop. However, note the following important points:
      - udtn-jet.boulder.rdhpcs.noaa.gov
      - :file:`/lfs[56]/data_untrusted/$USER`
      -
-   * - Gaea
+   * - Gaea C5/F5
      - noaardhpcs#gaea
+     - N/A
+     - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
+     -
+   * - Gaea C6/F6
+     - noaardhpcs#gaea_f6
      - N/A
      - :file:`/gpfs/f[56]`, :file:`/ncrc/home[12]/$USER`
      -
@@ -482,9 +486,8 @@ direction, but the connection must be initiated from the remote host.
 .. important::
 
     Unattended data transfers to Gaea can only be completed using `Globus
-    <https://app.globus.org/>`_, or another method that can
-    authenticate using an X509 certificate, e.g., :command:`gsiscp` or
-    :command:`globus-url-copy`.
+    App`_, or another method that can authenticate using an X509 certificate,
+    e.g., :command:`gsiscp` or :command:`globus-url-copy`.
 
 This capability is intended mainly for projects that can demonstrate a
 need where unattended data transfer is required. If you need this
@@ -727,7 +730,7 @@ In either case, you will be asked for a password. Enter the password
 from your RSA token (not your passphrase). Your response should be
 your PIN+Token code.
 
-SSH Port Tunnel For PuTTy Windows Systems
+SSH Port Tunnel For PuTTY Windows Systems
 -----------------------------------------
 
 PuTTY is an SSH client, used to configure and initiate connection.
@@ -943,6 +946,8 @@ options. Please work with your local network administrators to help
 tune your local hosts to maximize network performance.
 
 
+.. _globus_online_data_transfer:
+
 ===========================
 Globus Online Data Transfer
 ===========================
@@ -970,9 +975,9 @@ find source and target endpoints for your transfer, then select
 directories or files to be transferred. The transfer itself is a
 background process.
 
-To copy a file, several files, or an entire directory between two systems, navigate to `Globus <https://app.globus.org/>`_.
- Locate the source and target endpoints by their given names and
- follow these steps:
+To copy a file, several files, or an entire directory between two systems,
+navigate to the `Globus App <https://app.globus.org/>`_.  Locate the source and
+target endpoints by their given names and follow these steps:
 
 
  #. Authenticate yourself to both endpoints.
