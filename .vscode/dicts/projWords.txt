@@ -52,6 +52,7 @@ cfsstrat
 cgateway
 chdir
 checkjob
+checkmark
 chgrp
 chicklet
 ciaqex
@@ -599,6 +600,7 @@ upgrd
 URBRNG
 urllib
 URPRNG
+usbac
 userdir
 Userspace
 UTDN
@@ -638,5 +640,6 @@ xtmp
 xxdiff
 xzvf
 yubi
+Yubico
 yubikey
 zrtrr
