@@ -1,6 +1,6 @@
 **New to the NOAA RDHPCS Program?**
 
-Welcome!  The information below introduces how we structure user
+Welcome!  The information below explains how we structure user
 accounts, projects, and system allocations. It's all you need to know
 about getting to work. In general, NOAA RDHPCS resources are granted
 to projects in allocations on systems, and are made available to the
@@ -40,7 +40,7 @@ Once you've been approved for the RDHPCS project, you will receive an email
 containing instructions about your next steps. These include:
 
 #. Requesting access to further projects
-#. Completing the RSA token request form.
+#. Requesting a YubiKey for multi-factor authorization.
 
    Confer with your supervisor and colleagues to identify the project(s) to
    request.
@@ -55,13 +55,10 @@ First time users must:
    responsible for creating your account, or re-activating your account
    if you have been marked inactive.
 #. Have accurate information in `NOAA Accounts Portal`_
-#. Have enabled Multi Factor Authentication (MFA) for NOAA Single Sign
-   On (SSO).
+#. Request a YubiKey token for Multi Factor Authentication (MFA) for NOAA
+   Single Sign On (SSO).
 #. Apply for an RDHPCS account using the `Account Information
    Management`_ website and request access to the **rdhpcs** project.
-#. Request an RSA SecurID token via the `Account Information
-   Management`_ website.  Software tokens are faster to issue and are
-   preferred if you have a smartphone.
 #. Request a Common Access Card (CAC)
 
 NOAA will conduct a security investigation that takes 6-12 weeks.
@@ -212,7 +209,7 @@ website.
 Common Access Card (CAC)
 ========================
 
-The Common Access Card (CAC) is another means of access to RDHPCS
+The Common Access Card (CAC) is a means of access to RDHPCS
 resources for both Web and SSH access. To obtain a CAC, work with your
 local admin services team as they need to start the application
 process.  Some labs can issue CACs on-site, otherwise you will have to
