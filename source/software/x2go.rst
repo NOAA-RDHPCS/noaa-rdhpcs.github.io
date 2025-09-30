@@ -65,7 +65,7 @@ Open the `X2Go client` (you can use the desktop icon or use run the
 If you do not have any configured X2Go sessions, the X2Go client will open the
 new session dialog window automatically.
 
-Set the following conferation items, then click :guilabel:`OK`.
+Set the following configuration items, then click :guilabel:`OK`.
 
 :Session name: Name the session configuration something that has meaning to
     you, for example the system name (Gaea, Hera, etc.)
@@ -96,7 +96,8 @@ Open an :ref:`SSH connection <ssh_access>` that will establish the :ref:`SSH
 local forward <ssh-port-tunnels>` to the RDHPCS host.  Once the SSH connection
 is established, open the X2Go client and double click the session in the list
 in the right side bar. When the authentication dialog box appears, ensure your
-user name is correct and enter your :ref:`RSA passcode <rsa_instructions>`.
+user name is correct and enter your username and password, then authenticate
+using YubiKey.
 
 .. image:: /images/x2go_password.png
     :scale: 30%
@@ -122,7 +123,7 @@ X2Go Tips
 ---------
 
 Some users have found that ensuring that only one connection, the first
-connection that estabilshes the SSH port forwards, when starting an X2Go
+connection that establishes the SSH port forwards, when starting an X2Go
 session allows for the best chance of allowing X2Go to launch the desktop
 session.  After the X2Go session is active, you can open additional SSH
 sessions as you desire.
@@ -220,7 +221,7 @@ try the following.
 .. topic:: Bind address already in use
 
     If you get the message ``bind: Address already in use`` on your initial
-    login, this typically indicates wilyou have more than one system session
+    login, this typically indicates that you have more than one system session
     open.  For example, you have multiple Hera sessions open.  Please close all
     sessions and open one new session with your configured port tunnel.
 
@@ -266,8 +267,8 @@ try the following.
          pdsh@hfe03: hfe01: ssh exited with exit code 1
          pdsh@hfe03: hfe03: ssh exited with exit code 1
          pdsh@hfe03: hfe10: ssh exited with exit code 1
-         hfe08:  93232 First.Last         /usr/lib64/nx/../x2/x2goagent -extension XFIXES -nolisten tcp -nolisten tcp -dpi 120 -D -auth /home/Raghu.Reddy/.Xauthority -geometry 800x600 -name X2GO-Raghu.Reddy-56-1511972370_stDMATE_dp32 :56
-         hfe08:  93345 First.Last         /bin/bash /usr/bin/x2goruncommand 56 93232 Raghu.Reddy-56-1511972370_stDMATE_dp32 37673 mate-session nosnd D
+         hfe08:  93232 First.Last         /usr/lib64/nx/../x2/x2goagent -extension XFIXES -nolisten tcp -nolisten tcp -dpi 120 -D -auth /home/First.Last/.Xauthority -geometry 800x600 -name X2GO-First.Last-56-1511972370_stDMATE_dp32 :56
+         hfe08:  93345 First.Last         /bin/bash /usr/bin/x2goruncommand 56 93232 First.Last-56-1511972370_stDMATE_dp32 37673 mate-session nosnd D
          pdsh@hfe03: hfe07: ssh exited with exit code 1
          pdsh@hfe03: hfe06: ssh exited with exit code 1
          pdsh@hfe03: hfe04: ssh exited with exit code 1

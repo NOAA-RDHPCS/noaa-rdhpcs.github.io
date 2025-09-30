@@ -38,7 +38,7 @@ This diagram illustrates the typical process for using Cloud resources.
         :scale: 50%
 
       Your username is your RDHPCS NOAA username.
-      Your password is your RSA PIN plus the 8 digit code from your RSA token.
+      Your password is your NOAA password, with YubiKey MFA.
       When you are logged in, click **Compute**.
 
       .. figure:: /images/cgateway.png
@@ -120,7 +120,7 @@ Parallel Works
 * In addition, there is an archive of Parallel Works `Training Sessions
   <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1G8V0Mua9Dy7oUJ_wI36NAd3kMuMcHyGM/edit>`_.
 * To use the ACTIVATE platform, you must have a NOAA user account and password,
-  and a valid :ref:`RSA Token <rsa_instructions>`.
+  and a working YubiKey token.
 * You can use Parallel Works to access Cloud clusters (assuming you have a
   project allocation on the Cloud platform) or on-prem systems. See
   :ref:`project_request` if you need access to a Cloud project.
@@ -129,7 +129,7 @@ Using ACTIVATE
 --------------
 
 Users access the ACTIVATE platform through the Parallel Works NOAA Portal,
-using the RSA Token authentication method.  On the landing page, enter your
+using the YubiKey authentication method.  On the landing page, enter your
 NOAA user name, and your PIN and SecurID OTP.
 
 Add a workflow to my account
@@ -720,11 +720,6 @@ login fails, log into the `<account URL
 <https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_ to check
 whether “single sign on” is working.
 
-If you are still experiencing issues with your token, open a
-:ref:`help request <getting_help>` with the title *Please check RSA
-token status.* To expedite troubleshooting, please include the full
-terminal output you received when you tried to use your token and the
-information that you have attempted the “single sign on” login test.
 
 If you continue to experience connection issues, open a :ref:`help
 request <getting_help>`.
@@ -861,56 +856,7 @@ it to your project space and create a symlink as shown below:
   mkdir -p /a/directory/in/your/project/space/pw
   ln -s /a/directory/in/your/project/space/pw $HOME/pw
 
-Authentication Issues
----------------------
 
-Authentication to the PW system can fail for a number of
-reasons.
-
-.. note::
-
-  Remember that userIDs are case sensitive. Most are First.Last, with the first
-  letter capitalized. Use the correct format, or your login will fail.
-
-.. note::
-
-  If you enter an incorrect username or PIN and token value three times during
-  a login attempt, your account will automatically lock for fifteen minutes.
-  This is a fairly common occurrence.
-
-To resync your token:
-
-1. Use ssh to login to one of the hosts such as one of Hera/Niagara/Jet, using
-   your RSA Token. After the host authenticates once, it will ask you wait for
-   the token to change.
-2. Enter your PIN + RSA token again after the token has changed. After a
-   successful login your token will be re-synched and you should be able
-   to proceed.
-
-.. note::
-
-  If you still have issues with your token, open a help
-  request with the subject **Please check RSA token status**. To expedite
-  troubleshooting, include the full terminal output you received when you
-  tried to use your token.
-
-If the RSA token is working and you still cannot login to the PW system, check
-whether your workstation is behind a firewall that is blocking access.
-If you are connected to a VPN, disconnect the VPN and try again. You may also
-experience connection failure if you are trying to access from outside the
-United States. If you continue to experience connection issues, open a help
-request.
-
-.. note::
-
-  Occasionally, a valid user login attempt will receive an
-  **Invalid name or password** error. This can happen when a user token is out of
-  sync with the SSO system. Try logging in to an on-prem HPC system like Niagara
-  or Hera. If the login fails, log into the account URL to check whether “single
-  sign on” is working. If your login still fails, open a cloud help desk case.
-  Send email to rdhpcs.cloud.help@noaa.gov, with Login Error in the Subject. In
-  the case, include the information that you have attempted the “single sign on”
-  login test.
 
 Failed to authenticate agent on remote host for on-prem HPC system login
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3665,23 +3611,6 @@ What are the Cloud regions supported by Parallel Works?
 :Azure: EastUS and SouthCentralUS. Preferred region is EastUS.
 :GCP: regions are us-central1, and us-east-1. Preferred region is us-central1
 
-How to tunnel back from a compute node to the controller/head node?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A case where the users have added their keys to the account
-and can login to the head node and run jobs. However, when
-they start a job on compute node and then try to tunnel back
-to the head node it fails.
-
-Users on the cluster can create an ssh key on the cluster
-that will allow access back to the head node from compute.
-If you want to use a different key name that would work, but
-you might need to configure the ssh client to look for it.
-This works.
-
-.. code-block:: shell
-
-  ssh-keygen -t rsa -f ~/.ssh/id_rsa -N * && cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys*
 
 On Azure, missing /apps fs system or modules not loaded
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
