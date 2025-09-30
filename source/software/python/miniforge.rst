@@ -1,35 +1,34 @@
-.. _installing-miniconda:
+.. _installing-miniforge:
 
 ********************
 Installing Miniconda
 ********************
 
-While the RDHPCS system have Anaconda/Conda available, you can install your own
-`Miniconda <https://docs.conda.io/en/main/miniconda.html>`__.
+While the RDHPCS system have Miniforge available, you can install your own
+`Miniforge <https://docs.conda.io/en/main/miniconda.html>`__.
 
 The install process is rather simple (with a few notable warnings, see
-:ref:`Cautionary Notes <miniconda-notes>` further below):
+:ref:`Cautionary Notes <miniforge-notes>` further below):
 
 .. code-block:: bash
 
-   $ mkdir miniconda/
-   $ cd miniconda/
-   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-   chmod u+x Miniconda3-latest-Linux-x86_64.sh
-   ./Miniconda3-latest-Linux-x86_64.sh -u -p ~/miniconda
+   $ mkdir miniforge
+   $ cd miniforge/
+   wget https://github.com/conda-forge/miniforge/releases/download/25.3.0-3/Miniforge3-25.3.0-3-Linux-x86_64.sh
+   sh Miniforge3-25.3.0-3-Linux-x86_64.sh -u -p ~/miniforge
 
-* The ``-p`` flag specifies the prefix path for where to install miniconda.
+* The ``-p`` flag specifies the prefix path for where to install miniforge.
 * The ``-u`` updates any current installations at the ``-p`` location (not
   necessary if you didn't do a ``mkdir`` beforehand)
 
-.. _miniconda-notes:
+.. _miniforge-notes:
 
 Cautionary Notes
 ================
 
 While running the installer, you will be prompted with something like this:
 
-``Do you wish the installer to initialize Miniconda3 by running conda init?
+``Do you wish the installer to initialize Miniforge3 by running conda init?
 [yes|no]``
 
 If "yes", your ``.bashrc`` (or equivalent shell configuration file) will be
@@ -60,13 +59,13 @@ avoid clashing:
 
       .. code-block:: bash
 
-         $ export PATH="/path/to/your/miniconda/bin:$PATH"
+         $ export PATH="/path/to/your/miniforge/bin:$PATH"
 
    .. tab-item:: Csh-like Shells
 
       .. code-block:: bash
 
-         $ setenv PATH "/path/to/your/miniconda/bin:$PATH"
+         $ setenv PATH "/path/to/your/miniforge/bin:$PATH"
 
 .. note::
 

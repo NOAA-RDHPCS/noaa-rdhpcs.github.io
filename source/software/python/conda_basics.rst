@@ -28,9 +28,9 @@ packages assume use of GCC.
 .. code-block:: bash
 
    $ module use /contrib/miniconda/modulefiles
-   $ module load miniconda3
+   $ module load conda
 
-This puts you in the "base" conda environment, which is the default Python
+This puts you in the "base" conda environment( and activates it), which is the default Python
 environment after loading the module.  To see a list of environments, use the
 command ``conda env list``:
 
@@ -43,7 +43,7 @@ command ``conda env list``:
    base                  *  /contrib/miniconda3/4.12.0
    avid_verify              /contrib/miniconda3/4.12.0/envs/avid_verify
    pygraf                   /contrib/miniconda3/4.12.0/envs/pygraf
-   regional_workflow         /contrib/miniconda3/4.12.0/envs/regional_workflow
+   regional_workflow        /contrib/miniconda3/4.12.0/envs/regional_workflow
    test_uwtools             /contrib/miniconda3/4.12.0/envs/test_uwtools
 
 This also is a great way to keep track of the locations and names of all other
@@ -65,9 +65,9 @@ list``:
    brotlipy                  0.7.0         py39h27cfd23_1003
    bzip2                     1.0.8                h7f98852_4    conda-forge
    c-ares                    1.18.1               h7f98852_0    conda-forge
-   ca-certificates           2022.5.18.1           ha878542_0    conda-forge
-   certifi                   2022.5.18.1       py39hf3d152e_0    conda-forge
-   cffi                      1.15.0            py39hd667e15_1
+   ca-certificates           2022.5.18.1          ha878542_0    conda-forge
+   certifi                   2022.5.18.1      py39hf3d152e_0    conda-forge
+   cffi                      1.15.0           py39hd667e15_1
    charset-normalizer        2.0.4              pyhd3eb1b0_0
    .
    .
@@ -80,7 +80,7 @@ executing:
 
    $ python --version
 
-   Python 3.7.0
+   Python 3.12.0
 
 Creating a new environment
 ==========================
@@ -105,6 +105,7 @@ your ``$HOME`` directory.
    It is highly recommended to create new environments in the "Project Home"
    directory. This space avoids purges, allows for potential collaboration
    within your project, and works better with the compute nodes.
+
 
 After executing the ``conda create`` command, you will be prompted to install
 "the following NEW packages" -- type "y" then hit Enter/Return. Downloads of
@@ -146,7 +147,7 @@ environment:
    base                     /contrib/miniconda3/4.12.0
    avid_verify              /contrib/miniconda3/4.12.0/envs/avid_verify
    pygraf                   /contrib/miniconda3/4.12.0/envs/pygraf
-   regional_workflow         /contrib/miniconda3/4.12.0/envs/regional_workflow
+   regional_workflow        /contrib/miniconda3/4.12.0/envs/regional_workflow
    test_uwtools             /contrib/miniconda3/4.12.0/envs/test_uwtools
                          *  /scratch[34]/<LAB>/<PROJECT_ID>/<USER_ID>/envs/py31013
 
