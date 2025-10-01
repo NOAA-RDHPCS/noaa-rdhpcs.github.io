@@ -173,18 +173,15 @@ sitemap_excludes = [
 rst_prolog = """.. admonition:: Attention
     :class: attention
 
-    Parts of the U.S. government are closed. This site will not be updated; however,
-    NOAA websites and social media channels necessary to protect lives and property will be maintained.
-    To learn more, visit `the planning page <https://www.commerce.gov/sites/default/files/2023-09/DOC-Lapse-Plan-2023.pdf>`_
+    The U.S. government is closed. However, because the information this website provides is
+    necessary to protect lives and property this site will be updated and maintained during
+    the federal government shutdown.
+
     For the latest forecasts and critical weather information, visit `<weather.gov>`_.
 
-    **Please note:** Some Funding Opportunities offered under the Bipartisan Infrastructure Law and Inflation
-    Reduction Act are open and can be applied for during the partial government shutdown.
+    To learn more, visit `<commerce.gov/news/blog>`_.
+
 """
-
-
-
-
 
 
 
