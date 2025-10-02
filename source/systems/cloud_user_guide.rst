@@ -121,6 +121,7 @@ Parallel Works
   <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1G8V0Mua9Dy7oUJ_wI36NAd3kMuMcHyGM/edit>`_.
 * To use the ACTIVATE platform, you must have a NOAA user account and password,
   and a working YubiKey token.
+  and a working YubiKey token.
 * You can use Parallel Works to access Cloud clusters (assuming you have a
   project allocation on the Cloud platform) or on-prem systems. See
   :ref:`project_request` if you need access to a Cloud project.
@@ -131,6 +132,10 @@ Using ACTIVATE
 Users access the ACTIVATE platform through the Parallel Works NOAA Portal,
 using the YubiKey authentication method.  On the landing page, enter your
 NOAA user name, and your PIN and SecurID OTP.
+using the YubiKey authentication method.  On the landing page, enter your
+NOAA user name, and your PIN and SecurID OTP.
+
+
 
 Add a workflow to my account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
