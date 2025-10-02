@@ -258,6 +258,7 @@ jobout
 jobscript
 JRBRNG
 JRPRNG
+jsmith
 Jumpstart
 jupy
 kbytes
