@@ -1817,8 +1817,8 @@ remain compliant with their security controls and security plan.
     via SSH key pairs
  -  Role accounts may run jobs, utilize cron services, and be used to
     manage contrib directories.
- -  Access to the Role account shall be done via the ``sudo -su
-    role-PROJECTNAME`` command.
+ -  Access to the Role account shall be done via the 
+    ``sudo su - role-PROJECTNAME`` command.
  -  The sudo command can be run on Login, Development, and DTN nodes.
 
  **To Request a New Role Account**
