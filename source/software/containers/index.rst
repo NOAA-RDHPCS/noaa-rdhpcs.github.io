@@ -7,13 +7,12 @@ Containers
 .. note:: Current Status
 
     We now allow all users and projects to run `Singularity
-    <https://sylabs.io/singularity/>`_ Containers on Hera,
-    Jet, and Mercury.
+    <https://sylabs.io/singularity/>`_ or `Apptainer <https://apptainer.org/>`_ Containers on Ursa, Hera,
+    Jet, and Mercury. Users can build containers whereever Apptainer is installed.
 
-    Although this allows users to run Singularity Containers, we currently do not
+    Although this allows users to run Singularity/Apptainer containers, we currently do not
     support the following items:
 
-    - RDHPCS Build Environment for creating new Containers
     - Any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
       Etc.) for supporting Containers
 
@@ -52,8 +51,48 @@ is `Docker <https://www.docker.com/>`_, Docker is not a viable solution for
 High Performance Computing (HPC) systems. There are security issues surrounding
 Docker which make it infeasible for HPC systems. Considering the possible
 security issue and capabilities to run the weather model across the nodes,
-NOAA's RDHPC systems chose `Singularity`_ as a platform for users to test and
-run models within Containers.
+NOAA's RDHPC systems chose `Singularity`_ and its derivative `Apptainer`_ as
+the platforms for users to test and run models within Containers. Containers
+built with either of the two tools are expected to work with the other tool.
+Apptainer aliases all of the Singularity commands, so users can use the
+`singularity` command on all RDHPCS systems without breaking their workflows.
+However, there are small but important differences between Apptainer and Singularity. 
+
+Differences between SingularityCE and Apptainer
+-----------------------------------------------
+
+The main difference is in how SingularityCE and Apptainer are installed.
+SingularityCE inherited the legacy Singularity behavior and is installed
+with *setuid* bit enabled. However, Apptainer by default
+disables *setuid* and runs in *root-less* mode out of the box. As a result,
+wherever SingularityCE is installed, container build service is disabled
+for security reasons. However, users can build containers with Apptainer out of the box.
+
+
+Additional differences arise when users try to run MPI applications through
+containers. An Apptainer MPI task is not allowed to access the memory
+associated with the other MPI tasks, so direct copying of memory is not
+possible with Apptainer in the default mode. For newer versions of Apptainer,
+this limitation is eased by specifying a flag. When older versions of Apptainer
+are deployed, users have to resort to specifying MPI options that disable
+features such as Cross Memory Attach. If using OpenMPI or HPCX, it can be
+accomplished by disabling *vader* shared memory transport mechanism for single
+node jobs. Similar workarounds are needed in other cases.
+
+
+Either Singularity or Apptainer is deployed on a RDHPCS system.
+The below table shows the installed software on the RDHPCS systems.
+
+=============  ===========  =========
+RDHPCS System  Singularity  Apptainer
+=============  ===========  =========
+Gaea           No           Yes
+Hera           Yes          No
+Jet            Yes          No
+Mercury        Yes          No
+PPAN           Yes          No
+Ursa           No           Yes
+=============  ===========  =========
 
 .. _containers-limitation-exception-liability:
 
@@ -64,23 +103,27 @@ One such exception in regards to software dependencies issues, is
 within HPC where parallel programs require a Message Passing
 Interface (MPI) library for communication across distributed tasks.
 Although there is ongoing work to provide compatibility between
-different MPI solutions, there is still a need to build Containers
+different MPI solutions, there is still a need to build containers
 with a matching flavor and in some cases, version of an MPI
 implementation.
 
-Building the Container image usually requires root permission, which
-has to be implemented by users on other platforms. NOAA RDHPCS does
-not currently provide this service/permission to our users. Users
-have to create the images outside of RDHPCS and copy them to the R&D
-HPC systems to run with Singularity.
+..
+  ** Apptainer circumvents the issue ** 
+  Building the Container image usually requires root permission, which
+  has to be implemented by users on other platforms. NOAA RDHPCS does
+  not currently provide this service/permission to our users. Users
+  have to create the images outside of RDHPCS and copy them to the R&D
+  HPC systems to run with Singularity.
 
 It is user's responsibility to make sure that the images
 downloaded from internet or created by the user will not violate the
 NOAA RDHPCS security policy.
 
-By default, RDHPCS firewall block access to external Container
-repositories. If you would like to request access to an external
-repository, please submit a help ticket.
+..
+  ** Not true anymore **
+  By default, RDHPCS firewall block access to external Container
+  repositories. If you would like to request access to an external
+  repository, please submit a help ticket.
 
 
 .. _containers-singularity:
