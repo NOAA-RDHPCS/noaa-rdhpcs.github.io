@@ -6,7 +6,7 @@ Containers
 
 .. note:: Current Status
 
-    We now allow all users and projects to run `Singularity
+    We now allow all users and projects to run `SingularityCE
     <https://sylabs.io/singularity/>`_ or `Apptainer <https://apptainer.org/>`_ Containers on Ursa, Hera,
     Jet, and Mercury. Users can build containers whereever Apptainer is installed.
 
@@ -51,12 +51,32 @@ is `Docker <https://www.docker.com/>`_, Docker is not a viable solution for
 High Performance Computing (HPC) systems. There are security issues surrounding
 Docker which make it infeasible for HPC systems. Considering the possible
 security issue and capabilities to run the weather model across the nodes,
-NOAA's RDHPC systems chose `Singularity`_ and its derivative `Apptainer`_ as
-the platforms for users to test and run models within Containers. Containers
+NOAA's RDHPC systems chose Singularity as the platform for users to test and
+run models within Containers.
+
+Singularity
+===========
+
+Singularity is a container solution created by necessity for scientific and
+application driven workloads. It was originally developed by Lawrence Berkeley
+National Laboratory (LBL).
+
+Please note that there is a fork in the development of singularity into two
+projects, `Apptainer <https://apptainer.org/>`_ and `SingularityCE`_.  Containers
 built with either of the two tools are expected to work with the other tool.
-Apptainer aliases all of the Singularity commands, so users can use the
+SingularityCE can be invoked from the command line using the *singularity* command,
+whereas Apptainer can be invoked with the *apptainer* command.
+Apptainer aliases the SingularityCE command, so users can use the
 `singularity` command on all RDHPCS systems without breaking their workflows.
-However, there are small but important differences between Apptainer and Singularity. 
+However, there are small but important differences between Apptainer and SingularityCE. 
+For convenience, when the word *Singularity* is used,
+it implies either *SingularityCE* or *Apptainer* or both depending on the context.
+
+Please refer to the `SingularityCE documentation
+<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information
+than what is presented here.  The `Apptainer documentation
+<https://apptainer.org/docs/user/latest/>`_ and `Docker documentation
+<https://docs.docker.com/>`_ may provide useful information.
 
 Differences between SingularityCE and Apptainer
 -----------------------------------------------
@@ -80,19 +100,19 @@ accomplished by disabling *vader* shared memory transport mechanism for single
 node jobs. Similar workarounds are needed in other cases.
 
 
-Either Singularity or Apptainer is deployed on a RDHPCS system.
+Either SingularityCE or Apptainer is deployed on a RDHPCS system.
 The below table shows the installed software on the RDHPCS systems.
 
-=============  ===========  =========
-RDHPCS System  Singularity  Apptainer
-=============  ===========  =========
-Gaea           No           Yes
-Hera           Yes          No
-Jet            Yes          No
-Mercury        Yes          No
-PPAN           Yes          No
-Ursa           No           Yes
-=============  ===========  =========
+=============  =============  =========
+RDHPCS System  SingularityCE  Apptainer
+=============  =============  =========
+Gaea           No             Yes
+Hera           Yes            No
+Jet            Yes            No
+Mercury        Yes            No
+PPAN           Yes            No
+Ursa           No             Yes
+=============  =============  =========
 
 .. _containers-limitation-exception-liability:
 
@@ -128,32 +148,17 @@ NOAA RDHPCS security policy.
 
 .. _containers-singularity:
 
-Singularity
-===========
-
-Singularity is a container solution created by necessity for scientific and
-application driven workloads. It was originally developed by Lawrence Berkeley
-National Laboratory (LBL).
-
-Please note that there is a fork in the development of singularity into two
-projects, `Apptainer <https://apptainer.org/>`_ and `SingularityCE
-<Singularity_>`_. At the present time we are using the singularity-ce solution.
-
-Please refer to the `Singularity documentation
-<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information
-than what is presented here.  The `Apptainer documentation
-<https://apptainer.org/docs/user/latest/>`_ and `Docker documentation
-<https://docs.docker.com/>`_ may provide useful information.
 
 How to create images
 --------------------
 
-Creating images from Singularity or Docker needs superuser permissions. For
+Creating images from SingularityCE needs superuser permissions. For
 security reasons, this service is not currently allowed on NOAA's R&D HPC
-systems. Users either need to download available images online or build their
-own images on other platforms, and then run them on NOAA's R&D HPC systems. For
+systems, where SingularityCE is installed. 
+Users either need to download available images online or build their
+own images on other platforms, where Apptainer is installed. For
 image building, please refer to the related documents for `Singularity
-<Singularity documentation_>`_ or `Docker <Docker documentation_>`_. Existing
+<https://docs.sylabs.io/guides/latest/user-guide/>`_  or `Docker <Docker documentation_>`_. Existing
 Docker images can be converted to Singularity images and then run on NOAA's R&D
 HPC systems.
 
@@ -170,8 +175,8 @@ Download Singularity containers
 `Docker Hub <https://hub.docker.com>`_ and `Singularity Hub
 <https://singularityhub.com/>`_ have dynamic images. The singularity images can
 be downloaded or converted from Docker images outside of RDHPCS. This can be
-done with Singularity using ``singularity build lolcow.simg
-shub://GodloveD/lolcow`` where ``lolcow.simg`` is the name of the Singularity
+done with Singularity using ``singularity build lolcow.sif
+shub://GodloveD/lolcow`` where ``lolcow.sif`` is the name of the Singularity
 image file, and ``shub://GodloveD/lolcow`` is the Singularity Hub container to
 download.
 
@@ -180,29 +185,28 @@ Convert Docker container to Singularity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can convert Docker containers to a Singularity image and then run it on R&D
-HPC systems. Currently the `Docker Hub`_ is not opened on the R&D HPC systems.
-You need to do the conversion externally and then copy the image back to R&D
-HPC systems.
+HPC systems. 
+
+.. 
+  Currently the `Docker Hub`_ is not opened on the R&D HPC systems.
+  You need to do the conversion externally and then copy the image back to R&D
+  HPC systems.
 
 .. code-block:: shell
 
-    $ singularity build lolcow.simg docker://godlovedc/lolcow
+    $ singularity pull lolcow.sif docker://godlovedc/lolcow
 
 Build containers
 ^^^^^^^^^^^^^^^^
 
-On external platforms, ones which you have the root permission. Follow the
-`build documentation for Singularity
-<https://docs.sylabs.io/guides/latest/user-guide/build_a_container.html>`__. In
-brief, given an singularity recipe file called :file:`Singularity_recipe`, run
-the command ``sudo singularity build lolcow.simg Singularity_recipe`` to build
+Follow the `build documentation for Singularity <https://docs.sylabs.io/guides/latest/user-guide/build_a_container.html>`_. In
+brief, given an singularity definition file called :file:`lolcow.def`, run
+the command ``singularity build lolcow.sif lolcow.def`` to build
 the image.
 
 .. important::
 
-    You must have sudo/root permissions on the system where you build the
-    container image.  As mentioned, users are not granted permission to build
-    container images on the NOAA R&D HPCS systems.
+    You may need sudo/root permissions on the system where SingularityCE is installed.
 
 Use an existing image file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -213,12 +217,12 @@ copy it to the target machine, and use it there.
 Run a Single Node or Single Core Containers
 -------------------------------------------
 
-Follow the `Singularity documentation`_. Here is an example to run the
-Singularity image :file:`hydro.simg`.
+Follow the `Singularity documentation <https://docs.sylabs.io/guides/latest/user-guide/>`_. Here is an example to run the
+Singularity image :file:`hydro.sif`.
 
 .. code-block:: shell
 
-    $ singularity run hydro.simg echo "hello world"
+    $ singularity run hydro.sif echo "hello world"
 
 Run an MPI-dependent container
 ------------------------------
@@ -237,14 +241,14 @@ typically done on any system.
 
 .. code-block:: shell
 
-    $ singularity exec container_image.simg bash
+    $ singularity shell container.sif
 
 Using a container to run a parallel job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here is an example Slurm run script to run the wrf model with 512 MPI tasks. In
-this example, the :file:`wrf.exe`` file is not included in the
-:file:`hydro.simg` image file.  The :file:`wrf.exe` and :file:`hydro.simg`
+this example, the :file:`wrf.exe` executable is compiled on the host machine using 
+the :file:`hydro.sif` container.  The :file:`wrf.exe` and :file:`hydro.sif`
 files are all in the working directory of the run.
 
 .. code-block:: shell
@@ -260,17 +264,19 @@ files are all in the working directory of the run.
     #SBATCH --error=singularity_wrf.out
 
 
-    srun singularity exec hydro.simg ./wrf.exe
+    srun singularity exec hydro.sif ./wrf.exe
 
 .. note::
 
-    The :file:`hydro.simg` and :file:`wrf.exe` are under the same directory.
+    The :file:`hydro.sif` and :file:`wrf.exe` are under the same directory.
     Under the running directory, you will not have the soft links from other
     directories.
 
 Container help, questions, and guidance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The R&D HPCS system administrators and help staff have very little knowledge on
+The complexities involving containers, particularly MPI and containers, can make 
+containers difficult to use. RDHPCS system administrators and help staff have limited knowledge on
 using containers on HPC systems.  Open a :ref:`help request <getting_help>` to
 what help can be offered.  However, you will likely find your fellow scientists
 and the greater container communities have better knowledge for your specific
