@@ -68,7 +68,7 @@ built with either of the two tools are expected to work with the other tool.
 SingularityCE can be invoked from the command line using the *singularity*
 command, whereas Apptainer can be invoked with the *apptainer* command.
 Apptainer aliases the SingularityCE command, so users can use the
-`singularity` command on all RDHPCS systems without breaking their workflows.
+*singularity* command on all RDHPCS systems without breaking their workflows.
 However, there are small but important differences between Apptainer and
 SingularityCE. For convenience, when the word *Singularity* is used, it
 implies either *SingularityCE* or *Apptainer* or both depending on the context.
@@ -159,8 +159,9 @@ security reasons, this service is not currently allowed on NOAA's R&D HPC
 systems, where SingularityCE is installed.
 Users either need to download available images online or build their
 own images on other platforms, where Apptainer is installed. For
-image building, please refer to the related documents for `Singularity
-<https://docs.sylabs.io/guides/latest/user-guide/>`_  or `Docker <Docker documentation_>`_. Existing
+image building, please refer to the related `documents for SingularityCE
+<https://docs.sylabs.io/guides/latest/user-guide/>`_  or
+`Docker <Docker documentation_>`_. Existing
 Docker images can be converted to Singularity images and then run on NOAA's R&D
 HPC systems.
 
