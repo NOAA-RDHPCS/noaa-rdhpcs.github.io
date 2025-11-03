@@ -62,15 +62,15 @@ application driven workloads. It was originally developed by Lawrence Berkeley
 National Laboratory (LBL).
 
 Please note that there is a fork in the development of singularity into two
-projects, `Apptainer <https://apptainer.org/>`_ and `SingularityCE`_.  Containers
+projects, `Apptainer <https://apptainer.org/>`_ and `SingularityCE`_. Containers
 built with either of the two tools are expected to work with the other tool.
-SingularityCE can be invoked from the command line using the *singularity* command,
-whereas Apptainer can be invoked with the *apptainer* command.
+SingularityCE can be invoked from the command line using the *singularity*
+command, whereas Apptainer can be invoked with the *apptainer* command.
 Apptainer aliases the SingularityCE command, so users can use the
 `singularity` command on all RDHPCS systems without breaking their workflows.
-However, there are small but important differences between Apptainer and SingularityCE. 
-For convenience, when the word *Singularity* is used,
-it implies either *SingularityCE* or *Apptainer* or both depending on the context.
+However, there are small but important differences between Apptainer and
+SingularityCE. For convenience, when the word *Singularity* is used, it
+implies either *SingularityCE* or *Apptainer* or both depending on the context.
 
 Please refer to the `SingularityCE documentation
 <https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information
@@ -83,10 +83,10 @@ Differences between SingularityCE and Apptainer
 
 The main difference is in how SingularityCE and Apptainer are installed.
 SingularityCE inherited the legacy Singularity behavior and is installed
-with *setuid* bit enabled. However, Apptainer by default
-disables *setuid* and runs in *root-less* mode out of the box. As a result,
-wherever SingularityCE is installed, container build service is disabled
-for security reasons. However, users can build containers with Apptainer out of the box.
+with *setuid* bit enabled. However, Apptainer by default disables *setuid*
+and runs in *root-less* mode out of the box. As a result, wherever SingularityCE
+is installed, container build service is disabled for security reasons. However,
+users can build containers with Apptainer out of the box.
 
 
 Additional differences arise when users try to run MPI applications through
@@ -128,7 +128,7 @@ with a matching flavor and in some cases, version of an MPI
 implementation.
 
 ..
-  ** Apptainer circumvents the issue ** 
+  ** Apptainer circumvents the issue **
   Building the Container image usually requires root permission, which
   has to be implemented by users on other platforms. NOAA RDHPCS does
   not currently provide this service/permission to our users. Users
@@ -154,7 +154,7 @@ How to create images
 
 Creating images from SingularityCE needs superuser permissions. For
 security reasons, this service is not currently allowed on NOAA's R&D HPC
-systems, where SingularityCE is installed. 
+systems, where SingularityCE is installed.
 Users either need to download available images online or build their
 own images on other platforms, where Apptainer is installed. For
 image building, please refer to the related documents for `Singularity
@@ -185,9 +185,9 @@ Convert Docker container to Singularity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can convert Docker containers to a Singularity image and then run it on R&D
-HPC systems. 
+HPC systems.
 
-.. 
+..
   Currently the `Docker Hub`_ is not opened on the R&D HPC systems.
   You need to do the conversion externally and then copy the image back to R&D
   HPC systems.
@@ -247,8 +247,8 @@ Using a container to run a parallel job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here is an example Slurm run script to run the wrf model with 512 MPI tasks. In
-this example, the :file:`wrf.exe` executable is compiled on the host machine using 
-the :file:`hydro.sif` container.  The :file:`wrf.exe` and :file:`hydro.sif`
+this example, the :file:`wrf.exe` executable is compiled on the host machine
+using the :file:`hydro.sif` container. The :file:`wrf.exe` and :file:`hydro.sif`
 files are all in the working directory of the run.
 
 .. code-block:: shell
@@ -275,9 +275,10 @@ files are all in the working directory of the run.
 Container help, questions, and guidance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The complexities involving containers, particularly MPI and containers, can make 
-containers difficult to use. RDHPCS system administrators and help staff have limited knowledge on
-using containers on HPC systems.  Open a :ref:`help request <getting_help>` to
-what help can be offered.  However, you will likely find your fellow scientists
-and the greater container communities have better knowledge for your specific
-Singularity image/application.
+The complexities involving containers, particularly MPI and containers,
+can make containers difficult to use. RDHPCS system administrators and help
+staff have limited knowledge on using containers on HPC systems. Open a
+:ref:`help request <getting_help>` to what help can be offered. However,
+you will likely find your fellow scientists and the greater container
+communities have better knowledge for your specific Singularity
+image/application.
