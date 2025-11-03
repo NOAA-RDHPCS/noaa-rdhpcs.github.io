@@ -6,11 +6,11 @@ Containers
 
 .. note:: Current Status
 
-    We now allow all users and projects to run `SingularityCE
-    <https://sylabs.io/singularity/>`_ or `Apptainer <https://apptainer.org/>`_ Containers on Ursa, Hera,
-    Jet, and Mercury. Users can build containers whereever Apptainer is installed.
+    We now allow all users and projects to run `Singularity
+    <https://en.wikipedia.org/wiki/Singularity_(software)>`_ containers on Ursa, Hera,
+    Jet, and Mercury.
 
-    Although this allows users to run Singularity/Apptainer containers, we currently do not
+    Although this allows users to run Singularity containers, we currently do not
     support the following items:
 
     - Any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
@@ -62,7 +62,8 @@ application driven workloads. It was originally developed by Lawrence Berkeley
 National Laboratory (LBL).
 
 Please note that there is a fork in the development of singularity into two
-projects, `Apptainer <https://apptainer.org/>`_ and `SingularityCE`_. Containers
+projects, `Apptainer <https://apptainer.org/>`_ and `SingularityCE
+<https://sylabs.io/singularity/>`_. Containers
 built with either of the two tools are expected to work with the other tool.
 SingularityCE can be invoked from the command line using the *singularity*
 command, whereas Apptainer can be invoked with the *apptainer* command.
@@ -101,8 +102,8 @@ accomplished by disabling *vader* shared memory transport mechanism for single
 node jobs. Similar workarounds are needed in other cases.
 
 
-Either SingularityCE or Apptainer is deployed on a RDHPCS system.
-The below table shows the installed software on the RDHPCS systems.
+Either SingularityCE or Apptainer is deployed on any given RDHPCS system.
+The below table shows the installed container software on the RDHPCS systems.
 
 =============  =============  =========
 RDHPCS System  SingularityCE  Apptainer
