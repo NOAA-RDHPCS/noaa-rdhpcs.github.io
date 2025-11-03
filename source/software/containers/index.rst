@@ -21,8 +21,8 @@ Introduction
 A container is a standard unit of software that packages up code and all its
 dependencies so the application runs quickly and reliably from one computing
 environment to another. Containers are also popular solutions to run the
-applications in the cloud environment. The main feature is the portability.
-Container images become Containers at run-time.
+applications in the cloud environment. The main feature is the 
+portability. Container images become Containers at run-time.
 
 .. _containers-background:
 
