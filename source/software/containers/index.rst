@@ -11,7 +11,7 @@ Containers
     Jet, and Mercury.
     Although this allows users to run Singularity containers, we currently do not
     support any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
-      Etc.) for supporting Containers
+    Etc.) for supporting Containers
 
 .. _containers-introduction:
 
@@ -20,8 +20,8 @@ Introduction
 
 A container is a standard unit of software that packages up code and all its
 dependencies so the application runs quickly and reliably from one computing
-environment to another. Containers are also popular solutions to run the
-applications in the cloud environment. The main feature is the 
+environment to another. Containers are also a popular soltion to run
+applications in the cloud environment. The main feature is the
 portability. Container images become Containers at run-time.
 
 .. _containers-background:
@@ -74,18 +74,18 @@ The `Apptainer documentation
 <https://apptainer.org/docs/user/latest/>`_ and `Docker documentation
 <https://docs.docker.com/>`_ may provide useful information.
 Please refer to the `SingularityCE documentation
-<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information.  
+<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information. 
 
 Differences between SingularityCE and Apptainer
 -----------------------------------------------
 
-The installation process is the main difference between SingularityCE and Apptainer.
-SingularityCE inherited the legacy Singularity behavior and is installed
-with *setuid* bit enabled. However, Apptainer by default disables *setuid*
-and runs in *root-less* mode out of the box. As a result, wherever
-SingularityCE is installed, container build service is disabled for
-security reasons. However, users can build containers with Apptainer out
-of the box.
+The installation process is the main difference between SingularityCE and 
+Apptainer. SingularityCE inherited the legacy Singularity behavior and is
+installed with *setuid* bit enabled. However, Apptainer by default 
+disables *setuid* and runs in *root-less* mode out of the box. As a 
+result, wherever SingularityCE is installed, container build service is 
+disabled for security reasons. However, users can build containers 
+with Apptainer out of the box.
 
 
 Additional differences arise when users try to run MPI applications through
@@ -135,7 +135,7 @@ implementation.
   HPC systems to run with Singularity.
 
 It is user's responsibility to make sure that the images
-downloaded from the internet or created by the user will not violate 
+downloaded from the internet or created by the user will not violate
 the NOAA RDHPCS security policy.
 
 ..
