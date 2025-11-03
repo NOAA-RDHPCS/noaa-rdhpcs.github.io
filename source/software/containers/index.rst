@@ -9,11 +9,8 @@ Containers
     We now allow all users and projects to run `Singularity
     <https://en.wikipedia.org/wiki/Singularity_(software)>`_ containers on Ursa, Hera,
     Jet, and Mercury.
-
     Although this allows users to run Singularity containers, we currently do not
-    support the following items:
-
-    - Any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
+    support any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
       Etc.) for supporting Containers
 
 .. _containers-introduction:
@@ -64,25 +61,25 @@ National Laboratory (LBL).
 Please note that there is a fork in the development of singularity into two
 projects, `Apptainer <https://apptainer.org/>`_ and `SingularityCE
 <https://sylabs.io/singularity/>`_. Containers
-built with either of the two tools are expected to work with the other tool.
-SingularityCE can be invoked from the command line using the *singularity*
-command, whereas Apptainer can be invoked with the *apptainer* command.
+built with either tool are expected to work with the other tool.
+SingularityCE can be invoked from the command line using the `singularity`
+command, and Apptainer can be invoked with the `apptainer` command.
 Apptainer aliases the SingularityCE command, so users can use the
-*singularity* command on all RDHPCS systems without breaking their workflows.
+`singularity` command on all RDHPCS systems without breaking their workflows.
 However, there are small but important differences between Apptainer and
 SingularityCE. For convenience, when the word *Singularity* is used, it
 implies either *SingularityCE* or *Apptainer* or both depending on the context.
 
-Please refer to the `SingularityCE documentation
-<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information
-than what is presented here.  The `Apptainer documentation
+The `Apptainer documentation
 <https://apptainer.org/docs/user/latest/>`_ and `Docker documentation
 <https://docs.docker.com/>`_ may provide useful information.
+Please refer to the `SingularityCE documentation
+<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information.  
 
 Differences between SingularityCE and Apptainer
 -----------------------------------------------
 
-The main difference is in how SingularityCE and Apptainer are installed.
+The installation process is the main difference between SingularityCE and Apptainer.
 SingularityCE inherited the legacy Singularity behavior and is installed
 with *setuid* bit enabled. However, Apptainer by default disables *setuid*
 and runs in *root-less* mode out of the box. As a result, wherever
@@ -96,8 +93,8 @@ containers. An Apptainer MPI task is not allowed to access the memory
 associated with the other MPI tasks, so direct copying of memory is not
 possible with Apptainer in the default mode. For newer versions of Apptainer,
 this limitation is eased by specifying a flag. When older versions of Apptainer
-are deployed, users have to resort to specifying MPI options that disable
-features such as Cross Memory Attach. If using OpenMPI or HPCX, it can be
+are deployed, users have to specify MPI options that disable
+features such as Cross Memory Attach. Using OpenMPI or HPCX, this can be
 accomplished by disabling *vader* shared memory transport mechanism for single
 node jobs. Similar workarounds are needed in other cases.
 
@@ -121,7 +118,7 @@ Ursa           No             Yes
 Limitation, Exception and Liability
 -----------------------------------
 
-One such exception in regards to software dependencies issues, is
+One exception regarding software dependencies issues, is
 within HPC where parallel programs require a Message Passing
 Interface (MPI) library for communication across distributed tasks.
 Although there is ongoing work to provide compatibility between
@@ -134,12 +131,12 @@ implementation.
   Building the Container image usually requires root permission, which
   has to be implemented by users on other platforms. NOAA RDHPCS does
   not currently provide this service/permission to our users. Users
-  have to create the images outside of RDHPCS and copy them to the R&D
+  have to create images outside of RDHPCS and copy them to the R&D
   HPC systems to run with Singularity.
 
 It is user's responsibility to make sure that the images
-downloaded from internet or created by the user will not violate the
-NOAA RDHPCS security policy.
+downloaded from the internet or created by the user will not violate 
+the NOAA RDHPCS security policy.
 
 ..
   ** Not true anymore **
@@ -154,11 +151,11 @@ NOAA RDHPCS security policy.
 How to create images
 --------------------
 
-Creating images from SingularityCE needs superuser permissions. For
-security reasons, this service is not currently allowed on NOAA's R&D HPC
+Superuser permissions are required to create images from SingularityCE.
+For security reasons, this service is not currently allowed on NOAA's R&D HPC
 systems, where SingularityCE is installed.
-Users either need to download available images online or build their
-own images on other platforms, where Apptainer is installed. For
+Users either need to download available images online, or build their
+own images on other platforms where Apptainer is installed. For
 image building, please refer to the related `documents for SingularityCE
 <https://docs.sylabs.io/guides/latest/user-guide/>`_  or
 `Docker <Docker documentation_>`_. Existing
@@ -176,7 +173,7 @@ Download Singularity containers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `Docker Hub <https://hub.docker.com>`_ and `Singularity Hub
-<https://singularityhub.com/>`_ have dynamic images. The singularity images can
+<https://singularityhub.com/>`_ contain dynamic images. The singularity images can
 be downloaded or converted from Docker images outside of RDHPCS. This can be
 done with Singularity using ``singularity build lolcow.sif
 shub://GodloveD/lolcow`` where ``lolcow.sif`` is the name of the Singularity
@@ -187,8 +184,8 @@ download.
 Convert Docker container to Singularity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can convert Docker containers to a Singularity image and then run it on R&D
-HPC systems.
+You can convert Docker containers to a Singularity image and then run the image
+on R&D HPC systems.
 
 ..
   Currently the `Docker Hub`_ is not opened on the R&D HPC systems.
@@ -214,7 +211,7 @@ the image.
 Use an existing image file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you already have the image files on other machines, you can simply
+If you already have an image file on other machines, you can simply
 copy it to the target machine, and use it there.
 
 Run a Single Node or Single Core Containers
@@ -238,8 +235,8 @@ Using a container to compile a model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To build a model within a container, the container must have the compiler and
-all required libraries and library headers.  An easy way to accomplish this, is
-to launch an interactive shell in the container, and build the model as is
+all required libraries and library headers.  An easy way to accomplish this is
+to launch an interactive shell in the container, then build the model as is
 typically done on any system.
 
 .. code-block:: shell
@@ -249,7 +246,7 @@ typically done on any system.
 Using a container to run a parallel job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here is an example Slurm run script to run the wrf model with 512 MPI tasks. In
+Here is an example Slurm script to run the wrf model with 512 MPI tasks. In
 this example, the :file:`wrf.exe` executable is compiled on the host machine
 using the :file:`hydro.sif` container. The :file:`wrf.exe` and
 :file:`hydro.sif` files are all in the working directory of the run.
