@@ -74,17 +74,17 @@ The `Apptainer documentation
 <https://apptainer.org/docs/user/latest/>`_ and `Docker documentation
 <https://docs.docker.com/>`_ may provide useful information.
 Please refer to the `SingularityCE documentation
-<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information. 
+<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information.
 
 Differences between SingularityCE and Apptainer
 -----------------------------------------------
 
-The installation process is the main difference between SingularityCE and 
+The installation process is the main difference between SingularityCE and
 Apptainer. SingularityCE inherited the legacy Singularity behavior and is
-installed with *setuid* bit enabled. However, Apptainer by default 
-disables *setuid* and runs in *root-less* mode out of the box. As a 
-result, wherever SingularityCE is installed, container build service is 
-disabled for security reasons. However, users can build containers 
+installed with *setuid* bit enabled. However, Apptainer by default
+disables *setuid* and runs in *root-less* mode out of the box. As a
+result, wherever SingularityCE is installed, container build service is
+disabled for security reasons. However, users can build containers
 with Apptainer out of the box.
 
 
