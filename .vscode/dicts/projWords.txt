@@ -23,6 +23,7 @@ azurestream
 baseclone
 baseprojectname
 bbcp
+bcfgh
 bigdir
 bigmem
 bigvftmp
@@ -51,6 +52,7 @@ cfsstrat
 cgateway
 chdir
 checkjob
+checkmark
 chgrp
 chicklet
 ciaqex
@@ -104,6 +106,7 @@ dmgets
 dmgt
 dmlocate
 dmls
+dmput
 dmwho
 doctrees
 drwxr
@@ -185,6 +188,7 @@ groupinstall
 groupname
 GRPRNG
 gsihyb
+gsiscp
 gsissh
 gssapi
 gsutil
@@ -522,6 +526,7 @@ Sandybridge
 Scalapack
 SCHEDNODES
 Schnepp
+scriptreplay
 seaglider
 Secur
 securid
@@ -574,6 +579,7 @@ TFLOPS
 Theia
 thiea
 TIMELIMIT
+timelog
 timesout
 tirpc
 tjet
@@ -594,6 +600,7 @@ upgrd
 URBRNG
 urllib
 URPRNG
+usbac
 userdir
 Userspace
 UTDN
@@ -607,6 +614,7 @@ vimdiff
 vjet
 VSIZE
 vtune
+vvcccbn
 wallclock
 wamgip
 wamipe
@@ -632,6 +640,9 @@ XTHI
 xtmp
 xxdiff
 xzvf
+ykman
 yubi
+Yubico
 yubikey
+yubiotp
 zrtrr
