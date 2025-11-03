@@ -84,9 +84,10 @@ Differences between SingularityCE and Apptainer
 The main difference is in how SingularityCE and Apptainer are installed.
 SingularityCE inherited the legacy Singularity behavior and is installed
 with *setuid* bit enabled. However, Apptainer by default disables *setuid*
-and runs in *root-less* mode out of the box. As a result, wherever SingularityCE
-is installed, container build service is disabled for security reasons. However,
-users can build containers with Apptainer out of the box.
+and runs in *root-less* mode out of the box. As a result, wherever
+SingularityCE is installed, container build service is disabled for
+security reasons. However, users can build containers with Apptainer out
+of the box.
 
 
 Additional differences arise when users try to run MPI applications through
@@ -248,8 +249,8 @@ Using a container to run a parallel job
 
 Here is an example Slurm run script to run the wrf model with 512 MPI tasks. In
 this example, the :file:`wrf.exe` executable is compiled on the host machine
-using the :file:`hydro.sif` container. The :file:`wrf.exe` and :file:`hydro.sif`
-files are all in the working directory of the run.
+using the :file:`hydro.sif` container. The :file:`wrf.exe` and
+:file:`hydro.sif` files are all in the working directory of the run.
 
 .. code-block:: shell
 
