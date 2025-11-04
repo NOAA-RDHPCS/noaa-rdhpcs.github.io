@@ -1,6 +1,6 @@
 **New to the NOAA RDHPCS Program?**
 
-Welcome!  The information below introduces how we structure user
+Welcome!  The information below explains how we structure user
 accounts, projects, and system allocations. It's all you need to know
 about getting to work. In general, NOAA RDHPCS resources are granted
 to projects in allocations on systems, and are made available to the
@@ -39,8 +39,8 @@ credentials, review your profile for accuracy, and request the RDHPCS project.
 Once you've been approved for the RDHPCS project, you will receive an email
 containing instructions about your next steps. These include:
 
-#. Requesting access to further projects.
-#. Requesting a YubiKey device for Multi Factor Authentication.
+#. Requesting access to further projects
+#. Registering your NOAA issued YubiKey for RDHPCS access
 
 Confer with your supervisor and colleagues to identify the
 project(s) you should request.
@@ -55,12 +55,10 @@ First time users must:
    responsible for creating your account, or re-activating your account
    if you have been marked inactive.
 #. Have accurate information in `NOAA Accounts Portal`_
-#. Have enabled Multi Factor Authentication (MFA) for NOAA Single
-   Sign On (SSO). (See :ref:`configure_yubikey`
-   for details.)
+#. Have a NOAA issued YubiKey token for Multi Factor Authentication (MFA).
 #. Apply for an RDHPCS account using the `Account Information
    Management`_ website and request access to the **rdhpcs** project.
-#. Request a Common Access Card (CAC)
+#. Request a Common Access Card (CAC) as appropriate
 
 NOAA will conduct a security investigation that takes 6-12 weeks.
 This will include a fingerprint check, background check, and DOC
@@ -198,7 +196,7 @@ website.
 Common Access Card (CAC)
 ========================
 
-The Common Access Card (CAC) is another means of access to RDHPCS
+The Common Access Card (CAC) is a means of access to RDHPCS
 resources for both Web and SSH access. To obtain a CAC, work with your
 local admin services team as they need to start the application
 process.  Some labs can issue CACs on-site, otherwise you will have to
