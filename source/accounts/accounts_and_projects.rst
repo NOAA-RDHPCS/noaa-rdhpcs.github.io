@@ -40,7 +40,7 @@ Once you've been approved for the RDHPCS project, you will receive an email
 containing instructions about your next steps. These include:
 
 #. Requesting access to further projects
-#. Requesting a YubiKey for multi-factor authorization.
+#. Registering your NOAA issued YubiKey RDHPCS access
 
    Confer with your supervisor and colleagues to identify the project(s) to
    request.
@@ -55,11 +55,10 @@ First time users must:
    responsible for creating your account, or re-activating your account
    if you have been marked inactive.
 #. Have accurate information in `NOAA Accounts Portal`_
-#. Request a YubiKey token for Multi Factor Authentication (MFA) for NOAA
-   Single Sign On (SSO).
+#. Have a NOAA issued YubiKey token for Multi Factor Authentication (MFA).
 #. Apply for an RDHPCS account using the `Account Information
    Management`_ website and request access to the **rdhpcs** project.
-#. Request a Common Access Card (CAC)
+#. Request a Common Access Card (CAC) as appropriate
 
 NOAA will conduct a security investigation that takes 6-12 weeks.
 This will include a fingerprint check, background check, and DOC
