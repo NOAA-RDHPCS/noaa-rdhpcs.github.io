@@ -40,7 +40,7 @@ Once you've been approved for the RDHPCS project, you will receive an email
 containing instructions about your next steps. These include:
 
 #. Requesting access to further projects
-#. Registering your NOAA issued YubiKey RDHPCS access
+#. Registering your NOAA issued YubiKey for RDHPCS access
 
    Confer with your supervisor and colleagues to identify the project(s) to
    request.
