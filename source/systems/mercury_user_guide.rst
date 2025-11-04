@@ -44,7 +44,7 @@ Interactive Logins
 ==================
 
 The Mercury front ends may be accessed using either CAC or
-RSA credentials. Host names for CAC and RSA access can be found in the
+YubiKey credentials. Host names for CAC and YubiKey access can be found in the
 :ref:`bastion_hostnames` table.
 
 Data Transfer

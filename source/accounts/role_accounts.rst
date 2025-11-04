@@ -1,4 +1,3 @@
-
 .. _role_accounts:
 
 Role Accounts
@@ -14,35 +13,37 @@ function.
 Requesting a new role account
 ------------------------------------
 
-All requests for a new role account must be submitted via the helpdesk
-by sending email to rdhpcs.aim.help@noaa.gov with the subject line:
-"Role account request".  Include: (i) the proposed account name and
-generous description of purpose, (ii) an active project for the role
-account to be a member of, and (iii) the PI for the role
-account. Reference existing role accounts as appropriate.
+All requests for a new role account must be submitted as helpdesk tickets.
+Send email to rdhpcs.aim.help@noaa.gov with the subject line:
+**Role account request**.  Include:
+
+#. the proposed account name and generic description of purpose.
+#. an active project where role account is a member.
+#. the PI for the role account. Reference existing role accounts as
+   appropriate.
 
 Requesting changes to a role account
 ------------------------------------
 
-All changes to a role account must be submitted via the helpdesk by
-sending email to rdhpcs.aim.help@noaa.gov with the subject line: "Role
-account changes - Role.Account.Name.Here".  All changes require PI
+All changes to a role account must be submitted via the helpdesk.
+Send email to rdhpcs.aim.help@noaa.gov with the subject line: **Role
+account changes - Role.Account.Name.Here.** All changes require PI
 approval.
 
 
 Accessing a role account
 ------------------------
 
-You can access any role account if you are a member of the account by running
+If you are a member of a role account, you can access the account by running
 the command ``sudo su - <ROLE_ACCOUNT>``.
 Use ``sudo -l`` to list the access you have.
 
-You will authenticate with your RSA token to gain access. For example:
+You will authenticate with your YubiKey to gain access. For example:
 
  .. code-block:: shell
 
    jsmith# sudo su - role.user
-   Access is via First.Last username only. Enter RSA PASSCODE:
+   Access is via First.Last username only.
    bash-4.1$ whoami
    role.user
 

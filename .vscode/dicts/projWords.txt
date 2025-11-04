@@ -265,6 +265,7 @@ jobout
 jobscript
 JRBRNG
 JRPRNG
+jsmith
 Jumpstart
 jupy
 kbytes
@@ -626,6 +627,7 @@ vimdiff
 vjet
 VSIZE
 vtune
+vvcccbn
 wallclock
 wamgip
 wamipe
@@ -653,7 +655,9 @@ XTHI
 xtmp
 xxdiff
 xzvf
+ykman
 yubi
 Yubico
 yubikey
+yubiotp
 zrtrr

@@ -34,11 +34,12 @@ This diagram illustrates the typical process for using Cloud resources.
       To access the RDHPCS cloud gateway, log into the `Parallel Works NOAA Portal <https://noaa.parallel.works/sso>`_
 
 
-      .. figure:: /images/NOAAcloud.png
+      .. figure:: /images/NOAAcloud1.png
         :scale: 50%
 
-      Click on the button to continue to the NOAA SSO Portal.  Authenticate as appropriate.
-
+      Click **Continue with NOAA SSO**.
+      Your username is your NOAA username.
+      Sign in using your CAC or YubiKey.
       When you are logged in, click **Compute**.
 
       .. figure:: /images/cgateway.png
@@ -120,7 +121,7 @@ Parallel Works
 * In addition, there is an archive of Parallel Works `Training Sessions
   <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1G8V0Mua9Dy7oUJ_wI36NAd3kMuMcHyGM/edit>`_.
 * To use the ACTIVATE platform, you must have a NOAA user account and a
-  NOAA issued YubiKey registered for RDHPCS access.
+  :ref:`NOAA issued YubiKey registered for RDHPCS access <configure_yubikey>`.
 
 * You can use Parallel Works to access Cloud clusters (assuming you have a
   project allocation on the Cloud platform) or on-prem systems. See
@@ -553,6 +554,38 @@ including Cloud project, through the AIM system.
 All RDHPCS users can access to Parallel Works
 with appropriate authentication.
 
+Best Practices
+==============
+
+To prevent unexpected cost increases, consider the following:
+
+* **Set up Alerts - Runtime alert:** Enable runtime alerts in your Cluster
+  Configuration to receive hourly notifications on your active cluster.
+* **Set up Alerts - Session Cost limit:** Enable session cost limit, to
+  get notifications when a session reaches a preset dollar threshold.
+* **Monitor Active Clusters:** In the Monitor - Instances panel, identify
+  active clusters. Click the link to view compute nodes and their status.
+* **Analyze Cost Anomalies:** Use the Cost dashboard to detect cost anomalies
+  based on the usage. A filter lets you project costs in near-real time.
+* **Review Daily Usage Reports:**  Project PIs and Tech Leads receive a daily
+  *NOAA Cloud Usage Report for* email. Review the prior day's usage, and
+  discuss any inconsistent increases in usage with team members.
+* **Manage Compute Clusters boot disk cost:** The Compute Clusters form offers
+  two options for stopping a cluster:
+
+    * *Hibernation or Stop:* Use this option to preserve custom software
+       installed in the session on the boot disk. Be aware that boot disk
+       storage costs will be incurred when the cluster is shut down with this
+       option.
+
+    * *Destroy:* Select this option if no changes have been made to the boot
+      disk. In most cases, select this is the option to shutdown the cluster.
+
+* Stay on the latest version, always use the latest version of the Compute
+  Clusters configuration, and load configuration from the marketplace.
+
+
+
 
 Storage Types and Storage Costs
 ===============================
@@ -703,29 +736,6 @@ and extrapolate it to estimate usage for PoP.
 Errors
 ======
 
-How do I handle a Login error - Invalid username or password?
--------------------------------------------------------------
-
-.. note::
-
-  Remember that userIDs are case sensitive.  Most user names are
-  **F**\ irst.\ **L**\ ast, with the first and last name capitalized,
-  and not first.last! Be sure to use the correct format.
-
-If you enter an incorrect username or PIN and token value three times
-during a login attempt, your account will automatically lock for
-fifteen minutes. This is a fairly common occurrence. Wait for 15
-minutes and try logging in to an on-prem HPC system
-such as Jet, Hera, or Gaea, then try the Parallel Works system. If the
-login fails, log into the `<account URL
-<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_ to check
-whether “single sign on” is working.
-
-
-If you continue to experience connection issues, open a :ref:`help
-request <getting_help>`.
-
-
 Warning messages from the on-prem system about exceeding quota
 --------------------------------------------------------------
 
@@ -826,10 +836,6 @@ Click `here <https://parallelworks.com/docs/cli/pw/buckets>`_ for
 PW CLI commands for file transfers.
 
 
-
-
-
-
 On-premise HPC system exceeding Quota Warning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -856,7 +862,6 @@ it to your project space and create a symlink as shown below:
 
   mkdir -p /a/directory/in/your/project/space/pw
   ln -s /a/directory/in/your/project/space/pw $HOME/pw
-
 
 
 Failed to authenticate agent on remote host for on-prem HPC system login
@@ -3611,7 +3616,6 @@ What are the Cloud regions supported by Parallel Works?
 :AWS: us-east1 and us-east2. Preferred region is us-east-1
 :Azure: EastUS and SouthCentralUS. Preferred region is EastUS.
 :GCP: regions are us-central1, and us-east-1. Preferred region is us-central1
-
 
 On Azure, missing /apps fs system or modules not loaded
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -175,6 +175,25 @@ configure Tectia initially for login using SSH with your CAC.
 #. When prompted, enter your CAC PIN.
 
 
+.. _yubikey_instructions:
+
+Yubikey SSH Login
+=================
+
+RDHPCS users who do not have a CAC, or lack the required hardware or
+software, are welcome to use their NOAA issued Yubikey to login. You
+must have :ref:`configured and registered your Yubikey for NOAA RDHPCS
+access. <yubikey-user-instructions>`
+
+.. code-block:: console
+
+    $ ssh RSA-BASTION-HOSTNAME
+
+
+#. The RSA bastions are used for Yubikey logins.
+#. Reference the table above for the appropriate RSA Bastion to use.
+#. When prompted, enter your Yubikey PIN then press and hold your Yubikey
+   (long press).
 
 Selecting a Node
 ================

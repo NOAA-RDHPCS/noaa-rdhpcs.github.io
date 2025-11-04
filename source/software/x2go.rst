@@ -96,8 +96,8 @@ Open an :ref:`SSH connection <ssh_access>` that will establish the :ref:`SSH
 local forward <ssh-port-tunnels>` to the RDHPCS host.  Once the SSH connection
 is established, open the X2Go client and double click the session in the list
 in the right side bar. When the authentication dialog box appears, ensure your
-user name is correct and enter your username and password, then authenticate
-using YubiKey.
+user name is correct and authenticate with your :ref:`YubiKey
+<yubikey_instructions>`.
 
 .. image:: /images/x2go_password.png
     :scale: 30%
@@ -208,9 +208,7 @@ try the following.
 .. topic:: Access Denied
 
     If your login fails with "Access Denied", you will be sent back to the
-    login screen. This can happen for a number of reasons. Please wait for your
-    RSA token number to change and then try again. If this does not work,
-    please close all SSH sessions to the RDHPCS system and try again.
+    login screen. Please close all SSH sessions to the RDHPCS system and try again.
 
 .. topic:: Cannot connect to 127.0.0.1 or localhost
 
@@ -307,8 +305,8 @@ ticket:
     * If using CAC, take a snapshot of your CAC Tectia Configuration (the
       :menuselection:`Connection Profile --> Connection Page` **and** the
       :menuselection:`User Authentication --> Keys and Certificates` pages.)
-    * If using RSA, take a snapshot of your login session configuration or your
-      ``~/.ssh/config`` file.
+    * If using Yubikey, take a snapshot of your login session configuration
+      or your ``~/.ssh/config`` file.
 
 * Snapshot of your x2go session preferences configuration settings.
 * Any error messages you encountered or where you were stuck in the process
