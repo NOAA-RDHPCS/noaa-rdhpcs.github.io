@@ -37,8 +37,8 @@ This diagram illustrates the typical process for using Cloud resources.
       .. figure:: /images/NOAAcloud.png
         :scale: 50%
 
-      Your username is your RDHPCS NOAA username.
-      Your password is your NOAA password, with YubiKey MFA.
+      Click on the button to continue to the NOAA SSO Portal.  Authenticate as appropriate.
+
       When you are logged in, click **Compute**.
 
       .. figure:: /images/cgateway.png
@@ -119,9 +119,9 @@ Parallel Works
   of features and functions is available.
 * In addition, there is an archive of Parallel Works `Training Sessions
   <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1G8V0Mua9Dy7oUJ_wI36NAd3kMuMcHyGM/edit>`_.
-* To use the ACTIVATE platform, you must have a NOAA user account and password,
-  and a working YubiKey token.
-  and a working YubiKey token.
+* To use the ACTIVATE platform, you must have a NOAA user account and a
+  NOAA issued YubiKey registered for RDHPCS access.
+
 * You can use Parallel Works to access Cloud clusters (assuming you have a
   project allocation on the Cloud platform) or on-prem systems. See
   :ref:`project_request` if you need access to a Cloud project.
@@ -130,11 +130,7 @@ Using ACTIVATE
 --------------
 
 Users access the ACTIVATE platform through the Parallel Works NOAA Portal,
-using the YubiKey authentication method.  On the landing page, enter your
-NOAA user name, and your PIN and SecurID OTP.
-using the YubiKey authentication method.  On the landing page, enter your
-NOAA user name, and your PIN and SecurID OTP.
-
+authenticating through the NOAA SSO portal.
 
 
 Add a workflow to my account
