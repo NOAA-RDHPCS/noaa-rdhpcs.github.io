@@ -123,6 +123,9 @@ D. Select **Yubico OTP**
 
 E. Configure **Yubico OTP** credential
 
+   .. note::
+      **COPY THE SECRET KEY AT THIS STEP**
+
   - Under **Yubico OTP**, check and set the following:
   - Under **Public ID**, select **Use serial**.
   - Under **Private ID**, select **Generate**.
