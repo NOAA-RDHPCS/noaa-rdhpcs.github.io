@@ -138,13 +138,6 @@ It is user's responsibility to make sure that the images
 downloaded from the internet or created by the user will not violate
 the NOAA RDHPCS security policy.
 
-..
-  ** Not true anymore **
-  By default, RDHPCS firewall block access to external Container
-  repositories. If you would like to request access to an external
-  repository, please submit a help ticket.
-
-
 .. _containers-singularity:
 
 
@@ -155,8 +148,13 @@ Superuser permissions are required to create images from SingularityCE.
 For security reasons, this service is not currently allowed on NOAA's R&D HPC
 systems, where SingularityCE is installed.
 Users either need to download available images online, or build their
-own images on other platforms where Apptainer is installed. For
-image building, please refer to the related `documents for SingularityCE
+own images on other platforms where Apptainer is installed. 
+
+.. note::
+
+    Podman is available on PPAN / Analysis for this purpose.
+
+For image building, please refer to the related `documents for SingularityCE
 <https://docs.sylabs.io/guides/latest/user-guide/>`_  or
 `Docker <Docker documentation_>`_. Existing
 Docker images can be converted to Singularity images and then run on NOAA's R&D
