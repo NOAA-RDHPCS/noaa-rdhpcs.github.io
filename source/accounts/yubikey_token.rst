@@ -132,7 +132,6 @@ E. Configure **Yubico OTP** credential
   - Under **Secret Key**, select **Generate**.
 
 .. image:: /images/yc-auth-otp-register.png
-              :scale: 40%
 
 F. Record the **Public ID** and **Secret Key** in your favorite plain
    text editor. You will not be able to retrieve this information again
