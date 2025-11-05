@@ -211,9 +211,7 @@ exceptions are noted.
 
 Only the High-Performance Filesystems (the scratch filesystems) are
 available, not your /home filesystem. When you are asked for a
-password, provide your RSA Token's PIN + current 6 or 8 digit number
-from your token (a.k.a Passcode).
-
+password, authenticate to the system using YubiKey MFA.
 All RDHPCS systems require an initial login before you can
 access your directories from the DTNs/uDTNs.  This is
 because the directory structure gets set up only on
@@ -238,7 +236,8 @@ firewalls. See :ref:`firewall-modifications` for directions.
 
 DTNs support ssh-based authentication transfer methods, which
 currently include scp, rsync, and sftp. Default
-authentication uses your RSA token.
+authentication uses your NOAA name and password, and YubiKey Multi-Factor
+Authentication.
 
 .. note::
     If you're using WinSCP on Windows, choose SFTP as the protocol rather than SCP.

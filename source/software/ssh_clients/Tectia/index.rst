@@ -590,12 +590,11 @@ Testing Port Tunnels
 Once you have set up port tunneling, it's useful test that the tunnel
 has been established correctly.
 
-To do this, after the port tunnel has been established, try to login
-using the local host and port combination. Please keep in mind you
-will have to use your RSA authentication for this test. You should try
-to connect using the following settings with your ssh client (with
-Windows you could use a client like putty, and with linux/Mac you
-should use ssh):
+To do this, after the port tunnel has been established, try to login using the
+local host and port combination. Please keep in mind you will have to use
+YubiKey Multi-Factor authentication for this test. You should try to connect
+using the following settings with your ssh client (with Windows you could use a
+client like putty, and with linux/Mac you should use ssh):
 
 * Host: localhost (This is literal string, that is, enter the word
   "localhost")
@@ -603,6 +602,7 @@ should use ssh):
   listed as Local Port when you login)
 * User: Your user name
 
-When prompted, enter your PIN + RSA Token as the password. If you're
+When prompted, enter your User Name and Password, and authenticate
+with YubiKey. If you're
 able to login successfully and see your home directory, that confirms
 that your port tunneling is correct.
