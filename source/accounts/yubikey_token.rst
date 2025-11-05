@@ -1,6 +1,6 @@
 .. _yubikey-user-instructions:
 
-YubiKey
+Yubikey
 =======
 
 .. _configure_yubikey:
@@ -20,16 +20,22 @@ physical possession of a key for successful login.
 
 .. important::
 
-   As of **October 1, 2025** YubiKeys or CAC will be required to
+   As of **October 1, 2025** Yubikey or CAC will be required to
    access the NOAA RDHPCS.  Contact your security office to request a
    Yubikey.
 
 Yubikey Registration
 --------------------
 
+.. important::
+
+   Once you have followed these registrations instructions, you will
+   be using your Yubikey to authenticate into the RDHPCS.  **Your RSA
+   token will no longer work.**
+
 The NOAA Yubikey is issued by your security office.
 
-**If you do not have a NOAA issued YubiKey, contact your local I/T
+**If you do not have a NOAA issued Yubikey, contact your local I/T
 staff, your primary email admin, or your security office.**
 
 If you do not know *any* of those details, start by contacting your
@@ -39,7 +45,7 @@ the right hand side, then click **View my Info**.  Click the link
 **Primary Mail Admin** to send an email to your mail admin to start your
 Yubikey request.
 
-You must register your NOAA issued YubiKey for use with your NOAA
+You must register your NOAA issued Yubikey for use with your NOAA
 accounts at https://accounts.noaa.gov, **and** follow the additional
 steps below to configure and register your Yubikey for RDHPCS use.
 
@@ -74,10 +80,10 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
 
 .. important::
 
-   DO NOT PROCEED until you have registered your NOAA issued YubiKey
+   DO NOT PROCEED until you have registered your NOAA issued Yubikey
    at https://accounts.noaa.gov
 
-2. Download and install the `YubiKey Manager <https://www.yubico.com/support/download/yubikey-manager/>`_ or the `Yubico Authenticator <https://www.yubico.com/products/yubico-authenticator/>`_
+2. Download and install the `Yubico Authenticator <https://www.yubico.com/products/yubico-authenticator/>`_
 
 .. note::
 
@@ -86,67 +92,11 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
    installation from your local I/T office.  You may find it simpler
    and easier to use a personal computer for the following steps.
 
-.. note::
-
-   If you are a GFDL Linux user, the Yubikey Manager package is
-   installed on the GFDL workstations and does not need to be
-   installed. Proceed with Step 3, below.
-
 3. Insert your NOAA issued Yubikey into an available USB slot
 
-4. Follow the appropriate sequence of steps below using either the
-   **YubiKey Manager** or **Yubico Authenticator**.  *Linux users, skip
-   ahead to the Linux section*
-
-**YubiKey Manager**
-
-A. Open the **YubiKey Manager** from the **Start Menu** (Windows) or
-**Applications** folder (Mac).
-
-.. image:: /images/yk-mgr-main.png
-              :scale: 40%
-
-B. From the **Applications** menu, select **OTP**.
-
-.. image:: /images/yk-mgr-app-otp.png
-              :scale: 40%
-
-C. Under **Long Touch (Slot 2)**, select **Configure**
-
-.. image:: /images/yk-mgr-otp.png
-              :scale: 40%
-
-D. Under **Select Credential Type**, select **Yubico OTP**
-
-.. image:: /images/yk-mgr-otp-cred.png
-              :scale: 40%
-
-E. Select **Next** to continue to the **Yubico OTP** configuration.
-
-F. Configure **Yubico OTP** credential
-
-  - Under **Yubico OTP**, check and set the following:
-  - Under **Public ID**, select **Use serial**.
-  - Under **Private ID**, select **Generate**.
-  - Under **Secret Key**, select **Generate**.
-  - Ensure **Upload** is not checked.
-
-.. image:: /images/yk-mgr-otp-register.png
-              :scale: 40%
-
-G. Record the **Public ID** and **Secret Key** in your favorite plain
-   text editor. You will not be able to retrieve this information again
-   after completion. We will use this information to complete the
-   YubiKey enrollment process.
-
-H. Select Finish to confirm the changes on the YubiKey. The changes
-   will be written to the YubiKey.
-
-  .. note::
-     **Slot 2** may show as being configured.  It is safe to overwrite.
-
-Proceed to step 5.
-
+4. For Windows or Mac systems, follow the steps below using the
+   **Yubico Authenticator**.  *Linux users, skip ahead to the Linux
+   section*
 
 **Yubico Authenticator**
 
@@ -173,21 +123,25 @@ D. Select **Yubico OTP**
 
 E. Configure **Yubico OTP** credential
 
+   .. note::
+      **COPY THE SECRET KEY AT THIS STEP**
+
   - Under **Yubico OTP**, check and set the following:
   - Under **Public ID**, select **Use serial**.
   - Under **Private ID**, select **Generate**.
   - Under **Secret Key**, select **Generate**.
 
 .. image:: /images/yc-auth-otp-register.png
-              :scale: 40%
 
 F. Record the **Public ID** and **Secret Key** in your favorite plain
    text editor. You will not be able to retrieve this information again
    after completion. We will use this information to complete the
-   YubiKey enrollment process.
+   Yubikey enrollment process.
 
-G. Select **Save** to confirm the changes on the YubiKey. The changes
-   will be written to the YubiKey.
+G. Select **Save** to confirm the changes on the Yubikey. The changes
+   will be written to the Yubikey.
+
+   .. image:: /images/yc-auth-otp-register2.png
 
   .. note::
      **Slot 2** may show as being configured.  It is safe to overwrite.
@@ -210,7 +164,7 @@ B. Type (or copy and paste) the following **ykman** command
 .. code-block:: console
 
         ykman otp yubiotp 1 --serial-public-id --generate-private-id --generate-key
-        Using YubiKey serial as public ID: vvcccbn*****
+        Using Yubikey serial as public ID: vvcccbn*****
         Using a randomly generated private ID: a36ad3d*****
         Using a randomly generated secret key: 4de7b4a69faa75e779a8b0869b0*****
         Program a YubiOTP credential in slot 2? [y/N]: y
@@ -218,10 +172,10 @@ B. Type (or copy and paste) the following **ykman** command
 C. Record the **Public ID** and **Secret Key** in your favorite plain
    text editor. You will not be able to retrieve this information again
    after completion. We will use this information to complete the
-   YubiKey enrollment process.
+   Yubikey enrollment process.
 
 D. Type **y** and press **<ENTER>** to confirm the changes on the
-   YubiKey. The changes will be written to the YubiKey.
+   Yubikey. The changes will be written to the Yubikey.
 
   .. note::
      **Slot 2** may show as being configured.  It is safe to overwrite.
@@ -241,6 +195,12 @@ Continue onwards to the next step, step 5.
 - Confirm the PIN.
 
 6. Click on **Register Yubikey** to complete the registration.
+
+.. important::
+
+   Once you have followed these registrations instructions, you will
+   be using your Yubikey to authenticate into the RDHPCS.  **Your RSA
+   token will no longer work.**
 
 Wait for web page to return a green confirmation message.
 
