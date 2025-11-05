@@ -27,6 +27,12 @@ physical possession of a key for successful login.
 Yubikey Registration
 --------------------
 
+.. important::
+
+   Once you have followed these registrations instructions, you will
+   be using your Yubikey to authenticate into the RDHPCS.  **Your RSA
+   token will no longer work.**
+
 The NOAA Yubikey is issued by your security office.
 
 **If you do not have a NOAA issued YubiKey, contact your local I/T
@@ -77,7 +83,7 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
    DO NOT PROCEED until you have registered your NOAA issued YubiKey
    at https://accounts.noaa.gov
 
-2. Download and install the `YubiKey Manager <https://www.yubico.com/support/download/yubikey-manager/>`_ or the `Yubico Authenticator <https://www.yubico.com/products/yubico-authenticator/>`_
+2. Download and install the `Yubico Authenticator <https://www.yubico.com/products/yubico-authenticator/>`_
 
 .. note::
 
@@ -86,67 +92,11 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
    installation from your local I/T office.  You may find it simpler
    and easier to use a personal computer for the following steps.
 
-.. note::
-
-   If you are a GFDL Linux user, the Yubikey Manager package is
-   installed on the GFDL workstations and does not need to be
-   installed. Proceed with Step 3, below.
-
 3. Insert your NOAA issued Yubikey into an available USB slot
 
-4. Follow the appropriate sequence of steps below using either the
-   **YubiKey Manager** or **Yubico Authenticator**.  *Linux users, skip
-   ahead to the Linux section*
-
-**YubiKey Manager**
-
-A. Open the **YubiKey Manager** from the **Start Menu** (Windows) or
-**Applications** folder (Mac).
-
-.. image:: /images/yk-mgr-main.png
-              :scale: 40%
-
-B. From the **Applications** menu, select **OTP**.
-
-.. image:: /images/yk-mgr-app-otp.png
-              :scale: 40%
-
-C. Under **Long Touch (Slot 2)**, select **Configure**
-
-.. image:: /images/yk-mgr-otp.png
-              :scale: 40%
-
-D. Under **Select Credential Type**, select **Yubico OTP**
-
-.. image:: /images/yk-mgr-otp-cred.png
-              :scale: 40%
-
-E. Select **Next** to continue to the **Yubico OTP** configuration.
-
-F. Configure **Yubico OTP** credential
-
-  - Under **Yubico OTP**, check and set the following:
-  - Under **Public ID**, select **Use serial**.
-  - Under **Private ID**, select **Generate**.
-  - Under **Secret Key**, select **Generate**.
-  - Ensure **Upload** is not checked.
-
-.. image:: /images/yk-mgr-otp-register.png
-              :scale: 40%
-
-G. Record the **Public ID** and **Secret Key** in your favorite plain
-   text editor. You will not be able to retrieve this information again
-   after completion. We will use this information to complete the
-   YubiKey enrollment process.
-
-H. Select Finish to confirm the changes on the YubiKey. The changes
-   will be written to the YubiKey.
-
-  .. note::
-     **Slot 2** may show as being configured.  It is safe to overwrite.
-
-Proceed to step 5.
-
+4. For Windows or Mac systems, follow the steps below using the
+   **Yubico Authenticator**.  *Linux users, skip ahead to the Linux
+   section*
 
 **Yubico Authenticator**
 
@@ -241,6 +191,12 @@ Continue onwards to the next step, step 5.
 - Confirm the PIN.
 
 6. Click on **Register Yubikey** to complete the registration.
+
+.. important::
+
+   Once you have followed these registrations instructions, you will
+   be using your Yubikey to authenticate into the RDHPCS.  **Your RSA
+   token will no longer work.**
 
 Wait for web page to return a green confirmation message.
 
