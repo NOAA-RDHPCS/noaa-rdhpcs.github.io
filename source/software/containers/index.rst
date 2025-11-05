@@ -7,8 +7,8 @@ Containers
 .. note:: Current Status
 
     We now allow all users and projects to run `Singularity
-    <https://en.wikipedia.org/wiki/Singularity_(software)>`_ containers on Ursa, Hera,
-    Jet, and Mercury.
+    <https://en.wikipedia.org/wiki/Singularity_(software)>`_ containers on Ursa, Gaea,
+    Hera, Jet, and Mercury.
     Although this allows users to run Singularity containers, we currently do not
     support any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
     Etc.) for supporting Containers
@@ -20,7 +20,7 @@ Introduction
 
 A container is a standard unit of software that packages up code and all its
 dependencies so the application runs quickly and reliably from one computing
-environment to another. Containers are also a popular soltion to run
+environment to another. Containers are also a popular solution to run
 applications in the cloud environment. The main feature is the
 portability. Container images become Containers at run-time.
 
