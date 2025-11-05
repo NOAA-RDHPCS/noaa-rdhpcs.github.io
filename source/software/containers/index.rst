@@ -148,7 +148,7 @@ Superuser permissions are required to create images from SingularityCE.
 For security reasons, this service is not currently allowed on NOAA's R&D HPC
 systems, where SingularityCE is installed.
 Users either need to download available images online, or build their
-own images on other platforms where Apptainer is installed. 
+own images on other platforms where Apptainer is installed.
 
 .. note::
 
