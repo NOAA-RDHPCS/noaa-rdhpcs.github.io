@@ -232,9 +232,9 @@ You must have completed the registration steps above.
 
 .. note::
 
-    These steps configure your Yubikey for use on RDHPCS systems. 
+    These steps configure your Yubikey for use on RDHPCS systems.
     Once this is done you will generally not need to use your Yubikey Authenticator
-    again, unless you need to reconfigure your Yubikey because you forgot your PIN, 
+    again, unless you need to reconfigure your Yubikey because you forgot your PIN,
     or you replace your Yubikey.
 
 
