@@ -233,3 +233,4 @@ You must have completed the registration steps above.
 
      These steps configure your Yubikey once and for all. When you have
      completed the process successfully, you will never need to do it again.
+
