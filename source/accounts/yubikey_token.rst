@@ -24,6 +24,17 @@ physical possession of a key for successful login.
    access the NOAA RDHPCS.  Contact your security office to request a
    Yubikey.
 
+Please note that even though either CAC or Yubikey may be used for
+RDHPCS logins,
+the following services will **require** the use of Yubikey
+for authentication as CAC authentication is not
+supported for these services:
+
+* Authenticating to role accounts
+* Authenticating to “trusted” and “untrusted” DTNs for doing data transfers
+* Authenticating to Globus for doing data transfers
+* Authenticating when doing data transfers using the port tunnelling method
+
 Yubikey Registration
 --------------------
 
