@@ -24,6 +24,17 @@ physical possession of a key for successful login.
    access the NOAA RDHPCS.  Contact your security office to request a
    Yubikey.
 
+Please note that even though either CAC or Yubikey may be used for
+RDHPCS logins,
+the following services will **require** the use of Yubikey
+for authentication as CAC authentication is not
+supported for these services:
+
+* Authenticating to role accounts
+* Authenticating to “trusted” and “untrusted” DTNs for doing data transfers
+* Authenticating to Globus for doing data transfers
+* Authenticating when doing data transfers using the port tunnelling method
+
 Yubikey Registration
 --------------------
 
@@ -98,7 +109,8 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
    **Yubico Authenticator**.  *Linux users, skip ahead to the Linux
    section*
 
-**Yubico Authenticator (Windows or Mac)**
+Yubico Authenticator Setup Instructions for Windows/Mac
+-------------------------------------------------------
 
 A. Open the **Yubico Authenticator** from the **Start Menu** (Windows) or
 **Applications** folder (Mac).
@@ -145,8 +157,8 @@ G. Select **Save** to confirm the changes on the Yubikey. The changes
 
 Proceed to Step 5.
 
-
-**Yubico Authenticator for Linux**
+Yubico Authenticator Setup Instructions for Linux
+-------------------------------------------------
 
 A. Open a terminal window.
 
@@ -231,5 +243,10 @@ You must have completed the registration steps above.
 
 .. note::
 
-     These steps configure your Yubikey once and for all. When you have
-     completed the process successfully, you will never need to do it again.
+    These steps configure your Yubikey for use on RDHPCS systems.
+    Once this is done you will generally not need to use your Yubikey Authenticator
+    again, unless you need to reconfigure your Yubikey because you forgot your PIN,
+    or you replace your Yubikey.
+
+
+
