@@ -170,18 +170,7 @@ sitemap_excludes = [
     "genindex.html",
 ]
 
-rst_prolog = """.. admonition:: Attention
-    :class: attention
 
-    The U.S. government is closed. However, because the information this website provides is
-    necessary to protect lives and property this site will be updated and maintained during
-    the federal government shutdown.
-
-    For the latest forecasts and critical weather information, visit `<weather.gov>`_.
-
-    To learn more, visit `<commerce.gov/news/blog>`_.
-
-"""
 
 
 
