@@ -19,7 +19,7 @@ All connections to the NOAA RDHPCS enclave are done via Secure Shell
    the :ref:`MSU-HPC <MSU-HPC-user-guide>` user guide.
 
 Authentication is via a :ref:`CAC/PIV card<common-access>` or
-:ref:`RSA SecurID token<rsa_instructions>`.
+YubiKey Multi-Factor Authentication.
 
 Internal to the enclave, `X509 certificates
 <https://en.wikipedia.org/wiki/X.509>`__ are used to authenticate
@@ -175,24 +175,25 @@ configure Tectia initially for login using SSH with your CAC.
 #. When prompted, enter your CAC PIN.
 
 
-.. _rsa_instructions:
+.. _yubikey_instructions:
 
-RSA SSH Login
-=============
+Yubikey SSH Login
+=================
 
 RDHPCS users who do not have a CAC, or lack the required hardware or
-software, are welcome to use an RSA login.
+software, are welcome to use their NOAA issued Yubikey to login. You
+must have :ref:`configured and registered your Yubikey for NOAA RDHPCS
+access. <yubikey-user-instructions>`
 
 .. code-block:: console
 
     $ ssh RSA-BASTION-HOSTNAME
 
 
+#. The RSA bastions are used for Yubikey logins.
 #. Reference the table above for the appropriate RSA Bastion to use.
-#. When prompted, enter your PASSCODE which consists of your
-   PIN+RSA_CODE.  The RSA_CODE is the 6-8 digit code from the RSA fob or
-   RSA app.
-
+#. When prompted, enter your Yubikey PIN then press and hold your Yubikey
+   (long press).
 
 Selecting a Node
 ================

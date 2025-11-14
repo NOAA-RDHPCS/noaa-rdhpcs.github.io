@@ -39,6 +39,7 @@ brotlipy
 bucketname
 byacc
 cactest
+caja
 calnexfc
 CATN
 CBHN
@@ -101,6 +102,7 @@ Diskspace
 dispositioned
 dispositioning
 dlaps
+DMATE
 dmget
 dmgets
 dmgt
@@ -132,6 +134,7 @@ FFTW
 fgedebug
 fgewf
 fgews
+figwidth
 FILESYS
 fillin
 Finity
@@ -173,9 +176,13 @@ glrcm
 gmeta
 gmtb
 gnmip
+goagent
+gocleansessions
+goclient
 Godlove
 godlovedc
 gomtrans
+goruncommand
 gpfs
 gpshwrf
 gptl
@@ -258,6 +265,7 @@ jobout
 jobscript
 JRBRNG
 JRPRNG
+jsmith
 Jumpstart
 jupy
 kbytes
@@ -265,6 +273,7 @@ keybinds
 keyctl
 keyex
 keygen
+killallsessions
 kjet
 lahey
 LAPACK
@@ -410,10 +419,12 @@ nodename
 noder
 nodocs
 nofma
+nolisten
 nompi
 NOPASSWD
 Normshares
 noslurm
+nosnd
 nosofs
 nranks
 NRBRNG
@@ -455,6 +466,7 @@ Paraver
 pathnames
 PBPRNG
 pcluster
+pdsh
 perftools
 peta
 petaflops
@@ -558,6 +570,7 @@ SSLVPN
 stacksize
 Stmp
 strmtrck
+subshell
 superchip
 suspendtime
 swpc
@@ -624,10 +637,12 @@ webform
 wgrib
 wmem
 wrfsatda
+Xauthority
 Xclients
 xclock
 xclocks
 Xfer
+XFIXES
 xhpl
 xinitrc
 xjet

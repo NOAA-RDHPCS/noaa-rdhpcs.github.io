@@ -1,6 +1,6 @@
 **New to the NOAA RDHPCS Program?**
 
-Welcome!  The information below introduces how we structure user
+Welcome!  The information below explains how we structure user
 accounts, projects, and system allocations. It's all you need to know
 about getting to work. In general, NOAA RDHPCS resources are granted
 to projects in allocations on systems, and are made available to the
@@ -19,8 +19,8 @@ several steps in receiving a user account, and we're here to help you
 through them.
 
 .. note::
-    Project PIs do not receive a user account with project creation,
-    and must apply for user account to access the NOAA RDHPCS.
+    Project principal investigators (PIs) do not receive a user account with
+    project creation, and must apply for user account to access the NOAA RDHPCS.
 
 
 .. image:: /images/access1.png
@@ -40,10 +40,10 @@ Once you've been approved for the RDHPCS project, you will receive an email
 containing instructions about your next steps. These include:
 
 #. Requesting access to further projects
-#. Completing the RSA token request form.
+#. Registering your NOAA issued YubiKey for RDHPCS access
 
-   Confer with your supervisor and colleagues to identify the project(s) to
-   request.
+Confer with your supervisor and colleagues to identify the
+project(s) you should request.
 
 
 .. _Account Information Management:	https://aim.rdhpcs.noaa.gov
@@ -55,20 +55,16 @@ First time users must:
    responsible for creating your account, or re-activating your account
    if you have been marked inactive.
 #. Have accurate information in `NOAA Accounts Portal`_
-#. Have enabled Multi Factor Authentication (MFA) for NOAA Single Sign
-   On (SSO).
+#. Have a NOAA issued YubiKey token for Multi Factor Authentication (MFA).
 #. Apply for an RDHPCS account using the `Account Information
    Management`_ website and request access to the **rdhpcs** project.
-#. Request an RSA SecurID token via the `Account Information
-   Management`_ website.  Software tokens are faster to issue and are
-   preferred if you have a smartphone.
-#. Request a Common Access Card (CAC)
+#. Request a Common Access Card (CAC) as appropriate
 
 NOAA will conduct a security investigation that takes 6-12 weeks.
 This will include a fingerprint check, background check, and DOC
 public trust investigation.
 
-Foreign national participants have special hoops to jump through.
+Foreign national participants have additional hoops to jump through.
 
 Once your account request has been vetted by the security team, you
 will receive an email from the accounts team and will be able to
@@ -103,7 +99,7 @@ that have allocations on systems.
 #. Access the `Account Information Management`_ to request
    project access.  **Provide a clear reason for your request.**
 #. The principal investigator (PI) of the project must approve your
-   project request.  They will be automatically notified and regularly
+   project request.  The PI will be automatically notified and regularly
    reminded of open requests.
 #. Once your project request is approved, a welcome email will be sent
    to you.
@@ -120,44 +116,45 @@ MSU-HPC.
 General Access Requirements
 ---------------------------
 
-- All users, regardless of citizenship, follow the same process to
-   receive MSU-HPC access.
-- NOAA's RDHPCS users will need to use MSU's HPC Account Management
-   System and Process. RDHPCS Portfolio Managers have access to MSU's
-   Account Management Tool.
-- The Portfolio Manager (PfM) must have allocations to use the MSU-HPC
-   system.
-- MSU's Account Management system requires user
-   authentication. Principal Investigators (PIs) and Portfolio
-   Managers must maintain an active MSU account to manage their
-   projects online.
+- All users, regardless of citizenship, follow the same process to receive
+  MSU-HPC access.
+- NOAA's RDHPCS users will need to use MSU's HPC Account Management System and
+  Process. RDHPCS Portfolio Managers have access to MSU's Account Management
+  Tool.
+- The Portfolio Manager (PfM) must have allocations to use the MSU-HPC system.
+- MSU's Account Management system requires user authentication. Principal
+  Investigators and Portfolio Managers must maintain an active MSU account to
+  manage their projects online.
+
 
  .. note::
 
-   The designated PI or Portfolio Manager must request that a
-   MSU user account be created and the user assigned to their project.
+   The designated PI or PfM must request that a
+   MSU user account be created, and the user assigned to their project.
 
 
 Complete the following steps for MSU-HPC access.
 
-- Collaborate with a NOAA research lab and be associated with an
-  active NOAA research project. Each project has an assigned PI who is
-  responsible for the project and the project members. The PI or PfM
-  requests the project assignment and account creation.
-- New user completes NOAA account request form.
-- New user receives an email from MSU to change password, complete
-  required training, and setup the Duo dual-factor authentication.
-- Within three days, the user changes their password.
-- The user completes required training.
-- The user sets up the Duo App on their device.
+ #. Collaborate with a NOAA research lab and be associated with an
+    active NOAA research project. Each project has an assigned PI who is
+    responsible for the project and the project members. The PI or PfM
+    requests the project assignment and account creation.
+ #. New user completes NOAA account request form.
+ #. New user receives an email from MSU to change password, complete required
+    training, and setup the Duo dual-factor authentication.
+ #. Within three days, the user changes their password.
+ #. The user completes required training.
+ #. The user sets up the Duo App on their personal device.
+
 
 The User now has login access to MSU-HPC.
 
 .. note::
 
-   A PfM PI who loses MSU account access must issue a help
+   A PfM/PI who loses MSU account access must issue a help
    request. Send email to rdhpcs.orion.help@noaa.gov to open an OTRS
-   ticket. A new user who has any issues with completing MSU process,
+   ticket.
+   A new user who has any issues with completing MSU process
    should send email to rdhpcs.orion.help@noaa.gov to open a help
    ticket.
 
@@ -168,26 +165,14 @@ Account Activity Requirements: Suspension, Deactivation, Reactivation
 at least once every 90 days.**
 
 User accounts are suspended when they have been inactive for 90 days or more.
+
 The user will be notified at their NOAA.gov address if their account has been
 suspended, with instructions on reactivation. To reactivate your account, send
 an email to: rdhpcs.aim.help@noaa.gov with the subject line: Reactivate
 First.Last. This creates an OTRS ticket to reactivate the account.
 
 Depending on the length of account suspension, there may be additional
-steps to fully reactivate your account:
-
-.. topic:: Reactivate within seven days
-
-   If you reactivate your account within seven days, your RSA token is
-   re-enabled at the same time. Once your account and token are
-   re-enabled, you may log into your respective resource and project.
-
-.. topic:: Reactivate after seven days
-
-   If your account has been suspended for more than seven days and you
-   had a software token, you must apply for a new token using the
-   `Account Information Management`_ website.
-
+steps to fully reactivate your account.
 
 Deactivated Accounts
 --------------------
@@ -204,7 +189,6 @@ email to the appropriate :ref:`HPCS-specific help address
 <getting_help>`.
 
 
-
 Projects can be requested via the `Account Information Management`_
 website.
 
@@ -212,7 +196,7 @@ website.
 Common Access Card (CAC)
 ========================
 
-The Common Access Card (CAC) is another means of access to RDHPCS
+The Common Access Card (CAC) is a means of access to RDHPCS
 resources for both Web and SSH access. To obtain a CAC, work with your
 local admin services team as they need to start the application
 process.  Some labs can issue CACs on-site, otherwise you will have to
