@@ -472,6 +472,5 @@ Additional Resources
 ====================
 
 * `Conda User Guide <https://conda.io/projects/conda/en/latest/user-guide/index.html>`__
-* `Anaconda Package List <https://www.anaconda.com/docs/main>`__
 * `Pip User Guide <https://pip.pypa.io/en/stable/user_guide/>`__
 * `Using Pip In A Conda Environment <https://www.anaconda.com/blog/using-pip-in-a-conda-environment>`__
