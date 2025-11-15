@@ -24,6 +24,17 @@ physical possession of a key for successful login.
    access the NOAA RDHPCS.  Contact your security office to request a
    Yubikey.
 
+Please note that even though either CAC or Yubikey may be used for
+RDHPCS logins,
+the following services will **require** the use of Yubikey
+for authentication as CAC authentication is not
+supported for these services:
+
+* Authenticating to role accounts
+* Authenticating to “trusted” and “untrusted” DTNs for doing data transfers
+* Authenticating to Globus for doing data transfers
+* Authenticating when doing data transfers using the port tunnelling method
+
 Yubikey Registration
 --------------------
 
@@ -53,7 +64,7 @@ steps below to configure and register your Yubikey for RDHPCS use.
 
    If you have lost your NOAA issued Yubikey and have a replacement
    Yubikey, you will need to delete the lost Yubikey at the
-   `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_
+   `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_.
 
 **These steps create a** *new* **token on your Yubikey in** *Slot 2*,
 **the** *Long Press* **slot.  It is separate and different from the**
@@ -61,7 +72,7 @@ steps below to configure and register your Yubikey for RDHPCS use.
 
 .. note::
 
-   A *Long Press* means touch **and hold for three (3) seconds**
+   A *Long Press* means touch **and hold for three (3) seconds.**
 
 
 Follow these steps to configure **Long Press Slot 2** with a **Yubico
@@ -72,8 +83,8 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
    https://accounts.noaa.gov.  Navigate to your `NOAA Accounts profile
    page
    <https://accounts.noaa.gov/enduser/?realm=noaa-online#/profile>`_
-   and look at **MFA Enrollment** for a green checkmark and **Yubikey
-   registered**
+   and check **MFA Enrollment** for a green checkmark and **Yubikey
+   registered** confirmation.
 
 .. image:: /images/noaa-accounts-profile.png
         :scale: 70%
@@ -81,24 +92,25 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
 .. important::
 
    DO NOT PROCEED until you have registered your NOAA issued Yubikey
-   at https://accounts.noaa.gov
+   at https://accounts.noaa.gov.
 
-2. Download and install the `Yubico Authenticator <https://www.yubico.com/products/yubico-authenticator/>`_
+2. Download and install the `Yubico Authenticator <https://www.yubico.com/products/yubico-authenticator/>`_.
 
 .. note::
 
    If you are working on a Government Provided System (Government
-   Furnished Equipment (GFE)) you will need to request a software
+   Furnished Equipment (GFE)), you will need to request a software
    installation from your local I/T office.  You may find it simpler
    and easier to use a personal computer for the following steps.
 
-3. Insert your NOAA issued Yubikey into an available USB slot
+3. Insert your NOAA issued Yubikey into an available USB slot.
 
 4. For Windows or Mac systems, follow the steps below using the
    **Yubico Authenticator**.  *Linux users, skip ahead to the Linux
    section*
 
-**Yubico Authenticator**
+Yubico Authenticator Setup Instructions for Windows/Mac
+-------------------------------------------------------
 
 A. Open the **Yubico Authenticator** from the **Start Menu** (Windows) or
 **Applications** folder (Mac).
@@ -111,20 +123,17 @@ B. Select **Slots**.
 .. image:: /images/yc-auth-slots.png
               :scale: 40%
 
-C. Select **Slot 2 Long Touch**
+C. Select **Slot 2 Long Touch**.
 
 .. image:: /images/yc-auth-slot2.png
               :scale: 40%
 
-D. Select **Yubico OTP**
+D. Select **Yubico OTP.**
 
 .. image:: /images/yc-auth-slot2-otp.png
               :scale: 40%
 
-E. Configure **Yubico OTP** credential
-
-   .. note::
-      **COPY THE SECRET KEY AT THIS STEP**
+E. Configure **Yubico OTP** credential:
 
   - Under **Yubico OTP**, check and set the following:
   - Under **Public ID**, select **Use serial**.
@@ -144,16 +153,16 @@ G. Select **Save** to confirm the changes on the Yubikey. The changes
    .. image:: /images/yc-auth-otp-register2.png
 
   .. note::
-     **Slot 2** may show as being configured.  It is safe to overwrite.
+     **Slot 2** may show as being configured.  It is safe to overwrite the configuration.
 
-Proceed to step 5.
+Proceed to Step 5.
 
-
-**Linux**
+Yubico Authenticator Setup Instructions for Linux
+-------------------------------------------------
 
 A. Open a terminal window.
 
-B. Type (or copy and paste) the following **ykman** command
+B. Type (or copy and paste) the following **ykman** command:
 
 .. code-block:: console
 
@@ -178,18 +187,18 @@ D. Type **y** and press **<ENTER>** to confirm the changes on the
    Yubikey. The changes will be written to the Yubikey.
 
   .. note::
-     **Slot 2** may show as being configured.  It is safe to overwrite.
+     **Slot 2** may show as being configured.  It is safe to overwrite the configuration.
 
-Continue onwards to the next step, step 5.
+Continue onwards to the next step, Step 5.
 
-5. In a web browser, navigate to the `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_
+5. In a web browser, navigate to the `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_.
 
 .. image:: /images/yk-aim.png
               :scale: 70%
 
-- Enter the **Secret Key**
+- Enter the **Secret Key.**
 
-- Enter a 6 to 8 digit PIN.  You may choose to re-use the PIN you use
+- Enter a 6 to 8 digit PIN. You may choose to re-use the PIN you use
   for your RSA token to make it easier to remember.
 
 - Confirm the PIN.
@@ -214,20 +223,30 @@ Testing your Yubikey Registration for NOAA RDHPCS
 
 You must have completed the registration steps above.
 
-1. In a web browser, navigate to the `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_
+1. In a web browser, navigate to the `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_.
 
-2. Click on the **Test Yubikey** button
+2. Click the **Test Yubikey** button.
 
    .. image:: /images/aim-mfa-test-open.png
               :scale: 70%
 
-3. In the entry box, enter your PIN then press and hold the Yubikey.
-   **DO NOT PRESS ENTER**
+3. In the entry box, enter your PIN, then press and hold the Yubikey.
+   **DO NOT PRESS ENTER.**
 
    .. image:: /images/aim-mfa-test-entry.png
               :scale: 70%
 
-4. If the PIN and Yubikey OTP are correct, a success message will be returned
+4. If the PIN and Yubikey OTP are correct, a success message is returned.
 
    .. image:: /images/aim-mfa-test-success.png
               :scale: 70%
+
+.. note::
+
+    These steps configure your Yubikey for use on RDHPCS systems.
+    Once this is done you will generally not need to use your Yubikey Authenticator
+    again, unless you need to reconfigure your Yubikey because you forgot your PIN,
+    or you replace your Yubikey.
+
+
+
