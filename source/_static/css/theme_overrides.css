@@ -118,3 +118,13 @@ ul.menu-footer-bottom {
         margin: 0 50px;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    .wy-menu-vertical li.toctree-l2.current>a,.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a {
+        background: #696969;
+    }
+    .wy-menu-vertical li.toctree-l3.current>a,.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a {
+    background: #7e7e7e;
+    }
+
+}
