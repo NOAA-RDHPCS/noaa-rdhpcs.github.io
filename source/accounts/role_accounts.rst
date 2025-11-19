@@ -31,21 +31,32 @@ account changes - Role.Account.Name.Here.** All changes require PI
 approval.
 
 
-Accessing a role account
-------------------------
+Accessing a role account from your user account
+-----------------------------------------------
 
 If you are a member of a role account, you can access the account by running
 the command ``sudo su - <ROLE_ACCOUNT>``.
 Use ``sudo -l`` to list the access you have.
 
-You will authenticate with your YubiKey to gain access. For example:
+You will authenticate with your Yubikey to gain access. For example:
 
  .. code-block:: shell
 
    jsmith# sudo su - role.user
-   Access is via First.Last username only.
+   [sudo] password for First.Last:
    bash-4.1$ whoami
    role.user
+
+Accessing a role account for Data Transfers or Bastion SSH Login
+----------------------------------------------------------------
+
+Access to log in **as the role account directly** for (Globus) data
+transfers, or SSH login access, can be assigned to members of a role
+account.  They will use their RDHPCS registered Yubikey when prompted
+to authenticate.  Request this assignment via the helpdesk; send email
+to rdhpcs.aim.help@noaa.gov with the subject line: **Role account
+changes - Role.Account.Name.Here - Assign login access to First.Last**
+All changes require PI approval.
 
 
 X Applications With role accounts
