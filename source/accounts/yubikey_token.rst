@@ -281,7 +281,7 @@ Yubikey:
 - If AIM showing that you have registered but you are still unusable
   to login to the RDHPCS resources, you can check if your
   device has been registered correctly by clicking on the blue
-  "Test Yubikey" button and confirm that your authentication
+  "Test Yubikey" button and confirming that your authentication
   is working.
 - If the test above fails then you may have to re-register
   your Yubikey as you may have forgotten your PIN.
