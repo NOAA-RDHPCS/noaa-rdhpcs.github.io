@@ -137,6 +137,23 @@ You can also do the following in your script before using the module command
     $ source $MODULESHOME/init/csh          # For csh/tcsh scripts
     $ source $MODULESHOME/init/sh           # For sh/ksh scripts
 
+Why doesn't the module command work from cron?
+----------------------------------------------
+(This is applicable only on Ursa/Hera/Mercury/Jet)
+
+Cron comes with a very minimalist environment and none of the
+initialization scripts are run before it starts executing the script.
+So the ``module`` command will not be defined.
+
+In order to get the module command defined for use in your script
+that will be called from cron you need to have the following
+line in your script before the use of the ``module`` command:
+
+.. code-block:: shell
+
+    $ source /etc/profile.d/modules.sh           # For bash scripts
+    $ source /etc/profile.d/modules.csh          # For csh/tcsh scripts
+
 
 Command Summary
 ===============
