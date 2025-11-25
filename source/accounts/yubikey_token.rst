@@ -257,7 +257,7 @@ in setting up and using your Yubikey. Also please keep in mind that
 registering for one service doesn't automatically imply that you
 have registered for the other services.
 
-As a NOAA user, you have to register your Yubikey for three different 
+As a NOAA user, you have to register your Yubikey for three different
 services:
 
 - Register your Yubikey for accessing Gmail
