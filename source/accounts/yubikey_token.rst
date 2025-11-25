@@ -254,20 +254,20 @@ Troubleshooting RDHPCS Yubikey Authentication
 
 Please keep in mind that there are multiple Yubikey registrations involved
 in setting up and using your Yubikey. Also please keep in mind that
-registering for one service doesn't automatically imply you
+registering for one service doesn't automatically imply that you
 have registered for the other services.
 
-As a NOAA user there are three different services you have to register
-your Yubikey for:
+As a NOAA user, you have to register your Yubikey for three different 
+services:
 
-- Registering your Yubikey for accessing Gmail
-- Registering your Yubikey for ICAM which is required for accessing some Web
+- Register your Yubikey for accessing Gmail
+- Register your Yubikey for ICAM, which is required for accessing some Web
   applications
-- Registering your Yubikey for RDHPCS which is required for accessing
-  RDHPC resources
+- Register your Yubikey for RDHPCS, which is required to access
+  RDHPC resources.
 
 It is the last one that is required for logging in to RDHPCS resources with
-your Yubikey.  You can check if you are registered for RDHPCS access
+your Yubikey.  You can check whether you are registered for RDHPCS access
 by going to `AIM <https://aim.rdhpcs.noaa.gov/>`_.
 
 If you are having trouble logging into RDHPCS systems with your
@@ -275,14 +275,14 @@ Yubikey:
 
 - First check if you have registered by accessing the AIM link
   mentioned above.
-- If AIM is showing that you have not registered your Yubikey
+- If AIM shows that you have not registered your Yubikey
   with RDHPCS, you need to do that by following the instructions
   on this page.
-- If AIM showing that you have registered but you are still unusable
+- If AIM shows that you have registered but you are still unusable
   to login to the RDHPCS resources, you can check if your
   device has been registered correctly by clicking on the blue
   "Test Yubikey" button and confirming that your authentication
   is working.
 - If the test above fails then you may have to re-register
-  your Yubikey as you may have forgotten your PIN.
+  your Yubikey, as you may have forgotten your PIN.
 
