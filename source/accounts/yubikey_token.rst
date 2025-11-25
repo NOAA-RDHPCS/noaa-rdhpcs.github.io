@@ -112,6 +112,14 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
 Yubico Authenticator Setup Instructions for Windows/Mac
 -------------------------------------------------------
 
+.. important::
+
+   **Apple Mac users** will need to allow `Input Monitoring` to allow the
+   **Yubico Authenticator** to work properly.  `System Settings` =>
+   `Privacy & Security` => `Input Monitoring`, toggle `Yubico
+   Authenticator` on.
+
+
 A. Open the **Yubico Authenticator** from the **Start Menu** (Windows) or
 **Applications** folder (Mac).
 
@@ -244,45 +252,70 @@ You must have completed the registration steps above.
 .. note::
 
     These steps configure your Yubikey for use on RDHPCS systems.
-    Once this is done you will generally not need to use your Yubikey Authenticator
-    again, unless you need to reconfigure your Yubikey because you forgot your PIN,
-    or you replace your Yubikey.
+    Once this is done you will generally not need to use your Yubikey
+    Authenticator again, unless you need to re-register your Yubikey
+    if you are issued a replament Yubikey.
+
+
+FINAL STEP: SUCCESS!
+
+Proceed to log into NOAA RDHPCS resources using SSH or ParallelWorks.
+Remember to use the correct username, and type in your PIN then
+**touch and hold** the Yubikey.
+
 
 
 Troubleshooting RDHPCS Yubikey Authentication
 ---------------------------------------------
 
-Please keep in mind that there are multiple Yubikey registrations involved
-in setting up and using your Yubikey. Also please keep in mind that
-registering for one service doesn't automatically imply that you
-have registered for the other services.
+Be advised there are at least three Yubikey registrations needed to
+set up your all NOAA accounts to use your NOAA issued Yubikey.  Please
+keep in mind that registering for one service doesn't automatically
+imply that you have registered for the other services.
 
-As a NOAA user, you have to register your Yubikey for three different
-services:
+As a NOAA RDHPCS user, you have to register your Yubikey for at least
+three different areas:
 
-- Register your Yubikey for accessing Gmail
-- Register your Yubikey for ICAM, which is required for accessing some Web
-  applications
-- Register your Yubikey for RDHPCS, which is required to access
-  RDHPC resources.
+#. Register your Yubikey for accessing Gmail for your NOAA.GOV email.
+#. Register your Yubikey for ICAM (NOAA SSO), which is required for
+   accessing most NOAA web applications.
+#. Register your Yubikey for RDHPCS,which is required to access
+   RDHPC resources.
+#. There may also be lab-specific Yubikey registrations (GFDL)
+   required to access lab-level resources.
 
-It is the last one that is required for logging in to RDHPCS resources with
-your Yubikey.  You can check whether you are registered for RDHPCS access
-by going to `AIM <https://aim.rdhpcs.noaa.gov/>`_.
+You must have registered your NOAA issued Yubikey for Gmail and NOAA
+SSO before registering it for NOAA RDHPCS use.  Check to see if you have
+registered for RDHPCS access by going to `AIM
+<https://aim.rdhpcs.noaa.gov/>`_.
 
 If you are having trouble logging into RDHPCS systems with your
 Yubikey:
 
-- First check if you have registered by accessing the AIM link
-  mentioned above.
-- If AIM shows that you have not registered your Yubikey
-  with RDHPCS, you need to do that by following the instructions
-  on this page.
-- If AIM shows that you have registered but you are still unusable
-  to login to the RDHPCS resources, you can check if your
-  device has been registered correctly by clicking on the blue
-  "Test Yubikey" button and confirming that your authentication
-  is working.
-- If the test above fails then you may have to re-register
-  your Yubikey, as you may have forgotten your PIN.
+#. Confirm you have registered for NOAA RDHPCS use at the
+   `AIM MFA page <https://aim.rdhpcs.noaa.gov/cgi-bin/mfa.pl>`_.
+
+   If AIM shows that you have not registered your Yubikey with RDHPCS,
+   go to the top of this page and follow the instructions.
+
+#. Confirm proper registration by clicking on the blue
+   "Test Yubikey" button and confirming that your authentication
+   is working.
+
+   If the PIN is incorrect, the message returned will indicate that.
+
+#. If the registration test in AIM fails then try to re-register your
+   Yubikey; delete the current registration and follow the steps on
+   this page, making sure that all commands were successful.
+
+#. If the registration test in AIM succeeds, but you cannot log into
+   NOAA RDHPCS resources, remember that:
+
+   - You must already have access to the RDHPCS resource.  Registering
+     a yubikey does not grant any access.
+
+   - You must use the correct username, First.Last format.
+
+   - You must enter your PIN, then **press and hold** the Yubikey,
+     when authenticating.
 
