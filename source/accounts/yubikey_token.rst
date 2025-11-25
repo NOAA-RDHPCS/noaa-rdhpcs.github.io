@@ -252,7 +252,7 @@ You must have completed the registration steps above.
 Troubleshooting RDHPCS Yubikey Authentication
 ---------------------------------------------
 
-Please keep in mind that there multiple Yubikey registrations involved
+Please keep in mind that there are multiple Yubikey registrations involved
 in setting up and using your Yubikey. Also please keep in mind that
 registering for one service doesn't automatically imply you
 have registered for the other services.
@@ -264,10 +264,10 @@ your Yubikey for:
 - Registering your Yubikey for ICAM which is required for accessing some Web
   applications
 - Registering your Yubikey for RDHPCS which is required for accessing
-  HPC resources
+  RDHPC resources
 
 It is the last one that is required for logging in to RDHPCS resources with
-your Yubikey.  You can check if you are registered for RHDPCS access
+your Yubikey.  You can check if you are registered for RDHPCS access
 by going to `AIM <https://aim.rdhpcs.noaa.gov/>`_.
 
 If you are having trouble logging into RDHPCS systems with your
