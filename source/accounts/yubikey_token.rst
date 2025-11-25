@@ -257,7 +257,7 @@ You must have completed the registration steps above.
     if you are issued a replament Yubikey.
 
 
-FINAL STEP: SUCCESS!
+**FINAL STEP: SUCCESS!**
 
 Proceed to log into NOAA RDHPCS resources using SSH or ParallelWorks.
 Remember to use the correct username, and type in your PIN then
@@ -308,6 +308,7 @@ Yubikey:
    Yubikey; delete the current registration and follow the steps on
    this page, making sure that all commands were successful.
 
+
 #. If the registration test in AIM succeeds, but you cannot log into
    NOAA RDHPCS resources, remember that:
 
@@ -316,6 +317,6 @@ Yubikey:
 
    - You must use the correct username, First.Last format.
 
-   - You must enter your PIN, then **press and hold** the Yubikey,
+   - You must enter your PIN, then **press and hold** the Yubikey
      when authenticating.
 
