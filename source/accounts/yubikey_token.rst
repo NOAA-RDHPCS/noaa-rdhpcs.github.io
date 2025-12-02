@@ -109,6 +109,15 @@ re-register the *Yubico OTP* credential **in Long Press Slot 2**:
    **Yubico Authenticator**.  *Linux users, skip ahead to the Linux
    section*
 
+.. note::
+
+   If you are using a non-US standard (QWERTY) keyboard, such as
+   Dvorak or Colemak, you must switch to the US keyboard layout when
+   using the Yubikey.  See the `Yubico support article on keyboard
+   layouts
+   <https://support.yubico.com/s/article/Using-YubiKeys-with-various-keyboard-layouts>`_.
+
+
 Yubico Authenticator Setup Instructions for Windows/Mac
 -------------------------------------------------------
 
