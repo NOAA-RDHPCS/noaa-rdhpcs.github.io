@@ -22,9 +22,9 @@ opened up on an as-needed basis.  Sites that have been allowed access
 are referred to as *trusted hosts* and all other sites/hosts will be
 considered *"untrusted" sites/hosts.*
 
-Please see the '''Firewall''' section below for more details if you
-need access to/from a machine that is currently considered as an
-“untrusted” host/site.
+See :ref:`requests_for_firewall_exceptions` for details if you need
+access to or from a machine that is currently considered as an “untrusted”
+host/site.
 
 .. _data_transfer_methods:
 
@@ -56,7 +56,7 @@ Data Transfer Methods
 Globus
 ------
 
-Globus Connect Service is available on all RDHPCS systems (Hera, Mercury, Jet,
+Globus Connect Service is available on all RDHPCS systems (Ursa, Mercury, Jet,
 PPAN, Gaea, Orion, and Hercules) and we encourage its use over other methods
 whenever possible. Globus Connect Service is used to transfer data between
 Globus endpoints. A Globus endpoint is a file transfer location
@@ -81,7 +81,7 @@ Data Transfer Nodes (DTNs)
 
 We highly recommend using this method to transfer data when available,
 as it provides a fast method for transferring TO and FROM HPC Systems
-- Jet, Hera, Mercury, Gaea, and Orion.  Please see the
+- Jet, Ursa, Mercury, Gaea, and Orion.  Please see the
 Transferring Data page for complete details.
 
 Note the following:
@@ -123,7 +123,7 @@ copying to copy data from an remote host to an RDHPCS host.
     into the appropriate host for the necessary directories to appear -
     including your /home.
 
-    Please see the Transferring Data page
+    Please see :ref:`transferring-data`
     for complete details.
 
 .. _Port_Tunnelling:
@@ -133,7 +133,7 @@ Port Tunnelling
 
 In the SSH port tunnel method, an SSH tunnel is created between your
 point of login (typically your desktop) to the remote host (typically
-Hera, Jet or other remote hosts). The port tunnel method works
+Ursa, Jet or other remote hosts). The port tunnel method works
 from any system on the network (that is, your local machine does not
 necessarily have to be in the noaa.gov domain). We recommend using
 this method when the options above are not available or
@@ -193,7 +193,7 @@ support Globus may still use other methods described in this document.
 Many users are accustomed to using scp/sftp via service (same as
 login) nodes. However, we would like to point out that Data Transfer
 Nodes (DTN's) provides a much faster method for transferring data to
-and from HPC systems (Jet/Ursa/Hera/Mercury/Gaea/WCOSS/Orion), so
+and from HPC systems (Jet/Ursa/Mercury/Gaea/WCOSS/Orion), so
 we highly recommend DTNs over service nodes.
 
 Much data on RDHPCS servers are protected by confidentiality
@@ -268,7 +268,7 @@ transfers from most external sites including your local
 desktop/laptop. However, note the following important points:
 
 * Before you can use the UDTNs for data transfers on any of the
-  clusters (Mercury, Ursa, Hera, Jet, PPAN, etc.), **you must login
+  clusters (Mercury, Ursa, Jet, PPAN, etc.), **you must login
   at least once to set up the necessary directories.**
 * File space on the UDTNs is very limited. So it is important to move
   to your project space as soon as possible and clean up
@@ -278,7 +278,7 @@ desktop/laptop. However, note the following important points:
   UDTNs. Details and examples are available in the
   :ref:`globus_online_data_transfer` section
 * Using "globus flows" may be a good way to accomplish two-step
-  transfers since most of the time the data has to be moved off of the
+  transfers since most of the time the data has to be moved off the
   destination!
 
 .. note::
@@ -357,8 +357,8 @@ a file from a remote location to your project space on
 the RDHPCS systems, and you do the steps in reverse order to
 move the file in the opposite direction:
 
-#. First transfer to the data_untrusted tree above using the uDTN
-#. Then move/copy to the allocated project space.
+#. Transfer to the data_untrusted tree above using the uDTN.
+#. Move/copy to the allocated project space.
 
 The Globus Flows may be useful here in setting up automated 2-step
 transfers.
@@ -376,9 +376,9 @@ Transfer and Syntax Examples
     scp /path/to/local/file First.Last@dtn-<name>.<site>.rdhpcs.noaa.gov:/path/on/HPC/System
     First.Last@dtn-<name>.<site>.rdhpcs.noaa.gov's password:
 
-(This is the point where you enter your PIN+RSA Token response)
+(This is the point where you enter your YubiKey Token response)
 
-Transfer a file on Hera to a destination on Jet
+Transfer a file on Ursa to a destination on Jet
 -----------------------------------------------
 
 .. code-block:: console
@@ -419,7 +419,7 @@ open the firewall. Please provide the following information:
 
 * **Summary/Justification for transfer:** Why do you need this and for
   how long (permanent or temporary - specify timeframe if temporary)?
-* **Source Systems (DNS name)**: dtn-hera.fairmont.rdhpcs.noaa.gov,
+* **Source Systems (DNS name)**: dtn-ursa.fairmont.rdhpcs.noaa.gov,
   dtn-jet.boulder.rdhpcs.noaa.gov,
   dtn-niagara.fairmont.rdhpcs.noaa.gov
 * **Source IPs**: See below for dtn IPs
@@ -435,7 +435,7 @@ open the firewall. Please provide the following information:
 
   .. code-block:: shell
 
-    dtn-hera.fairmont.rdhpcs.noaa.gov = 140.208.202.[4-5]
+    dtn-ursa.fairmont.rdhpcs.noaa.gov = 140.208.202.[4-5]
     dtn-jet.boulder.rdhpcs.noaa.gov = 140.208.171.[1-4]
     dtn-niagara.fairmont.rdhpcs.noaa.gov = 140.208.202.[76-77]
 
@@ -450,9 +450,9 @@ Example
 -------
 
 * **Summary/Justification for transfer:** Requesting (permanent) wget
-  access to pull data from ruc.noaa.gov via the Hera DTNs to transfer
+  access to pull data from ruc.noaa.gov via the Ursa DTNs to transfer
   weather data to NOAA R&D systems.
-* **Source Systems (DNS name):** dtn-hera.fairmont.rdhpcs.noaa.gov,
+* **Source Systems (DNS name):** dtn-ursa.fairmont.rdhpcs.noaa.gov,
   dtn-jet.boulder.rdhpcs.noaa.gov,
   dtn-niagara.fairmont.rdhpcs.noaa.gov
 * **Source IPs**: 140.208.202.[4-5], 140.208.171.[1-4], 140.208.202.[76-77]
@@ -555,7 +555,7 @@ Using a Pre-Established SSH Port Tunnel
 
 With the SSH port tunnel method, an SSH tunnel is created
 between your point of login (typically your desktop) to the remote
-host (typically Hera, Jet or other remote hosts). The port tunnel
+host (typically Ursa, Jet or another remote host). The port tunnel
 method will work from any system on the network (that is, your local
 machine does not necessarily have to be in the noaa.gov domain). We
 recommend using this in cases where DTN is not accessible.
@@ -593,7 +593,7 @@ To establish a new tunnel, do one of the following:
 
 In the steps below, replace First.Last with your own HPC username, and
 XXXXX with the unique Local Port Number assigned to you when you log
-in to your specified HPC system (Hera/Jet). Use the word "localhost"
+in to your specified HPC system (Ursa/Jet). Use the word "localhost"
 where indicated. It is not a variable, don't substitute anything else.
 Before you perform the first step, close all current sessions on the
 HPC where system you are trying to connect. Once the first session has
@@ -609,9 +609,9 @@ ssh, copy via scp) will work as expected.
 **1. Find your local port number**
 
 To find your unique local port number, log onto your specified HPC
-system (Hera/Jet). Make a note of this number - once you've recorded
+system (Ursa/Jet). Make a note of this number - once you've recorded
 it, close all sessions. Note that this number will be different on Jet and
-Hera.
+Ursa.
 
 .. image:: /images/linux_xfer1.png
    :scale: 75%
@@ -628,20 +628,20 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
 
 For Mac or Linux, enter:
 
 .. code-block:: shell
 
-     ssh -LXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+     ssh -LXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X -LXXXXX:localhost:XXXXX First.Last@hera-rsa.boulder.rdhpcs.noaa.gov
+    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
 
 Note that objects emphasized in this figure should be unique to your
 configuration:
@@ -725,9 +725,8 @@ For Mac or Linux, enter:
     rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
 
 
-In either case, you will be asked for a password. Enter the password
-from your RSA token (not your passphrase). Your response should be
-your PIN+Token code.
+In either case, you will be asked for a password. Touch your YubiKey for
+authentication.
 
 SSH Port Tunnel For PuTTY Windows Systems
 -----------------------------------------
@@ -850,8 +849,8 @@ When prompted for a password, enter your RSA PIN + RSA Token:
 .. image:: /images/winSCP2.png
   :scale: 75%
 
-External Data Transfers (applies to NESCC, ie. Hera and Niagara only)
----------------------------------------------------------------------
+External Data Transfers (applies to NESCC -- Ursa and Niagara only)
+-------------------------------------------------------------------
 
 
 Internally Initiated Transfers
@@ -870,7 +869,7 @@ contains your request. Use the subject line: <$SYSTEM> FEs to
 
 .. code-block:: shell
 
-  Hera:
+  Ursa:
   Source Systems:  hfe[1-12].fairmont.rdhpcs.noaa.gov
   Source IPs:  140.208.193.[1-12]
   Jet:
@@ -897,9 +896,9 @@ Include the following information in the request:
 Example
 -------
 
-* **Subject:** Hera FEs to podaac-tools.jpl.nasa.gov
+* **Subject:** Ursa FEs to podaac-tools.jpl.nasa.gov
 * **Justification:** Requesting (permanent) wget access to pull data
-  from podaac-tools.jpl.nasa.gov via the Hera front ends to transfer
+  from podaac-tools.jpl.nasa.gov via the Ursa front ends to transfer
   weather data to NOAA.
 * **Source Systems:** hfe[01-12].fairmont.rdhpcs.noaa.gov,
   fe[1-8].boulder.rdhpcs.noaa.gov, nfe[1-4].boulder.rdhpcs.noaa.gov
@@ -925,9 +924,9 @@ Tuning Hosts to Improve Data Transfer Rates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The standard tuning parameters for network settings are not optimal
-for high-latency transfers, which means any transfers to and from Hera
+for high-latency transfers, which means any transfers to and from Ursa
 unless you are in West Virginia. These settings are specific to where
-you and the latency between your system and Hera. A good place to
+you are, and the latency between your system and Ursa. A good place to
 start is to change the settings on your local host to match:
 
 .. code-block:: shell
@@ -958,7 +957,7 @@ invoke Globus functions either through a web interface or from a
 command line interface (CLI).
 
 Click here to access `Globus Documentation <https://docs.globus.org/guides/>`_.
-Click here to review the `Globus Tutorial <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`_
+Click here to review the `Globus Tutorial <https://drive.google.com/file/d/1jKAcRGAInmWarUQ_OV7_xsiUesZPX5Ck/view>`_.
 
 Overview
 ========
@@ -1120,8 +1119,8 @@ public site available via AWS resources.
 Globus Command Line Interface (CLI)
 ===================================
 
-Globus CLI is available on Jet, Ursa, Hera, and Mercury.
-Please load the "globus-cli" module by running the command:
+Globus CLI is available on Jet, Ursa, and Mercury.
+To load the "globus-cli" module, run the command:
 
 .. code-block:: shell
 
@@ -1151,7 +1150,7 @@ To transfer data from your laptop/workstation to a NOAA RDHPCS system, you can
 * Use Globus Connect Personal to transfer data between a NOAA RDHPCS
   UDTN and your local laptop/workstation.
 * Use ``scp`` to a NOAA RDHPCS UDTN, using configured ssh port tunnels.
-* Use ``scp`` to a NOAA RDHPCS UDTN where permitted (Jet, Hera)
+* Use ``scp`` to a NOAA RDHPCS UDTN where permitted (Jet, Ursa)
 
 .. note::
 
@@ -1238,7 +1237,7 @@ For assistance, contact the GFDL team at oar.gfdl.dpteam@noaa.gov.
     email address or a GlobusID.
   * You can only share directories under your ``/*/data_untrusted/$USER`` directory.
   * Before any sharing can be done, the user that is sharing the data
-    must login to the system (Mercury, Ursa (WIP), Hera, Jet, ...) at least once,
+    must login to the system (Mercury, Ursa (WIP), Jet, ...) at least once,
     to make sure that the account is properly set up the with the necessary
     home and project directories.
   * It may be necessary to create (``mkdir``) your ``/*/data_untrusted/$USER``
@@ -1280,7 +1279,7 @@ What you need to have on hand
 
 * Your NOAA username (First.Last), and your RDHPCS MFA token.
 * The name and source of the destination endpoints, e.g.,
-  *noaardhpcs#ppan_untrusted*, *noaardhpcs#hera*.
+  *noaardhpcs#ppan_untrusted*, *noaardhpcs#ursa*.
 * The file systems exposed to the endpoints (e.g.,
   ``/collab1/data_untrusted``, ``/scratch4/``).
 
@@ -1584,7 +1583,7 @@ icon.
 Globus Command Line Interface (CLI)
 ===================================
 
-The CLI is available on Jet, Ursa (WIP), Hera, and Niagara. If you would like to
+The CLI is available on Jet, Ursa (WIP), and Niagara. If you would like to
 use Globus-cli, either on your personal machine or on a system where
 globus-cli is not installed, you can install it easily. Refer to the
 instructions to install and use the `Globus CLI
@@ -1771,7 +1770,7 @@ Local Data Migration note and table
 || Jet        || /lfs5      |
 ||            || /lfs6      |
 +-------------+-------------+
-|| Hera, Ursa || /scratch3  |
+|| Ursa       || /scratch3  |
 ||            || /scratch4  |
 +-------------+-------------+
 
@@ -1822,7 +1821,7 @@ destination if does exist:
 xsync
 -----
 
-On Jet and Hera, an additional data synchronization tool,
+On Jet and Ursa, an additional data synchronization tool,
 ``xsync`` is available in ``/apps/local/bin``. It is an unsupported
 wrapper around ``rsync``,
 ``find``, and ``xargs`` that performs multi-threaded transfers.
