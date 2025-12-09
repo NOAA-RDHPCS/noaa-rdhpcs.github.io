@@ -293,9 +293,10 @@ Below are some technical insights regarding the new Vast file system.
   new streamlined and efficient analysis pipelines.
 
 The VAST file system is significantly more expensive per PB than
-the Lustre file systems, and we currently do not know how the cost
-to your application will be affected using the VAST file system
-vs the Lustre File systems.  Therefore, currently only two
+the Lustre file systems, and we currently do not know what
+the performance implications of this file system are as opposed
+to the Lustre file system on your applications.
+Therefore, currently only two
 projects, ``rstprod`` and ``public``, have project based quotas
 on the VAST file system.  However, all other Ursa projects and
 users may utilize ``/scratch5``, via the purged directory,
