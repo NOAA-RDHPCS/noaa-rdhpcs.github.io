@@ -25,10 +25,52 @@ Inspecting and setting up an environment
 First, load the python module and the gnu compiler, if available as most Python
 packages assume use of GCC.
 
-.. code-block:: bash
+.. tab-set::
 
-   $ module use /contrib/miniconda/modulefiles
-   $ module load conda
+    .. tab-item:: Gaea
+        :sync: gaea
+
+        .. code-block:: bash
+
+            $ module use /usw/conda/modulefiles
+            $ module load conda
+
+        .. note::
+
+            While the path to the Python module on Gaea is in a directory path
+            with the name of ``conda``, the Python module will not initialize
+            the Conda environment.  If you want to use Conda, you must load the
+            ``miniforge`` instead (see :ref:`python-conda-modules`
+            below).
+
+    .. tab-item:: Hera
+        :sync: hera
+
+        .. code-block:: bash
+
+            $ module load conda
+
+    .. tab-item:: Jet
+        :sync: jet
+
+        .. code-block:: bash
+
+            $ module load conda
+
+    .. tab-item:: mercury
+        :sync: mercury
+
+        .. code-block:: bash
+
+            $ module load conda
+
+    .. tab-item:: PPAN
+        :sync: ppan
+
+        .. code-block:: bash
+
+            $ module load conda
+
 
 This puts you in the "base" conda environment( and activates it), which is the default Python
 environment after loading the module.  To see a list of environments, use the

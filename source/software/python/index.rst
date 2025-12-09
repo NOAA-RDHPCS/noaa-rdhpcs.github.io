@@ -169,6 +169,27 @@ on these systems, add the module file path to modules, and load the module.
             $ module use /usw/conda/modulefiles
             $ module load conda
 
+    .. tab-item:: Hera
+        :sync: hera
+
+        .. code-block:: bash
+
+            $ module load conda
+
+    .. tab-item:: Jet
+        :sync: jet
+
+        .. code-block:: bash
+
+            $ module load conda
+
+    .. tab-item:: mercury
+        :sync: mercury
+
+        .. code-block:: bash
+
+            $ module load conda
+
     .. tab-item:: PPAN
         :sync: ppan
 
