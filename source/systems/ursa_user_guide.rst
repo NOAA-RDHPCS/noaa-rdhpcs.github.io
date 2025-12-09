@@ -271,8 +271,10 @@ Ursa HPFS File Systems
 ======================
 
 Ursa has the following three High Performance File Systems (HPFS) available:
-``/scratch[3,4,5]``.  Note ``/scratch[3,4]`` are shared with Hera, but
-``/scratch5`` is only available on Ursa.
+``/scratch[3,4,5]``.
+
+.. note::
+    ``/scratch5`` is only available on Ursa.
 
 .. caution::
    Please note that the HPFS file systems are **NOT** backed up!
@@ -280,24 +282,26 @@ Ursa has the following three High Performance File Systems (HPFS) available:
 The ``/scratch[3,4]`` file systems are Lustre file systems with project
 based disk space quotas for routine work.
 
-The ``/scratch5`` file system is a new VAST file system which offers
+The ``/scratch5`` file system is a new VAST file system, which offers
 different technology from the ``/scratch[3,4]`` Lustre file systems.
 Below are some technical insights regarding the new Vast file system.
 
-* An all-flash filesystem designed to perform well for a variety
+* This is an all-flash filesystem designed to perform well for a variety
   of workloads and files of varying size.
-* VAST offers unique data cataloging abilities that one can utilize
+* VAST offers unique data cataloging abilities that can be used
   with HDF and NetCDF file formats. This should help to create
   new streamlined and efficient analysis pipelines.
 
 The VAST file system is significantly more expensive per PB than
-the Lustre file systems, and we currently do not know the amount
-your application will be affected by using the VAST file system
+the Lustre file systems, and we currently do not know how the cost
+to your application will be affected using the VAST file system
 vs the Lustre File systems.  Therefore, currently only two
 projects, ``rstprod`` and ``public``, have project based quotas
-on the VAST file system.  However all other Ursa projects and
+on the VAST file system.  However, all other Ursa projects and
 users may utilize ``/scratch5``, via the purged directory,
 ``/scratch5/purged``.
+
+.. warning::
 **This directory will be purged of all files that have not
 been accessed in the past 30 days**. Depending on usage we
 will adjust the purge schedule as needed, preceded by a user
@@ -309,7 +313,7 @@ sub-directory under the ``/purged`` directory
 (``/scratch5/purged/$USER``), with the directory name the
 same as the First.Last of your NOAA email.
 
-Since ``/scratch5`` is new and different technology from our
+Since ``/scratch5`` is a new and different technology from our
 previous Lustre file systems, the RDHPCS program would appreciate
 insight into your experiences with it. In particular, we would
 like to know how performance has been affected (both positively
@@ -322,8 +326,8 @@ If the performance of your application suite is significantly
 improved using the VAST File system vs the Lustre file systems
 and you would like your project to have non-purged quota project
 space on ``/scratch5``, please have your Portfolio Manager
-submit a request via a RDHPCS Ursa Help ticket. Include how much
-disk space you require and a detailed justification, including
+submit a request via a RDHPCS Ursa Help ticket. Include the amount
+of disk space you require and a detailed justification, including
 a performance comparison for your application suite between
 ``/scratch[3,4]`` and ``/scratch5``.
 
