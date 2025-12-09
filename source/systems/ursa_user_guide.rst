@@ -302,11 +302,12 @@ users may utilize ``/scratch5``, via the purged directory,
 ``/scratch5/purged``.
 
 .. warning::
-**This directory will be purged of all files that have not
-been accessed in the past 30 days**. Depending on usage we
-will adjust the purge schedule as needed, preceded by a user
-notification. Users under the ``/purged`` directory have a quota
-of **250 TB**.
+
+   **This directory will be purged of all files that have not
+   been accessed in the past 30 days**. Depending on usage we
+   will adjust the purge schedule as needed, preceded by a user
+   notification. Users under the ``/purged`` directory have a quota
+   of **250 TB**.
 
 If you want to use ``/scratch5``,  create and use a single
 sub-directory under the ``/purged`` directory
