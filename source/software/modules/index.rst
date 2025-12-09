@@ -7,7 +7,8 @@ Modules
 
 Lmod is a Lua based module software management system that helps
 manage the user environment (PATH, LD_LIBRARY_PATH) through module
-files. LMOD is used on the HPC systems Gaea, Hera, and Jet.
+files. LMOD is used on the HPC systems
+Gaea, Ursa, Hera, Jet, and the MSU systems Hercules and Orion.
 
 View Active Modules
 ===================
@@ -18,8 +19,8 @@ Use ``module list`` to see what modules are loaded in your environment.
 
     $ module list
 
-Find Modules
-============
+Finding Modules
+===============
 
 Lmod provides several commands to help you find modules including
 module avail, and module spider.
@@ -34,8 +35,9 @@ the current environment.
 
 
 The command ``module spider <module>`` will show all modules and
-versions with the name.  This includes modules that cannot be loaded
-in the current environment.
+versions with the name.  This list includes modules that may not be
+available to load directly but will become available after
+certain modules are loaded.
 
 .. code-block:: shell
 
@@ -117,28 +119,6 @@ unknown behavior.
 Use ``module use <path>`` or ``module use -a <path>`` to add more module paths.
 
 
-Modules with sh, bash, and ksh scripts
-======================================
-
-
-How can I get the shell functions created by modules in bash shell
-scripts such as job submission scripts?
-
-
-Make sure that shell functions and alias works correctly in bash
-interactive sub-shells.
-
-Once that works then change the first line of the shell script to be:
-
-.. code-block:: shell
-
-    #!/bin/bash -l
-
-**Note**: That is not a minus one.
-
-This will cause the startup scripts to be sourced before the first
-executable statement in the script.
-
 Why doesn't the module command work in shell scripts?
 -----------------------------------------------------
 
@@ -153,8 +133,26 @@ You can also do the following in your script before using the module command
 
 .. code-block:: shell
 
-    $ source $MODULESHOME/init/sh
+    $ source $MODULESHOME/init/bash         # For bash scripts
+    $ source $MODULESHOME/init/csh          # For csh/tcsh scripts
+    $ source $MODULESHOME/init/sh           # For sh/ksh scripts
 
+Why doesn't the module command work from cron?
+----------------------------------------------
+(This is applicable only on Ursa/Hera/Mercury/Jet)
+
+Cron comes with a very minimalist environment and none of the
+initialization scripts are run before it starts executing the script.
+So the ``module`` command will not be defined.
+
+In order to get the module command defined for use in your script
+that will be called from cron you need to have the following
+line in your script before the use of the ``module`` command:
+
+.. code-block:: shell
+
+    $ source /etc/profile.d/modules.sh           # For bash scripts
+    $ source /etc/profile.d/modules.csh          # For csh/tcsh scripts
 
 
 Command Summary
