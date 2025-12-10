@@ -285,13 +285,8 @@ based disk space quotas for routine work.
 
 The ``/scratch5`` file system is a new VAST file system, which offers
 different technology from the ``/scratch[3,4]`` Lustre file systems.
-Below are some technical insights regarding the new Vast file system.
-
-* This is an all-flash filesystem designed to perform well for a variety
-  of workloads and files of varying size.
-* VAST offers unique data cataloging abilities that can be used
-  with HDF and NetCDF file formats. This should help to create
-  new streamlined and efficient analysis pipelines.
+This is an all-flash filesystem designed to perform well for a variety
+of workloads and files of varying size.
 
 The VAST file system is significantly more expensive per PB than
 the Lustre file systems, and we currently do not know what
@@ -300,7 +295,8 @@ to the Lustre file system on your applications.
 Therefore, currently only two
 projects, ``rstprod`` and ``public``, have project based quotas
 on the VAST file system.  However, all other Ursa projects and
-users may utilize ``/scratch5``, via the purged directory,
+users may explore the suitability of this new file system
+for your applications via the purged directory,
 ``/scratch5/purged``.
 
 .. warning::
