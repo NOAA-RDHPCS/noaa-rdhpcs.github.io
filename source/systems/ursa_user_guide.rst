@@ -274,7 +274,8 @@ Ursa has the following three High Performance File Systems (HPFS) available:
 ``/scratch[3,4,5]``.
 
 .. note::
-    ``/scratch5`` is only available on Ursa.
+    While the ``/scratch[3,4]`` file systems are shared between Ursa
+    and Hera, ``/scratch5`` is only available on Ursa.
 
 .. caution::
    Please note that the HPFS scratch file systems are **NOT** backed up!
