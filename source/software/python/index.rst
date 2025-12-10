@@ -44,7 +44,8 @@ supported on all RDHPCS systems.
     The only conda channel approved for use on the NOAA RDHPCS systems is
     `conda-forge <https://conda-forge.org>`_.  The conda-forge installer,
     `Miniforge <https://conda-forge.org/download/>`_, includes the `conda`_
-    package manager and will use the `conda-forge`_ channel.
+    package manager and will use the `conda-forge`_ channel. This is the
+    default channel for Miniforge3 but not for anaconda.
 
 If you want to leverage Python with Jupyter, we direct you to our
 :ref:`jupyter_on_rdhpcs_systems` page for comprehensive guidance.
@@ -147,7 +148,8 @@ To start using Python, load the ``python`` module.
             $ module load python
 
 Run the ``module avail python`` command to see the available versions of
-Python.
+Python. After loading one of these, you are in a conda environemnt
+associated with that version.
 
 .. _python-conda-modules:
 
@@ -165,14 +167,35 @@ on these systems, add the module file path to modules, and load the module.
         .. code-block:: bash
 
             $ module use /usw/conda/modulefiles
-            $ module load miniforge
+            $ module load conda
+
+    .. tab-item:: Hera
+        :sync: hera
+
+        .. code-block:: bash
+
+            $ module load conda
+
+    .. tab-item:: Jet
+        :sync: jet
+
+        .. code-block:: bash
+
+            $ module load conda
+
+    .. tab-item:: mercury
+        :sync: mercury
+
+        .. code-block:: bash
+
+            $ module load conda
 
     .. tab-item:: PPAN
         :sync: ppan
 
         .. code-block:: bash
 
-            $ module load miniforge
+            $ module load conda
 
 
 .. _python-python-and-conda-environments:
