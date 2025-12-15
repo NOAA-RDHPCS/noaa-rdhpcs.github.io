@@ -73,7 +73,18 @@ file.
     </div>
 
     <script>
+        function fix_port(port) {
+            if (port > 65535) {
+                port -= 65535;
+                port += 2000;
+            }
+            return(port);
+        }
+
         function ssh_host_conf(host, user, lf_port, rf_port) {
+
+            lf_port = fix_port(lf_port);
+            rf_port = fix_port(rf_port);
 
             return(`Host ${host}-rsa.boulder.rdhpcs.noaa.gov\n` +
                    `    HostName          ${host}-rsa.boulder.rdhpcs.noaa.gov\n\n` +
@@ -105,7 +116,7 @@ file.
             let uid = parseInt(id);
 
             return(ssh_host_conf("gaea", user, lf_gaea + uid, rf_gaea + uid) +
-                   ssh_host_conf("hera", user, lf_hera + uid, rf_gaea + uid) +
+                   ssh_host_conf("hera", user, lf_hera + uid, rf_hera + uid) +
                    ssh_host_conf("jet", user, lf_jet + uid, rf_jet + uid) +
                    ssh_host_conf("mercury", user, lf_mercury + uid, rf_mercury + uid) +
                    ssh_host_conf("ppan", user, lf_ppan + uid, rf_ppan + uid) +
