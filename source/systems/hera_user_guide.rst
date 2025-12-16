@@ -1043,8 +1043,7 @@ has `detailed documentation
 .. note::
 
    Since DDT is GUI debugger, interactions over a wide area network
-   can be extremely slow. You may want to consider using a Remote
-   Desktop which in our environment is :ref:`X2GO <x2go-remote-desktop>`.
+   can be extremely slow.
 
 Invoking DDT on Hera with Intel IMPI
 ------------------------------------
