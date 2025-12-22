@@ -278,11 +278,11 @@ Troubleshooting RDHPCS Yubikey Authentication
 ---------------------------------------------
 
 The most common problem that users have had logging in
-with Yubikey is the failure to do the "long touch" 
+with Yubikey is the failure to do the "long touch"
 correctly. These suggestions should help:
 
-* When you're logging into the RHPCS bastions using a 
-  terminal program, **keep touching the key** until the 
+* When you're logging into the RHPCS bastions using a
+  terminal program, **keep touching the key** until the
   cursor moves to the next line.
 * If you're loggin in using a GUIs (Globus login using
   a browser for example) **keep touching the key**
