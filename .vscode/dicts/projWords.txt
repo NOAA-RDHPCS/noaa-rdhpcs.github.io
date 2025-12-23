@@ -66,6 +66,7 @@ cmod
 CMRS
 cnvgrib
 codegen
+Colemak
 collab
 Collaboratory
 comgsi

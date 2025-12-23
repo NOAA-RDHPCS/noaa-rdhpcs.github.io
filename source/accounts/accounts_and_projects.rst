@@ -47,7 +47,8 @@ Once you've been approved for the RDHPCS project, you will receive an email
 containing instructions about your next steps. These include:
 
 #. Requesting access to further projects
-#. Registering your NOAA issued YubiKey for RDHPCS access
+#. Registering your NOAA issued YubiKey for RDHPCS access. Your Yubikey token
+   generates a One-Time Password (OTP) to authenticate your identity.
 
 Confer with your supervisor and colleagues to identify the
 project(s) you should request.
@@ -116,9 +117,8 @@ that have allocations on systems.
 Requesting access to MSU-HPC systems
 ====================================
 
-The Hercules and Orion systems comprise MSU-HPC, managed by
-Mississippi State University. Follow these steps to get an Account for
-MSU-HPC.
+The Hercules and Orion systems comprise MSU-HPC, managed by Mississippi State
+University.
 
 General Access Requirements
 ---------------------------
@@ -138,7 +138,6 @@ General Access Requirements
 
    The designated PI or PfM must request that a
    MSU user account be created, and the user assigned to their project.
-
 
 Complete the following steps for MSU-HPC access.
 
