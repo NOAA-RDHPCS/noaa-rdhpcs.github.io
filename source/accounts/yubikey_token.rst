@@ -277,6 +277,25 @@ Remember to use the correct username, and type in your PIN then
 Troubleshooting RDHPCS Yubikey Authentication
 ---------------------------------------------
 
+The most common problem that users have had logging in
+with Yubikey is the failure to do the "long touch"
+correctly. These suggestions should help:
+
+* When you're logging into the RHPCS bastions using a
+  terminal program, **keep touching the key** until the
+  cursor moves to the next line.
+* If you're loggin in using a GUIs (Globus login using
+  a browser for example) **keep touching the key**
+  until the authentication fails or succeeds.  You should
+  keep your finger on the Yubikey even after it looks like
+  it has completed entering the token.  There should be
+  no need to press the "Enter" key when you log in using
+  a GUI.
+
+If you are doing the right things as described above and are
+still having problems, please read through the following
+troubleshooting suggestions.
+
 Be advised there are at least three Yubikey registrations needed to
 set up your all NOAA accounts to use your NOAA issued Yubikey.  Please
 keep in mind that registering for one service doesn't automatically
