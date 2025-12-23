@@ -25,6 +25,13 @@ through them.
 
 .. image:: /images/access1.png
 
+.. Attention::
+
+   Your local line office will create an account for you. Your NOAA email
+   identity will be your first and last name, in mixed case, like:
+   Robin.Lee@NOAA.gov.
+
+
 Once you have a NOAA.gov email address, you can:
 
 1. Request an RDHPCS account through the Account Information Management

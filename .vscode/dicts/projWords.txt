@@ -263,6 +263,7 @@ jobfile
 jobnames
 jobout
 jobscript
+jobsubmitsettings
 JRBRNG
 JRPRNG
 jsmith
@@ -439,6 +440,7 @@ nvcc
 nvfortran
 nvhpc
 ocio
+octicon
 odvars
 ohdc
 OMPI
@@ -546,6 +548,7 @@ sepp
 setopt
 setstripe
 settarg
+Sharcnet
 SHAREDUNAME
 showallarticles
 showq
@@ -574,6 +577,7 @@ subshell
 superchip
 suspendtime
 swpc
+systemsettings
 szip
 tcmi
 tcpip
