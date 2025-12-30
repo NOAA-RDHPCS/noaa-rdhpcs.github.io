@@ -15,6 +15,9 @@ certificates), and helps prevent the compromise of accounts used to
 access computers, networks and web applications by requiring the
 physical possession of a key for successful login.
 
+Each time you use your Yubikey, it generates a One-Time Password (OTP)
+to verify your identity.
+
 .. image:: /images/yubi-usbac.png
    :align: center
 
@@ -262,8 +265,8 @@ You must have completed the registration steps above.
 
     These steps configure your Yubikey for use on RDHPCS systems.
     Once this is done you will generally not need to use your Yubikey
-    Authenticator again, unless you need to re-register your Yubikey
-    if you are issued a replament Yubikey.
+    Authenticator again, unless you need to re-register the device
+    if you are issued a replacement Yubikey.
 
 
 **FINAL STEP: SUCCESS!**
@@ -276,6 +279,25 @@ Remember to use the correct username, and type in your PIN then
 
 Troubleshooting RDHPCS Yubikey Authentication
 ---------------------------------------------
+
+The most common problem that users have had logging in
+with Yubikey is the failure to do the "long touch"
+correctly. These suggestions should help:
+
+* When you're logging into the RDHPCS bastions using a
+  terminal program, **keep touching the key** until the
+  cursor moves to the next line.
+* If you're logging in using a GUI (Globus login using
+  a browser for example) **keep touching the key**
+  until the authentication fails or succeeds.  You should
+  keep your finger on the Yubikey even after it looks like
+  it has completed entering the token.  There should be
+  no need to press the "Enter" key when you log in using
+  a GUI.
+
+If you are doing the right things as described above and are
+still having problems, please read through the following
+troubleshooting suggestions.
 
 Be advised there are at least three Yubikey registrations needed to
 set up your all NOAA accounts to use your NOAA issued Yubikey.  Please
@@ -294,7 +316,7 @@ three different areas:
    required to access lab-level resources.
 
 You must have registered your NOAA issued Yubikey for Gmail and NOAA
-SSO before registering it for NOAA RDHPCS use.  Check to see if you have
+SSO before you register it for NOAA RDHPCS use.  Check to see if you have
 registered for RDHPCS access by going to `AIM
 <https://aim.rdhpcs.noaa.gov/>`_.
 

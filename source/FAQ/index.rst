@@ -359,7 +359,7 @@ file. The fix is to run the following:
 
 .. code-block:: shell
 
-  cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 
 1. You may have inadvertently changed permissions for your ~/.ssh

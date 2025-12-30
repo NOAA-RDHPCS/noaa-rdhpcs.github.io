@@ -95,8 +95,8 @@ Forge connecting to a remote system
 documentation for more information.
 
 
-Debgging an MPI process
-=======================
+Debugging an MPI process
+========================
 
 .. _forge-first-time-config:
 
@@ -152,7 +152,7 @@ dialog window select guilabel:`job submission`. In the *job submission
 settings* area, in the *submission template file* box, enter the full path to
 the :file:`slurm.qtf` file you downloaded.  Alternatively, you can click on the
 file icon (:octicon:`file-directory-fill;1em;sd-text-warning`) and navigate to
-the Slurm template file.  The other Slurm items will be updated whith the Slurm
+the Slurm template file.  The other Slurm items will be updated with the Slurm
 template file.  Ensure the :guilabel:`quick restart` option is selected.
 
 Finally, select :guilabel:`Ok` to close the settings.
@@ -171,14 +171,14 @@ Submit a debug job
     :align: right
     :alt: Linaro Forge run dialog
 
-    The Linary Forge run dialog box.  This is where users will select the MPI
+    The Linaro Forge run dialog box.  This is where users will select the MPI
     type (Slurm), number of processors, and the queue submission information.
 
 In the DDT client window, select :guilabel:`Run and debug a program`.  This
 will bring up the run dialog window.
 
 In the run dialog window, expand the :guilabel:`application` section and in the
-*applicatoin* text box enter the path to the executable or use the file icon
+*application* text box enter the path to the executable or use the file icon
 (:octicon:`file-directory-fill;1em;sd-text-warning`) and navigate to the
 executable.  In the *working directory* text box, you should also enter the
 full path to the directory from where the debug job should be run.
@@ -191,16 +191,16 @@ add any additional :command:`srun` arguments to run your application.
 
     Ensure the number of processes and the number of nodes required for that
     many processes is correct for the RDHPCS system and partition.  You can set
-    the *processe per node* option with the correct number of processes per
+    the *processes per node* option with the correct number of processes per
     node, and the link button (:octicon:`link;1em;sd-text-secondary`) to
     automatically set the correct number of required nodes.
 
-If debugging a hybrid MPI+OpenMP applicaiton, select the :guilabel:`OpenMP` and
+If debugging a hybrid MPI+OpenMP application, select the :guilabel:`OpenMP` and
 enter the number of OpenMP threads.  Please note you may need to use the MPI
 implementation *Slurm (MPMD)* if debugging an MPI+OpenMP application.
 
 Select the :guilabel:`submit to queue` section.  If you haven't already
-configured DDT to lauch Slurm jobs, please refer to
+configured DDT to launch Slurm jobs, please refer to
 :ref:`forge-first-time-config`.  Click the :guilabel:`parameters` button to
 verify the Slurm submit settings.
 
