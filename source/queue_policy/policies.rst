@@ -311,8 +311,8 @@ and justification.
 
 Long Term Data Archive Storage
 --------------------------------
-Long term data storage is provided by the `NESCC-HPSS <https://docs.rdhpcs.noaa.gov/data/nescc_hpss.html>`_
-and `GFDL-DMF <https://docs.rdhpcs.noaa.gov/data/gfdl_archive.html>`_ data archives.
+Long term data storage is provided by the `NESCC-HPSS <https://docs.rdhpcs.noaa.gov/data/storage.html#nescc-hpss>`_
+and `GFDL-DMF <https://docs.rdhpcs.noaa.gov/data/storage.html#gfdl-archive>`_ data archives.
 
 
 Filesystem Backup and Data Retention
