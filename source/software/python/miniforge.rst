@@ -1,7 +1,7 @@
 .. _installing-miniforge:
 
 ********************
-Installing Miniconda
+Installing Miniforge
 ********************
 
 While the RDHPCS system have Miniforge available, you can install your own
