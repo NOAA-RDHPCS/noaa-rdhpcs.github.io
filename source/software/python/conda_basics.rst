@@ -72,9 +72,9 @@ packages assume use of GCC.
             $ module load conda
 
 
-This puts you in the "base" conda environment( and activates it), which is the default Python
-environment after loading the module.  To see a list of environments, use the
-command ``conda env list``:
+This puts you in the "base" conda environment( and activates it), which is
+the default Python environment after loading the module.  To see a list of
+environments, use the command ``conda env list``:
 
 .. code-block:: bash
 
