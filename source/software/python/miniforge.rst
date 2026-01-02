@@ -5,7 +5,7 @@ Installing Miniforge
 ********************
 
 While the RDHPCS system have Miniforge available, you can install your own
-`Miniforge <https://docs.conda.io/en/main/miniconda.html>`__.
+`Miniforge <https://https://github.com/conda-forge/miniforge>`__.
 
 The install process is rather simple (with a few notable warnings, see
 :ref:`Cautionary Notes <miniforge-notes>` further below):
