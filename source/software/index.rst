@@ -7,6 +7,7 @@ Software
 .. toctree::
    :maxdepth: 2
 
+   Parallel Works/index
    modules/index
    Python <python/index>
    workflows/index
