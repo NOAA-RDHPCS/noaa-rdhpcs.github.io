@@ -111,7 +111,7 @@ Ursa Partitions
    * - u1-service
      - batch, windfall
      - 100
-     - Serial jobs (max 64 cores and/or 250g of memory),
+     - Serial jobs (max 64 cores and/or 250g of memory per user),
        with a 24 hr wall time limit. Jobs will be run on
        service nodes that have external network connectivity. Useful
        for data transfers or access to external resources like databases.
