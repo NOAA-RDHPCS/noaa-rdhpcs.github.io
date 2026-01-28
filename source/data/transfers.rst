@@ -849,6 +849,46 @@ When prompted for a password, enter your RSA PIN + RSA Token:
 .. image:: /images/winSCP2.png
   :scale: 75%
 
+Transfer Data between RDHPCS Systems and a Local Laptop
+=======================================================
+
+**1. Find the assigned "Local Port" number for your machine**
+
+Login to the host in question, Ursa for example, and look for the following
+message in the start up banner:
+
+  ``Local port 12345 forwarded to remote host.
+  Remote port 1234 forwarded to local host.``
+
+In this example, output 12345 is your unique assigned "Local Port" for this
+host. This will always be your Local Port number for this host. Note down the
+number and logout of that session. Also, make sure you don't have any existing
+sessions on that machine.
+
+**2. Establish a port tunnel with the "Local Port" number using Windows
+PowerShell**
+
+Open Windows PowerShell session and connect to the host using the following
+command, replacing XXXXX with your assigned Local Port number from above.
+
+.. code:: shell
+
+  ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+
+  Connect using WinSCP using the following settings:
+  File Protocol: sftp
+  Host: localhost
+  Port: XXXXX
+
+**3. Use WinSCP to transfer data as you normally would**
+
+Linux system transfer
+---------------------
+
+.. note::
+
+  content TBD
+
 External Data Transfers (applies to NESCC -- Ursa and Niagara only)
 -------------------------------------------------------------------
 
