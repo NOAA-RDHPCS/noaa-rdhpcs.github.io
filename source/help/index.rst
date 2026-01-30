@@ -4,20 +4,10 @@
 Getting Help
 ############
 
-There are two ways to request help from the RDHPCS team:
+To request help from the RDHPCS team, send an e-mail to one of the specific
+RDHPCS e-mail addresses.
 
-* Use the `RDHPCS ticket portal <https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_.
-* Send an e-mail to one of the specific RDHPCS e-mail addresses.
 
-When sending an e-mail, be sure to do the following:
-
-* Select the correct e-mail address, corresponding to the HPC system you're
-  using.
-* Use your noaa.gov e-mail address.
-* Give your e-mail a helpful subject line, as this will become the title
-  of your ticket.
-* Include as much information as possible, so the help desk team can best
-  assist you.
 
 .. _rdhpcs-system-help:
 
@@ -54,6 +44,16 @@ When sending an e-mail, be sure to do the following:
 +------------------------------------+-----------------------------+
 | Rocoto Workflow Manager            | rdhpcs.rocoto.help@noaa.gov |
 +------------------------------------+-----------------------------+
+
+Be sure to do the following when you write your email:
+
+* Select the correct e-mail address that corresponds to the HPC system you're
+  using.
+* Use your noaa.gov e-mail address.
+* Give your e-mail a helpful subject line, since it will become the title
+  of your ticket.
+* Include as much information as possible, so the help desk team can best
+  assist you.
 
 The RDHPCS program, along with the RDHPCS integrator, manages help requests for
 these the RDHPCS systems:
