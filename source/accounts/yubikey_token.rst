@@ -77,8 +77,7 @@ steps below to configure and register your Yubikey for RDHPCS use.
 
 .. note::
 
-   A *Long Press* means touch **and hold for three (3) seconds.**
-
+   A *Long Press* means touch **and hold until you connect to the resource.**
 
 Follow these steps to configure **Long Press Slot 2** with a **Yubico
 OTP** credential.  You can safely restart these instructions and
