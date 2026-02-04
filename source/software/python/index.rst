@@ -124,7 +124,15 @@ To start using Python, load the ``python`` module.
 
         .. code-block:: bash
 
-            $ module load python
+            $ module load rdhpcs-python
+
+
+    .. tab-item:: Ursa
+        :sync: Ursa
+
+        .. code-block:: bash
+
+            $ module load rdhpcs-python
 
     .. tab-item:: Jet
         :sync: jet
@@ -145,7 +153,7 @@ To start using Python, load the ``python`` module.
 
         .. code-block:: bash
 
-            $ module load python
+            $ module load rdhpcs-python
 
 Run the ``module avail python`` command to see the available versions of
 Python. After loading one of these, you are in a conda environemnt
@@ -174,7 +182,14 @@ on these systems, add the module file path to modules, and load the module.
 
         .. code-block:: bash
 
-            $ module load conda
+            $ module load rdhpcs-conda
+
+    .. tab-item:: Ursa
+        :sync: hera
+
+        .. code-block:: bash
+
+            $ module load rdhpcs-conda
 
     .. tab-item:: Jet
         :sync: jet
@@ -204,12 +219,10 @@ Python and Conda Environments
 =============================
 
 The Python ecosystem is vast, with a multitude of packages and dependencies.
-The environments the system admins have made available have only a few standard
-packages available (e.g., `matplotlib <https://matplotlib.org/>`_, `netcdf4
-<https://unidata.github.io/netcdf4-python/>`_, `numpy <https://numpy.org/>`_,
-`scipy <https://scipy.org/>`_, and `xarray
-<https://docs.xarray.dev/en/stable/>`_.)  If the packages you need are not in the
-available environments, you can create your own custom environment.
+The environments the system admins has only the basis python standard
+library. If you need outside package, you should your own custom environment.
+We recommend all users maintain their own environments with the packages
+they need.
 
 .. hint::
 
@@ -447,7 +460,7 @@ command to launch a parallel python job.
 .. code-block:: bash
 
     $ salloc -A <PROJECT_ID> -N 1 -t 0:05:00
-    $ module load miniforge
+    $ module load rdhpcs-conda
     $ conda activate my_env
     $ srun -n 20 python3 script.py
 
@@ -579,5 +592,4 @@ Additional Resources
 * `pip User Guide <https://pip.pypa.io/en/stable/user_guide/>`__
 * `venv Documentation <https://docs.python.org/3/tutorial/venv.html>`__
 * `Conda User Guide <https://conda.io/projects/conda/en/latest/user-guide/index.html>`__
-* `Anaconda <https://www.anaconda.com>`__
 * `Using Pip In A Conda Environment <https://www.anaconda.com/blog/using-pip-in-a-conda-environment>`__
