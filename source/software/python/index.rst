@@ -182,14 +182,7 @@ on these systems, add the module file path to modules, and load the module.
 
         .. code-block:: bash
 
-            $ module load rdhpcs-conda
-
-    .. tab-item:: Ursa
-        :sync: hera
-
-        .. code-block:: bash
-
-            $ module load rdhpcs-conda
+            $ module load conda
 
     .. tab-item:: Jet
         :sync: jet
