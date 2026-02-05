@@ -4,6 +4,40 @@
 Jet User Guide
 **************
 
+.. _Data Transfers:  https://docs.rdhpcs.noaa.gov/data/transfers.html
+.. _Helpdesk:		   https://docs.rdhpcs.noaa.gov/help/index.html
+.. _Presentation:    https://docs.google.com/presentation/d/1yW_qDjhRbklwEn7LlDySBuq_GksvAVg1N6QpsYPsmZg/edit?slide=id.p#slide=id.p
+
+.. Attention::
+
+   **Jet is scheduled to be decommissioned on March 31, 2026!**
+
+   * Please work with your PIs and Portfolio Manager to migrate
+     your workloads from Jet to other RDHPCS resources as soon
+     as possible.
+   * Because of the decommissioning process LFS5 and LFS6
+     file systems are now very full, but they also contain
+     a very large amount of old data. Please review your
+     data on LFS5 and LFS6 and delete any old and unnecessary
+     data and migrate your needed data to other systems at
+     your earliest opportunity.
+     Removing the old and unnecessary data will keep Jet
+     performant for all users still using Jet until the
+     decommission date.
+   * Information on Transferring data is found here:
+     `Data Transfers`_.
+   * After the decommission date, data on lfs5 and lfs6
+     older than 30 days will be deleted and no longer
+     available.  /home data will be moved to the HPSS
+     archive and available by help ticket request for
+     1 year, then it will be deleted and no longer available.
+   * Please see the following `Presentation`_ on timelines
+     for the transition and some guidance on moving your
+     projects and data to other RDHPCS resources.
+   * If you require further assistance, please start a Jet
+     help ticket: `Helpdesk`_.
+
+
 .. image:: /images/JET.jpeg
 
 Currently Jet consists of six compute
