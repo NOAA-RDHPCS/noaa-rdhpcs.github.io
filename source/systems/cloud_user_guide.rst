@@ -3791,3 +3791,59 @@ marketplace first. Publishing to the marketplace is also a good way to
 version control the cluster definitions anyway, so it might be good
 for backing up the configuration data somewhere. You can publish resources
 to the marketplace from `here <https://noaa.parallel.works/market/publish>`__
+
+
+experimental section for links and pix
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. grid:: 6
+
+  .. grid-item-card::
+
+    .. figure:: /images/cld1.png
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    * `Provision a bucket <https://parallelworks.com/docs/getting-started#provision-a-bucket>`_
+
+  .. grid-item-card::
+
+    .. figure:: /images/cld2.png
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    * `Provision a cluster <https://parallelworks.com/docs/getting-started#provision-a-cluster>`_
+
+  .. grid-item-card::
+
+    .. figure:: /images/cld3.png
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    * `Upload files to a bucket <https://parallelworks.com/docs/getting-started#upload-file-to-bucket>`_
+    * `Data transfer methods <https://docs.rdhpcs.noaa.gov/data/transfers.html#data-transfer-methods>`_
+
+  .. grid-item-card::
+
+    .. figure:: /images/cld4.png
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    * `Start the cluster <https://parallelworks.com/docs/getting-started#start-the-cluster>`_
+    * `Running Workflows <https://parallelworks.com/docs/run/workflows-and-apps/running-workflows>`_
+
+  .. grid-item-card::
+
+    .. figure:: /images/cld5.png
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      * `Data transfer methods <https://docs.rdhpcs.noaa.gov/data/transfers.html#data-transfer-methods>`_
+
+
+  .. grid-item-card::
+
+    .. figure:: /images/cld6.png
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    * `Stop a cluster <https://parallelworks.com/docs/compute/starting-stopping-clusters#stopping-clusters>`_
+    * `Destroy a cluster <https://parallelworks.com/docs/compute/starting-stopping-clusters#destroying-clusters>`_
+
+
+

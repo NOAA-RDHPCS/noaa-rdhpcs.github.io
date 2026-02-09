@@ -265,6 +265,7 @@ jobnames
 jobout
 jobscript
 jobsubmitsettings
+jpgsource
 JRBRNG
 JRPRNG
 jsmith
