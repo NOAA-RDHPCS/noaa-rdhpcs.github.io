@@ -48,7 +48,7 @@ updated with something like this:
 .. warning::
 
    By default, this will always initialize conda upon login, which clashes with
-   other Python installations (e.g., if you use the other anaconda modules).
+   other Python installations (e.g., if you use the other miniforge3 conda modules).
 
 It is **MUCH SAFER** to say "no" and to just export the ``PATH`` manually to
 avoid clashing:
