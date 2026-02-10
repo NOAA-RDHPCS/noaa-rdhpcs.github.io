@@ -371,7 +371,7 @@ The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform. A Jupyter workflow is available
 in the ACTIVATE Marketplace. (See the Parallel Works documentation for
 directions to `add workflows
-<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
+<https://parallelworks.com/docs/run/workflows-and-apps/adding-workflows-and-apps`_.)
 
 To use the Jupyter workflow on a Slurm compute node, first set a default
 working directory for the session. Set the **Directory To Start Jupyter Lab
