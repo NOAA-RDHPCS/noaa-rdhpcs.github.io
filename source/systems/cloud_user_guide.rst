@@ -371,7 +371,8 @@ The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform. A Jupyter workflow is available
 in the ACTIVATE Marketplace. (See the Parallel Works documentation for
 directions to `add workflows
-<https://parallelworks.com/docs/run/workflows-and-apps/adding-workflows-and-apps`_.)
+<https://parallelworks.com/docs/run/workflows-and-apps/adding-workflows-and-apps>`_.)
+
 
 To use the Jupyter workflow on a Slurm compute node, first set a default
 working directory for the session. Set the **Directory To Start Jupyter Lab
@@ -424,7 +425,7 @@ node start.
 
 .. image:: /images/jupy4.png
 
-See `Configuring clusters <https://parallelworks.com/docs/compute/configuring-clusters-v2#partition-settings>`_
+See `Configuring clusters <https://parallelworks.com/docs/compute/configuring-cloud-clusters#partition-settings>`_
 for complete information on configuring clusters and partitions.
 
 Using the Mamba tool to run Jupyter
@@ -696,7 +697,7 @@ the project.
   project, like contrib file system, object storage to store
   backup, and egress.
 
-See the `Costing Dashboard <https://parallelworks.com/docs/monitoring-costs>`_
+See the `Costing Dashboard <https://parallelworks.com/docs/monitoring/costs>`_
 section in the Parallel Works user guide for complete information.
 
 
@@ -2945,7 +2946,7 @@ tab, and your SSH public keys.
 Remove the SSH key from the “Access Public Key” box, and
 save your configuration.
 
-`Reference <https://parallelworks.com/docs/navigating-the-platform>`__
+`Reference <https://parallelworks.com/docs/navigating-activate>`__
 
 **Where do I enter my public SSH key in the PW platform?**
 
