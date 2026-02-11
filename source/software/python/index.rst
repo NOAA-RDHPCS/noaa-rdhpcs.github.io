@@ -212,10 +212,9 @@ Python and Conda Environments
 =============================
 
 The Python ecosystem is vast, with a multitude of packages and dependencies.
-The environments the system admins has only the basis python standard
-library. If you need outside package, you should your own custom environment.
-We recommend all users maintain their own environments with the packages
-they need.
+The system provided python environment contains only a base python. If you 
+need additional packages, create your own python environment using `miniforge`,
+installing packages there.
 
 .. hint::
 
