@@ -47,7 +47,9 @@ Yubikey Registration
    be using your Yubikey to authenticate into the RDHPCS.  **Your RSA
    token will no longer work.**
 
-The NOAA Yubikey is issued by your security office.
+The NOAA Yubikey is issued by your security office. You can only
+register **NOAA-issued YubiKeys** with AIM
+for use with RDHPCS resources.
 
 **If you do not have a NOAA issued Yubikey, contact your local I/T
 staff, your primary email admin, or your security office.**
