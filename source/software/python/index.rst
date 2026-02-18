@@ -212,9 +212,9 @@ Python and Conda Environments
 =============================
 
 The Python ecosystem is vast, with a multitude of packages and dependencies.
-The system provided python environment contains only a base python. If you 
-need additional packages, create your own python environment using `miniforge`,
-installing packages there.
+The system provided python environment contains only a base python.
+If you need additional packages, create your own python environment using 
+miniforge, installing packages there.
 
 .. hint::
 
