@@ -204,7 +204,7 @@ Common Access Card (CAC)
 
 The Common Access Card (CAC) is a means of access to RDHPCS
 resources for both Web and SSH access. To obtain a CAC, work with your
-local admin services team as they need to start the application
+local admin services team, as they need to start the application
 process.  Some labs can issue CACs on-site, otherwise you will have to
 visit a RAPIDS site. The site locator website is `ID Card Office
 Online <https://idco.dmdc.osd.mil/idco/>`_.  SSH logins with a CAC
