@@ -9,23 +9,23 @@ PPAN User Guide
 
 
 Post Processing and Analysis (PPAN) is a small cluster comprised of
-over 130 Dell servers located at GFDL in Princeton, NJ. These systems
-have multiple petabytes of disk storage and access to nearly 200
+over 130 Dell servers located at the Geophysical Fluid Dynamics Laboratory
+(GFDL) in Princeton, NJ. These systems
+have offer multiple petabytes of disk storage and access to nearly 200
 petabytes of archive storage. Combined with various generations of
-Intel processors, from Sandy Bridge to Ice Lake, each has
-specifications that range from 48-512GB of memory and are designed to
-provide a system that can meet most user demands.
+Intel processors from Sandy Bridge to Ice Lake,
+specifications for each range from 48-512GB of memory to meet most user
+post-processing demands.
 
-PPAN supports GFDL's science community by providing a place to further analyze
+PPAN supports GFDL's science community by providing a place to analyze
 and interpret models generated on other HPC systems. This gives users a local
 system to experiment and evaluate with various degrees of control and
 validation of complex processes and tasks. PPAN is also a host to various
-software packages including MATLAB and other complex combinations of Python & R
-libraries.
+software packages, including MATLAB and other complex combinations of
+Python & R libraries.
 
-The GFDL Post-processing and Analysis Cluster is called Pan. For interactive
-use, it contains approximately 20 analysis hosts with names like an001, an101,
-and an200.
+The GFDL Post-processing and Analysis Cluster is called Pan. It contains
+approximately 20 analysis hosts for interactive use.
 The analysis hosts feature a high-performance (CXFS) interface to the big-data
 filesystems ``/archive`` and ``/work``. A variety of data analysis software
 packages is available via the environment modules system.
@@ -42,29 +42,29 @@ This diagram represents the PPAN Data Network.
 Login to Analysis
 =================
 
-:ref:`Log into analysis using ssh <ssh_access>`, authenticate with either a
-CAC or an RSA fob.
+:ref:`Log into analysis using ssh <ssh_access>`, and authenticate with either a
+CAC or a YubiKey.
 
 ssh setup for GFDL Workstations
 -------------------------------
 
-From the GFDL workstations, to setup ``ssh`` to allow additional analysis
-logins without further authentication, existing users should run the
-commands below to update the configuration files.  New users should not need
-to run these commands.
+From the GFDL workstations, you can set up ``ssh`` to allow additional
+analysis logins without further authentication. Existing users
+configuring CAC access should run the
+command below to update the configuration files. New users, and those
+authenticating with YubiKey, should not need to do so.
 
 .. code-block:: shell
 
-   gfdl> setup-RSA
-   gfdl> setup-CAC
+      gfdl> setup-CAC
 
-To login with an RSA fob, type
+To login with a YubiKey, type
 
 .. code-block:: shell
 
    gfdl> ssh analysis
 
-and enter your RSA PIN plus the 6 digits showing on the fob.
+and enter your YubiKey PIN, then press and hold the YubiKey.
 
 To login with a CAC, type
 
@@ -98,12 +98,12 @@ C-shell keybinds for analysis
 -----------------------------
 
 If you use a C-shell (csh or tcsh) you may find that your key bindings on
-analysis are broken. e.g., the delete key produces a '~' instead of deleting a
-character. To fix this, create a ~/.bindings file with the following
-contents (mirroring the contents present in /etc/inputrc on the analysis nodes,
-but converting them for csh.) Add a line to your `~/.cshrc` file under the
-hpss-csc section from the C-shell Setup guidance above telling it to source
-~/.bindings
+analysis are broken. For instance, the delete key produces a '~' instead
+of deleting a character. To fix this, create a ~/.bindings file with the
+following contents (mirroring the contents present in /etc/inputrc on
+the analysis nodes, but converting them for csh.) Add a line to your
+`~/.cshrc` file under the hpss-csc section from the C-shell Setup guidance
+above telling it to source ~/.bindings
 
 .. code-block:: shell
 
@@ -147,32 +147,36 @@ Logging into the PP nodes
 -------------------------
 
 Sometimes, for debugging or other purposes, it can be useful to log into the pp
-nodes and run diagnostics / check on system resources. To do so, ssh in from
-any of the analysis nodes (workstations don't work):
+nodes and run diagnostics or check on system resources. To do so, ssh in from
+any of the analysis nodes:
 
 .. code-block:: shell
 
   >ssh ${pp_nodename}
 
-where ${pp_nodename} is one of the pp nodes (i.e. pp212, pp301). The same
-method will work from analysis (not from the workstations) to log into an
+where ${pp_nodename} is one of the pp nodes (e.g., pp212, pp301). The same
+method will work from analysis to log into an
 analysis node; simply swap out ${pp_nodename} for ${analysis_nodename}
+
+.. note::
+
+   This method will not work from a workstation.
 
 File Systems
 ============
 
 In each GFDL filesystem, you have your own directory to work in. Two names
-point to this directory: your username (First.Last) and your "userdir"
+point to this directory: your username (First.Last) and your *userdir*
 (initials).
 
-For example, user First.Last may access his home directory as either:
+For example, user First.A.Last may access the home directory as either:
 
 .. code-block:: shell
 
    /home/First.Last
    /home/fal
 
-The short "userdir" name is a convenient shorthand for the longer username
+The short *userdir* name is a convenient shorthand for the longer username
 (First.Last).
 
 /home and /nbhome
@@ -182,8 +186,8 @@ The GFDL workstations and the analysis cluster use a unified home directory.
 /home is backed up daily. New users are given a /home disk space quota of 10
 GB.
 
-There is also a supplemental home directory called "/nbhome" (no-backup /home).
-/nbhome is backed up weekly (not daily). New users are given an /nbhome disk
+There is also a supplemental home directory called */nbhome* (no-backup /home).
+/nbhome is backed up weekly, not daily. New users are given an /nbhome disk
 space quota of 10 GB.
 
 To see your /home and /nbhome quota and usage, run the local `homeuse`` command
@@ -196,11 +200,11 @@ or the analysis cluster. The disk usage amounts it shows are updated hourly:
    /home & /nbhome usage - Jul 22 14:01
 
    GROUP USERNAME                     FILESYS     FILES        GB  QUOTA  USE%
-   s     Joe.Scientist               -  /home       80270      6.27     10   63%
-   s     Joe.Scientist               -  /nbhome    110080      4.91     10   49%
+   s     First.Last                  -  /home       80270      6.27     10   63%
+   s     First.Last                  -  /nbhome    110080      4.91     10   49%
 
 
-The `homerpt` command shows group reports of /home or /nbhome usage.
+The ``homerpt`` command shows group reports of /home or /nbhome usage.
 You can run the command on a GFDL workstation or the analysis cluster. Run it with no
 options to see the usage message:
 
@@ -216,10 +220,10 @@ filesystem, except that file data is on tape storage until recalled to disk.
 /archive is mounted read/write on the analysis cluster, but read-only on GFDL
 workstations.
 
-Files will be recalled from tape automatically when they are opened. But if
+Files will be recalled from tape automatically when they are opened. If
 many files are needed, it is best to use the commands below to recall files
 from tape. These commands are available on the analysis cluster and GFDL
-workstations. "dm" stands for "Data Migration".
+workstations. *dm* stands for *Data Migration*.
 
 .. code-block:: shell
 
@@ -281,7 +285,7 @@ removed by an administrator if /vftmp fills. To return to the same analysis
 host at a later login, hit control-C at the login menu, then enter the host
 name.
 
-As much as possible, interactive work should be done in $TMPDIR or
+As far as possible, interactive work should be done in $TMPDIR or
 /vftmp/<First.Last>.
 
 /work
@@ -320,20 +324,18 @@ In an analysis login session, use gcp to transfer files to/from the /net,
    gcp /archive/USER/testfile gfdl:/net2/USER/testfile
    gcp gfdl:/net2/USER/testfile /archive/USER/testfile
 
-/net, /net2, and /net3 are not mounted on the post-processing nodes, but they
+/net, /net2, and /net3 are not mounted on the post-processing nodes, but
 can be accessed via gcp.
 
 Batch Software
 ==============
 
-The NOAA/RDHPCS systems in Princeton, Boulder, and Fairmont, and the DOE Gaea
-system, use the Slurm batch system.
+The DOE Gaea system, and NOAA/RDHPCS systems in Princeton, Boulder, and
+Fairmont, use the Slurm batch system.
 
 Slurm is an open-source batch system developed by DOE since 2003. It is now in
 wide use at DOE and other supercomputer sites. Slurm now includes backfill
 scheduling and accounting. Commercial support is available from SchedMD LLC.
-Slurm replaces the Moab batch system used since 2010. Tables below show
-corresponding Slurm and Moab commands and options.
 
 Access
 ------
@@ -376,30 +378,34 @@ shows all running jobs, with 40 characters of each jobname.
 Gotchas
 -------
 
-#. If -o is a directory, the job submission succeeds, the job is scheduled, and
-immediately fails with reason NonZeroExitCode.
+* If -o is a directory, the job submission succeeds, the job is scheduled, and
+  immediately fails with reason NonZeroExitCode.
 
-3. If -D dir is not specified, the job's working directory is the submission
-directory. If this directory does not exist on the execution host, Slurm does
-"cd /tmp" and runs the job.
+* If -D dir is not specified, the job's working directory is the submission
+  directory. If this directory does not exist on the execution host, Slurm does
+  ``cd /tmp`` and runs the job.
 
-#. Slurm redirects standard output and standard error to the logfile pointed to
-   in the header only after a line is finished executing. If you need a
-   heartbeat to monitor script progress, consider using another mechanism.
 
-#. If slurm scripts do not end with a POSIX-standard new line character, the
-   last line of the script will not execute. Please note that this is not an
-   issue if you are editing your script; this is a possible issue if you
-   auto-generate code  for batch submission outside of FRE. (`Reference
-   <https://thoughtbot.com/blog/no-newline-at-end-of-file>`_
+  * Slurm redirects standard output and standard error to the logfile
+    pointed to in the header only after a line is finished executing.
+    If you need a heartbeat to monitor script progress, consider using
+    another mechanism.
+
+
+  * If slurm scripts do not end with a POSIX-standard new line character, the
+    last line of the script will not execute. Please note that this is not an
+    issue if you are editing your script; this is a possible issue if you
+    auto-generate code  for batch submission outside of FRE. (`Reference
+    <https://thoughtbot.com/blog/no-newline-at-end-of-file>`_
+
 
 
 Analysis Software
 =================
 
-To access most analysis software, you must use the "module" command, described
-below. Only matlab, idl, and mathematica are accessible without loading a
-module.
+To access most analysis software, you must use the ``module`` command,
+described below. (Note that matlab, idl, and mathematica are accessible
+without loading a module.)
 
 Most GFDL software on PP/AN (and workstations) is managed by Spack, which
 facilitates easier, automated, and more frequent software updates. The `GFDL
@@ -414,8 +420,8 @@ subject line.
 Using Modules
 -------------
 
-The "module" command allows you to select a version of a software package to
-use. After doing "module load <package>", the executables and man pages for
+The ``module`` command allows you to select a version of a software package to
+use. After doing ``module load <package>``, the executables and man pages for
 <package> will be available.
 
 To see the available software packages, run:
@@ -463,7 +469,7 @@ We are now using netcdf-c:
 
 IDL is available without using modules.
 
-By default, IDL runs multi-threaded using a number of threads equal to the
+By default, IDL runs multi-threaded, using a number of threads equal to the
 number of cores on the host. Especially for batch jobs, it is better to set a
 smaller number of threads, which won't vary between hosts. To set IDL to use 4
 threads:
@@ -480,15 +486,18 @@ cluster hosts an001 and an002. For details, see the Nag page of the GFDL wiki.
 MATLAB Licenses
 ---------------
 
-To see the current usage of MATLAB licenses, run "lmgfdl" in an analysis
+To see the current usage of MATLAB licenses, run ``lmgfdl`` in an analysis
 cluster or workstation window:
 
+.. code-block:: shell
+
+   an001> lmgfdl
 
 .. _about_archrpt:
 
-*************
+
 About Archrpt
-*************
+=============
 
 | Archprt displays detailed information about archive data usage for
   user and group.
@@ -554,7 +563,7 @@ Command:
 
 ::
 
-   Report for date: 120125
+   Report for date: 120126
    -------------------------------- User Info ----------------------------------
                                                                         Quota
    User         First.Last      Group  Total Files        Used      Limit / Used
@@ -588,13 +597,13 @@ Command:
 
 ::
 
-   Report for date: 120125
+   Report for date: 120126
    -------------------------------- User Info ----------------------------------
                                                                         Quota
    User         First.Last      Group  Total Files        Used      Limit / Used
                                                                     Bytes     %
    ----         ----------      -----  -----------       ------     ------------
-   r7j          Rob.Scientist      j       145,105      134.11T   140.00T/  95.8
+   r7j          Mad.Scientist      j       145,105      134.11T   140.00T/  95.8
 
 .. _show_archive_report_by_specified_group_and_sort_by_files_view_sort:
 
@@ -713,7 +722,7 @@ The commands above can also be used with the date option.
 .. _summary_option__s:
 
 Summary Option [-s]
-===================
+-------------------
 
 The summary option will output group quota info.
 
@@ -886,8 +895,8 @@ Configuration
 
 User quotas are authorized by the group head and defined in a text
 file. Group heads may choose any path name for the file, but once
-selected please inform Garrett Power and/or Ed Weiss so that it can be
-linked into archrpt. This file is owned by the group head or his
+selected please inform teh group head, so that the path can be
+linked into archrpt. This file is owned by the group head or their
 designee, and only the owner should have write access to the file.
 Once linked to the archrpt configuration directory, the quota file
 owner can adjust users' quotas by editing this file. The format of the
