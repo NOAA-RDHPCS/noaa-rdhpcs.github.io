@@ -946,4 +946,419 @@ each user in that group will receive an email stating the group is
 over its quota limit. If an individual user is over quota, a warning
 email is sent to just that user.
 
+Analysis Hosts
+==============
+
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
+
+   * - Node
+     - CPUs
+     - GB Total Mem (ppan 1)
+     - /vftmp (TB)
+     - S:C:T (actual)
+     - S:C:T (SLURM)
+     - Annotations
+     - AVX (ppan 3)
+     - Architecture (ppan4)
+   * - an001
+     - 12
+     - 202
+     - 16
+     - 2:6:1
+     - 4:1:1
+     -
+     -
+     -  nehalem
+   * - an002
+     - 12
+     - 202
+     - 16
+     - 2:6:1
+     - 4:1:1
+     -
+     -
+     - nehalem
+   * - an005
+     - 8
+     - 101
+     - 10
+     - 2:4:1
+     - 4:1:1
+     -
+     -
+     - westmere
+   * - an006
+     - 8
+     - 101
+     - 10
+     - 2:4:1
+     - 4:1:1
+     -
+     -
+     - westmere
+   * - an007
+     - 8
+     - 101
+     - 10
+     - 2:4:1
+     - 4:1:1
+     - 2x /vftmp speed, scron
+     -
+     - westmere
+   * - an008
+     - 8
+     - 101
+     - 10
+     - 2:4:1
+     - 4:1:1
+     - 2x /vftmp speed, scron
+     -
+     - westmere
+   * - an009
+     - 8
+     - 101
+     - 10
+     - 2:4:1
+     - 4:1:1
+     -
+     -
+     - westmere
+   * - an0010
+     - 8
+     - 101
+     - 10
+     - 2:4:1
+     - 4:1:1
+     -
+     -
+     - westmere
+   * - an011
+     - 8
+     - 101
+     - 10
+     - 2:4:1
+     - 4:1:1
+     -
+     -
+     - westmere
+   * - an012
+     - 8
+     - 101
+     - 10
+     - 2:4:1
+     - 4:1:1
+     -
+     -
+     - westmere
+   * - an013
+     - 8
+     - 202
+     - 16
+     - 2:4:1
+     - 4:1:1
+     - Reserved/Engineering test
+     -
+     - westmere
+   * - an014
+     - 8
+     - 101
+     - 16
+     - 2:4:1
+     - 4:1:1
+     -
+     -
+     - westmere
+   * - an101
+     - 16
+     - 540
+     - 40
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX
+     - sandybridge
+   * - an102
+     - 16
+     - 540
+     - 40
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX
+     - sandybridge
+   * - an104
+     - 16
+     - 540
+     - 40
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX
+     - sandybridge
+   * - an105
+     - 24
+     - 270
+     - 40
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX
+     - sandybridge
+   * - an106
+     - 24
+     - 270
+     - 40
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX2
+     - sandybridge
+   * - an107
+     - 16
+     - 270
+     - 40
+     - 2:8:1
+     - 4:1:1
+     - jhan
+     - AVX
+     - sandybridge
+   * - an108
+     - 24
+     - 270
+     - 40
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX
+     - sandybridge
+   * - an200
+     - 16
+     - 540
+     - 72
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX2
+     - broadwell
+   * - an201
+     - 16
+     - 540
+     - 48
+     - 2:8:1
+     - 4:1:1
+     - jhanbigmem
+     - AVX512
+     - skylake
+   * - an202
+     - 16
+     - 540
+     - 48
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX512
+     - skylake
+   * - an203
+     - 16
+     - 540
+     - 48
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX512
+     - skylake
+   * - an204
+     - 16
+     - 540
+     - 48
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX512
+     - skylake
+   * - an205
+     - 16
+     - 540
+     - 48
+     - 2:8:1
+     - 4:1:1
+     -
+     - AVX512
+     - skylake
+   * - an206
+     - 24
+     - 1080
+     - 48
+     - 2:12:1
+     - 4:1:1
+     -
+     - AVX512
+     - icelake
+   * - an207
+     - 24
+     - 1080
+     - 48
+     - 2:12:1
+     - 4:1:1
+     -
+     - AVX512
+     - icelake
+   * - an208
+     - 24
+     - 4328
+     - 48
+     - 2:12:1
+     - 4:1:1
+     - NAG library
+     - AVX512
+     - icelake
+   * - an209
+     - 24
+     - 4328
+     - 48
+     - 2:12:1
+     - 4:1:1
+     -
+     - AVX512
+     - icelake
+   * - an210
+     - 24
+     - 4328
+     - 44
+     - 2:12:1
+     - 4:1:1
+     -
+     - AVX512
+     - icelake
+   * - an211
+     - 24
+     - 4328
+     - 44
+     - 2:12:1
+     - 4:1:1
+     -
+     - AVX512
+     - icelake
+
+
+Post-Processing Hosts
+=====================
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
+
+   * - Nodes (Range)
+     - CPUs/host
+     - GB Memory (ppan 1)
+     - /vftmp (TB)
+     - S:C:T (actual)
+     - S:C:T (SLURM)
+     - Partition
+     - AVX Instructions
+   * - pp[015-016]
+     - 8
+     - 51
+     - 10
+     - 2:4:1
+     - 8:1:1
+     - batch/stage
+     - no
+   * - pp[017-026]
+     - 8
+     - 51
+     - 10
+     - 2:4:1
+     - 8:1:1
+     - desk
+     - no
+   * - pp[027-066,068,072-074]
+     - 8
+     - 51
+     - 10
+     - 2:4:1
+     - 8:1:1
+     - batch/stage
+     - no
+   * - pp[101,104,105]
+     - 8
+     - 101
+     - 20
+     - 2:4:1
+     - 8:1:1
+     - batch/stage
+     - no
+   * - pp[200-202]
+     - 8
+     - 101
+     - 48
+     - 2:4:1
+     - 8:1:1
+     - batch/stage
+     - no
+   * - pp[203-212]
+     - 8
+     - 203
+     - 48
+     - 2:4:1
+     - 8:1:1
+     - batch/stage
+     - no
+   * - pp[300-309]
+     - 16
+     - 135
+     - 20
+     - 2:8:1
+     - 8:1:1
+     - batch/stage
+     - yes
+   * - pp310
+     - 16
+     - 270
+     - 36
+     - 2:8:1
+     - 2:8:1
+     - batch/stage
+     - yes
+   * - pp[311-333]
+     - 16
+     - 135
+     - 20
+     - 2:8:1
+     - 8:1:1
+     - batch/stage
+     - yes
+   * - pp[334-338]
+     - 24
+     - 270
+     - 24
+     - 2:12:1
+     - 8:1:1
+     - batch/stage
+     - yes
+   * - pp[339-343]
+     - 24
+     - 540
+     - 24
+     - 2:12:1
+     - 8:1:1
+     - batch/stage
+     - yes
+   * - pp[400-401]
+     - 24
+     - 540
+     - 24
+     - 2:12:1
+     - 8:1:1
+     - gpu
+     - yes
+
+
+
+
 
