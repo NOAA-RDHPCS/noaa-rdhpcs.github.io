@@ -7,6 +7,7 @@ Jet User Guide
 .. _Data Transfers:  https://docs.rdhpcs.noaa.gov/data/transfers.html
 .. _Helpdesk:		   https://docs.rdhpcs.noaa.gov/help/index.html
 .. _Presentation:    https://docs.google.com/presentation/d/1yW_qDjhRbklwEn7LlDySBuq_GksvAVg1N6QpsYPsmZg/edit?slide=id.p#slide=id.p
+.. _Google Doc:      https://docs.google.com/document/d/1-Q9ktwH8ytgPkHNu9dBvLbq439gCcYw_ANDvb8WbRsY/edit?tab=t.0#heading=h.yzfl0j6tk081
 
 .. Attention::
 
@@ -15,28 +16,32 @@ Jet User Guide
    * Please work with your PIs and Portfolio Manager to migrate
      your workloads from Jet to other RDHPCS resources as soon
      as possible.
-   * Because of the decommissioning process LFS5 and LFS6
-     file systems are now very full, but they also contain
-     a very large amount of old data. Please review your
-     data on LFS5 and LFS6 and delete any old and unnecessary
-     data and migrate your needed data to other systems at
-     your earliest opportunity.
-     Removing the old and unnecessary data will keep Jet
-     performant for all users still using Jet until the
-     decommission date.
-   * Information on Transferring data is found here:
-     `Data Transfers`_.
-   * After the decommission date, data on lfs5 and lfs6
-     older than 30 days will be deleted and no longer
-     available.  /home data will be moved to the HPSS
-     archive and available by help ticket request for
-     1 year, then it will be deleted and no longer available.
    * Please see the following `Presentation`_ on timelines
      for the transition and some guidance on moving your
      projects and data to other RDHPCS resources.
    * If you require further assistance, please start a Jet
      help ticket: `Helpdesk`_.
 
+.. Important::
+
+   **Important information about Jet Data Disposition**
+
+   * After the Jet decommission date, data on lfs5 and lfs6 older
+     than 30 days will be deleted and no longer available.
+     The remaining less than 31 days old data, we will migrate
+     to an Ursa file system and will be available for an additional
+     60 days after the migration is complete.
+   * Information on Transferring data: `Data Transfers`_.
+   * **A significant amount of data on Jet has remained untouched
+     for over a year!** Removing this stale data is strongly
+     recommended as it will significantly reduce the amount
+     of time and effort you need to migrate to other systems.
+   * **Easy Cleanup**: A user-friendly script and step-by-step
+     instructions are available to help you clean up lfs5 and lfs6
+     files that meet various inactivity criteria: `Google Doc`_.
+   * /home data will be moved to the HPSS archive and available
+     by help ticket request for 1 year, then it will be deleted
+     and no longer available.
 
 .. image:: /images/JET.jpeg
 
