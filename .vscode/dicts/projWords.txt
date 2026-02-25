@@ -94,6 +94,7 @@ cudatoolkit
 CXFS
 CXXFLAGS
 Darshan
+dask
 DBUS
 deamon
 devcimultiintel
@@ -118,6 +119,7 @@ DTN
 eastus
 ecflow
 ecmwf
+Electrotechnical
 elif
 emcda
 enddo
@@ -227,6 +229,7 @@ hostdomain
 hostfile
 hostnames
 HPCS
+hpetest
 HPFS
 HPSS
 hpsscore

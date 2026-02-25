@@ -956,6 +956,7 @@ each user in that group will receive an email stating the group is
 over its quota limit. If an individual user is over quota, a warning
 email is sent to just that user.
 
+
 .. _analysis-hosts:
 
 
@@ -970,13 +971,14 @@ Analysis Hosts
 
    * - Node
      - CPUs
-     - GB Total Mem (ppan 1)
+     - GB Total Mem (ppan 1 [#f1]_)
+
      - /vftmp (TB)
-     - S:C:T (actual)
+     - S:C:T (actual [#f2]_)
      - S:C:T (SLURM)
      - Annotations
-     - AVX (ppan 3)
-     - Architecture (ppan4)
+     - AVX (ppan 3 [#f3]_)
+     - Architecture (ppan4 [#f4]_)
    * - an001
      - 12
      - 202
@@ -985,7 +987,7 @@ Analysis Hosts
      - 4:1:1
      -
      -
-     -  nehalem
+     - nehalem
    * - an002
      - 12
      - 202
@@ -1257,6 +1259,7 @@ Analysis Hosts
      - AVX512
      - icelake
 
+
 .. _postprocess-hosts:
 
 Post-Processing Hosts
@@ -1269,19 +1272,35 @@ Post-Processing Hosts
 
    * - Nodes (Range)
      - CPUs/host
-     - GB Memory (ppan 1)
+     - GB Memory (ppan 1 [#f1]_)
      - /vftmp (TB)
      - S:C:T (actual)
      - S:C:T (SLURM)
      - Partition
      - AVX Instructions
-   * - pp[015-016]
+   * - pp[008-010]
+     - 16
+     - 203
+     - 10
+     - 2:8:1
+     - 2:8:1
+     - workflow
+     - yes
+   * - pp[013-014]
      - 8
      - 51
      - 10
      - 2:4:1
-     - 8:1:1
-     - batch/stage
+     - 2:4:1
+     - hpetest
+     - no
+   * - pp[017-026]
+     - 8
+     - 51
+     - 10
+     - 2:4:1
+     - 2:4:1
+     - dask
      - no
    * - pp[017-026]
      - 8
@@ -1373,6 +1392,19 @@ Post-Processing Hosts
      - yes
 
 
+Host listing circa 2/2025
 
+   .. rubric:: Footnotes
 
+   .. [#f1] Units expressed in base-10 multiple-byte as recommended by the
+      International Standard IEC 80000-13 Quantities and Units – Part 13:
+      Information Science and Technology, International Electrotechnical
+      Commission (2008)
+
+   .. [#f2] Number of CPU sockets per host, C: Number of physical cores per
+    socket, T: Number of threads per core (Hyper-threading).
+
+   .. [#f3] Advanced Vector eXtension support processor (AVX).
+
+   .. [#f4] Processor architecture denomination.
 
