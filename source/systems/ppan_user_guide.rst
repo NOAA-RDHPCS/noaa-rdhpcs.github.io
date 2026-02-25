@@ -1391,7 +1391,7 @@ Post-Processing Hosts
       Information Science and Technology, International Electrotechnical
       Commission (2008)
 
-   .. [#f2] Number of CPU sockets per host, C: Number of physical cores per
+   .. [#f2] S: Number of CPU sockets per host, C: Number of physical cores per
     socket, T: Number of threads per core (Hyper-threading).
 
    .. [#f3] Advanced Vector eXtension support processor (AVX).
