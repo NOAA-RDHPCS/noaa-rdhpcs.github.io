@@ -175,7 +175,7 @@ analysis node; simply swap out ${pp_nodename} for ${analysis_nodename}
 File Systems
 ============
 
-In each GFDL filesystem, you have your own directory to work in. 
+In each GFDL filesystem, you have your own directory to work in.
 To determine your userdir, use the gfdluser $USER command.
 
 For example, user First.A.Last may access the home directory as either:
