@@ -970,14 +970,13 @@ Analysis Hosts
 
    * - Node
      - CPUs
-     - GB Total Mem (ppan 1 [#f1]_)
-
+     - GB Total Mem [#f1]_
      - /vftmp (TB)
-     - S:C:T (actual [#f2]_)
+     - S:C:T (actual) [#f2]_
      - S:C:T (SLURM)
      - Annotations
-     - AVX (ppan 3 [#f3]_)
-     - Architecture (ppan4 [#f4]_)
+     - AVX [#f3]_
+     - Architecture [#f4]_
    * - an001
      - 12
      - 202
@@ -1271,7 +1270,7 @@ Post-Processing Hosts
 
    * - Nodes (Range)
      - CPUs/host
-     - GB Memory (ppan 1 [#f1]_)
+     - GB Memory [#f1]_
      - /vftmp (TB)
      - S:C:T (actual)
      - S:C:T (SLURM)
@@ -1300,14 +1299,6 @@ Post-Processing Hosts
      - 2:4:1
      - 2:4:1
      - dask
-     - no
-   * - pp[017-026]
-     - 8
-     - 51
-     - 10
-     - 2:4:1
-     - 8:1:1
-     - desk
      - no
    * - pp[027-066,068,072-074]
      - 8
@@ -1391,7 +1382,7 @@ Post-Processing Hosts
      - yes
 
 
-Host listing circa 2/2025
+.. Note::
 
    .. rubric:: Footnotes
 
