@@ -1270,7 +1270,7 @@ Post-Processing Hosts
 
    * - Nodes (Range)
      - CPUs/host
-     - GB Memory [#f1]_
+     - GB Memory [#f5]_
      - /vftmp (TB)
      - S:C:T (actual)
      - S:C:T (SLURM)
@@ -1389,12 +1389,20 @@ Post-Processing Hosts
    .. [#f1] Units expressed in base-10 multiple-byte as recommended by the
       International Standard IEC 80000-13 Quantities and Units – Part 13:
       Information Science and Technology, International Electrotechnical
-      Commission (2008)
+      Commission (2008).
 
-   .. [#f2] S: Number of CPU sockets per host, C: Number of physical cores per
-    socket, T: Number of threads per core (Hyper-threading).
+   .. [#f2] **S**: Number of CPU sockets per host, **C**: Number of physical
+      cores per socket, **T**: Number of threads per core
+      (`Hyper-threading <https://en.wikipedia.org/wiki/Hyper-threading>`_)
 
-   .. [#f3] Advanced Vector eXtension support processor (AVX).
+   .. [#f3] Advanced Vector eXtension support processor
+      (`AVX <https://en.wikipedia.org/wiki/Advanced_Vector_Extensions>`_)
 
    .. [#f4] Processor architecture denomination.
+
+   .. [#f5] Units expressed in base-10 multiple-byte as recommended by the
+      International Standard IEC 80000-13 Quantities and Units – Part 13:
+      Information Science and Technology, International Electrotechnical
+      Commission (2008). 
+
 
