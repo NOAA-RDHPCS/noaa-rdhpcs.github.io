@@ -1,4 +1,5 @@
-
+.. meta::
+   :robots: nosnippet
 
 .. _data-storage-and-transfers:
 
