@@ -172,9 +172,10 @@ associated with that version.
 Conda
 -----
 
-Some RDHPCS systems have Conda installed for all users using miniforge3.  To start using Conda
-on these systems, add the module file path to modules if needed, and load the module.
-For rdhpcs-conda, you do not need to activate the environment.
+Some RDHPCS systems have Conda installed for all users using miniforge3.
+To start using Conda on these systems, add the module file path to
+modules if needed, and load the module. For rdhpcs-conda, you do not
+need to activate the environment.
 
 .. tab-set::
 
