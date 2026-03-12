@@ -155,7 +155,7 @@ Logging into the PP nodes
 
 Sometimes, for debugging or other purposes, it can be useful to log into the pp
 nodes and run diagnostics or check on system resources.
-Provided that your keys
+Provided that your ssh keys
 are configured correctly, you can ssh in from any of the analysis nodes as
 follows:
 
@@ -175,9 +175,8 @@ analysis node; simply swap out ${pp_nodename} for ${analysis_nodename}
 File Systems
 ============
 
-In each GFDL filesystem, you have your own directory to work in. Two names
-point to this directory: your username (First.Last) and your *userdir*
-(initials).
+In each GFDL filesystem, you have your own directory to work in.
+To determine your userdir, use the gfdluser $USER command.
 
 For example, user First.A.Last may access the home directory as either:
 
@@ -1305,6 +1304,14 @@ Post-Processing Hosts
      - 2:4:1
      - hpetest
      - no
+   * - pp[017-026]
+     - 8
+     - 51
+     - 10
+     - 2:4:1
+     - 2:4:1
+     - dask
+     - no
    * - pp[027-066,068,072-074]
      - 8
      - 51
@@ -1386,7 +1393,8 @@ Post-Processing Hosts
      - gpu
      - yes
 
-.. note::
+
+.. Note::
 
    .. rubric:: Footnotes
 
@@ -1407,5 +1415,6 @@ Post-Processing Hosts
    .. [#f5] Units expressed in base-10 multiple-byte as recommended by the
       International Standard IEC 80000-13 Quantities and Units – Part 13:
       Information Science and Technology, International Electrotechnical
-      Commission (2008). ..
+      Commission (2008).
+
 
