@@ -409,6 +409,18 @@ Gotchas
     <https://thoughtbot.com/blog/no-newline-at-end-of-file>`_
 
 
+Podman
+======
+
+Podman is an open-source utility that can be used on Gaea or PPAN to create and
+manage containers. For more information see the `Podman documentation. <https://podman.io/docs>`_
+
+.. note::
+
+    Before you can use Podman on Gaea or PPAN, you will need to request Podman access
+    through the Help system. Send email to oar.gfdl.help@noaa.gov,
+    and specify Podman Access in the subject line.
+
 
 Analysis Software
 =================
