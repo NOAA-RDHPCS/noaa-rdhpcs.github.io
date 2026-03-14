@@ -14,4 +14,5 @@ Software
    compilers/index
    containers/index
    VSCode/index
+   remote_desktop
    x2go
