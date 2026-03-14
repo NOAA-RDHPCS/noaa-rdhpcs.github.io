@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Check URLs that are excluded from Sphinx linkcheck due to SSL or other CI issues.
+"""Check URLs that are excluded from Sphinx linkcheck due to CI environment limitations.
 
 Reads linkcheck_ignore patterns from source/conf.py, then extracts URLs that
 will generate actual hyperlinks in the built documentation by parsing RST
 hyperlink syntax:
 
   1. Inline references:      `Link text <URL>`_  /  `Link text <URL>`__
-  2. Hyperlink targets:      .. _label: URL
+  2. Hyperlink targets:      .. _label: URL  (label may be quoted)
   3. Bare URLs in paragraph text (skipped when inside code blocks)
 
 Checks each matched URL with SSL verification disabled. URLs that are
@@ -143,7 +143,7 @@ def extract_rst_links(rst_file: Path) -> list[tuple[str, int]]:
             continue
 
         for m in RE_BARE.finditer(line):
-            url = m.group(1).rstrip(".,;:")
+            url = re.sub(r"[.,;:]+$", "", m.group(1))
             if url not in seen:
                 seen.add(url)
                 results.append((url, lineno))
@@ -169,18 +169,17 @@ def check_url(session: requests.Session, url: str) -> tuple[str, int | None]:
     for attempt in range(MAX_RETRIES):
         try:
             resp = session.head(url, **REQ_KWARGS)
-            # Some servers reject HEAD; fall back to GET (body not needed)
+            # Some servers reject HEAD; fall back to GET (stream to avoid downloading body)
             if resp.status_code == 405:
-                resp = session.get(url, **REQ_KWARGS)
+                resp = session.get(url, stream=True, **REQ_KWARGS)
+                resp.close()
             code = resp.status_code
             if 200 <= code < 400:
                 return STATUS_OK, code
             if 400 <= code < 500:
                 return STATUS_BROKEN, code
             # 5xx: retry
-        except requests.exceptions.ConnectionError:
-            return STATUS_UNREACHABLE, None
-        except requests.exceptions.Timeout:
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
             if attempt == MAX_RETRIES - 1:
                 return STATUS_UNREACHABLE, None
         if attempt < MAX_RETRIES - 1:

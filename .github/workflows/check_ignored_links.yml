@@ -1,0 +1,70 @@
+# cspell: words linkcheck
+
+name: Weekly Ignored Link Check
+
+# Runs weekly to verify links that are excluded from the standard linkcheck
+# (e.g., due to SSL certificate verification failures or other CI environment
+# limitations). Creates a GitHub issue if any checked links are broken (4xx).
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Every Monday at 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check-ignored-links:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests==2.32.3
+
+      - name: Check ignored links
+        id: check
+        run: |
+          set +e
+          python .github/scripts/check_ignored_links.py > check_output.txt 2>&1
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+          cat check_output.txt
+
+      - name: Create issue for broken links
+        if: steps.check.outputs.exit_code == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          existing=$(gh issue list \
+            --label "bug" \
+            --state open \
+            --search "Broken ignored link(s) detected in:title" \
+            --json number \
+            --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            echo "Issue #$existing already open; skipping creation."
+            exit 0
+          fi
+          check_output=$(cat check_output.txt)
+          gh issue create \
+            --title "Broken ignored link(s) detected" \
+            --label "bug" \
+            --body "The weekly ignored link check found one or more broken links.
+
+These URLs are excluded from the standard CI link checker (see \`linkcheck_ignore\` in \`source/conf.py\`) because they cannot be verified by the GitHub Actions runner environment (e.g., SSL certificate chain issues or network restrictions). They are checked separately by this scheduled workflow.
+
+## Check Output
+
+\`\`\`
+${check_output}
+\`\`\`
+
+## Action Required
+
+Update the broken link(s) in the referenced source file(s) to point to the correct URL, or update \`linkcheck_ignore\` in \`source/conf.py\` if the URL is now checkable by the standard link checker."
