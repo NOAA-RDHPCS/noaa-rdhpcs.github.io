@@ -154,7 +154,9 @@ linkcheck_ignore = [
     r'https://accounts\.noaa\.gov/',
     # opstree.com returns 403 to automated requests but the page is valid
     r'https://opstree\.com/.*',
-    r'https://nsd.rdc.noaa.gov/'
+    r'https://nsd.rdc.noaa.gov/',
+    # Google Docs/Slides require authentication and time out in CI
+    r'https://docs\.google\.com/.*',
 ]
 
 linkcheck_retries = 3
