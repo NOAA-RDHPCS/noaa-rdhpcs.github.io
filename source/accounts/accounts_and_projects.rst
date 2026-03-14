@@ -25,6 +25,13 @@ through them.
 
 .. image:: /images/access1.png
 
+.. Attention::
+
+   Your local line office will create an account for you. Your NOAA email
+   identity will be your first and last name, in mixed case, like:
+   Robin.Lee@NOAA.gov.
+
+
 Once you have a NOAA.gov email address, you can:
 
 1. Request an RDHPCS account through the Account Information Management
@@ -40,7 +47,8 @@ Once you've been approved for the RDHPCS project, you will receive an email
 containing instructions about your next steps. These include:
 
 #. Requesting access to further projects
-#. Registering your NOAA issued YubiKey for RDHPCS access
+#. Registering your NOAA issued YubiKey for RDHPCS access. Your Yubikey token
+   generates a One-Time Password (OTP) to authenticate your identity.
 
 Confer with your supervisor and colleagues to identify the
 project(s) you should request.
@@ -109,9 +117,8 @@ that have allocations on systems.
 Requesting access to MSU-HPC systems
 ====================================
 
-The Hercules and Orion systems comprise MSU-HPC, managed by
-Mississippi State University. Follow these steps to get an Account for
-MSU-HPC.
+The Hercules and Orion systems comprise MSU-HPC, managed by Mississippi State
+University.
 
 General Access Requirements
 ---------------------------
@@ -131,7 +138,6 @@ General Access Requirements
 
    The designated PI or PfM must request that a
    MSU user account be created, and the user assigned to their project.
-
 
 Complete the following steps for MSU-HPC access.
 
@@ -198,7 +204,7 @@ Common Access Card (CAC)
 
 The Common Access Card (CAC) is a means of access to RDHPCS
 resources for both Web and SSH access. To obtain a CAC, work with your
-local admin services team as they need to start the application
+local admin services team, as they need to start the application
 process.  Some labs can issue CACs on-site, otherwise you will have to
 visit a RAPIDS site. The site locator website is `ID Card Office
 Online <https://idco.dmdc.osd.mil/idco/>`_.  SSH logins with a CAC
