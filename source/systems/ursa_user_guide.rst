@@ -224,7 +224,7 @@ Description of the two exploratory systems:
   NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
   These nodes have a single NDR200 connection to Ursa
   IB fabric.  More detailed information about
-  the `NVIDIA GH200 <https://resources.nvidia.com/en-us-data-center-overview-mc/en-us-data-center-overview/grace-hopper-superchip-datasheet-partner>`_
+  the `NVIDIA GH200 <https://www.nvidia.com/en-us/data-center/grace-hopper-superchip/>`_
   is available from NVIDIA.
 
 * Partition:  ``u1-mi300x``. Three dual-Intel CPU sockets

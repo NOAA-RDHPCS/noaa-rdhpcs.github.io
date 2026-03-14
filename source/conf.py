@@ -135,7 +135,8 @@ linkcheck_allowed_redirects = {
     r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*',
     r'https://support\.hpe\.com/connect/s/product\?kmpmoid=1013083813': r'https://support\.hpe\.com/connect/s/product\?language=?.*&kmpmoid=1013083813',
     r'https://conda\.io/.*': r'https://docs\.conda\.io/.*',
-    r'https://noaa-gfdl\.readthedocs\.io/projects/.*': r'https://noaa-gfdl\.readthedocs\.io/projects/.*?/.*?/latest'
+    r'https://noaa-gfdl\.readthedocs\.io/projects/.*': r'https://noaa-gfdl\.readthedocs\.io/projects/.*?/.*?/latest',
+    r'https://helpdesk\.gfdl\.noaa\.gov/.*': r'https://keycloak\.gfdl\.noaa\.gov/.*'
 }
 
 linkcheck_ignore = [
@@ -151,6 +152,8 @@ linkcheck_ignore = [
     r'https://www\.amd\.com/en/products/accelerators/instinct/mi300/mi300x\.html',
     r'https://www\.gnu\.org/software/.*?/',
     r'https://accounts\.noaa\.gov/',
+    # opstree.com returns 403 to automated requests but the page is valid
+    r'https://opstree\.com/.*',
     r'https://nsd.rdc.noaa.gov/'
 ]
 
