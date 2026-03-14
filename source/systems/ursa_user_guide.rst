@@ -111,7 +111,8 @@ Ursa Partitions
    * - u1-service
      - batch, windfall
      - 100
-     - Serial jobs (max 4 cores), with a 24 hr limit. Jobs will be run on
+     - Serial jobs (max 64 cores and/or 250 GB of memory per user),
+       with a 24 hr wall time limit. Jobs will be run on
        service nodes that have external network connectivity. Useful
        for data transfers or access to external resources like databases.
        If your workflow requires pushing or pulling data to/from
@@ -302,7 +303,7 @@ for your applications via the purged directory,
 .. warning::
 
    **This directory will be purged of all files that have not
-   been accessed in the past 30 days**. Depending on usage we
+   been accessed in the past 90 days**. Depending on usage we
    will adjust the purge schedule as needed, preceded by a user
    notification. Users under the ``/purged`` directory have a quota
    of **250 TB**.

@@ -656,10 +656,10 @@ parallel, and thus, a single core may be sufficient. If your
 memory demands are large, it may be appropriate to use an
 entire node even though you are using only a single core.
 
-Using Anaconda Python on Hera
------------------------------
+Using Miniforge3 and Python on Hera
+-----------------------------------
 
-See :ref:`Installing Miniconda <installing-miniconda>` for
+See :ref:`Installing Miniforge <installing-miniforge>` for
 installation instructions.
 
 .. warning::

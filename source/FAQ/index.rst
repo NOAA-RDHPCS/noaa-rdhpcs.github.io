@@ -410,12 +410,12 @@ is not practical to have a "common" python installation that is
 applicable for all users.  Python works best when users install the
 packages they need in their own project space.
 
-We have now opened up access to the anaconda repositories so it is no
+We have now opened up access to the conda forge repositories so it is no
 longer necessary to use the RDHPCS mirror for installing the Python
 packages you need. You should now be able to install Python packages
 the same way you would on your local desktop/laptop.
 
-Please search for "anaconda" in the search field for
+Please search for "conda" in the search field for
 specific instructions (if any) on how to maintain your own python
 installations in our environment.
 
