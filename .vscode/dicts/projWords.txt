@@ -35,6 +35,7 @@ bluearc
 bootable
 boto
 botocore
+broadwell
 brotlipy
 bucketname
 byacc
@@ -93,6 +94,7 @@ cudatoolkit
 CXFS
 CXXFLAGS
 Darshan
+dask
 DBUS
 deamon
 devcimultiintel
@@ -117,6 +119,7 @@ DTN
 eastus
 ecflow
 ecmwf
+Electrotechnical
 elif
 emcda
 enddo
@@ -226,6 +229,7 @@ hostdomain
 hostfile
 hostnames
 HPCS
+hpetest
 HPFS
 HPSS
 hpsscore
@@ -242,6 +246,7 @@ hwrf
 hwrfv
 hybda
 ICAM
+icelake
 ICHUNK
 icpc
 ifort
@@ -259,6 +264,8 @@ JCPRNG
 jcsda
 jdoe
 jetmgmt
+jhan
+jhanbigmem
 joberr
 jobfile
 jobnames
@@ -404,6 +411,7 @@ ncview
 ndays
 neaqs
 nedit
+nehalem
 nems
 NESCC
 nesccmgmt
@@ -640,6 +648,7 @@ wamipe
 WCOSS
 wdas
 webform
+westmere
 wgrib
 wmem
 wrfsatda
