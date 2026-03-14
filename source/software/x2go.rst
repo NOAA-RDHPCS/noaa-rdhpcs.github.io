@@ -26,7 +26,7 @@ The RDHPCS does not support these X2Go features:
 .. note::
 
     The systems at Mississippi State University (MSU) use the web-based
-    application `Open OnDemand <https://openondemand.org/>`_ to facilitate
+    application `Open OnDemand <https://www.openondemand.org/>`_ to facilitate
     remote desktop connection.  Please refer to MSU's `Open OnDemand User Guide
     <https://intranet.hpc.msstate.edu/helpdesk/resource-docs/ood_guide.php>`__
     for more information.
