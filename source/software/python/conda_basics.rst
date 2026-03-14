@@ -48,7 +48,14 @@ packages assume use of GCC.
 
         .. code-block:: bash
 
-            $ module load conda
+            $ module load rdhpcs-conda
+
+    .. tab-item:: Ursa
+        :sync: ursa
+
+        .. code-block:: bash
+
+            $ module load rdhpcs-conda
 
     .. tab-item:: Jet
         :sync: jet
@@ -69,7 +76,7 @@ packages assume use of GCC.
 
         .. code-block:: bash
 
-            $ module load conda
+            $ module load rdhpc-conda
 
 
 This puts you in the "base" conda environment( and activates it), which is
@@ -122,7 +129,7 @@ executing:
 
    $ python --version
 
-   Python 3.12.0
+   Python 3.13.0
 
 Creating a new environment
 ==========================

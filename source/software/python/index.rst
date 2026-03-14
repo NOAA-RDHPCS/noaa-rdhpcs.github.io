@@ -108,23 +108,23 @@ To start using Python, load the ``python`` module.
 
         .. code-block:: bash
 
-            $ module use /usw/conda/modulefiles
-            $ module load python
-
-        .. note::
-
-            While the path to the Python module on Gaea is in a directory path
-            with the name of ``conda``, the Python module will not initialize
-            the Conda environment.  If you want to use Conda, you must load the
-            ``miniforge`` instead (see :ref:`python-conda-modules`
-            below).
+            $ module use /ncrc/usw/rdhpcs/modulefiles/
+            $ module load rdhpcs-python
 
     .. tab-item:: Hera
         :sync: hera
 
         .. code-block:: bash
 
-            $ module load python
+            $ module load rdhpcs-python
+
+
+    .. tab-item:: Ursa
+        :sync: Ursa
+
+        .. code-block:: bash
+
+            $ module load rdhpcs-python
 
     .. tab-item:: Jet
         :sync: jet
@@ -145,7 +145,23 @@ To start using Python, load the ``python`` module.
 
         .. code-block:: bash
 
-            $ module load python
+            $ module load rdhpcs-python
+
+    .. tab-item:: Orion
+        :sync: orion
+
+        .. code-block:: bash
+
+            $ module load contrib
+            $ module load rdhpcs-python
+
+    .. tab-item:: Hercules
+        :sync: Hercules
+
+        .. code-block:: bash
+
+            $ module load contrib
+            $ module load rdhpcs-python
 
 Run the ``module avail python`` command to see the available versions of
 Python. After loading one of these, you are in a conda environemnt
@@ -156,8 +172,10 @@ associated with that version.
 Conda
 -----
 
-Some RDHPCS systems have Conda installed for all users.  To start using Conda
-on these systems, add the module file path to modules, and load the module.
+Some RDHPCS systems have Conda installed for all users using miniforge3.
+To start using Conda on these systems, add the module file path to
+modules if needed, and load the module. For rdhpcs-conda, you do not
+need to activate the environment.
 
 .. tab-set::
 
@@ -166,15 +184,22 @@ on these systems, add the module file path to modules, and load the module.
 
         .. code-block:: bash
 
-            $ module use /usw/conda/modulefiles
-            $ module load conda
+            $ module use /ncrc/usw/rdhpcs/modulefiles/
+            $ module load rdhpcs-conda
 
     .. tab-item:: Hera
         :sync: hera
 
         .. code-block:: bash
 
-            $ module load conda
+            $ module load rdhpcs-conda
+
+    .. tab-item:: Ursa
+        :sync: Ursa
+
+        .. code-block:: bash
+
+            $ module load rdhpcs-conda
 
     .. tab-item:: Jet
         :sync: jet
@@ -195,8 +220,23 @@ on these systems, add the module file path to modules, and load the module.
 
         .. code-block:: bash
 
-            $ module load conda
+            $ module load rdhpcs-conda
 
+    .. tab-item:: Orion
+        :sync: orion
+
+        .. code-block:: bash
+
+            $ module load contrib
+            $ module load rdhpcs-conda
+
+    .. tab-item:: Hercules
+        :sync: Hercules
+
+        .. code-block:: bash
+
+            $ module load contrib
+            $ module load rdhpcs-conda
 
 .. _python-python-and-conda-environments:
 
@@ -204,12 +244,9 @@ Python and Conda Environments
 =============================
 
 The Python ecosystem is vast, with a multitude of packages and dependencies.
-The environments the system admins have made available have only a few standard
-packages available (e.g., `matplotlib <https://matplotlib.org/>`_, `netcdf4
-<https://unidata.github.io/netcdf4-python/>`_, `numpy <https://numpy.org/>`_,
-`scipy <https://scipy.org/>`_, and `xarray
-<https://docs.xarray.dev/en/stable/>`_.)  If the packages you need are not in the
-available environments, you can create your own custom environment.
+The system provided python environment contains only a base python.
+If you need additional packages, create your own python environment using
+miniforge, installing packages there.
 
 .. hint::
 
@@ -300,10 +337,10 @@ To create and activate an environment:
         .. code-block:: bash
 
             #1. Create the "my_env" environment with Python version X.Y
-            $ conda create --name my_env python=X.Y
+            $ conda create -p /PATH/TO/my_env python=X.Y
 
             #2. Activate "my_env"
-            $ conda activate /path/to/my_env
+            $ conda activate /PATH/TO/my_env
 
             #3. Install additional packages in the "my_env" environment
             $ conda install <package_name> [<package_name> ...]
@@ -432,7 +469,7 @@ seamlessly. Below is an example of an effective batch script:
     cd $SLURM_SUBMIT_DIR
     date
 
-    module load python
+    module load rdhpcs-conda
     conda activate my_env
 
     srun -n 5 python3 script.py
@@ -447,7 +484,7 @@ command to launch a parallel python job.
 .. code-block:: bash
 
     $ salloc -A <PROJECT_ID> -N 1 -t 0:05:00
-    $ module load miniforge
+    $ module load rdhpcs-conda
     $ conda activate my_env
     $ srun -n 20 python3 script.py
 
@@ -579,5 +616,4 @@ Additional Resources
 * `pip User Guide <https://pip.pypa.io/en/stable/user_guide/>`__
 * `venv Documentation <https://docs.python.org/3/tutorial/venv.html>`__
 * `Conda User Guide <https://conda.io/projects/conda/en/latest/user-guide/index.html>`__
-* `Anaconda <https://www.anaconda.com>`__
 * `Using Pip In A Conda Environment <https://www.anaconda.com/blog/using-pip-in-a-conda-environment>`__
