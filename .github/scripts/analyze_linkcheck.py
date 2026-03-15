@@ -67,18 +67,26 @@ def get_broken_links() -> list[dict]:
             except json.JSONDecodeError:
                 continue
             if entry.get("status") == "broken" and 400 <= entry.get("code", 0) < 500:
+                filename = entry.get("filename")
+                if not filename or not entry.get("uri"):
+                    print(f"WARNING: skipping malformed entry: {entry}", file=sys.stderr)
+                    continue
                 # Normalize filename (relative to source/) to repo-root-relative path
-                entry["filepath"] = f"{SOURCE_DIR}/{entry['filename']}"
+                entry["filepath"] = f"{SOURCE_DIR}/{filename}"
                 broken.append(entry)
     return broken
 
 
 def get_modified_rst_files(base_ref: str) -> set[str]:
     """Return repo-root-relative paths of RST files modified in the PR."""
-    result = subprocess.run(
-        ["git", "diff", "--name-only", f"origin/{base_ref}...HEAD", "--", "*.rst"],
-        capture_output=True, text=True, check=True,
-    )
+    try:
+        result = subprocess.run(
+            ["git", "diff", "--name-only", f"origin/{base_ref}...HEAD", "--", "*.rst"],
+            capture_output=True, text=True, check=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        print(f"WARNING: git diff failed: {exc.stderr.strip()}", file=sys.stderr)
+        sys.exit(2)
     return {line.strip() for line in result.stdout.splitlines() if line.strip()}
 
 
@@ -87,10 +95,14 @@ def get_added_urls(base_ref: str, rst_files: set[str]) -> set[str]:
     if not rst_files:
         return set()
 
-    result = subprocess.run(
-        ["git", "diff", f"origin/{base_ref}...HEAD", "--"] + sorted(rst_files),
-        capture_output=True, text=True, check=True,
-    )
+    try:
+        result = subprocess.run(
+            ["git", "diff", f"origin/{base_ref}...HEAD", "--"] + sorted(rst_files),
+            capture_output=True, text=True, check=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        print(f"WARNING: git diff failed: {exc.stderr.strip()}", file=sys.stderr)
+        sys.exit(2)
 
     urls: set[str] = set()
     for line in result.stdout.splitlines():
@@ -98,9 +110,9 @@ def get_added_urls(base_ref: str, rst_files: set[str]) -> set[str]:
             continue
         content = line[1:]
         for m in RE_INLINE.finditer(content):
-            urls.add(m.group(1).strip())
+            urls.add(re.sub(r"[.,;:]+$", "", m.group(1).strip()))
         for m in RE_TARGET.finditer(content):
-            urls.add(m.group(1).strip())
+            urls.add(re.sub(r"[.,;:]+$", "", m.group(1).strip()))
         for m in RE_BARE.finditer(content):
             urls.add(re.sub(r"[.,;:]+$", "", m.group(1)))
     return urls
@@ -116,7 +128,10 @@ def format_table(entries: list[dict]) -> str:
         code = e.get("code", "")
         info = e.get("info", "").split("\n")[0]  # first line only
         status = f"{code} — {info}".strip(" —") if code else info
-        rows.append(f"| `{e['filepath']}` | {e['lineno']} | {e['uri']} | {status} |")
+        filepath = e.get("filepath", "unknown")
+        lineno = e.get("lineno", "?")
+        uri = e.get("uri", "")
+        rows.append(f"| `{filepath}` | {lineno} | {uri} | {status} |")
     return "\n".join(rows)
 
 

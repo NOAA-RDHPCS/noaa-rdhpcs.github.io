@@ -49,11 +49,13 @@ def main() -> int:
     print("| File | Line | URL | Status |")
     print("|------|------|-----|--------|")
     for e in broken:
-        filepath = f"{SOURCE_DIR}/{e['filename']}"
+        filepath = f"{SOURCE_DIR}/{e.get('filename', 'unknown')}"
         code = e.get("code", "")
         info = e.get("info", "").split("\n")[0]
         status = f"{code} — {info}".strip(" —") if code else info
-        print(f"| `{filepath}` | {e['lineno']} | {e['uri']} | {status} |")
+        lineno = e.get("lineno", "?")
+        uri = e.get("uri", "")
+        print(f"| `{filepath}` | {lineno} | {uri} | {status} |")
 
     print(
         "\n## Action Required\n\n"

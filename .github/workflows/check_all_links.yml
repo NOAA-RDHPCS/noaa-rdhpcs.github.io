@@ -42,6 +42,10 @@ jobs:
         id: report
         run: |
           set +e
+          # stderr is intentionally merged into issue_body.md (2>&1) so that any
+          # Python warnings or script errors appear in the issue for diagnostics.
+          # If stderr output ever corrupts the issue body formatting, replace 2>&1
+          # with a separate redirect (e.g., 2>report_err.txt) and handle it separately.
           python .github/scripts/report_linkcheck.py > issue_body.md 2>&1
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           set -e
