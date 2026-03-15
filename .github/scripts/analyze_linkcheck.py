@@ -49,6 +49,22 @@ RE_INLINE = re.compile(r"`[^`<]*<(https?://[^>]+)>`__?")
 RE_TARGET = re.compile(r"^\s*\.\.\s+_`?[^`:]+`?:\s+(https?://\S+)", re.MULTILINE)
 RE_BARE = re.compile(r"(?<![`<])(https?://[^\s`<>\"')\]\\]+)")
 
+# Sphinx 9.x writes code=0 for all broken entries; the actual HTTP status
+# is only in the info field (e.g. "404 Client Error: Not Found for url: ...").
+# This pattern matches that prefix so we can detect 4xx responses either way.
+RE_4XX_INFO = re.compile(r"^4\d\d\b")
+
+
+def _is_broken_4xx(entry: dict) -> bool:
+    """Return True if the entry represents an HTTP 4xx broken link."""
+    code = entry.get("code", 0)
+    if 400 <= code < 500:
+        return True
+    # Fallback for Sphinx versions that always write code=0
+    if code == 0 and entry.get("status") == "broken":
+        return bool(RE_4XX_INFO.match(entry.get("info", "")))
+    return False
+
 
 def get_broken_links() -> list[dict]:
     """Parse output.json and return entries with HTTP 4xx status only."""
@@ -66,7 +82,7 @@ def get_broken_links() -> list[dict]:
                 entry = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            if entry.get("status") == "broken" and 400 <= entry.get("code", 0) < 500:
+            if _is_broken_4xx(entry):
                 filename = entry.get("filename")
                 if not filename or not entry.get("uri"):
                     print(f"WARNING: skipping malformed entry: {entry}", file=sys.stderr)
