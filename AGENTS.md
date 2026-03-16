@@ -61,11 +61,53 @@ The workflow requirements in [CONTRIBUTING.md](CONTRIBUTING.md) apply equally
 to agent actions and are non-negotiable. Key constraints:
 
 - Open a GitHub issue describing the change before starting any work.
+- All contributors — regardless of organization membership — use the fork
+  and pull request workflow. Never push directly to
+  `NOAA-RDHPCS/noaa-rdhpcs.github.io`.
 - Branch off an up-to-date `main` branch; submit changes via pull request to `main`.
 - Keep each pull request as small as possible. Split large changes into separate,
   logical PRs.
 - A PR must pass all build tests with zero warnings or errors before it can be
   accepted.
+
+### Creating a pull request
+
+Use the `gh` CLI to create pull requests. Before doing so:
+
+1. Verify `gh` is available: `gh --version`. If not found, stop and ask
+   the user how to proceed — do not attempt to install software without
+   permission.
+
+2. Inspect remotes to determine the repository topology:
+
+   ```bash
+   git remote -v
+   ```
+
+   - If all remote URLs point to `NOAA-RDHPCS/noaa-rdhpcs.github.io`
+     — this should not happen under the fork workflow. Stop and clarify
+     with the user before pushing.
+   - If one remote points to `NOAA-RDHPCS/noaa-rdhpcs.github.io`
+     (the upstream) and another points to a fork (a different owner,
+     same repository name) — this is the expected fork topology.
+
+   Do not assume remote names. Identify remotes by their URLs, not by
+   names like `origin` or `upstream`. The upstream remote may be named
+   anything (for example, `rdhpcs`, `upstream`, or `noaa`).
+
+3. Determine the fork owner from the fork's remote URL. For example,
+   from `git@github.com:someuser/noaa-rdhpcs.github.io.git` the fork
+   owner is `someuser`.
+
+4. Ensure the branch has been pushed to the fork remote, then create
+   the PR:
+
+   ```bash
+   gh pr create \
+     --repo NOAA-RDHPCS/noaa-rdhpcs.github.io \
+     --base main \
+     --head <fork-owner>:<branch-name>
+   ```
 
 ---
 
