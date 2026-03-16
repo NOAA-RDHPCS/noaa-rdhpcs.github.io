@@ -147,6 +147,16 @@ Build the HTML documentation:
 make html
 ```
 
+Preview the built documentation in your browser.  From the repository
+root, start a local web server:
+
+```bash
+cd build/html && python3 -m http.server 8080
+```
+
+Then open `http://localhost:8080` in your browser.  Press `Ctrl+C` to
+stop the server when done.
+
 Run the link validator:
 
 ```bash
