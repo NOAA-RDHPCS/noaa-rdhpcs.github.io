@@ -1,8 +1,13 @@
-NOAA RDHPCS GitLab Server
+NOAA RDHPCS Git Server
 =========================
+
+Git is a popular software version control system designed to help developers track changes in source code, manage multiple versions of files, and collaborate efficiently across teams. Git follows a distributed design and allows every user to maintain a complete copy of the repository history, making development faster, more flexible, and resilient. A Git server builds on these capabilities by providing a centralized platform to host, manage, and share Git repositories, enabling teams and individuals to collaborate more effectively on software development projects. It offers a secure and organized environment for maintaining project history, managing branches, controlling access, reviewing code, and integrating with other development tools, making it an essential component of modern software development and delivery workflows. NOAA provides a secure Git server based on self-hosted Gitlab that is accessible only from the RDHPCS systems. In addition to providing a Git server, the Gitlab also offers self hosted CI/CD pipelines as well as artifact/container registry, both of which are very useful for NOAA software developers.
 
 Access
 ------
+
+SSLVPN
+~~~~~~
 
 Log in to `sslvpn.rdhpcs.noaa.gov <https://sslvpn.rdhpcs.noaa.gov>`__ and click **Create new book for Your.Name@noaa.gov**.
 In the pane that opens, enter:
@@ -27,8 +32,8 @@ A new browser tab should open and point to the Git server.
    :alt: Bookmarks tab showing the Git Server entry.
    :width: 700px
 
-Alternative method
-~~~~~~~~~~~~~~~~~~
+Manual Tunnel
+~~~~~~~~~~~~~
 
 1. Set up a tunnel to any RDHPCS machine:
 
@@ -48,15 +53,17 @@ Alternative method
 
 3. Open ``https://git.rdhpcs.noaa.gov`` in the browser. You should see the GitLab server with NOAA SAML SSO. Sign in with your NOAA credentials and complete MFA using your YubiKey.
 
-Additional Authentication Settings
-----------------------------------
+.. _authentication-settings:
+
+Authentication Settings
+-----------------------
 
 Two authentication methods may be needed to access server contents such as the container registry and Git repositories:
 
 - For Apptainer/Singularity, use a **Personal Access Token (PAT)**.
 - For Git over SSH, register an **SSH key**.
 
-Additional GitLab documentation is available at:
+More details can be found in the GitLab documentation available at:
 `GitLab user authentication docs <https://docs.gitlab.com/auth/user_authentication/>`__.
 
 Create a personal access token
@@ -110,12 +117,6 @@ Users can use Apptainer on an RDHPCS system to:
 - Run them securely without root privileges.
 - Authenticate using GitLab Personal Access Tokens.
 
-Typical workflow
-~~~~~~~~~~~~~~~~
-
-.. code-block:: text
-
-   GitLab Registry -> Apptainer pull -> .sif image -> Run on cluster
 
 Configuration on RDHPCS system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -163,7 +164,7 @@ This creates ``alpine_latest.sif`` in the current working directory.
 Step 2: Create a PAT on the GitLab server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is covered in :ref:`additional-authentication-settings`.
+This is covered in :ref:`authentication-settings`.
 
 Step 3: Log in to the GitLab registry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
