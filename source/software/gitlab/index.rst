@@ -115,7 +115,7 @@ Configuration on RDHPCS system
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Configure ``mksquashfs``
-^^^^^^^^^^^^^^^^^^^^^^^^
+++++++++++++++++++++++++
 
 Add the following line to ``singularity.conf`` or ``apptainer.conf``:
 
@@ -124,7 +124,7 @@ Add the following line to ``singularity.conf`` or ``apptainer.conf``:
    mksquashfs procs = 4
 
 Configure the Apptainer cache directory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++
 
 By default, Apptainer uses the home directory for cache storage. On multi-user RDHPCS systems,
 home directories are often too small, so use a scratch location instead:
@@ -141,22 +141,8 @@ You can also place this command in ``~/.bashrc`` and then source the file or log
    ``/scratch3`` and ``/scratch4`` are available on both Hera and Ursa.
    ``/scratch5`` is available only on Ursa.
 
-Image pull and push
-~~~~~~~~~~~~~~~~~~~
-
-Step 1: Pull an image from a public Docker registry
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Example using ``alpine:latest``:
-
-.. code-block:: bash
-
-   apptainer -c singularity.conf pull docker://alpine:latest
-
-This creates ``alpine_latest.sif`` in the current working directory.
-
-Step 2: Create a PAT on the GitLab server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create a Personal Access Token (PAT) on the GitLab server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Click the user icon in the top-right corner and select **Edit Profile**.
 2. In the left pane, click **Personal Access Tokens**.
@@ -167,9 +153,22 @@ Step 2: Create a PAT on the GitLab server
 
    You can view the PAT only once after creation.
 
+Image pull and push
+~~~~~~~~~~~~~~~~~~~
 
-Step 3: Log in to the GitLab registry
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 1: Pull an image from a public registry
+++++++++++++++++++++++++++++++++++++++++++++
+
+Example using ``alpine:latest``:
+
+.. code-block:: bash
+
+   apptainer -c singularity.conf pull docker://alpine:latest
+
+This creates ``alpine_latest.sif`` in the current working directory.
+
+Step 2: Log in to the GitLab registry
++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: bash
 
@@ -177,20 +176,20 @@ Step 3: Log in to the GitLab registry
 
 Enter your PAT when prompted.
 
-Step 4: Push the Apptainer image to the GitLab server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 3: Push the Apptainer image to the Git server
+++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: bash
 
    apptainer push alpine_latest.sif \
      oras://git.rdhpcs.noaa.gov:5050/User.Name/first_project/alpine:latest
 
-This assumes ``User.Name/first_project`` already exists on the GitLab server. At a more advanced
+This assumes ``User.Name/first_project`` already exists on the Git server. At a more advanced
 level, CI/CD pipelines are used to build and push the containers to the registry as part of the
 software release cycle.
 
-Step 5: Pull images from the GitLab server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 4: Pull images from the Git server
++++++++++++++++++++++++++++++++++++++++
 
 After uploading, you can remove the local file and pull it again from the registry:
 
