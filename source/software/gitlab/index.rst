@@ -10,28 +10,25 @@ Initial access to the Git server has to be done through web to setup account, cr
 SSLVPN
 ~~~~~~
 
-Log in to `sslvpn.rdhpcs.noaa.gov <https://sslvpn.rdhpcs.noaa.gov>`__ and click **Create new book for Your.Name@noaa.gov**.
-In the pane that opens, enter:
-
-- **Name:** ``Git Server``
-- **URL:** ``https://git.rdhpcs.noaa.gov``
-
-.. note::
-
-   Including ``https://`` in the URL is required.
-
-Leave the other fields blank, then click **OK**.
-
 .. image:: /images/gitserver1.png
    :alt: VPN portal showing the Create new book workflow for the Git server.
    :width: 700px
 
-Click the **Bookmarks** tab for ``Your.Name@noaa.gov`` and then select the newly created **Git Server** widget.
-A new browser tab should open and point to the Git server.
+1. Log in to `sslvpn.rdhpcs.noaa.gov <https://sslvpn.rdhpcs.noaa.gov>`__ and click **Create new bookmark for Your.Name@noaa.gov**. In the pane that opens, fill the two fields shown below, leave the remaining fields blank, and then press the **OK** button.
 
-.. image:: /images/gitserver2.png
-   :alt: Bookmarks tab showing the Git Server entry.
-   :width: 700px
+  - **Name:** ``Git Server``
+  - **URL:** ``https://git.rdhpcs.noaa.gov``
+
+  .. note::
+
+     Including ``https://`` in the URL is required.
+
+
+2. Click the **Bookmarks** tab for ``Your.Name@noaa.gov`` and then select the newly created **Git Server** widget. A new browser tab should open and point to the Git server.
+
+  .. image:: /images/gitserver2.png
+     :alt: Bookmarks tab showing the Git Server entry.
+     :width: 700px
 
 Manual Tunnel
 ~~~~~~~~~~~~~
@@ -42,7 +39,7 @@ Manual Tunnel
 
       ssh -D <port-no> User.Name@bastion.<princeton/boulder>.rdhpcs.noaa.gov
 
-2. Configure browser proxy settings. In the example below, port ``9999`` is used.
+2. Configure browser proxy settings. Check your browser documentation on how to modify the proxy settings. In the example below, Mozilla Firefox with a tunneling port number ``9999`` is used.
 
    .. image:: /images/gitserver3.png
       :alt: Firefox network proxy settings for SOCKS tunnel access.
@@ -52,57 +49,30 @@ Manual Tunnel
 
 .. _authentication-settings:
 
-Authentication Settings
------------------------
+Git Usage
+---------
 
-Two authentication methods may be needed to access server contents such as the container registry and Git repositories:
+Git Repo Creation
+~~~~~~~~~~~~~~~~~
 
-- For Apptainer/Singularity, use a **Personal Access Token (PAT)**.
-- For Git over SSH, register an **SSH key**.
+Git repository have to be created from the browser. When creating a project, GitLab may ask whether to use your username or a group name as the namespace.  In this document, let us assume the first project created is ``User.Name/first_project``.
+
+Git Client Access
+~~~~~~~~~~~~~~~~~
+Git access is typically through a git client (git command or IDE) on the RDHPCS system. The URL for the git repo on the  git server is dependent on whether ssh or https protocol is used. Login and password details have to be supplied if https protocol is used and it would be tedious to supply login credentials all the times. SSH protocol enables password-less connection through SSH keys. They are created on the client and then added to your account on the Git server.
+
+Register an SSH key
++++++++++++++++++++
+1. On the RDHPCS system, from which the user wants to connect to the Git server, generate an SSH key pair using ``ssh-keygen`` command. Various options can be passed to the ``ssh-keygen`` command such as key-type with ``-t`` flag. Some of the popular key types are ``rsa`` and ``ed25519``.
+Depending on the key type selected, the command typically creates files such as ``$HOME/.ssh/id_rsa`` and ``$HOME/.ssh/id_rsa.pub`` or similar files for other key types.
+2. Copy the contents of the ``.pub`` file.
+3. On the Git server website, click on the project, and then click on **SSH Keys** from the left pane.
+4. Click **Add new key** button.
+5. Paste the public key, provide a title such as the hostname where the key was created, and click **Add key**.
 
 More details can be found in the GitLab documentation available at:
 `GitLab user authentication docs <https://docs.gitlab.com/auth/user_authentication/>`__.
 
-Create a personal access token
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Click the user icon in the top-right corner and select **Edit Profile**.
-2. In the left pane, click **Personal Access Tokens**.
-3. Click **Add new token**.
-4. Save the token in a secure location.
-
-.. warning::
-
-   You can view the PAT only once after creation.
-
-Register an SSH key
-~~~~~~~~~~~~~~~~~~~
-
-Generate an SSH key pair:
-
-.. code-block:: bash
-
-   ssh-keygen
-
-This typically creates files such as ``$HOME/.ssh/id_rsa`` and ``$HOME/.ssh/id_rsa.pub`` or similar files for other key types such as ``ed25519``.
-
-Then:
-
-1. Copy the contents of the ``.pub`` file.
-2. In GitLab, open **SSH Keys** from the left pane.
-3. Click **Add new key**.
-4. Paste the public key, provide a title such as the hostname where the key was created, and click **Add key**.
-
-Git Usage
----------
-
-Create a Git repository from the browser first. Assuming your SSH keys are already added to the account, you can then use Git from the command line or from an IDE in the usual way.
-
-When creating a project, GitLab may ask whether to use your username or a group name as the namespace. In this example, assume the first project created is:
-
-.. code-block:: text
-
-   User.Name/first_project
 
 Container Registry Usage with Apptainer
 ---------------------------------------
@@ -161,7 +131,15 @@ This creates ``alpine_latest.sif`` in the current working directory.
 Step 2: Create a PAT on the GitLab server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is covered in :ref:`authentication-settings`.
+1. Click the user icon in the top-right corner and select **Edit Profile**.
+2. In the left pane, click **Personal Access Tokens**.
+3. Click **Add new token**.
+4. Save the token in a secure location.
+
+.. warning::
+
+   You can view the PAT only once after creation.
+
 
 Step 3: Log in to the GitLab registry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,7 +158,7 @@ Step 4: Push the Apptainer image to the GitLab server
    apptainer push alpine_latest.sif \
      oras://git.rdhpcs.noaa.gov:5050/User.Name/first_project/alpine:latest
 
-This assumes ``User.Name/first_project`` already exists on the GitLab server.
+This assumes ``User.Name/first_project`` already exists on the GitLab server. At a more advanced level, CI/CD pipelines are used to build and push the containers to the registry as part of the software release cycle.
 
 Step 5: Pull images from the GitLab server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -198,6 +176,6 @@ To use a custom local image name:
 
 .. code-block:: bash
 
-   apptainer pull myapp.sif \
+   apptainer pull my_alpine_image.sif \
      docker://git.rdhpcs.noaa.gov:5050/group/project/image:<tag>
 
