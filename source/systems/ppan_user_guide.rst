@@ -417,7 +417,7 @@ manage containers. For more information, see the
 .. note::
 
     Before you can use Podman on Gaea or PPAN, you will need to request
-    Podman access through the `Help system. <https://docs.rdhpcs.noaa.gov/help/index.html#getting-help>`
+    Podman access through the :ref:`Help System <getting_help>`
     Send an email to oar.gfdl.help@noaa.gov, and specify Podman access
     in the subject line.
 
