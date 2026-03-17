@@ -3,8 +3,9 @@ NOAA RDHPCS Git Server
 
 Git is a popular software version control system designed to help developers track changes in source code, manage multiple versions of files, and collaborate efficiently across teams. Git follows a distributed design and allows every user to maintain a complete copy of the repository history, making development faster, more flexible, and resilient. A Git server builds on these capabilities by providing a centralized platform to host, manage, and share Git repositories, enabling teams and individuals to collaborate more effectively on software development projects. It offers a secure and organized environment for maintaining project history, managing branches, controlling access, reviewing code, and integrating with other development tools, making it an essential component of modern software development and delivery workflows. NOAA provides a secure Git server based on self-hosted Gitlab that is accessible only from the RDHPCS systems. In addition to providing a Git server, the Gitlab also offers self hosted CI/CD pipelines as well as artifact/container registry, both of which are very useful for NOAA software developers.
 
-Access
-------
+Web Access
+----------
+Initial access to the Git server has to be done through web to setup account, create new repos, and configure settings for password-less login for git and container registry. There are two methods to access the Git server web interface via tunnels.
 
 SSLVPN
 ~~~~~~
@@ -41,11 +42,7 @@ Manual Tunnel
 
       ssh -D <port-no> User.Name@bastion.<princeton/boulder>.rdhpcs.noaa.gov
 
-2. Configure browser proxy settings. In Firefox on macOS, go to:
-
-   ``Settings -> General -> Network Settings``
-
-   Then enter the proxy values as needed. In the example below, port ``9999`` is used.
+2. Configure browser proxy settings. In the example below, port ``9999`` is used.
 
    .. image:: /images/gitserver3.png
       :alt: Firefox network proxy settings for SOCKS tunnel access.
