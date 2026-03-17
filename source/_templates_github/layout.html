@@ -1,0 +1,11 @@
+{#
+    _templates_github/layout.html
+    Extends the RTD theme layout to exclude the sidebar navigation from
+    Google search snippets and reduce its ranking weight.
+#}
+{%- extends "!layout.html" %}
+{%- block navigation %}
+<div data-nosnippet>
+{{ super() }}
+</div>
+{%- endblock %}
