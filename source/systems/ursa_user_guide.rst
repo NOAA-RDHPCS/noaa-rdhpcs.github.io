@@ -155,7 +155,7 @@ Ursa has 15 outward-facing nodes.
 
 Using GPU Resources on Ursa
 ===========================
-Ursa has one production GPU partition (``u1-h100``) and two 
+Ursa has one production GPU partition (``u1-h100``) and two
 exploratory GPU
 partitions (``u1-gh`` and ``u1-mi300x``). See the table above for
 details.
