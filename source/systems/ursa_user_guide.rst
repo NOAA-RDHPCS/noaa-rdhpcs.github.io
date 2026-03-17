@@ -155,8 +155,9 @@ Ursa has 15 outward-facing nodes.
 
 Using GPU Resources on Ursa
 ===========================
-Ursa has 1 production GPU partition (``u1-h100``) and  2 Exploratory GPU
-partitions (``u1-gh`` and ``u1-mi300x``). See the table above for more
+Ursa has one production GPU partition (``u1-h100``) and two 
+exploratory GPU
+partitions (``u1-gh`` and ``u1-mi300x``). See the table above for
 details.
 
 Partition ``u1-h100``:  There are 58 nodes, each with 192 AMD cpu
@@ -165,8 +166,8 @@ accessible from the ``gpu`` and ``gpuwf`` QOS’s. For billing and accounting:
 one H100 gpu-hour will count as 192/2=96 cpu core-hours.
 
 In order to have priority access to the H100 GPU resources you will
-need to have a GPU specific project allocation. Please contact your
-PI or Portfolio Manager for getting a GPU specific allocation.
+need a GPU specific project allocation. Please contact your
+PI or Portfolio Manager to get a GPU specific allocation.
 
 All projects with a CPU project allocation on Ursa have windfall
 access to the H100 GPU resources, and conversely all users with
@@ -176,7 +177,7 @@ non-GPU resources.
 Using H100 GPU Resources With a GPU allocation
 ----------------------------------------------
 
-If you have a H100 GPU specific project allocation on Ursa you can access
+If you have a H100 GPU specific project allocation on Ursa, you can access
 the H100 GPUs by submitting to the ``u1-h100`` partition and ``gpu`` QOS as
 shown in the example below where 3 H100 GPUs are being requested:
 
@@ -188,8 +189,8 @@ Using H100 GPU Resources Without a GPU allocation
 -------------------------------------------------
 
 Users that do not have H100 GPU specific project allocations on Ursa
-can access the H100 GPU resources at windfall priority . Which means
-users will be able to submit jobs to the system, but they will only run
+can access the H100 GPU resources at windfall priority. This means
+that users can submit jobs to the system, but they will only run
 when the resources are not being used by projects that do have a H100
 GPU specific project allocation. This is helpful for users who are
 interested in exploring the GPU resources for their applications.
