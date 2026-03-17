@@ -62,7 +62,7 @@ Manual Tunnel
       :alt: Firefox network proxy settings for SOCKS tunnel access.
       :width: 650px
 
-3. Open ``https://git.rdhpcs.noaa.gov`` in the browser. You should see the GitLab server with NOAA SAML SSO.
+3. Open ``https://git.rdhpcs.noaa.gov`` in the browser. You should see the Git server with NOAA SAML SSO.
    Sign in with your NOAA credentials and complete MFA using your YubiKey.
 
 
@@ -72,13 +72,13 @@ Git Usage
 Git Repo Creation
 ~~~~~~~~~~~~~~~~~
 
-Git repository have to be created from the browser. When creating a project, GitLab may ask whether
-to use your username or a group name as the namespace.  In this document, let us assume the first
+Git repository have to be created from the browser. When creating a project, user may be asked whether
+to use the username or a group name as the namespace. If the project does not belong to a group, use the usename. For the rest of this document, it is assumeed the first
 project created is ``User.Name/first_project``.
 
 Git Client Access
 ~~~~~~~~~~~~~~~~~
-Git access is typically through a git client (git command or IDE) on the RDHPCS system. The URL for
+Git access is typically through a git client, (either git command on CLI or IDE) on the RDHPCS system. The URL for
 the git repo on the  git server is dependent on whether ssh or https protocol is used. Login and
 password details have to be supplied if https protocol is used and it would be tedious to supply
 login credentials all the times. SSH protocol enables password-less connection through SSH keys.
