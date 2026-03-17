@@ -144,14 +144,16 @@ Add the following line to ``singularity.conf`` or ``apptainer.conf``:
 Configure the Apptainer cache directory
 +++++++++++++++++++++++++++++++++++++++
 
-By default, Apptainer uses the home directory for cache storage. On multi-user RDHPCS systems,
-home directories are often too small, so use a scratch location instead:
+By default, Apptainer uses the home directory for cache storage. On
+multi-user RDHPCS systems, home directories are often too small, so
+use a scratch location instead:
 
 .. code-block:: bash
 
    export APPTAINER_CACHEDIR=/scratch[3-5]/<project-path>/User.Name/apptainer_cache_dir
 
-You can also place this command in ``~/.bashrc`` and then source the file or log in again.
+You can also place this command in ``~/.bashrc`` and then source the
+file or log in again.
 
 .. note::
 
@@ -209,7 +211,8 @@ containers to the registry as part of the software release cycle.
 Step 4: Pull images from the Git server
 +++++++++++++++++++++++++++++++++++++++
 
-After uploading, you can remove the local file and pull it again from the registry:
+After uploading, you can remove the local file and pull it again from the
+registry:
 
 .. code-block:: bash
 
