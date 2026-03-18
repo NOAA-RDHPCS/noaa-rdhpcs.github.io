@@ -1,3 +1,6 @@
+.. meta::
+   :robots: noindex
+
 .. _software:
 
 ########
@@ -14,4 +17,4 @@ Software
    compilers/index
    containers/index
    VSCode/index
-   x2go
+

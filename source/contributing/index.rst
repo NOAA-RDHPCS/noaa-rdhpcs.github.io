@@ -83,15 +83,14 @@ Workflow for contributions to the documentation repository
    The issue should describe the issue with the documentation, the
    desired change, etc.
 
-2. Fork and clone, or just clone the repository.
+2. Fork and clone the repository.
 
-   The choice depends on whether the person making the change is a
-   member of the NOAA-RDHPCS GitHub organization or not:
-
-   a. If a member: Clone the repository
-        (git clone git@github.com:NOAA-RDHPCS/noaa-rdhpcs.github.io.git).
-   b. If not a member: Use the "fork and pull request" workflow:
-        https://docs.github.com/en/pull-requests/collaborating-with-pull-requests
+   All contributors use the fork and pull request workflow.  Go to
+   https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io and click the
+   "Fork" button to create your own copy, then clone your fork locally.
+   See the `GitHub fork and pull request documentation
+   <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests>`_
+   for details.
 
 3. Create a new git branch in the local clone.
 
