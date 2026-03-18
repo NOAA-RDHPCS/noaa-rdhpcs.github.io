@@ -168,7 +168,7 @@ Step 4: Enroll Your SSH Public Key
 
    a. Paste the trimmed SSH public key (from Step 3) into the
       **SSH public key** field.
-   c. Click **Register SSHKEY**.
+   b. Click **Register SSHKEY**.
 
 ----
 
