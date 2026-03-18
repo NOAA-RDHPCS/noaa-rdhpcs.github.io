@@ -221,7 +221,8 @@ registry:
 
 This creates ``alpine_latest.sif`` in the working directory.
 
-A custom local image name, for example ``my_alpine_image`` as shown below.
+A custom local image name, for example ``my_alpine_image``, can also be
+used as shown below.
 
 .. code-block:: bash
 
