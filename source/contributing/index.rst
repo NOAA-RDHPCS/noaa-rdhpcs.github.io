@@ -1,3 +1,10 @@
+.. meta::
+   :description: How to contribute to RDHPCS documentation, including
+    setting up a local authoring environment, building and validating
+    the docs, and submitting a pull request.
+   :keywords: contributing, documentation, pull request, fork, Sphinx,
+    reStructuredText, RST, GitHub
+
 .. _Contributing:
 
 ******************************
@@ -7,144 +14,220 @@ Contributing to these docs
 Overview
 ========
 
-To improve the appearance and functionality of our user documentation,
-as of Summer 2024 we've transferred the MediaWiki-based documentation
-spread across multiple instances to this single site
-`docs.rdhpcs.noaa.gov <https://docs.rdhpcs.noaa.gov>`_ The files are
-kept in the `NOAA-RDHPCS Github repository
-<https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/issues/new>`_,
-edited either in your browser or favorite editor, using
-reStructuredText (RST) as the markup language and rendered into HTML
-by Sphinx.  All these steps including checks for correct markup
-syntax, valid links, and others, are automated using Github flows.
+This site, `docs.rdhpcs.noaa.gov <https://docs.rdhpcs.noaa.gov>`_, is the
+single source for RDHPCS user documentation.  Source files are kept in the
+`NOAA-RDHPCS GitHub repository
+<https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io>`_, written in
+reStructuredText (RST), and rendered into HTML by Sphinx.  Automated checks
+validate markup syntax, links, and style on every pull request.
 
-Process
--------
-
-Changes are tracked using Github issues, submitted using Pull Requests
-(PRs), and reviewed for approval and syntax by members of the Docs
-team prior to publication.  Issues are reviewed regularly and the team
-aims for a timely response.
-
-Issues will have labels to help guide the focus -- eg, an HPCS
-specific item vs a general question.  Additional labels will be
-created as needed.
+Before contributing, review `CONTRIBUTING.md`_ in the repository root.
+It covers the Code of Conduct, issue and pull request guidelines, commit
+message format, source directory structure, and code style requirements
+that apply to all contributions.
 
 Submitting suggestions
 ----------------------
 
-Have a suggestion for improvement? Start the conversation by using
-Github to `open an issue
-<https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/issues/new>`_.
+Have a suggestion but don't want to edit files directly?  Open a GitHub issue
+to start the conversation:
+`open an issue <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/issues/new>`_.
 
-If a Github account is needed, `follow these steps
-<https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account>`_
+If you need a GitHub account, `follow these steps
+<https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account>`_.
 
-Contributing changes
---------------------
+Contributing changes via the browser
+-------------------------------------
 
-The most direct method to contribute changes is to use the Github web
-browser interface to create and submit changes via a Pull Request
-(PR).
+The quickest way to contribute is through the GitHub web interface, which
+requires no local tooling.  A webcast tutorial walks through the full
+browser-based workflow — log into your NOAA Google account first, then watch
+the `webcast tutorial
+<https://drive.google.com/file/d/1MdCbUExf3prY0OF-6CRc3EY1-UPSSwCE>`_.
 
-For those unfamiliar with these tools and flows, we have created a
-webcast tutorial for this!  Please make sure you are logged into your
-Google NOAA account, then access this `webcast tutorial
-<https://drive.google.com/file/d/1MdCbUExf3prY0OF-6CRc3EY1-UPSSwCE>`_
+To set up a local authoring environment instead, continue reading below.
+The following sections cover the full command-line workflow: setting up
+your environment, building and validating the docs, and submitting
+changes via a pull request.
 
-For those comfortable with the command line and wanting to edit or
-preview changes on your own system, please see :ref:`Contributing via the
-CLI <via_cli>` for details on how to install the Python based
-Sphinx tools and use the `git` commands for the fork, clone, commit,
-and push actions that comprise the Docs workflow.
+Set up your authoring environment
+==================================
 
-GitHub Guidelines
-===================
+The steps below require `Python 3 <https://www.python.org/downloads/>`_
+to be installed on your system.
 
-Here are some guidelines and common practices that we use in this project.
+#. Fork the documentation repository on GitHub.
 
-- When you want to work on an issue, assign it to yourself if no one
-  is assigned yet. If there is somebody assigned, check in with that
-  person about collaborating.
-- Reference the issue(s) that your PR addresses with GitHub's '#' notation.
-- Use "WIP" in your PR title to indicate that it should not be merged yet.
-  Remove just the WIP when you are ready for it to be merged.
-- If you think certain individuals should be aware of your proposed changes,
-  suggest them as reviewers on the PR.
-- You do not need to assign labels to your PR, but you may do so if you have
-  suggestions. However, be aware that the labels might get changed.
+   Go to https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io and click the
+   **Fork** button in the upper-right corner.
+
+   .. image:: /images/github_fork.png
+      :width: 80.0%
+      :align: center
+      :alt: GitHub Fork button in the upper-right corner of the repository page
+
+#. Clone your fork locally.
+
+   .. code-block:: shell
+
+      $ git clone https://github.com/<your-github-id>/noaa-rdhpcs.github.io.git
+      $ cd noaa-rdhpcs.github.io
+
+#. Add the upstream remote and track it.
+
+   .. code-block:: shell
+
+      $ git remote add upstream https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io.git
+      $ git fetch upstream
+      $ git branch --set-upstream-to=upstream/main
+
+   This links your local ``main`` branch to the official repository so
+   that ``git pull`` (with no arguments) always fetches the latest
+   changes from upstream.
+
+#. Create and activate a Python virtual environment.
+
+   .. code-block:: shell
+
+      $ python3 -m venv .venv
+      $ source .venv/bin/activate
+
+   On Windows use ``.venv\Scripts\activate`` instead.
+
+   You only need to create the virtual environment once.  In future
+   terminal sessions, reactivate it before running any ``make`` or
+   ``pip`` commands.
+
+   .. code-block:: shell
+
+      $ source .venv/bin/activate
+
+#. Install Sphinx and the required packages.
+
+   .. code-block:: shell
+
+      $ pip install -r requirements.txt
+
+   See `requirements.txt
+   <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/requirements.txt>`_
+   for the full list of packages.
 
 
-Workflow for contributions to the documentation repository
-===============================================================
+Build and validate
+==================
 
-1. Open an issue in the NOAA-RDHPCS/noaa-rdhpcs.github.io repository
+After setup, use these commands from the repository root.  All must complete
+with zero errors and zero warnings before you commit or submit a pull request.
 
-   The issue should describe the issue with the documentation, the
-   desired change, etc.
+**Build HTML**
+   .. code-block:: shell
 
-2. Fork and clone the repository.
+      $ make html
 
-   All contributors use the fork and pull request workflow.  Go to
-   https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io and click the
-   "Fork" button to create your own copy, then clone your fork locally.
-   See the `GitHub fork and pull request documentation
-   <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests>`_
-   for details.
+**Preview**
+   Start a local web server.
 
-3. Create a new git branch in the local clone.
+   .. code-block:: shell
 
-   The name of the branch doesn't matter, but it should be enough to
-   indicate what is being done. Generic names (e.g., "updates",
-   "fixes", etc.) do not help the developer or the reviewer recognize
-   what is included. (git checkout -b new.branch.name).
+      $ python3 -m http.server 8080 --directory build/html
 
-4. Modify the documentation.
+   Open ``http://localhost:8080``.  Press ``Ctrl+C`` to stop.
 
-   As mentioned previously, and as a good best-practice, only include
-   one set of changes in each branch. That is, do not update multiple
-   pages with new, unrelated text.
+**Check links**
+   .. code-block:: shell
 
-5. Commit the change.
+      $ make linkcheck
 
-   The commit message should describe what is changed, why, etc.  (see
-   https://cbea.ms/git-commit/). The standard is to use at least two
-   lines. The first line is a subject line, somewhat terse but
-   descriptive (e.g., "Add scp transfer to data page"). The other
-   line(s) should be more specific about what changes (e.g., added
-   info for uses to scp data to the external DTNs).
+**Lint markup**
+   .. code-block:: shell
 
-6. Push the branch.
+      $ make lint
 
-   Where will determine if a member of the organization or not, but
-   is typically: git push origin new.branch.name
 
-7. Open a pull request (PR) in NOAA-RDHPCS/noaa-rdhpcs.github.io.
+Edit and submit
+===============
 
-   Add any additional information the reviewer(s) will need in the PR
-   description. If the PR is tied to any issues, mention the issues
-   using the #. You can even `use keywords
-   <https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests>`_
-   to perform other automated workflow items (e.g., automatically
-   close issues).
+After your environment is set up, follow these steps for each contribution.
 
-8. Work with the reviewers to refine the update as needed.
+#. Update your local clone from upstream.
 
-   This will typically be to help refine the text to make it easier to
-   understand, flow better, or adjust the layout. They may also
-   request changes to allow the automated testing to pass as there are
-   automated checks (CI) tests to ensure the `NOAA-RDHPCS Docs
-   flexible style guide
-   <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/CODE_STYLE.md>`_
-   is followed.
+   .. code-block:: shell
 
+      $ git checkout main
+      $ git pull upstream main
+
+#. Create a new branch for your changes.
+
+   .. code-block:: shell
+
+      $ git checkout -b my-edits-branch
+
+#. Make your edits to the relevant ``.rst`` files.
+
+   Keep one logical change per branch — don't bundle unrelated edits.
+   See `CONTRIBUTING.md`_ for guidance on which directories to edit
+   and which to avoid.
+
+#. Rebuild and preview your changes (see `Build and validate`_ above).
+
+#. Stage and commit your changes.
+
+   .. code-block:: shell
+
+      $ git add <file1.rst> <file2.rst>
+      $ git commit -m "Add scp transfer to data page"
+
+   Replace ``<file1.rst> <file2.rst>`` with the actual filenames you changed.
+
+   Write commit messages in the imperative mood with a subject line of 50
+   characters or fewer.  Add a body if the reason for the change is not
+   obvious.  Reference the related issue with ``#<issue number>``.  See
+   `CONTRIBUTING.md`_ for the full commit message guidelines.
+
+#. Push your branch to your fork.
+
+   .. code-block:: shell
+
+      $ git push -u origin my-edits-branch
+
+   The ``-u`` flag links your local branch to the remote so that
+   future pushes on this branch only need ``git push``.
+
+#. Open a pull request on GitHub.
+
+   After pushing, GitHub will display a prompt to open a pull request.
+
+   .. image:: /images/github_pr.png
+      :width: 80.0%
+      :align: center
+      :alt: GitHub prompt to open a pull request after pushing a branch
+
+   Include a description of your changes and reference any related issues.
+   The automated CI checks must pass before the PR can be merged.
+
+#. Work with the reviewers to refine the update as needed.
+
+
+GitHub guidelines
+=================
+
+- When you want to work on an issue, assign it to yourself if no one is
+  assigned yet.  If someone is already assigned, check in with them about
+  collaborating.
+- Reference the issue(s) your PR addresses using GitHub's ``#`` notation.
+- Use ``WIP`` in your PR title to indicate it's not ready to merge.  Remove
+  it when you're ready for review.
+- If specific individuals should be aware of your changes, suggest them as
+  reviewers on the PR.
+- You don't need to assign labels to your PR; the team may adjust them.
 
 
 Resources
-===================
+=========
 
 | `Sphinx Quickstart <https://www.sphinx-doc.org/en/master/usage/quickstart.html>`_
-| `restructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
-| `restructuredText Reference <https://docutils.sourceforge.net/rst.html>`_
-| `NOAA-RDHPCS Docs flexible style guide <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/CODE_STYLE.md>`_
+| `reStructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
+| `reStructuredText Reference <https://docutils.sourceforge.net/rst.html>`_
+| `NOAA-RDHPCS Docs style guide <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/CODE_STYLE.md>`_
 
+.. _CONTRIBUTING.md: https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/CONTRIBUTING.md
