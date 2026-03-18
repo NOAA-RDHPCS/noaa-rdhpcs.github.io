@@ -1,7 +1,7 @@
 # Writing Guide
 
 The [Plain Writing Act of
-2010](https://www.gpo.gov/fdsys/pkg/PLAW-111publ274/content-detail.html),
+2010](https://www.govinfo.gov/content/pkg/PLAW-111publ274/content-detail.html),
 signed on October 13, 2010, requires that federal agencies use clear
 communication that the public can understand and use.  The information
 contained in this writing guide lays out how the documentation shall
@@ -26,8 +26,7 @@ users.  This range includes first-time High Performance Computing
 written at a level that all users can understand and follow.
 
 Use the second person ("you") to refer to the reader.  Do not overuse
-"you" and "your" as they are often implied who you are addressing in the
-instructions.
+"you" and "your" as the reader is often implied by context.
 
 ## Use plain language
 
@@ -41,17 +40,16 @@ produce better output for non-native English users.
 
 ### Be concise
 
-In technical documentation, typically, _less is_ more*.  Short, simple
-sentences are easier for users to read and understand.  The [United
-States Plain [Language
+In technical documentation, typically, _less is more_.  Short, simple
+sentences are easier for users to read and understand.  The [United States Plain Language
 Guidelines](https://www.plainlanguage.gov/guidelines/concise/) have
 several tips and examples to implement concise language.  These
 include:
 
-* check your prepositions
-* omit redundant words
-* cut excess modifiers
-* avoid doublets and triplets
+* Check your prepositions
+* Omit redundant words
+* Cut excess modifiers
+* Avoid doublets and triplets
 
 ### Use short sentences
 
@@ -98,7 +96,7 @@ Instead of reproducing in-depth instruction, link to reliable,
 authoritative web pages with relevant information.
 
 When instructing users to contact the help desk, link to the [Getting
-Help](source/help/index.rst) page with "Contact the X help desk."
+Help](https://docs.rdhpcs.noaa.gov/help/) page with "Contact the X help desk."
 instead of listing the email address.
 
 
@@ -132,7 +130,7 @@ example, writing *St.* instead of *Street*, or *Rx* for
 *prescription*, or *DC* for *District of Columbia*.
 
 Acronyms are a *type* of abbreviation. They shorten phrases in a
-specific way— using parts of the initial word or phrase (usually
+specific way — using parts of the initial word or phrase (usually
 letters) to form an abbreviation. For example, *DIY* or *ASAP*.
 
 In the most technical sense, there is a difference between acronyms
@@ -141,6 +139,7 @@ In the most technical sense, there is a difference between acronyms
 content guide refers to both as acronyms. The readability issues that
 acronyms and initialisms create tend to be similar, and “acronym” is
 the more common term.
+
 When referring to a state, write out the state name instead of the
 abbreviation.
 
@@ -196,10 +195,10 @@ Don't use gender-specific pronouns in generic references: *he*, *him*,
 
 * Rewrite to use the second person (you).
 * Rewrite the sentence to have a plural noun and pronoun.
-* Do not use slash constructions like *he/she* and *s/he*.
+* Don't use slash constructions like *he/she* and *s/he*.
 * Use *the* or *a* instead of a pronoun.
 * Refer to the person's role.
-* use *person* or *individual*.
+* Use *person* or *individual*.
 
 When writing about a real person, use the pronouns that person
 prefers.
@@ -241,7 +240,7 @@ system is appropriate.  That is, *earth*, *venus*, etc.
 
 Do not use actual user names as example user names.  For RDHPCS or
 NOAA user names, use `First.Last` or `User.Name`.  For non-NOAA user
-names, please use fre-software mascots, such as Tux (Linux Kernal),
+names, please use free-software mascots, such as Tux (Linux Kernel),
 Wilber (The GIMP), Geeko (SUSE), or Foxkey (Firefox).
 
 #### File and directory names
@@ -258,7 +257,7 @@ Consider the following when referring to files and directories:
   distinguish between directories and files.
 * Use capitals exactly as they appear in the file system.
 * When necessary to refer to file extensions, such as in compound
-  words like "PDF file', always capitalize the extension.
+  words like "PDF file", always capitalize the extension.
 
 ### Numbers and dates
 
@@ -369,7 +368,7 @@ Some recommendations are:
 ### Search engine-friendly content
 
 Users will typically begin looking for relevant documentation using
-the search feature.  Use standard Search Engine Optimization (SED)
+the search feature.  Use standard Search Engine Optimization (SEO)
 techniques to create and design the content.  This will help ensure
 users can find the correct documentation.
 
@@ -378,29 +377,94 @@ users can find the correct documentation.
 Search engines use title tags and other meta tags to help rank the
 relevance of the documentation.  That comes from the `<h1>`, `<h2>`,
 etc. HTML tags and other meta information are included on the page.
-ReStructuredText has the `.. meta::`
-[directive](https://docutils.sourceforge.io/docs/ref/rst/directives.html#toc-entry-43).
-The `:description:` and `:keywords:` are two field names that will
-help search engines find and display appropriate content for the user.
+Every page must include a `.. meta::` directive with the following
+fields.  See [CODE_STYLE.md](CODE_STYLE.md) for the syntax.
 
-```rst
-.. meta::
-   :description: The Geophysical Fluid Dynamics Laboratory archive
-    system for long-term storage of scientific data.
-   :keywords: archive, GFDL, tape, ptmp, work, Data Management Framework, DMF
-```
+**`:description:`** — Write one to two sentences summarizing what the
+page covers and what the user will be able to do after reading it.
+Write the description as a complete sentence in plain language.
 
-#### Optimize images by adding alt text
+**`:keywords:`** — List the terms a user would search for to find this
+page.  Include the system name, topic, and common synonyms.  Separate
+terms with commas.
 
-Be sure to add alternative text to the included images.  This allows
-search engines to understand the content of the image, and index them
-accurately.  This also improves the accessibility of the
-documentation.
+#### Control search engine indexing with `:robots:`
+
+Add a **`:robots:`** field to the `.. meta::` directive on pages that
+consist only of a title and a `.. toctree::` directive with no
+substantive prose.  Most `index.rst` files fall into this category.
+
+Use `noindex` to prevent search engines from indexing the page.  This
+keeps search results focused on content pages rather than navigation
+pages that would produce a meaningless result for the user.
+
+If a page has even a short introductory paragraph that stands alone as
+useful content, do not add `:robots: noindex`.  Leave the page
+indexable and write `:description:` and `:keywords:` as normal.
+
+See [CODE_STYLE.md](CODE_STYLE.md) for the syntax and examples.
+
+
+## Accessibility
+
+The RDHPCS documentation is a federal government information resource
+and must comply with **Section 508 of the Rehabilitation Act of 1973**
+(29 U.S.C. § 794d), as revised in 2018.  The Revised Section 508
+Standards incorporate the Web Content Accessibility Guidelines (WCAG)
+2.0 Level AA as the technical requirement for all electronic content.
+The authoritative resource for federal Section 508 compliance is
+[Section508.gov](https://www.section508.gov/).
+
+Content authors are responsible for the following accessibility
+requirements.  Structural requirements (heading hierarchy, table
+markup) are covered in [CODE_STYLE.md](CODE_STYLE.md).
+
+### Alternative text for images
+
+Every image, diagram, screenshot, and figure must have alternative
+(alt) text.  Screen readers read alt text aloud in place of the image
+for users who are blind or have low vision.  This is a mandatory
+Section 508 requirement, not an optional enhancement.
+
+Write alt text that describes the content and purpose of the image.
+If the image conveys data or a process, describe what it shows.  If
+the image is purely decorative and adds no information, use an empty
+alt attribute so screen readers skip it.
+
+Do not use "image of", "picture of", or the filename as alt text.  Do
+not repeat the surrounding caption verbatim.
+
+See the Sphinx documentation for the
+[`.. figure::`](https://docutils.sourceforge.io/docs/ref/rst/directives.html#figure)
+and
+[`.. image::`](https://docutils.sourceforge.io/docs/ref/rst/directives.html#image)
+directives for the RST syntax to add alt text.
+
+### Descriptive link text
+
+Every hyperlink must describe its destination or purpose.  Users of
+screen readers often navigate by tabbing through links in isolation,
+without the surrounding sentence for context.
+
+Do not use generic link text such as "click here", "here", "read
+more", or "this page".  Instead, use text that identifies what the
+link leads to.  For example:
+
+| Use this | Not this |
+| --- | --- |
+| See the [Slurm job submission guide](…) | See [this page](…) for details |
+| [Submit a help request](…) | [Click here](…) to get help |
+| [NOAA RDHPCS account request form](…) | The form is [here](…) |
+
+This requirement applies to all links, including those in bullet lists,
+tables, and admonitions.
 
 
 ## References
 
 * [GSA 18F Content Guide](https://guides.18f.gov/content-guide/)
 * [U.S. Plain Language Guide](https://www.plainlanguage.gov/)
+* [Section 508 of the Rehabilitation Act](https://www.section508.gov/)
+* [WCAG 2.0 Level AA Guidelines](https://www.w3.org/TR/WCAG20/)
 * [SUSE Documentation Style Guide](https://documentation.suse.com/style/)
 * [Microsoft Writing Style Guide](https://learn.microsoft.com/en-us/style-guide/welcome/)
