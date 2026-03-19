@@ -164,7 +164,7 @@ To start using Python, load the ``python`` module.
             $ module load rdhpcs-python
 
 Run the ``module avail python`` command to see the available versions of
-Python. After loading one of these, you are in a conda environemnt
+Python. After loading one of these, you are in a conda environment
 associated with that version.
 
 .. _python-conda-modules:

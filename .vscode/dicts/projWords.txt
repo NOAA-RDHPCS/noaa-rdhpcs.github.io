@@ -170,6 +170,7 @@ genvall
 genvlist
 geospace
 getstripe
+gfdluser
 gfsenkf
 gitflow
 globpsd
@@ -448,6 +449,7 @@ numactl
 nvcc
 nvfortran
 nvhpc
+Oakridge
 ocio
 octicon
 odvars
@@ -571,6 +573,8 @@ SLES
 slurmctld
 slurmd
 slurmdbd
+smartsite
+Smartsites
 SOURCEDIR
 Spack
 SPHINXBUILD
