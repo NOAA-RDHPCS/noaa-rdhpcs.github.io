@@ -976,7 +976,7 @@ In general, the process for running a job is:
 #. optionally monitor the job before and during execution
 
 The following sections describe in detail how to create, submit, and manage
-jobs for execution on Frontier. Frontier uses SchedMD's Slurm Workload Manager
+jobs for execution on Gaea. Gaea uses SchedMD's Slurm Workload Manager
 as the batch scheduling system.
 
 
@@ -1121,7 +1121,7 @@ non-comment, non-whitespace line. Options after that will be ignored by Slurm
 |   13 | Copy the output file to an appropriate location.                     |
 +------+----------------------------------------------------------------------+
 
-.. _frontier-interactive:
+.. _gaea-interactive:
 
 Interactive Jobs
 ----------------
