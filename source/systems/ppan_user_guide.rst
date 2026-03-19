@@ -1590,7 +1590,7 @@ Creating directories
 
 GCP provides an option for automatically creating new directories:
 
-   ``-cd.``
+   ``-cd``
 
 The final segment of the path is interpreted as a directory if a trailing slash
 is included. Otherwise, it will be interpreted as a file. A few examples are
@@ -1622,7 +1622,7 @@ directories.
 Synchronize
 ^^^^^^^^^^^
 
-GCP provides the ``-sync`` option to transfer files to the destination only if
+GCP provides the ``--sync`` option to transfer files to the destination only if
 the source is newer. This works for both recursive and non recursive transfers.
 
 Caveats
