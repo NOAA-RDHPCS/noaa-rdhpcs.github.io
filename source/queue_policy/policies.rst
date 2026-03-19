@@ -1,3 +1,10 @@
+.. meta::
+   :description: RDHPCS system usage policies and best practices, covering
+    login node restrictions, cron and scrontab guidelines, job scheduling,
+    allocation fairshare, and priority settings.
+   :keywords: queue policy, login nodes, cron, scrontab, Slurm, fairshare,
+    allocation, best practices
+
 ###########################
 Policies and Best Practices
 ###########################

@@ -1,5 +1,12 @@
 :orphan:
 
+.. meta::
+   :description: Interactive form to generate a sample OpenSSH client
+    configuration for NOAA RDHPCS systems with system-specific hostnames
+    and proxy settings.
+   :keywords: OpenSSH, SSH configuration, config file, Bastion, proxy,
+    RDHPCS systems
+
 .. _openssh-config:
 
 OpenSSH Sample Configuration

@@ -1,3 +1,10 @@
+.. meta::
+   :description: Overview of Slurm job scheduling commands and usage on RDHPCS
+    systems, covering sbatch, srun, squeue, salloc, and other common Slurm
+    commands.
+   :keywords: Slurm, job scheduler, sbatch, srun, squeue, salloc, sinfo,
+    scancel, batch jobs, HPC
+
 ########
 Overview
 ########

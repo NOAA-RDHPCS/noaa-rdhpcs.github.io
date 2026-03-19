@@ -1,3 +1,9 @@
+.. meta::
+   :description: Guide to data transfer methods on RDHPCS systems, including
+    Globus, Data Transfer Nodes, Untrusted DTNs, and SSH port tunneling.
+   :keywords: data transfers, Globus, DTN, UDTN, port tunneling, rsync, scp,
+    trusted hosts, firewall
+
 .. _Data_Transfers:
 
 ##############

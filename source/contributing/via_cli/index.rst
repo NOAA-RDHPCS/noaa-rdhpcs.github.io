@@ -1,3 +1,10 @@
+.. meta::
+   :description: Step-by-step instructions for contributing to RDHPCS
+    documentation from the command line, including forking the repository,
+    installing dependencies, and submitting pull requests.
+   :keywords: contributing, CLI, command line, GitHub, fork, clone, pull
+    request, RST, Sphinx, Python
+
 .. _via_cli:
 
 ******************************

@@ -1,3 +1,9 @@
+.. meta::
+   :description: Frequently asked questions about RDHPCS accounts, system
+    access, authentication, and Parallel Works login troubleshooting.
+   :keywords: FAQ, frequently asked questions, accounts, access, authentication,
+    Parallel Works, RDHPCS
+
 .. _FAQ:
 
 ##########################

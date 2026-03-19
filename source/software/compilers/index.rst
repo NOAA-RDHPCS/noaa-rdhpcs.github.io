@@ -1,3 +1,10 @@
+.. meta::
+   :description: Overview of available compilers and MPI stacks on RDHPCS
+    systems, including Intel, Nvidia/PGI, and NAG compilers with Intel MPI,
+    and how to load and use them.
+   :keywords: compilers, Intel, MPI, Intel MPI, Nvidia, PGI, NAG, Fortran,
+    C, C++, parallel, HPC
+
 .. _compilers:
 
 Compilers

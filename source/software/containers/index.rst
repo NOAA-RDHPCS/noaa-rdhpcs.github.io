@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to running Singularity containers on RDHPCS systems
+    including Ursa, Gaea, Hera, Jet, and Mercury for portable and reproducible
+    software environments.
+   :keywords: Singularity, containers, Docker, Apptainer, container images,
+    portability, HPC, Ursa, Gaea, Hera
+
 .. _rdhpcs-containers:
 
 **********

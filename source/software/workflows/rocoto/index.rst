@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to using Rocoto, a self-contained workflow management
+    system for long-range weather pattern workflows, available on Hera and
+    Jet RDHPCS systems.
+   :keywords: Rocoto, workflow, workflow management, batch jobs, weather
+    forecasting, Hera, Jet, cycles, dependencies
+
 .. _rocoto:
 
 ******

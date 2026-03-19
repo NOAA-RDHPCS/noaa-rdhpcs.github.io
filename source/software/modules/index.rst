@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to using Lmod environment modules on RDHPCS systems to
+    manage software environments and search for available packages on Gaea,
+    Hera, Jet, and MSU systems.
+   :keywords: Lmod, modules, module list, module avail, module spider,
+    module load, environment, HPC software
+
 .. _modules:
 
 #######

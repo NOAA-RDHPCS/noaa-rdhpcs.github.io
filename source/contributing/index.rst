@@ -1,3 +1,9 @@
+.. meta::
+   :description: Guide to contributing to the RDHPCS documentation site using
+    GitHub issues and pull requests, with RST markup rendered by Sphinx.
+   :keywords: contributing, documentation, GitHub, RST, reStructuredText,
+    Sphinx, pull request, issue, docs team
+
 .. _Contributing:
 
 ******************************

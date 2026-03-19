@@ -1,3 +1,10 @@
+.. meta::
+   :description: Overview of the Flexible Modeling System Runtime Environment
+    (FRE) for managing FMS-based models on Gaea for build and run, and on
+    PPAN for post-processing.
+   :keywords: FRE, FMS, Flexible Modeling System, workflow, Gaea, PPAN, GFDL,
+    post-processing, scientific workflow
+
 .. _fre-workflow:
 
 ********************************************
