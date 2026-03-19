@@ -14,10 +14,10 @@ Contributing to these docs
 Overview
 ========
 
-This site, `docs.rdhpcs.noaa.gov <https://docs.rdhpcs.noaa.gov>`_, is the
+This site, `docs.rdhpcs.noaa.gov <https://docs.rdhpcs.noaa.gov>`__, is the
 single source for RDHPCS user documentation.  Source files are kept in the
 `NOAA-RDHPCS GitHub repository
-<https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io>`_, written in
+<https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io>`__, written in
 reStructuredText (RST), and rendered into HTML by Sphinx.  Automated checks
 validate markup syntax, links, and style on every pull request.
 
@@ -29,21 +29,98 @@ that apply to all contributions.
 Submitting suggestions
 ----------------------
 
-Have a suggestion but don't want to edit files directly?  Open a GitHub issue
-to start the conversation:
-`open an issue <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/issues/new>`_.
+Have a suggestion but don't want to edit files directly?
+`Open an issue <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/issues/new>`__
+on GitHub to start the conversation.
 
 If you need a GitHub account, `follow these steps
-<https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account>`_.
+<https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account>`__.
 
 Contributing changes via the browser
 -------------------------------------
 
 The quickest way to contribute is through the GitHub web interface, which
-requires no local tooling.  A webcast tutorial walks through the full
-browser-based workflow — log into your NOAA Google account first, then watch
-the `webcast tutorial
-<https://drive.google.com/file/d/1MdCbUExf3prY0OF-6CRc3EY1-UPSSwCE>`_.
+requires no local tooling.  Watch the `webcast tutorial
+<https://sites.google.com/noaa.gov/rdhpc-docs-internal/presentations/training-and-tutorials/contributing-to-rdhpcs-documentation>`__
+(log into your NOAA Google account first) for a walk-through of the full
+browser-based workflow.
+
+.. note::
+
+   The browser-based editors can't build or preview the rendered
+   documentation.  The automated checks catch markup errors after
+   you submit a pull request, but you won't see the final HTML output
+   beforehand.  Use the :ref:`command-line workflow <Contributing>` if you
+   want to preview your changes locally before submitting.
+
+#. Fork the repository.
+
+   Go to https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io and click the
+   **Fork** button in the upper-right corner.  Select your account and click
+   **Create fork**.
+
+   .. image:: /images/github_fork.png
+      :width: 80.0%
+      :align: center
+      :alt: GitHub Fork button in the upper-right corner of the repository page
+
+#. Navigate to the file you want to edit in your fork and open an editor.
+
+   Two browser-based editors are available:
+
+   - **Simple editor** — navigate to the file you want to edit, then click
+     the **pencil icon** (Edit this file) in the upper-right corner of the
+     file view.  Best for single-file changes.
+
+   - **github.dev** — press ``.`` (period) while viewing the repository or
+     a file to open a Visual Studio Code-style editor in the browser.  Use
+     this for changes that span multiple files.
+
+#. Create a new branch for your changes.
+
+   .. note::
+
+      Always create a new branch rather than committing directly to ``main``.
+      This keeps your default branch clean and lets you have multiple
+      contributions open at once.
+
+   **Simple editor**: Branch creation happens at commit time in step 5 below
+   — no action needed here.
+
+   **github.dev**: Click the branch name in the bottom status bar, type a
+   short descriptive branch name in the box that appears, and click
+   **Create new branch**.
+
+#. Edit the file.
+
+   Make your changes in the editor.  The simple editor has a **Preview** tab,
+   but it renders raw RST — not the final built HTML.
+
+#. Commit your changes.
+
+   **Simple editor**: Scroll to the top and click **Commit changes**.  Enter
+   a commit message, select **Create a new branch for this commit**, give the
+   branch a short descriptive name, and click **Propose changes**.
+
+   **github.dev**: Click the **Source Control icon** in the left sidebar
+   (or press ``Ctrl+Shift+G``).  Click **+** next to each changed file to
+   stage it, enter a commit message, and click **Commit & Push**.
+
+#. Open a pull request.
+
+   After proposing changes in the simple editor, GitHub takes you directly
+   to the **Open a pull request** page.  In github.dev, click the pull
+   request icon at the top of the Source Control sidebar.
+
+   Fill in a descriptive title and description.  Reference your issue using
+   ``#<issue number>``.  Click **Create pull request**.
+
+   .. image:: /images/github_pr.png
+      :width: 80.0%
+      :align: center
+      :alt: GitHub prompt to open a pull request after pushing a branch
+
+#. Work with the reviewers to refine the update as needed.
 
 To set up a local authoring environment instead, continue reading below.
 The following sections cover the full command-line workflow: setting up
@@ -53,7 +130,7 @@ changes via a pull request.
 Set up your authoring environment
 ==================================
 
-The steps below require `Python 3 <https://www.python.org/downloads/>`_
+The steps below require `Python 3 <https://www.python.org/downloads/>`__
 to be installed on your system.
 
 #. Fork the documentation repository on GitHub.
@@ -109,7 +186,7 @@ to be installed on your system.
       $ pip install -r requirements.txt
 
    See `requirements.txt
-   <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/requirements.txt>`_
+   <https://github.com/NOAA-RDHPCS/noaa-rdhpcs.github.io/blob/main/requirements.txt>`__
    for the full list of packages.
 
 
@@ -195,7 +272,7 @@ After your environment is set up, follow these steps for each contribution.
 
 #. Open a pull request on GitHub.
 
-   After pushing, GitHub will display a prompt to open a pull request.
+   After pushing, GitHub displays a prompt to open a pull request.
 
    .. image:: /images/github_pr.png
       :width: 80.0%
@@ -203,7 +280,7 @@ After your environment is set up, follow these steps for each contribution.
       :alt: GitHub prompt to open a pull request after pushing a branch
 
    Include a description of your changes and reference any related issues.
-   The automated CI checks must pass before the PR can be merged.
+   The automated checks must pass before the PR can be merged.
 
 #. Work with the reviewers to refine the update as needed.
 
@@ -214,12 +291,13 @@ GitHub guidelines
 - When you want to work on an issue, assign it to yourself if no one is
   assigned yet.  If someone is already assigned, check in with them about
   collaborating.
-- Reference the issue(s) your PR addresses using GitHub's ``#`` notation.
+- Reference the issue(s) your pull request (PR) addresses using GitHub's
+  ``#`` notation.
 - Use ``WIP`` in your PR title to indicate it's not ready to merge.  Remove
   it when you're ready for review.
 - If specific individuals should be aware of your changes, suggest them as
   reviewers on the PR.
-- You don't need to assign labels to your PR; the team may adjust them.
+- You don't need to assign labels to your PR. The team may adjust them.
 
 
 Resources
