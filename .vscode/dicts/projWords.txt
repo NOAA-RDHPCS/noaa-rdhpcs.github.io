@@ -449,7 +449,6 @@ numactl
 nvcc
 nvfortran
 nvhpc
-Oakridge
 ocio
 octicon
 odvars
