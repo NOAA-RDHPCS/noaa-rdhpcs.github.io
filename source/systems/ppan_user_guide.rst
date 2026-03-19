@@ -14,7 +14,7 @@ over 130 Dell servers located at the Geophysical Fluid Dynamics Laboratory
 offer multiple petabytes of disk storage and access to nearly 200
 petabytes of archive storage. Various generations of
 Intel processors from Sandy Bridge to Ice Lake, and available
-ranges from 48-512GB of memory, are sufficient for most user
+ranges from 48-512 GB of memory, are sufficient for most user
 post-processing demands. See :ref:`analysis-hosts` and
 :ref:`postprocess-hosts` for specifics.
 
@@ -23,7 +23,7 @@ and interpret models generated on other HPC systems. This gives users a local
 system to experiment and evaluate with various degrees of control and
 validation of complex processes and tasks. PPAN is also a host to various
 software packages, including MATLAB and other complex combinations of
-Python & R libraries.
+Python and R libraries.
 
 The GFDL Post-processing and Analysis Cluster is called Pan, or PPAN. It
 contains approximately 20 analysis hosts for interactive use. The analysis
@@ -164,9 +164,9 @@ follows:
 
   >ssh ${pp_nodename}
 
-where ${pp_nodename} is one of the pp nodes (e.g., pp212, pp301). The same
-method will work from analysis to log into an
-analysis node; simply swap out ${pp_nodename} for ${analysis_nodename}
+where ${pp_nodename} is one of the pp nodes (for example, pp212, pp301). The
+same method will work from analysis to log into an analysis node; simply swap
+out ${pp_nodename} for ${analysis_nodename}
 
 .. note::
 
@@ -371,7 +371,7 @@ Easy-to-use local job display scripts are available on PP/AN. The '-h' or
       qa          show all jobs
       qi          show input queue
       qr          show running jobs
-      qc          show completed & failed jobs
+      qc          show completed and failed jobs
 
    qj jobid       show job details
    qn an|pp       show Slurm batch nodes
@@ -952,7 +952,7 @@ the group quota.
 
 Again, this file can be created at any path name in the owner's home
 directory. It should be **write only** by the owner and **readable by
-everyone** (e.g. **chmod 644**). Then to activate the file and make it
+everyone** (**chmod 644**, for instance). Then to activate the file and make it
 available to archrpt, please provide its path name to Garrett Power
 and/or Ed Weiss so it can be linked to the archrpt configuration
 directory.
