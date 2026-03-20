@@ -2,7 +2,7 @@
    :description: User guide for Hera, a NOAA RDHPCS system at NESCC with
     63,840 cores, supporting weather prediction and research workloads.
    :keywords: Hera, RDHPCS, NESCC, scratch, Slurm, weather prediction,
-    Intel, GPU
+    Intel
 
 .. _hera-user-guide:
 
