@@ -197,6 +197,8 @@ Module Collections
 Lmod can save and restore named sets of modules, called *collections*.
 This is useful for complex environments you use regularly.
 
+.. spell:ignore myenv
+
 .. code-block:: shell
 
    $ module save myenv        # Save the current module state as "myenv"
@@ -212,8 +214,8 @@ This is useful for complex environments you use regularly.
 Adding Additional Module Paths
 ==============================
 
-Do not manually set the ``MODULESPATH`` environment variable.
-Manually setting ``MODULESPATH`` will produce unknown behavior.
+Do not manually set the ``MODULEPATH`` environment variable.
+Manually setting ``MODULEPATH`` will produce unknown behavior.
 
 Use ``module use <path>`` to prepend a path to the module search path,
 or ``module use -a <path>`` to append it:
@@ -336,51 +338,53 @@ details on the Gaea programming environment.
 Command Summary
 ===============
 
-+-------------------------------------------+------------------------------------------+
-| Command                                   | Description                              |
-+===========================================+==========================================+
-| ``module list``                           | List active modules in the user          |
-|                                           | environment                              |
-+-------------------------------------------+------------------------------------------+
-| ``module -t list``                        | Terse (one-per-line) list of active      |
-|                                           | modules                                  |
-+-------------------------------------------+------------------------------------------+
-| ``module avail [module]``                 | List available modules compatible with   |
-|                                           | the current environment                  |
-+-------------------------------------------+------------------------------------------+
-| ``module spider [module]``                | Search all modules in the full           |
-|                                           | hierarchy, including those not yet       |
-|                                           | available                                |
-+-------------------------------------------+------------------------------------------+
-| ``module keyword <term>``                 | Search all modules for a keyword         |
-+-------------------------------------------+------------------------------------------+
-| ``module show <module>``                  | Show environment changes a module would  |
-|                                           | make, without loading it                 |
-+-------------------------------------------+------------------------------------------+
-| ``module load <module>[/version]``        | Load a module into the user environment  |
-+-------------------------------------------+------------------------------------------+
-| ``module unload <module>``                | Remove a loaded module from the user     |
-|                                           | environment                              |
-+-------------------------------------------+------------------------------------------+
-| ``module swap <module1> <module2>``       | Replace module1 with module2, cascading  |
-|                                           | dependency changes                       |
-+-------------------------------------------+------------------------------------------+
-| ``module use [-a] <path>``                | Prepend (or append with ``-a``) a path   |
-|                                           | to MODULESPATH                           |
-+-------------------------------------------+------------------------------------------+
-| ``module unuse <path>``                   | Remove a path from MODULESPATH           |
-+-------------------------------------------+------------------------------------------+
-| ``module save [name]``                    | Save the current module set as a named   |
-|                                           | collection                               |
-+-------------------------------------------+------------------------------------------+
-| ``module restore [name]``                 | Restore a previously saved collection    |
-+-------------------------------------------+------------------------------------------+
-| ``module savelist``                       | List all saved module collections        |
-+-------------------------------------------+------------------------------------------+
-| ``module reset``                          | Reset loaded modules to system defaults  |
-+-------------------------------------------+------------------------------------------+
-| ``module purge``                          | Unload **all** modules (**do not use     |
-|                                           | on Gaea**)                               |
-+-------------------------------------------+------------------------------------------+
-| ``module update``                         | Reload all currently loaded modules      |
-+-------------------------------------------+------------------------------------------+
++-------------------------------------+---------------------------------------+
+| Command                             | Description                           |
++=====================================+=======================================+
+| ``module list``                     | List active modules in the user       |
+|                                     | environment                           |
++-------------------------------------+---------------------------------------+
+| ``module -t list``                  | Terse (one-per-line) list of active   |
+|                                     | modules                               |
++-------------------------------------+---------------------------------------+
+| ``module avail [module]``           | List available modules compatible     |
+|                                     | with the current environment          |
++-------------------------------------+---------------------------------------+
+| ``module spider [module]``          | Search all modules in the full        |
+|                                     | hierarchy, including those not yet    |
+|                                     | available                             |
++-------------------------------------+---------------------------------------+
+| ``module keyword <term>``           | Search all modules for a keyword      |
++-------------------------------------+---------------------------------------+
+| ``module show <module>``            | Show environment changes a module     |
+|                                     | would make, without loading it        |
++-------------------------------------+---------------------------------------+
+| ``module load <module>[/version]``  | Load a module into the user           |
+|                                     | environment                           |
++-------------------------------------+---------------------------------------+
+| ``module unload <module>``          | Remove a loaded module from the user  |
+|                                     | environment                           |
++-------------------------------------+---------------------------------------+
+| ``module swap <module1> <module2>`` | Replace module1 with module2,         |
+|                                     | cascading dependency changes          |
++-------------------------------------+---------------------------------------+
+| ``module use [-a] <path>``          | Prepend (or append with ``-a``) a     |
+|                                     | path to MODULEPATH                    |
++-------------------------------------+---------------------------------------+
+| ``module unuse <path>``             | Remove a path from MODULEPATH         |
++-------------------------------------+---------------------------------------+
+| ``module save [name]``              | Save the current module set as a      |
+|                                     | named collection                      |
++-------------------------------------+---------------------------------------+
+| ``module restore [name]``           | Restore a previously saved collection |
++-------------------------------------+---------------------------------------+
+| ``module savelist``                 | List all saved module collections     |
++-------------------------------------+---------------------------------------+
+| ``module reset``                    | Reset loaded modules to system        |
+|                                     | defaults                              |
++-------------------------------------+---------------------------------------+
+| ``module purge``                    | Unload **all** modules (**do not use  |
+|                                     | on Gaea**)                            |
++-------------------------------------+---------------------------------------+
+| ``module update``                   | Reload all currently loaded modules   |
++-------------------------------------+---------------------------------------+
