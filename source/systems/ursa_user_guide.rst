@@ -155,90 +155,98 @@ Ursa has 15 outward-facing nodes.
 
 Using GPU Resources on Ursa
 ===========================
-Ursa has 2 H100 GPUs each with 94GB of memory in the ``u1-h100``
-partition as indicated in the table above.  This partition
-is only accessible from the ``gpu`` and ``gpuwf`` QOSes.
+Ursa has one production GPU partition (``u1-h100``) and two
+exploratory GPU
+partitions (``u1-gh`` and ``u1-mi300x``). See the table above for
+details.
 
-In order to have priority access to the GPU resources you will need to
-have a GPU specific project allocation. Please contact your PI
-or Portfolio Manager for getting a GPU specific allocation.
+Partition ``u1-h100``:  There are 58 nodes, each with 192 AMD cpu
+cores, 2 NVIDIA  H100 GPUs with 94GB of memory/GPU.  This partition is
+accessible from the ``gpu`` and ``gpuwf`` QOS’s. For billing and accounting:
+one H100 gpu-hour will count as 192/2=96 cpu core-hours.
 
-All projects with a CPU project allocation on Ursa have
-windfall access to the GPU resources, and conversely all users with
-GPU specific project allocations have windfall access
-to the non-GPU resources.
+In order to have priority access to the H100 GPU resources you will
+need a GPU specific project allocation. Please contact your
+PI or Portfolio Manager to get a GPU specific allocation.
 
-Using GPU Resources With a GPU allocation
------------------------------------------
+All projects with a CPU project allocation on Ursa have windfall
+access to the H100 GPU resources, and conversely all users with
+GPU specific project allocations have windfall access to the
+non-GPU resources.
 
-If you have a GPU specific project allocation on Ursa you
-can access the GPUs by
-submitting to the ``u1-h100`` partition and ``gpu`` QOS as shown in
-the example below where 2 H100 GPUs on 1 node are being requested:
+Using H100 GPU Resources With a GPU allocation
+----------------------------------------------
 
-.. code-block:: shell
-
-   sbatch -A mygpu_project -p u1-h100 -q gpu -N 1 --gres=gpu:h100:2 my_ml.job
-
-Using GPU Resources Without a GPU allocation
---------------------------------------------
-
-Users that do not have GPU specific project allocations
-on Ursa can access
-the GPU resources at windfall priority. Which means users will be able
-to submit jobs to the system, but they will only run when the
-resources are not being used by projects that do have a GPU
-specific project allocation.
-This is helpful for users who are in interested in
-exploring the GPU resources for their applications. To use the system
-in this mode please submit the jobs to the ``u1-h100`` partition and
-``gpuwf``
-QOS as shown in the example below where 2 H100 GPUs on 1 node are
-being requested:
+If you have a H100 GPU specific project allocation on Ursa, you can access
+the H100 GPUs by submitting to the ``u1-h100`` partition and ``gpu`` QOS as
+shown in the example below where 3 H100 GPUs are being requested:
 
 .. code-block:: shell
 
-   sbatch -A mycpu_project -p u1-h100 -q gpuwf -N 1 --gres=gpu:h100:2 my_ml.job
+   sbatch -A mygpu_project -p u1-h100 -q gpu --gpus=h100:3 my_ml.job
+
+Using H100 GPU Resources Without a GPU allocation
+-------------------------------------------------
+
+Users that do not have H100 GPU specific project allocations on Ursa
+can access the H100 GPU resources at windfall priority. This means
+that users can submit jobs to the system, but they will only run
+when the resources are not being used by projects that do have a H100
+GPU specific project allocation. This is helpful for users who are
+interested in exploring the GPU resources for their applications.
+To use the system in this mode please submit the jobs to the ``u1-h100``
+partition and ``gpuwf`` QOS as shown in the example below where 2 H100
+GPUs are being requested:
+
+.. code-block:: shell
+
+   sbatch -A mycpu_project -p u1-h100 -q gpuwf --gpus=h100:2 my_ml.job
 
 
 Using the Exploratory GPU Resources
 ===================================
 
-In addition to the NVIDIA H100 GPU system (Partition: ``u1-h100``),
-two new small GPU exploratory systems with the newer GPU types
-are available for experimentation.  These systems are connected
-to the Ursa IB network and have access to the Ursa file systems.
-All projects with access to Ursa have equal access to the
-new Exploratory Systems via the ``gpuwf`` QOS.
+In addition to the NVIDIA H100 GPU system (Partition: ``u1-h100``), two new
+small GPU exploratory systems (partitions) with the newer GPU types are
+available for experimentation. These systems are connected to the Ursa
+IB network and have access to the Ursa file systems. There are no
+allocations or fairshare priority for these partitions; therefore all
+projects with access to Ursa have equal access (first come first served)
+to these partitions via the ``gpuwf`` QOS.
 
 To access these nodes, login to Ursa and submit an interactive
 batch job requesting these GPU resources. Once you have an interactive
 shell, you can compile and run your applications on those nodes.
+Please keep in mind that the CPUs on the exploratory GPU resources
+are different from the CPUs in the production system.
 Vendor provided software is available by loading the appropriate
 modules. Please run the ``module spider`` command to see the list
 of modules available.
 
 Description of the two exploratory systems:
 
-* Partition:  ``u1-gh``. Eight Grace Hopper nodes with one
-  NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
-  These nodes have a single NDR200 connection to Ursa
-  IB fabric.  More detailed information about
-  the `NVIDIA GH200 <https://www.nvidia.com/en-us/data-center/grace-hopper-superchip/>`_
-  is available from NVIDIA.
-
-* Partition:  ``u1-mi300x``. Three dual-Intel CPU sockets
-  with 8 AMD Mi300x APUs nodes with AMD ROCm software.
-  These nodes have a single NDR200 connection to the
-  Ursa IB fabric. Click `AMD MI300X <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>`_
+* Partition:  ``u1-gh``: There are 8 Grace Hopper nodes, each with
+  one NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
+  The CPU part of this superchip is an ARM processor with 72 cpu
+  cores and approximately 213 GB of RAM. Click
+  the `NVIDIA GH200 <https://resources.nvidia.com/en-us-data-center-overview-mc/en-us-data-center-overview/grace-hopper-superchip-datasheet-partner>`_
   for more detailed information.
+  For billing and accounting: one grace hopper gpu-hour will count
+  as 72 cpu core-hours.
+
+* Partition:  ``u1-mi300x``. There are 3 nodes, each with 96 Intel cpu
+  cores, 8 AMD Mi300x APUs each with 192 GB of RAM AMD ROCm software.
+  Click `AMD MI300X <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>`_
+  for more detailed information.
+  For billing and accounting: one mi300x gpu-hour will count as
+  96/8=12 cpu core-hours.
 
 Run one of the following commands to get interactive access to these nodes:
 
 .. code-block:: shell
 
-  salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf -N 1 --gres=gpu:gh200:1
-  salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf -N 1 --gres=gpu:mi300x:2
+  salloc -A mygpu_project -t 480 -p u1-gh     -q gpuwf --gpus=gh200:1
+  salloc -A mygpu_project -t 480 -p u1-mi300x -q gpuwf --gpus=mi300x:2
 
 In the examples above, the first example requests one node
 with one GH200 GPU and the second example requests one node with
