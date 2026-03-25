@@ -120,11 +120,19 @@ ul.menu-footer-bottom {
 }
 
 @media (prefers-color-scheme: dark) {
-    .wy-menu-vertical li.toctree-l2.current>a,.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a {
-        background: #696969;
-    }
-    .wy-menu-vertical li.toctree-l3.current>a,.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a {
-    background: #7e7e7e;
+    /* Nav header: override the light #efefef background so white text/logo remains readable */
+    .wy-side-nav-search {
+        background-color: #2b2b2b;
     }
 
+    /* Active toctree items: use darker backgrounds for sufficient contrast with white text.
+       #4a4a4a gives ~7.1:1 and #595959 gives ~5.3:1 contrast ratio against white (WCAG AA/AAA). */
+    .wy-menu-vertical li.toctree-l2.current>a,.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a {
+        background: #4a4a4a;
+        color: #ffffff;
+    }
+    .wy-menu-vertical li.toctree-l3.current>a,.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a {
+        background: #595959;
+        color: #ffffff;
+    }
 }
