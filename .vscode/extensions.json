@@ -6,7 +6,6 @@
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-python.debugpy",
-        "lextudio.restructuredtext",
         "trond-snekvik.simple-rst",
     ]
 }
