@@ -154,6 +154,8 @@ linkcheck_ignore = [
     r'https://nsd.rdc.noaa.gov/'
 ]
 
+linkcheck_timeout = 30
+linkcheck_workers = 5
 linkcheck_retries = 3
 
 # This is needed for backwards compatibility.  We have
