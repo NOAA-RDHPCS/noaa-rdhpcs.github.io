@@ -23,10 +23,9 @@ the creation of isolated Python environments without the hassle of conflicting
 dependencies or complications from other Python installations.  Conda is fully
 supported on all RDHPCS systems.
 
-This `presentation
-<https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/10heIBc3-5xzOMROQ1uDTf_mhL1iBeLa1/edit>`_
-describes the standard supported environment for across RDHPCS, such that a
-script can be run on different systems with minimal changes
+See the `RDHPCS standard python environment <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/10heIBc3-5xzOMROQ1uDTf_mhL1iBeLa1/edit>`_
+presentation for an overview. This link includes a recording, slides and
+transcript of the presentation.
 
 .. caution::
 
