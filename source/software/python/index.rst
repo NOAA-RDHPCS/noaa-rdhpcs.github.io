@@ -23,6 +23,9 @@ the creation of isolated Python environments without the hassle of conflicting
 dependencies or complications from other Python installations.  Conda is fully
 supported on all RDHPCS systems.
 
+`RDHPCS Python training video 
+https://sites.google.com/noaa.gov/rdhpc-docs-internal/presentations/rdhpcs-python-standard-deployment-for-users?authuser=0`
+
 .. caution::
 
     The RDHPCS does not have a license with the `Anaconda Python
