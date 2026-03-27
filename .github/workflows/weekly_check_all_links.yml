@@ -1,0 +1,79 @@
+# cspell: words linkcheck
+
+name: Weekly Full Link Check
+
+# Runs weekly to verify all links in the documentation, including those that
+# are reachable from the CI environment.  Creates a GitHub issue if any links
+# return HTTP 4xx responses.  Complements the ignored-links workflow, which
+# separately checks URLs excluded from the standard linkcheck.
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  SPHINXOPTS: --quiet
+
+jobs:
+  check-all-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Python Requirements
+        run: pip install -r requirements.txt
+
+      - name: Run linkcheck
+        continue-on-error: true
+        run: make linkcheck
+
+      - name: Report broken links
+        id: report
+        run: |
+          set +e
+          # stderr is intentionally merged into issue_body.md (2>&1) so that any
+          # Python warnings or script errors appear in the issue for diagnostics.
+          # If stderr output ever corrupts the issue body formatting, replace 2>&1
+          # with a separate redirect (e.g., 2>report_err.txt) and handle it separately.
+          python .github/scripts/report_linkcheck.py > issue_body.md 2>&1
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+          cat issue_body.md
+
+      - name: Create issue for broken links
+        if: steps.report.outputs.exit_code == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          existing=$(gh issue list \
+            --label "bug" \
+            --state open \
+            --search "Broken link(s) detected in:title" \
+            --json number \
+            --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            echo "Issue #$existing already open; skipping creation."
+            exit 0
+          fi
+          gh issue create \
+            --title "Broken link(s) detected" \
+            --label "bug" \
+            --body-file issue_body.md
+
+      - name: Upload linkcheck Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linkcheck-output
+          path: 'build/linkcheck/output.*'
