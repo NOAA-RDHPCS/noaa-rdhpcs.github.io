@@ -170,6 +170,7 @@ genvall
 genvlist
 geospace
 getstripe
+gfdluser
 gfsenkf
 gitflow
 globpsd
