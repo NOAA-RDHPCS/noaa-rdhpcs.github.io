@@ -1,3 +1,6 @@
+.. meta::
+   :robots: noindex
+
 .. _software:
 
 ########
@@ -15,4 +18,4 @@ Software
    gitlab/index
    containers/index
    VSCode/index
-   x2go
+

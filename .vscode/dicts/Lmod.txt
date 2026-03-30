@@ -2,3 +2,5 @@
 
 modulefiles
 MODULEPATH
+savelist
+unuse
