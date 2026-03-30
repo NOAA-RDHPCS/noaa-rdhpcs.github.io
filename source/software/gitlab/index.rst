@@ -13,7 +13,9 @@ effectively on software development projects. It offers a secure
 and organized environment for maintaining project history, managing
 branches, controlling access, reviewing code, and integrating with
 other development tools, making it an essential component of modern
-software development and delivery workflows. NOAA provides a secure
+software development and delivery workflows. 
+
+NOAA provides a secure
 Git server based on self-hosted Gitlab that is accessible only from
 the RDHPCS systems. In addition to providing a Git server, the Gitlab
 also offers rtifact/container registry and supports self-hosted CI/CD
@@ -21,38 +23,9 @@ pipelines, both of which would be useful for NOAA software developers.
 
 Web Access
 ----------
-Initial access to the Git server has to be done through web to setup
-account, create new repos, and configure settings for password-less
-login for git and container registry. There are two methods to
-access the Git server web interface via tunnels.
-
-SSLVPN
-~~~~~~
-
-.. image:: /images/gitserver1.png
-   :alt: VPN portal showing the Create new book workflow for the Git server.
-   :width: 700px
-
-1. Log in to `sslvpn.rdhpcs.noaa.gov <https://sslvpn.rdhpcs.noaa.gov>`__
-   and click **Create new bookmark for Your.Name@noaa.gov**. In the pane that
-   opens, fill the two fields shown below, leave the remaining fields
-   blank, and then press the **OK** button.
-
-   - **Name:** ``Git Server``
-   - **URL:** ``https://git.rdhpcs.noaa.gov``
-
-   .. note::
-
-     Including ``https://`` in the URL is required.
-
-
-2. Click the **Bookmarks** tab for ``Your.Name@noaa.gov`` and then select
-   the newly created **Git Server** widget. A new browser tab should open
-   and point to the Git server.
-
-   .. image:: /images/gitserver2.png
-      :alt: Bookmarks tab showing the Git Server entry.
-      :width: 700px
+The Git server is accessed through the web, to set up accounts,
+create new repos, and configure settings for password-less
+login for git and container registry. 
 
 Manual Tunnel
 ~~~~~~~~~~~~~
@@ -82,10 +55,10 @@ Git Usage
 Git Repo Creation
 ~~~~~~~~~~~~~~~~~
 
-Git repository have to be created from the browser. When creating a project,
-user may be asked whether to use the username or a group name as the namespace.
-If the project does not belong to a group, use the usename. For the rest of
-this document, it is assumeed the first project created is
+Git repositories must be created from the browser. When creating a project,
+the user may be asked whether to use the username or a group name as the namespace.
+If the project does not belong to a group, use the username. This
+document assumes that the first project created is
 ``User.Name/first_project``.
 
 Git Client Access
@@ -100,23 +73,10 @@ and then added to your account on the Git server.
 
 Register an SSH key
 +++++++++++++++++++
-1. On the RDHPCS system, from which the user wants to connect to the Git
-   server, generate an SSH key pair using ``ssh-keygen`` command. Various
-   options can be passed to the ``ssh-keygen`` command such as key-type
-   with ``-t`` flag. Some of the popular key types are ``rsa`` and
-   ``ed25519``. Depending on the key type selected, the command typically
-   creates files such as ``$HOME/.ssh/id_rsa`` and ``$HOME/.ssh/id_rsa.pub``
-   or similar files for other key types.
-2. Copy the contents of the ``.pub`` file.
-3. On the Git server website, click on the project, and then click on
-   **SSH Keys** from the left pane.
-4. Click **Add new key** button.
-5. Paste the public key, provide a title such as the hostname where the key
-   was created, and click **Add key**.
 
-More details can be found in the GitLab documentation available at:
-`GitLab user authentication docs <https://docs.gitlab.com/auth/user_authentication/>`__.
-
+Connection with the Git servier requires SSH keys. See
+`Use SSH keys with Gitlab <https://docs.gitlab.com/user/ssh/>`__
+for detailed instructions.
 
 Container Registry Usage with Apptainer
 ---------------------------------------
