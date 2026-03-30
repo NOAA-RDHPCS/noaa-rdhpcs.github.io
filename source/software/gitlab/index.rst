@@ -58,9 +58,9 @@ Git Repo Creation
 Git repositories must be created from the browser. When creating a project,
 the user may be asked whether to use the username or a group name as
 the namespace.
-Unless the project belongs to a group, use the username. 
+Unless the project belongs to a group, use the username.
 
-.. note:: 
+.. note::
    In this example, the first project created is
    ``User.Name/first_project``.
 
