@@ -135,23 +135,28 @@ linkcheck_allowed_redirects = {
     r'https://docs\.linaroforge\.com/latest/html/.*': r'https://docs\.linaroforge\.com/\d+\.\d+\.\d+/html/.*',
     r'https://support\.hpe\.com/connect/s/product\?kmpmoid=1013083813': r'https://support\.hpe\.com/connect/s/product\?language=?.*&kmpmoid=1013083813',
     r'https://conda\.io/.*': r'https://docs\.conda\.io/.*',
-    r'https://noaa-gfdl\.readthedocs\.io/projects/.*': r'https://noaa-gfdl\.readthedocs\.io/projects/.*?/.*?/latest'
+    r'https://noaa-gfdl\.readthedocs\.io/projects/.*': r'https://noaa-gfdl\.readthedocs\.io/projects/.*?/.*?/latest',
+    r'https://helpdesk\.gfdl\.noaa\.gov/.*': r'https://keycloak\.gfdl\.noaa\.gov/.*'
 }
 
 linkcheck_ignore = [
-    r'https://noaastore\.blob\.core\.windows\.net/?.*',
     r'https://www\.intel\.com/content/.*',
     r'https://www\.lustre\.org/documentation/',
-    r'https://www\.putty\.org/.*',
     r'https://(orion|hercules)-ood.hpc.msstate.edu/?.*',
-    r'https://cpe\.ext\.hpe\.com/docs/latest/.*',
+    # cpe.ext.hpe.com uses a certificate chain that GitHub Actions runners
+    # cannot verify (SSL: CERTIFICATE_VERIFY_FAILED). These links are checked
+    # separately on a weekly schedule in .github/workflows/check_ssl_ignored_links.yml.
+    r'https://cpe\.ext\.hpe\.com/.*',
     r'https://noaa-rrfs-pds\.s3\.amazonaws\.com/.*',
-    r'https://sslvpn\.rdhpcs\.noaa\.gov/',
     r'https://docutils\.sourceforge\.net/rst\.html',
     r'https://www\.amd\.com/en/products/accelerators/instinct/mi300/mi300x\.html',
     r'https://www\.gnu\.org/software/.*?/',
     r'https://accounts\.noaa\.gov/',
-    r'https://nsd.rdc.noaa.gov/'
+    # opstree.com returns 403 to automated requests but the page is valid
+    r'https://opstree\.com/.*',
+    r'https://nsd.rdc.noaa.gov/',
+    # Google Docs/Slides require authentication and time out in CI
+    r'https://docs\.google\.com/.*',
 ]
 
 linkcheck_timeout = 30
