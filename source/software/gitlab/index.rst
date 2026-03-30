@@ -13,7 +13,7 @@ effectively on software development projects. It offers a secure
 and organized environment for maintaining project history, managing
 branches, controlling access, reviewing code, and integrating with
 other development tools, making it an essential component of modern
-software development and delivery workflows. 
+software development and delivery workflows.
 
 NOAA provides a secure
 Git server based on self-hosted Gitlab that is accessible only from
@@ -25,7 +25,7 @@ Web Access
 ----------
 The Git server is accessed through the web, to set up accounts,
 create new repos, and configure settings for password-less
-login for git and container registry. 
+login for git and container registry.
 
 Manual Tunnel
 ~~~~~~~~~~~~~
@@ -56,10 +56,13 @@ Git Repo Creation
 ~~~~~~~~~~~~~~~~~
 
 Git repositories must be created from the browser. When creating a project,
-the user may be asked whether to use the username or a group name as the namespace.
-If the project does not belong to a group, use the username. This
-document assumes that the first project created is
-``User.Name/first_project``.
+the user may be asked whether to use the username or a group name as
+the namespace.
+Unless the project belongs to a group, use the username. 
+
+.. note:: 
+   In this example, the first project created is
+   ``User.Name/first_project``.
 
 Git Client Access
 ~~~~~~~~~~~~~~~~~
