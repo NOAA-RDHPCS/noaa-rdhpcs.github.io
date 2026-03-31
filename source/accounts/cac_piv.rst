@@ -22,10 +22,11 @@ such as bastions and RDHPCS login nodes.  These instructions guide you
 through extracting your PIV authentication certificate as an OpenSSH
 public key and enrolling it for use in the RDHPCS systems.
 
-.. note::
+.. important::
 
-   The SSH public key enrollment only needs to be completed **once**.
-   Do not re-enroll once per platform or per system.
+   The SSH public key enrollment only needs to be completed **once**,
+   unless you have renewed your CAC.  Do not re-enroll once per
+   platform or per system.
 
 .. important::
 
@@ -47,11 +48,12 @@ Prerequisites
 - A CAC/PIV card reader connected to your workstation
 - Your CAC/PIV PIN
 - An active NOAA RDHPCS account
+- Windows only: Putty-CAC
 
 ----
 
-Step 1: Install PuTTY-CAC
---------------------------
+Windows Only Step: Install PuTTY-CAC
+------------------------------------
 
 PuTTY-CAC is a fork of PuTTY that uses Microsoft's built-in CryptoAPI (CAPI)
 to interface with smart cards. No additional middleware (e.g., OpenSC) is
@@ -71,11 +73,103 @@ required.
 
 ----
 
-Step 2: Extract Your PIV SSH Public Key
+Step 1: Extract Your PIV SSH Public Key
 ----------------------------------------
 
-This step retrieves the ``ssh-rsa`` public key that corresponds to the
-PIV Authentication certificate on your card.
+These steps retrieve the ``ssh-rsa`` public key that corresponds to
+the PIV Authentication certificate on your card.  The exact steps vary
+depending on your environment.  Choose the correct path:
+
+Linux
+-----
+
+1. Insert your PIV/CAC into your card reader.
+
+2. Ensure you have the ``pkcs15-tool`` available
+
+.. code-block:: console
+
+   pkcs15-tool --help
+
+If "Command not found" is returned, install the ``opensc`` package
+using your Linux package manager and try again.
+
+3. If you have a CAC, try the following command in a terminal window:
+.. code-block:: console
+
+   pkcs15-tool --read-ssh-key 4
+
+The output will be two lines. Copy the line that starts with "ssh-rsa"
+and proceed to step 4.
+
+If that produced no output, or no lines that started with ssh-rsa, try:
+
+.. code-block:: console
+
+   pkcs15-tool --read-ssh-key 5
+
+The output will be two lines. Copy the line that starts with "ssh-rsa"
+and proceed to step 4.
+
+If this doesn't work, proceed to the PIV instructions.
+
+4. If you have a PIV card:
+
+In a terminal window, list the keys available. Look for "PIV AUTH" or
+"CAC Cert":
+
+.. code-block:: console
+
+        pkcs15-tool --list-public-keys
+
+Sample output:
+
+.. code-block:: console
+
+        ~]$ pkcs15-tool --list-public-keys
+        … snip …
+        Public RSA Key [CAC Cert 5]
+                Object Flags    : [0x00]
+                Usage           : [0xC0], verify, verifyRecover
+                Access Flags    : [0x02], extract
+                ModLength       : 2048
+                Key ref         : 5 (0x05)
+                Native          : yes
+                ID              : 0005
+                DirectValue     : <absent>
+
+The label and ID numbers vary based on the version of OpenSC and the
+smart card. Record the existence of either “PIV AUTH” or “CAC Cert.”
+If “CAC Cert” is present, refer to either “CAC Cert 5” or “CAC Cert
+4.” Record the ID number associated with the Public RSA Key.
+
+5. Use the ID number to view your SSH key.
+
+.. code-block:: console
+
+        pkcs15-tool --read-ssh-key ####
+
+The output will be two lines. Copy the line that starts with "ssh-rsa"
+and proceed to step 4.
+
+Mac OS
+------
+
+1. Insert your PIV/CAC into your reader.
+
+2. Open a terminal window, and use the ``ssh-keygen`` command to get
+   the OpenSSH-format public key fingerprint.
+
+.. code-block:: console
+
+   ssh-keygen -D /usr/lib/ssh-keychain.dylib
+
+The output will be two lines that start with ssh-rsa.  Copy the line
+that contains “Key for PIV Authentication” and proceed to step 4
+
+
+Windows
+-------
 
 1. **Insert** your CAC/PIV card into the card reader.
 
@@ -160,7 +254,7 @@ Step 4: Enroll Your SSH Public Key
 
    https://aim.rdhpcs.noaa.gov
 
-2. Log in with your RDHPCS username and authentication token.
+2. Log in with your RDHPCS username using CAC, PIV, or Yubikey.
 
 3. Select the green **Update your NOAA MFA** button.
 
@@ -175,32 +269,9 @@ Step 4: Enroll Your SSH Public Key
 Step 5: Connect to RDHPCS Resources
 -------------------------------------
 
-Once your key has been registered by performing the above steps, use PuTTY-CAC
-to connect to RDHPCS bastions.
-
-1. **Insert** your CAC/PIV card.
-
-2. **Open** PuTTY-CAC and load or create a saved session profile.
-
-3. Navigate to **Connection → SSH → Certificate** and confirm your
-   PIV authentication certificate is shown under **Selected thumbprint**.
-   If not, repeat the **Set CAPI Cert…** step from Step 2.
-
-4. Return to **Session**, select your profile, and click **Save**.
-
-5. Click **Open** to initiate the connection.
-
-6. Verify the server key fingerprint when prompted and click **Yes**.
-
-7. Enter your RDHPCS **username** (``First.Last`` format).
-
-8. When the certificate confirmation dialog appears, click **OK** and
-   enter your **CAC/PIV PIN**.
-
-   .. note::
-
-      Your card reader may flash during signing. **Do not remove your
-      card until you are fully logged in.**
+Once your key has been registered by performing the above steps, you
+may proceed to use your CAC / PIV / SSHKEY to connect to RDHPCS
+bastions.  See :ref:`CAC SSH Login<Common-access>` for details.
 
 ----
 
