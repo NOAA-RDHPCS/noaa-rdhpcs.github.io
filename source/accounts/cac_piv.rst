@@ -306,3 +306,7 @@ Additional Resources
 - `RDHPCS Yubikey Registration <https://docs.rdhpcs.noaa.gov/accounts/yubikey_token.html>`_
 - `ID Management SSH with PIV Guide <https://playbooks.idmanagement.gov/piv/engineer/ssh/>`_
 - RDHPCS Help Desk: `rdhpcs.help@noaa.gov <mailto:rdhpcs.help@noaa.gov>`_
+
+.. _putty_cac_config:
+
+fill me in.
