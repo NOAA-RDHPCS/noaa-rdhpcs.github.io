@@ -798,7 +798,7 @@ SSH Port Tunnel For PuTTy Windows Systems
 
 PuTTY is an SSH client, used to configure and initiate connection.
 Navigate to a separate tab to install `PuTTY
-<http://www.putty.org/>`_. If you cannot install software on your
+<https://www.putty.org/>`_. If you cannot install software on your
 machine, contact your local systems administrator.
 
 **Configuration**

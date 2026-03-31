@@ -3,6 +3,10 @@
 name: Check Hyperlinks
 on: [pull_request]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 env:
   SPHINXOPTS: --quiet
 
@@ -14,20 +18,54 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Prepare Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
           cache: 'pip'
+
       - name: Install Python Requirements
         run: pip install -r requirements.txt
+
       - name: Check for Broken Links
+        id: linkcheck
+        continue-on-error: true
         run: |
           if [ x${RUNNER_DEBUG:+is_set} == x"is_set" ]
           then
             unset SPHINXOPTS
           fi
           make linkcheck
+
+      - name: Analyze linkcheck results
+        id: analyze
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          set +e
+          python .github/scripts/analyze_linkcheck.py
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: Comment on PR
+        if: hashFiles('comment_body.md') != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --edit-last \
+            --body-file comment_body.md \
+          || gh pr comment ${{ github.event.pull_request.number }} \
+            --body-file comment_body.md
+
+      - name: Fail if new broken links found
+        if: steps.analyze.outputs.exit_code == '1'
+        run: |
+          echo "One or more broken links were introduced by this PR."
+          echo "See the PR comment for details."
+          exit 1
+
       - name: Upload linkcheck Artifact
         uses: actions/upload-artifact@v4
         if: always()
