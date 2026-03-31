@@ -160,19 +160,73 @@ Common Access Card (CAC) SSH Login
 
 RDHPCS users with a CAC who are logging in from a Windows, Mac, or
 Linux system are recommended to use a CAC login. This requires a CAC
-reader and software from Tectia. If you recently were issued a new CAC
-or renewed CAC, please log into the `Account Information Management`_
-website to update the CAC information.
+reader and a modern OpenSSH client, or PUTTY-CAC for Windows.
 
-Reference the :ref:`Tectia` pages for complete information on how to
-configure Tectia initially for login using SSH with your CAC.
+.. attention::
 
-.. code-block:: console
-
-    $ sshg3 CAC-BASTION-HOSTNAME
+        If you recently were issued a new or renewed CAC, please log into
+        the `Account Information Management`_ website to update the CAC
+        information.
 
 #. Reference the table above for the appropriate CAC Bastion to use.
 #. When prompted, enter your CAC PIN.
+
+See also the to-be-created consolidated section on configuring your
+openssh or putty-cac for easy rdhpcs access.
+
+Always start by **inserting** your CAC/PIV card.  If the CAC/PIV is
+not available, authentication will fall through to Yubikey.
+
+
+Linux
+-----
+
+.. code-block:: console
+
+                ssh -oPKCS11Provider=/usr/lib64/pkcs11/opensc-pkcs11.so First.Last@BASTION
+
+Mac OS
+-------
+
+.. code-block:: console
+
+                ssh -oPKCS11Provider=/usr/lib/ssh-keychain.dylib First.Last@BASTION
+
+Windows
+-------
+
+Reference :ref:`putty-cac-config` to configure and create profiles.
+
+Open PuTTY-CAC.  Select the desired profile (Bastion / HPCS) and click
+**Connect** or something like that.
+
+2. **Open** PuTTY-CAC and load or create a saved session profile.
+
+3. Navigate to **Connection → SSH → Certificate** and confirm your
+   PIV authentication certificate is shown under **Selected thumbprint**.
+   If not, repeat the **Set CAPI Cert…** step from Step 2.
+
+4. Return to **Session**, select your profile, and click **Save**.
+
+5. Click **Open** to initiate the connection.
+
+6. Verify the server key fingerprint when prompted and click **Yes**.
+
+7. Enter your RDHPCS **username** (``First.Last`` format).
+
+8. When the certificate confirmation dialog appears, click **OK** and
+   enter your **CAC/PIV PIN**.
+
+   .. note::
+
+      Your card reader may flash during signing. **Do not remove your
+      card until you are fully logged in.**
+
+
+
+
+
+
 
 
 .. _yubikey_instructions:
