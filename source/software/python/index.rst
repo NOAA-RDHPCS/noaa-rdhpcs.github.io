@@ -23,6 +23,10 @@ the creation of isolated Python environments without the hassle of conflicting
 dependencies or complications from other Python installations.  Conda is fully
 supported on all RDHPCS systems.
 
+See the `RDHPCS standard python environment <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/10heIBc3-5xzOMROQ1uDTf_mhL1iBeLa1/edit>`_
+presentation for an overview. This link includes a recording, slides and
+transcript of the presentation.
+
 .. caution::
 
     The RDHPCS does not have a license with the `Anaconda Python

@@ -417,54 +417,12 @@ Then, let the Help Desk team know by adding this line to the ticket:
 Managing Help Tickets
 =====================
 
-Help Tickets can be managed in two ways:
-
-.. tab-set::
-
-    .. tab-item:: Email
-
-        This method is recommended when you have only a few open tickets.
-        Reply to the e-mail thread that is started by the OTRS system after you
-        submit a help request.  The subject of that e-mail thread starts with
-        the assigned ticket number (e.g., [RDHPCS#2018041954000023]), followed
-        by the subject in your original e-mail request. DO NOT reply to your
-        original e-mail request you sent or it will start a new ticket and add
-        confusion to the process.
-
-    .. tab-item:: User Portal
-
-        This method is recommended when you need to manage several open tickets
-        and can be used for viewing and relying to open or closed tickets.
-        Please refer to the :ref:`user portal documentation
-        <help_user_portal>`.
-
-
-.. _help_user_portal:
-
-Help Ticket System User Portal
-==============================
-
-Login
------
-
-`Link to the portal <https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_
-
-The ticket system allows an alternative access point to view RDHPCS help
-tickets. It is recommended to use the portal if you have multiple open help
-tickets and/or need to search through old help tickets. Log on to the RDHPCS
-portal using NOAA SSO credentials.  Gaea and PPAN tickets can be accessed
-using the GFDL portal using the GFDL Active Directory (AD) password.
-
-.. note::
-
-    RDHPCS users that do not also have an active GFDL account will not be able
-    to access Gaea and PPAN tickets.
-
-
-When you first log in, you'll be on the **Open** ticket tab, with additional
-options to see **All** or only **Closed** tickets.
-
-.. image:: /images/help_portal/otrswikiuseroverview.png
+You can reply to the e-mail thread that is started by the OTRS system after you
+submit a help request.  The subject of that e-mail thread starts with
+the assigned ticket number (for instance, [RDHPCS#2018041954000023]), followed
+by the subject in your original e-mail request. DO NOT reply to your
+original e-mail request you sent or it will start a new ticket and add
+confusion to the process.
 
 
 Reply to a Ticket
@@ -473,8 +431,8 @@ Reply to a Ticket
 In order to reply to a ticket, locate the **Reply** button found at the
 end of the most recent ticket thread.
 
-Ticket replies can be expanded and collapsed using the "Show All Articles"
-button, as shown below circled in red.  Select "Submit" to send the ticket to
+You can expand and collapse ticket replies using the **Show All Articles**
+button, shown below circled in red.  Select **Submit** to send the ticket to
 the RDHPCS Help Desk. Select Submit to send the ticket to the RDHPCS Help Desk.
 
 .. image:: /images/help_portal/showallarticles.png
@@ -487,7 +445,7 @@ the RDHPCS Help Desk. Select Submit to send the ticket to the RDHPCS Help Desk.
 Search for a Ticket
 -------------------
 
-Search for an OTRS ticket by selecting the "Search" option in the
+To search for an OTRS ticket, select the **Search** option in the
 Tickets Menu:
 
 .. image:: /images/help_portal/otrsticketsearch.png
