@@ -1,3 +1,10 @@
+.. meta::
+   :description: User guide for Jet, a NOAA RDHPCS system scheduled for
+    decommission on March 31, 2026, with guidance on migrating workloads
+    and data to other RDHPCS resources.
+   :keywords: Jet, RDHPCS, decommission, migration, hurricane forecasting,
+    partitions, Slurm
+
 .. _jet-user-guide:
 
 **************

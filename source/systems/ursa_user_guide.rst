@@ -1,3 +1,10 @@
+.. meta::
+   :description: User guide for Ursa, a NOAA RDHPCS system at NESCC in
+    Fairmont, West Virginia, featuring AMD Genoa CPUs and GPU nodes for
+    weather prediction workloads.
+   :keywords: Ursa, RDHPCS, NESCC, AMD Genoa, GPU, Slurm, weather prediction,
+    Fairmont, West Virginia
+
 .. _ursa-user-guide:
 
 ***************

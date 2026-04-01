@@ -1,3 +1,10 @@
+.. meta::
+   :description: User guide for PPAN (Post Processing and Analysis), a cluster
+    at GFDL in Princeton, NJ for analyzing and interpreting models generated
+    on other HPC systems.
+   :keywords: PPAN, post-processing, analysis, GFDL, Princeton, Slurm, archive,
+    petabytes, MATLAB, Python
+
 .. _ppan-user-guide:
 
 ###############

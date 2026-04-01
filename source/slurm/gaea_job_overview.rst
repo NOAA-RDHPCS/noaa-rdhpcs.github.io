@@ -1,3 +1,10 @@
+.. meta::
+   :description: Overview of batch job elements on Gaea, including compiling,
+    running, combining, data transfer, and allocation for reference with the
+    C5 and C6 systems.
+   :keywords: Gaea, batch jobs, Slurm, sbatch, compiling, PrgEnv-intel,
+    partitions, allocation
+
 #######################
 Gaea Batch Job Overview
 #######################

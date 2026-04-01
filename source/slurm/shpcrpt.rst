@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to the shpcrpt tool for reporting project FairShare
+    factor, allocation, and month-to-date compute usage on RDHPCS systems
+    including Gaea, Hera, and Jet.
+   :keywords: shpcrpt, FairShare, allocation, compute usage, project reporting,
+    Gaea, Hera, Jet, Slurm
+
 .. _slurm-shpcrpt:
 
 *******

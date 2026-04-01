@@ -1,3 +1,10 @@
+.. meta::
+   :description: User guide for Gaea, a NOAA RDHPCS system operated by Oak
+    Ridge National Laboratory, featuring HPE Cray EX systems C5 and C6 with
+    over 20 petaflops of computing capability.
+   :keywords: Gaea, RDHPCS, ORNL, Oak Ridge, C5, C6, HPE Cray,
+    weather modeling, filesystems
+
 .. _gaea-user-guide:
 
 ###############

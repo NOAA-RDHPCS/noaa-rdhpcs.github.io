@@ -1,3 +1,10 @@
+.. meta::
+   :description: Contact information for RDHPCS system support, with email
+    addresses for Jet, Hera, Mercury, Ursa, Orion, Hercules, RDHPCS Cloud,
+    and Gaea help desks.
+   :keywords: help, support, helpdesk, contact, email, Jet, Hera, Mercury,
+    Ursa, Orion, Hercules, Gaea
+
 .. _getting_help:
 
 ############

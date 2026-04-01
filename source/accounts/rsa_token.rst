@@ -1,3 +1,9 @@
+.. meta::
+   :description: Information about RSA tokens and their replacement by CAC and
+    YubiKey for NOAA RDHPCS multi-factor authentication.
+   :keywords: RSA token, MFA, CAC, YubiKey, authentication, NOAA SSO,
+    single sign-on, deprecated
+
 .. _rsa-token:
 
 ##########
