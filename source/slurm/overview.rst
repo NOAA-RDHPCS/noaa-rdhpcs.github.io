@@ -15,7 +15,7 @@ now provided by `SchedMD <https://www.schedmd.com>`__.  The information provided
 this document is a basic guide for some of the most useful commands, along with
 specific information for the RDHPCS systems.  The SchedMD site maintains `full
 documentation <https://slurm.schedmd.com/>`__ and basic `tutorials
-<https://www.schedmd.com/publications/>`__.
+<https://slurm.schedmd.com/publications.html>`__.
 
 Some common Slurm commands are summarized in the table below.
 

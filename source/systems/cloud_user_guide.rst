@@ -734,7 +734,7 @@ number of cores = 1 x 4 x 6 = 24 core hours.
 
 .. note::
 
-  GCP's GPU to vCPUs conversion can be found `here <https://cloud.google.com/compute/docs/gpus>`__
+  GCP's GPU to vCPUs conversion can be found `here <https://docs.cloud.google.com/compute/docs/gpus>`__
   In GCP, two vCPUs makes one physical core.
 
 PW’s cost dashboard is a good tool to find unit cost,
@@ -2093,7 +2093,7 @@ The GCP command line utility is ``gsutil``. PW OS image has the GCP
 utility ``gsutil`` installed.  Follow the instructions at this link to
 copy files to Google bucket:
 
-`GSUtil commands <https://cloud.google.com/storage/docs/gsutil#builtinhelp>`_
+`GSUtil commands <https://docs.cloud.google.com/storage/docs/gsutil>`_
 
 How do I access Azure Blob from a Remote Machine?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2184,7 +2184,7 @@ In order to '''export changes''' from lustre data to the bucket data
 repository, the following options are available:
 
 * Use the `gsutil cp
-  <https://cloud.google.com/storage/docs/gsutil#builtinhelp>`_
+  <https://docs.cloud.google.com/storage/docs/gsutil>`_
   command: ``gsutil cp path/to/file gs://bucket-name/path/to/file``.
 * Use gsutil --help command to learn more about the options.
 * Use the --recursive (-r) flag to move nested directories.
@@ -3329,14 +3329,14 @@ increases the maximum egress bandwidth for VMs, and ranges
 from 50 Gbps to 100 Gbps depending on the size of your N2,
 N2D, C2 or C2D VM.
 
-`Additional reference <https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration>`__
+`Additional reference <https://docs.cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration>`__
 
 Why are all instance types are labeled as AMD64?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AMD64 is the name of the architecture, not the cpu platform.
 Intel and AMD chips are both "amd64". Additional reference:
-https://en.m.wikipedia.org/wiki/X86-64
+https://en.wikipedia.org/wiki/X86-64
 
 Data access via globus CLI tools in the cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3600,9 +3600,9 @@ GCP Region/AZs on GPUs and models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Select a location “North America” and machine type “A2” to view
 different types of GPUs available on different `regions/AZs
-<https://cloud.google.com/compute/docs/regions-zones#available>`__
+<https://docs.cloud.google.com/compute/docs/regions-zones>`__
 
-To learn more about `GPU models <https://cloud.google.com/compute/docs/gpus/gpu-regions-zones>`_.
+To learn more about `GPU models <https://docs.cloud.google.com/compute/docs/regions-zones/gpu-regions-zones>`_.
 
 What are the GPU models available on AWS, Azure, and GCP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -236,7 +236,7 @@ Description of the two exploratory systems:
   one NVIDIA GH200 Grace Hopper Superchip with NVIDIA software.
   The CPU part of this superchip is an ARM processor with 72 cpu
   cores and approximately 213 GB of RAM. Click
-  the `NVIDIA GH200 <https://resources.nvidia.com/en-us-data-center-overview-mc/en-us-data-center-overview/grace-hopper-superchip-datasheet-partner>`_
+  the `NVIDIA GH200 <https://www.nvidia.com/en-us/data-center/grace-hopper-superchip/>`_
   for more detailed information.
   For billing and accounting: one grace hopper gpu-hour will count
   as 72 cpu core-hours.

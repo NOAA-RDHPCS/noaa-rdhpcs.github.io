@@ -58,7 +58,7 @@ Data Transfer
 =============
 
 Data transfer instructions can be found on the
-`Transferring Data page <https://docs.rdhpcs.noaa.gov/data/transferring_data.html#transferring-data>`_.
+:ref:`transferring-data` page.
 
 In order to use Mercury for file transfers, user account directories must be in
 place. These directories are automatically created with your first login to a
@@ -133,7 +133,7 @@ HPSS Access
 ===========
 
 HPSS is accessible. See the
-`NESCC HPSS page <https://docs.rdhpcs.noaa.gov/data/nescc_hpss.html>`_
+:ref:`nescc_hpss` page
 for additional information.
 
 Getting Help
