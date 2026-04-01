@@ -1,8 +1,8 @@
 .. meta::
    :description: Overview of available compilers and MPI stacks on RDHPCS
-    systems, including Intel, Nvidia/PGI, and NAG compilers with Intel MPI,
+    systems, including Intel and NVIDIA compilers with Intel MPI,
     and how to load and use them.
-   :keywords: compilers, Intel, MPI, Intel MPI, Nvidia, PGI, NAG, Fortran,
+   :keywords: compilers, Intel, MPI, Intel MPI, NVIDIA, Fortran,
     C, C++, parallel, HPC
 
 .. _compilers:
@@ -12,7 +12,7 @@ Compilers
 
 The following compilers and MPI stacks are available on RDHPCS systems:
 
-* Compilers: Intel, Nvidia/PGI, NAG
+* Compilers: Intel, NVIDIA
 * MPI: Intel MPI
 
 We recommend the Intel compiler/Intel MPI combination, unless there is a
@@ -100,7 +100,7 @@ information.
 
 
 Recommended Intel compiler options for debugging
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We recommend the following options as a starting point for debugging code.
 These options are very helpful in detecting common errors in code. The
@@ -146,20 +146,16 @@ situations you will have to compile the application with the flag:
 If you use this option, keep in mind that al l dependent libraries must also be
 compiled, either with this option or with ``-fpic`` option.
 
-Run the command: ``ifx -–help`` to see all the available options.
+Run the command: ``ifx --help`` to see all the available options.
 
-Using the Nvidia/PGI compilers
-------------------------------
+Using the NVIDIA compilers
+--------------------------
 
 Users should use the Intel compiler unless they have demonstrated that there is
 a good reason not to. The Intel compiler is the most supported and well tested
 compiler on the system.
 
-The vendor of the PGI compiler, The Portland Group, has been acquired by
-Nvidia. Since the older versions of this compiler are deprecated we only
-document the commands for the newer versions.
-
-To see the available versions of the PGI/Nvidia HPC compilers, use the
+To see the available versions of the NVIDIA HPC compilers, use the
 command ``module available nvhpc``.
 
 You need to load a module for a specific version of the compiler before you are
@@ -189,8 +185,8 @@ For parallel programs:
    mpinvc++  - for C++ MPI sources
 
 
-Documentation on Nvidia/PGI compiler options
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Documentation on NVIDIA compiler options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The man pages are the best resource for documentation on compiler options.
 After you've loaded the modules as instructed above, run
@@ -201,8 +197,8 @@ After you've loaded the modules as instructed above, run
    man nvcc
 
 
-Nvidia/PGI compiler options for optimization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NVIDIA compiler options for optimization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We recommend the following options as a starting point for optimizing code.
 Users should keep in mind that each code is different, and some tuning and
@@ -214,8 +210,8 @@ experimentation with different settings may be required.
    -O3 -fastsse -tp=sandybridge,ivybridge,haswell,skylake
 
 
-Nvidia/PGI compiler options for debugging
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NVIDIA compiler options for debugging
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We recommend the following options as a starting point for debugging code.
 These options are very helpful in detecting common errors in code.
