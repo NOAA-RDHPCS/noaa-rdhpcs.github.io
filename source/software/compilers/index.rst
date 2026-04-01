@@ -3,7 +3,7 @@
     systems, including Intel and NVIDIA compilers with Intel MPI,
     and how to load and use them.
    :keywords: compilers, Intel, MPI, Intel MPI, NVIDIA, Fortran,
-    C, C++, parallel, HPC
+    C, C++, parallel, HPC, HPC-X
 
 .. _compilers:
 
