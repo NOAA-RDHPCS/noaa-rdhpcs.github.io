@@ -24,7 +24,7 @@ Suffix filenames with the `.rst` extension.
 
 :warning: RST files are human-readable text files.  Some programs will parse
 `.rst` files with `rst2html`, which cannot interpret some of Sphinx's directives
-such as `.. code-block::`.  Such readers, e.g., the GitHub platform, will not
+such as `.. code-block::`.  Such readers, for example, the GitHub platform, will not
 display all content.
 
 When you need to read HTML builds of the documentation, the best
@@ -39,7 +39,15 @@ and host these pages.
 
 ### Indentation
 
-Indent with 2-4 spaces.  Follow the indentation already established in the file.
+The project default is **3 spaces**.  Use 3 spaces for all new files
+and for new content added to existing files.
+
+When editing existing files, follow the indentation already established
+in that file (2–4 spaces are all found in the repository).  Do not
+reformat an entire file solely to change indentation.
+
+VS Code users: the `.vscode/settings.json` file in this repository
+configures 3-space indentation for `.rst` files automatically.
 
 ### Blank lines
 
@@ -176,7 +184,7 @@ with all the references defined at the end of the document.  You can
 use the references inline as frequently as needed.  As an example:
 
 ```rst
-  Some text which includes links to `example website`_, and my have other
+  Some text which includes links to `example website`_, and may have other
   links.
 
   `Example website`_ can be referenced multiple times.  Capitalization of
@@ -207,7 +215,7 @@ acronym.  Use the inline method to reference the link when different
 text is needed.  As an example:
 
 ```rst
-  The `Accounts Informationtion Management (AIM) <AIM_>`_ system will
+  The `Accounts Information Management (AIM) <AIM_>`_ system will
   be mentioned most often as `AIM`_.  As done in the previous sentence,
   the first time used we spelled out the acronym but still used the
   `AIM` target name using the inline link reference.
@@ -243,8 +251,42 @@ directive](https://docutils.sourceforge.io/docs/ref/rst/directives.html#list-tab
 
 ## Page meta information
 
-Use the meta (`.. meta`) directive to add meta information to the
-page.
+Use the `.. meta::` directive to add meta information to every page.
+Place the directive at the top of the file, before the page title
+anchor and heading.
+
+### Content pages
+
+All content pages must include `:description:` and `:keywords:` fields.
+
+```rst
+.. meta::
+   :description: How to submit a batch job on the Hera system using
+    Slurm, including partition selection and resource requests.
+   :keywords: Hera, Slurm, batch job, sbatch, partition, queue
+```
+
+`:description:` — One to two sentences.  Continue long descriptions on
+the next line with a hanging indent of one space.
+
+`:keywords:` — Comma-separated list of search terms.  Include the
+system name, topic name, and common synonyms or abbreviations.
+
+### Navigation pages (toctree-only index.rst files)
+
+Pages that contain only a title and a `.. toctree::` directive with no
+substantive prose must include `:robots: noindex` to prevent search
+engines from surfacing a contentless result.  Omit `:description:` and
+`:keywords:` on these pages.
+
+```rst
+.. meta::
+   :robots: noindex
+```
+
+If an `index.rst` file has a substantive introductory paragraph, treat
+it as a content page and include `:description:` and `:keywords:`
+instead of `:robots: noindex`.
 
 ## Tests
 
@@ -258,25 +300,25 @@ The tests include:
 ### Build test
 
 The information in [CONTRIBUTING.md](CONTRIBUTING.md) and
-[Contributing to these [docs](source/contributing/index.rst) has
+[Contributing to these docs](https://docs.rdhpcs.noaa.gov/contributing/) has
 instructions on how to build the pages.  All warnings and errors must
 be resolved.
 
 ### Lint test
 
-We use the [doc8](https://pygments.org/languages/) style checking tool
+We use the [doc8](https://doc8.readthedocs.io/) style checking tool
 for RST.  The included checks are:
 
-- invalid RST format
-- lines should not be longer than 79 characters
+- Invalid RST format
+- Lines should not be longer than 79 characters
   - RST exception: line with no whitespace except in the beginning
   - RST exception: lines with http or https URLs
   - RST exception: literal blocks
   - RST exception: rst target directives
-- no trailing whitespace
-- no tabulation for indentation
-- no carriage returns (use Unix newlines)
-- no newline at the end of the file
+- No trailing whitespace
+- No tabulation for indentation
+- No carriage returns (use Unix newlines)
+- No newline at the end of the file
 
 All RST files must pass the lint checks.
 
@@ -285,3 +327,9 @@ All RST files must pass the lint checks.
 To run the link test, run `make linkcheck`.  All links must be valid
 and resolvable.  Redirects will be allowed to sites that require the
 user to log in.  All other redirects must be resolved.
+
+## Commit messages
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the commit message format,
+including subject line length, body wrapping, and issue reference
+conventions.

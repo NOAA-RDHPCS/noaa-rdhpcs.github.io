@@ -7,6 +7,10 @@
     "files.trimTrailingWhitespace": true,
     "rewrap.wrappingColumn": 79,
     "makefile.configureOnOpen": true,
+    "[restructuredtext]": {
+        "editor.tabSize": 3,
+        "editor.insertSpaces": true
+    },
     "cSpell.words": [
         "GADDIR",
         "nesdis"
