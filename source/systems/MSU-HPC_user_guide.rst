@@ -1,3 +1,10 @@
+.. meta::
+   :description: User guide for MSU-HPC systems Orion and Hercules, operated
+    by Mississippi State University under a NOAA grant for severe weather
+    research and collaboration.
+   :keywords: MSU-HPC, Orion, Hercules, Mississippi State, Lustre, Slurm,
+    severe weather
+
 .. _MSU-HPC-user-guide:
 .. _orion-user-guide:
 

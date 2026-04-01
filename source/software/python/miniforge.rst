@@ -1,3 +1,10 @@
+.. meta::
+   :description: Instructions for installing your own Miniforge distribution on
+    RDHPCS systems, including cautionary notes about conda initialization and
+    shell configuration.
+   :keywords: Miniforge, installation, conda-forge, Python, package management,
+    conda init, .bashrc, HPC
+
 .. _installing-miniforge:
 
 ********************
