@@ -929,6 +929,30 @@ To resolve this problem:
 
 #. Try using scp to transfer a file.
 
+Known Issues
+============
+
+Intel MPI Collective Algorithms issue
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It has been observed that the default algorithms configured by Intel oneAPI
+MPI for collective operations are causing instability on AMD systems. Users
+have reported instances of code hanging, and system monitoring indicates
+highly uneven Non-Uniform Memory Access (NUMA) load, leading to node
+performance issues.
+
+To mitigate these issues, a module has been created to set the collective
+algorithms to empirically tested values. We strongly recommend loading
+this module whenever utilizing Intel oneAPI for code execution on the
+Ursa cluster.
+
+.. code-block:: shell
+
+ module load impi-collective-settings/1.0.0
+
+Please be advised that this module must be loaded in addition to the
+intel-oneapi-mpi module that your application needs.
+
 Recent User-Facing Changes
 ==========================
 
