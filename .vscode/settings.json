@@ -1,6 +1,9 @@
 {
     "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "esbonio.sphinx.confDir": "${workspaceFolder}/source",
+    "esbonio.sphinx.pythonCommand": [
+        "${workspaceFolder}/.venv/bin/python"
+    ],
     "files.trimTrailingWhitespace": true,
     "rewrap.wrappingColumn": 79,
     "makefile.configureOnOpen": true,
