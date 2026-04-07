@@ -1,3 +1,10 @@
+.. meta::
+   :description: Overview of NOAA Research and Development High Performance
+    Computing Systems (RDHPCS) used for weather forecasting, earth-system
+    modeling, and data analysis.
+   :keywords: RDHPCS, HPC systems, Gaea, Hera, Jet, PPAN, Mercury, Ursa,
+    cloud, MSU-HPC, overview
+
 .. _rdhpcs-systems:
 
 ###################

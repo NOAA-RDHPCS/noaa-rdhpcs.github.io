@@ -1,3 +1,9 @@
+.. meta::
+   :description: Guide to using Linaro Forge DDT, a graphical debugger for
+    MPI, OpenMP, CUDA, and multithreaded applications on RDHPCS systems.
+   :keywords: Linaro Forge, DDT, debugger, MPI, OpenMP, CUDA, Fortran, C++,
+    parallel debugging
+
 .. _linaro-forge:
 
 ************************

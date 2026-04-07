@@ -1,3 +1,10 @@
+.. meta::
+   :description: User guide for Mercury, an RDHPCS data transfer and
+    collaboration system supporting Globus, DTNs, and UDTNs for secure
+    data transfer to and from NOAA collaborators.
+   :keywords: Mercury, data transfer, collaboration, DTN, UDTN, Globus,
+    HPSS, AMD EPYC
+
 .. _mercury-user-guide:
 
 ##################

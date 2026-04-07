@@ -1,3 +1,10 @@
+.. meta::
+   :description: Overview of data storage options on RDHPCS systems, including
+    user home, project home, work areas, and archive storage types such as NFS,
+    Lustre, and HPSS.
+   :keywords: data storage, filesystems, Lustre, NFS, HPSS, user home,
+    project work, archive, member work
+
 .. _data-storage:
 
 ############

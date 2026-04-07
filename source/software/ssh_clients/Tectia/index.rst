@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to using Tectia SSH Client for CAC-based remote login to
+    RDHPCS systems from Windows, Mac, and Linux, including initial setup and
+    port forwarding.
+   :keywords: Tectia, SSH client, CAC, PIV, Windows, Mac, Linux, port
+    forwarding, X11, RDHPCS
+
 .. _Tectia:
 
 ******

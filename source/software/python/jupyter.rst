@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to installing and using JupyterLab and JupyterHub on
+    RDHPCS systems for interactive scientific computing, notebooks, and
+    multi-user environments.
+   :keywords: Jupyter, JupyterLab, JupyterHub, notebooks, interactive computing,
+    Python, conda, pip, RDHPCS
+
 .. _jupyter_on_rdhpcs_systems:
 
 *************************

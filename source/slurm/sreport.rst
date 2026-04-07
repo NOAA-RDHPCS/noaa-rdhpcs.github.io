@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to the sreport command for generating cluster utilization
+    reports from the Slurm database, including CPU hours and job counts by
+    user and project.
+   :keywords: sreport, cluster utilization, CPU hours, job count, Slurm,
+    reporting, project usage, account
+
 .. _slurm-sreport:
 
 #######

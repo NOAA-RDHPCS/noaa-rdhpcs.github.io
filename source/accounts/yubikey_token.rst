@@ -1,3 +1,10 @@
+.. meta::
+   :description: Instructions for configuring and using a YubiKey for
+    multi-factor authentication on NOAA RDHPCS systems, required for
+    access as of October 2025.
+   :keywords: YubiKey, MFA, multi-factor authentication, OTP, one-time password,
+    CAC, authentication, USB security key
+
 .. _yubikey-user-instructions:
 
 Yubikey

@@ -1,3 +1,10 @@
+.. meta::
+   :description: Instructions for setting up Visual Studio Code for remote
+    development on RDHPCS systems, including server installation in project
+    space and SSH tunnel configuration.
+   :keywords: VSCode, Visual Studio Code, IDE, remote development, SSH,
+    project space, Hera, Jet, tunnel
+
 .. _rdhpcs-VSCode:
 
 ******

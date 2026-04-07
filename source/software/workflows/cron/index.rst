@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to scheduling recurring tasks on RDHPCS systems using
+    cron on Hera, Jet, and Mercury, or Slurm's scrontab feature available on
+    all RDHPCS systems.
+   :keywords: cron, scrontab, Slurm crontab, scheduled tasks, automation,
+    batch jobs, Hera, Jet, Mercury, Gaea
+
 .. _cron_scron:
 
 .. note::

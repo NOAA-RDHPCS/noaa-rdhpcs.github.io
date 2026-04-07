@@ -1,3 +1,9 @@
+.. meta::
+   :description: Guide to RDHPCS role accounts, which are shared user accounts
+    for project groups, including how to request, modify, and access them.
+   :keywords: role accounts, shared accounts, sudo, project access, helpdesk,
+    account management
+
 .. _role_accounts:
 
 Role Accounts

@@ -1,3 +1,9 @@
+.. meta::
+   :description: Introduction to NOAA RDHPCS user accounts, projects, and system
+    allocations, including how to apply for a user account through the AIM system.
+   :keywords: accounts, projects, allocations, AIM, user account, NOAA RDHPCS,
+    YubiKey, access request
+
 **New to the NOAA RDHPCS Program?**
 
 Welcome!  The information below explains how we structure user
