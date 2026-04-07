@@ -1,3 +1,10 @@
+.. meta::
+   :description: Introduction to conda environment workflows on RDHPCS systems,
+    including how to create, activate, and manage conda environments with
+    custom Python versions.
+   :keywords: Conda, conda environments, conda activate, conda create, Python,
+    packages, Miniforge, Gaea, Hera, Ursa, mercury, PPAN, Anaconda
+
 .. _conda-basics:
 
 ************

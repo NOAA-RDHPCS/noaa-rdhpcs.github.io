@@ -1,3 +1,10 @@
+.. meta::
+   :description: Guide to connecting to NOAA RDHPCS systems via SSH to a
+    Bastion host using CAC/PIV card or YubiKey multi-factor authentication
+    and X509 certificates.
+   :keywords: connecting, SSH, Bastion, CAC, PIV, YubiKey, MFA, X509,
+    authentication, Parallel Works
+
 .. _connecting-to-rdhpcs:
 
 ##########
