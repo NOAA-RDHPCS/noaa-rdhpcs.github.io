@@ -82,8 +82,6 @@ public trust investigation.
 to jump through.
 
 
-Foreign national participants have additional hoops to jump through.
-
 Once your account request has been vetted by the security team, you
 will receive an email from the accounts team and will be able to
 proceed to request access to projects allocated to systems.
@@ -185,7 +183,7 @@ nationals takes 6-12 months, and includes additional checks and
 investigations. The process is managed through the Foreign National
 Registration System (FNRS) and requires additional information from the
 applicant.
-The `Foreign Nationals Registration page <https://sites.google.com/noaa.gov/cao/old_ocao-services-and-guidance/noaa-deemed-exports-technology-control-program/how-to-sponsor-a-foreign-national-guest#h.a645i6du8rqk>`_`
+The `Foreign Nationals Registration page <https://sites.google.com/noaa.gov/cao/old_ocao-services-and-guidance/noaa-deemed-exports-technology-control-program/how-to-sponsor-a-foreign-national-guest#h.a645i6du8rqk>`_
 has the forms and instructions you need to complete the process.
 
 
