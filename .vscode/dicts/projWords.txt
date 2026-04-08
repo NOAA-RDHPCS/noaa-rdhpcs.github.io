@@ -430,6 +430,7 @@ nodename
 noder
 nodocs
 nofma
+noindex
 nolisten
 nompi
 NOPASSWD
