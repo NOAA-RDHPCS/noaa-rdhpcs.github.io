@@ -283,7 +283,7 @@ concurrently run the script:
 
    Srun -N 1 -n 5 &
    Srun -N 1 -n 5 &
-   Wait
+
 
 and wait.
 
