@@ -144,6 +144,7 @@ fillin
 Finity
 firstlast
 Firstname
+FNRS
 FOIA
 fortl
 fpic
