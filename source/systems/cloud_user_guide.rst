@@ -435,6 +435,37 @@ node start.
 See `Configuring clusters <https://parallelworks.com/docs/compute/configuring-cloud-clusters#partition-settings>`_
 for complete information on configuring clusters and partitions.
 
+Configure a JupyterLab workflow for an existing Python environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*I have a Python environment installed on my project disk. How can
+I configure the JupyterLab workflow to utilize this environment?
+What is the established procedure to install supplementary Python
+packages within the existing PW JupyterLab workflow environment?*
+
+If the desired Python environment is a Conda or Miniconda installation, you can
+direct the workflow to use it by specifying the complete path to the
+Conda installation and the environment name.
+
+For instance, consider a cluster where Miniconda is installed at
+/home/First.Last/miniconda3, and an environment named ``myenv`` exists:
+
+  ``$ ls /home/Matt.Long/miniconda3/envs/
+  myenv``
+
+To integrate this environment with the JupyterLab workflow, adjust
+the configuration form:
+
+placeholder for jupyter workflow form image
+
+Note the setting **Install Jupyter-Lab if not there**.
+Make sure that the toggle remains set to "Yes" (the default).
+If any necessary dependencies for initiating the workflow session are not
+already present in the environment, this setting will ensure that they are
+installed automatically.
+
+placeholder for jupyter workflow form image
+
 Using the Mamba tool to run Jupyter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
