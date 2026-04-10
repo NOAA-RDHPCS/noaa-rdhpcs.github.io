@@ -275,22 +275,27 @@ then also do an
 
 before you issue the ``salloc`` command.
 
+There may be times (for instance, performance testing of a model)
+when you may want to run a job multiple times at once.
+To do so, you would configure salloc to hold all the nodes you need.
+Then, once in the interactive session, you can launch srun as
+a background process to run multiple instances of the script concurrently .
+To do so run the following commands, and wait:
 
-You can configure salloc to hold all the nodes you need. To do so,
-concurrently run the script:
 
 .. code-block:: shell
 
-   Srun -N 1 -n 5 &
-   Srun -N 1 -n 5 &
+   Srun -N 1 -n 5 ./<script> &
+   Srun -N 1 -n 5 ./<script> &
 
-
-and wait.
+The `&` indicates that the command should run as a
+background process, so that the command on the
+following line can run immediately.
 
 .. note::
 
    If you are using the method above to hold all the nodes you need, be sure
-   to specify -N. If you don’t specify -N it will spread your ntasks across
+   to specify -N. If you don’t specify -N ,it will spread your ntasks across
    your entire reservation.
 
 
