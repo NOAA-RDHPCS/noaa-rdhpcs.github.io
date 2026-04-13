@@ -456,7 +456,7 @@ For instance, consider a cluster where Miniconda is installed at
 To integrate this environment with the JupyterLab workflow, adjust
 the configuration form:
 
-placeholder for jupyter workflow form image
+.. image:: /images/jupyter1.png
 
 Note the setting **Install Jupyter-Lab if not there**.
 Make sure that the toggle remains set to "Yes" (the default).
@@ -464,7 +464,7 @@ If any necessary dependencies for initiating the workflow session are not
 already present in the environment, this setting will ensure that they are
 installed automatically.
 
-placeholder for jupyter workflow form image
+.. image:: /images/jupyter2.png
 
 Using the Mamba tool to run Jupyter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

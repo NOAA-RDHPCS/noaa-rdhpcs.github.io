@@ -242,7 +242,7 @@ error will be displayed to the terminal.
 Submitting an Interactive Job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An interactive job is useful for tasks, such as debugging, that require
+An interactive job is useful for tasks such as debugging, that require
 interactive access with a program as it runs. With SLURM there are two ways to
 run jobs interactively, ``srun`` or ``salloc``. We recommend that you use
 ``salloc``.
@@ -274,6 +274,35 @@ then also do an
    ssh -X localhost
 
 before you issue the ``salloc`` command.
+
+There may be times (for instance, performance testing of a model)
+when you may want to run a job multiple times at once.
+To do so, you would configure salloc to hold all the nodes you need.
+Then, once in the interactive session, you can launch srun as
+a background process to run multiple instances of the script concurrently .
+To do so run the following commands, and wait:
+
+
+.. code-block:: shell
+
+   Srun -N 1 -n 5 ./<script> &
+   Srun -N 1 -n 5 ./<script> &
+
+The `&` indicates that the command should run as a
+background process, so that the command on the
+following line can run immediately.
+
+.. note::
+
+   If you are using the method above to hold all the nodes you need, be sure
+   to specify -N. If you don’t specify -N ,it will spread your ntasks across
+   your entire reservation.
+
+
+If you are using x2go and need to use X windows-based tools, then also do an
+``ssh -X localhost`` before you issue the ``salloc`` command. This is needed
+because of the way x2go handles X11 forwarding.
+git add .
 
 
 Submitting a Job to Run a Command on a Compute Node
