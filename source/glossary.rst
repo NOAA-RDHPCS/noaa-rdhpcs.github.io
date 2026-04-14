@@ -1,3 +1,10 @@
+.. meta::
+   :description: Glossary of RDHPCS terminology covering compute nodes, login
+    nodes, data transfer nodes, Slurm, and other HPC concepts used in the
+    documentation.
+   :keywords: glossary, HPC terminology, compute node, login node, DTN,
+    data transfer node, Slurm, front-end
+
 .. _glossary:
 
 Glossary

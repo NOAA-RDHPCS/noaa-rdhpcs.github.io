@@ -1,3 +1,9 @@
+.. meta::
+   :description: Overview of Python usage on RDHPCS systems, emphasizing Conda
+    environment management for scientific computing, with guidance on avoiding
+    the Anaconda distribution.
+   :keywords: Python, Conda, virtual environments, venv, Miniforge, HPC,
+    scientific computing, conda-forge, packages
 
 ########################
 Python on RDHPCS Systems

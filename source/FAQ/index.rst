@@ -1,3 +1,9 @@
+.. meta::
+   :description: Frequently asked questions about RDHPCS accounts, system
+    access, authentication, and Parallel Works login troubleshooting.
+   :keywords: FAQ, frequently asked questions, accounts, access, authentication,
+    Parallel Works, RDHPCS
+
 .. _FAQ:
 
 ##########################
@@ -464,20 +470,16 @@ should submit an "issue" ticket at the above link.
 I am using spack-stack and getting some errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-First, documentation for spack-stack can be found here:
-`spack-stack documentation <https://spack-stack.readthedocs.io/en/latest>`_
+The spack-stack software is installed and maintained by the EPIC team,
+and the RDHPCS administrators are not able to provide assistance with
+these issues.
 
-The second issue most users run into is the "location" of spack-stack
-on various supported platforms.  That can be found here:
-`Preconfigured sites <https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html>`_
+If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_ and
+are encountering spack-stack related issues, you will need to submit an
+issue on their `github repository <https://github.com/JCSDA/spack-stack/issues>`_.
 
-If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_
-and are having issues, you will have to submit an `issue on their
-github repository <https://github.com/JCSDA/spack-stack/issues>`_.
-
-The modules and associated software are not maintained by the system
-administrators so you will have to work the spack-stack team through
-the link above.
+You will find a link to their documentation at the github site
+above.
 
 When is my .bashrc executed? When would it be ignored?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -922,6 +924,30 @@ To resolve this problem:
  ssh -L XXXX:localhost:XXXX
 
 #. Try using scp to transfer a file.
+
+Known Issues
+============
+
+Intel MPI Collective Algorithms issue
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It has been observed that the default algorithms configured by Intel oneAPI
+MPI for collective operations are causing instability on AMD systems. Users
+have reported instances of code hanging, and system monitoring indicates
+highly uneven Non-Uniform Memory Access (NUMA) load, leading to node
+performance issues.
+
+To mitigate these issues, a module has been created to set the collective
+algorithms to empirically tested values. We strongly recommend loading
+this module whenever utilizing Intel oneAPI for code execution on the
+Ursa cluster.
+
+.. code-block:: shell
+
+ module load impi-collective-settings/1.0.0
+
+Please be advised that this module must be loaded in addition to the
+intel-oneapi-mpi module that your application needs.
 
 Recent User-Facing Changes
 ==========================

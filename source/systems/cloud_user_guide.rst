@@ -1,4 +1,11 @@
 
+.. meta::
+   :description: User guide for RDHPCS Cloud Computing, which uses the Parallel
+    Works platform to manage on-demand HPC clusters on AWS, GCP, and Azure
+    for NOAA research.
+   :keywords: cloud computing, Parallel Works, AWS, GCP, Azure, on-demand HPC,
+    NOAA, cloud cluster
+
 .. _cloud-user-guide:
 
 ######################
