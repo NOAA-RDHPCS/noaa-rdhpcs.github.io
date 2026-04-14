@@ -457,6 +457,7 @@ To integrate this environment with the JupyterLab workflow, adjust
 the configuration form:
 
 .. image:: /images/jupyter1.png
+           :scale: 60%
 
 Note the setting **Install Jupyter-Lab if not there**.
 Make sure that the toggle remains set to "Yes" (the default).
