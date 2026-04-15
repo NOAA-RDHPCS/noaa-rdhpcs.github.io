@@ -309,4 +309,4 @@ Additional Resources
 
 .. _putty_cac_config:
 
-fill me in.
+
