@@ -1460,12 +1460,9 @@ smartsite. The currently supported smartsites in GCP are:
 +---------+----------------------------------------------------------------+
 | GFDL    | Pan and GFDL workstations in Princeton, NJ                     |
 +---------+----------------------------------------------------------------+
-| data1   | GFDL Data portal in Princeton, NJ                              |
-+---------+----------------------------------------------------------------+
 | Gaea    | ORNL hosted NCRC/CMRS system in Oak Ridge, TN                  |
 +---------+----------------------------------------------------------------+
-| Hera    | NESCC system in Fairmont, WV                                   |
-+---------+----------------------------------------------------------------+
+
 
 To transfer data from one site to another, simply prepend the smartsite and a
 colon to your file location (for example, ``gaea:/path/to/file``).
@@ -1558,11 +1555,6 @@ Filesystems that GCP supports remotely from other sites:
    ``/home, /ptmp, /work, /archive``
 
 
-GFDL Data1
-^^^^^^^^^^
-
-The GCP **data1:** destination is used to transfer data to the **data1** host
-from GFDL WS or GFDL Pan.
 
 Gaea
 ^^^^
@@ -1572,22 +1564,11 @@ batch).
 
 Filesystems that GCP supports locally from within Gaea:
 
-   ``/lustre/f1, /ncrc/home``
+   ``/gpfs/f5, gpfs/f6, /ncrc/home``
 
 Filesystems that GCP supports remotely from other sites:
 
-   ``/lustre/f1, /ncrc/home``
-
-Hera
-^^^^
-
-Filesystems that GCP supports locally from Hera:
-
-   ``/home, /scratch3, /scratch4``
-
-Filesystems that GCP supports remotely from other sites:
-
-   ``/scratch3, /scratch4``
+   ``/gpfs/f5, gpfs/f6, /ncrc/home``
 
 Helpful Hints
 -------------
