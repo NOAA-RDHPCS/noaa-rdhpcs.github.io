@@ -78,8 +78,8 @@ NOAA will conduct a security investigation that takes 6-12 weeks.
 This will include a fingerprint check, background check, and DOC
 public trust investigation.
 
-:ref:`Foreign national participants <Foreign_nationals>` have additional hoops
-to jump through.
+:ref:`Foreign national participants <Foreign_nationals>` must complete
+additional steps.
 
 
 Once your account request has been vetted by the security team, you
