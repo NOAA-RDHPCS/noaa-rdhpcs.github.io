@@ -112,7 +112,7 @@ C-shell keybinds for analysis
 -----------------------------
 
 If you use a C-shell (csh or tcsh) you may find that your key bindings on
-analysis are broken. For instance, the delete key produces a '~' instead
+analysis are broken. For example, the delete key produces a '~' instead
 of deleting a character. To fix this, create a ~/.bindings file with the
 following contents (mirroring the contents present in /etc/inputrc on
 the analysis nodes, but converting them for csh.) Add a line to your
@@ -959,8 +959,8 @@ the group quota.
 
 Again, this file can be created at any path name in the owner's home
 directory. It should be **write only** by the owner and **readable by
-everyone** (**chmod 644**, for instance). Then to activate the file and make it
-available to archrpt, please provide its path name to Garrett Power
+everyone** (``chmod 644``, for example). Then to activate the file and make it
+available to archrpt, provide its path name to Garrett Power
 and/or Ed Weiss so it can be linked to the archrpt configuration
 directory.
 
