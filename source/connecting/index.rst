@@ -4,306 +4,424 @@
 Connecting
 ##########
 
-.. _Account Information Management:	https://aim.rdhpcs.noaa.gov
+.. _ssh-overview:
 
-Connecting for the first time
-=============================
+********
+Overview
+********
 
-All connections to the NOAA RDHPCS enclave are done via Secure Shell
-(SSH) in a terminal session to a Bastion, or via a web browser to
-`ParallelWorks <https://noaa.parallel.works>`__.  See our :ref:`ParallelWorks guide <cloud-user-guide>`.
+All RDHPCS on-premise compute systems are accessed through a *bastion
+host* — a secure gateway server between your workstation and the
+compute system.  You connect to the bastion first, and the bastion
+forwards you to the compute system.
+
+.. code-block:: text
+
+   Your workstation  →  Bastion host  →  RDHPCS compute system
+
+RDHPCS supports two authentication methods:
+
+* **Common Access Card (CAC)** — uses your CAC with the Tectia
+  Secure Shell (SSH) client.  Recommended for users who have a CAC
+  and a card reader.
+* **YubiKey** — uses your NOAA-issued YubiKey with a standard SSH
+  client.  Use this method if you don't have a CAC or a card reader.
+
+Within the RDHPCS enclave, `X.509`_ certificates authenticate you
+to individual compute systems.
 
 .. note::
 
-   For access to the MSU HPC systems Orion and Hercules, please review
-   the :ref:`MSU-HPC <MSU-HPC-user-guide>` user guide.
+   Mississippi State University (MSU) hosts the Orion and Hercules
+   systems using a separate login process.  See the
+   :ref:`MSU-HPC user guide <MSU-HPC-user-guide>`.
 
-Authentication is via a :ref:`CAC/PIV card<common-access>` or
-YubiKey Multi-Factor Authentication.
+.. note::
 
-Internal to the enclave, `X509 certificates
-<https://en.wikipedia.org/wiki/X.509>`__ are used to authenticate
-between resources.  At first login, and at yearly intervals, a master
-certificate valid for one year is created (SSH Bastion login required)
-with a user-defined pass-phrase.  At each successive log in, a
-thirty-day proxy certificate is created and used for resource access
-and data transfers.
+   Cloud resources are available through the `Parallel Works`_
+   platform.  See the :ref:`Cloud User Guide <cloud-user-guide>`.
+
+
+.. _prerequisites:
+
+****************
+Before you begin
+****************
+
+Confirm you have the following before connecting for the first time:
+
+* An active RDHPCS account.  Visit `Account Information Management`_
+  (AIM) to view your profile.
+* Access to the RDHPCS system you want to use.  AIM lists the systems
+  your account can access.
+* A CAC and card reader, **or** a registered YubiKey.
+  See :ref:`yubikey-user-instructions` to register your YubiKey.
+* An SSH client installed and configured.
+  See :ref:`ssh-client-selection` below.
 
 .. attention::
 
-   You must have access to an RDHPCS resource (system) in order to log
-   into it!  Visit the `Account Information Management`_ website to
-   view your RDHPCS profile and system access.
+   You must have access to a system before you can log into it.
+   Visit AIM to verify your system access before you begin.
 
 
-Access to most RDHPCS systems require a signed x.509 certificate.  The
-first login attempt will generate a master certificate request.  You
-will experience a short (less than 5 minute) delay while the request
-is signed. Users cannot fully log on to a system until that
-certificate is signed.
+.. _ssh-client-selection:
 
-The prompt will ask you to create a passphrase. Create a passphrase
-with a minimum of three words.
+********************************
+Choose and install an SSH client
+********************************
 
-.. note::
+Your platform and authentication method determine which SSH client to
+use.  See :ref:`ssh-clients` for selection guidance and installation
+instructions for each client.
 
-    Do not worry if you forget your passphrase -- just continue to
-    try.  On the 4th attempt the system will prompt you to recreate
-    your master certificate.
-
-.. _ssh_access:
-
-Secure Shell (SSH) Access
-=========================
-
-Access to on premise RDHPCS compute resources is done using the Secure Shell
-(SSH) protocol to one of the system's bastions, or via ParallelWorks.
-
-MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
-See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
-
-SSH clients are available for Windows-based systems, such as published
-by VanDyke software.  For recent SecureCRT versions, the preferred
-authentication setting is shown above.
-
-For Windows systems, `PuTTY
-<https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_,
-`SecureCRT <https://www.vandyke.com/products/securecrt/>`_, or
-`MobaXterm <https://mobaxterm.mobatek.net/>`_ can also be used to
-provide SSH capability.  Recent updates to Windows 10 and Windows 11
-have added built-in support for SSH.  If it is not installed on your
-version of Windows, please refer to Microsoft's `documentation on
-OpenSSH <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui&pivots=windows-server-2025>`_.
 
 .. _bastion_hostnames:
 
-Bastion Hostnames
-=================
-.. |CBHN|	replace:: **CAC Bastion hostnames**
-.. |RBHN|	replace:: **RSA Bastion hostnames**
-.. |GCPRNG|	replace:: gaea.princeton.rdhpcs.noaa.gov
-.. |GCBRNG|	replace:: gaea.boulder.rdhpcs.noaa.gov
-.. |GRPRNG|	replace:: gaea-rsa.princeton.rdhpcs.noaa.gov
-.. |GRBRNG|	replace:: gaea-rsa.boulder.rdhpcs.noaa.gov
+*****************
+Bastion hostnames
+*****************
 
-.. |HCPRNG|	replace:: hera.princeton.rdhpcs.noaa.gov
-.. |HCBRNG|	replace:: hera.boulder.rdhpcs.noaa.gov
-.. |HRPRNG|	replace:: hera-rsa.princeton.rdhpcs.noaa.gov
-.. |HRBRNG|	replace:: hera-rsa.boulder.rdhpcs.noaa.gov
+Each RDHPCS system has bastion hosts at two locations: Princeton,
+New Jersey, and Boulder, Colorado.  Either location works for login
+and data transfer.  Choose the location closest to you for the best
+response time.
 
-.. |JCPRNG|	replace:: bastion-jet.princeton.rdhpcs.noaa.gov
-.. |JCBRNG|	replace:: bastion-jet.boulder.rdhpcs.noaa.gov
-.. |JRPRNG|	replace:: jet-rsa.princeton.rdhpcs.noaa.gov
-.. |JRBRNG|	replace:: jet-rsa.boulder.rdhpcs.noaa.gov
+CAC users must connect to a CAC bastion hostname.
+YubiKey users must connect to an RSA bastion hostname.
 
-.. |PPPRNG|	replace:: bastion-analysis.princeton.rdhpcs.noaa.gov
-.. |PPBRNG|	replace:: bastion-analysis.boulder.rdhpcs.noaa.gov
-.. |PAPRNG|	replace:: analysis-rsa.princeton.rdhpcs.noaa.gov
-.. |PBPRNG|	replace:: analysis-rsa.boulder.rdhpcs.noaa.gov
+.. |CBHN|   replace:: **CAC bastion hostnames**
+.. |RBHN|   replace:: **RSA bastion hostnames**
+.. |GCPRNG| replace:: gaea.princeton.rdhpcs.noaa.gov
+.. |GCBRNG| replace:: gaea.boulder.rdhpcs.noaa.gov
+.. |GRPRNG| replace:: gaea-rsa.princeton.rdhpcs.noaa.gov
+.. |GRBRNG| replace:: gaea-rsa.boulder.rdhpcs.noaa.gov
 
-.. |MCPRNG|	replace:: mercury-cac.princeton.rdhpcs.noaa.gov
-.. |MCBRNG|	replace:: mercury-cac.boulder.rdhpcs.noaa.gov
-.. |MRPRNG|	replace:: mercury-rsa.princeton.rdhpcs.noaa.gov
-.. |MRBRNG|	replace:: mercury-rsa.boulder.rdhpcs.noaa.gov
+.. |HCPRNG| replace:: hera.princeton.rdhpcs.noaa.gov
+.. |HCBRNG| replace:: hera.boulder.rdhpcs.noaa.gov
+.. |HRPRNG| replace:: hera-rsa.princeton.rdhpcs.noaa.gov
+.. |HRBRNG| replace:: hera-rsa.boulder.rdhpcs.noaa.gov
 
-.. |UCPRNG|	replace:: ursa-cac.princeton.rdhpcs.noaa.gov
-.. |UCBRNG|	replace:: ursa-cac.boulder.rdhpcs.noaa.gov
-.. |URPRNG|	replace:: ursa-rsa.princeton.rdhpcs.noaa.gov
-.. |URBRNG|	replace:: ursa-rsa.boulder.rdhpcs.noaa.gov
+.. |JCPRNG| replace:: bastion-jet.princeton.rdhpcs.noaa.gov
+.. |JCBRNG| replace:: bastion-jet.boulder.rdhpcs.noaa.gov
+.. |JRPRNG| replace:: jet-rsa.princeton.rdhpcs.noaa.gov
+.. |JRBRNG| replace:: jet-rsa.boulder.rdhpcs.noaa.gov
 
-.. |OUG|	replace:: :ref:`orion-user-guide`
+.. |PPPRNG| replace:: bastion-analysis.princeton.rdhpcs.noaa.gov
+.. |PPBRNG| replace:: bastion-analysis.boulder.rdhpcs.noaa.gov
+.. |PAPRNG| replace:: analysis-rsa.princeton.rdhpcs.noaa.gov
+.. |PBPRNG| replace:: analysis-rsa.boulder.rdhpcs.noaa.gov
+
+.. |MCPRNG| replace:: mercury-cac.princeton.rdhpcs.noaa.gov
+.. |MCBRNG| replace:: mercury-cac.boulder.rdhpcs.noaa.gov
+.. |MRPRNG| replace:: mercury-rsa.princeton.rdhpcs.noaa.gov
+.. |MRBRNG| replace:: mercury-rsa.boulder.rdhpcs.noaa.gov
+
+.. |UCPRNG| replace:: ursa-cac.princeton.rdhpcs.noaa.gov
+.. |UCBRNG| replace:: ursa-cac.boulder.rdhpcs.noaa.gov
+.. |URPRNG| replace:: ursa-rsa.princeton.rdhpcs.noaa.gov
+.. |URBRNG| replace:: ursa-rsa.boulder.rdhpcs.noaa.gov
 
 +-------------------+-----------------+----------------------------------+
-| **RDHPCS System** | |CBHN|          | |RBHN|                           |
+| **RDHPCS system** | |CBHN|          | |RBHN|                           |
 +-------------------+-----------------+----------------------------------+
 | Gaea              | |GCPRNG|        | |GRPRNG|                         |
 |                   |                 |                                  |
 |                   | |GCBRNG|        | |GRBRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| Hera              | |HCBRNG|        | |HRBRNG|                         |
+| Hera              | |HCPRNG|        | |HRPRNG|                         |
 |                   |                 |                                  |
-|                   | |HCPRNG|        | |HRPRNG|                         |
+|                   | |HCBRNG|        | |HRBRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| Jet               | |JCBRNG|        | |JRBRNG|                         |
+| Jet               | |JCPRNG|        | |JRPRNG|                         |
 |                   |                 |                                  |
-|                   | |JCPRNG|        | |JRPRNG|                         |
+|                   | |JCBRNG|        | |JRBRNG|                         |
 +-------------------+-----------------+----------------------------------+
 | PPAN              | |PPPRNG|        | |PAPRNG|                         |
 |                   |                 |                                  |
 |                   | |PPBRNG|        | |PBPRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| Mercury           | |MCBRNG|        | |MRBRNG|                         |
+| Mercury           | |MCPRNG|        | |MRPRNG|                         |
 |                   |                 |                                  |
-|                   | |MCPRNG|        | |MRPRNG|                         |
+|                   | |MCBRNG|        | |MRBRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| Ursa              | |UCBRNG|        | |URBRNG|                         |
+| Ursa              | |UCPRNG|        | |URPRNG|                         |
 |                   |                 |                                  |
-|                   | |UCPRNG|        | |URPRNG|                         |
+|                   | |UCBRNG|        | |URBRNG|                         |
 +-------------------+-----------------+----------------------------------+
 
-In addition to the Bastions, RDHPCS users have access to computational capacity
-on the Orion and Hercules systems, hosted by Mississippi State University. See
-the :ref:`MSU-HPC <MSU-HPC-user-guide>` user guide.
-for detailed information.
 
-Computational capacity is also available on the RDHPCS Cloud Platform, which
-allows NOAA users to create custom HPC clusters on an as-needed basis, through
-the Parallel Works platform. The :ref:`Cloud User Guide <cloud-user-guide>`
-provides more information.
+.. _ssh_access:
+.. _login-instructions:
+
+******
+Log in
+******
+
+.. _first-login:
+
+First login and certificate setup
+==================================
+
+On your first login, RDHPCS creates an `X.509`_ master certificate
+that authenticates you to RDHPCS systems.  The certificate request
+must be signed before you can fully log in.  Signing takes less than
+five minutes.
+
+The system prompts you to create a passphrase for your master
+certificate.  Create a passphrase of at least three words.
+
+.. note::
+
+   Your master certificate is valid for one year.  Each login renews
+   a thirty-day proxy certificate used for resource access and data
+   transfers.
+
+.. note::
+
+   If you forget your passphrase, keep attempting to log in.  On the
+   fourth failed attempt, the system prompts you to regenerate your
+   master certificate.
 
 
 .. _Common-access:
 .. _cac_instructions:
 
-Common Access Card (CAC) SSH Login
-==================================
+Log in with a CAC
+==================
 
-RDHPCS users with a CAC who are logging in from a Windows, Mac, or
-Linux system are recommended to use a CAC login. This requires a CAC
-reader and software from Tectia. If you recently were issued a new CAC
-or renewed CAC, please log into the `Account Information Management`_
-website to update the CAC information.
+CAC login requires a card reader and the :ref:`Tectia <Tectia>` SSH
+client.  Install and configure Tectia before following these steps.
 
-Reference the :ref:`Tectia` pages for complete information on how to
-configure Tectia initially for login using SSH with your CAC.
+#. Find your CAC bastion hostname in the :ref:`bastion_hostnames`
+   table above.
+#. Open a terminal and connect to the bastion:
 
-.. code-block:: console
+   .. code-block:: console
 
-    $ sshg3 CAC-BASTION-HOSTNAME
+      $ sshg3 CAC-BASTION-HOSTNAME
 
-#. Reference the table above for the appropriate CAC Bastion to use.
-#. When prompted, enter your CAC PIN.
+#. When prompted, enter your CAC Personal Identification Number (PIN).
+
+If you recently received a new or renewed CAC, update your card
+information in `Account Information Management`_ before logging in.
 
 
 .. _yubikey_instructions:
 
-Yubikey SSH Login
-=================
+Log in with a YubiKey
+======================
 
-RDHPCS users who do not have a CAC, or lack the required hardware or
-software, are welcome to use their NOAA issued Yubikey to login. You
-must have :ref:`configured and registered your Yubikey for NOAA RDHPCS
-access. <yubikey-user-instructions>`
+:ref:`Configure and register your YubiKey <yubikey-user-instructions>`
+before following these steps.
 
-.. code-block:: console
+#. Find your RSA bastion hostname in the :ref:`bastion_hostnames`
+   table above.
+#. Open a terminal and connect to the bastion:
 
-    $ ssh RSA-BASTION-HOSTNAME
+   .. code-block:: console
+
+      $ ssh RSA-BASTION-HOSTNAME
+
+#. When prompted, enter your YubiKey PIN, then press and hold the
+   YubiKey button (long press).
 
 
-#. The RSA bastions are used for Yubikey logins.
-#. Reference the table above for the appropriate RSA Bastion to use.
-#. When prompted, enter your Yubikey PIN then press and hold your Yubikey
-   (long press).
+.. _select-a-node:
 
-Selecting a Node
-================
+*************
+Select a node
+*************
 
-RDHPCS systems accessed via SSH allow users to select a specific head
-node at login.  After successful authentication at the bastion host, a
-list of available nodes will be displayed with a 5 second delay to
-choose a specific destination.  To select a specific host, press
-Control+C (^C) and enter the desired node.
+After you authenticate at the bastion, a list of available compute
+nodes is displayed.  The bastion waits five seconds, then connects
+you to a node that the load balancer selects.
 
-Here is an example of what the display looks like for the Gaea system
-mid 2024:
+To connect to a specific node, press :kbd:`Control+C` within five
+seconds and enter the node name when prompted.
+
+The following example shows the selection prompt as it appears on the
+Gaea system.  The node list varies by system.
 
 .. code-block:: shell
 
+   Welcome to the NOAA RDHPCS.
 
-     Welcome to the NOAA RDHPCS.
+   Attempting to renew your proxy certificate...
+   Proxy certificate has 720:00:00  (30.0 days) left.
 
-     Attempting to renew your proxy certificate...Proxy certificate has 720:00:00  (30.0 days) left.
+           Welcome to gaea.rdhpcs.noaa.gov
+   Gateway to gaea-c5.ncrc.gov and other points beyond
 
-             Welcome to gaea.rdhpcs.noaa.gov
-     Gateway to gaea-c5.ncrc.gov and other points beyond
+   Hostname            Description
+   gaea                C5 head nodes
+   gaea51              C5 head node
+   gaea52              C5 head node
+   ...
+   gaea61              C6 head node
+   ...
 
-     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     !! RDHPCS Policy states that all user login sessions shall be terminated     !!
-     !! after a maximum duration of seven (7) days. ALL user login sessions will  !!
-     !! be dropped from the Princeton Bastions at 4AM ET / 2AM MT each Monday     !!
-     !! morning, regardless of the duration. Please note: This will NOT impact    !!
-     !! batch jobs, cron scripts, screen sessions, remote desktop, or data        !!
-     !! transfers.                                                                !!
-     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-     Hostname            Description
-     gaea                C5 head nodes
-     gaea51              C5 head node
-     gaea52              C5 head node
-     gaea53              C5 head node
-     gaea54              C5 head node
-     gaea55              C5 head node
-     gaea56              C5 head node
-     gaea57              C5 head node
-     gaea58              C5 head node
-     gaea60              T6 Test access only
-     gaea61              C6 head node
-     gaea62              C6 head node
-     gaea63              C6 head node
-     gaea64              C6 head node
-     gaea65              C6 head node
-     gaea66              C6 head node
-     gaea67              C6 head node
-     gaea68              C6 head node
-
-     You will now be connected to NOAA RDHPCS: Gaea (CMRS/NCRC) C5 system.
-     To select a specific host, hit ^C within 5 seconds.
-
+   To select a specific host, hit ^C within 5 seconds.
 
 .. note::
 
-    After the 5 second wait, the bastion node will use a load balancer to select
-    a node.
+   After five seconds, the bastion connects you to the load-balanced
+   default node.  See the user guide for your system for the complete
+   list of available nodes.
 
-
-X11 Graphics
-============
-
-Users can use SSH X11 forwarding to open GUI-based applications (e.g., xterm,
-ARM Forge).  This is typically done using an SSH option.  For the :ref:`Tectia`
-client :command:`sshg3` or OpenSSH-based clients, use the ``-X`` option:
-
-.. code-block:: console
-
-    $ sshg3 -X host.url
-
-or
-
-.. code-block:: console
-
-    $ ssh -X host.url
-
-Other clients, like PuTTY, will have an option when configuring the host.
-
-The base SSH X11 forwarding is typically slow.  RDHPCS systems use X2Go for
-improved X11 performance.  Some users have found it difficult to use X2Go.
-Please submit a :ref:`support issue <getting_help>` if you have issues using
-X2Go.
-
-.. note::
-
-    Microsoft Windows users can use any of the X11 servers available for
-    Windows.  The SSH client will need to be configured to use the X11 server
-    for forwarding X11.
 
 .. _ssh-port-tunnels:
 
-SSH Port Tunnels
-================
+****************
+SSH port tunnels
+****************
 
-To allow users to easily transfer small files to and from the RDHPCS
-systems, the bastion configures SSH port-forwarding tunnels.  To use these
-tunnels, the user must configure their local SSH client to create tunnels
-to/from the bastion.
+RDHPCS bastions support SSH port forwarding, also called *port
+tunneling*.  Port tunnels let you:
 
-See the Port Tunnel section of the :ref:`Tectia` page for details.  You can use
-:ref:`this form <openssh-config>` to create a sample SSH configuration for
-OpenSSH-based clients.
+* Transfer files using tools like :command:`scp` and :command:`rsync`.
+* Use remote development tools such as
+  :ref:`VS Code Remote-SSH <rdhpcs-VSCode>` and the
+  :ref:`ARM Forge debugger <linaro-forge>`.
+* Access Jupyter notebooks running on compute nodes.
+* Forward other network services between your workstation and RDHPCS
+  systems.
+
+.. note::
+
+   SSH port forwarding is not supported on MSU HPC systems
+   (Orion and Hercules).
+
+Port assignment
+===============
+
+Each user gets unique port numbers calculated from a base port for
+each system and your user ID (UID).  Run :command:`id -u` on any
+RDHPCS system to find your UID.
+
+**Port formula:** LocalForward port = base port + UID
+
+If the result exceeds 65,535, the port wraps around:
+port = (base port + UID - 65,535) + 2,000.
+
+.. list-table:: Port tunnel base ports by system
+   :header-rows: 1
+   :widths: 20 40 40
+
+   * - System
+     - LocalForward base port
+     - RemoteForward base port
+   * - Gaea
+     - 30,000
+     - 20,000
+   * - Hera
+     - 45,000
+     - 55,000
+   * - Jet
+     - 11,300
+     - 21,300
+   * - Mercury
+     - 25,000
+     - 35,000
+   * - PPAN
+     - 40,000
+     - 50,000
+   * - Ursa
+     - 35,000
+     - 45,000
+
+Use the :ref:`OpenSSH configuration form <openssh-config>` to
+generate a complete SSH configuration with your port assignments
+already calculated.  Your assigned port numbers also appear in the
+login banner each time you connect.
+
+Set up port tunnels
+===================
+
+For client-specific port tunnel setup, see:
+
+* :ref:`openssh-client` — OpenSSH on Linux, macOS, and Windows
+* :ref:`putty-client` — PuTTY on Windows
+* :ref:`Tectia` — Tectia on Windows, macOS, and Linux
+
+.. warning::
+
+   The tunnels are active only while this SSH session remains open.
+   Closing the terminal window or letting the session time out
+   disconnects all tunnels.  Keep this session running the entire
+   time you need access.
+
+To verify a tunnel, open a second terminal and connect through the
+local port:
+
+.. code-block:: console
+
+   $ ssh -p LOCAL-PORT First.Last@localhost
+
+Replace ``LOCAL-PORT`` with your calculated LocalForward port for
+the system.  You are prompted for your normal credentials (PIN + RSA
+token or YubiKey).  A successful login confirms the tunnel is working.
+You can log out of the test session immediately.
 
 
+.. _x11-graphics:
 
-Web based ParallelWorks Access
-==============================
+***********************
+X11 and remote graphics
+***********************
 
-See the :ref:`cloud-user-guide` for details on using ParallelWorks in
-a web browser to access on-premise and cloud HPCS.
+SSH X11 forwarding lets you run graphical applications on RDHPCS
+systems and display them on your local workstation.
+
+For X11 setup with your SSH client, see :ref:`openssh-x11`,
+:ref:`putty-x11`, or :ref:`tectia-x11`.
+
+Windows X11 servers
+===================
+
+To display graphical output on Windows, an X11 server must be running
+on your workstation before you connect.  Options include:
+
+* `MobaXterm`_ — includes a built-in X11 server.  No separate
+  installation is needed.
+* `VcXsrv`_ — a free, open-source X11 server for Windows.
+
+X2Go
+====
+
+Basic X11 forwarding can be slow over high-latency connections.
+RDHPCS systems support X2Go for faster graphical application
+performance.
+
+.. .. TODO: Add a dedicated X2Go setup and usage guide.
+
+If you have trouble with X2Go, :ref:`contact the help desk
+<getting_help>`.
+
+
+.. _web-based-access:
+
+****************
+Web-based access
+****************
+
+The RDHPCS Cloud Platform is available from a web browser through the
+`Parallel Works`_ platform.  `Parallel Works`_ lets you create and
+manage on-demand High Performance Computing (HPC) clusters without an
+SSH connection.
+
+See the :ref:`Cloud User Guide <cloud-user-guide>` for details.
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   SSH Clients <ssh_clients/index>
+
+
+.. _Account Information Management: https://aim.rdhpcs.noaa.gov
+.. _X.509: https://en.wikipedia.org/wiki/X.509
+.. _MobaXterm: https://mobaxterm.mobatek.net/
+.. _VcXsrv: https://sourceforge.net/projects/vcxsrv/
+.. _Parallel Works: https://noaa.parallel.works

@@ -13,8 +13,8 @@ purchased for each RDHPCS user.
 
 The following features are supported:
 
-* Port forwarding
 * X11 tunneling
+* Port forwarding (see :ref:`ssh-port-tunnels`)
 
 Access to RDHPCS Systems from a system which cannot directly access a
 user's CAC is not supported.
@@ -38,7 +38,6 @@ section describe how to do the following:
 * Install the license file on your local laptop or workstation
 * Configure the Tectia software
 * Use the client software to connect to R&D HPC Systems
-* Set up port tunneling
 
 Locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
 table. Then follow the instructions for your operating system.
@@ -508,101 +507,107 @@ Configure the Tectia Client
 If successful you will see the message “Authentication successful.”
 You will be forwarded to a front-end host.
 
-.. ref: port_tunnels
+Port tunnels
+============
 
-Port Tunnelling
-===============
+See :ref:`ssh-port-tunnels` for your LocalForward port number and
+the port assignment formula.
 
-If you plan to do file transfers from non-NOAA domains, or if you plan
-to use remote Desktop features (such as X2Go), you will have to set
-port forwarding for each profile.  Please keep in mind that different
-bastions use different port numbers. Log in to each specific host to
-make sure you have your correct port number.
+.. tab-set::
 
-* Select the "Tunneling" Tab
-* Select "Use Defaults" so that it will use the X11 forwarding setting
-  that is set in Default Setting
-* Select the "Add" button
+   .. tab-item:: macOS and Linux
+      :sync: macos
 
-In the steps below, replace "12345" with the unique **local port**
-number assigned to you when you login to Jet. Port numbers are
-dependent on the host you are trying to connect.
+      #. Open your connection profile and select the **Tunneling**
+         tab.
+      #. Check **Use Defaults**.
+      #. Click **Add** and fill in the tunnel settings:
 
-* "Type"= TCP
-* "Listen Port"= 12345
-* Select "Allow local connections only"
-* "Destination host"=localhost
-* "Destination port"= 12345
+         * **Type:** TCP
+         * **Listen port:** your LocalForward port for this system
+         * **Allow local connections only:** checked
+         * **Destination host:** ``localhost``
+         * **Destination port:** same as the Listen port
 
-Click "OK". This will populate the "Local Tunnels" tab in the
-configuration window:
+         .. figure:: /images/mactectia5.png
 
-.. figure:: /images/mactectia5.png
+      #. Click **OK**, then click **Apply** to save the profile.
 
-* Click "Apply" to save the profile
+      Repeat these steps for each connection profile you use.
 
-Repeat these steps for each profile you create.
+   .. tab-item:: Windows
+      :sync: windows
 
-Set Up Port Tunnelling
-----------------------
+      #. Open your connection profile and select the **Tunneling**
+         tab.
 
-Complete the following sequence to set up port tunnelling.
+         .. figure:: /images/tectiawin6.png
 
-1. Edit your connection profile. Navigate to the "Tunneling" tab.
+      #. Check **Use Defaults**.  Confirm that **Tunnel X11
+         connections** and **Allow Agent Forwarding** are checked.
 
-   .. figure:: /images/tectiawin6.png
+         .. figure:: /images/tectiawin7.png
 
-2. Check "Use Defaults". Tunnel X11 connections" and "Allow Agent
-   Forwarding" should be checked. If not, check them.
+      #. Click **Add** and fill in the tunnel settings:
 
-   .. figure:: /images/tectiawin7.png
+         * **Type:** TCP
+         * **Listen port:** your LocalForward port for this system
+         * **Allow local connections only:** checked
+         * **Destination host:** ``127.0.0.1``
+         * **Destination port:** same as the Listen port
 
-3. Select "Add".
+         .. figure:: /images/tectiawin8.png
 
-   * Select "TCP" for Type
-   * Listen Port should match your Local port number listed on your
-     session login.
-   * Check "Allow local connections only"
-   * Destination host: 127.0.0.1
-   * Destination Port should match your Local port number listed on
-     your session login.
+      #. Click **OK**.
+      #. Click **Test connection** to verify the tunnel is active.
 
-     .. figure:: /images/tectiawin8.png
+         .. figure:: /images/tectiawin9.png
 
-   * Select "OK"
+         The completed configuration looks like the following:
 
-4. Selecting "Test connection" to test.
+         .. figure:: /images/tectiawin10.png
 
-   .. figure:: /images/tectiawin9.png
+      #. Click **Apply** to save the profile.
 
-   * Completed configuration should look like the following:
+      Repeat these steps for each connection profile you use.
 
-   .. figure:: /images/tectiawin10.png
 
-Once the session is open, you will be able to use this forwarded port
-for data transfers as long as this ssh window is kept open. After the
-first session has been opened with the port forwarding, any further
-connections (login via ssh, copy via scp) will work as expected.
+.. _tectia-x11:
 
-Testing Port Tunnels
---------------------
+X11 forwarding
+==============
 
-Once you have set up port tunneling, it's useful test that the tunnel
-has been established correctly.
+X11 forwarding is enabled by default when **Use Defaults** is checked
+in the **Tunneling** tab of your connection profile (covered in the
+Configure section above).
 
-To do this, after the port tunnel has been established, try to login using the
-local host and port combination. Please keep in mind you will have to use
-YubiKey Multi-Factor authentication for this test. You should try to connect
-using the following settings with your ssh client (with Windows you could use a
-client like putty, and with linux/Mac you should use ssh):
+To connect with explicit X11 forwarding from the command line, add
+the ``-X`` flag to ``sshg3``:
 
-* Host: localhost (This is literal string, that is, enter the word
-  "localhost")
-* Port: Your-assigned-local-port-on-hera-jet (This is the number
-  listed as Local Port when you login)
-* User: Your user name
+.. code-block:: console
 
-When prompted, enter your User Name and Password, and authenticate
-with YubiKey. If you're
-able to login successfully and see your home directory, that confirms
-that your port tunneling is correct.
+   $ sshg3 -X CAC-BASTION-HOSTNAME
+
+.. note::
+
+   You need an X11 server running on your local workstation before
+   you connect:
+
+   * **Windows** — install `VcXsrv`_ or `MobaXterm`_.
+   * **macOS** — install `XQuartz`_.
+   * **Linux** — X11 is available if a desktop environment is running.
+
+
+Reference
+=========
+
+* `Tectia SSH Client documentation
+  <https://www.ssh.com/products/tectia-ssh/>`__ — official product
+  documentation
+* `AIM <https://aim.rdhpcs.noaa.gov>`__ — manage CAC information and
+  account details
+
+
+.. _VcXsrv: https://sourceforge.net/projects/vcxsrv/
+.. _MobaXterm: https://mobaxterm.mobatek.net/
+.. _XQuartz: https://www.xquartz.org/

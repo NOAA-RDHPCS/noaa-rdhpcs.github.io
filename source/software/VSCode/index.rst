@@ -31,72 +31,31 @@ Issue the following commands on each remote host:
    mkdir -p /in/your/project/dir/$USER/vscode-server
    ln -s    /in/your/project/dir/$USER/vscode-server ~/.vscode-server
 
-Set up Port Forwarding on your Local client
--------------------------------------------
+Set up a port tunnel
+--------------------
 
-.. note::
-    Each user on the system is assigned a specific Local port number that is
-    different for each host. Your assigned Local port on Hera is
-    different from the one Jet, but will remain fixed.
-
-On your local machine:
-
-1. Get your assigned **Local port number**.
-   If you already know your port number you may skip this step.
-
-2. Login to the appropriate host Hera/Jet/Mercury. In the welcome message look
-   for the following line:
-
-  ``Local port <assigned-port-number> forwarded to remote host``
-
-The number after "Local port" is your assigned port number. Note down this
-number and log out of the system.
-
-Create a session with the tunnel and keep this session open
------------------------------------------------------------
+VSCode Remote-SSH connects to RDHPCS systems through an SSH port
+tunnel.  Set up your tunnel using the instructions in
+:ref:`ssh-port-tunnels`, then keep that session open while you work
+in VSCode.
 
 .. note::
 
-    Windows users please use PowerShell instead of other clients such as putty.
-    Linux users can use the usual ssh command.
-
-Example
-^^^^^^^
-
-This example uses **hera** as our host and **12345** as our assigned
-Local port number, with a username of First.Last.
-
-.. code-block:: console
-
-  ssh                                  -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov    (Linux/Mac users)
-  ssh -m hmac-sha2-512-etm@openssh.com -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov    (Windows users)
-
-Login, and keep this session open.
-
-Test to make sure the tunnel is working
----------------------------------------
-
-In another local window, type
-
-.. code-block:: console
-
-  ssh -p 12345 First.Last@localhost
-
-
-Enter your PIN+Token at the prompt. If you are successful, your port tunnel is
-all set up and will work long as your session you created is kept
-alive.
+   Windows users must use PowerShell to establish the tunnel, not
+   PuTTY.  PuTTY is not compatible with VSCode Remote-SSH.
 
 Login with your VSCode client
 -----------------------------
 
 .. note::
 
-    We will assume the following:
-    * You have set up the tunnels as mentioned above.
-    * You have installed VSCode on your local machine.
-    * You have  installed the "Remote-SSH" plugin in your VSCode client.
-    * Before you start VSCode, remove any entry containing localhost in your ``~/.ssh/known_hosts`` file
+   Before connecting, confirm that:
+
+   * Your port tunnel is active.  See :ref:`ssh-port-tunnels`.
+   * VSCode is installed on your local machine.
+   * The **Remote-SSH** plugin is installed in VSCode.
+   * Any ``localhost`` entry is removed from your
+     ``~/.ssh/known_hosts`` file.
 
 After you start VSCode, you can select the following menu items:
 
@@ -104,11 +63,13 @@ After you start VSCode, you can select the following menu items:
 
 When prompted for host, enter:
 
-  ``First.Last@localhost:12345``
+  ``First.Last@localhost:LOCAL-PORT``
 
 .. note::
 
-  Remember to replace First.Last with your user name, and to specify your actual Local Port Number.
+   Replace ``First.Last`` with your username and ``LOCAL-PORT`` with
+   your LocalForward port for the system.  See
+   :ref:`ssh-port-tunnels` for port number assignments.
 
 .. note::
 

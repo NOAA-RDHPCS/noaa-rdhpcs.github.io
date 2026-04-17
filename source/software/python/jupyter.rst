@@ -116,11 +116,11 @@ the JupyterLab service you will need to use the pre-established port tunnels.
 There are a few additional steps to access a JupyterLab session that is running
 on the compute nodes.
 
-To access a JupyterLab session on a head node, you will need connect using two
-local terminal sessions.  The first terminal session will establish the
-user-assigned pre-established SSH port tunnels.  The second session will
-establish an additional tunnels to allow the JupyterLab to connect to the
-running JupyterLab port on the head or compute node.
+To access a JupyterLab session on a head node, you need two local
+terminal sessions.  The first session establishes your pre-assigned
+SSH port tunnel (see :ref:`ssh-port-tunnels`).  The second session
+creates an additional tunnel so your browser can reach the JupyterLab
+port on the head or compute node.
 
 .. note::
 
@@ -139,15 +139,10 @@ JupyterLab on Head Nodes
 window 1
 """"""""
 
-Login to the HPC system and establish your tunnel using your assigned user
-local port number:
-
-.. code-block:: shell
-
-    $ ssh -L 12345:127.0.0.1:12345 J.Doe@<bastion>.rdhpcs.noaa.gov
-
-Once logged in, start the JupyterLab session using a port number in the range
-8800-8900 range:
+Establish your SSH port tunnel to the RDHPCS system.  See
+:ref:`ssh-port-tunnels` for setup instructions.  Once logged in,
+start the JupyterLab session using a port number in the 8800–8900
+range:
 
 .. tab-set::
 
@@ -189,11 +184,13 @@ JupyterLab session between your localhost and the RDHPCS system:
 
 .. code-block:: shell
 
-    $ ssh -p 12345 -L <port#>:127.0.0.1:<port#> J.Doe@127.0.0.1
+    $ ssh -p LOCAL-PORT -L <port#>:127.0.0.1:<port#> First.Last@127.0.0.1
 
 .. note::
 
-    This will not give you a prompt on the RDHPCS system.
+    Replace ``LOCAL-PORT`` with your LocalForward port for the system.
+    See :ref:`ssh-port-tunnels` for port number assignments.
+    This command does not give you a shell prompt on the RDHPCS system.
 
 Open your browser on your local machine, and navigate to the entire URL
 (including the token) you noted above when you ran ``jupyter lab`` in window 1
@@ -204,12 +201,8 @@ JupyterLab on Compute Nodes
 window 1
 """"""""
 
-Login to the HPC system and establish your tunnel using your assigned user
-local port number:
-
-.. code-block:: shell
-
-    $ ssh -L 12345:127.0.0.1:12345 J.Doe@<bastion>.rdhpcs.noaa.gov
+Establish your SSH port tunnel to the RDHPCS system.  See
+:ref:`ssh-port-tunnels` for setup instructions.
 
 Start an interactive batch session.  On the compute node, use ``hostname`` to
 get the name of the compute node.  This will be needed later:
@@ -264,10 +257,10 @@ JupyterLab session between your localhost and the RDHPCS system:
 
 .. code-block:: shell
 
-    $ ssh -p 12345 -L <port#>:127.0.0.1:<port#> J.Doe@127.0.0.1
+    $ ssh -p LOCAL-PORT -L <port#>:127.0.0.1:<port#> First.Last@127.0.0.1
 
-Once the connection is established, using the compute node host name establish
-a connection to the compute node with tunnels to the JupyterLab session port:
+Once the connection is established, use the compute node hostname to
+connect to the compute node and tunnel the JupyterLab session port:
 
 .. code-block:: shell
 
