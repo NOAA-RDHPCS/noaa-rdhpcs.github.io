@@ -18,37 +18,21 @@ Jet User Guide
 
 .. Attention::
 
-   **Jet is scheduled to be decommissioned on March 31, 2026!**
-
-   * Please work with your PIs and Portfolio Manager to migrate
-     your workloads from Jet to other RDHPCS resources as soon
-     as possible.
-   * Please see the following `Presentation`_ on timelines
-     for the transition and some guidance on moving your
-     projects and data to other RDHPCS resources.
-   * If you require further assistance, please start a Jet
-     help ticket: `Helpdesk`_.
+   **Jet has been decommissioned as of March 31, 2026!**
 
 .. Important::
 
    **Important information about Jet Data Disposition**
 
-   * After the Jet decommission date, data on lfs5 and lfs6 older
-     than 30 days will be deleted and no longer available.
-     The remaining less than 31 days old data, we will migrate
-     to an Ursa file system and will be available for an additional
-     60 days after the migration is complete.
-   * Information on Transferring data: `Data Transfers`_.
-   * **A significant amount of data on Jet has remained untouched
-     for over a year!** Removing this stale data is strongly
-     recommended as it will significantly reduce the amount
-     of time and effort you need to migrate to other systems.
-   * **Easy Cleanup**: A user-friendly script and step-by-step
-     instructions are available to help you clean up lfs5 and lfs6
-     files that meet various inactivity criteria: `Google Doc`_.
-   * /home data will be moved to the HPSS archive and available
-     by help ticket request for 1 year, then it will be deleted
-     and no longer available.
+* Files from ``/home/$USER`` on Jet can be found at the following
+  location on the Ursa login nodes in “read-only”
+  mode: ``/jet/home/$USER``
+* Files from ``/contrib`` on Jet can now be found here on
+  the Ursa login nodes in “read-only” mode: ``/jet/contrib``
+* Files from ``/lfs[5,6]`` on Jet can now be found here
+  on the Ursa login nodes in “read-only” mode: ``/jet/lfs[5,6]``.
+  **Please note that only files accessed within the last 30 days
+  as of Mar 31st are being made available on here**.
 
 .. image:: /images/JET.jpeg
 
