@@ -18,16 +18,7 @@ Jet User Guide
 
 .. Attention::
 
-   **Jet has been decommission as of March 31, 2026!**
-
-   * Please work with your PIs and Portfolio Manager to migrate
-     your workloads from Jet to other RDHPCS resources as soon
-     as possible.
-   * Please see the following `Presentation`_ on timelines
-     for the transition and some guidance on moving your
-     projects and data to other RDHPCS resources.
-   * If you require further assistance, please start a Jet
-     help ticket: `Helpdesk`_.
+   **Jet has been decommissioned as of March 31, 2026!**
 
 .. Important::
 
@@ -40,9 +31,8 @@ Jet User Guide
   the Ursa login nodes in “read-only” mode: ``/jet/contrib``
 * Files from ``/lfs[5,6]`` on Jet can now be found here
   on the Ursa login nodes in “read-only” mode: ``/jet/lfs[5,6]``.
-  **Please note that for files on the LFS file system only files
-  accessed within the last 30 days as of Mar 31st are being made
-  available here.**
+  **Please note that only files accessed within the last 30 days
+  as of Mar 31st are being made available on here**.
 
 .. image:: /images/JET.jpeg
 
