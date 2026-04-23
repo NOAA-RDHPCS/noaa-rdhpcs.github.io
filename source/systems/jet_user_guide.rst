@@ -24,15 +24,14 @@ Jet User Guide
 
    **Important information about Jet Data Disposition**
 
-* Files from ``/home/$USER`` on Jet can be found at the following
-  location on the Ursa login nodes in “read-only”
-  mode: ``/jet/home/$USER``
-* Files from ``/contrib`` on Jet can now be found here on
-  the Ursa login nodes in “read-only” mode: ``/jet/contrib``
-* Files from ``/lfs[5,6]`` on Jet can now be found here
-  on the Ursa login nodes in “read-only” mode: ``/jet/lfs[5,6]``.
-  **Please note that only files accessed within the last 30 days
-  as of Mar 31st are being made available on here**.
+The following Jet user data is available **until July 31, 2026**.
+The data is accessible from the Ursa login nodes in “read-only” mode.
+
+* Files from ``/home/$USER`` are found at: ``/jet/home/$USER``
+* Files from ``/contrib`` are found at: ``/jet/contrib``
+* Files from ``/lfs[5,6]`` are found at: ``/jet/lfs[5,6]`` **Note: Only
+files accessed within the last 30 days as of March 31, 2026
+are available.**
 
 .. image:: /images/JET.jpeg
 
