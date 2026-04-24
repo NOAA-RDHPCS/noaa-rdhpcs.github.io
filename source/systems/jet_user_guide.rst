@@ -31,8 +31,8 @@ The data is accessible from the Ursa login nodes in “read-only” mode.
 * Files from ``/contrib`` are found at: ``/jet/contrib``
 * Files from ``/lfs[5,6]`` are found at: ``/jet/lfs[5,6]``
 
-**Note: Only files accessed within the last 30 days as of March 31, 2026
-are available.**
+**Note: For LFS, only files accessed within the last 30 days (as of March 31,
+2026) are available.**
 
 
 .. image:: /images/JET.jpeg
