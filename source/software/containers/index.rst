@@ -20,7 +20,7 @@ Containers
     ParallelWorks.
     Although this allows users to run Singularity containers, we currently do not
     support any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
-    Etc.) for supporting Containers
+    Etc.) to support Containers
 
 .. _containers-introduction:
 
@@ -28,16 +28,16 @@ Introduction
 ============
 
 As both existing and new NOAA projects endeavor to build software tools and
-solutions that are portable across many HPC sites and architectures, it is
-important that the RDHPCS program be proactive in providing necessary tools to
-support these projects. One such solution for allowing users to accomplish this
-goal is with the use of *software containers*. Through the use of containers,
+solutions that are portable across many HPC sites and architectures, the RDHPCS
+program must be proactive in providing tools necessary to
+support these projects. One such solution that allows users to accomplish this
+goal is the use of *software containers*. Using containers,
 software developers can build their stack and create encapsulated run-time
 environments which may be distributed to their user base. This greatly
-minimizes the need for users to have to worry about software dependencies and
-machine-specific user environment.
+minimizes user concerns about software dependencies and
+machine-specific user environments.
 
-A single container image stored on disk can be used for launching multiple
+A single container image stored on disk can be used to launch multiple
 container instances, including by different users. Each running container
 is treated by the host system as a regular process.
 
@@ -80,14 +80,15 @@ image, and has layers such as `a) Linux base image, b) application image,
 c) configuration`.
 
 A container provides its own filesystem, effectively complementing the host
-system’s operating system environment, as demonstrated in the diagram below.
+system’s operating system environment, as illustrated in the diagram below.
 
 .. figure:: /images/containers_system2.png
    :width: 60%
    :align: center
    :alt: containers have their own filesystem; they interact with the host at runtime, making a container instance being viewed as regular running application.
 
-   Containers have their own filesystem. They interact with the host at runtime, making a container instance being viewed as regular running application.
+   Containers have their own filesystem. They interact with the host at runtime, so the container
+instance is viewed as a regular running application.
 
 Containers can "bind" directories from the host system, making selected host
 filesystems accessible inside the running container. This enables the container
@@ -120,8 +121,8 @@ Supported RDHPCS Container Solutions
 ------------------------------------
 
 The dominant container platform across the enterprise and broader container
-ecosystem is `Docker <https://www.docker.com/>_`; however, it is not well suited
-for High Performance Computing (HPC) environments. A key limitation is that
+ecosystem is `Docker <https://www.docker.com/>_`.  However, Docker is not well
+suited to High Performance Computing (HPC) environments. A key limitation is that
 Docker typically requires root (or sudo) privileges to build and run
 containers, raising security concerns on shared HPC systems. Additionally,
 Docker is designed for microservice-based workloads, where numerous small,
@@ -145,7 +146,7 @@ Laboratory (LBL), and initially released in 2015 (see `Singularity/Apptainer
 history <https://en.wikipedia.org/wiki/Apptainer#History>`_).
 
 A fork in the development of *Singularity* happened few years later,
-resulting in splitting the initial project into two. One is a direct
+splitting the initial project into two. One is a direct
 continuation of the initial project, `SingularityCE
 <https://sylabs.io/singularity/>`_, is an open source with commercial
 vendor stewardship. The other is `Apptainer <https://apptainer.org/>`_, more
@@ -168,7 +169,7 @@ Differences between SingularityCE and Apptainer
 The installation process is the main difference between SingularityCE and
 Apptainer. SingularityCE inherited the legacy Singularity behavior and is
 installed with *setuid* bit enabled (effectively running programs with the
-permissions of the file's owner, not the user who executes it). However,
+permissions of the file's owner, not the user who executes it).
 Apptainer by default disables *setuid* and runs in *root-less* mode out of
 the box. For a regular user, SingularityCE thus largely disables `build`
 service for security reasons, with some exceptions for very basics (such
@@ -237,14 +238,14 @@ How to create images
 Superuser permissions are required to create images from SingularityCE.
 For security reasons, this service is not currently allowed on NOAA's R&D HPC
 systems, where SingularityCE is installed.
-Users either need to download available images online, or build their
+Users must either download available images online, or build their
 own images on other platforms where Apptainer is installed.
 
 .. note::
 
     Podman is available on PPAN / Analysis for this purpose.
 
-For image building, please refer to the related `documents for SingularityCE
+For image building, refer to the related `documents for SingularityCE
 <https://docs.sylabs.io/guides/latest/user-guide/>`_  or
 `Docker <Docker documentation_>`_. Existing
 Docker images can be converted to Singularity images and then run on NOAA's R&D
@@ -334,7 +335,7 @@ typically done on any system.
 Using a container to run a parallel job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here is an example Slurm script to run the wrf model with 512 MPI tasks. In
+Here is a sample Slurm script to run the wrf model with 512 MPI tasks. In
 this example, the :file:`wrf.exe` executable is compiled on the host machine
 using the :file:`hydro.sif` container. The :file:`wrf.exe` and
 :file:`hydro.sif` files are all in the working directory of the run.
@@ -366,7 +367,7 @@ Container help, questions, and guidance
 The complexities involving containers, particularly MPI and containers,
 can make containers difficult to use. RDHPCS system administrators and help
 staff have limited knowledge on using containers on HPC systems. Open a
-:ref:`help request <getting_help>` to what help can be offered. However,
-you will likely find your fellow scientists and the greater container
-communities have better knowledge for your specific Singularity
-image/application.
+:ref:`help request <getting_help>` to obtain what help can be offered. 
+In practice, you will likely find that your fellow scientists and the 
+greater container communities have better knowledge for your specific 
+Singularity image/application.
