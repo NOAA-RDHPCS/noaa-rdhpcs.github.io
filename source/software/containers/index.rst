@@ -15,7 +15,7 @@ Containers
 .. note:: Current Status
 
     We now allow all users and projects to run `Singularity
-    <https://en.wikipedia.org/wiki/Singularity_(software)>`_ containers on Ursa, Gaea,
+    <https://en.wikipedia.org/wiki/Apptainer#History>`_ containers on Ursa, Gaea,
     Hera, MSU-HPC (Orion and Hercules), Mercury, and NOAA Cloud providers via
     ParallelWorks.
     Although this allows users to run Singularity containers, we currently do not
@@ -35,7 +35,7 @@ goal is with the use of *software containers*. Through the use of containers,
 software developers can build their stack and create encapsulated run-time
 environments which may be distributed to their user base. This greatly
 minimizes the need for users to have to worry about software dependencies and
-user environment.
+machine-specific user environment.
 
 A single container image stored on disk can be used for launching multiple
 container instances, including by different users. Each running container
@@ -72,7 +72,8 @@ to lower overhead and more efficient use of the host system resources.
 
 Containers are typically stored and distributed as image files, such as `.img`
 (legacy formats) or `.sif` (Singularity Image Format). Each image contains its
-own filesystem and all necessary software components. Container software —
+own filesystem and all necessary software components, built as several
+software layers stacked on top of each other. Container software —
 such as *SingularityCE* or *Apptainer* — is used to launch these images to
 start a container instance. Container is thus a running environment of the
 image, and has layers such as `a) Linux base image, b) application image,
@@ -84,9 +85,9 @@ system’s operating system environment, as demonstrated in the diagram below.
 .. figure:: /images/containers_system2.png
    :width: 60%
    :align: center
-   :alt: containers have their own filesystem; they interact with the host at runtime, providing virtualication at the application level
+   :alt: containers have their own filesystem; they interact with the host at runtime, making a container instance being viewed as regular running application.
 
-   Containers have their own filesystem. They interact with the host at runtime, providing virtualication at the application level.
+   Containers have their own filesystem. They interact with the host at runtime, making a container instance being viewed as regular running application.
 
 Containers can "bind" directories from the host system, making selected host
 filesystems accessible inside the running container. This enables the container
@@ -119,7 +120,7 @@ Supported RDHPCS Container Solutions
 ------------------------------------
 
 The dominant container platform across the enterprise and broader container
-ecosystem is Docker <https://www.docker.com/>_; however, it is not well suited
+ecosystem is `Docker <https://www.docker.com/>_`; however, it is not well suited
 for High Performance Computing (HPC) environments. A key limitation is that
 Docker typically requires root (or sudo) privileges to build and run
 containers, raising security concerns on shared HPC systems. Additionally,
@@ -130,13 +131,9 @@ Docker unsuitable for resource-intensive applications typical of HPC
 environments.
 
 To address these needs, alternative container technologies have been developed
-specifically for HPC environments. One such solution is `Singularity`, which
-was later split into `SingularityCE` (Community Edition) and `Apptainer`. These
-packages are designed to operate securely without requiring elevated privileges
-and to integrate effectively with HPC system architectures. In the remainder
-of this text, the term “Singularity” is used in a general sense, with
-distinctions between *SingularityCE* and *Apptainer* software packages noted
-where relevant.
+specifically for HPC environments. One such solution is `Singularity`,
+designed to operate securely without requiring elevated privileges
+and to integrate effectively with HPC system architectures.
 
 Singularity
 ===========
@@ -144,36 +141,39 @@ Singularity
 Singularity is a container solution created for scientific and
 application-driven workloads for shared computing environments such as HPC
 systems. It was originally developed by Lawrence Berkeley National
-Laboratory (LBL).
+Laboratory (LBL), and initially released in 2015 (see `Singularity/Apptainer
+history <https://en.wikipedia.org/wiki/Apptainer#History>`_).
 
-Please note that there is a fork in the development of singularity into two
-projects, `Apptainer <https://apptainer.org/>`_ and `SingularityCE
-<https://sylabs.io/singularity/>`_. Containers
-built with either tool are expected to work with the other tool.
+A fork in the development of *Singularity* happened few years later,
+resulting in splitting the initial project into two. One is a direct
+continuation of the initial project, `SingularityCE
+<https://sylabs.io/singularity/>`_, is an open source with commercial
+vendor stewardship. The other is `Apptainer <https://apptainer.org/>`_, more
+community-driven and oriented on HPC and Cloud use and integration.
+Containers built with either tool are expected to work with the other tool.
 SingularityCE can be invoked from the command line using the `singularity`
 command, and Apptainer can be invoked with the `apptainer` command.
 Apptainer aliases the SingularityCE command, so users can use the
 `singularity` command on all RDHPCS systems without breaking their workflows.
-However, there are small but important differences between Apptainer and
-SingularityCE. For convenience, when the word *Singularity* is used, it
-implies either *SingularityCE* or *Apptainer* or both depending on the context.
 
 The `Apptainer documentation
-<https://apptainer.org/docs/user/latest/>`_ and `Docker documentation
-<https://docs.docker.com/>`_ may provide useful information.
-Please refer to the `SingularityCE documentation
-<https://docs.sylabs.io/guides/latest/user-guide/>`_ for additional information.
+<https://apptainer.org/docs/user/latest/>`_, `SingularityCE documentation
+<https://docs.sylabs.io/guides/latest/user-guide/>`_, and `Docker
+documentation <https://docs.docker.com/>`_  provide more extensive
+information about containerization, software installations, and users guides.
 
 Differences between SingularityCE and Apptainer
 -----------------------------------------------
 
 The installation process is the main difference between SingularityCE and
 Apptainer. SingularityCE inherited the legacy Singularity behavior and is
-installed with *setuid* bit enabled. However, Apptainer by default
-disables *setuid* and runs in *root-less* mode out of the box. As a
-result, wherever SingularityCE is installed, container build service is
-disabled for security reasons. However, users can build containers
-with Apptainer out of the box.
+installed with *setuid* bit enabled (effectively running programs with the
+permissions of the file's owner, not the user who executes it). However,
+Apptainer by default disables *setuid* and runs in *root-less* mode out of
+the box. For a regular user, SingularityCE thus largely disables `build`
+service for security reasons, with some exceptions for very basics (such
+as pulling a container from a Docker repository converting it into `\*.sif`
+image. Apptainer users, however, can build containers out of the box.
 
 
 Additional differences arise when users try to run MPI applications through
