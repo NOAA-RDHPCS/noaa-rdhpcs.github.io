@@ -91,24 +91,25 @@ Linux
 
    pkcs15-tool --help
 
-If "Command not found" is returned, install the ``opensc`` package
+If ``Command not found`` is returned, install the ``opensc`` package
 using your Linux package manager and try again.
 
 3. If you have a CAC, try the following command in a terminal window:
+
 .. code-block:: console
 
-   pkcs15-tool --read-ssh-key 4
+   pkcs15-tool --read-ssh-key 0004
 
-The output will be two lines. Copy the line that starts with "ssh-rsa"
+The output will be two lines. Copy the line that starts with ``ssh-rsa``
 and proceed to step 4.
 
 If that produced no output, or no lines that started with ssh-rsa, try:
 
 .. code-block:: console
 
-   pkcs15-tool --read-ssh-key 5
+   pkcs15-tool --read-ssh-key 0005
 
-The output will be two lines. Copy the line that starts with "ssh-rsa"
+The output will be two lines. Copy the line that starts with ``ssh-rsa``
 and proceed to step 4.
 
 If this doesn't work, proceed to the PIV instructions.
@@ -143,7 +144,8 @@ smart card. Record the existence of either “PIV AUTH” or “CAC Cert.”
 If “CAC Cert” is present, refer to either “CAC Cert 5” or “CAC Cert
 4.” Record the ID number associated with the Public RSA Key.
 
-5. Use the ID number to view your SSH key.
+5. Use the ID number to view your SSH key.  Preserve the leading
+   zeros!
 
 .. code-block:: console
 
