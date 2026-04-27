@@ -48,7 +48,7 @@ Prerequisites
 - A CAC/PIV card reader connected to your workstation
 - Your CAC/PIV PIN
 - An active NOAA RDHPCS account
-- Windows only: Putty-CAC
+- Windows only: PuTTY-CAC
 
 ----
 
