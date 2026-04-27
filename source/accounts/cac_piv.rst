@@ -185,7 +185,7 @@ Windows
 
 5. Under **Authentication parameters**, click **Set CAPI Cert…**
 
-   A Windows Security dialog titled **PuTTY: Select Certificate Or Key"*
+   A Windows Security dialog titled **PuTTY: Select Certificate Or Key**
    will appear.
 
    .. note::
