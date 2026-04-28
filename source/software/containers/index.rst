@@ -87,8 +87,9 @@ system’s operating system environment, as illustrated in the diagram below.
    :align: center
    :alt: containers have their own filesystem; they interact with the host at runtime, making a container instance being viewed as regular running application.
 
-Containers have their own filesystem. They interact with the host at runtime,
-so the container instance is viewed as a regular running application.
+   Containers have their own filesystem. They interact with the host at
+   runtime, so the container instance is viewed as a regular running
+   application.
 
 Containers can "bind" directories from the host system, making selected host
 filesystems accessible inside the running container. This enables the container
@@ -143,7 +144,7 @@ Singularity is a container solution created for scientific and
 application-driven workloads for shared computing environments such as HPC
 systems. It was originally developed by Lawrence Berkeley National
 Laboratory (LBL), and initially released in 2015 (see `Singularity/Apptainer
-history <https://en.wikipedia.org/wiki/Apptainer#History>`_).
+history <https://en.wikipedia.org/wiki/Apptainer#History>`__).
 
 A fork in the development of *Singularity* happened few years later,
 splitting the initial project into two. One is a direct
@@ -163,6 +164,39 @@ The `Apptainer documentation
 documentation <https://docs.docker.com/>`_  provide more extensive
 information about containerization, software installations, and users guides.
 
+Some of the most common commands are the following:
+
+.. code-block:: shell
+
+    singularity pull ...    # converting a remote image into local *.sif image
+    singularity build ...   # building an image or sandbox, in one of the supported ways
+    singularity shell ...   # for shelling into the container or sandbox_dir
+    singularity run ...     # for running a container
+    singularity exec ...    # for launching a user's executable with the container
+
+Users could easily access help with these options using ``--help`` command,
+e.g.:
+
+.. code-block:: shell
+
+    singularity --help
+    singulairty exec --help
+
+User Identity and Execution Model
+---------------------------------
+
+Both SingularityCE and Apptainer are designed for shared HPC environments and
+thus follow a non-root, user-preserving execution model. Unlike other
+general-purpose container runtimes such as Docker, they do alter or isolate
+user permissions by default.
+
+By default, container runtimes in SingularityCE and Apptainer preserve
+the invoking user’s identity inside the container, so the same `UID/GID`
+(user ID, group ID) is
+used and no additional privileges are granted beyond those already held
+on the host (unless explicity enabled via limited features like
+``--fakeroot`` for iterative development purposes, as discussed later).
+
 Differences between SingularityCE and Apptainer
 -----------------------------------------------
 
@@ -171,10 +205,11 @@ Apptainer. SingularityCE inherited the legacy Singularity behavior and is
 installed with *setuid* bit enabled (effectively running programs with the
 permissions of the file's owner, not the user who executes it).
 Apptainer by default disables *setuid* and runs in *root-less* mode out of
-the box. For a regular user, SingularityCE thus largely disables **`build`**
-service for security reasons, with some exceptions for very basics (such
-as pulling a container from a Docker repository converting it into ``*.sif``
-image. Apptainer users, however, can build containers out of the box.
+the box. For a regular user, SingularityCE thus largely disables  **build**
+service for security reasons, with some exceptions for few basic builds
+(such as pulling a container from a Docker repository converting it into
+``*.sif`` image). Apptainer users, however, can build containers out of the
+box.
 
 Either SingularityCE or Apptainer is deployed on any given RDHPCS system.
 The below table shows the installed container software on the RDHPCS systems.
@@ -202,21 +237,19 @@ multiple CPUs and often multiple nodes for scalable performance.
 Communication and coordination between the tasks in such applications
 are handled using *MPI* (Message Passing Interface), a standardized
 framework for exchanging messages across CPUs and nodes in
-distributed-memory systems.
+distributed-memory systems. Different supported models for MPI
+integration into container runtime environment are described in the
+subsequent section.
 
-An outlile of supported modes of runtime environment models for
-MPI integration is given below.
-
-As with any model source code, it is users to download container
-images from reputable sources, to make sure that the images
+As with any model source code, it is users responsibility to download
+container images from reputable sources, to make sure that the images
 downloaded from the internet or created by the user will not violate
 the NOAA RDHPCS security policy, and to fully understand the contents
 of container images prior to running it on RDHPC systems.
 
-
 .. _containers-mpi-implementation-support:
 
-Container suppport of MPI implementaion
+Container support of MPI implementaion
 ---------------------------------------
 
 SingularityCE and Apptainer typically provide runtime environment for
@@ -248,6 +281,10 @@ a few supported MPI intergration models.
       Exascale, *PMIx*, which provides process mapping
       and connection information required for MPI initialization.
 
+   .. warning::
+
+      Mismatched MPI versions may result in runtime failures or hangs.
+      The container MPI must be ABI-compatible with the host MPI.
 
 #. **Host MPI only (bind) model** - the container does not include an MPI
    implementation, creating lighter container images. Instead, the application
@@ -264,10 +301,10 @@ a few supported MPI intergration models.
      higher-performance networks such as InfiniBand (OFI/libfabric, UCX),
      and may work well on on tightly managed HPC systems
 
-    Key requirements for this model are as follows
+    Key requirements for this model are as follows:
 
      *  `Binary compatibility (critical)`: the application needs to be built
-        against an MPI ABI-compatibel libraries with the host MPI
+        against an MPI ABI-compatible libraries with the host MPI
      *  `Library binding`: host MPI, fabric, and vendor libraries
         (e.g., /usr/lib64, /opt, /opt/cray) need to be mounted into the
         container
@@ -281,8 +318,8 @@ a few supported MPI intergration models.
     Certain advantages of this model include: i) smaller container images;
     ii) avoiding MPI duplication and version drift; iii) use of optimized
     vendor MPI (e.g, Cray, Intel MPI, etc.) and access to higher-performance
-    networks such as InfiniBand (via OFI/libfabric, UCX libraries), which may
-    work well on tightly managed HPC systems.
+    networks such as InfiniBand (via *OFI/libfabric*, *UCX* libraries), which
+    may work well on tightly managed HPC systems.
 
     However, this approach offers low portability due to container tied to
     a specific system's MPI stack, as well as required knowledge of host
@@ -299,7 +336,7 @@ a few supported MPI intergration models.
       host MPI installations
    *  Execution initiated from within the container
 
-    Advantages of this approach:
+    Advantages:
 
      *   Portable and reproducible — self-contained MPI stack independent of
          the host
@@ -319,85 +356,225 @@ a few supported MPI intergration models.
          in another due to subtle system differences
 
     The fully containerized MPI approach maximizes portability and
-    reproducibility, but is generally less reliable and less scalable than the
-    hybrid MPI model, for multi-node HPC workloads.
+    reproducibility, but is generally less reliable and may not be scalable
+    as the hybrid MPI model, for multi-node HPC workloads.
 
 In practice, the **hybrid MPI** model is considered the most robust and widely
 recommended method for supporting MPI in containerized HPC workflows.
 
 .. _containers-singularity:
 
+Downloading and creating container images
+-----------------------------------------
 
-Creating container images
--------------------------
-
-Superuser permissions are required to create images from SingularityCE.
-For security reasons, this service is not currently allowed on NOAA's R&D HPC
-systems, where SingularityCE is installed.
-Users must either download available images online, or build their
-own images on other platforms where Apptainer is installed.
+There are several ways to create Singularity container images or pull them
+from existing repositories. Some of the methods may be available for
+regular users, others require superuser (*sudo/root*) permissions to
+to create images using SingularityCE. For security reasons, some
+``build`` services are limited on NOAA's RDHPC systems, where SingularityCE
+is installed. Users could build their own images on other platforms
+where Apptainer is installed.
 
 .. note::
 
     Podman is available on PPAN / Analysis for this purpose.
 
-For image building, refer to the related `documents for SingularityCE
-<https://docs.sylabs.io/guides/latest/user-guide/>`_  or
-`Docker <Docker documentation_>`_. Existing
+For image building, also refer to the related `documents for SingularityCE
+<https://docs.sylabs.io/guides/latest/user-guide/>`_, `documents for
+Apptainer <https://apptainer.org/docs/user/main/>`_ or
+`Docker docs <Docker documentation_>`_. Existing
 Docker images can be converted to Singularity images and then run on NOAA's R&D
 HPC systems.
-
-.. note::
-
-    As with any model source code, we expect our users to download container
-    images from reputable sources and to fully understand the contents of the
-    Container prior to running it on R&D HPC systems.
-
-
-Download Singularity containers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-`Docker Hub <https://hub.docker.com>`_ and `Singularity Hub
-<https://singularityhub.com/>`_ contain dynamic images. The singularity images can
-be downloaded or converted from Docker images outside of RDHPCS. This can be
-done with Singularity using ``singularity build lolcow.sif
-shub://GodloveD/lolcow`` where ``lolcow.sif`` is the name of the Singularity
-image file, and ``shub://GodloveD/lolcow`` is the Singularity Hub container to
-download.
 
 
 Convert Docker container to Singularity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can convert Docker containers to a Singularity image and then run the image
-on R&D HPC systems.
-
-..
-  Currently the `Docker Hub`_ is not opened on the R&D HPC systems.
-  You need to do the conversion externally and then copy the image back to R&D
-  HPC systems.
+Pull from DockerHub or other Open Container Initiative (*OCI*)
+repositories. It downloads a prebuilt container and converts it into
+``.sif`` format. No root privilege is required.
 
 .. code-block:: shell
 
-    $ singularity pull lolcow.sif docker://godlovedc/lolcow
+    singularity pull image.sif docker://rockylinux:9
+    singularity pull image.sif docker://myrepo/myimage:tag
 
-Build containers
-^^^^^^^^^^^^^^^^
 
-Follow the `build documentation for Singularity <https://docs.sylabs.io/guides/latest/user-guide/build_a_container.html>`_. In
-brief, given an singularity definition file called :file:`lolcow.def`, run
-the command ``singularity build lolcow.sif lolcow.def`` to build
-the image.
+Build from a Docker container or other OCI-library sources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. important::
+.. code-block:: shell
 
-    You may need sudo/root permissions on the system where SingularityCE is installed.
+    singularity build image.sif docker://rockylinux:9
+    singularity build image.sif docker://myrepo/myimage:tag
 
-Use an existing image file
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note that ``pull`` is for simple Docker/OCI-to-SIF convertion, while ``build``
+is more general and has many build options. Both produce a ``.sif`` image
+file, they do not enable be bit-by-bit reproducibility when converting
+Docker/OCI layers.
 
-If you already have an image file on other machines, you can simply
-copy it to the target machine, and use it there.
+To ensure that files and directories are readable and executable
+by all users, a option ``--fix-perms`` could be used. It may mitigate
+permission mismatches between build-time root and run-time user, and
+adjusts restrictive permissions inherited from Docker layers, root-owned
+files, and package installs. It effectively prevents runtime issues such
+as *Permission denied* when accessing files, or non-root users unable to
+execute binaries inside the container.
+
+.. code-block:: shell
+
+    singularity build --fix-perms image.sif docker://rockylinux:9
+
+Build a writable container sandbox
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When further development of the container is needed, you may create a
+writable sandbox. It appears as a regular directory on the host filesystem
+that represents the container root filesystem. It could be built from
+a remote repository or from an existing local container image:
+
+.. code-block:: shell
+
+   singularity build --sandbox  sandbox_dir/ docker://rockylinux:9
+   singularity build --sandbox --fix-perms sandbox_dir/ docker://rockylinux:9
+   singularity build --sandbox  sandbox_dir/ image.sif
+
+This creates a directory structure under ./mydirs with further nested
+``bin/``, ``etc/``, ``usr/``, ``var/`` and other container directories,
+emulating filesystem in user space. It could be accessed as other user's
+directories.
+
+Note that it takes more disk space that ``.sif`` file, which is a compressed
+image. When container image is launched, it is mounted in Filesystem in User
+space (FUSE), using ``squashfuse/squashfuse_ll``. No mount is needed for
+a sandbox container, which is helpful for development and debugging. Note
+however that it does not give *sudo/root* privileges inside the container.
+
+When using sandbox for shelling-in or running that requires writing into
+the directory, use ``--writable`` option during launch, e.g.:
+
+.. code-block:: shell
+
+    singularity shell --writable sandbox_dir/
+
+Build a writable container sandbox with altered privileges
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+    This build requires elevated sudo/root privileges when using SingularityCE
+
+The ``--fakeroot`` option can be used to build a sandbox container with
+emulated root privileges inside the container namespace, enabling installation
+and modification steps that require elevated access while remaining
+unprivileged on the host. This option makes it particularly useful for
+iterative container development and debugging.
+
+.. code-block:: shell
+
+    singularity build --sandbox --fakeroot image/ docker://rockylinux:9
+
+Mind the warnings in the terminal prompt, e.g.:
+
+.. note::
+
+    | WARNING: The sandbox contain files/dirs that cannot be removed with 'rm'.
+    | WARNING: Use 'chmod -R u+rwX' to set permissions that allow removal.
+    | WARNING: Use the '--fix-perms' option to 'apptainer build' to modify permissions at build time.
+
+Build a container image from the existing sandbox
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A container image could also be created from the existing sandbox. If
+you used sandbox for any development, it is recommended to convert it
+to ``.sif`` image for production runs and batch jobs.
+
+.. code-block:: shell
+
+   singularity build image.sif sandbox_dir/
+   singularity build --fix-perms image.sif sandbox_dir/
+
+
+Build a container or a sandbox from a definition file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
+
+    This build requires elevated sudo/root privileges when using SingularityCE.
+    It could be used with Apptainer
+
+.. code-block:: shell
+
+   apptainer build simple-rocky9.sif simple-rocky9.def
+
+An example of the definition file ``simple-rocky9.def``:
+
+.. code::
+
+    Bootstrap: docker
+    From: rockylinux:9
+
+    %labels
+        Author Your Name
+        Version v1.0
+        Description Rocky Linux 9 example container
+
+    %post
+        dnf -y update
+        dnf -y install gcc gcc-c++ gcc-gfortran
+        dnf clean all
+
+    %runscript
+        echo "Hello from Rocky Linux 9 example container"
+        cat /etc/os-release
+
+Run a simple example:
+
+.. code-block:: shell
+
+   singularity run simple-rocky9.sif
+
+
+Note that for a more complex cases users may need to list a full (absolute)
+container name and *bind mounts* of host directories into the container,
+as discussed in the next section.
+
+
+Bind host directories into container
+------------------------------------
+
+A container normally sees its own filesystem, plus a limited set of host
+paths that are automatically mounted by the runtime. To make additional host
+directories visible inside the container, use *bind mounts*. A bind mount
+maps a directory on the host to a directory inside the container, allowing
+the application in the container to read input files, write output, and
+access shared *project* or *scratch* filesystems. This is especially important
+on HPC systems, where user data usually lives outside the container image,
+for example under ``/home``, ``/work``, ``/scratch``, ``/lustre``, or
+``/gpfs``. These bind mounts are listed in the command line using ``-B`` flag.
+If more than a single directory is needed to be bound, it needs to be listed
+with its own ``-B`` flag.
+
+
+.. code-block:: shell
+
+   singularity shell -B /work image.sif
+   singularity shell -B /scratch3 -B /scratch4
+
+Some host directories needed at container runtime
+may have the same name as native container directories. Host directories
+could then be mounted with a different name for container runtime use.
+The renaming approach is as following: ``-B dir_host:dir_container``.
+
+.. code-block:: shell
+
+   singularity build -B /local -B /work -B  /apps:/apps2 image.sif
+   singularity exec -B /local -B /work -B  /apps:/apps2 image.sif
+
+In this case, ``/work`` and ``/local`` filesystem on the host system are
+mounted with the same name, but host's ``/apps`` becomes ``/apps2`` inside
+the runtime container. Usually only top-level directories (filesystems)
+need to be listed to create a mount point inside the container.
+
 
 Run a Single Node or Single Core Containers
 -------------------------------------------
@@ -426,7 +603,7 @@ typically done on any system.
 
 .. code-block:: shell
 
-    $ singularity shell container.sif
+    singularity shell container.sif
 
 Using a container to run a parallel job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
