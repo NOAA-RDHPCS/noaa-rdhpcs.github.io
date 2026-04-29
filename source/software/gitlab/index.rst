@@ -99,23 +99,22 @@ For detailed instructions on PAT, refer to the
 Gitlab Project
 ~~~~~~~~~~~~~~
 
-A git repository is designated as a Project on Gitlab. On Gitlab instance, container
-images are associated with a Gitlab Project. If users want to upload a container
-image or create a new git repository, a Gitlab Project has to be created.
-When creating a new Project, the user may be asked whether to use the user name or
-a group name as the namespace.  Unless the project belongs to a group, use the user
-name.
+A git repository is designated as a Project on Gitlab. On Gitlab instance,
+container images are associated with a Gitlab Project. If users want to upload
+a container image or create a new git repository, a Gitlab Project has to be
+created.  When creating a new Project, the user may be asked whether to use the
+user name or a group name as the namespace.  Unless the project belongs to a
+group, use the user name.
 
 A Gitlab Project has three visibility levels: private, internal, and public.
-A private project can only be accessed by the owners of the project which could be
-a single user or a group owining the project.
+A private project can only be accessed by the owners of the project which could
+be a single user or a group owining the project.
 If a repository or container images need to be shared to the RDHPCS users, the
 associated Project needs either internal or public visibility.
-Because Gitlab instance is accessible only from RDHPCS network, internal and public
-visibility levels serve similar purpose except accessing public projects do not
-require authentication to the Gitlab. It is recommended to use public visibility
-for general sharing.
-
+Because Gitlab instance is accessible only from RDHPCS network, internal and
+public visibility levels serve similar purpose except accessing public projects
+do not require authentication to the Gitlab. It is recommended to use public
+visibility for general sharing.
 
 
 Git Usage
