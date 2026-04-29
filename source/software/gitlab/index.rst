@@ -1,7 +1,7 @@
 NOAA RDHPCS Git and Container Registry Server
 =============================================
 
-.. 
+..
     Git is a popular software version control system designed to help
     developers track changes in source code, manage multiple versions
     of files, and collaborate efficiently across teams. Git follows a
@@ -16,15 +16,15 @@ NOAA RDHPCS Git and Container Registry Server
     other development tools, making it an essential component of modern
     software development and delivery workflows.
 
-NOAA provides a secure Git server (URL: git.rdhpcs.noaa.gov) and a 
-container registry (URL: registry.rdhpcs.noaa.gov) based on 
+NOAA provides a secure Git server (URL: git.rdhpcs.noaa.gov) and a
+container registry (URL: registry.rdhpcs.noaa.gov) based on
 a self-hosted Gitlab instance that is accessible only from
 the RDHPCS systems. The Gitlab instance
 supports CI/CD pipelines that can run with self-hosted Gitlab Runners installed
 on RDHPCS systems.
 
 .. attention::
-  
+
   The NOAA Git server and the container registry are accessible natively only from
   the RDHPCS systems. Users need to use tunnels if accessing them from
   external machines such as personal laptops.
@@ -61,19 +61,19 @@ Manual Tunnel
 Configure User Authentication for Command Line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Public and internal projects hosted on the Gitlab requires user authentication. 
-The Gitlab instance does not support the Yubikey based authentication from the 
-command line. Instead, users are expected to setup either SSH keys or Personal
-Access Token (PAT).  
+Public and internal projects hosted on the Gitlab requires user
+authentication. The Gitlab instance does not support the Yubikey based
+authentication from the command line. Instead, users are expected to
+setup either SSH keys or Personal Access Token (PAT).
 
 SSH Keys
 ++++++++
 
 SSH keys come in pairs and consist of a public and private key. Users typically
-create them on the machine (client) from which the Gitlab server is accessed. 
-Each client machine requires its own set of SSH keys. The RDHPCS systems such as
-Ursa and Hera have pregenerated SSH keys. Users have to upload the public SSH key
-to the Gitlab server. 
+create them on the machine (client) from which the Gitlab server is accessed.
+Each client machine requires its own set of SSH keys. The RDHPCS systems such
+as Ursa and Hera have pregenerated SSH keys. Users have to upload the public
+SSH key to the Gitlab server.
 See `Use SSH keys with Gitlab <https://docs.gitlab.com/user/ssh/>`__
 for detailed instructions.
 
@@ -104,16 +104,16 @@ images are associated with a Gitlab Project. If users want to upload a container
 image or create a new git repository, a Gitlab Project has to be created.
 When creating a new Project, the user may be asked whether to use the user name or
 a group name as the namespace.  Unless the project belongs to a group, use the user
-name. 
+name.
 
 A Gitlab Project has three visibility levels: private, internal, and public.
-A private project can only be accessed by the owners of the project which could be 
+A private project can only be accessed by the owners of the project which could be
 a single user or a group owining the project.
-If a repository or container images need to be shared to the RDHPCS users, the 
+If a repository or container images need to be shared to the RDHPCS users, the
 associated Project needs either internal or public visibility.
 Because Gitlab instance is accessible only from RDHPCS network, internal and public
-visibility levels serve similar purpose except accessing public projects do not 
-require authentication to the Gitlab. It is recommended to use public visibility 
+visibility levels serve similar purpose except accessing public projects do not
+require authentication to the Gitlab. It is recommended to use public visibility
 for general sharing.
 
 
@@ -126,8 +126,8 @@ Git Client Access
 Git access is typically through a git client, (either git command on CLI
 or IDE) on the RDHPCS system. The URL for the git repo on the  git server
 is dependent on whether ssh or https protocol is used. User id and PAT
- have to be supplied if https protocol is used. SSH protocol enables
-password-less connection through SSH keys. To learn more about git, refer 
+have to be supplied if https protocol is used. SSH protocol enables
+password-less connection through SSH keys. To learn more about git, refer
 to `git documentation <https://git-scm.com/>`__.
 
 Container Registry Usage with Apptainer
@@ -163,7 +163,7 @@ file or log in again.
 
 Registry Login
 ~~~~~~~~~~~~~~
-A container image hosted on a registry can be either publicly accessible or 
+A container image hosted on a registry can be either publicly accessible or
 accessible only after authentication on the registry. For pushing images,
 authentication is mandatory. To authenticate to
 the registry, first ensure you have account on the registry. Then authenticate
@@ -191,7 +191,7 @@ Image Pull
    does not to supply any registry URL, DockerHub registry is used. Running
    the above command creates ``alpine_latest.sif`` in the working directory.
 
-2. Assuming an alpine linux SIF image is stored on the RDHPCS registry, 
+2. Assuming an alpine linux SIF image is stored on the RDHPCS registry,
 
 .. code-block:: bash
 
@@ -199,8 +199,8 @@ Image Pull
      oras://registry.rdhpcs.noaa.gov/user.name/user_project/alpine:latest
 
    In the above command, :code:`user.name/user_project` represents the project
-   under which the image is stored. Since the image is in SIF format, 
-   :code:`oras://` prefix is needed. 
+   under which the image is stored. Since the image is in SIF format,
+   :code:`oras://` prefix is needed.
 
 3. A custom local image name can also be used as shown below.
 
@@ -209,7 +209,7 @@ Image Pull
    apptainer pull my_image.sif \
      docker://registry.rdhpcs.noaa.gov/group/project/<image>:<tag>
 
-   When the above command is executed, instead of :code:`image_tag.sif`, 
+   When the above command is executed, instead of :code:`image_tag.sif`,
    :code:`my_image.sif` is created in the working directory.
 
 Push Image to the RDHPCS container registry
