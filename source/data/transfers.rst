@@ -566,6 +566,55 @@ method will work from any system on the network (that is, your local
 machine does not necessarily have to be in the noaa.gov domain). We
 recommend using this in cases where DTN is not accessible.
 
+
+Transferring data between RDHPCS systems and a local Windows laptop
+===================================================================
+
+
+1. Find your assigned "Local Port" number for your machine.
+Login to the host in question (Ursa for example) and look for the
+following message in the start up banner:
+
+.. code-block:: shell
+
+  Local port 12345 forwarded to remote host.
+  Remote port 1234 forwarded to local host.
+
+.. note::
+
+  In this example, output 12345 is your unique assigned **Local Port** for this host.
+  Note down the above number and logout of that session.
+
+.. attention::
+
+  Make sure you don't have any existing sessions on that machine. If you do have existing
+  sessions you will need to close them before you establish the port tunnel.
+  You can also open a new session on a different machine where you have no existing sessions.
+
+1. Establish a port tunnel using the above port number using Windows
+PowerShell. Open a new Windows PowerShell session and connect to the host using
+the following command:
+
+
+.. code-block:: shell
+
+  ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-mfa.princeton.rdhpcs.noaa.gov
+
+.. note::
+
+  Replace First.Last with your name, and XXXXX with the assigned Local Port number noted above.
+
+1. Connect using WinSCP using the following settings:
+
+.. code-block:: shell
+
+  File Protocol: sftp
+  Host: localhost
+  Port: XXXXX
+
+4. Transfer data as you normally would with WinSCP.
+
+
 .. _ssh-tunnel:
 
 SSH Port Tunnel from Linux-like systems
