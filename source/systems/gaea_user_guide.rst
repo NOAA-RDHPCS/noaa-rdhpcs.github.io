@@ -506,7 +506,7 @@ Move data to and from Gaea
 
 The suggested way to move data to and from Gaea is `Globus Online
 <https://app.globus.org>`_.  Please review the additional information in
-:ref:`globus_online_data_transfer` and :ref:`globus_example`.
+:ref:`globus_quickstart` and :ref:`globus_concepts`.
 
 Please review :ref:`transferring-data` for information on other transfer
 methods available.
