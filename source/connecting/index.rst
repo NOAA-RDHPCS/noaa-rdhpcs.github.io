@@ -87,7 +87,7 @@ OpenSSH <https://learn.microsoft.com/en-us/windows-server/administration/openssh
 Bastion Hostnames
 =================
 .. |CBHN|	replace:: **CAC Bastion hostnames**
-.. |RBHN|	replace:: **RSA Bastion hostnames**
+.. |MBHN|	replace:: **MFA Bastion hostnames**
 .. |GCPRNG|	replace:: gaea.princeton.rdhpcs.noaa.gov
 .. |GCBRNG|	replace:: gaea.boulder.rdhpcs.noaa.gov
 .. |GRPRNG|	replace:: gaea-rsa.princeton.rdhpcs.noaa.gov
@@ -118,10 +118,24 @@ Bastion Hostnames
 .. |URPRNG|	replace:: ursa-rsa.princeton.rdhpcs.noaa.gov
 .. |URBRNG|	replace:: ursa-rsa.boulder.rdhpcs.noaa.gov
 
+.. |FCPRNG|	replace:: analysis-cac.fairmont.rdhpcs.noaa.gov
+.. |FRBRNG|	replace:: analysis-mfa.fairmont.rdhpcs.noaa.gov
+.. |FBPRNG|	replace:: gaea-cac.fairmont.rdhpcs.noaa.gov
+.. |FRPRNG|	replace:: gaea-mfa.fairmont.rdhpcs.noaa.gov
+.. |HCGRNG|	replace:: hera-cac.fairmont.rdhpcs.noaa.gov
+.. |HRGRNG|	replace:: hera-mfa.fairmont.rdhpcs.noaa.gov
+.. |MCCRNG|	replace:: mercury-cac.fairmont.rdhpcs.noaa.gov
+.. |MCRRNG|	replace:: mercury-mfa.fairmont.rdhpcs.noaa.gov
+.. |MGCRNG|	replace:: mgmt-cac.fairmont.rdhpcs.noaa.gov
+.. |MGBRNG|	replace:: mgmt-mfa.fairmont.rdhpcs.noaa.gov
+.. |URCRNG|	replace:: ursa-cac.fairmont.rdhpcs.noaa.gov
+.. |URRRNG|	replace:: ursa-mfa.fairmont.rdhpcs.noaa.gov
+
+
 .. |OUG|	replace:: :ref:`orion-user-guide`
 
 +-------------------+-----------------+----------------------------------+
-| **RDHPCS System** | |CBHN|          | |RBHN|                           |
+| **RDHPCS System** | |CBHN|          | |MBHN|                           |
 +-------------------+-----------------+----------------------------------+
 | Gaea              | |GCPRNG|        | |GRPRNG|                         |
 |                   |                 |                                  |
@@ -147,6 +161,24 @@ Bastion Hostnames
 |                   |                 |                                  |
 |                   | |UCPRNG|        | |URPRNG|                         |
 +-------------------+-----------------+----------------------------------+
+| Fairmont          | |FCPRNG|        | |FRBRNG|                         |
+|                   |                 |                                  |
+|                   | |FBPRNG|        | |FRPRNG|                         |
+|                   |                 |                                  |
+|                   | |HCGRNG|        | |HRGRNG|                         |
+|                   |                 |                                  |
+|                   | |MCCRNG|        | |MCRRNG|                         |
+|                   |                 |                                  |
+|                   | |MGCRNG|        | |MGBRNG|                         |
+|                   |                 |                                  |
+|                   | |URCRNG|        | |URRRNG|                         |
++-------------------+-----------------+----------------------------------+
+
+
+
+
+
+
 
 In addition to the Bastions, RDHPCS users have access to computational capacity
 on the Orion and Hercules systems, hosted by Mississippi State University. See
