@@ -12,13 +12,13 @@
 Containers
 **********
 
-.. note:: Current Status
+.. note:: **Current Status**
 
     We now allow all users and projects to run `Singularity
     <https://en.wikipedia.org/wiki/Apptainer#History>`_ containers on Ursa, Gaea,
     Hera, MSU-HPC (Orion and Hercules), Mercury, and NOAA Cloud providers via
     ParallelWorks.
-    Although this allows users to run Singularity containers, we currently do not
+    Although users are allowed to run Singularity containers, we currently do not
     support any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
     Etc.) to support Containers.
 
@@ -45,9 +45,13 @@ environment variables, and accessing host filesystems.
 
 While containers provide a high degree of portability, their correct use
 in HPC environments requires an understanding of several key concepts,
-including the container execution model, filesystem access through bind
-mounts, and interaction with system-provided Message-Passing Interface
-(MPI) implementations.
+including: 
+
+* the container execution model
+* filesystem access through bind mounts
+* interaction with system-provided Message-Passing Interface
+  (MPI) implementations.
+
 These topics are introduced in the following sections.
 
 
@@ -96,7 +100,7 @@ system at runtime, as illustrated in the diagram below.
 Although containers provide an isolated environment, they rely on the host
 system for access to filesystems, hardware, and other resources. Host
 directories can be made available inside the container at runtime through
-*bind mounts* enabling applications to read input data and write output
+*bind mounts*, enabling applications to read input data and write output
 results (see :ref:`Bind Mounting Host Directories Into a Container
 <containers-bind-mount-host-directories>`).
 
@@ -124,14 +128,14 @@ To address these needs, alternative technologies have been developed
 specifically for HPC environments, such as *Singularity* containers
 (`software <https://en.wikipedia.org/wiki/Singularity_(software)>`_).
 In particular, *SingularityCE*
-`https://sylabs.io/singularity/ <https://sylabs.io/singularity/>`_ and
-*Apptainer* (`https://apptainer.org/ <https://apptainer.org/>`_)
+`https://sylabs.io/singularity/<https://sylabs.io/singularity/>`_ and
+*Apptainer*(`https://apptainer.org/ <https://apptainer.org/>`_)
 provide a container model
-that operates without requiring elevated privileges and could integrate with
+that operates without requiring elevated privileges, and could integrate with
 HPC system architecture, batch schedulers, parallel filesystems, and
 high-performance interconnects.
 
-On RDHPCS systems, both *SingularityCE* and *Apptainer* are supported.
+Both *SingularityCE* and *Apptainer* are supported On RDHPCS systems.
 The table below shows the installed container software on each system.
 
 ===============  =============  =========
@@ -180,21 +184,21 @@ Both projects retain a common design and are widely used across HPC systems.
 Further information is available at:
 
 - Docker:
-  `https://www.docker.com/ <https://www.docker.com/>`_
+  `https://www.docker.com/<https://www.docker.com/>`_
 - Docker Documentation:
-  `https://docs.docker.com/ <https://docs.docker.com/>`_
+  `https://docs.docker.com/<https://docs.docker.com/>`_
 
 - SingularityCE:
-  `https://sylabs.io/singularity/ <https://sylabs.io/singularity/>`_
+  `https://sylabs.io/singularity/<https://sylabs.io/singularity/>`_
 - SingularityCE Documentation:
-  `https://docs.sylabs.io/ <https://docs.sylabs.io/>`_
-  `https://docs.sylabs.io/guides/latest/user-guide/ <https://docs.sylabs.io/guides/latest/user-guide/>`_
+  `https://docs.sylabs.io/<https://docs.sylabs.io/>`_
+  `https://docs.sylabs.io/guides/latest/user-guide/<https://docs.sylabs.io/guides/latest/user-guide/>`_
 
 - Apptainer:
-  `https://apptainer.org/ <https://apptainer.org/>`_
+  `https://apptainer.org/<https://apptainer.org/>`_
 - Apptainer Documentation:
-  `https://apptainer.org/docs/ <https://apptainer.org/docs/>`_
-  `https://apptainer.org/docs/user/latest/ <https://apptainer.org/docs/user/latest/>`_
+  `https://apptainer.org/docs/<https://apptainer.org/docs/>`_
+  `https://apptainer.org/docs/user/latest/<https://apptainer.org/docs/user/latest/>`_
 
 .. _containers-user-identity:
 
