@@ -396,7 +396,7 @@ particularly useful for iterative container development and debugging.
     singularity build --sandbox --fakeroot image/ docker://rockylinux:9
 
 Sandbox builds may create files with restrictive permissions that cannot be
-removed with ``rm``. Note the prompt warnings, e.g.:
+removed with ``rm``. Note the prompt warnings, such as:
 
 .. warning::
 
@@ -506,7 +506,7 @@ Containers can be executed directly using the container runtime. The
    singularity run image.sif
 
 The ``run`` command always invokes the container’s predefined runscript.
-To execute a different command directly, use ``exec`` instead
+Use ``exec`` to execute a different command directly
 (:ref:`Executing Applications in Containers <containers-exec>`).
 
 .. note::
@@ -533,7 +533,7 @@ For example, if the container defines a runscript such as:
    echo "$@"
    my_application "$@"
 
-then the arguments are accessible within the runscript via ``$@`` and are
+then the arguments are accessible within the runscript via ``$@``, and are
 forwarded to the application. The output would be:
 
 .. code-block:: shell
