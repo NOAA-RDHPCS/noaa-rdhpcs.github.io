@@ -97,12 +97,14 @@ RDHPCS System compute allocations are determined by the RDHPCS
 Allocation Committee (AC), with oversight from the NOAA HPC Board.
 Approved System allocations are typically given to portfolios as a
 percentage of the System or an average core-hours per month. Each
-portfolio is represented on the Allocation Committee and an Allocation
-Committee Chair is assigned by the HPC board typically for a 1+ year
-term. Each portfolio has a portfolio manager (PfM) who is responsible
+portfolio is represented on the Allocation Committee. An Allocation
+Committee Chair is assigned by the HPC board, typically for a 1+ year
+term. Each portfolio has a portfolio manager (PfM), who is responsible
 for managing their projects and Principal Investigators (PIs), and
-distributing their allocation amongst their projects as needed on each
-System where they have an allocation. Within a portfolio, allocations
+distributing their allocation among their projects as needed on each
+System where they have an allocation.
+
+Within a portfolio, allocations
 on a System can be traded by the PfM as desired. Portfolios may trade
 allocations with each other on a System or between Systems with
 approval from all concerned PfM's, and with documentation and
@@ -113,7 +115,10 @@ portfolio's disk quota on a system is initially based on their
 percentage of compute allocation on that System.
 
 Click to review the `On-Premises Allocation Request Form.
-<https://docs.google.com/forms/d/e/1FAIpQLSdP6aZJ8HslQ4blPE3upF5tduudkbaChjDwLYDCA0LjPciWCQ/viewform?usp=sf_link>`_
+<https://docs.google.com/forms/d/e/1FAIpQLSd7B3I7ON-aX1--Q2Ah4P_Abz9D3YyBrO76yxEJyN9zui4sUA/viewform?usp=sf_link>`_
+
+The :ref:`cloud-allocations` process is different and is described in the
+Cloud Allocations section below.
 
 The Allocation Committee (AC) is appointed by
 the HPC Board to manage allocations across RDHPCS resources. The
@@ -135,13 +140,12 @@ There are three steps to obtain an increase in allocation:
 
 #. Identify your Portfolio Manager (PfM).
 #. Request that your PfM
-   complete an `On-Premises Allocation Request Form
-   <https://docs.google.com/forms/d/e/1FAIpQLSdP6aZJ8HslQ4blPE3upF5tduudkbaChjDwLYDCA0LjPciWCQ/viewform?usp=sf_link>`_.
-#. The PfM completes and submits the request for approval.
-#. The PfM opens a Help Ticket to notify RDHPCS of the request.
-   Send email to rdhpcs.<system>.help@noaa.gov, using the actual system name,
-   with Allocation in the subject line.
-
+   complete the `On-Premises Allocation Request Form
+   <https://docs.google.com/forms/d/e/1FAIpQLSd7B3I7ON-aX1--Q2Ah4P_Abz9D3YyBrO76yxEJyN9zui4sUA/viewform>`_.
+#. The PfM submits the completed request for approval.
+#. The PfM opens a Help Ticket to notify RDHPCS of the request. (To create a
+   help ticket, send email to rdhpcs.<system>.help@noaa.gov, using the actual
+   system name, with Allocation in the subject line.
 
 Adding a Project to an Allocation
 ---------------------------------
@@ -168,12 +172,14 @@ The request should contain the following:
   system should be emailed to the Allocation Committee Chair, as they
   must be approved by the Allocation Committee.
 
+.. _cloud-allocations:
+
 Cloud Computing Allocations
 ---------------------------
 
 To request allocation for a new project, complete the `Cloud Computing
 Allocation form
-<https://docs.google.com/forms/d/e/1FAIpQLScbCVdipW-Bj2iD-bPzFjrzGjOdVM_jbmabbEZ3-CNrWdrdBA/viewform?usp=sf_link>`_.
+<https://docs.google.com/forms/d/e/1FAIpQLSfzDt2eoVoeGGzA7nnMLq5znFh7_9RxNFNRhMlSZWWWsNeYzw/viewform?usp=sf_link>`_.
 After you complete the form, create a Cloud
 help ticket to track the issue. Send email to
 rdhpcs.cloud.help@noaa.gov, using Cloud Allocation Request in the
