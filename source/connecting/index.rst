@@ -88,29 +88,29 @@ Bastion Hostnames
 =================
 .. |CBHN|	replace:: **CAC Bastion hostnames**
 .. |MBHN|	replace:: **MFA Bastion hostnames**
-.. |GCPRNG|	replace:: gaea.princeton.rdhpcs.noaa.gov
+.. |GCPRNG|	replace:: gaea-cac.princeton.rdhpcs.noaa.gov
 .. |GCFRNG|	replace:: gaea-cac.fairmont.rdhpcs.noaa.gov
-.. |GMPRNG|	replace:: gaea-rsa.princeton.rdhpcs.noaa.gov
+.. |GMPRNG|	replace:: gaea-mfa.princeton.rdhpcs.noaa.gov
 .. |GMFRNG|	replace:: gaea-mfa.fairmont.rdhpcs.noaa.gov
 
-.. |HCPRNG|	replace:: hera.princeton.rdhpcs.noaa.gov
+.. |HCPRNG|	replace:: hera-cac.princeton.rdhpcs.noaa.gov
 .. |HCFRNG|	replace:: hera-cac.fairmont.rdhpcs.noaa.gov
-.. |HMPRNG|	replace:: hera-rsa.princeton.rdhpcs.noaa.gov
+.. |HMPRNG|	replace:: hera-mfa.princeton.rdhpcs.noaa.gov
 .. |HMFRNG|	replace:: hera-mfa.fairmont.rdhpcs.noaa.gov
 
-.. |PCPRNG|	replace:: bastion-analysis.princeton.rdhpcs.noaa.gov
+.. |PCPRNG|	replace:: analysis-cac.princeton.rdhpcs.noaa.gov
 .. |PCFRNG|	replace:: analysis-cac.fairmont.rdhpcs.noaa.gov
-.. |PMPRNG|	replace:: analysis-rsa.princeton.rdhpcs.noaa.gov
+.. |PMPRNG|	replace:: analysis-mfa.princeton.rdhpcs.noaa.gov
 .. |PMFRNG|	replace:: analysis-mfa.fairmont.rdhpcs.noaa.gov
 
 .. |MCPRNG|	replace:: mercury-cac.princeton.rdhpcs.noaa.gov
 .. |MCFRNG|	replace:: mercury-cac.fairmont.rdhpcs.noaa.gov
-.. |MMPRNG|	replace:: mercury-rsa.princeton.rdhpcs.noaa.gov
+.. |MMPRNG|	replace:: mercury-mfa.princeton.rdhpcs.noaa.gov
 .. |MMFRNG|	replace:: mercury-mfa.fairmont.rdhpcs.noaa.gov
 
 .. |UCPRNG|	replace:: ursa-cac.princeton.rdhpcs.noaa.gov
 .. |UCFRNG|	replace:: ursa-cac.fairmont.rdhpcs.noaa.gov
-.. |UMPRNG|	replace:: ursa-rsa.princeton.rdhpcs.noaa.gov
+.. |UMPRNG|	replace:: ursa-mfa.princeton.rdhpcs.noaa.gov
 .. |UMFRNG|	replace:: ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 .. |OUG|	replace:: :ref:`orion-user-guide`
