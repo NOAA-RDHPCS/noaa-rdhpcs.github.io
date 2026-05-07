@@ -231,6 +231,7 @@ hostdomain
 hostfile
 hostnames
 HPCS
+HPCX
 hpetest
 HPFS
 HPSS
@@ -560,6 +561,7 @@ sepp
 setopt
 setstripe
 settarg
+setuid
 Sharcnet
 SHAREDUNAME
 showallarticles
