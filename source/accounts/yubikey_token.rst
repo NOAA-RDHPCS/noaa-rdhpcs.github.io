@@ -48,12 +48,6 @@ supported for these services:
 Yubikey Registration
 --------------------
 
-.. important::
-
-   Once you have followed these registrations instructions, you will
-   be using your Yubikey to authenticate into the RDHPCS.  **Your RSA
-   token will no longer work.**
-
 The NOAA Yubikey is issued by your security office. You can only
 register **NOAA-issued YubiKeys** with AIM
 for use with RDHPCS resources.
@@ -227,8 +221,7 @@ Continue onwards to the next step, Step 5.
 
 - Enter the **Secret Key.**
 
-- Enter a 6 to 8 digit PIN. You may choose to re-use the PIN you use
-  for your RSA token to make it easier to remember.
+- Enter a 6 to 8 digit PIN. 
 
 - Confirm the PIN.
 
@@ -237,8 +230,7 @@ Continue onwards to the next step, Step 5.
 .. important::
 
    Once you have followed these registrations instructions, you will
-   be using your Yubikey to authenticate into the RDHPCS.  **Your RSA
-   token will no longer work.**
+   be using your Yubikey to authenticate into the RDHPCS.
 
 Wait for web page to return a green confirmation message.
 
