@@ -45,7 +45,7 @@ environment variables, and accessing host filesystems.
 
 While containers provide a high degree of portability, their correct use
 in HPC environments requires an understanding of several key concepts,
-including: 
+including:
 
 * the container execution model
 * filesystem access through bind mounts
@@ -126,10 +126,11 @@ HPC environments.
 
 To address these needs, alternative technologies have been developed
 specifically for HPC environments, such as *Singularity* containers
-(`software <https://en.wikipedia.org/wiki/Singularity_(software)>`_).
-In particular, *SingularityCE*
-`https://sylabs.io/singularity/<https://sylabs.io/singularity/>`_ and
-*Apptainer*(`https://apptainer.org/ <https://apptainer.org/>`_)
+(`software <https://en.wikipedia.org/wiki/Singularity_(software)>`_ ).
+
+In particular, *SingularityCE* `https://sylabs.io/singularity/
+<https://sylabs.io/singularity/>`_ and
+*Apptainer* (`https://apptainer.org/ <https://apptainer.org/>`_)
 provide a container model
 that operates without requiring elevated privileges, and could integrate with
 HPC system architecture, batch schedulers, parallel filesystems, and
@@ -184,21 +185,21 @@ Both projects retain a common design and are widely used across HPC systems.
 Further information is available at:
 
 - Docker:
-  `https://www.docker.com/<https://www.docker.com/>`_
+  `https://www.docker.com/ <https://www.docker.com/>`_
 - Docker Documentation:
-  `https://docs.docker.com/<https://docs.docker.com/>`_
+  `https://docs.docker.com/ <https://docs.docker.com/>`_
 
 - SingularityCE:
-  `https://sylabs.io/singularity/<https://sylabs.io/singularity/>`_
+  `https://sylabs.io/singularity/ <https://sylabs.io/singularity/>`_
 - SingularityCE Documentation:
-  `https://docs.sylabs.io/<https://docs.sylabs.io/>`_
-  `https://docs.sylabs.io/guides/latest/user-guide/<https://docs.sylabs.io/guides/latest/user-guide/>`_
+  `https://docs.sylabs.io/ <https://docs.sylabs.io/>`_
+  `https://docs.sylabs.io/guides/latest/user-guide/ <https://docs.sylabs.io/guides/latest/user-guide/>`_
 
 - Apptainer:
-  `https://apptainer.org/<https://apptainer.org/>`_
+  `https://apptainer.org/ <https://apptainer.org/>`_
 - Apptainer Documentation:
-  `https://apptainer.org/docs/<https://apptainer.org/docs/>`_
-  `https://apptainer.org/docs/user/latest/<https://apptainer.org/docs/user/latest/>`_
+  `https://apptainer.org/docs/ <https://apptainer.org/docs/>`_
+  `https://apptainer.org/docs/user/latest/ <https://apptainer.org/docs/user/latest/>`_
 
 .. _containers-user-identity:
 
