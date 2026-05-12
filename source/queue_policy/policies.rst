@@ -210,8 +210,8 @@ storage. Please utilize HPSS for long term storage.
 Submit requests for additional quota via an OTRS help ticket
 from the PfM. The request should contain the following:
 
-* AMOUNT: The amount of quota needed.<br>
-* JUSTIFICATION:The reason why this space is needed.<br>
+* AMOUNT: The amount of quota needed.
+* JUSTIFICATION:The reason why this space is needed.
 * TIME FRAME: Is this a temporary or permanent implementation? If
   temporary, please include the date when you would like this increase
   to be reverted.
@@ -233,7 +233,6 @@ They are NOT backed up, therefore there is a small risk that data could
 be lost without any possibility of recovery.
 HPFS-scratch on current systems include:
 * Ursa/Hera's /scratch(3,4)
-* Jet's /lfs(5,6)
 * Mercury's /collab2
 
 
@@ -248,7 +247,7 @@ HPFS-scratch on current systems include:
 
 .. note::
 
-  Use this google doc to assist you with `Ursa/Hera/Jet Scratch File
+  Use this google doc to assist you with `Ursa/Hera Scratch File
   Management <https://docs.google.com/document/d/1fDssUm61kyACE3l-8A8n6G2gHa_I9kW55DpFO1vpwBk/edit?usp=sharing>`_
 
 
@@ -279,7 +278,7 @@ replicated to another off-site location
 
 Every RDHPCS user is provided a user directory in the /data-untrusted
 directory on each HPFS (scratch) file system on RDHPCS systems (Ursa,
-Jet, Mercury, etc.) they have access to.
+Mercury, etc.) they have access to.
 
 Your "$SCRATCH/data_untrusted/$USER" directory is provided so that you
 can move data on and off of the system from any external site, and is
@@ -303,7 +302,7 @@ HFS data can be retrieved from our snapshots - please see
 :ref:`home_snapshot` for more information.
 
 Each RDHPCS user is given a home directory (/home/First.Last) and a
-**50GB** quota on each system (Ursa, Hera, Jet, etc.) they have an account
+**50GB** quota on each system (Ursa, Hera, etc.) they have an account
 on. All files owned by you in /home are counted not just files in your
 /home/First.Last directory.
 
@@ -355,8 +354,7 @@ Recover Recently Deleted Files from /home
 
 The home filesystem is backed up regularly. However, the filesystem
 also supports snapshots, which will allow you to retrieve your own
-files if they have been deleted over the last few days. The number of
-days is different for Hera and Jet clusters.
+files if they have been deleted over the last few days.
 
 Look at the snapshot directory (/home/$USER/.snapshot) to see what options
 are available. Each directory listed there represent a day.
@@ -505,35 +503,6 @@ The RDHPCS program policy is to NOT delete active project HPFS data.
 If the PI or Portfolio Manager so directs in a help request, we will
 change ownership of active HPFS project data to another project
 member.
-
-Niagara Per User Data
----------------------
-
-As Niagara is a hybrid system (a cross between a traditional HPC
-system and a data transfer/collaboration system, available to all
-RDHPCS users), the file system management needs to be handled
-differently then on more traditional HPC systems (Hera and Jet). As a
-result, the following data management policies are implemented on
-Niagara:
-
-* All files under the ``collab1/data_untrusted/$USER`` directory tree
-  which have not been accessed in the last 5 days will be
-  automatically purged.
-* All files under the ``/collab1/data/$USER`` directory tree which
-  have not been accessed in the last 60 days will be automatically
-  purged.
-* All files under the ``/collab1/data/$PROJECT`` directory are treated
-  the same as HPFS (scratch) data and are not deleted.
-
-The definition of access time is the last time the file was opened for
-reading or writing.
-
-.. note::
-
-   If the file system's usage starts getting close to the total
-   capacity, we will be forced implement a more aggressive purge
-   policy (i.e. 30 day or 15 day purge) . So please actively manage
-   your data.
 
 Home File System (HFS) Data
 ----------------------------
@@ -788,8 +757,8 @@ you run it.
 
 .. _QOS-table:
 
-Jet, Hera and Ursa QOS
-----------------------
+Hera and Ursa QOS
+-----------------
 
 .. list-table::
    :header-rows: 1
@@ -805,18 +774,20 @@ Jet, Hera and Ursa QOS
      -
      -
      -
-     - Max of 400 pending/running jobs per project/account, additional jobs
-       will be rejected. Max of 20 jobs per project/account will gain age
-       priority. Exceptions are stated below.
+     - Max of 1500 total jobs including pending and running jobs per
+       project/account, additional jobs will be rejected at submit time.
+       Max of 400 running jobs per project/account, additional jobs will
+       be in “Pending” state. Max of 20 jobs per project/account will gain
+       age priority. Exceptions are stated below
    * - batch
-     - 8400 (Jet/Hera)
+     - 8400 (Hera)
        14400 (Ursa)
      - 8 hours
      - 1
      - For non-gpu projects only. **Default QOS** for projects with an
        allocation more then Windfall-Only (RawShare=1).
    * - urgent
-     - 8400 (Jet/Hera)
+     - 8400 (Hera)
        14400 (Ursa)
      - 8 hours
      - 2
@@ -828,7 +799,7 @@ Jet, Hera and Ursa QOS
        FairShare is below 0.45, jobs submitted to urgent are automatically
        changed to batch and users notified via stderr.
    * - debug
-     - 8400 (Jet/Hera)
+     - 8400 (Hera)
        14400 (Ursa)
      - 30 mins
      - 1.25
@@ -843,14 +814,14 @@ Jet, Hera and Ursa QOS
        job to the default QOS so that you can restart your application over and
        over again without having to start a new batch job.
    * - long
-     - 4200 (Jet/Hera)
+     - 4200 (Hera)
        7296 (Ursa)
      - 16 hours
      - 1
      - For non-gpu projects only. For normal priority jobs that require between
        8-16 hours
    * - windfall
-     - 8400 (Jet/Hera)
+     - 8400 (Hera)
        14400 (Ursa)
      - 8 hours (except "service" partitions)
      - 0
