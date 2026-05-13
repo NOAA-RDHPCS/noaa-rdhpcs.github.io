@@ -133,17 +133,11 @@ See the :ref:`Quality of Service (QOS) table <QOS-table>` for more information.
 Ursa Node Sharing
 -----------------
 
-Jobs requesting less than 192 cores or the equivalent amount
-of memory will share the node with other jobs.
-
-With the Ursa ``u1-compute`` partition:
-
-* If you request 1-191 cores for your job
-  you will be allocated and charged for the greater of
-  the number of cores requested or the amount of memory
-  requested in GB divided by 2.
-* If you request 192 or greater cores you will be given and charged for whole
-  nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
+As of 5/14/26 node sharing has been enabled for all job sizes. If you
+need exclusive access to the nodes for your job please use the
+``--exclusive`` option on the sbatch command. Please refer to the
+`Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_
+for additional details on using this option.
 
 Ursa Front Ends and Service Partition
 ---------------------------------------
@@ -151,7 +145,8 @@ Ursa has 15 outward-facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
     * ``ufe01-ufe04``, total of 768 cores for interactive use.
-      See the `Login (Front End) Node Usage Policy <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#login-node-usage>`_ for important information about using Login nodes.
+      See the `Login (Front End) Node Usage Policy <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#login-node-usage>`_
+      for important information about using Login nodes.
 * 10 nodes will comprise the service partition:
     * 3,840 cores total.
     * Available via Slurm.
