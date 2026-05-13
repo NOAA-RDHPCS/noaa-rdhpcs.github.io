@@ -83,8 +83,8 @@ for detailed instructions.
 Personal Access Token (PAT)
 +++++++++++++++++++++++++++
 
-PAT is useful to access the Gitlab API, container registry and for https based git
-access. A PAT has to be created on the Gitlab server.
+PAT is useful to access the Gitlab API, container registry and for https based
+git access. A PAT has to be created on the Gitlab server.
 
 1. Click the user icon in the top-right corner and select **Edit Profile**.
 2. In the left pane, click **Personal Access Tokens**.
