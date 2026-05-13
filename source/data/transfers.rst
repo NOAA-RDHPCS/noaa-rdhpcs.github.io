@@ -408,7 +408,7 @@ open the firewall. Please provide the following information:
   how long (permanent or temporary - specify timeframe if temporary)?
 * **Source Systems (DNS name)**: dtn-ursa.fairmont.rdhpcs.noaa.gov,
   dtn-hera.fairmont.rdhpcs.noaa.gov,
-  dtn-niagara.fairmont.rdhpcs.noaa.gov
+  dtn-mercury.fairmont.rdhpcs.noaa.gov
 * **Source IPs**: See below for dtn IPs
 * **Destination Systems** (DNS name):
 * **Destination IPs**: Use the "host" command to find IPs, see below
@@ -423,8 +423,7 @@ open the firewall. Please provide the following information:
   .. code-block:: shell
 
     dtn-ursa.fairmont.rdhpcs.noaa.gov = 140.208.202.[4-5]
-    dtn-hera.fairmont.rdhpcs.noaa.gov = 140.208.171.[1-4]
-    dtn-niagara.fairmont.rdhpcs.noaa.gov = 140.208.202.[76-77]
+    dtn-mercury.fairmont.rdhpcs.noaa.gov = 140.208.202.[76-77]
 
 * Use the "host" command to find IPs
 
@@ -440,8 +439,7 @@ Example
   access to pull data from ruc.noaa.gov via the Ursa DTNs to transfer
   weather data to NOAA R&D systems.
 * **Source Systems (DNS name):** dtn-ursa.fairmont.rdhpcs.noaa.gov,
-  dtn-hera.fairmont.rdhpcs.noaa.gov,
-  dtn-niagara.fairmont.rdhpcs.noaa.gov
+  dtn-mercury.fairmont.rdhpcs.noaa.gov
 * **Source IPs**: 140.208.202.[4-5], 140.208.171.[1-4], 140.208.202.[76-77]
 * **Destination Systems:** ruc.noaa.gov
 * **Destination IPs:** 140.172.12.92
@@ -835,7 +833,7 @@ When prompted for a password, enter your RSA PIN + RSA Token:
 .. image:: /images/winSCP2.png
   :scale: 75%
 
-External Data Transfers (applies to NESCC -- Ursa and Niagara only)
+External Data Transfers (applies to NESCC -- Ursa and Mercury only)
 -------------------------------------------------------------------
 
 
@@ -861,7 +859,7 @@ contains your request. Use the subject line: <$SYSTEM> FEs to
   Hera:
   Source Systems:  fe[1-8].fairmont.rdhpcs.noaa.gov
   Source IPs:  140.208.160.[1-8]
-  Niagara:
+  Mercury
   Source Systems:  nfe[1-12].fairmont.rdhpcs.noaa.gov
   Source IPs:140.208.193.[65-76]
 
@@ -888,7 +886,7 @@ Example
   weather data to NOAA.
 * **Source Systems:** hfe[01-12].fairmont.rdhpcs.noaa.gov,
   fe[1-8].boulder.rdhpcs.noaa.gov, nfe[1-4].boulder.rdhpcs.noaa.gov
-  dtn-niagara.fairmont.rdhpcs.noaa.gov
+  dtn-mercury.fairmont.rdhpcs.noaa.gov
 * **Source IPs:** 140.208.192.[9-18], 140.208.160.[1-8],
   140.208.193.[65-68]
 * **Destination Systems:** podaac-tools.jpl.nasa.gov
@@ -1551,7 +1549,7 @@ icon.
 Globus Command Line Interface (CLI)
 ===================================
 
-The CLI is available on Ursa (WIP) and Niagara. If you would like to
+The CLI is available on Ursa (WIP) and Mercury. If you would like to
 use Globus-cli, either on your personal machine or on a system where
 globus-cli is not installed, you can install it easily. Refer to the
 instructions to install and use the `Globus CLI

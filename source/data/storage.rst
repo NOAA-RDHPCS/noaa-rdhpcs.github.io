@@ -174,7 +174,7 @@ User Home Quotas
 
 Quotas are enforced on user home directories. To request an increased quota,
 contact the Help Desk. To view your current quota and usage, use the command
-``quota`` on Gaea, Ursa, Hera, and Niagara; and ``homeuse`` on Pan:
+``quota`` on Gaea, Ursa, Hera, and Mercury; and ``homeuse`` on Pan:
 
 
 .. tab-set::
@@ -455,7 +455,7 @@ Security Computing Center (NESCC) is based on IBM's High Performance Storage
 System (HPSS). The NESCC HPSS environment includes 22 petabytes of front-end
 disk cache, five Oracle SL8500 enterprise tape libraries, three Spectra Logic
 TFinity tape libraries, and 148 tape drives. Total available capacity is 430
-PB. HPSS is accessible from WCOSS2, Hera, Mercury, and Gaea.
+PB. HPSS is accessible from WCOSS2, Ursa, Hera, Mercury, and Gaea.
 
 Users should keep the following things in mind when using the HPSS system:
 
@@ -466,7 +466,7 @@ Users should keep the following things in mind when using the HPSS system:
    tar file before storing data into HPSS, or use HTAR.
 -  All data stored in HPSS is single copy. Deleted data cannot be recovered.
 -  HPSS **is not accessible from compute nodes.** Access is available via
-   Hera/Mercury front-end nodes (FEs), Gaea Data Transfer Nodes (DTNs),
+   Ursa/Hera/Mercury front-end nodes (FEs), Gaea Data Transfer Nodes (DTNs),
    and WCOSS2 transfer nodes.
 -  Batch jobs that require access to HPSS must be submitted to the
    correct systems service or transfer queues.  Look for queue or partition
@@ -504,7 +504,7 @@ All requests must have the following information:
 -  User Name
 -  Requested project(s) - See :ref:`NESCC HPSS Data Structure
    <nescc_hpss_data_structure>` for available HPSS projects
--  System HPSS access is needed from (Hera/Mercury/Gaea/WCOSS)
+-  System HPSS access is needed from (Ursa/Hera/Mercury/Gaea/WCOSS)
 
 .. _adding_new_projects_to_hpss:
 
@@ -927,7 +927,7 @@ with the recovery service.
 Getting Started
 ===============
 
-HPSS is only accessible from WCOSS, Hera, and Gaea Data Transfer
+HPSS is only accessible from WCOSS, Ursa, Hera, and Gaea Data Transfer
 Nodes (DTNs). Batch jobs should be used to access HPSS and need be
 submitted to the respective systems service or transfer queues.  Look
 for queue names that contain "dtn".
