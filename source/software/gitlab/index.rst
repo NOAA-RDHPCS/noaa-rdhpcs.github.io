@@ -34,7 +34,7 @@ Web Access
 ----------
 The Gitlab instance is accessed through the web to set up accounts,
 create new projects, and configure settings for password-less
-login for git and container registry. To access the Gitlab web interface from 
+login for git and container registry. To access the Gitlab web interface from
 a personal machine, first a tunnel has to be created followed by proxy setup
 on your web browser.
 
@@ -102,12 +102,12 @@ For detailed instructions on PAT, refer to the
 Gitlab Project
 ~~~~~~~~~~~~~~
 
-A git repository is designated as a Project on Gitlab server. Container images stored
-in the container registry are associated with a Gitlab project. If users want to upload
-a container image or create a new git repository, a Gitlab project has to be
-created.  When creating a new project, the user may be asked whether to use the
-user name or a group name as the namespace.  Unless the project belongs to a
-group, use the user name.
+A git repository is designated as a Project on Gitlab server. Container images
+stored in the container registry are associated with a Gitlab project. If users
+want to upload a container image or create a new git repository, a Gitlab
+project has to be created.  When creating a new project, the user may be asked
+whether to use the user name or a group name as the namespace.  Unless the
+project belongs to a group, use the user name.
 
 A Gitlab project has three visibility levels: private, internal, and public.
 A private project can only be accessed by the owners of the project who could
@@ -116,8 +116,8 @@ If a repository or container images need to be shared to the RDHPCS users, the
 associated project needs to have either internal or public visibility.
 Because Gitlab server is accessible only from RDHPCS network, internal and
 public visibility levels serve similar purpose except accessing public projects
-do not require authentication to the Gitlab server. It is recommended to use public
-visibility for a project instead of internal visibility.
+do not require authentication to the Gitlab server. It is recommended to use
+public visibility for a project instead of internal visibility.
 
 
 Git Usage
@@ -169,9 +169,9 @@ Registry Login
 ~~~~~~~~~~~~~~
 A container image hosted on a registry can be either publicly accessible or
 accessible only after authentication on the registry. For pushing images,
-authentication is mandatory. To authenticate to
-the registry, first ensure you have account on the Gitlab server. Then authenticate
-to the registry using apptainer.
+authentication is mandatory. To authenticate to the registry, first ensure
+you have account on the Gitlab server. Then authenticate to the registry
+using apptainer.
 
 .. code-block:: bash
 
