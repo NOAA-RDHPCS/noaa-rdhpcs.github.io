@@ -88,8 +88,8 @@ useful when pipelines are run occassionally. Shell executor provides direct
 access to tools, scripts, directories, compilers, or system-level utilities
 already installed on the RDHPCS cluster.
 
-However, because shell executor jobs run directly on the login node, they should
-be used sparingly so as to not overwhelm the login nodes.
+However, because shell executor jobs run directly on the login node, they
+should be used sparingly so as to not overwhelm the login nodes.
 
 Installing GitLab Runner on RDHPCS systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -207,11 +207,11 @@ using the same tags in ``.gitlab-ci.yml``.
        - whoami
        - pwd
 
-The ``tags`` section ensures that the job runs only on a runner that has matching
-tags. This is useful when a particular job needs to run on a particular cluster
-or when different runners are configured for different purposes, such as builds,
-deployment jobs, or high-performance workloads. The above pipeline can only run
-on a runner with a ``ursa`` tag.
+The ``tags`` section ensures that the job runs only on a runner that has
+matching tags. This is useful when a particular job needs to run on a
+particular cluster or when different runners are configured for different
+purposes, such as builds, deployment jobs, or high-performance workloads. The
+above pipeline can only run on a runner with a ``ursa`` tag.
 
 Shell Executor Best Practices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -222,20 +222,20 @@ When using the shell executor, follow these practices:
 * Try to avoid running untrusted code.
 * Use runner tags to control which jobs can use the runner.
 * Clean temporary files and workspace data.
-* Store sensitive values as GitLab CI/CD variables instead of hardcoding them in
-  scripts.
+* Store sensitive values as GitLab CI/CD variables instead of hardcoding them
+  in scripts.
 
 Custom Slurm Executor
 ~~~~~~~~~~~~~~~~~~~~~
 
-The ``shell`` executor can overwhelm the login nodes for high velocty projects. For
-such cases, ``service`` partition can be used to run CI/CD pipelines. Users have to
-install a
+The ``shell`` executor can overwhelm the login nodes for high velocty projects.
+For such cases, ``service`` partition can be used to run CI/CD pipelines. Users
+have to install a
 `custom slurm executor <https://github.com/Algebraic-Programming/slurm-gitlab-executor>`__
 and update the gitlab runner to use the slurm executor. Users can refer to the
 `instructions <https://github.com/Algebraic-Programming/slurm-gitlab-executor/blob/master/README.md>`__
-to set up the slurm executor. In the end update the final runner configuration to
-point ``builds_dir`` and ``cache_dir`` variables to directories in either
+to set up the slurm executor. In the end update the final runner configuration
+to point ``builds_dir`` and ``cache_dir`` variables to directories in either
 ``/scratch3`` or ``/scratch4``.
 
 .. code-block:: yaml
@@ -246,8 +246,8 @@ point ``builds_dir`` and ``cache_dir`` variables to directories in either
       builds_dir = "/scratch[3,4]/path/builds"
       cache_dir = "/scratch[3,4]/path/cache"
 
-Slurm variables have to be specified in the ``.gitlab-ci.yml`` file to generate an
-appropriate sbatch script that can be launched by the slurm executor. Slurm
+Slurm variables have to be specified in the ``.gitlab-ci.yml`` file to generate
+an appropriate sbatch script that can be launched by the slurm executor. Slurm
 variables shown below are appropriate for the ``u1-service`` partition on Ursa
 cluster.
 
