@@ -5,8 +5,8 @@ GitLab CI/CD Pipelines
 GitLab CI/CD pipelines automate the process of building, testing, validating,
 and deploying application code whenever changes are pushed to a git repository.
 A pipeline is defined in a file named ``.gitlab-ci.yml`` at the root of the
-git repository. This file contains stages, jobs, scripts, variables, and rules that
-control how the automation runs.
+git repository. This file contains stages, jobs, scripts, variables, and rules
+that control how the automation runs.
 
 A typical pipeline is organized into stages such as ``build``, ``test``, and
 ``deploy``. Each stage can contain one or more jobs. Jobs in the same stage can
@@ -21,7 +21,8 @@ reaches production or another target environment.
 Example ``.gitlab-ci.yml`` Pipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following example shows a simple pipeline with three stages: build, test, and deploy.
+The following example shows a simple pipeline with three stages: build, test,
+and deploy.
 
 .. code-block:: yaml
 
@@ -63,9 +64,9 @@ In this example:
 * ``deploy_job`` runs only when changes are pushed to the ``main`` branch.
 * ``artifacts`` allows files created in one job to be passed to later stages.
 
-This type of pipeline can be expanded to include application compilation, unit tests,
-code quality checks, security scans, container image builds, and deployment to
-development, staging, or production environments.
+This type of pipeline can be expanded to include application compilation,
+unit tests, code quality checks, security scans, container image builds,
+and deployment to development, staging, or production environments.
 
 GitLab Runners
 --------------
@@ -83,21 +84,21 @@ which pipeline jobs run.
 
 The ``shell`` executor runs CI/CD job commands directly on the login node using
 the user configured shell, such as Bash. This executor is simple to configure and
-useful when pipelines are run occassionally. Shell executor provides direct access
-to tools, scripts, directories, compilers, or system-level utilities already
-installed on the RDHPCS cluster.
+useful when pipelines are run occassionally. Shell executor provides direct
+access to tools, scripts, directories, compilers, or system-level utilities
+already installed on the RDHPCS cluster.
 
-However, because shell executor jobs run directly on the login node, they should be
-used sparingly so as to not overwhelm the login nodes. 
+However, because shell executor jobs run directly on the login node, they should
+be used sparingly so as to not overwhelm the login nodes.
 
 Installing GitLab Runner on RDHPCS systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Gitlab Runners can be installed at user scope on RDHPCS systems. The following example
-shows a common installation flow targeting an RDHPCS cluster.
+Gitlab Runners can be installed at user scope on RDHPCS systems. The following
+example shows a common installation flow targeting an RDHPCS cluster.
 
 .. code-block:: bash
-   
+
    # Create a folder in /scratch3 or /scratch4 under appropriate project directory or
    # in your home directory
    mkdir -p <target_folder>/bin
@@ -119,7 +120,8 @@ shows a common installation flow targeting an RDHPCS cluster.
 Registering a Runner with Shell Executor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before registering the runner, create or obtain a runner authentication token from GitLab.
+Before registering the runner, create or obtain a runner authentication token
+from GitLab.
 
 In GitLab, go to the project or group where the runner should be registered:
 
@@ -155,7 +157,7 @@ After registration, the runner configuration is stored in:
 
 .. code-block:: text
 
-   $HOME/.gitlab-runner/config.toml 
+   $HOME/.gitlab-runner/config.toml
 
 A shell executor runner configuration may look similar to this:
 
@@ -181,14 +183,14 @@ After registration, the runner can only be run in the user mode.
 
    gitlab-runner run
 
-To check runner status from GitLab, return to the project or group runner settings page.
-The runner should appear as available or online.
+To check runner status from GitLab, return to the project or group runner settings
+page. The runner should appear as available or online.
 
 Using Runner Tags in a Pipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If a runner is registered with tags, pipeline jobs can target that runner by using the
-same tags in ``.gitlab-ci.yml``.
+If a runner is registered with tags, pipeline jobs can target that runner by using
+the same tags in ``.gitlab-ci.yml``.
 
 .. code-block:: yaml
 
@@ -206,9 +208,10 @@ same tags in ``.gitlab-ci.yml``.
        - pwd
 
 The ``tags`` section ensures that the job runs only on a runner that has matching tags.
-This is useful when a particular job needs to run on a particular cluster or when different
-runners are configured for different purposes, such as builds, deployment jobs, or
-high-performance workloads. The above pipeline can only run on a runner with a ``ursa`` tag.
+This is useful when a particular job needs to run on a particular cluster or when
+different runners are configured for different purposes, such as builds, deployment jobs,
+or high-performance workloads. The above pipeline can only run on a runner with a ``ursa``
+tag.
 
 Shell Executor Best Practices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -224,13 +227,14 @@ When using the shell executor, follow these practices:
 Custom Slurm Executor
 ~~~~~~~~~~~~~~~~~~~~~
 
-The ``shell`` executor can overwhelm the login nodes for high velocty projects. For such 
-cases, ``service`` partition can be used to run CI/CD pipelines. Users have to install a 
+The ``shell`` executor can overwhelm the login nodes for high velocty projects. For such
+cases, ``service`` partition can be used to run CI/CD pipelines. Users have to install a
 `custom slurm executor <https://github.com/Algebraic-Programming/slurm-gitlab-executor>`__
 and update the gitlab runner to use the slurm executor. Users can refer to the
 `instructions <https://github.com/Algebraic-Programming/slurm-gitlab-executor/blob/master/README.md>`__
 to set up the slurm executor. In the end update the final runner configuration to point
-``builds_dir`` and ``cache_dir`` variables to directories in either ``/scratch3`` or ``/scratch4``.
+``builds_dir`` and ``cache_dir`` variables to directories in either ``/scratch3`` or
+``/scratch4``.
 
 .. code-block:: yaml
 
@@ -240,12 +244,12 @@ to set up the slurm executor. In the end update the final runner configuration t
       builds_dir = "/scratch[3,4]/path/builds"
       cache_dir = "/scratch[3,4]/path/cache"
 
-Slurm variables have to be specified in the ``.gitlab-ci.yml`` file to generate an appropriate sbatch
-script that can be launched by the slurm executor. Slurm variables shown below are appropriate 
-for the ``u1-service`` partition on Ursa cluster.
+Slurm variables have to be specified in the ``.gitlab-ci.yml`` file to generate an appropriate
+sbatch script that can be launched by the slurm executor. Slurm variables shown below are
+appropriate for the ``u1-service`` partition on Ursa cluster.
 
 .. code-block:: yaml
-   
+
    variables:
       CI_SLURM_ACCOUNT:
         value: "your_noaa_project"
@@ -257,13 +261,13 @@ for the ``u1-service`` partition on Ursa cluster.
       CI_SLURM_MEM_PER_NODE:
         value: "100G"
         description: "Maximum memory allowed on u1-service is 250G"
-      CI_SLURM_NNODES: 
+      CI_SLURM_NNODES:
         value: "1"
         description: "Number of nodes"
-      CI_SLURM_NTASKS: 
+      CI_SLURM_NTASKS:
         value: "1"
         description: "Number of tasks"
-      CI_SLURM_CPUS_PER_TASK: 
+      CI_SLURM_CPUS_PER_TASK:
         value: "8"
         description: "Maximum number cores allowed is 63"
       CI_SLURM_QOS:
