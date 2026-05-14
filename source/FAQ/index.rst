@@ -30,7 +30,7 @@ password" error, follow these steps before requesting help:
 #. Make sure you are using your RSA token to authenticate. CAC
    authentication is not supported.
 #. Make sure you can successfully log into the on-prem HPCS system --
-   Analysis, Gaea, Hera, or Niagara.
+   Analysis, Ursa, Gaea, Hera, or Niagara.
 #. Now try to login to the Parallel Works platform.
 
 If you continue to get an "Invalid username error", confirm your
