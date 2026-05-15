@@ -87,65 +87,56 @@ OpenSSH <https://learn.microsoft.com/en-us/windows-server/administration/openssh
 Bastion Hostnames
 =================
 .. |CBHN|	replace:: **CAC Bastion hostnames**
-.. |RBHN|	replace:: **RSA Bastion hostnames**
-.. |GCPRNG|	replace:: gaea.princeton.rdhpcs.noaa.gov
-.. |GCBRNG|	replace:: gaea.boulder.rdhpcs.noaa.gov
-.. |GRPRNG|	replace:: gaea-rsa.princeton.rdhpcs.noaa.gov
-.. |GRBRNG|	replace:: gaea-rsa.boulder.rdhpcs.noaa.gov
+.. |MBHN|	replace:: **MFA Bastion hostnames**
+.. |GCPRNG|	replace:: gaea-cac.princeton.rdhpcs.noaa.gov
+.. |GCFRNG|	replace:: gaea-cac.fairmont.rdhpcs.noaa.gov
+.. |GMPRNG|	replace:: gaea-mfa.princeton.rdhpcs.noaa.gov
+.. |GMFRNG|	replace:: gaea-mfa.fairmont.rdhpcs.noaa.gov
 
-.. |HCPRNG|	replace:: hera.princeton.rdhpcs.noaa.gov
-.. |HCBRNG|	replace:: hera.boulder.rdhpcs.noaa.gov
-.. |HRPRNG|	replace:: hera-rsa.princeton.rdhpcs.noaa.gov
-.. |HRBRNG|	replace:: hera-rsa.boulder.rdhpcs.noaa.gov
+.. |HCPRNG|	replace:: hera-cac.princeton.rdhpcs.noaa.gov
+.. |HCFRNG|	replace:: hera-cac.fairmont.rdhpcs.noaa.gov
+.. |HMPRNG|	replace:: hera-mfa.princeton.rdhpcs.noaa.gov
+.. |HMFRNG|	replace:: hera-mfa.fairmont.rdhpcs.noaa.gov
 
-.. |JCPRNG|	replace:: bastion-jet.princeton.rdhpcs.noaa.gov
-.. |JCBRNG|	replace:: bastion-jet.boulder.rdhpcs.noaa.gov
-.. |JRPRNG|	replace:: jet-rsa.princeton.rdhpcs.noaa.gov
-.. |JRBRNG|	replace:: jet-rsa.boulder.rdhpcs.noaa.gov
-
-.. |PPPRNG|	replace:: bastion-analysis.princeton.rdhpcs.noaa.gov
-.. |PPBRNG|	replace:: bastion-analysis.boulder.rdhpcs.noaa.gov
-.. |PAPRNG|	replace:: analysis-rsa.princeton.rdhpcs.noaa.gov
-.. |PBPRNG|	replace:: analysis-rsa.boulder.rdhpcs.noaa.gov
+.. |PCPRNG|	replace:: analysis-cac.princeton.rdhpcs.noaa.gov
+.. |PCFRNG|	replace:: analysis-cac.fairmont.rdhpcs.noaa.gov
+.. |PMPRNG|	replace:: analysis-mfa.princeton.rdhpcs.noaa.gov
+.. |PMFRNG|	replace:: analysis-mfa.fairmont.rdhpcs.noaa.gov
 
 .. |MCPRNG|	replace:: mercury-cac.princeton.rdhpcs.noaa.gov
-.. |MCBRNG|	replace:: mercury-cac.boulder.rdhpcs.noaa.gov
-.. |MRPRNG|	replace:: mercury-rsa.princeton.rdhpcs.noaa.gov
-.. |MRBRNG|	replace:: mercury-rsa.boulder.rdhpcs.noaa.gov
+.. |MCFRNG|	replace:: mercury-cac.fairmont.rdhpcs.noaa.gov
+.. |MMPRNG|	replace:: mercury-mfa.princeton.rdhpcs.noaa.gov
+.. |MMFRNG|	replace:: mercury-mfa.fairmont.rdhpcs.noaa.gov
 
 .. |UCPRNG|	replace:: ursa-cac.princeton.rdhpcs.noaa.gov
-.. |UCBRNG|	replace:: ursa-cac.boulder.rdhpcs.noaa.gov
-.. |URPRNG|	replace:: ursa-rsa.princeton.rdhpcs.noaa.gov
-.. |URBRNG|	replace:: ursa-rsa.boulder.rdhpcs.noaa.gov
+.. |UCFRNG|	replace:: ursa-cac.fairmont.rdhpcs.noaa.gov
+.. |UMPRNG|	replace:: ursa-mfa.princeton.rdhpcs.noaa.gov
+.. |UMFRNG|	replace:: ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 .. |OUG|	replace:: :ref:`orion-user-guide`
 
 +-------------------+-----------------+----------------------------------+
-| **RDHPCS System** | |CBHN|          | |RBHN|                           |
+| **RDHPCS System** | |CBHN|          | |MBHN|                           |
 +-------------------+-----------------+----------------------------------+
-| Gaea              | |GCPRNG|        | |GRPRNG|                         |
+| Gaea              | |GCPRNG|        | |GMPRNG|                         |
 |                   |                 |                                  |
-|                   | |GCBRNG|        | |GRBRNG|                         |
+|                   | |GCFRNG|        | |GMFRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| Hera              | |HCBRNG|        | |HRBRNG|                         |
+| Hera              | |HCPRNG|        | |HMPRNG|                         |
 |                   |                 |                                  |
-|                   | |HCPRNG|        | |HRPRNG|                         |
+|                   | |HCFRNG|        | |HMFRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| Jet               | |JCBRNG|        | |JRBRNG|                         |
+| PPAN              | |PCPRNG|        | |PMPRNG|                         |
 |                   |                 |                                  |
-|                   | |JCPRNG|        | |JRPRNG|                         |
+|                   | |PCFRNG|        | |PMFRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| PPAN              | |PPPRNG|        | |PAPRNG|                         |
+| Mercury           | |MCPRNG|        | |MMPRNG|                         |
 |                   |                 |                                  |
-|                   | |PPBRNG|        | |PBPRNG|                         |
+|                   | |MCFRNG|        | |MMFRNG|                         |
 +-------------------+-----------------+----------------------------------+
-| Mercury           | |MCBRNG|        | |MRBRNG|                         |
+| Ursa              | |UCPRNG|        | |UMPRNG|                         |
 |                   |                 |                                  |
-|                   | |MCPRNG|        | |MRPRNG|                         |
-+-------------------+-----------------+----------------------------------+
-| Ursa              | |UCBRNG|        | |URBRNG|                         |
-|                   |                 |                                  |
-|                   | |UCPRNG|        | |URPRNG|                         |
+|                   | |UCFRNG|        | |UMFRNG|                         |
 +-------------------+-----------------+----------------------------------+
 
 In addition to the Bastions, RDHPCS users have access to computational capacity
@@ -194,11 +185,11 @@ access. <yubikey-user-instructions>`
 
 .. code-block:: console
 
-    $ ssh RSA-BASTION-HOSTNAME
+    $ ssh MFA-BASTION-HOSTNAME
 
 
-#. The RSA bastions are used for Yubikey logins.
-#. Reference the table above for the appropriate RSA Bastion to use.
+#. The MFA bastions are used for Yubikey logins.
+#. Reference the table above for the appropriate MFA Bastion to use.
 #. When prompted, enter your Yubikey PIN then press and hold your Yubikey
    (long press).
 
