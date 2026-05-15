@@ -556,8 +556,12 @@ If you have difficulties, contact the support staff for help.
 
 .. _established-tunnel:
 
-Using a Pre-Established SSH Port Tunnel
-=======================================
+
+Transferring to and from local machine to RDHPCS systems
+========================================================
+
+SSH Port Tunnel method
+======================
 
 With the SSH port tunnel method, an SSH tunnel is created
 between your point of login (typically your desktop) to the remote
@@ -703,7 +707,17 @@ For Mac or Linux, enter:
 
 For Windows:
 
-It is recommended to use `WinSCP <https://winscp.net/eng/index.php>`_ to
+There are two approaches. The first is to use the command line and enter:
+
+... code-block:: shell
+   scp -P XXXXX -o MACs=hmac-sha2-512-etm@openssh.com .\Notes.txt First.Last@localhost
+
+. If Putty is installed one can also enter:
+
+... code-block:: shell
+   pscp -P XXXXX - .\Notes.txt First.Last@localhost
+
+If one prefers a graphical interface, it is recommended to use `WinSCP <https://winscp.net/eng/index.php>`_ to
 transfer the file. First open the app and start a session. The protocal
 should be SFTP, the hostname should be localhost, the port should be one
 for the tunnel as mentioned above and the user name will be account name
