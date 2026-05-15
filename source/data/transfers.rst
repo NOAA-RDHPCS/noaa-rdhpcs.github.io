@@ -710,14 +710,17 @@ For Windows:
 There are two approaches. The first is to use the command line and enter:
 
 ... code-block:: shell
-   scp -P XXXXX -o MACs=hmac-sha2-512-etm@openssh.com .\Notes.txt First.Last@localhost
+
+scp -P XXXXX -o MACs=hmac-sha2-512-etm@openssh.com
+.\Notes.txt First.Last@localhost
 
 . If Putty is installed one can also enter:
 
 ... code-block:: shell
    pscp -P XXXXX - .\Notes.txt First.Last@localhost
 
-If one prefers a graphical interface, it is recommended to use `WinSCP <https://winscp.net/eng/index.php>`_ to
+If one prefers a graphical interface, it is recommended to use
+`WinSCP <https://winscp.net/eng/index.php>`_ to
 transfer the file. First open the app and start a session. The protocal
 should be SFTP, the hostname should be localhost, the port should be one
 for the tunnel as mentioned above and the user name will be account name
