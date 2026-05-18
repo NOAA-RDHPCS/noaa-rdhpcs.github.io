@@ -5,6 +5,27 @@
    :keywords: YubiKey, MFA, multi-factor authentication, OTP, one-time password,
     CAC, authentication, USB security key
 
+.. raw:: html
+
+   <style>
+   article.bd-article ol > li {
+       font-size: 1.1rem;
+       font-weight: 600;
+       margin-bottom: 0.6rem;
+       line-height: 1.6;
+   }
+   article.bd-article ol ol > li {
+       font-size: 1.0rem;
+       font-weight: 500;
+   }
+   </style>
+
+   article.bd-article ol > li::marker {
+    font-weight: 700;
+    font-size: 1.15rem;
+ }
+
+
 .. _yubikey-user-instructions:
 
 Yubikey
@@ -91,12 +112,15 @@ Follow these steps to configure **Long Press Slot 2** with a **Yubico
 OTP** credential.  You can safely restart these instructions and
 re-register the *Yubico OTP* credential **in Long Press Slot 2**:
 
+.. marker::
+
 1. You must have registered your NOAA issued Yubikey at
    https://accounts.noaa.gov.  Navigate to your `NOAA Accounts profile
    page
    <https://accounts.noaa.gov/enduser/?realm=noaa-online#/profile>`_
    and check **MFA Enrollment** for a green checkmark and **Yubikey
    registered** confirmation.
+
 
 .. image:: /images/noaa-accounts-profile.png
         :scale: 70%
