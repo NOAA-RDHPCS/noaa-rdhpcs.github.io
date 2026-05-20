@@ -60,29 +60,13 @@ experimentation with different settings may be required.
 .. code-block:: shell
 
    -O3 -xHOST -ip   -align array64byte                                  # The -xHOST is recommended for Hera users only
-   -O3 -qopt-zmm-usage=high -axCORE-AVX512  -align array64byte -ip      # For Skylake processors (Hera/kJet)
+   -O3 -qopt-zmm-usage=high -axCORE-AVX512  -align array64byte -ip      # For Skylake processors (Hera)
 
 .. note::
 
    Using the AVX-512 instructions may or may not improve performance. We
    recommended that you experiment with and without these options and use the
    one that performs the best.
-
-Compiling for multiple processor types
---------------------------------------
-
-Jet consists of multiple clusters of various types of processors. If you
-compile the codes with "fat" executables, it will be possible to run your
-applications on any of the Jet partitions.  As you can then take advantage of
-any of the available clusters and not wait for specific partitions to be
-available, this will likely improve your job turnaround.
-
-Use the following optimization flags to create "fat" executables that can run
-on any of the Jet clusters.
-
-.. code-block:: shell
-
-   -O3 -axSSE4.2,AVX,CORE-AVX2,CORE-AVX512  -align array64byte -ip
 
 
 Compiling for reproducible results
