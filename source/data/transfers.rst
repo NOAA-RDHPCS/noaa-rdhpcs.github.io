@@ -32,6 +32,88 @@ See :ref:`requests_for_firewall_exceptions` for details if you need
 access to or from a machine that is currently considered as an “untrusted”
 host/site.
 
+.. _data_transfer_steps:
+
+Basic Steps for Data Transfers
+===================================
+
+Find your assigned **Local Port** number for the RDHPCS machine
+---------------------------------------------------------------
+
+* Login to the RDHPCS host machine and look for the following message
+   in the start up banner:
+
+  .. code-block:: shell
+
+    Local port 12345 forwarded to remote host.
+    Remote port 1234 forwarded to local host.
+
+* Make a note of the Local Port number (in the example above, it is 12345).
+  You will need this number to set up your SSH port tunnel for data transfers.
+  Also note the logout of that session.
+
+.. note::
+     If you have an existing session on that machine, you will not see the
+     above message. You will need to open a new session on a different
+     machine or close your existing sessions to see the message and get
+     your assigned Local Port number.
+
+
+Establish a port tunnel using the local port number
+----------------------------------------------------
+
+*  Using the local port number, issue the following command from your
+   local machine.  Remember to replace First.Last with your own credentials
+   and XXXXX with the local port number you identified in Step 1.
+
+* For Windows Power Shell, enter:
+
+.. code-block:: shell
+
+  ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX
+  First.Last@ursa-mfa.princeton.rdhpcs.noaa.gov  # Windows PowerShell
+
+* For Mac or Linux, enter:
+
+.. code-block:: shell
+
+   ssh                                  -LXXXXX:localhost:XXXXX
+   First.Last@ursa-mfa.princeton.rdhpcs.noaa.gov  # Mac/Linux
+
+Then issue the transfer appropriate command:
+
+Linux Transfer
+""""""""""""""
+
+.. code-block:: shell
+
+  scp -P XXXXX local-file First.Last@localhost:/path/to/remote/file         # To send the file
+  scp -P XXXXX First.Last@localhost:/path/to/remote/file /path/to/local/file   # To get the file
+
+Windows Transfer
+"""""""""""""""""
+
+.. code-block:: shell
+
+  File Protocol: sftp
+  Host: localhost               # The word "localhost"
+  Port: XXXXX                   # The same XXXXX number mentioned above
+  Username: First.Last     # Your username on RDHPCS system
+
+
+Windows PowerShell
+"""""""""""""""""""
+
+Use this scp command in the Windows PowerShell Window:
+
+.. code-block:: shell
+
+  scp -P XXXXX -o MACs=hmac-sha2-512-etm@openssh.com .\Notes.txt First.Last@local
+
+
+
+
+
 .. _data_transfer_methods:
 
 Data Transfer Methods
@@ -576,8 +658,8 @@ copy. To establish the port tunnel, you will need to
 get the appropriate bastion hostname (CAC or RSA) for the host
 you need from the :ref:`bastion_hostnames` table.
 
-Before You Begin
-^^^^^^^^^^^^^^^^^
+**Before You Begin**
+
 
 Only the first session to a bastion can establish an ssh tunnel.
 You will know that you already have an
@@ -859,8 +941,7 @@ External Data Transfers (applies to NESCC -- Ursa and Niagara only)
 -------------------------------------------------------------------
 
 
-Internally Initiated Transfers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Internally Initiated Transfers**
 
 HPC systems do not have specific hosts for internally initiated
 transfers. Transfers initiated from HPC Systems use the front end nodes
@@ -926,8 +1007,8 @@ Example
   ``--2019-05-13  15:34:09--https://podaac-tools.jpl.nasa.gov/measures-drive/files/mur_sst/tmchin/seasonal``
 
 
-Tuning Hosts to Improve Data Transfer Rates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Tuning Hosts to Improve Data Transfer Rates**
+
 
 The standard tuning parameters for network settings are not optimal
 for high-latency transfers, which means any transfers to and from Ursa
