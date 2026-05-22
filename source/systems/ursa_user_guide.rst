@@ -16,22 +16,21 @@ Ursa User Guide
 
 .. _ursa-system-overview:
 
-Ursa System Overview
-====================
+System Overview
+===============
 Ursa is located at the NOAA Environmental Security Computing Center (NESCC), in
 Fairmont, West Virginia.
+Ursa is a high performance computing system designed to support NOAA's
+weather prediction workloads. It features AMD Genoa CPUs and GPU nodes,
+which are connected to the same high performance file systems as
+the Hera system at NESCC.
 
-Getting Started with Ursa
--------------------------
-Log into your NOAA Google account, and you can view a
-`slide presentation introducing Ursa
-<https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_.
-Log into your NOAA Google account, and you can also review
-a `recorded version of the presentation
-<https://drive.google.com/file/d/15-C4Zs_oMxUQ2_QqPm-9CkxPkeK46q56/view>`_.
+See :ref:`Getting Started <ursa-intro>` for an introduction to
+the Ursa system and how to get started with it.
 
-Ursa System Configuration
-=========================
+
+System Configuration
+====================
 
 .. list-table::
    :header-rows: 1
@@ -87,8 +86,8 @@ Ursa System Configuration
      - N/A
      - 3.48 PFlops
 
-Ursa Partitions
----------------
+Partitions
+----------
 
 .. list-table::
    :header-rows: 1
@@ -130,8 +129,8 @@ Ursa Partitions
 
 See the :ref:`Quality of Service (QOS) table <QOS-table>` for more information.
 
-Ursa Node Sharing
------------------
+Node Sharing
+------------
 
 Jobs requesting less than 192 cores or the equivalent amount
 of memory will share the node with other jobs.
@@ -145,8 +144,8 @@ With the Ursa ``u1-compute`` partition:
 * If you request 192 or greater cores you will be given and charged for whole
   nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
 
-Ursa Front Ends and Service Partition
----------------------------------------
+Front Ends and Service Partition
+--------------------------------
 Ursa has 15 outward-facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
@@ -259,12 +258,11 @@ In the examples above, the first example requests one node
 with one GH200 GPU and the second example requests one node with
 two MI300X GPUs.
 
-Ursa Software Stack
-===================
+Software Stack
+==============
 
 * Ursa OS is Rocky 9.4, similar to MSU systems (Rocky 9.1)
-  whereas Hera/Jet are Rocky 8.
-* Module layout is more akin to what you see on MSU
+* Module layout is akin to what you see on MSU
   systems; installed using spack.
 
   * Please run the ``module spider`` command to see all
@@ -283,8 +281,8 @@ Ursa Software Stack
 * An Intel stack is in place. Other stacks will be
   considered if requested.
 
-Ursa HPFS File Systems
-======================
+HPFS File Systems
+=================
 
 Ursa has the following three High Performance File Systems (HPFS) available:
 ``/scratch[3,4,5]``.
@@ -361,7 +359,6 @@ files are removed from the hot tier and reside only on the cold tier.
 **As a result the reported usage for the first 1 GB of
 active files may be doubled.**
 
-
 Cron and Scrontab Services
 ==========================
 
@@ -369,6 +366,18 @@ On Ursa both ``cron`` and ``scrontab`` services are available.
 We strongly recommend using ``scrontab`` instead of ``cron``
 whenever possible.  For information on how to use ``scrontab``
 please see :ref:`scrontab <rdhpcs_scrontab>`.
+
+.. _ursa-intro:
+
+Getting Started with Ursa
+=========================
+
+If you're logged into your NOAA account, you can view a
+`slide presentation introducing Ursa
+<https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_,
+or review a `recorded version of the presentation
+<https://drive.google.com/file/d/15-C4Zs_oMxUQ2_QqPm-9CkxPkeK46q56/view>`_.
+
 
 Getting Help
 =============
