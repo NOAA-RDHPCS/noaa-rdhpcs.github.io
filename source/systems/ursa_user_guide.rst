@@ -26,7 +26,7 @@ weather prediction workloads. It features AMD Genoa CPUs and GPU nodes,
 which are connected to the same high performance file systems as
 the Hera system at NESCC.
 
-See `:ref:Getting Started <ursa-intro>` for a slide presentation and 
+See `:ref:Getting Started <ursa-intro>` for a slide presentation and
 recorded overview of the system.
 
 System Configuration
@@ -373,7 +373,7 @@ please see :ref:`scrontab <rdhpcs_scrontab>`.
 Getting Started with Ursa
 =========================
 
-The Ursa system was introduced to the NOAA community in a 
+The Ursa system was introduced to the NOAA community in a
 presentation on June 20, 2024. You can review the `
 `slide presentation that introduced Ursa,
 <https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_,
