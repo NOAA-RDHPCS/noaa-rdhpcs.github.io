@@ -18,6 +18,7 @@ Ursa User Guide
 
 System Overview
 ===============
+
 Ursa is located at the NOAA Environmental Security Computing Center (NESCC), in
 Fairmont, West Virginia.
 Ursa is a high performance computing system designed to support NOAA's
@@ -25,9 +26,8 @@ weather prediction workloads. It features AMD Genoa CPUs and GPU nodes,
 which are connected to the same high performance file systems as
 the Hera system at NESCC.
 
-See :ref:`Getting Started <ursa-intro>` for an introduction to
-the Ursa system and how to get started with it.
-
+See `:ref:Getting Started <ursa-intro>` for a slide presentation and 
+recorded overview of the system.
 
 System Configuration
 ====================
@@ -146,6 +146,7 @@ With the Ursa ``u1-compute`` partition:
 
 Front Ends and Service Partition
 --------------------------------
+
 Ursa has 15 outward-facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
