@@ -373,12 +373,12 @@ please see :ref:`scrontab <rdhpcs_scrontab>`.
 Getting Started with Ursa
 =========================
 
-If you're logged into your NOAA account, you can view a
-`slide presentation introducing Ursa
+The Ursa system was introduced to the NOAA community in a 
+presentation on June 20, 2024. You can review the `
+`slide presentation that introduced Ursa,
 <https://docs.google.com/presentation/d/1Miz_d5-atesgbfQhVk7LAWFNiveWwyDQFz3XZ4dfXLg/edit?pli=1&slide=id.p#slide=id.p>`_,
-or review a `recorded version of the presentation
-<https://drive.google.com/file/d/15-C4Zs_oMxUQ2_QqPm-9CkxPkeK46q56/view>`_.
-
+or watch a `recorded version of the presentation
+<https://drive.google.com/file/d/15-C4Zs_oMxUQ2_QqPm-9CkxPkeK46q56/view>`_
 
 Getting Help
 =============
