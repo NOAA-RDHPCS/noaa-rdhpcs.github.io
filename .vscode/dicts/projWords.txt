@@ -83,6 +83,7 @@ cput
 CRAN
 craype
 creds
+crond
 csdchem
 csh
 cshrc
@@ -144,6 +145,7 @@ fillin
 Finity
 firstlast
 Firstname
+FNJT
 FNRS
 FOIA
 fortl
@@ -490,12 +492,14 @@ physcpubind
 pkcs
 PNETCDF
 podaac
+postdrop
 PPBRNG
 ppef
 PPPRNG
 prarms
 Preconfigured
 procname
+procs
 profosse
 PROJECTNAME
 projid
