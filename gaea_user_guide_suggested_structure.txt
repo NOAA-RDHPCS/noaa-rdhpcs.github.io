@@ -1,0 +1,28 @@
+Proposed New Structure for Gaea User Guide:
+
+1.  **Getting Started**
+    *   **Quick Start:** A new, concise tutorial for first-time users covering connecting, submitting a sample job, and checking results.
+    *   **System Overview:** High-level description of Gaea's capabilities.
+    *   **Connecting:** Instructions for SSH access.
+
+2.  **Managing Data and Files**
+    *   **File Systems:** Details on NFS and GPFS (`/home`, `/scratch`, etc.).
+    *   **Data Transfer:** How to move data to and from Gaea using Globus and other methods.
+
+3.  **Developing and Building Software**
+    *   **Programming Environment:** Using Environment Modules (`Lmod`).
+    *   **Compiling and Linking:** Information on compilers (`PrgEnv-cray`, `PrgEnv-gnu`), wrappers, and linking.
+    *   **Debugging:** Using `DDT`, `GDB`, etc.
+    *   **Profiling:** Using performance analysis tools.
+    *   **Installed Software:** A list of available applications and libraries.
+
+4.  **Running Jobs with Slurm**
+    *   **Job Submission:** Batch scripts vs. interactive jobs.
+    *   **Resource Requests:** Requesting nodes, time, partitions, etc.
+    *   **Job Management:** Monitoring, modifying, and canceling jobs.
+    *   **Parallel Execution:** Using `srun` with correct settings.
+
+5.  **Reference and Advanced Topics**
+    *   **System Architecture:** Detailed breakdown of compute nodes, interconnect, etc.
+    *   **Tips and Tricks:** Performance advice, including GPPS best practices.
+    *   **Known Issues:** Current system-related problems.

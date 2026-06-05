@@ -1973,7 +1973,7 @@ GPFS file system performance
 We are investigating several GPFS (F5 and F6) performance issues.  We have
 discovered that some slow read performance is likely tied to the GPFS file
 compression.  We are working with ORNL and IBM to gather more information and
-for a resolution.
+for a resolution.Can
 
 Data transfer performance
 -------------------------
