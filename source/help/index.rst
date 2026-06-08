@@ -1,8 +1,8 @@
 .. meta::
    :description: Contact information for RDHPCS system support, with email
-    addresses for Jet, Hera, Mercury, Ursa, Orion, Hercules, RDHPCS Cloud,
+    addresses for Hera, Mercury, Ursa, Orion, Hercules, RDHPCS Cloud,
     and Gaea help desks.
-   :keywords: help, support, helpdesk, contact, email, Jet, Hera, Mercury,
+   :keywords: help, support, helpdesk, contact, email, Hera, Mercury,
     Ursa, Orion, Hercules, Gaea
 
 .. _getting_help:
@@ -21,8 +21,6 @@ RDHPCS e-mail addresses.
 +----------------+------------------------------+
 | System         | Email Address                |
 +================+==============================+
-| Jet            | rdhpcs.jet.help@noaa.gov     |
-+----------------+------------------------------+
 | Hera           | rdhpcs.hera.help@noaa.gov    |
 +----------------+------------------------------+
 | Mercury        | rdhpcs.mercury.help@noaa.gov |
@@ -66,7 +64,6 @@ The RDHPCS program, along with the RDHPCS integrator, manages help requests for
 these the RDHPCS systems:
 
 - Account Management
-- Jet
 - Hera
 - Mercury
 - Orion / Hercules
@@ -118,7 +115,7 @@ system with the issue.
 
         - Delayed command responses (ex: "ls", "mv") from tfe02 -
           bastion-hera.princeton
-        - Downloading data to Jet front-end nodes (fe1) using curl
+        - Downloading data to Hera front-end nodes (fe1) using curl
           hangs/timesout
 
     .. tab-item:: Bad Subject Example
