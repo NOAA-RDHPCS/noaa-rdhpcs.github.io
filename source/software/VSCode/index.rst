@@ -3,7 +3,7 @@
     development on RDHPCS systems, including server installation in project
     space and SSH tunnel configuration.
    :keywords: VSCode, Visual Studio Code, IDE, remote development, SSH,
-    project space, Hera, Jet, tunnel
+    project space, Hera,tunnel
 
 .. _rdhpcs-VSCode:
 
@@ -27,7 +27,7 @@ Set up the install directory
 ----------------------------
 
 VSCode installs the VSCode server and other plugins on the remote system (on
-Hera/Jet for example). Since there is limited space in home directory, we
+Hera for example). Since there is limited space in home directory, we
 recommend that you install all VSCode software in your project space.
 
 Create a directory for installation of the VSCode server.
@@ -44,14 +44,14 @@ Set up Port Forwarding on your Local client
 .. note::
     Each user on the system is assigned a specific Local port number that is
     different for each host. Your assigned Local port on Hera is
-    different from the one Jet, but will remain fixed.
+    different from the one on Ursa, but will remain fixed.
 
 On your local machine:
 
 1. Get your assigned **Local port number**.
    If you already know your port number you may skip this step.
 
-2. Login to the appropriate host Hera/Jet/Mercury. In the welcome message look
+2. Login to the appropriate host Hera/Mercury. In the welcome message look
    for the following line:
 
   ``Local port <assigned-port-number> forwarded to remote host``

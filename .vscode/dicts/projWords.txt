@@ -83,6 +83,7 @@ cput
 CRAN
 craype
 creds
+crond
 csdchem
 csh
 cshrc
@@ -144,6 +145,8 @@ fillin
 Finity
 firstlast
 Firstname
+FNJT
+FNRS
 FOIA
 fortl
 fpic
@@ -230,6 +233,7 @@ hostdomain
 hostfile
 hostnames
 HPCS
+HPCX
 hpetest
 HPFS
 HPSS
@@ -430,6 +434,7 @@ nodename
 noder
 nodocs
 nofma
+noindex
 nolisten
 nompi
 NOPASSWD
@@ -487,12 +492,14 @@ physcpubind
 pkcs
 PNETCDF
 podaac
+postdrop
 PPBRNG
 ppef
 PPPRNG
 prarms
 Preconfigured
 procname
+procs
 profosse
 PROJECTNAME
 projid
@@ -558,6 +565,7 @@ sepp
 setopt
 setstripe
 settarg
+setuid
 Sharcnet
 SHAREDUNAME
 showallarticles

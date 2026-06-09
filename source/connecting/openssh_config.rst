@@ -111,8 +111,6 @@ file.
             let rf_gaea = 20000;
             let lf_hera = 45000;
             let rf_hera = 55000;
-            let lf_jet = 11300;
-            let rf_jet = 21300;
             let lf_mercury = 25000;
             let rf_mercury = 35000;
             let lf_ppan = 40000;
@@ -124,7 +122,6 @@ file.
 
             return(ssh_host_conf("gaea", user, lf_gaea + uid, rf_gaea + uid) +
                    ssh_host_conf("hera", user, lf_hera + uid, rf_hera + uid) +
-                   ssh_host_conf("jet", user, lf_jet + uid, rf_jet + uid) +
                    ssh_host_conf("mercury", user, lf_mercury + uid, rf_mercury + uid) +
                    ssh_host_conf("ppan", user, lf_ppan + uid, rf_ppan + uid) +
                    ssh_host_conf("ursa", user, lf_ursa + uid, rf_ursa + uid));

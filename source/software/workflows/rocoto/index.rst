@@ -1,9 +1,9 @@
 .. meta::
    :description: Guide to using Rocoto, a self-contained workflow management
-    system for long-range weather pattern workflows, available on Hera and
-    Jet RDHPCS systems.
+    system for long-range weather pattern workflows, available on the
+    Hera and Ursa RDHPCS systems.
    :keywords: Rocoto, workflow, workflow management, batch jobs, weather
-    forecasting, Hera, Jet, cycles, dependencies
+    forecasting, Hera, cycles, dependencies
 
 .. _rocoto:
 
@@ -34,9 +34,10 @@ analysis or initialization time.
 Rocoto on RDHPCS Systems
 ========================
 
-An official release of the latest version is located on Jet and Hera at
+An official release of the latest version is located on Hera and Ursa at
 :file:`/apps/rocoto` and on gaea at :file:`/ncrc/proj/epic/rocoto`.
-Modulefiles are available at :file:`/apps/modules/modulefiles` on hera and jet
+Modulefiles are available at :file:`/apps/modules/modulefiles` on hera
+and Ursa, in the same modulesfile location,
 and at :file:`/ncrc/proj/epic/rocoto/modulefiles` on gaea.
 
 To add Rocoto to your environment, run the following commands:

@@ -30,7 +30,7 @@ password" error, follow these steps before requesting help:
 #. Make sure you are using your RSA token to authenticate. CAC
    authentication is not supported.
 #. Make sure you can successfully log into the on-prem HPCS system --
-   Analysis, Gaea, Hera, Jet or Niagara.
+   Analysis, Ursa, Gaea, Hera, or Niagara.
 #. Now try to login to the Parallel Works platform.
 
 If you continue to get an "Invalid username error", confirm your
@@ -131,8 +131,8 @@ that not, your job isn't starting because the system is full.
 
 The RDHPCS systems are for research and development and instantaneous
 job starts should not be expected. Even when it might appear that
-there are free resources, there are often reservations (specifically
-on Jet) that are securing resources for future use.
+there are free resources, there are often reservations
+that are securing resources for future use.
 
 One change you can make that will help the system schedule your job
 sooner is to specify an accurate wall clock time (''-l
@@ -308,25 +308,11 @@ How can I recover recently deleted files from /home?
 The home filesystem is backed up
 regularly. However, the filesystem also supports snapshots, which will
 allow you to retrieve your own files if they have been deleted over
-the last few days. The number of days is different for Hera and Jet
-clusters.
+the last few days.
 
 Look at the snapshot directory (/home/.snapshot) to see what
 options are available. Each directory listed there represent a day. As an
-example on Jet:
-
-.. code-block:: shell
-
-  2021-09-09_0015-0600.daily
-  2021-09-12_0015-0600.daily	2021-09-15_0015-0600.daily
-  2021-09-18_0015-0600.daily	2021-09-21_0015-0600.daily
-  2021-09-10_0015-0600.daily  2021-09-13_0015-0600.daily
-  2021-09-16_0015-0600.daily  2021-09-19_0015-0600.daily
-  2021-09-22_0015-0600.daily 2021-09-11_0015-0600.daily
-  2021-09-14_0015-0600.daily	2021-09-17_0015-0600.daily
-  2021-09-20_0015-0600.daily	2021-09-23_0015-0600.daily
-
-Hera is slightly different:
+example on Hera:
 
 .. code-block:: shell
 
@@ -470,20 +456,16 @@ should submit an "issue" ticket at the above link.
 I am using spack-stack and getting some errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-First, documentation for spack-stack can be found here:
-`spack-stack documentation <https://spack-stack.readthedocs.io/en/latest>`_
+The spack-stack software is installed and maintained by the EPIC team,
+and the RDHPCS administrators are not able to provide assistance with
+these issues.
 
-The second issue most users run into is the "location" of spack-stack
-on various supported platforms.  That can be found here:
-`Preconfigured sites <https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html>`_
+If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_ and
+are encountering spack-stack related issues, you will need to submit an
+issue on their `github repository <https://github.com/JCSDA/spack-stack/issues>`_.
 
-If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_
-and are having issues, you will have to submit an `issue on their
-github repository <https://github.com/JCSDA/spack-stack/issues>`_.
-
-The modules and associated software are not maintained by the system
-administrators so you will have to work the spack-stack team through
-the link above.
+You will find a link to their documentation at the github site
+above.
 
 When is my .bashrc executed? When would it be ignored?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -591,7 +573,7 @@ So if you are working with NCL please use the following module load command:
 
    module load gnu/9.2.0 pyncl
 
-Compile WRF on Hera/Jet with Rocky OS
+Compile WRF on Hera with Rocky OS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the earlier versions of WRF model, the user may need following
@@ -669,7 +651,7 @@ To establish a new tunnel, do one of the following:
 
 In the steps below, replace First.Last with your own HPC username, and
 XXXXX with the unique Local Port Number assigned to you when you log
-in to your specified HPC system (Hera/Jet/etc). Use the word "localhost"
+in to your specified HPC system. Use the word "localhost"
 where indicated. It is not a variable, don't substitute anything else.
 Before you perform the first step, close all current sessions on the
 HPC system where you are trying to connect. Once the first session has
@@ -684,7 +666,7 @@ forwarded port for data transfers.
 **1. Find your local port number**
 
 To find your unique local port number, log onto your specified HPC
-system (Hera/Jet). Make a note of this number - once you've recorded
+system. Make a note of this number - once you've recorded
 it, close all sessions. Note that this number, which is a fixed
 value for you, will be different on each HPC system.
 
@@ -878,7 +860,7 @@ system (you already have the Local Port number):
 
 * Load your current saved session
 * Enter the new host name for the other Bastion
-* Give the new session a new name (ex: Jet - Princeton)
+* Give the new session a new name (ex: Hera- Princeton)
 * Select Save. The new session will appear in the list of saved sessions.
 * Select Open to Login and verify the new session works correctly.
 
@@ -921,7 +903,7 @@ The number above will match the port you are trying to use.
 To resolve this problem:
 
 #. Exit all ssh sessions from your host
-#. Restart ssh to Jet. This session must have the port tunnel options included
+#. Restart ssh. This session must have the port tunnel options included
 
 .. code-block:: shell
 

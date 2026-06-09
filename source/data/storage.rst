@@ -104,18 +104,6 @@ different storage areas are summarized in the list and table below.
     | User-Shared Applications | ``/contrib/<application>``                     | NFS    | 0755        | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
 
-  .. tab-item:: Jet
-    :sync: jet
-
-    +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
-    | Area                     | Path                                        | Type   | Permissions |  Quota        | Backups | Purged  | Retention  | On Compute Nodes |
-    +==========================+=============================================+========+=============+===============+=========+=========+============+==================+
-    | User Home                | ``/home/<userid>``                          | NFS    | User set    | 10 GB         | Yes     | No      | 90 days    | Read/Write       |
-    +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
-    | Member Work              | ``/lfs[5,6]/<userid>``                      | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
-    +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
-    | User-Shared Applications | ``/contrib/<application>``                  | NFS    | 0755        | N/A           | No      | No      | N/A        | Read/Write       |
-    +--------------------------+---------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
 
   .. tab-item:: Mercury
     :sync: mercury
@@ -175,7 +163,7 @@ User Home Directories (NFS)
 The environment variable ``$HOME`` will always point to your current home
 directory. It is recommended, where possible, that you use this variable to
 reference your home directory. In cases in which using ``$HOME`` is not
-feasible, it is recommended that you use ``/home/$USER`` (for ursa, hera, jet,
+feasible, it is recommended that you use ``/home/$USER`` (for ursa, hera,
 mercury, and pan) and ``ncrc/home/$USER`` for gaea.
 
 Users should note that since this is an NFS-mounted filesystem, its performance
@@ -186,7 +174,7 @@ User Home Quotas
 
 Quotas are enforced on user home directories. To request an increased quota,
 contact the Help Desk. To view your current quota and usage, use the command
-``quota`` on Gaea, Ursa, Hera, Jet, and Niagara; and ``homeuse`` on Pan:
+``quota`` on Gaea, Ursa, Hera, and Mercury; and ``homeuse`` on Pan:
 
 
 .. tab-set::
@@ -224,16 +212,6 @@ contact the Help Desk. To view your current quota and usage, use the command
       10.181.1.1:/home
                         4147M      0K   5120M            2112       0       0
 
-  .. tab-item:: Jet
-    :sync: jet
-
-    .. code::
-
-      $ quota -Qs
-      Disk quotas for user userid (uid 12345):
-           Filesystem   space   quota   limit   grace   files   quota   limit   grace
-      10.181.1.1:/home
-                        4147M      0K   5120M            2112       0       0
 
   .. tab-item:: Mercury
     :sync: mercury
@@ -477,7 +455,7 @@ Security Computing Center (NESCC) is based on IBM's High Performance Storage
 System (HPSS). The NESCC HPSS environment includes 22 petabytes of front-end
 disk cache, five Oracle SL8500 enterprise tape libraries, three Spectra Logic
 TFinity tape libraries, and 148 tape drives. Total available capacity is 430
-PB. HPSS is accessible from WCOSS2, Hera, Mercury, Jet, and Gaea.
+PB. HPSS is accessible from WCOSS2, Ursa, Hera, Mercury, and Gaea.
 
 Users should keep the following things in mind when using the HPSS system:
 
@@ -488,7 +466,7 @@ Users should keep the following things in mind when using the HPSS system:
    tar file before storing data into HPSS, or use HTAR.
 -  All data stored in HPSS is single copy. Deleted data cannot be recovered.
 -  HPSS **is not accessible from compute nodes.** Access is available via
-   Hera/Mercury/Jet front-end nodes (FEs), Gaea Data Transfer Nodes (DTNs),
+   Ursa/Hera/Mercury front-end nodes (FEs), Gaea Data Transfer Nodes (DTNs),
    and WCOSS2 transfer nodes.
 -  Batch jobs that require access to HPSS must be submitted to the
    correct systems service or transfer queues.  Look for queue or partition
@@ -526,7 +504,7 @@ All requests must have the following information:
 -  User Name
 -  Requested project(s) - See :ref:`NESCC HPSS Data Structure
    <nescc_hpss_data_structure>` for available HPSS projects
--  System HPSS access is needed from (Hera/Jet/Mercury/Gaea/WCOSS)
+-  System HPSS access is needed from (Ursa/Hera/Mercury/Gaea/WCOSS)
 
 .. _adding_new_projects_to_hpss:
 
@@ -696,7 +674,6 @@ NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
          * iset
          * isidora
          * isp-1
-         * jetmgmt
          * lpdm
          * madis
          * mcwi
@@ -818,7 +795,6 @@ NCEPDEV, BMC, HFIP, CPO, NAGAPE, NOS and SYSADMIN
          :columns: 6
 
          * cmod
-         * jetmgmt
          * nesccmgmt
 
 .. _nescc_hpss_data_retention:
@@ -951,7 +927,7 @@ with the recovery service.
 Getting Started
 ===============
 
-HPSS is only accessible from WCOSS, Theia, Jet and Gaea Data Transfer
+HPSS is only accessible from WCOSS, Ursa, Hera, and Gaea Data Transfer
 Nodes (DTNs). Batch jobs should be used to access HPSS and need be
 submitted to the respective systems service or transfer queues.  Look
 for queue names that contain "dtn".
@@ -964,7 +940,7 @@ module command:
 
 .. tab-set::
 
-   .. tab-item:: Hera, Jet, Mercury, and WCOSS
+   .. tab-item:: Hera,  Mercury, and WCOSS
 
       .. code::
 
@@ -1327,7 +1303,7 @@ batch job:
    #SBATCH --time=0:30:00
    #SBATCH --account=<ENTER A VALID PROJECT HERE>
    # Use the proper partition name.
-   #    Jet, Hera, Mercury use the 'service' partition
+   #    Hera and Mercury use the 'service' partition
    #    Gaea is 'dtn_f5_f6', with optional --constraint=f5 or --constraint=f6
    #      to route to a node which has that file system mounted
    #SBATCH --partition=<USE THE CORRECT PARTITION, SEE ABOVE>

@@ -78,7 +78,9 @@ NOAA will conduct a security investigation that takes 6-12 weeks.
 This will include a fingerprint check, background check, and DOC
 public trust investigation.
 
-Foreign national participants have additional hoops to jump through.
+:ref:`Foreign national participants <Foreign_nationals>` must complete
+additional steps.
+
 
 Once your account request has been vetted by the security team, you
 will receive an email from the accounts team and will be able to
@@ -169,6 +171,21 @@ The User now has login access to MSU-HPC.
    A new user who has any issues with completing MSU process
    should send email to rdhpcs.orion.help@noaa.gov to open a help
    ticket.
+
+.. _Foreign_nationals:
+
+Foreign Nationals
+-----------------
+
+Foreign nationals are welcome to apply for NOAA RDHPCS access, but there are
+additional steps in the process.  The security investigation for foreign
+nationals takes 6-12 months, and includes additional checks and
+investigations. The process is managed through the Foreign National
+Registration System (FNRS) and requires additional information from the
+applicant.
+The `Foreign Nationals Registration page <https://sites.google.com/noaa.gov/cao/old_ocao-services-and-guidance/noaa-deemed-exports-technology-control-program/how-to-sponsor-a-foreign-national-guest#h.a645i6du8rqk>`_
+has the forms and instructions you need to complete the process.
+
 
 Account Activity Requirements: Suspension, Deactivation, Reactivation
 =====================================================================

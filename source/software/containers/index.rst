@@ -1,6 +1,6 @@
 .. meta::
    :description: Guide to running Singularity containers on RDHPCS systems
-    including Ursa, Gaea, Hera, Jet, and Mercury for portable and reproducible
+    including Ursa, Gaea, Hera, and Mercury for portable and reproducible
     software environments.
    :keywords: Singularity, containers, Docker, Apptainer, container images,
     portability, HPC, Ursa, Gaea, Hera
@@ -15,7 +15,7 @@ Containers
 
     We now allow all users and projects to run `Singularity
     <https://en.wikipedia.org/wiki/Singularity_(software)>`_ containers on Ursa, Gaea,
-    Hera, Jet, and Mercury.
+    Hera, and Mercury.
     Although this allows users to run Singularity containers, we currently do not
     support any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
     Etc.) for supporting Containers
@@ -114,7 +114,6 @@ RDHPCS System  SingularityCE  Apptainer
 =============  =============  =========
 Gaea           No             Yes
 Hera           Yes            No
-Jet            Yes            No
 Mercury        Yes            No
 PPAN           Yes            No
 Ursa           No             Yes
