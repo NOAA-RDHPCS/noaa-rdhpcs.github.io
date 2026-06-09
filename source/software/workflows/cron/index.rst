@@ -1,16 +1,16 @@
 .. meta::
    :description: Guide to scheduling recurring tasks on RDHPCS systems using
-    cron on Hera, Jet, and Mercury, or Slurm's scrontab feature available on
+    cron on Hera and Mercury, or Slurm's scrontab feature available on
     all RDHPCS systems.
    :keywords: cron, scrontab, Slurm crontab, scheduled tasks, automation,
-    batch jobs, Hera, Jet, Mercury, Gaea
+    batch jobs, Hera, Mercury, Gaea
 
 .. _cron_scron:
 
 .. note::
 
-    Cron is available on :ref:`Hera <hera-user-guide>`, :ref:`Jet
-    <jet-user-guide>`, and :ref:`Mercury <mercury-user-guide>`.  Users on the
+    Cron is available on :ref:`Hera <hera-user-guide>`,
+    and :ref:`Mercury <mercury-user-guide>`.  Users on the
     other RDHPCS systems, for example :ref:`Gaea <gaea-user-guide>` and
     :ref:`PPAN <ppan-user-guide>` must use :ref:`rdhpcs_scrontab`.
 
@@ -25,7 +25,7 @@ schedule scripts to be run based on a recurrence rule.  Slurm also has a
 cron-like feature :command:`scrontab` that is enabled on all RDHPCS systems.
 
 At this time, :command:`cron` is only available on :ref:`Hera
-<hera-user-guide>`, :ref:`Jet <jet-user-guide>`, and :ref:`Mercury
+<hera-user-guide>` and :ref:`Mercury
 <mercury-user-guide>`.
 
 Users can use `Slurm crontab <https://slurm.schedmd.com/scrontab.html>`_
@@ -105,7 +105,7 @@ The `crontab guru <https://crontab.guru/>`_ is a helpful research for cron.
 Viewing currently running crontab processes
 ===========================================
 
-Note: This utility is only available on Hera/Mercury/Jet.
+Note: This utility is only available on Hera and Mercury.
 
 To get a view of your currently executing crontab processes please use the
 command crond_procs.
@@ -205,7 +205,7 @@ Monitoring scrontab jobs
 ------------------------
 
 You can monitor your scrontab jobs supplying the ``--me`` and ``--p
-<parition>`` flags to :command:`squeue`:
+<partition>`` flags to :command:`squeue`:
 
 .. code-block:: shell
 

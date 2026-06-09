@@ -64,7 +64,7 @@ If you want to leverage Python with Jupyter, we direct you to our
 
     The RDHPCS is diligently working to implement a unified Python/Conda
     configuration and policies across all NOAA-managed RDHPCS systems (Hera,
-    Jet, Mercury, Pan). This documentation will be updated as these
+    Mercury, Pan). This documentation will be updated as these
     configurations and policies are implemented.
 
 .. _python-guides:
@@ -136,13 +136,6 @@ To start using Python, load the ``python`` module.
 
             $ module load rdhpcs-python
 
-    .. tab-item:: Jet
-        :sync: jet
-
-        .. code-block:: bash
-
-            $ module load python
-
     .. tab-item:: mercury
         :sync: mercury
 
@@ -210,13 +203,6 @@ need to activate the environment.
         .. code-block:: bash
 
             $ module load rdhpcs-conda
-
-    .. tab-item:: Jet
-        :sync: jet
-
-        .. code-block:: bash
-
-            $ module load conda
 
     .. tab-item:: mercury
         :sync: mercury

@@ -64,13 +64,6 @@ packages assume use of GCC.
 
             $ module load rdhpcs-conda
 
-    .. tab-item:: Jet
-        :sync: jet
-
-        .. code-block:: bash
-
-            $ module load conda
-
     .. tab-item:: mercury
         :sync: mercury
 

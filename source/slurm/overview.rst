@@ -1112,7 +1112,7 @@ sub-Portfolio's FairShare.
 
 .. note::
 
-   ``sfairshare`` is only available on Hera and Jet.
+   ``sfairshare`` is only available on Hera.
 
 .. _slurm-saccount-params:
 
@@ -1139,7 +1139,7 @@ The ``saccount_params`` will show your current:
 
 .. note::
 
-   ``saccount_params`` is only available on Hera, Jet, Orion.
+   ``saccount_params`` is only available on Hera, and Orion.
 
 .. code-block:: shell
 

@@ -3,7 +3,7 @@
     to manage software environments, load compilers and libraries, and
     use modules correctly in batch job scripts.
    :keywords: modules, Lmod, module load, module avail, module spider,
-    batch jobs, software environment, Gaea, Hera, Ursa, Jet, Orion,
+    batch jobs, software environment, Gaea, Hera, Ursa, Orion,
     Hercules
 
 .. _modules:
@@ -14,7 +14,7 @@ Modules
 
 `Lmod <https://lmod.readthedocs.io/en/latest/>`__ is a Lua-based module
 system used to manage software environments on the RDHPCS systems
-Gaea, Ursa, Hera, Jet, and the MSU systems Hercules and Orion. Rather
+Gaea, Ursa, Hera, and the MSU systems Hercules and Orion. Rather
 than manually setting environment variables like ``PATH`` and
 ``LD_LIBRARY_PATH``, the module system handles these changes for you
 when you load or unload a module.
@@ -232,7 +232,6 @@ To remove a path from the module search:
 
 Known community and project module paths on specific systems:
 
-- **Jet**: ``module use /contrib/modulefiles``
 - **Gaea (GFDL FRE)**: ``module use /ncrc/home2/fms/local/modulefiles``
 
 
@@ -293,7 +292,7 @@ directory for the full list.
 
 .. note::
 
-   This section applies to Ursa, Hera, Mercury, and Jet only. On
+   This section applies to Ursa, Hera, and Mercury only. On
    Gaea, use ``scrontab`` for recurring scheduled jobs.
 
 Cron starts with a minimal environment and runs no system
