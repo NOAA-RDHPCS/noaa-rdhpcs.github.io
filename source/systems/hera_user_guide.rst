@@ -278,13 +278,13 @@ Hera Lustre Configuration
 -------------------------
 
 All nodes (login and compute) access the lustre file-systems mounted
-at ``/scratch1`` and ``/scratch2``. Each user has access to one or
+at ``/scratch3`` and ``/scratch4``. Each user has access to one or
 more directories based on the project which they are a member of, such
 as:
 
 .. code-block:: shell
 
-   /scratch[1,2]/${PORTFOLIO}/${PROJECT}/${TASK}
+   /scratch[3,4]/${PORTFOLIO}/${PROJECT}/${TASK}
 
 where ``${TASK}`` is often, but not necessarily, the individual user's
 login ID, as defined by the project lead.
@@ -339,7 +339,7 @@ Unaligned stripes means that some file segments are split across OSTs.
 Progressive File Layouts
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``/scratch1`` and ``/scratch2`` file systems are enabled with a
+The ``/scratch3`` and ``/scratch4`` file systems are enabled with a
 feature called Progressive File Layouts (PFL), which is efficient for
 the vast majority of use cases. It uses a single stripe count for
 small files (reducing overhead) and increases the striping as the file
@@ -430,10 +430,10 @@ For example, to get a summary of the disk usage for project *rtnim*:
 
    $ id
    uid=5088(rtfim) gid=10052(rtfim) groups=10052(rtfim)...
-   $ lfs quota -p 10052 /scratch1
+   $ lfs quota -p 10052 /scratch3
    Disk quotas for prj 10052 (pid 10052):
    Filesystem  kbytes   quota   limit   grace   files   quota   limit   grace
-   /scratch1       4  1048576 1258291      *      1  100000  120000      *
+   /scratch3       4  1048576 1258291      *      1  100000  120000      *
    ("kbytes" = usage, "quota" = soft quota, "limit" = hard quota)
 
 Finding Files

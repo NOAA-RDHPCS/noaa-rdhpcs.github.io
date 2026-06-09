@@ -132,7 +132,6 @@ remote RDHPCS system:
 
 * :download:`Gaea </_downloads/gaea_slurm.qtf>`
 * :download:`Hera </_downloads/hera_slurm.qtf>`
-* :download:`Jet </_downloads/jet_slurm.qtf>`
 
 Please review the downloaded queue template file.  You may need to modify it to
 ensure the correct modules are loaded for your application to run.
