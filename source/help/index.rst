@@ -40,6 +40,11 @@ RDHPCS e-mail addresses.
 | AIM / Accounts | rdhpcs.aim.help@noaa.gov     |
 +----------------+------------------------------+
 
+.. note::
+
+  GFDL users can create and manage their help tickets through
+  :ref:`ServiceDesk`.
+
 .. _rdhpcs-workflow-help:
 
 +------------------------------------+-----------------------------+
@@ -418,8 +423,45 @@ Then, let the Help Desk team know by adding this line to the ticket:
 
     I have recorded an example of the issue -- you can find it in the "for-help-desk" directory in my home directory.
 
-Managing Help Tickets
-=====================
+.. _ServiceDesk:
+
+ServiceDesk
+===========
+
+GFDL users can create and manage their help tickets through the `ServiceDesk
+portal <https://servicedesk.gfdl.noaa.gov>`_. Authenticate with your CAC or Yubikey
+to access the portal. The Portal landing page allows you to submit a new
+ticket help, and view and manage existing tickets.
+
+.. image:: /images/SDesk1.png
+
+Submitting a Ticket through ServiceDesk
+---------------------------------------
+
+
+1. Click the red Report an Issue button.
+2. Select the incident category that best describes your issue.
+
++--------------------+-------------------------------------------------------+
+| HPC/Gaea           | Problems, performance drops, or connectivity errors   |
++--------------------+-------------------------------------------------------+
+| HPC/PPAN           | Problems, performance drops, or connectivity errors   |
++--------------------+-------------------------------------------------------+
+| Network            | Outages, slow connections, Wi-Fi drops, connectivity  |
++--------------------+-------------------------------------------------------+
+| Software           | Application crashes, licensing errors, bugs.          |
++--------------------+-------------------------------------------------------+
+| Technical Services | Hardware or IT problems, printers VDI connections.    |
++--------------------+-------------------------------------------------------+
+
+
+3. Complete the required ticket fields. Make sure to categorize your issue
+   correctly, and provide as much information as you can.
+
+Check these tips for :ref:`good_hd_requests`.
+
+Managing OTRS Help Tickets
+==========================
 
 You can reply to the e-mail thread that is started by the OTRS system after you
 submit a help request.  The subject of that e-mail thread starts with
