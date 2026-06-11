@@ -42,8 +42,8 @@ RDHPCS e-mail addresses.
 
 .. note::
 
-  GFDL users can create and manage their help tickets through
-  :ref:`ServiceDesk`.
+  PPAN (GFDL) and Gaea users can create and manage their
+  help tickets through GFDL :ref:`ServiceDesk`.
 
 .. _rdhpcs-workflow-help:
 
@@ -425,10 +425,10 @@ Then, let the Help Desk team know by adding this line to the ticket:
 
 .. _ServiceDesk:
 
-ServiceDesk
-===========
+GFDL ServiceDesk
+================
 
-GFDL users can create and manage their help tickets through the `ServiceDesk
+GFDL users can create and manage their help tickets through the GFDL `ServiceDesk
 portal <https://servicedesk.gfdl.noaa.gov>`_. Authenticate with your CAC or Yubikey
 to access the portal. The Portal landing page allows you to submit a new
 ticket help, and view and manage existing tickets.
