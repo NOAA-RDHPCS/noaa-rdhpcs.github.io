@@ -653,7 +653,7 @@ of the following options:
 
 or
 
-    ``#SBATCH --nodes=1``
+    ``#SBATCH --mem=0``
 
 The same technique is used for parallel jobs. The main difference will be that
 you need to replace the launch line as follows.
