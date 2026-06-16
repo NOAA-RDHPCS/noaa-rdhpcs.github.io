@@ -30,6 +30,10 @@ login nodes in “read-only” mode, and will remain available until July 31, 20
 * Files from ``/contrib`` are found at: ``/jet/contrib``
 * Files from ``/lfs[5,6]`` are found at: ``/jet/lfs[5,6]``
 
+
+**Note: For LFS, only files accessed within the last 30 days (as of March 31, 2026) 
+are available.**
+
 If you have data in these locations that you wish to retain, transfer the data
 to another RDHPCS system or your local environment prior to July 31, 2026.
 
