@@ -17,6 +17,7 @@ permissions:
 
 env:
   SPHINXOPTS: --quiet
+  LINKCHECK_RATE_LIMIT_TIMEOUT: '600'
 
 jobs:
   check-all-links:
