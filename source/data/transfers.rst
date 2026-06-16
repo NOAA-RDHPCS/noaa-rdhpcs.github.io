@@ -722,8 +722,7 @@ machine, contact your local systems administrator.
 
 **Configuration**
 
-Enter host information to configure an SSH Terminal Session. The
-example below defines a session to Jet via the Boulder Bastion:
+Enter host information to configure an SSH Terminal Session.
 
 .. image:: /images/putty1.png
    :scale: 75%
@@ -1780,23 +1779,6 @@ destination if does exist:
 
     Do not use the ``--delete`` option if you do not want data in the
     destination directory to be removed.
-
-xsync
------
-
-On Ursa, an additional data synchronization tool,
-``xsync`` is available in ``/apps/local/bin``. It is an unsupported
-wrapper around ``rsync``,
-``find``, and ``xargs`` that performs multi-threaded transfers.
-
-Usage of ``xsync`` is almost identical to ``rsync`` as described above.
-
-.. note::
-
-    ``xsync`` does not support the ``--include`` and ``--exclude``
-    rsync options.  To view additional parameters to tune threading
-    and depth for better performance, run ``xsync --help``. In most
-    cases they should not be needed.
 
 
 A sample batch script to transfer data
