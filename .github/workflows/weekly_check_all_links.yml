@@ -38,6 +38,20 @@ jobs:
         continue-on-error: true
         run: make linkcheck
 
+      - name: Gather known broken URLs from open issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue list \
+            --repo ${{ github.repository }} \
+            --label "bug" \
+            --state open \
+            --search "Broken link in:title" \
+            --json number,body > open_issues.json
+          python .github/scripts/extract_known_urls.py open_issues.json > known_urls.json
+          echo "Known URLs from open issues:"
+          cat known_urls.json
+
       - name: Report broken links
         id: report
         run: |
@@ -46,7 +60,13 @@ jobs:
           # Python warnings or script errors appear in the issue for diagnostics.
           # If stderr output ever corrupts the issue body formatting, replace 2>&1
           # with a separate redirect (e.g., 2>report_err.txt) and handle it separately.
-          python .github/scripts/report_linkcheck.py > issue_body.md 2>&1
+          #
+          # Exit codes:
+          #   0 - no broken links found
+          #   1 - new broken links found (create issue)
+          #   2 - output.json missing or unreadable
+          #   3 - broken links found but all are already tracked (skip issue creation)
+          python .github/scripts/report_linkcheck.py --known-urls-file known_urls.json > issue_body.md 2>&1
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           set -e
           cat issue_body.md
@@ -56,16 +76,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          existing=$(gh issue list \
-            --label "bug" \
-            --state open \
-            --search "Broken link(s) detected in:title" \
-            --json number \
-            --jq '.[0].number')
-          if [ -n "$existing" ]; then
-            echo "Issue #$existing already open; skipping creation."
-            exit 0
-          fi
           gh issue create \
             --title "Broken link(s) detected" \
             --label "bug" \
