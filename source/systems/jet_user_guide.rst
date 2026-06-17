@@ -21,7 +21,7 @@ Jet User Guide
    **Jet has been decommissioned as of March 31, 2026!**
 
 Jet Data Disposition
----------------------
+====================
 
 Certain Jet user data is currently accessible from the Ursa
 login nodes in “read-only” mode, and will remain available until July 31, 2026.
@@ -33,7 +33,10 @@ login nodes in “read-only” mode, and will remain available until July 31, 20
 If you have data in these locations that you wish to retain, transfer the data
 to another RDHPCS system or your local environment prior to July 31, 2026.
 
-.. WARNING::
+**Note: For LFS, only files accessed on Jet during the last 30 days of Jet's
+operation (March 1–March 31, 2026) are made available.**
 
-   **Jet data will not be available after July 31, 2026.**
+.. warning::
+
+   Jet data will not be available after July 31, 2026.
 
