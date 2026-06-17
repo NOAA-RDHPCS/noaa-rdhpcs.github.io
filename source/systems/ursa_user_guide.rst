@@ -132,17 +132,11 @@ See the :ref:`Quality of Service (QOS) table <QOS-table>` for more information.
 Node Sharing
 ------------
 
-Jobs requesting less than 192 cores or the equivalent amount
-of memory will share the node with other jobs.
+As of 6/18/26, node sharing has been enabled for all job sizes, unless you use
+the ``--exclusive`` option when you submit your job.
 
-With the Ursa ``u1-compute`` partition:
-
-* If you request 1-191 cores for your job
-  you will be allocated and charged for the greater of
-  the number of cores requested or the amount of memory
-  requested in GB divided by 2.
-* If you request 192 or greater cores you will be given and charged for whole
-  nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
+For more information on this ``sbatch`` option, refer to the
+`sbatch documentation <https://slurm.schedmd.com/sbatch.html>`_.
 
 Front Ends and Service Partition
 --------------------------------
