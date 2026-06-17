@@ -1780,7 +1780,6 @@ destination if does exist:
     Do not use the ``--delete`` option if you do not want data in the
     destination directory to be removed.
 
-
 A sample batch script to transfer data
 --------------------------------------
 
