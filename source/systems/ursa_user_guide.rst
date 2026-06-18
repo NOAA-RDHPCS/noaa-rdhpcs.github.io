@@ -142,7 +142,8 @@ With the Ursa ``u1-compute`` partition:
   the number of cores requested or the amount of memory
   requested in GB divided by 2.
 * If you request 192 or greater cores you will be given and charged for whole
-  nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
+  nodes, in multiples of 192 cores. (For example, request - 193,
+  charged for 384 cores.)
 
 For more information on this ``sbatch`` option, refer to the
 `sbatch documentation <https://slurm.schedmd.com/sbatch.html>`_.
