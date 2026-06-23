@@ -100,11 +100,11 @@ file.
                    `    LocalForward      ${lf_port} localhost:${lf_port}\n` +
                    `    RemoteForward     ${rf_port} localhost:22\n` +
                    `    User              ${user}\n` +
-		   `# CAC / PIV / PKCS11 Providers for MacOS and Linux.\n` +
-		   `    Match exec "uname | grep Darwin"\n` +
-		   `      PKCS11Provider    /usr/lib/ssh-keychain.dylib\n` +
-		   `    Match exec "uname | grep Linux"\n` +
-		   `      PKCS11Provider    /usr/lib64/pkcs11/opensc-pkcs11.so\n\n` +
+                   `# CAC / PIV / PKCS11 Providers for MacOS and Linux.\n` +
+                   `    Match exec "uname | grep Darwin"\n` +
+                   `      PKCS11Provider    /usr/lib/ssh-keychain.dylib\n` +
+                   `    Match exec "uname | grep Linux"\n` +
+                   `      PKCS11Provider    /usr/lib64/pkcs11/opensc-pkcs11.so\n\n` +
                    `Host ${host}.local\n` +
                    `    HostName          localhost\n` +
                    `    Port              ${lf_port}\n` +
