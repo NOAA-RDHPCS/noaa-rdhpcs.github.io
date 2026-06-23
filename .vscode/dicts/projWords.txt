@@ -580,6 +580,8 @@ SLES
 slurmctld
 slurmd
 slurmdbd
+smartsite
+Smartsites
 SOURCEDIR
 Spack
 SPHINXBUILD
