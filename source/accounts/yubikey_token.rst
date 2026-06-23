@@ -221,7 +221,7 @@ Continue onwards to the next step, Step 5.
 
 - Enter the **Secret Key.**
 
-- Enter a 6 to 8 digit PIN. 
+- Enter a 6 to 8 digit PIN.
 
 - Confirm the PIN.
 

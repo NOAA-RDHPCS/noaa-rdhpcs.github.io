@@ -69,80 +69,73 @@ Access to on premise RDHPCS compute resources is done using the Secure Shell
 MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
 See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 
-SSH clients are available for Windows-based systems, such as published
-by VanDyke software.  For recent SecureCRT versions, the preferred
-authentication setting is shown above.
-
-For Windows systems, `PuTTY
-<https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_,
-`SecureCRT <https://www.vandyke.com/products/securecrt/>`_, or
-`MobaXterm <https://mobaxterm.mobatek.net/>`_ can also be used to
-provide SSH capability.  Recent updates to Windows 10 and Windows 11
+SSH terminal clients are part of the standard Operating Systems (O/S) in use
+today across Linux, MacOS, and Windows.  Windows 10 and Windows 11
 have added built-in support for SSH.  If it is not installed on your
 version of Windows, please refer to Microsoft's `documentation on
 OpenSSH <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui&pivots=windows-server-2025>`_.
+
+Graphical SSH clients for Windows systems are available; users have
+reported success with applications such as `PuTTY-CAC <https://github.com/NoMoreFood/putty-cac/releases>`_,
+`SecureCRT <https://www.vandyke.com/products/securecrt/>`_, or
+`MobaXterm <https://mobaxterm.mobatek.net/>`_.
+
 
 .. _bastion_hostnames:
 
 Bastion Hostnames
 =================
-.. |CBHN|	replace:: **CAC Bastion hostnames**
+
+As of mid 2026, there is only one type of Bastion used for both CAC or
+Yubikey access.
+
+
 .. |MBHN|	replace:: **MFA Bastion hostnames**
-.. |GCPRNG|	replace:: gaea-cac.princeton.rdhpcs.noaa.gov
-.. |GCFRNG|	replace:: gaea-cac.fairmont.rdhpcs.noaa.gov
 .. |GMPRNG|	replace:: gaea-mfa.princeton.rdhpcs.noaa.gov
 .. |GMFRNG|	replace:: gaea-mfa.fairmont.rdhpcs.noaa.gov
 
-.. |HCPRNG|	replace:: hera-cac.princeton.rdhpcs.noaa.gov
-.. |HCFRNG|	replace:: hera-cac.fairmont.rdhpcs.noaa.gov
 .. |HMPRNG|	replace:: hera-mfa.princeton.rdhpcs.noaa.gov
 .. |HMFRNG|	replace:: hera-mfa.fairmont.rdhpcs.noaa.gov
 
-.. |PCPRNG|	replace:: analysis-cac.princeton.rdhpcs.noaa.gov
-.. |PCFRNG|	replace:: analysis-cac.fairmont.rdhpcs.noaa.gov
 .. |PMPRNG|	replace:: analysis-mfa.princeton.rdhpcs.noaa.gov
 .. |PMFRNG|	replace:: analysis-mfa.fairmont.rdhpcs.noaa.gov
 
-.. |MCPRNG|	replace:: mercury-cac.princeton.rdhpcs.noaa.gov
-.. |MCFRNG|	replace:: mercury-cac.fairmont.rdhpcs.noaa.gov
 .. |MMPRNG|	replace:: mercury-mfa.princeton.rdhpcs.noaa.gov
 .. |MMFRNG|	replace:: mercury-mfa.fairmont.rdhpcs.noaa.gov
 
-.. |UCPRNG|	replace:: ursa-cac.princeton.rdhpcs.noaa.gov
-.. |UCFRNG|	replace:: ursa-cac.fairmont.rdhpcs.noaa.gov
 .. |UMPRNG|	replace:: ursa-mfa.princeton.rdhpcs.noaa.gov
 .. |UMFRNG|	replace:: ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 .. |OUG|	replace:: :ref:`orion-user-guide`
 
-+-------------------+-----------------+----------------------------------+
-| **RDHPCS System** | |CBHN|          | |MBHN|                           |
-+-------------------+-----------------+----------------------------------+
-| Gaea              | |GCPRNG|        | |GMPRNG|                         |
-|                   |                 |                                  |
-|                   | |GCFRNG|        | |GMFRNG|                         |
-+-------------------+-----------------+----------------------------------+
-| Hera              | |HCPRNG|        | |HMPRNG|                         |
-|                   |                 |                                  |
-|                   | |HCFRNG|        | |HMFRNG|                         |
-+-------------------+-----------------+----------------------------------+
-| PPAN              | |PCPRNG|        | |PMPRNG|                         |
-|                   |                 |                                  |
-|                   | |PCFRNG|        | |PMFRNG|                         |
-+-------------------+-----------------+----------------------------------+
-| Mercury           | |MCPRNG|        | |MMPRNG|                         |
-|                   |                 |                                  |
-|                   | |MCFRNG|        | |MMFRNG|                         |
-+-------------------+-----------------+----------------------------------+
-| Ursa              | |UCPRNG|        | |UMPRNG|                         |
-|                   |                 |                                  |
-|                   | |UCFRNG|        | |UMFRNG|                         |
-+-------------------+-----------------+----------------------------------+
++-------------------+----------------------------------+
+| **RDHPCS System** | |MBHN|                           |
++-------------------+----------------------------------+
+| Gaea              | |GMPRNG|                         |
+|                   |                                  |
+|                   | |GMFRNG|                         |
++-------------------+----------------------------------+
+| Hera              | |HMPRNG|                         |
+|                   |                                  |
+|                   | |HMFRNG|                         |
++-------------------+----------------------------------+
+| PPAN              | |PMPRNG|                         |
+|                   |                                  |
+|                   | |PMFRNG|                         |
++-------------------+----------------------------------+
+| Mercury           | |MMPRNG|                         |
+|                   |                                  |
+|                   | |MMFRNG|                         |
++-------------------+----------------------------------+
+| Ursa              | |UMPRNG|                         |
+|                   |                                  |
+|                   | |UMFRNG|                         |
++-------------------+----------------------------------+
 
-In addition to the Bastions, RDHPCS users have access to computational capacity
-on the Orion and Hercules systems, hosted by Mississippi State University. See
-the :ref:`MSU-HPC <MSU-HPC-user-guide>` user guide.
-for detailed information.
+In addition to the NOAA systems, RDHPCS users have access to
+computational capacity on the Orion and Hercules systems, hosted by
+Mississippi State University. See the :ref:`MSU-HPC
+<MSU-HPC-user-guide>` user guide.  for detailed information.
 
 Computational capacity is also available on the RDHPCS Cloud Platform, which
 allows NOAA users to create custom HPC clusters on an as-needed basis, through
@@ -166,14 +159,15 @@ reader and a modern OpenSSH client, or PUTTY-CAC for Windows.
         the `Account Information Management`_ website to update the CAC
         information.
 
-#. Reference the table above for the appropriate CAC Bastion to use.
+#. Reference the table above for the appropriate Bastion to use.
 #. When prompted, enter your CAC PIN.
 
-See also the to-be-created consolidated section on configuring your
-openssh or putty-cac for easy rdhpcs access.
+See also the `ssh port tunnels`_ section to create an OpenSSH
+configuration for easy RDHPCS access.
 
-Always start by **inserting** your CAC/PIV card.  If the CAC/PIV is
-not available, authentication will fall through to Yubikey.
+Always start by **inserting** your CAC/PIV card **before** using
+``ssh``.  If the CAC/PIV is not available, authentication will fall
+through to Yubikey, and the password prompt will be different.
 
 
 Linux
@@ -192,8 +186,6 @@ Mac OS
 
 Windows
 -------
-
-Reference :ref:`putty-cac-config` to configure and create profiles.
 
 Open PuTTY-CAC.  Select the desired profile (Bastion / HPCS) and click
 **Connect** or something like that.
@@ -217,14 +209,8 @@ Open PuTTY-CAC.  Select the desired profile (Bastion / HPCS) and click
 
    .. note::
 
-      Your card reader may flash during signing. **Do not remove your
+      Your card reader may flash during login. **Do not remove your
       card until you are fully logged in.**
-
-
-
-
-
-
 
 
 .. _yubikey_instructions:
@@ -239,11 +225,10 @@ access. <yubikey-user-instructions>`
 
 .. code-block:: console
 
-    $ ssh MFA-BASTION-HOSTNAME
+    $ ssh First.Last@BASTION
 
 
-#. The MFA bastions are used for Yubikey logins.
-#. Reference the table above for the appropriate MFA Bastion to use.
+#. All bastions are available for both CAC and Yubikey logins.
 #. When prompted, enter your Yubikey PIN then press and hold your Yubikey
    (long press).
 
@@ -305,32 +290,25 @@ mid 2024:
 .. note::
 
     After the 5 second wait, the bastion node will use a load balancer to select
-    a node.
+    a lightly loaded node.
 
 
 X11 Graphics
 ============
 
-Users can use SSH X11 forwarding to open GUI-based applications (e.g., xterm,
-ARM Forge).  This is typically done using an SSH option.  For the :ref:`Tectia`
-client :command:`sshg3` or OpenSSH-based clients, use the ``-X`` option:
-
-.. code-block:: console
-
-    $ sshg3 -X host.url
-
-or
+Users can use SSH X11 forwarding to open GUI-based applications (e.g.,
+xterm, ARM Forge).  This is typically done using an SSH option.  For
+OpenSSH-based clients, use the ``-X`` option:
 
 .. code-block:: console
 
     $ ssh -X host.url
 
-Other clients, like PuTTY, will have an option when configuring the host.
+Other clients, like PuTTY-CAC, will have an option when configuring
+the host.
 
-The base SSH X11 forwarding is typically slow.  RDHPCS systems use X2Go for
-improved X11 performance.  Some users have found it difficult to use X2Go.
-Please submit a :ref:`support issue <getting_help>` if you have issues using
-X2Go.
+The base SSH X11 forwarding is typically slow.  A different option is to use
+ParallelWorks with a graphical desktop accessible via web browser.
 
 .. note::
 
@@ -348,10 +326,12 @@ systems, the bastion configures SSH port-forwarding tunnels.  To use these
 tunnels, the user must configure their local SSH client to create tunnels
 to/from the bastion.
 
-See the Port Tunnel section of the :ref:`Tectia` page for details.  You can use
-:ref:`this form <openssh-config>` to create a sample SSH configuration for
+You can use :ref:`this OpenSSH configuration generation form
+<openssh-config>` to create a sample SSH configuration for
 OpenSSH-based clients.
 
+Windows users will need to configure port tunnels in their SSH
+application of choice.
 
 
 Web based ParallelWorks Access
