@@ -302,6 +302,7 @@ following line can run immediately.
 If you are using x2go and need to use X windows-based tools, then also do an
 ``ssh -X localhost`` before you issue the ``salloc`` command. This is needed
 because of the way x2go handles X11 forwarding.
+git add .
 
 
 Submitting a Job to Run a Command on a Compute Node
