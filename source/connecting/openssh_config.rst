@@ -93,9 +93,9 @@ file.
             lf_port = fix_port(lf_port);
             rf_port = fix_port(rf_port);
 
-            return(`Host ${host}-rsa.boulder.rdhpcs.noaa.gov\n` +
-                   `    HostName          ${host}-rsa.boulder.rdhpcs.noaa.gov\n\n` +
-                   `Host ${host}-rsa.princeton.rdhpcs.noaa.gov ${host}-rsa.boulder.rdhpcs.noaa.gov\n` +
+            return(`Host ${host}-rsa.fairmont.rdhpcs.noaa.gov\n` +
+                   `    HostName          ${host}-rsa.fairmont.rdhpcs.noaa.gov\n\n` +
+                   `Host ${host}-rsa.princeton.rdhpcs.noaa.gov ${host}-rsa.fairmont.rdhpcs.noaa.gov\n` +
                    `    HostName          ${host}-rsa.princeton.rdhpcs.noaa.gov\n` +
                    `    LocalForward      ${lf_port} localhost:${lf_port}\n` +
                    `    RemoteForward     ${rf_port} localhost:22\n` +
