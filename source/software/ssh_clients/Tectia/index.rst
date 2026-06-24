@@ -352,7 +352,7 @@ Configure the Tectia Client
          .. figure:: /images/tectiawin4.png
 
       6. Set up a connection profile for each hostname that you want
-         to use. There are two bastions, one in Boulder, CO and one in
+         to use. There are two bastions, one in Fairmont, WV and one in
          Princeton, NJ. It is highly recommended that you set up a
          profile from each bastion for each RDHPCS system you need to
          use, as bastions are typically down during maintenance
@@ -414,9 +414,9 @@ Configure the Tectia Client
 
          .. figure:: /images/rheltectia6.png
 
-         * Set a profile name, for example “jet”.
+         * Set a profile name, for example “hera”.
          * Set the full hostname, for example
-           *bastion-jet.boulder.rdhpcs.noaa.gov*.
+           *bastion-hera.fairmont.rdhpcs.noaa.gov*.
          * Apply the changes and then click OK.
 
       **Using the Tectia SSH Client**
@@ -483,9 +483,9 @@ Configure the Tectia Client
 
          .. figure:: /images/rheltectia6.png
 
-         * Set a profile name, for example “jet”.
+         * Set a profile name, for example “hera”.
          * Set the full hostname, for example
-           “bastion-jet.boulder.rdhpcs.noaa.gov”.
+           “bastion-hera.fairmont.rdhpcs.noaa.gov”.
          * Apply the changes and then click OK.
 
       Once the Tectia Client has been configured, you can connect to any of the following CAC bastions.

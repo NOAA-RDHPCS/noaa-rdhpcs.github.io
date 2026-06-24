@@ -612,20 +612,20 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.fairmont.rdhpcs.noaa.gov
 
 For Mac or Linux, enter:
 
 .. code-block:: shell
 
-     ssh -LXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+     ssh -LXXXX:localhost:XXXXX First.Last@ursa-rsa.fairmont.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.fairmont.rdhpcs.noaa.gov
 
 Note that objects emphasized in this figure should be unique to your
 configuration:
@@ -884,7 +884,7 @@ Example
   from podaac-tools.jpl.nasa.gov via the Ursa front ends to transfer
   weather data to NOAA.
 * **Source Systems:** hfe[01-12].fairmont.rdhpcs.noaa.gov,
-  fe[1-8].boulder.rdhpcs.noaa.gov, nfe[1-4].boulder.rdhpcs.noaa.gov
+  fe[1-8].fairmont.rdhpcs.noaa.gov, nfe[1-4].fairmont.rdhpcs.noaa.gov
   dtn-mercury.fairmont.rdhpcs.noaa.gov
 * **Source IPs:** 140.208.192.[9-18], 140.208.160.[1-8],
   140.208.193.[65-68]
