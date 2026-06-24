@@ -534,8 +534,12 @@ If you have difficulties, contact the support staff for help.
 
 .. _established-tunnel:
 
-Using a Pre-Established SSH Port Tunnel
-=======================================
+
+Transferring to and from local machine to RDHPCS systems
+========================================================
+
+SSH Port Tunnel method
+======================
 
 With the SSH port tunnel method, an SSH tunnel is created
 between your point of login (typically your desktop) to the remote
@@ -612,20 +616,20 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.fairmont.rdhpcs.noaa.gov
 
 For Mac or Linux, enter:
 
 .. code-block:: shell
 
-     ssh -LXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+     ssh -LXXXX:localhost:XXXXX First.Last@ursa-rsa.fairmont.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.fairmont.rdhpcs.noaa.gov
 
 Note that objects emphasized in this figure should be unique to your
 configuration:
@@ -633,8 +637,8 @@ configuration:
 .. image:: /images/linux_xfer2.png
    :scale: 75%
 
-Verify that the tunnel is working by doing the following in another local
-window from your local machine:
+If you are using Linux, verify that the tunnel is working by doing
+the following in another local window from your local machine:
 
 .. code-block:: shell
 
@@ -644,7 +648,7 @@ window from your local machine:
 Note that <port> is your local port number used above, First.Last is
 your user ID on the RDHPCS systems and localhost is typed as-is.
 
-You should be prompted for your password; enter your PIN + RSA token
+You should be prompted for your password; enter your PIN + press your Yubikey
 and you should be able to login. Once you are able to log in, you can
 log out of that session as that was only for testing the tunnel.
 
@@ -666,23 +670,8 @@ Please keep in mind that tunnel will exist only as long as the session opened
 in Step 1 is kept alive.
 
 
-.. code-block:: shell
-
-  Hostname: localhost
-  Port: your-assigned-port-used-in-Step1-above
-  File protocol: SFTP
-
-
-
-
 To transfer a file **to** HPC Systems
 
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
 
 For Mac or Linux, enter:
 
@@ -694,13 +683,64 @@ For Mac or Linux, enter:
 
    Your username is case sensitive when used in the scp command. Username should be in the form of First.Last.
 
+For Windows:
+
+There are two approaches. The first is to use the command line and enter:
+
+... code-block:: shell
+
+scp -P XXXXX -o MACs=hmac-sha2-512-etm@openssh.com
+.\Notes.txt First.Last@localhost
+
+. If Putty is installed one can also enter:
+
+... code-block:: shell
+   pscp -P XXXXX - .\Notes.txt First.Last@localhost
+
+If one prefers a graphical interface, it is recommended to use
+`WinSCP <https://winscp.net/eng/index.php>`_ to
+transfer the file. First open the app and start a session. The protocal
+should be SFTP, the hostname should be localhost, the port should be one
+for the tunnel as mentioned above and the user name will be account name
+on the RDHPCS system. Leave the password blank. Click the login button.
+
+.. image:: /images/winscp1.png
+   :scale: 75%
+
+If a dialog box appears requesting to add a host key to the cache, click
+yes and continue. The next screen will ask you for your password. Enter
+your Pin + press your Yubikey to log in as you would normally do for a
+login.
+
+.. image:: /images/winscp2.png
+   :scale: 75%
+
+The next screen will show the interface for transfering files with the local
+directory system on the right and the RDHPCS remote system directory on the
+left as show below.
+
+.. image:: /images/winscp3.png
+   :scale: 75%
+
+To transfer a file, right click on the file and select upload.
+
+.. image:: /images/winscp2a.png
+   :scale: 75%
+
+The transfer dialog box will pop up. Click OK and wait for the transfer to
+complete.
+
+.. image:: /images/winscp3a.png
+   :scale: 75%
+
+You should now see the file on the left.
+
 To transfer a file **from** HPC Systems:
 
-For Windows Power Shell, enter:
+For Windows:
 
-.. code-block:: shell
-
-    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
+The procedure is almost the same as copying to the RDHPCS with the exception
+that you will click on a file or files on the left and select download.
 
 For Mac or Linux, enter:
 
@@ -708,8 +748,7 @@ For Mac or Linux, enter:
 
     rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
 
-
-In either case, you will be asked for a password. Touch your YubiKey for
+You will be asked for a password. Enter your PIN and touch your YubiKey for
 authentication.
 
 SSH Port Tunnel For PuTTY Windows Systems
