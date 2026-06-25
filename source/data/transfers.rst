@@ -712,13 +712,15 @@ For Mac or Linux, enter:
 In either case, you will be asked for a password. Touch your YubiKey for
 authentication.
 
-SSH Port Tunnel For PuTTY Windows Systems
------------------------------------------
+SSH Port Tunnel For PuTTY-CAC Windows Systems
+---------------------------------------------
 
-PuTTY is an SSH client, used to configure and initiate connection.
-Navigate to a separate tab to install `PuTTY
-<https://www.putty.org/>`_. If you cannot install software on your
-machine, contact your local systems administrator.
+PuTTY-CAC is an SSH client, used to configure and initiate connection.
+As needed, install `PuTTY-CAC
+<https://github.com/NoMoreFood/putty-cac/releases/>`_. If you cannot
+install software on your machine, contact your local systems
+administrator.
+
 
 **Configuration**
 
@@ -761,13 +763,13 @@ the RSA token code to refresh before you enter it.
 .. image:: /images/linux_xfer1.png
     :scale: 75%
 
-* Click **Exit**, or close the Putty window to end the session.
+* Click **Exit**, or close the PuTTY-CAC window to end the session.
 
 **Port Tunnel Setup**
 
 To enable data transfers, you will need to set up a Port Tunnel.
 
-* Open Putty.
+* Open PuTTY-CAC.
 * Select the session from the Saved Sessions list, then Load.
 * In the left pane under Connection>SSH select Tunnels.
 * Check Local ports accept connections from other hosts.
@@ -799,12 +801,6 @@ system (you already have the Local Port number):
 * Select Save. The new session will appear in the list of saved sessions.
 * Select Open to Login and verify the new session works correctly.
 
-
-
-SSH Port Tunnel For Tectia Windows Systems
-------------------------------------------
-
-See the :ref:`tectia` pages for complete information.
 
 
 WinSCP
