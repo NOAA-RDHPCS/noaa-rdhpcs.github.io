@@ -612,20 +612,20 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 For Mac or Linux, enter:
 
 .. code-block:: shell
 
-     ssh -LXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+     ssh -LXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 Note that objects emphasized in this figure should be unique to your
 configuration:
@@ -841,7 +841,7 @@ Internally Initiated Transfers
 
 HPC systems do not have specific hosts for internally initiated
 transfers. Transfers initiated from HPC Systems use the front end nodes
-for doing the transfers.
+or nodes in the service partition for doing the transfers.
 
 The firewall rules are set up by default to block all outgoing
 traffic. However, we permit internally initiated transfers by request,
@@ -853,14 +853,14 @@ contains your request. Use the subject line: <$SYSTEM> FEs to
 .. code-block:: shell
 
   Ursa:
+  Source Systems:  ufe[1-16].fairmont.rdhpcs.noaa.gov
+  Source IPs:  140.208.193.[131-146]
+  Hera:
   Source Systems:  hfe[1-12].fairmont.rdhpcs.noaa.gov
   Source IPs:  140.208.193.[1-12]
-  Hera:
-  Source Systems:  fe[1-8].fairmont.rdhpcs.noaa.gov
-  Source IPs:  140.208.160.[1-8]
   Mercury
-  Source Systems:  nfe[1-12].fairmont.rdhpcs.noaa.gov
-  Source IPs:140.208.193.[65-76]
+  Source Systems:  mfe[01-04].fairmont.rdhpcs.noaa.gov
+  Source IPs: 140.208.193.[101-104]
 
 Include the following information in the request:
 
@@ -884,10 +884,9 @@ Example
   from podaac-tools.jpl.nasa.gov via the Ursa front ends to transfer
   weather data to NOAA.
 * **Source Systems:** hfe[01-12].fairmont.rdhpcs.noaa.gov,
-  fe[1-8].boulder.rdhpcs.noaa.gov, nfe[1-4].boulder.rdhpcs.noaa.gov
-  dtn-mercury.fairmont.rdhpcs.noaa.gov
-* **Source IPs:** 140.208.192.[9-18], 140.208.160.[1-8],
-  140.208.193.[65-68]
+  mfe[1-4].fairmont.rdhpcs.noaa.gov
+* **Source IPs:** 140.208.193.[1-12],
+  140.208.193.[101-104]
 * **Destination Systems:** podaac-tools.jpl.nasa.gov
 * **Destination IPs:**  128.149.132.160
 * **Destination Port name (s):** HTTP/HTTPS, SSH
