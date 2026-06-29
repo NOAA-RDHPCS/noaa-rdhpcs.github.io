@@ -751,18 +751,19 @@ For Mac or Linux, enter:
 You will be asked for a password. Enter your PIN and touch your YubiKey for
 authentication.
 
-SSH Port Tunnel For PuTTY Windows Systems
------------------------------------------
+SSH Port Tunnel For PuTTY-CAC Windows Systems
+---------------------------------------------
 
-PuTTY is an SSH client, used to configure and initiate connection.
-Navigate to a separate tab to install `PuTTY
-<https://www.putty.org/>`_. If you cannot install software on your
-machine, contact your local systems administrator.
+PuTTY-CAC is an SSH client, used to configure and initiate connection.
+As needed, install `PuTTY-CAC
+<https://github.com/NoMoreFood/putty-cac/releases/>`_. If you cannot
+install software on your machine, contact your local systems
+administrator.
+
 
 **Configuration**
 
-Enter host information to configure an SSH Terminal Session. The
-example below defines a session to Jet via the Boulder Bastion:
+Enter host information to configure an SSH Terminal Session.
 
 .. image:: /images/putty1.png
    :scale: 75%
@@ -801,13 +802,13 @@ the RSA token code to refresh before you enter it.
 .. image:: /images/linux_xfer1.png
     :scale: 75%
 
-* Click **Exit**, or close the Putty window to end the session.
+* Click **Exit**, or close the PuTTY-CAC window to end the session.
 
 **Port Tunnel Setup**
 
 To enable data transfers, you will need to set up a Port Tunnel.
 
-* Open Putty.
+* Open PuTTY-CAC.
 * Select the session from the Saved Sessions list, then Load.
 * In the left pane under Connection>SSH select Tunnels.
 * Check Local ports accept connections from other hosts.
@@ -839,12 +840,6 @@ system (you already have the Local Port number):
 * Select Save. The new session will appear in the list of saved sessions.
 * Select Open to Login and verify the new session works correctly.
 
-
-
-SSH Port Tunnel For Tectia Windows Systems
-------------------------------------------
-
-See the :ref:`tectia` pages for complete information.
 
 
 WinSCP
@@ -1819,24 +1814,6 @@ destination if does exist:
 
     Do not use the ``--delete`` option if you do not want data in the
     destination directory to be removed.
-
-xsync
------
-
-On Ursa, an additional data synchronization tool,
-``xsync`` is available in ``/apps/local/bin``. It is an unsupported
-wrapper around ``rsync``,
-``find``, and ``xargs`` that performs multi-threaded transfers.
-
-Usage of ``xsync`` is almost identical to ``rsync`` as described above.
-
-.. note::
-
-    ``xsync`` does not support the ``--include`` and ``--exclude``
-    rsync options.  To view additional parameters to tune threading
-    and depth for better performance, run ``xsync --help``. In most
-    cases they should not be needed.
-
 
 A sample batch script to transfer data
 --------------------------------------

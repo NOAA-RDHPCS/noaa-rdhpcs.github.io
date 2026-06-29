@@ -20,6 +20,7 @@ Table of Contents
 * [Source directory structure](#source-directory-structure)
 * [Commit messages](#commit-messages)
 * [Building and testing locally](#building-and-testing-locally)
+* [Managing Python dependencies](#managing-python-dependencies)
 * [Code style](#code-style)
 
 ## Code of Conduct
@@ -172,6 +173,49 @@ make lint
 All commands must complete with zero errors and zero warnings before
 you commit.  See [Contributing to these
 docs](https://docs.rdhpcs.noaa.gov/contributing/) for a full walkthrough.
+
+## Managing Python dependencies
+
+This project uses pinned dependencies with SHA256 hash verification for supply
+chain security.  The `requirements.txt` file is generated from `requirements.in`
+and should not be edited directly.
+
+### Files
+
+- `requirements.in` — Direct dependencies (human-edited)
+- `requirements.txt` — Fully pinned with hashes (generated, do not edit)
+
+### Adding or updating a dependency
+
+1. Install pip-tools (one-time setup):
+
+   ```bash
+   pip install pip-tools
+   ```
+
+2. Edit `requirements.in` to add or modify the package.
+
+3. Regenerate the pinned requirements:
+
+   ```bash
+   pip-compile --generate-hashes requirements.in -o requirements.txt
+   ```
+
+4. Commit both `requirements.in` and `requirements.txt`.
+
+### Upgrading all dependencies
+
+To upgrade all packages to their latest compatible versions:
+
+```bash
+pip-compile --generate-hashes --upgrade requirements.in -o requirements.txt
+```
+
+### CI verification
+
+A CI check verifies that `requirements.txt` stays in sync with `requirements.in`.
+If you modify `requirements.in`, you must regenerate `requirements.txt` before
+the pull request can be merged.
 
 ## Code style
 
