@@ -57,7 +57,7 @@ jobs:
             --label "bug" \
             --body "The weekly ignored link check found one or more broken links.
 
-These URLs are excluded from the standard CI link checker (see \`linkcheck_ignore\` in \`source/conf.py\`) because they cannot be verified by the GitHub Actions runner environment (e.g., SSL certificate chain issues or network restrictions). They are checked separately by this scheduled workflow.
+## These URLs are excluded from the standard CI link checker (see \`linkcheck_ignore\` in \`source/conf.py\`) because they cannot be verified by the GitHub Actions runner environment (e.g., SSL certificate chain issues or network restrictions). They are checked separately by this scheduled workflow.
 
 ## Check Output
 
@@ -67,4 +67,4 @@ ${check_output}
 
 ## Action Required
 
-Update the broken link(s) in the referenced source file(s) to point to the correct URL, or update \`linkcheck_ignore\` in \`source/conf.py\` if the URL is now checkable by the standard link checker."
+## Update the broken link(s) in the referenced source file(s) to point to the correct URL, or update \`linkcheck_ignore\` in \`source/conf.py\` if the URL is now checkable by the standard link checker."
