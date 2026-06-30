@@ -309,7 +309,7 @@ example,
 
     $ ssh <First.Last>@gaea-rsa.rdhpcs.noaa.gov
 
-For more information on connecting through the Boulder or Princeton bastion,
+For more information on connecting through the Fairmont or Princeton bastion,
 with a :abbr:`CAC (Common Access Card)`, or for your first connection, see
 :ref:`connecting-to-rdhpcs`.
 
