@@ -209,8 +209,8 @@ either the volume or file count quota is exceed by more than 1.2x,
 writes will not be allowed.
 
 Summary and detailed information on finding your project's disk volume
-and file count quota and usage is found :ref: `here
-<Getting_Information_about_your_Projects>`.
+and file count quota and usage is found
+:ref:`here <slurm-getting-information-about-your-projects>`.
 
 Volume Quota Increase
 ^^^^^^^^^^^^^^^^^^^^^
