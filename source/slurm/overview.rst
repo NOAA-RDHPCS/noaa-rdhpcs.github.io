@@ -1119,7 +1119,7 @@ sub-Portfolio's FairShare.
 saccount_params
 ---------------
 
-The ``saccount_params`` will show your current:
+The ``saccount_params`` displays:
 
 - Home File System usage/quota (MB)
 - For each of your projects
