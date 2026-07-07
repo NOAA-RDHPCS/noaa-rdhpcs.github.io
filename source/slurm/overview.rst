@@ -646,15 +646,9 @@ the appropriate amount of memory by doing something like the following:
     sbatch --ntasks=1 --mem=8000M ... jobfile
 
 While the suffixes M and G both work, the number specified must be an integer.
-If you would prefer that the single-core job allocates the entire node, use one
-of the following options:
-
-    ``#SBATCH --exclusive``
-
-or
-
-    ``#SBATCH --nodes=1``
-
+If you would prefer that the single-core job
+allocates the entire node, use the ``--exclusive`` option
+to get exclusive access to the entire node.
 The same technique is used for parallel jobs. The main difference will be that
 you need to replace the launch line as follows.
 
