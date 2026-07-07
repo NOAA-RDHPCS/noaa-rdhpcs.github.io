@@ -12,7 +12,7 @@ Accounts, Projects, and Access Tokens
    :maxdepth: 2
 
    accounts_and_projects
-   rsa_token
+   cac_piv
    yubikey_token
    role_accounts
 

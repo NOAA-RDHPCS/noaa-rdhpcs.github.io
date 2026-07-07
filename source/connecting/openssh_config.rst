@@ -93,13 +93,18 @@ file.
             lf_port = fix_port(lf_port);
             rf_port = fix_port(rf_port);
 
-            return(`Host ${host}-rsa.boulder.rdhpcs.noaa.gov\n` +
-                   `    HostName          ${host}-rsa.boulder.rdhpcs.noaa.gov\n\n` +
-                   `Host ${host}-rsa.princeton.rdhpcs.noaa.gov ${host}-rsa.boulder.rdhpcs.noaa.gov\n` +
-                   `    HostName          ${host}-rsa.princeton.rdhpcs.noaa.gov\n` +
+            return(`Host ${host}-mfa.fairmont.rdhpcs.noaa.gov\n` +
+                   `    HostName          ${host}-mfa.fairmont.rdhpcs.noaa.gov\n\n` +
+                   `Host ${host}-mfa.princeton.rdhpcs.noaa.gov ${host}-mfa.fairmont.rdhpcs.noaa.gov\n` +
+                   `    HostName          ${host}-mfa.princeton.rdhpcs.noaa.gov\n` +
                    `    LocalForward      ${lf_port} localhost:${lf_port}\n` +
                    `    RemoteForward     ${rf_port} localhost:22\n` +
-                   `    User              ${user}\n\n` +
+                   `    User              ${user}\n` +
+                   `# CAC / PIV / PKCS11 Providers for MacOS and Linux.\n` +
+                   `    Match exec "uname | grep Darwin"\n` +
+                   `      PKCS11Provider    /usr/lib/ssh-keychain.dylib\n` +
+                   `    Match exec "uname | grep Linux"\n` +
+                   `      PKCS11Provider    /usr/lib64/pkcs11/opensc-pkcs11.so\n\n` +
                    `Host ${host}.local\n` +
                    `    HostName          localhost\n` +
                    `    Port              ${lf_port}\n` +
@@ -111,8 +116,6 @@ file.
             let rf_gaea = 20000;
             let lf_hera = 45000;
             let rf_hera = 55000;
-            let lf_jet = 11300;
-            let rf_jet = 21300;
             let lf_mercury = 25000;
             let rf_mercury = 35000;
             let lf_ppan = 40000;
@@ -124,7 +127,6 @@ file.
 
             return(ssh_host_conf("gaea", user, lf_gaea + uid, rf_gaea + uid) +
                    ssh_host_conf("hera", user, lf_hera + uid, rf_hera + uid) +
-                   ssh_host_conf("jet", user, lf_jet + uid, rf_jet + uid) +
                    ssh_host_conf("mercury", user, lf_mercury + uid, rf_mercury + uid) +
                    ssh_host_conf("ppan", user, lf_ppan + uid, rf_ppan + uid) +
                    ssh_host_conf("ursa", user, lf_ursa + uid, rf_ursa + uid));

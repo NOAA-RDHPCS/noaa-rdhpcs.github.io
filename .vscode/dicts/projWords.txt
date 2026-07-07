@@ -42,6 +42,7 @@ byacc
 cactest
 caja
 calnexfc
+CAPI
 CATN
 CBHN
 ccasm
@@ -83,6 +84,7 @@ cput
 CRAN
 craype
 creds
+crond
 csdchem
 csh
 cshrc
@@ -144,6 +146,7 @@ fillin
 Finity
 firstlast
 Firstname
+FNJT
 FNRS
 FOIA
 fortl
@@ -180,6 +183,8 @@ globusconnectpersonal
 glopara
 glrcm
 gmeta
+GMFRNG
+GMPRNG
 gmtb
 gnmip
 goagent
@@ -222,6 +227,8 @@ HFIP
 hfipprd
 highgpu
 hlist
+HMFRNG
+HMPRNG
 hmtb
 hmtr
 homerpt
@@ -329,6 +336,7 @@ MANPATH
 marineda
 Mathematica
 maxresident
+MBHN
 Mbounds
 MCBRNG
 Mchkfpstk
@@ -347,6 +355,8 @@ Minfo
 MKLROOT
 mmap
 mmchattr
+MMFRNG
+MMPRNG
 Moba
 modelpsd
 modulefamilies
@@ -488,14 +498,18 @@ petaflops
 phod
 physcpubind
 pkcs
+PMFRNG
+PMPRNG
 PNETCDF
 podaac
+postdrop
 PPBRNG
 ppef
 PPPRNG
 prarms
 Preconfigured
 procname
+procs
 profosse
 PROJECTNAME
 projid
@@ -625,6 +639,8 @@ udunits
 Uecflow
 ujet
 umarwi
+UMFRNG
+UMPRNG
 untar
 untarring
 upgrd
