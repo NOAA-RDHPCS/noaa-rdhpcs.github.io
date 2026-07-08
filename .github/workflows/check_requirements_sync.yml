@@ -1,0 +1,37 @@
+name: Check Requirements Sync
+
+on:
+  pull_request:
+    paths:
+      - 'requirements.in'
+      - 'requirements.txt'
+
+jobs:
+  check-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pip-tools
+        run: pip install pip-tools
+
+      - name: Check requirements are in sync
+        run: |
+          pip-compile --generate-hashes requirements.in -o requirements.txt.new
+          if ! diff -q requirements.txt requirements.txt.new > /dev/null 2>&1; then
+            echo "::error::requirements.txt is out of sync with requirements.in"
+            echo ""
+            echo "Run the following command locally and commit the result:"
+            echo "  pip-compile --generate-hashes requirements.in -o requirements.txt"
+            echo ""
+            echo "Differences found:"
+            diff requirements.txt requirements.txt.new || true
+            exit 1
+          fi
+          echo "requirements.txt is in sync with requirements.in"

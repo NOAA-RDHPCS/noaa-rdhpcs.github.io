@@ -1,0 +1,15 @@
+# Direct dependencies for RDHPCS Documentation
+#
+# This file lists the direct dependencies for the project.
+# Run 'pip-compile --generate-hashes requirements.in' to regenerate
+# the pinned requirements.txt file.
+#
+# See CONTRIBUTING.md for instructions on updating dependencies.
+
+sphinx
+sphinx_rtd_theme
+sphinx_design
+sphinx-sitemap
+sphinxcontrib-mermaid
+doc8
+codeowners

@@ -646,15 +646,9 @@ the appropriate amount of memory by doing something like the following:
     sbatch --ntasks=1 --mem=8000M ... jobfile
 
 While the suffixes M and G both work, the number specified must be an integer.
-If you would prefer that the single-core job allocates the entire node, use one
-of the following options:
-
-    ``#SBATCH --exclusive``
-
-or
-
-    ``#SBATCH --nodes=1``
-
+If you would prefer that the single-core job
+allocates the entire node, use the ``--exclusive`` option
+to get exclusive access to the entire node.
 The same technique is used for parallel jobs. The main difference will be that
 you need to replace the launch line as follows.
 
@@ -1112,14 +1106,14 @@ sub-Portfolio's FairShare.
 
 .. note::
 
-   ``sfairshare`` is only available on Hera and Jet.
+   ``sfairshare`` is only available on Hera.
 
 .. _slurm-saccount-params:
 
 saccount_params
 ---------------
 
-The ``saccount_params`` will show your current:
+The ``saccount_params`` displays:
 
 - Home File System usage/quota (MB)
 - For each of your projects
@@ -1139,7 +1133,7 @@ The ``saccount_params`` will show your current:
 
 .. note::
 
-   ``saccount_params`` is only available on Hera, Jet, Orion.
+   ``saccount_params`` is only available on Hera, and Orion.
 
 .. code-block:: shell
 
