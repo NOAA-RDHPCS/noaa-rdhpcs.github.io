@@ -15,38 +15,38 @@ Containers
 
 **Current Status**
 
-We now allow all users and projects to run `Singularity
-<https://en.wikipedia.org/wiki/Apptainer#History>`_ containers on Ursa, Gaea,
-Hera, MSU-HPC (Orion and Hercules), Mercury, and NOAA Cloud providers via
-ParallelWorks.
-Although users are allowed to run Singularity containers, we currently do not
-support any new RDHPCS services (i.e. Revision Control, Registries, Mirrors,
-Etc.) to support Containers.
+`Singularity <https://en.wikipedia.org/wiki/Apptainer#History>`_ containers
+are now available to all users and projects on Ursa, Gaea, Hera, MSU-HPC
+(Orion and Hercules), and Mercury. NOAA Cloud providers, accessed via
+ParallelWorks, are also supported.
+Although users are allowed to run Singularity containers, we currently do
+not support additional RDHPCS container services. This includes revision
+control, registries, and mirrors.
 
 .. _containers-introduction:
 
 Introduction
 ============
 
-As both existing and new NOAA projects endeavor to build software tools and
-solutions that are portable across multiple HPC sites and architectures,
-the RDHPCS program aims to provide the tools and infrastructure necessary to
-support these efforts. One such solution is the use of *software containers*.
-Unlike traditional environments based
-on modules or system-installed libraries, containers encapsulate the full
-runtime stack while operating within a shared, multi-user HPC system without
-requiring elevated privileges.
+Both existing and new NOAA projects aim to build software that is portable
+across HPC sites and architectures. The RDHPCS program provides the tools
+and infrastructure needed to support these efforts. One such solution is
+the use of *software containers*.
+Unlike traditional environments based on modules or system-installed
+libraries, containers encapsulate the full runtime stack. It operates
+within a shared, multi-user HPC system without requiring elevated
+privileges.
 
-This chapter describes how to use containers effectively on RDHPCS systems,
-including how to obtain and build container images, how to use containers
-for software development, and how to run applications in batch and
-MPI-enabled workflows. Particular emphasis is placed on practical usage
-patterns, such as integrating containers with system schedulers, managing
-environment variables, and accessing host filesystems.
+This chapter describes how to use containers effectively on RDHPCS
+systems. Topics include obtaining and building container images, using
+containers for software development, and running applications in batch
+and MPI-enabled workflows. Particular emphasis is placed on practical
+usage patterns, such as scheduler integration, environment variables,
+and host filesystem access.
 
-While containers provide a high degree of portability, their correct use
-in HPC environments requires an understanding of several key concepts,
-including:
+Containers provide a high degree of portability. However, their correct
+use in HPC environments requires an understanding of several key
+concepts, including:
 
 * the container execution model
 * filesystem access through bind mounts
@@ -62,15 +62,15 @@ Background
 ----------
 
 A container is a standardized unit of software that packages an application
-together with its dependencies into a self-contained runtime environment.
+and its dependencies into a self-contained runtime environment.
 This encapsulation allows applications to run consistently across different
 systems and improves reproducibility of results.
 
 Containers provide lightweight virtualization by sharing the host system’s
-OS kernel (typically Linux), unlike virtual machines (VMs), which rely on
-hardware emulation and run separate operating systems. This design reduces
-overhead while maintaining isolation at the application level, as illustrated
-in the figure below.
+OS kernel (typically Linux). This differs from virtual machines (VMs),
+which rely on hardware emulation and run separate operating systems. This
+design reduces overhead while maintaining isolation at the application
+level, as illustrated in the figure below.
 
 .. figure:: /images/containers_system1.png
    :width: 60%
@@ -83,8 +83,8 @@ in the figure below.
 Container environments are typically stored and distributed as image files,
 such as ``.sif`` (Singularity Image Format). An image contains a complete
 filesystem with all required software components and is commonly constructed
-from layered components. Container software — such as *SingularityCE*
-or *Apptainer* — is used to launch these images on the host system to start a
+from layered components. Container software, such as *SingularityCE*
+or *Apptainer*, launches these images on the host system to start a
 container instance. A *container* is thus a running instance of an image.
 
 Each container provides its own filesystem while interacting with the host
@@ -102,14 +102,14 @@ system at runtime, as illustrated in the diagram below.
 Although containers provide an isolated environment, they rely on the host
 system for access to filesystems, hardware, and other resources. Host
 directories can be made available inside the container at runtime through
-*bind mounts*, enabling applications to read input data and write output
-results (see :ref:`Bind Mounting Host Directories Into a Container
+*bind mounts*. This enables applications to read input data and write
+output results (see :ref:`Bind Mounting Host Directories Into a Container
 <containers-bind-mount-host-directories>`).
 
-Effective use of containers in HPC workflows therefore requires an
-understanding of how containerized applications interact with the host
-system, particularly with respect to filesystem access and environment
-configuration. These aspects are described in the sections that follow.
+Effective use of containers in HPC workflows requires understanding how
+containerized applications interact with the host system. This is
+particularly true for filesystem access and environment configuration.
+These aspects are described in the sections that follow.
 
 .. _containers-supported-rdhpcs-container-solutions:
 
@@ -120,11 +120,11 @@ The dominant container platform across the enterprise and broader container
 ecosystem is `Docker <https://www.docker.com/>`_. However, *Docker* is not well
 suited to High Performance Computing (HPC) environments. A key limitation is
 that Docker typically requires *root* (or ``sudo``) elevated privileges to
-build and run containers, which raises security concerns on shared HPC systems.
-In addition, *Docker* is designed for microservice-oriented workloads, where
-many small, loosely coupled services are deployed, a model that does not align
-well with large-scale, resource-intensive applications typical of
-HPC environments.
+build and run containers. This raises security concerns on shared HPC
+systems.
+In addition, *Docker* is designed for microservice-oriented workloads,
+where many small, loosely coupled services are deployed. This model does
+not align well with large-scale, resource-intensive HPC applications.
 
 To address these needs, alternative technologies have been developed
 specifically for HPC environments, such as *Singularity* containers
@@ -133,10 +133,9 @@ specifically for HPC environments, such as *Singularity* containers
 In particular, *SingularityCE* `https://sylabs.io/singularity/
 <https://sylabs.io/singularity/>`_ and
 *Apptainer* (`https://apptainer.org/ <https://apptainer.org/>`_)
-provide a container model
-that operates without requiring elevated privileges, and can integrate with
-HPC system architecture, batch schedulers, parallel filesystems, and
-high-performance interconnects.
+provide a container model that operates without requiring elevated
+privileges. Both can integrate with HPC system architecture, batch
+schedulers, parallel filesystems, and high-performance interconnects.
 
 Both *SingularityCE* and *Apptainer* are supported on RDHPCS systems.
 The table below shows the installed container software on each system
@@ -180,12 +179,12 @@ and whether module loading is needed.
      - ``singularity``
      - none required
 
-(*) - The ``apptainer`` module on Hercules/Orion is a Spack-managed install
-that loads a separate environment that may not combine well with other system
-modules. The ``apptainer`` enables certain container build features that are
-otherwise limited in ``singularity`` module by security constraints. The
-``singularity`` module could further be used for compile and runtime
-environments.
+(*) - The ``apptainer`` module on Hercules/Orion is a Spack-managed install.
+It loads a separate environment that may not combine well with other
+system modules. The ``apptainer`` enables certain container build features
+that are otherwise limited in ``singularity`` module by security
+constraints. The ``singularity`` module could further be used for compile
+and runtime environments.
 
 
 .. note::
@@ -194,8 +193,9 @@ environments.
    updated. Use ``module avail`` to verify installed versions.
 
 Containers built with either tool are expected to work with the other tool.
-*SingularityCE* can be invoked from the command line using the ``singularity``
-command, and *Apptainer* can be invoked with the ``apptainer`` command.
+*SingularityCE* can be invoked from the command line using the
+``singularity`` command. *Apptainer* can be invoked with the
+``apptainer`` command.
 *Apptainer* provides compatibility with the ``singularity`` command,
 allowing users to use the same command across RDHPCS systems. Differences
 primarily relate to configuration defaults and installation details, but
@@ -208,8 +208,8 @@ Singularity Containers
 
 *Singularity* was introduced in 2015 as a container solution designed
 specifically for HPC environments (see `Singularity/Apptainer
-history <https://en.wikipedia.org/wiki/Apptainer#History>`_),
-with a focus on security, portability, and integration with existing system
+history <https://en.wikipedia.org/wiki/Apptainer#History>`_). It focuses
+on security, portability, and integration with existing system
 architectures. Unlike Docker,
 Singularity allows users to run containers without elevated privileges,
 making it suitable for shared, multi-user systems.
@@ -243,17 +243,18 @@ Further information is available at:
 Container User Identity
 -----------------------
 
-Both SingularityCE and Apptainer are designed for shared HPC environments
-and follow a non-root execution model that preserves the invoking user’s
-identity inside the container. Processes run with the same ``UID/GID`` as
-on the host, so file permissions, access controls, and resource limits are
-enforced consistently. As a result, no additional privileges are granted
-beyond those already held on the host, unless explicitly enabled through
-limited features such as ``--fakeroot`` for development purposes.
+Both SingularityCE and Apptainer are designed for shared HPC environments.
+They follow a non-root execution model that preserves the invoking
+user’s identity inside the container. Processes run with the same
+``UID/GID`` as on the host, so permissions, access controls, and
+resource limits are enforced consistently. As a result, no additional
+privileges are granted beyond those already held on the host. Limited
+features, such as ``--fakeroot``, can explicitly enable additional
+privileges for development purposes.
 Host directories must be explicitly made accessible inside the container
-(for example, through *bind mounts*) for applications that need
-read/write access. This ensures consistent behavior within standard HPC
-security policies.
+(for example, through *bind mounts*). This applies to applications that
+need read/write access. This ensures consistent behavior within standard
+HPC security policies.
 
 .. _containers-differences-singularity-apptainer:
 
@@ -262,9 +263,9 @@ Differences Between SingularityCE and Apptainer
 
 One important difference between SingularityCE and Apptainer is their default
 privilege model. SingularityCE commonly uses a **setuid-root** helper
-program in its default installation to perform selected container setup
-operations (for example, for mount and namespace setup), while the
-containerized application itself runs as the invoking user.
+program to perform selected container setup operations, such as mount
+and namespace setup. The containerized application itself runs as the
+invoking user.
 Apptainer is non-**setuid** by default in current versions
 and normally uses unprivileged user namespaces for rootless execution.
 
@@ -273,20 +274,20 @@ Regular users can commonly pull or convert images from Docker/OCI registries
 into ``.sif`` images. Building containers from definition files without
 ``sudo`` privileges usually requires fakeroot support, user namespace support,
 and appropriate users' UID/GID mappings. Apptainer often provides a more
-convenient rootless build workflow, but it is not unlimited and remains subject
-to operating system support, filesystem constraints, and local HPC security
-policy.
+convenient rootless build workflow, but it is not unlimited. It remains
+subject to operating system support, filesystem constraints, and local
+HPC security policy.
 
 .. _containers-limitation-exception-liability:
 
 Usage Considerations and Security Responsibilities
 --------------------------------------------------
 
-Many applications on HPC systems are designed to run in parallel across
-multiple CPUs and often multiple nodes for scalable performance.
+Many HPC applications are designed to run in parallel across multiple
+CPUs and often multiple nodes for scalable performance.
 Communication and coordination between the tasks in such applications
-are handled using Message Passing Interface (*MPI*), a standardized
-framework for exchanging messages across CPUs and nodes in
+are handled using Message Passing Interface (*MPI*). MPI is a
+standardized framework for exchanging messages across CPUs and nodes in
 distributed-memory systems. Different approaches for MPI integration
 in container runtime environments are described in
 Section :ref:`MPI Integration Models <containers-mpi-integration>`.
@@ -294,11 +295,11 @@ Users should evaluate the
 available approaches and select the one that best fits their application
 and workflow requirements.
 
-As with any model source code, it is the user's responsibility to download
-container images from reputable sources, to make sure that the images
-downloaded from the internet or created by the user will not violate
-the NOAA RDHPCS security policy, and to fully understand the contents
-of container images prior to running it on RDHPC systems.
+As with any source code, users are responsible for downloading container
+images only from reputable sources. Users must also ensure that images,
+whether downloaded or self-created, comply with the NOAA RDHPCS security
+policy. Finally, users should fully understand the contents of a
+container image before running it on RDHPC systems.
 
 .. _containers-building-images:
 
@@ -306,7 +307,7 @@ Obtaining and Building Container Images
 =======================================
 
 There are several ways to obtain or build container images using
-SingularityCE or Apptainer, including pulling images from existing
+SingularityCE or Apptainer. These include pulling images from existing
 repositories or creating them locally. Some methods are available to regular
 users, while others require superuser (``sudo``/root) privileges when using
 SingularityCE. For security reasons, some ``build`` capabilities are
@@ -316,9 +317,8 @@ build their own images on other platforms where Apptainer is available.
 .. note::
 
     *Podman* program is available on PPAN / Analysis for this purpose.
-    It is daemonless, open-source container engine used to build, manage,
-    run, and share Open Container Initiative (OCI) containers and container
-    images.
+    It is a daemonless, open-source engine used to build, manage, run,
+    and share Open Container Initiative (OCI) containers and images.
 
 For additional details, refer to the `SingularityCE Documentation
 <https://docs.sylabs.io/guides/latest/user-guide/>`_, `Apptainer
@@ -337,11 +337,14 @@ Pull an image from DockerHub or another Open Container Initiative (OCI)
 registry. This command downloads a prebuilt container image and converts
 it to Singularity Image Format (.sif). Root privileges are not required.
 
-The examples below show how to pull the latest Rocky Linux 9 image, how
-to pull a generic DockerHub image using the myrepo/myimage:tag naming format,
-and how to pull a custom named image from the NOAA-EPIC Docker repository.
-The NOAA-EPIC image is used later in this chapter for workflow examples (See
-:ref:`Container Execution Workflows <containers-execution-workflows>`).
+The examples below show how to pull three kinds of images:
+
+* the latest Rocky Linux 9 image
+* a generic DockerHub image, using the ``myrepo/myimage:tag`` naming format
+* a custom named image from the NOAA-EPIC Docker repository
+
+The NOAA-EPIC image is used later in this chapter for workflow examples
+(see :ref:`Container Execution Workflows <containers-execution-workflows>`).
 
 .. code-block:: shell
 
@@ -360,18 +363,18 @@ Build from a Docker Container
     singularity build image.sif docker://myrepo/myimage:tag
 
 The ``pull`` command performs a simple conversion from Docker/OCI images
-to ``.sif`` format, while ``build`` provides more general functionality
-and additional options. Both produce a ``.sif`` image
+to ``.sif`` format. The ``build`` command provides more general
+functionality and additional options. Both produce a ``.sif`` image
 file, but would not be bit-for-bit identical when converting
 Docker/OCI layers.
 
 To ensure that files and directories are accessible to all users, the
 ``--fix-perms`` option can be used. It mitigates permission mismatches
 between build-time root and run-time users by adjusting restrictive
-permissions inherited from Docker layers or package installations.
-It effectively prevents runtime issues such as *Permission denied* when
-accessing files, or non-root users unable to
-execute binaries inside the container.
+permissions from Docker layers or package installations.
+It effectively prevents runtime issues, such as *Permission denied*
+errors when accessing files. It also ensures non-root users can execute
+binaries inside the container.
 
 .. _containers-build-image-noaaepic:
 
@@ -385,9 +388,9 @@ Build a Writable Sandbox Container
 ----------------------------------
 
 When additional development of a container is needed, a writable sandbox
-may be created. The sandbox appears as a directory on the host filesystem
-representing the container’s root filesystem and can be built from either
-a remote repository or an existing local image:
+may be created. The sandbox appears as a directory on the host
+filesystem, representing the container’s root filesystem. It can be built
+from either a remote repository or an existing local image:
 
 .. code-block:: shell
 
@@ -396,9 +399,9 @@ a remote repository or an existing local image:
    singularity build --sandbox --fix-perms sandbox_dir/ docker://rockylinux:9
 
 When the sandbox is built without the ``--fix-perms`` option (first two
-command lines), builds may create files with restrictive permissions that
-cannot be removed with ``rm``. Note the prompt warnings that indicate how to
-address these issues, such as:
+command lines), builds may create files with restrictive permissions.
+These files cannot be removed with ``rm``. Note the prompt warnings that
+indicate how to address these issues, such as:
 
 .. warning::
 
@@ -407,27 +410,27 @@ address these issues, such as:
     | WARNING: Use the '--fix-perms' option to 'apptainer build' to modify permissions at build time.
 
 
-The build of a sandbox creates a directory structure under ``./sandbox_dir``
-with further nested ``bin/``, ``etc/``, ``usr/``, ``var/`` and other container
-directories, emulating filesystem in user space. Note, however, that it does
-not give *sudo/root* privileges inside the container. The container filesystem
-can be accessed as other user's directories, and is not compressed,
-taking more disk space than the container image.
+Building a sandbox creates a directory structure under ``./sandbox_dir``,
+with further nested ``bin/``, ``etc/``, ``usr/``, ``var/``, and other
+container directories. This emulates a filesystem in user space. Note,
+however, that it does not give *sudo/root* privileges inside the
+container. The container filesystem can be accessed as other users'
+directories. It is not compressed, taking more disk space than the
+container image.
 
-In contrast, a ``.sif`` image file has a filesystem in a compressed
-read-only *SquashFS* format, efficiently storing files inside the image.
+In contrast, a ``.sif`` image file has a filesystem in a compressed,
+read-only *SquashFS* format that efficiently stores files.
 When a container image is launched in Apptainer runtime, it is mounted
-using Filesystem in Userspace (FUSE) interface/tool,
-``squashfuse``, that allows filesystems run in user space without
-sudo/root privileges.
+using the Filesystem in Userspace (FUSE) tool, ``squashfuse``. This
+allows filesystems to run in user space without sudo/root privileges.
 For a default *setuid* mode in SingularityCE runtime, the *SquashFS*
 partition is mounted using kernel filesystem drivers
-(``squashfs``, not using *FUSE*).  However, running SingularityCE
+(``squashfs``, not *FUSE*).  However, running SingularityCE
 in the alternative/rootless mode implements *FUSE* mount with
 ``squashfuse``, when kernel mounts are not permitted.
 
 No runtime mount is needed for a sandbox container, which is already
-mounted during build time, and has a directory structure integrated
+mounted during build time. It has a directory structure integrated
 with the host filesystem.
 This allows for faster execution and could be helpful for
 development and debugging.
@@ -439,8 +442,8 @@ the directory, use ``--writable`` option during launch, for example:
 
    singularity shell --writable [-B dir_host:dir_container] sandbox_dir/
 
-where the ``-B`` option is used to bind mount host directories into the
-container, see :ref:`Bind Mounting Host Directories Into a Container
+The ``-B`` option is used to bind mount host directories into the
+container. See :ref:`Bind Mounting Host Directories Into a Container
 <containers-bind-mount-host-directories>`.
 
 .. _containers-build-writable-sandbox-fakeroot:
@@ -473,8 +476,9 @@ Build an Image from the Existing Sandbox
 -------------------------------------------------
 
 A container image can also be created from the existing sandbox. If
-you used the sandbox for any development, it is recommended to convert it
-to a ``.sif`` image for production runs and batch jobs.
+you used the sandbox for any development, it is recommended to convert
+it to a ``.sif`` image. This is especially useful for production runs
+and batch jobs.
 
 .. code-block:: shell
 
@@ -524,9 +528,9 @@ Run the resulting image with:
 
 It will print the message from the runscript and display the contents of
 ``/etc/os-release`` inside the container.
-Users may need to specify the full (absolute) path
-to the container image and **bind mount** host directories into the container,
-as described in the :ref:`Bind Mounting Host Directories Into a Container
+Users may need to specify the full, absolute path to the container image
+and bind-mount host directories into it. This is described in the
+:ref:`Bind Mounting Host Directories Into a Container
 <containers-bind-mount-host-directories>` section.
 
 .. _containers-runtime-model:
@@ -553,9 +557,8 @@ Detailed command usage is available via the built-in help system:
 
 Apptainer provides the same command interface and supports the
 ``singularity`` command for compatibility on most systems by legacy reasons.
-However, use of the ``apptainer`` command
-is recommended on systems with Apptainer, which ensures consistency with
-environment variable naming
+However, use of the ``apptainer`` command is recommended on systems with
+Apptainer. This ensures consistency with environment variable naming
 (for example, ``APPTAINERENV_*``) and avoids ambiguity when configuring or
 debugging runtime behavior.
 
@@ -635,14 +638,13 @@ To interactively explore or debug a container environment, use the
 
    singularity shell image.sif
 
-This opens an interactive shell inside the container, where commands are
-executed within the container environment while still running as processes
-on the host system. The
-container provides its own filesystem rooted at ``/`` (the *root*
-directory), with a standard Linux directory layout (for example, ``/bin``,
-``/usr``, ``/etc``, ``/home``). Some host directories may also be visible
-if they are *bind-mounted* into the container ( see :ref:`Bind Mounting Host
-Directories Into a Container <containers-bind-mount-host-directories>`) .
+This opens an interactive shell inside the container. Commands run
+within the container environment, but still execute as processes on the
+host system. The container provides its own filesystem rooted at ``/``
+(the *root* directory). It uses a standard Linux directory layout (for
+example, ``/bin``, ``/usr``, ``/etc``, ``/home``). Some host directories
+may also be visible if bind-mounted (see :ref:`Bind Mounting Host
+Directories Into a Container <containers-bind-mount-host-directories>`).
 
 If write access is required (for example, for sandbox containers), use:
 
@@ -673,15 +675,16 @@ Multiple commands can be executed by invoking a shell:
    singularity exec myimage.sif bash -c "command1 && command2"
 
 In more complex workflows, a sequence of commands can be executed within
-the container by invoking a shell and running a short command script. This
-is commonly used to initialize the runtime environment, load modules, and
-compile applications. See examples with command scripts in section
+the container. This is done by invoking a shell and running a short
+command script. This is commonly used to initialize the runtime
+environment, load modules, and compile applications. See examples with
+command scripts in section
 :ref:`Container Execution Workflows <containers-execution-workflows>`.
 
 The container exits automatically once the command sequence completes.
-Availability of modules inside the container depends on whether the module
-system (for example, Lmod) is installed in the container or made available from
-the host environment.
+Availability of modules inside the container depends on whether the
+module system (for example, Lmod) is installed in the container.
+Modules may also be made available from the host environment.
 
 .. note::
 
@@ -848,17 +851,18 @@ reliable and reproducible container execution in HPC workflows.
 Bind Mounting Host Directories Into a Container
 -----------------------------------------------
 
-A container normally sees its own filesystem, plus a limited set of host
-paths that are automatically mounted by the runtime environment.
+A container normally sees only its own filesystem, plus a limited set of
+host paths mounted automatically by the runtime.
 To make additional host
 directories visible inside the container, use *bind mounts*. A bind mount
-maps a directory on the host to a directory inside the container, allowing
-the application in the container to read input files, write output, and
-access shared *project* or *scratch* filesystems. This is especially important
-on HPC systems, where user data usually lives outside the container image,
-for example under ``/home``, ``/work``, ``/scratch``, ``/lustre``, or
-``/gpfs``. These bind mounts are listed in the command line using ``-B`` flag.
-If more than a single directory is needed to be bound, it needs to be listed
+maps a directory on the host to a directory inside the container. This
+allows the application to read input files, write output, and access
+shared *project* or *scratch* filesystems. This is especially important
+on HPC systems, where user data usually lives outside the container
+image. Examples include ``/home``, ``/work``, ``/scratch``, ``/lustre``,
+and ``/gpfs``. These bind mounts are listed in the command line using
+the ``-B`` flag.
+If more than one directory needs to be bound, each one must be listed
 with its own ``-B`` flag.
 
 .. code-block:: shell
@@ -876,21 +880,25 @@ The renaming approach is as following: ``-B dir_host:dir_container``.
    singularity build -B /local -B /work -B /apps:/apps2 image.sif
    singularity exec -B /local -B /work -B /apps:/apps2 image.sif
 
-In this case, ``/work`` and ``/local`` filesystem on the host system are
-mounted with the same name, but host's ``/apps`` becomes ``/apps2`` inside
-the runtime container. Most of the times only top-level directories
-(filesystems) need to be listed to create a mount point inside the container.
+In this case, the host's ``/work`` and ``/local`` filesystems are mounted
+under the same name. However, the host's ``/apps`` becomes ``/apps2``
+inside the runtime container. Most of the time, only top-level
+directories (filesystems) need to be listed to create a mount point
+inside the container.
 
 
 The following table lists the typical bind directories for a number of NOAA
 RDHPC Tier 1 platforms. These paths are to be entered each with its ``-B``
-flag. The directories usually include a local filesystem hosting work
-directory, any other temporary space that a system may use for building
-containers, any non-standard filesystems for home directories, and any
-additional filesystems that may host input data or output results.
-The list is not exhaustive, and users should consult the system documentation
-for additional bind mount points that may be required for specific applications
-or workflows.
+flag. The directories usually include:
+
+* a local filesystem hosting the work directory
+* any temporary space used for building containers
+* non-standard filesystems for home directories
+* additional filesystems that may host input data or output results
+
+The list is not exhaustive. Users should consult the system documentation
+for additional bind mount points that specific applications or workflows
+may require.
 
 .. list-table:: Typical bind directories on NOAA RDHPC Tier 1 platforms
    :widths: 25 35 40
@@ -934,16 +942,16 @@ Hybrid MPI Model (Host + Container MPI)
 This is the most common and recommended approach.
 
 The MPI launcher (for example, ``mpirun`` or scheduler launchers such as
-``srun``) is executed on the host system and starts ranks across
+``srun``) is executed on the host system. It starts ranks across
 compute nodes. Each rank then launches a container instance, resulting
 in one container per MPI task. MPI communication uses the host system’s
 communication stack (for example, *OFI/libfabric*, *UCX*, *TCP*).
 
-A key requirement is that the MPI library inside the container is
-compatible with the host MPI at the binary (*ABI*) level.
+A key requirement is that the container's MPI library is compatible
+with the host MPI at the binary (*ABI*) level.
 Application Binary Interface (*ABI*) defines how compiled programs and
-libraries interact, including function calls, data types, symbol names,
-system calls, and linking.
+libraries interact. This includes function calls, data types, symbol
+names, system calls, and linking.
 
 Compatibility requirements depend on the launch method:
 
@@ -1016,8 +1024,8 @@ Limitations:
    may be sensitive to system-specific configuration
 
 In practice, the **hybrid MPI model** provides the best balance of performance,
-portability, and integration with HPC systems, and is generally recommended
-for production workflows.
+portability, and integration with HPC systems. It is generally
+recommended for production workflows.
 
 .. _containers-execution-workflows:
 
@@ -1025,19 +1033,19 @@ Container Execution Workflows
 =============================
 
 The examples in this section use the container image built earlier from
-the NOAA-EPIC Docker repository, ``rocky9-gnu13-ompi416.sif`` (see
+the NOAA-EPIC Docker repository, ``rocky9-gnu13-ompi416.sif``. See
 :ref:`Pull and Convert Docker Images to Singularity Format
 <containers-pull-convert-images>`
 or :ref:`Build from a Docker Container with --fix-perms
-<containers-build-image-noaaepic>`). The image contains an ``mpi-tests``
-directory with simple "Hello, World"-type Fortran test programs to give
-examples of different workflows and MPI integration models.
-These examples demonstrate building and running a Fortran application
-inside a Singularity/Apptainer container, both as a serial application
-and as an MPI application on a single node or across multiple nodes.
+<containers-build-image-noaaepic>`. The image contains an ``mpi-tests``
+directory with simple "Hello, World"-type Fortran test programs. These
+illustrate different workflows and MPI integration models.
+The examples demonstrate building and running a Fortran application
+inside a Singularity/Apptainer container. This includes serial
+execution, and MPI execution on a single node or across multiple nodes.
 
-The directory can be copied out to the user's own space, using bind
-mount directories (``-B``) as required by the target system:
+The directory can be copied to the user's space, using bind mount
+directories (``-B``) as required by the target system:
 
 .. code-block:: shell
 
@@ -1060,9 +1068,9 @@ The directory contains:
 * ``job_card2`` / ``job_card2_args`` -- run the MPI test on two nodes,
   with and without command-line arguments.
 
-The examples below assume a *Slurm* scheduler, MPI ranks launched with
-``srun`` or ``mpirun``, and a working directory under ``/lustre``,
-matching the NOAA AWS Cloud environment.
+The examples below assume a *Slurm* scheduler, with MPI ranks launched
+using ``srun`` or ``mpirun``. They also assume a working directory
+under ``/lustre``, matching the NOAA AWS Cloud environment.
 
 .. _containers-compile-application:
 
@@ -1100,17 +1108,18 @@ builds both ``hello-world`` and ``hello-world-parallel`` using
 .. _containers-compile-option-a:
 
 **Option A**. The executables can be built interactively, after starting a
-shell inside the container first. Make sure to load any singularity/apptainer
-modules if needed, adapt the bind mount directory (or directories),
-and define the image path for your environment. For example:
+shell inside the container first. Make sure to load any
+singularity/apptainer modules if needed. Also adapt the bind mount
+directory (or directories), and define the image path for your
+environment. For example:
 
 .. code-block:: shell
 
    export img="/lustre/rocky9-gnu13-ompi416.sif"
    singularity shell -B /lustre "${img}"
 
-After the Singularity or Apptainer prompt appears indicating a successful
-shell session, initialize the module environment and load
+After the Singularity or Apptainer prompt appears, indicating a
+successful shell session, initialize the module environment. Load
 the compiler/MPI environment as follows:
 
 .. code-block:: shell
@@ -1132,9 +1141,9 @@ using the ``Makefile``:
 
 .. _containers-compile-option-b:
 
-**Option B**. While shelled into the container as shown in Option A,
-the executables can be also built without the ``Makefile``,
-directly with ``mpif90``:
+**Option B**. While shelled into the container from Option A, the
+executables can also be built without the ``Makefile``, using
+``mpif90`` directly:
 
 .. code-block:: shell
 
@@ -1146,8 +1155,9 @@ and return to the host environment to test other build methods.
 
 .. _containers-compile-option-c:
 
-**Option C**. A single command can be used to build the executables without
-opening an interactive shell, by running several commands inside the container.
+**Option C**. A single command can be used to build the executables
+without opening an interactive shell. It runs several commands inside
+the container.
 
 .. code-block:: shell
 
@@ -1178,8 +1188,8 @@ script file to be executed inside the container. Such a script, named
    make -j
 
 You can make it executable using ``chmod +x build.sh``. Then execute
-the script inside the container with the ``exec`` command, as shown below; adjust paths
-as required for your environment.
+the script inside the container with the ``exec`` command, as shown
+below. Adjust paths as required for your environment.
 
 .. code-block:: shell
 
@@ -1191,10 +1201,11 @@ as required for your environment.
 job, as shown in ``job_card_compile`` below. This example requests one node
 with one task and four CPU cores, which ``make -j`` uses to build in parallel.
 Adapt the SBATCH directives (at the very least, *account*, *qos*),
-the image path, and the work directory as needed for your environment.
-The batch script also demonstrates
-how to start a container and run commands inside it, including loading modules
-and building the executables.
+the image path, and the work directory. Adjust these as needed for your
+environment.
+The batch script also demonstrates how to start a container and run
+commands inside it. This includes loading modules and building the
+executables.
 
 .. code-block:: shell
 
@@ -1228,11 +1239,11 @@ Submit the batch compile job with the standard Slurm command:
 
    sbatch job_card_compile
 
-In this example, the job requests one task with four CPU cores using
-``--cpus-per-task=4``, which ``make -j`` uses to build in parallel. This
-is different from running an MPI application: only one container process is
-started by the job scheduler, and ``make`` creates the parallel build jobs
-inside that container.
+In this example, the job requests one task with four CPU cores, using
+``--cpus-per-task=4``. This is used by ``make -j`` to build in parallel.
+This differs from running an MPI application. Only one container
+process is started by the job scheduler, and ``make`` creates the
+parallel build jobs inside that container.
 
 .. _containers-serial-single-node:
 
@@ -1256,9 +1267,9 @@ serial test:
    end program hello_world
 
 After building it with any method from :ref:`Compiling an Application Inside a
-Container <containers-compile-application>`, you can run it either from
-an interactive shell inside the container or directly from the host
-environment using the ``exec`` command.
+Container <containers-compile-application>`, you can run it. This works
+either from an interactive shell inside the container, or directly from
+the host environment using the ``exec`` command.
 
 .. _containers-run-serial-option-a:
 
@@ -1285,10 +1296,10 @@ executable from the test directory:
 
 .. _containers-run-serial-option-b:
 
-**Option B**. Run the executable directly from the host environment by
+**Option B**. Run the executable from the host environment by
 invoking the container with the ``exec`` command, without opening an
-interactive shell, similar to the :ref:`Building using a container, Option C
-<containers-compile-option-c>`:
+interactive shell. This is similar to :ref:`Building using a container,
+Option C <containers-compile-option-c>`:
 
 .. code-block:: shell
 
@@ -1300,16 +1311,16 @@ interactive shell, similar to the :ref:`Building using a container, Option C
       ./hello-world
    '
 
-This runs a single process without invoking MPI and can be used
+This runs a single process without invoking MPI. It can be used
 interactively or within a batch job, typically without requiring
 scheduler launchers (for example, ``srun``).
 
 .. _containers-run-serial-option-c:
 
-**Option C**. Similarly to the build example in
-:ref:`Building using a container, Option D <containers-compile-option-d>`,
-the commands can be placed in a script, for example, ``run.sh``, and executed
-inside the container with the ``exec`` command.
+**Option C**. As in :ref:`Building using a container, Option D
+<containers-compile-option-d>`, the commands can be placed in a script,
+such as ``run.sh``. The script is executed inside the container with
+the ``exec`` command.
 A script file ``run.sh`` may look as follows:
 
 .. code-block:: shell
@@ -1332,18 +1343,18 @@ Run the script inside the container with:
 Running an MPI Application on a Single Node (Containerized)
 -----------------------------------------------------------
 
-For multi-rank jobs involving a single node, users have options to run a
-container application from the interactive container shell with or without
-a script, or by submitting a batch script to the job scheduler. On most of
-the NOAA RDHPC platforms, you may need to allocate a compute node for
-"on the node" MPI execution using ``salloc`` command (for Slurm job
-schedulers). After a compute node has been allocated, make sure to load
+For multi-rank jobs involving a single node, users have several run
+options. These include the interactive container shell, with or without
+a script, or submitting a batch script to the job scheduler. On most
+NOAA RDHPC platforms, you may need to allocate a compute node for
+"on the node" MPI execution. Use the ``salloc`` command for Slurm job
+schedulers. After a compute node has been allocated, make sure to load
 apptainer/singularity modules and any other modules if required.
 
 **Option A**. Start an interactive shell inside the container as in
 :ref:`Running a Serial Application, Option A
-<containers-run-serial-option-a>`, and then run the MPI executable with
-the ``mpirun`` invoked *inside* the container. Specify the number of ranks
+<containers-run-serial-option-a>`. Then run the MPI executable with
+``mpirun`` invoked *inside* the container. Specify the number of ranks
 with ``-n`` option. For example, to run on 8 ranks you can use:
 
 .. code-block:: shell
@@ -1371,12 +1382,11 @@ message. The order of ranks may vary between runs:
     Hello, World! I am process           5 of           8
 
 
-**Option B**. Alternatively, after the compute node has been allocated and all
-the necessary host system modules are loaded, you can run the MPI executable
-directly from the host environment by invoking the container with the ``exec``
-command, similar to the :ref:`Running a Serial Application, Option B
-<containers-run-serial-option-b>`. The above example with 8 ranks can be run
-as follows:
+**Option B**. Once the compute node and required modules are ready, you
+can run the MPI executable directly from the host. Invoke the container
+with the ``exec`` command, similar to :ref:`Running a Serial Application,
+Option B <containers-run-serial-option-b>`. The above example with 8
+ranks can be run as follows:
 
 .. code-block:: shell
 
@@ -1390,14 +1400,14 @@ as follows:
 
 The output should be similar to the previous example.
 
-**Option C**. A batch job can be submitted to the scheduler with a
-script so that CPU cores and other resources are allocated by the
-scheduler, and ``mpirun`` is still invoked *inside* the container.
+**Option C**. A batch job can be submitted with a script, so that the
+scheduler allocates CPU cores and other resources. The ``mpirun``
+command is still invoked *inside* the container.
 The batch script ``job_card1`` in the ``mpi-tests`` directory demonstrates
 this approach for the ``hello-world-parallel`` executable. Note that the
-script needs to be adapted to user's account, queue, and any other
-SBATCH directives required on a particular system, besides the usual
-container image path and working directory.
+script needs to be adapted to your account, queue, and other SBATCH
+directives for your system. It also needs the usual container image path
+and working directory.
 
 .. code-block:: shell
 
@@ -1451,11 +1461,11 @@ The order of MPI ranks may vary between runs.
 Passing Arguments to the MPI Application on a Single Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A second script, ``job_card1_args`` in the ``mpi-tests`` directory, runs the
-same example while passing command-line arguments to the executable, showing
-that arguments given to ``mpirun`` inside the container are forwarded to each
-rank. Edit the script ``job_card1_args`` shown below as in the previous example
-to adapt it to your environment:
+A second script, ``job_card1_args`` in the ``mpi-tests`` directory, runs
+the same example while passing command-line arguments to the executable.
+This shows that arguments given to ``mpirun`` are forwarded to each rank
+inside the container. Edit the script ``job_card1_args`` shown below as
+in the previous example to adapt it to your environment:
 
 .. code-block:: shell
 
@@ -1487,16 +1497,16 @@ to adapt it to your environment:
       '
 
 Submit it with ``sbatch job_card1_args``. The output should be similar to the
-previous example, but each rank will also print the command-line arguments
+previous example. Each rank will also print the command-line arguments
 passed to it.
 
 This approach is useful for single-node testing because it avoids
 cross-node process launch and scheduler integration issues. However, it
-assumes that the MPI launcher inside the container can correctly start
-and manage all ranks on the allocated node.
+assumes the MPI launcher inside the container can correctly start
+and manage all ranks on the node.
 
-For production multi-node jobs, a tighter integration is required
-between the host scheduler, the host MPI runtime, and the containerized
+For production multi-node jobs, tighter integration is required
+between the host scheduler, host MPI runtime, and containerized
 application. See :ref:`MPI Integration Models <containers-mpi-integration>`
 for the recommended multi-node approaches.
 
@@ -1505,17 +1515,16 @@ for the recommended multi-node approaches.
 MPI Execution on Multiple Nodes Using Host MPI
 ----------------------------------------------
 
-Many HPC applications are built with MPI and require coordination
-between the scheduler, MPI launcher, host MPI runtime, and containerized
+Many HPC applications use MPI and require coordination between the
+scheduler, MPI launcher, host MPI runtime, and containerized
 application.
 
-For production HPC jobs, the recommended approach is usually to let the
-host scheduler and host MPI launcher start the MPI ranks, while each
-rank executes the application inside the container. This is often
-referred to as a *Hybrid MPI Model* (see :ref:`Hybrid MPI Model
-<containers-hybrid-mpi-model>`), because the process launch is managed
-by the host system while the application environment is provided by the
-container.
+For production HPC jobs, the host scheduler and host MPI launcher
+usually start the MPI ranks. Each rank then executes the application
+inside the container. This is often referred to as a *Hybrid MPI Model*
+(see :ref:`Hybrid MPI Model <containers-hybrid-mpi-model>`). The
+process launch is managed by the host system, while the application
+environment is provided by the container.
 
 In this model:
 
@@ -1551,10 +1560,11 @@ script ``wrapper.sh``:
 
    srun --mpi=pmi2 -n ${nprocs} ${wrapper}
 
-A sample ``wrapper.sh`` script sets the ``SINGULARITYENV_*`` variables needed
-inside the container (``PATH``, ``LD_LIBRARY_PATH``, ``CPATH``, MPI/PMI tuning,
-and the network fabric provider), then starts containers on each rank, followed
-by launching the MPI executable:
+A sample ``wrapper.sh`` script sets several ``SINGULARITYENV_*``
+variables needed inside the container. These include ``PATH``,
+``LD_LIBRARY_PATH``, ``CPATH``, MPI/PMI tuning, and the network fabric
+provider. It then starts a container on each rank and launches the MPI
+executable:
 
 .. code-block:: shell
 
@@ -1599,15 +1609,15 @@ The expected ``out`` file should look similar to:
 
 The rank order may vary between runs. A second script,
 ``job_card2_args``, passes additional command-line arguments through
-``srun`` and the wrapper script to the executable running inside each
-container instance.
+``srun`` and the wrapper script. These reach the executable running
+inside each container instance.
 
 This model is generally more robust for production multi-node jobs than
-starting ``mpirun`` from inside a single container instance (see
+starting ``mpirun`` from inside a single container instance. See
 :ref:`MPI Execution on a Single Node (Containerized)
-<containers-mpi-single-node-containerized>`), because the host scheduler
-and host MPI runtime remain responsible for process placement, rank
-launch, and network integration.
+<containers-mpi-single-node-containerized>` for that approach. The host
+scheduler and host MPI runtime remain responsible for process
+placement, rank launch, and network integration.
 
 On *Slurm* systems, users can check which MPI launch plugins are
 available on the host system with:
@@ -1618,25 +1628,24 @@ available on the host system with:
 
 The output is system dependent, but may include options such as
 ``pmi2``, ``pmix``, or other site-supported MPI launch interfaces. The
-wrapper script above assumes that Slurm launches ranks through its PMI2
-interface, and that Open MPI inside the container was built with PMI2
-support.
+wrapper script above assumes that Slurm launches ranks through its
+PMI2 interface. It also assumes that Open MPI inside the container was
+built with PMI2 support.
 
 .. _containers-wrapper-scripts:
 
 Using Wrapper Scripts to Launch Application Binaries
 ----------------------------------------------------
 
-Some HPC workflows expect application binaries to be available at a
-fixed path or under a fixed name, for example
-``${workdir}/bin/hello-world-parallel``. When the real executable is
-provided inside a container, a symbolic link with the expected name can
-point to a wrapper script that starts the container and then runs the
+Some HPC workflows expect application binaries at a fixed path or
+name, for example ``${workdir}/bin/hello-world-parallel``. A symbolic
+link can point to a wrapper script when the real executable is inside
+a container. The wrapper script starts the container and then runs the
 real executable inside it.
 
-Starting from the ``wrapper.sh`` script used in the previous section,
-edit it so that the command name is taken from the name used to invoke
-the wrapper, and prepend the directory with the real executable to the
+Start from the ``wrapper.sh`` script used in the previous section. Edit
+it so that the command name comes from the name used to invoke the
+wrapper. Then prepend the directory with the real executable to the
 container's search path:
 
 .. code-block:: shell
@@ -1674,7 +1683,7 @@ to your environment.
 Slurm now launches ``/lustre/mpi-tests/bin/hello-world-parallel``, which
 is a symbolic link to the wrapper script. The wrapper starts the
 container and runs the real ``hello-world-parallel`` executable from
-the container ``PATH``, producing the same output as the original
+the container ``PATH``. This produces the same output as the original
 ``job_card2`` example.
 
 This approach is useful when:
@@ -1690,9 +1699,9 @@ This approach is useful when:
 
    The wrapper script should normally not call ``srun``, ``mpirun``, or
    ``mpiexec`` itself. For multi-node jobs, the scheduler or MPI launcher
-   should call the wrapper script so that rank placement, process
-   management, and network initialization remain under control of the
-   host launch environment.
+   should call the wrapper script. This keeps rank placement, process
+   management, and network initialization under control of the host
+   launch environment.
 
 Container help, questions, and guidance
 =======================================
@@ -1701,27 +1710,26 @@ The complexities involving containers, particularly MPI and containers,
 can make containers difficult to use. RDHPCS system administrators and help
 staff have limited knowledge on using containers on HPC systems. Open a
 :ref:`help request <getting_help>` to obtain what help can be offered.
-In practice, you will likely find that your fellow scientists and the
-greater container communities have better knowledge for your specific
-Singularity image/application.
+In practice, your fellow scientists and the container community will
+likely know your specific Singularity image or application better.
 
 .. note::
 
-   The general examples shown in this chapter have been successfully tested on
-   most NOAA RDHPC platforms, including Hera, Ursa, Gaea, Orion/Hercules, and
-   NOAA AWS/Azure (via ParallelWorks), using the container software available
-   on those platforms. Some examples, such as building a sandbox container
-   and opening an interactive shell inside it, may require bind-mounting the
-   corresponding host filesystems. This ensures that the expected mount-point
-   directories are available inside the sandbox and helps avoid errors or
-   warnings when entering the container.
+   The general examples in this chapter have been tested on most NOAA
+   RDHPC platforms. These include Hera, Ursa, Gaea, Orion/Hercules, and
+   NOAA AWS/Azure (via ParallelWorks). Testing used the container
+   software available on each platform. Some examples, such as building
+   a sandbox container and opening a shell inside it, may require
+   bind-mounting corresponding host filesystems. This ensures that the
+   expected mount-point directories are available inside the sandbox.
+   It helps avoid errors or warnings when entering the container.
 
-   In contrast, examples for more complex workflows, such as batch scripts
-   that launch containers to compile and/or run applications, are intended
-   as templates for user-specific use cases. These examples should be edited
-   to match the target platform, platform-specific scheduler directives,
-   filesystem layout, container image, application, and site-specific
-   environment.
+   In contrast, examples for more complex workflows are intended as
+   templates for user-specific use cases. These include batch scripts
+   that launch containers to compile and/or run applications. These
+   examples should be edited to match the target platform, scheduler
+   directives, filesystem layout, container image, application, and
+   site-specific environment.
 
 
 
