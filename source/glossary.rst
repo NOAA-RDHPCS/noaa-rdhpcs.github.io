@@ -37,16 +37,16 @@ Glossary
         is a portable message-passing
         standard designed to function on parallel computing architectures.
         See `Message Passing Interface (MPI)
-        <https://en.wikipedia.org/wiki/Message_Passing_Interface>`_
+        <https://en.wikipedia.org/wiki/Message_Passing_Interface>`__
 
-    PMI/PMIx (Process Management Interface/PMI for Exascale)
+    PMI/PMIx (Process Management Interface, PMI for Exascale)
         provides the interface between the system's job scheduler
         and MPI processes. See `PMI/PMIx overview (Slurm documentation)
-        <https://slurm.schedmd.com/mpi_guide.html>`_,
+        <https://slurm.schedmd.com/mpi_guide.html>`__,
         `PMIx (Process Management Interface for Exascale)
-        <https://pmix.org/>`_
+        <https://pmix.org/>`__,
         `OpenPMIx GitHub (overview + documentation)
-        <https://openpmix.github.io/>`_
+        <https://openpmix.github.io/>`__
 
     Slurm
         An open source cluster management and job scheduling system. It
