@@ -72,19 +72,19 @@ GitLab Runners
 --------------
 
 A GitLab Runner is an agent that executes the jobs defined in a GitLab CI/CD
-pipeline. When a pipeline starts, GitLab assigns each job to an available runner.
-The runner checks out the repository, executes the job script, collects artifacts,
-and sends the job result back to GitLab.
+pipeline. When a pipeline starts, GitLab assigns each job to an available
+runner. The runner checks out the repository, executes the job script, collects
+artifacts, and sends the job result back to GitLab.
 
-Runners can be installed on RDHPCS systems such as Hera and Ursa.
-Users are advised to two executor types, either shell, or a custum slurm executor
+Runners can be installed on RDHPCS systems such as Hera and Ursa. Users are
+advised to two executor types, either shell, or a custum slurm executor
 from https://github.com/Algebraic-Programming/slurm-gitlab-executor.
 The executor determines the environment in
 which pipeline jobs run.
 
 The ``shell`` executor runs CI/CD job commands directly on the login node using
-the user configured shell, such as Bash. This executor is simple to configure and
-useful when pipelines are run occassionally. Shell executor provides direct
+the user configured shell, such as Bash. This executor is simple to configure
+and useful when pipelines are run occassionally. Shell executor provides direct
 access to tools, scripts, directories, compilers, or system-level utilities
 already installed on the RDHPCS cluster.
 
@@ -117,8 +117,8 @@ example shows a common installation flow targeting an RDHPCS cluster.
    chmod +x <target_folder>/bin/gitlab-runner
 
 
-Registering a Runner with Shell Executor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Register a Gitlab Runner with Shell Executor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before registering the runner, create or obtain a runner authentication token
 from GitLab.
@@ -174,8 +174,8 @@ A shell executor runner configuration may look similar to this:
 
 Users can register multiple runners with different tags and names.
 
-Running the Runner
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Gitlab Runner Execution
+~~~~~~~~~~~~~~~~~~~~~~~
 
 After registration, the runner can only be run in the user mode.
 
@@ -186,8 +186,8 @@ After registration, the runner can only be run in the user mode.
 To check runner status from GitLab, return to the project or group runner
 settings page. The runner should appear as available or online.
 
-Using Runner Tags in a Pipeline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Runner Tags in a Gitlab Pipeline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If a runner is registered with tags, pipeline jobs can target that runner by
 using the same tags in ``.gitlab-ci.yml``.

@@ -18,16 +18,15 @@ Gitlab Server
 
 NOAA RDHPCS provides a secure Git server (URL: https://git.rdhpcs.noaa.gov) and a
 container registry (URL: https://registry.rdhpcs.noaa.gov) based on
-a self-hosted Gitlab instance that is accessible only from
-the RDHPCS systems. The Gitlab instance
+a self-hosted Gitlab instance that is accessible only within
+the NOAA network. The Gitlab instance
 supports CI/CD pipelines that can run with self-hosted Gitlab Runners installed
 on RDHPCS systems.
 
 .. attention::
 
-  The NOAA Git server and the container registry are accessible natively only from
-  the RDHPCS systems. Users need to use tunnels if accessing them from
-  external machines such as personal laptops.
+  Users need to use tunnels to access the NOAA RDHPCS Git server and the
+  container registry from external machines such as personal laptops.
 
 
 Web Access
@@ -116,7 +115,8 @@ If a repository or container images need to be shared to the RDHPCS users, the
 associated project needs to have either internal or public visibility.
 Because Gitlab server is accessible only from RDHPCS network, internal and
 public visibility levels serve similar purpose except accessing public projects
-do not require authentication to the Gitlab server. It is recommended to use
+do not require authentication to the Gitlab server. If the intent is to make a
+project accessible to all the NOAA users, it is recommended to use
 public visibility for a project instead of internal visibility.
 
 
@@ -124,9 +124,9 @@ Git Usage
 ---------
 
 Git access is typically through a git client, (either git command on CLI
-or IDE) on the RDHPCS system. The URL for the git repo on the  git server
-is dependent on whether ssh or https protocol is used. User id and PAT
-have to be supplied if https protocol is used. SSH protocol enables
+or an IDE such as VSCode) on the RDHPCS system. The URL for the git repo on
+the git server is dependent on whether ssh or https protocol is used. User
+id and PAT have to be supplied if https protocol is used. SSH protocol enables
 password-less connection through SSH keys. To learn more about git, refer
 to `git documentation <https://git-scm.com/>`__.
 
