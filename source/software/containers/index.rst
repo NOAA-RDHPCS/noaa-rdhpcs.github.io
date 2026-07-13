@@ -41,8 +41,8 @@ This chapter describes how to use containers effectively on RDHPCS
 systems. Topics include obtaining and building container images, using
 containers for software development, and running applications in batch
 and MPI-enabled workflows. Particular emphasis is placed on practical
-usage patterns, such as scheduler integration, environment variables,
-and host filesystem access.
+usage patterns, such as integrating containers with system schedulers,
+managing environment variables, and accessing host filesystems.
 
 Containers provide a high degree of portability. However, their correct
 use in HPC environments requires an understanding of several key
@@ -179,9 +179,10 @@ and whether module loading is needed.
      - ``singularity``
      - none required
 
-(*) - The ``apptainer`` module on Hercules/Orion is a Spack-managed install.
-It loads a separate environment that may not combine well with other
-system modules. The ``apptainer`` enables certain container build features
+(*) - The ``apptainer`` module on Hercules/Orion is a Spack-managed
+install that loads a separate environment, which may not combine well
+with other system modules. The ``apptainer`` enables certain container
+build features
 that are otherwise limited in ``singularity`` module by security
 constraints. The ``singularity`` module could further be used for compile
 and runtime environments.
@@ -314,12 +315,6 @@ SingularityCE. For security reasons, some ``build`` capabilities are
 restricted on NOAA RDHPC systems where SingularityCE is installed. Users can
 build their own images on other platforms where Apptainer is available.
 
-.. note::
-
-    *Podman* program is available on PPAN / Analysis for this purpose.
-    It is a daemonless, open-source engine used to build, manage, run,
-    and share Open Container Initiative (OCI) containers and images.
-
 For additional details, refer to the `SingularityCE Documentation
 <https://docs.sylabs.io/guides/latest/user-guide/>`_, `Apptainer
 documentation <https://apptainer.org/docs/user/main/>`_, or
@@ -353,6 +348,19 @@ The NOAA-EPIC image is used later in this chapter for workflow examples
     singularity pull rocky9-gnu13-ompi416.sif docker://noaaepic/rocky9-gnu:13.3.1-ompi416
 
 .. _containers-build-image:
+
+.. note::
+
+    Some platforms, such as *Ursa*, may require allocating a service node to
+    pull or build a container with additional memory requirements. To create
+    a local container ``rocky9-gnu13-ompi416.sif``, for example, the
+    allocation request could look as follows:
+
+    .. code-block:: shell
+
+         salloc -N 1 -p u1-service -A <project> -t 30:00 --mem=16G
+
+    Replace ``<project>`` with your project account.
 
 Build from a Docker Container
 -----------------------------
@@ -400,7 +408,8 @@ from either a remote repository or an existing local image:
 
 When the sandbox is built without the ``--fix-perms`` option (first two
 command lines), builds may create files with restrictive permissions.
-These files cannot be removed with ``rm``. Note the prompt warnings that
+These files cannot be removed with ``rm`` without adjusting user's
+permissions first. Note the prompt warnings that
 indicate how to address these issues, such as:
 
 .. warning::
@@ -528,7 +537,7 @@ Run the resulting image with:
 
 It will print the message from the runscript and display the contents of
 ``/etc/os-release`` inside the container.
-Users may need to specify the full, absolute path to the container image
+Users may need to specify the full path to the container image
 and bind-mount host directories into it. This is described in the
 :ref:`Bind Mounting Host Directories Into a Container
 <containers-bind-mount-host-directories>` section.
@@ -641,7 +650,7 @@ To interactively explore or debug a container environment, use the
 This opens an interactive shell inside the container. Commands run
 within the container environment, but still execute as processes on the
 host system. The container provides its own filesystem rooted at ``/``
-(the *root* directory). It uses a standard Linux directory layout (for
+(the *root* directory), with a standard Linux directory layout (for
 example, ``/bin``, ``/usr``, ``/etc``, ``/home``). Some host directories
 may also be visible if bind-mounted (see :ref:`Bind Mounting Host
 Directories Into a Container <containers-bind-mount-host-directories>`).
@@ -860,8 +869,8 @@ allows the application to read input files, write output, and access
 shared *project* or *scratch* filesystems. This is especially important
 on HPC systems, where user data usually lives outside the container
 image. Examples include ``/home``, ``/work``, ``/scratch``, ``/lustre``,
-and ``/gpfs``. These bind mounts are listed in the command line using
-the ``-B`` flag.
+``/gpfs``, ``/local``. These bind mounts are listed in the command line
+using the ``-B`` flag.
 If more than one directory needs to be bound, each one must be listed
 with its own ``-B`` flag.
 
@@ -950,8 +959,8 @@ communication stack (for example, *OFI/libfabric*, *UCX*, *TCP*).
 A key requirement is that the container's MPI library is compatible
 with the host MPI at the binary (*ABI*) level.
 Application Binary Interface (*ABI*) defines how compiled programs and
-libraries interact. This includes function calls, data types, symbol
-names, system calls, and linking.
+libraries interact, including function calls, data types, symbol names,
+system calls, and linking.
 
 Compatibility requirements depend on the launch method:
 
@@ -1038,11 +1047,13 @@ the NOAA-EPIC Docker repository, ``rocky9-gnu13-ompi416.sif``. See
 <containers-pull-convert-images>`
 or :ref:`Build from a Docker Container with --fix-perms
 <containers-build-image-noaaepic>`. The image contains an ``mpi-tests``
-directory with simple "Hello, World"-type Fortran test programs. These
-illustrate different workflows and MPI integration models.
+directory with simple Fortran test programs. These illustrate different
+workflows and MPI integration models.
 The examples demonstrate building and running a Fortran application
 inside a Singularity/Apptainer container. This includes serial
 execution, and MPI execution on a single node or across multiple nodes.
+These examples have been tested on the following RDHPC systems:
+Ursa, Hera, MSU Hercules/Orion, Gaea c5/c6, NOAA Cloud AWS/Azure.
 
 The directory can be copied to the user's space, using bind mount
 directories (``-B``) as required by the target system:
@@ -1055,63 +1066,53 @@ directories (``-B``) as required by the target system:
 
 The directory contains:
 
-* ``README.md`` -- a description of the examples and instructions for running
-  the tests.
+* ``README.md`` -- a description of the examples and instructions for
+  building and running the tests.
 * ``hello-world.f90`` -- a simple serial Fortran test program.
 * ``hello-world-parallel.f90`` -- an MPI hello-world test program.
 * ``Makefile`` -- builds both test executables.
-* ``wrapper.sh`` -- starts the container and launches the executable
-  inside it.
-* ``job_card_compile`` -- builds the executables in a batch job.
-* ``job_card1`` / ``job_card1_args`` -- run the MPI test on one node,
-  with and without command-line arguments.
-* ``job_card2`` / ``job_card2_args`` -- run the MPI test on two nodes,
-  with and without command-line arguments.
+* ``job_compile.sh`` -- batch script for building the executables.
+* ``job_script.sh`` -- batch script for running the MPI test on two
+  nodes, with or without command-line arguments.
+
+The ``hello-world.f90`` program is a minimal serial test: it prints a
+single "Hello, World!" message and exits, without using MPI at all.
+It runs as one process no matter how many ranks or nodes are requested.
+It doesn't verify anything about the MPI runtime, only that the
+compiler toolchain and container can build and run a basic executable.
+
+The ``hello-world-parallel.f90`` program is a minimal MPI application.
+It initializes MPI with ``mpi_init``, then retrieves each process's
+rank and the total number of ranks (``mpi_comm_rank`` and
+``mpi_comm_size``). The output contains a greeting from every rank, for
+example "Hello, World! I am process 3 of 8". If command-line arguments
+are passed to the executable, each rank also reports how many it
+received and lists them, as shown in the
+:ref:`Passing Arguments <containers-mpi-args>` example below. It then
+shuts down cleanly with ``mpi_finalize``.
 
 The examples below assume a *Slurm* scheduler, with MPI ranks launched
-using ``srun`` or ``mpirun``. They also assume a working directory
-under ``/lustre``, matching the NOAA AWS Cloud environment.
+using ``srun``. They also assume a working directory under ``/lustre``,
+matching the NOAA AWS Cloud environment. Other systems may require
+changes to the Slurm directives, bind paths, base directory, container
+image path, and MPI runtime environment.
 
 .. _containers-compile-application:
 
-Compiling an Application Inside a Container
+Compiling an Application With a Container
 -------------------------------------------
 
 Containers can also be used to provide a consistent build environment
 for compiling applications. The ``Makefile`` in the example directory
 builds both ``hello-world`` and ``hello-world-parallel`` using
-``mpif90``:
-
-.. code-block:: makefile
-
-   EXECS     =  hello-world hello-world-parallel
-
-   all: $(EXECS)
-       rm -f *.o
-
-   hello-world.o: hello-world.f90
-       $(F90) $(FFLAGS) -c $<
-
-   hello-world-parallel.o: hello-world-parallel.f90
-       $(F90) $(FFLAGS) -c $<
-
-   hello-world: hello-world.o
-       $(F90LINKER) -o $@ $^
-
-   hello-world-parallel: hello-world-parallel.o
-       $(F90LINKER) -o $@ $^
-
-   clean:
-       rm -f *.o  $(EXECS) core
-
+``mpif90``. The executables can be built using one of the following methods.
 
 .. _containers-compile-option-a:
 
-**Option A**. The executables can be built interactively, after starting a
-shell inside the container first. Make sure to load any
-singularity/apptainer modules if needed. Also adapt the bind mount
-directory (or directories), and define the image path for your
-environment. For example:
+**Option A: build with the Makefile, from an interactive shell**. Start
+a shell inside the container. Add ``-B /lustre`` or
+``-B /path/to/bind/mount`` to the command line if needed,
+and define the image path for your environment:
 
 .. code-block:: shell
 
@@ -1124,7 +1125,6 @@ the compiler/MPI environment as follows:
 
 .. code-block:: shell
 
-   singularity shell -B /lustre "${img}"
    source /usr/share/lmod/lmod/init/bash
    module use /opt/modulefiles
    module load gnu openmpi
@@ -1141,88 +1141,54 @@ using the ``Makefile``:
 
 .. _containers-compile-option-b:
 
-**Option B**. While shelled into the container from Option A, the
-executables can also be built without the ``Makefile``, using
-``mpif90`` directly:
+**Option B: build manually with mpif90**. While shelled into the
+container from Option A, the executables can also be built without the
+``Makefile``, using ``mpif90`` directly:
 
 .. code-block:: shell
 
+   make clean
    mpif90 -o hello-world-parallel hello-world-parallel.f90
    mpif90 -o hello-world hello-world.f90
 
 After successful compilation, exit the container shell with ``exit``
-and return to the host environment to test other build methods.
+and return to the host environment.
 
 .. _containers-compile-option-c:
 
-**Option C**. A single command can be used to build the executables
-without opening an interactive shell. It runs several commands inside
-the container.
+**Option C: build with a batch script**. Alternatively, the build can
+run non-interactively in a batch job, as shown in ``job_compile.sh``
+below. This example requests one node with one task and four CPU
+cores, which ``make -j`` uses to build in parallel.
+Before submitting, the following adaptations of the script are needed
+for your host system:
 
-.. code-block:: shell
-
-   singularity exec "${img}" bash -c "
-      source /usr/share/lmod/lmod/init/bash && \
-      cd /lustre/mpi-tests && \
-      module use /opt/modulefiles && \
-      module load gnu openmpi && \
-      make -j
-   "
-
-Add ``-B /lustre`` or ``-B /path/to/bind/mount`` to the command line if needed
-for your environment.
-
-.. _containers-compile-option-d:
-
-**Option D**. Note that the same set of commands can be placed inside a
-script file to be executed inside the container. Such a script, named
-``build.sh``, may look as follows:
-
-.. code-block:: shell
-
-   #!/bin/bash
-   source /usr/share/lmod/lmod/init/bash
-   cd /lustre/mpi-tests
-   module use /opt/modulefiles
-   module load gcc openmpi
-   make -j
-
-You can make it executable using ``chmod +x build.sh``. Then execute
-the script inside the container with the ``exec`` command, as shown
-below. Adjust paths as required for your environment.
-
-.. code-block:: shell
-
-   singularity exec [-B /lustre] "${img}" bash build.sh
-
-.. _containers-compile-option-e:
-
-**Option E**. Alternatively, the build can run non-interactively in a batch
-job, as shown in ``job_card_compile`` below. This example requests one node
-with one task and four CPU cores, which ``make -j`` uses to build in parallel.
-Adapt the SBATCH directives (at the very least, *account*, *qos*),
-the image path, and the work directory. Adjust these as needed for your
-environment.
-The batch script also demonstrates how to start a container and run
-commands inside it. This includes loading modules and building the
-executables.
+*  ``SBATCH`` directives for the Slurm job scheduler (at the very least,
+   *account*, *qos*, and *partition*);
+*  ``base_dir`` -- your base directory with a container image and
+   locally staged *mpi-tests* directory;
+*  Load a singularity or apptainer module if required;
+*  For *Apptainer*, set the corresponding ``APPTAINER`` environment
+   variables and replace ``singularity`` with ``apptainer``;
+*  The bind directory (or directories) following the ``-B`` flag.
 
 .. code-block:: shell
 
    #!/bin/sh
    #SBATCH -e err
    #SBATCH -o out
-   #SBATCH --account=ca-epic
+   #SBATCH --account=epic
    #SBATCH --qos=batch
+   ##SBATCH --partition=<partition>
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=4
    #SBATCH --time=00:00:30
    #SBATCH --job-name="hello-world-compile"
 
-   img="/lustre/rocky9-gnu13-ompi416.sif"
-   workdir="/lustre/mpi-tests"
-   cd ${workdir}
+   base_dir="/lustre"
+   img="${base_dir}/rocky9-gnu13-ompi416.sif"
+   cd ${base_dir}/mpi-tests
 
    singularity exec -B /lustre ${img} bash -c '
       source /usr/share/lmod/lmod/init/bash
@@ -1237,69 +1203,41 @@ Submit the batch compile job with the standard Slurm command:
 
 .. code-block:: shell
 
-   sbatch job_card_compile
+   sbatch job_compile.sh
 
-In this example, the job requests one task with four CPU cores, using
-``--cpus-per-task=4``. This is used by ``make -j`` to build in parallel.
-This differs from running an MPI application. Only one container
-process is started by the job scheduler, and ``make`` creates the
-parallel build jobs inside that container.
+Only one container process is started by the job scheduler; ``make``
+creates the parallel build jobs (four, matching ``--cpus-per-task``)
+inside that container. This differs from running an MPI application,
+where a separate container instance is started for each MPI rank.
 
 .. _containers-serial-single-node:
 
 Running a Serial Application
 ----------------------------
 
-Applications that do not use MPI can be executed directly inside a
-container. This simple execution model is commonly used for
-preprocessing, postprocessing, testing, or building applications.
+Applications that do not use MPI can be executed interactively inside a
+container, or launched directly from the host environment. This simple
+execution model is commonly used for preprocessing, postprocessing,
+testing, or building applications.
 
-The ``hello-world.f90`` program in the example directory is a minimal
-serial test:
+After building ``hello-world`` with any method from
+:ref:`Compiling an Application With a Container
+<containers-compile-application>`, you can run it either from an
+interactive shell inside the container, or directly from the host
+environment using the ``exec`` command.
 
-.. code-block:: fortran
-
-   program hello_world
-       implicit none
-
-       print *, 'Hello, World!'
-
-   end program hello_world
-
-After building it with any method from :ref:`Compiling an Application Inside a
-Container <containers-compile-application>`, you can run it. This works
-either from an interactive shell inside the container, or directly from
-the host environment using the ``exec`` command.
-
-.. _containers-run-serial-option-a:
-
-**Option A**. Start an interactive shell inside the container as during
-the build, as in :ref:`Building using a container, Option A
-<containers-compile-option-a>`:
+**From an interactive shell**, as in :ref:`Compiling an Application
+With a Container, Option A <containers-compile-option-a>`:
 
 .. code-block:: shell
 
-   export img="/lustre/rocky9-gnu13-ompi416.sif"
-   singularity shell -B /lustre "${img}"
-
-Initialize Lmod module environment, load the modules, and then run the
-executable from the test directory:
-
-.. code-block:: shell
-
-   singularity shell -B /lustre "${img}"
    source /usr/share/lmod/lmod/init/bash
    module use /opt/modulefiles
    module load gnu openmpi
    cd /lustre/mpi-tests
    ./hello-world
 
-.. _containers-run-serial-option-b:
-
-**Option B**. Run the executable from the host environment by
-invoking the container with the ``exec`` command, without opening an
-interactive shell. This is similar to :ref:`Building using a container,
-Option C <containers-compile-option-c>`:
+**Directly from the host**, without opening an interactive shell:
 
 .. code-block:: shell
 
@@ -1315,309 +1253,18 @@ This runs a single process without invoking MPI. It can be used
 interactively or within a batch job, typically without requiring
 scheduler launchers (for example, ``srun``).
 
-.. _containers-run-serial-option-c:
-
-**Option C**. As in :ref:`Building using a container, Option D
-<containers-compile-option-d>`, the commands can be placed in a script,
-such as ``run.sh``. The script is executed inside the container with
-the ``exec`` command.
-A script file ``run.sh`` may look as follows:
-
-.. code-block:: shell
-
-   #!/bin/bash
-   source /usr/share/lmod/lmod/init/bash
-   module use /opt/modulefiles
-   module load gnu openmpi
-   cd /lustre/mpi-tests
-   ./hello-world
-
-Run the script inside the container with:
-
-.. code-block:: shell
-
-   singularity exec -B /lustre "${img}" bash run.sh
-
-.. _containers-mpi-single-node-containerized:
-
-Running an MPI Application on a Single Node (Containerized)
------------------------------------------------------------
-
-For multi-rank jobs involving a single node, users have several run
-options. These include the interactive container shell, with or without
-a script, or submitting a batch script to the job scheduler. On most
-NOAA RDHPC platforms, you may need to allocate a compute node for
-"on the node" MPI execution. Use the ``salloc`` command for Slurm job
-schedulers. After a compute node has been allocated, make sure to load
-apptainer/singularity modules and any other modules if required.
-
-**Option A**. Start an interactive shell inside the container as in
-:ref:`Running a Serial Application, Option A
-<containers-run-serial-option-a>`. Then run the MPI executable with
-``mpirun`` invoked *inside* the container. Specify the number of ranks
-with ``-n`` option. For example, to run on 8 ranks you can use:
-
-.. code-block:: shell
-
-   singularity shell -B /lustre "${img}"
-   source /usr/share/lmod/lmod/init/bash
-   module use /opt/modulefiles
-   module load gnu openmpi
-   cd /lustre/mpi-tests
-   mpirun -n 8 ./hello-world-parallel
-
-The output should be similar to the following, with each rank printing its own
-message. The order of ranks may vary between runs:
-
-.. code-block:: text
-
-   nprocs,nnodes,ntpn = 8,1,8
-    Hello, World! I am process           6 of           8
-    Hello, World! I am process           1 of           8
-    Hello, World! I am process           2 of           8
-    Hello, World! I am process           3 of           8
-    Hello, World! I am process           4 of           8
-    Hello, World! I am process           7 of           8
-    Hello, World! I am process           0 of           8
-    Hello, World! I am process           5 of           8
-
-
-**Option B**. Once the compute node and required modules are ready, you
-can run the MPI executable directly from the host. Invoke the container
-with the ``exec`` command, similar to :ref:`Running a Serial Application,
-Option B <containers-run-serial-option-b>`. The above example with 8
-ranks can be run as follows:
-
-.. code-block:: shell
-
-   singularity exec -B /lustre "${img}" bash -c '
-      source /usr/share/lmod/lmod/init/bash
-      module use /opt/modulefiles
-      module load gnu openmpi
-      cd /lustre/mpi-tests
-      mpirun -n 8 ./hello-world-parallel
-   '
-
-The output should be similar to the previous example.
-
-**Option C**. A batch job can be submitted with a script, so that the
-scheduler allocates CPU cores and other resources. The ``mpirun``
-command is still invoked *inside* the container.
-The batch script ``job_card1`` in the ``mpi-tests`` directory demonstrates
-this approach for the ``hello-world-parallel`` executable. Note that the
-script needs to be adapted to your account, queue, and other SBATCH
-directives for your system. It also needs the usual container image path
-and working directory.
-
-.. code-block:: shell
-
-   #!/bin/sh
-   #SBATCH -e err
-   #SBATCH -o out
-   #SBATCH --account=ca-epic
-   #SBATCH --qos=batch
-   #SBATCH --nodes=1
-   #SBATCH --ntasks-per-node=8
-   #SBATCH --time=00:00:30
-   #SBATCH --job-name="hello-world-parallel"
-
-   nprocs=${SLURM_NTASKS}
-   nnodes=${SLURM_NNODES}
-   ntpn=${SLURM_NTASKS_PER_NODE}
-   echo "nprocs,nnodes,ntpn = ${nprocs},${nnodes},${ntpn}"
-
-   img="/lustre/rocky9-gnu13-ompi416.sif"
-   workdir="/lustre/mpi-tests"
-
-   singularity exec -B /lustre "${img}" bash -c '
-      source /usr/share/lmod/lmod/init/bash
-      module use /opt/modulefiles
-      module load gnu openmpi
-      mpirun -n "${nprocs}" "./hello-world-parallel"
-      '
-
-Submit the job with:
-
-.. code-block:: shell
-
-   sbatch job_card1
-
-The ``out`` file should contain output similar to:
-
-.. code-block:: text
-
-   nprocs,nnodes,ntpn = 8,1,8
-    Hello, World! I am process           6 of           8
-    Hello, World! I am process           1 of           8
-    Hello, World! I am process           2 of           8
-    Hello, World! I am process           3 of           8
-    Hello, World! I am process           4 of           8
-    Hello, World! I am process           7 of           8
-    Hello, World! I am process           0 of           8
-    Hello, World! I am process           5 of           8
-
-The order of MPI ranks may vary between runs.
-
-Passing Arguments to the MPI Application on a Single Node
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A second script, ``job_card1_args`` in the ``mpi-tests`` directory, runs
-the same example while passing command-line arguments to the executable.
-This shows that arguments given to ``mpirun`` are forwarded to each rank
-inside the container. Edit the script ``job_card1_args`` shown below as
-in the previous example to adapt it to your environment:
-
-.. code-block:: shell
-
-   #!/bin/sh
-   #SBATCH -e err
-   #SBATCH -o out
-   #SBATCH --account=ca-epic
-   #SBATCH --qos=batch
-   #SBATCH --nodes=1
-   #SBATCH --ntasks-per-node=8
-   #SBATCH --time=00:00:30
-   #SBATCH --job-name="hello-world-parallel"
-
-   nprocs=${SLURM_NTASKS}
-   nnodes=${SLURM_NNODES}
-   ntpn=${SLURM_NTASKS_PER_NODE}
-   echo "nprocs,nnodes,ntpn = ${nprocs},${nnodes},${ntpn}"
-
-   img="/lustre/rocky9-gnu13-ompi416.sif"
-   workdir="/lustre/mpi-tests"
-   cd ${workdir}
-
-   singularity exec -B /lustre "${img}" bash -c '
-      source /usr/share/lmod/lmod/init/bash
-      module use /opt/modulefiles
-      module load gnu openmpi
-      mpirun -n "${nprocs}" "./hello-world-parallel" \
-            "${nprocs}" "${nnodes}" "${ntpn}"
-      '
-
-Submit it with ``sbatch job_card1_args``. The output should be similar to the
-previous example. Each rank will also print the command-line arguments
-passed to it.
-
-This approach is useful for single-node testing because it avoids
-cross-node process launch and scheduler integration issues. However, it
-assumes the MPI launcher inside the container can correctly start
-and manage all ranks on the node.
-
-For production multi-node jobs, tighter integration is required
-between the host scheduler, host MPI runtime, and containerized
-application. See :ref:`MPI Integration Models <containers-mpi-integration>`
-for the recommended multi-node approaches.
-
-.. _containers-mpi-execution-multiple-nodes:
-
-MPI Execution on Multiple Nodes Using Host MPI
-----------------------------------------------
-
-Many HPC applications use MPI and require coordination between the
-scheduler, MPI launcher, host MPI runtime, and containerized
-application.
-
-For production HPC jobs, the host scheduler and host MPI launcher
-usually start the MPI ranks. Each rank then executes the application
-inside the container. This is often referred to as a *Hybrid MPI Model*
-(see :ref:`Hybrid MPI Model <containers-hybrid-mpi-model>`). The
-process launch is managed by the host system, while the application
-environment is provided by the container.
-
-In this model:
-
-* the scheduler allocates the nodes and tasks;
-* the host MPI launcher (``srun``) starts the MPI ranks across the
-  allocated nodes;
-* each MPI rank runs a wrapper script that starts a container instance;
-* the application runs inside the container;
-* MPI communication uses the configured MPI runtime and the host
-  system's high-speed network when available.
-
-The two-node example uses ``job_card2`` together with the supplementary
-script ``wrapper.sh``:
-
-.. code-block:: shell
-
-   #!/bin/sh
-   #SBATCH -e err
-   #SBATCH -o out
-   #SBATCH --account=ca-epic
-   #SBATCH --qos=batch
-   #SBATCH --nodes=2
-   #SBATCH --ntasks-per-node=8
-   #SBATCH --time=00:00:30
-   #SBATCH --job-name="hello-world-parallel"
-
-   nprocs=${SLURM_NTASKS}
-   nnodes=${SLURM_NNODES}
-   ntpn=${SLURM_NTASKS_PER_NODE}
-   echo "nprocs,nnodes,ntpn = ${nprocs},${nnodes},${ntpn}"
-
-   wrapper="/lustre/mpi-tests/wrapper.sh"
-
-   srun --mpi=pmi2 -n ${nprocs} ${wrapper}
-
-A sample ``wrapper.sh`` script sets several ``SINGULARITYENV_*``
-variables needed inside the container. These include ``PATH``,
-``LD_LIBRARY_PATH``, ``CPATH``, MPI/PMI tuning, and the network fabric
-provider. It then starts a container on each rank and launches the MPI
-executable:
-
-.. code-block:: shell
-
-   #!/bin/bash
-   export SINGULARITYENV_FI_PROVIDER=tcp
-   export SINGULARITYENV_CPATH=/opt/slurm/include:/opt/openmpi/4.1.6/include
-   export SINGULARITYENV_PREPEND_PATH=/opt/openmpi/4.1.6/bin
-   export SINGULARITYENV_LD_LIBRARY_PATH=/opt/slurm/lib:/opt/openmpi/4.1.6/lib:/.singularity.d/libs
-   export SINGULARITYENV_LIBRARY_PATH=/opt/slurm/lib:/opt/openmpi/4.1.6/lib
-   export SINGULARITYENV_PMIX_MCA_gds=hash
-   export SINGULARITYENV_OMPI_MCA_btl="^openib"
-   export SINGULARITYENV_OMPI_MCA_btl_tcp_if_include=eth0
-   export SINGULARITYENV_OMPI_MCA_pml=ob1
-
-   img="/lustre/rocky9-gnu13-ompi416.sif"
-   cmd="/lustre/mpi-tests/hello-world-parallel"
-
-   singularity exec -B /lustre "${img}" "${cmd}" "$@"
-
-For *Apptainer*, use the corresponding ``APPTAINERENV_*`` variables and
-replace ``singularity exec`` with ``apptainer exec``.
-
-Submit the job with:
-
-.. code-block:: shell
-
-   sbatch job_card2
-
-The expected ``out`` file should look similar to:
-
-.. code-block:: text
-
-   nprocs = 16
-    Hello, World! I am process           0 of          16
-    Hello, World! I am process           8 of          16
-    Hello, World! I am process           1 of          16
-    Hello, World! I am process           2 of          16
-    Hello, World! I am process           5 of          16
-    Hello, World! I am process           3 of          16
-
-...and so on, with each rank printing its own message.
-
-The rank order may vary between runs. A second script,
-``job_card2_args``, passes additional command-line arguments through
-``srun`` and the wrapper script. These reach the executable running
-inside each container instance.
-
-This model is generally more robust for production multi-node jobs than
-starting ``mpirun`` from inside a single container instance. See
-:ref:`MPI Execution on a Single Node (Containerized)
-<containers-mpi-single-node-containerized>` for that approach. The host
-scheduler and host MPI runtime remain responsible for process
-placement, rank launch, and network integration.
+.. _containers-mpi-application:
+
+Running an MPI Application
+--------------------------
+
+For production HPC jobs, the host scheduler and host MPI launcher remain
+responsible for process placement, rank launch, and network integration.
+Each rank then launches a container instance
+and executes the application inside the container. This is often referred
+to as a *Hybrid MPI Model*
+(see :ref:`Hybrid MPI Model <containers-hybrid-mpi-model>`).
+This approach works equally well for a single node or across multiple nodes.
 
 On *Slurm* systems, users can check which MPI launch plugins are
 available on the host system with:
@@ -1627,81 +1274,156 @@ available on the host system with:
    srun --mpi=list
 
 The output is system dependent, but may include options such as
-``pmi2``, ``pmix``, or other site-supported MPI launch interfaces. The
-wrapper script above assumes that Slurm launches ranks through its
-PMI2 interface. It also assumes that Open MPI inside the container was
-built with PMI2 support.
+``pmi2``, ``pmix``, or other site-supported MPI launch interfaces.
+The example below assumes that Slurm launches ranks through its PMI2
+interface, and that the Open MPI stack inside the container was built
+with PMI2 support.
 
-.. _containers-wrapper-scripts:
-
-Using Wrapper Scripts to Launch Application Binaries
-----------------------------------------------------
-
-Some HPC workflows expect application binaries at a fixed path or
-name, for example ``${workdir}/bin/hello-world-parallel``. A symbolic
-link can point to a wrapper script when the real executable is inside
-a container. The wrapper script starts the container and then runs the
-real executable inside it.
-
-Start from the ``wrapper.sh`` script used in the previous section. Edit
-it so that the command name comes from the name used to invoke the
-wrapper. Then prepend the directory with the real executable to the
-container's search path:
+The batch script ``job_script.sh`` submits a two-node Slurm job that
+runs ``hello-world-parallel``. By default, it runs the executable
+without arguments:
 
 .. code-block:: shell
 
-   cmd=$(basename "$0")
-   export SINGULARITYENV_PREPEND_PATH=${workdir}
+   #!/bin/bash
+   #SBATCH -e err
+   #SBATCH -o out
+   #SBATCH --account=epic
+   #SBATCH --qos=batch
+   ##SBATCH --partition=<partition>
+   #SBATCH --nodes=2
+   #SBATCH --ntasks-per-node=8
+   #SBATCH --time=00:00:30
+   #SBATCH --job-name="hello-world-parallel"
 
-With ``${workdir}`` set to ``/lustre/mpi-tests``, create the expected
-``bin`` directory and link the expected executable name to the wrapper
-script:
+   base_dir="/lustre"
+   img="${base_dir}/rocky9-gnu13-ompi416.sif"
+   cd ${base_dir}/mpi-tests
+
+   nprocs=${SLURM_NTASKS}
+   nnodes=${SLURM_NNODES}
+   ntpn=${SLURM_NTASKS_PER_NODE}
+
+   # module load singularity # module load apptainer
+   export SINGULARITY_SHELL=/bin/bash
+   export SINGULARITYENV_OMPI_MCA_btl="^openib"
+   export SINGULARITYENV_OMPI_MCA_btl_vader_single_copy_mechanism=none
+
+   srun --mpi=pmi2 -n ${nprocs} \
+           singularity exec -B /lustre  ${img} \
+           bash -c '
+           source /usr/share/lmod/lmod/init/bash
+           module use /opt/modulefiles
+           module load gnu openmpi
+           ./hello-world-parallel '
+   # Running with arguments: replace the line above with the following
+   # two lines (uncomment them)
+   #        ./hello-world-parallel "$1" "$2" "$3"
+   #        ' bash "${nprocs}" "${nnodes}" "${ntpn}"
+
+Several environment variables are defined that start with
+``SINGULARITY`` or ``SINGULARITYENV_*`` (use ``APPTAINER_*`` or
+``APPTAINERENV_*`` for the *Apptainer* software). They are set to
+coordinate with the host environment and network fabric provider.
+These particular variables ensure this example works successfully on
+the NOAA RDHPC systems tested (Ursa, Hera, Gaea, MSU Hercules/Orion,
+and NOAA Cloud AWS/Azure).
+
+Adapt batch script to your environment as in
+:ref:`Option C: build with a batch script <containers-compile-option-c>`,
+before submitting it to the job scheduler:
 
 .. code-block:: shell
 
-   mkdir -p ${workdir}/bin
-   ln -s ${workdir}/wrapper.sh ${workdir}/bin/hello-world-parallel
+   sbatch job_script.sh
 
-Then update the batch script to launch the expected executable path
-instead of the wrapper directly. In ``job_card2``, replace:
+By default, the script runs the executable without arguments, so the
+``out`` file should contain a simple greeting from each rank, similar
+to:
+
+.. code-block:: text
+
+   Hello, World! I am process           8 of          16
+   Hello, World! I am process           9 of          16
+   Hello, World! I am process           0 of          16
+   Hello, World! I am process          10 of          16
+   Hello, World! I am process           1 of          16
+   Hello, World! I am process          11 of          16
+   Hello, World! I am process           4 of          16
+   Hello, World! I am process          12 of          16
+   Hello, World! I am process           5 of          16
+   Hello, World! I am process          14 of          16
+   Hello, World! I am process           3 of          16
+   Hello, World! I am process          15 of          16
+   Hello, World! I am process           2 of          16
+   Hello, World! I am process          13 of          16
+   Hello, World! I am process           7 of          16
+   Hello, World! I am process           6 of          16
+
+The rank order may vary between runs.
+The same batch script works for a single node; set ``--nodes=1`` in the
+SBATCH directives instead.
+
+.. _containers-mpi-args:
+
+Passing Arguments to the MPI Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To pass three values derived from Slurm (``nprocs``, ``nnodes``, and
+``ntpn``) to ``hello-world-parallel``, uncomment the optional argument
+block already present at the end of ``job_script.sh``, replacing the
+line
+
+.. code-block:: text
+
+           ./hello-world-parallel ''
+
+with the following:
+
+.. code-block:: text
+
+           ./hello-world-parallel "$1" "$2" "$3"
+           ' bash "${nprocs}" "${nnodes}" "${ntpn}"
+
+Submit the modified script the same way. The output should be similar
+to the previous example, but each rank also reports the command-line
+arguments it received:
+
+.. code-block:: text
+
+   Number of arguments:           3
+   Arguments provided:
+   Argument           1 :16
+   Argument           2 :2
+   Argument           3 :8
+   Hello, World! I am process           4 of          16
+
+.. _containers-mpi-single-node:
+
+Testing on a Single Node with Containerized MPI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For quick testing on a single node, ``mpirun`` can instead be invoked
+*inside* the container, using the container's own MPI stack rather than
+the host launcher. This corresponds to the
+:ref:`Fully Containerized MPI Model <containers-full-containerized-mpi>`.
+Start an interactive shell as in :ref:`Compiling an Application With a
+Container, Option A <containers-compile-option-a>`, then run:
 
 .. code-block:: shell
 
-   wrapper="/lustre/mpi-tests/wrapper.sh"
-   srun --mpi=pmi2 -n ${nprocs} ${wrapper}
+   source /usr/share/lmod/lmod/init/bash
+   module use /opt/modulefiles
+   module load gnu openmpi
+   cd /lustre/mpi-tests
+   mpirun -n 8 ./hello-world-parallel
 
-with:
-
-.. code-block:: shell
-
-   executable="/lustre/mpi-tests/bin/hello-world-parallel"
-   srun --mpi=pmi2 -n ${nprocs} ${executable}
-
-Make sure to adapt the paths of ``wrapper`` and ``executable`` variables
-to your environment.
-
-Slurm now launches ``/lustre/mpi-tests/bin/hello-world-parallel``, which
-is a symbolic link to the wrapper script. The wrapper starts the
-container and runs the real ``hello-world-parallel`` executable from
-the container ``PATH``. This produces the same output as the original
-``job_card2`` example.
-
-This approach is useful when:
-
-* an existing workflow should not be modified extensively;
-* the batch script or workflow driver expects a specific executable
-  name;
-* container options, bind mounts, and environment variables need to be
-  managed consistently in one wrapper script;
-* the same wrapper pattern is used for several application binaries.
-
-.. note::
-
-   The wrapper script should normally not call ``srun``, ``mpirun``, or
-   ``mpiexec`` itself. For multi-node jobs, the scheduler or MPI launcher
-   should call the wrapper script. This keeps rank placement, process
-   management, and network initialization under control of the host
-   launch environment.
+This approach is **not recommended** for production or multi-node jobs:
+it does not have full integration with the host job scheduler, since
+``mpirun`` runs entirely inside the container using its MPI libraries
+rather than through Slurm. It can, however, be helpful for debugging an
+MPI application on a single node before running it through the
+:ref:`Hybrid MPI Model <containers-hybrid-mpi-model>` described above.
 
 Container help, questions, and guidance
 =======================================
