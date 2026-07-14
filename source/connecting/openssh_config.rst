@@ -93,13 +93,18 @@ file.
             lf_port = fix_port(lf_port);
             rf_port = fix_port(rf_port);
 
-            return(`Host ${host}-rsa.boulder.rdhpcs.noaa.gov\n` +
-                   `    HostName          ${host}-rsa.boulder.rdhpcs.noaa.gov\n\n` +
-                   `Host ${host}-rsa.princeton.rdhpcs.noaa.gov ${host}-rsa.boulder.rdhpcs.noaa.gov\n` +
-                   `    HostName          ${host}-rsa.princeton.rdhpcs.noaa.gov\n` +
+            return(`Host ${host}-mfa.fairmont.rdhpcs.noaa.gov\n` +
+                   `    HostName          ${host}-mfa.fairmont.rdhpcs.noaa.gov\n\n` +
+                   `Host ${host}-mfa.princeton.rdhpcs.noaa.gov ${host}-mfa.fairmont.rdhpcs.noaa.gov\n` +
+                   `    HostName          ${host}-mfa.princeton.rdhpcs.noaa.gov\n` +
                    `    LocalForward      ${lf_port} localhost:${lf_port}\n` +
                    `    RemoteForward     ${rf_port} localhost:22\n` +
-                   `    User              ${user}\n\n` +
+                   `    User              ${user}\n` +
+                   `# CAC / PIV / PKCS11 Providers for MacOS and Linux.\n` +
+                   `    Match exec "uname | grep Darwin"\n` +
+                   `      PKCS11Provider    /usr/lib/ssh-keychain.dylib\n` +
+                   `    Match exec "uname | grep Linux"\n` +
+                   `      PKCS11Provider    /usr/lib64/pkcs11/opensc-pkcs11.so\n\n` +
                    `Host ${host}.local\n` +
                    `    HostName          localhost\n` +
                    `    Port              ${lf_port}\n` +
