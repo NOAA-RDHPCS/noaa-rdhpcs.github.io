@@ -1471,8 +1471,8 @@ on my local machine. This lets me direct my browser to the
 URL 'localhost:8888' and see the page being served by the
 remote machine over that port.
 
-How do I How to assign a static ip address to a cluster?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How do I assign a static ip address to a cluster?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're working with a security team managing firewall access to the cluster,
 you can assign a static IP address to the cluster.  The IP address will remain
