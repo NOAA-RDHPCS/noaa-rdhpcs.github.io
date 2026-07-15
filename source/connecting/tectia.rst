@@ -27,8 +27,72 @@ SSH Tectia Client provides secure terminal client functionality for remote
 users and system administrators for accessing remote hosts running SSH Tectia
 Server or other Secure Shell server.
 
-Locate the CAC-bastion hostname you need in the :ref:`bastion_hostnames`
-table.
+Locate the CAC-bastion hostname you need:
+
+CAC users must connect to a CAC bastion hostname.
+YubiKey users must connect to an RSA bastion hostname.
+
+.. |CBHN|   replace:: **CAC bastion hostnames**
+.. |RBHN|   replace:: **RSA bastion hostnames**
+.. |GCPRNG| replace:: gaea.princeton.rdhpcs.noaa.gov
+.. |GCBRNG| replace:: gaea.boulder.rdhpcs.noaa.gov
+.. |GRPRNG| replace:: gaea-rsa.princeton.rdhpcs.noaa.gov
+.. |GRBRNG| replace:: gaea-rsa.boulder.rdhpcs.noaa.gov
+
+.. |HCPRNG| replace:: hera.princeton.rdhpcs.noaa.gov
+.. |HCBRNG| replace:: hera.boulder.rdhpcs.noaa.gov
+.. |HRPRNG| replace:: hera-rsa.princeton.rdhpcs.noaa.gov
+.. |HRBRNG| replace:: hera-rsa.boulder.rdhpcs.noaa.gov
+
+.. |JCPRNG| replace:: bastion-jet.princeton.rdhpcs.noaa.gov
+.. |JCBRNG| replace:: bastion-jet.boulder.rdhpcs.noaa.gov
+.. |JRPRNG| replace:: jet-rsa.princeton.rdhpcs.noaa.gov
+.. |JRBRNG| replace:: jet-rsa.boulder.rdhpcs.noaa.gov
+
+.. |PPPRNG| replace:: bastion-analysis.princeton.rdhpcs.noaa.gov
+.. |PPBRNG| replace:: bastion-analysis.boulder.rdhpcs.noaa.gov
+.. |PAPRNG| replace:: analysis-rsa.princeton.rdhpcs.noaa.gov
+.. |PBPRNG| replace:: analysis-rsa.boulder.rdhpcs.noaa.gov
+
+.. |MCPRNG| replace:: mercury-cac.princeton.rdhpcs.noaa.gov
+.. |MCBRNG| replace:: mercury-cac.boulder.rdhpcs.noaa.gov
+.. |MRPRNG| replace:: mercury-rsa.princeton.rdhpcs.noaa.gov
+.. |MRBRNG| replace:: mercury-rsa.boulder.rdhpcs.noaa.gov
+
+.. |UCPRNG| replace:: ursa-cac.princeton.rdhpcs.noaa.gov
+.. |UCBRNG| replace:: ursa-cac.boulder.rdhpcs.noaa.gov
+.. |URPRNG| replace:: ursa-rsa.princeton.rdhpcs.noaa.gov
+.. |URBRNG| replace:: ursa-rsa.boulder.rdhpcs.noaa.gov
+
++-------------------+-----------------+----------------------------------+
+| **RDHPCS system** | |CBHN|          | |RBHN|                           |
++-------------------+-----------------+----------------------------------+
+| Gaea              | |GCPRNG|        | |GRPRNG|                         |
+|                   |                 |                                  |
+|                   | |GCBRNG|        | |GRBRNG|                         |
++-------------------+-----------------+----------------------------------+
+| Hera              | |HCPRNG|        | |HRPRNG|                         |
+|                   |                 |                                  |
+|                   | |HCBRNG|        | |HRBRNG|                         |
++-------------------+-----------------+----------------------------------+
+| Jet               | |JCPRNG|        | |JRPRNG|                         |
+|                   |                 |                                  |
+|                   | |JCBRNG|        | |JRBRNG|                         |
++-------------------+-----------------+----------------------------------+
+| PPAN              | |PPPRNG|        | |PAPRNG|                         |
+|                   |                 |                                  |
+|                   | |PPBRNG|        | |PBPRNG|                         |
++-------------------+-----------------+----------------------------------+
+| Mercury           | |MCPRNG|        | |MRPRNG|                         |
+|                   |                 |                                  |
+|                   | |MCBRNG|        | |MRBRNG|                         |
++-------------------+-----------------+----------------------------------+
+| Ursa              | |UCPRNG|        | |URPRNG|                         |
+|                   |                 |                                  |
+|                   | |UCBRNG|        | |URBRNG|                         |
++-------------------+-----------------+----------------------------------+
+
+
 
 The OS-specific tabs (Windows, Linux, MAC)  in the :ref:`Install Tectia`
 section describe how to do the following:
