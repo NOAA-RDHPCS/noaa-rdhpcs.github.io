@@ -162,6 +162,17 @@ configuration file.
         }
 
         /**
+         * Capitalize first letter of each name part (First.Last format).
+         * Converts "first.last" to "First.Last".
+         */
+        function capitalizeUsername(username) {
+            return username.split('.').map(function(part) {
+                if (part.length === 0) return part;
+                return part.charAt(0).toUpperCase() + part.slice(1);
+            }).join('.');
+        }
+
+        /**
          * Validate username format (First.Last pattern).
          */
         function isValidUsername(username) {
@@ -260,9 +271,9 @@ configuration file.
                 return;
             }
 
-            const username = sanitizeUsername(rawUsername);
+            const sanitizedUsername = sanitizeUsername(rawUsername);
 
-            if (!isValidUsername(username)) {
+            if (!isValidUsername(sanitizedUsername)) {
                 showError(
                     'Invalid username format.\n\n' +
                     'Enter your username as First.Last (for example, John.Smith).\n' +
@@ -271,6 +282,9 @@ configuration file.
                 usernameInput.focus();
                 return;
             }
+
+            // Capitalize first letter of each name part
+            const username = capitalizeUsername(sanitizedUsername);
 
             // Validate UID
             if (!rawUid) {
