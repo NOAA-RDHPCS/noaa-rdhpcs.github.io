@@ -10,6 +10,10 @@ Supports deduplication against known URLs from open issues.  When a
 --known-urls-file is provided, links already tracked in open issues are
 marked with "Related to #NNN" in the status column instead of the HTTP error.
 
+Supports deduplication against known broken URLs from open issues.  When a
+--known-urls-file is provided, broken links already tracked in open issues are
+marked with "Related to #NNN" in the status column instead of the HTTP error.
+
 Exit codes:
   0 - no broken or rate-limited links found
   1 - at least one NEW broken or rate-limited link found (create issue)
