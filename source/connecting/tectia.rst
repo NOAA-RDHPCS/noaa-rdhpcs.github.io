@@ -657,8 +657,7 @@ the ``-X`` flag to ``sshg3``:
    You need an X11 server running on your local workstation before
    you connect:
 
-   * **Windows** — install `VcXsrv
-   * `_ or `MobaXterm`_.
+   * **Windows** — install `VcXsrv`_ or `MobaXterm`_.
    * **macOS** — install `XQuartz`_.
    * **Linux** — X11 is available if a desktop environment is running.
 
