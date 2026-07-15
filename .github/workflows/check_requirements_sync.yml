@@ -60,17 +60,107 @@ jobs:
         if: steps.changed-files.outputs.requirements_in_changed == 'true'
         run: |
           pip-compile --generate-hashes requirements.in -o requirements.txt.new
-          if ! diff -q requirements.txt requirements.txt.new > /dev/null 2>&1; then
-            echo "::error::requirements.txt is out of sync with requirements.in"
-            echo ""
-            echo "Run the following command locally and commit the result:"
-            echo "  pip-compile --generate-hashes requirements.in"
-            echo ""
-            echo "Differences found:"
-            diff requirements.txt requirements.txt.new || true
-            exit 1
-          fi
-          echo "requirements.txt is properly generated from requirements.in"
+
+          # Create a Python script to compare requirements files
+          # This ignores comment lines (which may differ due to output filename)
+          # and compares only the actual package specifications
+          cat << 'EOF' > compare_requirements.py
+          import re
+          import sys
+
+          def parse_requirements(content):
+              """Parse requirements.txt and extract package versions and hashes."""
+              packages = {}
+              current_pkg = None
+              current_version = None
+              current_hashes = set()
+
+              for line in content.split('\n'):
+                  line = line.strip()
+                  if not line or line.startswith('#'):
+                      continue
+
+                  # Match package==version pattern
+                  pkg_match = re.match(r'^([a-zA-Z0-9_-]+)==([^\s\\]+)', line)
+                  if pkg_match:
+                      # Save previous package
+                      if current_pkg:
+                          packages[current_pkg] = {
+                              'version': current_version,
+                              'hashes': frozenset(current_hashes)
+                          }
+                      current_pkg = pkg_match.group(1).lower()
+                      current_version = pkg_match.group(2)
+                      current_hashes = set()
+
+                  # Match hash pattern
+                  hash_match = re.search(r'--hash=sha256:([a-f0-9]+)', line)
+                  if hash_match and current_pkg:
+                      current_hashes.add(hash_match.group(1))
+
+              # Save last package
+              if current_pkg:
+                  packages[current_pkg] = {
+                      'version': current_version,
+                      'hashes': frozenset(current_hashes)
+                  }
+
+              return packages
+
+          def compare_requirements(file1, file2):
+              """Compare two requirements files, ignoring comments."""
+              with open(file1, 'r') as f:
+                  content1 = f.read()
+              with open(file2, 'r') as f:
+                  content2 = f.read()
+
+              pkgs1 = parse_requirements(content1)
+              pkgs2 = parse_requirements(content2)
+
+              differences = []
+
+              # Check for packages in file1 but not in file2
+              for pkg in pkgs1:
+                  if pkg not in pkgs2:
+                      differences.append(f"Package '{pkg}' in {file1} but not in {file2}")
+
+              # Check for packages in file2 but not in file1
+              for pkg in pkgs2:
+                  if pkg not in pkgs1:
+                      differences.append(f"Package '{pkg}' in {file2} but not in {file1}")
+
+              # Check for version/hash differences
+              for pkg in pkgs1:
+                  if pkg in pkgs2:
+                      if pkgs1[pkg]['version'] != pkgs2[pkg]['version']:
+                          differences.append(
+                              f"Package '{pkg}' version mismatch: "
+                              f"{pkgs1[pkg]['version']} vs {pkgs2[pkg]['version']}"
+                          )
+                      elif pkgs1[pkg]['hashes'] != pkgs2[pkg]['hashes']:
+                          differences.append(
+                              f"Package '{pkg}' hash mismatch for version {pkgs1[pkg]['version']}"
+                          )
+
+              return differences
+
+          if __name__ == '__main__':
+              differences = compare_requirements('requirements.txt', 'requirements.txt.new')
+              if differences:
+                  print("requirements.txt is out of sync with requirements.in")
+                  print()
+                  print("Differences found:")
+                  for diff in differences:
+                      print(f"  - {diff}")
+                  print()
+                  print("Run the following command locally and commit the result:")
+                  print("  pip-compile --generate-hashes requirements.in")
+                  sys.exit(1)
+              else:
+                  print("requirements.txt is properly generated from requirements.in")
+          EOF
+
+          python compare_requirements.py
 
       - name: Check hash integrity
         if: steps.changed-files.outputs.requirements_txt_changed == 'true'
