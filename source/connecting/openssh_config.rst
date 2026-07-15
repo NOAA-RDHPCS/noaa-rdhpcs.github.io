@@ -47,6 +47,19 @@ configuration file.
             height: 38px !important;
             box-sizing: border-box !important;
         }
+        #ssh_config_form .system-checkboxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            margin-left: 1em;
+            align-items: center;
+        }
+        #ssh_config_form .system-checkboxes label {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            cursor: pointer;
+        }
     </style>
     <form id="ssh_config_form" aria-label="SSH configuration generator">
         <div class="mb-3 input-group">
@@ -84,6 +97,37 @@ configuration file.
                    style="margin-left: 1em; display: flex; align-items: center;">
                 Find your user ID by running&nbsp;<code>id -u</code>&nbsp;on an RDHPCS system.
             </small>
+        </div>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">
+                Systems
+            </span>
+            <div class="system-checkboxes" role="group" aria-label="Select systems to include">
+                <label>
+                    <input type="checkbox" id="system_all" name="systems" value="all" checked>
+                    All
+                </label>
+                <label>
+                    <input type="checkbox" id="system_gaea" name="systems" value="gaea">
+                    Gaea
+                </label>
+                <label>
+                    <input type="checkbox" id="system_hera" name="systems" value="hera">
+                    Hera
+                </label>
+                <label>
+                    <input type="checkbox" id="system_mercury" name="systems" value="mercury">
+                    Mercury
+                </label>
+                <label>
+                    <input type="checkbox" id="system_ppan" name="systems" value="ppan">
+                    PPAN
+                </label>
+                <label>
+                    <input type="checkbox" id="system_ursa" name="systems" value="ursa">
+                    Ursa
+                </label>
+            </div>
         </div>
         <div id="button_container" style="margin-top: 1em; display: flex; justify-content: space-between; align-items: center;">
             <button class="btn btn-neutral"
@@ -235,12 +279,34 @@ configuration file.
         }
 
         /**
-         * Generate complete SSH configuration for all systems.
+         * Get list of selected systems from checkboxes.
+         * Returns all system keys if "All" is checked, otherwise returns
+         * only the checked individual systems.
          */
-        function generateFullConfig(username, uid) {
-            let config = '';
+        function getSelectedSystems() {
+            const allCheckbox = document.getElementById('system_all');
+            if (allCheckbox.checked) {
+                return Object.keys(SYSTEMS);
+            }
+            const selected = [];
             for (const key of Object.keys(SYSTEMS)) {
-                config += generateSystemConfig(SYSTEMS[key], username, uid);
+                const checkbox = document.getElementById('system_' + key);
+                if (checkbox && checkbox.checked) {
+                    selected.push(key);
+                }
+            }
+            return selected;
+        }
+
+        /**
+         * Generate SSH configuration for selected systems.
+         */
+        function generateFullConfig(username, uid, selectedSystems) {
+            let config = '';
+            for (const key of selectedSystems) {
+                if (SYSTEMS[key]) {
+                    config += generateSystemConfig(SYSTEMS[key], username, uid);
+                }
             }
             return config;
         }
@@ -305,8 +371,15 @@ configuration file.
 
             const uid = parseInt(rawUid, 10);
 
+            // Get selected systems
+            const selectedSystems = getSelectedSystems();
+            if (selectedSystems.length === 0) {
+                showError('Please select at least one system.');
+                return;
+            }
+
             // Generate and display config using textContent (XSS-safe)
-            const config = generateFullConfig(username, uid);
+            const config = generateFullConfig(username, uid, selectedSystems);
             output.textContent = config;
             container.style.display = 'block';
             document.getElementById('copy_btn').style.display = 'inline-block';
@@ -346,6 +419,8 @@ configuration file.
         document.addEventListener('DOMContentLoaded', function() {
             const generateBtn = document.getElementById('generate_btn');
             const copyBtn = document.getElementById('copy_btn');
+            const allCheckbox = document.getElementById('system_all');
+            const systemCheckboxes = document.querySelectorAll('input[name="systems"]:not([value="all"])');
 
             if (generateBtn) {
                 generateBtn.addEventListener('click', handleGenerate);
@@ -354,6 +429,35 @@ configuration file.
             if (copyBtn) {
                 copyBtn.addEventListener('click', handleCopy);
             }
+
+            // Handle "All" checkbox behavior
+            if (allCheckbox) {
+                allCheckbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        // Uncheck all individual system checkboxes when "All" is checked
+                        systemCheckboxes.forEach(function(cb) {
+                            cb.checked = false;
+                        });
+                    }
+                });
+            }
+
+            // Handle individual system checkbox behavior
+            systemCheckboxes.forEach(function(cb) {
+                cb.addEventListener('change', function() {
+                    if (this.checked) {
+                        // Uncheck "All" when any individual system is checked
+                        allCheckbox.checked = false;
+                    }
+                    // If no individual systems are checked, check "All"
+                    const anyChecked = Array.from(systemCheckboxes).some(function(c) {
+                        return c.checked;
+                    });
+                    if (!anyChecked) {
+                        allCheckbox.checked = true;
+                    }
+                });
+            });
 
             // Allow Enter key to trigger generation
             const form = document.getElementById('ssh_config_form');
