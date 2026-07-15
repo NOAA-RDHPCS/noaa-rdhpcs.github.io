@@ -73,13 +73,29 @@ jobs:
 
       - name: Create issue for broken links
         if: steps.report.outputs.exit_code == '1'
+        id: create_issue
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh issue create \
+          issue_url=$(gh issue create \
             --title "Broken link(s) detected" \
             --label "bug" \
-            --body-file issue_body.md
+            --body-file issue_body.md)
+          echo "issue_url=$issue_url" >> "$GITHUB_OUTPUT"
+          issue_number=$(echo "$issue_url" | grep -oE '[0-9]+$')
+          echo "issue_number=$issue_number" >> "$GITHUB_OUTPUT"
+
+      - name: Assign issue to code owners
+        if: steps.report.outputs.exit_code == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          assignees=$(python .github/scripts/resolve_assignees.py issue_body.md)
+          if [ -n "$assignees" ]; then
+            echo "Assigning issue #${{ steps.create_issue.outputs.issue_number }} to: $assignees"
+            gh issue edit ${{ steps.create_issue.outputs.issue_number }} \
+              --add-assignee "$assignees"
+          fi
 
       - name: Upload linkcheck Artifact
         uses: actions/upload-artifact@v4
