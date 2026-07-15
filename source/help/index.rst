@@ -142,8 +142,8 @@ that we can look at it.
         hung, and then eventually reported that my connection timed out. See
         below:
 
-        $ ssh -l john.smith bastion-hera.boulder.rdhpcs.noaa.gov
-        ssh: connect to host bastion-hera.boulder.rdhpcs.noaa.gov port 22: Connection timed out
+        $ ssh -l john.smith bastion-hera.fairmont.rdhpcs.noaa.gov
+        ssh: connect to host bastion-hera.fairmont.rdhpcs.noaa.gov port 22: Connection timed out
 
     .. tab-item:: Bad Description Example
 
