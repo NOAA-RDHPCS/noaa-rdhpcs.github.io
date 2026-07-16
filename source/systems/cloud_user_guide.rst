@@ -1811,42 +1811,6 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
-How can I configure a CentOS Cluster to use Rocky 8 (latest)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you have already made extensive modifications to your cluster's definition,
-you may prefer to revert the required settings by hand without loading a config
-from the Marketplace. There are two primary settings that need to be updated,
-the OS image Rocky 8 (latest), and the ``/apps`` disk snapshot. Keep in mind
-that the OS image will need to be set on the controller and every partition you
-have configured on the cluster.
-
-From the CentOS cluster configuration, find the ``Image*`` dropdown under the
-Controller settings and select the image.
-
-.. image:: /images/Rocky81.png
-
-Follow the same procedure on each compute partition to select the
-Rocky 8 (latest) image under the ``Elastic Image*`` dropdown:
-
-.. image:: /images/Rocky82.png
-
-The software and modules under ``/apps`` were built specifically for their
-target operating systems, so the Rocky 8 disk also needs to be selected.
-
-.. image:: /images/rocky83.png
-
-Click **Save Changes**.
-
-We recommend that you also replace any existing CentOS 7 based persistent
-Lustre resources to use Rocky 8 as well. The suggested method to do this is to
-duplicate your existing storage configuration, and copy your data to the new
-Lustre, either by copying directly from the old storage, or by syncing it with
-a bucket. Once you have verified that all of your data has been migrated, you
-can shut down the old file system. If your data is backed up to a bucket
-already, you can also re-provision your existing Lustre configuration and
-re-sync the data.
-
 Automate startup/shutdown for a group of clusters [CI/CD] in Parallel Works
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
