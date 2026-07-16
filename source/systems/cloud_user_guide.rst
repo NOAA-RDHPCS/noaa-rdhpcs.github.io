@@ -234,23 +234,24 @@ multiple of 2.8 TB.
 Creating OS snapshots on clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On the new clusters, the login node's root disk can be snapshotted at any time.
-This allows you to make changes on a running cluster, and snapshot it when you
-are ready to create a bootable disk.
+On new clusters, you can snapshot the login node's root
+disk at any time. This allows you to make changes on a
+running cluster, and snapshot it when you are ready to create
+a bootable disk.
 
- After you make changes to your login node, click the **Create Snapshot** on
- the root disk from your cluster's session page:
+After you make changes to your login node, click **Create Snapshot** on
+the root disk from your cluster's session page:
 
 .. image:: /images/legacy-snap1.png
 
-At the prompt, give the snapshot a name. The snapshot name must be between 3
-and 51 characters, begin with a letter, and use only lowercase letters,
+At the prompt, give the snapshot a name. The name must be between 3-51
+characters long, begin with a letter, and use only lowercase letters,
 numbers, and hyphens:
 
 .. image:: /images/legacy-snap2.png
 
-When you click **Create**, you will automatically be redirected to the
-snapshots page, where you can monitor its provisioning status.
+When you click **Create**, you will automatically redirect to the
+snapshots page. You can monitor the provisioning status there.
 
 .. image:: /images/legacy-snap3.png
 
@@ -259,7 +260,7 @@ few minutes for the snapshot to finish provisioning.
 To expand the provisioning status log, click the button in the Status column.
 
 OS snapshots can be identified on the snapshots page by the **Bootable**
-column. You can use the **Group by** dropdown at the top of the page to group
+column. Use the **Group by** dropdown at the top of the page to group
 all of your OS snapshots together:
 
 .. image:: /images/legacy-snap4.png
@@ -270,7 +271,7 @@ image in your cluster configuration:
 .. image:: /images/legacy-snap5.png
 
 For more information about creating OS snapshots, see the
-`Parallel Works User Guide <https://parallelworks.com/docs/compute/creating-os-snapshots>_`.
+`Parallel Works User Guide <https://parallelworks.com/docs/compute/creating-os-snapshots>`_.
 
 Migrating disk snapshots on next-gen clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
