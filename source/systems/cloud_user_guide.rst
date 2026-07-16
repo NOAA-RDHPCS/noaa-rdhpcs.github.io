@@ -1158,22 +1158,62 @@ rdhpcs.cloud.help@noaa.gov [ OTRS ticket on RDHPCS help.]
 Reference on data egress charges
 """"""""""""""""""""""""""""""""
 
-AWS
+Here’s a concise overview of typical public egress pricing for AWS and Google Cloud (GCP). Pricing depends on the data size, and the below table can help to estimate.
 
-Traffic between regions will typically have a $0.09 per GB
-charge for the egress of both the source and destination.
-Traffic between services in the same region is charged at
-$0.01 per GB for all four flows.
+1. AWS (Amazon Web Services) – Data Transfer Out to the Internet
 
-AWS's monthly data transfer costs for outbound data to the
-public internet are $0.09 per GB for the first 10 TB,
-dropping to $0.085 per GB for the next 40 GB, $0.07 per GB
-for the next 100 TB, and $. 05/GB greater than 150 TB.
+Service: Amazon S3 / EC2 / most services in a region  
+Region example: US East (N. Virginia)
 
-`Azure
-<https://azure.microsoft.com/en-us/pricing/details/bandwidth/>`_`
+Typical monthly tiered pricing for Data Transfer Out to the Internet:
 
-`GCP <https://cloud.google.com/network-tiers/pricing>`_
+ Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
+-----------------------------------------------------------------
+ First 100 GB                            Often free or low cost
+ Up to 10 TB                             ~$0.09 per GB          
+ Next 40 TB (10–50 TB)                   ~$0.085 per GB        
+ Next 100 TB (50–150 TB)                 ~$0.07 per GB          
+ Over 150 TB                             ~$0.05–0.06 per GB    
+
+Other notes:
+- Data transfer within the same region (e.g., EC2 to S3 in same region) is often free or discounted, depending on direction and service.
+- Inter‑region transfer (e.g., us-east-1 to us-west-2) is not free and charged separately, usually lower than internet egress but still significant.
+
+2. Azure Data Transfer Out (Egress) – US Regions
+
+This applies to most services (e.g., Azure Storage, VMs/Compute, etc.) when sending data from Azure to the public internet.
+
+Region example: East US, West US, Central US
+Pricing tier: “Data transfer (Outbound)” / “Bandwidth (Outbound)”
+
+Approximate pay‑as‑you‑go rates (per month, per GB):
+
+ Monthly Outbound Data (per billing account)  Approx. Price (USD/GB)
+---------------------------------------------------------------------
+ First 5 GB / month                          Free
+ 5 GB – 10 TB / month                        ~$0.087 per GB
+ 10 TB – 50 TB / month                       ~$0.083 per GB
+ 50 TB – 150 TB / month                      ~$0.07–0.08 per GB
+ 150 TB – 500 TB / month                     ~$0.06–0.07 per GB
+ > 500 TB / month                            Negotiated / lower tier
+
+
+3. GCP (Google Cloud Platform) – Egress to the Internet
+
+Service: Google Cloud Storage  
+Region example: us-central1, us-east1
+
+Typical monthly tiered pricing for Network Egress to the Internet (North America, general):
+
+ Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
+-----------------------------------------------------------------
+ First 1 GB                              Free                    
+ Next up to 1 TB                         ~$0.12 per GB          
+ Next up to 10 TB                        ~$0.11 per GB          
+ Next up to 50 TB                        ~$0.08–0.09 per GB    
+ Higher tiers                            Lower per-GB rate      
+
+Pricing can vary by region.
 
 Quota limits
 ^^^^^^^^^^^^
