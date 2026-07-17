@@ -352,7 +352,7 @@ The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform. A Jupyter workflow is available
 in the ACTIVATE Marketplace. (See the Parallel Works documentation for
 directions to `add workflows
-<https://parallelworks.com/docs/run/workflows-and-apps/adding-workflows-and-apps>`_.)
+<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
 
 
 To use the Jupyter workflow on a Slurm compute node, first set a default
@@ -1957,7 +1957,7 @@ your project's bucket. Click on the key icon to find the bucket name,
 keys and sample command to access the bucket.
 
 Please refer to the `AzCopy guide
-<https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy>`_ for information on how to use AzCopy.
+<https://github.com/Azure/azure-storage-azcopy/wiki/azcopy_copy>`_ for information on how to use AzCopy.
 
 
 GCP gcloud install on an on-prem, and files transfer to a cloud bucket
