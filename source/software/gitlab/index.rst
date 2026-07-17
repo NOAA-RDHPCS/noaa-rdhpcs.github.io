@@ -123,14 +123,76 @@ public visibility for a project instead of internal visibility.
 Git Usage
 ---------
 
-Git access is typically through a git client, (either git command on CLI
+Git access is typically through a git client, (either git or glab commands on CLI
 or an IDE such as VSCode) on the RDHPCS system. The URL for the git repo on
 the git server is dependent on whether ssh or https protocol is used. User
 id and PAT have to be supplied if https protocol is used. SSH protocol enables
 password-less connection through SSH keys. To learn more about git, refer
 to `git documentation <https://git-scm.com/>`__.
 
+GitLab CLI (glab)
+~~~~~~~~~~~~~~~~~
+
+GitLab CLI tool named glab is installed on the RDHPCS systems. Using glab,
+users can perform actions such as repository creation on the Git server,
+cloning the repository, etc. The first step in using the GitLab CLI is 
+authenticating the GitLab server.
+
+.. code-block:: bash
+
+   glab auth login --hostname https://git.rdhpcs.noaa.gov --token <YOUR_PAT_TOKEN>
+
+By default glab command defaults to https://gitlab.com. To use the RDHPCS
+git server, set the environment variable GITLAB_HOST.
+
+.. code-block:: bash
+
+   export GITLAB_HOST=https://git.rdhpcs.noaa.gov
+
+To make it permanent add the above line to your ``~/.bashrc`` file and then
+source the file or log in again. Users can add the SSH keys from the command line. 
+
+.. code-block:: bash
+ 
+   glab ssh-key add ~/.ssh/id_rsa.pub -t "<rdhpcs_machine_name>" --usage-type "auth"
+
+Glab can be used to create a repo under user account.
+
+.. code-block:: bash
+
+   glab repo create <project-name>
+
+To create the same repo under a group, run the below command.
+
+.. code-block:: bash
+
+   glab repo create <group-name>/<project-name>
+
+All the repos owned by the user in the Git server can be listed by running the
+below command.
+
+.. code-block:: bash
+
+   glab repo list 
+
+A repo can be cloned using glab. Users can supply the full URL or they can 
+supply the path shown in the ``glab repo list`` command. The path is usually
+``<account-name or group-name>/<project-name>``.
+
+.. code-block:: bash
+
+   glab repo clone <path-to-repo>
+
+For additional information on the GitLab CLI, refer to the `glab 
+documentation <https://docs.gitlab.com/cli/>`__.
+
+Similar to glab, GitHub CLI tool (gh) is also available on the RDHPCS
+systems. Refer to the `gh documentation <https://cli.github.com/>`__
+for additional information.
+
+
 .. include:: gitlab_ci_cd_pipelines_and_runners.rst
+
 
 Container Registry
 ------------------
@@ -145,25 +207,25 @@ The container registry is accessible at https://registry.rdhpcs.noaa.gov.
     - Authenticate using GitLab Personal Access Tokens.
 
 
-    Configuration on RDHPCS system
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuration on RDHPCS system
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    By default, Apptainer uses the home directory for cache storage. On
-    multi-user RDHPCS systems, home directories are often too small, so
-    use a scratch location instead:
+By default, Apptainer uses the home directory for cache storage. On
+multi-user RDHPCS systems, home directories are often too small, so
+use a scratch location instead:
 
-    .. code-block:: bash
+.. code-block:: bash
 
-       export APPTAINER_CACHEDIR=/scratch[3-5]/<project-path>/User.Name/apptainer_cache_dir
+   export APPTAINER_CACHEDIR=/scratch[3-5]/<project-path>/User.Name/apptainer_cache_dir
 
-    You can also place this command in ``~/.bashrc`` and then source the
-    file or log in again.
+You can also place this command in ``~/.bashrc`` and then source the
+file or log in again.
 
-    .. note::
+.. note::
 
-       Choose one of ``/scratch3`` through ``/scratch5``.
-       ``/scratch3`` and ``/scratch4`` are available on both Hera and Ursa.
-       ``/scratch5`` is available only on Ursa.
+   Choose one of ``/scratch3`` through ``/scratch5``.
+   ``/scratch3`` and ``/scratch4`` are available on both Hera and Ursa.
+   ``/scratch5`` is available only on Ursa.
 
 Registry Login
 ~~~~~~~~~~~~~~
