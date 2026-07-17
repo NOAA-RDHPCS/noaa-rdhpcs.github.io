@@ -157,6 +157,10 @@ linkcheck_ignore = [
     r'https://nsd.rdc.noaa.gov/',
     # Google Docs/Slides require authentication and time out in CI
     r'https://docs\.google\.com/.*',
+    r'https://sites.google.com/noaa.gov/cao/old_ocao-services-and-guidance/.*',
+    # forbidden
+    r'https://sourceforge.net/projects/.*',
+    # 
 ]
 
 linkcheck_timeout = 30
