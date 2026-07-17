@@ -123,8 +123,8 @@ public visibility for a project instead of internal visibility.
 Git Usage
 ---------
 
-Git access is typically through a git client, (either git or glab commands on CLI
-or an IDE such as VSCode) on the RDHPCS system. The URL for the git repo on
+Git access is typically through a git client, (either git or glab commands on
+CLI or an IDE such as VSCode) on the RDHPCS system. The URL for the git repo on
 the git server is dependent on whether ssh or https protocol is used. User
 id and PAT have to be supplied if https protocol is used. SSH protocol enables
 password-less connection through SSH keys. To learn more about git, refer
@@ -135,7 +135,7 @@ GitLab CLI (glab)
 
 GitLab CLI tool named glab is installed on the RDHPCS systems. Using glab,
 users can perform actions such as repository creation on the Git server,
-cloning the repository, etc. The first step in using the GitLab CLI is 
+cloning the repository, etc. The first step in using the GitLab CLI is
 authenticating the GitLab server.
 
 .. code-block:: bash
@@ -150,10 +150,11 @@ git server, set the environment variable GITLAB_HOST.
    export GITLAB_HOST=https://git.rdhpcs.noaa.gov
 
 To make it permanent add the above line to your ``~/.bashrc`` file and then
-source the file or log in again. Users can add the SSH keys from the command line. 
+source the file or log in again. Users can add the SSH keys from the command
+line as shown below.
 
 .. code-block:: bash
- 
+
    glab ssh-key add ~/.ssh/id_rsa.pub -t "<rdhpcs_machine_name>" --usage-type "auth"
 
 Glab can be used to create a repo under user account.
@@ -175,7 +176,7 @@ below command.
 
    glab repo list 
 
-A repo can be cloned using glab. Users can supply the full URL or they can 
+A repo can be cloned using glab. Users can supply the full URL or they can
 supply the path shown in the ``glab repo list`` command. The path is usually
 ``<account-name or group-name>/<project-name>``.
 
@@ -183,7 +184,7 @@ supply the path shown in the ``glab repo list`` command. The path is usually
 
    glab repo clone <path-to-repo>
 
-For additional information on the GitLab CLI, refer to the `glab 
+For additional information on the GitLab CLI, refer to the `glab
 documentation <https://docs.gitlab.com/cli/>`__.
 
 Similar to glab, GitHub CLI tool (gh) is also available on the RDHPCS
