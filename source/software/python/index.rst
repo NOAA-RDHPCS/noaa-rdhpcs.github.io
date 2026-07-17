@@ -148,7 +148,7 @@ To start using Python, load the ``python`` module.
 
         .. code-block:: bash
 
-            $ module load rdhpcs-python
+            $ module load python
 
     .. tab-item:: Orion
         :sync: orion

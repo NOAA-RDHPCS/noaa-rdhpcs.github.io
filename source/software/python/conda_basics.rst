@@ -76,7 +76,7 @@ packages assume use of GCC.
 
         .. code-block:: bash
 
-            $ module load rdhpc-conda
+            $ module load conda
 
 
 This puts you in the "base" conda environment( and activates it), which is
