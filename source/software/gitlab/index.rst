@@ -174,7 +174,7 @@ below command.
 
 .. code-block:: bash
 
-   glab repo list 
+   glab repo list
 
 A repo can be cloned using glab. Users can supply the full URL or they can
 supply the path shown in the ``glab repo list`` command. The path is usually
