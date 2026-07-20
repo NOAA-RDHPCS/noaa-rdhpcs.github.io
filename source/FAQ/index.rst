@@ -30,7 +30,7 @@ password" error, follow these steps before requesting help:
 #. Make sure you are using your RSA token to authenticate. CAC
    authentication is not supported.
 #. Make sure you can successfully log into the on-prem HPCS system --
-   Analysis, Ursa, Gaea, Hera, or Niagara.
+   PPAN, Ursa, Gaea, Hera, or Niagara.
 #. Now try to login to the Parallel Works platform.
 
 If you continue to get an "Invalid username error", confirm your
@@ -59,55 +59,29 @@ See :ref:`Connecting for the first time <connecting-to-rdhpcs>`.
 How do I use X11 application with shared user account (role account)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A shared user account (role account) is one that is typically used by
-a project when multiple users need to manage some workload. After a
-role account is created (via OTRS help request)
-you can access it using sudo. Example:
+A role account is a shared user account used by a project when multiple
+users need to manage some workload. To use X11 applications with a role
+account, use the ``xsudo`` utility:
 
 .. code-block:: shell
 
-  # sudo su - $SHAREDUNAME
+   $ xsudo <role_account_name>
 
-Where $SHAREDUNAME is the role account name (ex: role.glopara). When
-it asks for a password, use your token.
-
-Using X applications can be tricky, but we have created a wrapper
-script to help you. To allow for use of X applications while in the
-shared account, use the tool '''xsudo'''. Ex:
-
+Before switching to the role account, note your DISPLAY environment variable:
 
 .. code-block:: shell
 
-  # xsudo $SHAREDUNAME
+   $ echo $DISPLAY
 
-If you are planning to use X utilities with role accounts, you should
-use the xsudo utility to switch to the role account and need to
-explicitly set the DISPLAY environment variable.  So for example, if
-you want to use role.rap-chem role account and would like the ability
-to use X applications:
-
-* First note the DISPLAY environment variable setting by doing:
+After switching with ``xsudo``, set the DISPLAY variable to the value you
+recorded:
 
 .. code-block:: shell
 
-    echo $DISPLAY
+   $ export DISPLAY=localhost:14.0   # Use your actual value
 
-* Then use the xsudo command to switch to the role account:
-
-.. code-block:: shell
-
-    xsudo role.rap-chem
-
-* Then set the DISPLAY environment variable to the '''value you
-  obtained above''' just before doing xsudo; (please note that the
-  next command you use depends on your shell):
-
-  .. code-block:: shell
-
-    export DISPLAY=localhost:14.0
-
-That will enable your X applications to work.
-A complete discussion of Role Accounts can be found here: :ref:`role_accounts`.
+For complete information about role accounts, including how to request one
+and other access methods, see :ref:`role_accounts`.
 
 Jobs
 ====
@@ -135,8 +109,8 @@ there are free resources, there are often reservations
 that are securing resources for future use.
 
 One change you can make that will help the system schedule your job
-sooner is to specify an accurate wall clock time (''-l
-walltime=hh:mm:ss''). You should pick a time that is roughly 10-15%
+sooner is to specify an accurate wall clock time (``--time=hh:mm:ss``).
+You should pick a time that is roughly 10-15%
 longer than your average job length. By doing this, and not just
 putting a default time of 8:00 hours, the system can better optimize
 how resources are used and find space on the system to run your job
@@ -159,53 +133,71 @@ the output to the Help Desk so that we can diagnose the problem.
 
 .. code-block:: shell
 
-  # squeue --job $JOB_ID
-  # scontrol show job $JOB_ID
+  $ squeue --job $JOB_ID
+  $ scontrol show job $JOB_ID
 
 What is the meaning of the exit code?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you check a job status with the showq -c or checkjob command, it is
-good to know the meaning of the completion code, or the CCODE column
-for showq. Here is a list of exit code Moab reported from Torque:
+You can check a completed job's exit code using the ``sacct`` command:
 
 .. code-block:: shell
 
-  0   /* job exec successful */
- -1   /* job exec failed, before files, no retry */
- -2   /* job exec failed, after files, no retry  */
- -3   /* job execution failed, do retry    */
- -4   /* job aborted on MOM initialization */
- -5   /* job aborted on MOM init, checkpoint, no migrate */
- -6   /* job aborted on MOM init, checkpoint, ok migrate */
- -7   /* job restart failed */
- -8   /* exec() of user command failed */
- -9   /* could not create/open stdout stderr files */
- -10   /* job exceeded a memory limit */
- -11   /* job exceeded a walltime limit */
- -12   /* job exceeded a cpu time lim
+  $ sacct -j <jobid> --format=JobID,JobName,State,ExitCode
 
+The ``ExitCode`` field shows two numbers separated by a colon (e.g., ``1:0``).
+The first number is the exit code returned by the job script or application.
+The second number is the signal number if the job was terminated by a signal
+(0 means no signal).
 
-When the number for the exit code is more than 128, subtract 128 from
-the given exit code to see what signal was used to kill the job. For
-example 143 is another common exit code seen:
+**Common Slurm job states and their meanings:**
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 85
+
+   * - State
+     - Description
+   * - COMPLETED
+     - Job finished successfully (exit code 0)
+   * - FAILED
+     - Job terminated with a non-zero exit code
+   * - TIMEOUT
+     - Job exceeded its time limit
+   * - CANCELLED
+     - Job was cancelled by the user or administrator
+   * - OUT_OF_MEMORY
+     - Job exceeded memory limit and was killed
+
+**Understanding exit codes:**
+
+- **Exit code 0**: Job completed successfully
+- **Exit codes 1-127**: Application-specific error codes
+- **Exit codes 128+**: Job was terminated by a signal. Subtract 128 to find
+  the signal number.
+
+For example, exit code 143:
 
 .. code-block:: shell
 
   143 - 128 = 15
 
-To see which signaled the response to what number you can use the command:
+To see which signal corresponds to which number:
 
 .. code-block:: shell
 
-  kill -l
+  $ kill -l
 
-Which lists the signals in order. And you will see that 15 is TERM
-(**terminated**).
+Signal 15 is TERM (**terminated**), which means the job was killed by
+the user, administrator, or the scheduler (e.g., due to time limit).
 
-So when a job has a completion code of 143, the job was terminated
-with signal 15 (which is the TERM signal), which suggests that the job
-was killed by the user or system administrator.
+**Common signals:**
+
+- **9 (KILL)**: Forcefully terminated
+- **11 (SEGV)**: Segmentation fault (memory access error)
+- **15 (TERM)**: Graceful termination request
+
+For more details on job states, see :ref:`slurm-state-codes`.
 
 
 All my multi-node MPI jobs are timing out, even simple jobs! What is wrong?
@@ -215,7 +207,7 @@ If you find that all of your multi-node jobs are getting stuck
 and running into **wall time limit exceeded** error, it
 is possible that you have a problem with your keys, or some cases,
 because of incorrect permissions settings on the
-**/.ssh** directory.
+``~/.ssh`` directory.
 
 A simple way to check if this is indeed the problem is to try the
 following:
@@ -230,21 +222,21 @@ My multi-node jobs fail on mpirun/mpiexec.
 
 If you are able to run some parallel jobs across nodes but not
 others, especially if the failure is right after the **mpirun** (or
-**;mpiexec**) command, the most likely cause of that
+**mpiexec**) command, the most likely cause of that
 failure is the stack size setting. You need to set the stack size to
-be the appropriate value for your application. If you're not sure it
-could set it to &quot;unlimited&quot;. There are some rare instances
-we have seen problems when set to &quot;unlimited&quot;, but so far
+be the appropriate value for your application. If you're not sure, you
+could set it to "unlimited". There are some rare instances
+we have seen problems when set to "unlimited", but so far
 most of the time it has been fine. If you're not able to determine a
 good number to set to you could try the unlimited setting.
 
 How you set the stack size depends on what your login shell is,
-**independent of the shell that is used for lunch and the job**.
+**independent of the shell that is used for launching the job**.
 
 If your login shell is **csh/tcsh**:
 
 
-Add the following line to your **/.cshrc** file:
+Add the following line to your ``~/.cshrc`` file:
 
 .. code-block:: shell
 
@@ -253,7 +245,7 @@ Add the following line to your **/.cshrc** file:
 If your login shell is **bash**:
 
 
-Add the following line to your **/.bashrc** file:
+Add the following line to your ``~/.bashrc`` file:
 
 .. code-block:: shell
 
@@ -263,7 +255,7 @@ Add the following line to your **/.bashrc** file:
 
   Capital-S for soft limit
 
-Please also make sure that you have a **.bash_profile** file
+Please also make sure that you have a ``~/.bash_profile`` file
 that has contains the following (in addition to whatever you have for your own
 environment):
 
@@ -276,7 +268,7 @@ environment):
 
 .. note::
 
-  Trying to set the stack size within the job file does not work!'''
+  Trying to set the stack size within the job file does not work.
   This is because setting it within the job only changes the setting
   on the head node for the job, but the remaining nodes only get the
   **default** setting, or whatever is set in the initialization
@@ -305,37 +297,18 @@ within 24 hours.
 How can I recover recently deleted files from /home?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The home filesystem is backed up
-regularly. However, the filesystem also supports snapshots, which will
-allow you to retrieve your own files if they have been deleted over
-the last few days.
-
-Look at the snapshot directory (/home/.snapshot) to see what
-options are available. Each directory listed there represent a day. As an
-example on Hera:
+The home filesystem supports snapshots, which allow you to retrieve your own
+files if they have been deleted in the last few days. Access snapshots at
+``/home/.snapshot`` (or ``$HOME/.snapshot`` for your directory).
 
 .. code-block:: shell
 
-  2021-09-17_0015+0000.homeSnap  2021-09-20_0015+0000.homeSnap
-  2021-09-23_0015+0000.homeSnap
-  2021-09-18_0015+0000.homeSnap  2021-09-21_0015+0000.homeSnap
-  AUTO_SNAPSHOT_8820a150-8f27-11d5-95ff-040403080604_694
-  2021-09-19_0015+0000.homeSnap  2021-09-22_0015+0000.homeSnap
+   $ ls /home/.snapshot
+   $ cd /home/.snapshot/<snapshot_date>/Your.Username
+   $ cp <file> ~/
 
-You can then access the old files in your copy of your home directory
-under the appropriate snapshot.
-
-For example, if you want to recover Hera files in your
-<code>$HOME</code> from September 22nd, 2024, and your user name is
-Robin.Lee:
-
-.. code-block:: shell
-
-  $ cd /home/.snapshot/2021-09-22_0015+0000.homeSnap/Robin.Lee
-
-
-Copy the files you want from the here, the snapshot,  to anywhere in
-your real home.
+For complete details on snapshot availability and usage, see
+:ref:`home_snapshot`.
 
 Why am I not able to ssh between nodes, it is asking me for a password!
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -378,8 +351,8 @@ You usually cannot.
 
 Please note that only the /home filesystem is backed up.  Project
 space is typically assigned on very large high performance file
-systems and hence cannot be backed up. '''Any files deleted from
-project space are gone forever and cannot be recovered.'''
+systems and hence cannot be backed up. **Any files deleted from
+project space are gone forever and cannot be recovered.**
 
 So it is important to have a second copy of files that are
 irreplaceable.  Files like source files should typically stored in
@@ -387,12 +360,78 @@ some source code repositories and irreplaceable data files should be
 stored in HPSS tape archive.
 
 How do I find out which directories and partitions I can use?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Refer to the Slurm pages.
+Use the ``saccount_params`` command to see your project associations, available
+partitions, and Quality of Service (QOS) options:
+
+.. code-block:: shell
+
+   $ saccount_params
+
+This displays your projects, available partitions, and QOS settings. For more
+detailed information about available partitions on a system:
+
+.. code-block:: shell
+
+   $ sinfo
+
+To see which accounts and partitions you have access to:
+
+.. code-block:: shell
+
+   $ sacctmgr show associations user=$USER format=Account,Partition,QOS
+
+For information about your project directories on scratch file systems, refer
+to the storage documentation for your specific system. Project directories
+are typically located at:
+
+- ``/scratch1/<portfolio>/<project>`` or ``/scratch2/<portfolio>/<project>``
+  on Hera
+- ``/scratch3/<portfolio>/<project>`` or ``/scratch4/<portfolio>/<project>``
+  on Ursa/Hera
+- ``/work/<project>`` or ``/work2/<project>`` on Orion/Hercules
+
+See :ref:`data-storage` for complete details on available file systems.
 
 How do I find out what my project quota is?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Refer to the allocation pages.
+To check your **home directory quota**, use the ``quota`` command:
+
+.. code-block:: shell
+
+   $ quota -Qs
+
+To check your **project's scratch space usage and quota**, use the
+``saccount_params`` command, which displays disk usage and quota information
+along with compute allocation details:
+
+.. code-block:: shell
+
+   $ saccount_params
+
+For a more detailed view of scratch space usage by project:
+
+.. code-block:: shell
+
+   $ shpcrpt -a <account_name>
+
+On Lustre file systems (such as Orion/Hercules), you can also use:
+
+.. code-block:: shell
+
+   $ lfs quota -g <project_group> /work
+
+To check your **compute allocation** (core-hours), use:
+
+.. code-block:: shell
+
+   $ shpcrpt -a <account_name>
+
+This shows your project's allocation, usage, and FairShare information. See
+:ref:`allocation` for details on how allocations work and how to request
+increases.
 
 Can you please install the xyz python package(s)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -494,7 +533,7 @@ any such command that accesses a remote machine:
     SHA256:lU91/IcK9rcFKIh1txPP1nfI0+JgNaj9IElGqftsc5H.
     Please contact your system administrator.
     Add correct host key in /Users/first.last/.ssh/known_hosts to get rid of this message.
-    '''<big>Offending RSA key in /Users/first.last/.ssh/known_hosts:5</big>'''
+    **Offending RSA key in /Users/first.last/.ssh/known_hosts:5**
     RSA host key for [localhost]:55362 has changed and you have requested strict checking.
     Host key verification failed.
 
@@ -518,7 +557,7 @@ After verifying that it is not an attack, the solution is to remove the
 offending key (shown in the error message) from the
 **~/.ssh/known_hosts** file on the machine where you see the above
 error.  In the highlighted message above, **5** is the line
-number in the **/.ssh/known_hosts** file.
+number in the ``~/.ssh/known_hosts`` file.
 
 In the example shown above, since line 5 is the problem key, you can
 use your favorite editor and delete that line.  Alternatively on a
@@ -537,37 +576,40 @@ Some operational data from WCOSS2 is available on Hera/HPSS.
 However RDHPCS doesn't keep track of the locations of the operational
 data stored on Hera/HPSS. Please reach out the NCO SPA team that is
 responsible for making that data available by contacting them at
-'''nco.spa@noaa.gov'''.
+nco.spa@noaa.gov.
 
 
 My jobs using NCL are no longer working
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-NCL has decided to switch to Python and have indicated the PyNCL will
-be replacing NCL.
+.. warning::
 
-So if you are used to using:
+   NCAR Command Language (NCL) has been in maintenance mode since
+   September 2019 and is no longer actively developed. NCAR recommends
+   transitioning to Python-based tools.
 
-.. code-block:: shell
-
-   module load ncl
-
-please load
+If you have existing NCL scripts, you can still run them using the ``pyncl``
+module:
 
 .. code-block:: shell
 
    module load pyncl
 
-That will make NCL version 6.6.2 commands and libraries and headers
-available. If you use other ncl modules, we found that the gmeta files
-created will be dodgy, and not show any content with idt, for example.
+This provides NCL version 6.6.2 commands, libraries, and headers.
 
-Also, we have seen some of the programs that use NCL are using the
-newer features of the Fortran standard, so in addition to loading the
-"pyncl" module you may consider loading a more recent version of the
-GNU module.
+**For new work**, NCAR recommends using Python with packages such as:
 
-So if you are working with NCL please use the following module load command:
+- `xarray <https://xarray.dev/>`_ for netCDF data handling
+- `matplotlib <https://matplotlib.org/>`_ and `cartopy <https://scitools.org.uk/cartopy/>`_ for visualization
+- `geocat-viz <https://geocat-viz.readthedocs.io/>`_ for NCL-style plots in Python
+
+For migration guidance and Python equivalents of NCL functions, see the
+`NCAR GeoCAT documentation <https://geocat.ucar.edu/>`_ and the
+`NCL to Python Transition Guide
+<https://geocat-examples.readthedocs.io/en/latest/ncl-to-python.html>`_.
+
+If you must continue using NCL and encounter issues with newer Fortran
+features, load a more recent GNU compiler:
 
 .. code-block:: shell
 
@@ -629,284 +671,58 @@ Port Tunnels
 How do I set up an ssh port tunnel?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can only establish an ssh tunnel from your initial bastion session. If you
-try to establish a tunnel and see the messages like this:
+SSH port tunnels allow you to transfer data between your local machine and
+RDHPCS systems. You must establish the tunnel from your **initial** bastion
+session - if you see "Address already in use" errors, you already have an
+open session.
 
+**Quick steps:**
 
-  .. code-block:: shell
+1. Find your unique local port number (displayed when you log in)
+2. Establish tunnel:
+   ``ssh -L XXXXX:localhost:XXXXX First.Last@bastion_hostname``
+3. Use ``scp -P XXXXX`` or ``rsync`` with the tunnel for transfers
 
-    -------------------
-    bind [127.0.0.1]:57037: Address already in use
-    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
-    Could not request local forwarding.
-    -------------------
-
-You will know that you already have an open session, and cannot
-open a tunnel on this bastion.
-
-To establish a new tunnel, do one of the following:
-
-  * Close any existing sessions on this bastion, **or**,
-  * Open a new session using a bastion where you have no existing sessions.
-
-In the steps below, replace First.Last with your own HPC username, and
-XXXXX with the unique Local Port Number assigned to you when you log
-in to your specified HPC system. Use the word "localhost"
-where indicated. It is not a variable, don't substitute anything else.
-Before you perform the first step, close all current sessions on the
-HPC system where you are trying to connect. Once the first session has
-been opened with port forwarding, any further connections (login via
-ssh, copy via scp) will work as expected. You are running these
-commands on your local machine, not within the HPC system terminal.
-
-As long as this ssh window remains open, you will be able to use this
-forwarded port for data transfers.
-
-
-**1. Find your local port number**
-
-To find your unique local port number, log onto your specified HPC
-system. Make a note of this number - once you've recorded
-it, close all sessions. Note that this number, which is a fixed
-value for you, will be different on each HPC system.
-
-.. image:: /images/linux_xfer1.png
-   :scale: 75%
-
-.. note::
-    Open two terminal windows for this process
-
-**Local Client Window #1**
-
-Enter the appropriate command for your environment. Remember to replace XXXXX
-with the local port number identified in Step 1 or as needed.
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:XXXXX First.Last@bastion_hostname
-
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-     ssh -L XXXX:localhost:XXXXX First.Last@bastion_hostname
-
-If you will be running X11 applications with x2go or normal terminals,
-remember to add the -X parameter as follows:
-
-.. code-block:: shell
-
-    ssh -X -L XXXX:localhost:XXXXX First.Last@bastion_hostname
-
-
-To verify that the tunnel is working, open another local window in your local
-machine, and issue the command:
-
-.. code-block:: shell
-
-   ssh -p XXXX First.Last@localhost
-
-Note that XXXX is your local port number used above, First.Last is
-your user ID on the RDHPCS systems and localhost is typed as-is.
-
-.. note::
-
-  For a complete list of available bastions by site, check the
-  :ref:`bastion_hostnames` table.
-
-You should be prompted for your password; enter your PIN + RSA token
-and you should be able to login. Once you are able to log in, you can
-log out of that session as that was only for testing the tunnel.
-
-**2. Use SCP to Complete the Transfer**
-
-**Local Client Window #2**
-
-Once the session is open, you can use this forwarded port
-for data transfers, as long as this ssh window is kept open.
-
-Remember that this is the second terminal session opened on your local
-machine. Once a tunnel has been set up as in Step 1, you
-can use a client such as WinSCP to do the transfers using that tunnel.
-Please keep in mind that tunnel will exist only as long as the session opened
-in Step 1 is kept alive.
-
-
-.. code-block:: shell
-
-  Hostname: localhost
-  Port: your-assigned-port-used-in-Step1-above
-  File protocol: SFTP
-
-
-To transfer a file **to** HPC Systems
-
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-  rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
-
-.. note::
-
-   Your username is case sensitive when used in the scp command. Username should be in the form of First.Last.
-
-To transfer a file **from** HPC Systems:
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
-
-
-In either case, you will be asked for a password. Enter the password
-from your RSA token (not your passphrase). Your response should be
-your PIN+Token code.
-
+For complete instructions including PuTTY/Windows setup, troubleshooting,
+and examples, see :ref:`Port_Tunnelling`.
 
 SSH Port Tunnel For PuTTy Windows Systems
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-PuTTY is an SSH client, used to configure and initiate connection.
-Navigate to a separate tab to install `PuTTY
-<https://www.putty.org/>`_. If you cannot install software on your
-machine, contact your local systems administrator.
+For Windows users using PuTTY, configuration involves setting up port
+forwarding in the Connection > SSH > Tunnels settings.
 
-**Configuration**
-
-Enter host information to configure an SSH Terminal Session:
-
-.. image:: /images/putty1.png
-   :scale: 75%
-
-1. Enter Username
-In the left pane under Connection, select "Data" and enter your NOAA
-user name as it appears in your NOAA email address. (Ex: First.Last
-if your NOAA email is First.Last@noaa.gov). User name is case
-sensitive - First.Last. If you do not create a username, you will have
-to enter your user name each time your open a session.
-
-.. image:: /images/putty2.png
-   :scale: 75%
-
-Complete the configuration:
-
-* Select "Session" from the top of the left pane.
-* Select "Save" (between Load and Delete).
-
-**Open a First System Session**
-
-Open the session to make sure it's working, and to record your Local
-Port number to complete the Port Tunneling setup.
-
-* Select the configured session from the "Saved Sessions" list. Select
-  Load, then Open.
-* Enter your unique RSA Passcode.
-
-The RSA passcode is your RSA token PIN followed by 8 digits displayed
-on your RSA token. The digits must be on display when you press enter,
-or access will be denied. When you open a new SSH session, wait for
-the RSA token code to refresh before you enter it.
-
-* Find and record your Local Host number.
-*  Click **Exit**, or close the Putty window to end the session.
-
-**Port Tunnel Setup**
-
-To enable data transfers, you will need to set up a Port Tunnel.
-
-* Open Putty.
-* Select the session from the Saved Sessions list, then Load.
-* In the left pane under Connection>SSH select Tunnels.
-* Check Local ports accept connections from other hosts.
-* In the Source Port field, enter your Local Port number
-* In the Destination Port field, enter "localhost:<local port
-  number>", where your local port number matches what was entered in
-  the Source port.
-* Select Local and Auto Radio Buttons.
-* Click the Add Button.
-
-.. image:: /images/putty3.png
-
-To save the configuration change:
-
-* In the left pane, select Session.
-* Select Save.
-
-Select **Open** to Login and verify that the updated session works correctly.
-
-Create a new Port Tunnel for each SSH system you intend to use. Each
-one will have a unique Local Port number.
-
-To add extra saved sessions (ex: for another Bastion) for the same
-system (you already have the Local Port number):
-
-* Load your current saved session
-* Enter the new host name for the other Bastion
-* Give the new session a new name (ex: Hera- Princeton)
-* Select Save. The new session will appear in the list of saved sessions.
-* Select Open to Login and verify the new session works correctly.
-
+For step-by-step instructions with screenshots, see the
+:ref:`PuTTY port tunnel documentation <Port_Tunnelling>`.
 
 How to transfer small files to/from an RDHPCS system?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Port Tunnelling approach is useful for transferring small amount
-data to/from RDHPCS systems from your local machine.
+For small file transfers, use SSH port tunnelling with ``scp`` or ``rsync``.
+For larger transfers or frequent use, consider using Globus or the Data
+Transfer Nodes (DTNs).
 
-Transferring data using scp/WinSCP is a 2 step process:
-
-1. Establish a Tunnel by following the steps documented here:
-2. Transfer file using WinSCP
-
-See the Data Transfer pages for complete information.
+See :ref:`data-transfer-overview` for complete information on all transfer
+methods.
 
 I can no longer transfer files via the port tunnel, please help!
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-From a given machine, your first login has to establish the port
-tunnel. If you do not, the port used will be blocked and you cannot
-establish the port tunnel with subsequent ssh commands. If you cannot
-use scp to transfer files, look for an error message similar to this
-the following when you are trying to establish your tunnel:
+Your first login from a given machine must establish the port tunnel. If you
+logged in without establishing the tunnel first, the port becomes blocked.
 
-.. code-block:: shell
+**To resolve:**
 
-  ssh: connect to host localhost port 2083: Connection refused
+#. Exit all SSH sessions from your local machine
+#. Reconnect with port tunnel options: ``ssh -L XXXX:localhost:XXXX ...``
+#. Try your transfer again
 
-
-The number above will match the port you are trying to use.
-
-To resolve this problem:
-
-#. Exit all ssh sessions from your host
-#. Restart ssh. This session must have the port tunnel options included
-
-.. code-block:: shell
-
- ssh -L XXXX:localhost:XXXX
-
-#. Try using scp to transfer a file.
+See :ref:`Port_Tunnelling` for detailed troubleshooting.
 
 Known Issues
 ============
+
+*Last reviewed: July 2026*
 
 Intel MPI Collective Algorithms issue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -932,25 +748,12 @@ intel-oneapi-mpi module that your application needs.
 Recent User-Facing Changes
 ==========================
 
+*Last reviewed: July 2026*
+
 Jan 22, 2025: DTNs for Ursa are now available
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 DTNs and the new file systems for Ursa are now available for your use.
-
-.. note::
-
-  Even though Ursa is not yet available, the new
-  filesystems ``/scratch3`` and ``/scratch4``, the filesystems for Ursa,
-  and the DTNs for Ursa are available now.
-
-.. note::
-
-  The ``/scratch3`` and ``/scratch4`` filesystems will be upgraded
-  in February. There will be a 3-5 day
-  outage for those file systems at that time.
-
-**Currently these two new filesystems are only mounted
-and accessible from Hera and the new Ursa DTNs.**
 
 .. list-table::
    :header-rows: 1
