@@ -1811,6 +1811,8 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
+
+
 Automate startup/shutdown for a group of clusters [CI/CD] in Parallel Works
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
