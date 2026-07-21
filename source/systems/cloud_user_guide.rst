@@ -229,36 +229,10 @@ multiple of 2.8 TB.
 
   Be aware that LFS is an expensive storage.
 
-Migrating Legacy OS Snapshots to v3 Clusters
---------------------------------------------
+Creating OS snapshots on clusters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Overview
-^^^^^^^^
-
-*OS snapshots*, also known as *bootable* snapshots, provide a convenient way to
-make modifications to the base OS image used on PW cloud clusters without
-applying the changes to a new cluster every time you start it.
-
-Parallel Works' next generation cloud cluster revamps the way OS snapshots are
-created. This article unpacks the differences between the legacy and next-gen
-systems, and also provides steps to migrate your existing custom snapshots to
-the new clusters.
-
-If you need further assistance migrating legacy snapshots to the new cluster
-provider, send email to rdhpcs.cloud.help@noaa.gov, with the subject line
-Migrating Legacy Snapshots.
-
-.. _os-snapshots-on-next-gen-clusters:
-
-Creating OS snapshots on next-gen clusters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-On the previous system, OS snapshots were pre-scripted, and provisioned by
-filling out a web form. This could be clunky, as errors in the script or
-temporary network hiccups could cause the build to fail, requiring
-you to repeat the process until you got a usable image to finish building.
-
-On the new clusters, the login node's root disk can be snapshotted at any time.
+On current clusters, you can snapshot the login node's root disk at any time.
 This allows you to make changes on a running cluster, and snapshot it when you
 are ready to create a bootable disk.
 
@@ -378,7 +352,7 @@ The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform. A Jupyter workflow is available
 in the ACTIVATE Marketplace. (See the Parallel Works documentation for
 directions to `add workflows
-<https://parallelworks.com/docs/run/workflows-and-apps/adding-workflows-and-apps>`_.)
+<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
 
 
 To use the Jupyter workflow on a Slurm compute node, first set a default
@@ -1983,7 +1957,7 @@ your project's bucket. Click on the key icon to find the bucket name,
 keys and sample command to access the bucket.
 
 Please refer to the `AzCopy guide
-<https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy>`_ for information on how to use AzCopy.
+<https://github.com/Azure/azure-storage-azcopy/wiki/azcopy_copy>`_ for information on how to use AzCopy.
 
 
 GCP gcloud install on an on-prem, and files transfer to a cloud bucket

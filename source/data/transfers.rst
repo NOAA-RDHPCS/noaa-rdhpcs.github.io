@@ -612,20 +612,20 @@ For Windows Power Shell, enter:
 
 .. code-block:: shell
 
-     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 For Mac or Linux, enter:
 
 .. code-block:: shell
 
-     ssh -LXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+     ssh -LXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 If you will be running X11 applications with x2go or normal terminals,
 remember to add the -X parameter as follows:
 
 .. code-block:: shell
 
-    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-rsa.boulder.rdhpcs.noaa.gov
+    ssh -X -LXXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
 
 Note that objects emphasized in this figure should be unique to your
 configuration:
@@ -712,13 +712,15 @@ For Mac or Linux, enter:
 In either case, you will be asked for a password. Touch your YubiKey for
 authentication.
 
-SSH Port Tunnel For PuTTY Windows Systems
------------------------------------------
+SSH Port Tunnel For PuTTY-CAC Windows Systems
+---------------------------------------------
 
-PuTTY is an SSH client, used to configure and initiate connection.
-Navigate to a separate tab to install `PuTTY
-<https://www.putty.org/>`_. If you cannot install software on your
-machine, contact your local systems administrator.
+PuTTY-CAC is an SSH client, used to configure and initiate connection.
+As needed, install `PuTTY-CAC
+<https://github.com/NoMoreFood/putty-cac/releases/>`_. If you cannot
+install software on your machine, contact your local systems
+administrator.
+
 
 **Configuration**
 
@@ -761,13 +763,13 @@ the RSA token code to refresh before you enter it.
 .. image:: /images/linux_xfer1.png
     :scale: 75%
 
-* Click **Exit**, or close the Putty window to end the session.
+* Click **Exit**, or close the PuTTY-CAC window to end the session.
 
 **Port Tunnel Setup**
 
 To enable data transfers, you will need to set up a Port Tunnel.
 
-* Open Putty.
+* Open PuTTY-CAC.
 * Select the session from the Saved Sessions list, then Load.
 * In the left pane under Connection>SSH select Tunnels.
 * Check Local ports accept connections from other hosts.
@@ -799,12 +801,6 @@ system (you already have the Local Port number):
 * Select Save. The new session will appear in the list of saved sessions.
 * Select Open to Login and verify the new session works correctly.
 
-
-
-SSH Port Tunnel For Tectia Windows Systems
-------------------------------------------
-
-See the :ref:`tectia` pages for complete information.
 
 
 WinSCP
@@ -841,7 +837,7 @@ Internally Initiated Transfers
 
 HPC systems do not have specific hosts for internally initiated
 transfers. Transfers initiated from HPC Systems use the front end nodes
-for doing the transfers.
+or nodes in the service partition for doing the transfers.
 
 The firewall rules are set up by default to block all outgoing
 traffic. However, we permit internally initiated transfers by request,
@@ -853,14 +849,14 @@ contains your request. Use the subject line: <$SYSTEM> FEs to
 .. code-block:: shell
 
   Ursa:
+  Source Systems:  ufe[1-16].fairmont.rdhpcs.noaa.gov
+  Source IPs:  140.208.193.[131-146]
+  Hera:
   Source Systems:  hfe[1-12].fairmont.rdhpcs.noaa.gov
   Source IPs:  140.208.193.[1-12]
-  Hera:
-  Source Systems:  fe[1-8].fairmont.rdhpcs.noaa.gov
-  Source IPs:  140.208.160.[1-8]
   Mercury
-  Source Systems:  nfe[1-12].fairmont.rdhpcs.noaa.gov
-  Source IPs:140.208.193.[65-76]
+  Source Systems:  mfe[01-04].fairmont.rdhpcs.noaa.gov
+  Source IPs: 140.208.193.[101-104]
 
 Include the following information in the request:
 
@@ -884,10 +880,9 @@ Example
   from podaac-tools.jpl.nasa.gov via the Ursa front ends to transfer
   weather data to NOAA.
 * **Source Systems:** hfe[01-12].fairmont.rdhpcs.noaa.gov,
-  fe[1-8].boulder.rdhpcs.noaa.gov, nfe[1-4].boulder.rdhpcs.noaa.gov
-  dtn-mercury.fairmont.rdhpcs.noaa.gov
-* **Source IPs:** 140.208.192.[9-18], 140.208.160.[1-8],
-  140.208.193.[65-68]
+  mfe[1-4].fairmont.rdhpcs.noaa.gov
+* **Source IPs:** 140.208.193.[1-12],
+  140.208.193.[101-104]
 * **Destination Systems:** podaac-tools.jpl.nasa.gov
 * **Destination IPs:**  128.149.132.160
 * **Destination Port name (s):** HTTP/HTTPS, SSH

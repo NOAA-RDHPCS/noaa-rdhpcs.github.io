@@ -92,8 +92,8 @@ Local port number, with a username of First.Last.
 
 .. code-block:: console
 
-  ssh                                  -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov    (Linux/Mac users)
-  ssh -m hmac-sha2-512-etm@openssh.com -L12345:localhost:12345 First.Last@hera-rsa.boulder.rdhpcs.noaa.gov    (Windows users)
+  ssh                                  -L12345:localhost:12345 First.Last@hera-rsa.fairmont.rdhpcs.noaa.gov    (Linux/Mac users)
+  ssh -m hmac-sha2-512-etm@openssh.com -L12345:localhost:12345 First.Last@hera-rsa.fairmont.rdhpcs.noaa.gov    (Windows users)
 
 Login, and keep this session open.
 
