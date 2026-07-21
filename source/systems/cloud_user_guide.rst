@@ -1302,8 +1302,6 @@ increase the size of the instance, or add a compute
 partition and send the work off to worker nodes.
 
 
-
-
 Clusters and snapshots
 ----------------------
 
@@ -1472,6 +1470,60 @@ In this example, I am tunneling port 8888 from the host
 on my local machine. This lets me direct my browser to the
 URL 'localhost:8888' and see the page being served by the
 remote machine over that port.
+
+How do I assign a static ip address to a cluster?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you're working with a security team managing firewall access to the cluster,
+you can assign a static IP address to the cluster.  The IP address will remain
+the same as long as that resource exists. If you associate it to a cluster, the
+login node will always come up with that IP, even if you destroy it and restart
+it. The static part comes from that
+separate IP address that you created and associated to the definition.
+
+If you want to move the IP to a different cluster later, you can do that as
+well. The only time it would change is if you de-provision the static IP and
+create a new one.
+
+There is a small cost associated with the static ip address.
+The page that directs to static IP management may not show up in the PW sidebar
+for you by default. If you want to add it, you can update your sidebar
+configuration. The gear on the lower left of the sidebar will take you to that
+config page. Once there, check the IP Addresses box in the Compute section.
+This will add the shortcut link to the sidebar:
+
+.. image:: /images/StaticIP1.png
+
+If you’re not able to locate the configuration gear at the above location,
+you’re not using the latest UI.  In that case, click the user name located
+at the bottom of the side bar, click on the account menu, and then
+click the sidebar menu.
+
+You will find the IP address option under the Compute section,
+to enable it to appear in the sidebar.
+
+Alternatively, you can navigate to the `IP management page <https://noaa.parallel.works/ips>`_.
+
+`Globus Online
+<https://app.globus.org>`_.
+
+.. image:: /images/StaticIP2.png
+
+To configure a static IP from this page, to provide a name, cloud network,
+region, and group. The network options are already region specific.
+Simply select the relevant east-1 or east-2 for both options, depending
+on where you want the IP to be located.
+Once configured, click the **Add IP Address** button at the top right.
+
+.. image:: /images/StaticIP3.png
+
+Once the IP has been provisioned, you can configure your cluster to use it
+
+.. image:: /images/StaticIP4.png
+
+This ensures that your cluster always has the same IP address to share with
+the security team.
+
 
 How do I turn off Lustre filesystem from the cluster?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
