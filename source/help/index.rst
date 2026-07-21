@@ -142,8 +142,8 @@ that we can look at it.
         hung, and then eventually reported that my connection timed out. See
         below:
 
-        $ ssh -l john.smith bastion-hera.boulder.rdhpcs.noaa.gov
-        ssh: connect to host bastion-hera.boulder.rdhpcs.noaa.gov port 22: Connection timed out
+        $ ssh -l john.smith bastion-hera.fairmont.rdhpcs.noaa.gov
+        ssh: connect to host bastion-hera.fairmont.rdhpcs.noaa.gov port 22: Connection timed out
 
     .. tab-item:: Bad Description Example
 
@@ -198,9 +198,9 @@ issue, please submit the new information to your **existing help ticket
 number**. You can do this by simply replying to the last e-mail sent to you by
 the help system (the ticket ID should be in the subject line), or replying to
 the ticket in the `customer portal
-<https://helpdesk.rdhpcs.noaa.gov/otrs/customer.pl>`_.  For Gaea and PPAN
+<https://servicedesk.gfdl.noaa.gov>`_.  For Gaea and PPAN
 tickets use the `GFDL customer portal
-<https://helpdesk.gfdl.noaa.gov/otrs/customer.pl>`_.
+<https://servicedesk.gfdl.noaa.gov>`_.
 
 Required Information for Specific Types of Help
 ===============================================

@@ -53,13 +53,13 @@ Rocoto Documentation
 ====================
 
 Rocoto documentation is available on `GitHub
-<https://github.com/christopherwharrop/rocoto/wiki/documentation>`_
+<https://github.com/NOAA-GSL/rocoto/wiki/documentation>`_
 
 Rocoto Help
 ===========
 
 For help using Rocoto, please reach out to the `Rocoto developers
-<https://github.com/christopherwharrop/rocoto/>`_.
+<https://github.com/NOAA-GSL/rocoto>`_.
 
 The RDHPCS technicians can offer some help with system issues that affect
 Rocoto.  Please open a :ref:`help request <rdhpcs-workflow-help>`.
