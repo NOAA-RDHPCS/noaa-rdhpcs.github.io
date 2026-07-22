@@ -118,7 +118,7 @@ Parallel Works
 ==============
 
 * Access is managed via the NOAA RDHPCS Portal, customized for NOAA.
-* The `Parallel Works User Guide <https://parallelworks.com/docs>`_ is their standard documentation.
+* The `Parallel Works User Guide`_ is their standard documentation.
 * NOAA users will find minor differences, for example, the login
   authentication, and project allocation between the standard and customized
   applications.
@@ -242,9 +242,9 @@ the root disk from your cluster's session page:
 
 .. image:: /images/legacy-snap1.png
 
-At the prompt, give the snapshot a name. The name must be between 3-51
-characters long, begin with a letter, and use only lowercase letters,
-numbers, and hyphens:
+At the prompt, give name the snapshot. The name must be 3-51
+characters in length, begin with a letter, and use only lowercase 
+letters, numbers, and hyphens:
 
 .. image:: /images/legacy-snap2.png
 
@@ -257,7 +257,7 @@ It might take a
 few minutes for the snapshot to finish provisioning.
 To expand the provisioning status log, click the button in the Status column.
 
-OS snapshots can be identified on the snapshots page by the **Bootable**
+OS snapshots can be identified on the snapshots page in the **Bootable**
 column. Use the **Group by** dropdown at the top of the page to group
 all of your OS snapshots together:
 
@@ -1157,7 +1157,8 @@ rdhpcs.cloud.help@noaa.gov [ OTRS ticket on RDHPCS help.]
 Reference on data egress charges
 """"""""""""""""""""""""""""""""
 
-Here’s a concise overview of typical public egress pricing for AWS and Google Cloud (GCP). Pricing depends on
+Here’s a concise overview of typical public egress pricing for AWS and
+Google Cloud (GCP). Pricing depends on
 the data size. The table below can help to estimate.
 
 1. AWS (Amazon Web Services) – Data Transfer Out to the Internet
@@ -1171,16 +1172,17 @@ Typical monthly tiered pricing for Data Transfer Out to the Internet:
 ---------------------------------------------------------------
 
  First 100 GB                            Often free or low cost
- Up to 10 TB                             ~$0.09 per GB        
+ Up to 10 TB                             ~$0.09 per GB
  Next 40 TB (10–50 TB)                   ~$0.085 per GB
- Next 100 TB (50–150 TB)                 ~$0.07 per GB        
- Over 150 TB                             ~$0.05–0.06 per GB  
+ Next 100 TB (50–150 TB)                 ~$0.07 per GB
+ Over 150 TB                             ~$0.05–0.06 per GB
+
 
 Other notes:
 - Data transfer within the same region (e.g., EC2 to S3 in same region) is
-  often free or discounted, depending on direction and service.
+often free or discounted, depending on direction and service.
 - Inter‑region transfer (e.g., us-east-1 to us-west-2) is not free and charged
-  separately, usually lower than internet egress but still significant.
+separately, usually lower than internet egress but still significant.
 
 2. Azure Data Transfer Out (Egress) – US Regions
 
@@ -1211,14 +1213,15 @@ Region example: us-central1, us-east1
 Typical monthly tiered pricing for Network Egress to the Internet
 (North America, general):
 
- Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
----------------------------------------------------------------
+Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
+--------------------------------------------------------------
 
  First 1 GB                              Free
  Next up to 1 TB                         ~$0.12 per GB
  Next up to 10 TB                        ~$0.11 per GB
  Next up to 50 TB                        ~$0.08–0.09 per GB
  Higher tiers                            Lower per-GB rate
+
 
 Pricing can vary by region.
 
@@ -2917,16 +2920,20 @@ below:
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
 
-[How to GitHub Copilot authenticate in VS Code when submitting to the Slum partition?]
+[How to GitHub Copilot authenticate in VS Code when submitting to the 
+Slum partition?]
 (How-to-GitHub-Copilot-authenticate-in-VS-Code-when-submitting-to-the-Slum-partition?)
 
-When using the GitHub Copilot in VS Code (specifically in ACTIVATE), follow these steps:
+When using the GitHub Copilot in VS Code (specifically in ACTIVATE), 
+follow these steps:
 
-1.  Locate the Git Icon: Click the Git icon in the lower-right corner of the VS Code
+1.  Locate the Git Icon: Click the Git icon in the lower-right corner
+    of the VS Code
     window. Note that the interface may not explicitly state "Signed out."
 2.  Sign In: Select the option to "Sign in to use AI features."
-3.  Authenticate: A code will be generated. Copy this code and follow the link to 
-    GitHub. Paste the code into the resulting GitHub login window to authorize access.
+3.  Authenticate: A code will be generated. Copy this code and follow the
+    link tovvGitHub. Paste the code into the resulting GitHub
+    login window to authorize access.
 
 Errors
 ------
