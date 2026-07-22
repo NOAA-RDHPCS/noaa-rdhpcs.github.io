@@ -230,7 +230,7 @@ multiple of 2.8 TB.
   Be aware that LFS is an expensive storage.
 
 Creating OS snapshots on clusters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On new clusters, you can snapshot the login node's root
 disk at any time. This allows you to make changes on a
