@@ -816,10 +816,16 @@ Hera and Ursa QOS
    * - long
      - 4200 (Hera)
        7296 (Ursa)
-     - 16 hours
+     - 96 hours (4 days)
      - 1
      - For non-gpu projects only. For normal priority jobs that require between
-       8-16 hours
+       8-96 hours.
+       Max of 116,736 core-hours for Ursa, max of 67,200 core-hours for Hera
+       (cpu_allocated * wallclock_requested) of running jobs at any time,
+       per project-account. A project can have up to the max number of jobs
+       pending/running as defined above, but the queued jobs will NOT be
+       considered for scheduling if the project’s running jobs exceed
+       this limit.
    * - windfall
      - 8400 (Hera)
        14400 (Ursa)
