@@ -243,7 +243,7 @@ the root disk from your cluster's session page:
 .. image:: /images/legacy-snap1.png
 
 At the prompt, give name the snapshot. The name must be 3-51
-characters in length, begin with a letter, and use only lowercase 
+characters in length, begin with a letter, and use only lowercase
 letters, numbers, and hyphens:
 
 .. image:: /images/legacy-snap2.png
@@ -1168,8 +1168,8 @@ Region example: US East (N. Virginia)
 
 Typical monthly tiered pricing for Data Transfer Out to the Internet:
 
- Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
----------------------------------------------------------------
+Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
+--------------------------------------------------------------
 
  First 100 GB                            Often free or low cost
  Up to 10 TB                             ~$0.09 per GB
@@ -2920,11 +2920,11 @@ below:
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
 
-[How to GitHub Copilot authenticate in VS Code when submitting to the 
+[How to GitHub Copilot authenticate in VS Code when submitting to the
 Slum partition?]
 (How-to-GitHub-Copilot-authenticate-in-VS-Code-when-submitting-to-the-Slum-partition?)
 
-When using the GitHub Copilot in VS Code (specifically in ACTIVATE), 
+When using the GitHub Copilot in VS Code (specifically in ACTIVATE),
 follow these steps:
 
 1.  Locate the Git Icon: Click the Git icon in the lower-right corner
