@@ -1168,6 +1168,7 @@ Typical monthly tiered pricing for Data Transfer Out to the Internet:
 
  Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
 -----------------------------------------------------------------
+
  First 100 GB                            Often free or low cost
  Up to 10 TB                             ~$0.09 per GB          
  Next 40 TB (10–50 TB)                   ~$0.085 per GB        
