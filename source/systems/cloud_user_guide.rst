@@ -118,7 +118,7 @@ Parallel Works
 ==============
 
 * Access is managed via the NOAA RDHPCS Portal, customized for NOAA.
-* The `Parallel Works User Guide <https://parallelworks.com/docs>`_ is their standard documentation.
+* The `Parallel Works User Guide`_ is their standard documentation.
 * NOAA users will find minor differences, for example, the login
   authentication, and project allocation between the standard and customized
   applications.
@@ -232,23 +232,24 @@ multiple of 2.8 TB.
 Creating OS snapshots on clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On current clusters, you can snapshot the login node's root disk at any time.
-This allows you to make changes on a running cluster, and snapshot it when you
-are ready to create a bootable disk.
+On new clusters, you can snapshot the login node's root
+disk at any time. This allows you to make changes on a
+running cluster, and snapshot it when you are ready to create
+a bootable disk.
 
- After you make changes to your login node, click the **Create Snapshot** on
- the root disk from your cluster's session page:
+After you make changes to your login node, click **Create Snapshot** on
+the root disk from your cluster's session page:
 
 .. image:: /images/legacy-snap1.png
 
-At the prompt, give the snapshot a name. The snapshot name must be between 3
-and 51 characters, begin with a letter, and use only lowercase letters,
-numbers, and hyphens:
+At the prompt, give name the snapshot. The name must be 3-51
+characters in length, begin with a letter, and use only lowercase
+letters, numbers, and hyphens:
 
 .. image:: /images/legacy-snap2.png
 
-When you click **Create**, you will automatically be redirected to the
-snapshots page, where you can monitor its provisioning status.
+When you click **Create**, you will automatically redirect to the
+snapshots page. You can monitor the provisioning status there.
 
 .. image:: /images/legacy-snap3.png
 
@@ -256,8 +257,8 @@ It might take a
 few minutes for the snapshot to finish provisioning.
 To expand the provisioning status log, click the button in the Status column.
 
-OS snapshots can be identified on the snapshots page by the **Bootable**
-column. You can use the **Group by** dropdown at the top of the page to group
+OS snapshots can be identified on the snapshots page in the **Bootable**
+column. Use the **Group by** dropdown at the top of the page to group
 all of your OS snapshots together:
 
 .. image:: /images/legacy-snap4.png
@@ -268,7 +269,7 @@ image in your cluster configuration:
 .. image:: /images/legacy-snap5.png
 
 For more information about creating OS snapshots, see the
-`Parallel Works User Guide <https://parallelworks.com/docs/compute/creating-os-snapshots>_`.
+`Parallel Works User Guide <https://parallelworks.com/docs/compute/creating-os-snapshots>`_.
 
 Migrating disk snapshots on next-gen clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1156,22 +1157,73 @@ rdhpcs.cloud.help@noaa.gov [ OTRS ticket on RDHPCS help.]
 Reference on data egress charges
 """"""""""""""""""""""""""""""""
 
-AWS
+Here’s a concise overview of typical public egress pricing for AWS and
+Google Cloud (GCP). Pricing depends on
+the data size. The table below can help to estimate.
 
-Traffic between regions will typically have a $0.09 per GB
-charge for the egress of both the source and destination.
-Traffic between services in the same region is charged at
-$0.01 per GB for all four flows.
+1. AWS (Amazon Web Services) – Data Transfer Out to the Internet
 
-AWS's monthly data transfer costs for outbound data to the
-public internet are $0.09 per GB for the first 10 TB,
-dropping to $0.085 per GB for the next 40 GB, $0.07 per GB
-for the next 100 TB, and $. 05/GB greater than 150 TB.
+Service: Amazon S3 / EC2 / most services in a region
+Region example: US East (N. Virginia)
 
-`Azure
-<https://azure.microsoft.com/en-us/pricing/details/bandwidth/>`_`
+Typical monthly tiered pricing for Data Transfer Out to the Internet:
 
-`GCP <https://cloud.google.com/network-tiers/pricing>`_
+Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
+--------------------------------------------------------------
+
+ First 100 GB                            Often free or low cost
+ Up to 10 TB                             ~$0.09 per GB
+ Next 40 TB (10–50 TB)                   ~$0.085 per GB
+ Next 100 TB (50–150 TB)                 ~$0.07 per GB
+ Over 150 TB                             ~$0.05–0.06 per GB
+
+
+Other notes:
+- Data transfer within the same region (e.g., EC2 to S3 in same region) is
+often free or discounted, depending on direction and service.
+- Inter‑region transfer (e.g., us-east-1 to us-west-2) is not free and charged
+separately, usually lower than internet egress but still significant.
+
+2. Azure Data Transfer Out (Egress) – US Regions
+
+This applies to most services (e.g., Azure Storage, VMs/Compute, etc.)
+when sending data from Azure to the public internet.
+
+Region example: East US, West US, Central US
+Pricing tier: “Data transfer (Outbound)” / “Bandwidth (Outbound)”
+
+Approximate pay‑as‑you‑go rates (per month, per GB):
+
+Monthly Outbound Data (per billing account)  Approx. Price (USD/GB)
+--------------------------------------------------------------------
+
+ First 5 GB / month                          Free
+ 5 GB – 10 TB / month                        ~$0.087 per GB
+ 10 TB – 50 TB / month                       ~$0.083 per GB
+ 50 TB – 150 TB / month                      ~$0.07–0.08 per GB
+ 150 TB – 500 TB / month                     ~$0.06–0.07 per GB
+ > 500 TB / month                            Negotiated / lower tier
+
+
+3. GCP (Google Cloud Platform) – Egress to the Internet
+
+Service: Google Cloud Storage
+Region example: us-central1, us-east1
+
+Typical monthly tiered pricing for Network Egress to the Internet
+(North America, general):
+
+Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
+--------------------------------------------------------------
+
+ First 1 GB                              Free
+ Next up to 1 TB                         ~$0.12 per GB
+ Next up to 10 TB                        ~$0.11 per GB
+ Next up to 50 TB                        ~$0.08–0.09 per GB
+ Higher tiers                            Lower per-GB rate
+
+
+Pricing can vary by region.
 
 Quota limits
 ^^^^^^^^^^^^
@@ -1769,41 +1821,7 @@ failure.
 
   echo "Finished User Bootstrap at $(date)"
 
-How can I configure a CentOS Cluster to use Rocky 8 (latest)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have already made extensive modifications to your cluster's definition,
-you may prefer to revert the required settings by hand without loading a config
-from the Marketplace. There are two primary settings that need to be updated,
-the OS image Rocky 8 (latest), and the ``/apps`` disk snapshot. Keep in mind
-that the OS image will need to be set on the controller and every partition you
-have configured on the cluster.
-
-From the CentOS cluster configuration, find the ``Image*`` dropdown under the
-Controller settings and select the image.
-
-.. image:: /images/Rocky81.png
-
-Follow the same procedure on each compute partition to select the
-Rocky 8 (latest) image under the ``Elastic Image*`` dropdown:
-
-.. image:: /images/Rocky82.png
-
-The software and modules under ``/apps`` were built specifically for their
-target operating systems, so the Rocky 8 disk also needs to be selected.
-
-.. image:: /images/rocky83.png
-
-Click **Save Changes**.
-
-We recommend that you also replace any existing CentOS 7 based persistent
-Lustre resources to use Rocky 8 as well. The suggested method to do this is to
-duplicate your existing storage configuration, and copy your data to the new
-Lustre, either by copying directly from the old storage, or by syncing it with
-a bucket. Once you have verified that all of your data has been migrated, you
-can shut down the old file system. If your data is backed up to a bucket
-already, you can also re-provision your existing Lustre configuration and
-re-sync the data.
 
 Automate startup/shutdown for a group of clusters [CI/CD] in Parallel Works
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2901,6 +2919,21 @@ below:
  .. code-block::
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
+
+[How to GitHub Copilot authenticate in VS Code when submitting to the
+Slum partition?]
+(How-to-GitHub-Copilot-authenticate-in-VS-Code-when-submitting-to-the-Slum-partition?)
+
+When using the GitHub Copilot in VS Code (specifically in ACTIVATE),
+follow these steps:
+
+1.  Locate the Git Icon: Click the Git icon in the lower-right corner
+    of the VS Code
+    window. Note that the interface may not explicitly state "Signed out."
+2.  Sign In: Select the option to "Sign in to use AI features."
+3.  Authenticate: A code will be generated. Copy this code and follow the
+    link tovvGitHub. Paste the code into the resulting GitHub
+    login window to authorize access.
 
 Errors
 ------
