@@ -1157,39 +1157,44 @@ rdhpcs.cloud.help@noaa.gov [ OTRS ticket on RDHPCS help.]
 Reference on data egress charges
 """"""""""""""""""""""""""""""""
 
-Here’s a concise overview of typical public egress pricing for AWS and Google Cloud (GCP). Pricing depends on the data size, and the below table can help to estimate.
+Here’s a concise overview of typical public egress pricing for AWS and Google Cloud (GCP). Pricing depends on
+the data size. The table below can help to estimate.
 
 1. AWS (Amazon Web Services) – Data Transfer Out to the Internet
 
-Service: Amazon S3 / EC2 / most services in a region  
+Service: Amazon S3 / EC2 / most services in a region
 Region example: US East (N. Virginia)
 
 Typical monthly tiered pricing for Data Transfer Out to the Internet:
 
  Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
------------------------------------------------------------------
+---------------------------------------------------------------
 
  First 100 GB                            Often free or low cost
- Up to 10 TB                             ~$0.09 per GB          
- Next 40 TB (10–50 TB)                   ~$0.085 per GB        
- Next 100 TB (50–150 TB)                 ~$0.07 per GB          
- Over 150 TB                             ~$0.05–0.06 per GB    
+ Up to 10 TB                             ~$0.09 per GB        
+ Next 40 TB (10–50 TB)                   ~$0.085 per GB
+ Next 100 TB (50–150 TB)                 ~$0.07 per GB        
+ Over 150 TB                             ~$0.05–0.06 per GB  
 
 Other notes:
-- Data transfer within the same region (e.g., EC2 to S3 in same region) is often free or discounted, depending on direction and service.
-- Inter‑region transfer (e.g., us-east-1 to us-west-2) is not free and charged separately, usually lower than internet egress but still significant.
+- Data transfer within the same region (e.g., EC2 to S3 in same region) is
+  often free or discounted, depending on direction and service.
+- Inter‑region transfer (e.g., us-east-1 to us-west-2) is not free and charged
+  separately, usually lower than internet egress but still significant.
 
 2. Azure Data Transfer Out (Egress) – US Regions
 
-This applies to most services (e.g., Azure Storage, VMs/Compute, etc.) when sending data from Azure to the public internet.
+This applies to most services (e.g., Azure Storage, VMs/Compute, etc.)
+when sending data from Azure to the public internet.
 
 Region example: East US, West US, Central US
 Pricing tier: “Data transfer (Outbound)” / “Bandwidth (Outbound)”
 
 Approximate pay‑as‑you‑go rates (per month, per GB):
 
- Monthly Outbound Data (per billing account)  Approx. Price (USD/GB)
----------------------------------------------------------------------
+Monthly Outbound Data (per billing account)  Approx. Price (USD/GB)
+--------------------------------------------------------------------
+
  First 5 GB / month                          Free
  5 GB – 10 TB / month                        ~$0.087 per GB
  10 TB – 50 TB / month                       ~$0.083 per GB
@@ -1200,18 +1205,20 @@ Approximate pay‑as‑you‑go rates (per month, per GB):
 
 3. GCP (Google Cloud Platform) – Egress to the Internet
 
-Service: Google Cloud Storage  
+Service: Google Cloud Storage
 Region example: us-central1, us-east1
 
-Typical monthly tiered pricing for Network Egress to the Internet (North America, general):
+Typical monthly tiered pricing for Network Egress to the Internet
+(North America, general):
 
  Monthly Data Transfer Out (per region)  Approx. Price (USD/GB)
------------------------------------------------------------------
- First 1 GB                              Free                    
- Next up to 1 TB                         ~$0.12 per GB          
- Next up to 10 TB                        ~$0.11 per GB          
- Next up to 50 TB                        ~$0.08–0.09 per GB    
- Higher tiers                            Lower per-GB rate      
+---------------------------------------------------------------
+
+ First 1 GB                              Free
+ Next up to 1 TB                         ~$0.12 per GB
+ Next up to 10 TB                        ~$0.11 per GB
+ Next up to 50 TB                        ~$0.08–0.09 per GB
+ Higher tiers                            Lower per-GB rate
 
 Pricing can vary by region.
 
@@ -2910,13 +2917,16 @@ below:
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
 
-[How to GitHub Copilot authenticate in VS Code when submitting to the Slum partition?](How-to-GitHub-Copilot-authenticate-in-VS-Code-when-submitting-to-the-Slum-partition?)
+[How to GitHub Copilot authenticate in VS Code when submitting to the Slum partition?]
+(How-to-GitHub-Copilot-authenticate-in-VS-Code-when-submitting-to-the-Slum-partition?)
 
 When using the GitHub Copilot in VS Code (specifically in ACTIVATE), follow these steps:
 
-1.  Locate the Git Icon: Click the Git icon in the lower-right corner of the VS Code window. Note that the interface may not explicitly state "Signed out."
+1.  Locate the Git Icon: Click the Git icon in the lower-right corner of the VS Code
+    window. Note that the interface may not explicitly state "Signed out."
 2.  Sign In: Select the option to "Sign in to use AI features."
-3.  Authenticate: A code will be generated. Copy this code and follow the link to GitHub. Paste the code into the resulting GitHub login window to authorize access.
+3.  Authenticate: A code will be generated. Copy this code and follow the link to 
+    GitHub. Paste the code into the resulting GitHub login window to authorize access.
 
 Errors
 ------
