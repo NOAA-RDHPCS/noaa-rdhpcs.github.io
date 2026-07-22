@@ -41,7 +41,7 @@ transcript of the presentation.
     `Anaconda Terms of Service
     <https://legal.anaconda.com/policies>`_, use of the Anaconda,
     which includes `Miniconda
-    <https://www.anaconda.com/docs/getting-started/miniconda/main>`_,
+    <https://www.anaconda.com/docs/getting-started/concepts/anaconda-or-miniconda>`_,
     on RDHPCS systems is prohibited.
 
     For more information, please refer to the `Anaconda Terms of Service`_
