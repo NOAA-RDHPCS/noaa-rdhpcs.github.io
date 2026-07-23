@@ -15,6 +15,7 @@ Software
    workflows/index
    debuggers/index
    compilers/index
+   gitlab/index
    containers/index
    VSCode/index
 
