@@ -1,8 +1,8 @@
 .. meta::
-   :description: Frequently asked questions about RDHPCS accounts, system
-    access, authentication, and Parallel Works login troubleshooting.
-   :keywords: FAQ, frequently asked questions, accounts, access, authentication,
-    Parallel Works, RDHPCS
+   :description: Frequently asked questions about RDHPCS accounts, jobs,
+    data, software, and connections.
+   :keywords: FAQ, frequently asked questions, accounts, jobs, data,
+    software, connections, troubleshooting, RDHPCS
 
 .. _FAQ:
 
@@ -14,976 +14,816 @@ Frequently Asked Questions
 Accounts
 ========
 
-How Do I Get an RDHPCS Account?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. faq:: How do I get an RDHPCS account?
+   :id: get-account
+   :tags: account application new user access getting started
 
-See :ref:`Applying for a user account <applying_for_user_account>`.
+   See :ref:`Applying for a user account <applying_for_user_account>`.
 
+.. faq:: Why am I getting an "Invalid username or password" error on Parallel Works?
+   :id: pw-invalid-password
+   :tags: parallel works PW login authentication error invalid password
 
-PW login is getting a "Invalid username or password" error.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   If you are an on-premise HPC system user logging into Parallel Works
+   for on-prem HPC systems access, follow these steps before requesting help:
 
-If you are an on-premise HPC system user logging into Parallel Works
-for on-prem HPC systems access, and getting an: "Invalid username or
-password" error, follow these steps before requesting help:
+   #. Make sure you are using your RSA token to authenticate. CAC
+      authentication is not supported.
+   #. Make sure you can successfully log into the on-prem HPCS system --
+      PPAN, Ursa, Gaea, Hera, or Niagara.
+   #. Now try to login to the Parallel Works platform.
 
-#. Make sure you are using your RSA token to authenticate. CAC
-   authentication is not supported.
-#. Make sure you can successfully log into the on-prem HPCS system --
-   Analysis, Ursa, Gaea, Hera, or Niagara.
-#. Now try to login to the Parallel Works platform.
+   If you continue to get an "Invalid username error", confirm your
+   `RDHPCS SSO authentication status
+   <https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_.
 
-If you continue to get an "Invalid username error", confirm your
-`RDHPCS SSO authentication status
-<https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_.
+   As needed, :ref:`request help <getting_help>`.
 
-As needed, :ref:`request help <getting_help>`.
+.. faq:: What do I do if my RSA token is locked?
+   :id: rsa-token-locked
+   :tags: RSA token locked authentication wait timeout
 
-My RSA Token is locked
-^^^^^^^^^^^^^^^^^^^^^^
+   Wait 15 minutes and try again.
 
-Wait 15 minutes and try again.
+   As needed, :ref:`request help <getting_help>` for your accounts, with
+   a subject line of "Please check RSA token status." If you can, include
+   the full terminal output you received when you tried to use your
+   token.
 
-As needed, :ref:`request help <getting_help>` for your accounts, with
-a subject line of "Please check RSA token status." If you can, include
-the full terminal output you received when you tried to use your
-token.
+.. faq:: How do I reset my passphrase?
+   :id: reset-passphrase
+   :tags: passphrase password reset forgot forgotten
 
-I forgot my passphrase, how do I reset it?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   On the 4th attempt the system will prompt to recreate a passphrase.
+   See :ref:`Connecting for the first time <connecting-to-rdhpcs>`.
 
-On the 4th attempt the system will prompt to recreate a passphrase.
-See :ref:`Connecting for the first time <connecting-to-rdhpcs>`.
+.. faq:: How do I use X11 applications with a role account?
+   :id: x11-role-account
+   :tags: X11 role account shared account xsudo DISPLAY graphics
 
+   A role account is a shared user account used by a project when multiple
+   users need to manage some workload. To use X11 applications with a role
+   account, use the ``xsudo`` utility:
 
-How do I use X11 application with shared user account (role account)?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   .. code-block:: shell
 
-A shared user account (role account) is one that is typically used by
-a project when multiple users need to manage some workload. After a
-role account is created (via OTRS help request)
-you can access it using sudo. Example:
+      $ xsudo <role_account_name>
 
-.. code-block:: shell
+   Before switching to the role account, note your DISPLAY environment
+   variable:
 
-  # sudo su - $SHAREDUNAME
+   .. code-block:: shell
 
-Where $SHAREDUNAME is the role account name (ex: role.glopara). When
-it asks for a password, use your token.
+      $ echo $DISPLAY
 
-Using X applications can be tricky, but we have created a wrapper
-script to help you. To allow for use of X applications while in the
-shared account, use the tool '''xsudo'''. Ex:
+   After switching with ``xsudo``, set the DISPLAY variable to the value you
+   recorded:
 
+   .. code-block:: shell
 
-.. code-block:: shell
+      $ export DISPLAY=localhost:14.0   # Use your actual value
 
-  # xsudo $SHAREDUNAME
+   For complete information about role accounts, including how to request one
+   and other access methods, see :ref:`role_accounts`.
 
-If you are planning to use X utilities with role accounts, you should
-use the xsudo utility to switch to the role account and need to
-explicitly set the DISPLAY environment variable.  So for example, if
-you want to use role.rap-chem role account and would like the ability
-to use X applications:
-
-* First note the DISPLAY environment variable setting by doing:
-
-.. code-block:: shell
-
-    echo $DISPLAY
-
-* Then use the xsudo command to switch to the role account:
-
-.. code-block:: shell
-
-    xsudo role.rap-chem
-
-* Then set the DISPLAY environment variable to the '''value you
-  obtained above''' just before doing xsudo; (please note that the
-  next command you use depends on your shell):
-
-  .. code-block:: shell
-
-    export DISPLAY=localhost:14.0
-
-That will enable your X applications to work.
-A complete discussion of Role Accounts can be found here: :ref:`role_accounts`.
 
 Jobs
 ====
 
-My job hasn't started and I have been waiting a long time. What is wrong?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. faq:: Why hasn't my job started after waiting a long time?
+   :id: job-not-starting
+   :tags: job pending waiting queue scheduler FairShare priority start
 
-We use the Slurm "FairShare" algorithm for scheduling jobs and
-jobs are scheduled based on job priority.
+   We use the Slurm "FairShare" algorithm for scheduling jobs and
+   jobs are scheduled based on job priority.
 
-You can find the "current" FairShare value of your project(s) by
-running the
+   You can find the "current" FairShare value of your project(s) by
+   running the
 
-.. code-block:: shell
+   .. code-block:: shell
 
-  saccount_params
+      saccount_params
 
-Please see the following link for details about how this algorithm
-works in our environment: :ref:`slurm-priority-and-fairshare`. More often
-that not, your job isn't starting because the system is full.
+   Please see the following link for details about how this algorithm
+   works in our environment: :ref:`slurm-priority-and-fairshare`. More often
+   than not, your job isn't starting because the system is full.
 
-The RDHPCS systems are for research and development and instantaneous
-job starts should not be expected. Even when it might appear that
-there are free resources, there are often reservations
-that are securing resources for future use.
+   The RDHPCS systems are for research and development and instantaneous
+   job starts should not be expected. Even when it might appear that
+   there are free resources, there are often reservations
+   that are securing resources for future use.
 
-One change you can make that will help the system schedule your job
-sooner is to specify an accurate wall clock time (''-l
-walltime=hh:mm:ss''). You should pick a time that is roughly 10-15%
-longer than your average job length. By doing this, and not just
-putting a default time of 8:00 hours, the system can better optimize
-how resources are used and find space on the system to run your job
-sooner.
+   One change you can make that will help the system schedule your job
+   sooner is to specify an accurate wall clock time (``--time=hh:mm:ss``).
+   You should pick a time that is roughly 10-15%
+   longer than your average job length. By doing this, and not just
+   putting a default time of 8:00 hours, the system can better optimize
+   how resources are used and find space on the system to run your job
+   sooner.
 
-You can also run the following command to check for errors that are
-preventing the job from running:
+   You can also run the following command to check for errors that are
+   preventing the job from running:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-  scontrol show job jobid
+      scontrol show job jobid
 
-where jobid is the job ID of the job in question.
+   where jobid is the job ID of the job in question.
 
-My job hasn't started and it is in a reservation, what is wrong?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. faq:: Why hasn't my job started even though it's in a reservation?
+   :id: job-in-reservation
+   :tags: job reservation pending queue not starting
 
-If you have this problem, please run the following commands and send
-the output to the Help Desk so that we can diagnose the problem.
+   If you have this problem, please run the following commands and send
+   the output to the Help Desk so that we can diagnose the problem.
 
-.. code-block:: shell
+   .. code-block:: shell
 
-  # squeue --job $JOB_ID
-  # scontrol show job $JOB_ID
+      $ squeue --job $JOB_ID
+      $ scontrol show job $JOB_ID
 
-What is the meaning of the exit code?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. faq:: What do Slurm exit codes mean?
+   :id: slurm-exit-codes
+   :tags: exit code error failed job sacct signal terminated killed
 
-When you check a job status with the showq -c or checkjob command, it is
-good to know the meaning of the completion code, or the CCODE column
-for showq. Here is a list of exit code Moab reported from Torque:
+   You can check a completed job's exit code using the ``sacct`` command:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-  0   /* job exec successful */
- -1   /* job exec failed, before files, no retry */
- -2   /* job exec failed, after files, no retry  */
- -3   /* job execution failed, do retry    */
- -4   /* job aborted on MOM initialization */
- -5   /* job aborted on MOM init, checkpoint, no migrate */
- -6   /* job aborted on MOM init, checkpoint, ok migrate */
- -7   /* job restart failed */
- -8   /* exec() of user command failed */
- -9   /* could not create/open stdout stderr files */
- -10   /* job exceeded a memory limit */
- -11   /* job exceeded a walltime limit */
- -12   /* job exceeded a cpu time lim
+      $ sacct -j <jobid> --format=JobID,JobName,State,ExitCode
+
+   The ``ExitCode`` field shows two numbers separated by a colon
+   (e.g., ``1:0``). The first number is the exit code returned by the job
+   script or application. The second number is the signal number if the job
+   was terminated by a signal (0 means no signal).
+
+   **Common Slurm job states and their meanings:**
+
+   .. list-table::
+      :header-rows: 1
+      :widths: 15 85
+
+      * - State
+        - Description
+      * - COMPLETED
+        - Job finished successfully (exit code 0)
+      * - FAILED
+        - Job terminated with a non-zero exit code
+      * - TIMEOUT
+        - Job exceeded its time limit
+      * - CANCELLED
+        - Job was cancelled by the user or administrator
+      * - OUT_OF_MEMORY
+        - Job exceeded memory limit and was killed
+
+   **Understanding exit codes:**
+
+   - **Exit code 0**: Job completed successfully
+   - **Exit codes 1-127**: Application-specific error codes
+   - **Exit codes 128+**: Job was terminated by a signal. Subtract 128 to
+     find the signal number.
+
+   For example, exit code 143:
+
+   .. code-block:: shell
+
+      143 - 128 = 15
+
+   To see which signal corresponds to which number:
+
+   .. code-block:: shell
+
+      $ kill -l
+
+   Signal 15 is TERM (**terminated**), which means the job was killed by
+   the user, administrator, or the scheduler (e.g., due to time limit).
+
+   **Common signals:**
+
+   - **9 (KILL)**: Forcefully terminated
+   - **11 (SEGV)**: Segmentation fault (memory access error)
+   - **15 (TERM)**: Graceful termination request
+
+   For more details on job states, see :ref:`slurm-state-codes`.
+
+.. faq:: Why are all my multi-node MPI jobs timing out?
+   :id: mpi-timeout
+   :tags: MPI multi-node timeout wall time SSH keys permissions
+
+   If you find that all of your multi-node jobs are getting stuck
+   and running into **wall time limit exceeded** error, it
+   is possible that you have a problem with your keys, or in some cases,
+   because of incorrect permissions settings on the
+   ``~/.ssh`` directory.
+
+   A simple way to check if this is indeed the problem is to try the
+   following:
+
+   While logged into one of the front end nodes, try to ssh to
+   another front end node. Normally you should be able to do this without
+   being prompted for a password. If you are prompted for a password,
+   refer to :ref:`ssh-between-nodes`.
+
+.. faq:: Why do my multi-node jobs fail on mpirun/mpiexec?
+   :id: mpi-fail
+   :tags: MPI mpirun mpiexec fail stack size ulimit parallel
+
+   If you are able to run some parallel jobs across nodes but not
+   others, especially if the failure is right after the **mpirun** (or
+   **mpiexec**) command, the most likely cause of that
+   failure is the stack size setting. You need to set the stack size to
+   be the appropriate value for your application. If you're not sure, you
+   could set it to "unlimited". There are some rare instances
+   we have seen problems when set to "unlimited", but so far
+   most of the time it has been fine. If you're not able to determine a
+   good number to set to you could try the unlimited setting.
+
+   How you set the stack size depends on what your login shell is,
+   **independent of the shell that is used for launching the job**.
+
+   If your login shell is **csh/tcsh**:
+
+   Add the following line to your ``~/.cshrc`` file:
+
+   .. code-block:: shell
+
+      limit stacksize unlimited
+
+   If your login shell is **bash**:
+
+   Add the following line to your ``~/.bashrc`` file:
+
+   .. code-block:: shell
+
+      ulimit -S -s unlimited
+
+   .. note::
+
+      Capital-S for soft limit
+
+   Please also make sure that you have a ``~/.bash_profile`` file
+   that contains the following (in addition to whatever you have for your
+   own environment):
+
+   .. code-block:: shell
+
+      # Get the aliases and functions
+      if [ -f ~/.bashrc ]; then
+      . ~/.bashrc
+      fi
+
+   .. note::
+
+      Trying to set the stack size within the job file does not work.
+      This is because setting it within the job only changes the setting
+      on the head node for the job, but the remaining nodes only get the
+      **default** setting, or whatever is set in the initialization
+      files.
 
 
-When the number for the exit code is more than 128, subtract 128 from
-the given exit code to see what signal was used to kill the job. For
-example 143 is another common exit code seen:
+Data
+====
 
-.. code-block:: shell
+.. faq:: How can I recover recently deleted files from /home?
+   :id: recover-home-files
+   :tags: recover deleted files home snapshot backup restore
 
-  143 - 128 = 15
+   The home filesystem supports snapshots, which allow you to retrieve your
+   own files if they have been deleted in the last few days. Access
+   snapshots at ``/home/.snapshot`` (or ``$HOME/.snapshot`` for your
+   directory).
 
-To see which signaled the response to what number you can use the command:
+   .. code-block:: shell
 
-.. code-block:: shell
+      $ ls /home/.snapshot
+      $ cd /home/.snapshot/<snapshot_date>/Your.Username
+      $ cp <file> ~/
 
-  kill -l
+   For complete details on snapshot availability and usage, see
+   :ref:`home_snapshot`.
 
-Which lists the signals in order. And you will see that 15 is TERM
-(**terminated**).
+.. faq:: How can I recover files deleted from my project space?
+   :id: recover-project-files
+   :tags: recover deleted files project scratch backup restore gone
 
-So when a job has a completion code of 143, the job was terminated
-with signal 15 (which is the TERM signal), which suggests that the job
-was killed by the user or system administrator.
+   You usually cannot.
+
+   Please note that only the /home filesystem is backed up. Project
+   space is typically assigned on very large high performance file
+   systems and hence cannot be backed up. **Any files deleted from
+   project space are gone forever and cannot be recovered.**
+
+   So it is important to have a second copy of files that are
+   irreplaceable. Files like source files should typically be stored in
+   source code repositories and irreplaceable data files should be
+   stored in HPSS tape archive.
+
+.. faq:: How do I find out which directories and partitions I can use?
+   :id: find-directories
+   :tags: directories partitions scratch work storage access sinfo
+
+   Use the ``saccount_params`` command to see your project associations,
+   available partitions, and Quality of Service (QOS) options:
+
+   .. code-block:: shell
+
+      $ saccount_params
+
+   This displays your projects, available partitions, and QOS settings. For
+   more detailed information about available partitions on a system:
+
+   .. code-block:: shell
+
+      $ sinfo
+
+   To see which accounts and partitions you have access to:
+
+   .. code-block:: shell
+
+      $ sacctmgr show associations user=$USER format=Account,Partition,QOS
+
+   For information about your project directories on scratch file systems,
+   refer to the storage documentation for your specific system. Project
+   directories are typically located at:
+
+   - ``/scratch1/<portfolio>/<project>`` or ``/scratch2/<portfolio>/<project>``
+     on Hera
+   - ``/scratch3/<portfolio>/<project>`` or ``/scratch4/<portfolio>/<project>``
+     on Ursa/Hera
+   - ``/work/<project>`` or ``/work2/<project>`` on Orion/Hercules
+
+   See :ref:`data-storage` for complete details on available file systems.
+
+.. faq:: How do I find out what my project quota is?
+   :id: project-quota
+   :tags: quota disk space storage allocation usage limit
+
+   To check your **home directory quota**, use the ``quota`` command:
+
+   .. code-block:: shell
+
+      $ quota -Qs
+
+   To check your **project's scratch space usage and quota**, use the
+   ``saccount_params`` command, which displays disk usage and quota
+   information along with compute allocation details:
+
+   .. code-block:: shell
+
+      $ saccount_params
+
+   For a more detailed view of scratch space usage by project:
+
+   .. code-block:: shell
+
+      $ shpcrpt -a <account_name>
+
+   On Lustre file systems (such as Orion/Hercules), you can also use:
+
+   .. code-block:: shell
+
+      $ lfs quota -g <project_group> /work
+
+   To check your **compute allocation** (core-hours), use:
+
+   .. code-block:: shell
+
+      $ shpcrpt -a <account_name>
+
+   This shows your project's allocation, usage, and FairShare information.
+   See :ref:`allocation` for details on how allocations work and how to
+   request increases.
 
 
-All my multi-node MPI jobs are timing out, even simple jobs! What is wrong?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Software
+========
 
-If you find that all of your multi-node jobs are getting stuck
-and running into **wall time limit exceeded** error, it
-is possible that you have a problem with your keys, or some cases,
-because of incorrect permissions settings on the
-**/.ssh** directory.
+.. faq:: Can RDHPCS install Python packages for me?
+   :id: python-packages
+   :tags: python package install conda pip module
 
-A simple way to check if this is indeed the problem is to try the
-following:
+   There are way too many combinations in which users use python so, it
+   is not practical to have a "common" python installation that is
+   applicable for all users. Python works best when users install the
+   packages they need in their own project space.
 
-While logged into the one of the front end nodes, try to ssh to
-another front end node. Normally you should be able to do this without
-being prompted for a password. If you are prompted for a password,
-refer to the next question.
+   We have now opened up access to the conda forge repositories so it is no
+   longer necessary to use the RDHPCS mirror for installing the Python
+   packages you need. You should now be able to install Python packages
+   the same way you would on your local desktop/laptop.
 
-My multi-node jobs fail on mpirun/mpiexec.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   Please search for "conda" in the search field for
+   specific instructions (if any) on how to maintain your own python
+   installations in our environment.
 
-If you are able to run some parallel jobs across nodes but not
-others, especially if the failure is right after the **mpirun** (or
-**;mpiexec**) command, the most likely cause of that
-failure is the stack size setting. You need to set the stack size to
-be the appropriate value for your application. If you're not sure it
-could set it to &quot;unlimited&quot;. There are some rare instances
-we have seen problems when set to &quot;unlimited&quot;, but so far
-most of the time it has been fine. If you're not able to determine a
-good number to set to you could try the unlimited setting.
+.. faq:: Why are my jobs failing intermittently?
+   :id: jobs-failing-intermittently
+   :tags: intermittent failure timeout MPI I_MPI_FABRICS environment
 
-How you set the stack size depends on what your login shell is,
-**independent of the shell that is used for lunch and the job**.
+   We are getting reports of jobs failing intermittently with a job
+   timeout error.
 
-If your login shell is **csh/tcsh**:
+   At least in some instances this has been traced to an environment
+   variable setting that is no longer valid. We were able to duplicate
+   this problem very easily with a simple MPI Hello World program.
+
+   The setting in question is the following environment variable:
+
+   .. code-block:: shell
+
+      export I_MPI_FABRICS=shm:ofa
+
+   This setting should no longer be set.
+   When this variable is set we were able to confirm that even a simple
+   MPI Hello World code can fail intermittently even when run on the same
+   set of nodes. While it is true that it happens only on some nodes and
+   rebooting them clears the nodes, not setting the above environment
+   variable does not cause this problem. We do plan to reboot the nodes
+   that exhibit the problem, but users can take action to avoid running
+   into this problem by simply unsetting the above environment variable.
+
+   If you are still seeing this error even though you have not set this
+   environment variable please submit a help ticket to report the problem.
+
+.. faq:: Why am I getting errors with hpc-stack or NCEPLIBS?
+   :id: hpc-stack-errors
+   :tags: hpc-stack NCEPLIBS module error library
+
+   If you are using `hpc-stack <https://github.com/NOAA-EMC/hpc-stack>`_
+   please keep in mind that this is a software stack that is installed
+   and maintained by the NCEPLIBS team. Please refer to the `hpc-stack
+   official supported distribution
+   <https://github.com/NOAA-EMC/hpc-stack/wiki/>`_.
+
+   If you have problems, particularly with modules or NCEP libraries, it
+   is very likely you are using an unsupported version of their
+   libraries. If you are using the official version and still having
+   problems, you should submit an "issue" ticket at the above link.
+
+.. faq:: Why am I getting errors with spack-stack?
+   :id: spack-stack-errors
+   :tags: spack-stack EPIC module error library
+
+   The spack-stack software is installed and maintained by the EPIC team,
+   and the RDHPCS administrators are not able to provide assistance with
+   these issues.
+
+   If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_
+   and are encountering spack-stack related issues, you will need to submit
+   an issue on their
+   `github repository <https://github.com/JCSDA/spack-stack/issues>`_.
+
+   You will find a link to their documentation at the github site
+   above.
+
+.. faq:: Why are my NCL jobs no longer working?
+   :id: ncl-not-working
+   :tags: NCL NCAR pyncl deprecated python visualization
+
+   .. warning::
+
+      NCAR Command Language (NCL) has been in maintenance mode since
+      September 2019 and is no longer actively developed. NCAR recommends
+      transitioning to Python-based tools.
+
+   If you have existing NCL scripts, you can still run them using the
+   ``pyncl`` module:
+
+   .. code-block:: shell
+
+      module load pyncl
+
+   This provides NCL version 6.6.2 commands, libraries, and headers.
+
+   **For new work**, NCAR recommends using Python with packages such as:
+
+   - `xarray <https://xarray.dev/>`_ for netCDF data handling
+   - `matplotlib <https://matplotlib.org/>`_ and
+     `cartopy <https://scitools.org.uk/cartopy/>`_ for visualization
+   - `geocat-viz <https://geocat-viz.readthedocs.io/>`_ for NCL-style plots
+     in Python
+
+   For migration guidance and Python equivalents of NCL functions, see the
+   `NCAR GeoCAT documentation <https://geocat.ucar.edu/>`_ and the
+   `NCL to Python Transition Guide
+   <https://geocat-examples.readthedocs.io/en/latest/ncl-to-python.html>`_.
+
+   If you must continue using NCL and encounter issues with newer Fortran
+   features, load a more recent GNU compiler:
+
+   .. code-block:: shell
+
+      module load gnu/9.2.0 pyncl
+
+.. faq:: How do I compile WRF on Hera with Rocky OS?
+   :id: compile-wrf-hera
+   :tags: WRF compile build Hera Rocky tirpc
+
+   For the earlier versions of WRF model, the user may need the following
+   to compile the model on Rocky8 OS. After loading the required
+   modules, user needs to add the following to the CPATH in order to
+   compile the WRF model.
+
+   .. code-block:: shell
+
+      setenv CPATH /usr/include/tirpc:$CPATH
+
+   After running the configure command, user needs to add "-ltirpc" to
+   configure.wrf file.
+
+   .. code-block:: shell
+
+      LIB_EXTERNAL    = \
+          -L$(WRF_SRC_ROOT_DIR)/external/io_netcdf -lwrfio_nf \
+          -L/apps/netcdf/4.9.2/gnu-9.2.0/lib -lnetcdff -lnetcdf -ltirpc
 
 
-Add the following line to your **/.cshrc** file:
-
-.. code-block:: shell
-
-  limit stacksize unlimited
-
-If your login shell is **bash**:
-
-
-Add the following line to your **/.bashrc** file:
-
-.. code-block:: shell
-
-  ulimit -S -s unlimited
-
-.. note::
-
-  Capital-S for soft limit
-
-Please also make sure that you have a **.bash_profile** file
-that has contains the following (in addition to whatever you have for your own
-environment):
-
-.. code-block:: shell
-
-    # Get the aliases and functions
-    if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-    fi
-
-.. note::
-
-  Trying to set the stack size within the job file does not work!'''
-  This is because setting it within the job only changes the setting
-  on the head node for the job, but the remaining nodes only get the
-  **default** setting, or whatever is set in the initialization
-  files.
-
-
-
-User Issues
+Connections
 ===========
 
-How do I change my default login shell?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. faq:: How do I change my default login shell?
+   :id: change-shell
+   :tags: shell bash csh tcsh change default AIM
+
+   To change your default shell:
+
+   * Log into `AIM  <https://aim.rdhpcs.noaa.gov/>`_.
+   * Click "view your information in AIM".
+   * Navigate down to the "Projects and Account Information" section.
+   * Click the dropdown menu (middle panel) next to "Shell selection".
+   * Choose your shell from the list and click the "Submit Changes"
+     button in the bottom section
 
-To change your default shell:
+   Once your help ticket is processed, the change should be complete
+   within 24 hours.
 
-* Log into `AIM  <https://aim.rdhpcs.noaa.gov/>`_.
-* Click "view your information in AIM".
-* Navigate down to the "Projects and Account Information" section.
-* Click the dropdown menu (middle panel) next to "Shell selection".
-* Choose your shell from the list and click the "Submit Changes"
-  button in the bottom section
+.. _ssh-between-nodes:
 
-Once your help ticket is processed, the change should be complete
-within 24 hours.
+.. faq:: Why can't I SSH between nodes without entering a password?
+   :id: ssh-between-nodes
+   :tags: SSH password nodes keys authorized_keys permissions
 
-How can I recover recently deleted files from /home?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   If you are getting prompted for a password while trying to SSH between
+   front end nodes there are two possible causes. The causes of those
+   problems and their fixes are shown below (please note you may need to
+   fix only one of these issues):
 
-The home filesystem is backed up
-regularly. However, the filesystem also supports snapshots, which will
-allow you to retrieve your own files if they have been deleted over
-the last few days.
+   1. You may have generated new keys and not added them to the
+      authorized_keys file. The fix is to run the following:
 
-Look at the snapshot directory (/home/.snapshot) to see what
-options are available. Each directory listed there represent a day. As an
-example on Hera:
+      .. code-block:: shell
 
-.. code-block:: shell
+         cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-  2021-09-17_0015+0000.homeSnap  2021-09-20_0015+0000.homeSnap
-  2021-09-23_0015+0000.homeSnap
-  2021-09-18_0015+0000.homeSnap  2021-09-21_0015+0000.homeSnap
-  AUTO_SNAPSHOT_8820a150-8f27-11d5-95ff-040403080604_694
-  2021-09-19_0015+0000.homeSnap  2021-09-22_0015+0000.homeSnap
+   2. You may have inadvertently changed permissions for your ~/.ssh
+      directory. The fix is to run the following command:
 
-You can then access the old files in your copy of your home directory
-under the appropriate snapshot.
+      .. code-block:: shell
 
-For example, if you want to recover Hera files in your
-<code>$HOME</code> from September 22nd, 2024, and your user name is
-Robin.Lee:
+         chmod -R 700 ~/.ssh
 
-.. code-block:: shell
+   .. note::
 
-  $ cd /home/.snapshot/2021-09-22_0015+0000.homeSnap/Robin.Lee
+      It is important to note that the keys generated should be created
+      without a passphrase. That is, when you are generating the keys
+      using **ssh-keygen** please be sure to press **Enter**
+      when prompted for the passphrase for the key.
 
+   You should now be able to access the requested node via SSH without
+   being prompted for a password.
 
-Copy the files you want from the here, the snapshot,  to anywhere in
-your real home.
+.. faq:: When is my .bashrc executed?
+   :id: bashrc-execution
+   :tags: bashrc bash_profile shell initialization login interactive
 
-Why am I not able to ssh between nodes, it is asking me for a password!
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   Please review :manpage:`bash(1)` and other information on the `bash
+   shell <https://www.gnu.org/software/bash/>`_ on the `internet
+   <https://opstree.com/blog/2020/02/11/shell-initialization-files/>`__.
 
-If you are getting prompted for a password while trying to SSH between
-FE nodes there are two possible causes. The causes of those
-problems and their fixes are shown below (please note you may need to
-fix only one of these issues):
+.. faq:: What does the "REMOTE HOST IDENTIFICATION HAS CHANGED" error mean?
+   :id: host-key-changed
+   :tags: SSH host key changed warning known_hosts security
 
-1. You may have generated new keys and not added them to the authorized_keys
-file. The fix is to run the following:
+   You may sometimes get an error message such as the one shown below
+   when attempting to access a remote machine when using ssh/scp/wget or
+   any such command that accesses a remote machine:
 
+   .. code-block:: shell
 
-.. code-block:: shell
+      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+      @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+      IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+      Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+      It is also possible that a host key has just been changed.
+      The fingerprint for the RSA key sent by the remote host is
+      SHA256:lU91/IcK9rcFKIh1txPP1nfI0+JgNaj9IElGqftsc5H.
+      Please contact your system administrator.
+      Add correct host key in /Users/first.last/.ssh/known_hosts to get rid of this message.
+      **Offending RSA key in /Users/first.last/.ssh/known_hosts:5**
+      RSA host key for [localhost]:55362 has changed and you have requested strict checking.
+      Host key verification failed.
 
-  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+   Most of the time when you get that message, it is likely that the host
+   key on the remote machine has indeed changed, and it is not an attack.
 
+   Under rare circumstances it is possible that someone is trying to do
+   what is called a "man-in-the-middle" attack. If you are accessing one
+   of the RDHPCS machines and you can be reasonably certain you can ignore
+   that message, implement the solution given below.
 
-1. You may have inadvertently changed permissions for your ~/.ssh
-   directory. The fix is to run the following command:
+   If the remote machine is a non-RDHPCS system you will have to
+   independently verify if the key has actually changed. If it is a well
+   known site such as github etc, they generally post an announcement on
+   their site that the keys have changed. And if you know that the key
+   has changed it is fine to go ahead and implement the solution given
+   below.
 
-.. code-block:: shell
+   After verifying that it is not an attack, the solution is to remove the
+   offending key (shown in the error message) from the
+   **~/.ssh/known_hosts** file on the machine where you see the above
+   error. In the highlighted message above, **5** is the line
+   number in the ``~/.ssh/known_hosts`` file.
 
-  chmod -R 700 ~/.ssh
+   In the example shown above, since line 5 is the problem key, you can
+   use your favorite editor and delete that line. Alternatively on a
+   Linux like systems you use the following command:
 
-.. note::
+   .. code-block:: shell
 
-  It is important to note that the keys generated should be created
-  without a passphrase. That is, when you are generating the keys
-  using **ssh-keygen** please be sure to press **Enter**
-  when prompted for the passphrase for the key.
+      sed -i.bak -e '5d' ~/.ssh/known_hosts
 
-You should now be able to access the requested node via SSH without
-being prompted for a password.
+.. faq:: How do I enable X11 forwarding using PowerShell on Windows?
+   :id: x11-powershell
+   :tags: X11 forwarding Windows PowerShell Xming DISPLAY graphics
 
-How can I recover files that I accidentally deleted from my project space?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   **Xming** is a popular X Server for Windows. If you don't have a
+   program such as Xming installed on your local machine you have to
+   install that first. It is a good idea to have Xming running on your
+   machine, so please start that program if you have not done so already.
 
-You usually cannot.
+   Assuming Xming is already installed on your system:
 
-Please note that only the /home filesystem is backed up.  Project
-space is typically assigned on very large high performance file
-systems and hence cannot be backed up. '''Any files deleted from
-project space are gone forever and cannot be recovered.'''
+   1. Start Powershell and paste the following command:
 
-So it is important to have a second copy of files that are
-irreplaceable.  Files like source files should typically stored in
-some source code repositories and irreplaceable data files should be
-stored in HPSS tape archive.
+      .. code-block:: shell
 
-How do I find out which directories and partitions I can use?
+         $env:DISPLAY= 'localhost:0.0'
 
-Refer to the Slurm pages.
+      (you need to type this command each time before using X11 forwarding.)
 
-How do I find out what my project quota is?
+   2. Now connect to SSH server using -X argument:
 
-Refer to the allocation pages.
+      .. code-block:: shell
 
-Can you please install the xyz python package(s)?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         ssh username@hostname -XY
 
-There are way too many combinations in which users use python so, it
-is not practical to have a "common" python installation that is
-applicable for all users.  Python works best when users install the
-packages they need in their own project space.
+   X11 forwarding is now enabled on Powershell.
 
-We have now opened up access to the conda forge repositories so it is no
-longer necessary to use the RDHPCS mirror for installing the Python
-packages you need. You should now be able to install Python packages
-the same way you would on your local desktop/laptop.
+   If the remote system is a Linux system you can quickly check if X
+   forwarding is working by running the command **xclock**.
 
-Please search for "conda" in the search field for
-specific instructions (if any) on how to maintain your own python
-installations in our environment.
+.. faq:: How do I set up an SSH port tunnel?
+   :id: ssh-port-tunnel
+   :tags: SSH port tunnel transfer data bastion forwarding
 
-Why are my jobs failing intermittently?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   SSH port tunnels allow you to transfer data between your local machine
+   and RDHPCS systems. You must establish the tunnel from your **initial**
+   bastion session - if you see "Address already in use" errors, you
+   already have an open session.
 
-We are getting reports of jobs failing intermittently with a job
-timeout error.
+   **Quick steps:**
 
-At least in some instances this has been traced to an environment
-variable setting that is no longer valid. We were able to duplicate
-this problem very easily with a simple MPI Hello World program.
+   1. Find your unique local port number (displayed when you log in)
+   2. Establish tunnel:
+      ``ssh -L XXXXX:localhost:XXXXX First.Last@bastion_hostname``
+   3. Use ``scp -P XXXXX`` or ``rsync`` with the tunnel for transfers
 
-The setting in question is the following environment variable:
+   For complete instructions including PuTTY/Windows setup, troubleshooting,
+   and examples, see :ref:`Port_Tunnelling`.
 
-.. code-block:: shell
+.. faq:: How do I set up an SSH port tunnel with PuTTY on Windows?
+   :id: ssh-port-tunnel-putty
+   :tags: SSH port tunnel PuTTY Windows transfer
 
-   export I_MPI_FABRICS=shm:ofa
+   For Windows users using PuTTY, configuration involves setting up port
+   forwarding in the Connection > SSH > Tunnels settings.
 
-This setting should no longer be set.
-When this variable is set we were able to confirm that even a simple
-MPI Hello World code can fail intermittently even when run on the same
-set of nodes.  While it is true that it happens only some nodes and
-rebooting them clears the nodes, not setting the above environment
-variable does not cause this problem.  We do plan to reboot the nodes
-that reboot the problem, but users can take action to avoid running
-into this problem by simply unsetting the above environment variable.
+   For step-by-step instructions with screenshots, see the
+   :ref:`PuTTY port tunnel documentation <Port_Tunnelling>`.
 
-If you are still seeing this error even though you have not set this
-environment variable please submit a help ticket to report the problem.
+.. faq:: How do I transfer small files to/from an RDHPCS system?
+   :id: transfer-small-files
+   :tags: transfer files scp rsync small data port tunnel
 
-Why am I getting these errors? I am using hpc-stack for NCEPLIBS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   For small file transfers, use SSH port tunnelling with ``scp`` or
+   ``rsync``. For larger transfers or frequent use, consider using Globus
+   or the Data Transfer Nodes (DTNs).
 
-If you are using `hpc-stack <https://github.com/NOAA-EMC/hpc-stack>`_
-please keep in mind that this is a software stack that is installed
-and maintained by the NCEPLIBS team.  Please refer to the `hpc-stack
-official supported distribution
-<https://github.com/NOAA-EMC/hpc-stack/wiki/>`_.
+   See :ref:`data-transfer-overview` for complete information on all
+   transfer methods.
 
-If you have problems, particularly with modules or NCEP libraries, it
-is very likely you are using an unsupported version of their
-libraries. If you are using the official version and still having problems, you
-should submit an "issue" ticket at the above link.
+.. faq:: Why can't I transfer files via the port tunnel anymore?
+   :id: port-tunnel-blocked
+   :tags: port tunnel transfer failed blocked connection refused
 
-I am using spack-stack and getting some errors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   Your first login from a given machine must establish the port tunnel. If
+   you logged in without establishing the tunnel first, the port becomes
+   blocked.
 
-The spack-stack software is installed and maintained by the EPIC team,
-and the RDHPCS administrators are not able to provide assistance with
-these issues.
+   **To resolve:**
 
-If you are using `spack-stack <https://github.com/JCSDA/spack-stack>`_ and
-are encountering spack-stack related issues, you will need to submit an
-issue on their `github repository <https://github.com/JCSDA/spack-stack/issues>`_.
+   #. Exit all SSH sessions from your local machine
+   #. Reconnect with port tunnel options: ``ssh -L XXXX:localhost:XXXX ...``
+   #. Try your transfer again
 
-You will find a link to their documentation at the github site
-above.
+   See :ref:`Port_Tunnelling` for detailed troubleshooting.
 
-When is my .bashrc executed? When would it be ignored?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Please review :manpage:`bash(1)` and other information on the `bash
-shell <https://www.gnu.org/software/bash/>`_ on the `internet
-<https://opstree.com/blog/2020/02/11/shell-initialization-files/>`__.
+Other
+=====
 
+.. faq:: Where can I find operational data from WCOSS2 on Hera?
+   :id: wcoss2-data
+   :tags: WCOSS2 operational data Hera HPSS NCO
 
-I got the message "REMOTE HOST IDENTIFICATION HAS CHANGED!". What should I do?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   Some operational data from WCOSS2 is available on Hera/HPSS.
 
-You may sometimes get an error message such as the one shown below
-when attempting to access a remote machine when using ssh/scp/wget or
-any such command that accesses a remote machine:
+   However RDHPCS doesn't keep track of the locations of the operational
+   data stored on Hera/HPSS. Please reach out to the NCO SPA team that is
+   responsible for making that data available by contacting them at
+   nco.spa@noaa.gov.
 
-.. code-block:: shell
+.. faq:: What are the RDHPCS Office Hours?
+   :id: office-hours
+   :tags: office hours support help meeting
 
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-    Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-    It is also possible that a host key has just been changed.
-    The fingerprint for the RSA key sent by the remote host is
-    SHA256:lU91/IcK9rcFKIh1txPP1nfI0+JgNaj9IElGqftsc5H.
-    Please contact your system administrator.
-    Add correct host key in /Users/first.last/.ssh/known_hosts to get rid of this message.
-    '''<big>Offending RSA key in /Users/first.last/.ssh/known_hosts:5</big>'''
-    RSA host key for [localhost]:55362 has changed and you have requested strict checking.
-    Host key verification failed.
+   Office Hours are held regularly. The Support team offers shared
+   solutions to acute and common problems.
 
+   Transcripts and recordings can be found in `RDHPCS Internal Documentation
+   <https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1VimyvTrM3ilw2Eug4wrDHJsU9Zi5n5PW/edit>`__.
 
-Most of the time when you get that message, it is likely that the host
-key on the remote machine has indeed changed, and it is not an attack.
-
-Under rare circumstances it is possible that someone is trying to do
-what is called a "man-in-the-middle" attack.  If you are accessing one
-of the RDHPCS machines and you can be reasonably certain you can ignore
-that message, implement the solution given below.
-
-If the remote machine is a non-RDHPCS system you will have to
-independently verify if the key has actually changed.  If it is a well
-known site such as github etc, they generally post an announcement on
-their site that the keys have changed.  And if you know that the key
-has changed it is fine to go ahead and implement the solution given
-below.
-
-After verifying that it is not an attack, the solution is to remove the
-offending key (shown in the error message) from the
-**~/.ssh/known_hosts** file on the machine where you see the above
-error.  In the highlighted message above, **5** is the line
-number in the **/.ssh/known_hosts** file.
-
-In the example shown above, since line 5 is the problem key, you can
-use your favorite editor and delete that line.  Alternatively on a
-Linux like systems you use the following command:
-
-.. code-block:: shell
-
-   sed -i.bak -e '5d' ~/.ssh/known_hosts
-
-
-Where can I find "Operational Data" from WCOSS2 on Hera?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Some operational data from WCOSS2 is available on Hera/HPSS.
-
-However RDHPCS doesn't keep track of the locations of the operational
-data stored on Hera/HPSS. Please reach out the NCO SPA team that is
-responsible for making that data available by contacting them at
-'''nco.spa@noaa.gov'''.
-
-
-My jobs using NCL are no longer working
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-NCL has decided to switch to Python and have indicated the PyNCL will
-be replacing NCL.
-
-So if you are used to using:
-
-.. code-block:: shell
-
-   module load ncl
-
-please load
-
-.. code-block:: shell
-
-   module load pyncl
-
-That will make NCL version 6.6.2 commands and libraries and headers
-available. If you use other ncl modules, we found that the gmeta files
-created will be dodgy, and not show any content with idt, for example.
-
-Also, we have seen some of the programs that use NCL are using the
-newer features of the Fortran standard, so in addition to loading the
-"pyncl" module you may consider loading a more recent version of the
-GNU module.
-
-So if you are working with NCL please use the following module load command:
-
-.. code-block:: shell
-
-   module load gnu/9.2.0 pyncl
-
-Compile WRF on Hera with Rocky OS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For the earlier versions of WRF model, the user may need following
-to compile the model on Rocky8 OS. After loading the required
-modules, user needs to add the following to the CPATH in order to
-compile the WRF model.
-
-.. code-block:: shell
-
- setenv CPATH /usr/include/tirpc:$CPATH
-
-
-After running the configure command, user needs to add "-ltirpc" to
-configure.wrf file.
-
-.. code-block:: shell
-
- LIB_EXTERNAL    = \
-                      -L$(WRF_SRC_ROOT_DIR)/external/io_netcdf -lwrfio_nf -L/apps/netcdf/4.9.2/gnu-9.2.0/lib -lnetcdff -lnetcdf  -ltirpc
-
-How do I enable x11 forwarding using PowerShell on a Windows system?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Xming** is a popular X Server for Windows, if you don't have a
-program such as Xming installed on your local machine you have to
-install that first. It is a good idea to have Xming running on your
-machine, so please start that program if you have not done so already.
-
-Assuming Xming is already installed on your system:
-
-1. Start Powershell and paste the following command :
-
-.. code-block:: shell
-
-   $env:DISPLAY= 'localhost:0.0'
-
-(you need to type this command each time before using x11 forwarding.)
-
-2. Now connect to SSH server using -X argument :
-
-.. code-block:: shell
-
-   ssh username@hostname -XY
-
-X11 forwarding is now enabled on Powershell.
-
-If the remote system is a Linux system you can quickly check if X
-forwarding is working by running the command **xclock**.
-
-Port Tunnels
-============
-
-How do I set up an ssh port tunnel?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can only establish an ssh tunnel from your initial bastion session. If you
-try to establish a tunnel and see the messages like this:
-
-
-  .. code-block:: shell
-
-    -------------------
-    bind [127.0.0.1]:57037: Address already in use
-    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
-    Could not request local forwarding.
-    -------------------
-
-You will know that you already have an open session, and cannot
-open a tunnel on this bastion.
-
-To establish a new tunnel, do one of the following:
-
-  * Close any existing sessions on this bastion, **or**,
-  * Open a new session using a bastion where you have no existing sessions.
-
-In the steps below, replace First.Last with your own HPC username, and
-XXXXX with the unique Local Port Number assigned to you when you log
-in to your specified HPC system. Use the word "localhost"
-where indicated. It is not a variable, don't substitute anything else.
-Before you perform the first step, close all current sessions on the
-HPC system where you are trying to connect. Once the first session has
-been opened with port forwarding, any further connections (login via
-ssh, copy via scp) will work as expected. You are running these
-commands on your local machine, not within the HPC system terminal.
-
-As long as this ssh window remains open, you will be able to use this
-forwarded port for data transfers.
-
-
-**1. Find your local port number**
-
-To find your unique local port number, log onto your specified HPC
-system. Make a note of this number - once you've recorded
-it, close all sessions. Note that this number, which is a fixed
-value for you, will be different on each HPC system.
-
-.. image:: /images/linux_xfer1.png
-   :scale: 75%
-
-.. note::
-    Open two terminal windows for this process
-
-**Local Client Window #1**
-
-Enter the appropriate command for your environment. Remember to replace XXXXX
-with the local port number identified in Step 1 or as needed.
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:XXXXX First.Last@bastion_hostname
-
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-     ssh -L XXXX:localhost:XXXXX First.Last@bastion_hostname
-
-If you will be running X11 applications with x2go or normal terminals,
-remember to add the -X parameter as follows:
-
-.. code-block:: shell
-
-    ssh -X -L XXXX:localhost:XXXXX First.Last@bastion_hostname
-
-
-To verify that the tunnel is working, open another local window in your local
-machine, and issue the command:
-
-.. code-block:: shell
-
-   ssh -p XXXX First.Last@localhost
-
-Note that XXXX is your local port number used above, First.Last is
-your user ID on the RDHPCS systems and localhost is typed as-is.
-
-.. note::
-
-  For a complete list of available bastions by site, check the
-  :ref:`bastion_hostnames` table.
-
-You should be prompted for your password; enter your PIN + RSA token
-and you should be able to login. Once you are able to log in, you can
-log out of that session as that was only for testing the tunnel.
-
-**2. Use SCP to Complete the Transfer**
-
-**Local Client Window #2**
-
-Once the session is open, you can use this forwarded port
-for data transfers, as long as this ssh window is kept open.
-
-Remember that this is the second terminal session opened on your local
-machine. Once a tunnel has been set up as in Step 1, you
-can use a client such as WinSCP to do the transfers using that tunnel.
-Please keep in mind that tunnel will exist only as long as the session opened
-in Step 1 is kept alive.
-
-
-.. code-block:: shell
-
-  Hostname: localhost
-  Port: your-assigned-port-used-in-Step1-above
-  File protocol: SFTP
-
-
-To transfer a file **to** HPC Systems
-
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-  rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
-
-.. note::
-
-   Your username is case sensitive when used in the scp command. Username should be in the form of First.Last.
-
-To transfer a file **from** HPC Systems:
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
-
-
-In either case, you will be asked for a password. Enter the password
-from your RSA token (not your passphrase). Your response should be
-your PIN+Token code.
-
-
-SSH Port Tunnel For PuTTy Windows Systems
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-PuTTY is an SSH client, used to configure and initiate connection.
-Navigate to a separate tab to install `PuTTY
-<https://www.putty.org/>`_. If you cannot install software on your
-machine, contact your local systems administrator.
-
-**Configuration**
-
-Enter host information to configure an SSH Terminal Session:
-
-.. image:: /images/putty1.png
-   :scale: 75%
-
-1. Enter Username
-In the left pane under Connection, select "Data" and enter your NOAA
-user name as it appears in your NOAA email address. (Ex: First.Last
-if your NOAA email is First.Last@noaa.gov). User name is case
-sensitive - First.Last. If you do not create a username, you will have
-to enter your user name each time your open a session.
-
-.. image:: /images/putty2.png
-   :scale: 75%
-
-Complete the configuration:
-
-* Select "Session" from the top of the left pane.
-* Select "Save" (between Load and Delete).
-
-**Open a First System Session**
-
-Open the session to make sure it's working, and to record your Local
-Port number to complete the Port Tunneling setup.
-
-* Select the configured session from the "Saved Sessions" list. Select
-  Load, then Open.
-* Enter your unique RSA Passcode.
-
-The RSA passcode is your RSA token PIN followed by 8 digits displayed
-on your RSA token. The digits must be on display when you press enter,
-or access will be denied. When you open a new SSH session, wait for
-the RSA token code to refresh before you enter it.
-
-* Find and record your Local Host number.
-*  Click **Exit**, or close the Putty window to end the session.
-
-**Port Tunnel Setup**
-
-To enable data transfers, you will need to set up a Port Tunnel.
-
-* Open Putty.
-* Select the session from the Saved Sessions list, then Load.
-* In the left pane under Connection>SSH select Tunnels.
-* Check Local ports accept connections from other hosts.
-* In the Source Port field, enter your Local Port number
-* In the Destination Port field, enter "localhost:<local port
-  number>", where your local port number matches what was entered in
-  the Source port.
-* Select Local and Auto Radio Buttons.
-* Click the Add Button.
-
-.. image:: /images/putty3.png
-
-To save the configuration change:
-
-* In the left pane, select Session.
-* Select Save.
-
-Select **Open** to Login and verify that the updated session works correctly.
-
-Create a new Port Tunnel for each SSH system you intend to use. Each
-one will have a unique Local Port number.
-
-To add extra saved sessions (ex: for another Bastion) for the same
-system (you already have the Local Port number):
-
-* Load your current saved session
-* Enter the new host name for the other Bastion
-* Give the new session a new name (ex: Hera- Princeton)
-* Select Save. The new session will appear in the list of saved sessions.
-* Select Open to Login and verify the new session works correctly.
-
-
-How to transfer small files to/from an RDHPCS system?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Port Tunnelling approach is useful for transferring small amount
-data to/from RDHPCS systems from your local machine.
-
-Transferring data using scp/WinSCP is a 2 step process:
-
-1. Establish a Tunnel by following the steps documented here:
-2. Transfer file using WinSCP
-
-See the Data Transfer pages for complete information.
-
-I can no longer transfer files via the port tunnel, please help!
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-From a given machine, your first login has to establish the port
-tunnel. If you do not, the port used will be blocked and you cannot
-establish the port tunnel with subsequent ssh commands. If you cannot
-use scp to transfer files, look for an error message similar to this
-the following when you are trying to establish your tunnel:
-
-.. code-block:: shell
-
-  ssh: connect to host localhost port 2083: Connection refused
-
-
-The number above will match the port you are trying to use.
-
-To resolve this problem:
-
-#. Exit all ssh sessions from your host
-#. Restart ssh. This session must have the port tunnel options included
-
-.. code-block:: shell
-
- ssh -L XXXX:localhost:XXXX
-
-#. Try using scp to transfer a file.
 
 Known Issues
 ============
 
-Intel MPI Collective Algorithms issue
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Last reviewed: July 2026*
 
-It has been observed that the default algorithms configured by Intel oneAPI
-MPI for collective operations are causing instability on AMD systems. Users
-have reported instances of code hanging, and system monitoring indicates
-highly uneven Non-Uniform Memory Access (NUMA) load, leading to node
-performance issues.
+.. faq:: What is the Intel MPI Collective Algorithms issue?
+   :id: intel-mpi-collective
+   :tags: Intel MPI collective algorithms Ursa AMD NUMA
 
-To mitigate these issues, a module has been created to set the collective
-algorithms to empirically tested values. We strongly recommend loading
-this module whenever utilizing Intel oneAPI for code execution on the
-Ursa cluster.
+   It has been observed that the default algorithms configured by Intel
+   oneAPI MPI for collective operations are causing instability on AMD
+   systems. Users have reported instances of code hanging, and system
+   monitoring indicates highly uneven Non-Uniform Memory Access (NUMA)
+   load, leading to node performance issues.
 
-.. code-block:: shell
+   To mitigate these issues, a module has been created to set the
+   collective algorithms to empirically tested values. We strongly
+   recommend loading this module whenever utilizing Intel oneAPI for code
+   execution on the Ursa cluster.
 
- module load impi-collective-settings/1.0.0
+   .. code-block:: shell
 
-Please be advised that this module must be loaded in addition to the
-intel-oneapi-mpi module that your application needs.
+      module load impi-collective-settings/1.0.0
+
+   Please be advised that this module must be loaded in addition to the
+   intel-oneapi-mpi module that your application needs.
+
 
 Recent User-Facing Changes
 ==========================
 
-Jan 22, 2025: DTNs for Ursa are now available
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Last reviewed: July 2026*
 
-DTNs and the new file systems for Ursa are now available for your use.
+.. faq:: Jan 22, 2025: DTNs for Ursa are now available
+   :id: ursa-dtn-available
+   :tags: Ursa DTN data transfer Globus scratch
 
-.. note::
+   DTNs and the new file systems for Ursa are now available for your use.
 
-  Even though Ursa is not yet available, the new
-  filesystems ``/scratch3`` and ``/scratch4``, the filesystems for Ursa,
-  and the DTNs for Ursa are available now.
+   .. list-table::
+      :header-rows: 1
+      :stub-columns: 1
+      :align: left
 
-.. note::
+      * -
+        - Host Name
+        - File System
+        - Globus Endpoints
+      * - Trusted
+        - dtn-ursa.fairmont.rdhpcs.noaa.gov
+        - /scratch[34]
+        - noaardhpcs#ursa
+      * - Untrusted
+        - udtn-ursa.fairmont.rdhpcs.noaa.gov
+        - /scratch[34]/data_untrusted
+        - noaardhpcs#ursa_untrusted
 
-  The ``/scratch3`` and ``/scratch4`` filesystems will be upgraded
-  in February. There will be a 3-5 day
-  outage for those file systems at that time.
+   Using these new DTNs you can do data transfers to the ``/scratch3``
+   and ``/scratch4`` filesystems either using Linux tools such
+   as scp and rsync, or by using Globus Online.
 
-**Currently these two new filesystems are only mounted
-and accessible from Hera and the new Ursa DTNs.**
-
-.. list-table::
-   :header-rows: 1
-   :stub-columns: 1
-   :align: left
-
-   * -
-     - Host Name
-     - File System
-     - Globus Endpoints
-   * - Trusted
-     - dtn-ursa.fairmont.rdhpcs.noaa.gov
-     - /scratch[34]
-     - noaardhpcs#ursa
-   * - Untrusted
-     - udtn-ursa.fairmont.rdhpcs.noaa.gov
-     - /scratch[34]/data_untrusted
-     - noaardhpcs#ursa_untrusted
-
-
-
-Using these new DTNs you can do data transfers to the ``/scratch3``
-and ``/scratch4`` filesystems either using Linux tools such
-as scp and rsync, or by using Globus Online.
-
-
-Please see the :ref:`data-transfer-overview` for more details.
-
-RDHPCS Office Hours
-===================
-
-Office Hours are held at regularly. The Support team offers shared
-solutions to acute and common problems.
-
-Transcripts and recordings can be found in `RDHPCS Internal Documentation.
-<https://sites.google.com/d/1QJ-MHpl1y0IEtzQUnIbjF2hUmMNQUMAo/p/1VimyvTrM3ilw2Eug4wrDHJsU9Zi5n5PW/edit>`__
+   Please see the :ref:`data-transfer-overview` for more details.
