@@ -133,7 +133,15 @@ to `git documentation <https://git-scm.com/>`__.
 GitLab CLI (glab)
 ~~~~~~~~~~~~~~~~~
 
-GitLab CLI tool named glab is installed on the RDHPCS systems. Using glab,
+GitLab CLI tool named glab is installed on the RDHPCS systems. On Gaea, users
+have to load the glab module by running the below commands:
+
+.. code-block:: bash
+
+    module use /ncrc/usw/rdhpcs/modulefiles
+    module load glab
+
+Using glab,
 users can perform actions such as repository creation on the Git server,
 cloning the repository, etc. The first step in using the GitLab CLI is
 authenticating the GitLab server.
