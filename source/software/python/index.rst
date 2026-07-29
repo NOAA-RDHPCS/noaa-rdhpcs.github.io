@@ -499,11 +499,10 @@ Cloning the base environment using conda
 It is not recommended to install new packages into the base environment.
 Instead, you should clone the base environment and install packages into the
 clone. To clone an environment, use the ``--clone <env_to_clone>`` flag when
-creating a new conda environment. Note for a very large environment we recommend
-the user to install their own miniforge environment in project space 
-Below is an example of cloning the base
-environment into a specific directory called ``envs/baseClone`` in your
-"Project Home":
+creating a new conda environment. Note for a very large environment we
+recommend the user to install their own miniforge environment in project
+space. Below is an example of cloning the base environment into a specific
+directory called ``envs/baseClone`` in your "Project Home":
 
 .. code-block:: bash
 
