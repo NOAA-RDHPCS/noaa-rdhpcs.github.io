@@ -12,17 +12,19 @@ Installing Miniforge
 ********************
 
 While the RDHPCS system have Miniforge available, you can install your own
-`Miniforge <https://docs.conda.io/en/main/miniconda.html>`__.
+`Miniforge <https://docs.conda.io/en/main/miniconda.html>`__. The main
+reason for doing this is if your environemnt you wish to create is far
+larger than your home directory.
 
 The install process is rather simple (with a few notable warnings, see
 :ref:`Cautionary Notes <miniforge-notes>` further below):
 
 .. code-block:: bash
 
-   $ mkdir miniforge
-   $ cd miniforge/
+   $ mkdir some_project_space_directory/miniforge
+   $ cd some_project_space_directoy/miniforge/
    wget https://github.com/conda-forge/miniforge/releases/download/25.3.0-3/Miniforge3-25.3.0-3-Linux-x86_64.sh
-   sh Miniforge3-25.3.0-3-Linux-x86_64.sh -u -p ~/miniforge
+   sh Miniforge3-25.3.0-3-Linux-x86_64.sh -u -p some_project_space_directory/miniforge
 
 * The ``-p`` flag specifies the prefix path for where to install miniforge.
 * The ``-u`` updates any current installations at the ``-p`` location (not
