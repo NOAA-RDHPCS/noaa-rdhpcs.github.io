@@ -49,14 +49,6 @@ transcript of the presentation.
     Academia and Research
     <https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research>`_.
 
-.. note::
-
-    The only conda channel approved for use on the NOAA RDHPCS systems is
-    `conda-forge <https://conda-forge.org>`_.  The conda-forge installer,
-    `Miniforge <https://conda-forge.org/download/>`_, includes the `conda`_
-    package manager and will use the `conda-forge`_ channel. This is the
-    default channel for Miniforge3 but not for anaconda.
-
 If you want to leverage Python with Jupyter, we direct you to our
 :ref:`jupyter_on_rdhpcs_systems` page for comprehensive guidance.
 
@@ -507,7 +499,9 @@ Cloning the base environment using conda
 It is not recommended to install new packages into the base environment.
 Instead, you should clone the base environment and install packages into the
 clone. To clone an environment, use the ``--clone <env_to_clone>`` flag when
-creating a new conda environment. Below is an example of cloning the base
+creating a new conda environment. Note for a very large environment we recommend
+the user to install their own miniforge environment in project space 
+Below is an example of cloning the base
 environment into a specific directory called ``envs/baseClone`` in your
 "Project Home":
 
