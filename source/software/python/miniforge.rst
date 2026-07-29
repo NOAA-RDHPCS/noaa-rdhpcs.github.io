@@ -22,7 +22,7 @@ The install process is rather simple (with a few notable warnings, see
 .. code-block:: bash
 
    $ mkdir some_project_space_directory/miniforge
-   $ cd some_project_space_directoy/miniforge/
+   $ cd some_project_space_directoy/miniforge
    wget https://github.com/conda-forge/miniforge/releases/download/25.3.0-3/Miniforge3-25.3.0-3-Linux-x86_64.sh
    sh Miniforge3-25.3.0-3-Linux-x86_64.sh -u -p some_project_space_directory/miniforge
 
