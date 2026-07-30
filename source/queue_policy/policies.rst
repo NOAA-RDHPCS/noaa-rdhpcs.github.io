@@ -493,7 +493,7 @@ active users or active projects, except as detailed below.
 HPFS (Scratch) Data
 -------------------
 
-Inactive users' and closed projects' data shall be dispositioned by
+Inactive users' and data shall be dispositioned by
 the PI or Portfolio Manager to maintain efficient usage of RDHPCS
 resources. If the PI or Portfolio Manager cannot personally implement
 the disposition of the data, the PI or PM can issue a help ticket, and
@@ -503,6 +503,29 @@ The RDHPCS program policy is to NOT delete active project HPFS data.
 If the PI or Portfolio Manager so directs in a help request, we will
 change ownership of active HPFS project data to another project
 member.
+
+Closed Projects
+---------------
+
+All data and files stored on the RDHPCS system are associated with
+and belong to a specific project. Prior to submitting a project closure
+request, the Principal Investigator (PI) or Portfolio Manager must notify
+all team members. It is the responsibility of the PI and project
+members to archive or transfer any required data to external storage, and
+to clean up their project space.
+
+Submitting a closure request indicates that team members have been
+notified, data migration is complete, and the related project space has been
+cleaned up. When a closure request is submitted, a strict 30-day window opens,
+after which all remaining files within the project space will be permanently
+deleted without recovery.
+
+.. attention::
+
+  RDHPCS administrators are under no obligation to issue
+  reminders or follow-up warnings. It is the sole responsibility
+  of the project team to finalize all backups before the 30-day period expires.
+
 
 Home File System (HFS) Data
 ----------------------------
