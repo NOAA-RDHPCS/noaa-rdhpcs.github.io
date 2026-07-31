@@ -72,20 +72,19 @@ html_js_files = [
 ]
 
 # cSpell:ignore gsce nochange
-html_context = {    # type: ignore
+html_context = {  # type: ignore
     "display_github": True,
-    "github_user": "NOAA-RDHPCS",  # Username
-    "github_repo": "noaa-rdhpcs.github.io",  # Repo name
-    "github_version": "main",  # Version
-    "conf_py_path": "/source/",  # Path in the checkout to the docs root
-    "gsce_id": "c44d566af80714ea2", # GSCE ID number.  Manage at https://programmablesearchengine.google.com
-    "version": "<a href='/help/' class='a-nochange'>Need Help? Click Here</a>", # Link to help page instead of a version
-    "github_issue_button": True, # Display the Open issue on GitHub button
-    # Items below affect the footer.  A custom footer file is in _templates
-    # and adds items to the extrafooter block
+    "github_user": "NOAA-RDHPCS",
+    "github_repo": "noaa-rdhpcs.github.io",
+    "github_version": "main",
+    "conf_py_path": "/source/",
+    "gsce_id": "c44d566af80714ea2",
+    "version": "<a href='/help/' class='a-nochange'>Need Help? Click Here</a>",
+    "github_issue_button": True,
+    # Footer-related context consumed by custom template(s)
     "show_sphinx": False,
-    "project_home_url": "https://www.noaa.gov/information-technology/hpcc", # URL to the Project Home page
-    "project_home_name": "NOAA High Performance Computing Systems", # False, or string with the Project name (e.g., NOAA RDHPCS Home)
+    "project_home_url": "https://www.noaa.gov/information-technology/hpcc",
+    "project_home_name": "NOAA High Performance Computing Systems",
     "noaa_footer_links": {
         "Protecting Your Privacy": "https://www.noaa.gov/protecting-your-privacy",
         "FOIA": "https://www.noaa.gov/information-technology/foia",
@@ -98,11 +97,12 @@ html_context = {    # type: ignore
         "No-Fear Act": "https://www.noaa.gov/organization/inclusion-and-civil-rights/no-fear-act",
         "USA.gov": "https://www.usa.gov/",
         "Ready.gov": "https://www.ready.gov/",
-        "HPCS Webmaster": "mailto:[webmaster.hpcs@noaa.gov](mailto:webmaster.hpcs@noaa.gov)",
+        "HPCS Webmaster": "mailto:webmaster.hpcs@noaa.gov",
     },
-    "google_calendar_name": "RDHPCS Events", # Name of the RDHPCS calendar
-    "google_calendar_id": "noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com", # Google Calendar ID for the RDHPCS calendar
+    "google_calendar_name": "RDHPCS Events",
+    "google_calendar_id": "noaa.gov_f1ggu43tm9lfeeg45t59a063cs@group.calendar.google.com",
 }
+
 # Tell Jinja2 templates the build is running on Read the Docs
 if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
@@ -160,7 +160,7 @@ linkcheck_ignore = [
     r'https://sites.google.com/noaa.gov/cao/old_ocao-services-and-guidance/.*',
     # forbidden
     r'https://sourceforge.net/projects/.*',
-    # 
+    #
 ]
 
 linkcheck_timeout = 30
@@ -185,9 +185,3 @@ sitemap_excludes = [
     "search.html",
     "genindex.html",
 ]
-
-
-
-
-
-
