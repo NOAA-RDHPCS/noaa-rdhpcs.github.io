@@ -1314,7 +1314,7 @@ batch job:
 
    source $MODULESHOME/init/bash
    domainname=$(perl -T -e "use Net::Domain(hostdomain); print hostdomain")
-   if [[ $domainname =~ boulder|fairmont ]]; then
+   if [[ $domainname =~ fairmont ]]; then
         module load hpss
    elif [[ $domainname =~ ncrc ]]; then
         module use /usw/hpss/modulefiles

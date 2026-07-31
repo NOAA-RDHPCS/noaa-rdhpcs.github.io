@@ -41,7 +41,7 @@ transcript of the presentation.
     `Anaconda Terms of Service
     <https://legal.anaconda.com/policies>`_, use of the Anaconda,
     which includes `Miniconda
-    <https://www.anaconda.com/docs/getting-started/miniconda/main>`_,
+    <https://www.anaconda.com/docs/getting-started/concepts/anaconda-or-miniconda>`_,
     on RDHPCS systems is prohibited.
 
     For more information, please refer to the `Anaconda Terms of Service`_
@@ -53,7 +53,7 @@ transcript of the presentation.
 
     The only conda channel approved for use on the NOAA RDHPCS systems is
     `conda-forge <https://conda-forge.org>`_.  The conda-forge installer,
-    `Miniforge <https://conda-forge.org/download/>`_, includes the `conda`_
+    `Miniforge <https://conda-forge.org/download/>`_, includes the ``conda``
     package manager and will use the `conda-forge`_ channel. This is the
     default channel for Miniforge3 but not for anaconda.
 

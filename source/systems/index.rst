@@ -44,9 +44,6 @@ The current systems are listed below, with links to their user guides.
    * - `Hera <https://www.noaa.gov/organization/information-technology/hera>`__
      - Predicting high-impact weather events
      - :ref:`hera-user-guide`
-   * - `Jet <https://www.noaa.gov/organization/information-technology/jet>`__
-     - Hurricane Forecast Improvement Program (HFIP)
-     - :ref:`jet-user-guide`
    * - `Mercury <https://www.noaa.gov/organization/information-technology/mercury>`_
      - Collaborative resource for data transfer
      - :ref:`mercury-user-guide`
