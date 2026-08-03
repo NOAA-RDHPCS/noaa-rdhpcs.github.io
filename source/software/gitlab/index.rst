@@ -134,12 +134,15 @@ GitLab CLI (glab)
 ~~~~~~~~~~~~~~~~~
 
 GitLab CLI tool named glab is installed on the RDHPCS systems. On Gaea, users
-have to load the glab module by running the below commands:
+have to load the glab module by running the below commands.
 
 .. code-block:: bash
 
     module use /ncrc/usw/rdhpcs/modulefiles
     module load glab
+
+On MSU systems, Orion, and Hercules, run the ``module load glab`` command to
+load the glab package.
 
 Using glab,
 users can perform actions such as repository creation on the Git server,
@@ -196,8 +199,9 @@ For additional information on the GitLab CLI, refer to the `glab
 documentation <https://docs.gitlab.com/cli/>`__.
 
 Similar to glab, GitHub CLI tool (gh) is also available on the RDHPCS
-systems. Refer to the `gh documentation <https://cli.github.com/>`__
-for additional information.
+systems. Whereever ``glab`` module has to be loaded, ``gh`` module has to be
+loaded to use ``gh``. Refer to the
+`gh documentation <https://cli.github.com/>`__ for additional information.
 
 
 .. include:: gitlab_ci_cd_pipelines_and_runners.rst
