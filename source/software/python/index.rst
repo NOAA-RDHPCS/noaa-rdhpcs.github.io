@@ -49,6 +49,14 @@ transcript of the presentation.
     Academia and Research
     <https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research>`_.
 
+.. note::
+
+    The only conda channel approved for use on the NOAA RDHPCS systems is
+    `conda-forge <https://conda-forge.org>`_.  The conda-forge installer,
+    `Miniforge <https://conda-forge.org/download/>`_, includes the ``conda``
+    package manager and will use the `conda-forge`_ channel. This is the
+    default channel for Miniforge3 but not for anaconda.
+
 If you want to leverage Python with Jupyter, we direct you to our
 :ref:`jupyter_on_rdhpcs_systems` page for comprehensive guidance.
 
