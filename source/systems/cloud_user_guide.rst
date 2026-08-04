@@ -75,7 +75,7 @@ This diagram illustrates the typical process for using Cloud resources.
   .. tab-item:: Import Data
      :sync: import
 
-      `Data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
+      `Parallel Works data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
 
   .. tab-item:: Perform Computations
      :sync: compute
@@ -352,7 +352,7 @@ The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform. A Jupyter workflow is available
 in the ACTIVATE Marketplace. (See the Parallel Works documentation for
 directions to `add workflows
-<https://parallelworks.com/docs/run/workflows-and-apps/adding-workflows-and-apps>`_.)
+<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
 
 
 To use the Jupyter workflow on a Slurm compute node, first set a default
@@ -1419,7 +1419,7 @@ How can I automatically find the hostname of a cluster?
 By default, the host names are always going to be different
 each time you start a cluster.
 
-You can find CSP information using the :envvar:`PW_CSP` variable, as
+You can find CSP information using the ``PW_CSP`` variable, as
 in the example:
 
 .. code-block:: shell
@@ -1427,7 +1427,7 @@ in the example:
     $ echo $PW_CSP
     google
 
-There are a few other :envvar:`PW_*` vars that you may find useful:
+There are a few other ``PW_*`` vars that you may find useful:
 
 :PW_PLATFORM_HOST:
 :PW_POOL_ID:
@@ -1957,7 +1957,7 @@ your project's bucket. Click on the key icon to find the bucket name,
 keys and sample command to access the bucket.
 
 Please refer to the `AzCopy guide
-<https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy>`_ for information on how to use AzCopy.
+<https://github.com/Azure/azure-storage-azcopy/wiki/azcopy_copy>`_ for information on how to use AzCopy.
 
 
 GCP gcloud install on an on-prem, and files transfer to a cloud bucket

@@ -235,7 +235,7 @@ Description of the two exploratory systems:
   For billing and accounting: one grace hopper gpu-hour will count
   as 72 cpu core-hours.
 
-* Partition:  ``u1-mi300x``. There are 3 nodes, each with 96 Intel cpu
+* Partition:  ``u1-mi300x``. There are 5 nodes, each with 96 Intel cpu
   cores, 8 AMD Mi300x APUs each with 192 GB of RAM AMD ROCm software.
   Click `AMD MI300X <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>`_
   for more detailed information.
