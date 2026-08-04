@@ -275,6 +275,12 @@ needs.
      - None of the above work for your case, and you are moving a modest
        number of files.
      - Slower. Requires a bastion session to stay open.
+   * - :ref:`gcp <gcp_general_copy>`
+     - Both ends are within Gaea, PPAN, or GFDL.
+     - Those sites only.
+   * - :ref:`rsync on the system itself <migrating_local>`
+     - Source and destination are both filesystems on the same system.
+     - Not a network transfer. Use a batch job for large volumes.
 
 .. _trusted_and_untrusted:
 
@@ -1040,6 +1046,92 @@ When prompted for a password, enter your MFA passcode.
 
 Type ``localhost`` exactly as shown in both clients. It is not a placeholder.
 
+
+.. _gcp_general_copy:
+
+=======================================
+Copy Between Gaea, PPAN, and GFDL
+=======================================
+
+GCP (general copy) is a convenience wrapper for copying data between the Gaea
+and PPAN analysis sites and the GFDL site. It hides the differences between
+those sites and their filesystems, and its syntax is close to :manpage:`cp(1)`.
+
+Use it when both ends of your copy are inside Gaea, PPAN, or GFDL. For
+anything crossing outside those sites, use Globus.
+
+Load the module and copy:
+
+.. code-block:: shell
+
+    module load gcp
+    gcp -v /path/to/source/file /path/to/destination/file
+
+.. TODO: Confirm the current GCP version and the "module load gcp/<version>"
+   form to recommend. The internal documentation this section was drawn from
+   cites 2.3.26, dated 2022-08-01.
+
+Use a Smartsite to Copy Between Sites
+=====================================
+
+Each NOAA site has a short name, called a *smartsite*. Prepend the smartsite
+and a colon to a path to place that path at another site. You do not need a
+smartsite for the site you are currently logged in to, though it is not an
+error to include one. These two commands are equivalent when run from GFDL:
+
+.. code-block:: shell
+
+    gcp -v /path/to/some/file gaea:/path/to/remote/destination
+    gcp -v gfdl:/path/to/some/file gaea:/path/to/remote/destination
+
+GCP pulls as well as it pushes, so the smartsite can be on either side:
+
+.. code-block:: shell
+
+    gcp -v gaea:/path/to/a/file /path/to/a/local/destination
+
+.. TODO: Confirm the current list of supported smartsites and the filesystems
+   GCP supports at each site. The internal documentation this section was
+   drawn from lists only gfdl and gaea, and names Gaea filesystems
+   (/lustre/f2) that have since been retired.
+
+.. note::
+
+    You cannot copy from a GFDL workstation directly to a remote site. Use the
+    GFDL PP/AN cluster to push or pull files to a remote site.
+
+Useful Options
+==============
+
+``-v``
+    Verbose output. It prints a unique log session id for the transfer, like
+    ``Unique log session id is 07f6dd51-6c4d-4e51-86b4-e3344c01c3ae``. Always
+    use ``-v``, and include that id in any help desk ticket about a failed
+    copy. The GCP team uses it to find your transfer in their logs.
+
+``-cd``
+    Create destination directories that do not exist. A trailing slash makes
+    GCP treat the last path segment as a directory; without one, it treats
+    that segment as a file name. So this creates a file called ``file``
+    inside a new directory called ``directory``:
+
+    .. code-block:: shell
+
+        gcp -cd /path/to/a/file /path/to/a/nonexistent/directory/
+
+    while this creates a *file* called ``directory``:
+
+    .. code-block:: shell
+
+        gcp -cd /path/to/a/file /path/to/a/nonexistent/directory
+
+For the full option list, run ``gcp --help``.
+
+.. seealso::
+
+    :ref:`ppan-user-guide` describes using GCP to reach the GFDL workstation
+    filesystems :file:`/net`, :file:`/net2`, and :file:`/net3` from an
+    analysis session.
 
 .. _unattended_transfers:
 
