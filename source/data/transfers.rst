@@ -373,30 +373,93 @@ completes.
 Set Up Your Own Computer with Globus Connect Personal
 =====================================================
 
-Globus Connect Personal turns your laptop or workstation into a Globus
-endpoint, so you can transfer data between it and an RDHPCS uDTN.
+Your laptop or workstation is not a Globus collection on its own. Globus
+Connect Personal is a small application that turns it into one, called a
+*personal collection*. Once it is running, your computer appears in the
+Globus File Manager just like any RDHPCS collection, and you transfer files
+between the two panels exactly as you would between two RDHPCS systems.
+
+This is the recommended way to move data between your own computer and
+RDHPCS.
+
+.. important::
+
+    NOAA RDHPCS treats your laptop or workstation as an **untrusted**
+    endpoint. Pair your personal collection with a **uDTN** collection from
+    :ref:`udtn_hostnames`, not with a trusted collection. Because your project
+    space is not visible from a uDTN, the transfer takes two steps. See
+    :ref:`udtn_two_step`.
+
+Why use Globus Connect Personal instead of ``scp``:
+
+* Transfer rates are much faster than ``scp`` or ``sftp``.
+* Transfers suspend and resume automatically as your computer sleeps, wakes,
+  or reboots. A large transfer survives closing your laptop lid.
+* Globus retries failed files on its own and emails you when the transfer
+  finishes.
+* Globus verifies each file after transfer, so you know the copy is intact.
+* You do not need an SSH port tunnel, and you do not need to keep a terminal
+  window open.
+
+Install Globus Connect Personal
+-------------------------------
+
+Install the version for your operating system, then start it and log in with
+the same NOAA RDHPCS identity you use for the `Globus App`_. During setup you
+give your collection a name, which is how it appears in the File Manager.
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
+
+   * - Operating system
+     - Installation instructions
+   * - Linux
+     - `Install on Linux
+       <https://docs.globus.org/globus-connect-personal/install/linux/>`_
+   * - macOS
+     - `Install on macOS
+       <https://docs.globus.org/globus-connect-personal/install/mac/>`_
+   * - Windows
+     - `Install on Windows
+       <https://docs.globus.org/globus-connect-personal/install/windows/>`_
+
+Choose Which Directories to Expose
+----------------------------------
+
+By default, Globus Connect Personal shares your home directory in read and
+write mode, and nothing else. You can change which paths are accessible, and
+whether each one is readable or writable.
+
+Restricting paths is worth doing. It limits what a mistaken transfer can
+overwrite on your own machine, and it keeps the File Manager listing short.
+See `Configuration and file permissions
+<https://docs.globus.org/globus-connect-personal/>`_ for the settings on each
+operating system.
 
 .. note::
 
-    NOAA RDHPCS considers your laptop or workstation a Globus **untrusted**
-    endpoint. Pair it with a uDTN collection, not a trusted collection.
+    On Linux, Globus Connect Personal must be running for your collection to
+    appear in the File Manager. If your collection shows as offline, start it
+    with :command:`globusconnectpersonal -start`.
 
-Benefits of using Globus Connect Personal with uDTNs:
+.. seealso::
 
-* Data transfers directly between your computer and an untrusted collection.
-* Transfer rates are much faster than ``scp`` or ``sftp``.
-* Transfers suspend and resume automatically as your computer sleeps, wakes,
-  or reboots.
-* The mechanism is identical to any other Globus transfer.
-
-See `Globus Connect Personal
-<https://www.globus.org/globus-connect-personal>`_ for information about
-setting up your laptop or workstation as a Globus personal endpoint.
+    * `Globus Connect Personal overview
+      <https://docs.globus.org/globus-connect-personal/>`_
+    * `Installation instructions for all platforms
+      <https://docs.globus.org/globus-connect-personal/install/>`_
 
 .. _globus_cli:
 
 Use the Globus Command Line
 ===========================
+
+Use the command line when you want to script a transfer, or when you are
+already logged in to an RDHPCS system and do not want to switch to a browser.
+The web app and the CLI drive the same service, so a transfer you start from
+one is visible in the other.
 
 The Globus command line interface (CLI) is available on Ursa and Mercury. To
 load it, run:
@@ -412,37 +475,113 @@ collections commonly used by RDHPCS users. To see them, run:
 
     $ module show globus-cli
 
+Log In
+------
+
+Before your first transfer, authenticate. This opens a URL that you paste
+into a browser, then paste the resulting code back into the terminal:
+
+.. code-block:: shell
+
+    $ globus login
+    $ globus whoami
+
+Your login persists, so you do not need to repeat this for every transfer.
+
+Find a Collection
+-----------------
+
+Commands take a collection UUID, not a display name. Look one up with
+``globus endpoint search``:
+
+.. code-block:: shell
+
+    $ globus endpoint search noaardhpcs#ursa_untrusted
+
+List a Directory
+----------------
+
+.. code-block:: shell
+
+    $ globus ls -l <collection-uuid>:/scratch4/data_untrusted/First.Last/
+
 .. TODO: The previous version of this page contained a table of collection
    UUIDs and their environment variable names (UUID_HERA_DTN, UUID_JET_DTN,
    UUID_NIAGARA_DTN, and so on) in source/files/globus_endpoints.csv. Every
    entry named a decommissioned system. Confirm the current UUIDs and
    variable names, then add them here.
 
-To find the UUID of a collection, use ``globus endpoint search``:
+Transfer Files
+--------------
 
-.. code-block:: shell
-
-  $ globus endpoint search noaardhpcs#cloud_aws_s3_public
-
-You can save a UUID in an environment variable of your own, then use normal
-Globus CLI commands. For example, to list a directory:
-
-.. code-block:: shell
-
-  $ globus ls -l $RDHPCS_AWS_PUBLIC:/noaa-rrfs-pds/
-
-This example transfers a file named :file:`myDataFileName_here.txt` from a
-personal endpoint to the PPAN untrusted collection. Replace ``First.Last``
-with your own user name, and replace the UUID with the one you looked up:
+``globus transfer`` takes a source and a destination, each written as
+``<collection-uuid>:<path>``. This example transfers a single file from a
+personal collection to the PPAN untrusted collection. Replace ``First.Last``
+with your own user name, and replace each UUID with one you looked up:
 
 .. code-block:: console
 
     [First.Last@an001 ~]$ globus transfer my-personal-external-endpoint-id:myDataFileName_here.txt \
     6ba73d87-08f2-463e-bf8f-83cc3e7a871f:First.Last/myDataFileName_there.txt
 
-If you want to use the Globus CLI on your personal machine, or on a system
-where it is not installed, you can install it yourself. See the Globus
-`CLI documentation <https://docs.globus.org/cli/>`_.
+To transfer a whole directory, add ``--recursive``. To check on a transfer
+after you submit it:
+
+.. code-block:: shell
+
+    $ globus task list
+    $ globus task wait <task-id>
+
+To move many separate paths in one task, use ``--batch``, which reads
+source and destination pairs from standard input. See the `globus transfer
+reference <https://docs.globus.org/cli/reference/transfer/>`_.
+
+Install the CLI Elsewhere
+-------------------------
+
+If you want the Globus CLI on your personal machine, or on a system where it
+is not installed, you can install it yourself. Globus recommends ``pipx``, so
+that the CLI keeps working across changes to your system Python.
+
+.. seealso::
+
+    * `Globus CLI documentation <https://docs.globus.org/cli/>`_
+    * `CLI quickstart <https://docs.globus.org/cli/quickstart/>`_
+    * `Using the CLI <https://docs.globus.org/cli/using-the-cli/>`_
+    * `CLI examples <https://docs.globus.org/cli/examples/>`_
+
+.. _globus_scheduled:
+
+Schedule and Repeat Transfers
+=============================
+
+You do not have to start every transfer by hand. Globus Timers runs a
+transfer on a schedule, and repeats it at an interval you choose. This is
+useful when you are pulling a data set that is updated daily, or when you
+want a long transfer to start overnight.
+
+To schedule a transfer in the web app, set up the transfer as usual in the
+File Manager, then open the **Transfer & Timer Options** menu before you
+click **Start**. Set a **Schedule Start** date and time, and a **Repeat**
+interval if you want the transfer to run more than once.
+
+Because a repeated transfer skips files that are already present and
+unchanged at the destination, a timer is also a practical way to keep two
+directories in sync.
+
+.. note::
+
+    Timers do not remove the uDTN two-step problem on their own. A scheduled
+    transfer can move data into your :file:`data_untrusted` staging directory,
+    but you still need to move it to project space before the 5-day purge. See
+    :ref:`udtn_two_step`.
+
+.. seealso::
+
+    * `How to schedule a transfer
+      <https://docs.globus.org/api/timers/getting-started/schedule-a-transfer/>`_
+    * `Automate transfers with a service account
+      <https://docs.globus.org/guides/recipes/automate-with-service-account/>`_
 
 .. _globus_sharing:
 
@@ -936,6 +1075,13 @@ initiated from the remote host.
 
     Unattended data transfers are allowed on the :ref:`trusted DTNs
     <transferring-data-trusted-dtn>` only.
+
+.. tip::
+
+    Before you set up SSH keys, consider whether Globus solves your problem
+    instead. A scheduled or repeating timer covers most recurring transfers
+    without any key management, and it works with untrusted collections. See
+    :ref:`globus_scheduled`.
 
 .. important::
 
