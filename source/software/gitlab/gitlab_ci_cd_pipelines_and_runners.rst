@@ -77,7 +77,7 @@ runner. The runner checks out the repository, executes the job script, collects
 artifacts, and sends the job result back to GitLab.
 
 Runners can be installed on RDHPCS systems such as Hera and Ursa. Users are
-advised to two executor types, either shell, or a custum slurm executor
+advised to set up two executor types, either shell, or a custum slurm executor
 from https://github.com/Algebraic-Programming/slurm-gitlab-executor.
 The executor determines the environment in
 which pipeline jobs run.

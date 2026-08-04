@@ -44,7 +44,7 @@ Tunnel Setup
 
    .. code-block:: bash
 
-      ssh -D <port-no> User.Name@bastion.<princeton/boulder>.rdhpcs.noaa.gov
+      ssh -D <port-no> User.Name@bastion.<princeton/fairmont>.rdhpcs.noaa.gov
 
 2. Configure browser proxy settings. Check your browser documentation on
    how to modify the proxy settings. In the example below, Mozilla Firefox
