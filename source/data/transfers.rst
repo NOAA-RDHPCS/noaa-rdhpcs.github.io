@@ -822,83 +822,113 @@ To send data **out**, do the same steps in reverse order.
 Through an SSH Port Tunnel
 ==========================
 
-With the SSH port tunnel method, an SSH tunnel is created between your point
-of login -- typically your desktop -- and the remote host. The port tunnel
-method works from any system on the network, so your local machine does not
-have to be in the noaa.gov domain. Use this method when the DTNs are not
-accessible.
+When you cannot reach a DTN, you can copy files through an SSH tunnel that
+runs over your bastion login. The bastion configures a port-forwarding tunnel
+for you; your local SSH client only has to connect to it.
+
+This method works from any system on the network, so your local machine does
+not have to be in the noaa.gov domain. It is slower than a DTN or Globus, so
+prefer it for a modest number of files.
 
 .. _ssh-tunnel:
 
-SSH Port Tunnel from Linux-like Systems
----------------------------------------
+Set Up the Tunnel Once
+----------------------
 
-This method requires two sessions on your local machine: one to establish the
-SSH port tunnel, and the other to perform the copy. To establish the port
-tunnel, get the appropriate bastion hostname for the host you need from the
-:ref:`bastion_hostnames` table.
+Rather than looking up a port number and typing forwarding options by hand,
+generate an SSH configuration file once and let your SSH client do the work
+afterwards.
 
-Before You Begin
-^^^^^^^^^^^^^^^^
+#. Generate your configuration with the :ref:`OpenSSH configuration form
+   <openssh-config>`. Enter your user name as ``First.Last`` and your numeric
+   user ID, which you find by running :command:`id -u` on an RDHPCS system.
+#. Copy the generated text into your SSH configuration file. On Linux and
+   macOS this is :file:`$HOME/.ssh/config`. On Windows it is
+   :file:`%userprofile%\\.ssh\\config`. Create the :file:`.ssh` directory if
+   it does not exist.
+#. Open a session to the bastion and leave it open:
 
-Only the first session to a bastion can establish an ssh tunnel. You already
-have an existing session when you see messages like:
+   .. code-block:: shell
 
-  .. code-block:: shell
+       ssh ursa-mfa.princeton.rdhpcs.noaa.gov
 
-    -------------------
-    bind [127.0.0.1]:57037: Address already in use
-    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
-    Could not request local forwarding.
-    -------------------
+   Take the bastion hostname for your system from the :ref:`bastion_hostnames`
+   table.
 
-To establish a new tunnel, do one of the following:
+The generated configuration defines a short alias for each system, named
+:samp:`{system}.local`. The alias already carries the forwarded port and your
+user name, so you never type either one again.
 
-  * Close any existing sessions.
-  * Open a new session using a bastion where you have no existing sessions.
+.. important::
 
-In the steps below, replace ``First.Last`` with your own HPC username, and
-``XXXXX`` with the unique local port number assigned to you when you log in to
-your HPC system. Use the word ``localhost`` where indicated. It is not a
-variable; do not substitute anything else. You run these commands on your
-local machine, not within the HPC system terminal.
+    The tunnel exists only while that first bastion session stays open. Close
+    it and your transfers stop.
 
-As long as the ssh window remains open, you can use the forwarded port for
-data transfers. After the first session has been opened with port forwarding,
-any further connections -- login via ssh, copy via scp -- work as expected.
+Copy Files Through the Tunnel
+-----------------------------
 
-**1. Find your local port number**
+In a second terminal, use the alias as though it were an ordinary host name.
+To copy **to** an RDHPCS system:
 
-To find your unique local port number, log in to your HPC system. Make a note
-of the number, then close all sessions. The number is different on each
-system.
+.. code-block:: shell
+
+    scp -r ./mydata ursa.local:/scratch3/PROJECT/First.Last/
+
+    rsync -av --partial --progress ./mydata/ ursa.local:/scratch3/PROJECT/First.Last/
+
+    sftp ursa.local
+
+To copy **from** an RDHPCS system, swap the arguments:
+
+.. code-block:: shell
+
+    scp -r ursa.local:/scratch3/PROJECT/First.Last/mydata ./
+
+    rsync -av --partial --progress ursa.local:/scratch3/PROJECT/First.Last/mydata/ ./mydata/
+
+You are asked for a password each time. Touch your YubiKey to authenticate.
+
+.. tip::
+
+    Useful :manpage:`rsync(1)` options over a tunnel:
+
+    * ``--partial --progress`` keeps partially transferred files and shows
+      progress, so an interrupted transfer resumes where it stopped rather
+      than starting over.
+    * ``--append-verify`` resumes a large single file and checksums the result.
+    * ``-z`` compresses in transit. It helps on a slow or distant link, but it
+      wastes CPU on already-compressed data such as NetCDF or tar.gz archives.
+
+Set Up the Tunnel by Hand
+-------------------------
+
+Use this method if you cannot use an SSH configuration file.
+
+**1. Find your local port number.** Log in to your HPC system and note the
+port number shown in the login banner. It is different on each system. Then
+close all sessions.
 
 .. image:: /images/linux_xfer1.png
    :scale: 75%
    :alt: Terminal login banner showing the assigned local port number
 
-.. note::
-    Open two terminal windows for this process.
+**2. Open the tunnel.** In your first terminal, replace ``XXXXX`` with that
+port number and ``First.Last`` with your user name. Type ``localhost``
+exactly as shown; it is not a placeholder.
 
-**Local Client Window #1**
-
-Enter the appropriate command for your environment. Replace ``XXXXX`` with the
-local port number from step 1.
-
-For Windows PowerShell, enter:
-
-.. code-block:: shell
-
-     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
-
-For Mac or Linux, enter:
+For Mac or Linux:
 
 .. code-block:: shell
 
      ssh -LXXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
 
-If you run X11 applications with x2go or normal terminals, add the ``-X``
-parameter:
+For Windows PowerShell:
+
+.. code-block:: shell
+
+     ssh -m hmac-sha2-512-etm@openssh.com -LXXXXX:localhost:XXXXX First.Last@ursa-mfa.fairmont.rdhpcs.noaa.gov
+
+To run X11 applications, add ``-X``:
 
 .. code-block:: shell
 
@@ -908,157 +938,108 @@ parameter:
    :scale: 75%
    :alt: Terminal showing an ssh command with local port forwarding options
 
-Verify that the tunnel works by running this in another local window on your
-local machine:
+**3. Copy files.** In a second terminal, address ``localhost`` on the
+forwarded port:
+
+.. code-block:: shell
+
+    scp -P XXXXX /local/path/to/file First.Last@localhost:/path/on/HPCSystem
+
+    rsync -av -e 'ssh -p XXXXX' /local/path/to/files/ First.Last@localhost:/path/on/HPCSystem/
+
+Reverse the arguments to copy from the HPC system to your machine.
+
+.. note::
+
+   Your user name is case sensitive. Use the form ``First.Last``.
+
+Only the First Session Can Open a Tunnel
+----------------------------------------
+
+Only the first session to a given bastion can establish a tunnel. You already
+have a session open when you see messages like:
+
+.. code-block:: shell
+
+    bind [127.0.0.1]:57037: Address already in use
+    channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
+    Could not request local forwarding.
+
+To establish a new tunnel, either close your existing sessions, or open a
+session using a bastion where you have none.
+
+To check that a tunnel is working, run this from another local window:
 
 .. code-block:: shell
 
    ssh -p <port> First.Last@localhost
 
-``<port>`` is the local port number you used above, ``First.Last`` is your
-user ID on the RDHPCS systems, and ``localhost`` is typed as-is.
+``<port>`` is your local port number and ``localhost`` is typed as-is. If you
+can log in, the tunnel works; log out again, because that session was only a
+test.
 
-You are prompted for your password. Enter your MFA response and you should be
-able to log in. Once you can log in, log out again -- that session was only
-to test the tunnel.
 
-**2. Use scp or rsync to complete the transfer**
+Windows Clients: PuTTY-CAC and WinSCP
+-------------------------------------
 
-**Local Client Window #2**
+Windows users who cannot use an OpenSSH configuration file can configure the
+tunnel in a graphical client instead. Install `PuTTY-CAC
+<https://github.com/NoMoreFood/putty-cac/releases/>`_ if you need one. If you
+cannot install software on your machine, contact your local systems
+administrator.
 
-Keep the window from step 1 open. The tunnel exists only as long as that
-session stays alive.
+**PuTTY-CAC.** Create a session for the bastion hostname from the
+:ref:`bastion_hostnames` table, then set these values:
 
-To transfer a file **to** an HPC system, for Windows PowerShell, enter:
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :align: left
 
-.. code-block:: shell
-
-  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-  rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
-
-To transfer a file **from** an HPC system, for Windows PowerShell, enter:
-
-.. code-block:: shell
-
-    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
-
-In either case you are asked for a password. Touch your YubiKey to
-authenticate.
-
-.. note::
-
-   Your username is case sensitive in the ``scp`` command. Use the form
-   ``First.Last``.
-
-SSH Port Tunnel for PuTTY-CAC on Windows
-----------------------------------------
-
-PuTTY-CAC is an SSH client used to configure and initiate a connection. As
-needed, install `PuTTY-CAC
-<https://github.com/NoMoreFood/putty-cac/releases/>`_. If you cannot install
-software on your machine, contact your local systems administrator.
-
-**Configuration**
-
-Enter host information to configure an SSH terminal session.
-
-.. image:: /images/putty1.png
-   :scale: 75%
-   :alt: PuTTY-CAC session configuration window with the bastion host name
-
-In the left pane under Connection, select **Data** and enter your NOAA user
-name as it appears in your NOAA email address -- for example, ``Robin.Lee`` if
-your NOAA email is Robin.Lee@noaa.gov. The user name is case sensitive. If you
-do not save a user name, you must enter it each time you open a session.
-
-.. image:: /images/putty2.png
-   :scale: 75%
-   :alt: PuTTY-CAC Data pane with the user name field filled in
-
-Complete the configuration:
-
-* Select **Session** from the top of the left pane.
-* Select **Save**, between Load and Delete.
-
-**Open a first system session**
-
-Open the session to make sure it works, and to record the local port number
-you need to complete the port tunneling setup.
-
-* Select the configured session from the **Saved Sessions** list, select
-  **Load**, then **Open**.
-* Enter your MFA passcode.
-* Find and record your local port number.
-* Click **Exit**, or close the PuTTY-CAC window to end the session.
-
-**Port tunnel setup**
-
-* Open PuTTY-CAC.
-* Select the session from the Saved Sessions list, then **Load**.
-* In the left pane, under Connection > SSH, select **Tunnels**.
-* Check **Local ports accept connections from other hosts**.
-* In the **Source Port** field, enter your local port number.
-* In the **Destination Port** field, enter ``localhost:<local port number>``,
-  where the local port number matches the source port.
-* Select the **Local** and **Auto** radio buttons.
-* Click **Add**.
+   * - Setting
+     - Value
+   * - Connection > Data > Auto-login username
+     - Your NOAA user name as ``First.Last``. It is case sensitive.
+   * - Connection > SSH > Tunnels > Source Port
+     - Your local port number
+   * - Connection > SSH > Tunnels > Destination
+     - :samp:`localhost:{local port number}`, matching the source port
+   * - Connection > SSH > Tunnels
+     - Select **Local** and **Auto**, check **Local ports accept connections
+       from other hosts**, then click **Add**
 
 .. image:: /images/putty3.png
    :alt: PuTTY-CAC Tunnels pane configured with a local port forward
 
-To save the configuration change, select **Session** in the left pane, then
-**Save**. Select **Open** to log in and verify that the updated session works.
+Save the session before you open it. Create a separate session for each
+system you use, because each has its own local port number. To add a session
+for a second bastion on the same system, load the existing session, change the
+host name, give it a new name, and save it.
 
-Create a new port tunnel for each SSH system you intend to use. Each one has a
-unique local port number.
+For the rest of the PuTTY-CAC setup, including CAC configuration, see
+:ref:`cac_instructions`.
 
-To add extra saved sessions for the same system -- for example, for another
-bastion -- when you already have the local port number:
-
-* Load your current saved session.
-* Enter the new host name for the other bastion.
-* Give the new session a new name.
-* Select **Save**. The new session appears in the list of saved sessions.
-* Select **Open** to log in and verify the new session works.
-
-WinSCP
-------
-
-.. note::
-  You must have a port tunnel established before you can use WinSCP. The
-  port-forwarded session must remain active to maintain the WinSCP
-  connection. Use the word ``localhost`` where indicated. It is not a
-  variable; do not substitute anything else.
-
-Once port forwarding is configured, open and configure WinSCP. Be sure to
-select SFTP as the file protocol.
+**WinSCP.** WinSCP needs a tunnel that is already open, and the
+port-forwarded session must stay active for the whole transfer. Configure it
+with:
 
 .. code-block:: shell
 
   Hostname: localhost
-  Port: your-assigned-port-used-in-Step-1-above
+  Port: your local port number
   File protocol: SFTP
 
 .. image:: /images/winSCP1.png
   :scale: 50%
   :alt: WinSCP login dialog configured for localhost with the SFTP protocol
 
-When prompted for a password, enter your MFA passcode:
+When prompted for a password, enter your MFA passcode.
 
-.. image:: /images/winSCP2.png
-  :scale: 75%
-  :alt: WinSCP password prompt
+.. note::
+    Choose SFTP as the protocol, not SCP.
+
+Type ``localhost`` exactly as shown in both clients. It is not a placeholder.
+
 
 .. _unattended_transfers:
 
