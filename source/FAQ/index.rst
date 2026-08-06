@@ -27,10 +27,8 @@ Accounts
    If you are an on-premise HPC system user logging into Parallel Works
    for on-prem HPC systems access, follow these steps before requesting help:
 
-   #. Make sure you are using your RSA token to authenticate. CAC
-      authentication is not supported.
-   #. Make sure you can successfully log into the on-prem HPCS system --
-      PPAN, Ursa, Gaea, Hera, or Niagara.
+   #. Make sure you are using your Yubikey or CAC to authenticate.
+   #. Make sure you can successfully log into the on-prem HPCS system.
    #. Now try to login to the Parallel Works platform.
 
    If you continue to get an "Invalid username error", confirm your
@@ -38,17 +36,6 @@ Accounts
    <https://sso.rdhpcs.noaa.gov/realms/NOAA-RDHPCS/account/>`_.
 
    As needed, :ref:`request help <getting_help>`.
-
-.. faq:: What do I do if my RSA token is locked?
-   :id: rsa-token-locked
-   :tags: RSA token locked authentication wait timeout
-
-   Wait 15 minutes and try again.
-
-   As needed, :ref:`request help <getting_help>` for your accounts, with
-   a subject line of "Please check RSA token status." If you can, include
-   the full terminal output you received when you tried to use your
-   token.
 
 .. faq:: How do I reset my passphrase?
    :id: reset-passphrase
