@@ -557,8 +557,6 @@ Connections
    Once your help ticket is processed, the change should be complete
    within 24 hours.
 
-.. _ssh-between-nodes:
-
 .. faq:: Why can't I SSH between nodes without entering a password?
    :id: ssh-between-nodes
    :tags: SSH password nodes keys authorized_keys permissions
