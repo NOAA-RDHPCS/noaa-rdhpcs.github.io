@@ -75,7 +75,7 @@ This diagram illustrates the typical process for using Cloud resources.
   .. tab-item:: Import Data
      :sync: import
 
-      `Data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
+      `Parallel Works data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
 
   .. tab-item:: Perform Computations
      :sync: compute
@@ -1419,7 +1419,7 @@ How can I automatically find the hostname of a cluster?
 By default, the host names are always going to be different
 each time you start a cluster.
 
-You can find CSP information using the :envvar:`PW_CSP` variable, as
+You can find CSP information using the ``PW_CSP`` variable, as
 in the example:
 
 .. code-block:: shell
@@ -1427,7 +1427,7 @@ in the example:
     $ echo $PW_CSP
     google
 
-There are a few other :envvar:`PW_*` vars that you may find useful:
+There are a few other ``PW_*`` vars that you may find useful:
 
 :PW_PLATFORM_HOST:
 :PW_POOL_ID:
