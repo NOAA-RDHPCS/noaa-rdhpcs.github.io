@@ -44,10 +44,10 @@ This diagram illustrates the typical process for using Cloud resources.
       .. figure:: /images/NOAAcloud1.png
         :scale: 50%
 
-      Click **Continue with NOAA SSO**.
+     Click :guilabel:`Continue with NOAA SSO`.
       Your username is your NOAA username.
       Sign in using your CAC or YubiKey.
-      When you are logged in, click **Compute**.
+      When you are logged in, click :guilabel:`Compute`.
 
       .. figure:: /images/cgateway.png
         :scale: 50%
@@ -148,9 +148,7 @@ The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform.
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the PW main page,
-click the workflow Marketplace button in the sidebar menu:
-
-.. image:: /images/mplace.png
+click the :guilabel:`Marketplace` button in the sidebar menu.
 
 From the Marketplace home page you can review available
 workflows.
@@ -165,10 +163,11 @@ Cloud and on-premise systems.
 **Subscribe to the default template of HPC systems from the Parallel
 Works Marketplace**
 
-1. From the login portal, click on the user Name. Select
-   **MARKETPLACE** from the drop down list box.
+1. From the login portal, click the user Name. Select
+   :guilabel:`MARKETPLACE` from the drop down list box.
 
-2. Click on the Fork sign and click the Fork button when prompted.
+2. Click the :guilabel:`Fork` sign and click the
+   :guilabel:`Fork` button when prompted.
 
 3. Exit the page.
 
@@ -208,7 +207,7 @@ the public key in ~/.ssh/authorized_keys file.
 
         $ ssh <Paste the username with IP address>
 
-   and press **Enter**.
+   and press :guilabel:`Enter`.
 
    This will let you login to the head node from the PW
    interface.
@@ -237,29 +236,26 @@ disk at any time. This allows you to make changes on a
 running cluster, and snapshot it when you are ready to create
 a bootable disk.
 
-After you make changes to your login node, click **Create Snapshot** on
-the root disk from your cluster's session page:
+
+After you make changes to your login node, click
+:guilabel:`Create Snapshot`
+on the root disk from your cluster's session page:
 
 .. image:: /images/legacy-snap1.png
 
 At the prompt, give name the snapshot. The name must be 3-51
 characters in length, begin with a letter, and use only lowercase
-letters, numbers, and hyphens:
+letters, numbers, and hyphens.
 
-.. image:: /images/legacy-snap2.png
-
-When you click **Create**, you will automatically redirect to the
+When you click :guilabel:`Create`, you will automatically redirect to the
 snapshots page. You can monitor the provisioning status there.
-
-.. image:: /images/legacy-snap3.png
 
 It might take a
 few minutes for the snapshot to finish provisioning.
 To expand the provisioning status log, click the button in the Status column.
 
-OS snapshots can be identified on the snapshots page in the **Bootable**
-column. Use the **Group by** dropdown at the top of the page to group
-all of your OS snapshots together:
+OS snapshots are _bootable_. Select **Bootable** in the :guilabel:`Group by`
+dropdown to group all OS snapshots together.
 
 .. image:: /images/legacy-snap4.png
 
@@ -268,8 +264,16 @@ image in your cluster configuration:
 
 .. image:: /images/legacy-snap5.png
 
+
 For more information about creating OS snapshots, see the
-`Parallel Works User Guide <https://parallelworks.com/docs/compute/creating-os-snapshots>`_.
+ `Parallel Works User Guide <https://parallelworks.com/docs/compute/creating-os-snapshots>`_.
+
+  :guilabel:
+
+  `Create snapshot`
+
+
+
 
 Migrating disk snapshots on next-gen clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -326,7 +330,7 @@ bar, it can be found under the extended menu:
 
 The legacy snapshot can be configured on the **'controllerImage'** line, as
 well as any relevant **'elasticImage'** lines in your Slurm partitions. When
-you are finished configuring the cluster, click **Save Json**:
+you are finished configuring the cluster, :guilabel:`Save Json`:
 
 .. image:: /images/legacy-snap7.png
 
@@ -513,7 +517,7 @@ in the subject line.
 Access the Account Information Management website and complete the form
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-View all projects, then click the ``Create a Project`` button.
+View all projects, then click :guilabel:`Create a Project`.
 Fill in the fields with the information from the allocation committee:
 
    a. Project short name, in the format: ``<cloud platform abbreviation>-<project name>``
@@ -589,8 +593,9 @@ Lustre file system
 Lustre is a parallel file system, available as ephemeral and persistent storage
 on the AWS, Azure, and GCP cloud platforms. A lustre file system can be
 attached and mounted on a cluster, and is accessible only from an active
-cluster. To create a lustre file system, access the Storage tab, and click Add
-Storage. You can create any number of lustre file systems. See `this article
+cluster. To create a lustre file system, access the Storage tab, and click
+:guilabel:`Add
+Storage.` You can create any number of lustre file systems. See `this article
 <https://parallelworks.com/docs/storage/creating-storage>`_ for
 information on creating a storage link.
 
@@ -622,7 +627,7 @@ The contrib filesystem is built on the cloud provider's native NFS service,
 AWS EFS is based on the amount of storage used, whereas Azure and GCP pricing
 is based on the provisioned capacity. This makes the AWS contrib cost
 lower than Azure and GCP, comparatively. To find the pricing from the
-Parallel Works Home, click on the NFS link and enter a storage size.
+Parallel Works Home, click the NFS link and enter a storage size.
 At any time, You can increase the size of your provisioned storage.
 
 Contrib storage charges
@@ -653,8 +658,8 @@ Costing
 Cost Calculator
 ---------------
 You can estimate the hourly cost of your experiments from the Parallel
-Works (PW) platform. Click the **Resources** tab, double click your resource
-definition, then click the **Definition** tab. When you update the required
+Works (PW) platform. Click :guilabel:`Resources`, double click your resource
+definition, then click :guilabel:`Definition`. When you update the required
 compute and lustre file system size configuration, the form dynamically shows
 an hourly estimate. Multiply this hourly cost by the run time, to estimate the
 cost of a single experiment.
@@ -687,9 +692,11 @@ Real Time Cost Estimates
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The PW Cost dashboard offers an almost real time estimate of your session. On
-your PW landing page, click the **Cost**. Under **Time Filter**, choose the
-second drop down box and select the value “RT” [Real Time]. Make sure the “User
-Filter” section has your name. The page automatically refreshes with the cost
+your PW landing page, click the :guilabel:`Cost` tab. Under
+:guilabel:`Time Filter`,
+choose the second drop down box and select the value “RT” [Real Time].
+Make sure the :guilabel:`User Filter` section has your name.
+The page automatically refreshes with the cost
 details. The estimate on the Cost dashboard is refreshed every 5 minutes.
 
 Estimating Core Hours
@@ -1046,7 +1053,7 @@ your Cloud platform.
 How do I resize the root disk?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Open up the resource name definition, click on the \_JSON
+Open up the resource name definition, click the \_JSON
 tab, add a parameter "root_size" with a value in the
 cluster_config section, that fits your need, save and
 restart the cluster.
@@ -1065,7 +1072,7 @@ Where do I get detailed Workflow instructions?
 
 If you're running a workflow for the first time, you will
 need to add it to your account first. From the Parallel
-Works main page, click the workflow Marketplace button
+Works main page, click the :guilabel:`Marketplace` button
 located on the top right menu bar, looks like an Earth icon.
 
 Learn more on the `workflow
@@ -1320,10 +1327,10 @@ The default CSP resource definition in the platform is
 fv3gfs model at 768 resolution 48-hours best performance
 optimized benchmark configuration.
 
-From the PW platform top ribbon, click on the “Resources”
+From the PW platform top ribbon, click the :guilabel:`Resources`
 link.
 
-Click on the edit button of a PW v2 cluster [aka elastic
+Click the edit button of a PW v2 cluster [aka elastic
 clusters, CSP slurm] resource definition.
 
 By default, there are two partitions, “Compute” and “batch”
@@ -1337,8 +1344,9 @@ Max Node Amount parameter is the maximum number of nodes in
 a partition. You can change that value to a non-zero number
 to resize the compute partition size.
 
-You may remove the batch partition by clicking on the
-“Remove Partition” button. You can also edit the value for
+To remove the batch partition, click the :guilabel:`Remove Partition` button.
+You can edit the value for Max Node Count parameter to resize this
+partition. You can also edit the value for
 Max Node Count parameter to resize this partition.
 
 Lustre filesystem is an expensive resource. You can disable
@@ -1375,19 +1383,19 @@ After a snapshot is created, the next step is to reference
 
 it in the cluster Resource configuration.
 
-From the Parallel Works banner, click on the “Compute” tab,
-and double click on the resource link to edit it.
+From the Parallel Works banner, click the :guilabel:`Compute` tab,
+and double click the resource link to edit it.
 
-From the Resource Definition page, look for the “Controller
-Image” name. Select your newly created custom snapshot name
-from the drop down list box.
+From the Resource Definition page,
+look for the :guilabel:`ControllerImage` name. Select your newly created custom
+snapshot name from the drop down list box.
 
 Scroll down the page to the partition section. Change the
 value of "Elastic Image" to your custom image. If you have
 more than one partitions, then change "Elastic Image" value
 to your custom image name.
 
-Click on the “Save Resource” button located on the top right
+Click the :guilabel:`Save Resource` button at the top right
 of the page.
 
 Now launch a new cluster using the custom snapshot from the
@@ -1511,12 +1519,12 @@ cluster. This setup will help you send a reminder when your
 cluster is up a predefined number of hours.
 
 You can turn on this functionality when creating a new
-resource name. When you click on the “add resource” button
-under the “Resource”, you find the run time alert option.
+resource name. When you click the :guilabel:`Add Resource` button
+under the :guilabel:`Resource` tab, you find the run time alert option.
 
 You can enable this functionality on a running cluster, by
-navigating to the “properties” tab of your resource name
-under the “Resource” tab.
+navigating to the :guilabel:`Properties` tab of your resource name
+under the :guilabel:`Resource` tab.
 
 `Reference <https://docs.parallel.works>`__
 
@@ -1533,15 +1541,15 @@ directory on contrib.
 #. Start a cluster, login to the controller node, and
    create your directory on the contrib volume.
 
-Start a cluster by clicking on the start/stop button
+To start a cluster, click the :guilabel:`Start/Stop` button.
 
 When your cluster is up, it shows your name with an IP
-address. Click on this link that copies username and IP
+address. Click the link that copies username and IP
 address to the clipboard.
 
-Click on the IDE button located top right on the ribbon.
+Click the :guilabel:`IDE` button located top right on the ribbon.
 
-Click on the 'Terminal' link and select a 'New Terminal'
+Click the :guilabel:`Terminal` link and select :guilabel:`New Terminal`.
 
 SSH into the controller node by pasting the login
 information from the clipboard.
@@ -1772,9 +1780,9 @@ can be a bucket, NFS or contrib filesystem. To set up the advanced setting
 change:
 
 #. Select a cluster configuration, then select the **Edit** option.
-#. Scroll all the way down, and click **Advanced Settings**.
+#. Scroll all the way down, and click :guilabel:`Advanced Settings`.
 #. In the Advanced settings form, scroll down to the
-   link **User workspace mount points**.
+   link :guilabel:`User workspace mount points`.
 
 Map the Home, Bucket or Contrib as illustrated below:
 
@@ -1783,7 +1791,7 @@ Map the Home, Bucket or Contrib as illustrated below:
    :scale: 75%
 
 
-4. From the top menu, click **Save Changes**.
+4. From the top menu, click :guilabel:`Save Changes`.
 5. Launch the cluster.
 6. Once the cluster is up, open the Editor menu, and locate your cluster name
    in the Explorer, as illustrated below:
@@ -2177,11 +2185,12 @@ How do I restore a default configuration?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can restore a configuration by navigating to the
-“Resources” tab, double click on a resource name, shows up
+“Resources” tab, double click a resource name, shows up
 it's “Definition” page. Scroll down on the page and click on
 the “(restore configuration)” link, then select a resource
-configuration from the drop down list, click on the
-"Restore" button, and then click “Save Resource”.
+configuration from the drop down list, click the
+:guilabel:`Restore`button, and then click
+:guilabel:`Save Resource`.
 
 How do I transfer files from one project to another?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2192,9 +2201,11 @@ If you are a member of a source and target cloud projects then
 transferring of files is easy:
 
 1. Create a small size cluster definition with just one node in the
-   compute batch.  From the resource definition, click on the “Add a
-   Attached storage” button then add both source and destination
-   buckets by selecting “Shared Persistent Storages” option from the
+   compute batch.  From the resource definition, click the
+   :guilabel:`Add Attached storage` button.
+   Then select :guilabel:`Shared Persistent Storages` option from
+   the drop down list box, and add both source and destination
+   buckets from the
    drop down list box one at a time.  Make sure the bucket's mount
    point names are easily distinguishable, for example /source and
    /destination.  You do not need a lustre file system in this
@@ -2364,9 +2375,9 @@ depend on the changes made to the platform. You can protect
 your configuration customization by backing up changes prior
 to restoring the default configuration.
 
-From the Parallel Works Platform click on the “Resources”
-tab, select the chicklet, and click on the “Duplicate
-resource” icon, and create a duplicate configuration.
+From the Parallel Works Platform click the :guilabel:`Resources` tab,
+select the chicklet, click the :guilabel:`Duplicate Resource`
+icon, and create a duplicate configuration.
 
 Use the original configuration for restoring the default
 configuration to bring the latest changes. Manually update
@@ -2836,7 +2847,7 @@ that are Active, Idle, Offline, and Total
 How do I manually reset the node status?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You may manually resume the nodes like this:
+You may manually resume the nodes with the command:
 
 .. code-block:: shell
 
@@ -2848,21 +2859,6 @@ below:
  .. code-block::
 
   sudo scontrol update nodename=userid-azurestream5-00002-1-[0001-0021] state=idle
-
-[How to GitHub Copilot authenticate in VS Code when submitting to the
-Slum partition?]
-(How-to-GitHub-Copilot-authenticate-in-VS-Code-when-submitting-to-the-Slum-partition?)
-
-When using the GitHub Copilot in VS Code (specifically in ACTIVATE),
-follow these steps:
-
-1.  Locate the Git Icon: Click the Git icon in the lower-right corner
-    of the VS Code
-    window. Note that the interface may not explicitly state "Signed out."
-2.  Sign In: Select the option to "Sign in to use AI features."
-3.  Authenticate: A code will be generated. Copy this code and follow the
-    link tovvGitHub. Paste the code into the resulting GitHub
-    login window to authorize access.
 
 Errors
 ------
@@ -2876,25 +2872,22 @@ has reduced the free space available for user data, that
 includes SSH public key stored in "Access Public Key", and
 "User Bootstrap".
 
-Below settings can lower the user data size, and avoid a
-provisioning error due to page size limit.
-
-Maintain SSH authentication key under the account, and as it
+The settings below can lower the user data size, and avoid a
+provisioning error due to page size limit. Maintain SSH authentication
+key under the account, and as it
 is shared across all your clusters.
-
-Click on the “User” icon located at the top right of the
-page, then navigate to the “account” -> “Authentication”
+Navigate to the :guilabel:`account -> Authentication`
 tab, and your SSH public keys.
 
 Remove the SSH key from the “Access Public Key” box, and
 save your configuration.
 
-`Reference <https://parallelworks.com/docs/navigating-activate>`__
+`Reference <https://parallelworks.com/docs/navigating-activate>`_
 
 **Where do I enter my public SSH key in the PW platform?**
 
 Navigate to your account, the Account -> Authentication,
-then click on the "add SSH key" button to your public SSH
+then click the :guilabel:`add SSH key` button to your public SSH
 Keys. There is a system key "User Workspace", which is used
 by the system to connect from a user's workspace to your
 cluster.
@@ -3097,14 +3090,15 @@ Parallel Works Cloud administrator can remove this storage.
 Finding the project object storage, [bucket/block storage] and access keys?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-From the login page, click on the IDE icon located at the
+From the login page, click the :guilabel:`IDE` icon located at the
 top right of the page, you will see file manager with
 folders.
 
 From the File Manager, navigate under the
 “storage/project_keys/<CSP>” folder to locate your project's
 object storage name and access key. **The file name is your
-project's bucket name**. Open the file by double clicking to
+project's bucket name**.
+Double click the file to open it and
 view the bucket access key information.
 
 To access the project's permanent object storage, copy and
@@ -3583,7 +3577,7 @@ To load the default CentOS 7 config from the marketplace:
   :scale: 60 %
 
 3.  Select AWS Default Intel FV3 Configuration v.1.0.0 from the dropdown menu,
-    and click the Restore button. Don't forget to save your changes!
+    and click :guilabel:`Restore`. Don't forget to save your changes!
 
 Manually Manually configure a cluster to use CentOS 7
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
