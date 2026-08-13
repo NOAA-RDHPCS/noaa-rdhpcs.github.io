@@ -1477,7 +1477,7 @@ How do I assign a static ip address to a cluster?
 It can be useful for security purposes to assign a static IP address to
 a cluster. It is *static* since
 the address remains the same as long as the cluster exists.
-The login node will always come up with that IP, even if you destroy and 
+The login node will always come up with that IP, even if you destroy and
 restart it. The IP address will only change if you de-provision the
 static IP and create a new one.
 
@@ -1496,7 +1496,7 @@ Once the IP has been provisioned, you can configure your cluster to use it:
 This ensures that your cluster will always have the same IP address.
 
 If you want to transfer the IP to a different cluster, you can do so
-following the same procedures. 
+following the same procedures.
 
 There is a small cost associated with the static ip address.
 The page that directs to static IP management may not show up in the PW sidebar
@@ -1510,8 +1510,7 @@ This will add the shortcut link to the sidebar:
 If you’re not able to locate the configuration gear at the above location,
 you’re not using the latest UI.  In that case, click the user name located
 at the bottom of the side bar, click on the account menu, and then
-click the sidebar menu. You will find the IP address option under the Compute section,
-to enable it to appear in the sidebar.
+click the sidebar menu. You will find the IP address option under Compute.
 
 How do I turn off Lustre filesystem from the cluster?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
