@@ -55,6 +55,11 @@ Accounts
    .. code-block:: shell
 
       $ xsudo <role_account_name>
+   
+   .. note::
+
+   Xsudo is available only on Hera and Ursa.
+
 
    Before switching to the role account, note your DISPLAY environment
    variable:
