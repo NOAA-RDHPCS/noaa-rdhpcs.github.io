@@ -1474,43 +1474,15 @@ remote machine over that port.
 How do I assign a static ip address to a cluster?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It can be useful for security purposes to assign a static IP address to
-a cluster. It is *static* since
-the address remains the same as long as the cluster exists.
-The login node will always come up with that IP, even if you destroy and
-restart it. The IP address will only change if you de-provision the
-static IP and create a new one.
+When you create a cluster, an ephemeral IP address is automatically chosen
+and assigned to it. This is suitable in most cases.
 
-To configure a static IP, provide a name, cloud network,
-region, and group. (The network options are already region specific.
-Simply select the relevant east-1 or east-2 for both options, depending
-on where you want the IP to be located.)
-Once the cluster is configured, click the :guilabel:`Add IP Address` button:
+If your cluster runs an application that depends on having the same IP
+address each time you run it, and you need to start and stop your
+cluster, you can create a static, shareable IP address for that cluster.
 
-.. image:: /images/StaticIP3.png
-
-Once the IP has been provisioned, you can configure your cluster to use it:
-
-.. image:: /images/StaticIP4.png
-
-This ensures that your cluster will always have the same IP address.
-
-If you want to transfer the IP to a different cluster, you can do so
-following the same procedures.
-
-There is a small cost associated with the static ip address.
-The page that directs to static IP management may not show up in the PW sidebar
-for you by default. If you want to add it, you can update your sidebar
-configuration. The gear on the lower left of the sidebar will take you to that
-config page. Once there, check the IP Addresses box in the Compute section.
-This will add the shortcut link to the sidebar:
-
-.. image:: /images/StaticIP1.png
-
-If you’re not able to locate the configuration gear at the above location,
-you’re not using the latest UI.  In that case, click the user name located
-at the bottom of the side bar, click on the account menu, and then
-click the sidebar menu. You will find the IP address option under Compute.
+Parallel Works `Managing IP Addresses <https://parallelworks.com/docs/compute/managing-ip-addresses>`_
+provides complete details.
 
 How do I turn off Lustre filesystem from the cluster?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
