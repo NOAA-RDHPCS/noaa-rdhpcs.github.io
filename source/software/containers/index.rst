@@ -172,9 +172,6 @@ and whether module loading is needed.
    * -
      - ``apptainer`` (*)
      - ``module load spack-managed-x86-64_v3/v1.0 apptainer``
-   * - Derecho
-     - ``apptainer``
-     - ``module load apptainer``
    * - NOAA Cloud (PW)
      - ``singularity``
      - none required
