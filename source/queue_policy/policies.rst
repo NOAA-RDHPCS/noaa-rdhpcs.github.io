@@ -866,9 +866,8 @@ Hera and Ursa QOS
      - 1
      - This QOS can only be used on Ursa in combination with the ``u1-h100``
        partition. Only Ursa projects with a GPU allocation (projects that begin
-       with ``gpu-``) of 2 or larger may use this QOS. Max of 1,344 gpu-hours
-       (gpu_allocated * wallclock_requested) of running jobs at any time, per
-       project-account. A project can have up to the max number of jobs
+       with ``gpu-``) of 2 or larger may use this QOS.
+       A project can have up to the max number of jobs
        pending/running as defined above, but the queued jobs will NOT be
        considered for scheduling if the project's running jobs exceed this
        limit.
