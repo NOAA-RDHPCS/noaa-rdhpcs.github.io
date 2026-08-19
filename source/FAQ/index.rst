@@ -58,7 +58,7 @@ Accounts
 
    .. note::
 
-   Xsudo is available only on Hera and Ursa.
+      Xsudo is available only on Hera and Ursa.
 
 
    Before switching to the role account, note your DISPLAY environment
@@ -492,13 +492,13 @@ Software
    - `xarray <https://xarray.dev/>`_ for netCDF data handling
    - `matplotlib <https://matplotlib.org/>`_ and
      `cartopy <https://scitools.org.uk/cartopy/>`_ for visualization
-   - `geocat-viz <https://geocat-viz.readthedocs.io/>`_ for NCL-style plots
+   - `geocat-viz <https://geocat-viz.readthedocs.io/en/latest/>`_ for NCL-style plots
      in Python
 
    For migration guidance and Python equivalents of NCL functions, see the
    `NCAR GeoCAT documentation <https://geocat.ucar.edu/>`_ and the
-   `NCL to Python Transition Guide
-   <https://geocat-examples.readthedocs.io/en/latest/ncl-to-python.html>`_.
+   `NCL to Python Applications
+   <https://ncar.github.io/geocat-applications/ncl/ncl_entries/ncl_entries.html>`_.
 
    If you must continue using NCL and encounter issues with newer Fortran
    features, load a more recent GNU compiler:
