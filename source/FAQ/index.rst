@@ -41,7 +41,8 @@ Accounts
    :id: reset-passphrase
    :tags: passphrase password reset forgot forgotten
 
-   On the 4th attempt the system will prompt to recreate a passphrase.
+   Keep trying to enter a passphrase. On your
+   4th attempt the system, will prompt you to recreate a passphrase.
    See :ref:`Connecting for the first time <connecting-to-rdhpcs>`.
 
 .. faq:: How do I use X11 applications with a role account?
@@ -338,8 +339,6 @@ Data
    refer to the storage documentation for your specific system. Project
    directories are typically located at:
 
-   - ``/scratch1/<portfolio>/<project>`` or ``/scratch2/<portfolio>/<project>``
-     on Hera
    - ``/scratch3/<portfolio>/<project>`` or ``/scratch4/<portfolio>/<project>``
      on Ursa/Hera
    - ``/work/<project>`` or ``/work2/<project>`` on Orion/Hercules
@@ -394,7 +393,9 @@ Software
    :id: python-packages
    :tags: python package install conda pip module
 
-   There are way too many combinations in which users use python so, it
+   If you load the `rdhpcs-python` module, you will have several
+   commonly used Python packages.
+   There are way too many combinations for using python, so it
    is not practical to have a "common" python installation that is
    applicable for all users. Python works best when users install the
    packages they need in their own project space.
