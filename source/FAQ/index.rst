@@ -629,156 +629,26 @@ Port Tunnels
 How do I set up an ssh port tunnel?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can only establish an ssh tunnel from your initial bastion session. If you
-try to establish a tunnel and see the messages like this:
+The quickest route is to generate an SSH configuration with the
+:ref:`OpenSSH configuration form <openssh-config>`, which gives you a short
+:samp:`{system}.local` alias with the forwarded port already set. Then open a
+bastion session and leave it open.
 
+Note that you can only establish an ssh tunnel from your **initial** bastion
+session. If you try to establish a tunnel and see messages like this:
 
   .. code-block:: shell
 
-    -------------------
     bind [127.0.0.1]:57037: Address already in use
     channel_setup_fwd_listener_tcpip: cannot listen to port: 57037
     Could not request local forwarding.
-    -------------------
 
-You will know that you already have an open session, and cannot
-open a tunnel on this bastion.
+then you already have an open session and cannot open a tunnel on this
+bastion. Either close your existing sessions, or use a bastion where you have
+none.
 
-To establish a new tunnel, do one of the following:
-
-  * Close any existing sessions on this bastion, **or**,
-  * Open a new session using a bastion where you have no existing sessions.
-
-In the steps below, replace First.Last with your own HPC username, and
-XXXXX with the unique Local Port Number assigned to you when you log
-in to your specified HPC system. Use the word "localhost"
-where indicated. It is not a variable, don't substitute anything else.
-Before you perform the first step, close all current sessions on the
-HPC system where you are trying to connect. Once the first session has
-been opened with port forwarding, any further connections (login via
-ssh, copy via scp) will work as expected. You are running these
-commands on your local machine, not within the HPC system terminal.
-
-As long as this ssh window remains open, you will be able to use this
-forwarded port for data transfers.
-
-
-**1. Find your local port number**
-
-To find your unique local port number, log onto your specified HPC
-system. Make a note of this number - once you've recorded
-it, close all sessions. Note that this number, which is a fixed
-value for you, will be different on each HPC system.
-
-.. image:: /images/linux_xfer1.png
-   :scale: 75%
-
-.. note::
-    Open two terminal windows for this process
-
-**Local Client Window #1**
-
-Enter the appropriate command for your environment. Remember to replace XXXXX
-with the local port number identified in Step 1 or as needed.
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-     ssh -m hmac-sha2-512-etm@openssh.com -XXXXX:localhost:XXXXX First.Last@bastion_hostname
-
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-     ssh -L XXXX:localhost:XXXXX First.Last@bastion_hostname
-
-If you will be running X11 applications with x2go or normal terminals,
-remember to add the -X parameter as follows:
-
-.. code-block:: shell
-
-    ssh -X -L XXXX:localhost:XXXXX First.Last@bastion_hostname
-
-
-To verify that the tunnel is working, open another local window in your local
-machine, and issue the command:
-
-.. code-block:: shell
-
-   ssh -p XXXX First.Last@localhost
-
-Note that XXXX is your local port number used above, First.Last is
-your user ID on the RDHPCS systems and localhost is typed as-is.
-
-.. note::
-
-  For a complete list of available bastions by site, check the
-  :ref:`bastion_hostnames` table.
-
-You should be prompted for your password; enter your PIN + RSA token
-and you should be able to login. Once you are able to log in, you can
-log out of that session as that was only for testing the tunnel.
-
-**2. Use SCP to Complete the Transfer**
-
-**Local Client Window #2**
-
-Once the session is open, you can use this forwarded port
-for data transfers, as long as this ssh window is kept open.
-
-Remember that this is the second terminal session opened on your local
-machine. Once a tunnel has been set up as in Step 1, you
-can use a client such as WinSCP to do the transfers using that tunnel.
-Please keep in mind that tunnel will exist only as long as the session opened
-in Step 1 is kept alive.
-
-
-.. code-block:: shell
-
-  Hostname: localhost
-  Port: your-assigned-port-used-in-Step1-above
-  File protocol: SFTP
-
-
-To transfer a file **to** HPC Systems
-
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-  scp -P XXXXX /local/path/to/file First.Last@localhost:/path/to/file/on/HPCSystems
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-  rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' /local/path/to/files First.Last@localhost:/path/to/files/on/HPCSystems
-
-.. note::
-
-   Your username is case sensitive when used in the scp command. Username should be in the form of First.Last.
-
-To transfer a file **from** HPC Systems:
-
-For Windows Power Shell, enter:
-
-.. code-block:: shell
-
-    scp -P XXXXX First.Last@localhost:/path/to/file/on/HPCSystems /local/path/to/file
-
-For Mac or Linux, enter:
-
-.. code-block:: shell
-
-    rsync <put rsync options here> -e 'ssh -l First.Last -p XXXXX' First.Last@localhost:/path/to/files/on/HPCSystems /local/path/to/files
-
-
-In either case, you will be asked for a password. Enter the password
-from your RSA token (not your passphrase). Your response should be
-your PIN+Token code.
+For the full procedure, including copying files over the tunnel with scp,
+rsync, and WinSCP, see :ref:`established-tunnel` on the data transfers page.
 
 
 SSH Port Tunnel For PuTTy Windows Systems
