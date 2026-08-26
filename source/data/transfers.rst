@@ -1160,38 +1160,36 @@ Endpoint.
       files (less than 1MB each one), it would be better to tar the small files.
       Otherwise, if the files are larger, Globus will handle them.
 
+
 Data Sharing with External Collaborators
-========================================
+===========================================
 
-.. Note::
-
-  For a more complete discussion, see :ref:`transferring-data`.
+.. _institutional_data_portal:
 
 RDHPCS users can share data with external collaborators who do not have
-accounts on the RDHPCS system. You can share data files with external
-collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
-process is described in this section.
-
-**For data that is short-lived**, and not broadly shared with external users
-use RDHPCS end-points.
-
-**For data that is expected to be available for three 3 months
-or more**, use the :ref:`institutional_data_portal` end-point.
-
-**For data that is expected to be permanent** (e.g., >3 months), use the GFDL
-institutional data portal end-point (noaagfdl#data_portal). This is for
-outbound sharing of data only. The data group will provide a Globus url to
-the data hosted upon completion of the data hosting.
+accounts on the RDHPCS system, through the GFDL Institutional Data Portal.
+You can share data files with external
+collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs).
+That process is described in this section.
 
 Data hosted on the GFDL Data portal servers is accessible through Globus, and
 available on request through the `data hosting request form
-<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__
-for papers, collaborations, and other projects. The requester will be notified
-of the Globus URL when the request is completed. GFDL Data Transfer features
-can be reviewed in `this table.
+<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__ for papers,
+collaborations, and other projects. The requester will be notified of the
+Globus URL when the request is completed. GFDL Data Transfer features can be
+reviewed in `this table.
 <https://docs.google.com/spreadsheets/d/1fVC60ztNzYxFui1zyF_S_AMfoc3O15oa1-oOKhGrqQI/edit?gid=0#gid=0>`_
 
-For assistance, contact the GFDL team at oar.gfdl.dpteam@noaa.gov.
+.. note::
+
+   * For data that is short-lived, and not broadly shared with external users,
+     use RDHPCS end-points.
+   * The GFDL Institutional Data Portal is available for outbound sharing of data only. Contact
+     your local IT support for appropriate URLs and other instructions for data sharing.
+
+.. note::
+
+  Information shared through the GFDL portal is shared permanently.
 
 .. note::
 
@@ -1576,25 +1574,7 @@ The mechanism for transferring data between your laptop/workstation
 `Globus Connect Personal`_ for information about setting up your
 laptop/workstation as a Globus Personal Endpoint.
 
-.. _institutional_data_portal:
-
-GFDL Institutional Data Portal
-==============================
-
-Data hosted on the GFDL Data portal servers is accessible through Globus, and
-available on request through the `data hosting request form
-<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__ for papers,
-collaborations, and other projects. The requester will be notified of the
-Globus URL when the request is completed. GFDL Data Transfer features can be
-reviewed in `this table.
-<https://docs.google.com/spreadsheets/d/1fVC60ztNzYxFui1zyF_S_AMfoc3O15oa1-oOKhGrqQI/edit?gid=0#gid=0>`_
-
-.. note::
-
-  Information shared through the GFDL portal is shared permanently.
-
 .. _migrating_local:
-
 
 Migrating Data Between Local File Systems
 =========================================

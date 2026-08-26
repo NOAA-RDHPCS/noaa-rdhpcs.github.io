@@ -15,15 +15,26 @@ PPAN User Guide
    :scale: 75%
 
 
-Post Processing and Analysis (PPAN) is a small cluster comprised of
+The GFDL Post-processing and Analysis Cluster is called Pan, or PPAN.
+PPAN is a small cluster comprised of
 over 130 Dell servers located at the Geophysical Fluid Dynamics Laboratory
-(GFDL) in Princeton, NJ. These systems
+(GFDL) in Princeton, NJ. It contains approximately 20 analysis hosts for
+interactive use. The analysis hosts feature a high-performance (CXFS)
+interface to the big-data filesystems
+``/archive`` and ``/work``. A variety of data analysis software packages is
+available via the environment modules system.
+
+These systems
 offer multiple petabytes of disk storage and access to nearly 200
 petabytes of archive storage. Various generations of
 Intel processors from Sandy Bridge to Ice Lake, and available
 ranges from 48-512GB of memory, are sufficient for most user
 post-processing demands. See :ref:`analysis-hosts` and
 :ref:`postprocess-hosts` for specifics.
+
+For batch use, Pan contains about 100 post-processing hosts with names like
+pp006 and pp317. The Slurm batch scheduler permits models running on Gaea to
+submit post-processing jobs to the GFDL cluster.
 
 PPAN supports GFDL's science community by providing a place to analyze
 and interpret models generated on other HPC systems. This gives users a local
@@ -32,20 +43,69 @@ validation of complex processes and tasks. PPAN is also a host to various
 software packages, including MATLAB and other complex combinations of
 Python & R libraries.
 
-The GFDL Post-processing and Analysis Cluster is called Pan, or PPAN. It
-contains approximately 20 analysis hosts for interactive use. The analysis
-hosts feature a high-performance (CXFS) interface to the big-data filesystems
-``/archive`` and ``/work``. A variety of data analysis software packages is
-available via the environment modules system.
-
-For batch use, Pan contains about 100 post-processing hosts with names like
-pp006 and pp317. The Slurm batch scheduler permits models running on Gaea to
-submit post-processing jobs to the GFDL cluster.
-
 This diagram represents the PPAN Data Network.
 
 .. image:: /images/PPANdiag.png
    :scale: 60%
+
+Data Sharing with External Collaborators
+===========================================
+
+.. _institutional_data_portal:
+
+RDHPCS users can share data with external collaborators who do not have
+accounts on the RDHPCS system, through the GFDL Institutional Data Portal.
+You can share data files with external
+collaborators, both inbound and outbound, using the Untrusted DTNs (UDTNs). The
+process is described in this section.
+
+Data hosted on the GFDL Data portal servers is accessible through Globus, and
+available on request through the `data hosting request form
+<https://docs.google.com/forms/d/e/1FAIpQLScH-2mMLHesN6DJlxLEVU6Kg8wXEKvEr-JgB_5nXchjCDrYww/viewform>`__ for papers,
+collaborations, and other projects. The requester will be notified of the
+Globus URL when the request is completed. GFDL Data Transfer features can be
+reviewed in `this table.
+<https://docs.google.com/spreadsheets/d/1fVC60ztNzYxFui1zyF_S_AMfoc3O15oa1-oOKhGrqQI/edit?gid=0#gid=0>`_
+
+.. note::
+
+   * For data that is short-lived, and not broadly shared with external users,
+     use RDHPCS end-points.
+   * For data that is expected to be available for three 3 months or
+     longer, use the GFDL Institutional Data Portal end-point.
+   * For data that is expected to be permanent (e.g., >3 months), use the GFDL
+     institutional data portal end-point (noaagfdl#data_portal). This portal is for
+     outbound sharing of data only. The data group will provide a Globus url to
+     share the data hosted upon completion of the data hosting.
+
+.. note::
+
+  Information shared through the GFDL portal is shared permanently.
+
+.. note::
+
+  Refer to the `GFDL FAIR use and GFDL Data DOI policy
+  <https://www.gfdl.noaa.gov/fair-use-policy/>`_ for external data sharing.
+
+.. Note::
+
+  * This data sharing feature is only available only on *untrusted*
+    Globus endpoints (UDTNs).
+  * You **must** share the collection with your collaborators.
+    **THERE IS CURRENTLY NO PUBLIC SHARING AVAILABLE.**   You can share to an
+    email address or a GlobusID.
+  * You can only share directories under your ``/*/data_untrusted/$USER`` directory.
+  * Before any sharing can be done, the user that is sharing the data
+    must login to the system (Mercury, Ursa (WIP), Hera, ...) at least once,
+    to make sure that the account is properly set up the with the necessary
+    home and project directories.
+  * It may be necessary to create (``mkdir``) your ``/*/data_untrusted/$USER``
+    directory, depending on the system.
+
+Refer to the :ref:`Globus Collection Summary <globus_collection_summary>` to
+find the names of relevant Globus
+Collections, and the exposed directory names.
+
 
 Login to Analysis
 =================
