@@ -370,7 +370,6 @@ your account, and click the trash can icon:
 .. image:: /images/legacy-snap9.png
 
 
-
 Running a Jupyter workflow on a Slurm compute node
 --------------------------------------------------
 
@@ -489,6 +488,219 @@ inactivity.)
 
       [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
       [compute-dy-c5n18xlarge-1]$
+
+Running VS Code from a Compute Node
+-----------------------------------
+
+VS Code sessions and VS Code workflows can be set to run on a compute node.
+You can run VS code through the Parallel Works web interface, or through the
+command line interface (CLI). To connect and run via the Parallel Works Command
+Line Interface, you can go directly to the instructions
+at :ref:`pw-cli`.
+
+To execute a workflow, click **Workflows** in the sidebar.
+Select :guilabel:`Open VSCode`.
+Select :guilabel:`Build`,then complete the Slurm submission information.
+For the workflow, switch the Schedule Job toggle to :guilabel:`Yes`.
+
+.. image:: /images/VSnode1.png
+                :scale: 40%
+
+.. _feature-preview:
+
+Environment and Compute Scheduling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To use the Session option, first enable the Environments & Compute Scheduling
+feature preview. Click your user name in the sidebar menu, then choose
+:guilabel:`Feature Preview` from the pop-up. In the Feature Preview pop-up,
+select :guilabel:`Environment & Compute Scheduling` and click
+:guilabel:`Enable`.
+
+To close the Feature Preview pop-up, press :guilabel:`esc`, or click the
+page outside the pop-up.
+
+You can now start a VS Code session from the Sessions page, or the
+Cluster's main page.
+
+.. note::
+
+  It's easier to start from the cluster's main page, since the pop-up form only includes
+  include the cluster specific options in the selection boxes.
+
+Open the cluster's main page, and click :guilabel:`VS Code`.
+
+.. image:: /images/VSnode3.png
+
+The VS Code workflow opens, with the Cluster Name field populated.
+Complete the pop-up form and click :guilabel:`Launch` to start the session.
+
+To start from the Sessions page, click :guilabel:`+Create`and select
+:guilabel:`VS Code session` from the list.
+
+.. image:: /images/VSnode5.png
+                  :scale: 70%
+
+In the pop-up form, select the environment to run your job. The environment
+list is divided by cluster name, but can't be filtered
+by cluster name. There should be an environment for each partition on the
+cluster. Scroll down, find the one you want to use, and select it.
+
+.. image:: /images/VSnode6.png
+                  :scale: 50%
+
+Complete the form, and click :guilabel:`Create session` to begin.
+
+.. _pw-cli:
+
+Parallel Works Command Line Interface (PW CLI)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+  If you have not installed the pw cli installed, follow the instructions in the
+  Parallel Works User Guide `CLI section <https://parallelworks.com/docs/cli>`_
+
+To connect using the PW CLI:
+
+#. Enable the :ref:`feature-preview` feature.
+#. Ensure all pw cli/agent versions are up to date.
+#. Generate an API key or access Token.
+#. Authenticate with the pw cli.
+#. Use the pw cli to start a vscode connection from your local system to a
+   Slurm scheduled compute node.
+
+Enable the Environments & Compute Scheduling preview
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Click your user name in the sidebar menu, then choose
+:guilabel:`Feature Preview` from the pop-up, then enable the feature.
+
+Ensure all pw cli/agent versions are up to date
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+For the workspace, click on your username again, and select
+:guilabel:`Account` from the sidebar menu.
+
+.. image:: /images/VSnode9.png
+                  :scale: 60%
+
+The account profile opens. It lists the Workspace version, which must be
+7.88.0 or later. If your version is earlier than 7.88.0, you must update your
+workspace.
+
+.. attention::
+
+  Updating the workspace may disrupt any running workflows, sessions, or ssh
+  connections. It's a good idea to save any work in progress, and stop any running workflows
+  or sessions before making the update.
+
+.. image:: /images/VSnode12.png
+
+Click the :guilabel:`Restart` button to update your workspace.
+
+Some status information will display during the update.
+When it's complete, typically within
+30 seconds, the version number should update to the latest version, and the
+information bars should go away. If the page doesn't
+update status after a couple of minutes, you may need to refresh your
+browser window to see version changes.
+
+Generate an API key or access Token
+"""""""""""""""""""""""""""""""""""""
+
+When the update is complete, click :guilabel:`Authentication` in the sidebar
+menu.
+
+.. image:: /images/VSnode10.png
+
+In the API Keys section, click the :guilabel:`+Create` button.
+
+.. image:: /images/VSnode13.png
+                  :scale: 60%
+
+
+API Keys can be long term (lasting from 1 to 30 days), require a name, and
+can be managed from the API keys list. Tokens are valid from 1 hour to a
+maximum of 24 hours, are not named, and cannot be managed after creation.
+Choose the option that best suits your needs, and click the applicable
+menu item. Fill in the appropriate information on the pop-up, and hit
+:guilabel:`Create` or :guilabel:`Generate` to finish the creation process.
+
+The new token/key information will appear in the API Keys section.
+
+.. image:: /images/VSnode11.png
+                    :scale: 60%
+
+The API key will have an extra line that lists the name of the key, and
+other details. You can use the :guilabel:`Copy` button
+to copy the key/token to your clipboard.
+
+.. note::
+
+  The API key/token is the only displayed once created, so make sure to
+  save a copy!
+
+You can now use the API key/token to authenticate the PW CLI to the platform,
+using a terminal on your local system.
+
+Authenticate with the pw cli
+"""""""""""""""""""""""""""""""
+
+If you're using an API Key for authentication, run:
+
+  ``pw auth apikey``
+
+For Token usage, run:
+
+  ``pw auth token``
+
+At the prompt, paste the key/token you copied from the API Keys section,
+and press :guilabel:`Enter`. The pw cli will confirm that you are
+authenticated.
+
+Run ``pw upgrade`` to ensure that your pw cli is up to date.
+
+Start a vscode connection to a Slurm scheduled compute node
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Enter ``env ls``. The command lists out the cluster's associated information,
+listing one environment per partition. You can use the environment information
+to start a VS Code session on a Slurm compute node.
+
+The following example runs in the u1-compute partition. In practice,
+replace the account and qos names below with <account> and <qos>
+values for your user. The last item on the line is the cluster name,
+which can be found as the last part of the URI in the cluster section of
+the env ls output.
+So, for pw://First.Last/noaaursacluster it would be noaaursacluster.
+
+.. code-block:: console
+
+  pw vscode --environment u1-compute --param account=<account> --param qos=<qos>
+  --param walltime=00:30:00 --param nodes=1 --param ntasks-per-node=1 noaaursacluster
+
+This command will submit a job on the cluster. When the job starts, vscode
+should start on your system, and the pw vscode command line output will display
+a line in the following format that can be used to terminate the remote
+session:
+
+  ``pw.exe workers delete <worker ID>``
+
+When vscode starts, it prompt you for the system type through a
+dropdown menu. Select :guilabel:`Linux`, and set the appropriate trust
+level if prompted. Vscode will download the server if necessary,
+and will connect your local front end to the server on the compute node.
+
+When you're finished, close your vscode window and make sure to kill the
+worker. If you closed the power shell window, or have otherwise lost track
+of your worker session ID, you can find a list of workers with the command:
+
+  ``pw.exe workers list``
+
+Once you have the appropriate worker ID, you can terminate it with:
+
+  ``pw.exe workers delete <ID>``
 
 
 Cloud Projects
@@ -1021,7 +1233,7 @@ Allocation Committee (AC). To make a request, complete the
 
 After you complete the form, create a
 Cloud help ticket to track the issue. Send email to
-rdhpcs.cloud.help@noaa.gov, copy to gonzalo.lassally@noaa.gov, using
+rdhpcs.cloud.help@noaa.gov, using
 Cloud Allocation Request in the subject line.
 
 Storage functionalities

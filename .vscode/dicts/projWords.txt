@@ -6,6 +6,7 @@ antlr
 AOCC
 aomip
 aoml
+apikey
 Apptainer
 Archprt
 archrpt
@@ -304,6 +305,7 @@ libmpi
 libsci
 Linaro
 linenos
+linkcheck
 LINTRST
 llapack
 lmgfdl
@@ -427,6 +429,7 @@ noaardhpcs
 noaastore
 noaatest
 noaatools
+noaaursacluster
 NOATIME
 NODEFILE
 NODELIST
