@@ -1,7 +1,7 @@
 .. meta::
    :description: Guide to running Singularity containers on RDHPCS systems
-    including Ursa, Gaea, Hera, MSU-HPC systems (Orion and Hercules),
-    Mercury, and NOAA Cloud providers via ParallelWorks (AWS and Azure)
+    including Ursa, Gaea, Hera, MSU-HPC systems (Orion and Hercules), PPAN,
+    and NOAA Cloud providers via ParallelWorks (AWS and Azure)
     for portable and reproducible software environments.
    :keywords: Singularity, containers, Docker, Apptainer, container images,
     portability, HPC, Ursa, Gaea, Hera, Orion, Hercules, NOAA Cloud, Mercury
@@ -17,11 +17,13 @@ Containers
 
 `Singularity <https://en.wikipedia.org/wiki/Apptainer#History>`_ containers
 are now available to all users and projects on Ursa, Gaea, Hera, MSU-HPC
-(Orion and Hercules), and Mercury. NOAA Cloud providers, accessed via
+(Orion and Hercules), and PPAN. NOAA Cloud providers, accessed via
 ParallelWorks, are also supported.
-Although users are allowed to run Singularity containers, we currently do
-not support additional RDHPCS container services. This includes revision
-control, registries, and mirrors.
+In addition to running Singularity containers, users are allowed to build
+container images on the RDHPCS systems where Apptainer is installed, and upload
+the images to the RDHPCS container registry deployed at
+https://registry.rdhpcs.noaa.gov. The same registry can also be used
+as a spack mirror.
 
 .. _containers-introduction:
 
@@ -157,12 +159,9 @@ and whether module loading is needed.
    * -
      - ``apptainer``
      - none required
-   * - Mercury
-     - ``singularity``
-     - (?)
    * - PPAN
      - ``singularity``
-     - (?)
+     - none required
    * - Ursa
      - ``appptainer``
      - none required
