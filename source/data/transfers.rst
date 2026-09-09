@@ -1002,10 +1002,10 @@ partner clusters.
      - Trusted hosts
        Anywhere
    * - Ursa
-     - noaardhpcs#ursa
-       noaardhpcs#ursa_untrusted
-     - /scratch3, /scratch4
-       /scratch3/data_untrusted, /scratch4/data_untrusted
+     - | noaardhpcs#ursa
+       | noaardhpcs#ursa_untrusted
+     - | /scratch[3,4,5]
+       | /scratch[3,4]/data_untrusted
      - NESCC
      - Trusted hosts
        Anywhere
