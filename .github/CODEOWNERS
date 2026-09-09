@@ -15,9 +15,16 @@
 # Owners of utilities and script files
 /.readthedocs.yaml @chanwilson
 /utils/ @hderry
-/requirements.txt @chanwilson
 /Makefile @chanwilson
 /make.bat @chanwilson
+
+# Python dependency files - require security review for supply chain protection
+# Changes to these files should be carefully reviewed for:
+#   - Unauthorized version changes
+#   - Hash modifications that could indicate compromised packages
+#   - New dependencies that increase attack surface
+/requirements.in @NOAA-RDHPCS/repo_admins
+/requirements.txt @NOAA-RDHPCS/repo_admins
 
 # Top-level code ownership for source files without specific assignments below
 /source/ @elisabethpatterson @chanwilson

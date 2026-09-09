@@ -865,12 +865,6 @@ system (you already have the Local Port number):
 * Select Open to Login and verify the new session works correctly.
 
 
-SSH Port Tunnel For Tectia Windows Systems
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-See the :ref:`tectia` pages for complete information.
-
-
 How to transfer small files to/from an RDHPCS system?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

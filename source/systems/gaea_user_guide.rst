@@ -309,7 +309,7 @@ example,
 
     $ ssh <First.Last>@gaea-rsa.rdhpcs.noaa.gov
 
-For more information on connecting through the Boulder or Princeton bastion,
+For more information on connecting through the Fairmont or Princeton bastion,
 with a :abbr:`CAC (Common Access Card)`, or for your first connection, see
 :ref:`connecting-to-rdhpcs`.
 
@@ -1768,7 +1768,7 @@ large-scale parallel applications. In addition to traditional debugging
 features (setting breakpoints, stepping through code, examining variables), DDT
 also supports attaching to already-running processes and memory debugging.
 In-depth details of DDT can be found in the official `DDT User Guide
-<https://docs.linaroforge.com/latest/html/forge/forge/introduction_to_forge/ddt.html>`_,
+<https://docs.linaroforge.com/26.0/html/forge/forge/introduction_to_forge/ddt.html>`_,
 and instructions for how to use it on RDHPCS systems can be found on the
 :doc:`Debugging Software </software/debuggers/index>` page. DDT is the RDHPCS's
 recommended debugging software for large parallel applications.

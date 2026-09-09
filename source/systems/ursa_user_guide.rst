@@ -132,17 +132,11 @@ See the :ref:`Quality of Service (QOS) table <QOS-table>` for more information.
 Node Sharing
 ------------
 
-Jobs requesting less than 192 cores or the equivalent amount
-of memory will share the node with other jobs.
+As of 6/18/26, node sharing has been enabled for all job sizes, unless you use
+the ``--exclusive`` option when you submit your job.
 
-With the Ursa ``u1-compute`` partition:
-
-* If you request 1-191 cores for your job
-  you will be allocated and charged for the greater of
-  the number of cores requested or the amount of memory
-  requested in GB divided by 2.
-* If you request 192 or greater cores you will be given and charged for whole
-  nodes, in multiples of 192 cores. (ex. Request - 193, charged for 384 cores)
+For more information on this ``sbatch`` option, refer to the
+`Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_.
 
 Front Ends and Service Partition
 --------------------------------
@@ -241,7 +235,7 @@ Description of the two exploratory systems:
   For billing and accounting: one grace hopper gpu-hour will count
   as 72 cpu core-hours.
 
-* Partition:  ``u1-mi300x``. There are 3 nodes, each with 96 Intel cpu
+* Partition:  ``u1-mi300x``. There are 5 nodes, each with 96 Intel cpu
   cores, 8 AMD Mi300x APUs each with 192 GB of RAM AMD ROCm software.
   Click `AMD MI300X <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>`_
   for more detailed information.
