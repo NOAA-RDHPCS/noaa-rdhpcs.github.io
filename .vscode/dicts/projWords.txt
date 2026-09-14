@@ -183,6 +183,8 @@ globusconnectpersonal
 glopara
 glrcm
 gmeta
+GMFRNG
+GMPRNG
 gmtb
 gnmip
 goagent
@@ -225,6 +227,7 @@ HFIP
 hfipprd
 highgpu
 hlist
+HMPRNG
 hmtb
 hmtr
 homerpt
@@ -333,6 +336,7 @@ MANPATH
 marineda
 Mathematica
 maxresident
+MBHN
 Mbounds
 MCBRNG
 Mchkfpstk

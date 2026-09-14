@@ -498,58 +498,79 @@ command line interface (CLI). To connect and run via the Parallel Works Command
 Line Interface, you can go directly to the instructions
 at :ref:`pw-cli`.
 
+VS Code Workflow
+^^^^^^^^^^^^^^^^
+
 To execute a workflow, click **Workflows** in the sidebar.
-Select :guilabel:`Open VSCode`.
-Select :guilabel:`Build`,then complete the Slurm submission information.
-For the workflow, switch the Schedule Job toggle to :guilabel:`Yes`.
+Select the :guilabel:`Open VS Code latest` workflow.
+Select :guilabel:`Execute Workflow`, switch the Schedule Job toggle to
+:guilabel:`Yes`,
+and complete the Slurm submission information.
 
 .. image:: /images/VSnode1.png
                 :scale: 40%
 
-.. _feature-preview:
+VS Code Session
+^^^^^^^^^^^^^^^
 
-Environment and Compute Scheduling
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To use the Session option, first enable the Environments & Compute Scheduling
-feature preview. Click your user name in the sidebar menu, then choose
-:guilabel:`Feature Preview` from the pop-up. In the Feature Preview pop-up,
-select :guilabel:`Environment & Compute Scheduling` and click
-:guilabel:`Enable`.
-
-To close the Feature Preview pop-up, press :guilabel:`esc`, or click the
-page outside the pop-up.
-
-You can now start a VS Code session from the Sessions page, or the
-Cluster's main page.
+VS Code sessions can be started from the Sessions page or the
+Cluster’s main page.
 
 .. note::
 
-  It's easier to start from the cluster's main page, since the pop-up form only includes
-  include the cluster specific options in the selection boxes.
+  It’s easier to start from the cluster’s main page, since the pop-up
+  form will only include the cluster specific options in the selection boxes.
 
-Open the cluster's main page, and click :guilabel:`VS Code`.
+
+.. _feature-preview:
+
+VS Code Session via Cluster Page
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Open the cluster’s main page, and click :guilabel:`VS Code.`
 
 .. image:: /images/VSnode3.png
+                :scale: 40%
 
-The VS Code workflow opens, with the Cluster Name field populated.
+The VS Code session configuration form will appear. The session resource is
+set to the cluster resource, as seen in the form title. Under Compute Target,
+select
+:guilabel:`Request new worker (provisions a new node)`.
 Complete the pop-up form and click :guilabel:`Launch` to start the session.
 
-To start from the Sessions page, click :guilabel:`+Create`and select
+.. image:: /images/VSnode4.png
+                  :scale: 40%
+
+VS Code Session via Sessions Page
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To start from the Sessions page, click :guilabel:`+Create` and select
 :guilabel:`VS Code session` from the list.
 
 .. image:: /images/VSnode5.png
-                  :scale: 70%
+                  :scale: 40%
 
-In the pop-up form, select the environment to run your job. The environment
-list is divided by cluster name, but can't be filtered
-by cluster name. There should be an environment for each partition on the
-cluster. Scroll down, find the one you want to use, and select it.
+In the pop-up form, select the Target environment to use to run the session.
+For ease of navigation, the list is divided by resource, with the environment
+lists collapsed by default. Click the **Environments** line to expand the list
+for a resource.
 
 .. image:: /images/VSnode6.png
+                  :scale: 40%
+
+You can user the Filter box to search and display relevant items. If you search
+cluster resource name,  the items in the drop-down list will be filtered to
+show the relevant environment list for matching cluster resources.
+
+.. image:: /images/VSnode7.png
                   :scale: 50%
 
-Complete the form, and click :guilabel:`Create session` to begin.
+There should be an environment for each partition on the cluster.
+Scroll down, select the desired environment, complete the form, and click
+:guilabel:`Create session` to begin.
+
+.. image:: /images/VSnode8.png
+                    :scale: 40%
 
 .. _pw-cli:
 
@@ -558,17 +579,28 @@ Parallel Works Command Line Interface (PW CLI)
 
 .. note::
 
-  If you have not installed the pw cli installed, follow the instructions in the
+  If you have not installed the pw cli, follow the instructions in the
   Parallel Works User Guide `CLI section <https://parallelworks.com/docs/cli>`_
 
 To connect using the PW CLI:
 
-#. Enable the :ref:`feature-preview` feature.
-#. Ensure all pw cli/agent versions are up to date.
+#. Ensure that all pw cli/agent versions are up to date.
 #. Generate an API key or access Token.
 #. Authenticate with the pw cli.
 #. Use the pw cli to start a vscode connection from your local system to a
    Slurm scheduled compute node.
+
+Ensure all pw cli/agent versions are up to date
+"""""""""""""""""""""""""""""""""""""""""""""""
+For the workspace, click on your username again, and select :guilabel:`Account`
+from the sidebar menu.
+
+.. image:: /images/VSnode9.png
+                  :scale: 40%
+
+The account profile that opens will list the Workspace version, which must be
+7.96.0 or later. If your version is earlier than 7.96.0, you must update
+your workspace.
 
 Enable the Environments & Compute Scheduling preview
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -583,10 +615,10 @@ For the workspace, click on your username again, and select
 :guilabel:`Account` from the sidebar menu.
 
 .. image:: /images/VSnode9.png
-                  :scale: 60%
+                  :scale: 40%
 
 The account profile opens. It lists the Workspace version, which must be
-7.88.0 or later. If your version is earlier than 7.88.0, you must update your
+7.96.0 or later. If your version is earlier than 7.96.0, you must update your
 workspace.
 
 .. attention::
@@ -595,7 +627,8 @@ workspace.
   connections. It's a good idea to save any work in progress, and stop any running workflows
   or sessions before making the update.
 
-.. image:: /images/VSnode12.png
+.. image:: /images/VSnode10.png
+                    :scale: 40%
 
 Click the :guilabel:`Restart` button to update your workspace.
 
@@ -612,11 +645,12 @@ Generate an API key or access Token
 When the update is complete, click :guilabel:`Authentication` in the sidebar
 menu.
 
-.. image:: /images/VSnode10.png
+.. image:: /images/VSnode11.png
+                      :scale: 40%
 
 In the API Keys section, click the :guilabel:`+Create` button.
 
-.. image:: /images/VSnode13.png
+.. image:: /images/VSnode12.png
                   :scale: 60%
 
 
@@ -629,16 +663,16 @@ menu item. Fill in the appropriate information on the pop-up, and hit
 
 The new token/key information will appear in the API Keys section.
 
-.. image:: /images/VSnode11.png
+.. image:: /images/VSnode13.png
                     :scale: 60%
 
-The API key will have an extra line that lists the name of the key, and
+The API key will have an extra line that lists the name of the key and
 other details. You can use the :guilabel:`Copy` button
 to copy the key/token to your clipboard.
 
 .. note::
 
-  The API key/token is the only displayed once created, so make sure to
+  The API key/token is the only available at creation time, so make sure to
   save a copy!
 
 You can now use the API key/token to authenticate the PW CLI to the platform,
