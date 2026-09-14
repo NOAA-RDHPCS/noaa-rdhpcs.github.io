@@ -649,6 +649,7 @@ urllib
 URPRNG
 usbac
 userdir
+USERPROFILE
 Userspace
 UTDN
 uwtools
@@ -670,6 +671,7 @@ wdas
 webform
 westmere
 wgrib
+winget
 wmem
 wrfsatda
 Xauthority
@@ -683,6 +685,7 @@ xinitrc
 xjet
 xlarge
 Xming
+Xsrv
 xstartup
 xsudo
 xsync
