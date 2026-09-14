@@ -3090,17 +3090,6 @@ Parallel Works Cloud administrator can remove this storage.
 Finding the project object storage, [bucket/block storage] and access keys?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-From the login page, click the :guilabel:`IDE` icon located at the
-top right of the page, you will see file manager with
-folders.
-
-From the File Manager, navigate under the
-“storage/project_keys/<CSP>” folder to locate your project's
-object storage name and access key. **The file name is your
-project's bucket name**.
-Double click the file to open it and
-view the bucket access key information.
-
 To access the project's permanent object storage, copy and
 paste the contents from the key file on the controller node,
 then execute the CSP commands. For example:-
