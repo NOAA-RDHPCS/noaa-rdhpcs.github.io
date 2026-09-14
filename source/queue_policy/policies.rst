@@ -803,15 +803,15 @@ Hera and Ursa QOS
        be in “Pending” state. Max of 20 jobs per project/account will gain
        age priority. Exceptions are stated below
    * - batch
-     - 8400 (Hera)
-       14400 (Ursa)
+     - | 8400 (Hera)
+       | 14400 (Ursa)
      - 8 hours
      - 1
      - For non-gpu projects only. **Default QOS** for projects with an
        allocation more then Windfall-Only (RawShare=1).
    * - urgent
-     - 8400 (Hera)
-       14400 (Ursa)
+     - | 8400 (Hera)
+       | 14400 (Ursa)
      - 8 hours
      - 2
      - For non-gpu projects only. QOS for a job that requires more urgency than
@@ -822,8 +822,8 @@ Hera and Ursa QOS
        FairShare is below 0.45, jobs submitted to urgent are automatically
        changed to batch and users notified via stderr.
    * - debug
-     - 8400 (Hera)
-       14400 (Ursa)
+     - | 8400 (Hera)
+       | 14400 (Ursa)
      - 30 mins
      - 1.25
      - For non-gpu projects only. Highest priority QOS, useful for debugging
@@ -837,8 +837,8 @@ Hera and Ursa QOS
        job to the default QOS so that you can restart your application over and
        over again without having to start a new batch job.
    * - long
-     - 4200 (Hera)
-       7296 (Ursa)
+     - | 4200 (Hera)
+       | 7296 (Ursa)
      - 96 hours (4 days)
      - 1
      - For non-gpu projects only. For normal priority jobs that require between
@@ -850,8 +850,8 @@ Hera and Ursa QOS
        considered for scheduling if the project’s running jobs exceed
        this limit.
    * - windfall
-     - 8400 (Hera)
-       14400 (Ursa)
+     - | 8400 (Hera)
+       | 14400 (Ursa)
      - 8 hours (except "service" partitions)
      - 0
      - **Lowest priority QOS**. If you have an allocation of windfall-only
@@ -872,8 +872,8 @@ Hera and Ursa QOS
        considered for scheduling if the project's running jobs exceed this
        limit.
    * - gpuwf
-     - 10 gpu's (Ursa ``u1-h100`` partition)
-       8 gpu's (Ursa ``u1-gh`` and ``u1-mi300x`` partitions)
+     - | 10 gpu's (Ursa ``u1-h100`` partition)
+       | 8 gpu's (Ursa ``u1-gh`` and ``u1-mi300x`` partitions)
      - 48 hours (2 days)
      - 0
      - This QOS can only be used on Ursa in combination with the ``u1-h100``,
