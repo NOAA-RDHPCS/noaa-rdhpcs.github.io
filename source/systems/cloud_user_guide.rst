@@ -1302,8 +1302,6 @@ increase the size of the instance, or add a compute
 partition and send the work off to worker nodes.
 
 
-
-
 Clusters and snapshots
 ----------------------
 
@@ -1472,6 +1470,19 @@ In this example, I am tunneling port 8888 from the host
 on my local machine. This lets me direct my browser to the
 URL 'localhost:8888' and see the page being served by the
 remote machine over that port.
+
+How do I assign a static ip address to a cluster?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you create a cluster, an ephemeral IP address is automatically chosen
+and assigned to it. This is suitable in most cases.
+
+If your cluster runs an application that depends on having the same IP
+address each time you run it, and you need to start and stop your
+cluster, you can create a static, shareable IP address for that cluster.
+
+Parallel Works `Managing IP Addresses <https://parallelworks.com/docs/compute/managing-ip-addresses>`_
+provides complete details.
 
 How do I turn off Lustre filesystem from the cluster?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
