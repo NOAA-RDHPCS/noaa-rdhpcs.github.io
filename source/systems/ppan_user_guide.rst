@@ -1276,6 +1276,24 @@ Analysis Hosts
      -
      - AVX512
      - icelake
+   * - an212
+     - 32
+     - 2163
+     - 48
+     - 2:16:1
+     - 4:1:1
+     -
+     - AVX512
+     - Emerald Rapids
+   * - an213
+     - 32
+     - 2163
+     - 48
+     - 2:16:1
+     - 4:1:1
+     -
+     - AVX512
+     - Emerald Rapids
 
 
 .. _postprocess-hosts:
@@ -1424,10 +1442,6 @@ Post-Processing Hosts
       International Standard IEC 80000-13 Quantities and Units – Part 13:
       Information Science and Technology, International Electrotechnical
       Commission (2008).
-
-
-Using GCP
-=========
 
 GCP (general copy) is a convenient tool for copying data between NOAA RDHPCS
 sites. It simplifies efficient data transfer between the various NOAA sites and

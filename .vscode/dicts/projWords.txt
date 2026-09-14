@@ -43,6 +43,7 @@ byacc
 cactest
 caja
 calnexfc
+CAPI
 CATN
 CBHN
 ccasm
@@ -227,6 +228,7 @@ HFIP
 hfipprd
 highgpu
 hlist
+HMFRNG
 HMPRNG
 hmtb
 hmtr
@@ -355,6 +357,8 @@ Minfo
 MKLROOT
 mmap
 mmchattr
+MMFRNG
+MMPRNG
 Moba
 modelpsd
 modulefamilies
@@ -497,6 +501,8 @@ petaflops
 phod
 physcpubind
 pkcs
+PMFRNG
+PMPRNG
 PNETCDF
 podaac
 postdrop
@@ -638,6 +644,8 @@ udunits
 Uecflow
 ujet
 umarwi
+UMFRNG
+UMPRNG
 untar
 untarring
 upgrd

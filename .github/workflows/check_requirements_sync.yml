@@ -1,0 +1,293 @@
+name: Check Requirements Sync
+
+on:
+  pull_request:
+    paths:
+      - 'requirements.in'
+      - 'requirements.txt'
+
+jobs:
+  check-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pip-tools
+        run: pip install pip-tools
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Get the list of changed files in this PR
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          # Check which requirements files changed
+          if echo "$CHANGED_FILES" | grep -q "^requirements\.in$"; then
+            echo "requirements_in_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "requirements_in_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+          if echo "$CHANGED_FILES" | grep -q "^requirements\.txt$"; then
+            echo "requirements_txt_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "requirements_txt_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check for unauthorized requirements.txt edit
+        if: steps.changed-files.outputs.requirements_txt_changed == 'true' && steps.changed-files.outputs.requirements_in_changed == 'false'
+        run: |
+          echo "::error::requirements.txt was modified without updating requirements.in"
+          echo ""
+          echo "Direct edits to requirements.txt are not allowed."
+          echo "To update dependencies:"
+          echo "  1. Edit requirements.in with the desired version changes"
+          echo "  2. Run: pip-compile --generate-hashes requirements.in"
+          echo "  3. Commit both files together"
+          exit 1
+
+      - name: Check requirements.txt is properly generated
+        if: steps.changed-files.outputs.requirements_in_changed == 'true'
+        run: |
+          pip-compile --generate-hashes requirements.in -o requirements.txt.new
+
+          # Create a Python script to compare requirements files
+          # This ignores comment lines (which may differ due to output filename)
+          # and compares only the actual package specifications
+          cat << 'EOF' > compare_requirements.py
+          import re
+          import sys
+
+          def parse_requirements(content):
+              """Parse requirements.txt and extract package versions and hashes."""
+              packages = {}
+              current_pkg = None
+              current_version = None
+              current_hashes = set()
+
+              for line in content.split('\n'):
+                  line = line.strip()
+                  if not line or line.startswith('#'):
+                      continue
+
+                  # Match package==version pattern
+                  pkg_match = re.match(r'^([a-zA-Z0-9_-]+)==([^\s\\]+)', line)
+                  if pkg_match:
+                      # Save previous package
+                      if current_pkg:
+                          packages[current_pkg] = {
+                              'version': current_version,
+                              'hashes': frozenset(current_hashes)
+                          }
+                      current_pkg = pkg_match.group(1).lower()
+                      current_version = pkg_match.group(2)
+                      current_hashes = set()
+
+                  # Match hash pattern
+                  hash_match = re.search(r'--hash=sha256:([a-f0-9]+)', line)
+                  if hash_match and current_pkg:
+                      current_hashes.add(hash_match.group(1))
+
+              # Save last package
+              if current_pkg:
+                  packages[current_pkg] = {
+                      'version': current_version,
+                      'hashes': frozenset(current_hashes)
+                  }
+
+              return packages
+
+          def compare_requirements(file1, file2):
+              """Compare two requirements files, ignoring comments."""
+              with open(file1, 'r') as f:
+                  content1 = f.read()
+              with open(file2, 'r') as f:
+                  content2 = f.read()
+
+              pkgs1 = parse_requirements(content1)
+              pkgs2 = parse_requirements(content2)
+
+              differences = []
+
+              # Check for packages in file1 but not in file2
+              for pkg in pkgs1:
+                  if pkg not in pkgs2:
+                      differences.append(f"Package '{pkg}' in {file1} but not in {file2}")
+
+              # Check for packages in file2 but not in file1
+              for pkg in pkgs2:
+                  if pkg not in pkgs1:
+                      differences.append(f"Package '{pkg}' in {file2} but not in {file1}")
+
+              # Check for version/hash differences
+              for pkg in pkgs1:
+                  if pkg in pkgs2:
+                      if pkgs1[pkg]['version'] != pkgs2[pkg]['version']:
+                          differences.append(
+                              f"Package '{pkg}' version mismatch: "
+                              f"{pkgs1[pkg]['version']} vs {pkgs2[pkg]['version']}"
+                          )
+                      elif pkgs1[pkg]['hashes'] != pkgs2[pkg]['hashes']:
+                          differences.append(
+                              f"Package '{pkg}' hash mismatch for version {pkgs1[pkg]['version']}"
+                          )
+
+              return differences
+
+          if __name__ == '__main__':
+              differences = compare_requirements('requirements.txt', 'requirements.txt.new')
+              if differences:
+                  print("requirements.txt is out of sync with requirements.in")
+                  print()
+                  print("Differences found:")
+                  for diff in differences:
+                      print(f"  - {diff}")
+                  print()
+                  print("Run the following command locally and commit the result:")
+                  print("  pip-compile --generate-hashes requirements.in")
+                  sys.exit(1)
+              else:
+                  print("requirements.txt is properly generated from requirements.in")
+          EOF
+
+          python compare_requirements.py
+
+      - name: Check hash integrity
+        if: steps.changed-files.outputs.requirements_txt_changed == 'true'
+        run: |
+          # Get requirements.txt from base branch
+          git show origin/${{ github.base_ref }}:requirements.txt > requirements.txt.base 2>/dev/null || {
+            echo "No requirements.txt in base branch, skipping hash integrity check"
+            exit 0
+          }
+
+          # Create a Python script to check hash integrity
+          cat << 'EOF' > check_hashes.py
+          import re
+          import sys
+
+          def parse_requirements(content):
+              """Parse requirements.txt and extract package versions and hashes."""
+              packages = {}
+              current_pkg = None
+              current_version = None
+              current_hashes = set()
+
+              for line in content.split('\n'):
+                  line = line.strip()
+                  if not line or line.startswith('#'):
+                      continue
+
+                  # Match package==version pattern
+                  pkg_match = re.match(r'^([a-zA-Z0-9_-]+)==([^\s\\]+)', line)
+                  if pkg_match:
+                      # Save previous package
+                      if current_pkg:
+                          packages[current_pkg] = {
+                              'version': current_version,
+                              'hashes': current_hashes
+                          }
+                      current_pkg = pkg_match.group(1).lower()
+                      current_version = pkg_match.group(2)
+                      current_hashes = set()
+
+                  # Match hash pattern
+                  hash_match = re.search(r'--hash=sha256:([a-f0-9]+)', line)
+                  if hash_match and current_pkg:
+                      current_hashes.add(hash_match.group(1))
+
+              # Save last package
+              if current_pkg:
+                  packages[current_pkg] = {
+                      'version': current_version,
+                      'hashes': current_hashes
+                  }
+
+              return packages
+
+          def check_hash_integrity(base_content, pr_content):
+              """Check for suspicious hash changes."""
+              base_pkgs = parse_requirements(base_content)
+              pr_pkgs = parse_requirements(pr_content)
+
+              errors = []
+              warnings = []
+
+              for pkg, pr_data in pr_pkgs.items():
+                  if pkg not in base_pkgs:
+                      continue  # New package, nothing to compare
+
+                  base_data = base_pkgs[pkg]
+
+                  # Only check if version is the same
+                  if pr_data['version'] != base_data['version']:
+                      continue  # Version changed, hash changes are expected
+
+                  base_hashes = base_data['hashes']
+                  pr_hashes = pr_data['hashes']
+
+                  # Check for removed hashes (suspicious)
+                  removed = base_hashes - pr_hashes
+                  if removed:
+                      errors.append(
+                          f"CRITICAL: {pkg}=={pr_data['version']}: "
+                          f"{len(removed)} hash(es) REMOVED. "
+                          f"This could indicate a supply chain attack."
+                      )
+
+                  # Check for added hashes (requires review)
+                  added = pr_hashes - base_hashes
+                  if added:
+                      warnings.append(
+                          f"WARNING: {pkg}=={pr_data['version']}: "
+                          f"{len(added)} new hash(es) added. "
+                          f"Verify these are legitimate (e.g., new platform wheels)."
+                      )
+
+              return errors, warnings
+
+          if __name__ == '__main__':
+              with open('requirements.txt.base', 'r') as f:
+                  base_content = f.read()
+              with open('requirements.txt', 'r') as f:
+                  pr_content = f.read()
+
+              errors, warnings = check_hash_integrity(base_content, pr_content)
+
+              if warnings:
+                  print("=" * 60)
+                  print("HASH INTEGRITY WARNINGS")
+                  print("=" * 60)
+                  for w in warnings:
+                      print(f"  {w}")
+                  print()
+
+              if errors:
+                  print("=" * 60)
+                  print("HASH INTEGRITY ERRORS")
+                  print("=" * 60)
+                  for e in errors:
+                      print(f"  {e}")
+                  print()
+                  print("Hash removal or modification for unchanged package versions")
+                  print("is not allowed as it may indicate a supply chain attack.")
+                  print()
+                  print("If this is a legitimate change, please explain in the PR")
+                  print("description and request review from the security team.")
+                  sys.exit(1)
+
+              if not errors and not warnings:
+                  print("Hash integrity check passed.")
+          EOF
+
+          python check_hashes.py
