@@ -189,34 +189,28 @@ Mac OS
 To connect to NOAA RDHPCS systems from a Windows workstation using
 your Common Access Card (CAC) or PIV, you will need to register your
 card with the RDHPCS authentication system, then configure a third-party
-software client to bridge your SSH connection with your smart card reader.
+software client to bridge your SSH connection.
 
 Step 1: Register your CAC (Automatic)
 --------------------------------------
 
-RDHPCS uses PrivacyIdea for server-side authentication, so your SSH public
-key is extracted and registered automatically when you log into the AIM portal.
-Windows
--------
+To use your CAC or PIV for RDHPCS access, follow these steps:
 
-Open PuTTY-CAC.  Select the desired profile (Bastion / HPCS) and click
-**Connect** or something like that.
+1. **Open** PuTTY-CAC and load or create a saved session profile.
 
-2. **Open** PuTTY-CAC and load or create a saved session profile.
-
-3. Navigate to **Connection → SSH → Certificate** and confirm your
+2. Navigate to **Connection → SSH → Certificate** and confirm your
    PIV authentication certificate is shown under **Selected thumbprint**.
    If not, repeat the **Set CAPI Cert…** step from Step 2.
 
-4. Return to **Session**, select your profile, and click **Save**.
+3. Return to **Session**, select your profile, and click **Save**.
 
-5. Click **Open** to initiate the connection.
+4. Click **Open** to initiate the connection.
 
-6. Verify the server key fingerprint when prompted and click **Yes**.
+5. Verify the server key fingerprint when prompted and click **Yes**.
 
-7. Enter your RDHPCS **username** (``First.Last`` format).
+6. Enter your RDHPCS **username** (``First.Last`` format).
 
-8. When the certificate confirmation dialog appears, click **OK** and
+7. When the certificate confirmation dialog appears, click **OK** and
    enter your **CAC/PIV PIN**.
 
    .. note::
@@ -229,8 +223,8 @@ Open PuTTY-CAC.  Select the desired profile (Bastion / HPCS) and click
    Management (AIM) portal: https://aim.rdhpcs.noaa.gov
 3. Authenticate to the site using your CAC.
 
-Upon successful login, your smart card's public key is automatically extracted
-and associated with your RDHPCS account.
+Upon successful login, your your CAC/PIV details are associated with your
+RDHPCS account.
 
 Step 2: Choose and Configure your Windows SSH Client
 ----------------------------------------------------
