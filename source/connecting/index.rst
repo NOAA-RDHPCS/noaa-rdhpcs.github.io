@@ -185,27 +185,32 @@ Mac OS
 
                 ssh -oPKCS11Provider=/usr/lib/ssh-keychain.dylib First.Last@BASTION
 
-Windows
--------
 
-Open PuTTY-CAC.  Select the desired profile (Bastion / HPCS) and click
-**Connect** or something like that.
+To connect to NOAA RDHPCS systems from a Windows workstation using
+your Common Access Card (CAC) or PIV, you will need to register your
+card with the RDHPCS authentication system, then configure a third-party
+software client to bridge your SSH connection.
 
-2. **Open** PuTTY-CAC and load or create a saved session profile.
+Step 1: Register your CAC (Automatic)
+--------------------------------------
 
-3. Navigate to **Connection → SSH → Certificate** and confirm your
+To use your CAC or PIV for RDHPCS access, follow these steps:
+
+1. **Open** PuTTY-CAC and load or create a saved session profile.
+
+2. Navigate to **Connection → SSH → Certificate** and confirm your
    PIV authentication certificate is shown under **Selected thumbprint**.
    If not, repeat the **Set CAPI Cert…** step from Step 2.
 
-4. Return to **Session**, select your profile, and click **Save**.
+3. Return to **Session**, select your profile, and click **Save**.
 
-5. Click **Open** to initiate the connection.
+4. Click **Open** to initiate the connection.
 
-6. Verify the server key fingerprint when prompted and click **Yes**.
+5. Verify the server key fingerprint when prompted and click **Yes**.
 
-7. Enter your RDHPCS **username** (``First.Last`` format).
+6. Enter your RDHPCS **username** (``First.Last`` format).
 
-8. When the certificate confirmation dialog appears, click **OK** and
+7. When the certificate confirmation dialog appears, click **OK** and
    enter your **CAC/PIV PIN**.
 
    .. note::
@@ -213,6 +218,129 @@ Open PuTTY-CAC.  Select the desired profile (Bastion / HPCS) and click
       Your card reader may flash during login. **Do not remove your
       card until you are fully logged in.**
 
+1. Insert your CAC into your smart card reader.
+2. Open a web browser and navigate to the RDHPCS Account and Identity
+   Management (AIM) portal: https://aim.rdhpcs.noaa.gov
+3. Authenticate to the site using your CAC.
+
+Upon successful login, your your CAC/PIV details are associated with your
+RDHPCS account.
+
+Step 2: Choose and Configure your Windows SSH Client
+----------------------------------------------------
+
+Because the federal standard for smart card SSH is centrally documented, we
+rely on the official General Services Administration (GSA) guides for client
+setup. You can choose between two supported methods on Windows: **PuTTY-CAC**
+(a GUI-based client) or **OpenSC** (for command-line integration).
+
+.. warning::
+   Standard PuTTY cannot be used with OpenSC, and PuTTY-CAC cannot provide smart
+   card routing for the built-in Windows OpenSSH client. You must use PuTTY-CAC for
+   a GUI experience, or OpenSC for a command-line experience.
+
+Method A: Using PuTTY-CAC (Recommended GUI)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+PuTTY-CAC is a modified version of the popular PuTTY terminal emulator that
+integrates directly with the Microsoft CryptoAPI (CAPI). This is generally the
+easiest method for Windows users who prefer a graphical interface.
+
+**1. Install PuTTY-CAC**
+
+The easiest way to install PuTTY-CAC is using the built-in Windows Package
+Manager (winget) from a PowerShell prompt:
+
+.. code-block:: powershell
+
+   winget install -e --id NoMoreFood.PuTTY-CAC
+
+**2. Configure PuTTY-CAC**
+
+For comprehensive instructions on configuring your connection, please refer
+to the official federal guidance:
+
+* `IDManagement.gov: SSH from Windows - Using PuTTY-CAC <https://www.idmanagement.gov/implement/scl-ssh/#ssh-from-windows---using-putty-cac>`_
+
+.. note::
+   **Skip Key Extraction:** The IDManagement guide includes instructions for
+   extracting your public key and copying it to a clipboard or text file. Because you
+   completed **Step 1** above, you can skip this portion of their guide. Your key is already registered.
+
+Method B: Using Windows OpenSSH with OpenSC (Command Line)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you prefer to use the command line via Windows PowerShell or Command
+Prompt, you can use the built-in Windows OpenSSH client combined with OpenSC.
+OpenSC provides the PKCS#11 module required for OpenSSH to communicate with
+your CAC.
+
+**1. Install OpenSC**
+
+We recommend installing the standard 64-bit release of OpenSC. The easiest way
+to install it is to use winget in PowerShell:
+
+.. code-block:: powershell
+
+   winget install -e --id OpenSC.OpenSC
+
+.. note::
+
+   If you're downloading the installer manually from the OpenSC GitHub project,
+   make sure to download the standard ``win64.msi`` release, not the "light" or x86 versions.
+
+
+**Verifying a Manual Download (Optional)**
+If you downloaded the installer manually and wish to verify its SHA-256
+checksum against the hash provided on the release page, you can run the
+following in PowerShell. (This command automatically strips the ``sha256:``
+prefix from the OpenSC release notes so it can evaluate correctly):
+
+.. code-block:: powershell
+
+   (Get-FileHash -Path "C:\path\to\OpenSC.msi" -Algorithm SHA256).Hash -eq "sha256:<insert_lowercase_key_here>".Replace("sha256:","")
+
+If the checksum matches, PowerShell will return ``True``.
+
+**2. Configure Windows OpenSSH**
+
+To tell the built-in Windows OpenSSH client to use your smart card reader
+automatically, you must add the OpenSC library path to your user SSH
+configuration file.
+
+Open or create your SSH configuration file located at
+``%USERPROFILE%\.ssh\config``
+(typically ``C:\Users\<username>\.ssh\config``).
+
+.. tip::
+   **Editing files in PowerShell:** You can edit this file directly in the terminal
+   using Windows 11's built-in editor. Type ``edit $env:USERPROFILE\.ssh\config``.
+   If that is not available, you can launch Notepad by typing
+   ``notepad $env:USERPROFILE\.ssh\config``. Otherwise, install standard Linux text
+   editors via winget (e.g., ``winget install GNU.Nano`` or ``winget install Vim.Vim``).
+
+Add the following block to your ``config`` file, replacing ``<your_username>``
+with your actual RDHPCS username:
+
+.. code-block:: text
+
+   Host *.rdhpcs.noaa.gov
+       PKCS11Provider "C:\Program Files\OpenSC Project\OpenSC\pkcs11\opensc-pkcs11.dll"
+       User <your_username>
+
+.. note::
+   OpenSSH does not evaluate Windows environment variables. You must use the exact,
+   absolute path to the DLL wrapped in quotes as shown above.
+
+**3. Connect via Command Line**
+
+With your ``.ssh/config`` file saved, you can now connect directly from
+PowerShell or Command Prompt. OpenSSH will automatically load the OpenSC
+library and prompt you for your CAC PIN:
+
+.. code-block:: powershell
+
+   ssh <rdhpcs-hostname>
 
 .. _yubikey_instructions:
 
