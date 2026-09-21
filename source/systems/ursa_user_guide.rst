@@ -145,8 +145,8 @@ Ursa has 15 outward-facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
     * ``ufe01-ufe04``, total of 768 cores for interactive use.
-      See the `Login (Front End) Node Usage Policy <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#login-node-usage>`_
-      for important information about using Login nodes.
+      See :ref:`Login Node Usage <login_node_usage>` for important information
+      about using Login nodes.
 * 10 nodes will comprise the service partition:
     * 3,840 cores total.
     * Available via Slurm.
