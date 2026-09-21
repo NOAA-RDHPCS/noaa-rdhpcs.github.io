@@ -133,8 +133,8 @@ Node Sharing
 ------------
 
 As of 5/14/26 node sharing has been enabled for all job sizes. If you
-need exclusive access to the nodes for your job please use the
-``--exclusive`` option on the sbatch command. Please refer to the
+need exclusive access to the nodes for your job use the
+``--exclusive`` option on the sbatch command. Refer to the
 `Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_
 for additional details on using this option.
 
