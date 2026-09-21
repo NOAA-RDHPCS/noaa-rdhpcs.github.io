@@ -132,11 +132,11 @@ See the :ref:`Quality of Service (QOS) table <QOS-table>` for more information.
 Node Sharing
 ------------
 
-As of 5/14/26 node sharing has been enabled for all job sizes. If you
-need exclusive access to the nodes for your job use the
-``--exclusive`` option on the sbatch command. Refer to the
-`Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_
-for additional details on using this option.
+As of 6/18/26, node sharing has been enabled for all job sizes, unless you use
+the ``--exclusive`` option when you submit your job.
+
+For more information on this ``sbatch`` option, refer to the
+`Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_.
 
 Front Ends and Service Partition
 --------------------------------
@@ -236,7 +236,7 @@ Description of the two exploratory systems:
   For billing and accounting: one grace hopper gpu-hour will count
   as 72 cpu core-hours.
 
-* Partition:  ``u1-mi300x``. There are 3 nodes, each with 96 Intel cpu
+* Partition:  ``u1-mi300x``. There are 5 nodes, each with 96 Intel cpu
   cores, 8 AMD Mi300x APUs each with 192 GB of RAM AMD ROCm software.
   Click `AMD MI300X <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>`_
   for more detailed information.

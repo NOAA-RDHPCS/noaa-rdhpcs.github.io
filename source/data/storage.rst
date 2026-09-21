@@ -84,7 +84,7 @@ different storage areas are summarized in the list and table below.
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Area                     | Path                                           | Type   | Permissions | Quota         | Backups | Purged  | Retention  | On Compute Nodes |
     +==========================+================================================+========+=============+===============+=========+=========+============+==================+
-    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 10 GB         | Yes     | No      | 90 days    | Read/Write       |
+    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 30 GB         | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Member Work              | ``/scratch[34]/<portfolio>/<projid>/<userid>`` | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
@@ -97,7 +97,7 @@ different storage areas are summarized in the list and table below.
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Area                     | Path                                           | Type   | Permissions | Quota         | Backups | Purged  | Retention  | On Compute Nodes |
     +==========================+================================================+========+=============+===============+=========+=========+============+==================+
-    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 10 GB         | Yes     | No      | 90 days    | Read/Write       |
+    | User Home                | ``/home/<userid>``                             | NFS    | User set    | 30 GB         | Yes     | No      | 90 days    | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
     | Member Work              | ``/scratch[34]/<portfolio>/<projid>/<userid>`` | Lustre | Project set | Project Based | No      | No      | N/A        | Read/Write       |
     +--------------------------+------------------------------------------------+--------+-------------+---------------+---------+---------+------------+------------------+
@@ -1314,7 +1314,7 @@ batch job:
 
    source $MODULESHOME/init/bash
    domainname=$(perl -T -e "use Net::Domain(hostdomain); print hostdomain")
-   if [[ $domainname =~ boulder|fairmont ]]; then
+   if [[ $domainname =~ fairmont ]]; then
         module load hpss
    elif [[ $domainname =~ ncrc ]]; then
         module use /usw/hpss/modulefiles

@@ -41,10 +41,29 @@ Accessing a role account from your user account
 -----------------------------------------------
 
 If you are a member of a role account, you can access the account by running
-the command ``sudo su - <ROLE_ACCOUNT>``.
-Use ``sudo -l`` to list the access you have.
+the :command:`sudo`. Use ``sudo -l`` to list the role accounts you can
+access, and the commands you can run.
 
-You will authenticate with your Yubikey to gain access. For example:
+.. code-block:: shell
+
+   $ sudo -l
+   Matching Defaults entries for First.Last on rdhpcs:
+      !mail_no_user
+
+   User First.Last may run the following commands on rdhpcs:
+      (role.user.2) NOPASSWD: ALL
+      (ALL) NOPASSWD: /bin/su - role.user, /bin/su -l role.user
+      (All) NOPASSWD: /bin/su - role.user.3, /usr/bin/du -k /path/*
+
+In the above example, the user can run ``sudo su - role.user`` to switch to the
+role account _role.user_ without needing to enter a password.  The user can
+also run ``sudo su - role.user.3`` to switch to the role account _role.user.3_
+without needing to enter a password.  For the role account _role.user.2_, the
+user can run any command as that role account without needing to enter a
+password with ``sudo -u role.user.2 <command>``.
+
+On some systems, you may need to authenticate with your Yubikey to gain access.
+For example:
 
  .. code-block:: shell
 

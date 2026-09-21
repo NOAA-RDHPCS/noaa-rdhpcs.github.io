@@ -6,6 +6,7 @@ antlr
 AOCC
 aomip
 aoml
+apikey
 Apptainer
 Archprt
 archrpt
@@ -42,6 +43,7 @@ byacc
 cactest
 caja
 calnexfc
+CAPI
 CATN
 CBHN
 ccasm
@@ -182,6 +184,8 @@ globusconnectpersonal
 glopara
 glrcm
 gmeta
+GMFRNG
+GMPRNG
 gmtb
 gnmip
 goagent
@@ -224,6 +228,8 @@ HFIP
 hfipprd
 highgpu
 hlist
+HMFRNG
+HMPRNG
 hmtb
 hmtr
 homerpt
@@ -304,6 +310,7 @@ libmpi
 libsci
 Linaro
 linenos
+linkcheck
 LINTRST
 llapack
 lmgfdl
@@ -331,6 +338,7 @@ MANPATH
 marineda
 Mathematica
 maxresident
+MBHN
 Mbounds
 MCBRNG
 Mchkfpstk
@@ -349,6 +357,8 @@ Minfo
 MKLROOT
 mmap
 mmchattr
+MMFRNG
+MMPRNG
 Moba
 modelpsd
 modulefamilies
@@ -427,6 +437,7 @@ noaardhpcs
 noaastore
 noaatest
 noaatools
+noaaursacluster
 NOATIME
 NODEFILE
 NODELIST
@@ -490,6 +501,8 @@ petaflops
 phod
 physcpubind
 pkcs
+PMFRNG
+PMPRNG
 PNETCDF
 podaac
 postdrop
@@ -580,6 +593,8 @@ SLES
 slurmctld
 slurmd
 slurmdbd
+smartsite
+Smartsites
 SOURCEDIR
 Spack
 SPHINXBUILD
@@ -629,6 +644,8 @@ udunits
 Uecflow
 ujet
 umarwi
+UMFRNG
+UMPRNG
 untar
 untarring
 upgrd

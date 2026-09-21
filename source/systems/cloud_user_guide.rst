@@ -75,7 +75,7 @@ This diagram illustrates the typical process for using Cloud resources.
   .. tab-item:: Import Data
      :sync: import
 
-      `Data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
+      `Parallel Works data transfer <https://parallelworks.com/docs/storage/transferring-data/aws-s3-buckets>`_
 
   .. tab-item:: Perform Computations
      :sync: compute
@@ -229,36 +229,10 @@ multiple of 2.8 TB.
 
   Be aware that LFS is an expensive storage.
 
-Migrating Legacy OS Snapshots to v3 Clusters
---------------------------------------------
+Creating OS snapshots on clusters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Overview
-^^^^^^^^
-
-*OS snapshots*, also known as *bootable* snapshots, provide a convenient way to
-make modifications to the base OS image used on PW cloud clusters without
-applying the changes to a new cluster every time you start it.
-
-Parallel Works' next generation cloud cluster revamps the way OS snapshots are
-created. This article unpacks the differences between the legacy and next-gen
-systems, and also provides steps to migrate your existing custom snapshots to
-the new clusters.
-
-If you need further assistance migrating legacy snapshots to the new cluster
-provider, send email to rdhpcs.cloud.help@noaa.gov, with the subject line
-Migrating Legacy Snapshots.
-
-.. _os-snapshots-on-next-gen-clusters:
-
-Creating OS snapshots on next-gen clusters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-On the previous system, OS snapshots were pre-scripted, and provisioned by
-filling out a web form. This could be clunky, as errors in the script or
-temporary network hiccups could cause the build to fail, requiring
-you to repeat the process until you got a usable image to finish building.
-
-On the new clusters, the login node's root disk can be snapshotted at any time.
+On current clusters, you can snapshot the login node's root disk at any time.
 This allows you to make changes on a running cluster, and snapshot it when you
 are ready to create a bootable disk.
 
@@ -370,7 +344,6 @@ your account, and click the trash can icon:
 .. image:: /images/legacy-snap9.png
 
 
-
 Running a Jupyter workflow on a Slurm compute node
 --------------------------------------------------
 
@@ -378,7 +351,7 @@ The Parallel Works ACTIVATE platform provides standard scripts, called
 workflows, to complete tasks on the platform. A Jupyter workflow is available
 in the ACTIVATE Marketplace. (See the Parallel Works documentation for
 directions to `add workflows
-<https://parallelworks.com/docs/run/workflows-and-apps/adding-workflows-and-apps>`_.)
+<https://parallelworks.com/docs/run/workflows/adding-workflows>`_.)
 
 
 To use the Jupyter workflow on a Slurm compute node, first set a default
@@ -489,6 +462,253 @@ inactivity.)
 
       [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
       [compute-dy-c5n18xlarge-1]$
+
+Running VS Code from a Compute Node
+-----------------------------------
+
+VS Code sessions and VS Code workflows can be set to run on a compute node.
+You can run VS code through the Parallel Works web interface, or through the
+command line interface (CLI). To connect and run via the Parallel Works Command
+Line Interface, you can go directly to the instructions
+at :ref:`pw-cli`.
+
+VS Code Workflow
+^^^^^^^^^^^^^^^^
+
+To execute a workflow, click **Workflows** in the sidebar.
+Select the :guilabel:`Open VS Code latest` workflow.
+Select :guilabel:`Execute Workflow`, switch the Schedule Job toggle to
+:guilabel:`Yes`,
+and complete the Slurm submission information.
+
+.. image:: /images/VSnode1.png
+                :scale: 40%
+
+VS Code Session
+^^^^^^^^^^^^^^^
+
+VS Code sessions can be started from the Sessions page or the
+Cluster’s main page.
+
+.. note::
+
+  It’s easier to start from the cluster’s main page, since the pop-up
+  form will only include the cluster specific options in the selection boxes.
+
+
+.. _feature-preview:
+
+VS Code Session via Cluster Page
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Open the cluster’s main page, and click :guilabel:`VS Code.`
+
+.. image:: /images/VSnode3.png
+                :scale: 40%
+
+The VS Code session configuration form will appear. The session resource is
+set to the cluster resource, as seen in the form title. Under Compute Target,
+select
+:guilabel:`Request new worker (provisions a new node)`.
+Complete the pop-up form and click :guilabel:`Launch` to start the session.
+
+.. image:: /images/VSnode4.png
+                  :scale: 40%
+
+VS Code Session via Sessions Page
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To start from the Sessions page, click :guilabel:`+Create` and select
+:guilabel:`VS Code session` from the list.
+
+.. image:: /images/VSnode5.png
+                  :scale: 40%
+
+In the pop-up form, select the Target environment to use to run the session.
+For ease of navigation, the list is divided by resource, with the environment
+lists collapsed by default. Click the **Environments** line to expand the list
+for a resource.
+
+.. image:: /images/VSnode6.png
+                  :scale: 40%
+
+You can user the Filter box to search and display relevant items. If you search
+cluster resource name,  the items in the drop-down list will be filtered to
+show the relevant environment list for matching cluster resources.
+
+.. image:: /images/VSnode7.png
+                  :scale: 50%
+
+There should be an environment for each partition on the cluster.
+Scroll down, select the desired environment, complete the form, and click
+:guilabel:`Create session` to begin.
+
+.. image:: /images/VSnode8.png
+                    :scale: 40%
+
+.. _pw-cli:
+
+Parallel Works Command Line Interface (PW CLI)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+  If you have not installed the pw cli, follow the instructions in the
+  Parallel Works User Guide `CLI section <https://parallelworks.com/docs/cli>`_
+
+To connect using the PW CLI:
+
+#. Ensure that all pw cli/agent versions are up to date.
+#. Generate an API key or access Token.
+#. Authenticate with the pw cli.
+#. Use the pw cli to start a vscode connection from your local system to a
+   Slurm scheduled compute node.
+
+Ensure all pw cli/agent versions are up to date
+"""""""""""""""""""""""""""""""""""""""""""""""
+For the workspace, click on your username again, and select :guilabel:`Account`
+from the sidebar menu.
+
+.. image:: /images/VSnode9.png
+                  :scale: 40%
+
+The account profile that opens will list the Workspace version, which must be
+7.96.0 or later. If your version is earlier than 7.96.0, you must update
+your workspace.
+
+Enable the Environments & Compute Scheduling preview
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Click your user name in the sidebar menu, then choose
+:guilabel:`Feature Preview` from the pop-up, then enable the feature.
+
+Ensure all pw cli/agent versions are up to date
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+For the workspace, click on your username again, and select
+:guilabel:`Account` from the sidebar menu.
+
+.. image:: /images/VSnode9.png
+                  :scale: 40%
+
+The account profile opens. It lists the Workspace version, which must be
+7.96.0 or later. If your version is earlier than 7.96.0, you must update your
+workspace.
+
+.. attention::
+
+  Updating the workspace may disrupt any running workflows, sessions, or ssh
+  connections. It's a good idea to save any work in progress, and stop any running workflows
+  or sessions before making the update.
+
+.. image:: /images/VSnode10.png
+                    :scale: 40%
+
+Click the :guilabel:`Restart` button to update your workspace.
+
+Some status information will display during the update.
+When it's complete, typically within
+30 seconds, the version number should update to the latest version, and the
+information bars should go away. If the page doesn't
+update status after a couple of minutes, you may need to refresh your
+browser window to see version changes.
+
+Generate an API key or access Token
+"""""""""""""""""""""""""""""""""""""
+
+When the update is complete, click :guilabel:`Authentication` in the sidebar
+menu.
+
+.. image:: /images/VSnode11.png
+                      :scale: 40%
+
+In the API Keys section, click the :guilabel:`+Create` button.
+
+.. image:: /images/VSnode12.png
+                  :scale: 60%
+
+
+API Keys can be long term (lasting from 1 to 30 days), require a name, and
+can be managed from the API keys list. Tokens are valid from 1 hour to a
+maximum of 24 hours, are not named, and cannot be managed after creation.
+Choose the option that best suits your needs, and click the applicable
+menu item. Fill in the appropriate information on the pop-up, and hit
+:guilabel:`Create` or :guilabel:`Generate` to finish the creation process.
+
+The new token/key information will appear in the API Keys section.
+
+.. image:: /images/VSnode13.png
+                    :scale: 60%
+
+The API key will have an extra line that lists the name of the key and
+other details. You can use the :guilabel:`Copy` button
+to copy the key/token to your clipboard.
+
+.. note::
+
+  The API key/token is the only available at creation time, so make sure to
+  save a copy!
+
+You can now use the API key/token to authenticate the PW CLI to the platform,
+using a terminal on your local system.
+
+Authenticate with the pw cli
+"""""""""""""""""""""""""""""""
+
+If you're using an API Key for authentication, run:
+
+  ``pw auth apikey``
+
+For Token usage, run:
+
+  ``pw auth token``
+
+At the prompt, paste the key/token you copied from the API Keys section,
+and press :guilabel:`Enter`. The pw cli will confirm that you are
+authenticated.
+
+Run ``pw upgrade`` to ensure that your pw cli is up to date.
+
+Start a vscode connection to a Slurm scheduled compute node
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Enter ``env ls``. The command lists out the cluster's associated information,
+listing one environment per partition. You can use the environment information
+to start a VS Code session on a Slurm compute node.
+
+The following example runs in the u1-compute partition. In practice,
+replace the account and qos names below with <account> and <qos>
+values for your user. The last item on the line is the cluster name,
+which can be found as the last part of the URI in the cluster section of
+the env ls output.
+So, for pw://First.Last/noaaursacluster it would be noaaursacluster.
+
+.. code-block:: console
+
+  pw vscode --environment u1-compute --param account=<account> --param qos=<qos>
+  --param walltime=00:30:00 --param nodes=1 --param ntasks-per-node=1 noaaursacluster
+
+This command will submit a job on the cluster. When the job starts, vscode
+should start on your system, and the pw vscode command line output will display
+a line in the following format that can be used to terminate the remote
+session:
+
+  ``pw.exe workers delete <worker ID>``
+
+When vscode starts, it prompt you for the system type through a
+dropdown menu. Select :guilabel:`Linux`, and set the appropriate trust
+level if prompted. Vscode will download the server if necessary,
+and will connect your local front end to the server on the compute node.
+
+When you're finished, close your vscode window and make sure to kill the
+worker. If you closed the power shell window, or have otherwise lost track
+of your worker session ID, you can find a list of workers with the command:
+
+  ``pw.exe workers list``
+
+Once you have the appropriate worker ID, you can terminate it with:
+
+  ``pw.exe workers delete <ID>``
 
 
 Cloud Projects
@@ -1021,7 +1241,7 @@ Allocation Committee (AC). To make a request, complete the
 
 After you complete the form, create a
 Cloud help ticket to track the issue. Send email to
-rdhpcs.cloud.help@noaa.gov, copy to gonzalo.lassally@noaa.gov, using
+rdhpcs.cloud.help@noaa.gov, using
 Cloud Allocation Request in the subject line.
 
 Storage functionalities
@@ -1445,7 +1665,7 @@ How can I automatically find the hostname of a cluster?
 By default, the host names are always going to be different
 each time you start a cluster.
 
-You can find CSP information using the :envvar:`PW_CSP` variable, as
+You can find CSP information using the ``PW_CSP`` variable, as
 in the example:
 
 .. code-block:: shell
@@ -1453,7 +1673,7 @@ in the example:
     $ echo $PW_CSP
     google
 
-There are a few other :envvar:`PW_*` vars that you may find useful:
+There are a few other ``PW_*`` vars that you may find useful:
 
 :PW_PLATFORM_HOST:
 :PW_POOL_ID:
@@ -1983,7 +2203,7 @@ your project's bucket. Click on the key icon to find the bucket name,
 keys and sample command to access the bucket.
 
 Please refer to the `AzCopy guide
-<https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy>`_ for information on how to use AzCopy.
+<https://github.com/Azure/azure-storage-azcopy/wiki/azcopy_copy>`_ for information on how to use AzCopy.
 
 
 GCP gcloud install on an on-prem, and files transfer to a cloud bucket
