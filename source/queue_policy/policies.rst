@@ -13,11 +13,14 @@ Policies and Best Practices
 System Usage
 ============
 
+.. _login_node_usage:
+
 Login Node Usage
 ----------------
 
 The login (front end) nodes are a part of the service nodes-providing
 access to the rest of the cluster. Login nodes are not intended for
+
 computation, instead they should be used for code and batch job
 management tasks. Running heavy processes directly on the login nodes
 may negatively impact other users who interact with the cluster.
@@ -493,7 +496,7 @@ active users or active projects, except as detailed below.
 HPFS (Scratch) Data
 -------------------
 
-Inactive users' and data shall be dispositioned by
+Inactive users' and closed projects' data shall be dispositioned by
 the PI or Portfolio Manager to maintain efficient usage of RDHPCS
 resources. If the PI or Portfolio Manager cannot personally implement
 the disposition of the data, the PI or PM can issue a help ticket, and
@@ -503,29 +506,6 @@ The RDHPCS program policy is to NOT delete active project HPFS data.
 If the PI or Portfolio Manager so directs in a help request, we will
 change ownership of active HPFS project data to another project
 member.
-
-Closed Projects
----------------
-
-All data and files stored on the RDHPCS system are associated with
-and belong to a specific project. Prior to submitting a project closure
-request, the Principal Investigator (PI) or Portfolio Manager must notify
-all team members. It is the responsibility of the PI and project
-members to archive or transfer any required data to external storage, and
-to clean up their project space.
-
-Submitting a closure request indicates that team members have been
-notified, data migration is complete, and the related project space has been
-cleaned up. When a closure request is submitted, a strict 30-day window opens,
-after which all remaining files within the project space will be permanently
-deleted without recovery.
-
-.. attention::
-
-  RDHPCS administrators are under no obligation to issue
-  reminders or follow-up warnings. It is the sole responsibility
-  of the project team to finalize all backups before the 30-day period expires.
-
 
 Home File System (HFS) Data
 ----------------------------
@@ -803,15 +783,15 @@ Hera and Ursa QOS
        be in “Pending” state. Max of 20 jobs per project/account will gain
        age priority. Exceptions are stated below
    * - batch
-     - | 8400 (Hera)
-       | 14400 (Ursa)
+     - 8400 (Hera)
+       14400 (Ursa)
      - 8 hours
      - 1
      - For non-gpu projects only. **Default QOS** for projects with an
        allocation more then Windfall-Only (RawShare=1).
    * - urgent
-     - | 8400 (Hera)
-       | 14400 (Ursa)
+     - 8400 (Hera)
+       14400 (Ursa)
      - 8 hours
      - 2
      - For non-gpu projects only. QOS for a job that requires more urgency than
@@ -822,8 +802,8 @@ Hera and Ursa QOS
        FairShare is below 0.45, jobs submitted to urgent are automatically
        changed to batch and users notified via stderr.
    * - debug
-     - | 8400 (Hera)
-       | 14400 (Ursa)
+     - 8400 (Hera)
+       14400 (Ursa)
      - 30 mins
      - 1.25
      - For non-gpu projects only. Highest priority QOS, useful for debugging
@@ -837,21 +817,15 @@ Hera and Ursa QOS
        job to the default QOS so that you can restart your application over and
        over again without having to start a new batch job.
    * - long
-     - | 4200 (Hera)
-       | 7296 (Ursa)
-     - 96 hours (4 days)
+     - 4200 (Hera)
+       7296 (Ursa)
+     - 16 hours
      - 1
      - For non-gpu projects only. For normal priority jobs that require between
-       8-96 hours.
-       Max of 116,736 core-hours for Ursa, max of 67,200 core-hours for Hera
-       (cpu_allocated * wallclock_requested) of running jobs at any time,
-       per project-account. A project can have up to the max number of jobs
-       pending/running as defined above, but the queued jobs will NOT be
-       considered for scheduling if the project’s running jobs exceed
-       this limit.
+       8-16 hours
    * - windfall
-     - | 8400 (Hera)
-       | 14400 (Ursa)
+     - 8400 (Hera)
+       14400 (Ursa)
      - 8 hours (except "service" partitions)
      - 0
      - **Lowest priority QOS**. If you have an allocation of windfall-only
@@ -866,14 +840,15 @@ Hera and Ursa QOS
      - 1
      - This QOS can only be used on Ursa in combination with the ``u1-h100``
        partition. Only Ursa projects with a GPU allocation (projects that begin
-       with ``gpu-``) of 2 or larger may use this QOS.
-       A project can have up to the max number of jobs
+       with ``gpu-``) of 2 or larger may use this QOS. Max of 1,344 gpu-hours
+       (gpu_allocated * wallclock_requested) of running jobs at any time, per
+       project-account. A project can have up to the max number of jobs
        pending/running as defined above, but the queued jobs will NOT be
        considered for scheduling if the project's running jobs exceed this
        limit.
    * - gpuwf
-     - | 10 gpu's (Ursa ``u1-h100`` partition)
-       | 8 gpu's (Ursa ``u1-gh`` and ``u1-mi300x`` partitions)
+     - 10 gpu's (Ursa ``u1-h100`` partition)
+       8 gpu's (Ursa ``u1-gh`` and ``u1-mi300x`` partitions)
      - 48 hours (2 days)
      - 0
      - This QOS can only be used on Ursa in combination with the ``u1-h100``,
