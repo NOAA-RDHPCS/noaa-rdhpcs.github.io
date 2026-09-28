@@ -1957,7 +1957,7 @@ Users should remember that GPFS F5 is not backed up. The user home area is
 backed up, with hourly and daily snapshots.
 
 Advanced Slurm Usage
-====================
+=====================
 
 This section collects advanced Slurm techniques for users who are already
 comfortable with the basics of ``sbatch``, ``salloc``, and ``srun``.  It
