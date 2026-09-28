@@ -538,6 +538,20 @@ and bind-mount host directories into it. This is described in the
 :ref:`Bind Mounting Host Directories Into a Container
 <containers-bind-mount-host-directories>` section.
 
+Build a Container for Different Architecture
+--------------------------------------------
+
+The ``u1-gh`` exploratory partition on Ursa contains 8 Grace Hopper compute nodes,
+which are equipped with Arm-based 72-core NVIDIA Grace CPU's. To run containers
+on Grace Hopper nodes, images have to be built for ARM64. Because the compute
+nodes are air-gapped, users can not build images directly on the Grace Hopper
+nodes. Instead, users have to use login nodes to build images targeting ARM
+architecture using the ``--arch`` flag.
+
+.. code-block:: shell
+
+    singularity build --arch arm64 <container_arm.sif> <container.def>
+
 .. _containers-runtime-model:
 
 Runtime Model
