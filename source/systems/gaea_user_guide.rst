@@ -1964,7 +1964,7 @@ comfortable with the basics of ``sbatch``, ``salloc``, and ``srun``.  It
 currently covers running many job steps in parallel with controlled CPU
 placement.
 
-.. _parallel-srun-steps:
+
 
 Running Parallel ``srun`` Job Steps in the Background
 -----------------------------------------------------
