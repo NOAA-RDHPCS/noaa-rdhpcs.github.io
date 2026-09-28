@@ -1956,6 +1956,267 @@ system (e.g., git).
 Users should remember that GPFS F5 is not backed up. The user home area is
 backed up, with hourly and daily snapshots.
 
+Advanced Slurm Usage
+====================
+
+This section collects advanced Slurm techniques for users who are already
+comfortable with the basics of ``sbatch``, ``salloc``, and ``srun``.  It
+currently covers running many job steps in parallel with controlled CPU
+placement.
+
+.. _parallel-srun-steps:
+
+Running Parallel ``srun`` Job Steps in the Background
+-----------------------------------------------------
+
+Overview
+~~~~~~~~
+
+This pattern launches many independent ``srun`` job steps in parallel, in the
+background, with one process pinned to one physical core each.  It is useful
+for testing core placement, CPU binding, and job step isolation across
+different systems.
+
+A simple ``sleep`` command is used as the test executable throughout this
+section.  It requires no compilation, no MPI runtime, and no external
+dependencies, which keeps the focus on Slurm's scheduling and binding behavior
+rather than on the test program itself.
+
+Prerequisites
+~~~~~~~~~~~~~
+
+* An active Slurm allocation (``salloc`` or ``sbatch``) with one or more CPUs
+  reserved.
+* Access to ``srun``, ``squeue``, ``sacct``, and ``scontrol`` on the login or
+  batch node.
+* A :file:`logs/` directory for per-step output.
+
+Core Concepts
+~~~~~~~~~~~~~
+
+Two Slurm flags govern how job steps share (or do not share) CPU resources.
+They are independent of each other and are commonly used together.
+
+``--exclusive``
+    A sharing policy.  It prevents other job steps from using the CPUs
+    allocated to this step while it is running.  It does not control which
+    specific CPU IDs are chosen.
+
+``--cpu-bind``
+    A placement mechanism.  It pins a task to specific CPU core IDs using
+    ``sched_setaffinity``.  It does not control whether other steps may also
+    use those cores.
+
+``--hint=nomultithread``
+    Restricts CPU selection to one hardware thread per physical core.  Without
+    this flag, ``--exclusive`` still prevents two steps from sharing the same
+    logical CPU ID, but it does **not** prevent two steps from landing on
+    sibling hardware threads of the same physical core on SMT-enabled systems.
+
+Recommended Flag Combination
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For a single-threaded test program running one task per step, the following
+combination gives the cleanest, most reproducible one-process-per-physical-core
+behavior:
+
+.. code-block:: bash
+
+   srun --exclusive \
+        --hint=nomultithread \
+        -n1 \
+        --cpus-per-task=1 \
+        --cpu-bind=cores \
+        --output=logs/task_${i}.log \
+        sleep 30 &
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Flag
+     - Purpose
+   * - ``-n1``
+     - One task per step.
+   * - ``--cpus-per-task=1``
+     - Reserve exactly one CPU per task.
+   * - ``--exclusive``
+     - No other step may share this CPU.
+   * - ``--hint=nomultithread``
+     - Avoid sibling hyperthread collisions.
+   * - ``--cpu-bind=cores``
+     - Pin the task to its assigned core.
+
+Launching Steps in Parallel
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each ``srun`` invocation is backgrounded with ``&`` inside a loop so the shell
+does not wait for one step to finish before launching the next.  The full CPU
+list is discovered dynamically rather than assumed, since allocated CPU IDs are
+not guaranteed to be a contiguous ``0..N-1`` range.
+
+.. code-block:: bash
+
+   #!/bin/bash
+   set -euo pipefail
+
+   mkdir -p logs
+
+   # Discover the CPUs actually allocated to this job, rather
+   # than assuming a contiguous range starting at zero.
+   CPU_LIST=$(taskset -cp $$ | awk -F': ' '{print $2}')
+   IFS=',' read -ra CPUS <<< "${CPU_LIST}"
+   NUM_CPUS=${#CPUS[@]}
+
+   SLEEP_SECONDS=30
+   PIDS=()
+
+   for i in $(seq 0 $((NUM_CPUS - 1))); do
+       srun --exclusive \
+            --hint=nomultithread \
+            -n1 \
+            --cpus-per-task=1 \
+            --cpu-bind=verbose,cores \
+            --output=logs/task_${i}.log \
+            sleep "${SLEEP_SECONDS}" &
+       PIDS+=($!)
+       echo "Launched step ${i} -> PID ${PIDS[-1]}"
+   done
+
+   wait "${PIDS[@]}"
+   echo "All ${NUM_CPUS} steps completed"
+
+Because ``sleep`` writes no output of its own, ``--cpu-bind=verbose`` is
+included so Slurm itself reports the CPU mask each task was bound to, directly
+in the step's log file.
+
+Confirming Parallel Execution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+While the steps are running, all of them should appear with a ``RUNNING``
+state at the same time, not one after another:
+
+.. code-block:: bash
+
+   squeue --step=<jobid>.*
+
+After completion, per-step timing and exit status are available through
+``sacct``:
+
+.. code-block:: bash
+
+   sacct -j <jobid> \
+         --format=JobID,Start,End,ExitCode,State,AllocCPUS -P
+
+Interpreting ``--cpu-bind=verbose`` Output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A typical line of ``--cpu-bind=verbose`` output looks like this:
+
+.. code-block:: text
+
+   cpu-bind=MASK - nodename, task 0 0 [12345]: mask 0x1 set
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 75
+
+   * - Field
+     - Meaning
+   * - ``cpu-bind=MASK``
+     - Binding type reported (mask form).
+   * - ``nodename``
+     - Hostname the task ran on.
+   * - ``task 0 0``
+     - Local task ID, then global task ID.
+   * - ``[12345]``
+     - Operating system process ID (PID).
+   * - ``mask 0x1``
+     - Hexadecimal CPU affinity mask actually applied.
+   * - ``set``
+     - Confirms the binding call succeeded.
+
+The process ID identifies the operating system process, not the Slurm step.
+PIDs are reused by the kernel once a process exits, so a PID by itself cannot
+be used to distinguish one step from another.  The Slurm step identity comes
+from ``SLURM_JOB_ID.SLURM_STEP_ID``, which should be logged separately if
+step-level correlation is required.
+
+Detecting Genuine Core Collisions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A CPU mask appearing in more than one step's log is not, by itself, proof of a
+collision.  Steps that run sequentially will correctly reuse a core once the
+earlier step has released it.  A genuine collision requires two conditions to
+hold at once:
+
+#. The same CPU mask appears under two different step IDs.
+#. The ``Start`` and ``End`` timestamps of those two steps, as reported by
+   ``sacct``, actually overlap in time.
+
+.. code-block:: bash
+
+   sacct -j <jobid> \
+         --format=JobID,Start,End,ExitCode,State,AllocCPUS -P
+
+If two steps share a mask and their time windows overlap, the isolation
+configuration should be reviewed, starting with partition-level
+oversubscription settings and the presence of ``--hint=nomultithread``.
+
+Deliberate Core Sharing
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The opposite goal, intentionally letting multiple steps share a single core for
+contention testing, uses the inverse of the flags above:
+
+.. code-block:: bash
+
+   CPU_ID=0
+
+   for i in $(seq 0 4); do
+       srun -n1 \
+            --cpus-per-task=1 \
+            --overlap \
+            --oversubscribe \
+            --cpu-bind=map_cpu:${CPU_ID} \
+            --output=logs/shared_core_task_${i}.log \
+            sleep 30 &
+   done
+   wait
+
+Oversubscription may also need to be enabled at the partition or allocation
+level.  Check the partition configuration before relying on step-level flags
+alone:
+
+.. code-block:: bash
+
+   scontrol show partition <partition_name>
+
+Why a Plain Command Instead of MPI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An MPI test program is only useful when a step launches more than one
+communicating task.  For steps that run a single task (``-n1``), an MPI program
+adds initialization overhead and an additional dependency, namely a matching
+``--mpi=`` launch plugin, without exercising any MPI functionality.  A plain
+command such as ``sleep`` isolates the variable actually under test, which is
+Slurm's core placement and binding behavior, and removes an unrelated source of
+failure.
+
+Summary
+~~~~~~~
+
+* ``--exclusive`` prevents CPU ID reuse between concurrently running steps.
+* ``--cpu-bind=cores`` pins each task to a specific core for the duration of
+  the step.
+* ``--hint=nomultithread`` is required in addition to ``--exclusive`` to avoid
+  sibling hyperthread contention on SMT-enabled systems.
+* CPU mask reuse across steps is only a problem when the corresponding time
+  windows overlap.
+* A minimal command such as ``sleep`` is sufficient for single-task binding
+  and placement tests; MPI is only needed once a step launches multiple
+  communicating tasks.
+
 ************
 Known issues
 ************
