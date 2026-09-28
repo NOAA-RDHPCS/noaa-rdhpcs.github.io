@@ -1970,7 +1970,7 @@ Running Parallel ``srun`` Job Steps in the Background
 -----------------------------------------------------
 
 Overview
-~~~~~~~~
+^^^^^^^^
 
 This pattern launches many independent ``srun`` job steps in parallel, in the
 background, with one process pinned to one physical core each.  It is useful
@@ -1983,7 +1983,7 @@ dependencies, which keeps the focus on Slurm's scheduling and binding behavior
 rather than on the test program itself.
 
 Prerequisites
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 * An active Slurm allocation (``salloc`` or ``sbatch``) with one or more CPUs
   reserved.
@@ -1992,7 +1992,7 @@ Prerequisites
 * A :file:`logs/` directory for per-step output.
 
 Core Concepts
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 Two Slurm flags govern how job steps share (or do not share) CPU resources.
 They are independent of each other and are commonly used together.
@@ -2014,7 +2014,7 @@ They are independent of each other and are commonly used together.
     sibling hardware threads of the same physical core on SMT-enabled systems.
 
 Recommended Flag Combination
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For a single-threaded test program running one task per step, the following
 combination gives the cleanest, most reproducible one-process-per-physical-core
@@ -2048,7 +2048,7 @@ behavior:
      - Pin the task to its assigned core.
 
 Launching Steps in Parallel
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each ``srun`` invocation is backgrounded with ``&`` inside a loop so the shell
 does not wait for one step to finish before launching the next.  The full CPU
@@ -2091,7 +2091,7 @@ included so Slurm itself reports the CPU mask each task was bound to, directly
 in the step's log file.
 
 Confirming Parallel Execution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While the steps are running, all of them should appear with a ``RUNNING``
 state at the same time, not one after another:
@@ -2109,7 +2109,7 @@ After completion, per-step timing and exit status are available through
          --format=JobID,Start,End,ExitCode,State,AllocCPUS -P
 
 Interpreting ``--cpu-bind=verbose`` Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A typical line of ``--cpu-bind=verbose`` output looks like this:
 
@@ -2143,7 +2143,7 @@ from ``SLURM_JOB_ID.SLURM_STEP_ID``, which should be logged separately if
 step-level correlation is required.
 
 Detecting Genuine Core Collisions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A CPU mask appearing in more than one step's log is not, by itself, proof of a
 collision.  Steps that run sequentially will correctly reuse a core once the
@@ -2164,7 +2164,7 @@ configuration should be reviewed, starting with partition-level
 oversubscription settings and the presence of ``--hint=nomultithread``.
 
 Deliberate Core Sharing
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The opposite goal, intentionally letting multiple steps share a single core for
 contention testing, uses the inverse of the flags above:
@@ -2193,7 +2193,7 @@ alone:
    scontrol show partition <partition_name>
 
 Why a Plain Command Instead of MPI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An MPI test program is only useful when a step launches more than one
 communicating task.  For steps that run a single task (``-n1``), an MPI program
@@ -2204,7 +2204,7 @@ Slurm's core placement and binding behavior, and removes an unrelated source of
 failure.
 
 Summary
-~~~~~~~
+^^^^^^^
 
 * ``--exclusive`` prevents CPU ID reuse between concurrently running steps.
 * ``--cpu-bind=cores`` pins each task to a specific core for the duration of
