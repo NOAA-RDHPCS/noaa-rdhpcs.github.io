@@ -688,6 +688,7 @@ xinitrc
 xjet
 xlarge
 Xming
+Xsrv
 xstartup
 xsudo
 xsync
