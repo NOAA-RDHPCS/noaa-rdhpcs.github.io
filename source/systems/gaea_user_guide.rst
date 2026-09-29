@@ -2049,11 +2049,25 @@ behavior:
 
 Launching Steps in Parallel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This script is intended to run directly on a compute node, after an
+interactive allocation has already been granted.  Request the allocation
+with ``salloc``, specifying the same resources the loop will use:
+
+.. code-block:: bash
+
+   salloc -A <account> -M <cluster> -t 00:10:00 -N1 --ntasks=10
+
+Once ``salloc`` returns and places the shell on a compute node, run the
+script directly, for example ``./myscript.sh``.  The ``#SBATCH`` style
+directives shown later in this section have no effect in this mode; the
+resources requested on the ``salloc`` command line are what determine the
+allocation.
 
 Each ``srun`` invocation is backgrounded with ``&`` inside a loop so the shell
 does not wait for one step to finish before launching the next.  The full CPU
 list is discovered dynamically rather than assumed, since allocated CPU IDs are
 not guaranteed to be a contiguous ``0..N-1`` range.
+
 
 .. code-block:: bash
 
@@ -2062,11 +2076,7 @@ not guaranteed to be a contiguous ``0..N-1`` range.
 
    mkdir -p logs
 
-   # Discover the CPUs actually allocated to this job, rather
-   # than assuming a contiguous range starting at zero.
-   CPU_LIST=$(taskset -cp $$ | awk -F': ' '{print $2}')
-   IFS=',' read -ra CPUS <<< "${CPU_LIST}"
-   NUM_CPUS=${#CPUS[@]}
+   NUM_CPUS=${SLURM_NTASKS:-${SLURM_CPUS_ON_NODE:-1}}
 
    SLEEP_SECONDS=30
    PIDS=()
@@ -2086,9 +2096,69 @@ not guaranteed to be a contiguous ``0..N-1`` range.
    wait "${PIDS[@]}"
    echo "All ${NUM_CPUS} steps completed"
 
+
+
 Because ``sleep`` writes no output of its own, ``--cpu-bind=verbose`` is
 included so Slurm itself reports the CPU mask each task was bound to, directly
 in the step's log file.
+
+Submitting via ``sbatch``
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The same script runs under ``sbatch`` once resource directives are added to
+the top of the file.  Directives must use a single ``#SBATCH``, not ``##``,
+and must appear before any executable line:
+
+.. code-block:: bash
+
+   #!/bin/bash
+   #SBATCH -A <account>
+   #SBATCH -M <cluster>
+   #SBATCH -t 00:10:00
+   #SBATCH --cpus-per-task=1
+   #SBATCH --ntasks=10
+   #SBATCH -N1
+
+   set -euo pipefail
+
+   mkdir -p logs
+
+   NUM_CPUS=${SLURM_NTASKS:-${SLURM_CPUS_ON_NODE:-1}}
+   SLEEP_SECONDS=30
+   PIDS=()
+
+   for i in $(seq 0 $((NUM_CPUS - 1))); do
+       srun --exclusive \
+            --hint=nomultithread \
+            -n1 \
+            --cpus-per-task=1 \
+            --cpu-bind=verbose,cores \
+            --output=logs/task_${i}.log \
+            sleep "${SLEEP_SECONDS}" &
+       PIDS+=($!)
+   done
+
+   wait "${PIDS[@]}"
+   echo "All ${NUM_CPUS} steps completed"
+
+Submit with:
+
+.. code-block:: bash
+
+   sbatch myscript.sh
+
+Then confirm the allocation matched what was requested:
+
+.. code-block:: bash
+
+   sacct -j <jobid> --format=JobID,NNodes,NTasks,AllocCPUS,State
+
+If the ``logs/`` directory does not already exist and a top-level
+``--output=logs/...`` directive is added for the batch step itself, Slurm may
+attempt to write that file before the script body has a chance to run
+``mkdir -p logs``.  Either create ``logs/`` ahead of time, or omit a
+directory path from the batch step's own ``--output`` directive and let it
+fall back to the default file in the submission directory.
 
 Confirming Parallel Execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
