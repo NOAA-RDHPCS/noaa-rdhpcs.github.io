@@ -186,13 +186,16 @@ Mac OS
                 ssh -oPKCS11Provider=/usr/lib/ssh-keychain.dylib First.Last@BASTION
 
 
+Windows
+--------
+
 To connect to NOAA RDHPCS systems from a Windows workstation using
 your Common Access Card (CAC) or PIV, you will need to register your
 card with the RDHPCS authentication system, then configure a third-party
 software client to bridge your SSH connection.
 
 Step 1: Register your CAC (Automatic)
---------------------------------------
+-------------------------------------
 
 To use your CAC or PIV for RDHPCS access, follow these steps:
 
