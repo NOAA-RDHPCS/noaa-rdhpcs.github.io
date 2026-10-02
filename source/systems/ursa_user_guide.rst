@@ -374,4 +374,4 @@ or watch a `recorded version of the presentation
 Getting Help
 =============
 
-For any Ursa or Rhea issue, open a :ref:`help request <getting_help>`.
+Open a :ref:`help request <getting_help>` for any Ursa issue.
