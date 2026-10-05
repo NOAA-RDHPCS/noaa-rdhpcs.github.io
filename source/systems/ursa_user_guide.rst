@@ -277,6 +277,8 @@ Software Stack
 * An Intel stack is in place. Other stacks will be
   considered if requested.
 
+.. _HPFS-scratch:
+
 HPFS File Systems
 =================
 
