@@ -218,8 +218,8 @@ To use your CAC or PIV for RDHPCS access, follow these steps:
 Upon successful login, your your CAC/PIV details are associated with your
 RDHPCS account.
 
-Step 2: Choose and Configure your Windows SSH Client
-----------------------------------------------------
+Choose and Configure your Windows SSH Client
+--------------------------------------------
 
 Because the federal standard for smart card SSH is centrally documented, we
 rely on the official General Services Administration (GSA) guides for client
