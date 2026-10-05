@@ -218,6 +218,14 @@ To use your CAC or PIV for RDHPCS access, follow these steps:
 Upon successful login, your your CAC/PIV details are associated with your
 RDHPCS account.
 
+Step 2: Choose and Configure your Windows SSH Client
+----------------------------------------------------
+
+Because the federal standard for smart card SSH is centrally documented, we
+rely on the official General Services Administration (GSA) guides for client
+setup. For Window we recommend **PuTTY-CAC**,
+(a GUI-based client).
+
 .. warning::
    Standard PuTTY cannot be used with OpenSC, and PuTTY-CAC cannot provide smart
    card routing for the built-in Windows OpenSSH client. You must use PuTTY-CAC for
