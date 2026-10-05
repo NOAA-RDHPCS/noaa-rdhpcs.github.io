@@ -193,8 +193,8 @@ Install PuTTY-CAC
    you may have to request your IT department to install it for you. They
    will follow the instructions below.
 
-The easiest way to install PuTTY-CAC to use the built-in Windows Package
-Manager (winget). From a PowerShell prompt, type the command:
+The easiest way to install PuTTY-CAC is to use the built-in Windows
+Package Manager (winget). From a PowerShell prompt, type the command:
 
    ``winget install -e --id NoMoreFood.PuTTY-CAC``
 
