@@ -223,33 +223,6 @@ RDHPCS account.
    card routing for the built-in Windows OpenSSH client. You must use PuTTY-CAC for
    a GUI experience, or OpenSC for a command-line experience.
 
-Using PuTTY-CAC
-^^^^^^^^^^^^^^^
-
-PuTTY-CAC is a modified version of the popular PuTTY terminal emulator that
-integrates directly with the Microsoft CryptoAPI (CAPI). This is generally the
-easiest method for Windows users who prefer a graphical interface.
-
-**1. Install PuTTY-CAC**
-
-The easiest way to install PuTTY-CAC is using the built-in Windows Package
-Manager (winget) from a PowerShell prompt:
-
-.. code-block:: powershell
-
-   winget install -e --id NoMoreFood.PuTTY-CAC
-
-**2. Configure PuTTY-CAC**
-
-For comprehensive instructions on configuring your connection, please refer
-to the official federal guidance:
-
-* `IDManagement.gov: SSH from Windows - Using PuTTY-CAC <https://www.idmanagement.gov/implement/scl-ssh/#ssh-from-windows---using-putty-cac>`_
-
-.. note::
-   **Skip Key Extraction:** The IDManagement guide includes instructions for
-   extracting your public key and copying it to a clipboard or text file. Because you
-   completed **Step 1** above, you can skip this portion of their guide. Your key is already registered.
 
 .. _yubikey_instructions:
 
