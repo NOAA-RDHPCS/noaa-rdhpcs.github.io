@@ -112,17 +112,14 @@ provides more information.
 Secure Shell (SSH) Access
 =========================
 
-RDHPCS compute resources are accessed via Secure Shell (SSH) protocol,
-to one of the system's bastions.
-
-MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
-See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
+* RDHPCS compute resources are accessed via Secure Shell (SSH) protocol,
+  to one of the system's bastions.
+* MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
+  See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 
 SSH terminal clients are part of the standard Operating Systems (O/S) in use
-today across Linux and MacOS.
-
-Graphical SSH clients for Windows systems are available. Users have
-reported success with applications such as `PuTTY-CAC <https://github.com/NoMoreFood/putty-cac/releases>`_,
+today across Linux and MacOS. Graphical SSH clients for Windows systems are
+available. Users have reported success with applications such as `PuTTY-CAC <https://github.com/NoMoreFood/putty-cac/releases>`_,
 `SecureCRT <https://www.vandyke.com/products/securecrt/>`_, or
 `MobaXterm <https://mobaxterm.mobatek.net/>`_.
 
@@ -140,9 +137,8 @@ reader and a modern OpenSSH client, or PUTTY-CAC for Windows.
 .. attention::
 
         If you recently were issued a new or renewed CAC, log into
-        the `Account Information Management`_ website to update the CAC
-        information.
-
+        the `Account Information Management`_ website to register
+        or update the CAC information.
         If you do not yet have a CAC, see
         :ref:`common_access_card`
         for information and instructions.
@@ -180,8 +176,7 @@ Windows
 --------
 
 To connect to NOAA RDHPCS systems from a Windows workstation using
-your Common Access Card (CAC) or PIV, you will need to register your
-card with the RDHPCS authentication system, then configure a third-party
+your Common Access Card (CAC) or PIV, you will need configure a third-party
 software client to bridge your SSH connection.
 
 Install PuTTY-CAC
@@ -193,47 +188,35 @@ Install PuTTY-CAC
    you may have to request your IT department to install it for you. They
    will follow the instructions below.
 
-The easiest way to install PuTTY-CAC to use the built-in Windows Package
+The easiest way to install PuTTY-CAC is to use the built-in Windows Package
 Manager (winget). From a PowerShell prompt, type the command:
 
    ``winget install -e --id NoMoreFood.PuTTY-CAC``
 
-Configure PuTTY-CAC
-^^^^^^^^^^^^^^^^^^^
-
-The `GSA ID Management website <https://www.idmanagement.gov/implement/scl-ssh/#ssh-using-putty-cac>`_
-provides instructions for configuring PuTTY-CAC
-to use your CAC/PIV card.
-
-.. note::
-
-   You will select your certificate from the Windows Security list. You might
-   have to click **More Choices** to see the correct certificate.
-   The certificate should have DOD in the name, and an expiry date in the future.
-
-
-Step 1: Register your CAC
--------------------------
+Configure your Session in PuTTY-CAC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To use your CAC or PIV for RDHPCS access, follow these steps:
 
-1. **Open** PuTTY-CAC and load or create a saved session profile.
+1. Open PuTTY-CAC and load or create a saved session profile.
+2. Navigate to Connection → SSH → Certificate and confirm
+   that your PIV authentication certificate is shown under **Selected
+   thumbprint**. If it isn't, repeat the Set CAPI Cert… step from Step 2.
 
-2. Return to **Session**, select your profile, and click **Save**.
+.. note::
 
-3. Click **Open** to initiate the connection.
+   You might have to click **More Choices** to see the correct certificate!
+   The certificate should have DOD in the name, and an expiry date in the future.
+
+3. Return to **Session**, select your profile, and click **Save**.
+4. Click **Open** to initiate the connection.
+5. Verify the server key fingerprint when prompted and click **Yes**.
+6. Enter your RDHPCS username (in First.Last format).
+7. When prompted enter your CAC/PIV PIN.
 
 
 Upon successful login, your your CAC/PIV details are associated with your
 RDHPCS account.
-
-Step 2: Choose and Configure your Windows SSH Client
-----------------------------------------------------
-
-Because the federal standard for smart card SSH is centrally documented, we
-rely on the official General Services Administration (GSA) guides for client
-setup. For Window we recommend **PuTTY-CAC**,
-(a GUI-based client).
 
 .. warning::
    Standard PuTTY cannot be used with OpenSC, and PuTTY-CAC cannot provide smart
