@@ -223,6 +223,8 @@ from the PfM. The request should contain the following:
 File System Usage Practices and Policies
 ========================================
 
+.. _HPFS-scratch:
+
 High Performance File System (HPFS - Scratch)
 ---------------------------------------------
 
