@@ -125,7 +125,7 @@ address can be found here_.
      (If not, please review information on Getting an Account.)
    - You have access to the old device.
 
-#. Go to http://taps.hpc.msstate.edu.
+#. Go to https://taps.hpc.msstate.edu.
 #. Login with credentials.
 #. Click :guilabel:`Other Options` or :guilabel:`Show Other Options`.
 #. Click :guilabel:`Manage Devices`.
