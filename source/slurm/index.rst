@@ -11,6 +11,7 @@ Slurm
    :maxdepth: 2
 
    overview
+   advanced_slurm_usage
 
 .. toctree::
    :hidden:
