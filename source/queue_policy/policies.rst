@@ -20,20 +20,28 @@ Login Node Usage
 
 The login (front end) nodes are a part of the service nodes-providing
 access to the rest of the cluster. Login nodes are not intended for
-
-computation, instead they should be used for code and batch job
+computation. Instead, they should be used for code and batch job
 management tasks. Running heavy processes directly on the login nodes
 may negatively impact other users who interact with the cluster.
 
 Login nodes should be used for tasks similar to the following:
 
-- Editing and compiling code
-- Organizing data on project and home directories
+- Edit and compile code
+- Organize data on project and home directories
 - Submit jobs (batch, dtn, etc, ...)
-- Monitor jobs
+- Monitor jobs.
 
-Use compute nodes for processes that require more cores, longer run
+Use compute nodes for other processes that require more cores, longer run
 times, or more memory.
+
+Run tools such as Matlab, IDL, etc., on a compute note. Follow these
+:ref:`instructions <interactive-jobs>` to get interactive access to
+a compute node.
+
+Run VS Code and similar tools on a compute node, through the Parallel
+Works ACTIVATE platform. See the :ref:`run_vscode` section for
+information and instructions.
+
 
 .. _cron_usage_policy:
 
