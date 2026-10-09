@@ -238,15 +238,15 @@ compute cluster has a dedicated set of login nodes.
 | Host Names           | Node Configuration         | Associated Compute |
 |                      |                            | Cluster            |
 +======================+============================+====================+
-| :regexp:`gaea5[1-8]` | 2x AMD EPYC 7662 64-core   | C5                 |
+| :regexp:`gaea5[1-6]` | 2x AMD EPYC 7662 64-core   | C5                 |
 |                      | (128 cores per node) with  |                    |
 |                      | 512 GB of memory per node  |                    |
 +----------------------+----------------------------+--------------------+
-| :regexp:`gaea6[1-8]` | 2x AMD EPYC 9654 96-core   | C6                 |
+| :regexp:`gaea6[1-6]` | 2x AMD EPYC 9654 96-core   | C6                 |
 |                      | (192 cores per node) with  |                    |
 |                      | 512 GB of memory per node  |                    |
 +----------------------+----------------------------+--------------------+
-| :regexp:`gaea7[1-8]` | 2x AMD EPYC 9845 96-core   | C7                 |
+| :regexp:`gaea7[1-6]` | 2x AMD EPYC 9845 96-core   | C7                 |
 |                      | (320 cores per node) with  |                    |
 |                      | 1.6 TB of memory per node  |                    |
 +----------------------+----------------------------+--------------------+
