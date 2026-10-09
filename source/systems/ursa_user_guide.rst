@@ -254,23 +254,6 @@ In the examples above, the first example requests one node
 with one GH200 GPU and the second example requests one node with
 two MI300X GPUs.
 
-Managing Software Installation on GH Nodes
-------------------------------------------
-
-Unlike the remaining Ursa nodes, which are based on x86
-architecture, the Grace Hopper (GH) nodes are based on ARM architecture
-and use ARM processors. Consequently, these nodes typically
-require a separate software stack, to be installed either
-by system administrators or by users themselves. Because GH nodes are
-accessible solely via the batch system and lack direct
-external connectivity, a specific module file is provided to allow external
-network access for software installation purposes.
-
-Loading the following module should enable external network access:
-
-     ``module load web-proxy``
-
-
 Software Stack
 ==============
 
