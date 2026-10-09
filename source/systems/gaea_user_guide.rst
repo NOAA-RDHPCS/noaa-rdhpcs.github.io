@@ -211,6 +211,20 @@ Gaea consists of two compute clusters, C5 and C6.
       node.  Each group of six cores share a 48 MB L3 cache.  Each CPU has 12
       lanes to the shared 384 GB of physical memory (2 GB per core).
 
+  .. tab-item:: C7
+    :sync: C7
+
+    The C7 compute nodes consist of [2x] 192 core AMD EPYC Zen 5c/Turin CPUs, with two
+    hardware threads per physical core and 768 GB of physical memory (2 GB
+    per core). C7 support up to the AVX-512 :abbr:`ISA (Instruction Set
+    Architecture)`.
+
+    .. figure:: /images/C7-ComputeNodeDiagram.png
+
+      Each C7 compute node has a total of 384 cores, in 4 NUMA domains per
+      node.  Each group of 16 cores share a 32 MB L3 cache.  Each CPU has 12
+      lanes to the shared 768 GB of physical memory (2 GB per core).
+
 
 .. _gaea-login-nodes:
 
@@ -394,8 +408,6 @@ C6 login node:
     gaea54              C5 head node
     gaea55              C5 head node
     gaea56              C5 head node
-    gaea57              C5 head node
-    gaea58              C5 head node
     gaea60              T6 Test access only
     gaea61              C6 head node
     gaea62              C6 head node
@@ -403,8 +415,13 @@ C6 login node:
     gaea64              C6 head node
     gaea65              C6 head node
     gaea66              C6 head node
-    gaea67              C6 head node
-    gaea68              C6 head node
+    gaea70              T7 Test access only
+    gaea71              C7 head node
+    gaea72              C7 head node
+    gaea73              C7 head node
+    gaea74              C7 head node
+    gaea75              C7 head node
+    gaea76              C7 head node
 
     You will now be connected to NOAA RDHPCS: Gaea (NCRC) C5 system.
     To select a specific host, hit ^C within 5 seconds.
@@ -821,6 +838,13 @@ table below lists details about each of the module-provided compilers.
     ``gcc``. ``gcc`` provides GCC installations that were packaged within
     CrayPE, while ``gcc-native`` provides GCC installations outside of CrayPE.
 
+
+.. note::
+
+    Nvidia (formerly NVHPC which was deprecated starting in CPE 24.11)
+    is the replacement for the PGI compiler.
+
+
 .. _gaea-dynamic-linking:
 
 Dynamic linking
@@ -1146,6 +1170,8 @@ The current Slurm clusters are:
 | c5               | C5 compute nodes    |
 +------------------+---------------------+
 | c6               | C6 compute nodes    |
++------------------+---------------------+
+| c7               | C7 compute nodes    |
 +------------------+---------------------+
 | es               | All login and DTN   |
 |                  | nodes               |
