@@ -101,6 +101,34 @@ NOAA's national research network through peering points at Atlanta and Chicago.
 
     * IBM Elastic Storage Server 3500 running GPFS 5.1
 
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
+
+    C7
+    ^^^
+
+    * HPE-EX Cray X3000
+
+    * 1,208 compute nodes (2 x AMD EPYC 9965 2.0GHz base 192-cores per socket)
+
+    * HPE Slingshot Interconnect v.11
+
+    * 768GB DDR4 per node; 927TB total
+
+    * 29 PF peak (base)
+
+  .. grid-item-card::
+    :class-header: sd-bg-muted sd-text-light
+
+    F7
+    ^^^
+
+    * IBM Spectrum Scale
+
+    * 70 PB
+
+    * IBM Elastic Storage Server 3500 running GPFS 5.1
+
 Gaea is the largest of the NOAA RDHPCS, and is used to study the earth's
 notoriously complex weather systems from a variety of angles by enabling
 scientists:
@@ -143,7 +171,7 @@ terms of hardware, but differ in their intended use.
 |         | connecting or submitting jobs, to ensure that you are routed   |
 |         | to a DTN which has that file system mounted. (Otherwise, this  |
 |         | should be selected automatically, based whether your process   |
-|         | originated on a C5 or C6 node).                                |
+|         | originated on a C5,C6, or C7 node).                                |
 +---------+----------------------------------------------------------------+
 
 .. _gaea-compute-nodes:
@@ -183,6 +211,20 @@ Gaea consists of two compute clusters, C5 and C6.
       node.  Each group of six cores share a 48 MB L3 cache.  Each CPU has 12
       lanes to the shared 384 GB of physical memory (2 GB per core).
 
+  .. tab-item:: C7
+    :sync: C7
+
+    The C7 compute nodes consist of [2x] 192 core AMD EPYC Zen 5c/Turin CPUs, with two
+    hardware threads per physical core and 768 GB of physical memory (2 GB
+    per core). C7 support up to the AVX-512 :abbr:`ISA (Instruction Set
+    Architecture)`.
+
+    .. figure:: /images/C7-ComputeNodeDiagram.png
+
+      Each C7 compute node has a total of 384 cores, in 4 NUMA domains per
+      node.  Each group of 16 cores share a 32 MB L3 cache.  Each CPU has 12
+      lanes to the shared 768 GB of physical memory (2 GB per core).
+
 
 .. _gaea-login-nodes:
 
@@ -196,13 +238,17 @@ compute cluster has a dedicated set of login nodes.
 | Host Names           | Node Configuration         | Associated Compute |
 |                      |                            | Cluster            |
 +======================+============================+====================+
-| :regexp:`gaea5[1-8]` | 2x AMD EPYC 7662 64-core   | C5                 |
+| :regexp:`gaea5[1-6]` | 2x AMD EPYC 7662 64-core   | C5                 |
 |                      | (128 cores per node) with  |                    |
 |                      | 512 GB of memory per node  |                    |
 +----------------------+----------------------------+--------------------+
-| :regexp:`gaea6[1-8]` | 2x AMD EPYC 9654 96-core   | C6                 |
+| :regexp:`gaea6[1-6]` | 2x AMD EPYC 9654 96-core   | C6                 |
 |                      | (192 cores per node) with  |                    |
 |                      | 512 GB of memory per node  |                    |
++----------------------+----------------------------+--------------------+
+| :regexp:`gaea7[1-6]` | 2x AMD EPYC 9845 96-core   | C7                 |
+|                      | (320 cores per node) with  |                    |
+|                      | 1.6 TB of memory per node  |                    |
 +----------------------+----------------------------+--------------------+
 
 .. _gaea-dtn-nodes:
@@ -251,21 +297,26 @@ The C5 and C6 nodes are connected with the HPE Slingshot.
 | C6      | [1x] HPE Slingshot 200 Gbps (25.0    | 200 Gbps    |
 |         | GB/s)                                |             |
 +---------+--------------------------------------+-------------+
+| C7      | [1x] HPE Slingshot 200 Gbps (25.0    | 200 Gbps    |
+|         | GB/s)                                |             |
++---------+--------------------------------------+-------------+
 
 File systems
 ============
 
-Gaea compute clusters C5 and C6 have their own file system.  C5 has
+Gaea compute clusters C5, C6, and C7 have their own file system.  C5 has
 access to F5 mounted at :file:`/gpfs/f5`.  C6 has access to :file:`/gpfs/f6`.
+C7 has access to F7 mounted at file:`/gpfs/f7`.
 There are separate sets of :abbr:`DTN (Data Transfer Nodes)`\ s which can
 access each file system.
 
 Operating system
 ================
 
-The C5 and C6 clusters run the Cray Operating System (COS).  :abbr:`COS (Cray
+The C5, and C6 clusters run the Cray Operating System (COS).  :abbr:`COS (Cray
 Operating System)` is based on SUSE Linux Enterprise Server (:abbr:`SLES (SUSE
-Linux Enterprise Server)`).
+Linux Enterprise Server)`). The C7 cluster runs Red Hat Enterprise Linux (RHEL)
+as the base operating system.
 
 +---------+----------+---------+
 | Cluster | Cray OS  | SLES    |
@@ -275,6 +326,15 @@ Linux Enterprise Server)`).
 +---------+----------+---------+
 | C6      | 3.1.0-28 | 15.5    |
 +---------+----------+---------+
+
++---------+----------+
+| Cluster | RHEL     |
+|         | Version  |
++=========+==========+
+| C7      |9.8 (Plow)|
++---------+----------+
+
+
 
 The version of COS and SLES installed on Gaea are updated yearly in the fall.
 The version of COS can be found running ``cat /opt/cray/etc/release/cos-base``
@@ -348,8 +408,6 @@ C6 login node:
     gaea54              C5 head node
     gaea55              C5 head node
     gaea56              C5 head node
-    gaea57              C5 head node
-    gaea58              C5 head node
     gaea60              T6 Test access only
     gaea61              C6 head node
     gaea62              C6 head node
@@ -357,8 +415,13 @@ C6 login node:
     gaea64              C6 head node
     gaea65              C6 head node
     gaea66              C6 head node
-    gaea67              C6 head node
-    gaea68              C6 head node
+    gaea70              T7 Test access only
+    gaea71              C7 head node
+    gaea72              C7 head node
+    gaea73              C7 head node
+    gaea74              C7 head node
+    gaea75              C7 head node
+    gaea76              C7 head node
 
     You will now be connected to NOAA RDHPCS: Gaea (NCRC) C5 system.
     To select a specific host, hit ^C within 5 seconds.
@@ -461,6 +524,27 @@ respectively, mounted at :file:`/gpfs/f5` and :file:`/gpfs/f6`.
       - No
       - No
       - C6 only
+    * - F7 Member Work
+      - :file:`/gpfs/f7/<projID>/scratch/<userID>`
+      - User set
+      - N/A
+      - No
+      - No
+      - C7 only
+    * - F7 Project Work
+      - :file:`/gpfs/f7/<projID>/proj-shared`
+      - 770
+      - N/A
+      - No
+      - No
+      - C7 only
+    * - F7 World Work
+      - :file:`/gpfs/f7/<projID>/world-shared`
+      - 775
+      - N/A
+      - No
+      - No
+      - C7 only
 
 File Compression
 ----------------
@@ -607,6 +691,60 @@ sub-command can be used as summarized in the following table.
 |                                         | containing ``<string>``           |
 +-----------------------------------------+-----------------------------------+
 
+.. _gaea-cray-modules:
+
+Cray Modules (CPE)
+==================
+
+
+Cray programming environment and compiler wrappers
+--------------------------------------------------
+
+The Cray Programming Environment (CPE) is a software ecosystem
+that provides compilers,scientific libraries, debuggers,
+and performance analysis tools.
+
+Within the CPE suite, the Cray Compiling Environment (CCE) exists which
+is a collection of modules that provide the cc, CC, and ftn compiler wrappers.
+
+Cray provides ``PrgEnv-<compiler>`` modules (for example, ``PrgEnv-cray``) that
+load compatible components of a specific compiler toolchain. The components
+include the specified compiler as well as MPI, LibSci, and other libraries.
+Loading the ``PrgEnv-<compiler>`` modules also defines a set of compiler
+wrappers for that compiler toolchain that automatically add include paths and
+link in libraries for Cray software. Compiler wrappers are provided for C
+(:command:`cc`), C++ (:command:`CC`), and Fortran (:command:`ftn`).
+
+.. note::
+
+    The Cray Programming Environment (CPE) is reaching its end of life with
+    version 26.03. Due to the impending EOL of the CPE, the C7 cluster will
+    no longer load the CPE by default. Instead, the default programming
+    environment will be the one that is active when you first log in.
+    If you still need the CPE for an existing workflow, use the alias
+    (:command: `load_cpe`) to access previous CPE versions.
+
+    .. code-block:: shell
+
+    gaea73.c7 ~]$ load_cpe
+
+
+For example, to load the Intel programming environment do:
+
+.. code-block:: shell
+
+    $ module load PrgEnv-intel
+
+This module will setup your programming environment with paths to software and
+libraries that are compatible with Intel host compilers.
+
+.. note::
+
+    Use the ``-craype-verbose`` compiler flag to display the full include and link
+    information used by the Cray compiler wrappers. This must be called on a
+    file, for example ``CC -craype-verbose test.cpp``.
+
+
 Compilers
 =========
 
@@ -700,31 +838,12 @@ table below lists details about each of the module-provided compilers.
     ``gcc``. ``gcc`` provides GCC installations that were packaged within
     CrayPE, while ``gcc-native`` provides GCC installations outside of CrayPE.
 
-Cray programming environment and compiler wrappers
---------------------------------------------------
-
-Cray provides ``PrgEnv-<compiler>`` modules (for example, ``PrgEnv-cray``) that
-load compatible components of a specific compiler toolchain. The components
-include the specified compiler as well as MPI, LibSci, and other libraries.
-Loading the ``PrgEnv-<compiler>`` modules also defines a set of compiler
-wrappers for that compiler toolchain that automatically add include paths and
-link in libraries for Cray software. Compiler wrappers are provided for C
-(:command:`cc`), C++ (:command:`CC`), and Fortran (:command:`ftn`).
-
-For example, to load the Intel programming environment do:
-
-.. code-block:: shell
-
-    $ module load PrgEnv-intel
-
-This module will setup your programming environment with paths to software and
-libraries that are compatible with Intel host compilers.
 
 .. note::
 
-    Use the ``-craype-verbose`` compiler flag to display the full include and link
-    information used by the Cray compiler wrappers. This must be called on a
-    file, for example ``CC -craype-verbose test.cpp``.
+    Nvidia (formerly NVHPC which was deprecated starting in CPE 24.11)
+    is the replacement for the PGI compiler.
+
 
 .. _gaea-dynamic-linking:
 
@@ -1051,6 +1170,8 @@ The current Slurm clusters are:
 | c5               | C5 compute nodes    |
 +------------------+---------------------+
 | c6               | C6 compute nodes    |
++------------------+---------------------+
+| c7               | C7 compute nodes    |
 +------------------+---------------------+
 | es               | All login and DTN   |
 |                  | nodes               |
