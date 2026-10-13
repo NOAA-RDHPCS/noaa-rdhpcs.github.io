@@ -17,24 +17,14 @@ Connecting for the first time
 =============================
 
 All connections to the NOAA RDHPCS enclave are done via Secure Shell
-(SSH) in a terminal session to a Bastion, or via a web browser to
-`ParallelWorks <https://noaa.parallel.works>`__.  See our :ref:`ParallelWorks guide <cloud-user-guide>`.
+(SSH) in a terminal session to a Bastion, or via a web browser, using
+`ParallelWorks <https://noaa.parallel.works>`__ as a remote access tool.
+The `Parallel Works User Guide <https://parallelworks.com/docs>`_ is their
+standard documentation, and describes how to use their platform
+for access to RDHPCS systems.
 
-.. note::
-
-   For access to the MSU HPC systems Orion and Hercules, please review
-   the :ref:`MSU-HPC <MSU-HPC-user-guide>` user guide.
-
-Authentication is via a :ref:`CAC/PIV card<common-access>` or
+Access is authenticated through :ref:`CAC/PIV card<common-access>` or
 YubiKey Multi-Factor Authentication.
-
-Internal to the enclave, `X509 certificates
-<https://en.wikipedia.org/wiki/X.509>`__ are used to authenticate
-between resources.  At first login, and at yearly intervals, a master
-certificate valid for one year is created (SSH Bastion login required)
-with a user-defined pass-phrase.  At each successive log in, a
-thirty-day proxy certificate is created and used for resource access
-and data transfers.
 
 .. attention::
 
@@ -42,54 +32,28 @@ and data transfers.
    into it!  Visit the `Account Information Management`_ website to
    view your RDHPCS profile and system access.
 
+Access to most RDHPCS systems requires a signed x.509 certificate. Your
+first login attempt will generate a master certificate request. You will
+experience a short delay (less than 5 minutes)
+while the request is signed. Users cannot fully log on to a
+system until that certificate is signed.
 
-Access to most RDHPCS systems require a signed x.509 certificate.  The
-first login attempt will generate a master certificate request.  You
-will experience a short (less than 5 minute) delay while the request
-is signed. Users cannot fully log on to a system until that
-certificate is signed.
-
-The prompt will ask you to create a passphrase. Create a passphrase
-with a minimum of three words.
+You will be prompted to create a passphrase for your master
+certificate. The passphrase must include at least **three words**.
 
 .. note::
 
-    Do not worry if you forget your passphrase -- just continue to
+    If you forget your passphrase, do not worry -- just continue to
     try.  On the 4th attempt the system will prompt you to recreate
     your master certificate.
-
-.. _ssh_access:
-
-Secure Shell (SSH) Access
-=========================
-
-Access to on premise RDHPCS compute resources is done using the Secure Shell
-(SSH) protocol to one of the system's bastions, or via ParallelWorks.
-
-MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
-See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
-
-SSH terminal clients are part of the standard Operating Systems (O/S) in use
-today across Linux, MacOS, and Windows.  Windows 10 and Windows 11
-git
-have added built-in support for SSH.  If it is not installed on your
-version of Windows, please refer to Microsoft's `documentation on
-OpenSSH <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui&pivots=windows-server-2025>`_.
-
-Graphical SSH clients for Windows systems are available; users have
-reported success with applications such as `PuTTY-CAC <https://github.com/NoMoreFood/putty-cac/releases>`_,
-`SecureCRT <https://www.vandyke.com/products/securecrt/>`_, or
-`MobaXterm <https://mobaxterm.mobatek.net/>`_.
-
 
 .. _bastion_hostnames:
 
 Bastion Hostnames
 =================
 
-As of mid 2026, there is only one type of Bastion used for both CAC or
+As of mid 2026, one type of Bastion is used for either CAC or
 Yubikey access.
-
 
 .. |MBHN|	replace:: **MFA Bastion hostnames**
 .. |GMPRNG|	replace:: gaea-mfa.princeton.rdhpcs.noaa.gov
@@ -133,15 +97,34 @@ Yubikey access.
 |                   | |UMFRNG|                         |
 +-------------------+----------------------------------+
 
-In addition to the NOAA systems, RDHPCS users have access to
+In addition to the NOAA systems, RDHPCS users can access
 computational capacity on the Orion and Hercules systems, hosted by
 Mississippi State University. See the :ref:`MSU-HPC
-<MSU-HPC-user-guide>` user guide.  for detailed information.
+<MSU-HPC-user-guide>` user guide for detailed information.
 
 Computational capacity is also available on the RDHPCS Cloud Platform, which
 allows NOAA users to create custom HPC clusters on an as-needed basis, through
 the Parallel Works platform. The :ref:`Cloud User Guide <cloud-user-guide>`
 provides more information.
+
+.. _ssh_access:
+
+Secure Shell (SSH) Access
+=========================
+
+RDHPCS compute resources are accessed via Secure Shell (SSH) protocol,
+to one of the system's bastions.
+
+MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
+See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
+
+SSH terminal clients are part of the standard Operating Systems (O/S) in use
+today across Linux and MacOS.
+
+Graphical SSH clients for Windows systems are available. Users have
+reported success with applications such as `PuTTY-CAC <https://github.com/NoMoreFood/putty-cac/releases>`_,
+`SecureCRT <https://www.vandyke.com/products/securecrt/>`_, or
+`MobaXterm <https://mobaxterm.mobatek.net/>`_.
 
 
 .. _Common-access:
@@ -150,25 +133,32 @@ provides more information.
 Common Access Card (CAC) SSH Login
 ==================================
 
-RDHPCS users with a CAC who are logging in from a Windows, Mac, or
-Linux system are recommended to use a CAC login. This requires a CAC
+The preferred method for RDHPCS users logging in from a Windows, Mac, or
+Linux system is to use a CAC login. This requires a CAC
 reader and a modern OpenSSH client, or PUTTY-CAC for Windows.
 
 .. attention::
 
-        If you recently were issued a new or renewed CAC, please log into
+        If you recently were issued a new or renewed CAC, log into
         the `Account Information Management`_ website to update the CAC
         information.
 
-#. Reference the table above for the appropriate Bastion to use.
-#. When prompted, enter your CAC PIN.
+        If you do not yet have a CAC, see
+        :ref:`common_access_card`
+        for information and instructions.
 
-See also the `ssh port tunnels`_ section to create an OpenSSH
+
+Check the Bastion table above for the appropriate Bastion to use.
+When prompted, enter your CAC PIN.
+
+See the `ssh port tunnels`_ section to create an OpenSSH
 configuration for easy RDHPCS access.
 
-Always start by **inserting** your CAC/PIV card **before** using
-``ssh``.  If the CAC/PIV is not available, authentication will fall
-through to Yubikey, and the password prompt will be different.
+.. note:
+
+   Always **insert** your CAC/PIV card **before** using ``ssh``.
+   If the CAC/PIV is not available, authentication will fall
+   through to Yubikey, and the password prompt will be different.
 
 
 Linux
@@ -185,34 +175,98 @@ Mac OS
 
                 ssh -oPKCS11Provider=/usr/lib/ssh-keychain.dylib First.Last@BASTION
 
+
 Windows
--------
+--------
 
-Open PuTTY-CAC.  Select the desired profile (Bastion / HPCS) and click
-**Connect** or something like that.
+To connect to NOAA RDHPCS systems from a Windows workstation using
+your Common Access Card (CAC) or PIV, you will need to register your
+card with the RDHPCS authentication system, then configure a third-party
+software client to bridge your SSH connection.
 
-2. **Open** PuTTY-CAC and load or create a saved session profile.
+Install PuTTY-CAC
+^^^^^^^^^^^^^^^^^
 
-3. Navigate to **Connection → SSH → Certificate** and confirm your
-   PIV authentication certificate is shown under **Selected thumbprint**.
-   If not, repeat the **Set CAPI Cert…** step from Step 2.
+.. note::
 
-4. Return to **Session**, select your profile, and click **Save**.
+   If you don’t have privileges to install software on your computer,
+   you may have to request your IT department to install it for you. They
+   will follow the instructions below.
 
-5. Click **Open** to initiate the connection.
+The easiest way to install PuTTY-CAC is to use the built-in Windows
+Package Manager (winget). From a PowerShell prompt, type the command:
 
-6. Verify the server key fingerprint when prompted and click **Yes**.
+   ``winget install -e --id NoMoreFood.PuTTY-CAC``
 
-7. Enter your RDHPCS **username** (``First.Last`` format).
+Configure PuTTY-CAC
+^^^^^^^^^^^^^^^^^^^
 
-8. When the certificate confirmation dialog appears, click **OK** and
-   enter your **CAC/PIV PIN**.
+The `GSA ID Management website <https://www.idmanagement.gov/implement/scl-ssh/#ssh-using-putty-cac>`_
+provides instructions for configuring PuTTY-CAC
+to use your CAC/PIV card.
 
-   .. note::
+.. note::
 
-      Your card reader may flash during login. **Do not remove your
-      card until you are fully logged in.**
+   You will select your certificate from the Windows Security list. You might
+   have to click **More Choices** to see the correct certificate.
+   The certificate should have DOD in the name, and an expiry date in the future.
 
+
+Step 1: Register your CAC
+-------------------------
+
+To use your CAC or PIV for RDHPCS access, follow these steps:
+
+1. **Open** PuTTY-CAC and load or create a saved session profile.
+
+2. Return to **Session**, select your profile, and click **Save**.
+
+3. Click **Open** to initiate the connection.
+
+
+Upon successful login, your your CAC/PIV details are associated with your
+RDHPCS account.
+
+Step 2: Choose and Configure your Windows SSH Client
+----------------------------------------------------
+
+Because the federal standard for smart card SSH is centrally documented, we
+rely on the official General Services Administration (GSA) guides for client
+setup. For Window we recommend **PuTTY-CAC**,
+(a GUI-based client).
+
+.. warning::
+   Standard PuTTY cannot be used with OpenSC, and PuTTY-CAC cannot provide smart
+   card routing for the built-in Windows OpenSSH client. You must use PuTTY-CAC for
+   a GUI experience, or OpenSC for a command-line experience.
+
+Using PuTTY-CAC
+^^^^^^^^^^^^^^^
+
+PuTTY-CAC is a modified version of the popular PuTTY terminal emulator that
+integrates directly with the Microsoft CryptoAPI (CAPI). This is generally the
+easiest method for Windows users who prefer a graphical interface.
+
+**1. Install PuTTY-CAC**
+
+The easiest way to install PuTTY-CAC is using the built-in Windows Package
+Manager (winget) from a PowerShell prompt:
+
+.. code-block:: powershell
+
+   winget install -e --id NoMoreFood.PuTTY-CAC
+
+**2. Configure PuTTY-CAC**
+
+For comprehensive instructions on configuring your connection, please refer
+to the official federal guidance:
+
+* `IDManagement.gov: SSH from Windows - Using PuTTY-CAC <https://www.idmanagement.gov/implement/scl-ssh/#ssh-from-windows---using-putty-cac>`_
+
+.. note::
+   **Skip Key Extraction:** The IDManagement guide includes instructions for
+   extracting your public key and copying it to a clipboard or text file. Because you
+   completed **Step 1** above, you can skip this portion of their guide. Your key is already registered.
 
 .. _yubikey_instructions:
 

@@ -6,6 +6,7 @@ antlr
 AOCC
 aomip
 aoml
+apikey
 Apptainer
 Archprt
 archrpt
@@ -99,6 +100,7 @@ Darshan
 dask
 DBUS
 deamon
+describedby
 devcimultiintel
 devel
 DFTI
@@ -292,6 +294,7 @@ keybinds
 keyctl
 keyex
 keygen
+keypress
 killallsessions
 kjet
 lahey
@@ -309,6 +312,7 @@ libmpi
 libsci
 Linaro
 linenos
+linkcheck
 LINTRST
 llapack
 lmgfdl
@@ -409,6 +413,7 @@ NAGAPE
 namelist
 naqfc
 nbhome
+nbsp
 NCAR
 NCARG
 NCBRNG
@@ -435,6 +440,7 @@ noaardhpcs
 noaastore
 noaatest
 noaatools
+noaaursacluster
 NOATIME
 NODEFILE
 NODELIST
@@ -590,6 +596,8 @@ SLES
 slurmctld
 slurmd
 slurmdbd
+smartsite
+Smartsites
 SOURCEDIR
 Spack
 SPHINXBUILD
@@ -607,6 +615,7 @@ suspendtime
 swpc
 systemsettings
 szip
+tabindex
 tcmi
 tcpip
 tcsh
@@ -683,6 +692,7 @@ xinitrc
 xjet
 xlarge
 Xming
+Xsrv
 xstartup
 xsudo
 xsync

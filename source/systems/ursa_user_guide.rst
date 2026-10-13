@@ -145,7 +145,8 @@ Ursa has 15 outward-facing nodes.
 
 * 4 nodes will be (front-end) login/cron nodes interactive use:
     * ``ufe01-ufe04``, total of 768 cores for interactive use.
-      See the `Login (Front End) Node Usage Policy <https://docs.rdhpcs.noaa.gov/queue_policy/policies.html#login-node-usage>`_ for important information about using Login nodes.
+      See :ref:`Login Node Usage <login_node_usage>` for important information
+      about using Login nodes.
 * 10 nodes will comprise the service partition:
     * 3,840 cores total.
     * Available via Slurm.
@@ -276,15 +277,13 @@ Software Stack
 * An Intel stack is in place. Other stacks will be
   considered if requested.
 
+.. _HPFS-scratch:
+
 HPFS File Systems
 =================
 
 Ursa has the following three High Performance File Systems (HPFS) available:
 ``/scratch[3,4,5]``.
-
-.. note::
-    While the ``/scratch[3,4]`` file systems are shared between Ursa
-    and Hera, ``/scratch5`` is only available on Ursa.
 
 .. caution::
    Please note that the HPFS scratch file systems are **NOT** backed up!
@@ -377,4 +376,4 @@ or watch a `recorded version of the presentation
 Getting Help
 =============
 
-For any Ursa or Rhea issue, open a :ref:`help request <getting_help>`.
+Open a :ref:`help request <getting_help>` for any Ursa issue.
