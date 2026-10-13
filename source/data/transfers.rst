@@ -314,8 +314,8 @@ desktop/laptop. However, note the following important points:
    * - Ursa
      - noaardhpcs#ursa_untrusted
      - udtn-ursa.fairmont.rdhpcs.noaa.gov
-     - :file:`/scratch[34]/data_untrusted/$USER`
-     - :file:`/scratch[34]/$USER`
+     - :file:`/scratch[3,4]/data_untrusted/$USER`
+     - :file:`/scratch[3,4]/$USER`
    * - Gaea C5/F5
      - noaardhpcs#gaea
      - N/A
