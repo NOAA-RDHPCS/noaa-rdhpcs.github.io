@@ -103,10 +103,10 @@ resets and training to keep your account active.
 **Password Resets**
 
 If you need to reset your password, please navigate to the TAPS_ portal
-and select "Forgot your password?". Enter your username, and then select
-"Request Password Reset". If your account is locked or disabled, or the
-"Password Reset" feature isn't working, please send a ticket to the MSU
-help desk with the subject "Password Reset Request". The MSU e-mail
+and select :guilabel:`Forgot your password?`. Enter your username, then select
+:guilabel:`Request Password Reset`. If your account is locked or disabled,
+or the **Password Reset** feature isn't working, send email to the MSU
+help desk with **Password Reset Request** in the subject. The MSU e-mail
 address can be found here_.
 
 .. note::
@@ -125,15 +125,13 @@ address can be found here_.
      (If not, please review information on Getting an Account.)
    - You have access to the old device.
 
-
-#.  Go to `TAPS`_ and choose Manage DUO and select  **Password --> Add
-    new Device**.
-#.  Select **Send Me a Push**.
-#.  Open DUO on the old device -- you should be prompted to accept a
-    request for authentication.
-#.  Approve that request and then on your PC, you should be prompted
-    to enter a device type. Keep following the prompts to add a token
-    to your new device.
+#. Go to https://taps.hpc.msstate.edu.
+#. Login with credentials.
+#. Click :guilabel:`Other Options` or :guilabel:`Show Other Options`.
+#. Click :guilabel:`Manage Devices`.
+#. Verify your identity with a Duo Push.
+#. Approve on your existing device.
+#. Follow enrollment steps for new device.
 
 **Login nodes: Available externally via SSH**
 
