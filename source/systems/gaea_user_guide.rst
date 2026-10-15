@@ -171,7 +171,7 @@ terms of hardware, but differ in their intended use.
 |         | connecting or submitting jobs, to ensure that you are routed   |
 |         | to a DTN which has that file system mounted. (Otherwise, this  |
 |         | should be selected automatically, based whether your process   |
-|         | originated on a C5,C6, or C7 node).                                |
+|         | originated on a C5,C6, or C7 node).                            |
 +---------+----------------------------------------------------------------+
 
 .. _gaea-compute-nodes:
@@ -726,7 +726,7 @@ link in libraries for Cray software. Compiler wrappers are provided for C
 
     .. code-block:: shell
 
-    gaea73.c7 ~]$ load_cpe
+      gaea73.c7 ~]$ load_cpe
 
 
 For example, to load the Intel programming environment do:

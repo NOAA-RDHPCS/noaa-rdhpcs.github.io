@@ -23,6 +23,7 @@ azcopy
 azurestream
 baseclone
 baseprojectname
+baudilio
 bbcp
 bcfgh
 bigdir
@@ -54,6 +55,7 @@ cffi
 CFLAGS
 cfsstrat
 cgateway
+chanwilson
 chdir
 checkjob
 checkmark
@@ -125,11 +127,13 @@ ecflow
 ecmwf
 Electrotechnical
 elif
+elisabethpatterson
 emcda
 enddo
 enso
 EPEL
 esac
+eschnepp
 eslogin
 ESSL
 etlcm
@@ -221,6 +225,7 @@ hafs
 Haswell
 HCBRNG
 HCPRNG
+hderry
 helloc
 hellocpp
 hellof
@@ -537,6 +542,7 @@ qopt
 qosap
 quotause
 Radeon
+Raghu
 RBHN
 RDARCH
 RDHPC
@@ -547,6 +553,7 @@ RDTNs
 realmemory
 reanl
 reconfig
+Reddy
 regclim
 renkf
 resynched
@@ -650,6 +657,7 @@ ujet
 umarwi
 UMFRNG
 UMPRNG
+unni
 untar
 untarring
 upgrd
