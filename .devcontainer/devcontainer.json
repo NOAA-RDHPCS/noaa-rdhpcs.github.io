@@ -1,0 +1,51 @@
+// Development container for the RDHPCS documentation.
+// See https://containers.dev/implementors/json_reference/ for the format.
+// cspell: words Esbonio stkb swyddfa debugpy trond-snekvik
+{
+    "name": "RDHPCS Documentation",
+    // Python 3.12 matches the GitHub Actions and Read the Docs builds.
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+
+    // Keep the container's virtual environment in a Docker volume.  This
+    // hides any host .venv (built for a different OS) from the container,
+    // so the Makefile and the Esbonio settings can keep using .venv/.
+    "mounts": [
+        "source=rdhpcs-docs-venv-${devcontainerId},target=${containerWorkspaceFolder}/.venv,type=volume"
+    ],
+
+    // A new volume is owned by root.  Give it to the container user, then
+    // create the virtual environment from the hash-pinned requirements.txt.
+    "postCreateCommand": "sudo chown vscode:vscode .venv && make venv",
+
+    // Serve a live preview that rebuilds and reloads the browser on save.
+    // This runs once each time the container starts, in the background, so
+    // reloading or opening more VS Code windows does not start a second copy.
+    "postStartCommand": "bash .devcontainer/start-preview.sh",
+
+    // The live preview uses port 8000.
+    "forwardPorts": [8000],
+    "portsAttributes": {
+        "8000": {
+            "label": "Documentation preview",
+            "onAutoForward": "notify"
+        }
+    },
+
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+            },
+            // Keep in sync with .vscode/extensions.json.
+            "extensions": [
+                "streetsidesoftware.code-spell-checker",
+                "stkb.rewrap",
+                "swyddfa.esbonio",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy",
+                "trond-snekvik.simple-rst"
+            ]
+        }
+    }
+}
