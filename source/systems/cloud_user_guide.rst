@@ -463,6 +463,8 @@ inactivity.)
       [awsnoaa-4]$ ssh compute-dy-c5n18xlarge-1
       [compute-dy-c5n18xlarge-1]$
 
+.. _run_vscode:
+
 Running VS Code from a Compute Node
 -----------------------------------
 
