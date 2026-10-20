@@ -17,4 +17,4 @@ Software
    compilers/index
    gitlab/index
    containers/index
-   VScode/index
+   VSCode/index
