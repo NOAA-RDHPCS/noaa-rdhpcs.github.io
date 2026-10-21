@@ -23,10 +23,17 @@ author = "NOAA RDHPCS"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+# Add _ext directory to path for local extensions
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent / "_ext"))
+
 extensions = ["sphinx_rtd_theme",
               "sphinx_design",
               "sphinx_sitemap",
               "sphinx.ext.autodoc",
+              "faq",
               ]
 
 # Additional templates for all locations
@@ -64,6 +71,7 @@ html_css_files = [
     "css/theme_overrides.css",
     "css/tooltipster.bundle.min.css",
     "css/tooltipster.custom.css",
+    "css/faq.css",
 ]
 
 html_js_files = [
