@@ -214,13 +214,15 @@ Follow these steps to configure or re-configure your sessions:
 
 1. Make sure your CAC card is inserted.
 2. Open PuTTY, and load or create a saved session profile.
-3. In the left panel navigate to Connection → SSH → Certificate.
-4. Under **Authentication Parameters** select the :guilabel:`Set CAPI Cert`.
-5. In the **Putty Select Certificate Or Key** dialog box, select
+3. Make sure the **host** you enter is an **MFA** bastion from 
+   the bastion table above.
+4. In the left panel navigate to Connection → SSH → Certificate.
+5. Under **Authentication Parameters** select the :guilabel:`Set CAPI Cert`.
+6. In the **Putty Select Certificate Or Key** dialog box, select
    **More choices**, then scroll and select your current
    valid DOD certificate,
    in format **Issuer:  DOD ID**, with an expiry date in the future.
-6. In the left panel navigate to :guiLabel:`Session` and click
+7. In the left panel navigate to :guiLabel:`Session` and click
    :guilabel:`Save`.
 
 To test the session, select the saved session and press :guilabel:`Open`.
