@@ -214,7 +214,7 @@ Follow these steps to configure or re-configure your sessions:
 
 1. Make sure your CAC card is inserted.
 2. Open PuTTY, and load or create a saved session profile.
-3. Make sure the **host** you enter is an **MFA** bastion from 
+3. Make sure the **host** you enter is an **MFA** bastion from
    the bastion table above.
 4. In the left panel navigate to Connection → SSH → Certificate.
 5. Under **Authentication Parameters** select the :guilabel:`Set CAPI Cert`.
