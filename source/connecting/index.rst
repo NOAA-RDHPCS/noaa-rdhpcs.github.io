@@ -217,7 +217,7 @@ Follow these steps to configure or re-configure your sessions:
 3. In the left panel navigate to Connection → SSH → Certificate.
 4. Under **Authentication Parameters** select the :guilabel:`Set CAPI Cert`.
 5. In the **Putty Select Certificate Or Key** dialog box, select
-   :**More choices**, then scroll and select your current
+   **More choices**, then scroll and select your current
    valid DOD certificate,
    in format **Issuer:  DOD ID**, with an expiry date in the future.
 6. In the left panel navigate to :guiLabel:`Session` and click
