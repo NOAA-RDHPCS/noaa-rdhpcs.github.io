@@ -217,11 +217,14 @@ Follow these steps to configure or re-configure your sessions:
 3. In the left panel navigate to Connection → SSH → Certificate.
 4. Under **Authentication Parameters** select the :guilabel:`Set CAPI Cert`.
 5. In the **Putty Select Certificate Or Key** dialog box, select
-   :guilabel:`More choices`, then scroll and select your current
+   :**More choices**, then scroll and select your current
    valid DOD certificate,
    in format **Issuer:  DOD ID**, with an expiry date in the future.
 6. In the left panel navigate to :guiLabel:`Session` and click
    :guilabel:`Save`.
+
+To test the session, select the saved session and press :guilabel:`Open`.
+Enter your CAC PIN when prompted, and you should be logged in.
 
 .. note::
 
@@ -232,16 +235,6 @@ Follow these steps to configure or re-configure your sessions:
    (it may take 2-5 cancels) until the pop ups stop and the session window asks
    for your **Password**. Enter your Yubikey PIN, then press and
    hold your Yubikey (long press).
-
-1. Return to **Session**, select your profile, and click **Save**.
-2. Click **Open** to initiate the connection.
-3. Verify the server key fingerprint when prompted and click **Yes**.
-4. Enter your RDHPCS username (in First.Last format).
-5. When prompted enter your CAC/PIV PIN.
-
-
-Upon successful login, your your CAC/PIV details are associated with your
-RDHPCS account.
 
 .. _yubikey_instructions:
 
