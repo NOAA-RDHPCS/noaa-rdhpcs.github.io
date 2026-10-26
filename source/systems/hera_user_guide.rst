@@ -144,8 +144,10 @@ batch scheduler to put your jobs on the first available resource.
 File System Usage
 =================
 
-For information on the file systems available for Hera, see the
-:ref:`High Performance File System<HPFS-scratch>` section.
+Hera file systems are shared with Ursa.
+For information on the shared file systems available for Hera, see the
+:ref:`High Performance File System <HPFS-scratch>` section
+of the Ursa User Guide.
 
 
 Applications and Libraries
