@@ -22,7 +22,7 @@ System Overview
   2,000 trillion floating point operations per second, or 2.0
   petaFLOPS
 - 45 million hours per month with 63,840 cores and a total scratch
-  disk capacity of 18.5 Petabytes.
+  disk capacity of 9.1 Petabytes.
 
 NESCC is also home to Niagara, a cloud-based computing resource. In
 addition, Test and Development systems are available through NESCC for
@@ -47,8 +47,8 @@ System Configuration
    * - Cores/Node
      - 40
    * - Total Cores
-     - 53,120
-   * - Memory/Core (GB)
+     - 63,840
+   * - Memory/Core (GB)/Node
      - 96
    * - Peak FLOPS/Node
      - 12
@@ -62,8 +62,8 @@ System Configuration
      - 2,672
    * - GPUs/Node
      - N/A
-   * - Total GPUs
-     - N/A
+   * - Total GPUs (PF)
+     - 2.0
    * - GPU FLOPS/GPU
      - N/A
    * - Interconnect
