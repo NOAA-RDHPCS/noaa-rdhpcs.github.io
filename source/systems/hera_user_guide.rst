@@ -18,9 +18,6 @@ System Overview
 
 - Capacity of 3,270 trillion floating point operations per second – or
   3.27 petaFLOPS
-- The Fine Grain Graphical Processing Units have a total capacity of
-  2,000 trillion floating point operations per second, or 2.0
-  petaFLOPS
 - 45 million hours per month with 63,840 cores and a total scratch
   disk capacity of 9.1 Petabytes.
 
@@ -60,17 +57,8 @@ System Configuration
      - 384
    * - CPU FLOPS (TFLOPS)
      - 2,672
-   * - GPUs/Node
-     - N/A
-   * - Total GPUs (PF)
-     - 2.0
-   * - GPU FLOPS/GPU
-     - N/A
    * - Interconnect
      - HDR-100 IB
-   * - Total GPU FLOPS (TFLOPS)
-     - N/A
-
 
 
 .. note::
