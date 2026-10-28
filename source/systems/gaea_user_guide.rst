@@ -32,11 +32,12 @@ collaborative effort between the `Department of Energy
 <https://www.energy.gov/>`_ and the `National Atmospheric and Oceanic
 Administration <https://www.noaa.gov/>`_.
 
-The Gaea System consists of two HPE-Cray EX 3000 systems, referred to as C5 and
-C6.  Two high-capacity parallel file systems provide over 150 petabytes of fast
+The Gaea System consists of three HPE-Cray EX 3000 systems, referred to as C5,
+C6, and C7. Three high-capacity parallel file systems
+provide over 220 petabytes of fast
 access storage. These system-specific filesystems are connected using FDR
 InfiniBand to the compute and data-transfer resources. The aggregate Gaea
-system contains a peak calculating capability greater than 20 petaflops
+system contains a peak calculating capability greater than 54 petaflops
 (quadrillion floating point operations per second).
 
 NOAA research partners access data remotely through fast interconnections to
@@ -179,7 +180,7 @@ terms of hardware, but differ in their intended use.
 Compute nodes
 =============
 
-Gaea consists of two compute clusters, C5 and C6.
+Gaea consists of three compute clusters, C5, C6, and C7.
 
 .. tab-set::
 
