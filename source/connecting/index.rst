@@ -198,30 +198,45 @@ Manager (winget). From a PowerShell prompt, type the command:
 
    ``winget install -e --id NoMoreFood.PuTTY-CAC``
 
-Configure your Session in PuTTY-CAC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure PuTTY for CAC access to RDHPCS systems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To use your CAC or PIV for RDHPCS access, follow these steps:
+Once you have installed PuTTY-CAC, your PuTTY version should be
+**Release 0.85-1**
+or newer. To check your PuTTY version, click :guilabel:`About` in the
+lower left of your PuTTY window.
+If you upgraded from an older PuTTY version your existing
+sessions
+configurations should be preserved, but you will have to edit
+them to allow CAC authentication.
 
-1. Open PuTTY-CAC and load or create a saved session profile.
-2. Navigate to Connection → SSH → Certificate and confirm
-   that your PIV authentication certificate is shown under **Selected
-   thumbprint**. If it isn't, repeat the Set CAPI Cert… step from Step 2.
+Follow these steps to configure or re-configure your sessions:
+
+1. Make sure your CAC card is inserted.
+2. Open PuTTY, and load or create a saved session profile.
+3. Make sure the **host** you enter is an **MFA** bastion from
+   the bastion table above.
+4. In the left panel navigate to Connection → SSH → Certificate.
+5. Under **Authentication Parameters** select the :guilabel:`Set CAPI Cert`.
+6. In the **Putty Select Certificate Or Key** dialog box, select
+   **More choices**, then scroll and select your current
+   valid DOD certificate,
+   in format **Issuer:  DOD ID**, with an expiry date in the future.
+7. In the left panel navigate to :guiLabel:`Session` and click
+   :guilabel:`Save`.
+
+To test the session, select the saved session and press :guilabel:`Open`.
+Enter your CAC PIN when prompted, and you should be logged in.
 
 .. note::
 
-   You might have to click **More Choices** to see the correct certificate!
-   The certificate should have DOD in the name, and an expiry date in the future.
-
-3. Return to **Session**, select your profile, and click **Save**.
-4. Click **Open** to initiate the connection.
-5. Verify the server key fingerprint when prompted and click **Yes**.
-6. Enter your RDHPCS username (in First.Last format).
-7. When prompted enter your CAC/PIV PIN.
-
-
-Upon successful login, your your CAC/PIV details are associated with your
-RDHPCS account.
+   If you try to use a session configured for CAC and you do not have your CAC,
+   you can still logon using your Yubikey.  Make sure your Yubikey is inserted.
+   A pop up window will prompt
+   you to insert your CAC. Press :guilabel:`Cancel` on these windows
+   (it may take 2-5 cancels) until the pop ups stop and the session window asks
+   for your **Password**. Enter your Yubikey PIN, then press and
+   hold your Yubikey (long press).
 
 .. _yubikey_instructions:
 
