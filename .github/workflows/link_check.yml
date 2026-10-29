@@ -50,6 +50,9 @@ jobs:
 
       - name: Comment on PR
         if: hashFiles('comment_body.md') != ''
+        # The token is read-only for PRs from forks and some bots, so a
+        # failed comment must not fail the job.
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
