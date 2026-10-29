@@ -5,7 +5,7 @@
 # for more information.
 
 # The tech-writer owns all files
-* @elisabethpatterson 
+* @elisabethpatterson
 
 # Per GitHub documentation, this is to protect the CODEOWNERS file from
 # unwanted changes.
@@ -39,5 +39,5 @@
 /source/systems/hera_user_guide.rst @elisabethpatterson @RaghuReddy-NOAA
 /source/systems/jet_user_guide.rst @elisabethpatterson @RaghuReddy-NOAA
 /source/systems/niagara_user_guide.rst @elisabethpatterson @RaghuReddy-NOAA
-/source/systems/pan/ @chanwilson
+/source/systems/pan/ @chanwilson @baudilio
 

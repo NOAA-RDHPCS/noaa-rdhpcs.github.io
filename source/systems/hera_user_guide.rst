@@ -18,11 +18,8 @@ System Overview
 
 - Capacity of 3,270 trillion floating point operations per second – or
   3.27 petaFLOPS
-- The Fine Grain Graphical Processing Units have a total capacity of
-  2,000 trillion floating point operations per second, or 2.0
-  petaFLOPS
 - 45 million hours per month with 63,840 cores and a total scratch
-  disk capacity of 18.5 Petabytes.
+  disk capacity of 9.1 Petabytes.
 
 NESCC is also home to Niagara, a cloud-based computing resource. In
 addition, Test and Development systems are available through NESCC for
@@ -47,8 +44,8 @@ System Configuration
    * - Cores/Node
      - 40
    * - Total Cores
-     - 53,120
-   * - Memory/Core (GB)
+     - 63,840
+   * - Memory/Core (GB)/Node
      - 96
    * - Peak FLOPS/Node
      - 12
@@ -60,17 +57,8 @@ System Configuration
      - 384
    * - CPU FLOPS (TFLOPS)
      - 2,672
-   * - GPUs/Node
-     - N/A
-   * - Total GPUs
-     - N/A
-   * - GPU FLOPS/GPU
-     - N/A
    * - Interconnect
      - HDR-100 IB
-   * - Total GPU FLOPS (TFLOPS)
-     - N/A
-
 
 
 .. note::
@@ -156,8 +144,10 @@ batch scheduler to put your jobs on the first available resource.
 File System Usage
 =================
 
-For information on the file systems available for Hera, see the
-:ref:`High Performance File System<HPFS-scratch>` section.
+Hera file systems are shared with Ursa.
+For information on the shared file systems available for Hera, see the
+:ref:`High Performance File System <HPFS-scratch>` section
+of the Ursa User Guide.
 
 
 Applications and Libraries
