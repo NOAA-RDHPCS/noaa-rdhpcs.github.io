@@ -23,7 +23,25 @@ if ! .venv/bin/python -m pip show --quiet sphinx-autobuild 2>/dev/null; then
     .venv/bin/python -m pip install --quiet sphinx-autobuild
 fi
 
-nohup .venv/bin/sphinx-autobuild source build/html \
-    --host 0.0.0.0 --port "${PORT}" >"${LOG}" 2>&1 &
+# Run the preview in its own session.  GitHub Codespaces stops the
+# processes in the postStartCommand session when the command finishes.
+# PYTHONUNBUFFERED writes the log as the preview runs.
+PYTHONUNBUFFERED=1 setsid nohup .venv/bin/sphinx-autobuild source build/html \
+    --host 0.0.0.0 --port "${PORT}" >"${LOG}" 2>&1 </dev/null &
+pid=$!
+
+# Do not exit until the preview has moved to its own session.  Otherwise
+# it can be stopped along with this script.
+for _ in $(seq 1 50); do
+    if [ "$(ps -o sid= -p "${pid}" | tr -d ' ')" = "${pid}" ]; then
+        break
+    fi
+    sleep 0.1
+done
+
+if ! kill -0 "${pid}" 2>/dev/null; then
+    echo "The live preview did not start.  See ${LOG}." >&2
+    exit 1
+fi
 
 echo "Started the live preview on port ${PORT}.  Log: ${LOG}"
