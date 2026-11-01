@@ -1,0 +1,50 @@
+/* FAQ Page Styling
+ * Provides visual separation for dropdown-based FAQ entries
+ */
+
+/* Dropdown container - closed state */
+.faq-item {
+    margin-bottom: 0.5rem;
+    border: 1px solid #e1e4e5;
+    border-radius: 4px;
+}
+
+/* Dropdown container - open state with stronger border */
+.faq-item[open] {
+    border-color: #2980b9;
+    border-width: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Horizontal separator after each FAQ item */
+.faq-item + .faq-item {
+    margin-top: 1rem;
+}
+
+/* Category section headers */
+.faq-category-header {
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #2980b9;
+}
+
+/* Search tags - hidden but indexable by search engines */
+.faq-tags {
+    display: none;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .faq-item {
+        border-color: #4a4a4a;
+    }
+
+    .faq-item[open] {
+        border-color: #5dade2;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .faq-category-header {
+        border-bottom-color: #5dade2;
+    }
+}
