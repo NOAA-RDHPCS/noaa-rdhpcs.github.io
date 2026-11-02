@@ -70,7 +70,7 @@ experimentation with different settings may be required.
 
 
 Compiling for reproducible results
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some applications may need to use the ``-fp-model`` option to obtain consistent
 arithmetic results across core counts. This option better controls the order of
