@@ -133,7 +133,7 @@ The NVIDIA compilers are available on Ursa only.
 To see the available versions of the NVIDIA HPC compilers, use the
 command ``module spider nvhpc``.
 
-You need to load a module for a specific version of the compiler before you are
+You need to load a module for a specific version of the compiler before you
 can use that compiler: ``module load nvhpc/<version>``. Loading this module
 also loads the necessary libraries and environment variables for the NVIDIA
 compilers and HPCX-MPI that is provided by NVIDIA.
