@@ -12,8 +12,10 @@ Compilers and MPI Stacks
 
 The following compilers and MPI stacks are available on RDHPCS systems:
 
-* Compilers: Intel oneapi compilers, NVIDIA compilers from NVIDIA HPC SDK (nvhpc), GNU compilers
-* MPI stacks: Intel oneapi MPI, HPCX-MPI (LTS), HPCX-MPI from NVIDIA HPC SDK (nvhpc)
+* Compilers: Intel oneapi compilers, NVIDIA compilers from NVIDIA HPC SDK
+  (nvhpc), GNU compilers
+* MPI stacks: Intel oneapi MPI, HPCX-MPI (LTS), HPCX-MPI from NVIDIA
+  HPC SDK (nvhpc)
 
 Using the Intel oneapi compilers with Intel oneapi MPI
 ------------------------------------------------------
