@@ -7,45 +7,45 @@
 
 .. _compilers:
 
-Compilers
-=========
+Compilers and MPI Stacks
+========================
 
 The following compilers and MPI stacks are available on RDHPCS systems:
 
-* Compilers: Intel, NVIDIA
-* MPI: Intel MPI
+* Compilers: Intel oneapi compilers, NVIDIA compilers from NVIDIA HPC SDK (nvhpc), GNU compilers
+* MPI stacks: Intel oneapi MPI, HPCX-MPI (LTS), HPCX-MPI from NVIDIA HPC SDK (nvhpc)
 
-We recommend the Intel compiler/Intel MPI combination, unless there is a
-specific reason to use other options.
+Using the Intel oneapi compilers with Intel oneapi MPI
+------------------------------------------------------
 
-Using the Intel compiler with Intel MPI
----------------------------------------
-
-To see the available modules, run the  command `` module spider intel impi``,
-which will print a list of available intel and impi modules.
+To see the available modules, run the  command
+``module spider intel-oneapi-mpi intel-oneapi-mpi``,
+which will print a list of available Intel compiler and Intel MPI modules.
 
 Load the desired version of the module files as follows:
 
 .. code-block:: shell
 
-    module load intel/<version> impi/<version>
+    module load intel-oneapi-compilers/<version> intel-oneapi-mpi/<version>
 
 Then use the following commands/wrappers to compile your applications.
 
-For serial codes:
+For non-MPI applications, use the following commands:
 
 .. code-block:: shell
 
-    ifx/ifort: for Fortran codes
-    icx/icc: for C/C++ codes
+    ifx: for non-MPI Fortran applications
+    icx: for non-MPI C/C++ applications
 
 
-For parallel codes:
+For MPI applications, use the following commands/wrappers:
 
 .. code-block:: shell
 
-    mpiifx/mpiifort -fc=ifx:  for Fortran MPI codes
-    mpiicx: for C/C++ codes
+    mpiicx: for C/C++ MPI applications
+    mpiifx: for Fortran MPI applications
+    mpif90 -fc=ifx:  for Fortran MPI applications
+
 
 Use the man pages, or the ``--help`` option on these commands, to get more
 detailed information about the options available with those commands.
@@ -59,7 +59,7 @@ experimentation with different settings may be required.
 
 .. code-block:: shell
 
-   -O3 -xHOST -ip   -align array64byte                                  # The -xHOST is recommended for Hera users only
+   -O3 -xHOST -ip   -align array64byte
    -O3 -qopt-zmm-usage=high -axCORE-AVX512  -align array64byte -ip      # For Skylake processors (Hera)
 
 .. note::
@@ -72,9 +72,9 @@ experimentation with different settings may be required.
 Compiling for reproducible results
 ----------------------------------
 
-Some applications may need to use the ``-fp-`` model to obtain consistent
+Some applications may need to use the ``-fp-model`` option to obtain consistent
 arithmetic results across core counts. This option better controls the order of
-execution and may affect performance. See ``man ifort``; for additional
+execution and may affect performance. See ``man ifx``; for additional
 information.
 
 .. code-block:: shell
@@ -88,7 +88,7 @@ Recommended Intel compiler options for debugging
 
 We recommend the following options as a starting point for debugging code.
 These options are very helpful in detecting common errors in code. The
--gen-interfaces can also be useful for finding errors.
+``-gen-interfaces`` can also be useful for finding errors.
 
 .. code-block:: shell
 
@@ -105,12 +105,6 @@ options (this is an issue with only Intel Fortran compiler):
    -qopenmp (if the source file has OpenMP directives that need to be honored)
    -recursive    # or -auto (these two are equivalent)
 
-.. warning::
-
-   If none of the options above are used, only scalers are put on stack and the
-   generated code may not be thread safe. If you have used ``xlf_r`` or
-   ``mpxlf_r`` options on IBM systems, you should use thread-safe compilation
-   options on Intel fortran compiler.
 
 Other potentially useful Intel compiler options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -135,20 +129,18 @@ Run the command: ``ifx --help`` to see all the available options.
 Using the NVIDIA compilers
 --------------------------
 
-Users should use the Intel compiler unless they have demonstrated that there is
-a good reason not to. The Intel compiler is the most supported and well tested
-compiler on the system.
-
+The NVIDIA compilers are available on Ursa only.
 To see the available versions of the NVIDIA HPC compilers, use the
-command ``module available nvhpc``.
+command ``module spider nvhpc``.
 
 You need to load a module for a specific version of the compiler before you are
-can use that compiler: ``module load nvhpc/<version>``
-
+can use that compiler: ``module load nvhpc/<version>``. Loading this module
+also loads the necessary libraries and environment variables for the NVIDIA
+compilers and HPCX-MPI that is provided by NVIDIA.
 
 Then use the following commands/wrappers for compiling your applications.
 
-For serial programs:
+For non-MPI applications:
 
 .. code-block:: shell
 
@@ -157,17 +149,14 @@ For serial programs:
    nvcc      - for Cuda C sources
    nvc++     - for C++ sources
 
-
-For parallel programs:
+For MPI applications:
 
 .. code-block:: shell
 
-   mpinvf77  - for Fortran 77 MPI sources
-   mpinvf90  - for Fortran 90 MPI sources
-   mpinvc    - for C MPI sources
-   mpinvcc   - for Cuda C MPI sources
-   mpinvc++  - for C++ MPI sources
-
+   mpif90  - for Fortran 90 MPI sources
+   mpic    - for C MPI sources
+   mpicc   - for Cuda C MPI sources
+   mpic++  - for C++ MPI sources
 
 Documentation on NVIDIA compiler options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -203,3 +192,19 @@ These options are very helpful in detecting common errors in code.
 .. code-block:: shell
 
    -O0 -g -traceback -Mbounds -Mchkfpstk -Mchkptr -Mchkstk
+
+Using the HPCX-MPI MPI implementation
+-------------------------------------
+
+The HPCX-MPI implementation is available on Ursa for use with
+GNU and Intel compilers. To see the available versions of the
+HPCX-MPI implementation, use the command
+``module spider hpcx-mpi``.
+
+Once the module is loaded, use the following commands/wrappers for
+compiling your applications.
+
+.. code-block:: shell
+
+   mpif90  - for Fortran 90 MPI sources
+   mpic++  - for C and C++ MPI sources
