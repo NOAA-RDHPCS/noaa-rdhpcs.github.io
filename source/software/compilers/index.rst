@@ -5,8 +5,6 @@
    :keywords: compilers, Intel, MPI, Intel MPI, NVIDIA, Fortran,
     C, C++, parallel, HPC, HPC-X
 
-.. _compilers:
-
 Software Stacks
 ===============
 
