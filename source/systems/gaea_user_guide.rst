@@ -336,7 +336,6 @@ as the base operating system.
 +---------+----------+
 
 
-
 The version of COS and SLES installed on Gaea are updated yearly in the fall.
 The version of COS can be found running ``cat /opt/cray/etc/release/cos-base``
 and version of SLES can be obtained running ``lsb-release -a``.
@@ -427,6 +426,14 @@ C6 login node:
     You will now be connected to NOAA RDHPCS: Gaea (NCRC) C5 system.
     To select a specific host, hit ^C within 5 seconds.
     ^CEnter a hostname, or a unique portion of a hostname []:
+
+
+.. note::
+
+    Refer to the <Shell and Programming Environment> section if
+    you encounter issues with login behavior for /bin/bash
+    shells between systems.
+
 
 ****************
 Data and storage
@@ -598,9 +605,9 @@ methods available.
 
 .. _gaea-programming-environment:
 
-***********************
-Programming environment
-***********************
+*********************************
+Shell and Programming Environment
+*********************************
 
 Gaea users are provided with many pre-installed software packages and
 scientific libraries.  Environment management tools are used to handle
@@ -608,6 +615,73 @@ necessary changes to the shell.
 
 Please refer to the `HPE Cray Programming Environment`_ and the `HPE Cray
 Programming Environment User Guide`_ documentation for more detail.
+
+.. _shell-startup-files:
+
+Shell Startup Files (``.bashrc``)
+=================================
+
+SLES (C5,C6) and RHEL (C7) handle the loading of ``~/.bashrc``
+for login shells differently, so the sameset of dot files
+can behave differently depending on the system you log in to.
+
+SLES
+----
+
+SLES sources ``~/.bashrc`` at the system level through ``/etc/profile``. User
+settings in ``~/.bashrc`` are therefore loaded for login shells even if
+personal configuration files such as ``~/.profile`` are empty or do not
+reference ``~/.bashrc``.
+
+RHEL
+----
+
+RHEL follows standard Bash behavior and does not source ``~/.bashrc`` globally.
+For login shells, Bash reads the first of ``~/.bash_profile``,
+``~/.bash_login``, and ``~/.profile`` that exists. If ``~/.bash_profile``
+exists, ``~/.profile`` is skipped. Whichever file is read must explicitly load
+``~/.bashrc``; otherwise, settings in ``~/.bashrc`` will not be applied to
+login shells.
+
+Summary
+-------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 40 40
+
+   * -
+     - SLES
+     - RHEL
+   * - ``~/.bashrc`` loaded in login shells
+     - Automatically, via ``/etc/profile``
+     - Only if sourced from your own login file
+   * - Behavior with an empty ``~/.profile``
+     - User settings still load
+     - ``~/.bashrc`` is not loaded
+   * - Where the loading logic lives
+     - System-wide fallback
+     - User's home directory files
+
+Recommended configuration
+-------------------------
+
+To get consistent behavior on both operating systems, explicitly source
+``~/.bashrc`` from your login file (``~/.bash_profile``, or ``~/.profile`` if
+you do not have a ``~/.bash_profile``):
+
+.. code-block:: bash
+
+   if [ -n "$BASH_VERSION" ]; then
+       if [ -f ~/.bashrc ]; then
+           . ~/.bashrc
+       fi
+   fi
+
+.. note::
+   If both ``~/.bash_profile`` and ``~/.profile`` exist, Bash reads only
+   ``~/.bash_profile`` for login shells. Add the snippet above to whichever
+   file Bash actually reads.
 
 .. _gaea-environment-modules:
 
