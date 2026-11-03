@@ -338,6 +338,8 @@ We strongly recommend using ``scrontab`` instead of ``cron``
 whenever possible.  For information on how to use ``scrontab``
 please see :ref:`scrontab <rdhpcs_scrontab>`.
 
+.. _Ursa-Software-Stacks:
+
 Software Stack
 ==============
 

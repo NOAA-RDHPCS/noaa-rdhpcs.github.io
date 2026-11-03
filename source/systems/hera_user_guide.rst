@@ -156,4 +156,5 @@ Software Stacks
 
 Software available on Hera is a subset of the software available on Ursa.
 For information on the software stacks available for Hera,
-see the :ref:`Software Stacks <software-stacks>` section of the Ursa User Guide.
+see :ref:`Software Stacks <Ursa-Software-Stacks>` section of the
+Ursa User Guide.
