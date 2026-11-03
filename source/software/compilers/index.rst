@@ -7,5 +7,8 @@
 
 .. _compilers:
 
+Software Stacks
+===============
+
 Information about the software stacks available on the various RDHPCS
 systems can be found in the description of the individual system.
