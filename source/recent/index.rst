@@ -45,8 +45,3 @@ Ursa
 
 To see all available modules, run the ``module spider`` command.
 
-
-
-
-Please see the :ref:`data-transfer-overview` for more details.
-
