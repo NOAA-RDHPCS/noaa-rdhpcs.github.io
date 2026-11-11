@@ -343,7 +343,7 @@ and version of SLES can be obtained running ``lsb-release -a``.
 .. _HPE Cray Programming Environment: https://cpe.ext.hpe.com/docs/latest/index.html
 .. _HPE Cray Programming Environment User Guide: https://cpe.ext.hpe.com/docs/25.03/getting_started/CPE-General-User-Guide-CSM.html
 
-.. seealso::
+.. seealso::https://documentation.suse.com/sbp/tuning-performance/html/SBP-AMD-EPYC-5-SLES15SP6/index.html
 
     `HPE Cray EX Documentation`_
         Documentation specific for the HPE Cray EX 3000 compute system.
@@ -429,9 +429,111 @@ C6 login node:
 
 .. note::
 
-    Refer to the <Shell and Programming Environment> section if
+    Refer to the <SLES/RHEL Differences> section if
     you encounter issues with login behavior for /bin/bash
     shells between systems.
+
+*********************
+SLES/RHEL Differences
+*********************
+
+The Gaea C7 cluster runs Red Hat Enterprise Linux (RHEL)
+as the base operating system, with version 9.8 (Plow)
+installed as of fall 2026. Gaea C5 and C6 clusters will
+continue to run SUSE Linux Enterprise Server (SLES) until
+they upgrade in January 2027. Most day-to-day commands
+should work the same on both systems, with two key
+differences highlighted. This guide explains what is different
+on C7, how to find those differences in your workflows,
+and the problems users are most likely to hit when moving between clusters.
+
+
+Notable Differences:
+* vi vs vim
+* Login behavior for /bin/bash shells
+
+Text Editors
+============
+(RHEL) 9 intentionally maintains separate binaries
+for vi and vim instead of symlinking them.
+The base vim-minimal package supplies /usr/bin/vi
+(a minimal build without advanced features
+like syntax highlighting or mouse support),
+while the optional vim-enhanced package provides /usr/bin/vim.
+
+If you want running vi to launch full vim instead of the minimal binary,
+you can resolve it with the following:
+
+.. code-block:: bash
+
+  echo "alias vi='vim'" >> ~/.bashrc
+  source ~/.bashrc
+
+
+Shell Startup Files (``.bashrc``)
+=================================
+
+SLES (C5,C6) and RHEL (C7) handle the loading of ``~/.bashrc``
+for login shells differently, so the sameset of dot files
+can behave differently depending on the system you log in to.
+
+SLES
+----
+
+SLES sources ``~/.bashrc`` at the system level through ``/etc/profile``. User
+settings in ``~/.bashrc`` are therefore loaded for login shells even if
+personal configuration files such as ``~/.profile`` are empty or do not
+reference ``~/.bashrc``.
+
+RHEL
+----
+
+RHEL follows standard Bash behavior and does not source ``~/.bashrc`` globally.
+For login shells, Bash reads the first of ``~/.bash_profile``,
+``~/.bash_login``, and ``~/.profile`` that exists. If ``~/.bash_profile``
+exists, ``~/.profile`` is skipped. Whichever file is read must explicitly load
+``~/.bashrc``; otherwise, settings in ``~/.bashrc`` will not be applied to
+login shells.
+
+Summary
+-------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 40 40
+
+   * -
+     - SLES
+     - RHEL
+   * - ``~/.bashrc`` loaded in login shells
+     - Automatically, via ``/etc/profile``
+     - Only if sourced from your own login file
+   * - Behavior with an empty ``~/.profile``
+     - User settings still load
+     - ``~/.bashrc`` is not loaded
+   * - Where the loading logic lives
+     - System-wide fallback
+     - User's home directory files
+
+Recommended configuration
+-------------------------
+
+To get consistent behavior on both operating systems, explicitly source
+``~/.bashrc`` from your login file (``~/.bash_profile``, or ``~/.profile`` if
+you do not have a ``~/.bash_profile``):
+
+.. code-block:: bash
+
+   if [ -n "$BASH_VERSION" ]; then
+       if [ -f ~/.bashrc ]; then
+           . ~/.bashrc
+       fi
+   fi
+
+.. note::
+   If both ``~/.bash_profile`` and ``~/.profile`` exist, Bash reads only
+   ``~/.bash_profile`` for login shells. Add the snippet above to whichever
+   file Bash actually reads.
 
 
 ****************
@@ -604,9 +706,9 @@ methods available.
 
 .. _gaea-programming-environment:
 
-*********************************
-Shell and Programming Environment
-*********************************
+***********************
+Programming Environment
+***********************
 
 Gaea users are provided with many pre-installed software packages and
 scientific libraries.  Environment management tools are used to handle
@@ -614,73 +716,6 @@ necessary changes to the shell.
 
 Please refer to the `HPE Cray Programming Environment`_ and the `HPE Cray
 Programming Environment User Guide`_ documentation for more detail.
-
-.. _shell-startup-files:
-
-Shell Startup Files (``.bashrc``)
-=================================
-
-SLES (C5,C6) and RHEL (C7) handle the loading of ``~/.bashrc``
-for login shells differently, so the sameset of dot files
-can behave differently depending on the system you log in to.
-
-SLES
-----
-
-SLES sources ``~/.bashrc`` at the system level through ``/etc/profile``. User
-settings in ``~/.bashrc`` are therefore loaded for login shells even if
-personal configuration files such as ``~/.profile`` are empty or do not
-reference ``~/.bashrc``.
-
-RHEL
-----
-
-RHEL follows standard Bash behavior and does not source ``~/.bashrc`` globally.
-For login shells, Bash reads the first of ``~/.bash_profile``,
-``~/.bash_login``, and ``~/.profile`` that exists. If ``~/.bash_profile``
-exists, ``~/.profile`` is skipped. Whichever file is read must explicitly load
-``~/.bashrc``; otherwise, settings in ``~/.bashrc`` will not be applied to
-login shells.
-
-Summary
--------
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 40 40
-
-   * -
-     - SLES
-     - RHEL
-   * - ``~/.bashrc`` loaded in login shells
-     - Automatically, via ``/etc/profile``
-     - Only if sourced from your own login file
-   * - Behavior with an empty ``~/.profile``
-     - User settings still load
-     - ``~/.bashrc`` is not loaded
-   * - Where the loading logic lives
-     - System-wide fallback
-     - User's home directory files
-
-Recommended configuration
--------------------------
-
-To get consistent behavior on both operating systems, explicitly source
-``~/.bashrc`` from your login file (``~/.bash_profile``, or ``~/.profile`` if
-you do not have a ``~/.bash_profile``):
-
-.. code-block:: bash
-
-   if [ -n "$BASH_VERSION" ]; then
-       if [ -f ~/.bashrc ]; then
-           . ~/.bashrc
-       fi
-   fi
-
-.. note::
-   If both ``~/.bash_profile`` and ``~/.profile`` exist, Bash reads only
-   ``~/.bash_profile`` for login shells. Add the snippet above to whichever
-   file Bash actually reads.
 
 .. _gaea-environment-modules:
 
