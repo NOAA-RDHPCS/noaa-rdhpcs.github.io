@@ -8,7 +8,7 @@ BUILDDIR      = build
 PORT          ?= 8000
 VENV          = .venv
 PYTHON        ?= python3
-MIN_PY_VER    = 3.10
+MIN_PY_VER    = 3.12
 
 # Verify python3 is available and meets minimum version requirement.
 PYTHON3 := $(firstword $(wildcard $(VENV)/bin/python3 $(shell command -v $(PYTHON) 2>/dev/null)))
