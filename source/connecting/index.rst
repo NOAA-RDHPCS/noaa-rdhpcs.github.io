@@ -112,17 +112,14 @@ provides more information.
 Secure Shell (SSH) Access
 =========================
 
-RDHPCS compute resources are accessed via Secure Shell (SSH) protocol,
-to one of the system's bastions.
-
-MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
-See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
+* RDHPCS compute resources are accessed via Secure Shell (SSH) protocol,
+  to one of the system's bastions.
+* MSU systems (Orion, Hercules) are accessed via SSH or OpenOnDemand.
+  See MSU-HPC :ref:`MSUHPC-logging-in` for instructions.
 
 SSH terminal clients are part of the standard Operating Systems (O/S) in use
-today across Linux and MacOS.
-
-Graphical SSH clients for Windows systems are available. Users have
-reported success with applications such as `PuTTY-CAC <https://github.com/NoMoreFood/putty-cac/releases>`_,
+today across Linux and MacOS. Graphical SSH clients for Windows systems are
+available. Users have reported success with applications such as `PuTTY-CAC <https://github.com/NoMoreFood/putty-cac/releases>`_,
 `SecureCRT <https://www.vandyke.com/products/securecrt/>`_, or
 `MobaXterm <https://mobaxterm.mobatek.net/>`_.
 
@@ -140,9 +137,8 @@ reader and a modern OpenSSH client, or PUTTY-CAC for Windows.
 .. attention::
 
         If you recently were issued a new or renewed CAC, log into
-        the `Account Information Management`_ website to update the CAC
-        information.
-
+        the `Account Information Management`_ website to register
+        or update the CAC information.
         If you do not yet have a CAC, see
         :ref:`common_access_card`
         for information and instructions.
@@ -180,9 +176,13 @@ Windows
 --------
 
 To connect to NOAA RDHPCS systems from a Windows workstation using
-your Common Access Card (CAC) or PIV, you will need to register your
-card with the RDHPCS authentication system, then configure a third-party
+your Common Access Card (CAC) or PIV, you will need configure a third-party
 software client to bridge your SSH connection.
+
+.. warning::
+   Standard PuTTY cannot be used with OpenSC, and PuTTY-CAC cannot provide smart
+   card routing for the built-in Windows OpenSSH client. You must use PuTTY-CAC for
+   a GUI experience, or OpenSC for a command-line experience.
 
 Install PuTTY-CAC
 ^^^^^^^^^^^^^^^^^
@@ -193,80 +193,50 @@ Install PuTTY-CAC
    you may have to request your IT department to install it for you. They
    will follow the instructions below.
 
-The easiest way to install PuTTY-CAC is to use the built-in Windows
-Package Manager (winget). From a PowerShell prompt, type the command:
+The easiest way to install PuTTY-CAC is to use the built-in Windows Package
+Manager (winget). From a PowerShell prompt, type the command:
 
    ``winget install -e --id NoMoreFood.PuTTY-CAC``
 
-Configure PuTTY-CAC
-^^^^^^^^^^^^^^^^^^^
+Configure PuTTY for CAC access to RDHPCS systems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The `GSA ID Management website <https://www.idmanagement.gov/implement/scl-ssh/#ssh-using-putty-cac>`_
-provides instructions for configuring PuTTY-CAC
-to use your CAC/PIV card.
+Once you have installed PuTTY-CAC, your PuTTY version should be
+**Release 0.85-1**
+or newer. To check your PuTTY version, click :guilabel:`About` in the
+lower left of your PuTTY window.
+If you upgraded from an older PuTTY version your existing
+sessions
+configurations should be preserved, but you will have to edit
+them to allow CAC authentication.
 
-.. note::
+Follow these steps to configure or re-configure your sessions:
 
-   You will select your certificate from the Windows Security list. You might
-   have to click **More Choices** to see the correct certificate.
-   The certificate should have DOD in the name, and an expiry date in the future.
+1. Make sure your CAC card is inserted.
+2. Open PuTTY, and load or create a saved session profile.
+3. Make sure the **host** you enter is an **MFA** bastion from
+   the bastion table above.
+4. In the left panel navigate to Connection → SSH → Certificate.
+5. Under **Authentication Parameters** select the :guilabel:`Set CAPI Cert`.
+6. In the **Putty Select Certificate Or Key** dialog box, select
+   **More choices**, then scroll and select your current
+   valid DOD certificate,
+   in format **Issuer:  DOD ID**, with an expiry date in the future.
+7. In the left panel navigate to :guiLabel:`Session` and click
+   :guilabel:`Save`.
 
-
-Step 1: Register your CAC
--------------------------
-
-To use your CAC or PIV for RDHPCS access, follow these steps:
-
-1. **Open** PuTTY-CAC and load or create a saved session profile.
-
-2. Return to **Session**, select your profile, and click **Save**.
-
-3. Click **Open** to initiate the connection.
-
-
-Upon successful login, your your CAC/PIV details are associated with your
-RDHPCS account.
-
-Step 2: Choose and Configure your Windows SSH Client
-----------------------------------------------------
-
-Because the federal standard for smart card SSH is centrally documented, we
-rely on the official General Services Administration (GSA) guides for client
-setup. For Window we recommend **PuTTY-CAC**,
-(a GUI-based client).
-
-.. warning::
-   Standard PuTTY cannot be used with OpenSC, and PuTTY-CAC cannot provide smart
-   card routing for the built-in Windows OpenSSH client. You must use PuTTY-CAC for
-   a GUI experience, or OpenSC for a command-line experience.
-
-Using PuTTY-CAC
-^^^^^^^^^^^^^^^
-
-PuTTY-CAC is a modified version of the popular PuTTY terminal emulator that
-integrates directly with the Microsoft CryptoAPI (CAPI). This is generally the
-easiest method for Windows users who prefer a graphical interface.
-
-**1. Install PuTTY-CAC**
-
-The easiest way to install PuTTY-CAC is using the built-in Windows Package
-Manager (winget) from a PowerShell prompt:
-
-.. code-block:: powershell
-
-   winget install -e --id NoMoreFood.PuTTY-CAC
-
-**2. Configure PuTTY-CAC**
-
-For comprehensive instructions on configuring your connection, please refer
-to the official federal guidance:
-
-* `IDManagement.gov: SSH from Windows - Using PuTTY-CAC <https://www.idmanagement.gov/implement/scl-ssh/#ssh-from-windows---using-putty-cac>`_
+To test the session, select the saved session and press :guilabel:`Open`.
+Enter your CAC PIN when prompted, and you should be logged in.
 
 .. note::
-   **Skip Key Extraction:** The IDManagement guide includes instructions for
-   extracting your public key and copying it to a clipboard or text file. Because you
-   completed **Step 1** above, you can skip this portion of their guide. Your key is already registered.
+
+   If you try to use a session configured for CAC and you do not have your CAC,
+   you can still logon using your Yubikey.  Make sure your Yubikey is inserted.
+   A pop up window will prompt
+   you to insert your CAC. Press :guilabel:`Cancel` on these windows
+   (it may take 2-5 cancels) until the pop ups stop and the session window asks
+   for your **Password**. Enter your Yubikey PIN, then press and
+   hold your Yubikey (long press).
 
 .. _yubikey_instructions:
 

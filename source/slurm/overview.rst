@@ -210,6 +210,8 @@ scripts and do one or more of the following:
 If you need help implementing these methods, open an RDHPCS help ticket. See
 :ref:`Getting_Help` for details.
 
+.. _interactive-jobs:
+
 Interactive Jobs
 ----------------
 

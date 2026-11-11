@@ -118,6 +118,48 @@ Keep one logical change per commit.  Do not bundle unrelated edits.
 
 ## Building and testing locally
 
+You can build the documentation in a development container or in a
+Python virtual environment on your own computer.
+
+### Option 1: Use the development container
+
+The repository includes a development container in `.devcontainer/`.
+It provides Python 3.12 and all required packages, so you do not need
+to install Python yourself.
+
+To use it, you need one of the following:
+
+- [Visual Studio Code](https://code.visualstudio.com/) with the
+  [Dev Containers
+  extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+  and [Docker](https://www.docker.com/) running on your computer.
+- A [GitHub Codespace](https://docs.github.com/en/codespaces) created
+  from your fork.  This runs in your web browser.
+
+To start the container:
+
+1. Open your clone of the repository in Visual Studio Code.
+2. When prompted, select **Reopen in Container**.  You can also run
+   **Dev Containers: Reopen in Container** from the Command Palette.
+3. Wait for the first build to finish.  It creates the `.venv`
+   virtual environment and installs the packages.
+
+When the container starts, it runs a live preview of the site with
+`sphinx-autobuild`.  Open the forwarded port 8000 in your browser.
+When you save a file, the preview rebuilds and the browser page
+reloads.  The preview writes its output to `/tmp/sphinx-autobuild.log`.
+If the preview stops, restart it in the container terminal:
+
+```bash
+.devcontainer/start-preview.sh
+```
+
+The preview does not use the same checks as the pull request build.
+Before you commit, run `make html`, `make linkcheck`, and `make lint`
+as described below.
+
+### Option 2: Use a Python virtual environment
+
 Create and activate a Python virtual environment:
 
 ```bash

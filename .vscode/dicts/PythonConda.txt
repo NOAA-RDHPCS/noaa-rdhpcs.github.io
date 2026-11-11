@@ -12,5 +12,6 @@ pkgs_dirs
 pycairo
 pyferret
 scipy
+sphinx-autobuild
 venv
 xarray
