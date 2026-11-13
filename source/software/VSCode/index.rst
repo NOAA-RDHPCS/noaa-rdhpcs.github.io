@@ -20,8 +20,19 @@ VSCode
     local client.
 
 
-Setting up VSCode for use on RDHPCS systems
-===========================================
+Using VSCode for remote development on Ursa/Hera
+================================================
+
+.. attention::
+
+   If you intend to use VSCode on Ursa and Hera, we strongly recommend
+   the :ref:`Parallel Works VSCode workflow <run_vscode>` approach
+   rather than the tunnelling method described below.
+   On Ursa/Hera, the tunnelling method creates too many problems
+   with the VSCode server installation. It is not supported.
+
+Setting up VSCode for remote development on Gaea
+================================================
 
 Set up the install directory
 ----------------------------
