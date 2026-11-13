@@ -106,6 +106,13 @@ FAQ
 
    FAQ/index
 
+Recent User-Facing Changes
+==========================
+
+.. toctree::
+   :maxdepth: 2
+
+   recent/index
 
 References
 ==========
