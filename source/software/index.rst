@@ -18,3 +18,4 @@ Software
    gitlab/index
    containers/index
    VSCode/index
+   remote-desktop/index

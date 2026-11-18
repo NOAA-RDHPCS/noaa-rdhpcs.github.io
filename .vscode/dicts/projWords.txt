@@ -7,7 +7,9 @@ AOCC
 aomip
 aoml
 apikey
+appptainer
 Apptainer
+APPTAINERENV
 Archprt
 archrpt
 arop
@@ -62,6 +64,7 @@ checkmark
 chgrp
 chicklet
 ciaqex
+cleanenv
 clib
 climatt
 cloudda
@@ -102,6 +105,7 @@ Darshan
 dask
 DBUS
 deamon
+Derecho
 describedby
 devcimultiintel
 devel
@@ -140,6 +144,7 @@ etlcm
 expfind
 expls
 Fairmont
+fakeroot
 fastsse
 FFLAGS
 FFTW
@@ -312,6 +317,7 @@ LDFLAGS
 LDTN
 LDTNs
 libcoolkeypk
+libfabric
 libgcc
 libmpi
 libsci
@@ -408,9 +414,11 @@ myfortcode
 myfxex
 mygpu
 myid
+myimage
 myjob
 mypartition
 myprog
+myrepo
 Myrinet
 myrun
 myscript
@@ -440,6 +448,8 @@ nesccmgmt
 nevs
 newrsa
 ngrr
+nnodes
+noaaepic
 noaagfdl
 noaardhpcs
 noaastore
@@ -461,12 +471,14 @@ Normshares
 noslurm
 nosnd
 nosofs
+nprocs
 nranks
 NRBRNG
 nrelwind
 NRPRNG
 ntasks
 NTHREADS
+ntpn
 nulludunits
 NUMA
 numactl
@@ -510,6 +522,7 @@ phod
 physcpubind
 pkcs
 PMFRNG
+PMIX
 PMPRNG
 PNETCDF
 podaac
@@ -559,6 +572,7 @@ renkf
 resynched
 rheltectia
 rmem
+rockylinux
 rocosmic
 rocoto
 rocotorun
@@ -597,6 +611,7 @@ shpcrpt
 shub
 silene
 simg
+SINGULARITYENV
 sjet
 Skylake
 SLES
@@ -611,6 +626,7 @@ SPHINXBUILD
 sphinxcontrib
 SPHINXOPTS
 squashfs
+squashfuse
 sshg
 SSLVPN
 stacksize
