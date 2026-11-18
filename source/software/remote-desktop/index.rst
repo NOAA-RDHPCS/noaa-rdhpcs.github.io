@@ -222,8 +222,8 @@ home quotas during workflow software installs:
 Cost Optimization Strategies
 ----------------------------
 
-   * **Cluster Shutdown**: Select :gui-label:`Destroy` when shutting down
-     standard clusters. Use :gui-label:`Stop/Hibernation` only if retaining
+   * **Cluster Shutdown**: Select **Destroy** when shutting down
+     standard clusters. Use **Stop/Hibernation** only if retaining
      un-snapshotted boot disk modifications (incurs disk storage fees).
    * **Runtime Alerts & Limits**: Enable hourly runtime alerts and session cost
      limits in cluster resource properties.
