@@ -158,24 +158,28 @@ File Transfers & Storage Management
 Overview of Storage Types
 -------------------------
 
-+--------------------+-----------------------------------------+-----------------------------------------+
-| Storage Type       | Description                             | Common Use Cases                        |
-+====================+=========================================+=========================================+
-| Object Storage     | Persistent object storage               | Long-term data archiving, backups,      |
-| (Bucket / Blob)    | (S3, GCP Bucket, Azure Blob)            | and large input/output datasets         |
-+--------------------+-----------------------------------------+-----------------------------------------+
-| Shared EFS/NFS     | Shared filesystem across project users  | Team software libraries, shared scripts |
-|                    |                                         | and persistent custom packages          |
-+--------------------+-----------------------------------------+-----------------------------------------+
-| Lustre File System | High-performance parallel filesystem    | High-IOPS active model execution and    |
-|                    | (ephemeral or persistent)               | scratch space during                    |
-+--------------------+-----------------------------------------+-----------------------------------------+
+.. list-table::
+ :header-rows: 1
+ :align: left
+
+ * - Storage Type
+   - Description
+   - Common Use Cases
+ * - Object Storage (Bucket / Blob)
+   - Persistent object storage (S3, GCP Bucket, Azure Blob)
+   - Long-term data archiving, backups, and large input/output datasets.
+ * - Contrib File System (NFS)
+   - Shared EFS/NFS filesystem across project users
+   - Team software libraries, shared scripts, and persistent custom packages.
+ * - Lustre File System
+   - High-performance parallel filesystem (ephemeral or persistent)
+   - High-IOPS active model execution and scratch space during runs.
 
 Data Transfer Methods
 ---------------------
 
-PW Short-Term Bucket Token (up to 24hours)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PW Short-Term Bucket Token (up to 24 hours)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: shell
 
@@ -202,7 +206,7 @@ Browser File Explorer
 ^^^^^^^^^^^^^^^^^^^^^
 
 Map Home/Bucket/Contrib under
-:gui-label:`Advanced Settings > User workspace mount points`, then
+**Advanced Settings > User workspace mount points**, then
 upload/download via Editor.
 
 Operational Best Practices & Cost Management
