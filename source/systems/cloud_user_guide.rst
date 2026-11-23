@@ -468,23 +468,11 @@ inactivity.)
 Running VS Code from a Compute Node
 -----------------------------------
 
-VS Code sessions and VS Code workflows can be set to run on a compute node.
+VS Code sessions can be set to run on a compute node.
 You can run VS code through the Parallel Works web interface, or through the
 command line interface (CLI). To connect and run via the Parallel Works Command
 Line Interface, you can go directly to the instructions
 at :ref:`pw-cli`.
-
-VS Code Workflow
-^^^^^^^^^^^^^^^^
-
-To execute a workflow, click **Workflows** in the sidebar.
-Select the :guilabel:`Open VS Code latest` workflow.
-Select :guilabel:`Execute Workflow`, switch the Schedule Job toggle to
-:guilabel:`Yes`,
-and complete the Slurm submission information.
-
-.. image:: /images/VSnode1.png
-                :scale: 40%
 
 VS Code Session
 ^^^^^^^^^^^^^^^
