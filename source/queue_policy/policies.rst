@@ -20,7 +20,6 @@ Login Node Usage
 
 The login (front end) nodes are a part of the service nodes-providing
 access to the rest of the cluster. Login nodes are not intended for
-
 computation. Instead, they should be used for code and batch job
 management tasks. Running heavy processes directly on the login nodes
 may negatively impact other users who interact with the cluster.
@@ -683,11 +682,9 @@ Overview
   running very large jobs suggests that there should be a limit on the
   number of cores a job may use, but with a capability to make
   exceptions for “novel” jobs that may require up to the entire
-  system.
-
-  This will promote consideration of whether a job requires a large
-  number of cores due to, for example, memory or schedule constraints,
-  or whether it is simply desired.
+  system. This will promote consideration of whether a job requires a
+  large number of cores due to, for example, memory or schedule
+  constraints, or whether it is simply desired.
 * There should be queues with different priority levels usable by the
   scheduling algorithm. At the very least, run-time variability would
   need to be assessed before we could even think of implementing this.
