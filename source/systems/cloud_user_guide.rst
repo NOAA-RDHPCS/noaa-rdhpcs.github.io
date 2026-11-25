@@ -41,7 +41,8 @@ This diagram illustrates the typical process for using Cloud resources.
       To access the RDHPCS cloud gateway, log into the `Parallel Works NOAA Portal <https://noaa.parallel.works/sso>`_
 
 
-      .. figure:: /images/NOAAcloud1.png
+
+
         :scale: 50%
 
       Click **Continue with NOAA SSO**.
